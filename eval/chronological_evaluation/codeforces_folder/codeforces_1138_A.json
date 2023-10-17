@@ -1,0 +1,101 @@
+[
+    {
+        "name": "Sushi for Two",
+        "description": "Arkady invited Anna for a dinner to a sushi restaurant. The restaurant is a\nbit unusual: it offers \n    n\n pieces of sushi aligned in a row, and a\ncustomer has to choose a continuous subsegment of these sushi to buy. The\npieces of sushi are of two types: either with tuna or with eel. Let's denote\nthe type of the \n    i\n-th from the left sushi as \n    t_i\n, where \n    t_i =\n    1\n means it is with tuna, and \n    t_i = 2\n means it is with eel. Arkady\ndoes not like tuna, Anna does not like eel. Arkady wants to choose such a\ncontinuous subsegment of sushi that it has equal number of sushi of each type\nand each half of the subsegment has only sushi of one type. For example,\nsubsegment \n    [2, 2, 2, 1, 1, 1]\n is valid, but subsegment \n    [1, 2, 1, 2,\n    1, 2]\n is not, because both halves contain both types of sushi. Find the\nlength of the longest continuous subsegment of sushi Arkady can buy. Input The\nfirst line contains a single integer \n    n\n (\n    2 \n    \u2264 n \n    \u2264\n    100\n     000\n) \u2014 the number of pieces of sushi. The second line contains\n\n    n\n integers \n    t_1\n, \n    t_2\n, ..., \n    t_n\n (\n    t_i = 1\n, denoting\na sushi with tuna or \n    t_i = 2\n, denoting a sushi with eel), representing\nthe types of sushi from left to right. It is guaranteed that there is at least\none piece of sushi of each type. Note that it means that there is at least one\nvalid continuous segment. Output Print a single integer \u2014 the maximum length\nof a valid continuous segment. Examples Input 7 2 2 2 1 1 2 2 Output 4 Input 6\n1 2 1 2 1 2 Output 2 Input 9 2 2 1 1 1 2 2 2 2 Output 6 Note In the first\nexample Arkady can choose the subsegment \n    [2, 2, 1, 1]\n or the subsegment\n\n    [1, 1, 2, 2]\n with length \n    4\n. In the second example there is no way\nbut to choose one of the subsegments \n    [2, 1]\n or \n    [1, 2]\n with length\n\n    2\n. In the third example Arkady's best choice is the subsegment \n    [1, 1,\n    1, 2, 2, 2]\n.\n\n",
+        "cf_contest_id": 1138,
+        "cf_index": "A",
+        "cf_rating": 900,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7\r\n2 2 2 1 1 2 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "6\r\n1 2 1 2 1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "9\r\n2 2 1 1 1 2 2 2 2\r\n",
+                "6\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "6\r\n1 2 2 1 1 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "3\r\n1 1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n2 1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n2 1 2 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n1 2 1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n1 1 2 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n2 1 1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\n2 1 1 1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "10\r\n2 2 1 1 1 2 1 1 2 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "100\r\n1 2 2 1 2 2 1 1 2 2 1 2 2 2 2 2 1 1 2 2 2 1 1 1 1 2 2 1 1 2 1 1 2 1 1 1 1 2 2 2 2 2 2 1 1 2 2 1 1 1 1 2 1 2 2 2 1 2 2 1 2 1 1 1 1 1 2 1 2 2 1 1 2 2 1 2 2 1 1 2 2 2 1 2 2 2 2 2 2 1 1 2 2 2 2 1 2 2 2 1\r\n",
+                "8\r\n"
+            ],
+            [
+                "100\r\n2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "54\r\n"
+            ],
+            [
+                "100\r\n1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1\r\n",
+                "14\r\n"
+            ],
+            [
+                "8\r\n1 1 1 1 1 2 2 2\r\n",
+                "6\r\n"
+            ],
+            [
+                "5\r\n1 1 1 2 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "7\r\n1 1 1 1 1 2 2\r\n",
+                "4\r\n"
+            ]
+        ]
+    }
+]

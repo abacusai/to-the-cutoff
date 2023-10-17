@@ -1,0 +1,180 @@
+[
+    {
+        "name": "BerPaint",
+        "description": "Anfisa the monkey got disappointed in word processors as they aren't good\nenough at reflecting all the range of her emotions, that's why she decided to\nswitch to graphics editors. Having opened the BerPaint, she saw a white\nrectangle W \u00d7 H in size which can be painted on. First Anfisa learnt to\nnavigate the drawing tool which is used to paint segments and quickly painted\non that rectangle a certain number of black-colored segments. The resulting\npicture didn't seem bright enough to Anfisa, that's why she turned her\nattention to the \"fill\" tool which is used to find a point on the rectangle to\npaint and choose a color, after which all the area which is the same color as\nthe point it contains, is completely painted the chosen color. Having applied\nthe fill several times, Anfisa expressed her emotions completely and stopped\npainting. Your task is by the information on the painted segments and applied\nfills to find out for every color the total area of the areas painted this\ncolor after all the fills. Input The first input line has two integers W and H\n(3 \u2264 W, H \u2264 10^4) \u2014 the sizes of the initially white rectangular painting\narea. The second line contains integer n \u2014 the number of black segments (0 \u2264 n\n\u2264 100). On the next n lines are described the segments themselves, each of\nwhich is given by coordinates of their endpoints x1, y1, x2, y2 (0 < x1, x2 <\nW, 0 < y1, y2 < H). All segments have non-zero length. The next line contains\npreset number of fills m (0 \u2264 m \u2264 100). Each of the following m lines defines\nthe fill operation in the form of \"x y color\", where (x, y) are the\ncoordinates of the chosen point (0 < x < W, 0 < y < H), and color \u2014 a line of\nlowercase Latin letters from 1 to 15 symbols in length, determining the color.\nAll coordinates given in the input are integers. Initially the rectangle is\n\"white\" in color, whereas the segments are drawn \"black\" in color. Output For\nevery color present in the final picture print on the single line the name of\nthe color and the total area of areas painted that color with an accuracy of\n10^-6. Print the colors in any order. Examples Input 4 5 6 1 1 1 3 1 3 3 3 3 3\n3 1 3 1 1 1 1 3 3 1 1 1 3 3 2 2 1 red 2 2 blue Output blue 0.00000000 white\n20.00000000 Input 5 5 5 1 1 2 2 2 2 4 2 4 2 4 4 4 4 2 4 2 4 2 2 2 3 3 black 3\n3 green Output green 4.00000000 white 21.00000000 Input 7 4 9 1 2 2 3 2 3 3 2\n3 2 2 1 2 1 1 2 3 2 4 2 4 2 5 3 5 3 6 2 6 2 5 1 5 1 4 2 2 2 2 black 2 2 red\nOutput red 2.00000000 white 26.00000000 Note Initially the black segments\npainted by Anfisa can also be painted a color if any of the chosen points lays\non the segment. The segments have areas equal to 0. That is why if in the\nfinal picture only parts of segments is painted some color, then the area,\npainted the color is equal to 0.\n\n",
+        "cf_contest_id": 44,
+        "cf_index": "F",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "geometry",
+            "graphs"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 5\r\n6\r\n1 1 1 3\r\n1 3 3 3\r\n3 3 3 1\r\n3 1 1 1\r\n1 3 3 1\r\n1 1 3 3\r\n2\r\n2 1 red\r\n2 2 blue\r\n",
+                "blue 0.000000000\r\nwhite 20.000000000\r\n"
+            ],
+            [
+                "5 5\r\n5\r\n1 1 2 2\r\n2 2 4 2\r\n4 2 4 4\r\n4 4 2 4\r\n2 4 2 2\r\n2\r\n3 3 black\r\n3 3 green\r\n",
+                "green 4.000000000\r\nwhite 21.000000000\r\n"
+            ],
+            [
+                "7 4\r\n9\r\n1 2 2 3\r\n2 3 3 2\r\n3 2 2 1\r\n2 1 1 2\r\n3 2 4 2\r\n4 2 5 3\r\n5 3 6 2\r\n6 2 5 1\r\n5 1 4 2\r\n2\r\n2 2 black\r\n2 2 red\r\n",
+                "red 2.000000000\r\nwhite 26.000000000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7 4\r\n9\r\n1 2 2 3\r\n2 3 3 2\r\n3 2 2 1\r\n2 1 1 2\r\n3 2 4 2\r\n4 2 5 3\r\n5 3 6 2\r\n6 2 5 1\r\n5 1 4 2\r\n2\r\n2 2 black\r\n2 2 white\r\n",
+                "white 28.000000000\r\n"
+            ],
+            [
+                "7 4\r\n9\r\n1 2 2 3\r\n2 3 3 2\r\n3 2 2 1\r\n2 1 1 2\r\n3 2 4 2\r\n4 2 5 3\r\n5 3 6 2\r\n6 2 5 1\r\n5 1 4 2\r\n1\r\n2 1 white\r\n",
+                "white 28.000000000\r\n"
+            ],
+            [
+                "7 4\r\n9\r\n1 2 2 3\r\n2 3 3 2\r\n3 2 2 1\r\n2 1 1 2\r\n3 2 4 2\r\n4 2 5 3\r\n5 3 6 2\r\n6 2 5 1\r\n5 1 4 2\r\n3\r\n2 1 red\r\n5 2 red\r\n1 2 blue\r\n",
+                "blue 2.000000000\r\nwhite 26.000000000\r\n"
+            ],
+            [
+                "7 4\r\n9\r\n1 2 2 3\r\n2 3 3 2\r\n3 2 2 1\r\n2 1 1 2\r\n3 2 4 2\r\n4 2 5 3\r\n5 3 6 2\r\n6 2 5 1\r\n5 1 4 2\r\n4\r\n2 2 black\r\n5 2 black\r\n1 2 red\r\n5 1 green\r\n",
+                "green 4.000000000\r\nwhite 24.000000000\r\n"
+            ],
+            [
+                "3 3\r\n0\r\n0\r\n",
+                "white 9.000000000\r\n"
+            ],
+            [
+                "3 3\r\n0\r\n1\r\n1 1 white\r\n",
+                "white 9.000000000\r\n"
+            ],
+            [
+                "3 3\r\n0\r\n1\r\n1 1 black\r\n",
+                "black 9.000000000\r\n"
+            ],
+            [
+                "5 4\r\n6\r\n1 1 1 3\r\n1 3 3 3\r\n3 3 3 1\r\n3 1 1 1\r\n1 3 3 1\r\n1 1 3 3\r\n1\r\n2 2 white\r\n",
+                "white 20.000000000\r\n"
+            ],
+            [
+                "5 5\r\n5\r\n1 1 2 2\r\n2 2 4 2\r\n4 2 4 4\r\n4 4 2 4\r\n2 4 2 2\r\n1\r\n1 1 white\r\n",
+                "white 25.000000000\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n1 1 7 1\r\n7 1 7 7\r\n7 7 1 7\r\n1 7 1 1\r\n3 3 3 5\r\n3 5 5 5\r\n5 5 5 3\r\n5 3 3 3\r\n1\r\n4 4 black\r\n",
+                "black 4.000000000\r\nwhite 96.000000000\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n1 1 7 1\r\n7 1 7 7\r\n7 7 1 7\r\n1 7 1 1\r\n3 3 3 5\r\n3 5 5 5\r\n5 5 5 3\r\n5 3 3 3\r\n4\r\n4 4 red\r\n2 2 black\r\n4 2 green\r\n4 3 red\r\n",
+                "red 36.000000000\r\nwhite 64.000000000\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n1 1 7 1\r\n7 1 7 7\r\n7 7 1 7\r\n1 7 1 1\r\n3 3 3 5\r\n3 5 5 5\r\n5 5 5 3\r\n5 3 3 3\r\n4\r\n3 3 white\r\n1 1 red\r\n2 2 red\r\n3 2 blue\r\n",
+                "blue 36.000000000\r\nwhite 64.000000000\r\n"
+            ],
+            [
+                "5 5\r\n1\r\n2 1 2 4\r\n0\r\n",
+                "black 0.000000000\r\nwhite 25.000000000\r\n"
+            ],
+            [
+                "5 5\r\n1\r\n2 1 2 4\r\n1\r\n2 2 red\r\n",
+                "red 0.000000000\r\nwhite 25.000000000\r\n"
+            ],
+            [
+                "5 5\r\n1\r\n2 1 2 4\r\n2\r\n2 2 red\r\n2 4 blue\r\n",
+                "blue 0.000000000\r\nwhite 25.000000000\r\n"
+            ],
+            [
+                "5 5\r\n1\r\n2 1 2 4\r\n3\r\n2 2 red\r\n2 4 blue\r\n2 4 orange\r\n",
+                "orange 0.000000000\r\nwhite 25.000000000\r\n"
+            ],
+            [
+                "5 5\r\n1\r\n2 1 2 4\r\n4\r\n2 2 red\r\n2 4 blue\r\n2 4 orange\r\n2 2 yellow\r\n",
+                "white 25.000000000\r\nyellow 0.000000000\r\n"
+            ],
+            [
+                "8 8\r\n5\r\n6 7 2 6\r\n7 1 7 6\r\n2 5 3 5\r\n5 4 2 2\r\n1 7 4 3\r\n5\r\n2 5 blue\r\n7 2 magenta\r\n3 2 cyan\r\n7 7 magenta\r\n3 2 orange\r\n",
+                "black 0.000000000\r\nblue 0.000000000\r\norange 64.000000000\r\n"
+            ],
+            [
+                "8 8\r\n5\r\n6 5 4 3\r\n6 7 3 2\r\n7 6 4 6\r\n7 6 2 1\r\n5 6 3 5\r\n5\r\n6 5 red\r\n7 5 red\r\n7 6 blue\r\n7 7 gray\r\n1 4 gray\r\n",
+                "gray 60.800000000\r\nwhite 3.200000000\r\n"
+            ],
+            [
+                "8 8\r\n5\r\n3 1 4 7\r\n5 5 5 4\r\n3 6 5 1\r\n1 2 1 1\r\n4 4 3 6\r\n5\r\n5 5 cyan\r\n7 6 violet\r\n3 4 cyan\r\n2 7 white\r\n1 3 green\r\n",
+                "black 0.000000000\r\ngreen 63.908088235\r\nwhite 0.091911765\r\n"
+            ],
+            [
+                "8 8\r\n5\r\n2 5 4 5\r\n6 4 2 7\r\n1 1 6 2\r\n2 7 6 5\r\n4 7 3 2\r\n5\r\n2 7 brown\r\n7 7 magenta\r\n7 1 blue\r\n3 5 gray\r\n7 5 brown\r\n",
+                "black 0.000000000\r\nbrown 63.604743083\r\ngray 0.000000000\r\nwhite 0.395256917\r\n"
+            ],
+            [
+                "8 8\r\n5\r\n2 1 4 4\r\n5 2 3 3\r\n4 3 6 4\r\n4 3 5 4\r\n3 6 3 5\r\n5\r\n7 7 violet\r\n1 2 red\r\n3 3 yellow\r\n5 5 brown\r\n5 4 yellow\r\n",
+                "black 0.000000000\r\nbrown 64.000000000\r\nyellow 0.000000000\r\n"
+            ],
+            [
+                "8 8\r\n5\r\n1 6 4 1\r\n4 1 7 5\r\n7 3 5 5\r\n5 5 6 3\r\n2 4 5 1\r\n5\r\n4 2 red\r\n1 5 violet\r\n5 1 blue\r\n5 2 red\r\n5 5 red\r\n",
+                "red 62.578571429\r\nwhite 1.421428571\r\n"
+            ],
+            [
+                "8 8\r\n5\r\n5 1 4 5\r\n3 2 4 1\r\n5 5 6 7\r\n7 1 4 2\r\n6 2 5 4\r\n5\r\n3 2 cyan\r\n1 6 yellow\r\n1 5 yellow\r\n1 2 brown\r\n3 5 green\r\n",
+                "black 0.000000000\r\ncyan 0.000000000\r\ngreen 64.000000000\r\n"
+            ],
+            [
+                "8 8\r\n5\r\n5 4 4 2\r\n2 7 5 4\r\n1 7 7 1\r\n1 4 3 1\r\n5 6 5 4\r\n5\r\n7 2 white\r\n3 7 black\r\n5 2 blue\r\n1 7 black\r\n1 4 brown\r\n",
+                "brown 64.000000000\r\n"
+            ],
+            [
+                "8 8\r\n5\r\n4 2 4 6\r\n3 6 2 6\r\n6 6 1 3\r\n1 7 4 4\r\n5 7 6 4\r\n5\r\n1 3 gray\r\n6 1 red\r\n3 3 green\r\n6 1 orange\r\n5 5 yellow\r\n",
+                "gray 0.000000000\r\nwhite 0.200000000\r\nyellow 63.800000000\r\n"
+            ],
+            [
+                "8 8\r\n5\r\n7 5 6 4\r\n7 3 6 7\r\n4 3 3 4\r\n1 2 7 5\r\n2 1 3 3\r\n5\r\n3 6 violet\r\n5 5 black\r\n3 1 blue\r\n3 4 white\r\n5 6 violet\r\n",
+                "violet 64.000000000\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n8 1 4 9\r\n7 8 6 2\r\n4 3 1 7\r\n3 6 2 6\r\n1 1 5 4\r\n8 8 2 9\r\n8 6 9 4\r\n6 6 1 8\r\n10\r\n7 5 magenta\r\n9 2 orange\r\n8 4 gray\r\n7 8 blue\r\n3 8 white\r\n9 7 cyan\r\n3 1 orange\r\n6 3 magenta\r\n3 3 gray\r\n9 1 magenta\r\n",
+                "black 0.000000000\r\nblue 0.000000000\r\nmagenta 100.000000000\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n2 9 7 1\r\n5 6 1 4\r\n8 3 5 3\r\n1 6 6 9\r\n4 1 3 8\r\n5 3 6 7\r\n8 9 2 4\r\n9 6 7 3\r\n10\r\n7 2 brown\r\n8 3 magenta\r\n1 8 red\r\n2 4 cyan\r\n1 9 gray\r\n3 5 yellow\r\n4 7 green\r\n4 5 violet\r\n5 2 cyan\r\n2 6 red\r\n",
+                "red 98.871894800\r\nwhite 1.128105200\r\nyellow 0.000000000\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n5 8 1 2\r\n5 4 6 6\r\n2 4 8 5\r\n8 9 4 4\r\n5 2 7 2\r\n1 1 3 5\r\n8 4 2 4\r\n4 7 7 8\r\n10\r\n7 8 white\r\n7 3 white\r\n3 9 green\r\n7 8 black\r\n9 9 yellow\r\n7 5 yellow\r\n5 1 orange\r\n9 5 yellow\r\n7 2 cyan\r\n6 2 yellow\r\n",
+                "yellow 100.000000000\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n8 7 4 3\r\n4 3 2 8\r\n6 6 4 9\r\n7 9 8 7\r\n8 1 5 5\r\n7 5 7 3\r\n8 6 2 4\r\n1 6 4 4\r\n10\r\n7 5 magenta\r\n7 3 violet\r\n8 2 brown\r\n1 1 blue\r\n7 1 green\r\n1 4 orange\r\n4 7 green\r\n7 5 white\r\n9 9 white\r\n1 7 blue\r\n",
+                "black 0.000000000\r\nblue 97.421717172\r\nwhite 2.578282828\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n1 4 7 4\r\n4 1 7 1\r\n1 7 9 5\r\n5 3 3 3\r\n8 2 1 9\r\n3 1 4 1\r\n6 9 3 4\r\n5 6 4 9\r\n10\r\n8 2 brown\r\n6 3 blue\r\n1 3 white\r\n4 6 white\r\n5 8 yellow\r\n6 2 cyan\r\n5 4 gray\r\n5 5 blue\r\n2 8 white\r\n3 3 cyan\r\n",
+                "black 0.000000000\r\ncyan 0.000000000\r\nwhite 100.000000000\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n4 3 1 3\r\n2 8 5 3\r\n3 7 5 9\r\n3 3 9 7\r\n2 2 8 5\r\n9 6 7 8\r\n6 4 3 4\r\n8 5 1 5\r\n10\r\n8 8 white\r\n5 3 blue\r\n3 5 orange\r\n7 1 yellow\r\n2 9 green\r\n9 9 yellow\r\n6 8 magenta\r\n3 6 cyan\r\n4 6 violet\r\n6 8 green\r\n",
+                "black 0.000000000\r\ngreen 95.847619048\r\norange 0.000000000\r\nwhite 4.152380952\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n9 2 6 4\r\n3 6 1 5\r\n6 8 7 4\r\n2 6 5 1\r\n3 3 3 8\r\n5 1 2 6\r\n6 6 5 4\r\n3 4 9 3\r\n10\r\n6 7 magenta\r\n3 3 gray\r\n5 6 gray\r\n2 6 red\r\n2 9 yellow\r\n4 9 orange\r\n7 4 gray\r\n1 8 magenta\r\n8 4 violet\r\n8 4 red\r\n",
+                "black 0.000000000\r\ngray 0.000000000\r\nred 99.321937322\r\nwhite 0.678062678\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n3 1 9 5\r\n1 4 5 7\r\n1 8 3 9\r\n7 6 2 6\r\n6 4 1 3\r\n4 6 8 2\r\n6 9 5 4\r\n7 3 7 8\r\n10\r\n7 4 brown\r\n2 3 red\r\n1 8 blue\r\n5 8 white\r\n8 1 green\r\n7 8 orange\r\n5 1 brown\r\n8 8 gray\r\n1 3 gray\r\n3 9 white\r\n",
+                "gray 95.500000000\r\nwhite 4.500000000\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n6 7 3 6\r\n1 2 1 9\r\n5 9 8 4\r\n6 9 6 1\r\n7 5 6 6\r\n9 2 3 9\r\n6 4 7 4\r\n1 3 6 4\r\n10\r\n7 1 yellow\r\n1 3 orange\r\n3 2 violet\r\n8 4 orange\r\n6 1 yellow\r\n1 6 cyan\r\n6 5 green\r\n6 8 orange\r\n3 3 gray\r\n5 7 black\r\n",
+                "black 99.250000000\r\norange 0.000000000\r\nwhite 0.750000000\r\n"
+            ],
+            [
+                "10 10\r\n8\r\n3 1 2 6\r\n5 2 4 3\r\n1 2 6 3\r\n4 8 4 9\r\n8 4 9 9\r\n3 5 4 5\r\n5 9 6 9\r\n8 9 8 7\r\n10\r\n2 9 orange\r\n5 3 blue\r\n6 3 orange\r\n1 9 cyan\r\n3 2 red\r\n7 8 cyan\r\n5 8 gray\r\n4 9 blue\r\n9 4 red\r\n3 1 violet\r\n",
+                "black 0.000000000\r\nblue 0.000000000\r\nred 100.000000000\r\nviolet 0.000000000\r\n"
+            ]
+        ]
+    }
+]

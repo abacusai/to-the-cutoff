@@ -1,0 +1,211 @@
+[
+    {
+        "name": "Red-Blue Operations (Hard Version)",
+        "description": "The only difference between easy and hard versions is the maximum values of\n\n    n\n and \n    q\n. You are given an array, consisting of \n    n\n integers.\nInitially, all elements are red. You can apply the following operation to the\narray multiple times. During the \n    i\n-th operation, you select an element\nof the array; then: if the element is red, it increases by \n    i\n and becomes\nblue; if the element is blue, it decreases by \n    i\n and becomes red. The\noperations are numbered from \n    1\n, i. e. during the first operation some\nelement is changed by \n    1\n and so on. You are asked \n    q\n queries of the\nfollowing form: given an integer \n    k\n, what can the largest minimum in the\narray be if you apply exactly \n    k\n operations to it? Note that the\noperations don't affect the array between queries, all queries are asked on\nthe initial array \n    a\n. Input The first line contains two integers \n    n\n\nand \n    q\n (\n    1 \n    \u2264 n, q \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the number of elements\nin the array and the number of queries. The second line contains \n    n\n\nintegers \n    a_1, a_2, \n    \u2026, a_n\n (\n    1 \n    \u2264 a_i \n    \u2264 10^9\n). The\nthird line contains \n    q\n integers \n    k_1, k_2, \n    \u2026, k_q\n (\n    1 \n    \u2264\n    k_j \n    \u2264 10^9\n). Output For each query, print a single integer \u2014 the\nlargest minimum that the array can have after you apply exactly \n    k\n\noperations to it. Examples Input 4 10 5 2 8 4 1 2 3 4 5 6 7 8 9 10 Output 3 4\n5 6 7 8 8 10 8 12 Input 5 10 5 2 8 4 4 1 2 3 4 5 6 7 8 9 10 Output 3 4 5 6 7 8\n9 8 11 8 Input 2 5 2 3 10 6 8 1 3 Output 10 7 8 3 3\n\n",
+        "cf_contest_id": 1832,
+        "cf_index": "D2",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 10\r\n5 2 8 4\r\n1 2 3 4 5 6 7 8 9 10\r\n",
+                "3 4 5 6 7 8 8 10 8 12 \r\n"
+            ],
+            [
+                "5 10\r\n5 2 8 4 4\r\n1 2 3 4 5 6 7 8 9 10\r\n",
+                "3 4 5 6 7 8 9 8 11 8 \r\n"
+            ],
+            [
+                "2 5\r\n2 3\r\n10 6 8 1 3\r\n",
+                "10 7 8 3 3 \r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 5\r\n4 10 1 6 1\r\n5 10 1 4 10\r\n",
+                "5 10 1 4 10 \r\n"
+            ],
+            [
+                "10 10\r\n12 14 5 2 17 8 8 16 14 19\r\n19 18 11 5 8 14 5 12 14 11\r\n",
+                "19 20 13 7 10 16 7 14 16 13 \r\n"
+            ],
+            [
+                "20 20\r\n21 45 34 1 43 19 14 33 24 9 9 19 4 16 42 7 25 10 25 23\r\n6 10 28 29 38 11 18 37 1 32 5 42 39 30 20 10 29 13 20 28\r\n",
+                "7 11 29 30 39 12 19 38 2 33 6 43 40 31 21 11 30 14 21 29 \r\n"
+            ],
+            [
+                "1 1\r\n1000000000\r\n1000000000\r\n",
+                "500000000 \r\n"
+            ],
+            [
+                "2 5\r\n1 1000000000\r\n1 2 3 1000000000 999999999\r\n",
+                "2 3 4 1000000001 750000000 \r\n"
+            ],
+            [
+                "2 1\r\n1 100\r\n100\r\n",
+                "101 \r\n"
+            ],
+            [
+                "1 5\r\n2\r\n10 6 8 1 3\r\n",
+                "-3 -1 -2 3 4 \r\n"
+            ],
+            [
+                "1 1\r\n1\r\n1000000000\r\n",
+                "-499999999 \r\n"
+            ],
+            [
+                "4 4\r\n6 7 7 8\r\n5 7 9 11\r\n",
+                "8 8 8 8 \r\n"
+            ],
+            [
+                "5 1\r\n4 6 6 6 9\r\n2\r\n",
+                "6 \r\n"
+            ],
+            [
+                "4 1\r\n1 1 1 1\r\n1\r\n",
+                "1 \r\n"
+            ],
+            [
+                "1 3\r\n1\r\n2 1000000000 999999999\r\n",
+                "0 -499999999 500000001 \r\n"
+            ],
+            [
+                "4 4\r\n6 7 7 14\r\n5 7 9 11\r\n",
+                "10 12 13 14 \r\n"
+            ],
+            [
+                "5 5\r\n999999999 1000000000 1000000000 999999998 999999997\r\n1000000000 999999999 999999998 999999997 999999996\r\n",
+                "1000000000 1899999996 1000000000 1899999994 1000000000 \r\n"
+            ],
+            [
+                "10 15\r\n10 10 10 10 10 10 10 10 10 10\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15\r\n",
+                "10 10 10 10 10 10 10 10 10 11 10 13 10 15 10 \r\n"
+            ],
+            [
+                "2 1\r\n1 1000000000\r\n999999999\r\n",
+                "750000000 \r\n"
+            ],
+            [
+                "1 5\r\n1\r\n1 2 3 1000000000 999999999\r\n",
+                "2 0 3 -499999999 500000001 \r\n"
+            ],
+            [
+                "4 1\r\n3 4 5 14\r\n11\r\n",
+                "13 \r\n"
+            ],
+            [
+                "1 6\r\n4\r\n11 45 14 19 19 810\r\n",
+                "10 27 -3 14 14 -401 \r\n"
+            ],
+            [
+                "1 10\r\n1\r\n1 2 3 4 5 6 7 8 9 10\r\n",
+                "2 0 3 -1 4 -2 5 -3 6 -4 \r\n"
+            ],
+            [
+                "1 1\r\n100\r\n10000\r\n",
+                "-4900 \r\n"
+            ],
+            [
+                "2 1\r\n1 5\r\n5\r\n",
+                "4 \r\n"
+            ],
+            [
+                "1 1\r\n1000000000\r\n2\r\n",
+                "999999999 \r\n"
+            ],
+            [
+                "3 4\r\n1 1000000000 999999999\r\n1 1000000000 999999999 999999998\r\n",
+                "2 1000000000 1000000000 999999999 \r\n"
+            ],
+            [
+                "1 1\r\n1\r\n66\r\n",
+                "-32 \r\n"
+            ],
+            [
+                "1 1\r\n1\r\n68\r\n",
+                "-33 \r\n"
+            ],
+            [
+                "1 1\r\n1\r\n74\r\n",
+                "-36 \r\n"
+            ],
+            [
+                "1 1\r\n1\r\n76\r\n",
+                "-37 \r\n"
+            ],
+            [
+                "1 1\r\n1\r\n78\r\n",
+                "-38 \r\n"
+            ],
+            [
+                "1 1\r\n10\r\n30\r\n",
+                "-5 \r\n"
+            ],
+            [
+                "1 1\r\n2\r\n4\r\n",
+                "0 \r\n"
+            ],
+            [
+                "1 1\r\n3\r\n6\r\n",
+                "0 \r\n"
+            ],
+            [
+                "2 4\r\n1 666666667\r\n1 1000000000 999999999 999999998\r\n",
+                "2 1000000001 583333334 999999999 \r\n"
+            ],
+            [
+                "2 4\r\n1 666666667\r\n9 1000000000 999999999 999999998\r\n",
+                "10 1000000001 583333334 999999999 \r\n"
+            ],
+            [
+                "1 1\r\n1\r\n10000000\r\n",
+                "-4999999 \r\n"
+            ],
+            [
+                "2 5\r\n1000000000 1000000000\r\n1 2 3 1000000000 999999999\r\n",
+                "1000000000 1000000001 1000000000 1750000000 1000000000 \r\n"
+            ],
+            [
+                "2 4\r\n666666667 999999999\r\n9 1000000000 999999999 500000001\r\n",
+                "666666676 1583333333 999999999 958333333 \r\n"
+            ],
+            [
+                "2 9\r\n74 99\r\n93 47 91 14 82 25 58 66 63\r\n",
+                "99 98 99 88 148 93 130 136 99 \r\n"
+            ],
+            [
+                "1 47\r\n72\r\n209 979 605 717 160 141 133 502 368 545 259 103 205 164 870 809 756 906 654 135 421 579 360 673 109 831 811 440 500 920 766 150 905 428 272 131 443 254 382 622 996 930 554 864 677 392 176\r\n",
+                "177 562 375 431 -8 143 139 -179 -112 345 202 124 175 -10 -363 477 -306 -381 -255 140 283 362 -108 409 127 488 478 -148 -178 -388 -311 -3 525 -142 -64 138 294 -55 -119 -239 -426 -393 -205 -360 411 -124 -16 \r\n"
+            ],
+            [
+                "1 7\r\n375173953\r\n211173799 81898451 816130243 30077013 179413921 11641670 32856007\r\n",
+                "480760853 416123179 783239075 390212460 464880914 369353118 391601957 \r\n"
+            ],
+            [
+                "1 13\r\n10000000\r\n3 4 8 999999998 999999999 10000 9999 10001 1 2 5 6 7\r\n",
+                "10000002 9999998 9999996 -489999999 510000000 9995000 10005000 10005001 10000001 9999999 10000003 9999997 10000004 \r\n"
+            ],
+            [
+                "2 1\r\n1 998244353\r\n101\r\n",
+                "102 \r\n"
+            ],
+            [
+                "5 10\r\n1 1 1 1 1\r\n1 2 3 4 5 6 7 8 9 10\r\n",
+                "1 1 1 1 2 1 4 1 6 1 \r\n"
+            ],
+            [
+                "6 2\r\n1 1 1 1 7 7\r\n8 7\r\n",
+                "6 5 \r\n"
+            ]
+        ]
+    }
+]

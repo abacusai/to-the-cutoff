@@ -1,0 +1,142 @@
+[
+    {
+        "name": "Liar",
+        "description": "The first semester ended. You know, after the end of the first semester the\nholidays begin. On holidays Noora decided to return to Vi\u010dkopolis. As a modest\nsouvenir for Leha, she brought a sausage of length m from Pavlopolis. Everyone\nknows that any sausage can be represented as a string of lowercase English\nletters, the length of which is equal to the length of the sausage. Leha was\nvery pleased with the gift and immediately ate the sausage. But then he\nrealized that it was a quite tactless act, because the sausage was a souvenir!\nSo the hacker immediately went to the butcher shop. Unfortunately, there was\nonly another sausage of length n in the shop. However Leha was not upset and\nbought this sausage. After coming home, he decided to cut the purchased\nsausage into several pieces and number the pieces starting from 1 from left to\nright. Then he wants to select several pieces and glue them together so that\nthe obtained sausage is equal to the sausage that Noora gave. But the hacker\ncan glue two pieces together only when the number of the left piece is less\nthan the number of the right piece. Besides he knows that if he glues more\nthan x pieces, Noora will notice that he has falsified souvenir sausage and\nwill be very upset. Of course Leha doesn\u2019t want to upset the girl. The hacker\nasks you to find out whether he is able to cut the sausage he bought, and then\nglue some of the pieces so that Noora doesn't notice anything. Formally, you\nare given two strings s and t. The length of the string s is n, the length of\nthe string t is m. It is required to select several pairwise non-intersecting\nsubstrings from s, so that their concatenation in the same order as these\nsubstrings appear in s, is equal to the string t. Denote by f(s, t) the\nminimal number of substrings to be chosen so that their concatenation is equal\nto the string t. If it is impossible to choose such substrings, then f(s, t) =\n\u221e. Leha really wants to know whether it\u2019s true that f(s, t) \u2264 x. Input The\nfirst line contains single integer n (1 \u2264 n \u2264 10^5) \u2014 length of sausage bought\nby Leha, i.e. the length of the string s. The second line contains string s of\nthe length n consisting of lowercase English letters. The third line contains\nsingle integer m (1 \u2264 m \u2264 n) \u2014 length of sausage bought by Noora, i.e. the\nlength of the string t. The fourth line contains string t of the length m\nconsisting of lowercase English letters. The fifth line contains single\ninteger x (1 \u2264 x \u2264 30) \u2014 the maximum number of pieces of sausage that Leha can\nglue so that Noora doesn\u2019t notice anything. Output In the only line print\n\"YES\" (without quotes), if Leha is able to succeed in creating new sausage so\nthat Noora doesn't notice anything. Otherwise print \"NO\" (without quotes).\nExamples Input 9 hloyaygrt 6 loyyrt 3 Output YES Input 9 hloyaygrt 6 loyyrt 2\nOutput NO Note Let's consider the first sample. In the optimal answer, Leha\nshould cut the sausage he bought in the following way: hloyaygrt = h + loy + a\n+ y + g + rt. Then he numbers received parts from 1 to 6: h \u2014 number 1 loy \u2014\nnumber 2 a \u2014 number 3 y \u2014 number 4 g \u2014 number 5 rt \u2014 number 6 Hereupon the\nhacker should glue the parts with numbers 2, 4 and 6 and get sausage loyygrt\nequal to one that is given by Noora. Thus, he will have to glue three pieces.\nSince x = 3 you should print \"YES\" (without quotes). In the second sample both\nsausages coincide with sausages from the first sample. However since x = 2 you\nshould print \"NO\" (without quotes).\n\n",
+        "cf_contest_id": 822,
+        "cf_index": "E",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "dp",
+            "hashing",
+            "string suffix structures"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "9\r\nhloyaygrt\r\n6\r\nloyyrt\r\n3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "9\r\nhloyaygrt\r\n6\r\nloyyrt\r\n2\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "9\r\npttvnonot\r\n5\r\nptoot\r\n3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "9\r\nmooomsmsm\r\n5\r\nmoomm\r\n2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "20\r\nyemeemeththyemyemyye\r\n8\r\nemethmyy\r\n3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "20\r\nmohcmhpcmmphoopcmccc\r\n8\r\nohcpcpcc\r\n3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "20\r\npbphqpeqbppeqphehqeh\r\n8\r\npphehqeh\r\n3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100\r\nkdkkhhkkhhhkkhhkkhhkhkkhkhhhhkhhhhkkhhhhkkhmkkkhmekkkkkkkkhhggiyzhydrehkhhhhhhhkhhkkhhkkhkkkkkhhkhkk\r\n15\r\ndhmmeggiyzhydre\r\n3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100\r\nhhhhghhhhudfhmfhfugfwwffdrmufgquwhukhdrhfmhdqwkkhgggwdwgumwqmrquqqdgmuquugghhghhmkrrhdudrrrghwggudkd\r\n80\r\nudfhmfhfugfwwffdrmufgquwhukhdrhfmhdqwkkhwdwgumwqmrquqqdgmuquumkrrhdudrrrghwgudkd\r\n3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100\r\nraqderezdbpacdaaadaadaddaadddnenqaezqnpbabpaebzrezeqaqraqdpadaaddddnqaqqaeedrnnarencrrpzpqzacezcqzed\r\n80\r\nraqderezdbpacaadanenqaezqnpbabpaebzrezeqaqraqdpanqaqqaeedrnnarencrrpzpqzacezcqze\r\n3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100\r\nmuswseujesomymggywysuomseyojysssosooeeyowmgjuezzmzwyogoyoyezymeuujwzsssuyogosessjjsusgsouuowgoymwejo\r\n80\r\nmuswseujemymggywyuomseyojyosoeeyowmgjuezzmzwyogoyyezymeuujwzuygesjjusguuwgoymwej\r\n16\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100\r\nnevfvenfetnrpeypeneernpfrrrrrnpytndgrenrfygprvpdyevnrrtdnnnygnfgttrgnfnrnpfrptnprpndtrrrprngvvrnnede\r\n80\r\nevfvenfetnrpeypeneernpfrpytndgrefygprvpdyevnrtdnygnfgttrgfnpfrptprpndtprngvvnede\r\n16\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10\r\nkkkffffkkf\r\n5\r\nkffkk\r\n1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\nqaqqqaqaaa\r\n5\r\naqaaa\r\n1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10\r\npipippiiii\r\n5\r\npipii\r\n1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\nvvvvgvgvvg\r\n5\r\nvvvgg\r\n1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\naaahahhhha\r\n5\r\naaahh\r\n2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10\r\naxxaaaaaxx\r\n5\r\nxaaaa\r\n2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10\r\nfiffffifii\r\n5\r\nifffi\r\n2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3\r\nndn\r\n2\r\nnn\r\n1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\njyk\r\n2\r\njy\r\n1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3\r\noii\r\n2\r\noi\r\n1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3\r\nlzz\r\n2\r\nlz\r\n1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2\r\ney\r\n1\r\ne\r\n30\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2\r\nhl\r\n2\r\nhl\r\n1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1\r\nh\r\n1\r\nh\r\n1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1\r\nr\r\n1\r\nr\r\n2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1\r\nr\r\n1\r\nf\r\n30\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\na\r\n1\r\ny\r\n2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nl\r\n1\r\nq\r\n1\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

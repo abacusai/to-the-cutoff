@@ -1,0 +1,165 @@
+[
+    {
+        "name": "Views Matter",
+        "description": "You came to the exhibition and one exhibit has drawn your attention. It\nconsists of \n    n\n stacks of blocks, where the \n    i\n-th stack consists of\n\n    a_i\n blocks resting on the surface. The height of the exhibit is equal to\n\n    m\n. Consequently, the number of blocks in each stack is less than or\nequal to \n    m\n. There is a camera on the ceiling that sees the top view of\nthe blocks and a camera on the right wall that sees the side view of the\nblocks. Find the maximum number of blocks you can remove such that the views\nfor both the cameras would not change. Note, that while originally all blocks\nare stacked on the floor, it is not required for them to stay connected to the\nfloor after some blocks are removed. There is no gravity in the whole\nexhibition, so no block would fall down, even if the block underneath is\nremoved. It is not allowed to move blocks by hand either. Input The first line\ncontains two integers \n    n\n and \n    m\n (\n    1 \n    \u2264 n \n    \u2264 100\n     000\n,\n\n    1 \n    \u2264 m \n    \u2264 10^9\n) \u2014 the number of stacks and the height of the\nexhibit. The second line contains \n    n\n integers \n    a_1, a_2, \n    \u2026,\n    a_n\n (\n    1 \n    \u2264 a_i \n    \u2264 m\n) \u2014 the number of blocks in each stack from\nleft to right. Output Print exactly one integer \u2014 the maximum number of blocks\nthat can be removed. Examples Input 5 6 3 3 3 3 3 Output 10 Input 3 5 1 2 4\nOutput 3 Input 5 5 2 3 1 4 4 Output 9 Input 1 1000 548 Output 0 Input 3 3 3 1\n1 Output 1 Note The following pictures illustrate the first example and its\npossible solution. Blue cells indicate removed blocks. There are \n    10\n blue\ncells, so the answer is \n    10\n.\n\n",
+        "cf_contest_id": 1061,
+        "cf_index": "B",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 6\r\n3 3 3 3 3\r\n",
+                "10\r\n"
+            ],
+            [
+                "3 5\r\n1 2 4\r\n",
+                "3\r\n"
+            ],
+            [
+                "5 5\r\n2 3 1 4 4\r\n",
+                "9\r\n"
+            ],
+            [
+                "1 1000\r\n548\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 3\r\n3 1 1\r\n",
+                "1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 17\r\n12 16 6 9 12 6 12 1 12 13\r\n",
+                "83\r\n"
+            ],
+            [
+                "24 1\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 2\r\n2 1 2 2 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "21 19\r\n19 13 2 16 8 15 14 15 7 8 3 17 11 6 1 18 16 6 2 15 5\r\n",
+                "196\r\n"
+            ],
+            [
+                "1 1000000000\r\n100000000\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 5\r\n1 2 2 3 4 5\r\n",
+                "11\r\n"
+            ],
+            [
+                "50 1000000000\r\n824428839 821375880 831521735 868908015 86990853 248293447 886713846 425716910 443947914 504402098 40124673 774093026 271211165 873482658 592754073 490097471 947930201 69692739 145291746 418475785 80274059 696889747 854947829 231642778 141525047 57563878 92067934 387507168 522358804 37616740 137164958 784087772 739414795 822912649 660269994 361145892 192615612 471529381 891373674 474531169 33938936 662896730 714731067 491934162 974334280 433349153 213000557 586427592 183557477 742231493\r\n",
+                "23264960121\r\n"
+            ],
+            [
+                "100 50\r\n20 13 10 38 7 22 40 15 27 32 37 44 42 50 33 46 7 47 43 5 18 29 26 3 32 5 1 29 17 1 1 43 2 38 23 23 49 36 14 18 36 3 49 47 11 19 6 29 14 9 6 46 15 22 31 45 24 5 31 2 24 14 7 15 21 44 8 7 38 50 17 1 29 39 16 35 10 22 19 8 6 42 44 45 25 26 16 34 36 23 17 11 41 15 19 28 44 27 46 8\r\n",
+                "2313\r\n"
+            ],
+            [
+                "5 100\r\n1 4 3 2 5\r\n",
+                "10\r\n"
+            ],
+            [
+                "100 1000\r\n55 84 52 34 3 2 85 80 58 19 13 81 23 89 90 64 71 25 98 22 24 27 60 9 21 66 1 74 51 33 39 18 28 59 40 73 7 41 65 62 32 5 45 70 57 87 61 91 78 20 82 17 50 86 77 96 31 11 68 76 6 53 88 97 15 79 63 37 67 72 48 49 92 16 75 35 69 83 42 100 95 93 94 38 46 8 26 47 4 29 56 99 44 10 30 43 36 54 14 12\r\n",
+                "4950\r\n"
+            ],
+            [
+                "14 200\r\n1 1 1 1 1 1 1 1 1 1 1 1 12 12\r\n",
+                "13\r\n"
+            ],
+            [
+                "6 6\r\n2 2 4 4 6 6\r\n",
+                "18\r\n"
+            ],
+            [
+                "5 4\r\n4 2 2 2 2\r\n",
+                "6\r\n"
+            ],
+            [
+                "9 12\r\n3 3 3 3 3 5 8 8 11\r\n",
+                "34\r\n"
+            ],
+            [
+                "8 12\r\n2 3 3 3 3 3 10 10\r\n",
+                "24\r\n"
+            ],
+            [
+                "6 5\r\n5 5 2 2 2 2\r\n",
+                "11\r\n"
+            ],
+            [
+                "4 78\r\n1 1 1 70\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 10\r\n1 5 1 5 1\r\n",
+                "6\r\n"
+            ],
+            [
+                "5 10\r\n5 4 1 5 5\r\n",
+                "15\r\n"
+            ],
+            [
+                "7 4\r\n2 2 2 2 2 2 4\r\n",
+                "8\r\n"
+            ],
+            [
+                "5 100\r\n1 2 100 2 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 678\r\n89 88 1 1 1 1 1 1 1 1\r\n",
+                "89\r\n"
+            ],
+            [
+                "4 4\r\n4 2 2 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "4 4\r\n1 1 3 4\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 100\r\n3 1 1 1 3\r\n",
+                "4\r\n"
+            ],
+            [
+                "4 4\r\n1 4 1 4\r\n",
+                "5\r\n"
+            ],
+            [
+                "4 4\r\n4 1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 2\r\n1 1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "4 8\r\n1 1 1 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 100\r\n1 1 1 1 1 1 1 1 1 6\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1000000000\r\n1 1000000000\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

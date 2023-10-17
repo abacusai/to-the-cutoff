@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Formurosa",
+        "description": "The Bytelandian Institute for Biological Research (BIBR) is investigating the\nproperties of two species of bacteria, named simply 0 and 1. Even under a\nmicroscope, bacteria of those two species are very difficult to distinguish.\nIn fact, the only thing the scientists possess that is able to differentiate\nbetween them is a plant called Formurosa. If the scientists place a sample of\ncolonies of bacteria on each on Formurosa's leaves, it will activate a\ncomplicated nutrition process. During that process color of Formurosa changes\nto reflect the result of a \u2014 possibly very complicated \u2014 logical formula on\nthe species of bacteria, involving constants and the operators | (OR),     (AND)\nand ^ (XOR). If it is 0, the plant will turn red, otherwise \u2014 it will turn\nblue. For example, if the nutrition process of Formurosa is described by the\nformula: (((?^?)|?)   (1^?)); then Formurosa has four leaves (the \"?\" signs\ndenote the leaves). If we place 0, 1, 0, 0 on the respective leaves, the\nresult of the nutrition process will be (((0^1)|0)   (1^0)) = 1, therefore the\nplant will turn blue. The scientists have n colonies of bacteria. They do not\nknow their types; the only thing they know for sure is that not all colonies\nare of the same type. They want to attempt to determine the bacteria's species\nby repeated evaluations with Formurosa. During each evaluation they must place\nexactly one sample on every leaf of the plant. However, they may use multiple\nsamples of one colony during a single evaluation; they can even cover the\nwhole plant with bacteria from one colony! Is it possible for them to always\ndetermine the species of each colony, no matter what they are (assuming they\nare not all the same)? Input The first line of input contains a single integer\nn (2 \u2264 n \u2264 10^6) \u2014 the number of colonies of bacteria. The second line\ncontains the formula describing the nutrition process of Formurosa. This line\ncontains only characters \u00ab0\u00bb, \u00ab1\u00bb, \u00ab?\u00bb, \u00ab|\u00bb, \u00ab   \u00bb, \u00ab^\u00bb, \u00ab(\u00bb, \u00ab)\u00bb and complies\nwith the following grammar: s \u2192 0|1|?|(s|s)|(s   s;)|(s^s) The formula consists\nof no more than 10^6 characters. Output If it is always possible to determine\nthe species of each colony, output \"YES\" (without quotes). Otherwise, output\n\"NO\" (without quotes). Examples Input 2 (?^?) Output NO Input 10 ? Output YES\nInput 2 ((?^?)   ?) Output YES\n\n",
+        "cf_contest_id": 217,
+        "cf_index": "C",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "divide and conquer",
+            "dp",
+            "expression parsing"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n(?^?)\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n?\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2\r\n((?^?)&?)\r\n",
+                "YES\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n((?^(?^(?&?)))^0)\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1000000\r\n(((?^(?^(?&?)))^0)^1)\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1000000\r\n0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1000000\r\n(((?^?)^(1^1))&?)\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1000000\r\n((1|0)^((1^1)&(0&1)))\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\n0\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

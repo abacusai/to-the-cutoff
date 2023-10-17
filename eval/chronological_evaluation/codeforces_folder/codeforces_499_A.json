@@ -1,0 +1,128 @@
+[
+    {
+        "name": "Watching a movie",
+        "description": "You have decided to watch the best moments of some movie. There are two\nbuttons on your player: Watch the current minute of the movie. By pressing\nthis button, you watch the current minute of the movie and the player\nautomatically proceeds to the next minute of the movie. Skip exactly x minutes\nof the movie (x is some fixed positive integer). If the player is now at the\nt-th minute of the movie, then as a result of pressing this button, it\nproceeds to the minute (t + x). Initially the movie is turned on in the player\non the first minute, and you want to watch exactly n best moments of the\nmovie, the i-th best moment starts at the li-th minute and ends at the ri-th\nminute (more formally, the i-th best moment consists of minutes: li, li + 1,\n..., ri). Determine, what is the minimum number of minutes of the movie you\nhave to watch if you want to watch all the best moments? Input The first line\ncontains two space-separated integers n, x (1 \u2264 n \u2264 50, 1 \u2264 x \u2264 10^5) \u2014 the\nnumber of the best moments of the movie and the value of x for the second\nbutton. The following n lines contain the descriptions of the best moments of\nthe movie, the i-th line of the description contains two integers separated by\na space li, ri (1 \u2264 li \u2264 ri \u2264 10^5). It is guaranteed that for all integers i\nfrom 2 to n the following condition holds: ri - 1 < li. Output Output a single\nnumber \u2014 the answer to the problem. Examples Input 2 3 5 6 10 12 Output 6\nInput 1 1 1 100000 Output 100000 Note In the first sample, the player was\ninitially standing on the first minute. As the minutes from the 1-st to the\n4-th one don't contain interesting moments, we press the second button. Now we\ncan not press the second button and skip 3 more minutes, because some of them\ncontain interesting moments. Therefore, we watch the movie from the 4-th to\nthe 6-th minute, after that the current time is 7. Similarly, we again skip 3\nminutes and then watch from the 10-th to the 12-th minute of the movie. In\ntotal, we watch 6 minutes of the movie. In the second sample, the movie is\nvery interesting, so you'll have to watch all 100000 minutes of the movie.\n\n",
+        "cf_contest_id": 499,
+        "cf_index": "A",
+        "cf_rating": 1000,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 3\r\n5 6\r\n10 12\r\n",
+                "6"
+            ],
+            [
+                "1 1\r\n1 100000\r\n",
+                "100000"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 1\r\n2156 3497\r\n4784 7775\r\n14575 31932\r\n33447 35902\r\n36426 47202\r\n48772 60522\r\n63982 68417\r\n78537 79445\r\n90081 90629\r\n94325 95728\r\n",
+                "53974"
+            ],
+            [
+                "10 3\r\n2156 3497\r\n4784 7775\r\n14575 31932\r\n33447 35902\r\n36426 47202\r\n48772 60522\r\n63982 68417\r\n78537 79445\r\n90081 90629\r\n94325 95728\r\n",
+                "53983"
+            ],
+            [
+                "10 10\r\n2156 3497\r\n4784 7775\r\n14575 31932\r\n33447 35902\r\n36426 47202\r\n48772 60522\r\n63982 68417\r\n78537 79445\r\n90081 90629\r\n94325 95728\r\n",
+                "54038"
+            ],
+            [
+                "10 1000\r\n2156 3497\r\n4784 7775\r\n14575 31932\r\n33447 35902\r\n36426 47202\r\n48772 60522\r\n63982 68417\r\n78537 79445\r\n90081 90629\r\n94325 95728\r\n",
+                "58728"
+            ],
+            [
+                "12 14\r\n2156 3497\r\n4784 7775\r\n14575 23857\r\n29211 30739\r\n31932 33447\r\n35902 36426\r\n47202 48772\r\n60522 63982\r\n68417 78537\r\n79445 86918\r\n90081 90629\r\n94325 95728\r\n",
+                "41870"
+            ],
+            [
+                "12 17\r\n2156 3497\r\n4784 7775\r\n14575 23857\r\n29211 30739\r\n31932 33447\r\n35902 36426\r\n47202 48772\r\n60522 63982\r\n68417 78537\r\n79445 86918\r\n90081 90629\r\n94325 95728\r\n",
+                "41872"
+            ],
+            [
+                "18 111\r\n1449 2156\r\n3497 4784\r\n7775 14575\r\n23857 24593\r\n29211 30739\r\n31932 33447\r\n35902 36426\r\n36991 38506\r\n39679 47202\r\n48772 60016\r\n60522 61868\r\n63340 63982\r\n68417 78537\r\n79445 86568\r\n86918 87940\r\n90081 90310\r\n90629 94325\r\n95728 96263\r\n",
+                "58967"
+            ],
+            [
+                "1 1\r\n14575 60522\r\n",
+                "45948"
+            ],
+            [
+                "1 10\r\n14575 60522\r\n",
+                "45952"
+            ],
+            [
+                "2 10\r\n14575 36426\r\n60522 79445\r\n",
+                "40785"
+            ],
+            [
+                "3 1\r\n14575 36426\r\n48772 60522\r\n79445 90081\r\n",
+                "44240"
+            ],
+            [
+                "1 100000\r\n1 100000\r\n",
+                "100000"
+            ],
+            [
+                "1 2\r\n2 100000\r\n",
+                "100000"
+            ],
+            [
+                "1 3\r\n4 100000\r\n",
+                "99997"
+            ],
+            [
+                "2 100\r\n5 6\r\n7 7\r\n",
+                "7"
+            ],
+            [
+                "1 10000\r\n500 600\r\n",
+                "600"
+            ],
+            [
+                "2 3\r\n1 3\r\n4 8\r\n",
+                "8"
+            ],
+            [
+                "3 1\r\n1 2\r\n3 4\r\n6 7\r\n",
+                "6"
+            ],
+            [
+                "1 1\r\n1 1\r\n",
+                "1"
+            ],
+            [
+                "1 3\r\n5 6\r\n",
+                "3"
+            ],
+            [
+                "1 5\r\n7 10\r\n",
+                "5"
+            ],
+            [
+                "1 100\r\n5 6\r\n",
+                "6"
+            ],
+            [
+                "1 2\r\n1 1\r\n",
+                "1"
+            ],
+            [
+                "1 100000\r\n100000 100000\r\n",
+                "100000"
+            ],
+            [
+                "2 3\r\n1 1\r\n5 6\r\n",
+                "3"
+            ]
+        ]
+    }
+]

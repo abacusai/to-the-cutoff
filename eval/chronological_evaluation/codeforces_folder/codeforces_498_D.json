@@ -1,0 +1,89 @@
+[
+    {
+        "name": "Traffic Jams in the Land",
+        "description": "Some country consists of (n + 1) cities, located along a straight highway.\nLet's number the cities with consecutive integers from 1 to n + 1 in the order\nthey occur along the highway. Thus, the cities are connected by n segments of\nthe highway, the i-th segment connects cities number i and i + 1. Every\nsegment of the highway is associated with a positive integer ai > 1 \u2014 the\nperiod of traffic jams appearance on it. In order to get from city x to city y\n(x < y), some drivers use the following tactics. Initially the driver is in\ncity x and the current time t equals zero. Until the driver arrives in city y,\nhe perfors the following actions: if the current time t is a multiple of ax,\nthen the segment of the highway number x is now having traffic problems and\nthe driver stays in the current city for one unit of time (formally speaking,\nwe assign t = t + 1); if the current time t is not a multiple of ax, then the\nsegment of the highway number x is now clear and that's why the driver uses\none unit of time to move to city x + 1 (formally, we assign t = t + 1 and x =\nx + 1). You are developing a new traffic control system. You want to\nconsecutively process q queries of two types: determine the final value of\ntime t after the ride from city x to city y (x < y) assuming that we apply the\ntactics that is described above. Note that for each query t is being reset to\n0. replace the period of traffic jams appearing on the segment number x by\nvalue y (formally, assign ax = y). Write a code that will effectively process\nthe queries given above. Input The first line contains a single integer n (1 \u2264\nn \u2264 10^5) \u2014 the number of highway segments that connect the n + 1 cities. The\nsecond line contains n integers a1, a2, ..., an (2 \u2264 ai \u2264 6) \u2014 the periods of\ntraffic jams appearance on segments of the highway. The next line contains a\nsingle integer q (1 \u2264 q \u2264 10^5) \u2014 the number of queries to process. The next q\nlines contain the descriptions of the queries in the format c, x, y (c \u2014 the\nquery type). If c is character 'A', then your task is to process a query of\nthe first type. In this case the following constraints are satisfied: 1 \u2264 x <\ny \u2264 n + 1. If c is character 'C', then you need to process a query of the\nsecond type. In such case, the following constraints are satisfied: 1 \u2264 x \u2264 n,\n2 \u2264 y \u2264 6. Output For each query of the first type output a single integer \u2014\nthe final value of time t after driving from city x to city y. Process the\nqueries in the order in which they are given in the input. Examples Input 10 2\n5 3 2 3 5 3 4 2 4 10 C 10 6 A 2 6 A 1 3 C 3 4 A 3 11 A 4 9 A 5 6 C 7 3 A 8 10\nA 2 5 Output 5 3 14 6 2 4 4\n\n",
+        "cf_contest_id": 498,
+        "cf_index": "D",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dp",
+            "number theory"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10\r\n2 5 3 2 3 5 3 4 2 4\r\n10\r\nC 10 6\r\nA 2 6\r\nA 1 3\r\nC 3 4\r\nA 3 11\r\nA 4 9\r\nA 5 6\r\nC 7 3\r\nA 8 10\r\nA 2 5\r\n",
+                "5\r\n3\r\n14\r\n6\r\n2\r\n4\r\n4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n3\r\n1\r\nC 1 4\r\n",
+                ""
+            ],
+            [
+                "1\r\n3\r\n2\r\nC 1 2\r\nA 1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "1\r\n3\r\n3\r\nA 1 2\r\nC 1 5\r\nA 1 2\r\n",
+                "2\r\n2\r\n"
+            ],
+            [
+                "1\r\n3\r\n4\r\nC 1 2\r\nA 1 2\r\nC 1 3\r\nC 1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n5 3\r\n1\r\nA 1 3\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n6 6\r\n2\r\nC 2 4\r\nA 2 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n5 5\r\n3\r\nC 1 3\r\nC 2 4\r\nC 1 6\r\n",
+                ""
+            ],
+            [
+                "2\r\n5 3\r\n4\r\nA 1 2\r\nA 1 3\r\nC 2 6\r\nC 2 4\r\n",
+                "2\r\n3\r\n"
+            ],
+            [
+                "3\r\n5 5 5\r\n1\r\nC 1 5\r\n",
+                ""
+            ],
+            [
+                "3\r\n5 6 2\r\n2\r\nC 1 6\r\nA 1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n3 5 6\r\n3\r\nA 2 3\r\nC 3 6\r\nC 2 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n2 2 2\r\n4\r\nC 1 3\r\nC 3 5\r\nA 1 2\r\nC 2 6\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n3 4 3 4\r\n1\r\nC 2 3\r\n",
+                ""
+            ],
+            [
+                "4\r\n2 3 3 6\r\n2\r\nA 2 3\r\nC 4 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n2 2 5 3\r\n3\r\nC 1 6\r\nC 4 2\r\nA 3 5\r\n",
+                "4\r\n"
+            ],
+            [
+                "4\r\n5 4 4 2\r\n4\r\nC 2 2\r\nA 1 3\r\nC 3 5\r\nC 4 5\r\n",
+                "4\r\n"
+            ]
+        ]
+    }
+]

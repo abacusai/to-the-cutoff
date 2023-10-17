@@ -1,0 +1,71 @@
+[
+    {
+        "name": "Defragmentation",
+        "description": "In this problem you have to implement an algorithm to defragment your hard\ndisk. The hard disk consists of a sequence of clusters, numbered by integers\nfrom 1 to n. The disk has m recorded files, the i-th file occupies clusters\nwith numbers ai, 1, ai, 2, ..., ai, ni. These clusters are not necessarily\nlocated consecutively on the disk, but the order in which they are given\ncorresponds to their sequence in the file (cluster ai, 1 contains the first\nfragment of the i-th file, cluster ai, 2 has the second fragment, etc.). Also\nthe disc must have one or several clusters which are free from files. You are\npermitted to perform operations of copying the contents of cluster number i to\ncluster number j (i and j must be different). Moreover, if the cluster number\nj used to keep some information, it is lost forever. Clusters are not cleaned,\nbut after the defragmentation is complete, some of them are simply declared\nunusable (although they may possibly still contain some fragments of files).\nYour task is to use a sequence of copy operations to ensure that each file\noccupies a contiguous area of memory. Each file should occupy a consecutive\ncluster section, the files must follow one after another from the beginning of\nthe hard disk. After defragmentation all free (unused) clusters should be at\nthe end of the hard disk. After defragmenting files can be placed in an\narbitrary order. Clusters of each file should go consecutively from first to\nlast. See explanatory examples in the notes. Print the sequence of operations\nleading to the disk defragmentation. Note that you do not have to minimize the\nnumber of operations, but it should not exceed 2n. Input The first line\ncontains two integers n and m (1 \u2264 n, m \u2264 200) \u2014 the number of clusters and\nthe number of files, correspondingly. Next m lines contain descriptions of the\nfiles. The first number in the line is ni (ni \u2265 1), the number of clusters\noccupied by the i-th file. Then follow ni numbers ai, 1, ai, 2, ..., ai, ni (1\n\u2264 ai, j \u2264 n). It is guaranteed that each cluster number occurs not more than\nonce and , that is, there exists at least one unused cluster. Numbers on each\nline are separated by spaces. Output In the first line print a single integer\nk (0 \u2264 k \u2264 2n) \u2014 the number of operations needed to defragment the disk. Next\nk lines should contain the operations' descriptions as \"i j\" (copy the\ncontents of the cluster number i to the cluster number j). Examples Input 7 2\n2 1 2 3 3 4 5 Output 0 Input 7 2 2 1 3 3 2 4 5 Output 3 2 6 3 2 6 3 Note Let's\nsay that a disk consists of 8 clusters and contains two files. The first file\noccupies two clusters and the second file occupies three clusters. Let's look\nat examples of correct and incorrect positions of files after defragmentation.\nExample 2: each file must occupy a contiguous area of memory. Example 3: the\norder of files to each other is not important, at first the second file can be\nwritten, and then \u2014 the first one. Example 4: violating the order of file\nfragments to each other is not allowed. Example 5: unused clusters should be\nlocated at the end, and in this example the unused clusters are 3, 7, 8.\n\n",
+        "cf_contest_id": 180,
+        "cf_index": "A",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7 2\r\n2 1 2\r\n3 3 4 5\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 2\r\n2 1 3\r\n3 2 4 5\r\n",
+                "3\r\n2 6\r\n3 2\r\n6 3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n1 2\r\n",
+                "1\r\n2 1\r\n"
+            ],
+            [
+                "3 1\r\n2 3 1\r\n",
+                "2\r\n1 2\r\n3 1\r\n"
+            ],
+            [
+                "3 2\r\n1 3\r\n1 2\r\n",
+                "1\r\n3 1\r\n"
+            ],
+            [
+                "5 3\r\n1 2\r\n1 4\r\n1 5\r\n",
+                "4\r\n2 1\r\n4 2\r\n3 4\r\n5 3\r\n"
+            ],
+            [
+                "7 3\r\n1 7\r\n2 6 5\r\n3 4 3 2\r\n",
+                "7\r\n7 1\r\n2 7\r\n6 2\r\n3 6\r\n5 3\r\n6 5\r\n7 6\r\n"
+            ],
+            [
+                "7 2\r\n3 1 3 5\r\n3 2 4 6\r\n",
+                "5\r\n2 7\r\n3 2\r\n5 3\r\n4 5\r\n7 4\r\n"
+            ],
+            [
+                "10 1\r\n5 7 4 6 9 2\r\n",
+                "9\r\n7 1\r\n2 7\r\n4 2\r\n3 4\r\n6 3\r\n4 6\r\n9 4\r\n5 9\r\n7 5\r\n"
+            ],
+            [
+                "7 2\r\n2 2 1\r\n3 3 4 5\r\n",
+                "3\r\n1 6\r\n2 1\r\n6 2\r\n"
+            ],
+            [
+                "7 2\r\n2 1 2\r\n3 4 5 6\r\n",
+                "3\r\n4 3\r\n5 4\r\n6 5\r\n"
+            ],
+            [
+                "20 5\r\n7 12 16 14 17 20 4 15\r\n2 7 8\r\n1 5\r\n5 3 6 18 11 2\r\n4 9 13 19 1\r\n",
+                "36\r\n1 10\r\n12 1\r\n2 12\r\n16 2\r\n3 16\r\n14 3\r\n4 14\r\n17 4\r\n5 17\r\n20 5\r\n6 20\r\n14 6\r\n7 14\r\n15 7\r\n8 15\r\n14 8\r\n9 14\r\n15 9\r\n10 15\r\n17 10\r\n11 17\r\n16 11\r\n12 16\r\n20 12\r\n13 20\r\n18 13\r\n14 18\r\n17 14\r\n15 17\r\n16 15\r\n18 16\r\n17 18\r\n20 17\r\n18 20\r\n19 18\r\n20 19\r\n"
+            ],
+            [
+                "20 10\r\n1 2\r\n2 14 11\r\n2 9 15\r\n2 16 8\r\n2 3 13\r\n3 17 12 6\r\n1 5\r\n1 7\r\n2 20 19\r\n1 1\r\n",
+                "28\r\n1 4\r\n2 1\r\n14 2\r\n3 14\r\n11 3\r\n4 11\r\n9 4\r\n5 9\r\n15 5\r\n6 15\r\n16 6\r\n7 16\r\n8 7\r\n14 8\r\n9 14\r\n13 9\r\n10 13\r\n17 10\r\n11 17\r\n12 11\r\n15 12\r\n13 15\r\n14 13\r\n16 14\r\n15 16\r\n20 15\r\n16 20\r\n19 16\r\n"
+            ]
+        ]
+    }
+]

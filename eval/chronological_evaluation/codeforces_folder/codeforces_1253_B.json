@@ -1,0 +1,124 @@
+[
+    {
+        "name": "Silly Mistake",
+        "description": "The Central Company has an office with a sophisticated security system. There\nare \n    10^6\n employees, numbered from \n    1\n to \n    10^6\n. The security\nsystem logs entrances and departures. The entrance of the \n    i\n-th employee\nis denoted by the integer \n    i\n, while the departure of the \n    i\n-th\nemployee is denoted by the integer \n    -i\n. The company has some strict rules\nabout access to its office: An employee can enter the office at most once per\nday. He obviously can't leave the office if he didn't enter it earlier that\nday. In the beginning and at the end of every day, the office is empty\n(employees can't stay at night). It may also be empty at any moment of the\nday. Any array of events satisfying these conditions is called a valid day.\nSome examples of valid or invalid days: \n    [1, 7, -7, 3, -1, -3]\n is a valid\nday (\n    1\n enters, \n    7\n enters, \n    7\n leaves, \n    3\n enters, \n    1\n\nleaves, \n    3\n leaves). \n    [2, -2, 3, -3]\n is also a valid day. \n    [2, 5,\n    -5, 5, -5, -2]\n is not a valid day, because \n    5\n entered the office twice\nduring the same day. \n    [-4, 4]\n is not a valid day, because \n    4\n left\nthe office without being in it. \n    [4]\n is not a valid day, because \n    4\n\nentered the office and didn't leave it before the end of the day. There are\n\n    n\n events \n    a_1, a_2, \n    \u2026, a_n\n, in the order they occurred. This\narray corresponds to one or more consecutive days. The system administrator\nerased the dates of events by mistake, but he didn't change the order of the\nevents. You must partition (to cut) the array \n    a\n of events into\ncontiguous subarrays, which must represent non-empty valid days (or say that\nit's impossible). Each array element should belong to exactly one contiguous\nsubarray of a partition. Each contiguous subarray of a partition should be a\nvalid day. For example, if \n    n=8\n and \n    a=[1, -1, 1, 2, -1, -2, 3, -3]\n\nthen he can partition it into two contiguous subarrays which are valid days:\n\n    a = [1, -1\u00a0\n    |\u00a0 1, 2, -1, -2, 3, -3]\n. Help the\nadministrator to partition the given array \n    a\n in the required way or\nreport that it is impossible to do. Find any required partition, you should\nnot minimize or maximize the number of parts. Input The first line contains a\nsingle integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264 10^5\n). The second line contains\n\n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    -10^6 \n    \u2264 a_i \n    \u2264\n    10^6\n and \n    a_i \n    \u2260 0\n). Output If there is no valid partition, print\n\n    -1\n. Otherwise, print any valid partition in the following format: On the\nfirst line print the number \n    d\n of days (\n    1 \n    \u2264 d \n    \u2264 n\n). On the\nsecond line, print \n    d\n integers \n    c_1, c_2, \n    \u2026, c_d\n (\n    1 \n    \u2264\n    c_i \n    \u2264 n\n and \n    c_1 + c_2 + \n    \u2026 + c_d = n\n), where \n    c_i\n is\nthe number of events in the \n    i\n-th day. If there are many valid solutions,\nyou can print any of them. You don't have to minimize nor maximize the number\nof days. Examples Input 6 1 7 -7 3 -1 -3 Output 1 6 Input 8 1 -1 1 2 -1 -2 3\n-3 Output 2 2 6 Input 6 2 5 -5 5 -5 -2 Output -1 Input 3 -8 1 1 Output -1 Note\nIn the first example, the whole array is a valid day. In the second example,\none possible valid solution is to split the array into \n    [1, -1]\n and\n\n    [1, 2, -1, -2, 3, -3]\n (\n    d = 2\n and \n    c = [2, 6]\n). The only other\nvalid solution would be to split the array into \n    [1, -1]\n, \n    [1, 2, -1,\n    -2]\n and \n    [3, -3]\n (\n    d = 3\n and \n    c = [2, 4, 2]\n). Both solutions\nare accepted. In the third and fourth examples, we can prove that there exists\nno valid solution. Please note that the array given in input is not guaranteed\nto represent a coherent set of events.\n\n",
+        "cf_contest_id": 1253,
+        "cf_index": "B",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n1 7 -7 3 -1 -3\r\n",
+                "1\r\n6\r\n"
+            ],
+            [
+                "8\r\n1 -1 1 2 -1 -2 3 -3\r\n",
+                "3\r\n2 4 2\r\n"
+            ],
+            [
+                "6\r\n2 5 -5 5 -5 -2\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "3\r\n-8 1 1\r\n",
+                "-1\r\n\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n1 -1 2 3\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "1\r\n-7\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "2\r\n-3 5\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "2\r\n100000 -100000\r\n",
+                "1\r\n2\r\n"
+            ],
+            [
+                "20\r\n384933 946658 407136 242739 -242739 -407136 -946658 -384933 384933 -384933 319281 407136 804861 -407136 415987 946658 -946658 -415987 -804861 -319281\r\n",
+                "3\r\n8 2 10\r\n"
+            ],
+            [
+                "4\r\n1 -1 -3 5\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "4\r\n1 -3 5 -1\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "2\r\n-4 4\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "4\r\n1 -1 -4 4\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "4\r\n1 -4 4 -1\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "6\r\n1 -1 2 1 -1 -2\r\n",
+                "2\r\n2 4\r\n"
+            ],
+            [
+                "3\r\n1 1 -1\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "4\r\n1 2 -2 -2\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "4\r\n2 3 -1 -4\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "2\r\n1 -3\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "4\r\n1 2 -1 -1\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "6\r\n8 -8 1 8 -8 -1\r\n",
+                "2\r\n2 4\r\n"
+            ],
+            [
+                "8\r\n1 -1 2 3 1 -2 -3 -1\r\n",
+                "2\r\n2 6\r\n"
+            ],
+            [
+                "2\r\n-1 1\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "2\r\n1000000 -1000000\r\n",
+                "1\r\n2\r\n"
+            ],
+            [
+                "4\r\n1 1 -1 -1\r\n",
+                "-1\r\n\r\n"
+            ],
+            [
+                "4\r\n1 -1 -1 1\r\n",
+                "-1\r\n\r\n"
+            ]
+        ]
+    }
+]

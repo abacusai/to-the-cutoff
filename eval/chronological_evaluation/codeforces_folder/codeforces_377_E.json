@@ -1,0 +1,372 @@
+[
+    {
+        "name": "Cookie Clicker",
+        "description": "Kostya is playing the computer game Cookie Clicker. The goal of this game is\nto gather cookies. You can get cookies using different buildings: you can just\nclick a special field on the screen and get the cookies for the clicks, you\ncan buy a cookie factory, an alchemy lab, a time machine and it all will bring\nlots and lots of cookies. At the beginning of the game (time 0), Kostya has 0\ncookies and no buildings. He has n available buildings to choose from: the\ni-th building is worth ci cookies and when it's built it brings vi cookies at\nthe end of each second. Also, to make the game more interesting to play,\nKostya decided to add a limit: at each moment of time, he can use only one\nbuilding. Of course, he can change the active building each second at his\ndiscretion. It's important that Kostya is playing a version of the game where\nhe can buy new buildings and change active building only at time moments that\nare multiples of one second. Kostya can buy new building and use it at the\nsame time. If Kostya starts to use a building at the time moment t, he can get\nthe first profit from it only at the time moment t + 1. Kostya wants to earn\nat least s cookies as quickly as possible. Determine the number of seconds he\nneeds to do that. Input The first line contains two integers n and s (1 \u2264 n \u2264\n2\u00b710^5, 1 \u2264 s \u2264 10^16) \u2014 the number of buildings in the game and the number of\ncookies Kostya wants to earn. Each of the next n lines contains two integers\nvi and ci (1 \u2264 vi \u2264 10^8, 0 \u2264 ci \u2264 10^8) \u2014 the number of cookies the i-th\nbuilding brings per second and the building's price. Output Output the only\ninteger \u2014 the minimum number of seconds Kostya needs to earn at least s\ncookies. It is guaranteed that he can do it. Examples Input 3 9 1 0 2 3 5 4\nOutput 6 Input 3 6 1 0 2 2 5 4 Output 5 Input 3 13 1 0 2 2 6 5 Output 7 Input\n1 10000000000000000 1 0 Output 10000000000000000\n\n",
+        "cf_contest_id": 377,
+        "cf_index": "E",
+        "cf_rating": 2800,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "geometry"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 9\r\n1 0\r\n2 3\r\n5 4\r\n",
+                "6\r\n"
+            ],
+            [
+                "3 6\r\n1 0\r\n2 2\r\n5 4\r\n",
+                "5\r\n"
+            ],
+            [
+                "3 13\r\n1 0\r\n2 2\r\n6 5\r\n",
+                "7\r\n"
+            ],
+            [
+                "1 10000000000000000\r\n1 0\r\n",
+                "10000000000000000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 9\r\n2 2\r\n3 3\r\n1 0\r\n",
+                "6\r\n"
+            ],
+            [
+                "1 1\r\n100000000 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 5\r\n5 7\r\n4 2\r\n3 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 9\r\n5 7\r\n4 2\r\n3 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "3 13\r\n5 7\r\n4 2\r\n3 0\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 33\r\n5 7\r\n4 2\r\n3 0\r\n",
+                "9\r\n"
+            ],
+            [
+                "3 42\r\n5 7\r\n4 2\r\n3 0\r\n",
+                "11\r\n"
+            ],
+            [
+                "4 13\r\n3 0\r\n5 5\r\n6 10\r\n9 7\r\n",
+                "5\r\n"
+            ],
+            [
+                "1 4\r\n3 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "1 10000000000000000\r\n100000000 0\r\n",
+                "100000000\r\n"
+            ],
+            [
+                "2 6\r\n3 0\r\n2 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 16\r\n3 0\r\n5 5\r\n90 70\r\n",
+                "5\r\n"
+            ],
+            [
+                "4 12\r\n1 1\r\n2 2\r\n4 0\r\n8 5\r\n",
+                "3\r\n"
+            ],
+            [
+                "4 3\r\n1 1\r\n2 0\r\n4 3\r\n8 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 17\r\n1 0\r\n2 2\r\n4 0\r\n7 5\r\n",
+                "4\r\n"
+            ],
+            [
+                "4 8\r\n4 0\r\n5 4\r\n6 3\r\n90 70\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 81\r\n1 0\r\n5 1\r\n7 7\r\n9 14\r\n",
+                "13\r\n"
+            ],
+            [
+                "4 81\r\n1 0\r\n5 1\r\n7 8\r\n9 14\r\n",
+                "13\r\n"
+            ],
+            [
+                "4 81\r\n1 0\r\n5 1\r\n7 9\r\n9 14\r\n",
+                "13\r\n"
+            ],
+            [
+                "4 81\r\n1 0\r\n5 1\r\n7 10\r\n9 14\r\n",
+                "13\r\n"
+            ],
+            [
+                "2 9999860400487203\r\n99999301 0\r\n99999302 99999302\r\n",
+                "99999303\r\n"
+            ],
+            [
+                "11 10000000000000000\r\n1 0\r\n10 986409\r\n9 109600\r\n5 64\r\n11 9864100\r\n8 13699\r\n3 4\r\n2 1\r\n7 1956\r\n4 15\r\n6 325\r\n",
+                "909090910202993\r\n"
+            ],
+            [
+                "12 10000000000000000\r\n7 1439\r\n11 7257599\r\n5 47\r\n12 79833599\r\n3 3\r\n6 239\r\n9 80639\r\n4 11\r\n8 10079\r\n2 1\r\n10 725759\r\n1 0\r\n",
+                "833333341409160\r\n"
+            ],
+            [
+                "11 108505111\r\n10 986409\r\n3 4\r\n11 9864100\r\n7 1956\r\n9 109600\r\n1 0\r\n2 1\r\n4 15\r\n8 13699\r\n6 325\r\n5 64\r\n",
+                "10976184\r\n"
+            ],
+            [
+                "12 958003210\r\n1 0\r\n6 239\r\n7 1439\r\n3 3\r\n2 1\r\n12 79833599\r\n4 11\r\n5 47\r\n10 725759\r\n9 80639\r\n11 7257599\r\n8 10079\r\n",
+                "87909427\r\n"
+            ],
+            [
+                "2 10000000000000000\r\n100000000 100000000\r\n1 0\r\n",
+                "200000000\r\n"
+            ],
+            [
+                "2 9999999999999997\r\n100000000 100000000\r\n99999999 0\r\n",
+                "100000001\r\n"
+            ],
+            [
+                "2 9999999999999998\r\n100000000 100000000\r\n99999999 0\r\n",
+                "100000001\r\n"
+            ],
+            [
+                "2 9999999999999999\r\n100000000 100000000\r\n99999999 0\r\n",
+                "100000001\r\n"
+            ],
+            [
+                "2 10000000000000000\r\n100000000 100000000\r\n99999999 0\r\n",
+                "100000002\r\n"
+            ],
+            [
+                "2 4999999999999995\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000001\r\n"
+            ],
+            [
+                "2 4999999999999996\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000001\r\n"
+            ],
+            [
+                "2 4999999999999997\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000001\r\n"
+            ],
+            [
+                "2 4999999999999998\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000001\r\n"
+            ],
+            [
+                "2 4999999999999999\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000002\r\n"
+            ],
+            [
+                "2 5000000099999995\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000002\r\n"
+            ],
+            [
+                "2 5000000099999996\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000002\r\n"
+            ],
+            [
+                "2 5000000099999997\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000003\r\n"
+            ],
+            [
+                "2 5000000199999993\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000003\r\n"
+            ],
+            [
+                "2 5000000199999994\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000003\r\n"
+            ],
+            [
+                "2 5000000199999995\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000003\r\n"
+            ],
+            [
+                "2 5000000199999996\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000003\r\n"
+            ],
+            [
+                "2 5000000199999997\r\n100000000 100000000\r\n99999998 0\r\n",
+                "50000004\r\n"
+            ],
+            [
+                "20 4030\r\n17 9\r\n9 18\r\n3 31\r\n4 32\r\n7 3\r\n2 0\r\n15 25\r\n14 40\r\n14 23\r\n12 22\r\n15 13\r\n15 39\r\n17 14\r\n20 9\r\n19 7\r\n6 6\r\n18 5\r\n6 34\r\n4 17\r\n5 17\r\n",
+                "205\r\n"
+            ],
+            [
+                "20 4572\r\n100 9\r\n99 10\r\n12 14\r\n29 13\r\n77 3\r\n97 17\r\n98 14\r\n33 8\r\n95 5\r\n18 2\r\n8 0\r\n91 22\r\n42 7\r\n92 23\r\n87 3\r\n68 2\r\n66 23\r\n93 12\r\n50 22\r\n13 5\r\n",
+                "47\r\n"
+            ],
+            [
+                "20 2914\r\n23 69\r\n21 15\r\n8 90\r\n7 41\r\n16 92\r\n7 57\r\n10 43\r\n24 30\r\n25 29\r\n16 94\r\n6 60\r\n19 19\r\n4 35\r\n20 83\r\n1 0\r\n9 5\r\n3 21\r\n19 38\r\n10 61\r\n11 55\r\n",
+                "125\r\n"
+            ],
+            [
+                "20 6895\r\n962 86\r\n124 717\r\n149 436\r\n493 794\r\n951 797\r\n925 717\r\n734 547\r\n705 349\r\n428 679\r\n957 735\r\n405 772\r\n588 772\r\n277 673\r\n103 967\r\n924 949\r\n610 46\r\n355 891\r\n372 695\r\n991 798\r\n84 0\r\n",
+                "9\r\n"
+            ],
+            [
+                "2 9999838400652863\r\n99999191 0\r\n99999192 99999192\r\n",
+                "99999193\r\n"
+            ],
+            [
+                "2 9999996400000323\r\n99999981 0\r\n99999982 99999982\r\n",
+                "99999983\r\n"
+            ],
+            [
+                "2 9999863200467855\r\n99999315 0\r\n99999316 99999316\r\n",
+                "99999317\r\n"
+            ],
+            [
+                "2 9999976000014399\r\n99999879 0\r\n99999880 99999880\r\n",
+                "99999881\r\n"
+            ],
+            [
+                "20 864\r\n15 33\r\n36 6\r\n2 0\r\n39 44\r\n14 2\r\n47 15\r\n34 12\r\n50 48\r\n9 19\r\n7 21\r\n46 19\r\n23 30\r\n15 9\r\n2 33\r\n27 46\r\n10 21\r\n8 17\r\n2 25\r\n47 22\r\n10 34\r\n",
+                "21\r\n"
+            ],
+            [
+                "20 399\r\n44 32\r\n37 49\r\n49 30\r\n10 0\r\n35 27\r\n26 31\r\n17 45\r\n44 39\r\n19 15\r\n12 4\r\n46 41\r\n32 14\r\n19 39\r\n25 48\r\n19 24\r\n23 23\r\n33 45\r\n32 22\r\n38 13\r\n42 33\r\n",
+                "11\r\n"
+            ],
+            [
+                "20 827\r\n29 21\r\n28 47\r\n15 27\r\n29 6\r\n33 19\r\n32 25\r\n38 7\r\n4 0\r\n46 11\r\n37 49\r\n40 42\r\n9 3\r\n26 7\r\n35 41\r\n32 44\r\n15 10\r\n13 14\r\n39 15\r\n12 48\r\n6 27\r\n",
+                "21\r\n"
+            ],
+            [
+                "18 2073\r\n54 6\r\n20 49\r\n43 46\r\n39 42\r\n16 41\r\n11 0\r\n29 32\r\n19 22\r\n58 20\r\n53 35\r\n14 20\r\n89 42\r\n93 37\r\n97 33\r\n19 38\r\n57 28\r\n56 41\r\n98 7\r\n",
+                "23\r\n"
+            ],
+            [
+                "19 1709\r\n28 39\r\n89 20\r\n14 41\r\n17 34\r\n62 20\r\n3 0\r\n47 38\r\n51 18\r\n53 34\r\n21 36\r\n53 13\r\n24 34\r\n35 13\r\n4 18\r\n73 31\r\n61 17\r\n10 42\r\n36 11\r\n82 31\r\n",
+                "25\r\n"
+            ],
+            [
+                "20 144\r\n10 0\r\n91 39\r\n58 28\r\n59 50\r\n13 10\r\n83 26\r\n21 37\r\n99 16\r\n93 47\r\n35 10\r\n12 6\r\n83 10\r\n97 19\r\n34 43\r\n94 14\r\n100 35\r\n75 28\r\n13 12\r\n94 4\r\n61 26\r\n",
+                "3\r\n"
+            ],
+            [
+                "20 208\r\n38 84\r\n13 5\r\n38 84\r\n17 54\r\n30 23\r\n22 23\r\n32 68\r\n10 52\r\n35 15\r\n36 85\r\n1 0\r\n19 36\r\n34 20\r\n49 5\r\n15 15\r\n13 40\r\n30 2\r\n7 97\r\n36 50\r\n50 3\r\n",
+                "7\r\n"
+            ],
+            [
+                "18 1758\r\n4 42\r\n15 61\r\n49 72\r\n1 0\r\n50 59\r\n31 9\r\n24 88\r\n48 83\r\n50 93\r\n47 18\r\n29 99\r\n44 96\r\n39 12\r\n5 32\r\n1 62\r\n26 94\r\n38 66\r\n25 77\r\n",
+                "47\r\n"
+            ],
+            [
+                "19 2982\r\n32 31\r\n35 58\r\n14 5\r\n42 34\r\n41 46\r\n39 10\r\n35 48\r\n3 0\r\n41 3\r\n5 25\r\n22 43\r\n8 48\r\n19 77\r\n49 92\r\n17 50\r\n50 66\r\n25 34\r\n24 44\r\n14 78\r\n",
+                "63\r\n"
+            ],
+            [
+                "18 1669\r\n79 73\r\n63 34\r\n69 57\r\n50 53\r\n12 53\r\n19 45\r\n1 0\r\n15 22\r\n22 72\r\n39 50\r\n12 100\r\n67 90\r\n80 66\r\n42 16\r\n75 71\r\n19 29\r\n28 85\r\n64 25\r\n",
+                "39\r\n"
+            ],
+            [
+                "18 1409\r\n70 16\r\n100 42\r\n97 25\r\n70 62\r\n54 75\r\n3 0\r\n25 87\r\n15 91\r\n47 95\r\n72 9\r\n62 30\r\n59 56\r\n42 3\r\n89 75\r\n27 28\r\n36 55\r\n29 77\r\n13 51\r\n",
+                "17\r\n"
+            ],
+            [
+                "20 2964\r\n45 7\r\n81 76\r\n38 18\r\n87 5\r\n56 53\r\n90 19\r\n86 87\r\n98 80\r\n61 21\r\n60 28\r\n29 49\r\n95 77\r\n20 32\r\n5 0\r\n60 58\r\n100 9\r\n49 6\r\n43 87\r\n62 64\r\n52 99\r\n",
+                "31\r\n"
+            ],
+            [
+                "2 9999844400605283\r\n99999221 0\r\n99999222 99999222\r\n",
+                "99999223\r\n"
+            ],
+            [
+                "2 9999858000504099\r\n99999289 0\r\n99999290 99999290\r\n",
+                "99999291\r\n"
+            ],
+            [
+                "2 9999984400006083\r\n99999921 0\r\n99999922 99999922\r\n",
+                "99999923\r\n"
+            ],
+            [
+                "2 9999921600153663\r\n99999607 0\r\n99999608 99999608\r\n",
+                "99999609\r\n"
+            ],
+            [
+                "20 1749\r\n40 7\r\n16 12\r\n7 8\r\n39 20\r\n13 11\r\n29 1\r\n20 9\r\n12 9\r\n5 0\r\n37 6\r\n34 3\r\n23 18\r\n19 1\r\n39 11\r\n13 15\r\n38 16\r\n28 5\r\n14 14\r\n18 17\r\n36 4\r\n",
+                "45\r\n"
+            ],
+            [
+                "20 8351\r\n111 72\r\n566 80\r\n8 0\r\n831 25\r\n832 62\r\n833 65\r\n522 4\r\n382 50\r\n116 69\r\n493 8\r\n866 9\r\n726 8\r\n102 48\r\n194 32\r\n779 39\r\n820 9\r\n661 65\r\n682 63\r\n226 71\r\n315 1\r\n",
+                "11\r\n"
+            ],
+            [
+                "20 6138\r\n8 0\r\n61 220\r\n90 440\r\n31 700\r\n64 312\r\n73 901\r\n11 255\r\n60 130\r\n32 818\r\n41 51\r\n38 897\r\n24 109\r\n46 165\r\n63 263\r\n70 778\r\n50 520\r\n96 964\r\n18 972\r\n22 819\r\n16 646\r\n",
+                "86\r\n"
+            ],
+            [
+                "20 8194\r\n70 58\r\n61 2\r\n94 76\r\n37 96\r\n2 34\r\n19 24\r\n92 53\r\n94 14\r\n22 39\r\n1 0\r\n31 54\r\n51 67\r\n6 94\r\n61 36\r\n75 18\r\n48 85\r\n43 15\r\n42 47\r\n99 63\r\n29 91\r\n",
+                "86\r\n"
+            ],
+            [
+                "20 5006\r\n14 1\r\n93 8\r\n27 18\r\n71 5\r\n91 16\r\n85 14\r\n6 0\r\n70 7\r\n82 25\r\n22 6\r\n13 1\r\n68 1\r\n37 15\r\n70 20\r\n13 14\r\n45 1\r\n86 8\r\n91 6\r\n30 20\r\n42 21\r\n",
+                "55\r\n"
+            ],
+            [
+                "20 9752\r\n6 71\r\n20 79\r\n18 18\r\n8 99\r\n4 0\r\n12 93\r\n7 93\r\n9 14\r\n7 23\r\n8 45\r\n19 64\r\n9 35\r\n9 11\r\n8 5\r\n22 31\r\n5 54\r\n15 77\r\n21 62\r\n14 66\r\n10 19\r\n",
+                "449\r\n"
+            ],
+            [
+                "20 3539\r\n9 5\r\n7 3\r\n4 2\r\n2 25\r\n16 6\r\n7 31\r\n2 13\r\n15 3\r\n17 12\r\n19 18\r\n19 27\r\n16 14\r\n17 12\r\n11 1\r\n3 33\r\n1 0\r\n9 1\r\n3 31\r\n10 18\r\n7 10\r\n",
+                "189\r\n"
+            ],
+            [
+                "20 1378\r\n38 11\r\n3 20\r\n1 0\r\n14 13\r\n37 12\r\n33 11\r\n40 20\r\n2 8\r\n9 2\r\n2 3\r\n17 13\r\n11 20\r\n12 17\r\n10 11\r\n17 8\r\n36 12\r\n21 17\r\n36 15\r\n36 13\r\n27 10\r\n",
+                "39\r\n"
+            ],
+            [
+                "20 4952\r\n83 18\r\n95 22\r\n96 23\r\n66 13\r\n41 15\r\n11 0\r\n41 16\r\n82 12\r\n36 21\r\n91 21\r\n88 20\r\n11 12\r\n67 18\r\n84 17\r\n83 10\r\n92 19\r\n61 3\r\n58 16\r\n57 6\r\n22 7\r\n",
+                "53\r\n"
+            ],
+            [
+                "20 1503\r\n9 4\r\n1 0\r\n18 7\r\n22 28\r\n15 1\r\n8 51\r\n24 46\r\n13 14\r\n20 94\r\n15 31\r\n12 55\r\n13 93\r\n24 82\r\n2 58\r\n8 65\r\n17 64\r\n19 43\r\n7 10\r\n2 81\r\n6 21\r\n",
+                "67\r\n"
+            ],
+            [
+                "20 7141\r\n522 37\r\n632 72\r\n835 31\r\n192 71\r\n58 20\r\n482 47\r\n395 25\r\n923 44\r\n542 3\r\n829 74\r\n227 16\r\n864 21\r\n935 16\r\n618 7\r\n605 9\r\n664 6\r\n6 0\r\n882 66\r\n217 24\r\n554 90\r\n",
+                "9\r\n"
+            ],
+            [
+                "20 7478\r\n60 397\r\n26 943\r\n26 6\r\n11 740\r\n24 18\r\n7 564\r\n52 64\r\n63 92\r\n61 380\r\n35 381\r\n58 593\r\n3 0\r\n65 934\r\n14 790\r\n18 179\r\n12 311\r\n44 154\r\n57 600\r\n76 136\r\n61 389\r\n",
+                "106\r\n"
+            ],
+            [
+                "20 6531\r\n97 32\r\n52 74\r\n96 23\r\n20 53\r\n24 5\r\n26 12\r\n13 38\r\n82 64\r\n9 17\r\n78 58\r\n29 96\r\n47 11\r\n43 37\r\n5 55\r\n38 48\r\n65 64\r\n59 45\r\n2 0\r\n80 29\r\n38 7\r\n",
+                "72\r\n"
+            ],
+            [
+                "20 9592\r\n513 927\r\n496 502\r\n468 849\r\n201 372\r\n659 633\r\n105 25\r\n591 537\r\n106 168\r\n303 700\r\n717 621\r\n193 913\r\n55 0\r\n830 439\r\n141 878\r\n657 119\r\n928 141\r\n536 837\r\n369 184\r\n121 911\r\n254 767\r\n",
+                "13\r\n"
+            ],
+            [
+                "20 7029\r\n81 11\r\n43 9\r\n28 18\r\n13 25\r\n80 19\r\n72 25\r\n67 17\r\n74 6\r\n61 17\r\n75 23\r\n19 20\r\n41 4\r\n26 22\r\n50 3\r\n40 1\r\n17 7\r\n23 9\r\n9 16\r\n44 9\r\n8 0\r\n",
+                "88\r\n"
+            ],
+            [
+                "20 7754\r\n12 13\r\n10 6\r\n22 51\r\n11 78\r\n8 92\r\n17 97\r\n7 80\r\n10 53\r\n13 77\r\n17 44\r\n20 54\r\n21 100\r\n2 96\r\n3 44\r\n14 15\r\n9 65\r\n1 0\r\n1 49\r\n10 74\r\n22 99\r\n",
+                "364\r\n"
+            ],
+            [
+                "5 80\r\n7 11\r\n9 4\r\n11 7\r\n3 0\r\n7 6\r\n",
+                "10\r\n"
+            ]
+        ]
+    }
+]

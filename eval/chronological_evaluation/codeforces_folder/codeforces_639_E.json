@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Bear and Paradox",
+        "description": "Limak is a big polar bear. He prepared n problems for an algorithmic contest.\nThe i-th problem has initial score pi. Also, testers said that it takes ti\nminutes to solve the i-th problem. Problems aren't necessarily sorted by\ndifficulty and maybe harder problems have smaller initial score but it's too\nlate to change it \u2014 Limak has already announced initial scores for problems.\nThough it's still possible to adjust the speed of losing points, denoted by c\nin this statement. Let T denote the total number of minutes needed to solve\nall problems (so, T = t1 + t2 + ... + tn). The contest will last exactly T\nminutes. So it's just enough to solve all problems. Points given for solving a\nproblem decrease linearly. Solving the i-th problem after x minutes gives\nexactly points, where is some real constant that Limak must choose. Let's\nassume that c is fixed. During a contest a participant chooses some order in\nwhich he or she solves problems. There are n! possible orders and each of them\ngives some total number of points, not necessarily integer. We say that an\norder is optimal if it gives the maximum number of points. In other words, the\ntotal number of points given by this order is greater or equal than the number\nof points given by any other order. It's obvious that there is at least one\noptimal order. However, there may be more than one optimal order. Limak\nassumes that every participant will properly estimate ti at the very beginning\nand will choose some optimal order. He also assumes that testers correctly\npredicted time needed to solve each problem. For two distinct problems i and j\nsuch that pi < pj Limak wouldn't be happy to see a participant with strictly\nmore points for problem i than for problem j. He calls such a situation a\nparadox. It's not hard to prove that there will be no paradox for c = 0. The\nsituation may be worse for bigger c. What is the maximum real value c\n(remember that ) for which there is no paradox possible, that is, there will\nbe no paradox for any optimal order of solving problems? It can be proved that\nthe answer (the maximum c as described) always exists. Input The first line\ncontains one integer n (2 \u2264 n \u2264 150 000) \u2014 the number of problems. The second\nline contains n integers p1, p2, ..., pn (1 \u2264 pi \u2264 10^8) \u2014 initial scores. The\nthird line contains n integers t1, t2, ..., tn (1 \u2264 ti \u2264 10^8) where ti is the\nnumber of minutes needed to solve the i-th problem. Output Print one real\nvalue on a single line \u2014 the maximum value of c that and there is no optimal\norder with a paradox. Your answer will be considered correct if its absolute\nor relative error does not exceed 10^-6. Namely: let's assume that your answer\nis a, and the answer of the jury is b. The checker program will consider your\nanswer correct if . Examples Input 3 4 3 10 1 1 8 Output 0.62500000000 Input 4\n7 20 15 10 7 20 15 10 Output 0.31901840491 Input 2 10 20 10 1 Output\n1.00000000000 Note In the first sample, there are 3 problems. The first is (4,\n1) (initial score is 4 and required time is 1 minute), the second problem is\n(3, 1) and the third one is (10, 8). The total time is T = 1 + 1 + 8 = 10.\nLet's show that there is a paradox for c = 0.7. Solving problems in order 1,\n2, 3 turns out to give the best total score, equal to the sum of: solved 1\nminute after the start: solved 2 minutes after the start: solved 10 minutes\nafter the start: So, this order gives 3.72 + 2.58 + 3 = 9.3 points in total\nand this is the only optimal order (you can calculate total scores for other 5\npossible orders too see that they are lower). You should check points for\nproblems 1 and 3 to see a paradox. There is 4 < 10 but 3.72 > 3. It turns out\nthat there is no paradox for c = 0.625 but there is a paradox for any bigger\nc. In the second sample, all 24 orders are optimal. In the third sample, even\nfor c = 1 there is no paradox.\n\n",
+        "cf_contest_id": 639,
+        "cf_index": "E",
+        "cf_rating": 2800,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "greedy",
+            "math",
+            "sortings"
+        ],
+        "time_limit_seconds": 3.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n4 3 10\r\n1 1 8\r\n",
+                "0.62500000\r\n"
+            ],
+            [
+                "4\r\n7 20 15 10\r\n7 20 15 10\r\n",
+                "0.31901840\r\n"
+            ],
+            [
+                "2\r\n10 20\r\n10 1\r\n",
+                "0.99999999\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n5 5 5\r\n5 5 5\r\n",
+                "0.99999999\r\n"
+            ],
+            [
+                "10\r\n39 69 92 77 22 6 90 22 35 22\r\n83 27 18 54 54 10 22 55 5 76\r\n",
+                "0.19316280\r\n"
+            ],
+            [
+                "15\r\n1 2 3 1 2 2 1 3 3 3 3 2 2 1 2\r\n1 3 2 3 3 3 2 2 3 3 1 1 1 1 1\r\n",
+                "0.68181818\r\n"
+            ],
+            [
+                "20\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20\r\n",
+                "0.05470174\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n1 2\r\n",
+                "0.59999999\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n2 1\r\n",
+                "0.99999999\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n100000000 100000000\r\n",
+                "0.99999999\r\n"
+            ],
+            [
+                "2\r\n100000000 100000000\r\n1 1\r\n",
+                "0.99999999\r\n"
+            ],
+            [
+                "2\r\n100000000 100000000\r\n100000000 100000000\r\n",
+                "0.99999999\r\n"
+            ],
+            [
+                "3\r\n51455 8409 1378\r\n1624 22130 11267\r\n",
+                "0.99999999\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n1 2 3\r\n",
+                "0.42857143\r\n"
+            ],
+            [
+                "20\r\n137026 38874 92543 51194 173809 255974 563206 326040 164798 680930 156332 687635 496664 720415 325164 511756 485740 150388 42706 103555\r\n109307 66867 172161 95238 323343 204193 560743 560820 131461 771416 268906 779012 494492 816148 323742 509518 550288 119966 34067 117316\r\n",
+                "0.00342518\r\n"
+            ]
+        ]
+    }
+]

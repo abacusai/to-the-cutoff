@@ -1,0 +1,101 @@
+[
+    {
+        "name": "Cubes",
+        "description": "Let's imagine that you're playing the following simple computer game. The\nscreen displays n lined-up cubes. Each cube is painted one of m colors. You\nare allowed to delete not more than k cubes (that do not necessarily go one\nafter another). After that, the remaining cubes join together (so that the\ngaps are closed) and the system counts the score. The number of points you\nscore equals to the length of the maximum sequence of cubes of the same color\nthat follow consecutively. Write a program that determines the maximum\npossible number of points you can score. Remember, you may delete no more than\nk any cubes. It is allowed not to delete cubes at all. Input The first line\ncontains three integers n, m and k (1 \u2264 n \u2264 2\u00b710^5, 1 \u2264 m \u2264 10^5, 0 \u2264 k < n).\nThe second line contains n integers from 1 to m \u2014 the numbers of cube colors.\nThe numbers of colors are separated by single spaces. Output Print the maximum\npossible number of points you can score. Examples Input 10 3 2 1 2 1 1 3 2 1 1\n2 2 Output 4 Input 10 2 2 1 2 1 2 1 1 2 1 1 2 Output 5 Input 3 1 2 1 1 1\nOutput 3 Note In the first sample you should delete the fifth and the sixth\ncubes. In the second sample you should delete the fourth and the seventh\ncubes. In the third sample you shouldn't delete any cubes.\n\n",
+        "cf_contest_id": 180,
+        "cf_index": "E",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "dp",
+            "two pointers"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 3 2\r\n1 2 1 1 3 2 1 1 2 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 2 2\r\n1 2 1 2 1 1 2 1 1 2\r\n",
+                "5\r\n"
+            ],
+            [
+                "3 1 2\r\n1 1 1\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 2 2\r\n1 1 1 2 1 2 1 2 1 1\r\n",
+                "5\r\n"
+            ],
+            [
+                "1 1 0\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "20 3 5\r\n2 2 3 1 2 2 3 3 3 2 1 2 3 1 1 3 3 3 2 3\r\n",
+                "7\r\n"
+            ],
+            [
+                "20 2 5\r\n2 2 1 2 1 2 1 2 1 1 2 1 2 2 1 2 2 1 2 1\r\n",
+                "7\r\n"
+            ],
+            [
+                "20 6 3\r\n4 1 2 6 3 3 2 5 2 5 2 1 1 4 1 2 2 1 1 4\r\n",
+                "5\r\n"
+            ],
+            [
+                "30 5 8\r\n1 4 1 5 3 4 4 1 1 4 1 3 5 5 5 5 1 5 1 5 2 3 2 2 3 4 5 2 1 2\r\n",
+                "7\r\n"
+            ],
+            [
+                "30 5 6\r\n4 2 2 1 3 4 2 3 2 4 3 1 1 4 4 3 5 1 4 5 5 1 2 2 1 2 4 4 1 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "100 10 15\r\n6 6 6 6 7 7 8 8 4 4 4 1 1 7 7 7 1 1 1 2 2 2 2 2 2 2 2 2 10 5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 6 6 10 2 2 8 8 1 1 1 1 1 6 6 6 6 2 2 3 3 9 9 9 9 9 10 10 10 10 10 4 9 9 9 7 7 7 7 9 9 7 7 5 8 8 8 8 2\r\n",
+                "25\r\n"
+            ],
+            [
+                "99 10 17\r\n3 2 2 9 7 10 10 10 10 6 6 6 3 7 3 3 7 2 2 2 2 2 10 10 2 2 7 7 7 7 1 8 8 8 8 10 9 10 10 10 5 5 2 2 5 5 5 1 4 9 9 2 2 3 3 2 2 9 9 9 9 9 9 9 7 4 8 8 4 8 8 10 10 4 5 9 9 10 5 5 5 5 5 8 8 8 8 2 2 2 2 1 8 8 5 10 10 2 2\r\n",
+                "11\r\n"
+            ],
+            [
+                "94 10 20\r\n2 3 4 4 4 4 4 4 4 4 4 4 5 5 5 5 3 3 3 3 6 6 5 1 5 5 5 2 2 2 2 4 1 1 1 1 8 8 10 5 2 2 4 4 4 4 4 3 3 3 3 3 6 6 6 6 2 2 2 2 2 2 2 2 1 10 10 2 2 2 6 6 6 8 4 4 4 8 1 1 1 1 1 1 6 6 2 2 8 7 7 7 3 4\r\n",
+                "13\r\n"
+            ],
+            [
+                "99 3 15\r\n2 2 2 2 2 2 3 3 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 3 3 3 1 1 1 3 3 3 3 3 3 3 1 1 1 1 3 3 3 3 3 3 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 2 2 2 2 2 2\r\n",
+                "27\r\n"
+            ],
+            [
+                "100 5 10\r\n4 4 4 4 4 4 4 4 4 4 4 4 2 4 4 4 4 4 4 4 4 4 2 2 2 3 3 3 3 3 3 3 4 4 4 3 3 2 1 1 1 2 3 3 5 5 5 5 5 5 5 5 5 5 4 4 4 4 4 4 4 4 4 2 2 2 2 2 2 2 4 4 4 4 5 4 4 4 4 4 4 4 3 3 3 3 3 3 3 3 3 5 5 5 3 3 4 3 3 3\r\n",
+                "21\r\n"
+            ],
+            [
+                "98 4 20\r\n3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 4 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 2 2 2 2 2 2 2 1 1 1 3 3 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 2 2 2 2 2 2 2 3 3 1 1 2 2 2 2 3 3 3\r\n",
+                "30\r\n"
+            ],
+            [
+                "92 5 40\r\n3 3 3 3 2 2 2 2 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4 4 4 3 3 5 3 3 3 4 4 4 1 1 4 4 4 4 4 4 4 4 4 4 4 2 2 2 2 2 2 2 2 2 3 3 3 2 5 1 1 4 4 4 4 4 4 4 4 4 4 4 2 2 4 4 5 5 5 5 5 5 5 5 5 2 2 2 2 2\r\n",
+                "33\r\n"
+            ],
+            [
+                "99 10 10\r\n9 9 9 10 10 10 9 9 9 9 9 2 2 10 10 10 10 10 3 3 5 10 10 2 2 3 3 6 1 1 1 1 1 1 7 7 7 7 7 4 4 6 6 6 8 9 9 9 2 2 9 9 5 5 5 5 1 10 7 7 9 9 9 5 6 6 6 6 8 8 4 1 3 3 3 3 3 3 9 9 4 1 1 7 1 1 1 3 3 3 3 3 3 10 9 10 9 8 9\r\n",
+                "12\r\n"
+            ],
+            [
+                "95 10 30\r\n3 3 8 8 8 4 9 3 3 3 3 3 3 8 10 5 5 5 5 5 5 4 9 1 1 1 1 6 6 7 7 7 1 1 1 1 1 1 9 9 10 10 10 10 10 5 3 3 3 3 3 3 6 6 6 6 1 6 6 6 6 9 4 9 5 5 5 2 2 2 2 10 10 8 3 3 4 2 9 9 9 2 5 2 2 8 8 8 7 7 3 3 3 4 4\r\n",
+                "11\r\n"
+            ],
+            [
+                "100 10 15\r\n7 7 3 6 6 6 8 8 8 8 8 8 8 8 8 8 8 5 5 1 9 9 9 9 9 9 9 9 2 2 2 4 7 7 8 2 2 2 2 2 2 8 8 7 7 2 2 2 7 7 7 4 4 4 4 4 4 4 4 4 4 7 7 7 7 7 7 7 7 2 2 2 6 6 3 3 3 3 3 3 1 1 1 1 1 1 4 4 4 4 1 1 1 1 5 4 5 6 6 6\r\n",
+                "13\r\n"
+            ]
+        ]
+    }
+]

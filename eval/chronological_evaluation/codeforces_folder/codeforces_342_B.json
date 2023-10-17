@@ -1,0 +1,73 @@
+[
+    {
+        "name": "Xenia and Spies",
+        "description": "Xenia the vigorous detective faced n (n \u2265 2) foreign spies lined up in a row.\nWe'll consider the spies numbered from 1 to n from left to right. Spy s has an\nimportant note. He has to pass the note to spy f. Xenia interrogates the spies\nin several steps. During one step the spy keeping the important note can pass\nthe note to one of his neighbours in the row. In other words, if this spy's\nnumber is x, he can pass the note to another spy, either x - 1 or x + 1 (if x\n= 1 or x = n, then the spy has only one neighbour). Also during a step the spy\ncan keep a note and not pass it to anyone. But nothing is that easy. During m\nsteps Xenia watches some spies attentively. Specifically, during step ti\n(steps are numbered from 1) Xenia watches spies numbers li, li + 1, li + 2,\n..., ri (1 \u2264 li \u2264 ri \u2264 n). Of course, if during some step a spy is watched, he\ncan't do anything: neither give the note nor take it from some other spy.\nOtherwise, Xenia reveals the spies' cunning plot. Nevertheless, if the spy at\nthe current step keeps the note, Xenia sees nothing suspicious even if she\nwatches him. You've got s and f. Also, you have the steps during which Xenia\nwatches spies and which spies she is going to watch during each step. Find the\nbest way the spies should act in order to pass the note from spy s to spy f as\nquickly as possible (in the minimum number of steps). Input The first line\ncontains four integers n, m, s and f (1 \u2264 n, m \u2264 10^5; 1 \u2264 s, f \u2264 n; s \u2260 f; n\n\u2265 2). Each of the following m lines contains three integers ti, li, ri (1 \u2264 ti\n\u2264 10^9, 1 \u2264 li \u2264 ri \u2264 n). It is guaranteed that t1 < t2 < t3 < ... < tm.\nOutput Print k characters in a line: the i-th character in the line must\nrepresent the spies' actions on step i. If on step i the spy with the note\nmust pass the note to the spy with a lesser number, the i-th character should\nequal \"L\". If on step i the spy with the note must pass it to the spy with a\nlarger number, the i-th character must equal \"R\". If the spy must keep the\nnote at the i-th step, the i-th character must equal \"X\". As a result of\napplying the printed sequence of actions spy s must pass the note to spy f.\nThe number of printed characters k must be as small as possible. Xenia must\nnot catch the spies passing the note. If there are miltiple optimal solutions,\nyou can print any of them. It is guaranteed that the answer exists. Examples\nInput 3 5 1 3 1 1 2 2 2 3 3 3 3 4 1 1 10 1 3 Output XXRR\n\n",
+        "cf_contest_id": 342,
+        "cf_index": "B",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 5 1 3\r\n1 1 2\r\n2 2 3\r\n3 3 3\r\n4 1 1\r\n10 1 3\r\n",
+                "XXRR"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 3 2 1\r\n1 1 2\r\n2 1 2\r\n4 1 2\r\n",
+                "XXL"
+            ],
+            [
+                "5 11 1 5\r\n1 1 5\r\n2 2 2\r\n3 1 1\r\n4 3 3\r\n5 3 3\r\n6 1 1\r\n7 4 4\r\n8 4 5\r\n10 1 3\r\n11 5 5\r\n13 1 5\r\n",
+                "XXXRXRXXRR"
+            ],
+            [
+                "4 6 4 2\r\n2 2 2\r\n3 3 3\r\n4 1 1\r\n10 1 4\r\n11 2 3\r\n12 2 4\r\n",
+                "LXXL"
+            ],
+            [
+                "7 5 7 6\r\n1 4 5\r\n2 7 7\r\n3 6 6\r\n4 3 4\r\n5 1 3\r\n",
+                "L"
+            ],
+            [
+                "4 4 3 4\r\n1 2 4\r\n2 1 2\r\n3 3 4\r\n4 2 3\r\n",
+                "XR"
+            ],
+            [
+                "10 10 1 10\r\n1 1 10\r\n2 1 1\r\n3 7 10\r\n4 6 7\r\n5 9 9\r\n6 4 9\r\n7 2 5\r\n8 3 10\r\n9 2 10\r\n10 7 9\r\n",
+                "XXRRRXXXXRRRRRR"
+            ],
+            [
+                "20 20 17 20\r\n1 16 20\r\n2 12 13\r\n3 14 16\r\n4 13 15\r\n5 3 15\r\n6 2 11\r\n7 18 18\r\n8 5 15\r\n9 6 12\r\n10 19 19\r\n11 9 11\r\n12 14 17\r\n13 19 19\r\n14 12 20\r\n15 1 1\r\n16 11 17\r\n17 13 14\r\n18 5 17\r\n19 2 10\r\n20 19 20\r\n",
+                "XRRR"
+            ],
+            [
+                "100 5 99 1\r\n1 1 2\r\n2 2 3\r\n3 3 3\r\n4 1 1\r\n10 1 3\r\n",
+                "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+            ],
+            [
+                "5 1 1 5\r\n1 1 1\r\n",
+                "XRRRR"
+            ],
+            [
+                "3 5 1 3\r\n1 1 2\r\n2 2 3\r\n3 3 3\r\n4 1 1\r\n1000000000 1 3\r\n",
+                "XXRR"
+            ],
+            [
+                "2 2 1 2\r\n1 1 2\r\n1000000000 1 2\r\n",
+                "XR"
+            ],
+            [
+                "10 1 1 10\r\n1 5 6\r\n",
+                "RRRRRRRRR"
+            ]
+        ]
+    }
+]

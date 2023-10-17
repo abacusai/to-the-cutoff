@@ -1,0 +1,106 @@
+[
+    {
+        "name": "Dress'em in Vests!",
+        "description": "The Two-dimensional kingdom is going through hard times... This morning the\nThree-Dimensional kingdom declared war on the Two-dimensional one. This\n(possibly armed) conflict will determine the ultimate owner of the straight\nline. The Two-dimensional kingdom has a regular army of n people. Each soldier\nregistered himself and indicated the desired size of the bulletproof vest: the\ni-th soldier indicated size ai. The soldiers are known to be unpretentious, so\nthe command staff assumes that the soldiers are comfortable in any vests with\nsizes from ai - x to ai + y, inclusive (numbers x, y \u2265 0 are specified). The\nTwo-dimensional kingdom has m vests at its disposal, the j-th vest's size\nequals bj. Help mobilize the Two-dimensional kingdom's army: equip with vests\nas many soldiers as possible. Each vest can be used only once. The i-th\nsoldier can put on the j-th vest, if ai - x \u2264 bj \u2264 ai + y. Input The first\ninput line contains four integers n, m, x and y (1 \u2264 n, m \u2264 10^5, 0 \u2264 x, y \u2264\n10^9) \u2014 the number of soldiers, the number of vests and two numbers that\nspecify the soldiers' unpretentiousness, correspondingly. The second line\ncontains n integers a1, a2, ..., an (1 \u2264 ai \u2264 10^9) in non-decreasing order,\nseparated by single spaces \u2014 the desired sizes of vests. The third line\ncontains m integers b1, b2, ..., bm (1 \u2264 bj \u2264 10^9) in non-decreasing order,\nseparated by single spaces \u2014 the sizes of the available vests. Output In the\nfirst line print a single integer k \u2014 the maximum number of soldiers equipped\nwith bulletproof vests. In the next k lines print k pairs, one pair per line,\nas \"ui vi\" (without the quotes). Pair (ui, vi) means that soldier number ui\nmust wear vest number vi. Soldiers and vests are numbered starting from one in\nthe order in which they are specified in the input. All numbers of soldiers in\nthe pairs should be pairwise different, all numbers of vests in the pairs also\nshould be pairwise different. You can print the pairs in any order. If there\nare multiple optimal answers, you are allowed to print any of them. Examples\nInput 5 3 0 0 1 2 3 3 4 1 3 5 Output 2 1 1 3 2 Input 3 3 2 2 1 5 9 3 5 7\nOutput 3 1 1 2 2 3 3 Note In the first sample you need the vests' sizes to\nmatch perfectly: the first soldier gets the first vest (size 1), the third\nsoldier gets the second vest (size 3). This sample allows another answer,\nwhich gives the second vest to the fourth soldier instead of the third one. In\nthe second sample the vest size can differ from the desired size by at most 2\nsizes, so all soldiers can be equipped.\n\n",
+        "cf_contest_id": 161,
+        "cf_index": "A",
+        "cf_rating": 1300,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "two pointers"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 3 0 0\r\n1 2 3 3 4\r\n1 3 5\r\n",
+                "2\r\n1 1\r\n3 2\r\n"
+            ],
+            [
+                "3 3 2 2\r\n1 5 9\r\n3 5 7\r\n",
+                "3\r\n1 1\r\n2 2\r\n3 3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 0 0\r\n1\r\n1\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "1 1 0 0\r\n1\r\n2\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 3 1 4\r\n1 5\r\n1 2 2\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "20 30 1 4\r\n1 1 1 1 2 2 2 2 3 3 3 3 4 4 4 4 4 4 4 5\r\n1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 4 4 4 4 4 4 4 4 5 5\r\n",
+                "20\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 15\r\n14 16\r\n15 17\r\n16 18\r\n17 19\r\n18 20\r\n19 21\r\n20 22\r\n"
+            ],
+            [
+                "33 23 17 2\r\n1 1 2 2 2 3 3 3 3 3 3 4 4 4 4 4 5 5 5 6 6 7 7 7 8 8 8 8 8 9 9 10 10\r\n1 1 3 3 4 4 4 5 5 6 6 6 7 8 8 8 8 8 8 9 9 10 10\r\n",
+                "23\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n12 10\r\n13 11\r\n14 12\r\n17 13\r\n20 14\r\n21 15\r\n22 16\r\n23 17\r\n24 18\r\n25 19\r\n26 20\r\n27 21\r\n28 22\r\n29 23\r\n"
+            ],
+            [
+                "2 2 1 4\r\n1 4\r\n3 6\r\n",
+                "2\r\n1 1\r\n2 2\r\n"
+            ],
+            [
+                "20 20 1 4\r\n1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 4 4 5 5\r\n3 3 3 3 3 4 4 4 4 4 4 4 4 5 5 5 6 6 7 7\r\n",
+                "20\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 13\r\n14 14\r\n15 15\r\n16 16\r\n17 17\r\n18 18\r\n19 19\r\n20 20\r\n"
+            ],
+            [
+                "33 23 17 2\r\n1 1 1 2 3 3 3 3 3 4 4 4 4 5 6 6 6 6 6 6 7 7 7 7 7 8 8 8 8 8 8 10 10\r\n10 10 10 11 12 12 12 12 12 13 13 13 13 14 15 15 15 15 15 15 16 16 16\r\n",
+                "5\r\n26 1\r\n27 2\r\n28 3\r\n32 4\r\n33 5\r\n"
+            ],
+            [
+                "1 1 1 2\r\n783266931\r\n783266932\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "2 3 1 4\r\n1 1\r\n3 3 4\r\n",
+                "2\r\n1 1\r\n2 2\r\n"
+            ],
+            [
+                "20 30 1 4\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2\r\n3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4\r\n",
+                "20\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 13\r\n14 14\r\n15 15\r\n16 16\r\n17 17\r\n18 18\r\n19 19\r\n20 20\r\n"
+            ],
+            [
+                "33 23 17 2\r\n1 1 1 1 1 1 1 2 2 2 2 2 2 2 3 3 3 3 3 3 4 4 4 4 4 4 4 5 5 5 5 5 5\r\n10 10 10 10 10 10 10 11 11 11 11 11 11 11 12 12 12 12 12 12 13 13 13\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 1 1 1\r\n1 1 1 5 5 7 7 8 8 8\r\n3\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 1 2 1\r\n1 2 5 8 9 9 9 10 10 10\r\n7\r\n",
+                "1\r\n4 1\r\n"
+            ],
+            [
+                "1 1 2 1\r\n7\r\n8\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "1 1 0 2\r\n9\r\n7\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2 0 2\r\n2 8\r\n3 5\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "2 2 1 0\r\n5 5\r\n6 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2 3 0\r\n8 9\r\n1 5\r\n",
+                "1\r\n1 2\r\n"
+            ]
+        ]
+    }
+]

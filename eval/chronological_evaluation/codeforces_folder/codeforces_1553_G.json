@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Common Divisor Graph",
+        "description": "Consider a sequence of distinct integers \n    a_1, \n    \u2026, a_n\n, each\nrepresenting one node of a graph. There is an edge between two nodes if the\ntwo values are not coprime, i. e. they have a common divisor greater than\n\n    1\n. There are \n    q\n queries, in each query, you want to get from one\ngiven node \n    a_s\n to another \n    a_t\n. In order to achieve that, you can\nchoose an existing value \n    a_i\n and create new value \n    a_n+1 = a_i\n    \n    \u00b7 (1 + a_i)\n, with edges to all values that are not coprime with\n\n    a_n+1\n. Also, \n    n\n gets increased by \n    1\n. You can repeat that\noperation multiple times, possibly making the sequence much longer and getting\nhuge or repeated values. What's the minimum possible number of newly created\nnodes so that \n    a_t\n is reachable from \n    a_s\n? Queries are independent.\nIn each query, you start with the initial sequence \n    a\n given in the input.\nInput The first line contains two integers \n    n\n and \n    q\n (\n    2 \n    \u2264 n\n    \n    \u2264 150\n     000\n, \n    1 \n    \u2264 q \n    \u2264 300\n     000\n) \u2014 the size of the\nsequence and the number of queries. The second line contains \n    n\n distinct\nintegers \n    a_1, a_2, \n    \u2026, a_n\n (\n    2 \n    \u2264 a_i \n    \u2264 10^6\n, \n    a_i\n    \n    \u2260 a_j\n if \n    i \n     j\n). The \n    j\n-th of the following \n    q\n\nlines contains two distinct integers \n    s_j\n and \n    t_j\n (\n    1 \n    \u2264 s_j,\n    t_j \n    \u2264 n\n, \n    s_j \n    \u2260 t_j\n) \u2014 indices of nodes for \n    j\n-th\nquery. Output Print \n    q\n lines. The \n    j\n-th line should contain one\ninteger: the minimum number of new nodes you create in order to move from\n\n    a_s_j\n to \n    a_t_j\n. Examples Input 3 3 2 10 3 1 2 1 3 2 3 Output 0\n1 1 Input 5 12 3 8 7 6 25 1 2 1 3 1 4 1 5 2 1 2 3 2 4 2 5 3 1 3 2 3 4 3 5\nOutput 0 1 0 1 0 1 0 1 1 1 1 2 Note In the first example, you can first create\nnew value \n    2 \n    \u00b7 3 = 6\n or \n    10 \n    \u00b7 11 = 110\n or \n    3 \n    \u00b7 4\n    = 12\n. None of that is needed in the first query because you can already get\nfrom \n    a_1 = 2\n to \n    a_2 = 10\n. In the second query, it's optimal to\nfirst create \n    6\n or \n    12\n. For example, creating \n    6\n makes it\npossible to get from \n    a_1 = 2\n to \n    a_3 = 3\n with a path \n    (2, 6,\n    3)\n. In the last query of the second example, we want to get from \n    a_3 =\n    7\n to \n    a_5 = 25\n. One way to achieve that is to first create \n    6\n    \n    \u00b7 7 = 42\n and then create \n    25 \n    \u00b7 26 = 650\n. The final graph\nhas seven nodes and it contains a path from \n    a_3 = 7\n to \n    a_5 = 25\n.\n\n",
+        "cf_contest_id": 1553,
+        "cf_index": "G",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "constructive algorithms",
+            "dsu",
+            "graphs",
+            "hashing",
+            "math",
+            "number theory"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3\r\n2 10 3\r\n1 2\r\n1 3\r\n2 3\r\n",
+                "0\r\n1\r\n1\r\n"
+            ],
+            [
+                "5 12\r\n3 8 7 6 25\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n2 1\r\n2 3\r\n2 4\r\n2 5\r\n3 1\r\n3 2\r\n3 4\r\n3 5\r\n",
+                "0\r\n1\r\n0\r\n1\r\n0\r\n1\r\n0\r\n1\r\n1\r\n1\r\n1\r\n2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n77 7\r\n1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1\r\n77 5\r\n1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 14\r\n7 4 6 5 2\r\n3 5\r\n4 2\r\n5 4\r\n3 2\r\n3 4\r\n4 1\r\n4 3\r\n2 4\r\n1 3\r\n3 2\r\n2 3\r\n5 4\r\n5 3\r\n1 4\r\n",
+                "0\r\n1\r\n1\r\n0\r\n1\r\n2\r\n1\r\n1\r\n1\r\n0\r\n0\r\n1\r\n0\r\n2\r\n"
+            ],
+            [
+                "9 30\r\n8 9 7 4 6 3 5 2 10\r\n2 1\r\n3 7\r\n5 2\r\n3 2\r\n7 3\r\n4 2\r\n3 9\r\n9 8\r\n9 4\r\n7 2\r\n7 4\r\n2 5\r\n3 1\r\n4 2\r\n3 9\r\n6 2\r\n6 1\r\n1 7\r\n3 7\r\n7 3\r\n3 2\r\n2 7\r\n1 5\r\n3 2\r\n8 9\r\n8 2\r\n7 6\r\n7 2\r\n3 9\r\n3 5\r\n",
+                "0\r\n1\r\n0\r\n1\r\n1\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n1\r\n0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n"
+            ],
+            [
+                "10 20\r\n89 86 73 22 76 78 33 97 42 56\r\n7 4\r\n8 7\r\n3 9\r\n4 7\r\n7 8\r\n9 1\r\n9 3\r\n7 1\r\n8 10\r\n3 5\r\n3 1\r\n3 8\r\n7 8\r\n10 1\r\n4 8\r\n1 8\r\n9 3\r\n8 9\r\n7 8\r\n10 7\r\n",
+                "0\r\n1\r\n1\r\n0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n2\r\n2\r\n1\r\n1\r\n1\r\n2\r\n1\r\n1\r\n1\r\n0\r\n"
+            ],
+            [
+                "3 3\r\n9901 101 1000000\r\n1 2\r\n1 3\r\n2 3\r\n",
+                "1\r\n1\r\n1\r\n"
+            ]
+        ]
+    }
+]

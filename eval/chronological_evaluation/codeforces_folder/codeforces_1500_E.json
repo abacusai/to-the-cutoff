@@ -1,0 +1,48 @@
+[
+    {
+        "name": "Subset Trick",
+        "description": "Vanya invented an interesting trick with a set of integers. Let an illusionist\nhave a set of positive integers \n    S\n. He names a positive integer \n    x\n.\nThen an audience volunteer must choose some subset (possibly, empty) of\n\n    S\n without disclosing it to the illusionist. The volunteer tells the\nillusionist the size of the chosen subset. And here comes the trick: the\nillusionist guesses whether the sum of the subset elements does not exceed\n\n    x\n. The sum of elements of an empty subset is considered to be \n    0\n.\nVanya wants to prepare the trick for a public performance. He prepared some\nset of distinct positive integers \n    S\n. Vasya wants the trick to be\nsuccessful. He calls a positive number \n    x\n unsuitable, if he can't be sure\nthat the trick would be successful for every subset a viewer can choose. Vanya\nwants to count the number of unsuitable integers for the chosen set \n    S\n.\nVanya plans to try different sets \n    S\n. He wants you to write a program\nthat finds the number of unsuitable integers for the initial set \n    S\n, and\nafter each change to the set \n    S\n. Vanya will make \n    q\n changes to the\nset, and each change is one of the following two types: add a new integer\n\n    a\n to the set \n    S\n, or remove some integer \n    a\n from the set\n\n    S\n. Input The first line contains two integers \n    n\n, \n    q\n (\n    1\n    \n    \u2264 n, q \n    \u2264 200\n     000\n) \u2014 the size of the initial set \n    S\n and\nthe number of changes. The next line contains \n    n\n distinct integers\n\n    s_1, s_2, \n    \u2026, s_n\n (\n    1 \n    \u2264 s_i \n    \u2264 10^13\n) \u2014 the\ninitial elements of \n    S\n. Each of the following \n    q\n lines contain two\nintegers \n    t_i\n, \n    a_i\n (\n    1 \n    \u2264 t_i \n    \u2264 2\n, \n    1 \n    \u2264 a_i\n    \n    \u2264 10^13\n), describing a change: If \n    t_i = 1\n, then an integer\n\n    a_i\n is added to the set \n    S\n. It is guaranteed that this integer is\nnot present in \n    S\n before this operation. If \n    t_i = 2\n, then an\ninteger \n    a_i\n is removed from the set \n    S\n. In is guaranteed that this\ninteger is present in \n    S\n before this operation. Output Print \n    q + 1\n\nlines. In the first line print the number of unsuitable integers for the\ninitial set \n    S\n. In the next \n    q\n lines print the number of unsuitable\nintegers for \n    S\n after each change. Example Input 3 11 1 2 3 2 1 1 5 1 6 1\n7 2 6 2 2 2 3 1 10 2 5 2 7 2 10 Output 4 1 6 12 19 13 8 2 10 3 0 0 Note In the\nfirst example the initial set is \n    S = \n    \n    1, 2, 3\n. For this set the\ntrick can be unsuccessful for \n    x \n    \u2208\n    \n    1, 2, 3, 4\n. For example,\nif \n    x = 4\n, the volunteer can choose the subset \n    1, 2\n with\nsum \n    3 \n    \u2264 x\n, and can choose the subset \n    2, 3\n with sum\n\n    5 > x\n. However, in both cases the illusionist only know the same size of\nthe subset (\n    2\n), so he can't be sure answering making a guess. Since\nthere is only one subset of size \n    3\n, and the sum of each subset of\nsmaller size does not exceed \n    5\n, all \n    x \n    \u2265 5\n are suitable.\n\n",
+        "cf_contest_id": 1500,
+        "cf_index": "E",
+        "cf_rating": 3300,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3 11\r\n1 2 3\r\n2 1\r\n1 5\r\n1 6\r\n1 7\r\n2 6\r\n2 2\r\n2 3\r\n1 10\r\n2 5\r\n2 7\r\n2 10\r\n",
+                "4\r\n1\r\n6\r\n12\r\n19\r\n13\r\n8\r\n2\r\n10\r\n3\r\n0\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n1\r\n2 1\r\n",
+                "0\r\n0\r\n"
+            ],
+            [
+                "1 11\r\n8336702541292\r\n1 9411501350464\r\n1 6820537703629\r\n1 9387978600131\r\n1 9179224156888\r\n1 6871041874686\r\n1 9220946307576\r\n1 7701882800506\r\n1 9213032824158\r\n1 9200100545299\r\n1 7638656121941\r\n1 7160867559473\r\n",
+                "0\r\n1074798809172\r\n5181927293670\r\n8824166999344\r\n12466406705018\r\n21348150026106\r\n27382016315358\r\n36121141291876\r\n43658244121362\r\n51182414671989\r\n63310267488342\r\n72893952145581\r\n"
+            ],
+            [
+                "1 11\r\n6759768972492\r\n1 7249324364172\r\n1 7275759501096\r\n1 7475282043009\r\n1 8078540881855\r\n1 8289006765477\r\n1 8449266702995\r\n1 8737272032030\r\n1 8753902378879\r\n1 9472258549603\r\n1 9732137448941\r\n1 9803744350919\r\n",
+                "0\r\n489555391680\r\n1031981057208\r\n2172974348475\r\n5727002995126\r\n10333361059887\r\n15901278749756\r\n23485233742870\r\n31202231510776\r\n45384434815198\r\n62148272528653\r\n74648085999194\r\n"
+            ],
+            [
+                "1 100\r\n3\r\n1 2\r\n2 3\r\n1 1\r\n1 5\r\n2 2\r\n1 2\r\n1 4\r\n2 2\r\n1 2\r\n2 1\r\n1 3\r\n2 2\r\n2 3\r\n1 2\r\n1 3\r\n2 2\r\n1 2\r\n2 3\r\n1 3\r\n1 1\r\n2 1\r\n2 4\r\n2 2\r\n2 3\r\n1 4\r\n1 1\r\n2 1\r\n2 4\r\n2 5\r\n1 4\r\n1 2\r\n2 4\r\n1 4\r\n1 1\r\n1 3\r\n2 2\r\n2 4\r\n2 3\r\n1 2\r\n2 1\r\n2 2\r\n1 1\r\n1 3\r\n1 2\r\n2 3\r\n2 2\r\n2 1\r\n1 2\r\n1 1\r\n1 4\r\n2 4\r\n2 1\r\n1 3\r\n1 1\r\n1 5\r\n1 4\r\n2 1\r\n2 2\r\n1 1\r\n2 4\r\n1 4\r\n2 5\r\n2 3\r\n1 3\r\n1 2\r\n2 4\r\n1 5\r\n2 3\r\n2 5\r\n2 1\r\n1 3\r\n1 5\r\n1 1\r\n1 4\r\n2 4\r\n2 1\r\n1 1\r\n1 4\r\n2 3\r\n2 5\r\n2 4\r\n2 1\r\n1 4\r\n2 4\r\n1 4\r\n1 1\r\n2 2\r\n2 4\r\n1 5\r\n2 5\r\n2 1\r\n1 2\r\n2 2\r\n1 2\r\n1 1\r\n1 4\r\n1 5\r\n1 3\r\n2 2\r\n1 2\r\n",
+                "0\r\n1\r\n0\r\n1\r\n6\r\n4\r\n6\r\n10\r\n8\r\n10\r\n6\r\n10\r\n4\r\n1\r\n6\r\n10\r\n4\r\n10\r\n6\r\n10\r\n13\r\n10\r\n6\r\n2\r\n0\r\n1\r\n8\r\n1\r\n0\r\n0\r\n0\r\n2\r\n0\r\n2\r\n5\r\n8\r\n6\r\n2\r\n0\r\n1\r\n0\r\n0\r\n0\r\n2\r\n4\r\n1\r\n0\r\n0\r\n0\r\n1\r\n5\r\n1\r\n0\r\n1\r\n4\r\n9\r\n13\r\n10\r\n4\r\n11\r\n7\r\n11\r\n6\r\n3\r\n6\r\n8\r\n4\r\n9\r\n6\r\n1\r\n0\r\n1\r\n6\r\n9\r\n13\r\n9\r\n6\r\n9\r\n13\r\n10\r\n5\r\n1\r\n0\r\n2\r\n0\r\n2\r\n5\r\n3\r\n0\r\n4\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n5\r\n10\r\n13\r\n11\r\n13\r\n"
+            ],
+            [
+                "1 33\r\n62\r\n1 63\r\n1 64\r\n1 65\r\n1 66\r\n1 67\r\n1 68\r\n1 69\r\n1 70\r\n1 71\r\n1 72\r\n1 73\r\n1 74\r\n1 75\r\n1 76\r\n1 77\r\n1 78\r\n1 79\r\n1 80\r\n1 81\r\n1 82\r\n1 83\r\n1 84\r\n1 85\r\n1 86\r\n1 87\r\n1 88\r\n1 89\r\n1 90\r\n1 91\r\n1 92\r\n1 93\r\n1 94\r\n1 95\r\n",
+                "0\r\n1\r\n4\r\n10\r\n20\r\n35\r\n56\r\n84\r\n120\r\n165\r\n220\r\n286\r\n364\r\n455\r\n560\r\n680\r\n812\r\n925\r\n1029\r\n1130\r\n1228\r\n1323\r\n1419\r\n1516\r\n1612\r\n1705\r\n1799\r\n1894\r\n1990\r\n2087\r\n2185\r\n2284\r\n2384\r\n2485\r\n"
+            ],
+            [
+                "1 20\r\n79\r\n1 75\r\n1 91\r\n1 87\r\n1 90\r\n1 89\r\n1 78\r\n1 85\r\n1 76\r\n1 82\r\n1 93\r\n1 92\r\n1 77\r\n1 95\r\n1 81\r\n1 94\r\n1 86\r\n1 84\r\n1 88\r\n1 80\r\n1 83\r\n",
+                "0\r\n4\r\n32\r\n56\r\n86\r\n115\r\n164\r\n204\r\n272\r\n324\r\n422\r\n511\r\n610\r\n751\r\n838\r\n952\r\n1038\r\n1122\r\n1210\r\n1292\r\n1375\r\n"
+            ]
+        ]
+    }
+]

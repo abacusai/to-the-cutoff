@@ -1,0 +1,375 @@
+[
+    {
+        "name": "Kuro and Topological Parity",
+        "description": "Kuro has recently won the \"Most intelligent cat ever\" contest. The three\nfriends then decided to go to Katie's home to celebrate Kuro's winning. After\na big meal, they took a small break then started playing games. Kuro\nchallenged Katie to create a game with only a white paper, a pencil, a pair of\nscissors and a lot of arrows (you can assume that the number of arrows is\ninfinite). Immediately, Katie came up with the game called Topological Parity.\nThe paper is divided into \n    n\n pieces enumerated from \n    1\n to \n    n\n.\nShiro has painted some pieces with some color. Specifically, the \n    i\n-th\npiece has color \n    c_i\n where \n    c_i = 0\n defines black color,\n\n    c_i = 1\n defines white color and \n    c_i = -1\n means that the piece\nhasn't been colored yet. The rules of the game is simple. Players must put\nsome arrows between some pairs of different pieces in such a way that for each\narrow, the number in the piece it starts from is less than the number of the\npiece it ends at. Also, two different pieces can only be connected by at most\none arrow. After that the players must choose the color (\n    0\n or \n    1\n)\nfor each of the unpainted pieces. The score of a valid way of putting the\narrows and coloring pieces is defined as the number of paths of pieces of\nalternating colors. For example, \n    [1 \n    \u2192 0 \n    \u2192 1 \n    \u2192 0]\n, \n    [0\n    \n    \u2192 1 \n    \u2192 0 \n    \u2192 1]\n, \n    [1]\n, \n    [0]\n are valid paths and will be\ncounted. You can only travel from piece \n    x\n to piece \n    y\n if and only\nif there is an arrow from \n    x\n to \n    y\n. But Kuro is not fun yet. He\nloves parity. Let's call his favorite parity \n    p\n where \n    p = 0\n stands\nfor \"even\" and \n    p = 1\n stands for \"odd\". He wants to put the arrows and\nchoose colors in such a way that the score has the parity of \n    p\n. It seems\nlike there will be so many ways which satisfy Kuro. He wants to count the\nnumber of them but this could be a very large number. Let's help him with his\nproblem, but print it modulo \n    10^9 + 7\n. Input The first line contains\ntwo integers \n    n\n and \n    p\n (\n    1 \n    \u2264 n \n    \u2264 50\n, \n    0 \n    \u2264 p\n    \n    \u2264 1\n) \u2014 the number of pieces and Kuro's wanted parity. The second line\ncontains \n    n\n integers \n    c_1, c_2, ..., c_n\n (\n    -1 \n    \u2264 c_i\n    \u2264 1\n) \u2014 the colors of the pieces. Output Print a single integer \u2014 the\nnumber of ways to put the arrows and choose colors so the number of valid\npaths of alternating colors has the parity of \n    p\n. Examples Input 3 1 -1 0\n1 Output 6 Input 2 1 1 0 Output 1 Input 1 1 -1 Output 2 Note In the first\nexample, there are \n    6\n ways to color the pieces and add the arrows, as are\nshown in the figure below. The scores are \n    3, 3, 5\n for the first row and\n\n    5, 3, 3\n for the second row, both from left to right.\n\n",
+        "cf_contest_id": 979,
+        "cf_index": "E",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 1\r\n-1 0 1\r\n",
+                "6"
+            ],
+            [
+                "2 1\r\n1 0\r\n",
+                "1"
+            ],
+            [
+                "1 1\r\n-1\r\n",
+                "2"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 0\r\n-1\r\n",
+                "0"
+            ],
+            [
+                "1 1\r\n0\r\n",
+                "1"
+            ],
+            [
+                "5 1\r\n-1 -1 -1 -1 -1\r\n",
+                "16512"
+            ],
+            [
+                "5 0\r\n-1 -1 -1 -1 -1\r\n",
+                "16256"
+            ],
+            [
+                "10 1\r\n1 1 1 1 0 0 0 1 0 0\r\n",
+                "185921272"
+            ],
+            [
+                "50 1\r\n-1 -1 1 0 1 1 0 -1 1 0 -1 -1 0 0 -1 -1 0 1 1 -1 1 0 -1 1 1 -1 -1 -1 1 -1 -1 0 -1 0 -1 0 0 -1 -1 0 1 -1 0 1 -1 1 0 -1 -1 1\r\n",
+                "803313751"
+            ],
+            [
+                "20 1\r\n0 0 -1 0 1 1 1 1 -1 -1 1 1 1 -1 0 0 1 1 1 0\r\n",
+                "483548109"
+            ],
+            [
+                "30 0\r\n1 0 1 1 0 -1 0 1 -1 0 1 -1 0 -1 1 1 -1 1 0 1 0 -1 1 1 0 1 -1 0 1 1\r\n",
+                "40673917"
+            ],
+            [
+                "40 1\r\n-1 1 1 1 0 -1 -1 1 1 -1 1 1 1 0 0 -1 1 0 1 -1 -1 1 0 1 1 0 1 0 0 -1 -1 1 -1 1 1 1 1 0 -1 0\r\n",
+                "73320910"
+            ],
+            [
+                "50 1\r\n-1 -1 0 -1 1 0 1 0 1 -1 -1 0 0 0 -1 0 0 -1 0 1 -1 0 1 -1 1 -1 1 -1 -1 1 -1 -1 0 1 1 0 0 0 1 -1 -1 1 0 0 -1 0 1 1 0 0\r\n",
+                "772364444"
+            ],
+            [
+                "50 1\r\n-1 -1 -1 -1 -1 0 -1 -1 -1 0 1 0 -1 0 1 -1 -1 -1 1 0 1 -1 0 1 0 1 0 0 1 1 -1 1 -1 -1 1 1 -1 -1 0 -1 -1 1 -1 1 -1 1 1 0 0 -1\r\n",
+                "279519499"
+            ],
+            [
+                "3 1\r\n0 -1 -1\r\n",
+                "18"
+            ],
+            [
+                "4 0\r\n1 -1 1 0\r\n",
+                "64"
+            ],
+            [
+                "21 0\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "0"
+            ],
+            [
+                "29 1\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "733922348"
+            ],
+            [
+                "41 0\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "0"
+            ],
+            [
+                "3 0\r\n0 0 0\r\n",
+                "0"
+            ],
+            [
+                "38 1\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "0"
+            ],
+            [
+                "25 1\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "322050759"
+            ],
+            [
+                "30 0\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "549790477"
+            ],
+            [
+                "46 0\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "480432768"
+            ],
+            [
+                "10 0\r\n1 0 -1 1 -1 0 0 1 1 0\r\n",
+                "743685088"
+            ],
+            [
+                "6 0\r\n-1 0 -1 1 1 1\r\n",
+                "61440"
+            ],
+            [
+                "7 0\r\n1 0 1 1 -1 1 1\r\n",
+                "2359296"
+            ],
+            [
+                "9 0\r\n0 -1 -1 -1 -1 -1 1 0 -1\r\n",
+                "560111071"
+            ],
+            [
+                "6 1\r\n1 -1 -1 -1 0 0\r\n",
+                "131072"
+            ],
+            [
+                "6 0\r\n0 -1 -1 0 0 -1\r\n",
+                "135168"
+            ],
+            [
+                "8 0\r\n-1 0 1 -1 1 -1 1 1\r\n",
+                "56964601"
+            ],
+            [
+                "6 1\r\n1 1 0 -1 -1 -1\r\n",
+                "133120"
+            ],
+            [
+                "22 1\r\n0 -1 1 0 0 1 1 1 -1 -1 1 1 1 -1 1 1 0 0 -1 0 1 1\r\n",
+                "981309322"
+            ],
+            [
+                "47 1\r\n0 -1 0 1 0 -1 1 -1 1 -1 1 -1 0 0 -1 0 -1 1 -1 -1 0 1 -1 1 0 0 1 -1 0 1 0 1 0 1 0 1 -1 -1 1 -1 -1 -1 0 1 1 0 1\r\n",
+                "716651774"
+            ],
+            [
+                "2 1\r\n0 1\r\n",
+                "1"
+            ],
+            [
+                "36 1\r\n-1 0 0 1 1 0 -1 -1 -1 -1 1 1 0 -1 0 1 0 -1 0 -1 0 1 0 -1 -1 0 1 -1 0 -1 0 -1 1 0 1 1\r\n",
+                "693536347"
+            ],
+            [
+                "37 0\r\n0 -1 0 0 0 -1 0 1 0 0 -1 0 -1 -1 0 1 1 0 -1 -1 -1 -1 1 -1 0 0 0 1 -1 -1 1 -1 1 1 -1 -1 -1\r\n",
+                "915368288"
+            ],
+            [
+                "4 1\r\n1 -1 -1 1\r\n",
+                "120"
+            ],
+            [
+                "35 0\r\n0 0 -1 -1 1 -1 1 -1 1 0 1 0 -1 0 1 1 -1 1 -1 0 0 -1 0 0 1 -1 -1 0 1 1 -1 1 1 1 -1\r\n",
+                "45647242"
+            ],
+            [
+                "25 1\r\n1 0 0 -1 -1 0 1 0 -1 1 0 0 0 -1 0 0 1 -1 -1 1 -1 -1 -1 1 1\r\n",
+                "66699122"
+            ],
+            [
+                "36 1\r\n-1 0 -1 -1 1 0 0 -1 1 0 0 -1 1 -1 1 0 1 0 0 0 1 1 1 0 1 1 0 -1 1 -1 0 0 0 1 1 -1\r\n",
+                "77953873"
+            ],
+            [
+                "9 1\r\n-1 -1 1 1 1 -1 -1 0 1\r\n",
+                "608326411"
+            ],
+            [
+                "36 0\r\n-1 0 0 -1 -1 -1 0 -1 0 1 -1 -1 1 1 -1 1 0 0 1 -1 1 1 -1 0 0 1 1 1 -1 1 1 -1 1 1 1 -1\r\n",
+                "152782818"
+            ],
+            [
+                "10 1\r\n1 1 1 -1 0 -1 -1 1 1 0\r\n",
+                "487370169"
+            ],
+            [
+                "7 0\r\n1 0 -1 1 -1 1 0\r\n",
+                "4194304"
+            ],
+            [
+                "2 0\r\n-1 0\r\n",
+                "3"
+            ],
+            [
+                "5 1\r\n-1 1 0 0 -1\r\n",
+                "1920"
+            ],
+            [
+                "2 0\r\n-1 -1\r\n",
+                "6"
+            ],
+            [
+                "4 1\r\n0 1 -1 -1\r\n",
+                "136"
+            ],
+            [
+                "5 0\r\n-1 0 0 0 1\r\n",
+                "1088"
+            ],
+            [
+                "17 0\r\n0 -1 -1 0 1 -1 0 0 -1 -1 0 -1 -1 -1 0 0 0\r\n",
+                "310296666"
+            ],
+            [
+                "10 0\r\n1 -1 0 1 1 -1 -1 0 1 0\r\n",
+                "487370169"
+            ],
+            [
+                "31 0\r\n1 -1 -1 0 -1 0 -1 -1 0 -1 -1 -1 1 1 0 1 -1 1 1 0 0 -1 0 1 -1 1 0 -1 1 -1 -1\r\n",
+                "304540143"
+            ],
+            [
+                "41 1\r\n0 0 -1 1 -1 -1 1 -1 -1 1 -1 1 -1 1 -1 0 1 1 1 0 0 1 1 -1 0 0 1 0 0 1 1 1 -1 0 -1 1 0 1 1 1 1\r\n",
+                "589337580"
+            ],
+            [
+                "37 1\r\n1 -1 1 -1 -1 -1 0 1 -1 -1 1 0 0 0 1 1 -1 0 -1 1 -1 0 1 -1 -1 -1 -1 -1 0 -1 0 0 -1 0 -1 -1 -1\r\n",
+                "916646835"
+            ],
+            [
+                "31 0\r\n1 0 1 1 0 0 0 -1 -1 -1 -1 -1 0 1 1 1 0 -1 1 -1 -1 1 -1 1 1 0 0 1 1 -1 0\r\n",
+                "253181331"
+            ],
+            [
+                "4 1\r\n1 0 1 0\r\n",
+                "32"
+            ],
+            [
+                "26 1\r\n1 -1 1 1 1 1 -1 1 -1 1 -1 -1 0 -1 -1 -1 1 0 -1 -1 0 1 -1 0 1 0\r\n",
+                "996763118"
+            ],
+            [
+                "28 1\r\n0 0 1 1 -1 1 -1 1 0 -1 -1 -1 0 -1 0 -1 1 0 -1 1 0 -1 -1 0 -1 1 1 -1\r\n",
+                "618844160"
+            ],
+            [
+                "24 1\r\n0 0 0 1 1 0 -1 0 -1 1 -1 -1 0 0 1 1 0 -1 0 0 0 0 1 1\r\n",
+                "189147304"
+            ],
+            [
+                "17 0\r\n-1 0 -1 1 0 0 1 1 -1 -1 -1 -1 -1 1 1 -1 -1\r\n",
+                "555719737"
+            ],
+            [
+                "42 1\r\n0 1 -1 0 -1 0 -1 1 -1 1 0 1 1 -1 0 -1 -1 1 -1 -1 0 -1 1 -1 0 1 0 1 -1 1 -1 1 0 0 -1 0 1 0 1 1 0 0\r\n",
+                "386658717"
+            ],
+            [
+                "3 0\r\n0 -1 -1\r\n",
+                "14"
+            ],
+            [
+                "9 1\r\n0 1 -1 -1 -1 -1 1 1 1\r\n",
+                "755810045"
+            ],
+            [
+                "9 0\r\n1 1 0 0 1 -1 -1 0 0\r\n",
+                "438952513"
+            ],
+            [
+                "14 1\r\n-1 0 0 1 -1 0 0 0 -1 -1 0 -1 0 0\r\n",
+                "829277977"
+            ],
+            [
+                "20 0\r\n1 -1 1 -1 -1 -1 0 1 1 0 1 0 -1 1 1 -1 1 0 1 1\r\n",
+                "841268608"
+            ],
+            [
+                "18 0\r\n1 1 1 -1 0 -1 -1 0 -1 -1 0 0 -1 0 -1 0 -1 1\r\n",
+                "557382306"
+            ],
+            [
+                "16 0\r\n1 -1 0 0 0 -1 -1 -1 0 -1 -1 1 0 0 -1 1\r\n",
+                "807669877"
+            ],
+            [
+                "27 1\r\n-1 0 -1 -1 -1 0 1 -1 1 0 0 -1 0 1 0 0 0 -1 -1 1 -1 -1 -1 0 1 0 0\r\n",
+                "61073361"
+            ],
+            [
+                "2 0\r\n-1 1\r\n",
+                "3"
+            ],
+            [
+                "34 1\r\n1 0 -1 0 0 0 -1 1 0 1 1 1 1 1 1 -1 0 0 1 0 -1 -1 -1 1 -1 -1 -1 1 1 1 -1 1 1 -1\r\n",
+                "132603129"
+            ],
+            [
+                "17 0\r\n1 0 1 1 0 1 1 0 1 1 1 0 1 0 0 -1 0\r\n",
+                "585862415"
+            ],
+            [
+                "16 0\r\n-1 0 0 1 0 0 0 0 -1 -1 -1 -1 1 1 0 1\r\n",
+                "878929813"
+            ],
+            [
+                "17 0\r\n0 0 0 0 0 1 -1 -1 -1 1 -1 1 0 0 1 -1 -1\r\n",
+                "427689083"
+            ],
+            [
+                "38 0\r\n-1 -1 1 1 -1 -1 1 -1 0 1 -1 1 1 1 -1 1 0 1 0 -1 1 -1 -1 0 0 1 -1 -1 0 -1 0 -1 -1 0 1 0 -1 0\r\n",
+                "502273788"
+            ],
+            [
+                "33 0\r\n0 1 -1 -1 -1 1 -1 1 1 -1 -1 -1 -1 0 1 0 -1 0 0 -1 1 -1 -1 0 0 -1 0 0 1 0 1 1 1\r\n",
+                "52976952"
+            ],
+            [
+                "32 1\r\n0 0 1 0 -1 0 1 -1 -1 -1 0 1 0 0 1 0 -1 -1 1 1 1 0 0 1 -1 -1 1 0 0 -1 0 1\r\n",
+                "247728070"
+            ],
+            [
+                "6 0\r\n-1 1 1 -1 -1 -1\r\n",
+                "267264"
+            ],
+            [
+                "27 1\r\n0 -1 1 0 -1 1 1 -1 0 -1 0 0 0 -1 -1 0 0 -1 -1 0 -1 0 -1 0 0 1 1\r\n",
+                "28918236"
+            ],
+            [
+                "27 1\r\n0 -1 -1 1 1 1 -1 1 0 0 1 -1 -1 1 -1 1 1 1 1 1 0 0 0 0 -1 -1 0\r\n",
+                "69931865"
+            ],
+            [
+                "17 1\r\n0 -1 -1 0 0 1 -1 -1 0 0 -1 1 0 -1 1 0 0\r\n",
+                "427689083"
+            ],
+            [
+                "34 0\r\n1 1 1 0 0 0 0 1 0 0 1 -1 1 1 -1 0 -1 1 1 1 0 1 1 -1 0 0 1 -1 -1 0 0 0 -1 -1\r\n",
+                "115086916"
+            ],
+            [
+                "31 1\r\n1 0 0 0 0 0 0 0 -1 0 0 0 1 -1 -1 -1 0 0 -1 0 1 -1 1 0 1 1 1 1 -1 -1 1\r\n",
+                "186475897"
+            ],
+            [
+                "48 1\r\n1 0 0 0 1 -1 1 1 0 -1 0 -1 1 1 0 -1 -1 -1 0 0 0 1 0 1 0 -1 -1 -1 -1 1 0 1 -1 -1 -1 1 -1 0 1 0 0 1 -1 0 -1 0 0 0\r\n",
+                "763606955"
+            ],
+            [
+                "5 0\r\n0 -1 0 0 0\r\n",
+                "768"
+            ],
+            [
+                "43 0\r\n1 0 0 -1 0 -1 0 -1 1 1 -1 1 -1 0 0 1 -1 -1 -1 0 0 -1 1 -1 -1 1 0 0 1 -1 0 -1 -1 -1 -1 -1 1 1 0 -1 -1 -1 0\r\n",
+                "477560567"
+            ],
+            [
+                "11 1\r\n1 0 1 0 -1 1 0 -1 -1 0 0\r\n",
+                "67049563"
+            ],
+            [
+                "13 1\r\n-1 1 0 0 -1 0 -1 1 -1 -1 1 1 0\r\n",
+                "621572676"
+            ]
+        ]
+    }
+]

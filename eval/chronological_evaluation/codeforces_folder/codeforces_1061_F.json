@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Lost Root",
+        "description": "The graph is called tree if it is connected and has no cycles. Suppose the\ntree is rooted at some vertex. Then tree is called to be perfect \n    k\n-ary\ntree if each vertex is either a leaf (has no children) or has exactly \n    k\n\nchildren. Also, in perfect \n    k\n-ary tree all leafs must have same depth.\nFor example, the picture below illustrates perfect binary tree with \n    15\n\nvertices: There is a perfect \n    k\n-ary tree with \n    n\n nodes. The nodes\nare labeled with distinct integers from \n    1\n to \n    n\n, however you don't\nknow how nodes are labelled. Still, you want to find the label of the root of\nthe tree. You are allowed to make at most \n    60 \n    \u00b7 n\n queries of the\nfollowing type: \"? \n    a\n \n    b\n \n    c\n\", the query returns \"Yes\" if node\nwith label \n    b\n lies on the path from \n    a\n to \n    c\n and \"No\"\notherwise. Both \n    a\n and \n    c\n are considered to be lying on the path\nfrom \n    a\n to \n    c\n. When you are ready to report the root of the tree,\nprint \"! \n    s\n\", where \n    s\n is the label of the root of the tree. It is\npossible to report the root only once and this query is not counted towards\nlimit of \n    60 \n    \u00b7 n\n queries. Interaction The first line of the\nstandard input stream contains two integers \n    n\n and \n    k\n (\n    3 \n    \u2264 n\n    \n    \u2264 1500\n, \n    2 \n    \u2264 k < n\n) \u2014 the number of nodes in the tree and the\nvalue of \n    k\n. It is guaranteed that \n    n\n is such that the tree forms a\nperfect \n    k\n-ary tree. You can ask at most \n    60 \n    \u00b7 n\n queries. To\nask a query, print a line of form \"? \n    a\n \n    b\n \n    c\n\", where \n    1\n    \n    \u2264 a, b, c \n    \u2264 n\n. After that you should read a single line containing\n\"Yes\" or \"No\" depending on the answer of the query. The tree is fixed for each\ntest and it doesn't depend on your queries. When you are ready to print the\nanswer, print a line of the form \"! \n    s\n\", where \n    s\n is the label of\nthe root vertex and then terminate your program. After printing each query do\nnot forget to print end of line and flush the output. Otherwise you may get\nIdleness limit exceeded. To do this, use: fflush(stdout) or cout.flush() in\nC++; System.out.flush() in Java; flush(output) in Pascal; stdout.flush() in\nPython; See documentation for other languages.In case your program will make\nmore than \n    60 \n    \u00b7 n\n queries, but in other aspects would follow the\ninteraction protocol and terminate coorectly, it will get verdict \u00abWrong\nAnswer\u00bb. Hacks To hack the solution use the following test format: The first\nline should contain integers \n    n\n and \n    k\n (\n    3 \n    \u2264 n \n    \u2264 1500\n,\n\n    2 \n    \u2264 k \n    \u2264 1500\n) \u2014 the number of vertices and the \n    k\n parameter\nof the tree. Of course, the value of \n    n\n must correspond to the size of\nthe valid \n    k\n-ary tree of some depth. The second line should contain\n\n    a_1, a_2, \n    \u2026, a_n\n (\n    1 \n    \u2264 a_i \n    \u2264 n\n) \u2014 the labels of the\ntree in the natural order, all labels must be distinct. Let's call the\nfollowing ordering of the tree vertices to be natural: first the root of the\ntree goes, then go all vertices on depth of one edge from root, ordered from\nleft to right, then go all vertices on depth of two edges from root, ordered\nfrom left to right, and so on until the maximum depth. This way, the \n    a_1\n\nis the answer for the hack. Example Input 3 2 No Yes Output ? 1 3 2 ? 1 2 3 !\n2 Note The tree in the example is as follows: The input and output for example\nillustrate possible interaction on that test (empty lines are inserted only\nfor clarity). The hack corresponding to the example would look like: 3 2 2 3 1\n\n",
+        "cf_contest_id": 1061,
+        "cf_index": "F",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "interactive",
+            "probabilities"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2\r\n2 3 1\r\n",
+                "15\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 3\r\n2 3 4 1\r\n",
+                "11\r\n"
+            ],
+            [
+                "9 8\r\n1 9 2 3 6 5 4 8 7\r\n",
+                "21\r\n"
+            ],
+            [
+                "8 7\r\n7 3 4 8 5 6 2 1\r\n",
+                "17\r\n"
+            ],
+            [
+                "6 5\r\n5 2 4 1 6 3\r\n",
+                "21\r\n"
+            ],
+            [
+                "85 4\r\n80 9 83 33 85 75 70 4 15 22 42 38 28 17 24 21 3 44 12 66 6 29 41 67 7 54 73 58 31 16 56 37 76 18 55 32 20 69 77 23 27 53 71 13 51 11 79 47 65 14 48 59 60 45 46 72 63 74 61 34 82 5 36 68 25 62 57 35 8 1 52 84 64 19 78 26 43 50 30 49 2 40 81 39 10\r\n",
+                "212\r\n"
+            ],
+            [
+                "121 3\r\n93 25 89 70 14 22 86 103 96 87 55 7 91 121 114 106 19 6 109 78 83 53 119 105 82 2 92 34 39 45 42 94 36 107 58 31 23 40 20 10 49 12 115 100 102 79 67 71 50 54 17 110 13 62 15 108 101 97 95 37 56 113 35 46 111 84 4 28 117 59 33 61 99 77 8 41 104 21 5 80 112 63 38 48 1 27 44 65 52 90 30 9 69 88 3 75 16 81 72 116 73 47 74 57 11 24 26 18 118 85 43 76 66 120 51 98 32 64 60 29 68\r\n",
+                "202\r\n"
+            ],
+            [
+                "31 5\r\n4 14 22 15 23 25 9 31 6 28 17 5 29 12 19 3 16 30 24 2 13 1 10 18 26 20 27 8 11 7 21\r\n",
+                "67\r\n"
+            ],
+            [
+                "11 10\r\n6 7 5 3 1 9 11 4 8 2 10\r\n",
+                "17\r\n"
+            ],
+            [
+                "11 10\r\n3 10 8 1 4 9 6 5 2 11 7\r\n",
+                "17\r\n"
+            ],
+            [
+                "6 5\r\n6 2 3 1 5 4\r\n",
+                "57\r\n"
+            ],
+            [
+                "8 7\r\n7 6 4 1 3 2 8 5\r\n",
+                "17\r\n"
+            ],
+            [
+                "110 109\r\n14 17 9 43 85 89 50 68 86 92 94 3 15 83 56 25 109 90 73 45 74 58 52 6 61 96 37 59 12 36 103 82 23 97 53 98 19 88 72 42 41 26 79 76 62 5 65 7 48 63 4 64 54 81 71 39 55 101 31 99 110 32 106 47 102 77 21 51 29 84 35 57 24 28 20 67 91 95 70 38 30 100 13 105 22 69 33 75 49 66 10 108 93 8 46 11 104 60 1 44 27 34 18 40 2 78 16 87 80 107\r\n",
+                "113\r\n"
+            ]
+        ]
+    }
+]

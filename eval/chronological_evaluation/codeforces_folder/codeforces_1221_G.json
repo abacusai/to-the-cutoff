@@ -1,0 +1,139 @@
+[
+    {
+        "name": "Graph And Numbers",
+        "description": "You are given an undirected graph with \n    n\n vertices and \n    m\n edges. You\nhave to write a number on each vertex of this graph, each number should be\neither \n    0\n or \n    1\n. After that, you write a number on each edge equal\nto the sum of numbers on vertices incident to that edge. You have to choose\nthe numbers you will write on the vertices so that there is at least one edge\nwith \n    0\n written on it, at least one edge with \n    1\n and at least one\nedge with \n    2\n. How many ways are there to do it? Two ways to choose\nnumbers are different if there exists at least one vertex which has different\nnumbers written on it in these two ways. Input The first line contains two\nintegers \n    n\n and \n    m\n (\n    1 \n    \u2264 n \n    \u2264 40\n, \n    0 \n    \u2264 m \n    \u2264\n    n(n - 1)/2\n) \u2014 the number of vertices and the number of edges,\nrespectively. Then \n    m\n lines follow, each line contains two numbers\n\n    x_i\n and \n    y_i\n (\n    1 \n    \u2264 x_i, y_i \n    \u2264 n\n, \n    x_i \n     y_i\n)\n\u2014 the endpoints of the \n    i\n-th edge. It is guaranteed that each pair of\nvertices is connected by at most one edge. Output Print one integer \u2014 the\nnumber of ways to write numbers on all vertices so that there exists at least\none edge with \n    0\n written on it, at least one edge with \n    1\n and at\nleast one edge with \n    2\n. Examples Input 6 5 1 2 2 3 3 4 4 5 5 1 Output 20\nInput 4 4 1 2 2 3 3 4 4 1 Output 4 Input 35 29 1 2 2 3 3 1 4 1 4 2 3 4 7 8 8 9\n9 10 10 7 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22\n23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 Output 34201047040\n\n",
+        "cf_contest_id": 1221,
+        "cf_index": "G",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "combinatorics",
+            "dp",
+            "meet-in-the-middle"
+        ],
+        "time_limit_seconds": 3.5,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "6 5\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 1\r\n",
+                "20"
+            ],
+            [
+                "4 4\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n",
+                "4"
+            ],
+            [
+                "35 29\r\n1 2\r\n2 3\r\n3 1\r\n4 1\r\n4 2\r\n3 4\r\n7 8\r\n8 9\r\n9 10\r\n10 7\r\n11 12\r\n12 13\r\n13 14\r\n14 15\r\n15 16\r\n16 17\r\n17 18\r\n18 19\r\n19 20\r\n20 21\r\n21 22\r\n22 23\r\n23 24\r\n24 25\r\n25 26\r\n26 27\r\n27 28\r\n28 29\r\n29 30\r\n",
+                "34201047040"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 5\r\n8 6\r\n8 3\r\n7 10\r\n9 10\r\n5 8\r\n",
+                "320"
+            ],
+            [
+                "10 10\r\n6 3\r\n3 10\r\n3 4\r\n1 8\r\n6 2\r\n8 9\r\n9 2\r\n7 6\r\n4 2\r\n1 3\r\n",
+                "700"
+            ],
+            [
+                "10 20\r\n7 3\r\n3 9\r\n4 8\r\n10 8\r\n7 8\r\n9 5\r\n9 2\r\n9 6\r\n4 1\r\n8 1\r\n2 1\r\n6 8\r\n2 3\r\n6 10\r\n3 4\r\n2 4\r\n2 10\r\n2 8\r\n5 10\r\n6 3\r\n",
+                "902"
+            ],
+            [
+                "10 25\r\n1 9\r\n4 7\r\n9 2\r\n10 9\r\n6 4\r\n1 5\r\n7 2\r\n2 10\r\n6 1\r\n8 2\r\n8 6\r\n8 9\r\n8 10\r\n10 5\r\n10 6\r\n9 3\r\n1 7\r\n6 9\r\n5 2\r\n8 4\r\n4 5\r\n7 9\r\n2 1\r\n9 4\r\n6 5\r\n",
+                "932"
+            ],
+            [
+                "10 35\r\n1 5\r\n5 7\r\n4 6\r\n6 5\r\n1 8\r\n5 2\r\n4 3\r\n7 4\r\n8 2\r\n10 5\r\n9 10\r\n3 9\r\n10 6\r\n7 10\r\n3 5\r\n3 8\r\n3 1\r\n7 2\r\n1 10\r\n5 8\r\n9 1\r\n3 6\r\n2 10\r\n3 7\r\n2 9\r\n5 4\r\n4 10\r\n3 2\r\n9 6\r\n7 8\r\n2 4\r\n4 8\r\n4 1\r\n1 6\r\n9 7\r\n",
+                "982"
+            ],
+            [
+                "10 40\r\n8 1\r\n10 1\r\n4 3\r\n10 9\r\n3 1\r\n5 6\r\n6 7\r\n1 5\r\n8 10\r\n4 8\r\n4 1\r\n3 8\r\n10 5\r\n5 8\r\n7 4\r\n5 4\r\n8 2\r\n10 7\r\n10 4\r\n2 3\r\n2 4\r\n8 6\r\n8 9\r\n10 3\r\n10 2\r\n3 6\r\n9 7\r\n9 2\r\n6 4\r\n6 9\r\n6 1\r\n7 5\r\n7 1\r\n3 5\r\n5 9\r\n4 9\r\n8 7\r\n2 5\r\n3 9\r\n2 6\r\n",
+                "992"
+            ],
+            [
+                "10 45\r\n1 10\r\n9 5\r\n3 10\r\n1 7\r\n1 3\r\n9 8\r\n2 7\r\n10 5\r\n2 8\r\n3 5\r\n3 2\r\n10 6\r\n1 8\r\n3 6\r\n4 6\r\n2 10\r\n4 1\r\n8 10\r\n10 9\r\n1 6\r\n8 6\r\n9 4\r\n4 3\r\n9 2\r\n7 9\r\n7 10\r\n7 4\r\n4 10\r\n3 7\r\n4 2\r\n2 1\r\n7 6\r\n5 2\r\n3 9\r\n5 7\r\n6 9\r\n5 8\r\n8 3\r\n9 1\r\n1 5\r\n5 4\r\n2 6\r\n8 4\r\n7 8\r\n6 5\r\n",
+                "1002"
+            ],
+            [
+                "20 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "20 5\r\n13 2\r\n16 6\r\n7 19\r\n5 15\r\n9 17\r\n",
+                "552960"
+            ],
+            [
+                "20 10\r\n7 6\r\n8 10\r\n17 9\r\n20 1\r\n19 1\r\n19 17\r\n4 2\r\n2 15\r\n3 4\r\n13 9\r\n",
+                "855168"
+            ],
+            [
+                "40 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "40 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "40 5\r\n36 21\r\n7 19\r\n12 33\r\n18 3\r\n4 7\r\n",
+                "523986010112"
+            ],
+            [
+                "40 5\r\n36 5\r\n23 9\r\n8 9\r\n29 34\r\n26 28\r\n",
+                "523986010112"
+            ],
+            [
+                "40 10\r\n20 12\r\n8 15\r\n18 24\r\n18 5\r\n40 29\r\n23 38\r\n22 9\r\n26 17\r\n11 35\r\n7 23\r\n",
+                "946637635584"
+            ],
+            [
+                "40 10\r\n3 1\r\n24 7\r\n34 28\r\n16 28\r\n32 23\r\n19 28\r\n10 32\r\n38 6\r\n35 28\r\n1 34\r\n",
+                "839934541824"
+            ],
+            [
+                "40 30\r\n7 36\r\n9 31\r\n10 22\r\n9 36\r\n22 34\r\n17 22\r\n12 37\r\n39 27\r\n40 28\r\n10 14\r\n17 19\r\n6 21\r\n2 4\r\n1 33\r\n21 30\r\n10 18\r\n1 27\r\n9 16\r\n23 7\r\n31 19\r\n22 29\r\n4 30\r\n40 7\r\n1 39\r\n25 15\r\n29 33\r\n35 33\r\n9 21\r\n4 9\r\n34 25\r\n",
+                "1092650375168"
+            ],
+            [
+                "40 30\r\n33 19\r\n20 4\r\n29 2\r\n40 17\r\n8 16\r\n30 9\r\n35 13\r\n24 5\r\n17 7\r\n35 15\r\n8 9\r\n22 36\r\n12 19\r\n20 33\r\n5 6\r\n25 17\r\n16 19\r\n23 35\r\n12 40\r\n17 18\r\n29 17\r\n11 35\r\n13 16\r\n2 14\r\n2 23\r\n33 4\r\n15 8\r\n26 12\r\n32 12\r\n26 5\r\n",
+                "1088767463424"
+            ],
+            [
+                "40 40\r\n33 16\r\n8 2\r\n39 37\r\n29 17\r\n40 28\r\n38 3\r\n1 37\r\n26 9\r\n6 24\r\n18 35\r\n32 22\r\n2 21\r\n23 28\r\n1 7\r\n11 24\r\n19 36\r\n22 37\r\n24 2\r\n31 32\r\n9 10\r\n5 12\r\n24 30\r\n26 15\r\n1 11\r\n34 7\r\n13 29\r\n21 9\r\n30 1\r\n3 31\r\n5 31\r\n19 17\r\n17 20\r\n22 25\r\n15 9\r\n24 7\r\n16 40\r\n12 27\r\n3 25\r\n5 8\r\n3 1\r\n",
+                "1098207467720"
+            ],
+            [
+                "40 40\r\n21 2\r\n3 31\r\n22 38\r\n40 5\r\n10 9\r\n8 25\r\n8 3\r\n34 9\r\n2 11\r\n33 23\r\n22 15\r\n36 32\r\n39 20\r\n6 35\r\n9 39\r\n27 34\r\n11 18\r\n2 33\r\n24 29\r\n24 17\r\n39 31\r\n4 27\r\n3 18\r\n39 21\r\n36 20\r\n35 7\r\n36 8\r\n13 19\r\n39 28\r\n12 24\r\n14 21\r\n6 7\r\n12 9\r\n21 27\r\n7 22\r\n32 14\r\n5 9\r\n23 12\r\n32 18\r\n34 33\r\n",
+                "1097936435776"
+            ],
+            [
+                "1 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1\r\n1 2\r\n",
+                "0"
+            ],
+            [
+                "40 40\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n8 9\r\n9 10\r\n10 11\r\n11 12\r\n12 13\r\n13 14\r\n14 15\r\n15 16\r\n16 17\r\n17 18\r\n18 19\r\n19 20\r\n20 21\r\n21 22\r\n22 23\r\n23 24\r\n24 25\r\n25 26\r\n26 27\r\n27 28\r\n28 29\r\n29 30\r\n30 31\r\n31 32\r\n32 33\r\n33 34\r\n34 35\r\n35 36\r\n36 37\r\n37 38\r\n38 39\r\n39 40\r\n40 1\r\n",
+                "1099053975524"
+            ],
+            [
+                "6 10\r\n4 2\r\n6 1\r\n2 1\r\n6 2\r\n5 2\r\n3 2\r\n6 5\r\n6 4\r\n3 1\r\n3 4\r\n",
+                "38"
+            ]
+        ]
+    }
+]

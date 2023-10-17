@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Comments",
+        "description": "A rare article in the Internet is posted without a possibility to comment it.\nOn a Polycarp's website each article has comments feed. Each comment on\nPolycarp's website is a non-empty string consisting of uppercase and lowercase\nletters of English alphabet. Comments have tree-like structure, that means\neach comment except root comments (comments of the highest level) has exactly\none parent comment. When Polycarp wants to save comments to his hard drive he\nuses the following format. Each comment he writes in the following format: at\nfirst, the text of the comment is written; after that the number of comments\nis written, for which this comment is a parent comment (i. e. the number of\nthe replies to this comments); after that the comments for which this comment\nis a parent comment are written (the writing of these comments uses the same\nalgorithm). All elements in this format are separated by single comma.\nSimilarly, the comments of the first level are separated by comma.For example,\nif the comments look like: then the first comment is written as\n\"hello,2,ok,0,bye,0\", the second is written as \"test,0\", the third comment is\nwritten as \"one,1,two,2,a,0,b,0\". The whole comments feed is written as:\n\"hello,2,ok,0,bye,0,test,0,one,1,two,2,a,0,b,0\". For a given comments feed in\nthe format specified above print the comments in a different format: at first,\nprint a integer d \u2014 the maximum depth of nesting comments; after that print d\nlines, the i-th of them corresponds to nesting level i; for the i-th row print\ncomments of nesting level i in the order of their appearance in the Policarp's\ncomments feed, separated by space. Input The first line contains non-empty\ncomments feed in the described format. It consists of uppercase and lowercase\nletters of English alphabet, digits and commas. It is guaranteed that each\ncomment is a non-empty string consisting of uppercase and lowercase English\ncharacters. Each of the number of comments is integer (consisting of at least\none digit), and either equals 0 or does not contain leading zeros. The length\nof the whole string does not exceed 10^6. It is guaranteed that given\nstructure of comments is valid. Output Print comments in a format that is\ngiven in the statement. For each level of nesting, comments should be printed\nin the order they are given in the input. Examples Input\nhello,2,ok,0,bye,0,test,0,one,1,two,2,a,0,b,0 Output 3 hello test one ok bye\ntwo a b Input a,5,A,0,a,0,A,0,a,0,A,0 Output 2 a A a A a A Input\nA,3,B,2,C,0,D,1,E,0,F,1,G,0,H,1,I,1,J,0,K,1,L,0,M,2,N,0,O,1,P,0 Output 4 A K M\nB F H L N O C D G I P E J Note The first example is explained in the\nstatements.\n\n",
+        "cf_contest_id": 747,
+        "cf_index": "E",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "expression parsing",
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "hello,2,ok,0,bye,0,test,0,one,1,two,2,a,0,b,0\r\n",
+                "3\r\nhello test one\r\nok bye two\r\na b\r\n"
+            ],
+            [
+                "a,5,A,0,a,0,A,0,a,0,A,0\r\n",
+                "2\r\na\r\nA a A a A\r\n"
+            ],
+            [
+                "A,3,B,2,C,0,D,1,E,0,F,1,G,0,H,1,I,1,J,0,K,1,L,0,M,2,N,0,O,1,P,0\r\n",
+                "4\r\nA K M\r\nB F H L N O\r\nC D G I P\r\nE J\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "BA,0\r\n",
+                "1\r\nBA\r\n"
+            ],
+            [
+                "Tu,1,dU,1,zncD,0\r\n",
+                "3\r\nTu\r\ndU\r\nzncD\r\n"
+            ],
+            [
+                "nwEwA,2,C,1,aG,0,xgv,0\r\n",
+                "3\r\nnwEwA\r\nC xgv\r\naG\r\n"
+            ],
+            [
+                "aa,0\r\n",
+                "1\r\naa\r\n"
+            ],
+            [
+                "ab,0,ba,0\r\n",
+                "1\r\nab ba\r\n"
+            ],
+            [
+                "aa,0,ab,1,a,0\r\n",
+                "2\r\naa ab\r\na\r\n"
+            ],
+            [
+                "a,0,bb,1,a,1,bb,0\r\n",
+                "3\r\na bb\r\na\r\nbb\r\n"
+            ],
+            [
+                "a,2,b,0,bb,1,a,1,a,0\r\n",
+                "4\r\na\r\nb bb\r\na\r\na\r\n"
+            ],
+            [
+                "bb,0,b,1,a,1,b,1,a,0,b,0\r\n",
+                "4\r\nbb b b\r\na\r\nb\r\na\r\n"
+            ],
+            [
+                "b,2,b,0,b,0,b,1,b,0,ba,1,b,0\r\n",
+                "2\r\nb b ba\r\nb b b b\r\n"
+            ],
+            [
+                "bb,0,bb,0,b,1,ab,0,b,0,a,2,ab,0,bb,0\r\n",
+                "2\r\nbb bb b b a\r\nab ab bb\r\n"
+            ],
+            [
+                "ba,0,aa,1,a,0,bb,1,a,0,a,0,a,0,a,1,a,0\r\n",
+                "2\r\nba aa bb a a a\r\na a a\r\n"
+            ],
+            [
+                "a,3,aa,0,b,0,b,0,b,0,a,0,b,2,aa,1,a,0,ab,0\r\n",
+                "3\r\na b a b\r\naa b b aa ab\r\na\r\n"
+            ]
+        ]
+    }
+]

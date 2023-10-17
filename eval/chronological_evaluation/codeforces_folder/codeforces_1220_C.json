@@ -1,0 +1,101 @@
+[
+    {
+        "name": "Substring Game in the Lesson",
+        "description": "Mike and Ann are sitting in the classroom. The lesson is boring, so they\ndecided to play an interesting game. Fortunately, all they need to play this\ngame is a string \n    s\n and a number \n    k\n (\n    0 \n    \u2264 k < |s|\n). At the\nbeginning of the game, players are given a substring of \n    s\n with left\nborder \n    l\n and right border \n    r\n, both equal to \n    k\n (i.e. initially\n\n    l=r=k\n). Then players start to make moves one by one, according to the\nfollowing rules: A player chooses \n    l^\n    '\n and \n    r^\n    '\n so\nthat \n    l^\n    '\n    \u2264 l\n, \n    r^\n    '\n    \u2265 r\n and\n\n    s[l^\n    ', r^\n    ']\n is lexicographically less than \n    s[l,\n    r]\n. Then the player changes \n    l\n and \n    r\n in this way: \n    l :=\n    l^\n    '\n, \n    r := r^\n    '\n. Ann moves first. The player, that\ncan't make a move loses.Recall that a substring \n    s[l, r]\n (\n    l \n    \u2264\n    r\n) of a string \n    s\n is a continuous segment of letters from s that\nstarts at position \n    l\n and ends at position \n    r\n. For example, \"ehn\" is\na substring (\n    s[3, 5]\n) of \"aaaehnsvz\" and \"ahz\" is not. Mike and Ann were\nplaying so enthusiastically that they did not notice the teacher approached\nthem. Surprisingly, the teacher didn't scold them, instead of that he said,\nthat he can figure out the winner of the game before it starts, even if he\nknows only \n    s\n and \n    k\n. Unfortunately, Mike and Ann are not so keen in\nthe game theory, so they ask you to write a program, that takes \n    s\n and\ndetermines the winner for all possible \n    k\n. Input The first line of the\ninput contains a single string \n    s\n (\n    1 \n    \u2264 |s| \n    \u2264 5 \n    \u00b7\n    10^5\n) consisting of lowercase English letters. Output Print \n    |s|\n\nlines. In the line \n    i\n write the name of the winner (print Mike or Ann) in\nthe game with string \n    s\n and \n    k = i\n, if both play optimally Examples\nInput abba Output Mike Ann Ann Mike Input cba Output Mike Mike Mike\n\n",
+        "cf_contest_id": 1220,
+        "cf_index": "C",
+        "cf_rating": 1300,
+        "difficulty": 0,
+        "cf_tags": [
+            "games",
+            "greedy",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 268.435456,
+        "public_cases": [
+            [
+                "abba\r\n",
+                "Mike\r\nAnn\r\nAnn\r\nMike\r\n"
+            ],
+            [
+                "cba\r\n",
+                "Mike\r\nMike\r\nMike\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "abacaba\r\n",
+                "Mike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\n"
+            ],
+            [
+                "a\r\n",
+                "Mike\r\n"
+            ],
+            [
+                "abacabadabacabaeabacabadabacaba\r\n",
+                "Mike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nMike\r\n"
+            ],
+            [
+                "abcdefghijklmnopqrstuvwxyz\r\n",
+                "Mike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\n"
+            ],
+            [
+                "dequudpveoozswafkmdadrxtnmagtpcdqzhxkitrbqytichoswltzzasfoeqktomxlypvhjyjnjymvlrvglvyursfm\r\n",
+                "Mike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\n"
+            ],
+            [
+                "bt\r\n",
+                "Mike\r\nAnn\r\n"
+            ],
+            [
+                "ctjfjfilqa\r\n",
+                "Mike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\n"
+            ],
+            [
+                "ww\r\n",
+                "Mike\r\nMike\r\n"
+            ],
+            [
+                "nsfsgfs\r\n",
+                "Mike\r\nAnn\r\nMike\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\n"
+            ],
+            [
+                "igiggr\r\n",
+                "Mike\r\nMike\r\nAnn\r\nMike\r\nMike\r\nAnn\r\n"
+            ],
+            [
+                "aabdbddcaabbcccabcbadadbbcddcbbdbbaadcbcdabdccbadbacdbbdcdbbccacca\r\n",
+                "Mike\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\nAnn\r\nMike\r\n"
+            ],
+            [
+                "lbkgircdbr\r\n",
+                "Mike\r\nMike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\n"
+            ],
+            [
+                "zhh\r\n",
+                "Mike\r\nMike\r\nMike\r\n"
+            ],
+            [
+                "qrwrere\r\n",
+                "Mike\r\nAnn\r\nAnn\r\nAnn\r\nMike\r\nAnn\r\nMike\r\n"
+            ],
+            [
+                "aaab\r\n",
+                "Mike\r\nMike\r\nMike\r\nAnn\r\n"
+            ],
+            [
+                "dyqyq\r\n",
+                "Mike\r\nAnn\r\nAnn\r\nAnn\r\nAnn\r\n"
+            ],
+            [
+                "okdudu\r\n",
+                "Mike\r\nMike\r\nMike\r\nAnn\r\nMike\r\nAnn\r\n"
+            ],
+            [
+                "aaaa\r\n",
+                "Mike\r\nMike\r\nMike\r\nMike\r\n"
+            ]
+        ]
+    }
+]

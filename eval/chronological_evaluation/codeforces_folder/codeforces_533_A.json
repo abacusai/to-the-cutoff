@@ -1,0 +1,79 @@
+[
+    {
+        "name": "Berland Miners",
+        "description": "The biggest gold mine in Berland consists of n caves, connected by n - 1\ntransitions. The entrance to the mine leads to the cave number 1, it is\npossible to go from it to any remaining cave of the mine by moving along the\ntransitions. The mine is being developed by the InMine Inc., k miners work for\nit. Each day the corporation sorts miners into caves so that each cave has at\nmost one miner working there. For each cave we know the height of its ceiling\nhi in meters, and for each miner we know his height sj, also in meters. If a\nminer's height doesn't exceed the height of the cave ceiling where he is, then\nhe can stand there comfortably, otherwise, he has to stoop and that makes him\nunhappy. Unfortunately, miners typically go on strike in Berland, so InMine\nmakes all the possible effort to make miners happy about their work\nconditions. To ensure that no miner goes on strike, you need make sure that no\nminer has to stoop at any moment on his way from the entrance to the mine to\nhis cave (in particular, he must be able to stand comfortably in the cave\nwhere he works). To reach this goal, you can choose exactly one cave and\nincrease the height of its ceiling by several meters. However enlarging a cave\nis an expensive and complex procedure. That's why InMine Inc. asks you either\nto determine the minimum number of meters you should raise the ceiling of some\ncave so that it is be possible to sort the miners into the caves and keep all\nminers happy with their working conditions or to determine that it is\nimpossible to achieve by raising ceiling in exactly one cave. Input The first\nline contains integer n (1 \u2264 n \u2264 5\u00b710^5) \u2014 the number of caves in the mine.\nThen follows a line consisting of n positive integers h1, h2, ..., hn (1 \u2264 hi\n\u2264 10^9), where hi is the height of the ceiling in the i-th cave. Next n - 1\nlines contain the descriptions of transitions between the caves. Each line has\nthe form ai, bi (1 \u2264 ai, bi \u2264 n, ai \u2260 bi), where ai and bi are the numbers of\nthe caves connected by a path. The next line contains integer k (1 \u2264 k \u2264 n).\nThe last line contains k integers s1, s2, ..., sk (1 \u2264 sj \u2264 10^9), where sj is\nthe j-th miner's height. Output In the single line print the minimum number of\nmeters that you need to raise the ceiling by in some cave so that all miners\ncould be sorted into caves and be happy about the work conditions. If it is\nimpossible to do, print - 1. If it is initially possible and there's no need\nto raise any ceiling, print 0. Examples Input 6 5 8 4 6 3 12 1 2 1 3 4 2 2 5 6\n3 6 7 4 2 5 3 11 Output 6 Input 7 10 14 7 12 4 50 1 1 2 2 3 2 4 5 1 6 5 1 7 6\n7 3 4 8 8 10 Output 0 Input 3 4 2 8 1 2 1 3 2 17 15 Output -1 Note In the\nfirst sample test we should increase ceiling height in the first cave from 5\nto 11. After that we can distribute miners as following (first goes index of a\nminer, then index of a cave): . In the second sample test there is no need to\ndo anything since it is already possible to distribute miners as following: .\nIn the third sample test it is impossible.\n\n",
+        "cf_contest_id": 533,
+        "cf_index": "A",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "greedy",
+            "trees"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n5 8 4 6 3 12\r\n1 2\r\n1 3\r\n4 2\r\n2 5\r\n6 3\r\n6\r\n7 4 2 5 3 11\r\n",
+                "6"
+            ],
+            [
+                "7\r\n10 14 7 12 4 50 1\r\n1 2\r\n2 3\r\n2 4\r\n5 1\r\n6 5\r\n1 7\r\n6\r\n7 3 4 8 8 10\r\n",
+                "0"
+            ],
+            [
+                "3\r\n4 2 8\r\n1 2\r\n1 3\r\n2\r\n17 15\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6\r\n2 6 1 6 6 5\r\n2 1\r\n3 1\r\n4 3\r\n5 2\r\n6 1\r\n6\r\n1 4 5 3 6 1\r\n",
+                "4"
+            ],
+            [
+                "15\r\n591404936 586027257 575540240 384235284 585103364 583434201 570568774 483077061 581111798 577481314 451004843 583035500 571084412 575721570 583830362\r\n1 2\r\n1 3\r\n2 5\r\n3 4\r\n5 6\r\n5 10\r\n6 7\r\n6 8\r\n6 9\r\n6 11\r\n9 12\r\n9 15\r\n10 13\r\n10 14\r\n15\r\n361179628 481282528 566635505 570478514 574540995 569719794 568018332 580846599 578032082 579535526 578136108 558900962 561889244 580390184 588720327\r\n",
+                "107896119"
+            ],
+            [
+                "25\r\n50 50 48 50 50 48 48 50 50 47 49 47 40 46 50 49 48 42 48 49 46 49 43 48 50\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 8\r\n1 10\r\n1 16\r\n2 11\r\n3 6\r\n3 7\r\n3 12\r\n4 13\r\n4 20\r\n4 22\r\n5 9\r\n5 14\r\n5 25\r\n6 17\r\n6 23\r\n9 15\r\n10 18\r\n10 21\r\n11 19\r\n11 24\r\n25\r\n40 42 42 45 46 46 47 48 48 45 47 47 48 46 49 48 49 49 48 50 50 50 48 49 50\r\n",
+                "0"
+            ],
+            [
+                "1\r\n5\r\n1\r\n3\r\n",
+                "0"
+            ],
+            [
+                "1\r\n999999990\r\n1\r\n1000000000\r\n",
+                "10"
+            ],
+            [
+                "2\r\n5 599999400\r\n2 1\r\n1\r\n1000000000\r\n",
+                "999999995"
+            ],
+            [
+                "4\r\n2 2 6 5\r\n2 1\r\n3 1\r\n4 2\r\n4\r\n3 7 1 6\r\n",
+                "-1\r\n"
+            ],
+            [
+                "7\r\n6 2 5 7 1 7 2\r\n2 1\r\n3 2\r\n4 1\r\n5 1\r\n6 5\r\n7 6\r\n5\r\n1 2 4 3 6\r\n",
+                "1"
+            ],
+            [
+                "2\r\n7 4\r\n2 1\r\n2\r\n1 5\r\n",
+                "0"
+            ],
+            [
+                "6\r\n3 7 6 1 4 7\r\n2 1\r\n3 1\r\n4 2\r\n5 4\r\n6 2\r\n6\r\n1 2 3 6 1 7\r\n",
+                "4"
+            ],
+            [
+                "6\r\n7 4 3 3 5 4\r\n2 1\r\n3 2\r\n4 1\r\n5 4\r\n6 5\r\n4\r\n4 1 2 5\r\n",
+                "0"
+            ]
+        ]
+    }
+]

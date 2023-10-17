@@ -1,0 +1,112 @@
+[
+    {
+        "name": "Alyona and Strings",
+        "description": "After returned from forest, Alyona started reading a book. She noticed strings\ns and t, lengths of which are n and m respectively. As usual, reading bored\nAlyona and she decided to pay her attention to strings s and t, which she\nconsidered very similar. Alyona has her favourite positive integer k and\nbecause she is too small, k does not exceed 10. The girl wants now to choose k\ndisjoint non-empty substrings of string s such that these strings appear as\ndisjoint substrings of string t and in the same order as they do in string s.\nShe is also interested in that their length is maximum possible among all\nvariants. Formally, Alyona wants to find a sequence of k non-empty strings p1,\np2, p3, ..., pk satisfying following conditions: s can be represented as\nconcatenation a1p1a2p2... akpkak + 1, where a1, a2, ..., ak + 1 is a sequence\nof arbitrary strings (some of them may be possibly empty); t can be\nrepresented as concatenation b1p1b2p2... bkpkbk + 1, where b1, b2, ..., bk + 1\nis a sequence of arbitrary strings (some of them may be possibly empty); sum\nof the lengths of strings in sequence is maximum possible. Please help Alyona\nsolve this complicated problem and find at least the sum of the lengths of the\nstrings in a desired sequence. A substring of a string is a subsequence of\nconsecutive characters of the string. Input In the first line of the input\nthree integers n, m, k (1 \u2264 n, m \u2264 1000, 1 \u2264 k \u2264 10) are given \u2014 the length of\nthe string s, the length of the string t and Alyona's favourite number\nrespectively. The second line of the input contains string s, consisting of\nlowercase English letters. The third line of the input contains string t,\nconsisting of lowercase English letters. Output In the only line print the\nonly non-negative integer \u2014 the sum of the lengths of the strings in a desired\nsequence. It is guaranteed, that at least one desired sequence exists.\nExamples Input 3 2 2 abc ab Output 2 Input 9 12 4 bbaaababb abbbabbaaaba\nOutput 7 Note The following image describes the answer for the second sample\ncase:\n\n",
+        "cf_contest_id": 682,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2 2\r\nabc\r\nab\r\n",
+                "2\r\n"
+            ],
+            [
+                "9 12 4\r\nbbaaababb\r\nabbbabbaaaba\r\n",
+                "7\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "11 11 4\r\naaababbabbb\r\nbbbaaaabaab\r\n",
+                "7\r\n"
+            ],
+            [
+                "15 9 4\r\nababaaabbaaaabb\r\nbbaababbb\r\n",
+                "8\r\n"
+            ],
+            [
+                "2 7 1\r\nbb\r\nbbaabaa\r\n",
+                "2\r\n"
+            ],
+            [
+                "13 4 3\r\nabbaababaaaab\r\naaab\r\n",
+                "4\r\n"
+            ],
+            [
+                "2 3 2\r\nab\r\naab\r\n",
+                "2\r\n"
+            ],
+            [
+                "13 9 1\r\noaflomxegekyv\r\nbgwwqizfo\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 9 1\r\nbabcb\r\nabbcbaacb\r\n",
+                "3\r\n"
+            ],
+            [
+                "8 12 2\r\nbccbbaac\r\nabccbcaccaaa\r\n",
+                "6\r\n"
+            ],
+            [
+                "11 2 2\r\nbcbcbbabaaa\r\nca\r\n",
+                "2\r\n"
+            ],
+            [
+                "12 7 6\r\naabbccaccbcb\r\ncabcccc\r\n",
+                "6\r\n"
+            ],
+            [
+                "15 10 1\r\nabbccbaaaabaabb\r\nbbaabaacca\r\n",
+                "5\r\n"
+            ],
+            [
+                "127 266 4\r\nbaaabaababaaabbabbbbaababbbabaabbaaaaaabbababaabababaaaabaaaabbabaaababaabaabbbbbaabaabbbbbaaabbaabaabbbbaaaaababaaabaaabbaabaa\r\nabbababaaaabbbabbbbaabbbbaaabbabbaaaabaabaabababbbabbaabbabaaaaaabbbbbbbbaaabaababbbabababbabaaaababaabaaabaaabaaabaabbbabbbbabbaaabaaaaaabbaaabababbababaaaaaabaaabbbabbbabbbbabaabbabababbabbabbaababbbabbbbabbabaabbbaababbaaababaabbabbaaabbabbaabaabaabbaabbabaababba\r\n",
+                "41\r\n"
+            ],
+            [
+                "132 206 2\r\nababaababaaaabbaabbaabaababbaaabbabababbbbabbbaaaaaaabbabaaaabbabbbbbbbbbabbbbaabbaaabaaaabbabaaaababbbbaaaaabababbbbabababbbabbabab\r\nabbbababbbaaababaaaababbbaababaaababbbbbbaaabbbabbbaabbbbabbbababbaaabbaaabaabababbaabbbbbaabaabaaababababaaaababbabaaaabbabaaabbbbabbbbaabbbbaaaabbabbbaababbbbaabbbbbabaabbababbaaabaabbabbbaabbabbbaabbaaab\r\n",
+                "26\r\n"
+            ],
+            [
+                "290 182 2\r\nbababbbabaabbbababbaaaabbbabbababbbbbbabbbaaaaabaaabbaabbbaaabaabaaaabbbaaabbaabbbbbbbbbbabbabbabaaaaaaaabaaaabababaabbabaabaaaaababaabbbbbbabbabbbbabaababbabbaaabbbbbaaabbbbaaababaabbbbababbbabbababbabbabbbaaabaaabbbbaabaaaaabbaabbbabbbbbabbbaaaabbaaababbaabbbbbbbbbbabaaabbaaabaababbbbaaa\r\nbabbaababaaaaaaabbaabbabaaaaaaaabbabaabbbaabaababbaaaababaaaabaabbababbabaaabbbaaabaabababbbbababaaabbbaababbbbaabbabbaabaaaaabaaabbbbbbabaabbababbbaabbaaaaabaaaabaaabaaaabbbaabaabab\r\n",
+                "25\r\n"
+            ],
+            [
+                "279 89 9\r\nbbbbaabbbbabaaaabbbababbaabbaabaaabababaabbaaaaabaababbbaababaaaaaabaababababbaaaababaaaabaaaaabaaaaaababbabaaababaaabbbabaaabaaabbbaabbaabaababbaaaaabaaabbabababababbaabbabbbaaababbbabbaaabaaabaaababaaabbaaaabababbabbabaabaabbbabbbabbbaababbabaaabaabbaabaabaaaaaaaabbbaabbbbabba\r\nabaaaabbabbbbaabaaaabbbbbbbbbbaaababaabaabbaaabbaabababababbbabaaabaaababbbbbbabbaabbbaba\r\n",
+                "71\r\n"
+            ],
+            [
+                "421 53 2\r\nbaaaaaabaaababaaaabbabaaabaabaaaabaabbaaababababbbbbabaaaaabbabbbaabbabbbbabaabbbababbbbabaaaababaabaabbbbaabaaaabbbaaaabababbbabbbbaabbabbabbbaabaaabbbabbabbababaaaaabbbabbbbbabbaaababbaababbbbbaaaabaabbabaaababbaabaaaaabbbbaabbbbaabaabbabbaabbaababbbaabaaaaabaabbaaabbababaaaabbabbbaaaabbbaabaabbaababababababaabbaaaabababaabaabaabbbaababbbaaaabaaababaabbabbabbaaaaaaaaaabbbbbabbaabbaabbabbbbbbbaabaabbaaaaabbbabbbbbbab\r\naababaaabbaaaabaaabbaabbabbbaaabbbababbbbbbaababbbbaa\r\n",
+                "22\r\n"
+            ],
+            [
+                "274 102 7\r\nbccabbbcbcababaacacaccbbcabbccbbacabccbaacabacacbcacaccaabacacccabbcccccabacbacbcaacacacbccaaacccaacacbbbcccccccbcaaacbcacaccbccacccacbbbbbbaabcbbbbbacbcacacaacbbbcbcbbaacacbaabcbbbaccbcccbbaacccabaabbcccccacbccbccbacbacbbbaccbabcbabbcbbccabaacccbaccaccaaaacacabcaacbabcabbc\r\nabbcabbabacaccacaaaabcacbbcbbaccccbcccacaacabacabccbbbbaaaaccbbccaabcabbacbabbcabbbcaccaccaabbbcabcacb\r\n",
+                "44\r\n"
+            ],
+            [
+                "120 362 6\r\ncaaccbbbabbbcbaacbaccacaaccacaaababccaccaabaccacccbbaaaaababbccbbacccaacabacbaaacabbacbabcccbccbcbbcaabaaabaabcccaabacbb\r\nabcbbaaccbbcabbcbbcacbabaacbaaacabcbabcabbabccbcaaacaccaaabbcbaacccccbcabacaacabbbcabaabcbbccabacbaaaacbbbbbccabccccbababcbacbbbcbbaabcaabcacbaaaaaccbaabbabacbcbbbaabbbcabcaacbcccbcbbacababbcaababcbbbbbbcbbaaaababacabcbbcbbaccccbcacccabbbabccabcabacccbbbcaccaccaacacaabacaabccccaabccccaabaccbabcaabbcbbccccbbabccbbccbaacaccabbacacabbacccbbaaacaabacccbcbacbcbcaca\r\n",
+                "43\r\n"
+            ],
+            [
+                "103 54 5\r\nbccabcbcabcbacbbacccbaccacacccacaaabbbabaccbcbcacbaaccaccaacabaaccbbbabccbacbcbaccbcabbbaacaabbcbbbcaab\r\nbabbccbcbcbbbbcabcbbccbabbbbcacbcbbbaccbbccbacaacaaaca\r\n",
+                "27\r\n"
+            ],
+            [
+                "14 14 1\r\ngeoskjkdvmxlnu\r\nfaqyereihjimnu\r\n",
+                "2\r\n"
+            ],
+            [
+                "8 8 3\r\nabbbcccd\r\nayyycccz\r\n",
+                "4\r\n"
+            ]
+        ]
+    }
+]

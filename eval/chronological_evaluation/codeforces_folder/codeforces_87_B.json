@@ -1,0 +1,48 @@
+[
+    {
+        "name": "Vasya and Types",
+        "description": "Programmer Vasya is studying a new programming language    K;*. The    K;*\nlanguage resembles the languages of the C family in its syntax. However, it is\nmore powerful, which is why the rules of the actual C-like languages are\nunapplicable to it. To fully understand the statement, please read the\nlanguage's description below carefully and follow it and not the similar rules\nin real programming languages. There is a very powerful system of pointers on\n   K;* \u2014 you can add an asterisk to the right of the existing type X \u2014 that will\nresult in new type X * . That is called pointer-definition operation. Also,\nthere is the operation that does the opposite \u2014 to any type of X, which is a\npointer, you can add an ampersand \u2014 that will result in a type    X;, to which\nrefers X. That is called a dereference operation. The    K;* language has only\ntwo basic data types \u2014 void and errtype. Also, the language has operators\ntypedef and typeof. The operator \"typedef A B\" defines a new data type B,\nwhich is equivalent to A. A can have asterisks and ampersands, and B cannot\nhave them. For example, the operator typedef void** ptptvoid will create a new\ntype ptptvoid, that can be used as void**. The operator \"typeof A\" returns\ntype of A, brought to void, that is, returns the type void**...*, equivalent\nto it with the necessary number of asterisks (the number can possibly be\nzero). That is, having defined the ptptvoid type, as shown above, the typeof\nptptvoid operator will return void**.An attempt of dereferencing of the void\ntype will lead to an error: to a special data type errtype. For errtype the\nfollowing equation holds true: errtype* =    errtype; = errtype. An attempt to\nuse the data type that hasn't been defined before that will also lead to the\nerrtype. Using typedef, we can define one type several times. Of all the\ndefinitions only the last one is valid. However, all the types that have been\ndefined earlier using this type do not change. Let us also note that the\ndereference operation has the lower priority that the pointer operation, in\nother words    T; * is always equal to T. Note, that the operators are executed\nconsecutively one by one. If we have two operators \"typedef    void; a\" and\n\"typedef a* b\", then at first a becomes errtype, and after that b becomes\nerrtype* = errtype, but not    void;* = void (see sample 2). Vasya does not yet\nfully understand this powerful technology, that's why he asked you to help\nhim. Write a program that analyzes these operators. Input The first line\ncontains an integer n (1 \u2264 n \u2264 100) \u2014 the number of operators. Then follow n\nlines with operators. Each operator is of one of two types: either \"typedef A\nB\", or \"typeof A\". In the first case the B type differs from void and errtype\ntypes, and besides, doesn't have any asterisks and ampersands. All the data\ntype names are non-empty lines of no more than 20 lowercase Latin letters. The\nnumber of asterisks and ampersands separately in one type in any operator does\nnot exceed 10, however if we bring some types to void with several asterisks,\ntheir number may exceed 10. Output For every typeof operator print on the\nsingle line the answer to that operator \u2014 the type that the given operator\nreturned. Examples Input 5 typedef void* ptv typeof ptv typedef       ptv; node\ntypeof node typeof    ptv; Output void* errtype void Input 17 typedef void* b\ntypedef b* c typeof b typeof c typedef    b; b typeof b typeof c typedef       b;* c\ntypeof c typedef    b;* c typeof c typedef    void; b typeof b typedef b******* c\ntypeof c typedef       b;* c typeof c Output void* void** void void** errtype void\nerrtype errtype errtype Note Let's look at the second sample. After the first\ntwo queries typedef the b type is equivalent to void*, and \u0441 \u2014 to void**. The\nnext query typedef redefines b \u2014 it is now equal to    b; =    void;* = void. At\nthat, the \u0441 type doesn't change. After that the \u0441 type is defined as       b;* =\n      void;* =    void; = errtype. It doesn't influence the b type, that's why the\nnext typedef defines c as    void;* = void. Then the b type is again redefined\nas    void; = errtype. Please note that the c type in the next query is defined\nexactly as errtype******* = errtype, and not    void;******* = void******. The\nsame happens in the last typedef.\n\n",
+        "cf_contest_id": 87,
+        "cf_index": "B",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\ntypedef void* ptv\r\ntypeof ptv\r\ntypedef &&ptv node\r\ntypeof node\r\ntypeof &ptv\r\n",
+                "void*\r\nerrtype\r\nvoid\r\n"
+            ],
+            [
+                "17\r\ntypedef void* b\r\ntypedef b* c\r\ntypeof b\r\ntypeof c\r\ntypedef &b b\r\ntypeof b\r\ntypeof c\r\ntypedef &&b* c\r\ntypeof c\r\ntypedef &b* c\r\ntypeof c\r\ntypedef &void b\r\ntypeof b\r\ntypedef b******* c\r\ntypeof c\r\ntypedef &&b* c\r\ntypeof c\r\n",
+                "void*\r\nvoid**\r\nvoid\r\nvoid**\r\nerrtype\r\nvoid\r\nerrtype\r\nerrtype\r\nerrtype\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\ntypeof void\r\ntypedef void voiddd\r\ntypeof &&&&&voiddd*********\r\ntypeof &&&&&voidddd*********\r\ntypedef aaaa bbbb\r\ntypeof bbbb\r\ntypeof aaaa\r\ntypedef void** aaaa\r\ntypeof aaaa\r\ntypeof bbbb\r\n",
+                "void\r\nvoid****\r\nerrtype\r\nerrtype\r\nerrtype\r\nvoid**\r\nerrtype\r\n"
+            ],
+            [
+                "15\r\ntypedef &void pt\r\ntypeof pt\r\ntypeof pt*\r\ntypedef pt**** err\r\ntypeof err\r\ntypeof &err\r\ntypeof err*\r\ntypedef &void*** pt\r\ntypeof err\r\ntypeof &err\r\ntypeof err*\r\ntypeof pt\r\ntypeof pt*\r\ntypeof &&pt*\r\ntypeof &&&pt\r\n",
+                "errtype\r\nerrtype\r\nerrtype\r\nerrtype\r\nerrtype\r\nerrtype\r\nerrtype\r\nerrtype\r\nvoid**\r\nvoid***\r\nvoid*\r\nerrtype\r\n"
+            ],
+            [
+                "1\r\ntypeof a\r\n",
+                "errtype\r\n"
+            ],
+            [
+                "2\r\ntypedef void errtypea\r\ntypeof errtypea\r\n",
+                "void\r\n"
+            ],
+            [
+                "4\r\ntypedef void voida\r\ntypedef voida* voidb\r\ntypedef voidb* voidc\r\ntypeof voidc\r\n",
+                "void**\r\n"
+            ]
+        ]
+    }
+]

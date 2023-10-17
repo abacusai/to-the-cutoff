@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Vladik and chat",
+        "description": "Recently Vladik discovered a new entertainment \u2014 coding bots for social\nnetworks. He would like to use machine learning in his bots so now he want to\nprepare some learning data for them. At first, he need to download t chats.\nVladik coded a script which should have downloaded the chats, however,\nsomething went wrong. In particular, some of the messages have no information\nof their sender. It is known that if a person sends several messages in a row,\nthey all are merged into a single message. It means that there could not be\ntwo or more messages in a row with the same sender. Moreover, a sender never\nmention himself in his messages. Vladik wants to recover senders of all the\nmessages so that each two neighboring messages will have different senders and\nno sender will mention himself in his messages. He has no idea of how to do\nthis, and asks you for help. Help Vladik to recover senders in each of the\nchats! Input The first line contains single integer t (1 \u2264 t \u2264 10) \u2014 the\nnumber of chats. The t chats follow. Each chat is given in the following\nformat. The first line of each chat description contains single integer n (1 \u2264\nn \u2264 100) \u2014 the number of users in the chat. The next line contains n space-\nseparated distinct usernames. Each username consists of lowercase and\nuppercase English letters and digits. The usernames can't start with a digit.\nTwo usernames are different even if they differ only with letters' case. The\nlength of username is positive and doesn't exceed 10 characters. The next line\ncontains single integer m (1 \u2264 m \u2264 100) \u2014 the number of messages in the chat.\nThe next m line contain the messages in the following formats, one per line: :\n\u2014 the format of a message with known sender. The username should appear in the\nlist of usernames of the chat. : \u2014 the format of a message with unknown\nsender. The text of a message can consist of lowercase and uppercase English\nletter, digits, characters '.' (dot), ',' (comma), '!' (exclamation mark), '?'\n(question mark) and ' ' (space). The text doesn't contain trailing spaces. The\nlength of the text is positive and doesn't exceed 100 characters. We say that\na text mention a user if his username appears in the text as a word. In other\nwords, the username appears in a such a position that the two characters\nbefore and after its appearance either do not exist or are not English letters\nor digits. For example, the text \"Vasya, masha13 and Kate!\" can mention users\n\"Vasya\", \"masha13\", \"and\" and \"Kate\", but not \"masha\". It is guaranteed that\nin each chat no known sender mention himself in his messages and there are no\ntwo neighboring messages with the same known sender. Output Print the\ninformation about the t chats in the following format: If it is not possible\nto recover senders, print single line \"Impossible\" for this chat. Otherwise\nprint m messages in the following format: : If there are multiple answers,\nprint any of them. Examples Input 1 2 Vladik netman 2 ?: Hello, Vladik! ?: Hi\nOutput netman: Hello, Vladik! Vladik: Hi Input 1 2 netman vladik 3 netman:how\nare you? ?:wrong message vladik:im fine Output Impossible Input 2 3 netman\nvladik Fedosik 2 ?: users are netman, vladik, Fedosik vladik: something wrong\nwith this chat 4 netman tigerrrrr banany2001 klinchuh 4 ?: tigerrrrr,\nbanany2001, klinchuh, my favourite team ever, are you ready? klinchuh: yes,\ncoach! ?: yes, netman banany2001: yes of course. Output Impossible netman:\ntigerrrrr, banany2001, klinchuh, my favourite team ever, are you ready?\nklinchuh: yes, coach! tigerrrrr: yes, netman banany2001: yes of course.\n\n",
+        "cf_contest_id": 754,
+        "cf_index": "C",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "constructive algorithms",
+            "dp",
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1\r\n2\r\nVladik netman\r\n2\r\n?: Hello, Vladik!\r\n?: Hi\r\n",
+                "netman: Hello, Vladik!\r\nVladik: Hi\r\n"
+            ],
+            [
+                "1\r\n2\r\nnetman vladik\r\n3\r\nnetman:how are you?\r\n?:wrong message\r\nvladik:im fine\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "2\r\n3\r\nnetman vladik Fedosik\r\n2\r\n?: users are netman, vladik, Fedosik\r\nvladik: something wrong with this chat\r\n4\r\nnetman tigerrrrr banany2001 klinchuh\r\n4\r\n?: tigerrrrr, banany2001, klinchuh, my favourite team ever, are you ready?\r\nklinchuh: yes, coach!\r\n?: yes, netman\r\nbanany2001: yes of course.\r\n",
+                "Impossible\r\nnetman: tigerrrrr, banany2001, klinchuh, my favourite team ever, are you ready?\r\nklinchuh: yes, coach!\r\ntigerrrrr: yes, netman\r\nbanany2001: yes of course.\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1\r\nb\r\n1\r\nb:lala!\r\n",
+                "b:lala!\r\n"
+            ],
+            [
+                "1\r\n1\r\nb\r\n1\r\n?:lala b!\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "1\r\n1\r\nb\r\n2\r\n?:lala hhe!\r\nb:wat?\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "1\r\n3\r\nA B C\r\n3\r\nA: HI\r\n?: HI\r\nB: HI\r\n",
+                "A: HI\r\nC: HI\r\nB: HI\r\n"
+            ]
+        ]
+    }
+]

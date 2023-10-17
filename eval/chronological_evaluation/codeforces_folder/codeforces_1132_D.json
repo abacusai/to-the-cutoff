@@ -1,0 +1,120 @@
+[
+    {
+        "name": "Stressful Training",
+        "description": "Berland SU holds yet another training contest for its students today. \n    n\n\nstudents came, each of them brought his laptop. However, it turned out that\neveryone has forgot their chargers! Let students be numbered from \n    1\n to\n\n    n\n. Laptop of the \n    i\n-th student has charge \n    a_i\n at the\nbeginning of the contest and it uses \n    b_i\n of charge per minute (i.e. if\nthe laptop has \n    c\n charge at the beginning of some minute, it becomes \n    c\n    - b_i\n charge at the beginning of the next minute). The whole contest lasts\nfor \n    k\n minutes. Polycarp (the coach of Berland SU) decided to buy a\nsingle charger so that all the students would be able to successfully finish\nthe contest. He buys the charger at the same moment the contest starts.\nPolycarp can choose to buy the charger with any non-negative (zero or\npositive) integer power output. The power output is chosen before the\npurchase, it can't be changed afterwards. Let the chosen power output be\n\n    x\n. At the beginning of each minute (from the minute contest starts to\nthe last minute of the contest) he can plug the charger into any of the\nstudent's laptops and use it for some integer number of minutes. If the laptop\nis using \n    b_i\n charge per minute then it will become \n    b_i - x\n per\nminute while the charger is plugged in. Negative power usage rate means that\nthe laptop's charge is increasing. The charge of any laptop isn't limited, it\ncan become infinitely large. The charger can be plugged in no more than one\nlaptop at the same time. The student successfully finishes the contest if the\ncharge of his laptop never is below zero at the beginning of some minute (from\nthe minute contest starts to the last minute of the contest, zero charge is\nallowed). The charge of the laptop of the minute the contest ends doesn't\nmatter. Help Polycarp to determine the minimal possible power output the\ncharger should have so that all the students are able to successfully finish\nthe contest. Also report if no such charger exists. Input The first line\ncontains two integers \n    n\n and \n    k\n (\n    1 \n    \u2264 n \n    \u2264 2 \n    \u00b7\n    10^5\n, \n    1 \n    \u2264 k \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the number of students (and\nlaptops, correspondigly) and the duration of the contest in minutes. The\nsecond line contains \n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    1 \n    \u2264\n    a_i \n    \u2264 10^12\n) \u2014 the initial charge of each student's laptop. The third\nline contains \n    n\n integers \n    b_1, b_2, \n    \u2026, b_n\n (\n    1 \n    \u2264 b_i\n    \n    \u2264 10^7\n) \u2014 the power usage of each student's laptop. Output Print a\nsingle non-negative integer \u2014 the minimal possible power output the charger\nshould have so that all the students are able to successfully finish the\ncontest. If no such charger exists, print -1. Examples Input 2 4 3 2 4 2\nOutput 5 Input 1 5 4 2 Output 1 Input 1 6 4 2 Output 2 Input 2 2 2 10 3 15\nOutput -1 Note Let's take a look at the state of laptops in the beginning of\neach minute on the first example with the charger of power \n    5\n: charge:\n\n    [3, 2]\n, plug the charger into laptop 1; charge: \n    [3 - 4 + 5, 2 - 2] =\n    [4, 0]\n, plug the charger into laptop 2; charge: \n    [4 - 4, 0 - 2 + 5] = [0,\n    3]\n, plug the charger into laptop 1; charge: \n    [0 - 4 + 5, 3 - 2] = [1,\n    1]\n. The contest ends after the fourth minute. However, let's consider the\ncharger of power \n    4\n: charge: \n    [3, 2]\n, plug the charger into laptop\n1; charge: \n    [3 - 4 + 4, 2 - 2] = [3, 0]\n, plug the charger into laptop 2;\ncharge: \n    [3 - 4, 0 - 2 + 4] = [-1, 2]\n, the first laptop has negative\ncharge, thus, the first student doesn't finish the contest. In the fourth\nexample no matter how powerful the charger is, one of the students won't\nfinish the contest.\n\n",
+        "cf_contest_id": 1132,
+        "cf_index": "D",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "greedy"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 4\r\n3 2\r\n4 2\r\n",
+                "5\r\n"
+            ],
+            [
+                "1 5\r\n4\r\n2\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 6\r\n4\r\n2\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 2\r\n2 10\r\n3 15\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 2\r\n6 5 1 6 1\r\n7 2 3 2 4\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 10\r\n9 4 6\r\n1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 10\r\n6 3 2\r\n6 6 9\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 20\r\n9 6 10\r\n3 2 1\r\n",
+                "5\r\n"
+            ],
+            [
+                "3 20\r\n8 9 10\r\n9 2 10\r\n",
+                "23\r\n"
+            ],
+            [
+                "3 100\r\n5 4 6\r\n1 2 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 100\r\n2 7 3\r\n10 3 5\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 200000\r\n6 4 8\r\n3 2 2\r\n",
+                "7\r\n"
+            ],
+            [
+                "3 200000\r\n8 5 9\r\n1 8 1\r\n",
+                "10\r\n"
+            ],
+            [
+                "7 7\r\n64 16 50 18 66 25 60\r\n8 4 10 2 3 5 2\r\n",
+                "5\r\n"
+            ],
+            [
+                "7 7\r\n64 15 12 21 17 54 38\r\n66 29 70 62 40 33 64\r\n",
+                "-1\r\n"
+            ],
+            [
+                "7 200000\r\n63 48 70 14 63 69 40\r\n9 4 10 7 9 3 8\r\n",
+                "50\r\n"
+            ],
+            [
+                "7 200000\r\n66 57 15 65 32 46 30\r\n66 31 64 9 63 57 65\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 10\r\n56 24 90 95 88\r\n14 3 9 19 11\r\n",
+                "24\r\n"
+            ],
+            [
+                "1 3\r\n3\r\n3\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 4\r\n3 4 4 3\r\n2 2 1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 2\r\n3 1\r\n3 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 4\r\n5 4\r\n5 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 4\r\n2 4 4\r\n1 4 3\r\n",
+                "8\r\n"
+            ],
+            [
+                "2 5\r\n6 3\r\n4 2\r\n",
+                "5\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n2\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

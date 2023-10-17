@@ -1,0 +1,63 @@
+[
+    {
+        "name": "The Hard Work of Paparazzi",
+        "description": "You are a paparazzi working in Manhattan. Manhattan has \n    r\n south-to-north\nstreets, denoted by numbers \n    1, 2,\n    \u2026, r\n in order from west to east,\nand \n    r\n west-to-east streets, denoted by numbers \n    1,2,\n    \u2026,r\n in\norder from south to north. Each of the \n    r\n south-to-north streets\nintersects each of the \n    r\n west-to-east streets; the intersection between\nthe \n    x\n-th south-to-north street and the \n    y\n-th west-to-east street is\ndenoted by \n    (x, y)\n. In order to move from the intersection \n    (x,y)\n to\nthe intersection \n    (x', y')\n you need \n    |x-x'|+|y-y'|\n minutes. You know\nabout the presence of \n    n\n celebrities in the city and you want to take\nphotos of as many of them as possible. More precisely, for each\n\n    i=1,\n    \u2026, n\n, you know that the \n    i\n-th celebrity will be at the\nintersection \n    (x_i, y_i)\n in exactly \n    t_i\n minutes from now (and he\nwill stay there for a very short time, so you may take a photo of him only if\nat the \n    t_i\n-th minute from now you are at the intersection \n    (x_i,\n    y_i)\n). You are very good at your job, so you are able to take photos\ninstantaneously. You know that \n    t_i < t_i+1\n for any \n    i=1,2,\n    \u2026,\n    n-1\n. Currently you are at your office, which is located at the intersection\n\n    (1, 1)\n. If you plan your working day optimally, what is the maximum\nnumber of celebrities you can take a photo of? Input The first line of the\ninput contains two positive integers \n    r, n\n (\n    1\n    \u2264 r\n    \u2264 500\n,\n\n    1\n    \u2264 n\n    \u2264 100,000\n) \u2013 the number of south-to-north/west-to-east\nstreets and the number of celebrities. Then \n    n\n lines follow, each\ndescribing the appearance of a celebrity. The \n    i\n-th of these lines\ncontains \n    3\n positive integers \n    t_i, x_i, y_i\n (\n    1\n    \u2264 t_i\n    \u2264\n    1,000,000\n, \n    1\n    \u2264 x_i, y_i\n    \u2264 r\n) \u2014 denoting that the \n    i\n-th\ncelebrity will appear at the intersection \n    (x_i, y_i)\n in \n    t_i\n\nminutes from now. It is guaranteed that \n    t_i<t_i+1\n for any\n\n    i=1,2,\n    \u2026, n-1\n. Output Print a single integer, the maximum number\nof celebrities you can take a photo of. Examples Input 10 1 11 6 8 Output 0\nInput 6 9 1 2 6 7 5 1 8 5 5 10 3 1 12 4 4 13 6 2 17 6 6 20 1 4 21 5 4 Output 4\nInput 10 4 1 2 1 5 10 9 13 8 8 15 9 9 Output 1 Input 500 10 69 477 122 73 186\n235 341 101 145 372 77 497 390 117 440 494 471 37 522 300 498 682 149 379 821\n486 359 855 157 386 Output 3 Note Explanation of the first testcase: There is\nonly one celebrity in the city, and he will be at intersection \n    (6,8)\n\nexactly \n    11\n minutes after the beginning of the working day. Since you are\ninitially at \n    (1,1)\n and you need \n    |1-6|+|1-8|=5+7=12\n minutes to\nreach \n    (6,8)\n you cannot take a photo of the celebrity. Thus you cannot\nget any photo and the answer is \n    0\n. Explanation of the second testcase:\nOne way to take \n    4\n photos (which is the maximum possible) is to take\nphotos of celebrities with indexes \n    3, 5, 7, 9\n (see the image for a\nvisualization of the strategy): To move from the office at \n    (1,1)\n to the\nintersection \n    (5,5)\n you need \n    |1-5|+|1-5|=4+4=8\n minutes, so you\narrive at minute \n    8\n and you are just in time to take a photo of celebrity\n\n    3\n. Then, just after you have taken a photo of celebrity \n    3\n, you\nmove toward the intersection \n    (4,4)\n. You need \n    |5-4|+|5-4|=1+1=2\n\nminutes to go there, so you arrive at minute \n    8+2=10\n and you wait until\nminute \n    12\n, when celebrity \n    5\n appears. Then, just after you have\ntaken a photo of celebrity \n    5\n, you go to the intersection \n    (6,6)\n.\nYou need \n    |4-6|+|4-6|=2+2=4\n minutes to go there, so you arrive at minute\n\n    12+4=16\n and you wait until minute \n    17\n, when celebrity \n    7\n\nappears. Then, just after you have taken a photo of celebrity \n    7\n, you go\nto the intersection \n    (5,4)\n. You need \n    |6-5|+|6-4|=1+2=3\n minutes to\ngo there, so you arrive at minute \n    17+3=20\n and you wait until minute\n\n    21\n to take a photo of celebrity \n    9\n. Explanation of the third\ntestcase: The only way to take \n    1\n photo (which is the maximum possible)\nis to take a photo of the celebrity with index \n    1\n (since\n\n    |2-1|+|1-1|=1\n, you can be at intersection \n    (2,1)\n after exactly one\nminute, hence you are just in time to take a photo of celebrity \n    1\n).\nExplanation of the fourth testcase: One way to take \n    3\n photos (which is\nthe maximum possible) is to take photos of celebrities with indexes \n    3, 8,\n    10\n: To move from the office at \n    (1,1)\n to the intersection\n\n    (101,145)\n you need \n    |1-101|+|1-145|=100+144=244\n minutes, so you can\nmanage to be there when the celebrity \n    3\n appears (at minute \n    341\n).\nThen, just after you have taken a photo of celebrity \n    3\n, you move toward\nthe intersection \n    (149,379)\n. You need \n    |101-149|+|145-379|=282\n\nminutes to go there, so you arrive at minute \n    341+282=623\n and you wait\nuntil minute \n    682\n, when celebrity \n    8\n appears. Then, just after you\nhave taken a photo of celebrity \n    8\n, you go to the intersection\n\n    (157,386)\n. You need \n    |149-157|+|379-386|=8+7=15\n minutes to go\nthere, so you arrive at minute \n    682+15=697\n and you wait until minute\n\n    855\n to take a photo of celebrity \n    10\n.\n\n",
+        "cf_contest_id": 1427,
+        "cf_index": "C",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 1\r\n11 6 8\r\n",
+                "0"
+            ],
+            [
+                "6 9\r\n1 2 6\r\n7 5 1\r\n8 5 5\r\n10 3 1\r\n12 4 4\r\n13 6 2\r\n17 6 6\r\n20 1 4\r\n21 5 4\r\n",
+                "4"
+            ],
+            [
+                "10 4\r\n1 2 1\r\n5 10 9\r\n13 8 8\r\n15 9 9\r\n",
+                "1"
+            ],
+            [
+                "500 10\r\n69 477 122\r\n73 186 235\r\n341 101 145\r\n372 77 497\r\n390 117 440\r\n494 471 37\r\n522 300 498\r\n682 149 379\r\n821 486 359\r\n855 157 386\r\n",
+                "3"
+            ]
+        ],
+        "private_cases": [
+            [
+                "500 1\r\n26969 164 134\r\n",
+                "1"
+            ],
+            [
+                "2 3\r\n1 1 1\r\n100 2 2\r\n10000 1 1\r\n",
+                "3"
+            ],
+            [
+                "500 2\r\n2000 1 1\r\n4000 1 1\r\n",
+                "2"
+            ],
+            [
+                "10 3\r\n26 10 9\r\n123 2 2\r\n404 5 6\r\n",
+                "3"
+            ],
+            [
+                "4 3\r\n851 4 3\r\n1573 1 4\r\n2318 3 4\r\n",
+                "3"
+            ],
+            [
+                "500 3\r\n2002 1 1\r\n2003 500 500\r\n2004 500 500\r\n",
+                "2"
+            ],
+            [
+                "500 2\r\n950 500 500\r\n3000 1 1\r\n",
+                "1"
+            ]
+        ]
+    }
+]

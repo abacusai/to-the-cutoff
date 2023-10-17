@@ -1,0 +1,145 @@
+[
+    {
+        "name": "Make a Permutation!",
+        "description": "Ivan has an array consisting of n elements. Each of the elements is an integer\nfrom 1 to n. Recently Ivan learned about permutations and their\nlexicographical order. Now he wants to change (replace) minimum number of\nelements in his array in such a way that his array becomes a permutation (i.e.\neach of the integers from 1 to n was encountered in his array exactly once).\nIf there are multiple ways to do it he wants to find the lexicographically\nminimal permutation among them. Thus minimizing the number of changes has the\nfirst priority, lexicographical minimizing has the second priority. In order\nto determine which of the two permutations is lexicographically smaller, we\ncompare their first elements. If they are equal \u2014 compare the second, and so\non. If we have two permutations x and y, then x is lexicographically smaller\nif xi < yi, where i is the first index in which the permutations x and y\ndiffer. Determine the array Ivan will obtain after performing all the changes.\nInput The first line contains an single integer n (2 \u2264 n \u2264 200 000) \u2014 the\nnumber of elements in Ivan's array. The second line contains a sequence of\nintegers a1, a2, ..., an (1 \u2264 ai \u2264 n) \u2014 the description of Ivan's array.\nOutput In the first line print q \u2014 the minimum number of elements that need to\nbe changed in Ivan's array in order to make his array a permutation. In the\nsecond line, print the lexicographically minimal permutation which can be\nobtained from array with q changes. Examples Input 4 3 2 2 3 Output 2 1 2 4 3\nInput 6 4 5 6 3 2 1 Output 0 4 5 6 3 2 1 Input 10 6 8 4 6 7 1 6 3 4 5 Output 3\n2 8 4 6 7 1 9 3 10 5 Note In the first example Ivan needs to replace number\nthree in position 1 with number one, and number two in position 3 with number\nfour. Then he will get a permutation [1, 2, 4, 3] with only two changed\nnumbers \u2014 this permutation is lexicographically minimal among all suitable. In\nthe second example Ivan does not need to change anything because his array\nalready is a permutation.\n\n",
+        "cf_contest_id": 864,
+        "cf_index": "D",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n3 2 2 3\r\n",
+                "2\n1 2 4 3\n"
+            ],
+            [
+                "6\r\n4 5 6 3 2 1\r\n",
+                "0\n4 5 6 3 2 1\n"
+            ],
+            [
+                "10\r\n6 8 4 6 7 1 6 3 4 5\r\n",
+                "3\n2 8 4 6 7 1 9 3 10 5\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6\r\n5 5 5 6 4 6\r\n",
+                "3\n1 2 5 3 4 6\n"
+            ],
+            [
+                "50\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "49\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50\n"
+            ],
+            [
+                "50\r\n1 1 2 1 1 1 1 1 1 1 1 1 2 1 2 1 1 2 1 1 1 1 1 1 1 1 1 2 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "48\n1 3 2 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50\n"
+            ],
+            [
+                "50\r\n2 4 1 2 3 7 2 2 1 1 3 4 2 12 4 3 2 1 2 5 1 3 3 7 9 6 10 5 7 1 4 3 6 2 3 12 1 3 2 6 2 2 2 4 1 6 1 3 7 13\r\n",
+                "39\n2 4 1 8 3 7 11 14 15 16 17 18 19 12 20 21 22 23 24 5 25 26 27 28 9 6 10 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 13\n"
+            ],
+            [
+                "50\r\n26 46 50 31 47 40 25 47 41 47 31 30 50 40 46 44 26 48 37 19 28 19 50 22 42 38 47 22 44 44 35 30 50 45 49 34 19 37 36 32 50 29 50 42 34 49 40 50 8 50\r\n",
+                "25\n1 2 3 4 5 6 25 7 41 9 31 10 11 12 46 13 26 48 14 15 28 16 17 18 20 38 47 22 21 44 35 30 23 45 24 27 19 37 36 32 33 29 39 42 34 49 40 43 8 50\n"
+            ],
+            [
+                "20\r\n15 18 20 6 19 13 20 17 20 16 19 17 17 19 16 12 14 19 20 20\r\n",
+                "10\n15 18 1 6 2 13 3 4 5 7 8 9 17 10 16 12 14 19 11 20\n"
+            ],
+            [
+                "50\r\n48 37 47 50 46 43 42 46 36 40 45 41 40 50 35 49 37 42 44 45 49 44 31 47 45 49 48 41 45 45 48 20 34 43 43 41 47 50 41 48 38 48 43 48 46 48 32 37 47 45\r\n",
+                "31\n1 2 3 4 5 6 7 8 36 9 10 11 40 12 35 13 14 42 15 16 17 44 31 18 19 49 21 22 23 24 25 20 34 26 27 28 29 50 41 30 38 33 43 39 46 48 32 37 47 45\n"
+            ],
+            [
+                "26\r\n26 26 23 25 22 26 26 24 26 26 25 18 25 22 24 24 24 24 24 26 26 25 24 26 26 23\r\n",
+                "20\n1 2 3 4 5 6 7 8 9 10 11 18 12 22 13 14 15 16 17 19 20 25 24 21 26 23\n"
+            ],
+            [
+                "50\r\n50 50 50 49 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 49 50 49 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 49\r\n",
+                "48\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 50 49\n"
+            ],
+            [
+                "50\r\n50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50\r\n",
+                "49\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50\n"
+            ],
+            [
+                "50\r\n4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4\r\n",
+                "49\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50\n"
+            ],
+            [
+                "50\r\n18 42 38 38 38 50 50 38 49 49 38 38 42 18 49 49 49 49 18 50 18 38 38 49 49 50 49 42 38 49 42 38 38 49 38 49 50 49 49 49 18 49 18 38 42 50 42 49 18 49\r\n",
+                "45\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 19 18 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 39 40 41 43 44 45 38 42 50 46 47 48 49\n"
+            ],
+            [
+                "50\r\n4 50 27 48 32 32 37 33 18 24 38 6 32 17 1 46 36 16 10 9 9 25 26 40 28 2 1 5 15 50 2 4 18 39 42 46 25 3 10 42 37 23 28 41 33 45 25 11 13 18\r\n",
+                "17\n4 7 27 48 8 12 14 19 18 24 38 6 32 17 1 20 36 16 10 9 21 22 26 40 28 2 29 5 15 50 30 31 34 39 35 46 25 3 43 42 37 23 44 41 33 45 47 11 13 49\n"
+            ],
+            [
+                "50\r\n39 49 43 21 22 27 28 41 35 6 31 9 4 39 27 27 7 41 9 28 43 37 20 47 28 37 8 46 23 14 50 48 21 47 9 31 9 37 34 17 15 17 18 16 29 6 43 33 16 17\r\n",
+                "20\n1 49 2 3 22 5 10 11 35 6 12 9 4 39 13 27 7 41 19 24 25 26 20 30 28 32 8 46 23 14 50 48 21 47 36 31 38 37 34 17 15 40 18 16 29 42 43 33 44 45\n"
+            ],
+            [
+                "2\r\n1 2\r\n",
+                "0\n1 2\n"
+            ],
+            [
+                "2\r\n2 1\r\n",
+                "0\n2 1\n"
+            ],
+            [
+                "2\r\n1 1\r\n",
+                "1\n1 2\n"
+            ],
+            [
+                "2\r\n2 2\r\n",
+                "1\n1 2\n"
+            ],
+            [
+                "3\r\n1 1 1\r\n",
+                "2\n1 2 3\n"
+            ],
+            [
+                "3\r\n2 2 2\r\n",
+                "2\n1 2 3\n"
+            ],
+            [
+                "3\r\n3 3 3\r\n",
+                "2\n1 2 3\n"
+            ],
+            [
+                "3\r\n1 2 2\r\n",
+                "1\n1 2 3\n"
+            ],
+            [
+                "3\r\n2 1 3\r\n",
+                "0\n2 1 3\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n",
+                "0\n3 2 1\n"
+            ],
+            [
+                "3\r\n2 2 3\r\n",
+                "1\n1 2 3\n"
+            ],
+            [
+                "3\r\n3 1 3\r\n",
+                "1\n2 1 3\n"
+            ],
+            [
+                "3\r\n2 2 1\r\n",
+                "1\n2 3 1\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n",
+                "0\n3 1 2\n"
+            ]
+        ]
+    }
+]

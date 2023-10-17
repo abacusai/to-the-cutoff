@@ -1,0 +1,81 @@
+[
+    {
+        "name": "Ciel and Duel",
+        "description": "Fox Ciel is playing a card game with her friend Jiro. Jiro has n cards, each\none has two attributes: position (Attack or Defense) and strength. Fox Ciel\nhas m cards, each one has these two attributes too. It's known that position\nof all Ciel's cards is Attack. Now is Ciel's battle phase, Ciel can do the\nfollowing operation many times: Choose one of her cards X. This card mustn't\nbe chosen before. If Jiro has no alive cards at that moment, he gets the\ndamage equal to (X's strength). Otherwise, Ciel needs to choose one Jiro's\nalive card Y, then: If Y's position is Attack, then (X's strength) \u2265 (Y's\nstrength) must hold. After this attack, card Y dies, and Jiro gets the damage\nequal to (X's strength) - (Y's strength). If Y's position is Defense, then\n(X's strength) > (Y's strength) must hold. After this attack, card Y dies, but\nJiro gets no damage. Ciel can end her battle phase at any moment (so, she can\nuse not all her cards). Help the Fox to calculate the maximal sum of damage\nJiro can get. Input The first line contains two integers n and m (1 \u2264 n, m \u2264\n100) \u2014 the number of cards Jiro and Ciel have. Each of the next n lines\ncontains a string position and an integer strength (0 \u2264 strength \u2264 8000) \u2014 the\nposition and strength of Jiro's current card. Position is the string \"ATK\" for\nattack, and the string \"DEF\" for defense. Each of the next m lines contains an\ninteger strength (0 \u2264 strength \u2264 8000) \u2014 the strength of Ciel's current card.\nOutput Output an integer: the maximal damage Jiro can get. Examples Input 2 3\nATK 2000 DEF 1700 2500 2500 2500 Output 3000 Input 3 4 ATK 10 ATK 100 ATK 1000\n1 11 101 1001 Output 992 Input 2 4 DEF 0 ATK 0 0 0 1 1 Output 1 Note In the\nfirst test case, Ciel has 3 cards with same strength. The best strategy is as\nfollows. First she uses one of these 3 cards to attack \"ATK 2000\" card first,\nthis attack destroys that card and Jiro gets 2500 - 2000 = 500 damage. Then\nshe uses the second card to destroy the \"DEF 1700\" card. Jiro doesn't get\ndamage that time. Now Jiro has no cards so she can use the third card to\nattack and Jiro gets 2500 damage. So the answer is 500 + 2500 = 3000. In the\nsecond test case, she should use the \"1001\" card to attack the \"ATK 100\" card,\nthen use the \"101\" card to attack the \"ATK 10\" card. Now Ciel still has cards\nbut she can choose to end her battle phase. The total damage equals (1001 -\n100) + (101 - 10) = 992. In the third test case note that she can destroy the\n\"ATK 0\" card by a card with strength equal to 0, but she can't destroy a \"DEF\n0\" card with that card.\n\n",
+        "cf_contest_id": 321,
+        "cf_index": "B",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "flows",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 3\r\nATK 2000\r\nDEF 1700\r\n2500\r\n2500\r\n2500\r\n",
+                "3000\r\n"
+            ],
+            [
+                "3 4\r\nATK 10\r\nATK 100\r\nATK 1000\r\n1\r\n11\r\n101\r\n1001\r\n",
+                "992\r\n"
+            ],
+            [
+                "2 4\r\nDEF 0\r\nATK 0\r\n0\r\n0\r\n1\r\n1\r\n",
+                "1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\nATK 100\r\n99\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 8\r\nDEF 100\r\nDEF 200\r\nDEF 300\r\nATK 100\r\n100\r\n101\r\n201\r\n301\r\n1\r\n1\r\n1\r\n1\r\n",
+                "201\r\n"
+            ],
+            [
+                "3 4\r\nDEF 100\r\nATK 200\r\nDEF 300\r\n101\r\n201\r\n301\r\n1\r\n",
+                "101\r\n"
+            ],
+            [
+                "4 4\r\nDEF 0\r\nDEF 0\r\nDEF 0\r\nATK 100\r\n100\r\n100\r\n100\r\n100\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 7\r\nATK 1\r\nATK 2\r\nATK 3\r\nATK 4\r\nATK 5\r\nATK 6\r\nATK 7\r\nDEF 8\r\nDEF 9\r\nDEF 10\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n",
+                "12\r\n"
+            ],
+            [
+                "5 6\r\nDEF 0\r\nDEF 0\r\nDEF 0\r\nDEF 0\r\nDEF 0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 25\r\nDEF 1568\r\nDEF 5006\r\nATK 4756\r\nDEF 1289\r\nDEF 1747\r\n3547\r\n1688\r\n1816\r\n3028\r\n1786\r\n3186\r\n3631\r\n3422\r\n1413\r\n2527\r\n2487\r\n3099\r\n2074\r\n2059\r\n1590\r\n1321\r\n3666\r\n2017\r\n1452\r\n2943\r\n1996\r\n2475\r\n1071\r\n1677\r\n2163\r\n",
+                "0\r\n"
+            ],
+            [
+                "13 14\r\nATK 2896\r\nATK 2919\r\nATK 2117\r\nATK 2423\r\nATK 2636\r\nATK 2003\r\nATK 2614\r\nATK 2857\r\nATK 2326\r\nATK 2958\r\nATK 2768\r\nATK 3017\r\nATK 2788\r\n3245\r\n3274\r\n3035\r\n3113\r\n2982\r\n3312\r\n3129\r\n2934\r\n3427\r\n3316\r\n3232\r\n3368\r\n3314\r\n3040\r\n",
+                "10399\r\n"
+            ],
+            [
+                "10 25\r\nATK 3519\r\nATK 2186\r\nATK 3219\r\nATK 3116\r\nATK 2170\r\nATK 3236\r\nATK 3013\r\nDEF 1188\r\nATK 1914\r\nATK 2838\r\n1335\r\n725\r\n752\r\n1254\r\n414\r\n1653\r\n439\r\n784\r\n649\r\n477\r\n759\r\n1666\r\n417\r\n1316\r\n392\r\n799\r\n534\r\n1402\r\n515\r\n1334\r\n1435\r\n898\r\n1214\r\n1427\r\n1820\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 12\r\nATK 3626\r\nATK 2802\r\n1160\r\n4985\r\n2267\r\n673\r\n2085\r\n3288\r\n1391\r\n2846\r\n4602\r\n2088\r\n3058\r\n3223\r\n",
+                "25238\r\n"
+            ],
+            [
+                "14 18\r\nDEF 102\r\nATK 519\r\nATK 219\r\nATK 671\r\nATK 1016\r\nATK 674\r\nATK 590\r\nATK 1005\r\nATK 514\r\nATK 851\r\nATK 273\r\nATK 928\r\nATK 1023\r\nATK 209\r\n2204\r\n2239\r\n2193\r\n2221\r\n2203\r\n2211\r\n2224\r\n2221\r\n2218\r\n2186\r\n2204\r\n2195\r\n2202\r\n2203\r\n2217\r\n2201\r\n2213\r\n2192\r\n",
+                "29069\r\n"
+            ],
+            [
+                "2 13\r\nDEF 4509\r\nDEF 4646\r\n4842\r\n4315\r\n5359\r\n3477\r\n5876\r\n5601\r\n3134\r\n5939\r\n6653\r\n5673\r\n4473\r\n2956\r\n4127\r\n",
+                "52224\r\n"
+            ]
+        ]
+    }
+]

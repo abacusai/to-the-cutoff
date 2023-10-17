@@ -1,0 +1,470 @@
+[
+    {
+        "name": "Plane of Tanks: Duel",
+        "description": "Vasya plays the Plane of Tanks. Tanks are described with the following\nattributes: the number of hit points; the interval between two gun shots (the\ntime required to recharge the gun); the probability that the gun shot will not\npierce armor of the enemy tank; the damage to the enemy's tank. The gun damage\nis described with a segment [l, r], where l and r are integer numbers. The\npotential gun damage x is chosen with equal probability among all integer\nnumbers of the segment [l, r]. If the shot pierces the armor of an enemy's\ntank then the enemy loses x hit points. If the number of hit points becomes\nnon-positive then the enemy tank is considered destroyed. It is possible that\nthe shot does not pierce the armor of a tank. In this case the number of hit\npoints doesn't change. The probability that the armor will not be pierced is\nconsidered as the shooting tank attribute and does not depend on players'\nbehavior. The victory is near and there is only one enemy tank left. Vasya is\nready for the battle \u2014 one more battle between the Good and the Evil is\ninevitable! Two enemies saw each other and each of them fired a shot at the\nsame moment... The last battle has begun! Help Vasya to determine what is the\nprobability that he will win the battle by destroying the enemy tank? If both\ntanks are destroyed (after simultaneous shots), then Vasya is considered a\nwinner. You can assume that each player fires a shot just after the gun\nrecharge and each tank has infinite number of ammo. Input The first line\ncontains five integer numbers separated with spaces describing Vasya's tank:\nthe number of hit points hp (10 \u2264 hp \u2264 200), the interval between two shots dt\n(1 \u2264 dt \u2264 30), gun damage segment l and r (10 \u2264 l \u2264 r \u2264 100), the probability\nthat the enemy's tank armor will not be pierced p (0 \u2264 p \u2264 100) (percents).\nThe second line describes the tank of Vasya's enemy in the same format. Output\nPrint the only number with absolute or relative error no more than 10^-4 \u2014\nprobability of Vasya's victory. Examples Input 100 3 50 50 0 100 3 50 50 0\nOutput 1.000000 Input 100 3 50 50 0 100 2 48 50 0 Output 0.888889 Input 100 3\n50 50 0 100 1 50 50 50 Output 0.500000 Note In the first example both tanks\nare destroyed at once after the second shot. The probability of destroying the\nenemy tank is 1. In the second example Vasya's enemy tank fires the second\nshot before Vasya's tank, but has no time for the third shot. In order to\ndestroy Vasya's tank it is necessary to fire two shots with damage 50. The\nprobability of that event is = . Otherwise, Vasya wins. In the third example\nVasya's enemy tank fires three shots with probability of armor piercing 0.5.\nIn order to destroy Vasya's tank it is necessary that at least 2 of 3 shots\npierce the armor of Vasya's tank. The probability of this event is 0.5.\n\n",
+        "cf_contest_id": 175,
+        "cf_index": "D",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dp",
+            "math",
+            "probabilities"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "100 3 50 50 0\r\n100 3 50 50 0\r\n",
+                "1.000000\r\n"
+            ],
+            [
+                "100 3 50 50 0\r\n100 2 48 50 0\r\n",
+                "0.888889\r\n"
+            ],
+            [
+                "100 3 50 50 0\r\n100 1 50 50 50\r\n",
+                "0.500000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "100 10 50 50 50\r\n100 2 80 90 100\r\n",
+                "1"
+            ],
+            [
+                "123 10 29 48 5\r\n145 7 18 30 12\r\n",
+                "0.628297\r\n"
+            ],
+            [
+                "130 7 17 29 40\r\n145 11 29 48 15\r\n",
+                "0.058169\r\n"
+            ],
+            [
+                "100 10 10 15 50\r\n100 10 10 15 50\r\n",
+                "0.534903\r\n"
+            ],
+            [
+                "10 1 30 40 90\r\n10 1 30 40 90\r\n",
+                "0.526316\r\n"
+            ],
+            [
+                "200 30 10 10 99\r\n200 30 10 10 99\r\n",
+                "0.500323\r\n"
+            ],
+            [
+                "200 30 10 20 99\r\n200 30 10 20 99\r\n",
+                "0.500383\r\n"
+            ],
+            [
+                "200 30 10 30 99\r\n200 30 10 30 99\r\n",
+                "0.500433\r\n"
+            ],
+            [
+                "200 30 10 40 99\r\n200 30 10 40 99\r\n",
+                "0.500477\r\n"
+            ],
+            [
+                "200 30 10 50 99\r\n200 30 10 50 99\r\n",
+                "0.500518\r\n"
+            ],
+            [
+                "200 30 10 60 99\r\n200 30 10 60 99\r\n",
+                "0.500555\r\n"
+            ],
+            [
+                "200 30 10 70 99\r\n200 30 10 70 99\r\n",
+                "0.500591\r\n"
+            ],
+            [
+                "200 30 10 80 99\r\n200 30 10 80 99\r\n",
+                "0.500624\r\n"
+            ],
+            [
+                "200 30 10 90 99\r\n200 30 10 90 99\r\n",
+                "0.500657\r\n"
+            ],
+            [
+                "200 30 10 99 99\r\n200 30 10 99 99\r\n",
+                "0.500686\r\n"
+            ],
+            [
+                "200 30 10 100 99\r\n200 30 10 100 99\r\n",
+                "0.500690\r\n"
+            ],
+            [
+                "10 30 10 10 99\r\n200 1 50 50 100\r\n",
+                "1"
+            ],
+            [
+                "200 1 50 50 100\r\n10 30 10 10 99\r\n",
+                "0"
+            ],
+            [
+                "200 1 50 50 100\r\n200 1 50 50 100\r\n",
+                "0"
+            ],
+            [
+                "200 1 10 50 100\r\n100 2 20 30 99\r\n",
+                "0"
+            ],
+            [
+                "200 30 10 50 99\r\n200 29 10 50 99\r\n",
+                "0.476631\r\n"
+            ],
+            [
+                "200 29 10 50 99\r\n200 30 10 50 99\r\n",
+                "0.523404\r\n"
+            ],
+            [
+                "200 28 49 50 99\r\n200 29 47 48 99\r\n",
+                "0.530101\r\n"
+            ],
+            [
+                "151 13 29 42 36\r\n12 19 39 39 18\r\n",
+                "0.996511\r\n"
+            ],
+            [
+                "171 29 38 46 64\r\n34 12 39 47 98\r\n",
+                "0.999959\r\n"
+            ],
+            [
+                "41 28 13 22 52\r\n103 10 32 35 54\r\n",
+                "0.000038\r\n"
+            ],
+            [
+                "61 14 20 26 37\r\n11 1 29 39 79\r\n",
+                "0.674500\r\n"
+            ],
+            [
+                "129 21 12 25 95\r\n194 15 21 43 8\r\n",
+                "0.000005\r\n"
+            ],
+            [
+                "111 9 16 34 1\r\n194 12 35 39 31\r\n",
+                "0.171160\r\n"
+            ],
+            [
+                "147 30 14 38 40\r\n82 25 26 29 33\r\n",
+                "0.738319\r\n"
+            ],
+            [
+                "100 27 16 18 37\r\n35 1 27 29 65\r\n",
+                "0.000676\r\n"
+            ],
+            [
+                "124 11 34 35 59\r\n88 6 46 49 81\r\n",
+                "0.618976\r\n"
+            ],
+            [
+                "107 18 36 49 24\r\n88 20 18 45 18\r\n",
+                "0.864512\r\n"
+            ],
+            [
+                "187 22 32 42 52\r\n24 9 34 46 17\r\n",
+                "0.813761\r\n"
+            ],
+            [
+                "37 21 16 33 71\r\n191 20 46 50 63\r\n",
+                "0.000131\r\n"
+            ],
+            [
+                "175 24 42 49 39\r\n107 9 22 24 19\r\n",
+                "0.473530\r\n"
+            ],
+            [
+                "191 21 32 34 26\r\n123 30 43 47 22\r\n",
+                "0.933435\r\n"
+            ],
+            [
+                "142 30 43 45 97\r\n17 27 10 38 83\r\n",
+                "0.616237\r\n"
+            ],
+            [
+                "184 7 42 43 94\r\n25 7 49 49 39\r\n",
+                "0.328388\r\n"
+            ],
+            [
+                "140 16 46 49 91\r\n151 11 26 49 88\r\n",
+                "0.194811\r\n"
+            ],
+            [
+                "190 1 28 44 7\r\n180 5 35 41 5\r\n",
+                "0.999994\r\n"
+            ],
+            [
+                "45 30 21 28 75\r\n150 14 34 41 25\r\n",
+                "0.000001\r\n"
+            ],
+            [
+                "10 14 50 50 87\r\n15 28 26 41 70\r\n",
+                "0.444882\r\n"
+            ],
+            [
+                "126 17 16 31 74\r\n90 14 26 49 36\r\n",
+                "0.019889\r\n"
+            ],
+            [
+                "40 12 43 44 54\r\n72 27 43 48 94\r\n",
+                "0.889597\r\n"
+            ],
+            [
+                "32 25 37 43 28\r\n139 21 44 48 12\r\n",
+                "0.000064\r\n"
+            ],
+            [
+                "114 23 20 48 71\r\n114 17 27 40 54\r\n",
+                "0.128658\r\n"
+            ],
+            [
+                "190 1 18 37 28\r\n56 6 46 50 21\r\n",
+                "0.999998\r\n"
+            ],
+            [
+                "79 28 43 50 3\r\n131 9 13 25 36\r\n",
+                "0.365044\r\n"
+            ],
+            [
+                "109 25 13 40 83\r\n90 23 33 42 13\r\n",
+                "0.001581\r\n"
+            ],
+            [
+                "77 7 29 32 42\r\n190 14 41 48 21\r\n",
+                "0.010913\r\n"
+            ],
+            [
+                "189 12 37 37 18\r\n18 25 37 43 31\r\n",
+                "1.000000\r\n"
+            ],
+            [
+                "181 21 23 23 53\r\n12 2 23 45 16\r\n",
+                "0.471057\r\n"
+            ],
+            [
+                "98 17 23 27 80\r\n55 30 28 42 97\r\n",
+                "0.997327\r\n"
+            ],
+            [
+                "43 5 47 49 57\r\n113 27 37 46 94\r\n",
+                "0.961777\r\n"
+            ],
+            [
+                "172 9 11 46 28\r\n55 30 47 49 0\r\n",
+                "0.999737\r\n"
+            ],
+            [
+                "87 21 41 50 47\r\n110 30 10 47 85\r\n",
+                "0.989100\r\n"
+            ],
+            [
+                "168 13 48 50 45\r\n67 24 12 18 31\r\n",
+                "1.000000\r\n"
+            ],
+            [
+                "18 12 30 40 88\r\n123 18 19 19 7\r\n",
+                "0.000001\r\n"
+            ],
+            [
+                "97 14 23 41 97\r\n90 19 17 31 9\r\n",
+                "0.000441\r\n"
+            ],
+            [
+                "86 12 37 38 61\r\n20 3 36 42 90\r\n",
+                "0.932411\r\n"
+            ],
+            [
+                "12 23 21 24 79\r\n29 20 10 36 87\r\n",
+                "0.349566\r\n"
+            ],
+            [
+                "72 12 36 48 60\r\n20 1 28 34 98\r\n",
+                "0.974988\r\n"
+            ],
+            [
+                "200 4 30 40 99\r\n200 10 42 47 99\r\n",
+                "0.869262\r\n"
+            ],
+            [
+                "200 21 49 49 99\r\n200 24 35 46 99\r\n",
+                "0.624574\r\n"
+            ],
+            [
+                "200 5 28 33 99\r\n200 14 17 21 99\r\n",
+                "0.999033\r\n"
+            ],
+            [
+                "200 24 40 41 99\r\n200 11 36 37 99\r\n",
+                "0.175116\r\n"
+            ],
+            [
+                "200 22 25 38 99\r\n200 23 44 47 99\r\n",
+                "0.312588\r\n"
+            ],
+            [
+                "200 2 33 46 99\r\n200 9 11 46 99\r\n",
+                "0.998389\r\n"
+            ],
+            [
+                "200 5 41 45 99\r\n200 27 36 47 99\r\n",
+                "0.994232\r\n"
+            ],
+            [
+                "200 29 44 49 99\r\n200 8 39 45 99\r\n",
+                "0.026773\r\n"
+            ],
+            [
+                "200 7 26 36 99\r\n200 28 33 43 99\r\n",
+                "0.978360\r\n"
+            ],
+            [
+                "200 2 18 27 99\r\n200 14 26 38 99\r\n",
+                "0.997765\r\n"
+            ],
+            [
+                "200 15 34 38 99\r\n200 14 45 49 99\r\n",
+                "0.334622\r\n"
+            ],
+            [
+                "200 17 43 44 99\r\n200 8 22 38 99\r\n",
+                "0.268213\r\n"
+            ],
+            [
+                "200 4 10 42 99\r\n200 8 41 42 99\r\n",
+                "0.613175\r\n"
+            ],
+            [
+                "200 10 21 24 99\r\n200 29 21 47 99\r\n",
+                "0.891807\r\n"
+            ],
+            [
+                "200 27 31 38 99\r\n200 24 25 25 99\r\n",
+                "0.621651\r\n"
+            ],
+            [
+                "200 14 40 46 99\r\n200 14 40 45 99\r\n",
+                "0.500687\r\n"
+            ],
+            [
+                "200 7 18 23 99\r\n200 14 40 45 99\r\n",
+                "0.463970\r\n"
+            ],
+            [
+                "200 29 47 50 99\r\n200 12 47 50 99\r\n",
+                "0.089513\r\n"
+            ],
+            [
+                "200 3 50 50 99\r\n200 8 25 46 99\r\n",
+                "0.985185\r\n"
+            ],
+            [
+                "200 1 48 50 99\r\n200 4 16 21 99\r\n",
+                "0.999989\r\n"
+            ],
+            [
+                "200 14 25 38 99\r\n200 26 11 21 99\r\n",
+                "0.996770\r\n"
+            ],
+            [
+                "200 22 11 30 99\r\n200 19 12 33 99\r\n",
+                "0.308321\r\n"
+            ],
+            [
+                "200 4 47 50 99\r\n200 23 48 49 99\r\n",
+                "0.994871\r\n"
+            ],
+            [
+                "200 25 13 32 99\r\n200 8 23 40 99\r\n",
+                "0.002760\r\n"
+            ],
+            [
+                "200 28 36 45 99\r\n200 20 14 34 99\r\n",
+                "0.635548\r\n"
+            ],
+            [
+                "200 3 31 41 99\r\n200 9 48 49 99\r\n",
+                "0.922242\r\n"
+            ],
+            [
+                "200 4 46 46 99\r\n200 2 28 33 99\r\n",
+                "0.289029\r\n"
+            ],
+            [
+                "200 13 41 45 99\r\n200 30 43 48 99\r\n",
+                "0.899160\r\n"
+            ],
+            [
+                "200 26 25 49 99\r\n200 25 43 50 99\r\n",
+                "0.365277\r\n"
+            ],
+            [
+                "200 6 26 38 99\r\n200 25 19 28 99\r\n",
+                "0.999414\r\n"
+            ],
+            [
+                "200 7 33 42 99\r\n200 1 39 43 99\r\n",
+                "0.000559\r\n"
+            ],
+            [
+                "200 25 16 23 99\r\n200 2 14 37 99\r\n",
+                "0.000003\r\n"
+            ],
+            [
+                "200 10 13 50 99\r\n200 6 16 37 99\r\n",
+                "0.268835\r\n"
+            ],
+            [
+                "200 10 25 33 99\r\n200 30 29 34 99\r\n",
+                "0.971850\r\n"
+            ],
+            [
+                "200 3 25 31 99\r\n200 30 30 32 99\r\n",
+                "0.999908\r\n"
+            ],
+            [
+                "200 22 16 20 99\r\n200 8 15 34 99\r\n",
+                "0.002208\r\n"
+            ],
+            [
+                "200 30 22 45 99\r\n200 15 32 35 99\r\n",
+                "0.110167\r\n"
+            ],
+            [
+                "200 26 14 36 99\r\n200 28 36 43 99\r\n",
+                "0.263182\r\n"
+            ],
+            [
+                "200 9 46 49 99\r\n200 4 10 48 99\r\n",
+                "0.260487\r\n"
+            ],
+            [
+                "200 13 49 49 99\r\n200 13 12 43 99\r\n",
+                "0.784831\r\n"
+            ],
+            [
+                "200 29 10 78 100\r\n200 23 13 100 100\r\n",
+                "0"
+            ],
+            [
+                "200 30 10 100 47\r\n200 29 10 100 47\r\n",
+                "0.452191\r\n"
+            ],
+            [
+                "200 30 10 100 99\r\n200 29 10 100 99\r\n",
+                "0.482964\r\n"
+            ],
+            [
+                "200 30 10 100 99\r\n200 29 10 37 98\r\n",
+                "0.551129\r\n"
+            ],
+            [
+                "200 30 100 100 100\r\n200 30 100 100 100\r\n",
+                "0"
+            ],
+            [
+                "200 29 10 100 99\r\n200 30 10 100 99\r\n",
+                "0.517083\r\n"
+            ]
+        ]
+    }
+]

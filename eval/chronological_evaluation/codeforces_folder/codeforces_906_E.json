@@ -1,0 +1,141 @@
+[
+    {
+        "name": "Reverses",
+        "description": "Hurricane came to Berland and to suburbs Stringsvill. You are going to it to\ncheck if it's all right with you favorite string. Hurrinace broke it a bit by\nreversing some of its non-intersecting substrings. You have a photo of this\nstring before hurricane and you want to restore it to original state using\nreversing minimum possible number of its substrings and find out which\nsubstrings you should reverse. You are given a string s \u2014 original state of\nyour string and string t \u2014 state of the string after hurricane. You should\nselect k non-intersecting substrings of t in such a way that after reverse of\nthese substrings string will be equal s and k is minimum possible. Input First\nline of input contains string s and second line contains string t. Both\nstrings have same length and consist of lowercase English letters. 1 \u2264 |s| =\n|t| \u2264 5\u00b710^5 Output In first line print k \u2014 minimum number of substrings you\nshould reverse. Next output k lines. Each line should contain two integers li,\nri meaning that you should reverse substring from symbol number li to symbol\nri (strings are 1-indexed). These substrings shouldn't intersect. If there are\nmultiple answers print any. If it's impossible to restore string output -1.\nExample Input abcxxxdef cbaxxxfed Output 2 7 9 1 3\n\n",
+        "cf_contest_id": 906,
+        "cf_index": "E",
+        "cf_rating": 3300,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "string suffix structures",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "abcxxxdef\r\ncbaxxxfed\r\n",
+                "2\r\n7 9\r\n1 3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "abbabbaaaaaabbabbbababbbbaaabbbbbaaaaabbbaabbaaaaa\r\naaaaabbabbabaabbbaaaaabbbbbaaabbbbababbbabbaaaaaab\r\n",
+                "3\r\n45 50\r\n12 44\r\n1 11\r\n"
+            ],
+            [
+                "ccccbcabaabbcbbaaabbcbcacbcbbbccaccaaccacabacbcbac\r\ncbcbbaaabbcbbaabacbccccaccbbbcbcaaccaaccacbcabcbca\r\n",
+                "5\r\n44 50\r\n41 42\r\n34 40\r\n24 33\r\n1 23\r\n"
+            ],
+            [
+                "jxzvgejegfjzwjckqmarrgicftaoenuoxkrpkqrtrbzapiqppj\r\noatfcigrramqkcjwzjfgejegvzxjpazbrtrqkprkxouneppqij\r\n",
+                "3\r\n46 49\r\n29 45\r\n1 28\r\n"
+            ],
+            [
+                "baabbababbbaabbbabbaaabbbbbbbaabbbabaabbbbbbaaabba\r\nabbaabbabbbabbbabaaabbabbbbbaabbbbabbbbaabbbaaabba\r\n",
+                "5\r\n36 42\r\n26 34\r\n17 23\r\n13 16\r\n1 6\r\n"
+            ],
+            [
+                "bcacaacbaaabcaabbbbaabcbbacacbbccbaabccbcaaaaaabcb\r\nbcacabcaabbcbaabbbbaacbaaaccbbcacbaabcccbaaaaaabcb\r\n",
+                "4\r\n40 41\r\n27 33\r\n9 26\r\n6 8\r\n"
+            ],
+            [
+                "gwgdnorsihmlukgpxaozwiisdezacqfzarjjubrlkluglvuxjm\r\ngwgrondsihlmoaxpgkuwzsiiedzacfqrazujjbrlulkglvuxjm\r\n",
+                "10\r\n41 43\r\n35 37\r\n32 34\r\n30 31\r\n25 26\r\n22 24\r\n20 21\r\n13 19\r\n11 12\r\n4 7\r\n"
+            ],
+            [
+                "aaaaababbbbaaabbbaabbbbbbaaabbababbabaababaabaabbb\r\nbaababaababbababbaaabbbbbbaabbbaaabbbbabaaaaabbbaa\r\n",
+                "2\r\n46 50\r\n1 45\r\n"
+            ],
+            [
+                "bcabcbcacabaccbbacabcbaabcbacaccabcbbaccccacccabcc\r\nabbcbaccacabcbaabcbacabbccabacacbcbacbbacccacccccc\r\n",
+                "2\r\n39 48\r\n1 38\r\n"
+            ],
+            [
+                "zxefpktsllyejkbcxrzcfvvfpjtrdxnmvilbpcbstudrsrmzlq\r\nlzmrsrdutsbcpblivmnxdrtjpfvvfczrxcbkjeyllstkpfexzq\r\n",
+                "1\r\n1 49\r\n"
+            ],
+            [
+                "a\r\na\r\n",
+                "0\r\n"
+            ],
+            [
+                "a\r\nb\r\n",
+                "-1\r\n"
+            ],
+            [
+                "abcde\r\ncbeda\r\n",
+                "-1\r\n"
+            ],
+            [
+                "bbaabbbaabaabaabaabbabaabaabaaabbabbbbbababbaaabba\r\nbbabbaaabaabaababbaabaabaabaabbbaabbbbbabaaabbabab\r\n",
+                "3\r\n49 50\r\n41 48\r\n1 36\r\n"
+            ],
+            [
+                "ihacaghigcehecegjbgdcjddjdbafigagcgaefdibbcffbjbgj\r\nihacaghigcehecegjbgdcjddjdbafigagcgaefdibbcbjbffgj\r\n",
+                "1\r\n44 48\r\n"
+            ],
+            [
+                "qhmwctdzpmikebnbttzdbwfuanwuiqwjeomgskllbpmvmqvlrh\r\nqhmwctdzpmikebnbttzdbwfuanwuiqwlksgmoejlbpmvmqvlrh\r\n",
+                "1\r\n32 39\r\n"
+            ],
+            [
+                "bbbaabaaabaaaaabbaababbbabaabbababbbbbabaababaaaab\r\nbbbaabaaaabbbabaabbaaaaabbaabbaababaababbbbbabaaab\r\n",
+                "2\r\n31 47\r\n10 25\r\n"
+            ],
+            [
+                "gaafgihfdifafigecdfchjdbhaehfchicacfacafigiaajfgaa\r\ngaafgihfdifaficihcfheahbdjhcfdcegacfigifacaaajfgaa\r\n",
+                "2\r\n37 43\r\n15 33\r\n"
+            ],
+            [
+                "suahfoqosnfgfslnapxpmbofxzdklwanxuxlkwwnvlqzfwdwoi\r\nsuahfoqosnfgxfobmpxpanlsfzdxuxnawlklkdwfzqlvnwwowi\r\n",
+                "4\r\n48 49\r\n38 47\r\n28 35\r\n13 25\r\n"
+            ],
+            [
+                "aaababaaaaaaaabbaaabbaaaabaabbaabbabaabbababbbbbab\r\naaababaaaaaaaabbaaabbaaaabaabbaabbabaabbababbbbbab\r\n",
+                "0\r\n"
+            ],
+            [
+                "aiedjdahdcicdfeibfhaicbcaghgeahehcbffjefhjhfdficjj\r\naiedjdahdcicdfeibfhaicbcaghgeahehcbffifdfhjhfejcjj\r\n",
+                "1\r\n38 47\r\n"
+            ],
+            [
+                "kwyxpguewbitchxngjuanrlahhoggyfqzajkfbcgbzexlqmfrc\r\nkwyxpguewbitchxngjuanrlahhofyggqzajkfbcgbzexlqmcrf\r\n",
+                "2\r\n48 50\r\n28 31\r\n"
+            ],
+            [
+                "abcabaabc\r\ncbaabacba\r\n",
+                "1\r\n1 9\r\n"
+            ],
+            [
+                "abbbbaaaabbaabaaaabbbbbaaaaaabbbaababbbabbaababbab\r\nabbbbaaaabbaabaaaabbbbbaaaaaabbbaababbbabbaababbab\r\n",
+                "0\r\n"
+            ],
+            [
+                "baabcbbaabbcbabbbcbbbabbabcbcacaccabcacbbabacbbacc\r\nbaabcbbaabbcbabbbcbbbabbabcbcacaccabcabbcabacbbacc\r\n",
+                "1\r\n38 42\r\n"
+            ],
+            [
+                "rcolyzoqvhboaapanpdoturjyhfspdalayuylekszitgstgsefgsi\r\nrcolyzoqvhboaapanpdoturjyhfspdalayuylekszisgtsgtefgsi\r\n",
+                "1\r\n43 48\r\n"
+            ],
+            [
+                "abaabbaabbbaabbaabbbababbaaaaaaaaaabbbaabbaaaababb\r\nabaabbaabbbaabbaabbbababbaaaaaaaaaabbbaabbaaaababb\r\n",
+                "0\r\n"
+            ],
+            [
+                "accbbacbabccccccbbcbbcaabbaacbabacbcbbaabaabaaaaab\r\naccbbacbabccccccbbcbbcaabbaacbabacbcbbaabaabaaaaab\r\n",
+                "0\r\n"
+            ],
+            [
+                "pjyiqxlcjuvzbdgxsbgxskuvguozyncisikeduhhdstqciepdz\r\npjyiqxlcjuvzbdgxsbgxskuvguozyncisikeduhhdstqciepdz\r\n",
+                "0\r\n"
+            ],
+            [
+                "ababababababababababababababababababababababababab\r\nbababababababababababababababababababababababababa\r\n",
+                "1\r\n1 50\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,167 @@
+[
+    {
+        "name": "Paint Tree",
+        "description": "You are given a tree with n vertexes and n points on a plane, no three points\nlie on one straight line. Your task is to paint the given tree on a plane,\nusing the given points as vertexes. That is, you should correspond each vertex\nof the tree to exactly one point and each point should correspond to a vertex.\nIf two vertexes of the tree are connected by an edge, then the corresponding\npoints should have a segment painted between them. The segments that\ncorrespond to non-adjacent edges, should not have common points. The segments\nthat correspond to adjacent edges should have exactly one common point. Input\nThe first line contains an integer n (1 \u2264 n \u2264 1500) \u2014 the number of vertexes\non a tree (as well as the number of chosen points on the plane). Each of the\nnext n - 1 lines contains two space-separated integers ui and vi (1 \u2264 ui, vi \u2264\nn, ui \u2260 vi) \u2014 the numbers of tree vertexes connected by the i-th edge. Each of\nthe next n lines contain two space-separated integers xi and yi ( - 10^9 \u2264 xi,\nyi \u2264 10^9) \u2014 the coordinates of the i-th point on the plane. No three points\nlie on one straight line. It is guaranteed that under given constraints\nproblem has a solution. Output Print n distinct space-separated integers from\n1 to n: the i-th number must equal the number of the vertex to place at the\ni-th point (the points are numbered in the order, in which they are listed in\nthe input). If there are several solutions, print any of them. Examples Input\n3 1 3 2 3 0 0 1 1 2 0 Output 1 3 2 Input 4 1 2 2 3 1 4 -1 -2 3 5 -3 3 2 0\nOutput 4 2 1 3 Note The possible solutions for the sample are given below.\n\n",
+        "cf_contest_id": 196,
+        "cf_index": "C",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "divide and conquer",
+            "geometry",
+            "sortings",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n1 3\r\n2 3\r\n0 0\r\n1 1\r\n2 0\r\n",
+                "1\r\n3\r\n2\r\n"
+            ],
+            [
+                "4\r\n1 2\r\n2 3\r\n1 4\r\n-1 -2\r\n3 5\r\n-3 3\r\n2 0\r\n",
+                "4\r\n3\r\n1\r\n2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n1 2\r\n1 3\r\n-1000000000 -1000000000\r\n0 1000000000\r\n1000000000 0\r\n",
+                "1\r\n2\r\n3\r\n"
+            ],
+            [
+                "4\r\n1 2\r\n1 3\r\n1 4\r\n1000000000 -1000000000\r\n1000000000 1000000000\r\n-1000000000 -1000000000\r\n-1000000000 1000000000\r\n",
+                "4\r\n3\r\n1\r\n2\r\n"
+            ],
+            [
+                "5\r\n1 2\r\n2 3\r\n1 4\r\n4 5\r\n-4 3\r\n2 3\r\n-1 1\r\n0 -1\r\n1 5\r\n",
+                "1\r\n3\r\n4\r\n5\r\n2\r\n"
+            ],
+            [
+                "5\r\n1 2\r\n1 3\r\n2 4\r\n2 5\r\n0 0\r\n4 4\r\n2 -1\r\n1 0\r\n3 1\r\n",
+                "1\r\n4\r\n3\r\n2\r\n5\r\n"
+            ],
+            [
+                "1\r\n0 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n31415 92654\r\n27182 81828\r\n",
+                "2\r\n1\r\n"
+            ],
+            [
+                "9\r\n9 8\r\n6 1\r\n4 2\r\n1 8\r\n8 7\r\n5 7\r\n6 2\r\n3 2\r\n8 3\r\n-5 -4\r\n-6 4\r\n6 5\r\n5 -1\r\n1 -8\r\n9 -3\r\n5 5\r\n8 1\r\n",
+                "4\r\n8\r\n1\r\n2\r\n9\r\n7\r\n5\r\n6\r\n3\r\n"
+            ],
+            [
+                "10\r\n4 3\r\n7 6\r\n5 7\r\n9 5\r\n7 4\r\n7 8\r\n2 5\r\n1 7\r\n5 10\r\n-10 -2\r\n-5 -7\r\n-9 9\r\n8 -8\r\n0 6\r\n-10 -7\r\n-2 0\r\n7 10\r\n8 9\r\n6 1\r\n",
+                "7\r\n8\r\n6\r\n3\r\n9\r\n1\r\n5\r\n2\r\n10\r\n4\r\n"
+            ],
+            [
+                "3\r\n2 1\r\n2 3\r\n1 1\r\n8 -2\r\n8 5\r\n",
+                "1\r\n2\r\n3\r\n"
+            ],
+            [
+                "7\r\n1 3\r\n1 7\r\n6 4\r\n3 6\r\n3 2\r\n2 5\r\n-5 -1\r\n2 -6\r\n3 5\r\n10 2\r\n1 4\r\n8 -3\r\n-7 -8\r\n",
+                "3\r\n7\r\n4\r\n5\r\n6\r\n2\r\n1\r\n"
+            ],
+            [
+                "5\r\n4 2\r\n4 1\r\n5 3\r\n5 2\r\n1 -4\r\n0 2\r\n2 1\r\n0 -4\r\n-1 -6\r\n",
+                "5\r\n2\r\n3\r\n4\r\n1\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n-3 10\r\n9 -2\r\n",
+                "1\r\n2\r\n"
+            ],
+            [
+                "3\r\n1 3\r\n2 3\r\n-10 -6\r\n1 7\r\n10 2\r\n",
+                "1\r\n3\r\n2\r\n"
+            ],
+            [
+                "10\r\n5 7\r\n3 4\r\n5 2\r\n5 3\r\n10 1\r\n3 10\r\n3 6\r\n8 4\r\n7 9\r\n2 4\r\n-7 5\r\n-7 6\r\n-4 9\r\n4 -5\r\n1 9\r\n10 -5\r\n-6 10\r\n1 -4\r\n5 6\r\n",
+                "7\r\n1\r\n10\r\n5\r\n2\r\n4\r\n9\r\n3\r\n6\r\n8\r\n"
+            ],
+            [
+                "1\r\n0 -10\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n7 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\n4 3\r\n4 5\r\n1 2\r\n3 1\r\n0 1\r\n-8 -3\r\n8 -9\r\n6 -9\r\n2 0\r\n",
+                "2\r\n1\r\n5\r\n4\r\n3\r\n"
+            ],
+            [
+                "9\r\n8 3\r\n2 8\r\n8 7\r\n2 1\r\n5 1\r\n8 9\r\n5 6\r\n2 4\r\n-5 -9\r\n-10 2\r\n-8 -1\r\n-9 3\r\n-2 -2\r\n-10 3\r\n-8 -10\r\n-2 -5\r\n3 5\r\n",
+                "6\r\n1\r\n4\r\n8\r\n7\r\n2\r\n5\r\n9\r\n3\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n9 7\r\n-7 2\r\n",
+                "2\r\n1\r\n"
+            ],
+            [
+                "7\r\n6 1\r\n5 3\r\n7 3\r\n5 2\r\n5 6\r\n4 5\r\n7 4\r\n-7 -5\r\n-10 5\r\n-3 1\r\n2 6\r\n2 -3\r\n-4 -7\r\n",
+                "2\r\n6\r\n1\r\n3\r\n7\r\n4\r\n5\r\n"
+            ],
+            [
+                "7\r\n1 2\r\n1 4\r\n6 7\r\n7 3\r\n5 1\r\n7 4\r\n-4 9\r\n6 8\r\n5 9\r\n1 -3\r\n1 -2\r\n7 2\r\n2 -2\r\n",
+                "1\r\n6\r\n2\r\n5\r\n4\r\n3\r\n7\r\n"
+            ],
+            [
+                "4\r\n3 2\r\n3 4\r\n3 1\r\n-6 3\r\n-5 0\r\n9 -10\r\n1 1\r\n",
+                "1\r\n3\r\n4\r\n2\r\n"
+            ],
+            [
+                "8\r\n4 1\r\n7 8\r\n2 8\r\n6 5\r\n6 1\r\n8 3\r\n4 8\r\n4 9\r\n4 4\r\n-6 10\r\n-1 -8\r\n-4 -8\r\n-8 2\r\n1 0\r\n3 3\r\n",
+                "7\r\n3\r\n4\r\n5\r\n6\r\n1\r\n8\r\n2\r\n"
+            ],
+            [
+                "6\r\n3 5\r\n3 4\r\n6 2\r\n5 2\r\n5 1\r\n-9 -2\r\n-7 5\r\n10 10\r\n-3 -5\r\n1 -2\r\n-10 -5\r\n",
+                "5\r\n3\r\n4\r\n2\r\n6\r\n1\r\n"
+            ],
+            [
+                "7\r\n4 3\r\n6 3\r\n4 7\r\n1 4\r\n1 5\r\n4 2\r\n0 -5\r\n-6 2\r\n3 -6\r\n6 9\r\n-8 -3\r\n4 -10\r\n5 -1\r\n",
+                "2\r\n4\r\n7\r\n6\r\n1\r\n5\r\n3\r\n"
+            ],
+            [
+                "15\r\n14 10\r\n12 3\r\n8 6\r\n11 10\r\n2 15\r\n6 3\r\n5 4\r\n8 15\r\n13 10\r\n4 6\r\n6 1\r\n7 9\r\n10 7\r\n7 8\r\n-886 143\r\n-932 -40\r\n-113 -599\r\n196 377\r\n-941 260\r\n465 557\r\n851 340\r\n528 765\r\n-529 453\r\n8 -978\r\n-953 336\r\n99 475\r\n216 -892\r\n811 -604\r\n885 780\r\n",
+                "5\r\n4\r\n3\r\n10\r\n6\r\n9\r\n14\r\n15\r\n8\r\n12\r\n1\r\n7\r\n13\r\n11\r\n2\r\n"
+            ],
+            [
+                "18\r\n17 14\r\n17 6\r\n11 16\r\n9 6\r\n7 13\r\n1 15\r\n18 11\r\n10 12\r\n6 16\r\n17 5\r\n17 3\r\n8 1\r\n6 1\r\n13 3\r\n2 8\r\n4 6\r\n13 10\r\n-491 -395\r\n-725 -675\r\n242 -573\r\n385 -341\r\n399 -330\r\n-39 -852\r\n749 9\r\n815 -756\r\n-265 403\r\n647 -587\r\n246 267\r\n500 941\r\n749 423\r\n-815 475\r\n947 -171\r\n-963 350\r\n-123 -908\r\n-835 -370\r\n",
+                "17\r\n4\r\n9\r\n3\r\n13\r\n11\r\n7\r\n18\r\n8\r\n10\r\n14\r\n2\r\n5\r\n15\r\n12\r\n1\r\n16\r\n6\r\n"
+            ],
+            [
+                "14\r\n10 12\r\n11 4\r\n9 2\r\n6 9\r\n10 1\r\n7 2\r\n12 4\r\n5 3\r\n5 4\r\n9 12\r\n13 1\r\n8 4\r\n10 14\r\n53 -983\r\n560 663\r\n755 11\r\n-937 -869\r\n-219 443\r\n587 -151\r\n-733 307\r\n-229 857\r\n-323 -137\r\n123 -24\r\n-239 -374\r\n-672 893\r\n688 441\r\n899 482\r\n",
+                "13\r\n11\r\n8\r\n1\r\n2\r\n6\r\n10\r\n4\r\n9\r\n7\r\n14\r\n12\r\n5\r\n3\r\n"
+            ],
+            [
+                "28\r\n11 18\r\n12 2\r\n17 27\r\n7 3\r\n18 8\r\n1 13\r\n24 11\r\n15 20\r\n10 28\r\n16 5\r\n27 15\r\n5 25\r\n4 13\r\n19 7\r\n20 7\r\n5 7\r\n8 28\r\n23 18\r\n6 21\r\n7 8\r\n13 7\r\n3 6\r\n2 14\r\n3 22\r\n26 10\r\n9 21\r\n14 13\r\n-819 780\r\n-390 507\r\n666 -738\r\n558 238\r\n769 -494\r\n-844 135\r\n-613 -124\r\n-343 147\r\n-16 437\r\n-866 641\r\n-832 -941\r\n-916 -446\r\n-759 -684\r\n-796 -42\r\n193 447\r\n-400 26\r\n-164 -747\r\n510 -751\r\n954 191\r\n362 -166\r\n45 273\r\n-586 -550\r\n835 -518\r\n-550 336\r\n654 -578\r\n69 -251\r\n-951 535\r\n-323 581\r\n",
+                "3\r\n6\r\n26\r\n27\r\n24\r\n7\r\n18\r\n20\r\n9\r\n4\r\n14\r\n13\r\n2\r\n8\r\n19\r\n5\r\n12\r\n10\r\n17\r\n16\r\n15\r\n28\r\n25\r\n22\r\n23\r\n11\r\n1\r\n21\r\n"
+            ],
+            [
+                "7\r\n1 2\r\n2 3\r\n2 4\r\n1 5\r\n5 6\r\n5 7\r\n50 50\r\n30 40\r\n0 0\r\n1 0\r\n40 1\r\n-10 -9\r\n10 -9\r\n",
+                "4\r\n3\r\n2\r\n5\r\n6\r\n1\r\n7\r\n"
+            ],
+            [
+                "4\r\n1 2\r\n2 3\r\n1 4\r\n0 100\r\n50 50\r\n0 0\r\n51 0\r\n",
+                "2\r\n3\r\n1\r\n4\r\n"
+            ],
+            [
+                "4\r\n1 2\r\n2 3\r\n1 4\r\n0 100\r\n-50 50\r\n0 0\r\n-51 0\r\n",
+                "3\r\n2\r\n4\r\n1\r\n"
+            ],
+            [
+                "4\r\n1 2\r\n2 4\r\n1 3\r\n0 0\r\n0 3\r\n2 2\r\n3 0\r\n",
+                "1\r\n2\r\n4\r\n3\r\n"
+            ],
+            [
+                "4\r\n1 2\r\n2 3\r\n1 4\r\n0 1000000000\r\n-500000000 500000000\r\n0 0\r\n-500000001 0\r\n",
+                "3\r\n2\r\n4\r\n1\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,128 @@
+[
+    {
+        "name": "World of Tank",
+        "description": "Vitya loves programming and problem solving, but sometimes, to distract\nhimself a little, he plays computer games. Once he found a new interesting\ngame about tanks, and he liked it so much that he went through almost all\nlevels in one day. Remained only the last level, which was too tricky. Then\nVitya remembered that he is a programmer, and wrote a program that helped him\nto pass this difficult level. Try do the same. The game is organized as\nfollows. There is a long road, two cells wide and n cells long. Some cells\nhave obstacles. You control a tank that occupies one cell. Initially, the tank\nis located before the start of the road, in a cell with coordinates (0, 1).\nYour task is to move the tank to the end of the road, to the cell (n + 1, 1)\nor (n + 1, 2). Every second the tank moves one cell to the right: the\ncoordinate x is increased by one. When you press the up or down arrow keys,\nthe tank instantly changes the lane, that is, the y coordinate. When you press\nthe spacebar, the tank shoots, and the nearest obstacle along the lane in\nwhich the tank rides is instantly destroyed. In order to load a gun, the tank\nneeds t seconds. Initially, the gun is not loaded, that means, the first shot\ncan be made only after t seconds after the tank starts to move. If at some\npoint the tank is in the same cell with an obstacle not yet destroyed, it\nburns out. If you press the arrow exactly at the moment when the tank moves\nforward, the tank will first move forward, and then change the lane, so it\nwill not be possible to move diagonally. Your task is to find out whether it\nis possible to pass the level, and if possible, to find the order of actions\nthe player need to make. Input The first line contains four integers n, m1, m2\nand t, the length of the field, the number of obstacles in the first lane, the\nnumber of obstacles in the second lane and the number of tank steps before\nreloading, respectively (1 \u2264 n \u2264 10^9; 0 \u2264 m1, m2 \u2264 n; 0 \u2264 m1 + m2 \u2264 10^6; 1 \u2264\nt \u2264 n). The next two lines contain a description of the obstacles. The first\nof these lines contains m1 numbers xi \u2014 the obstacle coordinates in the first\nlane (1 \u2264 xi \u2264 n; xi < xi + 1). The y coordinate for all these obstacles will\nbe 1. The second line contains m2 numbers describing the obstacles of the\nsecond lane in the same format. The y coordinate of all these obstacles will\nbe 2. Output In the first line print \u00abYes\u00bb, if it is possible to pass the\nlevel, or \u00abNo\u00bb, otherwise. If it is possible, then in the second line print\nthe number of times the tank moves from one lane to another, and in the next\nline print the coordinates of the transitions, one number per transition: the\ncoordinate x (0 \u2264 x \u2264 n + 1). All transition coordinates coordinates must be\ndistinct and should be output in strictly increasing order.The number of\ntransitions should not exceed 2\u00b710^6. If the tank can pass the level, then it\ncan do it using no more than 2\u00b710^6 transitions. In the fourth line print the\nnumber of shots that the tank makes during the movement, in the following\nlines print two numbers, x and y coordinates of the point (1 \u2264 x \u2264 n, 1 \u2264 y \u2264\n2), from which the tank fired a shot, the number of shots must not exceed m1 +\nm2. Shots must be output in the order in which they are fired. If there are\nseveral solutions, output any one. Examples Input 6 2 3 2 2 6 3 5 6 Output Yes\n2 0 3 2 2 2 4 1 Input 1 1 1 1 1 1 Output No Input 9 5 2 5 1 2 7 8 9 4 6 Output\nYes 4 0 3 5 10 1 5 2 Note Picture for the first sample test.\n\n",
+        "cf_contest_id": 936,
+        "cf_index": "D",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 2 3 2\r\n2 6\r\n3 5 6\r\n",
+                "Yes\r\n2\r\n0 3 \r\n2\r\n2 2\r\n4 1\r\n"
+            ],
+            [
+                "1 1 1 1\r\n1\r\n1\r\n",
+                "No\r\n"
+            ],
+            [
+                "9 5 2 5\r\n1 2 7 8 9\r\n4 6\r\n",
+                "Yes\r\n4\r\n0 3 5 10 \r\n1\r\n5 2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "20 20 0 20\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20\r\n\r\n",
+                "Yes\r\n2\r\n0 21 \r\n0\r\n"
+            ],
+            [
+                "20 12 9 3\r\n1 2 4 5 6 7 8 9 13 17 18 20\r\n6 9 11 13 14 15 16 19 20\r\n",
+                "Yes\r\n2\r\n0 10 \r\n6\r\n3 2\r\n6 2\r\n10 1\r\n13 1\r\n16 1\r\n19 1\r\n"
+            ],
+            [
+                "9 4 3 3\r\n2 3 7 8\r\n5 8 9\r\n",
+                "Yes\r\n2\r\n0 4 \r\n2\r\n4 1\r\n7 1\r\n"
+            ],
+            [
+                "20 9 7 3\r\n4 6 8 9 13 15 17 18 19\r\n1 3 4 9 11 13 19\r\n",
+                "Yes\r\n4\r\n5 10 14 20 \r\n4\r\n3 1\r\n6 2\r\n10 1\r\n14 2\r\n"
+            ],
+            [
+                "10 4 2 2\r\n3 8 9 10\r\n3 8\r\n",
+                "Yes\r\n0\r\n\r\n4\r\n2 1\r\n4 1\r\n6 1\r\n8 1\r\n"
+            ],
+            [
+                "10 6 0 2\r\n1 2 4 8 9 10\r\n\r\n",
+                "Yes\r\n2\r\n0 3 \r\n4\r\n3 1\r\n5 1\r\n7 1\r\n9 1\r\n"
+            ],
+            [
+                "10 2 4 1\r\n3 5\r\n1 5 7 10\r\n",
+                "Yes\r\n0\r\n\r\n2\r\n1 1\r\n2 1\r\n"
+            ],
+            [
+                "20 4 11 2\r\n2 5 6 19\r\n2 4 5 10 11 12 14 15 17 18 20\r\n",
+                "No\r\n"
+            ],
+            [
+                "20 7 8 1\r\n1 4 5 7 9 14 19\r\n3 9 10 12 13 14 15 17\r\n",
+                "Yes\r\n2\r\n0 2 \r\n6\r\n2 1\r\n3 1\r\n4 1\r\n5 1\r\n6 1\r\n7 1\r\n"
+            ],
+            [
+                "20 7 8 2\r\n5 6 8 9 11 13 17\r\n4 9 11 12 15 18 19 20\r\n",
+                "Yes\r\n0\r\n\r\n7\r\n2 1\r\n4 1\r\n6 1\r\n8 1\r\n10 1\r\n12 1\r\n14 1\r\n"
+            ],
+            [
+                "20 0 10 2\r\n\r\n2 3 4 5 6 7 13 15 16 18\r\n",
+                "Yes\r\n0\r\n\r\n0\r\n"
+            ],
+            [
+                "20 4 6 2\r\n4 11 12 16\r\n1 3 4 6 8 10\r\n",
+                "Yes\r\n0\r\n\r\n4\r\n2 1\r\n4 1\r\n6 1\r\n8 1\r\n"
+            ],
+            [
+                "20 9 1 2\r\n4 5 6 9 12 14 15 19 20\r\n7\r\n",
+                "Yes\r\n2\r\n0 7 \r\n7\r\n2 2\r\n7 1\r\n9 1\r\n11 1\r\n13 1\r\n15 1\r\n17 1\r\n"
+            ],
+            [
+                "20 10 9 2\r\n2 4 6 8 10 12 14 16 18 20\r\n3 5 7 9 11 13 15 17 19\r\n",
+                "Yes\r\n2\r\n0 21 \r\n9\r\n2 2\r\n4 2\r\n6 2\r\n8 2\r\n10 2\r\n12 2\r\n14 2\r\n16 2\r\n18 2\r\n"
+            ],
+            [
+                "20 9 10 2\r\n3 5 7 9 11 13 15 17 19\r\n2 4 6 8 10 12 14 16 18 20\r\n",
+                "Yes\r\n0\r\n\r\n9\r\n2 1\r\n4 1\r\n6 1\r\n8 1\r\n10 1\r\n12 1\r\n14 1\r\n16 1\r\n18 1\r\n"
+            ],
+            [
+                "20 0 0 3\r\n\r\n\r\n",
+                "Yes\r\n0\r\n\r\n0\r\n"
+            ],
+            [
+                "20 5 4 3\r\n3 9 13 14 15\r\n1 5 7 11\r\n",
+                "Yes\r\n2\r\n2 4 \r\n4\r\n4 1\r\n7 1\r\n10 1\r\n13 1\r\n"
+            ],
+            [
+                "20 8 8 3\r\n4 6 7 12 14 16 17 19\r\n1 2 3 7 9 11 12 19\r\n",
+                "Yes\r\n4\r\n4 8 13 20 \r\n4\r\n3 1\r\n6 2\r\n9 1\r\n13 2\r\n"
+            ],
+            [
+                "20 9 10 7\r\n3 4 5 6 14 17 18 19 20\r\n1 8 9 10 11 12 13 14 15 18\r\n",
+                "Yes\r\n4\r\n2 7 16 21 \r\n2\r\n7 1\r\n16 2\r\n"
+            ],
+            [
+                "20 7 10 8\r\n7 9 13 17 18 19 20\r\n1 2 3 4 5 9 10 11 15 20\r\n",
+                "Yes\r\n6\r\n6 8 12 14 16 21 \r\n2\r\n8 1\r\n16 2\r\n"
+            ],
+            [
+                "20 13 10 4\r\n1 2 3 4 5 6 7 8 9 10 11 16 18\r\n10 11 13 14 15 16 17 18 19 20\r\n",
+                "Yes\r\n2\r\n0 12 \r\n4\r\n4 2\r\n8 2\r\n12 1\r\n16 1\r\n"
+            ],
+            [
+                "20 9 9 8\r\n1 8 9 14 16 17 18 19 20\r\n3 4 5 6 11 12 13 14 20\r\n",
+                "Yes\r\n6\r\n0 2 7 10 15 21 \r\n2\r\n10 1\r\n18 2\r\n"
+            ],
+            [
+                "20 10 11 3\r\n1 4 5 6 10 12 13 14 18 20\r\n3 8 9 10 11 14 16 17 18 19 20\r\n",
+                "Yes\r\n6\r\n0 2 4 7 12 15 \r\n6\r\n3 1\r\n7 1\r\n10 1\r\n13 2\r\n16 1\r\n19 1\r\n"
+            ],
+            [
+                "20 11 11 3\r\n1 8 9 10 11 12 13 14 18 19 20\r\n3 4 5 6 7 8 9 13 16 17 18\r\n",
+                "Yes\r\n6\r\n0 2 10 15 19 21 \r\n6\r\n3 1\r\n6 1\r\n9 1\r\n12 2\r\n15 1\r\n18 1\r\n"
+            ]
+        ]
+    }
+]

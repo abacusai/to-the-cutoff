@@ -1,0 +1,140 @@
+[
+    {
+        "name": "Very simple problem",
+        "description": "You are given a convex polygon. Count, please, the number of triangles that\ncontain a given point in the plane and their vertices are the vertices of the\npolygon. It is guaranteed, that the point doesn't lie on the sides and the\ndiagonals of the polygon. Input The first line contains integer n \u2014 the number\nof vertices of the polygon (3 \u2264 n \u2264 100000). The polygon description is\nfollowing: n lines containing coordinates of the vertices in clockwise order\n(integer x and y not greater than 10^9 by absolute value). It is guaranteed\nthat the given polygon is nondegenerate and convex (no three points lie on the\nsame line). The next line contains integer t (1 \u2264 t \u2264 20) \u2014 the number of\npoints which you should count the answer for. It is followed by t lines with\ncoordinates of the points (integer x and y not greater than 10^9 by absolute\nvalue). Output The output should contain t integer numbers, each on a separate\nline, where i-th number is the answer for the i-th point. Please, do not use\n\nuse cin (also you may use \nOutput 2 Input 3 0 0 0 5 5 0 2 1 1 10 10 Output 1 0 Input 5 7 6 6 3 4 1 1 2 2\n4 4 3 3 2 3 5 5 4 2 Output 5 3 3 4\n\n",
+        "cf_contest_id": 55,
+        "cf_index": "E",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "geometry",
+            "two pointers"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n5 0\r\n0 0\r\n0 5\r\n5 5\r\n1\r\n1 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n0 0\r\n0 5\r\n5 0\r\n2\r\n1 1\r\n10 10\r\n",
+                "1\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 6\r\n6 3\r\n4 1\r\n1 2\r\n2 4\r\n4\r\n3 3\r\n2 3\r\n5 5\r\n4 2\r\n",
+                "5\r\n3\r\n3\r\n4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n3 2\r\n4 0\r\n3 -2\r\n1 -3\r\n-1 -3\r\n-3 -2\r\n-4 0\r\n-3 2\r\n-1 3\r\n1 3\r\n5\r\n10 0\r\n2 1\r\n-2 1\r\n2 -1\r\n-2 -1\r\n",
+                "0\r\n30\r\n30\r\n30\r\n30\r\n"
+            ],
+            [
+                "4\r\n2 2\r\n2 1\r\n1 1\r\n1 2\r\n4\r\n0 1\r\n0 0\r\n3 3\r\n3 1\r\n",
+                "0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "3\r\n1 1\r\n4 5\r\n3 -2\r\n2\r\n2 1\r\n3 1\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "9\r\n0 3\r\n2 6\r\n4 8\r\n7 7\r\n9 6\r\n7 3\r\n4 1\r\n2 0\r\n0 0\r\n6\r\n3 5\r\n1 4\r\n6 0\r\n5 4\r\n6 7\r\n-43 -23\r\n",
+                "24\r\n12\r\n0\r\n28\r\n12\r\n0\r\n"
+            ],
+            [
+                "6\r\n-5 -5\r\n-4 100\r\n-2 10\r\n-2 -8\r\n-3 -200\r\n-4 -239\r\n3\r\n-3 1\r\n-5 -4\r\n-3 -6\r\n",
+                "8\r\n0\r\n8\r\n"
+            ],
+            [
+                "10\r\n50 50\r\n58 51\r\n57 47\r\n56 44\r\n55 42\r\n54 41\r\n53 41\r\n52 42\r\n51 44\r\n50 47\r\n3\r\n51 50\r\n55 50\r\n50 51\r\n",
+                "8\r\n8\r\n0\r\n"
+            ],
+            [
+                "4\r\n3 1\r\n1 -1\r\n0 0\r\n2 2\r\n2\r\n1 0\r\n2 1\r\n",
+                "2\r\n2\r\n"
+            ],
+            [
+                "7\r\n0 2\r\n1 5\r\n3 7\r\n10 9\r\n10 2\r\n9 1\r\n1 0\r\n20\r\n3 1\r\n4 1\r\n5 1\r\n6 1\r\n7 1\r\n8 1\r\n2 3\r\n3 3\r\n6 3\r\n8 3\r\n9 3\r\n2 4\r\n7 4\r\n8 4\r\n9 4\r\n2 5\r\n3 5\r\n4 5\r\n7 5\r\n8 5\r\n",
+                "8\r\n8\r\n8\r\n5\r\n5\r\n5\r\n13\r\n13\r\n13\r\n11\r\n8\r\n11\r\n11\r\n8\r\n8\r\n11\r\n12\r\n12\r\n8\r\n8\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-1 3\r\n-4 -4\r\n-1 -1\r\n3 3\r\n-4 -4\r\n-1 3\r\n-1 3\r\n-1 3\r\n-4 -4\r\n-3 -4\r\n1 -3\r\n-3 -4\r\n-4 -3\r\n-3 -4\r\n-3 -4\r\n-3 1\r\n-1 3\r\n-4 -4\r\n3 -1\r\n3 -1\r\n",
+                "138\r\n0\r\n138\r\n138\r\n0\r\n138\r\n138\r\n138\r\n0\r\n0\r\n120\r\n0\r\n0\r\n0\r\n0\r\n120\r\n138\r\n0\r\n138\r\n138\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n3 -1\r\n-3 1\r\n-1 3\r\n3 3\r\n-4 -4\r\n-4 -3\r\n-1 3\r\n-1 -1\r\n-1 -1\r\n3 -1\r\n-1 3\r\n-4 -4\r\n-3 -4\r\n-3 1\r\n-4 -4\r\n-3 -4\r\n-3 1\r\n-3 1\r\n-1 -1\r\n-3 1\r\n",
+                "138\r\n120\r\n138\r\n138\r\n0\r\n0\r\n138\r\n138\r\n138\r\n138\r\n138\r\n0\r\n0\r\n120\r\n0\r\n0\r\n120\r\n120\r\n138\r\n120\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-3 1\r\n-3 1\r\n-4 -3\r\n-4 -3\r\n-3 -4\r\n-4 -3\r\n-3 1\r\n3 -1\r\n3 -1\r\n3 -1\r\n-4 -4\r\n-4 -3\r\n-1 3\r\n-4 -4\r\n-4 -4\r\n3 3\r\n-3 -4\r\n-3 1\r\n-4 -4\r\n-4 -3\r\n",
+                "120\r\n120\r\n0\r\n0\r\n0\r\n0\r\n120\r\n138\r\n138\r\n138\r\n0\r\n0\r\n138\r\n0\r\n0\r\n138\r\n0\r\n120\r\n0\r\n0\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-4 -3\r\n-3 1\r\n1 -3\r\n3 3\r\n-3 -4\r\n1 -3\r\n-3 -4\r\n3 -1\r\n3 -1\r\n-3 -4\r\n-1 3\r\n-3 1\r\n-1 -1\r\n-3 -4\r\n-3 1\r\n-4 -4\r\n1 -3\r\n-4 -4\r\n-1 -1\r\n3 3\r\n",
+                "0\r\n120\r\n120\r\n138\r\n0\r\n120\r\n0\r\n138\r\n138\r\n0\r\n138\r\n120\r\n138\r\n0\r\n120\r\n0\r\n120\r\n0\r\n138\r\n138\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-1 3\r\n-1 -1\r\n1 -3\r\n-4 -3\r\n-4 -4\r\n-4 -3\r\n-4 -4\r\n-1 3\r\n-1 -1\r\n1 -3\r\n3 3\r\n-4 -4\r\n-4 -4\r\n-3 -4\r\n-3 1\r\n-4 -3\r\n1 -3\r\n-4 -3\r\n-1 -1\r\n-1 3\r\n",
+                "138\r\n138\r\n120\r\n0\r\n0\r\n0\r\n0\r\n138\r\n138\r\n120\r\n138\r\n0\r\n0\r\n0\r\n120\r\n0\r\n120\r\n0\r\n138\r\n138\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-1 3\r\n-3 1\r\n3 -1\r\n-1 3\r\n3 3\r\n-1 -1\r\n-1 -1\r\n-1 -1\r\n1 -3\r\n1 -3\r\n3 -1\r\n-4 -4\r\n-4 -3\r\n1 -3\r\n-1 -1\r\n-3 1\r\n-4 -3\r\n-4 -4\r\n3 -1\r\n-1 -1\r\n",
+                "138\r\n120\r\n138\r\n138\r\n138\r\n138\r\n138\r\n138\r\n120\r\n120\r\n138\r\n0\r\n0\r\n120\r\n138\r\n120\r\n0\r\n0\r\n138\r\n138\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-4 -3\r\n-1 3\r\n1 -3\r\n1 -3\r\n3 -1\r\n-3 -4\r\n3 3\r\n3 -1\r\n3 -1\r\n-4 -3\r\n-3 1\r\n-1 3\r\n3 -1\r\n-3 1\r\n-3 1\r\n1 -3\r\n3 -1\r\n-1 -1\r\n-3 1\r\n-1 3\r\n",
+                "0\r\n138\r\n120\r\n120\r\n138\r\n0\r\n138\r\n138\r\n138\r\n0\r\n120\r\n138\r\n138\r\n120\r\n120\r\n120\r\n138\r\n138\r\n120\r\n138\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n1 -3\r\n-3 -4\r\n-3 1\r\n-3 -4\r\n-1 -1\r\n-4 -3\r\n3 3\r\n-3 1\r\n-4 -4\r\n-1 -1\r\n-4 -4\r\n3 -1\r\n-4 -3\r\n-4 -4\r\n-4 -4\r\n-4 -3\r\n1 -3\r\n3 3\r\n-3 -4\r\n-1 -1\r\n",
+                "120\r\n0\r\n120\r\n0\r\n138\r\n0\r\n138\r\n120\r\n0\r\n138\r\n0\r\n138\r\n0\r\n0\r\n0\r\n0\r\n120\r\n138\r\n0\r\n138\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-1 3\r\n3 3\r\n-3 1\r\n-3 -4\r\n-3 1\r\n1 -3\r\n3 3\r\n-4 -3\r\n-1 -1\r\n1 -3\r\n-1 -1\r\n-1 3\r\n3 -1\r\n-3 1\r\n-3 -4\r\n-4 -3\r\n1 -3\r\n-3 1\r\n-3 1\r\n-1 3\r\n",
+                "138\r\n138\r\n120\r\n0\r\n120\r\n120\r\n138\r\n0\r\n138\r\n120\r\n138\r\n138\r\n138\r\n120\r\n0\r\n0\r\n120\r\n120\r\n120\r\n138\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-4 -3\r\n-4 -4\r\n3 -1\r\n1 -3\r\n-4 -3\r\n-1 3\r\n-1 3\r\n-4 -3\r\n-1 -1\r\n-3 -4\r\n3 3\r\n-3 -4\r\n3 -1\r\n-3 -4\r\n-4 -3\r\n3 -1\r\n3 -1\r\n-4 -3\r\n-4 -4\r\n-4 -3\r\n",
+                "0\r\n0\r\n138\r\n120\r\n0\r\n138\r\n138\r\n0\r\n138\r\n0\r\n138\r\n0\r\n138\r\n0\r\n0\r\n138\r\n138\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-4 -4\r\n-1 -1\r\n3 -1\r\n1 -3\r\n-3 -4\r\n3 -1\r\n3 3\r\n-4 -4\r\n-3 -4\r\n1 -3\r\n-1 -1\r\n-1 3\r\n-4 -3\r\n-3 -4\r\n-4 -3\r\n3 -1\r\n-3 1\r\n3 3\r\n-1 -1\r\n1 -3\r\n",
+                "0\r\n138\r\n138\r\n120\r\n0\r\n138\r\n138\r\n0\r\n0\r\n120\r\n138\r\n138\r\n0\r\n0\r\n0\r\n138\r\n120\r\n138\r\n138\r\n120\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-1 -1\r\n1 -3\r\n-1 3\r\n-3 -4\r\n-3 -4\r\n1 -3\r\n-3 -4\r\n-1 -1\r\n-3 1\r\n3 -1\r\n-3 1\r\n3 -1\r\n-3 -4\r\n3 -1\r\n1 -3\r\n-3 1\r\n-4 -4\r\n-1 3\r\n-3 1\r\n-1 3\r\n",
+                "138\r\n120\r\n138\r\n0\r\n0\r\n120\r\n0\r\n138\r\n120\r\n138\r\n120\r\n138\r\n0\r\n138\r\n120\r\n120\r\n0\r\n138\r\n120\r\n138\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n3 3\r\n-4 -3\r\n3 -1\r\n-1 3\r\n-1 3\r\n1 -3\r\n-3 -4\r\n-4 -4\r\n-1 3\r\n-1 3\r\n3 -1\r\n3 3\r\n-3 1\r\n-3 -4\r\n-3 -4\r\n3 -1\r\n3 3\r\n3 3\r\n-3 -4\r\n-3 -4\r\n",
+                "138\r\n0\r\n138\r\n138\r\n138\r\n120\r\n0\r\n0\r\n138\r\n138\r\n138\r\n138\r\n120\r\n0\r\n0\r\n138\r\n138\r\n138\r\n0\r\n0\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-1 3\r\n-1 3\r\n3 3\r\n3 -1\r\n-1 3\r\n-4 -3\r\n3 3\r\n-1 -1\r\n-1 -1\r\n-4 -3\r\n-3 1\r\n-3 -4\r\n3 -1\r\n-1 -1\r\n-3 -4\r\n3 3\r\n-1 3\r\n-1 3\r\n-1 -1\r\n-4 -4\r\n",
+                "138\r\n138\r\n138\r\n138\r\n138\r\n0\r\n138\r\n138\r\n138\r\n0\r\n120\r\n0\r\n138\r\n138\r\n0\r\n138\r\n138\r\n138\r\n138\r\n0\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-1 3\r\n-4 -4\r\n-3 1\r\n-4 -3\r\n-3 1\r\n1 -3\r\n3 3\r\n-3 -4\r\n3 -1\r\n1 -3\r\n-3 1\r\n-4 -4\r\n-4 -4\r\n3 3\r\n-1 -1\r\n3 -1\r\n3 3\r\n-1 -1\r\n-3 1\r\n-4 -3\r\n",
+                "138\r\n0\r\n120\r\n0\r\n120\r\n120\r\n138\r\n0\r\n138\r\n120\r\n120\r\n0\r\n0\r\n138\r\n138\r\n138\r\n138\r\n138\r\n120\r\n0\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-3 1\r\n-1 3\r\n-4 -4\r\n3 -1\r\n1 -3\r\n3 3\r\n-4 -4\r\n-3 1\r\n-3 -4\r\n3 -1\r\n-3 1\r\n3 3\r\n-1 -1\r\n-1 3\r\n1 -3\r\n1 -3\r\n-4 -3\r\n-1 -1\r\n1 -3\r\n-1 3\r\n",
+                "120\r\n138\r\n0\r\n138\r\n120\r\n138\r\n0\r\n120\r\n0\r\n138\r\n120\r\n138\r\n138\r\n138\r\n120\r\n120\r\n0\r\n138\r\n120\r\n138\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-1 3\r\n-3 -4\r\n-1 3\r\n-1 3\r\n-1 3\r\n1 -3\r\n-3 -4\r\n1 -3\r\n1 -3\r\n3 -1\r\n-3 1\r\n3 3\r\n-1 -1\r\n1 -3\r\n-1 3\r\n-4 -4\r\n1 -3\r\n-1 3\r\n-3 -4\r\n-1 3\r\n",
+                "138\r\n0\r\n138\r\n138\r\n138\r\n120\r\n0\r\n120\r\n120\r\n138\r\n120\r\n138\r\n138\r\n120\r\n138\r\n0\r\n120\r\n138\r\n0\r\n138\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n-4 -4\r\n-1 3\r\n-3 1\r\n-1 -1\r\n-1 3\r\n3 -1\r\n1 -3\r\n3 3\r\n-4 -3\r\n-1 3\r\n-1 -1\r\n-3 1\r\n3 -1\r\n-1 3\r\n3 3\r\n-1 3\r\n-4 -3\r\n3 3\r\n-3 1\r\n-3 1\r\n",
+                "0\r\n138\r\n120\r\n138\r\n138\r\n138\r\n120\r\n138\r\n0\r\n138\r\n138\r\n120\r\n138\r\n138\r\n138\r\n138\r\n0\r\n138\r\n120\r\n120\r\n"
+            ],
+            [
+                "16\r\n-4 4\r\n-2 6\r\n0 7\r\n2 7\r\n4 6\r\n6 4\r\n7 2\r\n7 0\r\n6 -2\r\n4 -4\r\n2 -5\r\n0 -5\r\n-2 -4\r\n-4 -2\r\n-5 0\r\n-5 2\r\n20\r\n3 -1\r\n3 -1\r\n1 -3\r\n-4 -3\r\n-3 1\r\n-4 -4\r\n-3 -4\r\n-3 1\r\n-1 -1\r\n3 -1\r\n-1 3\r\n-1 -1\r\n-1 3\r\n3 3\r\n-1 3\r\n-1 -1\r\n-1 3\r\n-3 -4\r\n-4 -3\r\n-4 -3\r\n",
+                "138\r\n138\r\n120\r\n0\r\n120\r\n0\r\n0\r\n120\r\n138\r\n138\r\n138\r\n138\r\n138\r\n138\r\n138\r\n138\r\n138\r\n0\r\n0\r\n0\r\n"
+            ]
+        ]
+    }
+]

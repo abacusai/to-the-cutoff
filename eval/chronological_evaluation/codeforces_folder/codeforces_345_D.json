@@ -1,0 +1,105 @@
+[
+    {
+        "name": "Chain Letter",
+        "description": "A chain letter is a kind of a message which urges the recipient to forward it\nto as many contacts as possible, usually with some kind of mystic explanation.\nOf course, this is only a superstition, and you don't believe in it, but all\nyour friends do. You know that today there will be one of these letters going\naround, and you want to know how many times you'll receive it \u2014 of course, not\nthat you'll be sending it yourself! You are given an array of strings f with n\nelements which describes the contacts between you and n - 1 of your friends:\nj-th character of i-th string (f[i][j]) is \"1\" if people i and j will send\nmessages to each other, and \"0\" otherwise. Person 1 starts sending the letter\nto all his contacts; every person who receives the letter for the first time\nsends it to all his contacts. You are person n, and you don't forward the\nletter when you receive it. Calculate the number of copies of this letter\nyou'll receive. Input The first line of the input contains an integer n (2 \u2264 n\n\u2264 50) \u2014 the number of people involved. Next n following lines contain elements\nof f, strings of length n. Each character in f is either \"0\" or \"1\". It's\nguaranteed that two following equations hold: f[i][j] = f[j][i], f[i][i] = 0,\nfor all i, j (1 \u2264 i, j \u2264 n). Output Output a single integer \u2014 the number of\ncopies of the letter you will receive eventually. Examples Input 4 0111 1011\n1101 1110 Output 3 Input 4 0110 1010 1100 0000 Output 0 Input 4 0101 1001 0001\n1110 Output 2 Note In the first case, everybody sends letters to everyone, so\nyou get copies from all three of your friends. In the second case, you don't\nknow any of these people, so they don't bother you with their superstitious\nstuff. In the third case, two of your friends send you copies of the letter\nbut the third friend doesn't know them so he is unaffected.\n\n",
+        "cf_contest_id": 345,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "dfs and similar",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n0111\r\n1011\r\n1101\r\n1110\r\n",
+                "3\r\n"
+            ],
+            [
+                "4\r\n0110\r\n1010\r\n1100\r\n0000\r\n",
+                "0\r\n"
+            ],
+            [
+                "4\r\n0101\r\n1001\r\n0001\r\n1110\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n000\r\n000\r\n000\r\n",
+                "0\r\n"
+            ],
+            [
+                "5\r\n01001\r\n10001\r\n00010\r\n00100\r\n11000\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n01\r\n10\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n00\r\n00\r\n",
+                "0\r\n"
+            ],
+            [
+                "19\r\n0000110100001000100\r\n0000000010100101000\r\n0000011000000000000\r\n0000000101000100000\r\n1000000110111000000\r\n1010000100000100000\r\n0010000010110000100\r\n1001110000000110000\r\n0100101000110010000\r\n0001000000000001000\r\n0100101010001110101\r\n0000101010001101000\r\n1000100000110000011\r\n0101010100110000000\r\n0000000110100000000\r\n0100000001010000000\r\n1000001000100000010\r\n0000000000001000100\r\n0000000000101000000\r\n",
+                "2\r\n"
+            ],
+            [
+                "11\r\n01101110001\r\n10110101010\r\n11000111001\r\n01001000011\r\n10010110110\r\n11101010011\r\n10101101110\r\n01100010110\r\n00001011010\r\n01011111100\r\n10110100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "16\r\n0000000011100000\r\n0010000110110100\r\n0100000000001000\r\n0000110010011000\r\n0001001110101110\r\n0001001000010001\r\n0000110000000001\r\n0100100010001000\r\n1101100100001010\r\n1000000000100001\r\n1100100001000000\r\n0101010000001011\r\n0011100110010000\r\n0100100000000001\r\n0000100010010000\r\n0000011001010100\r\n",
+                "5\r\n"
+            ],
+            [
+                "20\r\n00010111000000111010\r\n00010000000100101010\r\n00011100111101100110\r\n11101000001000111001\r\n00110000111100101000\r\n10100011011001010010\r\n10000101011000010001\r\n10000110101001000100\r\n00101001001000101001\r\n00101110000111000001\r\n00111111100000000101\r\n01101000010010010101\r\n00000000010100100100\r\n00100101010000100110\r\n11111000100011000001\r\n10010110000100000100\r\n11011000100000000100\r\n00100001001111011011\r\n11100100000001000100\r\n00010010111100100100\r\n",
+                "8\r\n"
+            ],
+            [
+                "12\r\n000110100110\r\n000010010100\r\n000110101000\r\n101001100000\r\n111001011110\r\n000110000101\r\n101100010010\r\n010010101001\r\n001010010001\r\n110011000000\r\n100010100000\r\n000001011000\r\n",
+                "3\r\n"
+            ],
+            [
+                "17\r\n00000000100101011\r\n00101010000100000\r\n01000010010000100\r\n00000010000000000\r\n01000101000000000\r\n00001000000001000\r\n01110000001100000\r\n00001000000000000\r\n10000000000010101\r\n00100000000010000\r\n00000010000100000\r\n11000010001000000\r\n00000000110000010\r\n10000100000000100\r\n00100000100001001\r\n10000000000010000\r\n10000000100000100\r\n",
+                "3\r\n"
+            ],
+            [
+                "20\r\n00111111001101111011\r\n00101010000000010110\r\n11000010111110111001\r\n10001011000010111101\r\n11010011100011110110\r\n10000010111110101000\r\n11111101010110110101\r\n10011010111110000101\r\n00101101011011000111\r\n00100111100000100101\r\n10100101100110000010\r\n10100111001011100000\r\n00111111101100011011\r\n10001000100100110001\r\n10111110010101000110\r\n11111010000011001100\r\n10110100000010010111\r\n01011011110000111001\r\n11001000101010101001\r\n10110011110011001110\r\n",
+                "12\r\n"
+            ],
+            [
+                "6\r\n000100\r\n001010\r\n010011\r\n100000\r\n011000\r\n001000\r\n",
+                "0\r\n"
+            ],
+            [
+                "16\r\n0000000010000000\r\n0000000000000000\r\n0000001000000000\r\n0000000000010000\r\n0000000000000000\r\n0000000000000000\r\n0010000000100001\r\n0000000010010000\r\n1000000100000100\r\n0000000000000000\r\n0000001000000000\r\n0001000100000000\r\n0000000000000000\r\n0000000010000000\r\n0000000000000000\r\n0000001000000000\r\n",
+                "0\r\n"
+            ],
+            [
+                "6\r\n011111\r\n101111\r\n110111\r\n111011\r\n111101\r\n111110\r\n",
+                "5\r\n"
+            ],
+            [
+                "6\r\n010000\r\n101000\r\n010100\r\n001010\r\n000101\r\n000010\r\n",
+                "1\r\n"
+            ],
+            [
+                "7\r\n0100000\r\n1011000\r\n0100000\r\n0100100\r\n0001011\r\n0000100\r\n0000100\r\n",
+                "1\r\n"
+            ],
+            [
+                "7\r\n0100001\r\n1010001\r\n0100001\r\n0000001\r\n0000001\r\n0000001\r\n1111110\r\n",
+                "3\r\n"
+            ],
+            [
+                "9\r\n011000000\r\n100100000\r\n100000001\r\n010000001\r\n000001101\r\n000010100\r\n000011010\r\n000000100\r\n001110000\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

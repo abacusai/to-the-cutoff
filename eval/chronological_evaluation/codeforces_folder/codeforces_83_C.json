@@ -1,0 +1,157 @@
+[
+    {
+        "name": "Track",
+        "description": "You already know that Valery's favorite sport is biathlon. Due to your help,\nhe learned to shoot without missing, and his skills are unmatched at the\nshooting range. But now a smaller task is to be performed, he should learn to\ncomplete the path fastest. The track's map is represented by a rectangle n \u00d7 m\nin size divided into squares. Each square is marked with a lowercase Latin\nletter (which means the type of the plot), with the exception of the starting\nsquare (it is marked with a capital Latin letters S) and the terminating\nsquare (it is marked with a capital Latin letter T). The time of movement from\none square to another is equal to 1 minute. The time of movement within the\ncell can be neglected. We can move from the cell only to side-adjacent ones,\nbut it is forbidden to go beyond the map edges. Also the following restriction\nis imposed on the path: it is not allowed to visit more than k different types\nof squares (squares of one type can be visited an infinite number of times).\nSquares marked with S and T have no type, so they are not counted. But S must\nbe visited exactly once \u2014 at the very beginning, and T must be visited exactly\nonce \u2014 at the very end. Your task is to find the path from the square S to the\nsquare T that takes minimum time. Among all shortest paths you should choose\nthe lexicographically minimal one. When comparing paths you should\nlexicographically represent them as a sequence of characters, that is, of plot\ntypes. Input The first input line contains three integers n, m and k (1 \u2264 n, m\n\u2264 50, n\u00b7m \u2265 2, 1 \u2264 k \u2264 4). Then n lines contain the map. Each line has the\nlength of exactly m characters and consists of lowercase Latin letters and\ncharacters S and T. It is guaranteed that the map contains exactly one\ncharacter S and exactly one character T. Pretest 12 is one of the maximal\ntests for this problem. Output If there is a path that satisfies the\ncondition, print it as a sequence of letters \u2014 the plot types. Otherwise,\nprint \"-1\" (without quotes). You shouldn't print the character S in the\nbeginning and T in the end. Note that this sequence may be empty. This case is\npresent in pretests. You can just print nothing or print one \"End of\nline\"-character. Both will be accepted. Examples Input 5 3 2 Sba ccc aac ccc\nabT Output bcccc Input 3 4 1 Sxyy yxxx yyyT Output xxxx Input 1 3 3 TyS Output\ny Input 1 4 1 SxyT Output -1\n\n",
+        "cf_contest_id": 83,
+        "cf_index": "C",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "graphs",
+            "greedy",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 3 2\r\nSba\r\nccc\r\naac\r\nccc\r\nabT\r\n",
+                "bcccc\r\n"
+            ],
+            [
+                "3 4 1\r\nSxyy\r\nyxxx\r\nyyyT\r\n",
+                "xxxx\r\n"
+            ],
+            [
+                "1 3 3\r\nTyS\r\n",
+                "y\r\n"
+            ],
+            [
+                "1 4 1\r\nSxyT\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 3 3\r\nSaT\r\n",
+                "a\r\n"
+            ],
+            [
+                "3 4 1\r\nSbbT\r\naaaa\r\nabba\r\n",
+                "bb\r\n"
+            ],
+            [
+                "3 5 2\r\nSbcaT\r\nacbab\r\nacccb\r\n",
+                "aacccaa\r\n"
+            ],
+            [
+                "3 4 1\r\nSbbb\r\naaaT\r\nabbc\r\n",
+                "aaa\r\n"
+            ],
+            [
+                "3 4 2\r\nSbbb\r\naabT\r\nabbc\r\n",
+                "aab\r\n"
+            ],
+            [
+                "1 2 1\r\nST\r\n",
+                "\r\n"
+            ],
+            [
+                "4 5 3\r\nabaaa\r\nbabaT\r\nSabba\r\naaaaa\r\n",
+                "aaba\r\n"
+            ],
+            [
+                "6 6 3\r\npkhipk\r\nmlfmak\r\naqmbae\r\ndlbfSj\r\ndpbjcr\r\naTbqbm\r\n",
+                "cbqb\r\n"
+            ],
+            [
+                "1 20 3\r\nacbccbbddbffScTadffd\r\n",
+                "c\r\n"
+            ],
+            [
+                "1 30 2\r\nbmjcfldkloleiqqiTnmdjpaSckkijf\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 40 1\r\nfaSfgfTcfadcdfagfbccbffbeaaebagbfcfcgdfd\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 50 3\r\nSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaTaaaaaaaaaaa\r\n",
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n"
+            ],
+            [
+                "5 10 4\r\naaaaaaaaaa\r\naaaaaTaaaa\r\naaaaaaaSaa\r\naaaaaaaaaa\r\naaaaaaaaaa\r\n",
+                "aa\r\n"
+            ],
+            [
+                "5 3 4\r\naaT\r\nacc\r\nbbb\r\nbbc\r\ncSb\r\n",
+                "bbbc\r\n"
+            ],
+            [
+                "5 5 1\r\ncaTbc\r\ndccac\r\ndacda\r\naacaS\r\ncdcab\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10 8 2\r\nbdcdcbfa\r\ndecffcce\r\ndTffdacb\r\neeedcdbb\r\nfdbbbcba\r\nddabfcda\r\nabdbSeed\r\nbdcdcffa\r\ncadbaffa\r\nfcccddad\r\n",
+                "bbbbee\r\n"
+            ],
+            [
+                "20 10 3\r\nebebccacdb\r\neeebccddeT\r\neadebecaac\r\nadeeeaccbc\r\nbaccccdaed\r\ndeabceabba\r\ndadbecbaaa\r\neacbbcedcb\r\naeeScdbbab\r\nbabaecaead\r\nbacdbebeae\r\naacbadbeec\r\nacddceecca\r\nacaeaebaba\r\ncdddeaaeae\r\neabddadade\r\nddddaeaeed\r\nbccbaacadd\r\ndccccbabdc\r\necdaebeccc\r\n",
+                "bbbcccaccaac\r\n"
+            ],
+            [
+                "15 10 4\r\nsejwprqjku\r\npnjsiopxft\r\nrsplgvwixq\r\nendglkchxl\r\nftihbbexgh\r\nsxtxbbavge\r\njcdkusfnmr\r\nskgsqvflia\r\nkcxmcxjpae\r\namaiwcfile\r\nnjgjSunmwd\r\nldxvahgreu\r\necmrajbjuT\r\nnaioqigols\r\npbwrmxkltj\r\n",
+                "aajbju\r\n"
+            ],
+            [
+                "15 3 4\r\nllv\r\nttT\r\nhbo\r\nogc\r\nkfe\r\ngli\r\nfbx\r\nkfp\r\nspm\r\ncxc\r\nndw\r\nSoa\r\npfh\r\nedr\r\nxmv\r\n",
+                "-1\r\n"
+            ],
+            [
+                "15 15 3\r\ncbbdccabdcbacbd\r\nbcabdcacadacdbc\r\ncbcddbbcdbddcad\r\nddcabdbbdcabbdc\r\naabadcccTcabdbb\r\ncbacaaacaabdbbd\r\ndbdcbSdabaadbdb\r\ndbbaddcdddaadbb\r\nbbddcdcbaccbbaa\r\nadadadbdbbddccc\r\ncddbbdaddcbbdcc\r\nbbaadcdbbcaacca\r\nadbdcdbbcbddbcd\r\ncdadbcccddcdbda\r\ncbcdaabdcabccbc\r\n",
+                "aaca\r\n"
+            ],
+            [
+                "20 20 2\r\nddadfcdeTaeccbedeaec\r\nacafdfdeaffdeabdcefe\r\nabbcbefcdbbbcdebafef\r\nfdafdcccbcdeeaedeffc\r\ndfdaabdefdafabaabcef\r\nfebdcabacaaaabfacbbe\r\nabfcaacadfdbfdbaaefd\r\ndacceeccddccaccdbbce\r\ncacebecabedbddfbfdad\r\ndacbfcabbebfddcedffd\r\ncfcdfacfadcfbcebebaa\r\nddfbebafaccbebeefbac\r\nebfaebacbbebdfcbcbea\r\ndfbaebcfccacfeaccaad\r\nedeedeceebcbfdbcdbbe\r\nafaacccfbdecebfdabed\r\nddbdcedacedadeccaeec\r\necbSeacbdcccbcedafef\r\ncfdbeeffbeeafccfdddb\r\ncefdbdfbabccfdaaadbf\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10 10 2\r\nbaaaaaaaaa\r\nbffacffffa\r\nbggaccggga\r\nbbbSccchha\r\nbdddddccia\r\nbjddccccca\r\nbkkdddTaaa\r\nblllddblla\r\nbmmmmdbmma\r\nbbbbbbbbbb\r\n",
+                "ccccc\r\n"
+            ],
+            [
+                "10 20 3\r\nbaaaaaaaaaaaaaaaaaaa\r\nbfffffffacfffffffffa\r\nbgggggggaccgggggggga\r\nbbbbbbbbSccchhhhhhha\r\nbiiiiidddddcciiiiiia\r\nbjjjjjjddcccccjjjjja\r\nbkkkkkkkdddTaaaaaaaa\r\nbllllllllddbllllllla\r\nbmmmmmmmmmdbmmmmmmma\r\nbbbbbbbbbbbbbbbbbbbb\r\n",
+                "ccccc\r\n"
+            ],
+            [
+                "20 10 4\r\nbaaaaaaaaa\r\nbffacffffa\r\nbggaccggga\r\nbhhaccchha\r\nbiiaccccia\r\nbjjaccccca\r\nbkkakkkkka\r\nbllallllla\r\nbbbSmmmmma\r\nbnnnnnnnna\r\nbooooooooa\r\nbpppppTaaa\r\nbqqqqqbqqa\r\nbrrrrrbrra\r\nbdddddbssa\r\nbtddddbtta\r\nbuudddbuua\r\nbvvvddbvva\r\nbwwwwdbwwa\r\nbbbbbbbbbb\r\n",
+                "mmmno\r\n"
+            ],
+            [
+                "20 20 2\r\nbaaaaaaaaaaaaaaaaaaa\r\nbfffffffacfffffffffa\r\nbgggggggaccgggggggga\r\nbhhhhhhhaccchhhhhhha\r\nbiiiiiiiacccciiiiiia\r\nbjjjjjjjacccccjjjjja\r\nbkkkkkkkacccccckkkka\r\nblllllllacccccccllla\r\nbbbbbbbbSccccccccmma\r\nbddddddddddcccccccna\r\nbodddddddcccccccccca\r\nbppddddddddTaaaaaaaa\r\nbqqqdddddddbqqqqqqqa\r\nbrrrrddddddbrrrrrrra\r\nbsssssdddddbsssssssa\r\nbttttttddddbttttttta\r\nbuuuuuuudddbuuuuuuua\r\nbvvvvvvvvddbvvvvvvva\r\nbwwwwwwwwwdbwwwwwwwa\r\nbbbbbbbbbbbbbbbbbbbb\r\n",
+                "ccccc\r\n"
+            ],
+            [
+                "1 2 4\r\nST\r\n",
+                "\r\n"
+            ],
+            [
+                "3 3 1\r\naaa\r\naaa\r\nTSa\r\n",
+                "\r\n"
+            ],
+            [
+                "2 1 1\r\nS\r\nT\r\n",
+                "\r\n"
+            ],
+            [
+                "1 10 2\r\nbaaSaaTacb\r\n",
+                "aa\r\n"
+            ],
+            [
+                "2 1 4\r\nS\r\nT\r\n",
+                "\r\n"
+            ]
+        ]
+    }
+]

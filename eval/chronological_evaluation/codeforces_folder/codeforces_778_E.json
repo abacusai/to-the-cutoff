@@ -1,0 +1,180 @@
+[
+    {
+        "name": "Selling Numbers",
+        "description": "Boris really likes numbers and even owns a small shop selling interesting\nnumbers. He has n decimal numbers Bi. Cost of the number in his shop is equal\nto the sum of costs of its digits. You are given the values cd, where cd is\nthe cost of the digit d. Of course, Boris is interested in that numbers he\nowns have the maximum cost possible. Recently Boris got hold of the magical\nartifact A, which can allow him to increase the cost of his collection.\nArtifact is a string, consisting of digits and '?' symbols. To use the\nartifact, Boris must replace all '?' with digits to get a decimal number\nwithout leading zeros (it is also not allowed to get number 0). After that,\nthe resulting number is added to all numbers Bi in Boris' collection. He uses\nthe artifact exactly once. What is the maximum cost of the collection Boris\ncan achieve after using the artifact? Input First line contains artifact A,\nconsisting of digits '0'\u2013'9' and '?' symbols (1 \u2264 |A| \u2264 1000). Next line\ncontains n \u2014 the amount of numbers in Boris' collection (1 \u2264 n \u2264 1000). Next n\nlines contain integers Bi (1 \u2264 Bi < 10^1000). A doesn't start with '0'. Last\nline contains ten integers \u2014 costs of digits c0, c1, ..., c9 (0 \u2264 ci \u2264 1000).\nOutput Output one integer \u2014 the maximum possible cost of the collection after\nusing the artifact. Examples Input 42 3 89 1 958 0 0 1 1 2 2 3 3 4 4 Output 4\nInput ?5? 4 2203 5229 276 6243 2 1 6 1 1 2 5 2 2 3 Output 62 Note In the\nsecond sample input, the optimal way is to compose the number 453. After\nadding this number, Boris will have numbers 2656, 5682, 729 and 6696. The\ntotal cost of all digits in them is equal to 18 + 15 + 11 + 18 = 62.\n\n",
+        "cf_contest_id": 778,
+        "cf_index": "E",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "42\r\n3\r\n89\r\n1\r\n958\r\n0 0 1 1 2 2 3 3 4 4\r\n",
+                "4"
+            ],
+            [
+                "?5?\r\n4\r\n2203\r\n5229\r\n276\r\n6243\r\n2 1 6 1 1 2 5 2 2 3\r\n",
+                "62"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7\r\n1\r\n3\r\n8 1 5 4 7 8 4 7 5 5\r\n",
+                "9"
+            ],
+            [
+                "??\r\n15\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n286 581 293 453 203 142 812 307 160 509\r\n",
+                "20042"
+            ],
+            [
+                "????\r\n15\r\n4964\r\n200784979407\r\n8\r\n10504969852923\r\n139350978358\r\n510338401264\r\n13541\r\n178429642\r\n5470539\r\n6586737562677\r\n613648971975\r\n1\r\n3\r\n83666661558039\r\n31808008025\r\n6 91 7 107 101 186 191 32 223 198\r\n",
+                "18984"
+            ],
+            [
+                "7\r\n2\r\n6\r\n3\r\n1 4 4 8 7 2 2 7 6 2\r\n",
+                "17"
+            ],
+            [
+                "47\r\n1\r\n6\r\n6 4 10 8 3 4 8 1 10 9\r\n",
+                "12"
+            ],
+            [
+                "66\r\n5\r\n4692\r\n2\r\n46\r\n6724\r\n4\r\n1 7 4 4 10 5 4 9 4 8\r\n",
+                "86"
+            ],
+            [
+                "35542\r\n10\r\n1637\r\n5\r\n4453\r\n8986\r\n462131203\r\n37629\r\n9345416280\r\n8\r\n591820\r\n808\r\n74 79 92 26 96 34 63 38 39 20\r\n",
+                "3197"
+            ],
+            [
+                "2\r\n15\r\n5\r\n1\r\n6\r\n4\r\n9\r\n9\r\n4\r\n6\r\n6\r\n8\r\n8\r\n3\r\n8\r\n5\r\n4\r\n207 45 127 12 10 264 16 106 124 175\r\n",
+                "1844"
+            ],
+            [
+                "9328\r\n1\r\n214704426869\r\n232 119 159 1 282 144 106 300 37 1\r\n",
+                "2183"
+            ],
+            [
+                "55763480\r\n15\r\n293\r\n4046\r\n56060796\r\n6841503694973\r\n70493387750\r\n908176274\r\n335767793888\r\n5207360\r\n81\r\n9748940531087\r\n87448913681038\r\n6874868\r\n830823959658959\r\n252432732937\r\n929015460435\r\n517 666 646 540 121 640 994 660 87 607\r\n",
+                "85894"
+            ],
+            [
+                "?\r\n1\r\n7\r\n89 14 83 29 74 6 10 38 90 66\r\n",
+                "103"
+            ],
+            [
+                "???\r\n15\r\n472\r\n149\r\n2\r\n6\r\n44\r\n22\r\n73\r\n220\r\n154\r\n8\r\n7\r\n23\r\n7\r\n53\r\n8\r\n33 37 20 77 85 7 86 22 94 26\r\n",
+                "3122"
+            ],
+            [
+                "4\r\n1\r\n718281\r\n2 30 9 33 63 29 59 54 19 98\r\n",
+                "160"
+            ],
+            [
+                "?\r\n15\r\n7\r\n5\r\n5\r\n8\r\n7\r\n8\r\n9\r\n9\r\n5\r\n8\r\n1\r\n7\r\n1\r\n3\r\n1\r\n71 11 59 3 88 78 62 68 19 35\r\n",
+                "1129"
+            ],
+            [
+                "99?9031188\r\n15\r\n28156\r\n5960\r\n5180302734450\r\n115698\r\n2450\r\n1\r\n404455207\r\n34220661778544\r\n217655\r\n9\r\n8174491\r\n963280\r\n396\r\n82916838715582\r\n28644668\r\n5 11 1 3 5 1 11 11 13 11\r\n",
+                "1381"
+            ],
+            [
+                "?\r\n9\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n706 468 71 674 573 897 864 135 96 409\r\n",
+                "8696"
+            ],
+            [
+                "99999999999999?\r\n9\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n543 570 352 965 929 39 16 674 914 787\r\n",
+                "104408"
+            ],
+            [
+                "9999999999999??\r\n15\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n518 542 263 580 593 94 382 260 142 898\r\n",
+                "190848"
+            ],
+            [
+                "7?7?\r\n4\r\n222\r\n2222\r\n2\r\n2222\r\n419 7 171 103 214 39 146 61 209 462\r\n",
+                "5883"
+            ],
+            [
+                "1??1\r\n15\r\n8\r\n8888\r\n888\r\n88\r\n8\r\n888\r\n8888\r\n8\r\n888\r\n88\r\n88\r\n88\r\n8888\r\n88\r\n888\r\n347 106 52 240 224 176 185 223 33 376\r\n",
+                "17454"
+            ],
+            [
+                "???\r\n15\r\n999\r\n999\r\n999\r\n999\r\n999\r\n999\r\n999\r\n999\r\n999\r\n999\r\n999\r\n999\r\n999\r\n999\r\n999\r\n1000 1000 1000 1000 1000 1000 1000 1000 1000 1000\r\n",
+                "60000"
+            ],
+            [
+                "??\r\n10\r\n975810533\r\n85\r\n6872\r\n632\r\n90215547\r\n692601023\r\n4882290\r\n46530\r\n9744358\r\n75\r\n8 8 2 2 2 5 9 6 1 6\r\n",
+                "331"
+            ],
+            [
+                "???0?\r\n11\r\n227151887\r\n4\r\n5667091\r\n583377917\r\n20298584595\r\n14680490402\r\n453315686\r\n5\r\n509752\r\n216268\r\n8710552\r\n6 9 9 11 5 9 10 3 10 11\r\n",
+                "767"
+            ],
+            [
+                "8?0\r\n5\r\n9109\r\n754\r\n3\r\n8\r\n5\r\n4 5 5 2 4 1 3 1 2 2\r\n",
+                "50"
+            ],
+            [
+                "???\r\n14\r\n902\r\n72\r\n157\r\n1\r\n5\r\n765\r\n192\r\n8\r\n93\r\n840\r\n781\r\n1\r\n185\r\n70\r\n5 5 2 1 2 3 1 5 1 1\r\n",
+                "218"
+            ],
+            [
+                "????\r\n5\r\n9\r\n2\r\n352\r\n8401\r\n1\r\n2 1 2 1 1 2 1 2 1 1\r\n",
+                "39"
+            ],
+            [
+                "??\r\n6\r\n74639\r\n582\r\n2298\r\n74\r\n7485\r\n1\r\n3 3 2 1 1 1 3 2 3 1\r\n",
+                "47"
+            ],
+            [
+                "?\r\n6\r\n1777\r\n1\r\n644\r\n158\r\n464\r\n5413\r\n6 2 4 5 3 1 1 4 1 6\r\n",
+                "55"
+            ],
+            [
+                "??\r\n15\r\n4\r\n9\r\n5\r\n25\r\n2\r\n1\r\n4\r\n9\r\n2\r\n2\r\n4\r\n85\r\n57\r\n29\r\n5\r\n4 2 2 4 7 4 3 6 5 3\r\n",
+                "158"
+            ],
+            [
+                "???\r\n15\r\n6396\r\n8\r\n327488180922070\r\n10\r\n7778\r\n779\r\n4330870970\r\n39477437323318\r\n8098052395\r\n93993119771\r\n2\r\n67889028\r\n3\r\n2390985\r\n93056136\r\n97 48 103 73 115 20 119 8 17 70\r\n",
+                "7944"
+            ],
+            [
+                "??\r\n10\r\n9587\r\n581459447401\r\n31\r\n2734878\r\n227478\r\n32980616577\r\n211994950638662\r\n16\r\n70932\r\n1492\r\n157 215 178 142 18 229 56 245 218 166\r\n",
+                "11920"
+            ],
+            [
+                "?\r\n1\r\n4\r\n699 423 217 852 530 64 553 157 357 690\r\n",
+                "1275"
+            ],
+            [
+                "????????9???2?\r\n1\r\n5915\r\n26 307 436 115 454 606 512 580 202 55\r\n",
+                "7629"
+            ],
+            [
+                "????????????????????????????????????????????????????????????????????????????????????????????????????\r\n1\r\n9\r\n358 790 264 181 615 845 559 726 740 694\r\n",
+                "84500"
+            ],
+            [
+                "?????\r\n1\r\n417873046338\r\n338 893 489 760 913 690 42 21 272 729\r\n",
+                "8338"
+            ],
+            [
+                "??????????????????????????????????????????????????\r\n15\r\n3\r\n3\r\n7\r\n2\r\n2\r\n3\r\n7\r\n3\r\n8\r\n8\r\n2\r\n6\r\n1\r\n3\r\n9\r\n280 891 299 716 942 595 377 544 153 840\r\n",
+                "701990"
+            ],
+            [
+                "??666?6666??6?6?6???66?666????6???66??6?6?66??6?6666?6?6?6??6??666?6?6??666???666?6?6?6666666??????6\r\n1\r\n333333\r\n292 51 105 141 177 192 141 83 23 307\r\n",
+                "22234"
+            ],
+            [
+                "2946276112?210?21617318?11?3489?4?48?77?2??1?4?1122?56?9?0?90152433245?351315380?04??9124?18501?927161?1910?1001?2504358391?52361?274641749732929?01?4?740?92871?5?577?515?80??4?7597?550147756?0??8?6??1??05471?49\r\n1\r\n11050872143998674885831813402541973292529621478242800978238051504702465056783713428874202715751379727392469165102740383208423928646272789535758109976111447823690325707462182879584935074108628328655305074288898076464077277553478418745814018143\r\n81 94 295 802 603 184 355 85 825 229\r\n",
+                "113632"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,133 @@
+[
+    {
+        "name": "Dasha and Password",
+        "description": "After overcoming the stairs Dasha came to classes. She needed to write a\npassword to begin her classes. The password is a string of length n which\nsatisfies the following requirements: There is at least one digit in the\nstring, There is at least one lowercase (small) letter of the Latin alphabet\nin the string, There is at least one of three listed symbols in the string:\n'#', '*', '   '. Considering that these are programming classes it is not easy\nto write the password. For each character of the password we have a fixed\nstring of length m, on each of these n strings there is a pointer on some\ncharacter. The i-th character displayed on the screen is the pointed character\nin the i-th string. Initially, all pointers are on characters with indexes 1\nin the corresponding strings (all positions are numbered starting from one).\nDuring one operation Dasha can move a pointer in one string one character to\nthe left or to the right. Strings are cyclic, it means that when we move the\npointer which is on the character with index 1 to the left, it moves to the\ncharacter with the index m, and when we move it to the right from the position\nm it moves to the position 1. You need to determine the minimum number of\noperations necessary to make the string displayed on the screen a valid\npassword. Input The first line contains two integers n, m (3 \u2264 n \u2264 50, 1 \u2264 m \u2264\n50) \u2014 the length of the password and the length of strings which are assigned\nto password symbols. Each of the next n lines contains the string which is\nassigned to the i-th symbol of the password string. Its length is m, it\nconsists of digits, lowercase English letters, and characters '#', '*' or '   '.\nYou have such input data that you can always get a valid password. Output\nPrint one integer \u2014 the minimum number of operations which is necessary to\nmake the string, which is displayed on the screen, a valid password. Examples\nInput 3 4 1**2 a3*0 c4** Output 1 Input 5 5 #*   #* *a1c       q2w* #a3c# *   #*   \nOutput 3 Note In the first test it is necessary to move the pointer of the\nthird string to one left to get the optimal answer. In the second test one of\npossible algorithms will be: to move the pointer of the second symbol once to\nthe right. to move the pointer of the third symbol twice to the right.\n\n",
+        "cf_contest_id": 761,
+        "cf_index": "C",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dp",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 4\r\n1**2\r\na3*0\r\nc4**\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n#*&#*\r\n*a1c&\r\n&q2w*\r\n#a3c#\r\n*&#*&\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 2\r\n&l\r\n*0\r\n*9\r\n*#\r\n#o\r\n",
+                "2\r\n"
+            ],
+            [
+                "25 16\r\nvza**ooxkmd#*ywa\r\ndip#*#&ef&z&&&pv\r\nwggob&&72#*&&nku\r\nrsb##*&jm&#u**te\r\nzif#lu#t&2w#jbqb\r\nwfo&#&***0xp#&hp\r\njbw##h*###nkmkdn\r\nqrn*&y#3cnf&d*rc\r\nend*zg&0f*&g*&ak\r\niayh&r#8om#o**yq\r\nwym&e&*v0j&#zono\r\ntzu*vj&i18iew&ht\r\nhpfnceb193&#&acf\r\ngesvq&l&*&m*l*ru\r\nfot#u&pq&0y&s*pg\r\nqdfgs&hk*wob&&bw\r\nbqd&&&lnv&&ax&ql\r\nell#&t&k*p#n*rlg\r\nclfou#ap#*vxulmt\r\nfhp*gax&s1&pinql\r\nyihmh*yy&2&#&prc\r\nrmv**#h*bxyf&&eq\r\nziu##ku#f#uh*fek\r\nhmg&&cvx0p*#odgw\r\nquu&csv*aph#dkiq\r\n",
+                "10\r\n"
+            ],
+            [
+                "3 5\r\n*****\r\n1***a\r\n**a**\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 2\r\n&e\r\n#j\r\n&&\r\n*2\r\n94\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\ns*\r\nsq\r\n*v\r\nes\r\n*5\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 2\r\n0n\r\n5h\r\n7&\r\n1b\r\n5&\r\n4*\r\n9k\r\n0*\r\n7m\r\n62\r\n",
+                "2\r\n"
+            ],
+            [
+                "10 2\r\n89\r\n7&\r\ns8\r\now\r\n2#\r\n5&\r\nu&\r\n89\r\n8#\r\n3u\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 2\r\n#y\r\njc\r\n#6\r\n#0\r\nt7\r\ns7\r\nd#\r\nn2\r\n#7\r\n&3\r\n",
+                "1\r\n"
+            ],
+            [
+                "15 12\r\n502j2*su#*j4\r\n48vt&#2w8#r5\r\n43wl0085#&64\r\n99pedbk#*ol2\r\n08w#h#&y1346\r\n259*874&b*76\r\n40l#5hc*qta4\r\n280#h#r*3k98\r\n20t8o&l1##55\r\n8048l#6&o*37\r\n01a3z0179#30\r\n65p28q#0*3j3\r\n51tx885#**56\r\n105&&f64n639\r\n40v3&l61yr65\r\n",
+                "5\r\n"
+            ],
+            [
+                "15 12\r\ndcmzv&*zzflc\r\neftqm&**njyp\r\ntwlsi*jvuman\r\ngcxdlb#xwbul\r\nnpgvufdyqoaz\r\nxvvpk##&bpso\r\njlwcfb&kqlbu\r\nnpxxr#1augfd\r\nngnaph#erxpl\r\nlsfaoc*ulsbi\r\npffbe&6lrybj\r\nsuvpz#q&aahf\r\nizhoba**jjmc\r\nmkdtg#6*xtnp\r\nqqfpjo1gddqo\r\n",
+                "11\r\n"
+            ],
+            [
+                "15 12\r\n#&*&s#&&9&&&\r\n*&##*4&le&*#\r\n#*##24qh3*#&\r\n&***2j&a2###\r\n#*&#n68*z###\r\n##**1#&w#**&\r\n*&*#*0#&#***\r\n#*#*2723&*##\r\n&#&&mg3iu##*\r\n*&&#zl4k#&*&\r\n##&*5g#01&&*\r\n*##&wg1#6&*#\r\n#&**pvr6*&&#\r\n&&#*mzd#5&*#\r\n###*e2684#**\r\n",
+                "8\r\n"
+            ],
+            [
+                "20 13\r\n885**jh##mj0t\r\nky3h&h&clr#27\r\nq6n&v127i64xo\r\n3lz4du4zi5&z9\r\n0r7056qp8r*5a\r\nc8v94v#402l7n\r\nu968vxt9&2fkn\r\n2jl4m**o6412n\r\nh10v&vl*#4&h4\r\nj4864*##48*9d\r\n402i&3#x&o786\r\nzn8#w&*p#8&6l\r\n2e7&68p#&kc47\r\njf4e7fv&o0*3z\r\n0z67ocr7#5*79\r\nr8az68#&u&5a9\r\n65a#&9#*8o178\r\nqjevs&&muj893\r\n4c83i63j##m37\r\ng1g85c##f7y3f\r\n",
+                "3\r\n"
+            ],
+            [
+                "20 13\r\nvpym*054*4hoi\r\nldg&1u*yu4inw\r\nvs#b7*s27iqgo\r\nfp&*s2g#1i&#k\r\nyp&v474*58*#w\r\nzwfxx***4hqdg\r\nqqv*3163r2*&l\r\naxdc4l7&5l#fj\r\nqq&h#1z*&5#*a\r\nyml&&&9#a2*pr\r\nmpn&&78rbthpb\r\nac#d50**b7t#o\r\ndk&z7q&z&&#&j\r\ngyh#&f#0q5#&x\r\ncxw*#hgm#9nqn\r\nqm#&*c*k&2&bz\r\nxc#&86o#d9g#w\r\nzjm&12&9x3#hp\r\nzy&s##47u1jyf\r\nub*&9ao5qy#ip\r\n",
+                "6\r\n"
+            ],
+            [
+                "20 13\r\n*8002g&87&8&6\r\n&4&#2n*51i4&0\r\n40*#iq3pnc&87\r\n#*&0*s458&475\r\n802*8&1z*g533\r\n7171&a&2&2*8*\r\n*&##&&&&&t**&\r\n3#&*7#80*m18#\r\n#4#&#099qt9*7\r\n6*#56*#*&762&\r\n9406&ge0&7&07\r\n9**&6lv*v*2&&\r\n9##&c&i&z13#*\r\n68#*4g*9&f4&1\r\n37##80#&f2*&2\r\n81##*xo#q#5&0\r\n5247#hqy&d9&2\r\n#*13*5477*9#*\r\n2*&#q*0*fb9#*\r\n&2&4v*2##&&32\r\n",
+                "4\r\n"
+            ],
+            [
+                "25 16\r\n5v7dnmg1##qqa75*\r\n0187oa*&c&&ew9h*\r\nr70*&##*q#4i6*&#\r\n7*wk*&4v06col***\r\n28*0h94x**&21*f5\r\neh5vbt#8&8#8#3r&\r\np*01u&&90&08p*#*\r\nb9#e7&r8lc56b*##\r\nyb4&x#&4956iw&8*\r\n39&5#4d5#&3r8t5x\r\n7x13**kk#0n**&80\r\n4oux8yhz*pg84nnr\r\nb2yfb&b70xa&k56e\r\nqt5&q4&6#&*z5#3&\r\n5*#*086*51l&&44#\r\n84k5**0lij37j#&v\r\ns&j0m4j&2v3fv9h&\r\np&hu68704*&cufs#\r\n34ra*i1993*i*&55\r\nr#w#4#1#30*cudj*\r\n0m3p&e3t##y97&90\r\nk6my174e##5z1##4\r\n2*&v#0u&49f#*47#\r\nv5276hv1xn*wz8if\r\nk24*#&hu7e*##n8&\r\n",
+                "1\r\n"
+            ],
+            [
+                "25 16\r\n&*#&#**sw&**&#&#\r\n&*#*d#j*3b&q***#\r\n###&yq*v3q*&##**\r\n#**&#j&#6pt#*#*#\r\n***#y*cd&l*oe*##\r\n&&&***#k*e&*p&#*\r\n&###*&fkn*pni#**\r\n**&#ybz*&u*##&&#\r\n**##p&renhvlq#&#\r\n*#*&q&*#1&p#&&#&\r\n**&##&##2*ved&&*\r\n##*&tug&x*fx&*&*\r\n###**nt*u&&ux*&&\r\n&#&#**##1xca*#&&\r\n*#*&jw#rc#vow&&&\r\n&*#&exgq&&m*&#*&\r\n&&##l&&mbizc&**&\r\n##*&&#m*0&o#*##*\r\n&#*&fcqsy#&&#*#&\r\n**#**#*cdm#yf*&*\r\n*&##s#*v#*g#*&**\r\n*&##&*#mu##eh&#*\r\n####v#&i5*bnb&&&\r\n**##*hj&9#ro#&**\r\n#&&**&s*9x#f&&*#\r\n",
+                "12\r\n"
+            ],
+            [
+                "50 1\r\n#\r\n4\r\n7\r\n#\r\n&\r\n*\r\n3\r\n&\r\nc\r\n*\r\n7\r\n*\r\n#\r\nw\r\n1\r\n&\r\n8\r\n7\r\n&\r\n&\r\ny\r\ng\r\n#\r\n5\r\n*\r\n4\r\nx\r\ny\r\np\r\n6\r\nf\r\ne\r\np\r\n&\r\n#\r\n#\r\ns\r\nt\r\na\r\nm\r\n&\r\n1\r\nv\r\n#\r\n&\r\n1\r\nq\r\n0\r\ny\r\n3\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1\r\nr\r\n&\r\n6\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1\r\n1\r\nz\r\n#\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1\r\n6\r\n*\r\nt\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1\r\ni\r\n3\r\n&\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1\r\nj\r\n#\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1\r\n&\r\n7\r\no\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1\r\n&\r\nr\r\n3\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 8\r\n*1a*****\r\n*******a\r\n*******1\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 15\r\naaaaaaa1aaaaaaa\r\naaaaaaa*aaaaaaa\r\naaaaaaa*aaaaaaa\r\n",
+                "14\r\n"
+            ]
+        ]
+    }
+]

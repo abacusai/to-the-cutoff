@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Cutting a Fence",
+        "description": "Vasya the carpenter has an estate that is separated from the wood by a fence.\nThe fence consists of n planks put in a line. The fence is not closed in a\ncircle. The planks are numbered from left to right from 1 to n, the i-th plank\nis of height ai. All planks have the same width, the lower edge of each plank\nis located at the ground level. Recently a local newspaper \"Malevich and Life\"\nwrote that the most fashionable way to decorate a fence in the summer is to\ndraw a fuchsia-colored rectangle on it, the lower side of the rectangle must\nbe located at the lower edge of the fence. Vasya is delighted with this idea!\nHe immediately bought some fuchsia-colored paint and began to decide what kind\nof the rectangle he should paint. Vasya is sure that the rectangle should\ncover k consecutive planks. In other words, he will paint planks number x, x +\n1, ..., x + k - 1 for some x (1 \u2264 x \u2264 n - k + 1). He wants to paint the\nrectangle of maximal area, so the rectangle height equals min ai for x \u2264 i \u2264 x\n+ k - 1, x is the number of the first colored plank. Vasya has already made up\nhis mind that the rectangle width can be equal to one of numbers of the\nsequence k1, k2, ..., km. For each ki he wants to know the expected height of\nthe painted rectangle, provided that he selects x for such fence uniformly\namong all n - ki + 1 possible values. Help him to find the expected heights.\nInput The first line contains a single integer n (1 \u2264 n \u2264 10^6) \u2014 the number\nof planks in the fence. The second line contains a sequence of integers a1,\na2, ..., an (1 \u2264 ai \u2264 10^9) where ai is the height of the i-th plank of the\nfence. The third line contains an integer m (1 \u2264 m \u2264 10^6) and the next line\ncontains m space-separated integers k1, k2, ..., km (1 \u2264 ki \u2264 n) where ki is\nthe width of the desired fuchsia-colored rectangle in planks. Output Print m\nwhitespace-separated real numbers, the i-th number equals the expected value\nof the rectangle height, if its width in planks equals ki. The value will be\nconsidered correct if its absolute or relative error doesn't exceed 10^-9.\nExamples Input 3 3 2 1 3 1 2 3 Output 2.000000000000000 1.500000000000000\n1.000000000000000 Input 2 1 1 3 1 2 1 Output 1.000000000000000\n1.000000000000000 1.000000000000000 Note Let's consider the first sample test.\nThere are three possible positions of the fence for k1 = 1. For the first\nposition (x = 1) the height is 3, for the second one (x = 2) the height is 2,\nfor the third one (x = 3) the height is 1. As the fence position is chosen\nuniformly, the expected height of the fence equals ; There are two possible\npositions of the fence for k2 = 2. For the first position (x = 1) the height\nis 2, for the second one (x = 2) the height is 1. The expected height of the\nfence equals ; There is the only possible position of the fence for k3 = 3.\nThe expected height of the fence equals 1.\n\n",
+        "cf_contest_id": 212,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "dsu"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n3 2 1\r\n3\r\n1 2 3\r\n",
+                "2.0000000000000000\r\n1.5000000000000000\r\n1.0000000000000000\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n3\r\n1 2 1\r\n",
+                "1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n10\r\n4\r\n1 1 1 1\r\n",
+                "10.0000000000000000\r\n10.0000000000000000\r\n10.0000000000000000\r\n10.0000000000000000\r\n"
+            ],
+            [
+                "10\r\n1 1 2 2 1 1 2 1 3 1\r\n10\r\n1 2 3 4 5 6 7 8 9 10\r\n",
+                "1.5000000000000000\r\n1.1111111111111112\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n"
+            ],
+            [
+                "7\r\n1000000000 999999999 999999998 999999998 999999999 1000000000 1\r\n8\r\n1 2 3 4 5 6 7 1\r\n",
+                "857142856.4285714600000000\r\n833333332.1666666300000000\r\n799999998.6000000200000000\r\n749999998.7500000000000000\r\n666666665.6666666300000000\r\n499999999.5000000000000000\r\n1.0000000000000000\r\n857142856.4285714600000000\r\n"
+            ],
+            [
+                "13\r\n1 4 2 5 3 1 2 10 3 1 2 3 1\r\n13\r\n1 2 3 4 5 6 7 8 9 10 11 12 13\r\n",
+                "2.9230769230769229\r\n1.6666666666666667\r\n1.2727272727272727\r\n1.1000000000000001\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n"
+            ],
+            [
+                "4\r\n2 2 1 1\r\n8\r\n1 2 3 4 4 3 2 1\r\n",
+                "1.5000000000000000\r\n1.3333333333333333\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.3333333333333333\r\n1.5000000000000000\r\n"
+            ],
+            [
+                "4\r\n1 4 5 1\r\n5\r\n4 4 3 2 1\r\n",
+                "1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n2.0000000000000000\r\n2.7500000000000000\r\n"
+            ],
+            [
+                "4\r\n2 3 5 5\r\n20\r\n2 1 2 3 2 2 4 3 1 3 4 2 2 4 3 1 1 3 1 4\r\n",
+                "3.3333333333333335\r\n3.7500000000000000\r\n3.3333333333333335\r\n2.5000000000000000\r\n3.3333333333333335\r\n3.3333333333333335\r\n2.0000000000000000\r\n2.5000000000000000\r\n3.7500000000000000\r\n2.5000000000000000\r\n2.0000000000000000\r\n3.3333333333333335\r\n3.3333333333333335\r\n2.0000000000000000\r\n2.5000000000000000\r\n3.7500000000000000\r\n3.7500000000000000\r\n2.5000000000000000\r\n3.7500000000000000\r\n2.0000000000000000\r\n"
+            ],
+            [
+                "4\r\n4 1 1 1\r\n20\r\n1 1 1 1 3 1 4 3 2 4 1 4 4 3 4 1 3 4 4 4\r\n",
+                "1.7500000000000000\r\n1.7500000000000000\r\n1.7500000000000000\r\n1.7500000000000000\r\n1.0000000000000000\r\n1.7500000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.7500000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.7500000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n"
+            ],
+            [
+                "4\r\n5 1 1 1\r\n20\r\n4 1 1 3 1 4 4 2 4 4 3 3 1 2 1 2 1 4 2 3\r\n",
+                "1.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n1.0000000000000000\r\n2.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n2.0000000000000000\r\n1.0000000000000000\r\n2.0000000000000000\r\n1.0000000000000000\r\n2.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n1.0000000000000000\r\n"
+            ],
+            [
+                "1\r\n2\r\n20\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n2.0000000000000000\r\n"
+            ],
+            [
+                "2\r\n4 3\r\n20\r\n1 1 1 1 1 1 2 1 2 1 1 1 1 2 1 1 2 2 2 1\r\n",
+                "3.5000000000000000\r\n3.5000000000000000\r\n3.5000000000000000\r\n3.5000000000000000\r\n3.5000000000000000\r\n3.5000000000000000\r\n3.0000000000000000\r\n3.5000000000000000\r\n3.0000000000000000\r\n3.5000000000000000\r\n3.5000000000000000\r\n3.5000000000000000\r\n3.5000000000000000\r\n3.0000000000000000\r\n3.5000000000000000\r\n3.5000000000000000\r\n3.0000000000000000\r\n3.0000000000000000\r\n3.0000000000000000\r\n3.5000000000000000\r\n"
+            ],
+            [
+                "3\r\n4 3 1\r\n20\r\n3 2 1 3 1 3 2 1 2 1 3 1 1 3 3 1 3 2 1 2\r\n",
+                "1.0000000000000000\r\n2.0000000000000000\r\n2.6666666666666665\r\n1.0000000000000000\r\n2.6666666666666665\r\n1.0000000000000000\r\n2.0000000000000000\r\n2.6666666666666665\r\n2.0000000000000000\r\n2.6666666666666665\r\n1.0000000000000000\r\n2.6666666666666665\r\n2.6666666666666665\r\n1.0000000000000000\r\n1.0000000000000000\r\n2.6666666666666665\r\n1.0000000000000000\r\n2.0000000000000000\r\n2.6666666666666665\r\n2.0000000000000000\r\n"
+            ]
+        ]
+    }
+]

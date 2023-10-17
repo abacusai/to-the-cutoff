@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Train Tracks",
+        "description": "That's right. I'm a Purdue student, and I shamelessly wrote a problem about\ntrains. There are \n    n\n stations and \n    m\n trains. The stations are\nconnected by \n    n-1\n one-directional railroads that form a tree rooted at\nstation \n    1\n. All railroads are pointed in the direction from the root\nstation \n    1\n to the leaves. A railroad connects a station \n    u\n to a\nstation \n    v\n, and has a distance \n    d\n, meaning it takes \n    d\n time to\ntravel from \n    u\n to \n    v\n. Each station with at least one outgoing\nrailroad has a switch that determines the child station an incoming train will\nbe directed toward. For example, it might look like this: Here, stations\n\n    1\n and \n    3\n have switches directed toward stations \n    2\n and\n\n    4\n, respectively. Initially, no trains are at any station. Train \n    i\n\nwill enter station \n    1\n at time \n    t_i\n. Every unit of time, starting at\ntime \n    1\n, the following two steps happen: You can switch at most one\nstation to point to a different child station. A switch change takes effect\nbefore step \n    2\n. For every train that is on a station \n    u\n, it is\ndirected toward the station \n    v\n indicated by \n    u\n's switch. So, if the\nrailroad from \n    u\n to \n    v\n has distance \n    d\n, the train will enter\nstation \n    v\n in \n    d\n units of time from now. Every train has a\ndestination station \n    s_i\n. When it enters \n    s_i\n, it will stop there\npermanently. If at some point the train is going in the wrong direction, so\nthat it will never be able to reach \n    s_i\n no matter where the switches\npoint, it will immediately explode. Find the latest possible time of the first\nexplosion if you change switches optimally, or determine that you can direct\nevery train to its destination so that no explosion occurs. Also, find the\nminimum number of times you need to change a switch to achieve this. Input The\nfirst line contains two integers \n    n\n and \n    m\n (\n    1\n    \u2264 n,m\n    \u2264\n    10^5\n) \u2014 the number of stations and trains, respectively. The next \n    n-1\n\nlines describe the railroads. The \n    i\n-th line contains three integers\n\n    u,v,d\n (\n    1\n    \u2264 u,v\n    \u2264 n\n, \n    1\n    \u2264 d\n    \u2264 10^9\n), denoting a\nrailroad from station \n    u\n to station \n    v\n with distance \n    d\n. It is\nguaranteed that the railroads form a tree rooted at station \n    1\n. The\nswitch of a station \n    u\n is initially directed towards the last outgoing\nrailroad from \n    u\n that appears in the input. The next \n    m\n lines\ndescribe the trains. The \n    i\n-th line contains two integers \n    s_i,t_i\n\n(\n    1\n    \u2264 s_i\n    \u2264 n\n, \n    1\n    \u2264 t_1<t_2<\n    \u22ef<t_m\n    \u2264 10^9\n) \u2014 the\ndestination station and the time the \n    i\n-th train enters station \n    1\n,\nrespectively. Output Output two integers: the latest possible time of the\nfirst explosion (or \n    -1\n if it is possible to never have an explosion) and\nthe minimum number of switch changes to achieve it. Examples Input 5 4 1 2 1 1\n3 2 3 4 1 3 5 3 2 1 4 2 2 6 5 10 Output -1 6 Input 5 4 1 2 1 1 3 2 3 4 1 3 5 3\n5 1 4 2 4 3 2 4 Output 4 0 Input 11 6 1 2 1 1 3 2 3 4 1 3 5 2 5 6 1 5 7 2 7 8\n1 7 9 2 9 10 1 9 11 1 2 1 8 3 6 5 10 7 4 9 2 11 Output 11 4 Note For the first\ntest, here's an example timeline: At time \n    1\n, train \n    1\n enters\nstation \n    1\n. We switch station \n    1\n to point to station \n    2\n. Train\n\n    1\n is directed to station \n    2\n. At time \n    2\n, train \n    2\n enters\nstation \n    1\n, and train \n    1\n enters station \n    2\n, where it stops\npermanently. We switch station \n    1\n to point to station \n    3\n. Train\n\n    2\n is directed to station \n    3\n. At time \n    4\n, train \n    2\n enters\nstation \n    3\n. We switch station \n    3\n to point to station \n    4\n. Train\n\n    2\n is directed to station \n    4\n. At time \n    5\n, train \n    2\n enters\nstation \n    4\n, where it stops permanently. At time \n    6\n, train \n    3\n\nenters station \n    1\n. We switch station \n    1\n to point to station \n    2\n.\nTrain \n    3\n is directed to station \n    2\n. At time \n    7\n, train \n    3\n\nenters station \n    2\n, where it stops permanently. We switch station \n    3\n\nto point to station \n    5\n. At time \n    10\n, train \n    4\n enters station\n\n    1\n. We switch station \n    1\n to point to station \n    3\n. Train \n    4\n\nis directed to station \n    3\n. At time \n    12\n, train \n    4\n enters station\n\n    3\n. Train \n    4\n is directed to station \n    5\n. At time \n    15\n, train\n\n    4\n enters station \n    5\n, where it stops permanently. For the second\ntest, we switch nothing. At time \n    4\n, train \n    2\n is directed to station\n\n    5\n and train \n    4\n is directed to station \n    3\n. They both explode.\nIt is impossible to prevent an explosion by time \n    4\n. For the third test,\ndenote a switch change by \n    (u\n    \u2192 v,t)\n if we make station \n    u\n point\nto station \n    v\n at time \n    t\n. One solution is to make these \n    4\n\nswitch changes: \n    (1\n    \u2192 2,1)\n,\n    (1\n    \u2192 3,2)\n,\n    (7\n    \u2192\n    8,5)\n,\n    (5\n    \u2192 6,8)\n. At time \n    11\n, trains \n    4\n,\n    5\n, and\n\n    6\n explode. It is impossible to prevent an explosion by time \n    11\n.\n\n",
+        "cf_contest_id": 1344,
+        "cf_index": "E",
+        "cf_rating": 3100,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "trees"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 4\r\n1 2 1\r\n1 3 2\r\n3 4 1\r\n3 5 3\r\n2 1\r\n4 2\r\n2 6\r\n5 10\r\n",
+                "-1 6\r\n"
+            ],
+            [
+                "5 4\r\n1 2 1\r\n1 3 2\r\n3 4 1\r\n3 5 3\r\n5 1\r\n4 2\r\n4 3\r\n2 4\r\n",
+                "4 0\r\n"
+            ],
+            [
+                "11 6\r\n1 2 1\r\n1 3 2\r\n3 4 1\r\n3 5 2\r\n5 6 1\r\n5 7 2\r\n7 8 1\r\n7 9 2\r\n9 10 1\r\n9 11 1\r\n2 1\r\n8 3\r\n6 5\r\n10 7\r\n4 9\r\n2 11\r\n",
+                "11 4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "11 6\r\n1 7 1\r\n1 5 2\r\n5 6 1\r\n5 2 2\r\n2 3 1\r\n2 8 2\r\n8 9 1\r\n8 11 2\r\n11 4 1\r\n11 10 1\r\n7 1\r\n9 3\r\n3 5\r\n4 7\r\n6 9\r\n7 11\r\n",
+                "11 4\r\n"
+            ],
+            [
+                "6 8\r\n1 5 2\r\n6 2 6\r\n3 6 7\r\n1 3 3\r\n1 4 3\r\n2 4\r\n4 6\r\n2 14\r\n3 15\r\n5 19\r\n3 25\r\n2 29\r\n2 30\r\n",
+                "-1 5\r\n"
+            ],
+            [
+                "10 10\r\n7 9 10\r\n1 10 15\r\n3 7 63\r\n1 2 72\r\n3 4 95\r\n2 6 63\r\n8 3 70\r\n2 8 87\r\n8 5 32\r\n1 1\r\n6 25\r\n8 29\r\n1 33\r\n3 42\r\n10 59\r\n1 73\r\n4 87\r\n9 91\r\n3 100\r\n",
+                "-1 6\r\n"
+            ],
+            [
+                "1 1\r\n1 1\r\n",
+                "-1 0\r\n"
+            ],
+            [
+                "10 10\r\n6 3 1\r\n7 5 1\r\n8 9 1\r\n3 8 1\r\n6 4 1\r\n8 7 1\r\n7 10 1\r\n1 6 1\r\n3 2 1\r\n1 1\r\n7 2\r\n3 5\r\n2 8\r\n6 10\r\n9 11\r\n5 12\r\n1 14\r\n2 17\r\n6 20\r\n",
+                "-1 8\r\n"
+            ],
+            [
+                "20 20\r\n18 10 1\r\n18 17 1\r\n1 14 1\r\n12 15 1\r\n18 6 1\r\n18 5 1\r\n1 18 1\r\n1 12 1\r\n18 9 1\r\n18 4 1\r\n14 13 1\r\n13 8 1\r\n1 7 1\r\n13 11 1\r\n4 3 1\r\n14 2 1\r\n13 19 1\r\n18 20 1\r\n18 16 1\r\n11 1\r\n19 2\r\n8 3\r\n3 6\r\n20 7\r\n7 9\r\n14 10\r\n6 11\r\n8 13\r\n6 14\r\n9 15\r\n4 17\r\n6 19\r\n4 20\r\n3 21\r\n15 24\r\n10 25\r\n14 28\r\n15 29\r\n9 30\r\n",
+                "-1 25\r\n"
+            ]
+        ]
+    }
+]

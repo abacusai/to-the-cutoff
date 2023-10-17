@@ -1,0 +1,95 @@
+[
+    {
+        "name": "Water The Garden",
+        "description": "It is winter now, and Max decided it's about time he watered the garden. The\ngarden can be represented as n consecutive garden beds, numbered from 1 to n.\nk beds contain water taps (i-th tap is located in the bed xi), which, if\nturned on, start delivering water to neighbouring beds. If the tap on the bed\nxi is turned on, then after one second has passed, the bed xi will be watered;\nafter two seconds have passed, the beds from the segment [xi - 1, xi + 1] will\nbe watered (if they exist); after j seconds have passed (j is an integer\nnumber), the beds from the segment [xi - (j - 1), xi + (j - 1)] will be\nwatered (if they exist). Nothing changes during the seconds, so, for example,\nwe can't say that the segment [xi - 2.5, xi + 2.5] will be watered after 2.5\nseconds have passed; only the segment [xi - 2, xi + 2] will be watered at that\nmoment. The garden from test 1. White colour denotes a garden bed without a\ntap, red colour \u2014 a garden bed with a tap. The garden from test 1 after 2\nseconds have passed after turning on the tap. White colour denotes an\nunwatered garden bed, blue colour \u2014 a watered bed. Max wants to turn on all\nthe water taps at the same moment, and now he wonders, what is the minimum\nnumber of seconds that have to pass after he turns on some taps until the\nwhole garden is watered. Help him to find the answer! Input The first line\ncontains one integer t \u2014 the number of test cases to solve (1 \u2264 t \u2264 200). Then\nt test cases follow. The first line of each test case contains two integers n\nand k (1 \u2264 n \u2264 200, 1 \u2264 k \u2264 n) \u2014 the number of garden beds and water taps,\nrespectively. Next line contains k integers xi (1 \u2264 xi \u2264 n) \u2014 the location of\ni-th water tap. It is guaranteed that for each condition xi - 1 < xi holds. It\nis guaranteed that the sum of n over all test cases doesn't exceed 200. Note\nthat in hacks you have to set t = 1. Output For each test case print one\ninteger \u2014 the minimum number of seconds that have to pass after Max turns on\nsome of the water taps, until the whole garden is watered. Example Input 3 5 1\n3 3 3 1 2 3 4 1 1 Output 3 1 4 Note The first example consists of 3 tests:\nThere are 5 garden beds, and a water tap in the bed 3. If we turn it on, then\nafter 1 second passes, only bed 3 will be watered; after 2 seconds pass, beds\n[1, 3] will be watered, and after 3 seconds pass, everything will be watered.\nThere are 3 garden beds, and there is a water tap in each one. If we turn all\nof them on, then everything will be watered after 1 second passes. There are 4\ngarden beds, and only one tap in the bed 1. It will take 4 seconds to water,\nfor example, bed 4.\n\n",
+        "cf_contest_id": 920,
+        "cf_index": "A",
+        "cf_rating": 1000,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n5 1\r\n3\r\n3 3\r\n1 2 3\r\n4 1\r\n1\r\n",
+                "3\r\n1\r\n4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "26\r\n1 1\r\n1\r\n2 1\r\n2\r\n2 1\r\n1\r\n2 2\r\n1 2\r\n3 1\r\n3\r\n3 1\r\n2\r\n3 2\r\n2 3\r\n3 1\r\n1\r\n3 2\r\n1 3\r\n3 2\r\n1 2\r\n3 3\r\n1 2 3\r\n4 1\r\n4\r\n4 1\r\n3\r\n4 2\r\n3 4\r\n4 1\r\n2\r\n4 2\r\n2 4\r\n4 2\r\n2 3\r\n4 3\r\n2 3 4\r\n4 1\r\n1\r\n4 2\r\n1 4\r\n4 2\r\n1 3\r\n4 3\r\n1 3 4\r\n4 2\r\n1 2\r\n4 3\r\n1 2 4\r\n4 3\r\n1 2 3\r\n4 4\r\n1 2 3 4\r\n",
+                "1\r\n2\r\n2\r\n1\r\n3\r\n2\r\n2\r\n3\r\n2\r\n2\r\n1\r\n4\r\n3\r\n3\r\n3\r\n2\r\n2\r\n2\r\n4\r\n2\r\n2\r\n2\r\n3\r\n2\r\n2\r\n1\r\n"
+            ],
+            [
+                "31\r\n5 1\r\n5\r\n5 1\r\n4\r\n5 2\r\n4 5\r\n5 1\r\n3\r\n5 2\r\n3 5\r\n5 2\r\n3 4\r\n5 3\r\n3 4 5\r\n5 1\r\n2\r\n5 2\r\n2 5\r\n5 2\r\n2 4\r\n5 3\r\n2 4 5\r\n5 2\r\n2 3\r\n5 3\r\n2 3 5\r\n5 3\r\n2 3 4\r\n5 4\r\n2 3 4 5\r\n5 1\r\n1\r\n5 2\r\n1 5\r\n5 2\r\n1 4\r\n5 3\r\n1 4 5\r\n5 2\r\n1 3\r\n5 3\r\n1 3 5\r\n5 3\r\n1 3 4\r\n5 4\r\n1 3 4 5\r\n5 2\r\n1 2\r\n5 3\r\n1 2 5\r\n5 3\r\n1 2 4\r\n5 4\r\n1 2 4 5\r\n5 3\r\n1 2 3\r\n5 4\r\n1 2 3 5\r\n5 4\r\n1 2 3 4\r\n5 5\r\n1 2 3 4 5\r\n",
+                "5\r\n4\r\n4\r\n3\r\n3\r\n3\r\n3\r\n4\r\n2\r\n2\r\n2\r\n3\r\n2\r\n2\r\n2\r\n5\r\n3\r\n2\r\n2\r\n3\r\n2\r\n2\r\n2\r\n4\r\n2\r\n2\r\n2\r\n3\r\n2\r\n2\r\n1\r\n"
+            ],
+            [
+                "1\r\n200 1\r\n200\r\n",
+                "200\r\n"
+            ],
+            [
+                "1\r\n5 1\r\n5\r\n",
+                "5\r\n"
+            ],
+            [
+                "1\r\n177 99\r\n1 4 7 10 11 13 14 15 16 17 19 21 22 24 25 26 27 28 32 34 35 38 39 40 42 45 46 52 54 55 57 58 59 60 62 64 65 67 70 71 74 77 78 79 80 81 83 84 88 92 93 94 95 100 101 102 104 106 107 108 109 110 112 113 114 115 116 118 122 123 124 125 127 128 129 130 134 135 137 138 139 140 142 146 148 149 154 158 160 161 162 165 166 167 169 171 172 173 176\r\n",
+                "4\r\n"
+            ],
+            [
+                "1\r\n69 12\r\n5 7 10 11 12 18 20 27 28 31 47 67\r\n",
+                "11\r\n"
+            ],
+            [
+                "1\r\n74 7\r\n19 39 40 47 55 57 61\r\n",
+                "19\r\n"
+            ],
+            [
+                "1\r\n170 11\r\n14 18 37 39 80 83 103 112 124 127 131\r\n",
+                "40\r\n"
+            ],
+            [
+                "1\r\n200 1\r\n8\r\n",
+                "193\r\n"
+            ],
+            [
+                "1\r\n155 53\r\n2 3 7 9 10 11 12 20 24 26 28 31 38 39 40 51 53 56 58 63 65 66 69 70 72 74 79 81 83 88 90 92 100 103 104 106 111 113 114 115 116 121 124 126 127 128 133 136 142 143 145 148 150\r\n",
+                "6\r\n"
+            ],
+            [
+                "1\r\n161 69\r\n2 5 8 11 12 13 17 18 23 25 28 29 30 33 34 35 36 38 39 44 45 49 52 53 56 57 58 60 62 70 71 74 76 77 82 83 86 90 94 95 97 104 105 108 109 112 113 118 120 123 126 127 132 135 137 139 140 141 142 143 144 146 147 148 151 152 153 154 161\r\n",
+                "5\r\n"
+            ],
+            [
+                "1\r\n8 4\r\n1 2 3 7\r\n",
+                "3\r\n"
+            ],
+            [
+                "1\r\n12 2\r\n5 12\r\n",
+                "5\r\n"
+            ],
+            [
+                "1\r\n13 2\r\n6 12\r\n",
+                "6\r\n"
+            ],
+            [
+                "1\r\n13 2\r\n8 13\r\n",
+                "8\r\n"
+            ],
+            [
+                "1\r\n10 4\r\n1 2 3 5\r\n",
+                "6\r\n"
+            ],
+            [
+                "1\r\n200 2\r\n50 150\r\n",
+                "51\r\n"
+            ],
+            [
+                "1\r\n110 2\r\n1 110\r\n",
+                "55\r\n"
+            ]
+        ]
+    }
+]

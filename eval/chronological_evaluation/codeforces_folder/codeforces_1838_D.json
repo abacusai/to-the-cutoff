@@ -1,0 +1,45 @@
+[
+    {
+        "name": "Bracket Walk",
+        "description": "There is a string \n    s\n of length \n    n\n consisting of the characters '('\nand ')'. You are walking on this string. You start by standing on top of the\nfirst character of \n    s\n, and you want to make a sequence of moves such that\nyou end on the \n    n\n-th character. In one step, you can move one space to\nthe left (if you are not standing on the first character), or one space to the\nright (if you are not standing on the last character). You may not stay in the\nsame place, however you may visit any character, including the first and last\ncharacter, any number of times. At each point in time, you write down the\ncharacter you are currently standing on. We say the string is walkable if\nthere exists some sequence of moves that take you from the first character to\nthe last character, such that the string you write down is a regular bracket\nsequence. A regular bracket sequence is a bracket sequence that can be\ntransformed into a correct arithmetic expression by inserting characters '1'\nand '+' between the original characters of the sequence. For example, bracket\nsequences \"()()\", \"(())\" are regular (the resulting expressions are:\n\"(1)+(1)\", \"((1+1)+1)\"), and \")(\" and \"(\" are not. One possible valid walk on\n\n    s=\n    (())()))\n. The red dot indicates your current position, and\nthe red string indicates the string you have written down. Note that the red\nstring is a regular bracket sequence at the end of the process. You are given\n\n    q\n queries. Each query flips the value of a character from '(' to ')' or\nvice versa. After each query, determine whether the string is walkable.\nQueries are cumulative, so the effects of each query carry on to future\nqueries. Input The first line of the input contains two integers \n    n\n and\n\n    q\n (\n    1 \n    \u2264 n, q \n    \u2264 2\n    \u00b7 10^5\n) \u2014 the size of the string and\nthe number of queries, respectively. The second line of the input contains a\nstring \n    s\n of size \n    n\n, consisting of the characters '(' and ')' \u2014 the\ninitial bracket string. Each of the next \n    q\n lines contains a single\ninteger \n    i\n (\n    1\n    \u2264 i \n    \u2264 n\n) \u2014 the index of the character to flip\nfor that query. Output For each query, print \"YES\" if the string is walkable\nafter that query, and \"NO\" otherwise. You can output the answer in any case\n(upper or lower). For example, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will\nbe recognized as positive responses. Examples Input 10 9 (())()())) 9 7 2 6 3\n6 7 4 8 Output YES YES NO NO YES NO YES NO NO Input 3 2 (() 2 3 Output NO NO\nNote In the first example: After the first query, the string is (())()()().\nThis string is a regular bracket sequence, so it is walkable by simply moving\nto the right. After the second query, the string is (())()))(). If you move\nright once, then left once, then walk right until you hit the end of the\nstring, you produce the string (((())()))(), which is a regular bracket\nsequence. After the third query, the string is ()))()))(). We can show that\nthis string is not walkable. In the second example, the strings after the\nqueries are ()) and ()(, neither of which are walkable.\n\n",
+        "cf_contest_id": 1838,
+        "cf_index": "D",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "greedy",
+            "strings"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 9\r\n(())()()))\r\n9\r\n7\r\n2\r\n6\r\n3\r\n6\r\n7\r\n4\r\n8\r\n",
+                "Yes\r\nYes\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\n"
+            ],
+            [
+                "3 2\r\n(()\r\n2\r\n3\r\n",
+                "No\r\nNo\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n)\r\n1\r\n",
+                "No\r\n"
+            ],
+            [
+                "4 26\r\n))))\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n4\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n1\r\n1\r\n2\r\n1\r\n",
+                "No\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\n"
+            ],
+            [
+                "2 4\r\n))\r\n1\r\n1\r\n2\r\n1\r\n",
+                "Yes\r\nNo\r\nNo\r\nNo\r\n"
+            ],
+            [
+                "6 120\r\n))))))\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n4\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n4\r\n5\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n4\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n4\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n4\r\n5\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n4\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n3\r\n1\r\n1\r\n2\r\n1\r\n",
+                "No\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\n"
+            ]
+        ]
+    }
+]

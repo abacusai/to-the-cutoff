@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Decreasing Debts",
+        "description": "There are \n    n\n people in this world, conveniently numbered \n    1\n through\n\n    n\n. They are using burles to buy goods and services. Occasionally, a\nperson might not have enough currency to buy what he wants or needs, so he\nborrows money from someone else, with the idea that he will repay the loan\nlater with interest. Let \n    d(a,b)\n denote the debt of \n    a\n towards\n\n    b\n, or \n    0\n if there is no such debt. Sometimes, this becomes very\ncomplex, as the person lending money can run into financial troubles before\nhis debtor is able to repay his debt, and finds himself in the need of\nborrowing money. When this process runs for a long enough time, it might\nhappen that there are so many debts that they can be consolidated. There are\ntwo ways this can be done: Let \n    d(a,b) > 0\n and \n    d(c,d) > 0\n such that\n\n    a \n    \u2260 c\n or \n    b \n    \u2260 d\n. We can decrease the \n    d(a,b)\n and\n\n    d(c,d)\n by \n    z\n and increase \n    d(c,b)\n and \n    d(a,d)\n by \n    z\n,\nwhere \n    0 < z \n    \u2264\n    min(d(a,b),d(c,d))\n. Let \n    d(a,a) > 0\n. We can\nset \n    d(a,a)\n to \n    0\n. The total debt is defined as the sum of all\ndebts: \n    \n\n    \u03a3_d = \n    \u2211_a,b d(a,b)\n\n    \n Your goal is to use the\nabove rules in any order any number of times, to make the total debt as small\nas possible. Note that you don't have to minimise the number of non-zero\ndebts, only the total debt. Input The first line contains two space separated\nintegers \n    n\n (\n    1 \n    \u2264 n \n    \u2264 10^5\n) and \n    m\n (\n    0 \n    \u2264 m\n    \n    \u2264 3\n    \u00b7 10^5\n), representing the number of people and the number of\ndebts, respectively. \n    m\n lines follow, each of which contains three space\nseparated integers \n    u_i\n, \n    v_i\n (\n    1 \n    \u2264 u_i, v_i \n    \u2264 n, u_i\n    \n    \u2260 v_i\n), \n    d_i\n (\n    1 \n    \u2264 d_i \n    \u2264 10^9\n), meaning that the\nperson \n    u_i\n borrowed \n    d_i\n burles from person \n    v_i\n. Output On\nthe first line print an integer \n    m'\n (\n    0 \n    \u2264 m' \n    \u2264 3\n    \u00b7\n    10^5\n), representing the number of debts after the consolidation. It can be\nshown that an answer always exists with this additional constraint. After that\nprint \n    m'\n lines, \n    i\n-th of which contains three space separated\nintegers \n    u_i, v_i, d_i\n, meaning that the person \n    u_i\n owes the\nperson \n    v_i\n exactly \n    d_i\n burles. The output must satisfy \n    1 \n    \u2264\n    u_i, v_i \n    \u2264 n\n, \n    u_i \n    \u2260 v_i\n and \n    0 < d_i \n    \u2264 10^18\n.\nFor each pair \n    i \n    \u2260 j\n, it should hold that \n    u_i \n    \u2260 u_j\n or\n\n    v_i \n    \u2260 v_j\n. In other words, each pair of people can be included at\nmost once in the output. Examples Input 3 2 1 2 10 2 3 5 Output 2 1 2 5 1 3 5\nInput 3 3 1 2 10 2 3 15 3 1 10 Output 1 2 3 5 Input 4 2 1 2 12 3 4 8 Output 2\n1 2 12 3 4 8 Input 3 4 2 3 1 2 3 2 2 3 4 2 3 8 Output 1 2 3 15 Note In the\nfirst example the optimal sequence of operations can be the following: Perform\nan operation of the first type with \n    a = 1\n, \n    b = 2\n, \n    c = 2\n,\n\n    d = 3\n and \n    z = 5\n. The resulting debts are: \n    d(1, 2) = 5\n,\n\n    d(2, 2) = 5\n, \n    d(1, 3) = 5\n, all other debts are \n    0\n; Perform an\noperation of the second type with \n    a = 2\n. The resulting debts are:\n\n    d(1, 2) = 5\n, \n    d(1, 3) = 5\n, all other debts are \n    0\n. In the\nsecond example the optimal sequence of operations can be the following:\nPerform an operation of the first type with \n    a = 1\n, \n    b = 2\n, \n    c =\n    3\n, \n    d = 1\n and \n    z = 10\n. The resulting debts are: \n    d(3, 2) =\n    10\n, \n    d(2, 3) = 15\n, \n    d(1, 1) = 10\n, all other debts are \n    0\n;\nPerform an operation of the first type with \n    a = 2\n, \n    b = 3\n, \n    c =\n    3\n, \n    d = 2\n and \n    z = 10\n. The resulting debts are: \n    d(2, 2) =\n    10\n, \n    d(3, 3) = 10\n, \n    d(2, 3) = 5\n, \n    d(1, 1) = 10\n, all other\ndebts are \n    0\n; Perform an operation of the second type with \n    a = 2\n.\nThe resulting debts are: \n    d(3, 3) = 10\n, \n    d(2, 3) = 5\n, \n    d(1, 1) =\n    10\n, all other debts are \n    0\n; Perform an operation of the second type\nwith \n    a = 3\n. The resulting debts are: \n    d(2, 3) = 5\n, \n    d(1, 1) =\n    10\n, all other debts are \n    0\n; Perform an operation of the second type\nwith \n    a = 1\n. The resulting debts are: \n    d(2, 3) = 5\n, all other debts\nare \n    0\n.\n\n",
+        "cf_contest_id": 1266,
+        "cf_index": "D",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "data structures",
+            "graphs",
+            "greedy",
+            "implementation",
+            "math",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2\r\n1 2 10\r\n2 3 5\r\n",
+                "2\r\n1 2 5\r\n1 3 5\r\n"
+            ],
+            [
+                "3 3\r\n1 2 10\r\n2 3 15\r\n3 1 10\r\n",
+                "1\r\n2 3 5\r\n"
+            ],
+            [
+                "4 2\r\n1 2 12\r\n3 4 8\r\n",
+                "2\r\n1 2 12\r\n3 4 8\r\n"
+            ],
+            [
+                "3 4\r\n2 3 1\r\n2 3 2\r\n2 3 4\r\n2 3 8\r\n",
+                "1\r\n2 3 15\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "12 20\r\n1 3 1000000000\r\n3 2 1000000000\r\n1 4 1000000000\r\n4 2 1000000000\r\n1 5 1000000000\r\n5 2 1000000000\r\n1 6 1000000000\r\n6 2 1000000000\r\n1 7 1000000000\r\n7 2 1000000000\r\n1 8 1000000000\r\n8 2 1000000000\r\n1 9 1000000000\r\n9 2 1000000000\r\n1 10 1000000000\r\n10 2 1000000000\r\n1 11 1000000000\r\n11 2 1000000000\r\n1 12 1000000000\r\n12 2 1000000000\r\n",
+                "1\r\n1 2 10000000000\r\n"
+            ],
+            [
+                "50 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 5\r\n1 2 3\r\n2 3 3\r\n3 4 3\r\n4 5 3\r\n5 1 3\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

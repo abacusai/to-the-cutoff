@@ -1,0 +1,100 @@
+[
+    {
+        "name": "New Language",
+        "description": "Living in Byteland was good enough to begin with, but the good king decided to\nplease his subjects and to introduce a national language. He gathered the best\nof wise men, and sent an expedition to faraway countries, so that they would\nfind out all about how a language should be designed. After some time, the\nwise men returned from the trip even wiser. They locked up for six months in\nthe dining room, after which they said to the king: \"there are a lot of\ndifferent languages, but almost all of them have letters that are divided into\nvowels and consonants; in a word, vowels and consonants must be combined\ncorrectly.\" There are very many rules, all of them have exceptions, but our\nlanguage will be deprived of such defects! We propose to introduce a set of\nformal rules of combining vowels and consonants, and include in the language\nall the words that satisfy them. The rules of composing words are: The letters\nare divided into vowels and consonants in some certain way; All words have a\nlength of exactly n; There are m rules of the form (pos1, t1, pos2, t2). Each\nrule is: if the position pos1 has a letter of type t1, then the position pos2\nhas a letter of type t2.You are given some string s of length n, it is not\nnecessarily a correct word of the new language. Among all the words of the\nlanguage that lexicographically not smaller than the string s, find the\nminimal one in lexicographic order. Input The first line contains a single\nline consisting of letters 'V' (Vowel) and 'C' (Consonant), determining which\nletters are vowels and which letters are consonants. The length of this string\nl is the size of the alphabet of the new language (1 \u2264 l \u2264 26). The first l\nletters of the English alphabet are used as the letters of the alphabet of the\nnew language. If the i-th character of the string equals to 'V', then the\ncorresponding letter is a vowel, otherwise it is a consonant. The second line\ncontains two integers n, m (1 \u2264 n \u2264 200, 0 \u2264 m \u2264 4n(n - 1)) \u2014 the number of\nletters in a single word and the number of rules, correspondingly. Next m\nlines describe m rules of the language in the following format: pos1, t1,\npos2, t2 (1 \u2264 pos1, pos2 \u2264 n, pos1 \u2260 pos2, 'V', 'C' ). The last line contains\nstring s of length n, consisting of the first l small letters of the English\nalphabet. It is guaranteed that no two rules are the same. Output Print a\nsmallest word of a language that is lexicographically not smaller than s. If\nsuch words does not exist (for example, if the language has no words at all),\nprint \"-1\" (without the quotes). Examples Input VC 2 1 1 V 2 C aa Output ab\nInput VC 2 1 1 C 2 V bb Output -1 Input VCC 4 3 1 C 2 V 2 C 3 V 3 V 4 V abac\nOutput acaa Note In the first test word \"aa\" is not a word of the language,\nbut word \"ab\" is. In the second test out of all four possibilities only word\n\"bb\" is not a word of a language, but all other words are lexicographically\nless, so there is no answer. In the third test, due to the last rule, \"abac\"\ndoesn't belong to the language (\"a\" is a vowel, \"c\" is a consonant). The only\nword with prefix \"ab\" that meets the given rules is \"abaa\". But it is less\nthan \"abac\", so the answer will be \"acaa\"\n\n",
+        "cf_contest_id": 568,
+        "cf_index": "C",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "2-sat",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "VC\r\n2 1\r\n1 V 2 C\r\naa\r\n",
+                "ab\r\n"
+            ],
+            [
+                "VC\r\n2 1\r\n1 C 2 V\r\nbb\r\n",
+                "-1\r\n"
+            ],
+            [
+                "VCC\r\n4 3\r\n1 C 2 V\r\n2 C 3 V\r\n3 V 4 V\r\nabac\r\n",
+                "acaa\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "VC\r\n2 1\r\n1 C 2 V\r\naa\r\n",
+                "aa\r\n"
+            ],
+            [
+                "V\r\n2 1\r\n1 V 2 C\r\naa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "V\r\n2 0\r\naa\r\n",
+                "aa\r\n"
+            ],
+            [
+                "V\r\n2 1\r\n1 V 2 V\r\naa\r\n",
+                "aa\r\n"
+            ],
+            [
+                "VCC\r\n3 1\r\n3 V 2 C\r\naaa\r\n",
+                "aab\r\n"
+            ],
+            [
+                "VCC\r\n4 2\r\n1 V 2 C\r\n4 V 3 C\r\naaaa\r\n",
+                "abab\r\n"
+            ],
+            [
+                "VV\r\n2 5\r\n1 C 2 V\r\n1 C 2 C\r\n1 V 2 V\r\n2 V 1 V\r\n2 C 1 C\r\naa\r\n",
+                "aa\r\n"
+            ],
+            [
+                "VCC\r\n1 0\r\na\r\n",
+                "a\r\n"
+            ],
+            [
+                "VCCCVCCCVCCCCCVVCCVCVVCCVV\r\n1 0\r\ny\r\n",
+                "y\r\n"
+            ],
+            [
+                "CV\r\n10 18\r\n1 V 2 C\r\n1 C 2 V\r\n2 V 3 C\r\n2 C 3 V\r\n3 V 4 C\r\n3 C 4 V\r\n4 V 5 C\r\n4 C 5 V\r\n5 V 6 C\r\n5 C 6 V\r\n6 V 7 C\r\n6 C 7 V\r\n7 V 8 C\r\n7 C 8 V\r\n8 V 9 C\r\n8 C 9 V\r\n9 V 10 C\r\n9 C 10 V\r\nabbabaaaba\r\n",
+                "bababababa\r\n"
+            ],
+            [
+                "VCV\r\n10 10\r\n1 V 7 V\r\n7 V 1 V\r\n10 V 8 C\r\n9 V 1 V\r\n6 C 2 C\r\n1 V 9 V\r\n2 C 5 C\r\n2 V 9 C\r\n2 C 10 C\r\n1 V 4 C\r\nbbbbcaabab\r\n",
+                "bbbcbababb\r\n"
+            ],
+            [
+                "CCCCCVVCCVVCVCC\r\n100 10\r\n20 V 53 V\r\n18 V 54 C\r\n93 C 18 C\r\n65 V 86 C\r\n78 C 5 C\r\n12 C 52 V\r\n50 V 59 C\r\n3 V 72 C\r\n91 V 15 V\r\n86 V 2 V\r\nahlbjdbjbbcgeamgdkjebncejnbbedimfbelomaodnodedmcbgboafikflfcibkmdfknnfngcndnaofaokeohehdhnahjidlcjmh\r\n",
+                "ahlbjdbjbbcgeamgdkjebncejnbbedimfbelomaodnodedmcbgboahaaaaaaaaaaaaaaaaaaaaaaafaaaaaaaaaaaaaafaaaaaaa\r\n"
+            ],
+            [
+                "VCC\r\n10 3\r\n3 C 2 V\r\n6 C 3 V\r\n7 V 6 C\r\nacacbcaaaa\r\n",
+                "acacbcaaaa\r\n"
+            ],
+            [
+                "CCVCV\r\n50 10\r\n19 V 17 V\r\n44 C 50 C\r\n47 V 36 V\r\n45 C 21 V\r\n30 C 45 C\r\n34 V 24 C\r\n42 C 8 V\r\n43 C 40 V\r\n35 V 15 C\r\n22 V 45 C\r\nbecabaebcdeabbadbdddecaadbdbeeccbaaceabceecbbacdba\r\n",
+                "becabaebcdeabbadbdddecaadbdbeeccbaaceabceecbbacdba\r\n"
+            ],
+            [
+                "CCCCCCCCCCCCCCCCCCCCCCCCCC\r\n200 1\r\n1 C 200 V\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "VVVV\r\n5 1\r\n4 V 2 C\r\naaaaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "VC\r\n200 4\r\n199 V 200 V\r\n200 V 199 C\r\n199 C 200 C\r\n200 C 199 V\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

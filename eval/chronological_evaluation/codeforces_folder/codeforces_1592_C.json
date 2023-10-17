@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Bakry and Partitioning",
+        "description": "Bakry faced a problem, but since he's lazy to solve it, he asks for your help.\nYou are given a tree of \n    n\n nodes, the \n    i\n-th node has value \n    a_i\n\nassigned to it for each \n    i\n from \n    1\n to \n    n\n. As a reminder, a tree\non \n    n\n nodes is a connected graph with \n    n-1\n edges. You want to delete\nat least \n    1\n, but at most \n    k-1\n edges from the tree, so that the\nfollowing condition would hold: For every connected component calculate the\nbitwise XOR of the values of the nodes in it. Then, these values have to be\nthe same for all connected components. Is it possible to achieve this\ncondition? Input Each test contains multiple test cases. The first line\ncontains the number of test cases \n    t\n \n    (1 \n    \u2264 t \n    \u2264 5 \n    \u00b7\n    10^4)\n. Description of the test cases follows. The first line of each test\ncase contains two integers \n    n\n and \n    k\n \n    (2 \n    \u2264 k \n    \u2264 n \n    \u2264\n    10^5)\n. The second line of each test case contains \n    n\n integers \n    a_1,\n    a_2, ..., a_n\n \n    (1 \n    \u2264 a_i \n    \u2264 10^9)\n. The \n    i\n-th of the next\n\n    n-1\n lines contains two integers \n    u_i\n and \n    v_i\n (\n    1 \n    \u2264\n    u_i, v_i \n    \u2264 n\n, \n    u_i\n    \u2260 v_i\n), which means that there's an edge\nbetween nodes \n    u_i\n and \n    v_i\n. It is guaranteed that the given graph\nis a tree. It is guaranteed that the sum of \n    n\n over all test cases\ndoesn't exceed \n    2 \n    \u00b7 10^5\n. Output For each test case, you should\noutput a single string. If you can delete the edges according to the\nconditions written above, output \"YES\" (without quotes). Otherwise, output\n\"NO\" (without quotes). You can print each letter of \"YES\" and \"NO\" in any case\n(upper or lower). Example Input 5 2 2 1 3 1 2 5 5 3 3 3 3 3 1 2 2 3 1 4 4 5 5\n2 1 7 2 3 5 1 2 2 3 1 4 4 5 5 3 1 6 4 1 2 1 2 2 3 1 4 4 5 3 3 1 7 4 1 2 2 3\nOutput NO YES NO YES NO Note It can be shown that the objection is not\nachievable for first, third, and fifth test cases. In the second test case,\nyou can just remove all the edges. There will be \n    5\n connected components,\neach containing only one node with value \n    3\n, so the bitwise XORs will be\n\n    3\n for all of them. In the fourth test case, this is the tree: . You can\nremove an edge \n    (4,5)\n The bitwise XOR of the first component will be,\n\n    a_1 \n    \u2295 a_2 \n    \u2295 a_3 \n    \u2295 a_4 = 1 \n    \u2295 6 \n    \u2295 4\n    \n    \u2295 1 = 2\n (where \n    \u2295\n denotes the bitwise XOR). The bitwise\nXOR of the second component will be, \n    a_5 = 2\n.\n\n",
+        "cf_contest_id": 1592,
+        "cf_index": "C",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "constructive algorithms",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n2 2\r\n1 3\r\n1 2\r\n5 5\r\n3 3 3 3 3\r\n1 2\r\n2 3\r\n1 4\r\n4 5\r\n5 2\r\n1 7 2 3 5\r\n1 2\r\n2 3\r\n1 4\r\n4 5\r\n5 3\r\n1 6 4 1 2\r\n1 2\r\n2 3\r\n1 4\r\n4 5\r\n3 3\r\n1 7 4\r\n1 2\r\n2 3\r\n",
+                "NO\r\nYES\r\nNO\r\nYES\r\nNO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n3 2\r\n1 1 1\r\n1 2\r\n1 3\r\n3 3\r\n3 3 1\r\n1 2\r\n2 3\r\n",
+                "NO\r\nNO\r\n"
+            ],
+            [
+                "1\r\n7 3\r\n2 2 3 3 3 3 3\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n5 7\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1\r\n5 2\r\n3 3 3 3 3\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n7 6\r\n3 3 3 3 3 3 3\r\n1 2\r\n1 3\r\n2 4\r\n2 5\r\n3 6\r\n3 7\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1\r\n7 3\r\n4 1 2 1 1 1 1\r\n1 2\r\n1 3\r\n1 4\r\n2 5\r\n3 6\r\n4 7\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n5 3\r\n1 1 1 1 3\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n8 3\r\n16 16 8 8 1 3 3 2\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n5 5\r\n2 1 2 3 1\r\n1 2\r\n1 3\r\n2 4\r\n2 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n5 3\r\n1 1 1 1 2\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n9 3\r\n2 2 1 1 3 2 1 1 2\r\n1 2\r\n2 3\r\n2 4\r\n1 5\r\n1 6\r\n6 7\r\n6 8\r\n6 9\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,183 @@
+[
+    {
+        "name": "Inverse Function",
+        "description": "Petya wrote a programme on C++ that calculated a very interesting function\nf(n). Petya ran the program with a certain value of n and went to the kitchen\nto have some tea. The history has no records concerning how long the program\nhad been working. By the time Petya returned, it had completed the\ncalculations and had the result. However while Petya was drinking tea, a sly\nvirus managed to destroy the input file so that Petya can't figure out for\nwhich value of n the program was run. Help Petya, carry out the inverse\nfunction! Mostly, the program consists of a function in C++ with the following\nsimplified syntax: function ::= int f(int n) operatorSequence\noperatorSequence ::= operator | operator operatorSequence operator ::= return\narithmExpr; | if (logicalExpr) return arithmExpr; logicalExpr ::= arithmExpr >\narithmExpr | arithmExpr < arithmExpr | arithmExpr == arithmExpr arithmExpr ::=\nsum sum ::= product | sum + product | sum - product product ::= multiplier |\nproduct * multiplier | product / multiplier multiplier ::= n | number |\nf(arithmExpr) number ::= 0|1|2|... |32767 The whitespaces in a\noperatorSequence are optional. Thus, we have a function, in which body there\nare two kinds of operators. There is the operator \"return arithmExpr;\" that\nreturns the value of the expression as the value of the function, and there is\nthe conditional operator \"if (logicalExpr) return arithmExpr;\" that returns\nthe value of the arithmetical expression when and only when the logical\nexpression is true. Guaranteed that no other constructions of C++ language \u2014\ncycles, assignment operators, nested conditional operators etc, and other\nvariables except the n parameter are used in the function. All the constants\nare integers in the interval [0..32767]. The operators are performed\nsequentially. After the function has returned a value other operators in the\nsequence are not performed. Arithmetical expressions are performed taking into\nconsideration the standard priority of the operations. It means that first all\nthe products that are part of the sum are calculated. During the calculation\nof the products the operations of multiplying and division are performed from\nthe left to the right. Then the summands are summed, and the addition and the\nsubtraction are also performed from the left to the right. Operations \">\"\n(more), \"<\" (less) and \"==\" (equals) also have standard meanings. Now you've\ngot to pay close attention! The program is compiled with the help of 15-bit\nBerland C++ compiler invented by a Berland company BerSoft, that's why\narithmetical operations are performed in a non-standard way. Addition,\nsubtraction and multiplication are performed modulo 32768 (if the result of\nsubtraction is negative, then 32768 is added to it until the number belongs to\nthe interval [0..32767]). Division \"/\" is a usual integer division where the\nremainder is omitted. Examples of arithmetical operations: Guaranteed that for\nall values of n from 0 to 32767 the given function is performed correctly.\nThat means that: 1\u1e0aivision by 0 never occures. 2\u1e86hen performing a\nfunction for the value n = N recursive calls of the function f may occur only\nfor the parameter value of 0, 1, ..., N - 1. Consequently, the program never\nhas an infinite recursion. 3\u0226s the result of the sequence of the operators,\nthe function always returns a value. We have to mention that due to all the\nlimitations the value returned by the function f is independent from either\nglobal variables or the order of performing the calculations of arithmetical\nexpressions as part of the logical one, or from anything else except the value\nof n parameter. That's why the f function can be regarded as a function in its\nmathematical sense, i.e. as a unique correspondence between any value of n\nfrom the interval [0..32767] and a value of f(n) from the same interval. Given\nthe value of f(n), and you should find n. If the suitable n value is not\nunique, you should find the maximal one (from the interval [0..32767]). Input\nThe first line has an integer f(n) from the interval [0..32767]. The next\nlines have the description of the function f. In the description can be found\nextra spaces and line breaks (see the examples) which, of course, can\u2019t break\nkey words int, if, return and numbers. The size of input data can\u2019t exceed 100\nbytes. Output Output a single number \u2014 the answer to the problem. If there\u2019s\nno answer, output \"-1\" (without quotes). Examples Input 17 int f(int n)  if\n(n < 100) return 17; if (n > 99) return 27;  Output 99 Input 13 int f(int n)\n if (n == 0) return 0; return f(n - 1) + 1;  Output 13 Input 144 int f(int\nn)  if (n == 0) return 0; if (n == 1) return n; return f(n - 1) + f(n - 2); \nOutput 24588\n\n",
+        "cf_contest_id": 39,
+        "cf_index": "G",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 64.0,
+        "public_cases": [
+            [
+                "17\r\nint f(int n)\r\n{\r\nif (n < 100) return 17;\r\nif (n > 99) return 27;\r\n}\r\n",
+                "99\r\n"
+            ],
+            [
+                "13\r\nint f(int n)\r\n{\r\nif (n == 0) return 0;\r\nreturn f(n - 1) + 1;\r\n}\r\n",
+                "13\r\n"
+            ],
+            [
+                "144\r\nint f(int n)\r\n{\r\nif (n == 0) return 0;\r\nif (n == 1) return n;\r\nreturn f(n - 1) + f(n - 2);\r\n}\r\n",
+                "24588\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "32767\r\nint f(int n)\r\n{\r\nreturn n;\r\n}\r\n",
+                "32767\r\n"
+            ],
+            [
+                "27926\r\nint f(int n)\r\n{\r\nreturn n*n + 5*n/3 + 19 * 1423;\r\n}\r\n",
+                "29\r\n"
+            ],
+            [
+                "1\r\nint f(int n)\r\n{\r\nif (n == 0) return 153/12+5;\r\nreturn 32767/n;\r\n}\r\n",
+                "32767\r\n"
+            ],
+            [
+                "32\r\nint f(int n)\r\n{\r\nif (n == 0) return 1;\r\nreturn f(n - 1) * 7;\r\n}\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\nint f(int n)\r\n{\r\nif (n == 0) return 1;\r\nreturn f(n - 1) * 7;\r\n}\r\n",
+                "28672\r\n"
+            ],
+            [
+                "0\r\nint f(int n)\r\n{\r\nif (n < 2) return 1;\r\nreturn f(n - 1) + f(n - 2);\r\n}\r\n",
+                "24575\r\n"
+            ],
+            [
+                "32\r\nint f(int n)\r\n{\r\nif (n < 2) return 1;\r\nreturn f(n - 1) + f(n - 2);\r\n}\r\n",
+                "15959\r\n"
+            ],
+            [
+                "12351\r\nint f(int n)\r\n{\r\nif (n < 3) return n;\r\nreturn f(n - 1) * n + f(n - 2) + f(n - 3) / 5;\r\n}\r\n",
+                "26464\r\n"
+            ],
+            [
+                "0\r\nint f(int n){if (n < 1) return 0;return f(f(f(f(f(f(f(f(f(f(f(f(f(f(f(f(f(0)))))))))))))))));}\r\n",
+                "32767\r\n"
+            ],
+            [
+                "0\r\nint f(int n){if (n < 1) return 1;if (n < 2) return 0;return f(f(f(f(f(f(f(f(f(f(n-1))))))))));}\r\n",
+                "32767\r\n"
+            ],
+            [
+                "1\r\nint f(int n){if (n < 1) return 1;if (n < 2) return 0;return f(f(f(f(f(f(f(f(f(f(n-1))))))))));}\r\n",
+                "32766\r\n"
+            ],
+            [
+                "14\r\nint f(int n)\r\n{\r\nif (n < 1) return 0;\r\nreturn f(n / 2) + 1;\r\n}\r\n",
+                "16383\r\n"
+            ],
+            [
+                "12\r\nint f(int n)\r\n{\r\nif (n < 1) return 0;\r\nreturn f(n / 2) + 1;\r\n}\r\n",
+                "4095\r\n"
+            ],
+            [
+                "100\r\nint f(int n){if (n < 3) return 1;return f(n-1)+f(n-2)+f(n-3);}\r\n",
+                "-1\r\n"
+            ],
+            [
+                "7113\r\nint f(int n)\r\n{\r\nif (n < 3) return n;\r\nreturn f(n - 1) * n + f(n - 2) + f(n - 3) / 5;\r\n}\r\n",
+                "31277\r\n"
+            ],
+            [
+                "7169\r\nint f(int n){if (n < 7) return 1; return f(n-1)+f(n-2)+f(n-3)+f(n-4)+f(n-5)-f(n-6)-f(n-7);}\r\n",
+                "32258\r\n"
+            ],
+            [
+                "32657\r\nint f(int n){if (n < 7) return 1; return f(n-1)+f(n-2)+f(n-3)+f(n-4)+f(n-5)-f(n-6)-f(n-7);}\r\n",
+                "32308\r\n"
+            ],
+            [
+                "5\r\nint f(int n){if (n < 2) return 1;if (n < 8) return 2;if (n > 8) return 7;if (n > 2) return 5;}\r\n",
+                "8\r\n"
+            ],
+            [
+                "2\r\nint f(int n){if (n < 2) return 1;if (n < 8) return 2;if (n > 8) return 7;if (n > 2) return 5;}\r\n",
+                "7\r\n"
+            ],
+            [
+                "1\r\nint f(int n){if (n < 2) return 1;if (n < 8) return 2;if (n > 8) return 7;if (n > 2) return 5;}\r\n",
+                "1\r\n"
+            ],
+            [
+                "7\r\nint f(int n){if (n < 2) return 1;if (n < 8) return 2;if (n > 8) return 7;if (n > 2) return 5;}\r\n",
+                "32767\r\n"
+            ],
+            [
+                "6\r\nint f(int n){if (n < 1025) return n*5+12/6-n/3*15-7;return f(n/2)-f(n-7)*f(n-7)-1024;}\r\n",
+                "-1\r\n"
+            ],
+            [
+                "32763\r\nint f(int n){if (n < 1025) return n*5+12/6-n/3*15-7;return f(n/2)-f(n-7)*f(n-7)-1024;}\r\n",
+                "1023\r\n"
+            ],
+            [
+                "280\r\nint f(int n){if (n < 1025) return n*5+12/6-n/3*15-7;return f(n/2)-f(n-7)*f(n-7)-1024;}\r\n",
+                "32746\r\n"
+            ],
+            [
+                "1\r\nint f(int n){return 1;return 2;return 3;return 4;return 5;return 6;return 7;return 8;return 9;}\r\n",
+                "32767\r\n"
+            ],
+            [
+                "2\r\nint f(int n){return 1;return 2;return 3;return 4;return 5;return 6;return 7;return 8;return 9;}\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3647\r\nint f(int n){return 1*2*3+2*3*4-3*4*5-4*5*6+5*6*7+n*n*n-n/2/4/5+n+1/2+3*9*6-12+17/7*6+1-1;}\r\n",
+                "23117\r\n"
+            ],
+            [
+                "17463\r\nint f(int n){return 1*2*3+2*3*4-3*4*5-4*5*6+5*6*7+n*n*n-n/2/4/5+n+1/2+3*9*6-12+17/7*6+1-1;}\r\n",
+                "9167\r\n"
+            ],
+            [
+                "17\r\nint f(int n){if (n > 1000) return n/n;if (n > 100) return n/2;if (n > 10) return n; return 7;}\r\n",
+                "17\r\n"
+            ],
+            [
+                "55\r\nint f(int n)\r\n{\r\nif (n < 2) return 0;if (f(n-1) == f(n-2)) return f(n-2)+1;return f(n-1);\r\n}\r\n",
+                "111\r\n"
+            ],
+            [
+                "3\r\nint f(int n)\r\n{\r\nif (n > 5) return 8;\r\nif (n < 3) return 1;\r\nreturn f(12/n/n)+1;\r\n}\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2\r\nint f(int n)\r\n{\r\nif (n > 5) return 8;\r\nif (n < 3) return 1;\r\nreturn f(12/n/n)+1;\r\n}\r\n",
+                "5\r\n"
+            ],
+            [
+                "354\r\nint f(int n)\r\n{\r\nif (n < 4) return 1;\r\nreturn f(n-1)*f(n-2)*f(n-3)*f(n-4)+n;\r\n}\r\n",
+                "19794\r\n"
+            ],
+            [
+                "9182\r\nint f(int n)\r\n{\r\nif (n < 4) return 1;\r\nreturn f(n-1)*f(n-2)*f(n-3)*f(n-4)+n;\r\n}\r\n",
+                "27142\r\n"
+            ],
+            [
+                "32767\r\nint f(int n)\r\n{\r\nif (n < 5) return 0-1;if (f(n/2)*f(n-1) < 0) return f(n+28);return 10;\r\n}\r\n",
+                "4\r\n"
+            ],
+            [
+                "57\r\nint f(int n)\r\n{\r\nif (n/2*2 == n) return 1;\r\nif (n/2*2 == n-1) return 0;\r\nreturn 57;\r\n}\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\nint f(int n)\r\n{\r\nif (n/2*2 == n) return 1;\r\nif (n/2*2 == n-1) return 0;\r\nreturn 57;\r\n}\r\n",
+                "32766\r\n"
+            ],
+            [
+                "15\r\nint f(int n){if (n > 1) return f(n-2)/f(n-1)+15;if (n == 0) return 0;if (n == 1) return 1;}\r\n",
+                "32767\r\n"
+            ]
+        ]
+    }
+]

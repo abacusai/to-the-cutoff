@@ -1,0 +1,119 @@
+[
+    {
+        "name": "Incorrect Flow",
+        "description": "At the entrance examination for the magistracy of the MSU Cyber-Mechanics\nDepartment Sasha got the question about Ford-Fulkerson algorithm. He knew the\ntopic perfectly as he worked with it many times on programming competition. As\nthe task for the question he was given a network with partially build flow\nthat he had to use in order to demonstrate the workflow of the algorithm. He\nquickly finished to write the text and took a look at the problem only to\nunderstand that the given network is incorrect! Suppose you are given a\ndirected graph G(V, E) with two special nodes s and t called source and sink.\nWe denote as n the number of nodes in the graph, i.e. n = |V| and m stands for\nthe number of directed edges in the graph, i.e. m = |E|. For the purpose of\nthis problem we always consider node 1 to be the source and node n to be the\nsink. In addition, for each edge of the graph e we define the capacity\nfunction c(e) and flow function f(e). Function f(e) represents the correct\nflow if the following conditions are satisfied: For each edge the flow is non-\nnegative and does not exceed capacity c(e), i.e. 0 \u2264 f(e) \u2264 c(e). For each\nnode , that is not source or sink (v \u2260 s and v \u2260 t) the sum of flows of all\nedges going in v is equal to the sum of the flows among all edges going out\nfrom v. In other words, there is no flow stuck in v. It was clear that as the\nexam was prepared last night and there are plenty of mistakes in the tasks.\nSasha asked one of the professors to fix the network or give the correct task,\nbut the reply was that the magistrate student should be able to fix the\nnetwork himself. As the professor doesn't want the task to become easier, he\nasks Sasha to fix the network in a such way that the total number of changes\nis minimum possible. Sasha is not allowed to remove edges, add new ones or\nreverse the direction of existing edges. The only thing he is able to do is to\nchange capacity function c(e) and flow function f(e). Moreover, all the values\nshould remain non-negative integers. There is no requirement on the flow to be\nmaximum in any sense. Find the minimum possible total change of the functions\nf(e) and c(e) that Sasha has to make in order to make the flow correct. The\ntotal change is defined as the sum of absolute differences, i.e. if new\nfunctions are f^*(e) and c^*(e), then the total change is . Input The first\nline of the input contains two integers n and m (2 \u2264 n \u2264 100, 0 \u2264 m \u2264 100) \u2014\nthe number of nodes and edges in the graph respectively. Each of the following\nm lines contains the description of the edges, consisting of four integers ui,\nvi, ci and fi (1 \u2264 ui, vi \u2264 n, ui \u2260 vi, 0 \u2264 ci, fi \u2264 1 000 000) \u2014 index of the\nnode the edges starts from, the index of the node the edge goes to, current\ncapacity and flow value. Node number 1 is the source, and node number n is the\nsink. It's guaranteed that no edge goes to the source, and no edges starts in\nthe sink. Given graph contains no self-loops but may contain multiple edges.\nOutput Print one integer \u2014 the minimum total sum of changes that Sasha has to\ndo in order to get the correct flow description. Examples Input 2 1 1 2 2 1\nOutput 0 Input 2 1 1 2 1 2 Output 1 Input 3 3 1 2 1 1 2 3 2 2 1 3 3 3 Output 1\nInput 4 2 2 3 1 1 3 2 1 1 Output 0 Note In the first sample, the flow is\ninitially correct. Note, that the flow is not maximum, but this is not\nrequired. In the second sample, the flow value of the only edge is greater\nthan its capacity. There are two ways to fix this: either increase the\ncapacity up to 2 or reduce the flow down to 1. In the third sample, there is\nonly 1 unit of flow coming to vertex 2, but there are 2 units going out of it.\nOne of the possible solutions is to reduce the value of the flow on the second\nedge by 1. In the fourth sample, there is isolated circulation of flow, but\nthis description is correct by definition.\n\n",
+        "cf_contest_id": 708,
+        "cf_index": "D",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "flows"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 1\r\n1 2 2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1\r\n1 2 1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 3\r\n1 2 1 1\r\n2 3 2 2\r\n1 3 3 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "4 2\r\n2 3 1 1\r\n3 2 1 1\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 4\r\n1 2 2 3\r\n1 3 2 5\r\n2 4 2 2\r\n3 4 2 4\r\n",
+                "6\r\n"
+            ],
+            [
+                "2 1\r\n1 2 500000 1000000\r\n",
+                "500000\r\n"
+            ],
+            [
+                "2 1\r\n1 2 1000000 500000\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2\r\n1 2 1 2\r\n1 2 2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "100 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 6\r\n1 100 1000000 1\r\n1 2 1000000 1\r\n2 3 1000000 1\r\n4 3 1000000 1000000\r\n1 4 1000000 1000000\r\n4 100 100000 12124\r\n",
+                "1987878\r\n"
+            ],
+            [
+                "100 6\r\n1 100 1000000 0\r\n1 100 1000000 500000\r\n1 2 0 0\r\n2 100 0 1000000\r\n2 3 1000000 1000000\r\n3 2 1000000 1000000\r\n",
+                "1000000\r\n"
+            ],
+            [
+                "4 4\r\n1 2 3 3\r\n1 3 1 1\r\n2 4 4 4\r\n3 2 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 4\r\n1 2 2 2\r\n1 3 2 3\r\n2 4 2 3\r\n3 4 2 3\r\n",
+                "3\r\n"
+            ],
+            [
+                "4 4\r\n1 2 1 2\r\n1 3 3 4\r\n2 4 1 3\r\n3 4 3 5\r\n",
+                "6\r\n"
+            ],
+            [
+                "5 6\r\n1 2 2 2\r\n1 3 3 3\r\n2 5 2 2\r\n3 4 1 1\r\n3 5 2 2\r\n4 5 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 7\r\n1 2 3 3\r\n1 3 2 2\r\n2 4 2 2\r\n2 5 2 2\r\n3 2 1 2\r\n3 4 1 2\r\n4 5 3 4\r\n",
+                "3\r\n"
+            ],
+            [
+                "5 8\r\n1 2 3 4\r\n1 3 1 1\r\n1 4 1 3\r\n2 3 2 3\r\n2 5 1 2\r\n3 4 1 3\r\n3 5 2 3\r\n4 5 2 2\r\n",
+                "8\r\n"
+            ],
+            [
+                "5 7\r\n1 2 2 4\r\n1 4 3 5\r\n2 3 1 1\r\n2 5 3 6\r\n3 5 2 4\r\n4 2 2 5\r\n4 3 1 2\r\n",
+                "13\r\n"
+            ],
+            [
+                "10 22\r\n1 2 14 14\r\n1 3 20 20\r\n1 4 1 1\r\n1 6 7 7\r\n1 9 8 8\r\n2 3 1 1\r\n2 4 3 3\r\n2 10 10 10\r\n3 5 2 2\r\n3 6 6 6\r\n3 8 16 16\r\n3 10 5 5\r\n4 9 1 1\r\n4 10 3 3\r\n5 8 2 2\r\n6 7 13 13\r\n7 9 8 8\r\n7 10 13 13\r\n8 7 8 8\r\n8 10 10 10\r\n9 3 8 8\r\n9 10 9 9\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 30\r\n1 2 5 6\r\n1 3 8 9\r\n1 4 12 12\r\n1 7 25 26\r\n1 8 4 6\r\n1 9 9 9\r\n2 3 10 11\r\n2 6 2 4\r\n2 9 3 4\r\n2 10 11 11\r\n3 4 17 19\r\n3 6 10 12\r\n4 5 10 11\r\n4 8 17 19\r\n4 9 2 2\r\n4 10 16 18\r\n5 2 2 4\r\n5 6 9 9\r\n5 10 8 10\r\n6 8 2 4\r\n6 9 10 10\r\n6 10 9 9\r\n7 3 9 10\r\n7 4 16 17\r\n7 10 2 2\r\n8 2 19 20\r\n8 7 2 3\r\n8 10 2 4\r\n9 5 9 9\r\n9 10 15 17\r\n",
+                "32\r\n"
+            ],
+            [
+                "10 31\r\n1 2 10 10\r\n1 3 12 16\r\n1 4 2 6\r\n1 5 19 19\r\n1 6 2 6\r\n1 9 18 20\r\n2 3 7 11\r\n2 7 10 11\r\n3 4 10 11\r\n3 8 8 11\r\n3 9 11 13\r\n3 10 7 11\r\n4 2 7 8\r\n4 5 2 3\r\n4 6 19 22\r\n4 10 4 4\r\n5 7 9 12\r\n5 8 10 14\r\n5 10 10 11\r\n6 3 9 9\r\n6 5 8 11\r\n6 7 4 7\r\n7 3 8 12\r\n7 4 9 11\r\n7 8 2 3\r\n7 10 4 8\r\n8 4 2 4\r\n8 10 20 21\r\n9 4 9 12\r\n9 8 2 5\r\n9 10 18 20\r\n",
+                "70\r\n"
+            ],
+            [
+                "20 45\r\n1 5 4 5\r\n1 7 7 7\r\n1 8 2 3\r\n1 15 2 4\r\n1 19 2 4\r\n2 6 7 7\r\n2 17 2 5\r\n3 6 4 9\r\n3 12 7 10\r\n3 14 2 2\r\n3 18 2 5\r\n4 2 2 6\r\n4 20 2 7\r\n5 3 4 5\r\n5 4 2 7\r\n5 19 5 5\r\n6 8 2 7\r\n6 13 4 5\r\n6 17 7 11\r\n6 20 2 5\r\n7 3 2 6\r\n7 5 7 10\r\n8 10 2 3\r\n8 19 2 7\r\n8 20 7 9\r\n9 3 7 9\r\n10 6 2 4\r\n10 9 5 6\r\n10 14 2 7\r\n12 2 7 10\r\n12 6 2 3\r\n13 12 2 2\r\n13 20 4 7\r\n14 4 2 7\r\n14 20 2 4\r\n15 3 2 5\r\n16 10 2 4\r\n16 13 2 6\r\n17 16 2 4\r\n17 18 7 12\r\n18 8 7 8\r\n18 16 2 6\r\n19 7 2 6\r\n19 9 2 4\r\n19 10 5 8\r\n",
+                "117\r\n"
+            ],
+            [
+                "5 3\r\n2 3 1 1\r\n3 4 1 1\r\n4 2 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "13 18\r\n5 13 383489 392532\r\n1 8 61460 69187\r\n8 13 56154 56930\r\n1 10 187236 182940\r\n2 5 45819 38990\r\n1 4 201006 198477\r\n1 13 309347 302073\r\n1 9 215728 218907\r\n9 13 215728 218034\r\n8 12 5306 4851\r\n4 13 201006 199261\r\n1 3 54752 45874\r\n1 5 95682 103543\r\n10 5 187236 196965\r\n1 12 129448 127551\r\n1 2 45819 53537\r\n12 13 134754 127485\r\n3 5 54752 44946\r\n",
+                "67110\r\n"
+            ]
+        ]
+    }
+]

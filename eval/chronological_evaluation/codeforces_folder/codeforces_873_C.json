@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Strange Game On Matrix",
+        "description": "Ivan is playing a strange game. He has a matrix a with n rows and m columns.\nEach element of the matrix is equal to either 0 or 1. Rows and columns are\n1-indexed. Ivan can replace any number of ones in this matrix with zeroes.\nAfter that, his score in the game will be calculated as follows: Initially\nIvan's score is 0; In each column, Ivan will find the topmost 1 (that is, if\nthe current column is j, then he will find minimum i such that ai, j = 1). If\nthere are no 1's in the column, this column is skipped; Ivan will look at the\nnext min(k, n - i + 1) elements in this column (starting from the element he\nfound) and count the number of 1's among these elements. This number will be\nadded to his score. Of course, Ivan wants to maximize his score in this\nstrange game. Also he doesn't want to change many elements, so he will replace\nthe minimum possible number of ones with zeroes. Help him to determine the\nmaximum possible score he can get and the minimum possible number of\nreplacements required to achieve that score. Input The first line contains\nthree integer numbers n, m and k (1 \u2264 k \u2264 n \u2264 100, 1 \u2264 m \u2264 100). Then n lines\nfollow, i-th of them contains m integer numbers \u2014 the elements of i-th row of\nmatrix a. Each number is either 0 or 1. Output Print two numbers: the maximum\npossible score Ivan can get and the minimum number of replacements required to\nget this score. Examples Input 4 3 2 0 1 0 1 0 1 0 1 0 1 1 1 Output 4 1 Input\n3 2 1 1 0 0 1 0 0 Output 2 0 Note In the first example Ivan will replace the\nelement a1, 2.\n\n",
+        "cf_contest_id": 873,
+        "cf_index": "C",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "two pointers"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 3 2\r\n0 1 0\r\n1 0 1\r\n0 1 0\r\n1 1 1\r\n",
+                "4 1 "
+            ],
+            [
+                "3 2 1\r\n1 0\r\n0 1\r\n0 0\r\n",
+                "2 0 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 4 2\r\n0 1 1 1\r\n1 0 1 1\r\n1 0 0 1\r\n",
+                "7 0 "
+            ],
+            [
+                "3 57 3\r\n1 0 0 1 1 0 1 1 0 0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 1 0 0 1 1 0 1 1 1 1 0 1 1 1 0 0 0 1 1 0 0 1 0 0 0 1 1 0 0 1 0\r\n1 1 0 0 0 1 1 1 0 1 1 0 0 0 0 1 1 0 0 1 0 0 1 1 1 0 1 0 0 0 0 1 1 1 0 0 0 1 0 1 0 0 0 1 1 0 0 0 1 1 0 0 1 1 0 0 0\r\n1 0 1 0 0 1 1 0 1 0 0 0 1 0 1 0 1 0 1 1 1 1 0 1 0 0 0 1 1 1 1 0 1 1 1 0 1 0 0 0 0 0 0 1 1 1 1 0 1 1 1 0 0 1 1 0 1\r\n",
+                "80 0 "
+            ],
+            [
+                "1 1 1\r\n1\r\n",
+                "1 0 "
+            ],
+            [
+                "1 1 1\r\n0\r\n",
+                "0 0 "
+            ],
+            [
+                "2 2 1\r\n0 1\r\n1 0\r\n",
+                "2 0 "
+            ],
+            [
+                "100 1 20\r\n0\r\n0\r\n0\r\n1\r\n1\r\n0\r\n0\r\n0\r\n1\r\n1\r\n0\r\n1\r\n0\r\n1\r\n1\r\n0\r\n1\r\n1\r\n0\r\n1\r\n0\r\n1\r\n1\r\n0\r\n1\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n0\r\n1\r\n0\r\n1\r\n1\r\n1\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n0\r\n0\r\n1\r\n0\r\n1\r\n0\r\n1\r\n0\r\n1\r\n0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n0\r\n0\r\n1\r\n1\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n0\r\n1\r\n",
+                "13 34 "
+            ],
+            [
+                "1 100 1\r\n0 0 1 1 1 0 1 0 0 0 0 0 1 1 0 0 0 0 1 1 0 1 1 0 0 1 1 0 0 1 1 1 1 1 0 1 1 1 1 1 1 0 0 1 1 0 1 1 1 1 1 0 1 0 1 0 1 0 1 0 1 1 0 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 1 1 1 1 1 0 0 1 0 1 1 1 0 1 0 0 1 0 0 1 1 1\r\n",
+                "53 0 "
+            ]
+        ]
+    }
+]

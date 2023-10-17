@@ -1,0 +1,104 @@
+[
+    {
+        "name": "Remembering Strings",
+        "description": "You have multiset of n strings of the same length, consisting of lowercase\nEnglish letters. We will say that those strings are easy to remember if for\neach string there is some position i and some letter c of the English\nalphabet, such that this string is the only string in the multiset that has\nletter c in position i. For example, a multiset of strings \"abc\", \"aba\",\n\"adc\", \"ada\" are not easy to remember. And multiset \"abc\", \"ada\", \"ssa\" is\neasy to remember because: the first string is the only string that has\ncharacter c in position 3; the second string is the only string that has\ncharacter d in position 2; the third string is the only string that has\ncharacter s in position 2. You want to change your multiset a little so that\nit is easy to remember. For aij coins, you can change character in the j-th\nposition of the i-th string into any other lowercase letter of the English\nalphabet. Find what is the minimum sum you should pay in order to make the\nmultiset of strings easy to remember. Input The first line contains two\nintegers n, m (1 \u2264 n, m \u2264 20) \u2014 the number of strings in the multiset and the\nlength of the strings respectively. Next n lines contain the strings of the\nmultiset, consisting only of lowercase English letters, each string's length\nis m. Next n lines contain m integers each, the i-th of them contains integers\nai1, ai2, ..., aim (0 \u2264 aij \u2264 10^6). Output Print a single number \u2014 the answer\nto the problem. Examples Input 4 5 abcde abcde abcde abcde 1 1 1 1 1 1 1 1 1 1\n1 1 1 1 1 1 1 1 1 1 Output 3 Input 4 3 abc aba adc ada 10 10 10 10 1 10 10 10\n10 10 1 10 Output 2 Input 3 3 abc ada ssa 1 1 1 1 1 1 1 1 1 Output 0\n\n",
+        "cf_contest_id": 543,
+        "cf_index": "C",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 5\r\nabcde\r\nabcde\r\nabcde\r\nabcde\r\n1 1 1 1 1\r\n1 1 1 1 1\r\n1 1 1 1 1\r\n1 1 1 1 1\r\n",
+                "3"
+            ],
+            [
+                "4 3\r\nabc\r\naba\r\nadc\r\nada\r\n10 10 10\r\n10 1 10\r\n10 10 10\r\n10 1 10\r\n",
+                "2"
+            ],
+            [
+                "3 3\r\nabc\r\nada\r\nssa\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n",
+                "0"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 2\r\naa\r\naa\r\nab\r\nbb\r\nbb\r\n1 100\r\n100 100\r\n1 1\r\n100 100\r\n100 1\r\n",
+                "4"
+            ],
+            [
+                "3 3\r\nabc\r\nabc\r\nabc\r\n1 100 100\r\n100 1 100\r\n100 100 1\r\n",
+                "3"
+            ],
+            [
+                "18 3\r\nfbn\r\nlkj\r\nilm\r\ngfl\r\ndim\r\nbef\r\ncfi\r\nbma\r\neak\r\nkab\r\nbcn\r\nebc\r\nmfh\r\ncgi\r\ndeb\r\nfge\r\nfce\r\nglg\r\n543010 452044 432237\r\n533026 367079 978125\r\n571867 7573 259887\r\n523171 80963 129140\r\n727509 334751 399501\r\n656779 1472 523915\r\n803488 31561 922147\r\n488639 399532 725926\r\n301194 418928 306345\r\n500339 934078 810234\r\n621770 32854 324219\r\n35994 611153 973418\r\n22056 398091 505664\r\n594841 92510 294841\r\n285643 766895 214579\r\n789288 110084 241557\r\n803788 561404 814295\r\n454273 109684 485963\r\n",
+                "482616"
+            ],
+            [
+                "20 2\r\ned\r\nci\r\ngg\r\nib\r\nae\r\ndd\r\nka\r\nce\r\naf\r\ngb\r\nag\r\nke\r\ngj\r\nab\r\nie\r\nif\r\ngb\r\nkd\r\njg\r\neg\r\n52414 63820\r\n271794 291903\r\n838068 130592\r\n833667 287689\r\n270004 427864\r\n609044 320678\r\n358266 462930\r\n649990 731767\r\n805366 699807\r\n346704 829870\r\n3088 685256\r\n841621 526249\r\n880833 98228\r\n395075 685300\r\n693991 152955\r\n203957 482069\r\n61588 604920\r\n869639 800204\r\n460571 166336\r\n96179 163290\r\n",
+                "3086607"
+            ],
+            [
+                "14 4\r\neeac\r\neded\r\ndaea\r\nbdcc\r\nddba\r\nbbed\r\nbece\r\nbade\r\nbcde\r\naeaa\r\nbdac\r\neeeb\r\nbdcc\r\nedbb\r\n581667 582851 517604 898386\r\n791884 352385 258349 327447\r\n676328 157596 467774 112698\r\n45777 747499 235807 527714\r\n403040 861287 118443 362125\r\n263912 559519 730246 226455\r\n253277 156730 908225 39214\r\n106859 902383 881709 628437\r\n654953 279126 620775 491356\r\n326884 277262 143979 572860\r\n678172 916575 323805 344966\r\n788158 845192 910173 583941\r\n793949 346044 197488 869580\r\n752215 693122 61084 269351\r\n",
+                "1464749"
+            ],
+            [
+                "9 6\r\nfaggcc\r\nfaaabb\r\ngcbeab\r\nfcfccc\r\nggfbda\r\ncdfdca\r\nafgbfe\r\ngdfabb\r\ndfceca\r\n820666 301493 605608 275034 608561 41415\r\n38810 371880 894378 995636 233081 97716\r\n729450 719972 502653 951544 136420 297684\r\n141643 410761 189875 96642 313469 90309\r\n327239 909031 256744 641859 919511 632267\r\n274015 319092 647885 117871 244700 23850\r\n694455 42862 757559 76928 529026 404811\r\n169808 705232 622067 341005 732346 273726\r\n902764 775615 14975 694559 746539 949558\r\n",
+                "169808"
+            ],
+            [
+                "20 2\r\nef\r\naf\r\njn\r\nep\r\nma\r\nfl\r\nls\r\nja\r\ndf\r\nmn\r\noi\r\nhl\r\ncp\r\nki\r\nsm\r\nbr\r\nkh\r\nbh\r\nss\r\nsn\r\n994001 86606\r\n449283 850926\r\n420642 431355\r\n661713 265900\r\n311094 693311\r\n839793 582465\r\n218329 404955\r\n826100 437982\r\n490781 884023\r\n543933 661317\r\n732465 182697\r\n930091 431572\r\n899562 219773\r\n183082 851452\r\n187385 138584\r\n208770 505758\r\n32329 783088\r\n381254 60719\r\n81287 322375\r\n613255 515667\r\n",
+                "1399835"
+            ],
+            [
+                "14 3\r\nach\r\nema\r\nnia\r\nhdb\r\njdg\r\nmim\r\nihn\r\nlnb\r\nmea\r\nkbe\r\ndhf\r\nfdm\r\nihg\r\ndle\r\n354035 675597 288100\r\n834061 16574 159776\r\n624990 190507 971363\r\n783873 552492 865853\r\n23679 404670 333364\r\n419925 809048 493997\r\n614400 59207 604857\r\n291672 219123 261918\r\n812836 873570 862136\r\n168628 673613 981460\r\n811468 388422 605280\r\n625385 834937 352820\r\n604930 141476 454908\r\n638553 112928 340904\r\n",
+                "331983"
+            ],
+            [
+                "15 2\r\nfb\r\nii\r\nfh\r\nca\r\nhh\r\nid\r\nee\r\ndf\r\ncb\r\nah\r\ndd\r\neg\r\nfh\r\nbf\r\nfa\r\n760810 556244\r\n809829 634461\r\n387951 792353\r\n418763 335686\r\n72714 935647\r\n998352 931571\r\n933518 39685\r\n839205 685365\r\n478841 923156\r\n136274 626301\r\n62152 942551\r\n652306 897289\r\n985857 313305\r\n783929 451818\r\n614967 944901\r\n",
+                "2465167"
+            ],
+            [
+                "11 5\r\ngbacd\r\nadgcb\r\nfegcg\r\nadegd\r\necbef\r\ngaefc\r\ncfedb\r\naggcc\r\ncaeee\r\ngccbf\r\nbggfe\r\n25774 574140 364457 220351 328678\r\n332976 664320 153656 745374 268524\r\n976642 503249 891782 487119 60381\r\n342599 115529 926636 508909 173932\r\n873361 128784 330500 590205 224003\r\n744056 583317 746463 96586 490744\r\n576114 237562 483180 227779 850753\r\n767095 762144 485730 712642 641107\r\n754411 247671 390338 690181 587283\r\n127688 79591 62996 314500 601391\r\n278604 260035 971558 902808 119517\r\n",
+                "591667"
+            ],
+            [
+                "1 1\r\na\r\n10\r\n",
+                "0"
+            ],
+            [
+                "1 2\r\nav\r\n10 10\r\n",
+                "0"
+            ],
+            [
+                "1 19\r\naaaaaaaaaaaaaaaaaaa\r\n774231 725127 560557 436525 348529 840998 841465 338905 610008 346645 913975 616398 718745 2592 2734 126306 120664 449 493046\r\n",
+                "0"
+            ],
+            [
+                "20 1\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\n279537\r\n272065\r\n761854\r\n491903\r\n772493\r\n866813\r\n232656\r\n138771\r\n331568\r\n965561\r\n251399\r\n68795\r\n243844\r\n195442\r\n763171\r\n612582\r\n137653\r\n698277\r\n826156\r\n42642\r\n",
+                "7987621"
+            ],
+            [
+                "20 2\r\naa\r\nab\r\nba\r\nab\r\nba\r\nab\r\nbb\r\nba\r\naa\r\nba\r\nbb\r\nab\r\nab\r\nab\r\nba\r\naa\r\naa\r\nbb\r\nba\r\nba\r\n929272 190859\r\n322406 81721\r\n397851 916762\r\n556069 810114\r\n510543 404765\r\n6399 192522\r\n610299 679861\r\n251511 669405\r\n313342 57477\r\n515837 179823\r\n576007 834991\r\n750083 929304\r\n904444 761847\r\n551657 584593\r\n402463 483607\r\n128054 501477\r\n484233 342956\r\n779001 138132\r\n815387 273216\r\n717650 927079\r\n",
+                "7378839"
+            ],
+            [
+                "3 20\r\naaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaaaaa\r\n127368 467778 376749 367872 201445 632491 733098 177711 678142 3202 840006 769776 381139 365553 457474 206005 99000 226191 795686 589632\r\n785172 213443 482364 357721 191016 596022 882906 601573 917829 966436 129825 285602 706196 722082 206626 338767 795346 360434 596067 839588\r\n350648 821766 692816 249289 50316 993641 378347 192555 299095 692681 595706 90452 626278 159574 303025 263819 544206 818035 213523 721078\r\n",
+                "183343"
+            ],
+            [
+                "1 20\r\naaaaaaaaaaaaaaaaaaaa\r\n924705 786913 546594 427698 741583 189683 354089 380570 10694 41046 656300 416271 467032 627269 387941 432085 400210 97543 279672 409814\r\n",
+                "0"
+            ],
+            [
+                "2 20\r\naabbaaaaabbbbbbaabbb\r\naabaabbbabbaabaaabaa\r\n129031 157657 633540 354251 528473 948025 107960 614275 976567 779835 628647 672528 278433 254595 676151 992850 419435 163397 816037 682878\r\n97253 367892 938199 150466 687355 886265 900135 530415 409478 505794 468915 83346 765920 348268 600319 334416 410150 728362 239354 368428\r\n",
+                "0"
+            ]
+        ]
+    }
+]

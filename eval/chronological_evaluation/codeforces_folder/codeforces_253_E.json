@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Printer",
+        "description": "Let's consider a network printer that functions like that. It starts working\nat time 0. In each second it can print one page of a text. At some moments of\ntime the printer receives printing tasks. We know that a printer received n\ntasks. Let's number the tasks by consecutive integers from 1 to n. Then the\ntask number i is characterised by three integers: ti is the time when the task\ncame, si is the task's volume (in pages) and pi is the task's priority. The\npriorities of all tasks are distinct. When the printer receives a task, the\ntask goes to the queue and remains there until all pages from this task are\nprinted. The printer chooses a page to print each time when it either stops\nprinting some page or when it is free and receives a new task. Among all tasks\nthat are in the queue at this moment, the printer chooses the task with the\nhighest priority and next second prints an unprinted page from this task. You\ncan assume that a task goes to the queue immediately, that's why if a task has\njust arrived by time t, the printer can already choose it for printing. You\nare given full information about all tasks except for one: you don't know this\ntask's priority. However, we know the time when the last page from this task\nwas finished printing. Given this information, find the unknown priority value\nand determine the moments of time when the printer finished printing each\ntask. Input The first line contains integer n (1 \u2264 n \u2264 50000). Next n lines\ndescribe the tasks. The i-th of these lines contains three integers ti, si and\npi, separated by single spaces (0 \u2264 ti \u2264 10^9, 1 \u2264 si, pi \u2264 10^9). Exactly one\ntask (let's assume that his number is x) has number -1 written instead of the\npriority. All priorities are different. The last line contains integer T \u2014 the\ntime when the printer finished printing the last page of task x (1 \u2264 T \u2264\n10^15). Numbers ti are not necessarily distinct. The tasks in the input are\nwritten in the arbitrary order. Output In the first line print integer px \u2014\nthe priority of the task number x (1 \u2264 px \u2264 10^9, remember that all priorities\nshould be distinct). Then print n integers, the i-th of them represents the\nmoment of time when the last page of the task number i finished printing. It\nis guaranteed that at least one solution exists. If there are multiple\nsolutions, print any of them. Examples Input 3 4 3 -1 0 2 2 1 3 3 7 Output 4 7\n8 4 Input 3 3 1 2 2 3 3 3 1 -1 4 Output 4 7 6 4 Note Let's consider the first\ntest case. Let's assume that the unknown priority equals 4, then the printer's\nactions for each second are as follows: the beginning of the 1-st second (time\n0). The queue has task 2. The printer prints the first page of this task; the\nbeginning of the 2-nd second (time 1). The queue has tasks 2 and 3. The\nprinter prints the first page of task 3; the beginning of the 3-rd second\n(time 2). The queue has tasks 2 and 3. The printer prints the second page of\ntask 3; the beginning of the 4-th second (time 3). The queue has tasks 2 and\n3. The printer prints the third (last) page of task 3. Thus, by the end of the\n4-th second this task will have been printed; the beginning of the 5-th second\n(time 4). The queue has tasks 2 and 1. The printer prints the first page of\ntask 1; the beginning of the 6-th second (time 5). The queue has tasks 2 and\n1. The printer prints the second page of task 1; the beginning of the 7-th\nsecond (time 6). The queue has tasks 2 and 1. The printer prints the third\n(last) page of task 1. Thus, by the end of the 7-th second this task will have\nbeen printed; the beginning of the 8-th second (time 7). The queue has task 2.\nThe printer prints the second (last) page of task 2. Thus, by the end of the\n8-th second this task will have been printed. In the end, task number 1 will\nhave been printed by the end of the 7-th second, as was required. And tasks 2\nand 3 are printed by the end of the of the 8-th and the 4-th second\ncorrespondingly.\n\n",
+        "cf_contest_id": 253,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n4 3 -1\r\n0 2 2\r\n1 3 3\r\n7\r\n",
+                "500000000\r\n7 8 4 \r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n2 3 3\r\n3 1 -1\r\n4\r\n",
+                "500000000\r\n7 6 4 \r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n4 3 -1\r\n1 3 3\r\n0 2 2\r\n7\r\n",
+                "500000000\r\n7 4 8 \r\n"
+            ],
+            [
+                "3\r\n2 3 3\r\n3 1 -1\r\n3 1 2\r\n4\r\n",
+                "500000000\r\n6 4 7 \r\n"
+            ],
+            [
+                "3\r\n4 3 657086577\r\n5 4 149081751\r\n1 2 -1\r\n3\r\n",
+                "500000000\r\n7 11 3 \r\n"
+            ],
+            [
+                "5\r\n0 1 292998678\r\n0 2 -1\r\n1 2 608912148\r\n0 2 755127870\r\n2 2 671404265\r\n2\r\n",
+                "875000000\r\n9 2 8 4 6 \r\n"
+            ],
+            [
+                "10\r\n17 4 884864891\r\n69 93 224331262\r\n58 74 724292085\r\n27 29 929825081\r\n43 12 208820467\r\n53 3 328248431\r\n62 3 992168655\r\n87 19 185127074\r\n12 17 579471972\r\n53 67 -1\r\n126\r\n",
+                "750000000\r\n21 302 200 56 314 209 65 333 206 126 \r\n"
+            ],
+            [
+                "15\r\n0 8 166779212\r\n0 5 839952954\r\n5 10 483242337\r\n8 5 339541884\r\n0 1 713374035\r\n8 10 643849764\r\n2 7 794552390\r\n5 6 -1\r\n5 2 908479719\r\n1 1 134008261\r\n10 4 276719394\r\n8 8 886096242\r\n2 7 295245303\r\n0 6 415969052\r\n7 2 726464370\r\n21\r\n",
+                "875000000\r\n81 5 51 62 31 41 28 21 7 82 73 16 69 57 30 \r\n"
+            ],
+            [
+                "25\r\n56 19 42177293\r\n21 62 839934667\r\n42 98 749784888\r\n49 90 797682330\r\n64 31 580195110\r\n34 88 87988367\r\n91 84 698743989\r\n38 51 73744456\r\n52 63 645748174\r\n68 86 839775246\r\n21 12 334823061\r\n65 1 415353243\r\n42 99 398380598\r\n69 44 508219503\r\n75 77 28885585\r\n77 33 352358870\r\n69 60 706838283\r\n13 36 71952513\r\n21 44 297647544\r\n19 30 58364358\r\n91 96 146611248\r\n6 19 837719678\r\n98 74 347062453\r\n98 22 -1\r\n11 87 459377798\r\n852\r\n",
+                "375000000\r\n1335 83 361 263 599 1199 505 1250 568 169 971 731 830 643 1412 885 421 1286 1015 1316 1111 173 959 852 730 \r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,358 @@
+[
+    {
+        "name": "Anton and Making Potions",
+        "description": "Anton is playing a very interesting computer game, but now he is stuck at one\nof the levels. To pass to the next level he has to prepare n potions. Anton\nhas a special kettle, that can prepare one potions in x seconds. Also, he\nknows spells of two types that can faster the process of preparing potions.\nSpells of this type speed up the preparation time of one potion. There are m\nspells of this type, the i-th of them costs bi manapoints and changes the\npreparation time of each potion to ai instead of x. Spells of this type\nimmediately prepare some number of potions. There are k such spells, the i-th\nof them costs di manapoints and instantly create ci potions. Anton can use no\nmore than one spell of the first type and no more than one spell of the second\ntype, and the total number of manapoints spent should not exceed s. Consider\nthat all spells are used instantly and right before Anton starts to prepare\npotions. Anton wants to get to the next level as fast as possible, so he is\ninterested in the minimum number of time he needs to spent in order to prepare\nat least n potions. Input The first line of the input contains three integers\nn, m, k (1 \u2264 n \u2264 2\u00b710^9, 1 \u2264 m, k \u2264 2\u00b710^5) \u2014 the number of potions, Anton has\nto make, the number of spells of the first type and the number of spells of\nthe second type. The second line of the input contains two integers x and s (2\n\u2264 x \u2264 2\u00b710^9, 1 \u2264 s \u2264 2\u00b710^9) \u2014 the initial number of seconds required to\nprepare one potion and the number of manapoints Anton can use. The third line\ncontains m integers ai (1 \u2264 ai < x) \u2014 the number of seconds it will take to\nprepare one potion if the i-th spell of the first type is used. The fourth\nline contains m integers bi (1 \u2264 bi \u2264 2\u00b710^9) \u2014 the number of manapoints to\nuse the i-th spell of the first type. There are k integers ci (1 \u2264 ci \u2264 n) in\nthe fifth line \u2014 the number of potions that will be immediately created if the\ni-th spell of the second type is used. It's guaranteed that ci are not\ndecreasing, i.e. ci \u2264 cj if i < j. The sixth line contains k integers di (1 \u2264\ndi \u2264 2\u00b710^9) \u2014 the number of manapoints required to use the i-th spell of the\nsecond type. It's guaranteed that di are not decreasing, i.e. di \u2264 dj if i <\nj. Output Print one integer \u2014 the minimum time one has to spent in order to\nprepare n potions. Examples Input 20 3 2 10 99 2 4 3 20 10 40 4 15 10 80\nOutput 20 Input 20 3 2 10 99 2 4 3 200 100 400 4 15 100 800 Output 200 Note In\nthe first sample, the optimum answer is to use the second spell of the first\ntype that costs 10 manapoints. Thus, the preparation time of each potion\nchanges to 4 seconds. Also, Anton should use the second spell of the second\ntype to instantly prepare 15 potions spending 80 manapoints. The total number\nof manapoints used is 10 + 80 = 90, and the preparation time is 4\u00b75 = 20\nseconds (15 potions were prepared instantly, and the remaining 5 will take 4\nseconds each). In the second sample, Anton can't use any of the spells, so he\njust prepares 20 potions, spending 10 seconds on each of them and the answer\nis 20\u00b710 = 200.\n\n",
+        "cf_contest_id": 734,
+        "cf_index": "C",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "dp",
+            "greedy",
+            "two pointers"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "20 3 2\r\n10 99\r\n2 4 3\r\n20 10 40\r\n4 15\r\n10 80\r\n",
+                "20\r\n"
+            ],
+            [
+                "20 3 2\r\n10 99\r\n2 4 3\r\n200 100 400\r\n4 15\r\n100 800\r\n",
+                "200\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 3 3\r\n10 33\r\n1 7 6\r\n17 25 68\r\n2 9 10\r\n78 89 125\r\n",
+                "10\r\n"
+            ],
+            [
+                "94 1 1\r\n26 324\r\n7\r\n236\r\n77\r\n5\r\n",
+                "119\r\n"
+            ],
+            [
+                "3 4 5\r\n5 9\r\n1 2 1 1\r\n3 5 4 1\r\n1 1 1 1 3\r\n1 2 3 4 5\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 4 2\r\n3 10\r\n2 1 1 1\r\n1 5 3 5\r\n1 1\r\n1 5\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 3 3\r\n4 4\r\n2 3 1\r\n1 3 1\r\n1 2 2\r\n2 2 5\r\n",
+                "3\r\n"
+            ],
+            [
+                "4 3 2\r\n2 7\r\n1 1 1\r\n2 4 1\r\n1 4\r\n1 5\r\n",
+                "0\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 1999999999\r\n1\r\n2000000000\r\n1\r\n2000000000\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "3 1 1\r\n2 1\r\n1\r\n1\r\n1\r\n1\r\n",
+                "3\r\n"
+            ],
+            [
+                "379 5 8\r\n758 10000\r\n512 512 512 512 512\r\n500 500 500 500 500\r\n123 123 123 123 123 123 123 123\r\n500 500 500 500 500 500 500 500\r\n",
+                "131072\r\n"
+            ],
+            [
+                "256 22 22\r\n45 42\r\n21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42\r\n21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42\r\n21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42\r\n21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42\r\n",
+                "4935\r\n"
+            ],
+            [
+                "20 3 2\r\n1000 99\r\n1 2 3\r\n100 200 300\r\n1 2\r\n3 4\r\n",
+                "18000\r\n"
+            ],
+            [
+                "20 3 2\r\n10 99\r\n2 4 3\r\n200 100 400\r\n4 15\r\n10 80\r\n",
+                "50\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 1\r\n1\r\n100\r\n1\r\n100\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "100 1 1\r\n100 1\r\n1\r\n1000\r\n100\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 1 1\r\n100 1\r\n1\r\n1000\r\n99\r\n1\r\n",
+                "100\r\n"
+            ],
+            [
+                "2 1 1\r\n10 10\r\n2\r\n11\r\n1\r\n2\r\n",
+                "10\r\n"
+            ],
+            [
+                "2000000000 3 2\r\n1000000000 99\r\n2 4 3\r\n100 100 100\r\n4 15\r\n100 100\r\n",
+                "2000000000000000000\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 1\r\n2\r\n2\r\n2\r\n2\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "2000000000 2 2\r\n2000000000 1\r\n1 2\r\n100 100\r\n1 2\r\n100 100\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 1\r\n1\r\n2\r\n1\r\n2\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "2000000000 3 2\r\n10 1\r\n2 4 3\r\n200 100 400\r\n4 15\r\n100 800\r\n",
+                "20000000000\r\n"
+            ],
+            [
+                "1000 1 1\r\n10 10\r\n1\r\n1000\r\n500\r\n10\r\n",
+                "5000\r\n"
+            ],
+            [
+                "4 2 2\r\n4 3\r\n1 1\r\n8 8\r\n1 1\r\n1 1\r\n",
+                "12\r\n"
+            ],
+            [
+                "20 3 2\r\n10 99\r\n2 4 3\r\n200 100 400\r\n20 20\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2000 1 1\r\n2000 1\r\n2\r\n2\r\n1\r\n1\r\n",
+                "3998000\r\n"
+            ],
+            [
+                "20 3 2\r\n10 99\r\n2 4 3\r\n20 20 40\r\n4 20\r\n10 80\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 1 1\r\n10 50\r\n1\r\n50\r\n1\r\n50\r\n",
+                "10\r\n"
+            ],
+            [
+                "2000000000 3 2\r\n1000000000 99\r\n2 4 3\r\n200 100 400\r\n4 15\r\n100 100\r\n",
+                "2000000000000000000\r\n"
+            ],
+            [
+                "10 1 1\r\n10 10\r\n9\r\n100\r\n10\r\n10\r\n",
+                "0\r\n"
+            ],
+            [
+                "50 1 1\r\n3 10\r\n2\r\n100\r\n50\r\n10\r\n",
+                "0\r\n"
+            ],
+            [
+                "20 1 1\r\n10 99\r\n1\r\n100\r\n4\r\n10\r\n",
+                "160\r\n"
+            ],
+            [
+                "2000000000 3 2\r\n1000000000 99\r\n2 4 3\r\n200 100 400\r\n4 15\r\n100 800\r\n",
+                "2000000000000000000\r\n"
+            ],
+            [
+                "100 1 1\r\n100 2\r\n1\r\n2\r\n1\r\n2\r\n",
+                "100\r\n"
+            ],
+            [
+                "10 1 1\r\n10 50\r\n1\r\n51\r\n10\r\n50\r\n",
+                "0\r\n"
+            ],
+            [
+                "20 3 2\r\n10 10\r\n2 4 3\r\n10 90 90\r\n1 2\r\n999 1000\r\n",
+                "40\r\n"
+            ],
+            [
+                "5 1 1\r\n5 10\r\n3\r\n10\r\n5\r\n10\r\n",
+                "0\r\n"
+            ],
+            [
+                "20 1 1\r\n100 1\r\n2\r\n2\r\n20\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 1 1\r\n200 10\r\n10\r\n11\r\n100\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "20 3 2\r\n10 99\r\n2 4 3\r\n200 100 400\r\n4 15\r\n1 8\r\n",
+                "50\r\n"
+            ],
+            [
+                "20 3 1\r\n5 40\r\n2 3 4\r\n40 40 40\r\n20\r\n40\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 1 1\r\n10 50\r\n1\r\n51\r\n9\r\n50\r\n",
+                "10\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 1\r\n1\r\n5\r\n1\r\n5\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "100 1 1\r\n1000 5\r\n1\r\n6\r\n100\r\n4\r\n",
+                "0\r\n"
+            ],
+            [
+                "1000000000 1 1\r\n1000000000 1\r\n1\r\n10000\r\n1\r\n10000\r\n",
+                "1000000000000000000\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 1\r\n1\r\n10\r\n2\r\n10\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "20 1 1\r\n10 100\r\n5\r\n200\r\n10\r\n1\r\n",
+                "100\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 1\r\n1999999999\r\n1\r\n1\r\n1\r\n",
+                "3999999998000000000\r\n"
+            ],
+            [
+                "20 3 2\r\n10 10\r\n2 4 3\r\n10 10 10\r\n20 20\r\n999 999\r\n",
+                "40\r\n"
+            ],
+            [
+                "20 2 2\r\n10 100\r\n1 1\r\n1000 2000\r\n4 15\r\n100 800\r\n",
+                "160\r\n"
+            ],
+            [
+                "2 1 1\r\n5 5\r\n2\r\n10\r\n2\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "20 3 2\r\n10 2\r\n1 1 1\r\n3 4 5\r\n1 2\r\n1 3\r\n",
+                "190\r\n"
+            ],
+            [
+                "20 3 1\r\n10 10\r\n9 9 9\r\n10 10 10\r\n20\r\n10\r\n",
+                "0\r\n"
+            ],
+            [
+                "1000000000 3 2\r\n1000000000 1\r\n2 4 3\r\n20 10 40\r\n4 15\r\n10 80\r\n",
+                "1000000000000000000\r\n"
+            ],
+            [
+                "10 1 1\r\n10 10\r\n1\r\n20\r\n5\r\n9\r\n",
+                "50\r\n"
+            ],
+            [
+                "1 1 1\r\n1000 1000\r\n1\r\n1000\r\n1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1000000000 1 1\r\n1000000000 1\r\n1\r\n10000\r\n1000000000\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "20 1 1\r\n10 10\r\n4\r\n100\r\n20\r\n10\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 1 1\r\n100 10000\r\n99\r\n10001\r\n100\r\n10000\r\n",
+                "0\r\n"
+            ],
+            [
+                "20 1 1\r\n10 100\r\n5\r\n200\r\n10\r\n100\r\n",
+                "100\r\n"
+            ],
+            [
+                "52 2 3\r\n50 101\r\n15 13\r\n10 20\r\n20 50 51\r\n20 100 200\r\n",
+                "100\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 10\r\n5\r\n15\r\n5\r\n15\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "20 3 2\r\n10 99\r\n2 4 3\r\n99 100 400\r\n4 15\r\n100 800\r\n",
+                "40\r\n"
+            ],
+            [
+                "1 1 1\r\n1000 1\r\n1\r\n1000\r\n1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "100000000 1 1\r\n100000000 1\r\n10\r\n10\r\n10\r\n10\r\n",
+                "10000000000000000\r\n"
+            ],
+            [
+                "1000000000 3 2\r\n1000000000 99\r\n2 4 3\r\n20 10 40\r\n4 15\r\n10 80\r\n",
+                "1999999992\r\n"
+            ],
+            [
+                "100 1 1\r\n1000 5\r\n1\r\n6\r\n95\r\n4\r\n",
+                "5000\r\n"
+            ],
+            [
+                "1 1 1\r\n2 1\r\n1\r\n10\r\n1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "50 1 1\r\n10 10\r\n8\r\n11\r\n50\r\n10\r\n",
+                "0\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 1\r\n1\r\n10\r\n1\r\n10\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "10 1 1\r\n10 10\r\n5\r\n5\r\n7\r\n10\r\n",
+                "30\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 1\r\n200000000\r\n2000000000\r\n2000000000\r\n2000000000\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 1\r\n4\r\n100\r\n20\r\n100\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "100 1 1\r\n1000 5\r\n2\r\n6\r\n95\r\n4\r\n",
+                "5000\r\n"
+            ],
+            [
+                "10 1 2\r\n10 10\r\n5\r\n6\r\n5 7\r\n4 4\r\n",
+                "15\r\n"
+            ],
+            [
+                "1000000000 1 1\r\n1000000000 1\r\n1\r\n1000000\r\n1\r\n100000000\r\n",
+                "1000000000000000000\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 5\r\n2\r\n6\r\n2\r\n6\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "2000000000 1 1\r\n2000000000 1\r\n100\r\n100\r\n100\r\n100\r\n",
+                "4000000000000000000\r\n"
+            ],
+            [
+                "20 3 2\r\n10 99\r\n2 4 3\r\n20 10 40\r\n20 20\r\n99 99\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 2 2\r\n10 15\r\n5 7\r\n16 16\r\n5 10\r\n5 10\r\n",
+                "0\r\n"
+            ],
+            [
+                "1000000000 1 1\r\n1000000000 10\r\n999999991\r\n1\r\n1\r\n10000\r\n",
+                "999999991000000000\r\n"
+            ],
+            [
+                "1000000000 1 1\r\n1000000000 2\r\n999999999\r\n1\r\n1\r\n1\r\n",
+                "999999998000000001\r\n"
+            ],
+            [
+                "20 3 2\r\n2000000000 99\r\n2 4 3\r\n200 100 400\r\n4 15\r\n100 800\r\n",
+                "40000000000\r\n"
+            ]
+        ]
+    }
+]

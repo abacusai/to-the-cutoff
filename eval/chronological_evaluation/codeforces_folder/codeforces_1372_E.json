@@ -1,0 +1,113 @@
+[
+    {
+        "name": "Omkar and Last Floor",
+        "description": "Omkar is building a house. He wants to decide how to make the floor plan for\nthe last floor. Omkar's floor starts out as \n    n\n rows of \n    m\n zeros\n(\n    1 \n    \u2264 n,m \n    \u2264 100\n). Every row is divided into intervals such that\nevery \n    0\n in the row is in exactly \n    1\n interval. For every interval\nfor every row, Omkar can change exactly one of the \n    0\ns contained in that\ninterval to a \n    1\n. Omkar defines the quality of a floor as the sum of the\nsquares of the sums of the values in each column, i. e. if the sum of the\nvalues in the \n    i\n-th column is \n    q_i\n, then the quality of the floor is\n\n    \u2211_i = 1^m q_i^2\n. Help Omkar find the maximum quality that the\nfloor can have. Input The first line contains two integers, \n    n\n and\n\n    m\n (\n    1 \n    \u2264 n,m \n    \u2264 100\n), which are the number of rows and number\nof columns, respectively. You will then receive a description of the intervals\nin each row. For every row \n    i\n from \n    1\n to \n    n\n: The first row\ncontains a single integer \n    k_i\n (\n    1 \n    \u2264 k_i \n    \u2264 m\n), which is the\nnumber of intervals on row \n    i\n. The \n    j\n-th of the next \n    k_i\n lines\ncontains two integers \n    l_i,j\n and \n    r_i,j\n, which are the left and\nright bound (both inclusive), respectively, of the \n    j\n-th interval of the\n\n    i\n-th row. It is guaranteed that all intervals other than the first\ninterval will be directly after the interval before it. Formally, \n    l_i,1 =\n    1\n, \n    l_i,j\n    \u2264 r_i,j\n for all \n    1 \n    \u2264 j \n    \u2264 k_i\n,\n\n    r_i,j-1 + 1 = l_i,j\n for all \n    2 \n    \u2264 j \n    \u2264 k_i\n, and\n\n    r_i,k_i = m\n. Output Output one integer, which is the maximum possible\nquality of an eligible floor plan. Example Input 4 5 2 1 2 3 5 2 1 3 4 5 3 1 1\n2 4 5 5 3 1 1 2 2 3 5 Output 36 Note The given test case corresponds to the\nfollowing diagram. Cells in the same row and have the same number are a part\nof the same interval. The most optimal assignment is: The sum of the \n    1\nst\ncolumn is \n    4\n, the sum of the \n    2\nnd column is \n    2\n, the sum of the\n\n    3\nrd and \n    4\nth columns are \n    0\n, and the sum of the \n    5\nth\ncolumn is \n    4\n. The quality of this floor plan is \n    4^2 + 2^2 + 0^2 + 0^2\n    + 4^2 = 36\n. You can show that there is no floor plan with a higher quality.\n\n",
+        "cf_contest_id": 1372,
+        "cf_index": "E",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 5\r\n2\r\n1 2\r\n3 5\r\n2\r\n1 3\r\n4 5\r\n3\r\n1 1\r\n2 4\r\n5 5\r\n3\r\n1 1\r\n2 2\r\n3 5\r\n",
+                "36"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 3\r\n3\r\n1 1\r\n2 2\r\n3 3\r\n3\r\n1 1\r\n2 2\r\n3 3\r\n3\r\n1 1\r\n2 2\r\n3 3\r\n",
+                "27"
+            ],
+            [
+                "5 5\r\n1\r\n1 5\r\n1\r\n1 5\r\n1\r\n1 5\r\n1\r\n1 5\r\n1\r\n1 5\r\n",
+                "25"
+            ],
+            [
+                "5 5\r\n1\r\n1 5\r\n2\r\n1 4\r\n5 5\r\n2\r\n1 3\r\n4 5\r\n3\r\n1 1\r\n2 3\r\n4 5\r\n2\r\n1 2\r\n3 5\r\n",
+                "42"
+            ],
+            [
+                "2 1\r\n1\r\n1 1\r\n1\r\n1 1\r\n",
+                "4"
+            ],
+            [
+                "8 5\r\n2\r\n1 2\r\n3 5\r\n1\r\n1 5\r\n3\r\n1 1\r\n2 3\r\n4 5\r\n1\r\n1 5\r\n1\r\n1 5\r\n1\r\n1 5\r\n2\r\n1 1\r\n2 5\r\n3\r\n1 2\r\n3 4\r\n5 5\r\n",
+                "84"
+            ],
+            [
+                "7 8\r\n1\r\n1 8\r\n2\r\n1 5\r\n6 8\r\n4\r\n1 1\r\n2 2\r\n3 4\r\n5 8\r\n4\r\n1 3\r\n4 4\r\n5 5\r\n6 8\r\n2\r\n1 7\r\n8 8\r\n2\r\n1 6\r\n7 8\r\n3\r\n1 1\r\n2 2\r\n3 8\r\n",
+                "94"
+            ],
+            [
+                "19 25\r\n3\r\n1 5\r\n6 8\r\n9 25\r\n3\r\n1 2\r\n3 20\r\n21 25\r\n2\r\n1 23\r\n24 25\r\n2\r\n1 5\r\n6 25\r\n1\r\n1 25\r\n4\r\n1 16\r\n17 18\r\n19 20\r\n21 25\r\n4\r\n1 1\r\n2 4\r\n5 16\r\n17 25\r\n3\r\n1 10\r\n11 16\r\n17 25\r\n2\r\n1 21\r\n22 25\r\n5\r\n1 8\r\n9 16\r\n17 22\r\n23 23\r\n24 25\r\n4\r\n1 14\r\n15 22\r\n23 24\r\n25 25\r\n6\r\n1 6\r\n7 12\r\n13 18\r\n19 19\r\n20 24\r\n25 25\r\n3\r\n1 11\r\n12 14\r\n15 25\r\n4\r\n1 6\r\n7 7\r\n8 22\r\n23 25\r\n3\r\n1 7\r\n8 18\r\n19 25\r\n4\r\n1 3\r\n4 7\r\n8 18\r\n19 25\r\n3\r\n1 13\r\n14 23\r\n24 25\r\n1\r\n1 25\r\n4\r\n1 6\r\n7 11\r\n12 14\r\n15 25\r\n",
+                "823"
+            ],
+            [
+                "21 16\r\n6\r\n1 7\r\n8 8\r\n9 9\r\n10 12\r\n13 15\r\n16 16\r\n3\r\n1 1\r\n2 8\r\n9 16\r\n2\r\n1 13\r\n14 16\r\n3\r\n1 9\r\n10 13\r\n14 16\r\n3\r\n1 2\r\n3 15\r\n16 16\r\n2\r\n1 15\r\n16 16\r\n4\r\n1 6\r\n7 11\r\n12 13\r\n14 16\r\n4\r\n1 1\r\n2 10\r\n11 15\r\n16 16\r\n4\r\n1 7\r\n8 9\r\n10 13\r\n14 16\r\n3\r\n1 2\r\n3 10\r\n11 16\r\n2\r\n1 9\r\n10 16\r\n2\r\n1 2\r\n3 16\r\n3\r\n1 2\r\n3 5\r\n6 16\r\n3\r\n1 5\r\n6 12\r\n13 16\r\n3\r\n1 2\r\n3 5\r\n6 16\r\n4\r\n1 8\r\n9 12\r\n13 13\r\n14 16\r\n4\r\n1 2\r\n3 12\r\n13 13\r\n14 16\r\n5\r\n1 1\r\n2 2\r\n3 11\r\n12 15\r\n16 16\r\n1\r\n1 16\r\n4\r\n1 6\r\n7 12\r\n13 14\r\n15 16\r\n3\r\n1 6\r\n7 9\r\n10 16\r\n",
+                "1078"
+            ],
+            [
+                "1 1\r\n1\r\n1 1\r\n",
+                "1"
+            ],
+            [
+                "1 2\r\n2\r\n1 1\r\n2 2\r\n",
+                "2"
+            ],
+            [
+                "3 4\r\n4\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n4\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n4\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n",
+                "36"
+            ],
+            [
+                "1 100\r\n46\r\n1 1\r\n2 3\r\n4 5\r\n6 6\r\n7 8\r\n9 12\r\n13 15\r\n16 16\r\n17 18\r\n19 20\r\n21 25\r\n26 26\r\n27 27\r\n28 29\r\n30 30\r\n31 31\r\n32 35\r\n36 42\r\n43 44\r\n45 45\r\n46 49\r\n50 53\r\n54 58\r\n59 59\r\n60 60\r\n61 61\r\n62 66\r\n67 67\r\n68 68\r\n69 76\r\n77 77\r\n78 81\r\n82 82\r\n83 83\r\n84 85\r\n86 87\r\n88 88\r\n89 89\r\n90 90\r\n91 91\r\n92 93\r\n94 94\r\n95 96\r\n97 97\r\n98 98\r\n99 100\r\n",
+                "46"
+            ],
+            [
+                "6 8\r\n1\r\n1 8\r\n2\r\n1 1\r\n2 8\r\n3\r\n1 1\r\n2 6\r\n7 8\r\n2\r\n1 5\r\n6 8\r\n1\r\n1 8\r\n3\r\n1 2\r\n3 5\r\n6 8\r\n",
+                "56"
+            ],
+            [
+                "7 8\r\n2\r\n1 4\r\n5 8\r\n2\r\n1 1\r\n2 8\r\n4\r\n1 2\r\n3 5\r\n6 6\r\n7 8\r\n4\r\n1 1\r\n2 5\r\n6 7\r\n8 8\r\n5\r\n1 1\r\n2 2\r\n3 5\r\n6 6\r\n7 8\r\n2\r\n1 2\r\n3 8\r\n4\r\n1 1\r\n2 5\r\n6 6\r\n7 8\r\n",
+                "131"
+            ],
+            [
+                "1 100\r\n10\r\n1 3\r\n4 10\r\n11 17\r\n18 48\r\n49 54\r\n55 56\r\n57 59\r\n60 61\r\n62 81\r\n82 100\r\n",
+                "10"
+            ],
+            [
+                "1 100\r\n1\r\n1 100\r\n",
+                "1"
+            ],
+            [
+                "7 5\r\n3\r\n1 1\r\n2 3\r\n4 5\r\n1\r\n1 5\r\n3\r\n1 3\r\n4 4\r\n5 5\r\n1\r\n1 5\r\n4\r\n1 1\r\n2 3\r\n4 4\r\n5 5\r\n3\r\n1 1\r\n2 2\r\n3 5\r\n1\r\n1 5\r\n",
+                "78"
+            ],
+            [
+                "5 5\r\n4\r\n1 1\r\n2 2\r\n3 4\r\n5 5\r\n3\r\n1 2\r\n3 4\r\n5 5\r\n2\r\n1 3\r\n4 5\r\n3\r\n1 1\r\n2 3\r\n4 5\r\n3\r\n1 1\r\n2 4\r\n5 5\r\n",
+                "67"
+            ],
+            [
+                "7 5\r\n1\r\n1 5\r\n1\r\n1 5\r\n1\r\n1 5\r\n2\r\n1 3\r\n4 5\r\n1\r\n1 5\r\n1\r\n1 5\r\n1\r\n1 5\r\n",
+                "50"
+            ],
+            [
+                "6 8\r\n3\r\n1 4\r\n5 6\r\n7 8\r\n3\r\n1 2\r\n3 3\r\n4 8\r\n1\r\n1 8\r\n4\r\n1 1\r\n2 5\r\n6 7\r\n8 8\r\n3\r\n1 2\r\n3 6\r\n7 8\r\n3\r\n1 5\r\n6 7\r\n8 8\r\n",
+                "81"
+            ],
+            [
+                "15 17\r\n2\r\n1 13\r\n14 17\r\n1\r\n1 17\r\n4\r\n1 9\r\n10 14\r\n15 16\r\n17 17\r\n3\r\n1 1\r\n2 3\r\n4 17\r\n5\r\n1 4\r\n5 6\r\n7 14\r\n15 16\r\n17 17\r\n2\r\n1 3\r\n4 17\r\n2\r\n1 1\r\n2 17\r\n5\r\n1 2\r\n3 12\r\n13 13\r\n14 16\r\n17 17\r\n3\r\n1 4\r\n5 16\r\n17 17\r\n2\r\n1 6\r\n7 17\r\n2\r\n1 12\r\n13 17\r\n3\r\n1 5\r\n6 6\r\n7 17\r\n2\r\n1 2\r\n3 17\r\n4\r\n1 3\r\n4 5\r\n6 8\r\n9 17\r\n1\r\n1 17\r\n",
+                "439"
+            ],
+            [
+                "1 100\r\n20\r\n1 4\r\n5 5\r\n6 10\r\n11 12\r\n13 14\r\n15 15\r\n16 19\r\n20 23\r\n24 29\r\n30 36\r\n37 47\r\n48 56\r\n57 57\r\n58 60\r\n61 65\r\n66 68\r\n69 78\r\n79 80\r\n81 84\r\n85 100\r\n",
+                "20"
+            ]
+        ]
+    }
+]

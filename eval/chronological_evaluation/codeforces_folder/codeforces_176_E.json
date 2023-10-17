@@ -1,0 +1,45 @@
+[
+    {
+        "name": "Archaeology",
+        "description": "This time you should help a team of researchers on an island in the Pacific\nOcean. They research the culture of the ancient tribes that used to inhabit\nthe island many years ago. Overall they've dug out n villages. Some pairs of\nvillages were connected by roads. People could go on the roads in both\ndirections. Overall there were exactly n - 1 roads, and from any village one\ncould get to any other one. The tribes were not peaceful and they had many\nwars. As a result of the wars, some villages were destroyed completely. During\nmore peaceful years some of the villages were restored. At each moment of time\npeople used only those roads that belonged to some shortest way between two\nvillages that existed at the given moment. In other words, people used the\nminimum subset of roads in such a way, that it was possible to get from any\nexisting village to any other existing one. Note that throughout the island's\nwhole history, there existed exactly n - 1 roads that have been found by the\nresearchers. There never were any other roads. The researchers think that\nobserving the total sum of used roads\u2019 lengths at different moments of time\ncan help to better understand the tribes' culture and answer several\nhistorical questions. You will be given the full history of the tribes'\nexistence. Your task is to determine the total length of used roads at some\nmoments of time. Input The first line contains an integer n (1 \u2264 n \u2264 10^5) \u2014\nthe number of villages. The next n - 1 lines describe the roads. The i-th of\nthese lines contains three integers ai, bi and ci (1 \u2264 ai, bi \u2264 n, ai \u2260 bi, 1\n\u2264 ci \u2264 10^9, 1 \u2264 i < n) \u2014 the numbers of villages that are connected by the\ni-th road and the road's length. The numbers in the lines are separated by a\nspace. The next line contains an integer q (1 \u2264 q \u2264 10^5) \u2014 the number of\nqueries. Then follow q queries, one per line, ordered by time. Each query\nbelongs to one of three types: \"+ x\" \u2014 village number x is restored (1 \u2264 x \u2264\nn). \"- x\" \u2014 village number x is destroyed (1 \u2264 x \u2264 n). \"?\" \u2014 the\narchaeologists want to know the total length of the roads which were used for\nthat time period.It is guaranteed that the queries do not contradict each\nother, that is, there won't be queries to destroy non-existing villages or\nrestore the already existing ones. It is guaranteed that we have at least one\nquery of type \"?\". It is also guaranteed that one can get from any village to\nany other one by the given roads. At the initial moment of time no village is\nconsidered to exist. Output For each query of type \"?\" print the total length\nof used roads on a single line. You should print the answers to the queries in\nthe order, in which they are given in the input. Please do not use the \nspecifier to read or write 64-bit integers in \u0421++. It is preferred to use cin,\ncout streams or the \n6 4 2 10  3  1 ?  6 ?  5 ? \u00ad 6 \u00ad 3 ? Output 5 14 17 10\n\n",
+        "cf_contest_id": 176,
+        "cf_index": "E",
+        "cf_rating": 3100,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n1 2 1\r\n1 3 5\r\n4 1 7\r\n4 5 3\r\n6 4 2\r\n10\r\n+ 3\r\n+ 1\r\n?\r\n+ 6\r\n?\r\n+ 5\r\n?\r\n- 6\r\n- 3\r\n?\r\n",
+                "5\r\n14\r\n17\r\n10\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n5\r\n?\r\n+ 1\r\n?\r\n- 1\r\n?\r\n",
+                "0\r\n0\r\n0\r\n"
+            ],
+            [
+                "2\r\n1 2 13\r\n13\r\n?\r\n+ 1\r\n?\r\n+ 2\r\n?\r\n- 1\r\n?\r\n- 2\r\n?\r\n+ 1\r\n?\r\n+ 2\r\n?\r\n",
+                "0\r\n0\r\n13\r\n0\r\n0\r\n0\r\n13\r\n"
+            ],
+            [
+                "10\r\n7 3 9\r\n8 3 2\r\n10 5 6\r\n9 3 5\r\n2 1 7\r\n7 6 2\r\n3 4 1\r\n7 10 5\r\n10 1 8\r\n50\r\n+ 5\r\n?\r\n+ 7\r\n+ 2\r\n+ 10\r\n+ 9\r\n?\r\n+ 8\r\n- 7\r\n?\r\n+ 3\r\n- 10\r\n- 2\r\n?\r\n+ 6\r\n?\r\n+ 10\r\n+ 2\r\n?\r\n?\r\n- 8\r\n+ 1\r\n+ 7\r\n+ 8\r\n- 3\r\n?\r\n- 6\r\n- 2\r\n- 10\r\n- 1\r\n- 7\r\n- 5\r\n?\r\n?\r\n+ 1\r\n- 9\r\n+ 6\r\n+ 10\r\n+ 9\r\n- 10\r\n- 6\r\n- 8\r\n+ 5\r\n- 1\r\n+ 6\r\n- 5\r\n+ 1\r\n+ 4\r\n+ 2\r\n- 1\r\n",
+                "0\r\n40\r\n42\r\n27\r\n29\r\n44\r\n44\r\n44\r\n7\r\n7\r\n"
+            ],
+            [
+                "2\r\n2 1 140\r\n20\r\n?\r\n?\r\n?\r\n?\r\n+ 2\r\n?\r\n+ 1\r\n- 1\r\n- 2\r\n?\r\n+ 1\r\n?\r\n+ 2\r\n?\r\n?\r\n- 1\r\n+ 1\r\n- 1\r\n- 2\r\n+ 2\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n140\r\n140\r\n"
+            ],
+            [
+                "5\r\n2 5 150467345\r\n1 4 366330498\r\n2 3 341836058\r\n2 4 597500157\r\n63\r\n?\r\n+ 1\r\n?\r\n+ 2\r\n?\r\n- 1\r\n?\r\n+ 3\r\n?\r\n+ 1\r\n?\r\n- 2\r\n?\r\n- 1\r\n?\r\n+ 4\r\n?\r\n+ 1\r\n?\r\n+ 2\r\n?\r\n- 1\r\n?\r\n- 3\r\n?\r\n+ 1\r\n?\r\n- 2\r\n?\r\n- 1\r\n?\r\n+ 5\r\n?\r\n+ 1\r\n?\r\n+ 2\r\n?\r\n- 1\r\n?\r\n+ 3\r\n?\r\n+ 1\r\n?\r\n- 2\r\n?\r\n- 1\r\n?\r\n- 4\r\n?\r\n+ 1\r\n?\r\n+ 2\r\n?\r\n- 1\r\n?\r\n- 3\r\n?\r\n+ 1\r\n?\r\n- 2\r\n?\r\n- 1\r\n?\r\n",
+                "0\r\n0\r\n963830655\r\n0\r\n341836058\r\n1305666713\r\n1305666713\r\n0\r\n939336215\r\n1305666713\r\n1305666713\r\n939336215\r\n597500157\r\n963830655\r\n366330498\r\n0\r\n747967502\r\n1114298000\r\n1114298000\r\n747967502\r\n1089803560\r\n1456134058\r\n1456134058\r\n1089803560\r\n492303403\r\n1456134058\r\n1456134058\r\n492303403\r\n150467345\r\n1114298000\r\n1114298000\r\n0\r\n"
+            ]
+        ]
+    }
+]

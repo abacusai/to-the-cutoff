@@ -1,0 +1,74 @@
+[
+    {
+        "name": "Widget Library",
+        "description": "Vasya writes his own library for building graphical user interface. Vasya\ncalled his creation VTK (VasyaToolKit). One of the interesting aspects of this\nlibrary is that widgets are packed in each other. A widget is some element of\ngraphical interface. Each widget has width and height, and occupies some\nrectangle on the screen. Any widget in Vasya's library is of type Widget. For\nsimplicity we will identify the widget and its type. Types HBox and VBox are\nderivatives of type Widget, so they also are types Widget. Widgets HBox and\nVBox are special. They can store other widgets. Both those widgets can use the\npack() method to pack directly in itself some other widget. Widgets of types\nHBox and VBox can store several other widgets, even several equal widgets \u2014\nthey will simply appear several times. As a result of using the method pack()\nonly the link to the packed widget is saved, that is when the packed widget is\nchanged, its image in the widget, into which it is packed, will also change.\nWe shall assume that the widget a is packed in the widget b if there exists a\nchain of widgets a = c1, c2, ..., ck = b, k \u2265 2, for which ci is packed\ndirectly to ci + 1 for any 1 \u2264 i < k. In Vasya's library the situation when\nthe widget a is packed in the widget a (that is, in itself) is not allowed. If\nyou try to pack the widgets into each other in this manner immediately results\nin an error. Also, the widgets HBox and VBox have parameters border and\nspacing, which are determined by the methods set_border() and set_spacing()\nrespectively. By default both of these options equal 0. The picture above\nshows how the widgets are packed into HBox and VBox. At that HBox and VBox\nautomatically change their size depending on the size of packed widgets. As\nfor HBox and VBox, they only differ in that in HBox the widgets are packed\nhorizontally and in VBox \u2014 vertically. The parameter spacing sets the distance\nbetween adjacent widgets, and border \u2014 a frame around all packed widgets of\nthe desired width. Packed widgets are placed exactly in the order in which the\npack() method was called for them. If within HBox or VBox there are no packed\nwidgets, their sizes are equal to 0 \u00d7 0, regardless of the options border and\nspacing. The construction of all the widgets is performed using a scripting\nlanguage VasyaScript. The description of the language can be found in the\ninput data. For the final verification of the code Vasya asks you to write a\nprogram that calculates the sizes of all the widgets on the source code in the\nlanguage of VasyaScript. Input The first line contains an integer n \u2014 the\nnumber of instructions (1 \u2264 n \u2264 100). Next n lines contain instructions in the\nlanguage VasyaScript \u2014 one instruction per line. There is a list of possible\ninstructions below. \"Widget [name]([x],[y])\" \u2014 create a new widget [name] of\nthe type Widget possessing the width of [x] units and the height of [y] units.\n\"HBox [name]\" \u2014 create a new widget [name] of the type HBox. \"VBox [name]\" \u2014\ncreate a new widget [name] of the type VBox. \"[name1].pack([name2])\" \u2014 pack\nthe widget [name2] in the widget [name1]. At that, the widget [name1] must be\nof type HBox or VBox. \"[name].set_border([x])\" \u2014 set for a widget [name] the\nborder parameter to [x] units. The widget [name] must be of type HBox or VBox.\n\"[name].set_spacing([x])\" \u2014 set for a widget [name] the spacing parameter to\n[x] units. The widget [name] must be of type HBox or VBox. All instructions\nare written without spaces at the beginning and at the end of the string. The\nwords inside the instruction are separated by exactly one space. There are no\nspaces directly before the numbers and directly after them. The case matters,\nfor example, \"wiDget x\" is not a correct instruction. The case of the letters\nis correct in the input data. All names of the widgets consist of lowercase\nLatin letters and has the length from 1 to 10 characters inclusive. The names\nof all widgets are pairwise different. All numbers in the script are integers\nfrom 0 to 100 inclusive It is guaranteed that the above-given script is\ncorrect, that is that all the operations with the widgets take place after the\nwidgets are created and no widget is packed in itself. It is guaranteed that\nthe script creates at least one widget. Output For each widget print on a\nsingle line its name, width and height, separated by spaces. The lines must be\nordered lexicographically by a widget's name. Please, do not use the \nspecificator to read or write 64-bit integers in C++. It is preferred to use\ncout stream (also you may use \nme(50,40) VBox grandpa HBox father grandpa.pack(father) father.pack(me)\ngrandpa.set_border(10) grandpa.set_spacing(20) Widget brother(30,60)\nfather.pack(brother) Widget friend(20,60) Widget uncle(100,20)\ngrandpa.pack(uncle) Output brother 30 60 father 80 60 friend 20 60 grandpa 120\n120 me 50 40 uncle 100 20 Input 15 Widget pack(10,10) HBox dummy HBox x VBox y\ny.pack(dummy) y.set_border(5) y.set_spacing(55) dummy.set_border(10)\ndummy.set_spacing(20) x.set_border(10) x.set_spacing(10) x.pack(pack)\nx.pack(dummy) x.pack(pack) x.set_border(0) Output dummy 0 0 pack 10 10 x 40 10\ny 10 10 Note In the first sample the widgets are arranged as follows:\n\n",
+        "cf_contest_id": 89,
+        "cf_index": "B",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "expression parsing",
+            "graphs",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "12\r\nWidget me(50,40)\r\nVBox grandpa\r\nHBox father\r\ngrandpa.pack(father)\r\nfather.pack(me)\r\ngrandpa.set_border(10)\r\ngrandpa.set_spacing(20)\r\nWidget brother(30,60)\r\nfather.pack(brother)\r\nWidget friend(20,60)\r\nWidget uncle(100,20)\r\ngrandpa.pack(uncle)\r\n",
+                "brother 30 60\r\nfather 80 60\r\nfriend 20 60\r\ngrandpa 120 120\r\nme 50 40\r\nuncle 100 20\r\n"
+            ],
+            [
+                "15\r\nWidget pack(10,10)\r\nHBox dummy\r\nHBox x\r\nVBox y\r\ny.pack(dummy)\r\ny.set_border(5)\r\ny.set_spacing(55)\r\ndummy.set_border(10)\r\ndummy.set_spacing(20)\r\nx.set_border(10)\r\nx.set_spacing(10)\r\nx.pack(pack)\r\nx.pack(dummy)\r\nx.pack(pack)\r\nx.set_border(0)\r\n",
+                "dummy 0 0\r\npack 10 10\r\nx 40 10\r\ny 10 10\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5\r\nWidget one(10,20)\r\nWidget two(20,30)\r\nWidget three(30,40)\r\nWidget four(40,50)\r\nWidget five(50,60)\r\n",
+                "five 50 60\r\nfour 40 50\r\none 10 20\r\nthree 30 40\r\ntwo 20 30\r\n"
+            ],
+            [
+                "16\r\nWidget w(100,100)\r\nVBox v\r\nHBox h\r\nh.set_spacing(10)\r\nv.set_spacing(10)\r\nv.set_border(10)\r\nh.pack(w)\r\nh.pack(w)\r\nh.pack(w)\r\nh.pack(w)\r\nh.pack(w)\r\nv.pack(h)\r\nv.pack(h)\r\nv.pack(h)\r\nv.pack(h)\r\nv.pack(h)\r\n",
+                "h 540 100\r\nv 560 560\r\nw 100 100\r\n"
+            ],
+            [
+                "6\r\nHBox hb\r\nVBox vb\r\nhb.pack(vb)\r\nWidget wi(47,13)\r\nhb.pack(wi)\r\nvb.pack(wi)\r\n",
+                "hb 94 13\r\nvb 47 13\r\nwi 47 13\r\n"
+            ],
+            [
+                "1\r\nWidget a(0,0)\r\n",
+                "a 0 0\r\n"
+            ],
+            [
+                "1\r\nHBox h\r\n",
+                "h 0 0\r\n"
+            ],
+            [
+                "1\r\nVBox abcdefghij\r\n",
+                "abcdefghij 0 0\r\n"
+            ],
+            [
+                "20\r\nVBox hykl\r\nVBox enwv\r\nenwv.pack(hykl)\r\nVBox dlepf\r\ndlepf.pack(hykl)\r\nenwv.set_border(30)\r\nWidget mjrrik(54,21)\r\nhykl.set_border(2)\r\ndlepf.set_border(22)\r\nenwv.set_border(3)\r\nenwv.pack(dlepf)\r\ndlepf.pack(mjrrik)\r\nhykl.set_spacing(96)\r\nenwv.set_border(32)\r\ndlepf.set_border(72)\r\nWidget j(54,86)\r\nhykl.pack(j)\r\nenwv.set_border(54)\r\nhykl.set_border(88)\r\nhykl.set_border(86)\r\n",
+                "dlepf 370 423\r\nenwv 478 789\r\nhykl 226 258\r\nj 54 86\r\nmjrrik 54 21\r\n"
+            ],
+            [
+                "18\r\nHBox pack\r\nVBox vbox\r\nWidget widget(10,10)\r\npack.pack(widget)\r\nHBox hbox\r\nhbox.pack(widget)\r\nHBox set\r\nHBox se\r\nHBox s\r\nVBox border\r\nVBox spacing\r\nset.set_border(3)\r\nset.set_spacing(3)\r\nse.set_spacing(5)\r\ns.set_border(6)\r\nborder.set_border(7)\r\nspacing.set_spacing(9)\r\nvbox.pack(pack)\r\n",
+                "border 0 0\r\nhbox 10 10\r\npack 10 10\r\ns 0 0\r\nse 0 0\r\nset 0 0\r\nspacing 0 0\r\nvbox 10 10\r\nwidget 10 10\r\n"
+            ],
+            [
+                "3\r\nHBox ox\r\nWidget idget(5,5)\r\nox.pack(idget)\r\n",
+                "idget 5 5\r\nox 5 5\r\n"
+            ],
+            [
+                "4\r\nVBox ox\r\nWidget idge(50,60)\r\nox.pack(idge)\r\nox.set_border(5)\r\n",
+                "idge 50 60\r\nox 60 70\r\n"
+            ],
+            [
+                "5\r\nHBox package\r\nVBox packing\r\npackage.pack(packing)\r\nWidget packpackpa(13,13)\r\npacking.pack(packpackpa)\r\n",
+                "package 13 13\r\npacking 13 13\r\npackpackpa 13 13\r\n"
+            ]
+        ]
+    }
+]

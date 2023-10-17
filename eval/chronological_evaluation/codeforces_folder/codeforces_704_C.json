@@ -1,0 +1,90 @@
+[
+    {
+        "name": "Black Widow",
+        "description": "Natalia Romanova is trying to test something on the new gun S.H.I.E.L.D gave\nher. In order to determine the result of the test, she needs to find the\nnumber of answers to a certain equation. The equation is of form: Where\nrepresents logical OR and represents logical exclusive OR (XOR), and vi, j are\nsome boolean variables or their negations. Natalia calls the left side of the\nequation a XNF formula. Each statement in brackets is called a clause, and vi,\nj are called literals. In the equation Natalia has, the left side is actually\na 2-XNF-2 containing variables x1, x2, ..., xm and their negations. An XNF\nformula is 2-XNF-2 if: For each 1 \u2264 i \u2264 n, ki \u2264 2, i.e. the size of each\nclause doesn't exceed two. Each variable occurs in the formula at most two\ntimes (with negation and without negation in total). Please note that it's\npossible that a variable occurs twice but its negation doesn't occur in any\nclause (or vice versa). Natalia is given a formula of m variables, consisting\nof n clauses. Please, make sure to check the samples in order to properly\nunderstand how the formula looks like. Natalia is more into fight than theory,\nso she asked you to tell her the number of answers to this equation. More\nprecisely, you need to find the number of ways to set x1, ..., xm with true\nand false (out of total of 2^m ways) so that the equation is satisfied. Since\nthis number can be extremely large, you need to print the answer modulo 10^9 +\n7. Please, note that some variable may appear twice in one clause, or not\nappear in the equation at all (but still, setting it to false or true gives\ndifferent ways to set variables). Input The first line of input contains two\nintegers n and m (1 \u2264 n, m \u2264 100 000) \u2014 the number of clauses and the number\nof variables respectively. The next n lines contain the formula. The i-th of\nthem starts with an integer ki \u2014 the number of literals in the i-th clause. It\nis followed by ki non-zero integers ai, 1, ..., ai, ki. If ai, j > 0 then vi,\nj is xai, j otherwise it's negation of x - ai, j (1 \u2264 ki \u2264 2, - m \u2264 ai, j \u2264 m,\nai, j \u2260 0). Output Print the answer modulo 1 000 000 007 (10^9 + 7) in one\nline. Examples Input 6 7 2 4 -2 2 6 3 2 -7 1 2 -5 1 2 3 6 2 -2 -5 Output 48\nInput 8 10 1 -5 2 4 -6 2 -2 -6 2 -7 9 2 10 -1 2 3 -1 2 -8 9 2 5 8 Output 544\nInput 2 3 2 1 1 2 -3 3 Output 4 Note The equation in the first sample is: The\nequation in the second sample is: The equation in the third sample is:\n\n",
+        "cf_contest_id": 704,
+        "cf_index": "C",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "graphs",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 7\r\n2 4 -2\r\n2 6 3\r\n2 -7 1\r\n2 -5 1\r\n2 3 6\r\n2 -2 -5\r\n",
+                "48\r\n"
+            ],
+            [
+                "8 10\r\n1 -5\r\n2 4 -6\r\n2 -2 -6\r\n2 -7 9\r\n2 10 -1\r\n2 3 -1\r\n2 -8 9\r\n2 5 8\r\n",
+                "544\r\n"
+            ],
+            [
+                "2 3\r\n2 1 1\r\n2 -3 3\r\n",
+                "4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 38725\r\n2 23013 -16363\r\n2 -23013 16363\r\n",
+                "662608228\r\n"
+            ],
+            [
+                "2 32210\r\n2 -3433 -3433\r\n1 28893\r\n",
+                "972203304\r\n"
+            ],
+            [
+                "10 71995\r\n2 -32701 59200\r\n1 3140\r\n2 38963 -22093\r\n2 30741 -5776\r\n2 3140 -32701\r\n2 -23558 21596\r\n1 22093\r\n2 16008 -30741\r\n2 5776 16008\r\n2 21596 11974\r\n",
+                "742866463\r\n"
+            ],
+            [
+                "10 17\r\n1 -13\r\n1 -11\r\n1 -10\r\n1 1\r\n2 -3 -14\r\n2 2 -2\r\n2 -4 -12\r\n2 11 -10\r\n1 9\r\n2 -7 7\r\n",
+                "65536\r\n"
+            ],
+            [
+                "1 60149\r\n2 -49765 -17050\r\n",
+                "722548307\r\n"
+            ],
+            [
+                "1 2\r\n2 1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "1 2\r\n2 1 2\r\n",
+                "3\r\n"
+            ],
+            [
+                "1 2\r\n2 1 -2\r\n",
+                "3\r\n"
+            ],
+            [
+                "1 2\r\n2 -1 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 48101\r\n2 -34125 -34125\r\n2 -34756 -44134\r\n1 4490\r\n",
+                "499983706\r\n"
+            ],
+            [
+                "13 50665\r\n1 -2365\r\n2 2365 5149\r\n2 -17387 -3875\r\n2 -45522 -29348\r\n2 49534 49534\r\n2 -21148 34276\r\n1 18682\r\n2 -3875 17387\r\n1 18682\r\n1 45522\r\n2 24527 27540\r\n1 -16544\r\n2 21148 -45480\r\n",
+                "599020854\r\n"
+            ],
+            [
+                "10 12\r\n2 6 -5\r\n2 -4 12\r\n2 -7 -2\r\n2 -11 -1\r\n2 6 -2\r\n2 1 -7\r\n2 -10 9\r\n2 -5 4\r\n2 -11 9\r\n2 10 12\r\n",
+                "2048\r\n"
+            ],
+            [
+                "10 18\r\n2 10 2\r\n2 6 1\r\n2 -2 -15\r\n2 -4 -6\r\n2 -8 -11\r\n2 11 -10\r\n2 -17 -14\r\n2 17 -1\r\n2 -4 -14\r\n2 -8 -3\r\n",
+                "126976\r\n"
+            ],
+            [
+                "10 21\r\n2 21 -16\r\n2 -3 -9\r\n2 13 -17\r\n2 11 -21\r\n2 10 -17\r\n2 10 1\r\n2 -11 -19\r\n2 -9 3\r\n2 19 -16\r\n2 1 13\r\n",
+                "1048576\r\n"
+            ]
+        ]
+    }
+]

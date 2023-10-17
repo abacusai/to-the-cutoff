@@ -1,0 +1,84 @@
+[
+    {
+        "name": "Try and Catch",
+        "description": "Vasya is developing his own programming language VPL (Vasya Programming\nLanguage). Right now he is busy making the system of exceptions. He thinks\nthat the system of exceptions must function like that. The exceptions are\nprocessed by try-catch-blocks. There are two operators that work with the\nblocks: The try operator. It opens a new try-catch-block. The catch(, )\noperator. It closes the try-catch-block that was started last and haven't yet\nbeen closed. This block can be activated only via exception of type . When we\nactivate this block, the screen displays the . If at the given moment there is\nno open try-catch-block, then we can't use the catch operator.The exceptions\ncan occur in the program in only one case: when we use the throw operator. The\nthrow() operator creates the exception of the given type. Let's suggest that\nas a result of using some throw operator the program created an exception of\ntype a. In this case a try-catch-block is activated, such that this block's\ntry operator was described in the program earlier than the used throw\noperator. Also, this block's catch operator was given an exception type a as a\nparameter and this block's catch operator is described later that the used\nthrow operator. If there are several such try-catch-blocks, then the system\nactivates the block whose catch operator occurs earlier than others. If no\ntry-catch-block was activated, then the screen displays message \"Unhandled\nException\". To test the system, Vasya wrote a program that contains only try,\ncatch and throw operators, one line contains no more than one operator, the\nwhole program contains exactly one throw operator. Your task is: given a\nprogram in VPL, determine, what message will be displayed on the screen. Input\nThe first line contains a single integer: n (1 \u2264 n \u2264 10^5) the number of lines\nin the program. Next n lines contain the program in language VPL. Each line\ncontains no more than one operator. It means that input file can contain empty\nlines and lines, consisting only of spaces. The program contains only\noperators try, catch and throw. It is guaranteed that the program is correct.\nIt means that each started try-catch-block was closed, the catch operators\naren't used unless there is an open try-catch-block. The program has exactly\none throw operator. The program may have spaces at the beginning of a line, at\nthe end of a line, before and after a bracket, a comma or a quote mark. The\nexception type is a nonempty string, that consists only of upper and lower\ncase english letters. The length of the string does not exceed 20 symbols.\nMessage is a nonempty string, that consists only of upper and lower case\nenglish letters, digits and spaces. Message is surrounded with quote marks.\nQuote marks shouldn't be printed. The length of the string does not exceed 20\nsymbols. Length of any line in the input file does not exceed 50 symbols.\nOutput Print the message the screen will show after the given program is\nexecuted. Examples Input 8 try try throw ( AE ) catch ( BE, \"BE in line 3\")\ntry catch(AE, \"AE in line 5\") catch(AE,\"AE somewhere\") Output AE somewhere\nInput 8 try try throw ( AE ) catch ( AE, \"AE in line 3\") try catch(BE, \"BE in\nline 5\") catch(AE,\"AE somewhere\") Output AE in line 3 Input 8 try try throw (\nCE ) catch ( BE, \"BE in line 3\") try catch(AE, \"AE in line 5\") catch(AE,\"AE\nsomewhere\") Output Unhandled Exception Note In the first sample there are 2\ntry-catch-blocks such that try operator is described earlier than throw\noperator and catch operator is described later than throw operator: try-\ncatch(BE,\"BE in line 3\") and try-catch(AE,\"AE somewhere\"). Exception type is\nAE, so the second block will be activated, because operator catch(AE,\"AE\nsomewhere\") has exception type AE as parameter and operator catch(BE,\"BE in\nline 3\") has exception type BE. In the second sample there are 2 try-catch-\nblocks such that try operator is described earlier than throw operator and\ncatch operator is described later than throw operator: try-catch(AE,\"AE in\nline 3\") and try-catch(AE,\"AE somewhere\"). Exception type is AE, so both\nblocks can be activated, but only the first one will be activated, because\noperator catch(AE,\"AE in line 3\") is described earlier than catch(AE,\"AE\nsomewhere\") In the third sample there is no blocks that can be activated by an\nexception of type CE.\n\n",
+        "cf_contest_id": 195,
+        "cf_index": "C",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "expression parsing",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "8\r\ntry\r\n    try\r\n        throw ( AE ) \r\n    catch ( BE, \"BE in line 3\")\r\n\r\n    try\r\n    catch(AE, \"AE in line 5\") \r\ncatch(AE,\"AE somewhere\")\r\n",
+                "AE somewhere\r\n"
+            ],
+            [
+                "8\r\ntry\r\n    try\r\n        throw ( AE ) \r\n    catch ( AE, \"AE in line 3\")\r\n\r\n    try\r\n    catch(BE, \"BE in line 5\") \r\ncatch(AE,\"AE somewhere\")\r\n",
+                "AE in line 3\r\n"
+            ],
+            [
+                "8\r\ntry\r\n    try\r\n        throw ( CE ) \r\n    catch ( BE, \"BE in line 3\")\r\n\r\n    try\r\n    catch(AE, \"AE in line 5\") \r\ncatch(AE,\"AE somewhere\")\r\n",
+                "Unhandled Exception\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\ntry\r\nthrow(A)\r\ncatch(A, \"A cought\")\r\n",
+                "A cought\r\n"
+            ],
+            [
+                "5\r\n try  \r\n try \r\n  catch ( gnAEZNTt,  \"i5 tAC8ktUdeX\")  \r\n  throw(   gnAEZNTt    ) \r\ncatch  ( gnAEZNTt, \"g1cN\" )  \r\n",
+                "g1cN\r\n"
+            ],
+            [
+                "5\r\n try    \r\n catch(UqWpIpGKiMqFnKox ,  \"bp9h8dfeNLhk9Wea\"  ) \r\nthrow   (   uaBRmgAAQyWTCzaaQMlZ ) \r\n    try    \r\ncatch(  UqWpIpGKiMqFnKox,\"0OvVhsVWzDyqwo\"  )\r\n",
+                "Unhandled Exception\r\n"
+            ],
+            [
+                "5\r\n    throw  (    ouB    )    \r\n  try   \r\ncatch(ouB, \"bTJZV\" )\r\n try    \r\ncatch(  ouB , \"DUniE dDhpiN\")  \r\n",
+                "Unhandled Exception\r\n"
+            ],
+            [
+                "5\r\ntry    \r\n throw(    egdCZzrKRLBcqDl   )\r\n catch (  egdCZzrKRLBcqDl  ,\"o\" )\r\n    try    \r\n  catch (egdCZzrKRLBcqDl  , \"oM62EJIirV D0\"  ) \r\n",
+                "o\r\n"
+            ],
+            [
+                "10\r\n  \r\n\r\n \r\n\r\nthrow (ProgramException)\r\n \r\n  \r\n\r\n\r\n \r\n",
+                "Unhandled Exception\r\n"
+            ],
+            [
+                "3\r\ntry\r\nthrow ( X )\r\ncatch ( X, \"try again\")\r\n",
+                "try again\r\n"
+            ],
+            [
+                "3\r\ntry\r\nthrow ( try )\r\ncatch ( try, \"try again\")\r\n",
+                "try again\r\n"
+            ],
+            [
+                "3\r\ntry\r\nthrow(tryC)\r\ncatch(tryC, \"bad boy\")\r\n",
+                "bad boy\r\n"
+            ],
+            [
+                "7\r\ntry\r\ncatch(A,\"try A\")\r\ntry\r\n throw(A)\r\ncatch(A,\"try B\")\r\ntry\r\ncatch(A,\"try C\")\r\n",
+                "try B\r\n"
+            ],
+            [
+                "3\r\ntry\r\n throw(try)\r\ncatch(try,\"haha\")\r\n",
+                "haha\r\n"
+            ],
+            [
+                "3\r\ntry\r\n throw(try)\r\ncatch(try,\"asd\")\r\n",
+                "asd\r\n"
+            ],
+            [
+                "11\r\ntry\r\n  try\r\n  catch (B, \"b\")\r\n  \r\n  try\r\n    throw ( U )\r\n  catch (U, \"try\")\r\n  \r\n  try\r\n  catch (C, \"c\")\r\ncatch (A, \"a\")\r\n",
+                "try\r\n"
+            ]
+        ]
+    }
+]

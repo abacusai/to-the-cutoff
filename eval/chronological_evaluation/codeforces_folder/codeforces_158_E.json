@@ -1,0 +1,221 @@
+[
+    {
+        "name": "Phone Talks",
+        "description": "Cool J has recently become a businessman Mr. Jackson, and he has to make a lot\nof phone calls now. Today he has n calls planned. For each call we know the\nmoment ti (in seconds since the start of the day) when it is scheduled to\nstart and its duration di (in seconds). All ti are different. Mr. Jackson is a\nvery important person, so he never dials anybody himself, all calls will be\nincoming. Mr. Jackson isn't Caesar and he can't do several things at once. If\nsomebody calls him while he hasn't finished the previous conversation, Mr.\nJackson puts the new call on hold in the queue. In this case immediately after\nthe end of the current call Mr. Jackson takes the earliest incoming call from\nthe queue and starts the conversation. If Mr. Jackson started the call at the\nsecond t, and the call continues for d seconds, then Mr. Jackson is busy at\nseconds t, t + 1, ..., t + d - 1, and he can start a new call at second t + d.\nNote that if Mr. Jackson is not busy talking when somebody calls, he can't put\nthis call on hold. Mr. Jackson isn't Napoleon either, he likes to sleep. So\nsometimes he allows himself the luxury of ignoring a call, as if it never was\nscheduled. He can ignore at most k calls. Note that a call which comes while\nhe is busy talking can be ignored as well. What is the maximum number of\nseconds Mr. Jackson can sleep today, assuming that he can choose an arbitrary\ncontinuous time segment from the current day (that is, with seconds from the\n1-st to the 86400-th, inclusive) when he is not busy talking? Note that some\ncalls can be continued or postponed to the next day or even later. However,\nthe interval for sleep should be completely within the current day. Input The\nfirst input line contains a pair of integers n, k (0 \u2264 k \u2264 n \u2264 4000) separated\nby a space. Following n lines contain the description of calls for today. The\ndescription of each call is located on the single line and consists of two\nspace-separated integers ti and di, (1 \u2264 ti, di \u2264 86400). All ti are distinct,\nthe calls are given in the order of strict increasing ti. Scheduled times of\ncalls [ti, ti + di - 1] can arbitrarily intersect. Output Print a number from\n0 to 86400, inclusive \u2014 the maximally possible number of seconds for Mr.\nJackson to sleep today. Examples Input 3 2 30000 15000 40000 15000 50000 15000\nOutput 49999 Input 5 1 1 20000 10000 10000 20000 20000 25000 10000 80000 60000\nOutput 39999 Note In the first sample the most convenient way is to ignore the\nfirst two calls. In the second sample it is best to ignore the third call. In\nthis case Mr. Jackson will have been speaking: first call: from 1-st to\n20000-th second, second call: from 20001-st to 30000-th second, fourth call:\nfrom 30001-st to 40000-th second (the third call is ignored), fifth call: from\n80000-th to 139999-th second. Thus, the longest period of free time is from\nthe 40001-th to the 79999-th second.\n\n",
+        "cf_contest_id": 158,
+        "cf_index": "E",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "dp",
+            "sortings"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2\r\n30000 15000\r\n40000 15000\r\n50000 15000\r\n",
+                "49999\r\n"
+            ],
+            [
+                "5 1\r\n1 20000\r\n10000 10000\r\n20000 20000\r\n25000 10000\r\n80000 60000\r\n",
+                "39999\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "0 0\r\n",
+                "86400\r\n"
+            ],
+            [
+                "1 1\r\n1 86400\r\n",
+                "86400\r\n"
+            ],
+            [
+                "2 1\r\n65722 3022\r\n84838 47\r\n",
+                "84837\r\n"
+            ],
+            [
+                "5 2\r\n32116 1243\r\n49108 1654\r\n64520 1834\r\n65957 1369\r\n73162 741\r\n",
+                "64519\r\n"
+            ],
+            [
+                "7 3\r\n775 13173\r\n12856 8047\r\n19626 38671\r\n52445 30176\r\n60054 21623\r\n72400 25806\r\n77343 10680\r\n",
+                "52444\r\n"
+            ],
+            [
+                "8 1\r\n9303 14558\r\n9431 29966\r\n30787 11968\r\n46792 25977\r\n50839 10455\r\n62484 4094\r\n83170 27616\r\n86338 14637\r\n",
+                "9430\r\n"
+            ],
+            [
+                "8 2\r\n15887 3894\r\n15911 4426\r\n20199 3155\r\n20365 1342\r\n44645 122\r\n80426 3808\r\n80762 1293\r\n82722 3732\r\n",
+                "55730\r\n"
+            ],
+            [
+                "8 2\r\n3795 11305\r\n8423 4314\r\n27878 8897\r\n43059 8054\r\n50612 11279\r\n54297 1933\r\n67261 8353\r\n78461 4303\r\n",
+                "31198\r\n"
+            ],
+            [
+                "8 3\r\n20780 10468\r\n26680 4979\r\n55005 6874\r\n73443 11246\r\n82521 7985\r\n83373 4388\r\n83531 7535\r\n86322 6718\r\n",
+                "73442\r\n"
+            ],
+            [
+                "8 4\r\n4048 4224\r\n13308 4353\r\n18060 2193\r\n25491 4215\r\n25775 2108\r\n64974 4608\r\n81365 2589\r\n83087 1912\r\n",
+                "63704\r\n"
+            ],
+            [
+                "8 5\r\n3524 137\r\n4859 142\r\n7840 67\r\n40957 137\r\n47520 102\r\n48311 18\r\n65695 76\r\n70316 43\r\n",
+                "78494\r\n"
+            ],
+            [
+                "20 0\r\n2015 74\r\n3023 1226\r\n3368 879\r\n4927 620\r\n10136 836\r\n19366 1367\r\n21145 2035\r\n26560 1242\r\n32572 1187\r\n41620 2555\r\n43777 17\r\n46063 453\r\n49638 759\r\n61303 1067\r\n62375 1164\r\n69476 175\r\n70889 1102\r\n71993 2073\r\n75912 511\r\n79239 1509\r\n",
+                "10906\r\n"
+            ],
+            [
+                "20 1\r\n146 6334\r\n2078 5784\r\n4475 11855\r\n14028 10667\r\n24670 14164\r\n26128 111\r\n27724 6736\r\n27960 12610\r\n29461 4513\r\n33331 5826\r\n43119 8869\r\n47726 6921\r\n50791 8671\r\n52532 7014\r\n64843 3622\r\n66025 5126\r\n67900 9039\r\n72073 7744\r\n74375 9806\r\n82249 5953\r\n",
+                "2077\r\n"
+            ],
+            [
+                "20 2\r\n15728 1546\r\n17437 2535\r\n17574 3124\r\n25406 5772\r\n27062 1659\r\n30222 6666\r\n30260 53\r\n36465 4886\r\n38874 7500\r\n42340 5949\r\n45590 6779\r\n45689 564\r\n52849 2991\r\n68099 6397\r\n71976 2843\r\n72082 3401\r\n74670 4188\r\n76110 1693\r\n77200 4137\r\n78717 1975\r\n",
+                "17573\r\n"
+            ],
+            [
+                "20 8\r\n4657 499\r\n5573 5458\r\n13884 4280\r\n27558 3883\r\n31660 425\r\n34175 131\r\n36661 1191\r\n40660 3028\r\n41173 5958\r\n58962 3086\r\n61792 1523\r\n68662 509\r\n71650 2939\r\n72304 5650\r\n72995 4373\r\n74250 2598\r\n77281 5865\r\n77354 3291\r\n81770 6168\r\n82987 4567\r\n",
+                "53806\r\n"
+            ],
+            [
+                "20 2\r\n5397 1587\r\n11009 2480\r\n11104 3375\r\n18701 3816\r\n32563 4016\r\n33017 5525\r\n39313 6380\r\n49322 2125\r\n49632 2369\r\n51344 2066\r\n65694 2571\r\n66697 5065\r\n71087 1246\r\n73426 119\r\n78129 6196\r\n79557 6296\r\n82344 5065\r\n83284 1284\r\n84013 2164\r\n84441 2855\r\n",
+                "19074\r\n"
+            ],
+            [
+                "20 4\r\n2211 5166\r\n2806 5247\r\n3865 1723\r\n6837 3910\r\n6934 3859\r\n12604 5638\r\n14030 5570\r\n15044 4163\r\n18553 5237\r\n26912 4945\r\n36680 4774\r\n42299 5079\r\n53353 4777\r\n55823 2826\r\n56569 3485\r\n59225 2314\r\n71061 3345\r\n73997 4997\r\n77982 4771\r\n83217 4877\r\n",
+                "17070\r\n"
+            ],
+            [
+                "20 8\r\n3132 1359\r\n14422 3509\r\n15286 3564\r\n24853 2344\r\n25623 4000\r\n26710 379\r\n29013 309\r\n32143 2433\r\n33866 3829\r\n34796 1645\r\n36838 1\r\n41289 4073\r\n56086 3490\r\n64999 1501\r\n75421 355\r\n76962 1133\r\n77385 4077\r\n77576 2407\r\n80327 3592\r\n84511 3625\r\n",
+                "46099\r\n"
+            ],
+            [
+                "10 4\r\n1243 17639\r\n5233 18442\r\n5484 26270\r\n9941 8362\r\n21090 14371\r\n33606 6069\r\n38227 854\r\n56117 14329\r\n64498 24498\r\n82453 24552\r\n",
+                "33915\r\n"
+            ],
+            [
+                "18 8\r\n5336 2343\r\n14321 9358\r\n14625 6663\r\n17258 1573\r\n17738 48186\r\n20230 48142\r\n21467 16168\r\n21741 52736\r\n21747 34808\r\n25300 51376\r\n43798 21436\r\n44019 4408\r\n46827 18787\r\n63161 47590\r\n73220 25879\r\n74089 22169\r\n81816 48811\r\n81966 32786\r\n",
+                "24967\r\n"
+            ],
+            [
+                "15 8\r\n3851 20321\r\n8441 10283\r\n10559 29313\r\n16437 36295\r\n19412 3858\r\n23836 13428\r\n26389 7778\r\n27509 3588\r\n33024 30669\r\n41185 18296\r\n59076 9203\r\n64090 31386\r\n68308 30150\r\n71372 34652\r\n80726 2961\r\n",
+                "35806\r\n"
+            ],
+            [
+                "11 4\r\n17854 20196\r\n26817 691\r\n26913 19025\r\n29384 2838\r\n29967 11353\r\n40616 22394\r\n63401 12679\r\n66454 3978\r\n76381 4253\r\n79547 15056\r\n82908 13658\r\n",
+                "31179\r\n"
+            ],
+            [
+                "13 6\r\n636 14567\r\n2347 7588\r\n9619 4893\r\n9776 21048\r\n10548 7884\r\n12254 31417\r\n26586 5119\r\n35434 15444\r\n35549 31732\r\n50685 29710\r\n51003 30573\r\n76087 9393\r\n77495 22867\r\n",
+                "35400\r\n"
+            ],
+            [
+                "18 12\r\n63 6564\r\n9488 4800\r\n9652 7871\r\n11007 5718\r\n11560 2960\r\n13804 2625\r\n32823 7574\r\n44250 4454\r\n45583 1479\r\n51719 3065\r\n53776 9090\r\n54259 168\r\n57852 1096\r\n64681 299\r\n68160 8332\r\n77195 9147\r\n77445 3015\r\n80970 2471\r\n",
+                "60282\r\n"
+            ],
+            [
+                "14 7\r\n2760 65016\r\n6943 3779\r\n7578 65709\r\n10317 7040\r\n19540 9542\r\n29372 25695\r\n29950 41333\r\n36873 6266\r\n61210 12705\r\n64444 20540\r\n68899 7209\r\n71703 30643\r\n72543 2033\r\n84747 6270\r\n",
+                "50488\r\n"
+            ],
+            [
+                "16 6\r\n13302 9577\r\n15238 14644\r\n20601 7223\r\n22435 4578\r\n25345 15120\r\n25473 1482\r\n30947 5097\r\n34835 389\r\n38576 3725\r\n39913 1979\r\n55795 15345\r\n57670 7637\r\n64670 12974\r\n76749 7947\r\n80563 7806\r\n85873 8634\r\n",
+                "33211\r\n"
+            ],
+            [
+                "17 10\r\n3633 17739\r\n8491 5211\r\n17083 9184\r\n21031 17848\r\n22052 1087\r\n26293 12921\r\n33744 18786\r\n33782 1683\r\n36759 17455\r\n37287 14947\r\n42762 8365\r\n54434 1847\r\n71160 9446\r\n74367 17790\r\n79590 5487\r\n79802 2396\r\n82541 14147\r\n",
+                "48021\r\n"
+            ],
+            [
+                "12 4\r\n1559 5057\r\n5126 2742\r\n12172 3181\r\n13749 7674\r\n23756 7410\r\n26980 9932\r\n31293 9526\r\n37129 4191\r\n38248 2497\r\n66671 7166\r\n76261 1031\r\n81162 6921\r\n",
+                "38894\r\n"
+            ],
+            [
+                "11 5\r\n3581 28281\r\n14866 4325\r\n16459 4203\r\n28879 1762\r\n31583 20686\r\n34272 14808\r\n34923 36011\r\n59410 7396\r\n67771 4720\r\n71973 24897\r\n72234 14447\r\n",
+                "37130\r\n"
+            ],
+            [
+                "15 5\r\n4758 9338\r\n11736 3975\r\n17882 3463\r\n20021 2903\r\n20948 8218\r\n32127 6459\r\n35327 10649\r\n41549 909\r\n43199 8331\r\n55019 3189\r\n58811 5256\r\n71582 9175\r\n79602 9346\r\n80435 6789\r\n80919 9903\r\n",
+                "37144\r\n"
+            ],
+            [
+                "10 4\r\n1131 4298\r\n10247 10853\r\n22523 11481\r\n23315 3855\r\n27261 9757\r\n38960 6116\r\n44084 6967\r\n57643 9089\r\n65497 11174\r\n74520 7670\r\n",
+                "34358\r\n"
+            ],
+            [
+                "15 5\r\n4550 9104\r\n6784 7411\r\n11890 4788\r\n13460 9958\r\n16591 3330\r\n34007 2022\r\n45739 12775\r\n52171 6007\r\n59083 11039\r\n67075 3584\r\n67862 8515\r\n68289 12308\r\n68338 11539\r\n69031 2367\r\n79467 12498\r\n",
+                "37892\r\n"
+            ],
+            [
+                "10 4\r\n8120 14493\r\n11596 26562\r\n18304 3218\r\n18627 32235\r\n22322 43159\r\n53957 45181\r\n61558 6152\r\n64656 32668\r\n74792 2683\r\n84198 6249\r\n",
+                "35727\r\n"
+            ],
+            [
+                "5 3\r\n1664 63252\r\n8890 5950\r\n12998 65717\r\n38237 17361\r\n60028 37575\r\n",
+                "45188\r\n"
+            ],
+            [
+                "15 7\r\n4328 28379\r\n8879 44692\r\n11115 6900\r\n11317 12656\r\n14576 3748\r\n15276 30764\r\n33463 39366\r\n36165 26316\r\n48310 44416\r\n63509 44989\r\n65364 23716\r\n65987 4642\r\n80632 22207\r\n83594 18645\r\n86020 37260\r\n",
+                "41746\r\n"
+            ],
+            [
+                "19 9\r\n2157 8234\r\n6808 3562\r\n8445 1062\r\n13146 7931\r\n18551 1710\r\n31169 1270\r\n33664 5936\r\n38140 7564\r\n41193 9263\r\n41311 1014\r\n42157 4708\r\n52300 7634\r\n58072 6375\r\n65946 881\r\n67350 1289\r\n67418 1425\r\n67647 1589\r\n83754 3543\r\n84016 7447\r\n",
+                "45685\r\n"
+            ],
+            [
+                "16 9\r\n1986 5978\r\n9365 17961\r\n19021 1761\r\n19650 9462\r\n20795 26151\r\n23526 3479\r\n24973 13657\r\n35962 23030\r\n36565 1040\r\n38643 19976\r\n40790 25086\r\n49716 5411\r\n53176 4997\r\n69117 1660\r\n80199 13680\r\n83908 4508\r\n",
+                "42594\r\n"
+            ],
+            [
+                "20 13\r\n95 7441\r\n2882 16242\r\n5832 16958\r\n7865 4615\r\n9138 2742\r\n16000 6405\r\n17119 8849\r\n18257 13728\r\n24220 4018\r\n25645 818\r\n31731 8984\r\n34677 12249\r\n36761 17030\r\n41650 2769\r\n49586 4735\r\n52838 4863\r\n56019 26\r\n72998 12828\r\n75872 3997\r\n83799 5768\r\n",
+                "54743\r\n"
+            ],
+            [
+                "15 9\r\n895 11527\r\n964 47378\r\n1454 5014\r\n3551 51418\r\n5634 18659\r\n10675 34138\r\n11559 9786\r\n15164 10573\r\n20377 30569\r\n30549 6078\r\n52745 19983\r\n58856 5708\r\n62429 34186\r\n77318 3150\r\n86011 38066\r\n",
+                "46277\r\n"
+            ],
+            [
+                "14 5\r\n12617 6663\r\n12693 2668\r\n15867 5800\r\n21348 4059\r\n25817 7453\r\n30987 3443\r\n31397 844\r\n36437 6866\r\n44746 47\r\n46034 2584\r\n56362 510\r\n57653 2581\r\n76914 6377\r\n79380 695\r\n",
+                "37783\r\n"
+            ],
+            [
+                "1 1\r\n1 86400\r\n",
+                "86400\r\n"
+            ],
+            [
+                "2 2\r\n1 86400\r\n2 86400\r\n",
+                "86400\r\n"
+            ],
+            [
+                "2 1\r\n1 86400\r\n2 86400\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 0\r\n1 86400\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 0\r\n1 86400\r\n2 86400\r\n3 86400\r\n4 86400\r\n5 86400\r\n6 86400\r\n7 86400\r\n8 86400\r\n9 86400\r\n10 86400\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 4\r\n1 86400\r\n2 86400\r\n3 86400\r\n4 86400\r\n5 86400\r\n6 86400\r\n7 86400\r\n8 86400\r\n9 86400\r\n10 86400\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 10\r\n1 86400\r\n2 86400\r\n3 86400\r\n4 86400\r\n5 86400\r\n6 86400\r\n7 86400\r\n8 86400\r\n9 86400\r\n10 86400\r\n",
+                "86400\r\n"
+            ],
+            [
+                "1 0\r\n1 86400\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

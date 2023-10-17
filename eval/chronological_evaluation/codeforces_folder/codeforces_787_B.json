@@ -1,0 +1,137 @@
+[
+    {
+        "name": "Not Afraid",
+        "description": "Since the giant heads have appeared in the sky all humanity is in danger, so\nall Ricks and Mortys from all parallel universes are gathering in groups to\nfind a solution to get rid of them. There are n parallel universes\nparticipating in this event (n Ricks and n Mortys). I. e. each of n universes\nhas one Rick and one Morty. They're gathering in m groups. Each person can be\nin many groups and a group can contain an arbitrary number of members. Ricks\nand Mortys have registered online in these groups. So, a person can have\njoined a group more than once (developer of this website hadn't considered\nthis possibility). Summer from universe #1 knows that in each parallel\nuniverse (including hers) exactly one of Rick and Morty from that universe is\na traitor and is loyal, but no one knows which one. She knows that we are\ndoomed if there's a group such that every member in that group is a traitor\n(they will plan and destroy the world). Summer knows that if there's a\npossibility that world ends (there's a group where all members are traitors)\nshe should immediately cancel this event. So she wants to know if she should\ncancel the event. You have to tell her yes if and only if there's at least one\nscenario (among all 2^n possible scenarios, 2 possible scenarios for who a\ntraitor in each universe) such that in that scenario the world will end. Input\nThe first line of input contains two integers n and m (1 \u2264 n, m \u2264 10^4) \u2014\nnumber of universes and number of groups respectively. The next m lines\ncontain the information about the groups. i-th of them first contains an\ninteger k (number of times someone joined i-th group, k > 0) followed by k\nintegers vi, 1, vi, 2, ..., vi, k. If vi, j is negative, it means that Rick\nfrom universe number - vi, j has joined this group and otherwise it means that\nMorty from universe number vi, j has joined it. Sum of k for all groups does\nnot exceed 10^4. Output In a single line print the answer to Summer's\nquestion. Print \"YES\" if she should cancel the event and \"NO\" otherwise.\nExamples Input 4 2 1 -3 4 -2 3 2 -3 Output YES Input 5 2 5 3 -2 1 -1 5 3 -5 2\n5 Output NO Input 7 2 3 -1 6 7 7 -5 4 2 4 7 -3 4 Output YES Note In the first\nsample testcase, 1st group only contains the Rick from universe number 3, so\nin case he's a traitor, then all members of this group are traitors and so\nSummer should cancel the event.\n\n",
+        "cf_contest_id": 787,
+        "cf_index": "B",
+        "cf_rating": 1300,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 2\r\n1 -3\r\n4 -2 3 2 -3\r\n",
+                "YES"
+            ],
+            [
+                "5 2\r\n5 3 -2 1 -1 5\r\n3 -5 2 5\r\n",
+                "NO"
+            ],
+            [
+                "7 2\r\n3 -1 6 7\r\n7 -5 4 2 4 7 -3 4\r\n",
+                "YES"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n2 -2 2\r\n",
+                "NO"
+            ],
+            [
+                "7 7\r\n1 -2\r\n1 6\r\n2 7 -6\r\n2 -6 4\r\n2 -4 -6\r\n3 -5 7 -5\r\n1 -6\r\n",
+                "YES"
+            ],
+            [
+                "100 50\r\n2 62 -62\r\n2 19 -19\r\n2 38 -38\r\n2 -84 84\r\n2 -16 16\r\n2 67 -67\r\n2 41 -41\r\n2 -32 32\r\n2 32 -32\r\n2 -62 62\r\n2 89 -89\r\n2 -84 84\r\n2 96 -96\r\n2 -11 11\r\n2 59 -59\r\n2 -13 13\r\n2 -70 70\r\n2 -3 3\r\n2 -41 41\r\n2 -74 74\r\n2 47 -47\r\n2 87 -87\r\n2 17 -17\r\n2 20 -20\r\n2 -14 14\r\n2 -67 67\r\n2 -95 95\r\n2 -15 15\r\n2 -49 49\r\n2 75 -75\r\n2 -11 11\r\n2 -35 35\r\n2 -10 10\r\n2 -70 70\r\n2 -82 82\r\n2 33 -33\r\n2 14 -14\r\n2 -23 23\r\n2 83 -83\r\n2 21 -21\r\n2 86 -86\r\n2 -51 51\r\n2 -21 21\r\n2 -83 83\r\n2 94 -94\r\n2 -8 8\r\n2 75 -75\r\n2 69 -69\r\n2 -18 18\r\n2 42 -42\r\n",
+                "NO"
+            ],
+            [
+                "1 1\r\n1 1\r\n",
+                "YES"
+            ],
+            [
+                "1 1\r\n2 1 -1\r\n",
+                "NO"
+            ],
+            [
+                "1 50\r\n2 1 -1\r\n2 -1 1\r\n2 1 -1\r\n2 1 -1\r\n2 1 -1\r\n2 1 -1\r\n2 -1 1\r\n2 1 -1\r\n2 -1 1\r\n2 1 -1\r\n2 1 -1\r\n2 -1 1\r\n2 -1 1\r\n2 1 -1\r\n2 -1 1\r\n2 1 -1\r\n2 1 -1\r\n2 -1 1\r\n2 -1 1\r\n2 1 -1\r\n2 -1 1\r\n2 1 -1\r\n2 -1 1\r\n2 -1 1\r\n2 1 -1\r\n2 -1 1\r\n2 -1 1\r\n2 -1 1\r\n2 -1 1\r\n2 -1 1\r\n2 1 -1\r\n2 -1 1\r\n2 -1 1\r\n2 1 -1\r\n2 1 -1\r\n2 -1 1\r\n2 1 -1\r\n2 -1 1\r\n2 -1 1\r\n2 1 -1\r\n2 -1 1\r\n2 -1 1\r\n2 1 -1\r\n2 -1 1\r\n2 1 -1\r\n2 1 -1\r\n2 1 -1\r\n2 -1 1\r\n2 -1 1\r\n2 -1 1\r\n",
+                "NO"
+            ],
+            [
+                "10000 1\r\n2 -6748 6748\r\n",
+                "NO"
+            ],
+            [
+                "10000 1\r\n1 2550\r\n",
+                "YES"
+            ],
+            [
+                "10000 1\r\n10 5365 -2216 -866 -7450 -6342 4329 -777 -4329 5225 -2884\r\n",
+                "NO"
+            ],
+            [
+                "3 1\r\n3 1 1 2\r\n",
+                "YES"
+            ],
+            [
+                "5 1\r\n2 -1 -1\r\n",
+                "YES"
+            ],
+            [
+                "4 1\r\n3 1 1 -1\r\n",
+                "NO"
+            ],
+            [
+                "4 1\r\n4 3 3 3 3\r\n",
+                "YES"
+            ],
+            [
+                "1 1\r\n2 1 1\r\n",
+                "YES"
+            ],
+            [
+                "2 1\r\n2 2 2\r\n",
+                "YES"
+            ],
+            [
+                "4 2\r\n2 1 -1\r\n1 1\r\n",
+                "YES"
+            ],
+            [
+                "7 2\r\n3 -1 1 7\r\n7 -5 4 2 4 7 -3 4\r\n",
+                "YES"
+            ],
+            [
+                "4 1\r\n1 -1\r\n",
+                "YES"
+            ],
+            [
+                "10 1\r\n2 4 4\r\n",
+                "YES"
+            ],
+            [
+                "1 2\r\n2 1 -1\r\n2 -1 -1\r\n",
+                "YES"
+            ],
+            [
+                "10000 1\r\n2 -3 -3\r\n",
+                "YES"
+            ],
+            [
+                "1 2\r\n2 1 1\r\n2 -1 -1\r\n",
+                "YES"
+            ],
+            [
+                "5 1\r\n2 1 1\r\n",
+                "YES"
+            ],
+            [
+                "3 1\r\n2 3 3\r\n",
+                "YES"
+            ],
+            [
+                "4 1\r\n2 1 1\r\n",
+                "YES"
+            ],
+            [
+                "4 2\r\n3 -1 1 2\r\n3 -2 4 3\r\n",
+                "YES"
+            ]
+        ]
+    }
+]

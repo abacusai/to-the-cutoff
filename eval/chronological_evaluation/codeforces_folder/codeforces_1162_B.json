@@ -1,0 +1,248 @@
+[
+    {
+        "name": "Double Matrix",
+        "description": "You are given two \n    n \n    \u00d7 m\n matrices containing integers. A sequence\nof integers is strictly increasing if each next number is greater than the\nprevious one. A row is strictly increasing if all numbers from left to right\nare strictly increasing. A column is strictly increasing if all numbers from\ntop to bottom are strictly increasing. A matrix is increasing if all rows are\nstrictly increasing and all columns are strictly increasing. For example, the\nmatrix \n    [  9 10 11; ; ; 11 12 14; ; ;   ;  ]\n\nis increasing because each individual row and column is strictly increasing.\nOn the other hand, the matrix \n    [ 1 1; ; ; 2 3; ; ;  ;  ]\n is not increasing because the first row is not strictly\nincreasing. Let a position in the \n    i\n-th row (from top) and \n    j\n-th\ncolumn (from left) in a matrix be denoted as \n    (i, j)\n. In one operation,\nyou can choose any two numbers \n    i\n and \n    j\n and swap the number located\nin \n    (i, j)\n in the first matrix with the number in \n    (i, j)\n in the\nsecond matrix. In other words, you can swap two numbers in different matrices\nif they are located in the corresponding positions. You would like to make\nboth matrices increasing by performing some number of operations (possibly\nnone). Determine if it is possible to do this. If it is, print \"Possible\",\notherwise, print \"Impossible\". Input The first line contains two integers\n\n    n\n and \n    m\n (\n    1 \n    \u2264 n,m \n    \u2264 50\n) \u2014 the dimensions of each\nmatrix. Each of the next \n    n\n lines contains \n    m\n integers \n    a_i1,\n    a_i2, \n    \u2026, a_im\n (\n    1 \n    \u2264 a_ij\n    \u2264 10^9\n) \u2014 the number\nlocated in position \n    (i, j)\n in the first matrix. Each of the next \n    n\n\nlines contains \n    m\n integers \n    b_i1, b_i2, \n    \u2026, b_im\n (\n    1\n    \n    \u2264 b_ij\n    \u2264 10^9\n) \u2014 the number located in position \n    (i, j)\n in\nthe second matrix. Output Print a string \"Impossible\" or \"Possible\". Examples\nInput 2 2 2 10 11 5 9 4 3 12 Output Possible Input 2 3 2 4 5 4 5 6 3 6 7 8 10\n11 Output Possible Input 3 2 1 3 2 4 5 10 3 1 3 6 4 8 Output Impossible Note\nThe first example, we can do an operation on the top left and bottom right\ncells of the matrices. The resulting matrices will be \n    [  9 10; ; ; 11 12; ; ;   ;  ]\n and \n    [ 2 4; ; ; 3 5; ; ;  ;  ]\n. In the second example, we don't need\nto do any operations. In the third example, no matter what we swap, we can't\nfix the first row to be strictly increasing in both matrices.\n\n",
+        "cf_contest_id": 1162,
+        "cf_index": "B",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2\r\n2 10\r\n11 5\r\n9 4\r\n3 12\r\n",
+                "Possible\n"
+            ],
+            [
+                "2 3\r\n2 4 5\r\n4 5 6\r\n3 6 7\r\n8 10 11\r\n",
+                "Possible\n"
+            ],
+            [
+                "3 2\r\n1 3\r\n2 4\r\n5 10\r\n3 1\r\n3 6\r\n4 8\r\n",
+                "Impossible\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n1\r\n1\r\n",
+                "Possible\n"
+            ],
+            [
+                "1 20\r\n24113077 23454965 177666364 189267262 288203127 425702241 443748582 497192900 500408108 507081270 624761160 631677991 696654683 761843396 812804599 812841278 843770568 869392361 949349095 968479911\r\n16829544 25736255 99598087 115911995 176453954 263429812 351215090 378014815 552062882 574845969 512322624 590282812 661540376 712718129 886414197 922259985 933237957 936098789 939676223 966862085\r\n",
+                "Possible\n"
+            ],
+            [
+                "20 1\r\n66723051\r\n192052119\r\n224590623\r\n285234278\r\n167627491\r\n337383819\r\n374082795\r\n457862809\r\n434684264\r\n480651568\r\n509016946\r\n512760752\r\n577998249\r\n647547233\r\n737914492\r\n753247062\r\n687137696\r\n799938346\r\n957366563\r\n986223900\r\n47472129\r\n101178650\r\n145468869\r\n145519928\r\n311820460\r\n208565256\r\n303503995\r\n326456874\r\n472277646\r\n473761370\r\n493557409\r\n497115206\r\n518893690\r\n567441986\r\n615260095\r\n679825548\r\n782224818\r\n786514557\r\n861357063\r\n909226227\r\n",
+                "Possible\n"
+            ],
+            [
+                "2 2\r\n2 3\r\n4 6\r\n1 2\r\n5 4\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 3\r\n3 5\r\n1 2\r\n2 1\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 3\r\n3 4\r\n1 3\r\n3 2\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n3 4\r\n1 2\r\n3 4\r\n1 2\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n5 4\r\n1 3\r\n3 4\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n3 1\r\n9 10\r\n11 1\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n9 10\r\n11 12\r\n1 2\r\n2 2\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n1 2\r\n1 2\r\n2 3\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 3\r\n1 3 2\r\n4 5 6\r\n7 8 9\r\n10 11 12\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 2\r\n1 2\r\n9 9\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 3\r\n5 6 7\r\n1 1 1\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 3\r\n2 3 4\r\n1 2 3\r\n2 3 4\r\n1 2 3\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n3 4\r\n1 2\r\n5 6\r\n3 4\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 1\r\n5\r\n9\r\n9\r\n9\r\n",
+                "Impossible\n"
+            ],
+            [
+                "3 3\r\n1 2 3\r\n4 5 6\r\n7 80 90\r\n2 3 4\r\n5 6 7\r\n8 92 91\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 1\r\n1 1\r\n5 6\r\n7 8\r\n",
+                "Impossible\n"
+            ],
+            [
+                "3 3\r\n2 4 5\r\n6 7 8\r\n9 10 11\r\n2 1 6\r\n7 8 9\r\n10 11 12\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 2\r\n9 9\r\n1 9\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 3\r\n1 2 3\r\n5 5 5\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 1\r\n2 3\r\n10 11\r\n12 13\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n2 2\r\n2 4\r\n1 2\r\n2 5\r\n",
+                "Impossible\n"
+            ],
+            [
+                "3 1\r\n9\r\n8\r\n7\r\n9\r\n8\r\n7\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 3\r\n5 6 7\r\n1 2 3\r\n5 6 7\r\n1 2 3\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n2 3\r\n4 5\r\n1 1\r\n1 1\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 3\r\n3 6 6\r\n1 2 3\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n1 2\r\n1 2\r\n3 4\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 2\r\n1 1\r\n1 1\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n2 3\r\n1 2\r\n8 7\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 2\r\n10 5\r\n2 1\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n2 10\r\n11 10\r\n9 10\r\n3 12\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 2\r\n1 4\r\n6 5\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n6 7\r\n5 8\r\n6 7\r\n4 10\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 5\r\n2 3\r\n10 11\r\n12 13\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n9 10\r\n10 11\r\n9 10\r\n10 11\r\n",
+                "Possible\n"
+            ],
+            [
+                "1 2\r\n3 1\r\n9 15\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n1 2\r\n4 5\r\n4 5\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n2 3\r\n11 3\r\n3 4\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n2 3\r\n4 5\r\n5 5\r\n5 5\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n2 2\r\n1 2\r\n2 2\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 3\r\n1 100 3\r\n2 3 1000\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 2\r\n2 2\r\n2 3\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 2\r\n3 2\r\n5 1\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n4 4\r\n4 4\r\n7 7\r\n7 7\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 1\r\n1 1\r\n2 2\r\n2 2\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 3\r\n3 4\r\n2 1\r\n3 4\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 2\r\n3 5\r\n3 2\r\n",
+                "Impossible\n"
+            ],
+            [
+                "1 2\r\n4 2\r\n4 2\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n3 4\r\n2 2\r\n2 2\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n5 6\r\n1 2\r\n5 6\r\n1 2\r\n",
+                "Impossible\n"
+            ],
+            [
+                "2 2\r\n3 6\r\n5 9\r\n3 6\r\n5 4\r\n",
+                "Impossible\n"
+            ]
+        ]
+    }
+]

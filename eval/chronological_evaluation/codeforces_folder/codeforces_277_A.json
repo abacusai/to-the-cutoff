@@ -1,0 +1,88 @@
+[
+    {
+        "name": "Learning Languages",
+        "description": "The \"BerCorp\" company has got n employees. These employees can use m approved\nofficial languages for the formal correspondence. The languages are numbered\nwith integers from 1 to m. For each employee we have the list of languages,\nwhich he knows. This list could be empty, i. e. an employee may know no\nofficial languages. But the employees are willing to learn any number of\nofficial languages, as long as the company pays their lessons. A study course\nin one language for one employee costs 1 berdollar. Find the minimum sum of\nmoney the company needs to spend so as any employee could correspond to any\nother one (their correspondence can be indirect, i. e. other employees can\nhelp out translating). Input The first line contains two integers n and m (2 \u2264\nn, m \u2264 100) \u2014 the number of employees and the number of languages. Then n\nlines follow \u2014 each employee's language list. At the beginning of the i-th\nline is integer ki (0 \u2264 ki \u2264 m) \u2014 the number of languages the i-th employee\nknows. Next, the i-th line contains ki integers \u2014 aij (1 \u2264 aij \u2264 m) \u2014 the\nidentifiers of languages the i-th employee knows. It is guaranteed that all\nthe identifiers in one list are distinct. Note that an employee may know zero\nlanguages. The numbers in the lines are separated by single spaces. Output\nPrint a single integer \u2014 the minimum amount of money to pay so that in the end\nevery employee could write a letter to every other one (other employees can\nhelp out translating). Examples Input 5 5 1 2 2 2 3 2 3 4 2 4 5 1 5 Output 0\nInput 8 7 0 3 1 2 3 1 1 2 5 4 2 6 7 1 3 2 7 4 1 1 Output 2 Input 2 2 1 2 0\nOutput 1 Note In the second sample the employee 1 can learn language 2, and\nemployee 8 can learn language 4. In the third sample employee 2 must learn\nlanguage 2.\n\n",
+        "cf_contest_id": 277,
+        "cf_index": "A",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dsu"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 5\r\n1 2\r\n2 2 3\r\n2 3 4\r\n2 4 5\r\n1 5\r\n",
+                "0\r\n"
+            ],
+            [
+                "8 7\r\n0\r\n3 1 2 3\r\n1 1\r\n2 5 4\r\n2 6 7\r\n1 3\r\n2 7 4\r\n1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n0\r\n",
+                "1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\n0\r\n0\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 5\r\n1 3\r\n0\r\n0\r\n2 4 1\r\n0\r\n",
+                "4\r\n"
+            ],
+            [
+                "6 2\r\n0\r\n0\r\n2 1 2\r\n1 1\r\n1 1\r\n0\r\n",
+                "3\r\n"
+            ],
+            [
+                "7 3\r\n3 1 3 2\r\n3 2 1 3\r\n2 2 3\r\n1 1\r\n2 2 3\r\n3 3 2 1\r\n3 2 3 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "8 4\r\n0\r\n0\r\n4 2 3 1 4\r\n4 2 1 4 3\r\n3 4 3 1\r\n1 2\r\n2 4 1\r\n2 4 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "10 10\r\n5 7 5 2 8 1\r\n7 10 6 9 5 8 2 4\r\n2 2 7\r\n5 8 6 9 10 1\r\n2 9 5\r\n3 6 5 2\r\n6 5 8 7 9 10 4\r\n0\r\n1 1\r\n2 8 6\r\n",
+                "1\r\n"
+            ],
+            [
+                "11 42\r\n4 20 26 9 24\r\n14 34 7 28 32 12 15 26 4 10 38 21 20 8 11\r\n4 21 8 36 6\r\n11 32 1 39 11 21 10 25 17 26 15 4\r\n2 8 12\r\n2 21 31\r\n8 17 10 3 39 32 30 5 15\r\n20 24 20 38 17 4 7 21 19 32 28 31 22 30 37 10 5 33 2 13 9\r\n7 38 34 42 27 20 11 6\r\n3 40 3 39\r\n14 39 40 4 30 33 8 36 28 14 23 16 7 25 9\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 100\r\n1 33\r\n0\r\n2 35 4\r\n2 40 78\r\n1 69\r\n0\r\n1 2\r\n0\r\n0\r\n2 81 34\r\n1 45\r\n0\r\n1 87\r\n1 50\r\n1 97\r\n0\r\n2 100 59\r\n0\r\n0\r\n0\r\n1 45\r\n0\r\n0\r\n0\r\n1 6\r\n1 54\r\n0\r\n0\r\n0\r\n4 79 96 52 84\r\n1 86\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n3 90 2 80\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1 2\r\n0\r\n1 64\r\n0\r\n1 78\r\n1 82\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1 6\r\n0\r\n0\r\n2 47 57\r\n1 95\r\n0\r\n2 91 79\r\n0\r\n1 27\r\n0\r\n1 74\r\n0\r\n0\r\n1 14\r\n0\r\n0\r\n2 90 19\r\n0\r\n1 10\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1 57\r\n0\r\n2 28 50\r\n0\r\n0\r\n0\r\n1 47\r\n0\r\n0\r\n1 14\r\n0\r\n1 84\r\n1 1\r\n0\r\n0\r\n",
+                "87\r\n"
+            ],
+            [
+                "2 2\r\n2 1 2\r\n2 1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2\r\n2 1 2\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 100\r\n0\r\n0\r\n0\r\n",
+                "3\r\n"
+            ],
+            [
+                "100 100\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n",
+                "100\r\n"
+            ],
+            [
+                "3 3\r\n0\r\n0\r\n0\r\n",
+                "3\r\n"
+            ]
+        ]
+    }
+]

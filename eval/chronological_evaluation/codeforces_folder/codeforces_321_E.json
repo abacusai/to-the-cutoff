@@ -1,0 +1,69 @@
+[
+    {
+        "name": "Ciel and Gondolas",
+        "description": "Fox Ciel is in the Amusement Park. And now she is in a queue in front of the\nFerris wheel. There are n people (or foxes more precisely) in the queue: we\nuse first people to refer one at the head of the queue, and n-th people to\nrefer the last one in the queue. There will be k gondolas, and the way we\nallocate gondolas looks like this: When the first gondolas come, the q1 people\nin head of the queue go into the gondolas. Then when the second gondolas come,\nthe q2 people in head of the remain queue go into the gondolas. ... The remain\nqk people go into the last (k-th) gondolas. Note that q1, q2, ..., qk must be\npositive. You can get from the statement that and qi > 0. You know, people\ndon't want to stay with strangers in the gondolas, so your task is to find an\noptimal allocation way (that is find an optimal sequence q) to make people\nhappy. For every pair of people i and j, there exists a value uij denotes a\nlevel of unfamiliar. You can assume uij = uji for all i, j (1 \u2264 i, j \u2264 n) and\nuii = 0 for all i (1 \u2264 i \u2264 n). Then an unfamiliar value of a gondolas is the\nsum of the levels of unfamiliar between any pair of people that is into the\ngondolas. A total unfamiliar value is the sum of unfamiliar values for all\ngondolas. Help Fox Ciel to find the minimal possible total unfamiliar value\nfor some optimal allocation. Input The first line contains two integers n and\nk (1 \u2264 n \u2264 4000 and 1 \u2264 k \u2264 min(n, 800)) \u2014 the number of people in the queue\nand the number of gondolas. Each of the following n lines contains n integers\n\u2014 matrix u, (0 \u2264 uij \u2264 9, uij = uji and uii = 0). Please, use fast input\nmethods (for example, please use BufferedReader instead of Scanner for Java).\nOutput Print an integer \u2014 the minimal possible total unfamiliar value.\nExamples Input 5 2 0 0 1 1 1 0 0 1 1 1 1 1 0 0 0 1 1 0 0 0 1 1 0 0 0 Output 0\nInput 8 3 0 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1\n1 1 0 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 0 Output 7 Input 3 2\n0 2 0 2 0 3 0 3 0 Output 2 Note In the first example, we can allocate people\nlike this: 1, 2 goes into a gondolas, 3, 4, 5 goes into another gondolas.\nIn the second example, an optimal solution is : 1, 2, 3 | 4, 5, 6 | 7,\n8.\n\n",
+        "cf_contest_id": 321,
+        "cf_index": "E",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "divide and conquer",
+            "dp"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5 2\r\n0 0 1 1 1\r\n0 0 1 1 1\r\n1 1 0 0 0\r\n1 1 0 0 0\r\n1 1 0 0 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "8 3\r\n0 1 1 1 1 1 1 1\r\n1 0 1 1 1 1 1 1\r\n1 1 0 1 1 1 1 1\r\n1 1 1 0 1 1 1 1\r\n1 1 1 1 0 1 1 1\r\n1 1 1 1 1 0 1 1\r\n1 1 1 1 1 1 0 1\r\n1 1 1 1 1 1 1 0\r\n",
+                "7\r\n"
+            ],
+            [
+                "3 2\r\n0 2 0\r\n2 0 3\r\n0 3 0\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n0 9\r\n9 0\r\n",
+                "9\r\n"
+            ],
+            [
+                "5 1\r\n0 1 1 1 1\r\n1 0 1 1 1\r\n1 1 0 1 1\r\n1 1 1 0 1\r\n1 1 1 1 0\r\n",
+                "10\r\n"
+            ],
+            [
+                "6 2\r\n0 1 1 1 1 1\r\n1 0 1 1 1 1\r\n1 1 0 1 1 1\r\n1 1 1 0 1 1\r\n1 1 1 1 0 1\r\n1 1 1 1 1 0\r\n",
+                "6\r\n"
+            ],
+            [
+                "3 3\r\n0 1 3\r\n1 0 5\r\n3 5 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "9 3\r\n0 0 0 0 1 1 1 1 1\r\n0 0 0 0 1 1 1 1 1\r\n0 0 0 0 1 1 1 1 1\r\n0 0 0 0 1 1 1 1 1\r\n1 1 1 1 0 0 1 1 1\r\n1 1 1 1 0 0 1 1 1\r\n1 1 1 1 1 1 0 0 0\r\n1 1 1 1 1 1 0 0 0\r\n1 1 1 1 1 1 0 0 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "9 2\r\n0 0 0 0 1 1 1 1 1\r\n0 0 0 0 1 1 1 1 1\r\n0 0 0 0 1 1 1 1 1\r\n0 0 0 0 1 1 1 1 1\r\n1 1 1 1 0 0 1 1 1\r\n1 1 1 1 0 0 1 1 1\r\n1 1 1 1 1 1 0 0 0\r\n1 1 1 1 1 1 0 0 0\r\n1 1 1 1 1 1 0 0 0\r\n",
+                "6\r\n"
+            ],
+            [
+                "1 1\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1\r\n0 8\r\n8 0\r\n",
+                "8\r\n"
+            ],
+            [
+                "2 2\r\n0 8\r\n8 0\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

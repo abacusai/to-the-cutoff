@@ -1,0 +1,117 @@
+[
+    {
+        "name": "K-Periodic Array",
+        "description": "This task will exclusively concentrate only on the arrays where all elements\nequal 1 and/or 2. Array a is k-period if its length is divisible by k and\nthere is such array b of length k, that a is represented by array b written\nexactly times consecutively. In other words, array a is k-periodic, if it has\nperiod of length k. For example, any array is n-periodic, where n is the array\nlength. Array [2, 1, 2, 1, 2, 1] is at the same time 2-periodic and 6-periodic\nand array [1, 2, 1, 1, 2, 1, 1, 2, 1] is at the same time 3-periodic and\n9-periodic. For the given array a, consisting only of numbers one and two,\nfind the minimum number of elements to change to make the array k-periodic. If\nthe array already is k-periodic, then the required value equals 0. Input The\nfirst line of the input contains a pair of integers n, k (1 \u2264 k \u2264 n \u2264 100),\nwhere n is the length of the array and the value n is divisible by k. The\nsecond line contains the sequence of elements of the given array a1, a2, ...,\nan (1 \u2264 ai \u2264 2), ai is the i-th element of the array. Output Print the minimum\nnumber of array elements we need to change to make the array k-periodic. If\nthe array already is k-periodic, then print 0. Examples Input 6 2 2 1 2 2 2 1\nOutput 1 Input 8 4 1 1 2 1 1 1 2 1 Output 0 Input 9 3 2 1 1 1 2 1 1 1 2 Output\n3 Note In the first sample it is enough to change the fourth element from 2 to\n1, then the array changes to [2, 1, 2, 1, 2, 1]. In the second sample, the\ngiven array already is 4-periodic. In the third sample it is enough to replace\neach occurrence of number two by number one. In this case the array will look\nas [1, 1, 1, 1, 1, 1, 1, 1, 1] \u2014 this array is simultaneously 1-, 3- and\n9-periodic.\n\n",
+        "cf_contest_id": 371,
+        "cf_index": "A",
+        "cf_rating": 1000,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 2\r\n2 1 2 2 2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "8 4\r\n1 1 2 1 1 1 2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "9 3\r\n2 1 1 1 2 1 1 1 2\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n2\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2\r\n2 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 1\r\n1 2 1 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 1 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n",
+                "8\r\n"
+            ],
+            [
+                "2 1\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2\r\n2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1\r\n2 1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 3\r\n1 2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 2\r\n2 1 2 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 2\r\n2 2 2 1 1 2 2 2 2 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "10 5\r\n2 2 1 2 1 1 2 1 1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "20 4\r\n2 2 1 2 2 2 1 2 2 2 1 2 2 2 1 2 2 2 1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "20 5\r\n2 2 1 1 1 2 1 1 1 1 2 2 1 1 2 2 2 1 1 2\r\n",
+                "3\r\n"
+            ],
+            [
+                "20 10\r\n1 2 2 2 2 1 1 1 2 1 1 2 2 2 2 1 2 2 2 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "100 2\r\n2 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 2 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 1 1 2 1 2 1 1 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2\r\n",
+                "5\r\n"
+            ],
+            [
+                "100 4\r\n1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 2 2 1 2 1 1 1 1 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 2 1 1 1 1 1 1 2 1 1 1 1 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 2 1 1 2 1 1 1 2 1 2 1 2 1 1 1 2 1 1 1 2 1 1\r\n",
+                "8\r\n"
+            ],
+            [
+                "100 5\r\n2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 1 2 1 2 1 2 2 2 2 2 2 1 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 1 2 2 2 2 2 1 2 1 2 2 2 2 1 2 2 2 1 1 2 1 2 2 2 2 2 2 2 1 2 2 2\r\n",
+                "16\r\n"
+            ],
+            [
+                "100 10\r\n2 1 1 1 1 2 2 2 1 1 2 1 1 2 1 2 1 2 1 1 2 1 1 1 1 2 1 2 1 1 2 1 1 1 1 2 2 2 1 1 2 1 1 1 1 2 1 2 1 1 2 1 1 1 1 2 1 2 2 1 2 1 1 1 1 2 1 2 1 1 2 1 2 1 1 2 1 2 1 1 2 1 1 1 1 2 1 2 1 1 2 1 1 1 2 2 1 2 1 1\r\n",
+                "6\r\n"
+            ],
+            [
+                "100 20\r\n2 2 2 1 1 2 1 2 1 2 1 1 2 2 2 2 2 1 2 1 2 2 2 2 1 2 1 2 1 1 1 1 2 2 2 2 1 2 1 1 2 2 2 2 1 2 1 2 1 2 1 1 2 1 2 2 2 1 2 2 2 2 2 2 2 2 1 2 1 1 1 1 2 2 2 2 2 1 1 2 2 1 2 2 1 2 1 2 1 2 1 1 2 2 1 2 2 1 1 1\r\n",
+                "13\r\n"
+            ],
+            [
+                "100 25\r\n2 2 1 2 2 2 2 2 1 2 2 1 2 1 1 2 1 2 1 2 2 2 1 2 2 2 1 1 2 1 2 1 2 1 2 2 1 2 1 1 2 2 2 1 2 2 1 2 2 2 2 1 1 2 1 2 2 1 1 2 2 2 2 2 1 2 1 2 2 2 2 2 2 2 1 2 1 1 2 2 2 2 2 1 2 2 1 1 2 1 2 2 2 1 2 2 2 2 2 2\r\n",
+                "15\r\n"
+            ],
+            [
+                "100 10\r\n2 2 2 2 2 1 2 1 2 1 2 2 2 2 2 1 2 1 2 1 2 2 2 2 2 1 2 1 2 1 2 2 2 2 2 1 2 1 2 1 2 2 2 2 2 1 2 1 2 1 2 2 2 2 2 1 2 1 2 1 2 2 2 2 2 1 2 1 2 1 2 2 2 2 2 1 2 1 2 1 2 2 2 2 2 1 2 1 2 1 2 2 2 2 2 1 2 1 2 1\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

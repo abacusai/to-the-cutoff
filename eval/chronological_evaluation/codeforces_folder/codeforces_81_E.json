@@ -1,0 +1,80 @@
+[
+    {
+        "name": "Pairs",
+        "description": "There are n students in Polycarp's class (including himself). A few days ago\nall students wrote an essay \"My best friend\". Each student's essay was\ndedicated to one of the students of class, to his/her best friend. Note that\nstudent b's best friend is not necessarily student a, if a's best friend is b.\nAnd now the teacher leads the whole class to the museum of the history of\nsports programming. Exciting stories of legendary heroes await the students:\ntourist, Petr, tomek, SnapDragon \u2014 that's who they will hear about! The\nteacher decided to divide students into pairs so that each pair consisted of a\nstudent and his best friend. She may not be able to split all the students\ninto pairs, it's not a problem \u2014 she wants to pick out the maximum number of\nsuch pairs. If there is more than one variant of doing so, she wants to pick\nout the pairs so that there were as much boy-girl pairs as possible. Of\ncourse, each student must not be included in more than one pair. Input The\nfirst line contains an integer n (2 \u2264 n \u2264 10^5), n is the number of students\nper class. Next, n lines contain information about the students, one per line.\nEach line contains two integers fi, si (1 \u2264 fi \u2264 n, fi \u2260 i, 1 \u2264 si \u2264 2), where\nfi is the number of i-th student's best friend and si denotes the i-th pupil's\nsex (si = 1 for a boy and si = 2 for a girl). Output Print on the first line\ntwo numbers t, e, where t is the maximum number of formed pairs, and e is the\nmaximum number of boy-girl type pairs among them. Then print t lines, each\nline must contain a pair ai, bi (1 \u2264 ai, bi \u2264 n), they are numbers of pupils\nin the i-th pair. Print the pairs in any order. Print the numbers in pairs in\nany order. If there are several solutions, output any of them. Examples Input\n5 5 2 3 2 5 1 2 1 4 2 Output 2 2 5 3 4 2 Input 6 5 2 3 2 5 1 2 1 4 2 3 1\nOutput 3 1 4 2 5 1 3 6 Input 8 2 2 3 2 5 1 3 1 6 1 5 1 8 2 7 1 Output 4 1 5 6\n3 4 2 1 7 8 Note The picture corresponds to the first sample. On the picture\nrhomb stand for boys, squares stand for girls, arrows lead from a pupil to\nhis/her best friend. Bold non-dashed arrows stand for pairs in the answer.\n\n",
+        "cf_contest_id": 81,
+        "cf_index": "E",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "graphs",
+            "implementation",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n5 2\r\n3 2\r\n5 1\r\n2 1\r\n4 2\r\n",
+                "2 2\r\n5 3\r\n2 4\r\n"
+            ],
+            [
+                "6\r\n5 2\r\n3 2\r\n5 1\r\n2 1\r\n4 2\r\n3 1\r\n",
+                "3 1\r\n5 1\r\n2 4\r\n3 6\r\n"
+            ],
+            [
+                "8\r\n2 2\r\n3 2\r\n5 1\r\n3 1\r\n6 1\r\n5 1\r\n8 2\r\n7 1\r\n",
+                "4 1\r\n2 1\r\n3 4\r\n5 6\r\n7 8\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5\r\n3 2\r\n1 2\r\n4 2\r\n5 2\r\n1 2\r\n",
+                "2 0\r\n1 2\r\n4 3\r\n"
+            ],
+            [
+                "5\r\n2 1\r\n1 2\r\n4 1\r\n3 2\r\n4 1\r\n",
+                "2 2\r\n1 2\r\n4 5\r\n"
+            ],
+            [
+                "14\r\n6 2\r\n7 2\r\n4 2\r\n3 2\r\n8 2\r\n10 2\r\n14 2\r\n12 2\r\n2 2\r\n11 2\r\n1 2\r\n11 2\r\n2 2\r\n13 2\r\n",
+                "6 0\r\n10 6\r\n11 12\r\n8 5\r\n2 9\r\n14 7\r\n3 4\r\n"
+            ],
+            [
+                "2\r\n2 2\r\n1 2\r\n",
+                "1 0\r\n1 2\r\n"
+            ],
+            [
+                "3\r\n3 2\r\n1 2\r\n2 2\r\n",
+                "1 0\r\n2 3\r\n"
+            ],
+            [
+                "4\r\n4 1\r\n3 1\r\n4 1\r\n2 2\r\n",
+                "2 1\r\n4 1\r\n3 2\r\n"
+            ],
+            [
+                "6\r\n5 1\r\n1 1\r\n1 1\r\n1 2\r\n4 1\r\n1 1\r\n",
+                "2 1\r\n1 2\r\n4 5\r\n"
+            ],
+            [
+                "7\r\n4 1\r\n5 1\r\n7 1\r\n1 1\r\n1 1\r\n2 1\r\n5 1\r\n",
+                "3 0\r\n1 4\r\n2 6\r\n7 3\r\n"
+            ],
+            [
+                "8\r\n8 2\r\n6 1\r\n8 2\r\n2 1\r\n4 1\r\n2 1\r\n4 1\r\n1 2\r\n",
+                "3 0\r\n8 3\r\n4 5\r\n2 6\r\n"
+            ],
+            [
+                "20\r\n11 2\r\n15 1\r\n11 2\r\n8 2\r\n18 2\r\n1 1\r\n11 1\r\n18 1\r\n12 1\r\n9 1\r\n16 1\r\n14 1\r\n12 2\r\n1 2\r\n5 1\r\n12 1\r\n18 1\r\n11 1\r\n4 1\r\n10 1\r\n",
+                "7 5\r\n1 6\r\n10 20\r\n12 13\r\n11 3\r\n18 5\r\n15 2\r\n4 19\r\n"
+            ],
+            [
+                "30\r\n29 2\r\n16 2\r\n14 1\r\n14 2\r\n12 2\r\n14 2\r\n13 2\r\n1 2\r\n1 2\r\n3 2\r\n24 2\r\n18 2\r\n20 2\r\n4 2\r\n28 2\r\n20 2\r\n10 2\r\n30 2\r\n18 2\r\n18 2\r\n30 2\r\n3 2\r\n11 2\r\n7 2\r\n26 2\r\n5 2\r\n1 2\r\n23 2\r\n19 2\r\n7 2\r\n",
+                "13 1\r\n12 5\r\n26 25\r\n19 29\r\n1 8\r\n20 13\r\n7 24\r\n11 23\r\n28 15\r\n30 21\r\n16 2\r\n10 17\r\n3 22\r\n14 4\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,90 @@
+[
+    {
+        "name": "Basis",
+        "description": "For an array of integers \n    a\n, let's define \n    |a|\n as the number of\nelements in it. Let's denote two functions: \n    F(a, k)\n is a function that\ntakes an array of integers \n    a\n and a positive integer \n    k\n. The result\nof this function is the array containing \n    |a|\n first elements of the array\nthat you get by replacing each element of \n    a\n with exactly \n    k\n copies\nof that element.For example, \n    F([2, 2, 1, 3, 5, 6, 8], 2)\n is calculated\nas follows: first, you replace each element of the array with \n    2\n copies\nof it, so you obtain \n    [2, 2, 2, 2, 1, 1, 3, 3, 5, 5, 6, 6, 8, 8]\n. Then,\nyou take the first \n    7\n elements of the array you obtained, so the result\nof the function is \n    [2, 2, 2, 2, 1, 1, 3]\n. \n    G(a, x, y)\n is a function\nthat takes an array of integers \n    a\n and two different integers \n    x\n and\n\n    y\n. The result of this function is the array \n    a\n with every element\nequal to \n    x\n replaced by \n    y\n, and every element equal to \n    y\n\nreplaced by \n    x\n.For example, \n    G([1, 1, 2, 3, 5], 3, 1) = [3, 3, 2, 1,\n    5]\n. An array \n    a\n is a parent of the array \n    b\n if: either there\nexists a positive integer \n    k\n such that \n    F(a, k) = b\n; or there exist\ntwo different integers \n    x\n and \n    y\n such that \n    G(a, x, y) = b\n. An\narray \n    a\n is an ancestor of the array \n    b\n if there exists a finite\nsequence of arrays \n    c_0, c_1, \n    \u2026, c_m\n (\n    m \n    \u2265 0\n) such that\n\n    c_0\n is \n    a\n, \n    c_m\n is \n    b\n, and for every \n    i \n    \u2208 [1,\n    m]\n, \n    c_i-1\n is a parent of \n    c_i\n. And now, the problem itself.\nYou are given two integers \n    n\n and \n    k\n. Your goal is to construct a\nsequence of arrays \n    s_1, s_2, \n    \u2026, s_m\n in such a way that: every\narray \n    s_i\n contains exactly \n    n\n elements, and all elements are\nintegers from \n    1\n to \n    k\n; for every array \n    a\n consisting of\nexactly \n    n\n integers from \n    1\n to \n    k\n, the sequence contains at\nleast one array \n    s_i\n such that \n    s_i\n is an ancestor of \n    a\n. Print\nthe minimum number of arrays in such sequence. Input The only line contains\ntwo integers \n    n\n and \n    k\n (\n    1 \n    \u2264 n, k \n    \u2264 2 \n    \u00b7 10^5\n).\nOutput Print one integer \u2014 the minimum number of elements in a sequence of\narrays meeting the constraints. Since the answer can be large, output it\nmodulo \n    998244353\n. Examples Input 3 2 Output 2 Input 4 10 Output 12 Input\n13 37 Output 27643508 Input 1337 42 Output 211887828 Input 198756 123456\nOutput 159489391 Input 123456 198756 Output 460526614 Note Let's analyze the\nfirst example. One of the possible answers for the first example is the\nsequence \n    [[2, 1, 2], [1, 2, 2]]\n. Every array of size \n    3\n consisting\nof elements from \n    1\n to \n    2\n has an ancestor in this sequence: for the\narray \n    [1, 1, 1]\n, the ancestor is \n    [1, 2, 2]\n: \n    F([1, 2, 2], 13) =\n    [1, 1, 1]\n; for the array \n    [1, 1, 2]\n, the ancestor is \n    [1, 2, 2]\n:\n\n    F([1, 2, 2], 2) = [1, 1, 2]\n; for the array \n    [1, 2, 1]\n, the ancestor\nis \n    [2, 1, 2]\n: \n    G([2, 1, 2], 1, 2) = [1, 2, 1]\n; for the array \n    [1,\n    2, 2]\n, the ancestor is \n    [1, 2, 2]\n; for the array \n    [2, 1, 1]\n, the\nancestor is \n    [1, 2, 2]\n: \n    G([1, 2, 2], 1, 2) = [2, 1, 1]\n; for the\narray \n    [2, 1, 2]\n, the ancestor is \n    [2, 1, 2]\n; for the array \n    [2,\n    2, 1]\n, the ancestor is \n    [2, 1, 2]\n: \n    F([2, 1, 2], 2) = [2, 2, 1]\n;\nfor the array \n    [2, 2, 2]\n, the ancestor is \n    [1, 2, 2]\n: \n    G(F([1, 2,\n    2], 4), 1, 2) = G([1, 1, 1], 1, 2) = [2, 2, 2]\n.\n\n",
+        "cf_contest_id": 1644,
+        "cf_index": "F",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "fft",
+            "math",
+            "number theory"
+        ],
+        "time_limit_seconds": 6.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3 2\r\n",
+                "2"
+            ],
+            [
+                "4 10\r\n",
+                "12"
+            ],
+            [
+                "13 37\r\n",
+                "27643508"
+            ],
+            [
+                "1337 42\r\n",
+                "211887828"
+            ],
+            [
+                "198756 123456\r\n",
+                "159489391"
+            ],
+            [
+                "123456 198756\r\n",
+                "460526614"
+            ]
+        ],
+        "private_cases": [
+            [
+                "200000 199999\r\n",
+                "271480816"
+            ],
+            [
+                "200000 200000\r\n",
+                "271480817"
+            ],
+            [
+                "199999 200000\r\n",
+                "873716273"
+            ],
+            [
+                "1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 5\r\n",
+                "1"
+            ],
+            [
+                "1 200000\r\n",
+                "1"
+            ],
+            [
+                "5 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "200000 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "199999 199999\r\n",
+                "873716273"
+            ],
+            [
+                "198654 189954\r\n",
+                "75960792"
+            ],
+            [
+                "199562 200000\r\n",
+                "261864171"
+            ]
+        ]
+    }
+]

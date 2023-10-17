@@ -1,0 +1,74 @@
+[
+    {
+        "name": "Tree-String Problem",
+        "description": "A rooted tree is a non-directed connected graph without any cycles with a\ndistinguished vertex, which is called the tree root. Consider the vertices of\na rooted tree, that consists of n vertices, numbered from 1 to n. In this\nproblem the tree root is the vertex number 1. Let's represent the length of\nthe shortest by the number of edges path in the tree between vertices v and u\nas d(v, u). A parent of vertex v in the rooted tree with the root in vertex r\n(v \u2260 r) is vertex pv, such that d(r, pv) + 1 = d(r, v) and d(pv, v) = 1. For\nexample, on the picture the parent of vertex v = 5 is vertex p5 = 2. One day\nPolycarpus came across a rooted tree, consisting of n vertices. The tree\nwasn't exactly ordinary: it had strings written on its edges. Polycarpus\npositioned the tree on the plane so as to make all edges lead from top to\nbottom if you go from the vertex parent to the vertex (see the picture). For\nany edge that lead from vertex pv to vertex v (1 < v \u2264 n), he knows string sv\nthat is written on it. All strings are written on the edges from top to\nbottom. For example, on the picture s7=\"ba\". The characters in the strings are\nnumbered starting from 0. An example of Polycarpus's tree (corresponds to the\nexample from the statement) Polycarpus defines the position in this tree as a\nspecific letter on a specific string. The position is written as a pair of\nintegers (v, x) that means that the position is the x-th letter of the string\nsv (1 < v \u2264 n, 0 \u2264 x < |sv|), where |sv| is the length of string sv. For\nexample, the highlighted letters are positions (2, 1) and (3, 1). Let's\nconsider the pair of positions (v, x) and (u, y) in Polycarpus' tree, such\nthat the way from the first position to the second goes down on each step. We\nwill consider that the pair of such positions defines string z. String z\nconsists of all letters on the way from (v, x) to (u, y), written in the order\nof this path. For example, in the picture the highlighted positions define\nstring \"bacaba\". Polycarpus has a string t, he wants to know the number of\npairs of positions that define string t. Note that the way from the first\nposition to the second in the pair must go down everywhere. Help him with this\nchallenging tree-string problem! Input The first line contains integer n (2 \u2264\nn \u2264 10^5) \u2014 the number of vertices of Polycarpus's tree. Next n - 1 lines\ncontain the tree edges. The i-th of them contains number pi + 1 and string si\n+ 1 (1 \u2264 pi + 1 \u2264 n; pi + 1 \u2260 (i + 1)). String si + 1 is non-empty and\nconsists of lowercase English letters. The last line contains string t. String\nt consists of lowercase English letters, its length is at least 2. It is\nguaranteed that the input contains at most 3\u00b710^5 English letters. Output\nPrint a single integer \u2014 the required number. Please, do not use the \nspecifier to read or write 64-bit integers in \u0421++. It is preferred to use the\ncin, cout streams or the \nabacaba 2 aca 5 ba 2 ba aba Output 6 Input 7 1 ab 5 bacaba 1 abacaba 2 aca 5\nba 2 ba bacaba Output 4 Note In the first test case string \"aba\" is determined\nby the pairs of positions: (2, 0) and (5, 0); (5, 2) and (6, 1); (5, 2) and\n(3, 1); (4, 0) and (4, 2); (4, 4) and (4, 6); (3, 3) and (3, 5). Note that the\nstring is not defined by the pair of positions (7, 1) and (5, 0), as the way\nbetween them doesn't always go down.\n\n",
+        "cf_contest_id": 291,
+        "cf_index": "E",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "dfs and similar",
+            "hashing",
+            "strings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7\r\n1 ab\r\n5 bacaba\r\n1 abacaba\r\n2 aca\r\n5 ba\r\n2 ba\r\naba\r\n",
+                "6\r\n"
+            ],
+            [
+                "7\r\n1 ab\r\n5 bacaba\r\n1 abacaba\r\n2 aca\r\n5 ba\r\n2 ba\r\nbacaba\r\n",
+                "4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n1 a\r\n4 b\r\n1 b\r\naab\r\n",
+                "0\r\n"
+            ],
+            [
+                "4\r\n1 a\r\n1 b\r\n1 a\r\nbba\r\n",
+                "0\r\n"
+            ],
+            [
+                "4\r\n1 b\r\n2 b\r\n3 a\r\naba\r\n",
+                "0\r\n"
+            ],
+            [
+                "20\r\n20 a\r\n2 cb\r\n11 cab\r\n13 bac\r\n18 a\r\n3 bb\r\n1 a\r\n10 ab\r\n1 aba\r\n12 ca\r\n18 b\r\n18 acb\r\n10 aac\r\n1 a\r\n2 bacb\r\n8 ac\r\n8 ba\r\n12 ca\r\n1 ba\r\nabaab\r\n",
+                "1\r\n"
+            ],
+            [
+                "21\r\n13 c\r\n8 ab\r\n15 a\r\n9 b\r\n13 aa\r\n8 ca\r\n1 ba\r\n20 ac\r\n17 a\r\n8 ba\r\n4 b\r\n9 ab\r\n4 acb\r\n3 a\r\n18 ab\r\n4 aaab\r\n15 a\r\n16 ca\r\n11 b\r\n6 aa\r\nbababb\r\n",
+                "0\r\n"
+            ],
+            [
+                "22\r\n1 bacabaaab\r\n1 bac\r\n1 acabb\r\n1 ac\r\n1 abaaba\r\n1 aba\r\n1 cabaabaa\r\n1 ba\r\n1 bacac\r\n1 abc\r\n1 aaac\r\n1 aaaab\r\n1 acabacaca\r\n1 ba\r\n1 baa\r\n1 baca\r\n1 babaca\r\n1 aacabb\r\n1 acaa\r\n1 cacabab\r\n1 acaa\r\naabaabaa\r\n",
+                "0\r\n"
+            ],
+            [
+                "6\r\n4 baab\r\n6 acab\r\n1 aaab\r\n2 acabb\r\n4 aca\r\nbbaab\r\n",
+                "1\r\n"
+            ],
+            [
+                "10\r\n1 c\r\n6 aaaa\r\n5 bac\r\n10 a\r\n10 ac\r\n2 bac\r\n4 a\r\n2 b\r\n1 abbb\r\nabbba\r\n",
+                "2\r\n"
+            ],
+            [
+                "10\r\n10 aaab\r\n7 a\r\n5 ba\r\n9 b\r\n2 aca\r\n10 b\r\n3 bb\r\n1 acaa\r\n4 ba\r\nbabab\r\n",
+                "2\r\n"
+            ],
+            [
+                "7\r\n5 aba\r\n1 abacaab\r\n2 ac\r\n3 ab\r\n5 acab\r\n2 aa\r\nababa\r\n",
+                "3\r\n"
+            ],
+            [
+                "7\r\n1 abac\r\n5 c\r\n6 abb\r\n1 acaaba\r\n5 aba\r\n6 baa\r\nbaaba\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

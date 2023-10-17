@@ -1,0 +1,64 @@
+[
+    {
+        "name": "Company Acquisitions",
+        "description": "There are \n    n\n startups. Startups can be active or acquired. If a startup\nis acquired, then that means it has exactly one active startup that it is\nfollowing. An active startup can have arbitrarily many acquired startups that\nare following it. An active startup cannot follow any other startup. The\nfollowing steps happen until there is exactly one active startup. The\nfollowing sequence of steps takes exactly 1 day. Two distinct active startups\n\n    A\n, \n    B\n, are chosen uniformly at random. A fair coin is flipped, and\nwith equal probability, \n    A\n acquires \n    B\n or \n    B\n acquires \n    A\n\n(i.e. if \n    A\n acquires \n    B\n, then that means \n    B\n's state changes\nfrom active to acquired, and its starts following \n    A\n). When a startup\nchanges from active to acquired, all of its previously acquired startups\nbecome active. For example, the following scenario can happen: Let's say\n\n    A\n, \n    B\n are active startups. \n    C\n, \n    D\n, \n    E\n are acquired\nstartups under \n    A\n, and \n    F\n, \n    G\n are acquired startups under\n\n    B\n: Active startups are shown in red. If \n    A\n acquires \n    B\n, then\nthe state will be \n    A\n, \n    F\n, \n    G\n are active startups. \n    C\n,\n\n    D\n, \n    E\n, \n    B\n are acquired startups under \n    A\n. \n    F\n and\n\n    G\n have no acquired startups: If instead, \n    B\n acquires \n    A\n, then\nthe state will be \n    B\n, \n    C\n, \n    D\n, \n    E\n are active startups.\n\n    F\n, \n    G\n, \n    A\n are acquired startups under \n    B\n. \n    C\n,\n\n    D\n, \n    E\n have no acquired startups: You are given the initial state of\nthe startups. For each startup, you are told if it is either acquired or\nactive. If it is acquired, you are also given the index of the active startup\nthat it is following. You're now wondering, what is the expected number of\ndays needed for this process to finish with exactly one active startup at the\nend. It can be shown the expected number of days can be written as a rational\nnumber \n    P/Q\n, where \n    P\n and \n    Q\n are co-prime integers, and \n    Q\n    \n    \u2260 0 \n    10^9+7\n. Return the value of \n    P \n    \u00b7 Q^-1\n\nmodulo \n    10^9+7\n. Input The first line contains a single integer \n    n\n\n(\n    2 \n    \u2264 n \n    \u2264 500\n), the number of startups. The next line will\ncontain \n    n\n space-separated integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    a_i\n    = -1\n or \n    1 \n    \u2264 a_i \n    \u2264 n\n). If \n    a_i = -1\n, then that means\nstartup \n    i\n is active. Otherwise, if \n    1 \n    \u2264 a_i \n    \u2264 n\n, then\nstartup \n    i\n is acquired, and it is currently following startup \n    a_i\n.\nIt is guaranteed if \n    a_i \n    \u2260 -1\n, then \n    a_a_i =-1\n (that is, all\nstartups that are being followed are active). Output Print a single integer,\nthe expected number of days needed for the process to end with exactly one\nactive startup, modulo \n    10^9+7\n. Examples Input 3 -1 -1 -1 Output 3 Input\n2 2 -1 Output 0 Input 40 3 3 -1 -1 4 4 -1 -1 -1 -1 -1 10 10 10 10 10 10 4 20\n-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 3 3 3 3 3 3 3 3 Output 755808950 Note\nIn the first sample, there are three active startups labeled \n    1\n, \n    2\n\nand \n    3\n, and zero acquired startups. Here's an example of how one scenario\ncan happen Startup \n    1\n acquires startup \n    2\n (This state can be\nrepresented by the array \n    [-1, 1, -1]\n) Startup \n    3\n acquires startup\n\n    1\n (This state can be represented by the array \n    [3, -1, -1]\n) Startup\n\n    2\n acquires startup \n    3\n (This state can be represented by the array\n\n    [-1, -1, 2]\n). Startup \n    2\n acquires startup \n    1\n (This state can\nbe represented by the array \n    [2, -1, 2]\n). At this point, there is only\none active startup, and this sequence of steps took \n    4\n days. It can be\nshown the expected number of days is \n    3\n. For the second sample, there is\nonly one active startup, so we need zero days. For the last sample, remember\nto take the answer modulo \n    10^9+7\n.\n\n",
+        "cf_contest_id": 1025,
+        "cf_index": "G",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "math"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n-1 -1 -1\r\n",
+                "3\n"
+            ],
+            [
+                "2\r\n2 -1\r\n",
+                "0\n"
+            ],
+            [
+                "40\r\n3 3 -1 -1 4 4 -1 -1 -1 -1 -1 10 10 10 10 10 10 4 20 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 3 3 3 3 3 3 3 3\r\n",
+                "755808950\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "8\r\n-1 3 -1 -1 -1 3 -1 -1\r\n",
+                "124\n"
+            ],
+            [
+                "10\r\n3 -1 -1 -1 -1 -1 -1 -1 2 2\r\n",
+                "507\n"
+            ],
+            [
+                "50\r\n36 36 45 44 -1 -1 13 -1 36 -1 44 36 -1 -1 -1 35 -1 36 36 35 -1 -1 -1 14 36 36 22 36 13 -1 35 -1 35 36 -1 -1 13 13 45 36 14 -1 36 -1 -1 -1 22 36 -1 13\r\n",
+                "949472419\n"
+            ],
+            [
+                "10\r\n7 7 7 7 7 7 -1 7 7 -1\r\n",
+                "256\n"
+            ],
+            [
+                "10\r\n-1 4 4 -1 4 4 -1 4 -1 4\r\n",
+                "448\n"
+            ],
+            [
+                "10\r\n-1 6 6 6 -1 -1 -1 -1 6 -1\r\n",
+                "496\n"
+            ],
+            [
+                "10\r\n-1 -1 -1 -1 -1 -1 1 -1 -1 8\r\n",
+                "509\n"
+            ],
+            [
+                "10\r\n-1 -1 -1 -1 -1 -1 -1 -1 -1 -1\r\n",
+                "511\n"
+            ]
+        ]
+    }
+]

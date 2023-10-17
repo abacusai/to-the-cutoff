@@ -1,0 +1,232 @@
+[
+    {
+        "name": "Clues",
+        "description": "As Sherlock Holmes was investigating another crime, he found a certain number\nof clues. Also, he has already found direct links between some of those clues.\nThe direct links between the clues are mutual. That is, the direct link\nbetween clues A and B and the direct link between clues B and A is the same\nthing. No more than one direct link can exist between two clues. Of course\nSherlock is able to find direct links between all clues. But it will take too\nmuch time and the criminals can use this extra time to hide. To solve the\ncrime, Sherlock needs each clue to be linked to all other clues (maybe not\ndirectly, via some other clues). Clues A and B are considered linked either if\nthere is a direct link between them or if there is a direct link between A and\nsome other clue C which is linked to B. Sherlock Holmes counted the minimum\nnumber of additional direct links that he needs to find to solve the crime. As\nit turns out, it equals T. Please count the number of different ways to find\nexactly T direct links between the clues so that the crime is solved in the\nend. Two ways to find direct links are considered different if there exist two\nclues which have a direct link in one way and do not have a direct link in the\nother way. As the number of different ways can turn out rather big, print it\nmodulo k. Input The first line contains three space-separated integers n, m, k\n(1 \u2264 n \u2264 10^5, 0 \u2264 m \u2264 10^5, 1 \u2264 k \u2264 10^9) \u2014 the number of clues, the number\nof direct clue links that Holmes has already found and the divisor for the\nmodulo operation. Each of next m lines contains two integers a and b (1 \u2264 a, b\n\u2264 n, a \u2260 b), that represent a direct link between clues. It is guaranteed that\nany two clues are linked by no more than one direct link. Note that the direct\nlinks between the clues are mutual. Output Print the single number \u2014 the\nanswer to the problem modulo k. Examples Input 2 0 1000000000 Output 1 Input 3\n0 100 Output 3 Input 4 1 1000000000 1 4 Output 8 Note The first sample only\nhas two clues and Sherlock hasn't found any direct link between them yet. The\nonly way to solve the crime is to find the link. The second sample has three\nclues and Sherlock hasn't found any direct links between them. He has to find\ntwo of three possible direct links between clues to solve the crime \u2014 there\nare 3 ways to do it. The third sample has four clues and the detective has\nalready found one direct link between the first and the fourth clue. There are\n8 ways to find two remaining clues to solve the crime.\n\n",
+        "cf_contest_id": 156,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 0 1000000000\r\n",
+                "1"
+            ],
+            [
+                "3 0 100\r\n",
+                "3"
+            ],
+            [
+                "4 1 1000000000\r\n1 4\r\n",
+                "8"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6 4 100000\r\n1 4\r\n4 6\r\n6 1\r\n2 5\r\n",
+                "36"
+            ],
+            [
+                "10 0 123456789\r\n",
+                "100000000"
+            ],
+            [
+                "10 5 1000000000\r\n1 2\r\n4 3\r\n5 6\r\n8 7\r\n10 9\r\n",
+                "32000"
+            ],
+            [
+                "8 4 17\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n",
+                "8"
+            ],
+            [
+                "9 6 342597160\r\n1 2\r\n3 4\r\n4 5\r\n6 7\r\n7 8\r\n8 9\r\n",
+                "216"
+            ],
+            [
+                "1 0 1\r\n",
+                "0"
+            ],
+            [
+                "15 10 1\r\n1 2\r\n4 5\r\n6 3\r\n11 8\r\n8 5\r\n5 9\r\n9 1\r\n11 12\r\n12 1\r\n2 8\r\n",
+                "0"
+            ],
+            [
+                "8 8 999999937\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n8 7\r\n",
+                "1"
+            ],
+            [
+                "100000 0 1000000000\r\n",
+                "0"
+            ],
+            [
+                "100000 0 1\r\n",
+                "0"
+            ],
+            [
+                "9 11 498920381\r\n2 8\r\n5 4\r\n1 8\r\n8 3\r\n4 9\r\n3 6\r\n8 9\r\n1 7\r\n5 1\r\n5 6\r\n9 6\r\n",
+                "1"
+            ],
+            [
+                "2 0 753780649\r\n",
+                "1"
+            ],
+            [
+                "1 0 997185958\r\n",
+                "1"
+            ],
+            [
+                "10 36 279447540\r\n10 7\r\n10 8\r\n1 8\r\n1 5\r\n4 5\r\n9 5\r\n3 9\r\n7 3\r\n10 4\r\n8 9\r\n2 10\r\n6 2\r\n4 8\r\n10 3\r\n1 4\r\n10 1\r\n10 6\r\n8 3\r\n3 6\r\n9 7\r\n10 5\r\n6 9\r\n3 1\r\n8 6\r\n4 9\r\n5 3\r\n9 10\r\n7 2\r\n2 4\r\n7 4\r\n5 6\r\n5 8\r\n7 5\r\n5 2\r\n6 7\r\n1 9\r\n",
+                "1"
+            ],
+            [
+                "7 7 302838679\r\n5 3\r\n4 1\r\n5 4\r\n6 5\r\n1 6\r\n3 2\r\n6 4\r\n",
+                "6"
+            ],
+            [
+                "6 1 310732484\r\n4 2\r\n",
+                "432"
+            ],
+            [
+                "10 7 587143295\r\n1 10\r\n7 1\r\n1 8\r\n7 10\r\n8 10\r\n4 8\r\n6 8\r\n",
+                "6000"
+            ],
+            [
+                "3 3 975373207\r\n1 2\r\n1 3\r\n3 2\r\n",
+                "1"
+            ],
+            [
+                "9 33 321578376\r\n9 5\r\n6 3\r\n8 4\r\n4 1\r\n3 5\r\n2 6\r\n8 2\r\n7 6\r\n7 9\r\n8 6\r\n4 5\r\n1 6\r\n1 2\r\n5 6\r\n9 4\r\n7 8\r\n3 9\r\n9 6\r\n4 7\r\n7 2\r\n1 8\r\n4 6\r\n8 3\r\n3 7\r\n8 9\r\n5 7\r\n3 4\r\n7 1\r\n9 2\r\n5 1\r\n2 5\r\n9 1\r\n3 2\r\n",
+                "1"
+            ],
+            [
+                "5 10 93196990\r\n1 5\r\n1 4\r\n4 2\r\n1 3\r\n3 4\r\n1 2\r\n5 2\r\n5 4\r\n5 3\r\n2 3\r\n",
+                "1"
+            ],
+            [
+                "1 0 773734495\r\n",
+                "1"
+            ],
+            [
+                "2 1 719418546\r\n1 2\r\n",
+                "1"
+            ],
+            [
+                "3 2 21502109\r\n3 2\r\n1 2\r\n",
+                "1"
+            ],
+            [
+                "9 35 480175322\r\n6 3\r\n8 6\r\n7 5\r\n7 9\r\n3 4\r\n2 8\r\n5 3\r\n4 5\r\n4 6\r\n7 1\r\n7 6\r\n2 5\r\n8 3\r\n6 9\r\n8 4\r\n8 5\r\n6 1\r\n8 1\r\n3 2\r\n5 1\r\n8 9\r\n3 1\r\n8 7\r\n5 6\r\n5 9\r\n4 9\r\n7 4\r\n2 7\r\n3 9\r\n2 4\r\n7 3\r\n9 1\r\n2 9\r\n1 4\r\n1 2\r\n",
+                "1"
+            ],
+            [
+                "5 7 729985252\r\n2 3\r\n3 1\r\n2 5\r\n1 5\r\n1 2\r\n1 4\r\n4 3\r\n",
+                "1"
+            ],
+            [
+                "2 1 819865995\r\n2 1\r\n",
+                "1"
+            ],
+            [
+                "10 0 766953983\r\n",
+                "100000000"
+            ],
+            [
+                "2 1 855341703\r\n2 1\r\n",
+                "1"
+            ],
+            [
+                "10 30 407595309\r\n3 6\r\n6 10\r\n6 7\r\n7 10\r\n7 8\r\n3 10\r\n3 4\r\n1 4\r\n9 10\r\n8 4\r\n3 7\r\n5 1\r\n2 4\r\n6 2\r\n8 9\r\n10 5\r\n7 5\r\n10 4\r\n5 8\r\n8 2\r\n10 2\r\n1 6\r\n4 7\r\n2 3\r\n5 6\r\n8 10\r\n3 5\r\n1 8\r\n9 7\r\n1 9\r\n",
+                "1"
+            ],
+            [
+                "1 0 21080115\r\n",
+                "1"
+            ],
+            [
+                "57 28 776442742\r\n31 10\r\n25 28\r\n51 45\r\n14 40\r\n21 52\r\n53 51\r\n52 53\r\n4 6\r\n51 35\r\n53 15\r\n17 16\r\n40 44\r\n37 51\r\n33 43\r\n55 40\r\n42 16\r\n30 8\r\n19 45\r\n7 27\r\n31 8\r\n49 8\r\n43 44\r\n45 3\r\n16 22\r\n32 36\r\n52 36\r\n5 26\r\n2 23\r\n",
+                "135540294"
+            ],
+            [
+                "30 70 288262020\r\n27 18\r\n5 19\r\n23 17\r\n16 17\r\n29 17\r\n1 22\r\n23 5\r\n10 13\r\n22 26\r\n14 3\r\n8 3\r\n29 9\r\n9 1\r\n3 9\r\n16 4\r\n9 22\r\n10 22\r\n20 1\r\n3 7\r\n23 19\r\n26 8\r\n24 1\r\n5 7\r\n28 29\r\n20 11\r\n16 12\r\n6 9\r\n24 29\r\n30 4\r\n5 26\r\n18 21\r\n5 21\r\n30 6\r\n12 13\r\n16 23\r\n28 14\r\n30 1\r\n7 27\r\n7 19\r\n27 17\r\n5 30\r\n30 27\r\n28 30\r\n12 28\r\n27 9\r\n30 26\r\n20 18\r\n21 16\r\n8 30\r\n4 26\r\n13 22\r\n2 14\r\n12 30\r\n4 2\r\n6 12\r\n29 25\r\n19 29\r\n14 15\r\n3 23\r\n10 28\r\n7 1\r\n21 10\r\n4 12\r\n1 14\r\n7 21\r\n21 8\r\n17 26\r\n7 6\r\n26 29\r\n9 8\r\n",
+                "1"
+            ],
+            [
+                "99 12 832839308\r\n66 23\r\n36 5\r\n16 57\r\n70 62\r\n94 96\r\n63 33\r\n99 23\r\n63 10\r\n6 85\r\n73 23\r\n69 46\r\n72 95\r\n",
+                "71450536"
+            ],
+            [
+                "30 18 918975816\r\n30 18\r\n23 1\r\n21 14\r\n14 8\r\n18 9\r\n23 29\r\n3 23\r\n29 19\r\n18 4\r\n27 19\r\n30 2\r\n9 10\r\n9 28\r\n16 15\r\n10 6\r\n18 12\r\n23 9\r\n19 14\r\n",
+                "782410104"
+            ],
+            [
+                "83 33 367711297\r\n14 74\r\n26 22\r\n55 19\r\n8 70\r\n6 42\r\n53 49\r\n54 56\r\n52 17\r\n62 44\r\n78 61\r\n76 4\r\n78 30\r\n51 2\r\n31 42\r\n33 67\r\n45 41\r\n64 62\r\n15 25\r\n33 35\r\n37 20\r\n38 65\r\n65 83\r\n61 14\r\n20 67\r\n62 47\r\n7 34\r\n78 41\r\n38 83\r\n26 69\r\n54 58\r\n11 62\r\n30 55\r\n15 74\r\n",
+                "131377693"
+            ],
+            [
+                "24 68 862907549\r\n6 9\r\n16 22\r\n11 23\r\n12 17\r\n18 2\r\n15 5\r\n5 22\r\n16 4\r\n21 9\r\n7 11\r\n19 16\r\n9 13\r\n21 20\r\n5 24\r\n7 12\r\n17 1\r\n24 21\r\n23 7\r\n16 17\r\n16 18\r\n10 13\r\n18 7\r\n8 21\r\n13 5\r\n10 18\r\n4 11\r\n21 6\r\n15 13\r\n2 1\r\n20 16\r\n11 16\r\n22 19\r\n2 4\r\n21 1\r\n6 18\r\n24 12\r\n21 19\r\n6 14\r\n22 24\r\n11 20\r\n2 19\r\n1 11\r\n24 18\r\n14 8\r\n10 24\r\n5 3\r\n11 3\r\n17 4\r\n4 20\r\n2 10\r\n12 11\r\n24 7\r\n23 16\r\n2 3\r\n19 24\r\n22 1\r\n22 4\r\n4 6\r\n3 4\r\n11 13\r\n6 5\r\n18 23\r\n4 23\r\n22 13\r\n20 5\r\n2 5\r\n2 11\r\n9 5\r\n",
+                "1"
+            ],
+            [
+                "86 23 608266393\r\n62 78\r\n44 84\r\n42 37\r\n20 24\r\n40 36\r\n41 76\r\n14 38\r\n80 72\r\n39 52\r\n31 58\r\n71 17\r\n81 6\r\n32 65\r\n11 69\r\n43 86\r\n85 59\r\n28 77\r\n78 64\r\n15 19\r\n36 39\r\n53 49\r\n48 75\r\n33 85\r\n",
+                "235915236"
+            ],
+            [
+                "47 51 283106191\r\n18 14\r\n30 26\r\n24 2\r\n18 41\r\n35 31\r\n16 24\r\n29 39\r\n6 12\r\n17 21\r\n7 19\r\n36 16\r\n27 39\r\n28 34\r\n22 35\r\n28 43\r\n40 5\r\n2 26\r\n18 16\r\n27 13\r\n21 6\r\n19 5\r\n35 30\r\n13 31\r\n7 10\r\n25 7\r\n44 42\r\n45 1\r\n35 47\r\n11 28\r\n47 46\r\n18 15\r\n27 16\r\n24 41\r\n10 8\r\n25 41\r\n4 40\r\n5 11\r\n24 6\r\n10 17\r\n41 38\r\n47 28\r\n8 29\r\n25 24\r\n35 37\r\n44 17\r\n24 47\r\n8 32\r\n33 11\r\n26 28\r\n23 9\r\n5 9\r\n",
+                "189974"
+            ],
+            [
+                "67 2 818380264\r\n4 52\r\n15 44\r\n",
+                "517849052"
+            ],
+            [
+                "10 45 220178113\r\n9 1\r\n8 1\r\n5 8\r\n1 5\r\n7 8\r\n6 7\r\n7 9\r\n6 2\r\n3 2\r\n1 4\r\n8 3\r\n8 9\r\n3 6\r\n4 5\r\n5 3\r\n10 4\r\n3 9\r\n9 6\r\n5 9\r\n2 9\r\n10 7\r\n1 10\r\n9 4\r\n3 10\r\n2 5\r\n7 1\r\n6 10\r\n6 5\r\n8 6\r\n8 4\r\n8 10\r\n1 6\r\n4 2\r\n9 10\r\n2 10\r\n7 3\r\n6 4\r\n7 5\r\n1 2\r\n4 3\r\n10 5\r\n4 7\r\n3 1\r\n7 2\r\n8 2\r\n",
+                "1"
+            ],
+            [
+                "588 32 634894588\r\n535 26\r\n562 406\r\n70 368\r\n357 513\r\n108 361\r\n515 5\r\n159 56\r\n522 81\r\n169 229\r\n312 252\r\n492 43\r\n476 405\r\n524 555\r\n537 169\r\n142 149\r\n586 112\r\n7 159\r\n76 370\r\n295 376\r\n33 455\r\n278 225\r\n377 88\r\n526 308\r\n517 303\r\n300 576\r\n230 493\r\n588 525\r\n177 312\r\n356 215\r\n515 34\r\n196 236\r\n323 9\r\n",
+                "478655040"
+            ],
+            [
+                "3 2 11\r\n1 2\r\n2 3\r\n",
+                "1"
+            ],
+            [
+                "2 1 1000\r\n1 2\r\n",
+                "1"
+            ],
+            [
+                "1 0 10000\r\n",
+                "1"
+            ],
+            [
+                "5 4 100000\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n",
+                "1"
+            ],
+            [
+                "2 1 100000\r\n1 2\r\n",
+                "1"
+            ],
+            [
+                "1 0 10\r\n",
+                "1"
+            ],
+            [
+                "3 3 100\r\n1 2\r\n2 3\r\n3 1\r\n",
+                "1"
+            ],
+            [
+                "2 1 100\r\n1 2\r\n",
+                "1"
+            ],
+            [
+                "3 2 42\r\n1 2\r\n2 3\r\n",
+                "1"
+            ]
+        ]
+    }
+]

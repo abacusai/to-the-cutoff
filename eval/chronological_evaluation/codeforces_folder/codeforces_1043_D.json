@@ -1,0 +1,87 @@
+[
+    {
+        "name": "Mysterious Crime",
+        "description": "Acingel is a small town. There was only one doctor here \u2014 Miss Ada. She was\nvery friendly and nobody has ever said something bad about her, so who\ncould've expected that Ada will be found dead in her house? Mr Gawry, world-\nfamous detective, is appointed to find the criminal. He asked \n    m\n\nneighbours of Ada about clients who have visited her in that unlucky day.\nLet's number the clients from \n    1\n to \n    n\n. Each neighbour's testimony\nis a permutation of these numbers, which describes the order in which clients\nhave been seen by the asked neighbour. However, some facts are very suspicious\n\u2013 how it is that, according to some of given permutations, some client has\nbeen seen in the morning, while in others he has been seen in the evening? \"In\nthe morning some of neighbours must have been sleeping!\" \u2014 thinks Gawry \u2014 \"and\nin the evening there's been too dark to see somebody's face...\". Now he wants\nto delete some prefix and some suffix (both prefix and suffix can be empty) in\neach permutation, so that they'll be non-empty and equal to each other after\nthat \u2014 some of the potential criminals may disappear, but the testimony won't\nstand in contradiction to each other. In how many ways he can do it? Two ways\nare called different if the remaining common part is different. Input The\nfirst line contains two integers \n    n\n and \n    m\n (\n    1 \n    \u2264 n \n    \u2264\n    100\n     000\n, \n    1 \n    \u2264 m \n    \u2264 10\n) \u2014 the number of suspects and the\nnumber of asked neighbors. Each of the next \n    m\n lines contains \n    n\n\nintegers \n    a_1, a_2, \n    \u2026, a_n\n (\n    1 \n    \u2264 a_i \n    \u2264 n\n). It is\nguaranteed that these integers form a correct permutation (that is, each\nnumber from \n    1\n to \n    n\n appears exactly once). Output Output a single\ninteger denoting the number of ways to delete some prefix and some suffix of\neach permutation (possibly empty), such that the remaining parts will be equal\nand non-empty. Examples Input 3 2 1 2 3 2 3 1 Output 4 Input 5 6 1 2 3 4 5 2 3\n1 4 5 3 4 5 1 2 3 5 4 2 1 2 3 5 4 1 1 2 3 4 5 Output 5 Input 2 2 1 2 2 1\nOutput 2 Note In the first example, all possible common parts are \n    [1]\n,\n\n    [2]\n, \n    [3]\n and \n    [2, 3]\n. In the second and third examples, you\ncan only leave common parts of length \n    1\n.\n\n",
+        "cf_contest_id": 1043,
+        "cf_index": "D",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "combinatorics",
+            "math",
+            "meet-in-the-middle",
+            "two pointers"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2\r\n1 2 3\r\n2 3 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 6\r\n1 2 3 4 5\r\n2 3 1 4 5\r\n3 4 5 1 2\r\n3 5 4 2 1\r\n2 3 5 4 1\r\n1 2 3 4 5\r\n",
+                "5\r\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n2 1\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\n1 2\r\n",
+                "3\r\n"
+            ],
+            [
+                "5 3\r\n1 2 3 4 5\r\n2 3 4 1 5\r\n1 2 3 5 4\r\n",
+                "6\r\n"
+            ],
+            [
+                "2 1\r\n2 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "10 3\r\n7 4 10 8 3 6 2 9 5 1\r\n7 4 10 8 3 6 2 9 5 1\r\n2 9 5 1 7 4 10 8 3 6\r\n",
+                "31\r\n"
+            ],
+            [
+                "10 3\r\n6 5 9 2 3 10 4 1 8 7\r\n4 1 8 10 6 5 9 2 3 7\r\n6 5 9 2 3 7 10 4 1 8\r\n",
+                "23\r\n"
+            ],
+            [
+                "10 5\r\n4 7 6 8 9 2 10 5 3 1\r\n4 7 6 8 9 2 10 5 3 1\r\n1 4 7 6 8 9 2 10 5 3\r\n4 7 6 8 9 2 10 5 3 1\r\n4 7 6 8 9 2 10 5 3 1\r\n",
+                "46\r\n"
+            ],
+            [
+                "10 5\r\n7 10 6 2 4 9 8 1 3 5\r\n3 5 10 1 8 7 9 6 2 4\r\n6 2 4 1 8 7 9 3 5 10\r\n8 9 10 1 3 5 7 6 2 4\r\n6 2 4 1 9 10 8 7 3 5\r\n",
+                "14\r\n"
+            ],
+            [
+                "10 3\r\n4 10 5 1 6 8 9 2 3 7\r\n2 8 5 3 1 4 6 7 10 9\r\n2 4 5 3 6 10 9 1 8 7\r\n",
+                "10\r\n"
+            ],
+            [
+                "15 2\r\n9 5 15 6 1 13 8 12 4 11 3 10 2 7 14\r\n7 13 11 8 9 3 15 2 1 12 10 4 14 6 5\r\n",
+                "15\r\n"
+            ],
+            [
+                "10 4\r\n3 7 8 9 2 6 4 10 5 1\r\n3 7 8 9 2 6 1 4 10 5\r\n6 4 10 5 3 7 8 9 2 1\r\n3 7 8 9 2 6 4 10 5 1\r\n",
+                "23\r\n"
+            ],
+            [
+                "20 5\r\n8 1 13 19 3 14 5 2 4 6 12 18 20 17 16 15 11 10 7 9\r\n12 18 20 17 16 15 11 10 7 9 8 1 13 19 3 14 5 2 4 6\r\n5 2 4 6 12 18 20 17 16 15 11 10 7 9 8 1 13 19 3 14\r\n5 2 4 6 12 18 20 17 16 15 11 10 7 9 8 1 13 19 3 14\r\n8 1 13 19 3 14 5 2 4 6 12 18 20 17 16 15 11 10 7 9\r\n",
+                "86\r\n"
+            ],
+            [
+                "10 5\r\n6 8 4 1 7 10 3 2 5 9\r\n4 1 7 10 2 5 9 6 8 3\r\n3 6 8 4 1 7 10 2 5 9\r\n2 5 9 8 4 1 7 10 3 6\r\n2 5 9 6 8 4 1 7 10 3\r\n",
+                "19\r\n"
+            ]
+        ]
+    }
+]

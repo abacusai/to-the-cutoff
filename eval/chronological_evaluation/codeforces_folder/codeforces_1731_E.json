@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Graph Cost",
+        "description": "You are given an initially empty undirected graph with \n    n\n nodes, numbered\nfrom \n    1\n to \n    n\n (i. e. \n    n\n nodes and \n    0\n edges). You want to\nadd \n    m\n edges to the graph, so the graph won't contain any self-loop or\nmultiple edges. If an edge connecting two nodes \n    u\n and \n    v\n is added,\nits weight must be equal to the greatest common divisor of \n    u\n and\n\n    v\n, i. e. \n    (u, v)\n. In order to add edges to the graph, you can\nrepeat the following process any number of times (possibly zero): choose an\ninteger \n    k \n    \u2265 1\n; add exactly \n    k\n edges to the graph, each having a\nweight equal to \n    k + 1\n. Adding these \n    k\n edges costs \n    k + 1\n in\ntotal. Note that you can't create self-loops or multiple edges. Also, if you\ncan't add \n    k\n edges of weight \n    k + 1\n, you can't choose such\n\n    k\n.For example, if you can add \n    5\n more edges to the graph of weight\n\n    6\n, you may add them, and it will cost \n    6\n for the whole pack of\n\n    5\n edges. But if you can only add \n    4\n edges of weight \n    6\n to the\ngraph, you can't perform this operation for \n    k = 5\n. Given two integers\n\n    n\n and \n    m\n, find the minimum total cost to form a graph of \n    n\n\nvertices and exactly \n    m\n edges using the operation above. If such a graph\ncan't be constructed, output \n    -1\n. Note that the final graph may consist\nof several connected components. Input Each test contains multiple test cases.\nThe first line contains the number of test cases \n    t\n (\n    1 \n    \u2264 t \n    \u2264\n    10^4\n). Description of the test cases follows. The first line of each test\ncase contains two integers \n    n\n and \n    m\n (\n    2 \n    \u2264 n \n    \u2264 10^6\n;\n\n    1 \n    \u2264 m \n    \u2264\n    n(n-1)/2\n). It is guaranteed that the sum of\n\n    n\n over all test cases does not exceed \n    10^6\n. Output For each test\ncase, print the minimum cost to build the graph, or \n    -1\n if you can't\nbuild such a graph. Example Input 4 4 1 6 10 9 4 10 11 Output 2 -1 7 21 Note\nIn the first test case, we can add an edge between the vertices \n    2\n and\n\n    4\n with \n    = 2\n. This is the only possible way to add \n    1\n\nedge that will cost \n    2\n. In the second test case, there is no way to add\n\n    10\n edges, so the answer is \n    -1\n. In the third test case, we can add\nthe following edges: \n    k = 1\n: edge of weight \n    2\n between vertices\n\n    2\n and \n    4\n (\n    (2, 4) = 2\n). Cost: \n    2\n; \n    k = 1\n: edge\nof weight \n    2\n between vertices \n    4\n and \n    6\n (\n    (4, 6) =\n    2\n). Cost: \n    2\n; \n    k = 2\n: edges of weight \n    3\n: \n    (3, 6)\n and\n\n    (3, 9)\n (\n    (3, 6) = \n    (3, 9) = 3\n). Cost: \n    3\n. As a\nresult, we added \n    1 + 1 + 2 = 4\n edges with total cost \n    2 + 2 + 3 =\n    7\n, which is the minimal possible cost.\n\n",
+        "cf_contest_id": 1731,
+        "cf_index": "E",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "math",
+            "number theory"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n4 1\r\n6 10\r\n9 4\r\n10 11\r\n",
+                "2\r\n-1\r\n7\r\n21\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n40191 722371072\r\n8193 33045914\r\n25878 269778683\r\n73005 2180197926\r\n15741 63829946\r\n84916 3332177849\r\n81750 208103136\r\n67233 1884436524\r\n93098 1638412964\r\n7122 2995908\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n219781723\r\n-1\r\n2515485806\r\n3352795\r\n"
+            ],
+            [
+                "20\r\n48239 63336102\r\n15952 125383728\r\n6943 16259547\r\n41812 298765051\r\n20123 84237072\r\n18004 103220544\r\n37299 314690950\r\n1757 545753\r\n18870 88840905\r\n41705 121928553\r\n48728 655093709\r\n8682 5673271\r\n7087 24490027\r\n38059 213889641\r\n9560 3281370\r\n26999 228726817\r\n7762 4899652\r\n39850 139920440\r\n49377 352432586\r\n35994 415880282\r\n",
+                "66453655\r\n-1\r\n-1\r\n444292976\r\n-1\r\n-1\r\n-1\r\n831265\r\n-1\r\n138994809\r\n-1\r\n6563962\r\n-1\r\n300859703\r\n3507181\r\n-1\r\n5734675\r\n165654989\r\n491049782\r\n-1\r\n"
+            ],
+            [
+                "1\r\n1000000 1000000000\r\n",
+                "1001829675\r\n"
+            ],
+            [
+                "1\r\n1000000 9283898459\r\n",
+                "9430365319\r\n"
+            ],
+            [
+                "1\r\n1000000 200000000000\r\n",
+                "-1\r\n"
+            ],
+            [
+                "35\r\n1877 6806\r\n20474 85001\r\n2163 3272\r\n6559 24916\r\n8438 65706\r\n11421 33430\r\n21562 41227\r\n27650 107504\r\n7046 59565\r\n13979 10581\r\n17343 37604\r\n10355 49194\r\n25910 95831\r\n10105 81677\r\n6226 9560\r\n7836 9882\r\n16796 46266\r\n2806 15567\r\n18532 60443\r\n24821 224549\r\n5765 6220\r\n26763 261482\r\n16601 132790\r\n5601 31564\r\n27120 230060\r\n15371 64527\r\n28034 9484\r\n27706 211375\r\n7734 22038\r\n22959 156609\r\n27590 183760\r\n7459 71817\r\n14186 3224\r\n24849 161737\r\n16304 82837\r\n",
+                "6902\r\n85209\r\n3306\r\n25054\r\n66068\r\n33546\r\n41313\r\n107712\r\n59960\r\n10610\r\n37698\r\n49395\r\n96024\r\n82074\r\n9607\r\n9922\r\n46387\r\n15749\r\n60593\r\n225110\r\n6252\r\n262114\r\n133230\r\n31780\r\n230594\r\n64722\r\n9500\r\n211844\r\n22139\r\n156997\r\n184156\r\n72287\r\n3233\r\n162109\r\n83084\r\n"
+            ],
+            [
+                "10\r\n25494 110163\r\n49839 494935\r\n15284 23561\r\n2783 20210\r\n58262 140097\r\n18146 12139\r\n35370 92599\r\n94636 179404\r\n48811 157932\r\n66484 545260\r\n",
+                "110392\r\n495691\r\n23623\r\n20471\r\n140248\r\n12166\r\n92742\r\n179540\r\n158130\r\n545900\r\n"
+            ],
+            [
+                "10\r\n44985 154111\r\n59456 167487\r\n81712 47605\r\n75164 48910\r\n50712 357059\r\n51252 483971\r\n58653 261494\r\n12302 53519\r\n63746 458973\r\n9267 70973\r\n",
+                "154318\r\n167667\r\n47644\r\n48952\r\n357552\r\n484680\r\n261796\r\n53708\r\n459510\r\n71332\r\n"
+            ],
+            [
+                "10\r\n63227 1398233531\r\n27951 6739553\r\n35140 469427214\r\n73437 819443647\r\n83982 5074691\r\n6608 10291610\r\n26160 44297153\r\n26618 332664834\r\n49447 17089451\r\n32104 145605563\r\n",
+                "-1\r\n6850578\r\n-1\r\n1165397797\r\n5085311\r\n-1\r\n49932364\r\n-1\r\n17312614\r\n200955418\r\n"
+            ],
+            [
+                "25\r\n9879 8930813\r\n16699 81999353\r\n21651 106320064\r\n29505 47660902\r\n23353 9701049\r\n11422 38053460\r\n11755 33836682\r\n13953 29502042\r\n24112 46297550\r\n17260 148692959\r\n39820 316953089\r\n13861 63528061\r\n2385 1157042\r\n29993 427968779\r\n2734 3596741\r\n18464 38863992\r\n35818 370642943\r\n2019 1258411\r\n34838 370513608\r\n24104 282032513\r\n23693 141954109\r\n35987 433082725\r\n10369 20381979\r\n10812 22706363\r\n38274 137612211\r\n",
+                "10714223\r\n-1\r\n-1\r\n52648561\r\n10019330\r\n-1\r\n-1\r\n42033809\r\n53886657\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n48853611\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n31415121\r\n35241330\r\n165627407\r\n"
+            ],
+            [
+                "10\r\n61581 1661055078\r\n69301 271453153\r\n67331 1145116279\r\n55556 1387930458\r\n16687 110624616\r\n14237 88620262\r\n37892 53383794\r\n19812 151583103\r\n67008 2032097833\r\n26453 197135658\r\n",
+                "-1\r\n300795638\r\n-1\r\n-1\r\n-1\r\n-1\r\n57050957\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "1\r\n135155 2051222212\r\n",
+                "2565698542\r\n"
+            ],
+            [
+                "1\r\n545619 45724538749\r\n",
+                "65243593385\r\n"
+            ],
+            [
+                "1\r\n761461 48630220954\r\n",
+                "56904943760\r\n"
+            ],
+            [
+                "1\r\n677545 270440\r\n",
+                "270493\r\n"
+            ],
+            [
+                "1\r\n289597 43082\r\n",
+                "43097\r\n"
+            ],
+            [
+                "1\r\n937038 1097594781\r\n",
+                "1100065618\r\n"
+            ],
+            [
+                "1\r\n794200 36698727293\r\n",
+                "40773331790\r\n"
+            ],
+            [
+                "1\r\n968829 51198851471\r\n",
+                "56431309795\r\n"
+            ],
+            [
+                "1\r\n398044 1031227292\r\n",
+                "1042781543\r\n"
+            ],
+            [
+                "15\r\n38254 80390\r\n54500 261209\r\n17962 42543\r\n38188 134376\r\n36766 106878\r\n53809 342650\r\n19123 137815\r\n27896 27067\r\n10002 31053\r\n35220 188013\r\n29129 93969\r\n7818 46694\r\n8308 23236\r\n63068 375413\r\n50541 78498\r\n",
+                "80504\r\n261530\r\n42648\r\n134579\r\n107038\r\n343095\r\n138214\r\n27113\r\n31174\r\n188337\r\n94141\r\n46943\r\n23338\r\n375841\r\n78588\r\n"
+            ],
+            [
+                "1\r\n1000000 87445876454\r\n",
+                "103109767684\r\n"
+            ],
+            [
+                "25\r\n22013 157780425\r\n39651 286572903\r\n21427 5360807\r\n19154 118602093\r\n12174 8355668\r\n37798 590315901\r\n4050 7502825\r\n33604 20890829\r\n39753 270832624\r\n7369 18868198\r\n9855 41802042\r\n7177 1371499\r\n29759 227298961\r\n1736 1357215\r\n39425 623817732\r\n3887 3238828\r\n29097 336896200\r\n10777 48174477\r\n852 254997\r\n31190 485225226\r\n7644 20191606\r\n368 16007\r\n31794 39978516\r\n3477 1639290\r\n8488 15954573\r\n",
+                "-1\r\n435367433\r\n5479463\r\n-1\r\n9281817\r\n-1\r\n-1\r\n21592866\r\n403173230\r\n-1\r\n-1\r\n1442753\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n21516\r\n42910608\r\n2242489\r\n-1\r\n"
+            ],
+            [
+                "1\r\n1000000 834847374\r\n",
+                "836146853\r\n"
+            ],
+            [
+                "10\r\n77121 749902790\r\n51045 1296211436\r\n62598 1206712822\r\n47662 627488617\r\n84537 1820215866\r\n9778 12122401\r\n17881 63877996\r\n96343 2395116718\r\n31391 246593748\r\n13107 50346256\r\n",
+                "977548761\r\n-1\r\n-1\r\n-1\r\n-1\r\n15936033\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "10\r\n30108 112755469\r\n27592 173244210\r\n77724 907773993\r\n58742 50549421\r\n4675 7929786\r\n44200 183741056\r\n69426 593333782\r\n47042 790124960\r\n40904 328419784\r\n68964 2342906987\r\n",
+                "146150780\r\n-1\r\n1285097490\r\n51872585\r\n-1\r\n221170293\r\n763538028\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "1\r\n1000000 1000000\r\n",
+                "1000151\r\n"
+            ],
+            [
+                "10\r\n96814 959415\r\n67403 497820\r\n15270 33858\r\n95602 471607\r\n21685 43648\r\n40303 81310\r\n16265 140239\r\n57292 310002\r\n76813 65138\r\n13669 64628\r\n",
+                "960299\r\n498389\r\n33951\r\n471995\r\n43739\r\n81421\r\n140717\r\n310375\r\n65193\r\n64845\r\n"
+            ],
+            [
+                "1\r\n678202 38342\r\n",
+                "38350\r\n"
+            ],
+            [
+                "10\r\n91172 725739\r\n52659 236957\r\n57621 365915\r\n158 1228\r\n49851 234691\r\n11324 112129\r\n96333 234311\r\n45811 371506\r\n34885 337223\r\n48722 182737\r\n",
+                "726409\r\n237254\r\n366369\r\n1434\r\n234999\r\n112656\r\n234488\r\n372077\r\n337893\r\n182970\r\n"
+            ],
+            [
+                "1\r\n674889 9142756032\r\n",
+                "9461189984\r\n"
+            ],
+            [
+                "1\r\n921072 385615\r\n",
+                "385677\r\n"
+            ],
+            [
+                "1\r\n1000000 2042160677\r\n",
+                "2049424241\r\n"
+            ],
+            [
+                "1\r\n857670 4096949238\r\n",
+                "4135788748\r\n"
+            ]
+        ]
+    }
+]

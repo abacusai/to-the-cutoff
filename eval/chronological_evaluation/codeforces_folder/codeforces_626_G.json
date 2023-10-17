@@ -1,0 +1,70 @@
+[
+    {
+        "name": "Raffles",
+        "description": "Johnny is at a carnival which has n raffles. Raffle i has a prize with value\npi. Each participant can put tickets in whichever raffles they choose (they\nmay have more than one ticket in a single raffle). At the end of the carnival,\none ticket is selected at random from each raffle, and the owner of the ticket\nwins the associated prize. A single person can win multiple prizes from\ndifferent raffles. However, county rules prevent any one participant from\nowning more than half the tickets in a single raffle, i.e. putting more\ntickets in the raffle than all the other participants combined. To help combat\nthis (and possibly win some prizes), the organizers started by placing a\nsingle ticket in each raffle, which they will never remove. Johnny bought t\ntickets and is wondering where to place them. Currently, there are a total of\nli tickets in the i-th raffle. He watches as other participants place tickets\nand modify their decisions and, at every moment in time, wants to know how\nmuch he can possibly earn. Find the maximum possible expected value of\nJohnny's winnings at each moment if he distributes his tickets optimally.\nJohnny may redistribute all of his tickets arbitrarily between each update,\nbut he may not place more than t tickets total or have more tickets in a\nsingle raffle than all other participants combined. Input The first line\ncontains two integers n, t, and q (1 \u2264 n, t, q \u2264 200 000) \u2014 the number of\nraffles, the number of tickets Johnny has, and the total number of updates,\nrespectively. The second line contains n space-separated integers pi (1 \u2264 pi \u2264\n1000) \u2014 the value of the i-th prize. The third line contains n space-separated\nintegers li (1 \u2264 li \u2264 1000) \u2014 the number of tickets initially in the i-th\nraffle. The last q lines contain the descriptions of the updates. Each\ndescription contains two integers tk, rk (1 \u2264 tk \u2264 2, 1 \u2264 rk \u2264 n) \u2014 the type\nof the update and the raffle number. An update of type 1 represents another\nparticipant adding a ticket to raffle rk. An update of type 2 represents\nanother participant removing a ticket from raffle rk. It is guaranteed that,\nafter each update, each raffle has at least 1 ticket (not including Johnny's)\nin it. Output Print q lines, each containing a single real number \u2014 the\nmaximum expected value of Johnny's winnings after the k-th update. Your answer\nwill be considered correct if its absolute or relative error does not exceed\n10^-6. Namely: let's assume that your answer is a, and the answer of the jury\nis b. The checker program will consider your answer correct, if . Examples\nInput 2 1 3 4 5 1 2 1 1 1 2 2 1 Output 1.666666667 1.333333333 2.000000000\nInput 3 20 5 6 8 10 6 6 6 1 1 1 2 1 3 2 3 2 3 Output 12.000000000 12.000000000\n11.769230769 12.000000000 12.000000000 Note In the first case, Johnny only has\none ticket to distribute. The prizes are worth 4 and 5, and the raffles\ninitially have 1 and 2 tickets, respectively. After the first update, each\nraffle has 2 tickets, so Johnny has expected value of winning by placing his\nticket into the second raffle. The second update adds a ticket to the second\nraffle, so Johnny can win in the first raffle. After the final update, Johnny\nkeeps his ticket in the first raffle and wins . In the second case, Johnny has\nmore tickets than he is allowed to spend. In particular, after the first\nupdate, there are 7, 6, and 6 tickets in each raffle, respectively, so Johnny\ncan only put in 19 tickets, winning each prize with probability . Also, note\nthat after the last two updates, Johnny must remove a ticket from the last\nraffle in order to stay under the tickets in the third raffle.\n\n",
+        "cf_contest_id": 626,
+        "cf_index": "G",
+        "cf_rating": 3100,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "math"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 1 3\r\n4 5\r\n1 2\r\n1 1\r\n1 2\r\n2 1\r\n",
+                "1.6666666667\r\n1.3333333333\r\n2.0000000000\r\n"
+            ],
+            [
+                "3 20 5\r\n6 8 10\r\n6 6 6\r\n1 1\r\n1 2\r\n1 3\r\n2 3\r\n2 3\r\n",
+                "12.0000000000\r\n12.0000000000\r\n11.7692307692\r\n12.0000000000\r\n12.0000000000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 3 5\r\n760 534\r\n673 266\r\n1 1\r\n1 2\r\n1 2\r\n1 1\r\n1 1\r\n",
+                "5.9553903346\r\n5.9333333333\r\n5.9114391144\r\n5.9114391144\r\n5.9114391144\r\n"
+            ],
+            [
+                "2 3 5\r\n184 82\r\n227 743\r\n1 2\r\n1 2\r\n1 1\r\n1 1\r\n1 1\r\n",
+                "2.4000000000\r\n2.4000000000\r\n2.3896103896\r\n2.3793103448\r\n2.3690987124\r\n"
+            ],
+            [
+                "2 3 5\r\n312 223\r\n676 925\r\n2 1\r\n1 2\r\n2 2\r\n2 1\r\n2 1\r\n",
+                "1.3805309735\r\n1.3805309735\r\n1.3805309735\r\n1.3825701625\r\n1.3846153846\r\n"
+            ],
+            [
+                "10 5 5\r\n55 988 858 107 416 225 570 863 571 215\r\n514 384 63 72 908 134 470 654 893 473\r\n2 9\r\n2 2\r\n2 10\r\n1 6\r\n1 2\r\n",
+                "63.0882352941\r\n63.0882352941\r\n63.0882352941\r\n63.0882352941\r\n63.0882352941\r\n"
+            ],
+            [
+                "10 5 5\r\n479 832 604 584 670 298 849 851 727 693\r\n657 832 153 609 423 51 193 108 911 713\r\n2 7\r\n1 7\r\n1 3\r\n2 5\r\n1 4\r\n",
+                "37.6548672566\r\n37.6548672566\r\n37.6548672566\r\n37.6548672566\r\n37.6548672566\r\n"
+            ],
+            [
+                "10 5 5\r\n607 677 157 254 731 267 728 543 586 579\r\n97 872 51 747 746 968 811 666 337 466\r\n1 7\r\n1 2\r\n1 2\r\n1 10\r\n1 3\r\n",
+                "29.7549019608\r\n29.7549019608\r\n29.7549019608\r\n29.7549019608\r\n29.7549019608\r\n"
+            ],
+            [
+                "2 3 5\r\n32 875\r\n230 402\r\n1 2\r\n2 2\r\n1 2\r\n1 2\r\n1 2\r\n",
+                "6.4655172414\r\n6.4814814815\r\n6.4655172414\r\n6.4496314496\r\n6.4338235294\r\n"
+            ],
+            [
+                "2 3 5\r\n160 15\r\n976 72\r\n1 1\r\n2 1\r\n1 1\r\n1 1\r\n2 1\r\n",
+                "0.6000000000\r\n0.6000000000\r\n0.6000000000\r\n0.6000000000\r\n0.6000000000\r\n"
+            ],
+            [
+                "10 5 5\r\n735 521 607 435 281 44 712 827 446 762\r\n241 423 846 284 557 885 534 120 355 707\r\n1 3\r\n2 2\r\n2 3\r\n2 5\r\n1 8\r\n",
+                "33.0800000000\r\n33.0800000000\r\n33.0800000000\r\n33.0800000000\r\n32.8174603175\r\n"
+            ],
+            [
+                "10 5 5\r\n455 662 161 209 534 117 887 519 601 240\r\n680 463 936 717 584 802 256 679 373 652\r\n1 5\r\n1 4\r\n2 1\r\n1 2\r\n2 10\r\n",
+                "16.9923371648\r\n16.9923371648\r\n16.9923371648\r\n16.9923371648\r\n16.9923371648\r\n"
+            ]
+        ]
+    }
+]

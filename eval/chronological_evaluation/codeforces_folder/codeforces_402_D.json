@@ -1,0 +1,106 @@
+[
+    {
+        "name": "Upgrading Array",
+        "description": "You have an array of positive integers a[1], a[2], ..., a[n] and a set of bad\nprime numbers b1, b2, ..., bm. The prime numbers that do not occur in the set\nb are considered good. The beauty of array a is the sum , where function f(s)\nis determined as follows: f(1) = 0; Let's assume that p is the minimum prime\ndivisor of s. If p is a good prime, then , otherwise . You are allowed to\nperform an arbitrary (probably zero) number of operations to improve array a.\nThe operation of improvement is the following sequence of actions: Choose some\nnumber r (1 \u2264 r \u2264 n) and calculate the value g = GCD(a[1], a[2], ..., a[r]).\nApply the assignments: , , ..., . What is the maximum beauty of the array you\ncan get? Input The first line contains two integers n and m (1 \u2264 n, m \u2264 5000)\nshowing how many numbers are in the array and how many bad prime numbers there\nare. The second line contains n space-separated integers a[1], a[2], ..., a[n]\n(1 \u2264 a[i] \u2264 10^9) \u2014 array a. The third line contains m space-separated\nintegers b1, b2, ..., bm (2 \u2264 b1 < b2 < ... < bm \u2264 10^9) \u2014 the set of bad\nprime numbers. Output Print a single integer \u2014 the answer to the problem.\nExamples Input 5 2 4 20 34 10 10 2 5 Output -2 Input 4 5 2 4 8 16 3 5 7 11 17\nOutput 10 Note Note that the answer to the problem can be negative. The\nGCD(x1, x2, ..., xk) is the maximum positive integer that divides each xi.\n\n",
+        "cf_contest_id": 402,
+        "cf_index": "D",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "math",
+            "number theory"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 2\r\n4 20 34 10 10\r\n2 5\r\n",
+                "-2\r\n"
+            ],
+            [
+                "4 5\r\n2 4 8 16\r\n3 5 7 11 17\r\n",
+                "10\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "29 1\r\n55296 10368 6912 165888 20736 331776 36864 41472 1152 221184 1728 2304 18432 82944 73728 147456 576 13824 442368 864 288 5184 663552 110592 4608 3456 2592 27648 9216\r\n3\r\n",
+                "185\r\n"
+            ],
+            [
+                "35 1\r\n5184 10368 20736 3456 2592 73728 6912 27648 165888 147456 221184 36864 663552 18432 442368 41472 9216 1728 72 55296 331776 4608 1152 216 82944 2304 576 144 864 288 13824 432 1296 110592 648\r\n3\r\n",
+                "188\r\n"
+            ],
+            [
+                "21 1\r\n4608 864 2592 2304 144 13824 1296 432 576 6912 20736 648 288 72 1728 3456 5184 216 41472 1152 10368\r\n3\r\n",
+                "63\r\n"
+            ],
+            [
+                "21 1\r\n1152 13824 41472 5184 3456 10368 432 6912 864 288 216 4608 1728 648 1296 72 2304 2592 144 20736 576\r\n3\r\n",
+                "63\r\n"
+            ],
+            [
+                "20 1\r\n13824 256 10368 576 3456 1728 6912 1152 192 64 2304 41472 4608 1536 768 128 384 5184 512 20736\r\n3\r\n",
+                "110\r\n"
+            ],
+            [
+                "35 1\r\n20736 2304 73728 1296 1728 216 864 3456 110592 10368 147456 288 9216 2592 331776 663552 1152 144 27648 576 6912 648 82944 4608 36864 72 5184 13824 221184 55296 41472 18432 165888 432 442368\r\n3\r\n",
+                "188\r\n"
+            ],
+            [
+                "35 1\r\n147456 288 165888 55296 442368 864 3456 576 41472 663552 13824 10368 72 6912 5184 1296 4608 73728 82944 1728 27648 110592 144 432 221184 20736 648 331776 2304 2592 9216 36864 216 18432 1152\r\n3\r\n",
+                "188\r\n"
+            ],
+            [
+                "32 1\r\n2916 108 216 1458 34992 54 18 648 5832 6 36 324 432 104976 11664 17496 13122 4374 1296 72 972 1944 24 52488 486 144 48 12 26244 8748 3888 162\r\n3\r\n",
+                "-47\r\n"
+            ],
+            [
+                "15 1\r\n931170240 465585120 232792560 116396280 58198140 29099070 14549535 4849845 1616615 323323 46189 4199 323 19 1\r\n23\r\n",
+                "105\r\n"
+            ],
+            [
+                "1 1\r\n2\r\n2\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1\r\n2\r\n3\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 1\r\n2 4 8\r\n2\r\n",
+                "-3\r\n"
+            ],
+            [
+                "3 2\r\n2 6 8\r\n2 3\r\n",
+                "-3\r\n"
+            ],
+            [
+                "3 1\r\n8 4 2\r\n2\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n2\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n3\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 1\r\n1 1 1 1 1\r\n3\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1\r\n18 2\r\n2\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 2\r\n30 30 5 5\r\n2 3\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

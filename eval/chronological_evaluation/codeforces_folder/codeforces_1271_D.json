@@ -1,0 +1,75 @@
+[
+    {
+        "name": "Portals",
+        "description": "You play a strategic video game (yeah, we ran out of good problem legends). In\nthis game you control a large army, and your goal is to conquer \n    n\n\ncastles of your opponent. Let's describe the game process in detail. Initially\nyou control an army of \n    k\n warriors. Your enemy controls \n    n\n castles;\nto conquer the \n    i\n-th castle, you need at least \n    a_i\n warriors (you\nare so good at this game that you don't lose any warriors while taking over a\ncastle, so your army stays the same after the fight). After you take control\nover a castle, you recruit new warriors into your army \u2014 formally, after you\ncapture the \n    i\n-th castle, \n    b_i\n warriors join your army. Furthermore,\nafter capturing a castle (or later) you can defend it: if you leave at least\none warrior in a castle, this castle is considered defended. Each castle has\nan importance parameter \n    c_i\n, and your total score is the sum of\nimportance values over all defended castles. There are two ways to defend a\ncastle: if you are currently in the castle \n    i\n, you may leave one warrior\nto defend castle \n    i\n; there are \n    m\n one-way portals connecting the\ncastles. Each portal is characterised by two numbers of castles \n    u\n and\n\n    v\n (for each portal holds \n    u > v\n). A portal can be used as follows:\nif you are currently in the castle \n    u\n, you may send one warrior to defend\ncastle \n    v\n. Obviously, when you order your warrior to defend some castle,\nhe leaves your army. You capture the castles in fixed order: you have to\ncapture the first one, then the second one, and so on. After you capture the\ncastle \n    i\n (but only before capturing castle \n    i + 1\n) you may recruit\nnew warriors from castle \n    i\n, leave a warrior to defend castle \n    i\n,\nand use any number of portals leading from castle \n    i\n to other castles\nhaving smaller numbers. As soon as you capture the next castle, these actions\nfor castle \n    i\n won't be available to you. If, during some moment in the\ngame, you don't have enough warriors to capture the next castle, you lose.\nYour goal is to maximize the sum of importance values over all defended\ncastles (note that you may hire new warriors in the last castle, defend it and\nuse portals leading from it even after you capture it \u2014 your score will be\ncalculated afterwards). Can you determine an optimal strategy of capturing and\ndefending the castles? Input The first line contains three integers \n    n\n,\n\n    m\n and \n    k\n (\n    1 \n    \u2264 n \n    \u2264 5000\n, \n    0 \n    \u2264 m \n    \u2264\n    min(\n    n(n - 1)/2, 3 \n    \u00b7 10^5)\n, \n    0 \n    \u2264 k \n    \u2264 5000\n) \u2014\nthe number of castles, the number of portals and initial size of your army,\nrespectively. Then \n    n\n lines follow. The \n    i\n-th line describes the\n\n    i\n-th castle with three integers \n    a_i\n, \n    b_i\n and \n    c_i\n (\n    0\n    \n    \u2264 a_i, b_i, c_i \n    \u2264 5000\n) \u2014 the number of warriors required to\ncapture the \n    i\n-th castle, the number of warriors available for hire in\nthis castle and its importance value. Then \n    m\n lines follow. The\n\n    i\n-th line describes the \n    i\n-th portal with two integers \n    u_i\n\nand \n    v_i\n (\n    1 \n    \u2264 v_i < u_i \n    \u2264 n\n), meaning that the portal leads\nfrom the castle \n    u_i\n to the castle \n    v_i\n. There are no two same\nportals listed. It is guaranteed that the size of your army won't exceed\n\n    5000\n under any circumstances (i. e. \n    k + \n    \u2211\n    _i = 1^n\n    b_i \n    \u2264 5000\n). Output If it's impossible to capture all the castles,\nprint one integer \n    -1\n. Otherwise, print one integer equal to the maximum\nsum of importance values of defended castles. Examples Input 4 3 7 7 4 17 3 0\n8 11 2 0 13 3 5 3 1 2 1 4 3 Output 5 Input 4 3 7 7 4 17 3 0 8 11 2 0 13 3 5 3\n1 2 1 4 1 Output 22 Input 4 3 7 7 4 17 3 0 8 11 2 0 14 3 5 3 1 2 1 4 3 Output\n-1 Note The best course of action in the first example is as follows: capture\nthe first castle; hire warriors from the first castle, your army has \n    11\n\nwarriors now; capture the second castle; capture the third castle; hire\nwarriors from the third castle, your army has \n    13\n warriors now; capture\nthe fourth castle; leave one warrior to protect the fourth castle, your army\nhas \n    12\n warriors now. This course of action (and several other ones)\ngives \n    5\n as your total score. The best course of action in the second\nexample is as follows: capture the first castle; hire warriors from the first\ncastle, your army has \n    11\n warriors now; capture the second castle;\ncapture the third castle; hire warriors from the third castle, your army has\n\n    13\n warriors now; capture the fourth castle; leave one warrior to protect\nthe fourth castle, your army has \n    12\n warriors now; send one warrior to\nprotect the first castle through the third portal, your army has \n    11\n\nwarriors now. This course of action (and several other ones) gives \n    22\n as\nyour total score. In the third example it's impossible to capture the last\ncastle: you need \n    14\n warriors to do so, but you can accumulate no more\nthan \n    13\n without capturing it.\n\n",
+        "cf_contest_id": 1271,
+        "cf_index": "D",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 3 7\r\n7 4 17\r\n3 0 8\r\n11 2 0\r\n13 3 5\r\n3 1\r\n2 1\r\n4 3\r\n",
+                "5"
+            ],
+            [
+                "4 3 7\r\n7 4 17\r\n3 0 8\r\n11 2 0\r\n13 3 5\r\n3 1\r\n2 1\r\n4 1\r\n",
+                "22"
+            ],
+            [
+                "4 3 7\r\n7 4 17\r\n3 0 8\r\n11 2 0\r\n14 3 5\r\n3 1\r\n2 1\r\n4 3\r\n",
+                "-1"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 10 2\r\n2 1 1615\r\n2 1 1326\r\n0 0 3880\r\n2 0 1596\r\n1 2 4118\r\n0 0 4795\r\n0 1 814\r\n0 0 4555\r\n0 1 3284\r\n2 2 1910\r\n10 6\r\n2 1\r\n8 3\r\n8 7\r\n6 3\r\n4 1\r\n7 4\r\n6 4\r\n7 2\r\n10 9\r\n",
+                "27079"
+            ],
+            [
+                "5 5 0\r\n0 1 1738\r\n0 1 1503\r\n0 0 4340\r\n0 1 2017\r\n0 2 3894\r\n3 2\r\n2 1\r\n4 3\r\n3 1\r\n4 2\r\n",
+                "11989"
+            ],
+            [
+                "10 10 0\r\n0 2 1413\r\n0 0 4466\r\n0 0 2681\r\n0 0 2959\r\n0 2 1182\r\n0 0 468\r\n0 1 3347\r\n0 0 3978\r\n0 2 2831\r\n0 3 3138\r\n5 2\r\n3 2\r\n5 3\r\n10 6\r\n10 2\r\n7 2\r\n8 5\r\n5 1\r\n6 1\r\n5 4\r\n",
+                "25281"
+            ],
+            [
+                "10 10 4\r\n0 1 1301\r\n2 0 4645\r\n1 0 4970\r\n4 0 3046\r\n4 0 1204\r\n0 0 2318\r\n0 0 4610\r\n1 1 875\r\n2 1 2970\r\n0 3 4458\r\n7 6\r\n8 7\r\n8 6\r\n8 5\r\n5 2\r\n9 6\r\n9 1\r\n6 4\r\n6 2\r\n5 4\r\n",
+                "28318"
+            ],
+            [
+                "4 4 1\r\n1 0 30\r\n0 1 1590\r\n1 0 3728\r\n1 2 1614\r\n3 2\r\n4 3\r\n2 1\r\n3 1\r\n",
+                "6932"
+            ],
+            [
+                "1 0 0\r\n0 0 5\r\n",
+                "0"
+            ],
+            [
+                "3 2 1\r\n1 0 1\r\n1 0 1\r\n1 0 1\r\n3 1\r\n3 2\r\n",
+                "1"
+            ],
+            [
+                "3 0 0\r\n0 0 1\r\n0 0 1\r\n0 0 1\r\n",
+                "0"
+            ],
+            [
+                "1 0 1\r\n5 5 5\r\n",
+                "-1"
+            ],
+            [
+                "3 2 1\r\n0 0 20\r\n0 0 10\r\n0 0 5\r\n2 1\r\n3 1\r\n",
+                "20"
+            ]
+        ]
+    }
+]

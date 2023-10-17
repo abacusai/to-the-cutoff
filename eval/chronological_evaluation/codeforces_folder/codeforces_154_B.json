@@ -1,0 +1,76 @@
+[
+    {
+        "name": "Colliders",
+        "description": "By 2312 there were n Large Hadron Colliders in the inhabited part of the\nuniverse. Each of them corresponded to a single natural number from 1 to n.\nHowever, scientists did not know what activating several colliders\nsimultaneously could cause, so the colliders were deactivated. In 2312 there\nwas a startling discovery: a collider's activity is safe if and only if all\nnumbers of activated colliders are pairwise relatively prime to each other\n(two numbers are relatively prime if their greatest common divisor equals 1)!\nIf two colliders with relatively nonprime numbers are activated, it will cause\na global collapse. Upon learning this, physicists rushed to turn the colliders\non and off and carry out all sorts of experiments. To make sure than the\nscientists' quickness doesn't end with big trouble, the Large Hadron\nColliders' Large Remote Control was created. You are commissioned to write the\nsoftware for the remote (well, you do not expect anybody to operate it\nmanually, do you?). Initially, all colliders are deactivated. Your program\nreceives multiple requests of the form \"activate/deactivate the i-th\ncollider\". The program should handle requests in the order of receiving them.\nThe program should print the processed results in the format described below.\nTo the request of \"+ i\" (that is, to activate the i-th collider), the program\nshould print exactly one of the following responses: \"Success\" if the\nactivation was successful. \"Already on\", if the i-th collider was already\nactivated before the request. \"Conflict with j\", if there is a conflict with\nthe j-th collider (that is, the j-th collider is on, and numbers i and j are\nnot relatively prime). In this case, the i-th collider shouldn't be activated.\nIf a conflict occurs with several colliders simultaneously, you should print\nthe number of any of them. The request of \"- i\" (that is, to deactivate the\ni-th collider), should receive one of the following responses from the\nprogram: \"Success\", if the deactivation was successful. \"Already off\", if the\ni-th collider was already deactivated before the request. You don't need to\nprint quotes in the output of the responses to the requests. Input The first\nline contains two space-separated integers n and m (1 \u2264 n, m \u2264 10^5) \u2014 the\nnumber of colliders and the number of requests, correspondingly. Next m lines\ncontain numbers of requests, one per line, in the form of either \"+ i\"\n(without the quotes) \u2014 activate the i-th collider, or \"- i\" (without the\nquotes) \u2014 deactivate the i-th collider (1 \u2264 i \u2264 n). Output Print m lines \u2014 the\nresults of executing requests in the above given format. The requests should\nbe processed in the order, in which they are given in the input. Don't forget\nthat the responses to the requests should be printed without quotes. Examples\nInput 10 10  6  10  5 \u00ad 10 \u00ad 5 \u00ad 6  10  3  6  3 Output\nSuccess Conflict with 6 Success Already off Success Success Success Success\nConflict with 10 Already on Note Note that in the sample the colliders don't\nturn on after the second and ninth requests. The ninth request could also\nreceive response \"Conflict with 3\".\n\n",
+        "cf_contest_id": 154,
+        "cf_index": "B",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "math",
+            "number theory"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 10\r\n+ 6\r\n+ 10\r\n+ 5\r\n- 10\r\n- 5\r\n- 6\r\n+ 10\r\n+ 3\r\n+ 6\r\n+ 3\r\n",
+                "Success\r\nConflict with 6\r\nSuccess\r\nAlready off\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nConflict with 10\r\nAlready on\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7 5\r\n+ 7\r\n+ 6\r\n+ 4\r\n+ 3\r\n- 7\r\n",
+                "Success\r\nSuccess\r\nConflict with 6\r\nConflict with 6\r\nSuccess\r\n"
+            ],
+            [
+                "10 5\r\n+ 2\r\n- 8\r\n- 4\r\n- 10\r\n+ 1\r\n",
+                "Success\r\nAlready off\r\nAlready off\r\nAlready off\r\nSuccess\r\n"
+            ],
+            [
+                "10 10\r\n+ 1\r\n+ 10\r\n- 1\r\n- 10\r\n+ 1\r\n- 1\r\n+ 7\r\n+ 8\r\n+ 6\r\n- 7\r\n",
+                "Success\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nConflict with 8\r\nSuccess\r\n"
+            ],
+            [
+                "15 15\r\n+ 12\r\n+ 6\r\n+ 13\r\n- 13\r\n+ 7\r\n+ 14\r\n+ 8\r\n+ 13\r\n- 13\r\n+ 15\r\n+ 4\r\n+ 10\r\n+ 11\r\n+ 2\r\n- 14\r\n",
+                "Success\r\nConflict with 12\r\nSuccess\r\nSuccess\r\nSuccess\r\nConflict with 12\r\nConflict with 12\r\nSuccess\r\nSuccess\r\nConflict with 12\r\nConflict with 12\r\nConflict with 12\r\nSuccess\r\nConflict with 12\r\nAlready off\r\n"
+            ],
+            [
+                "2 20\r\n+ 1\r\n+ 2\r\n- 2\r\n+ 2\r\n- 1\r\n- 2\r\n+ 2\r\n- 2\r\n+ 2\r\n+ 1\r\n- 1\r\n+ 1\r\n- 1\r\n- 2\r\n+ 1\r\n- 1\r\n+ 1\r\n- 1\r\n+ 2\r\n+ 1\r\n",
+                "Success\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\n"
+            ],
+            [
+                "2 20\r\n- 1\r\n- 2\r\n- 1\r\n- 2\r\n+ 2\r\n+ 1\r\n- 1\r\n+ 1\r\n+ 1\r\n+ 2\r\n- 2\r\n+ 1\r\n- 2\r\n+ 2\r\n+ 1\r\n+ 1\r\n+ 1\r\n- 1\r\n- 1\r\n- 2\r\n",
+                "Already off\r\nAlready off\r\nAlready off\r\nAlready off\r\nSuccess\r\nSuccess\r\nSuccess\r\nSuccess\r\nAlready on\r\nAlready on\r\nSuccess\r\nAlready on\r\nAlready off\r\nSuccess\r\nAlready on\r\nAlready on\r\nAlready on\r\nSuccess\r\nAlready off\r\nSuccess\r\n"
+            ],
+            [
+                "25 20\r\n+ 7\r\n+ 14\r\n- 7\r\n+ 11\r\n+ 15\r\n+ 10\r\n+ 20\r\n- 15\r\n+ 13\r\n- 14\r\n+ 4\r\n- 11\r\n- 20\r\n+ 15\r\n+ 16\r\n+ 3\r\n+ 11\r\n+ 22\r\n- 16\r\n- 22\r\n",
+                "Success\r\nConflict with 7\r\nSuccess\r\nSuccess\r\nSuccess\r\nConflict with 15\r\nConflict with 15\r\nSuccess\r\nSuccess\r\nAlready off\r\nSuccess\r\nSuccess\r\nAlready off\r\nSuccess\r\nConflict with 4\r\nConflict with 15\r\nSuccess\r\nConflict with 4\r\nAlready off\r\nAlready off\r\n"
+            ],
+            [
+                "50 30\r\n- 39\r\n- 2\r\n+ 37\r\n- 10\r\n+ 27\r\n- 25\r\n+ 41\r\n+ 23\r\n- 36\r\n+ 49\r\n+ 5\r\n- 28\r\n+ 22\r\n+ 45\r\n+ 1\r\n+ 23\r\n+ 36\r\n+ 35\r\n- 4\r\n- 28\r\n- 10\r\n- 36\r\n- 38\r\n- 2\r\n- 38\r\n- 38\r\n- 37\r\n+ 8\r\n- 27\r\n- 28\r\n",
+                "Already off\r\nAlready off\r\nSuccess\r\nAlready off\r\nSuccess\r\nAlready off\r\nSuccess\r\nSuccess\r\nAlready off\r\nSuccess\r\nSuccess\r\nAlready off\r\nSuccess\r\nConflict with 27\r\nSuccess\r\nAlready on\r\nConflict with 22\r\nConflict with 5\r\nAlready off\r\nAlready off\r\nAlready off\r\nAlready off\r\nAlready off\r\nAlready off\r\nAlready off\r\nAlready off\r\nSuccess\r\nConflict with 22\r\nSuccess\r\nAlready off\r\n"
+            ],
+            [
+                "100 1\r\n+ 51\r\n",
+                "Success\r\n"
+            ],
+            [
+                "100000 1\r\n+ 12345\r\n",
+                "Success\r\n"
+            ],
+            [
+                "4 2\r\n+ 2\r\n+ 4\r\n",
+                "Success\r\nConflict with 2\r\n"
+            ],
+            [
+                "100000 2\r\n+ 57314\r\n+ 85971\r\n",
+                "Success\r\nConflict with 57314\r\n"
+            ],
+            [
+                "100000 4\r\n+ 81799\r\n+ 81799\r\n- 81799\r\n+ 81799\r\n",
+                "Success\r\nAlready on\r\nSuccess\r\nSuccess\r\n"
+            ]
+        ]
+    }
+]

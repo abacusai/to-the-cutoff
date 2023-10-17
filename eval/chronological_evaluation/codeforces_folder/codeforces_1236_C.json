@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Labs",
+        "description": "In order to do some research, \n    n^2\n labs are built on different heights of\na mountain. Let's enumerate them with integers from \n    1\n to \n    n^2\n, such\nthat the lab with the number \n    1\n is at the lowest place, the lab with the\nnumber \n    2\n is at the second-lowest place, \n    \u2026\n, the lab with the\nnumber \n    n^2\n is at the highest place. To transport water between the labs,\npipes are built between every pair of labs. A pipe can transport at most one\nunit of water at a time from the lab with the number \n    u\n to the lab with\nthe number \n    v\n if \n    u > v\n. Now the labs need to be divided into\n\n    n\n groups, each group should contain exactly \n    n\n labs. The labs from\ndifferent groups can transport water to each other. The sum of units of water\nthat can be sent from a group \n    A\n to a group \n    B\n is equal to the\nnumber of pairs of labs (\n    u, v\n) such that the lab with the number \n    u\n\nis from the group \n    A\n, the lab with the number \n    v\n is from the group\n\n    B\n and \n    u > v\n. Let's denote this value as \n    f(A,B)\n (i.e.\n\n    f(A,B)\n is the sum of units of water that can be sent from a group\n\n    A\n to a group \n    B\n). For example, if \n    n=3\n and there are \n    3\n\ngroups \n    X\n, \n    Y\n and \n    Z\n: \n    X = \n    \n    1, 5, 6\n    \n    , Y = \n    \n    2, 4,\n    9\n and \n    Z = \n    \n    3, 7, 8\n. In this case, the values of \n    f\n\nare equal to: \n    f(X,Y)=4\n because of \n    5 \n    \u2192 2\n, \n    5\n    \n    \u2192 4\n, \n    6 \n    \u2192 2\n, \n    6 \n    \u2192 4\n,\n\n    f(X,Z)=2\n because of \n    5 \n    \u2192 3\n, \n    6 \n    \u2192 3\n,\n\n    f(Y,X)=5\n because of \n    2 \n    \u2192 1\n, \n    4 \n    \u2192 1\n,\n\n    9 \n    \u2192 1\n, \n    9 \n    \u2192 5\n, \n    9 \n    \u2192 6\n,\n\n    f(Y,Z)=4\n because of \n    4 \n    \u2192 3\n, \n    9 \n    \u2192 3\n,\n\n    9 \n    \u2192 7\n, \n    9 \n    \u2192 8\n, \n    f(Z,X)=7\n because of\n\n    3 \n    \u2192 1\n, \n    7 \n    \u2192 1\n, \n    7 \n    \u2192 5\n,\n\n    7 \n    \u2192 6\n, \n    8 \n    \u2192 1\n, \n    8 \n    \u2192 5\n,\n\n    8 \n    \u2192 6\n, \n    f(Z,Y)=5\n because of \n    3 \n    \u2192 2\n,\n\n    7 \n    \u2192 2\n, \n    7 \n    \u2192 4\n, \n    8 \n    \u2192 2\n,\n\n    8 \n    \u2192 4\n. Please, divide labs into \n    n\n groups with size\n\n    n\n, such that the value \n    min f(A,B)\n over all possible pairs of\ngroups \n    A\n and \n    B\n (\n    A \n    \u2260 B\n) is maximal. In other words,\ndivide labs into \n    n\n groups with size \n    n\n, such that minimum number of\nthe sum of units of water that can be transported from a group \n    A\n to a\ngroup \n    B\n for every pair of different groups \n    A\n and \n    B\n (\n    A\n    \n    \u2260 B\n) as big as possible. Note, that the example above doesn't\ndemonstrate an optimal division, but it demonstrates how to calculate the\nvalues \n    f\n for some division. If there are many optimal divisions, you can\nfind any. Input The only line contains one number \n    n\n (\n    2 \n    \u2264 n\n    \n    \u2264 300\n). Output Output \n    n\n lines: In the \n    i\n-th line print\n\n    n\n numbers, the numbers of labs of the \n    i\n-th group, in any order you\nwant. If there are multiple answers, that maximize the minimum number of the\nsum of units of water that can be transported from one group the another, you\ncan print any. Example Input 3 Output 2 8 5 9 3 4 7 6 1 Note In the first test\nwe can divide \n    9\n labs into groups \n    2, 8, 5\n    \n    , \n    \n    9, 3,\n    4\n    \n    , \n    \n    7, 6, 1\n. From the first group to the second group we can\ntransport \n    4\n units of water (\n    8 \n    \u2192 3, 8 \n    \u2192 4, 5\n    \n    \u2192 3, 5 \n    \u2192 4\n). From the first group to the third\ngroup we can transport \n    5\n units of water (\n    2 \n    \u2192 1, 8\n    \n    \u2192 7, 8 \n    \u2192 6, 8 \n    \u2192 1, 5 \n    \u2192 1\n).\nFrom the second group to the first group we can transport \n    5\n units of\nwater (\n    9 \n    \u2192 2, 9 \n    \u2192 8, 9 \n    \u2192 5, 3\n    \n    \u2192 2, 4 \n    \u2192 2\n). From the second group to the third\ngroup we can transport \n    5\n units of water (\n    9 \n    \u2192 7, 9\n    \n    \u2192 6, 9 \n    \u2192 1, 3 \n    \u2192 1, 4 \n    \u2192 1\n).\nFrom the third group to the first group we can transport \n    4\n units of\nwater (\n    7 \n    \u2192 2, 7 \n    \u2192 5, 6 \n    \u2192 2, 6\n    \n    \u2192 5\n). From the third group to the second group we can transport\n\n    4\n units of water (\n    7 \n    \u2192 3, 7 \n    \u2192 4, 6\n    \n    \u2192 3, 6 \n    \u2192 4\n). The minimal number of the sum of units\nof water, that can be transported from one group to another is equal to\n\n    4\n. It can be proved, that it is impossible to make a better division.\n\n",
+        "cf_contest_id": 1236,
+        "cf_index": "C",
+        "cf_rating": 1300,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n",
+                "1\r\n6\r\n7\r\n2\r\n5\r\n8\r\n3\r\n4\r\n9\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n",
+                "1\r\n4\r\n2\r\n3\r\n"
+            ],
+            [
+                "4\r\n",
+                "1\r\n8\r\n9\r\n16\r\n2\r\n7\r\n10\r\n15\r\n3\r\n6\r\n11\r\n14\r\n4\r\n5\r\n12\r\n13\r\n"
+            ],
+            [
+                "5\r\n",
+                "1\r\n10\r\n11\r\n20\r\n21\r\n2\r\n9\r\n12\r\n19\r\n22\r\n3\r\n8\r\n13\r\n18\r\n23\r\n4\r\n7\r\n14\r\n17\r\n24\r\n5\r\n6\r\n15\r\n16\r\n25\r\n"
+            ],
+            [
+                "6\r\n",
+                "1\r\n12\r\n13\r\n24\r\n25\r\n36\r\n2\r\n11\r\n14\r\n23\r\n26\r\n35\r\n3\r\n10\r\n15\r\n22\r\n27\r\n34\r\n4\r\n9\r\n16\r\n21\r\n28\r\n33\r\n5\r\n8\r\n17\r\n20\r\n29\r\n32\r\n6\r\n7\r\n18\r\n19\r\n30\r\n31\r\n"
+            ],
+            [
+                "7\r\n",
+                "1\r\n14\r\n15\r\n28\r\n29\r\n42\r\n43\r\n2\r\n13\r\n16\r\n27\r\n30\r\n41\r\n44\r\n3\r\n12\r\n17\r\n26\r\n31\r\n40\r\n45\r\n4\r\n11\r\n18\r\n25\r\n32\r\n39\r\n46\r\n5\r\n10\r\n19\r\n24\r\n33\r\n38\r\n47\r\n6\r\n9\r\n20\r\n23\r\n34\r\n37\r\n48\r\n7\r\n8\r\n21\r\n22\r\n35\r\n36\r\n49\r\n"
+            ],
+            [
+                "8\r\n",
+                "1\r\n16\r\n17\r\n32\r\n33\r\n48\r\n49\r\n64\r\n2\r\n15\r\n18\r\n31\r\n34\r\n47\r\n50\r\n63\r\n3\r\n14\r\n19\r\n30\r\n35\r\n46\r\n51\r\n62\r\n4\r\n13\r\n20\r\n29\r\n36\r\n45\r\n52\r\n61\r\n5\r\n12\r\n21\r\n28\r\n37\r\n44\r\n53\r\n60\r\n6\r\n11\r\n22\r\n27\r\n38\r\n43\r\n54\r\n59\r\n7\r\n10\r\n23\r\n26\r\n39\r\n42\r\n55\r\n58\r\n8\r\n9\r\n24\r\n25\r\n40\r\n41\r\n56\r\n57\r\n"
+            ],
+            [
+                "9\r\n",
+                "1\r\n18\r\n19\r\n36\r\n37\r\n54\r\n55\r\n72\r\n73\r\n2\r\n17\r\n20\r\n35\r\n38\r\n53\r\n56\r\n71\r\n74\r\n3\r\n16\r\n21\r\n34\r\n39\r\n52\r\n57\r\n70\r\n75\r\n4\r\n15\r\n22\r\n33\r\n40\r\n51\r\n58\r\n69\r\n76\r\n5\r\n14\r\n23\r\n32\r\n41\r\n50\r\n59\r\n68\r\n77\r\n6\r\n13\r\n24\r\n31\r\n42\r\n49\r\n60\r\n67\r\n78\r\n7\r\n12\r\n25\r\n30\r\n43\r\n48\r\n61\r\n66\r\n79\r\n8\r\n11\r\n26\r\n29\r\n44\r\n47\r\n62\r\n65\r\n80\r\n9\r\n10\r\n27\r\n28\r\n45\r\n46\r\n63\r\n64\r\n81\r\n"
+            ],
+            [
+                "10\r\n",
+                "1\r\n20\r\n21\r\n40\r\n41\r\n60\r\n61\r\n80\r\n81\r\n100\r\n2\r\n19\r\n22\r\n39\r\n42\r\n59\r\n62\r\n79\r\n82\r\n99\r\n3\r\n18\r\n23\r\n38\r\n43\r\n58\r\n63\r\n78\r\n83\r\n98\r\n4\r\n17\r\n24\r\n37\r\n44\r\n57\r\n64\r\n77\r\n84\r\n97\r\n5\r\n16\r\n25\r\n36\r\n45\r\n56\r\n65\r\n76\r\n85\r\n96\r\n6\r\n15\r\n26\r\n35\r\n46\r\n55\r\n66\r\n75\r\n86\r\n95\r\n7\r\n14\r\n27\r\n34\r\n47\r\n54\r\n67\r\n74\r\n87\r\n94\r\n8\r\n13\r\n28\r\n33\r\n48\r\n53\r\n68\r\n73\r\n88\r\n93\r\n9\r\n12\r\n29\r\n32\r\n49\r\n52\r\n69\r\n72\r\n89\r\n92\r\n10\r\n11\r\n30\r\n31\r\n50\r\n51\r\n70\r\n71\r\n90\r\n91\r\n"
+            ]
+        ]
+    }
+]

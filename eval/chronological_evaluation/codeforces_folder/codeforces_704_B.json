@@ -1,0 +1,101 @@
+[
+    {
+        "name": "Ant Man",
+        "description": "Scott Lang is at war with Darren Cross. There are n chairs in a hall where\nthey are, numbered with 1, 2, ..., n from left to right. The i-th chair is\nlocated at coordinate xi. Scott is on chair number s and Cross is on chair\nnumber e. Scott can jump to all other chairs (not only neighboring chairs). He\nwants to start at his position (chair number s), visit each chair exactly once\nand end up on chair number e with Cross. As we all know, Scott can shrink or\ngrow big (grow big only to his normal size), so at any moment of time he can\nbe either small or large (normal). The thing is, he can only shrink or grow\nbig while being on a chair (not in the air while jumping to another chair).\nJumping takes time, but shrinking and growing big takes no time. Jumping from\nchair number i to chair number j takes |xi - xj| seconds. Also, jumping off a\nchair and landing on a chair takes extra amount of time. If Scott wants to\njump to a chair on his left, he can only be small, and if he wants to jump to\na chair on his right he should be large. Jumping off the i-th chair takes: ci\nextra seconds if he's small. di extra seconds otherwise (he's large). Also,\nlanding on i-th chair takes: bi extra seconds if he's small. ai extra seconds\notherwise (he's large). In simpler words, jumping from i-th chair to j-th\nchair takes exactly: |xi - xj| + ci + bj seconds if j < i. |xi - xj| + di + aj\nseconds otherwise (j > i). Given values of x, a, b, c, d find the minimum time\nScott can get to Cross, assuming he wants to visit each chair exactly once.\nInput The first line of the input contains three integers n, s and e (2 \u2264 n \u2264\n5000, 1 \u2264 s, e \u2264 n, s \u2260 e) \u2014 the total number of chairs, starting and ending\npositions of Scott. The second line contains n integers x1, x2, ..., xn (1 \u2264\nx1 < x2 < ... < xn \u2264 10^9). The third line contains n integers a1, a2, ..., an\n(1 \u2264 a1, a2, ..., an \u2264 10^9). The fourth line contains n integers b1, b2, ...,\nbn (1 \u2264 b1, b2, ..., bn \u2264 10^9). The fifth line contains n integers c1, c2,\n..., cn (1 \u2264 c1, c2, ..., cn \u2264 10^9). The sixth line contains n integers d1,\nd2, ..., dn (1 \u2264 d1, d2, ..., dn \u2264 10^9). Output Print the minimum amount of\ntime Scott needs to get to the Cross while visiting each chair exactly once.\nExample Input 7 4 3 8 11 12 16 17 18 20 17 16 20 2 20 5 13 17 8 8 16 12 15 13\n12 4 16 4 15 7 6 8 14 2 11 17 12 8 Output 139 Note In the sample testcase, an\noptimal solution would be . Spent time would be 17 + 24 + 23 + 20 + 33 + 22 =\n139.\n\n",
+        "cf_contest_id": 704,
+        "cf_index": "B",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "graphs",
+            "greedy"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7 4 3\r\n8 11 12 16 17 18 20\r\n17 16 20 2 20 5 13\r\n17 8 8 16 12 15 13\r\n12 4 16 4 15 7 6\r\n8 14 2 11 17 12 8\r\n",
+                "139"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1 2\r\n75475634 804928248\r\n476927808 284875072\r\n503158867 627937890\r\n322595515 786026685\r\n645468307 669240390\r\n",
+                "1659795993"
+            ],
+            [
+                "2 2 1\r\n396750123 498712414\r\n41068575 397815498\r\n975619613 324859334\r\n264886117 99828622\r\n52238294 539721972\r\n",
+                "1177410526"
+            ],
+            [
+                "3 2 1\r\n374288891 535590429 751244358\r\n124321145 232930851 266089174\r\n543529670 773363571 319728747\r\n580543238 582720391 468188689\r\n490702144 598813561 138628383\r\n",
+                "2469230490"
+            ],
+            [
+                "5 4 1\r\n291882089 358502890 412106895 564718673 837699009\r\n657489855 690430685 632939232 373282330 398630021\r\n753287868 667584659 79866982 603966291 850348020\r\n738379364 480642952 593942770 930919906 485781288\r\n903492853 141752547 984789430 897217447 909607734\r\n",
+                "5175751243"
+            ],
+            [
+                "10 8 1\r\n71550121 96204862 223219513 312183499 402690754 446173607 668171337 796619138 799843967 983359971\r\n905549873 673542337 566661387 879397647 434495917 631413076 150918417 579868000 224422012 126195703\r\n525305826 535526356 404334728 653535984 998133227 879226371 59632864 356493387 62611196 827258251\r\n296576565 204244054 812713672 780267148 614679390 447700005 102067050 544546349 116002772 761999375\r\n546951131 622980885 937972790 529946158 992070269 723690994 343766215 374461155 343698323 996408310\r\n",
+                "8924243769"
+            ],
+            [
+                "8 3 1\r\n58265855 250839457 317463343 432130709 479851779 538085060 652509537 687041819\r\n126496650 186774359 331193631 836310042 255380788 756411639 690869710 176576709\r\n222368048 906033133 8623893 807375696 461796409 362923880 194114590 733391789\r\n137574156 670510137 237249112 673135534 595041001 875171159 112263159 649035661\r\n806391318 956639323 312576627 140089445 824235612 590430725 170794245 24820918\r\n",
+                "7373256613"
+            ],
+            [
+                "2 1 2\r\n445124518 897457879\r\n106020849 17627833\r\n993819963 891100983\r\n222379086 338599698\r\n19224513 39444281\r\n",
+                "489185707"
+            ],
+            [
+                "3 1 3\r\n140847557 466570047 534914399\r\n93013372 106184897 87868332\r\n798881865 348785541 412639907\r\n541420868 474507814 209232335\r\n35025208 96472847 130874791\r\n",
+                "719618126"
+            ],
+            [
+                "2 2 1\r\n30771656 606524344\r\n997641489 998433881\r\n28784768 365665640\r\n391019116 560756524\r\n999852227 998301460\r\n",
+                "1165293980"
+            ],
+            [
+                "3 3 1\r\n101399784 425546473 843762421\r\n567904823 879017062 918453203\r\n254552488 116158914 179175464\r\n273461838 396254505 362710994\r\n886094289 597198515 822610701\r\n",
+                "1872039538"
+            ],
+            [
+                "2 1 2\r\n1 2\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n",
+                "3"
+            ],
+            [
+                "2 2 1\r\n1 2\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n",
+                "3"
+            ],
+            [
+                "2 1 2\r\n1 1000000000\r\n1000000000 1\r\n1 1\r\n1 1\r\n1 1000000000\r\n",
+                "1000000001"
+            ],
+            [
+                "2 2 1\r\n1 1000000000\r\n1 1\r\n1000000000 1\r\n1 1000000000\r\n1 1\r\n",
+                "2999999999"
+            ],
+            [
+                "3 1 2\r\n1 2 3\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n",
+                "7"
+            ],
+            [
+                "3 3 2\r\n1 2 3\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n",
+                "7"
+            ],
+            [
+                "3 1 3\r\n1 2 3\r\n1000000000 1000000000 1000000000\r\n1000000000 1000000000 1000000000\r\n1000000000 1000000000 1000000000\r\n1000000000 1000000000 1000000000\r\n",
+                "4000000002"
+            ],
+            [
+                "2 1 2\r\n511643468 985543586\r\n1000000000 1\r\n1 1000000000\r\n1000000000 1\r\n1 1000000000\r\n",
+                "473900120"
+            ],
+            [
+                "2 2 1\r\n326677749 688620949\r\n1000000000 1\r\n1 1000000000\r\n1000000000 1\r\n1 1000000000\r\n",
+                "361943202"
+            ]
+        ]
+    }
+]

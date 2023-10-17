@@ -1,0 +1,54 @@
+[
+    {
+        "name": "80-th Level Archeology",
+        "description": "Archeologists have found a secret pass in the dungeon of one of the pyramids\nof Cycleland. To enter the treasury they have to open an unusual lock on the\ndoor. The lock consists of n words, each consisting of some hieroglyphs. The\nwall near the lock has a round switch. Each rotation of this switch changes\nthe hieroglyphs according to some rules. The instruction nearby says that the\ndoor will open only if words written on the lock would be sorted in\nlexicographical order (the definition of lexicographical comparison in given\nin notes section). The rule that changes hieroglyphs is the following. One\nclockwise rotation of the round switch replaces each hieroglyph with the next\nhieroglyph in alphabet, i.e. hieroglyph x (1 \u2264 x \u2264 c - 1) is replaced with\nhieroglyph (x + 1), and hieroglyph c is replaced with hieroglyph 1. Help\narcheologist determine, how many clockwise rotations they should perform in\norder to open the door, or determine that this is impossible, i.e. no cyclic\nshift of the alphabet will make the sequence of words sorted\nlexicographically. Input The first line of the input contains two integers n\nand c (2 \u2264 n \u2264 500 000, 1 \u2264 c \u2264 10^6) \u2014 the number of words, written on the\nlock, and the number of different hieroglyphs. Each of the following n lines\ncontains the description of one word. The i-th of these lines starts with\ninteger li (1 \u2264 li \u2264 500 000), that denotes the length of the i-th word,\nfollowed by li integers wi, 1, wi, 2, ..., wi, li (1 \u2264 wi, j \u2264 c) \u2014 the\nindices of hieroglyphs that make up the i-th word. Hieroglyph with index 1 is\nthe smallest in the alphabet and with index c \u2014 the biggest. It's guaranteed,\nthat the total length of all words doesn't exceed 10^6. Output If it is\npossible to open the door by rotating the round switch, print integer x (0 \u2264 x\n\u2264 c - 1) that defines the required number of clockwise rotations. If there are\nseveral valid x, print any of them. If it is impossible to open the door by\nthis method, print - 1. Examples Input 4 3 2 3 2 1 1 3 2 3 1 4 2 3 1 2 Output\n1 Input 2 5 2 4 2 2 4 2 Output 0 Input 4 4 1 2 1 3 1 4 1 2 Output -1 Note Word\na1, a2, ..., am of length m is lexicographically not greater than word b1, b2,\n..., bk of length k, if one of two conditions hold: at first position i, such\nthat ai \u2260 bi, the character ai goes earlier in the alphabet than character bi,\ni.e. a has smaller character in the first position where they differ; if there\nis no such position i and m \u2264 k, i.e. the first word is a prefix of the second\nor two words are equal. The sequence of words is said to be sorted in\nlexicographical order if each word (except the last one) is lexicographically\nnot greater than the next word. In the first sample, after the round switch is\nrotated 1 position clockwise the words look as follows: 1 3 2 3 1 2 3 1 2 3 In\nthe second sample, words are already sorted in lexicographical order. In the\nlast sample, one can check that no shift of the alphabet will work.\n\n",
+        "cf_contest_id": 731,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 3\r\n2 3 2\r\n1 1\r\n3 2 3 1\r\n4 2 3 1 2\r\n",
+                "1"
+            ],
+            [
+                "2 5\r\n2 4 2\r\n2 4 2\r\n",
+                "0"
+            ],
+            [
+                "4 4\r\n1 2\r\n1 3\r\n1 4\r\n1 2\r\n",
+                "-1"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 1\r\n2 1 1\r\n2 1 1\r\n3 1 1 1\r\n",
+                "0"
+            ],
+            [
+                "2 10\r\n14 9 6 7 1 6 9 3 1 9 4 6 8 8 1\r\n3 3 7 6\r\n",
+                "2"
+            ],
+            [
+                "5 10\r\n1 5\r\n7 5 1 10 5 3 7 10\r\n1 2\r\n1 3\r\n7 4 7 3 9 4 6 1\r\n",
+                "6"
+            ],
+            [
+                "50 5\r\n1 4\r\n1 4\r\n1 4\r\n1 4\r\n2 4 4\r\n2 4 5\r\n2 4 5\r\n3 4 1 1\r\n4 4 1 2 5\r\n7 4 3 2 1 4 4 5\r\n1 5\r\n1 5\r\n1 5\r\n1 5\r\n2 5 4\r\n2 5 5\r\n2 5 5\r\n2 5 1\r\n2 5 3\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n2 1 4\r\n2 1 4\r\n2 1 5\r\n2 1 1\r\n2 1 1\r\n2 1 3\r\n9 1 3 4 3 2 5 5 5 2\r\n1 2\r\n1 2\r\n3 2 4 2\r\n2 2 1\r\n2 2 2\r\n2 2 2\r\n2 2 2\r\n1 3\r\n1 2\r\n1 3\r\n1 3\r\n1 3\r\n1 3\r\n1 3\r\n2 3 4\r\n3 3 4 4\r\n5 3 4 5 2 1\r\n2 3 5\r\n2 3 2\r\n2 3 3\r\n",
+                "-1"
+            ],
+            [
+                "10 10\r\n2 6 6\r\n1 7\r\n1 8\r\n2 8 2\r\n2 9 2\r\n2 10 5\r\n1 1\r\n1 4\r\n3 4 9 3\r\n2 5 1\r\n",
+                "5"
+            ]
+        ]
+    }
+]

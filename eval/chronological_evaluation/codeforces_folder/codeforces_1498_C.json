@@ -1,0 +1,113 @@
+[
+    {
+        "name": "Planar Reflections",
+        "description": "Gaurang has grown up in a mystical universe. He is faced by \n    n\n\nconsecutive 2D planes. He shoots a particle of decay age \n    k\n at the\nplanes. A particle can pass through a plane directly, however, every plane\nproduces an identical copy of the particle going in the opposite direction\nwith a decay age \n    k-1\n. If a particle has decay age equal to \n    1\n, it\nwill NOT produce a copy. For example, if there are two planes and a particle\nis shot with decay age \n    3\n (towards the right), the process is as follows:\n(here, \n    D(x)\n refers to a single particle with decay age \n    x\n) the\nfirst plane produces a \n    D(2)\n to the left and lets \n    D(3)\n continue on\nto the right; the second plane produces a \n    D(2)\n to the left and lets\n\n    D(3)\n continue on to the right; the first plane lets \n    D(2)\n continue\non to the left and produces a \n    D(1)\n to the right; the second plane lets\n\n    D(1)\n continue on to the right (\n    D(1)\n cannot produce any copies). In\ntotal, the final multiset \n    S\n of particles is \n    D(3), D(2), D(2),\n    D(1)\n. (See notes for visual explanation of this test case.) Gaurang is\nunable to cope up with the complexity of this situation when the number of\nplanes is too large. Help Gaurang find the size of the multiset \n    S\n, given\n\n    n\n and \n    k\n. Since the size of the multiset can be very large, you\nhave to output it modulo \n    10^9+7\n. Note: Particles can go back and forth\nbetween the planes without colliding with each other. Input The first line of\nthe input contains the number of test cases \n    t\n (\n    1 \n    \u2264 t \n    \u2264\n    100\n). Then, \n    t\n lines follow, each containing two integers \n    n\n and\n\n    k\n (\n    1 \n    \u2264 n, k \n    \u2264 1000\n). Additionally, the sum of \n    n\n over\nall test cases will not exceed \n    1000\n, and the sum of \n    k\n over all\ntest cases will not exceed \n    1000\n. All test cases in one test are\ndifferent. Output Output \n    t\n integers. The \n    i\n-th of them should be\nequal to the answer to the \n    i\n-th test case. Examples Input 4 2 3 2 2 3 1\n1 3 Output 4 3 1 2 Input 3 1 1 1 500 500 250 Output 1 2 257950823 Note Let us\nexplain the first example with four test cases. Test case 1: (\n    n = 2\n,\n\n    k = 3\n) is already explained in the problem statement. See the below\nfigure of this simulation. Each straight line with a different color\nrepresents the path of a different particle. As you can see, there are four\ndistinct particles in the multiset. Note that the vertical spacing between\nreflected particles is for visual clarity only (as mentioned before, no two\ndistinct particles collide with each other) Test case 2: (\n    n = 2\n, \n    k =\n    2\n) is explained as follows: the first plane produces a \n    D(1)\n to the\nleft and lets \n    D(2)\n continue on to the right; the second plane produces a\n\n    D(1)\n to the left and lets \n    D(2)\n continue on to the right; the first\nplane lets \n    D(1)\n continue on to the left (\n    D(1)\n cannot produce any\ncopies).Total size of multiset obtained \n    D(1), D(1), D(2)\n is\nequal to three. Test case 3: (\n    n = 3\n, \n    k = 1\n), there are three\nplanes, but decay age is only one. So no new copies are produced while the one\nparticle passes through the planes. Hence, the answer is one. Test case 4:\n(\n    n = 1\n, \n    k = 3\n) there is only one plane. The particle produces a\nnew copy to the left. The multiset \n    D(2), D(3)\n is of size two.\n\n",
+        "cf_contest_id": 1498,
+        "cf_index": "C",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "data structures",
+            "dp"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n2 3\r\n2 2\r\n3 1\r\n1 3\r\n",
+                "4\r\n3\r\n1\r\n2\r\n"
+            ],
+            [
+                "3\r\n1 1\r\n1 500\r\n500 250\r\n",
+                "1\r\n2\r\n257950823\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1000 1000\r\n",
+                "211715064\r\n"
+            ],
+            [
+                "8\r\n36 151\r\n43 187\r\n37 189\r\n46 186\r\n44 146\r\n73 37\r\n37 73\r\n557 17\r\n",
+                "929091785\r\n702459752\r\n42479847\r\n196559214\r\n865776926\r\n801685809\r\n873370071\r\n823112467\r\n"
+            ],
+            [
+                "1\r\n991 983\r\n",
+                "90036032\r\n"
+            ],
+            [
+                "37\r\n30 16\r\n22 37\r\n37 43\r\n25 31\r\n12 12\r\n15 30\r\n42 11\r\n29 28\r\n26 32\r\n12 32\r\n18 12\r\n11 48\r\n24 25\r\n15 40\r\n40 38\r\n17 12\r\n22 27\r\n35 32\r\n11 29\r\n35 24\r\n42 35\r\n21 14\r\n25 11\r\n16 14\r\n28 31\r\n49 45\r\n48 24\r\n28 20\r\n21 19\r\n43 49\r\n42 24\r\n14 21\r\n23 19\r\n19 16\r\n32 35\r\n28 10\r\n14 22\r\n",
+                "500692159\r\n20910845\r\n885314984\r\n124845875\r\n797588417\r\n276240629\r\n994345628\r\n193018901\r\n822918999\r\n929948425\r\n954416076\r\n172806682\r\n974670813\r\n700658711\r\n904391066\r\n286530678\r\n854861649\r\n62149489\r\n873376578\r\n496401839\r\n664000967\r\n29319235\r\n150022141\r\n593419315\r\n429944114\r\n179833379\r\n698577389\r\n475197132\r\n378602653\r\n486740789\r\n737338710\r\n660483766\r\n24492030\r\n320420567\r\n694451315\r\n740895036\r\n652573020\r\n"
+            ],
+            [
+                "32\r\n33 20\r\n41 44\r\n45 26\r\n35 36\r\n28 11\r\n26 18\r\n48 10\r\n35 34\r\n46 11\r\n13 43\r\n45 11\r\n18 24\r\n34 48\r\n30 17\r\n44 14\r\n24 24\r\n32 42\r\n29 27\r\n42 48\r\n22 10\r\n38 22\r\n11 28\r\n29 48\r\n38 27\r\n15 10\r\n27 46\r\n20 38\r\n20 32\r\n50 34\r\n19 18\r\n17 39\r\n45 17\r\n",
+                "475352134\r\n170086427\r\n363639095\r\n674704496\r\n865667198\r\n472661039\r\n37995993\r\n753393037\r\n735083411\r\n333923785\r\n366970062\r\n867513788\r\n689300842\r\n2592746\r\n267467184\r\n200614161\r\n453081314\r\n156772147\r\n751718033\r\n179829755\r\n462404021\r\n974160834\r\n45037792\r\n526244741\r\n696254206\r\n47332619\r\n154157194\r\n161613255\r\n102163198\r\n333223713\r\n493163714\r\n57258109\r\n"
+            ],
+            [
+                "6\r\n38 188\r\n18 158\r\n27 139\r\n38 154\r\n44 137\r\n49 185\r\n",
+                "426441393\r\n204614662\r\n74950768\r\n954672123\r\n514816121\r\n145167864\r\n"
+            ],
+            [
+                "5\r\n41 197\r\n36 180\r\n39 192\r\n44 104\r\n10 161\r\n",
+                "108823857\r\n454695427\r\n134358398\r\n446446956\r\n122179023\r\n"
+            ],
+            [
+                "6\r\n103 39\r\n161 13\r\n177 45\r\n116 34\r\n193 28\r\n172 35\r\n",
+                "425822080\r\n290931466\r\n447348855\r\n601276541\r\n399768990\r\n498063852\r\n"
+            ],
+            [
+                "7\r\n149 38\r\n114 15\r\n120 32\r\n161 39\r\n140 34\r\n104 20\r\n173 28\r\n",
+                "519522526\r\n513936082\r\n644154123\r\n701014853\r\n899036550\r\n951094693\r\n218466103\r\n"
+            ],
+            [
+                "6\r\n156 130\r\n198 180\r\n133 195\r\n121 112\r\n148 169\r\n196 160\r\n",
+                "567814382\r\n854901202\r\n539016936\r\n430063302\r\n717224051\r\n17951434\r\n"
+            ],
+            [
+                "6\r\n169 106\r\n140 102\r\n177 169\r\n144 163\r\n139 194\r\n196 172\r\n",
+                "342765823\r\n591022461\r\n63284704\r\n539893464\r\n809751744\r\n922743455\r\n"
+            ],
+            [
+                "2\r\n496 492\r\n481 407\r\n",
+                "116485411\r\n440948900\r\n"
+            ],
+            [
+                "2\r\n441 401\r\n467 430\r\n",
+                "629952830\r\n169004723\r\n"
+            ],
+            [
+                "1\r\n459 704\r\n",
+                "198768780\r\n"
+            ],
+            [
+                "1\r\n404 905\r\n",
+                "188669952\r\n"
+            ],
+            [
+                "1\r\n828 434\r\n",
+                "888636661\r\n"
+            ],
+            [
+                "1\r\n651 410\r\n",
+                "374205605\r\n"
+            ],
+            [
+                "1\r\n939 879\r\n",
+                "956782639\r\n"
+            ],
+            [
+                "1\r\n762 765\r\n",
+                "784899191\r\n"
+            ],
+            [
+                "3\r\n998 997\r\n1 1\r\n1 2\r\n",
+                "258470413\r\n1\r\n2\r\n"
+            ],
+            [
+                "1\r\n1000 999\r\n",
+                "444664353\r\n"
+            ]
+        ]
+    }
+]

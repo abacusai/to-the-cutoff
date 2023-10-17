@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Maxim and Array",
+        "description": "Recently Maxim has found an array of n integers, needed by no one. He\nimmediately come up with idea of changing it: he invented positive integer x\nand decided to add or subtract it from arbitrary array elements. Formally, by\napplying single operation Maxim chooses integer i (1 \u2264 i \u2264 n) and replaces the\ni-th element of array ai either with ai + x or with ai - x. Please note that\nthe operation may be applied more than once to the same position. Maxim is a\ncurious minimalis, thus he wants to know what is the minimum value that the\nproduct of all array elements (i.e. ) can reach, if Maxim would apply no more\nthan k operations to it. Please help him in that. Input The first line of the\ninput contains three integers n, k and x (1 \u2264 n, k \u2264 200 000, 1 \u2264 x \u2264 10^9) \u2014\nthe number of elements in the array, the maximum number of operations and the\nnumber invented by Maxim, respectively. The second line contains n integers\na1, a2, ..., an () \u2014 the elements of the array found by Maxim. Output Print n\nintegers b1, b2, ..., bn in the only line \u2014 the array elements after applying\nno more than k operations to the array. In particular, should stay true for\nevery 1 \u2264 i \u2264 n, but the product of all array elements should be minimum\npossible. If there are multiple answers, print any of them. Examples Input 5 3\n1 5 4 3 5 2 Output 5 4 3 5 -1 Input 5 3 1 5 4 3 5 5 Output 5 4 0 5 5 Input 5 3\n1 5 4 4 5 5 Output 5 1 4 5 5 Input 3 2 7 5 4 2 Output 5 11 -5\n\n",
+        "cf_contest_id": 721,
+        "cf_index": "D",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 3 1\r\n5 4 3 5 2\r\n",
+                "5\r\n4\r\n3\r\n5\r\n-1\r\n"
+            ],
+            [
+                "5 3 1\r\n5 4 3 5 5\r\n",
+                "5\r\n4\r\n0\r\n5\r\n5\r\n"
+            ],
+            [
+                "5 3 1\r\n5 4 4 5 5\r\n",
+                "5\r\n1\r\n4\r\n5\r\n5\r\n"
+            ],
+            [
+                "3 2 7\r\n5 4 2\r\n",
+                "5\r\n11\r\n-5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "100 1 1\r\n-1 -1 -2 0 -2 -1 0 0 0 0 2 2 2 2 2 1 0 1 1 1 1 0 1 0 2 0 0 1 1 1 2 2 1 0 0 2 0 1 2 1 2 1 2 2 0 2 0 1 1 0 2 1 1 2 1 1 0 2 2 0 1 1 1 1 1 1 0 2 2 2 2 0 0 0 0 2 2 1 0 2 0 0 2 0 2 1 0 2 2 1 1 2 0 2 0 2 0 0 2 2\r\n",
+                "-1\r\n-1\r\n-2\r\n1\r\n-2\r\n-1\r\n0\r\n0\r\n0\r\n0\r\n2\r\n2\r\n2\r\n2\r\n2\r\n1\r\n0\r\n1\r\n1\r\n1\r\n1\r\n0\r\n1\r\n0\r\n2\r\n0\r\n0\r\n1\r\n1\r\n1\r\n2\r\n2\r\n1\r\n0\r\n0\r\n2\r\n0\r\n1\r\n2\r\n1\r\n2\r\n1\r\n2\r\n2\r\n0\r\n2\r\n0\r\n1\r\n1\r\n0\r\n2\r\n1\r\n1\r\n2\r\n1\r\n1\r\n0\r\n2\r\n2\r\n0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n0\r\n2\r\n2\r\n2\r\n2\r\n0\r\n0\r\n0\r\n0\r\n2\r\n2\r\n1\r\n0\r\n2\r\n0\r\n0\r\n2\r\n0\r\n2\r\n1\r\n0\r\n2\r\n2\r\n1\r\n1\r\n2\r\n0\r\n2\r\n0\r\n2\r\n0\r\n0\r\n2\r\n2\r\n"
+            ],
+            [
+                "100 5 100\r\n-45 -36 -55 -96 -49 8 -88 -87 -82 51 27 -33 -65 0 -1 -42 -58 -19 -11 77 -54 14 -49 -90 -35 -9 -2 -48 0 -21 44 22 37 -32 -81 64 28 85 -77 44 18 -74 -50 62 8 -74 41 -15 -91 -93 -2 57 -12 2 -2 -90 84 6 -62 -14 72 85 86 -71 -59 57 -89 -4 78 56 56 24 -15 -78 27 -30 -31 -52 -92 50 43 85 -79 -14 -96 -1 -40 -7 16 18 99 -9 27 6 -96 -36 51 68 -17 55\r\n",
+                "-45\r\n-36\r\n-55\r\n-96\r\n-49\r\n8\r\n-88\r\n-87\r\n-82\r\n51\r\n27\r\n-33\r\n-65\r\n-100\r\n-101\r\n-42\r\n-58\r\n-19\r\n-11\r\n77\r\n-54\r\n14\r\n-49\r\n-90\r\n-35\r\n-9\r\n-102\r\n-48\r\n100\r\n-21\r\n44\r\n22\r\n37\r\n-32\r\n-81\r\n64\r\n28\r\n85\r\n-77\r\n44\r\n18\r\n-74\r\n-50\r\n62\r\n8\r\n-74\r\n41\r\n-15\r\n-91\r\n-93\r\n-2\r\n57\r\n-12\r\n2\r\n-2\r\n-90\r\n84\r\n6\r\n-62\r\n-14\r\n72\r\n85\r\n86\r\n-71\r\n-59\r\n57\r\n-89\r\n-4\r\n78\r\n56\r\n56\r\n24\r\n-15\r\n-78\r\n27\r\n-30\r\n-31\r\n-52\r\n-92\r\n50\r\n43\r\n85\r\n-79\r\n-14\r\n-96\r\n-101\r\n-40\r\n-7\r\n16\r\n18\r\n99\r\n-9\r\n27\r\n6\r\n-96\r\n-36\r\n51\r\n68\r\n-17\r\n55\r\n"
+            ],
+            [
+                "4 35529 390662471\r\n7178385 -402086 21850337 -1012896\r\n",
+                "3469871245807\r\n3470254327807\r\n3469885917759\r\n-3469865080318\r\n"
+            ],
+            [
+                "2 176474 610141845\r\n-1063752 -6637683\r\n",
+                "53837084913513\r\n-53837092614948\r\n"
+            ],
+            [
+                "1 157330 640126408\r\n-1723747\r\n",
+                "-100711089494387\r\n"
+            ],
+            [
+                "100 21063 1\r\n-2 -1 -1 -2 -1 -2 -1 0 0 -2 0 0 0 0 0 0 0 -1 -1 -2 2 2 0 2 2 2 2 0 1 1 2 1 2 1 0 1 2 2 0 2 0 2 1 1 2 1 0 1 1 0 1 0 0 0 0 0 0 2 1 0 2 2 0 2 0 1 1 2 1 2 2 1 1 1 1 1 0 2 2 2 2 2 2 0 0 0 0 0 2 1 0 1 0 0 2 1 0 2 0 0\r\n",
+                "-212\r\n-212\r\n-212\r\n-212\r\n-212\r\n-212\r\n-212\r\n212\r\n212\r\n-212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n-212\r\n-212\r\n-212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n212\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n211\r\n"
+            ],
+            [
+                "1 2 1000000000\r\n-1000000000\r\n",
+                "-3000000000\r\n"
+            ],
+            [
+                "2 1 1000\r\n-1000000000 1000000000\r\n",
+                "-1000001000\r\n1000000000\r\n"
+            ],
+            [
+                "5 200000 1000000000\r\n1 2 3 4 5\r\n",
+                "-39999999999999\r\n40000000000002\r\n40000000000003\r\n40000000000004\r\n40000000000005\r\n"
+            ],
+            [
+                "10 200000 1000000000\r\n1 5 2 6890 321 6 8 -123 9 10\r\n",
+                "20000000000001\r\n20000000000005\r\n20000000000002\r\n20000000006890\r\n20000000000321\r\n20000000000006\r\n20000000000008\r\n-20000000000123\r\n20000000000009\r\n20000000000010\r\n"
+            ],
+            [
+                "4 1 1\r\n-2 -2 1 1\r\n",
+                "-2\r\n-2\r\n0\r\n1\r\n"
+            ]
+        ]
+    }
+]

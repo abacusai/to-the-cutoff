@@ -1,0 +1,59 @@
+[
+    {
+        "name": "The Fair Nut and Amusing Xor",
+        "description": "The Fair Nut has two arrays \n    a\n and \n    b\n, consisting of \n    n\n\nnumbers. He found them so long ago that no one knows when they came to him.\nThe Fair Nut often changes numbers in his arrays. He also is interested in how\nsimilar \n    a\n and \n    b\n are after every modification. Let's denote\nsimilarity of two arrays as the minimum number of operations to apply to make\narrays equal (every operation can be applied for both arrays). If it is\nimpossible, similarity will be equal \n    -1\n. Per one operation you can\nchoose a subarray with length \n    k\n (\n    k\n is fixed), and change every\nelement \n    a_i\n, which belongs to the chosen subarray, to \n    a_i \n    \u2295\n    x\n (\n    x\n can be chosen), where \n    \u2295\n denotes the bitwise XOR\noperation. Nut has already calculated the similarity of the arrays after every\nmodification. Can you do it? Note that you just need to calculate those\nvalues, that is you do not need to apply any operations. Input The first line\ncontains three numbers \n    n\n, \n    k\n and \n    q\n (\n    1 \n    \u2264 k \n    \u2264 n\n    \n    \u2264 2 \n    \u00b7 10^5\n, \n    0 \n    \u2264 q \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the length of\nthe arrays, the length of the subarrays, to which the operations are applied,\nand the number of queries. The second line contains \n    n\n integers \n    a_1,\n    a_2, \n    \u2026, a_n\n (\n    0 \n    \u2264 a_i < 2^14\n) \u2014 elements of array\n\n    a\n. The third line contains \n    n\n integers \n    b_1, b_2, \n    \u2026,\n    b_n\n (\n    0 \n    \u2264 b_i < 2^14\n) \u2014 elements of array \n    b\n. Each of the\nnext \n    q\n lines describes query and contains string \n    s\n and two\nintegers \n    p\n and \n    v\n (\n    1 \n    \u2264 p \n    \u2264 n\n, \n    0 \n    \u2264 v <\n    2^14\n) \u2014 array, which this query changes (\u00aba\u00bb or \u00abb\u00bb without quotes),\nindex of changing element and its new value. Output On the first line print\ninitial similarity of arrays \n    a\n and \n    b\n. On the \n    i\n-th of\nfollowing \n    q\n lines print similarity of \n    a\n and \n    b\n after applying\nfirst \n    i\n modifications. Examples Input 3 3 1 0 4 2 1 2 3 b 2 5 Output -1\n1 Input 3 2 2 1 3 2 0 0 0 a 1 0 b 1 1 Output 2 -1 2 Note In the first sample\nmaking arrays \n    [0, 4, 2]\n and \n    [1, 2, 3]\n is impossible with\n\n    k=3\n. After the modification, you can apply the operation with \n    x=1\n\nto the whole first array (its length is equal to \n    k\n), and it will be\nequal to the second array. In order to make arrays equal in the second sample\nbefore changes, you can apply operations with \n    x=1\n on subarray \n    [1,\n    2]\n of \n    a\n and with \n    x=2\n on subarray \n    [2, 3]\n of \n    b\n. After\nall queries arrays will be equal \n    [0, 3, 2]\n and \n    [1, 0, 0]\n. The same\noperations make them equal \n    [1, 2, 2]\n.\n\n",
+        "cf_contest_id": 1083,
+        "cf_index": "F",
+        "cf_rating": 3300,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3 1\r\n0 4 2\r\n1 2 3\r\nb 2 5\r\n",
+                "-1\r\n1\r\n"
+            ],
+            [
+                "3 2 2\r\n1 3 2\r\n0 0 0\r\na 1 0\r\nb 1 1\r\n",
+                "2\r\n-1\r\n2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 2 5\r\n0 0 0 0 0\r\n0 0 0 0 0\r\na 4 4\r\na 4 0\r\nb 5 0\r\na 5 0\r\na 5 0\r\n",
+                "0\r\n-1\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5 2 5\r\n0 0 0 0 0\r\n0 0 0 0 0\r\na 5 6\r\nb 1 6\r\na 2 2\r\na 4 2\r\na 4 2\r\n",
+                "0\r\n-1\r\n4\r\n-1\r\n4\r\n4\r\n"
+            ],
+            [
+                "10 3 20\r\n8 0 0 0 0 0 0 0 0 8\r\n0 0 0 1 0 9 0 0 9 1\r\na 3 8\r\na 3 0\r\na 10 0\r\nb 1 8\r\na 2 0\r\na 6 8\r\na 5 0\r\nb 3 8\r\na 7 8\r\na 10 9\r\na 7 0\r\nb 1 1\r\na 2 0\r\nb 4 8\r\na 8 0\r\na 4 9\r\nb 9 8\r\nb 9 9\r\nb 9 9\r\nb 6 9\r\n",
+                "6\r\n-1\r\n6\r\n-1\r\n5\r\n5\r\n-1\r\n-1\r\n6\r\n-1\r\n-1\r\n-1\r\n7\r\n7\r\n-1\r\n-1\r\n7\r\n-1\r\n7\r\n7\r\n7\r\n"
+            ],
+            [
+                "10 5 20\r\n4 0 0 0 4 0 0 0 0 4\r\n0 0 0 0 0 0 0 0 0 0\r\nb 5 0\r\na 6 4\r\nb 3 0\r\na 8 0\r\nb 2 2\r\na 2 2\r\nb 9 0\r\na 6 0\r\nb 6 4\r\na 4 0\r\na 1 2\r\nb 6 2\r\na 6 4\r\na 6 0\r\na 10 2\r\nb 10 6\r\nb 2 0\r\nb 7 2\r\na 3 2\r\nb 3 2\r\n",
+                "-1\r\n-1\r\n4\r\n4\r\n4\r\n-1\r\n4\r\n4\r\n-1\r\n4\r\n4\r\n-1\r\n4\r\n-1\r\n4\r\n-1\r\n4\r\n-1\r\n4\r\n-1\r\n4\r\n"
+            ],
+            [
+                "10 3 20\r\n6 2 0 2 0 0 0 0 2 0\r\n0 0 0 0 2 4 6 0 0 4\r\nb 6 0\r\nb 6 0\r\na 3 4\r\nb 10 4\r\na 7 6\r\nb 2 6\r\na 5 6\r\na 4 4\r\na 3 6\r\na 6 2\r\na 2 0\r\na 4 2\r\nb 6 0\r\nb 2 6\r\na 3 2\r\nb 5 4\r\nb 7 0\r\na 3 0\r\nb 3 6\r\nb 4 6\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "10 1 20\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\nb 7 0\r\nb 4 0\r\nb 3 8\r\na 1 0\r\na 9 8\r\na 5 0\r\na 5 0\r\na 5 8\r\nb 10 8\r\na 7 0\r\nb 8 0\r\nb 5 0\r\na 9 0\r\nb 6 8\r\nb 2 8\r\nb 10 0\r\na 9 8\r\na 7 8\r\nb 4 0\r\na 6 0\r\n",
+                "0\r\n0\r\n0\r\n1\r\n1\r\n2\r\n2\r\n2\r\n3\r\n4\r\n4\r\n4\r\n4\r\n3\r\n4\r\n5\r\n4\r\n5\r\n6\r\n6\r\n6\r\n"
+            ],
+            [
+                "10 10 20\r\n0 0 0 0 0 0 0 0 8 0\r\n0 0 0 0 0 0 0 0 8 0\r\nb 3 0\r\na 9 0\r\nb 8 0\r\na 8 0\r\na 3 0\r\nb 9 0\r\nb 6 8\r\nb 6 0\r\nb 5 8\r\nb 5 0\r\nb 6 8\r\nb 6 0\r\na 5 8\r\nb 9 8\r\na 5 8\r\nb 5 0\r\na 5 0\r\na 9 8\r\nb 1 8\r\na 1 8\r\n",
+                "0\r\n0\r\n-1\r\n-1\r\n-1\r\n-1\r\n0\r\n-1\r\n0\r\n-1\r\n0\r\n-1\r\n0\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n0\r\n-1\r\n0\r\n"
+            ],
+            [
+                "1 1 0\r\n0\r\n0\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

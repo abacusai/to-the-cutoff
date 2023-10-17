@@ -1,0 +1,228 @@
+[
+    {
+        "name": "Dominoes",
+        "description": "You have a set of dominoes. Each domino is a rectangular tile with a line\ndividing its face into two square ends. Can you put all dominoes in a line one\nby one from left to right so that any two dominoes touched with the sides that\nhad the same number of points? You can rotate the dominoes, changing the left\nand the right side (domino \"1-4\" turns into \"4-1\"). Input The first line\ncontains number n (1 \u2264 n \u2264 100). Next n lines contains the dominoes. Each of\nthese lines contains two numbers \u2014 the number of points (spots) on the left\nand the right half, correspondingly. The numbers of points (spots) are non-\nnegative integers from 0 to 6. Output Print \"No solution\", if it is impossible\nto arrange the dominoes in the required manner. If the solution exists, then\ndescribe any way to arrange the dominoes. You put the dominoes from left to\nright. In each of n lines print the index of the domino to put in the\ncorresponding position and then, after a space, character \"+\" (if you don't\nneed to turn the domino) or \"\u2013\" (if you need to turn it). Examples Input 5 1 2\n2 4 2 4 6 4 2 1 Output 2 - 1 - 5 - 3 + 4 -\n\n",
+        "cf_contest_id": 267,
+        "cf_index": "B",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n",
+                "4 +\r\n3 -\r\n5 +\r\n1 +\r\n2 +\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n0 0\r\n",
+                "1 +\r\n"
+            ],
+            [
+                "1\r\n5 5\r\n",
+                "1 +\r\n"
+            ],
+            [
+                "5\r\n0 0\r\n0 0\r\n0 0\r\n0 0\r\n0 0\r\n",
+                "5 +\r\n4 +\r\n3 +\r\n2 +\r\n1 +\r\n"
+            ],
+            [
+                "4\r\n0 0\r\n0 0\r\n1 1\r\n1 1\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "5\r\n0 0\r\n0 0\r\n1 1\r\n0 1\r\n1 1\r\n",
+                "5 +\r\n3 +\r\n4 -\r\n2 +\r\n1 +\r\n"
+            ],
+            [
+                "6\r\n1 0\r\n0 0\r\n0 0\r\n1 1\r\n0 1\r\n1 1\r\n",
+                "5 +\r\n6 +\r\n4 +\r\n1 +\r\n3 +\r\n2 +\r\n"
+            ],
+            [
+                "12\r\n1 0\r\n0 0\r\n0 0\r\n1 1\r\n0 1\r\n1 1\r\n1 0\r\n0 0\r\n0 0\r\n1 1\r\n0 1\r\n1 1\r\n",
+                "11 +\r\n12 +\r\n10 +\r\n6 +\r\n4 +\r\n7 +\r\n5 +\r\n1 +\r\n9 +\r\n8 +\r\n3 +\r\n2 +\r\n"
+            ],
+            [
+                "18\r\n2 2\r\n3 3\r\n2 3\r\n3 2\r\n1 0\r\n0 0\r\n0 0\r\n1 1\r\n2 3\r\n3 2\r\n0 1\r\n1 1\r\n1 0\r\n0 0\r\n0 0\r\n1 1\r\n0 1\r\n1 1\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "19\r\n2 2\r\n3 3\r\n2 3\r\n3 2\r\n1 0\r\n0 0\r\n0 0\r\n2 1\r\n1 1\r\n2 3\r\n3 2\r\n0 1\r\n1 1\r\n1 0\r\n0 0\r\n0 0\r\n1 1\r\n0 1\r\n1 1\r\n",
+                "10 +\r\n2 +\r\n11 +\r\n3 +\r\n4 +\r\n1 +\r\n8 +\r\n19 +\r\n17 +\r\n13 +\r\n9 +\r\n14 +\r\n18 +\r\n5 +\r\n16 +\r\n15 +\r\n7 +\r\n6 +\r\n12 +\r\n"
+            ],
+            [
+                "6\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n1 3\r\n2 4\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "7\r\n1 2\r\n4 2\r\n2 3\r\n3 4\r\n4 1\r\n1 3\r\n2 4\r\n",
+                "4 +\r\n2 +\r\n7 +\r\n5 +\r\n6 +\r\n3 -\r\n1 -\r\n"
+            ],
+            [
+                "100\r\n5 1\r\n6 4\r\n1 6\r\n2 2\r\n4 0\r\n0 4\r\n4 4\r\n4 0\r\n6 6\r\n0 2\r\n3 2\r\n0 4\r\n0 4\r\n2 0\r\n4 4\r\n0 4\r\n2 6\r\n4 2\r\n1 4\r\n2 5\r\n2 0\r\n3 2\r\n1 4\r\n5 4\r\n4 2\r\n2 4\r\n4 0\r\n0 1\r\n6 4\r\n2 1\r\n5 4\r\n4 0\r\n5 6\r\n4 1\r\n2 4\r\n6 1\r\n6 4\r\n2 5\r\n2 4\r\n3 3\r\n5 4\r\n6 4\r\n2 2\r\n2 5\r\n4 4\r\n5 2\r\n3 4\r\n1 0\r\n2 2\r\n5 6\r\n3 5\r\n6 0\r\n0 3\r\n1 1\r\n3 1\r\n4 3\r\n4 0\r\n2 4\r\n2 6\r\n6 0\r\n5 6\r\n6 5\r\n3 6\r\n5 0\r\n0 2\r\n5 0\r\n4 5\r\n3 0\r\n5 3\r\n6 4\r\n6 5\r\n6 4\r\n5 6\r\n6 1\r\n1 3\r\n0 4\r\n4 1\r\n5 5\r\n4 5\r\n1 2\r\n1 6\r\n3 5\r\n2 2\r\n6 2\r\n5 3\r\n6 3\r\n3 1\r\n0 3\r\n3 3\r\n0 6\r\n6 6\r\n6 6\r\n4 3\r\n2 4\r\n5 5\r\n0 0\r\n6 6\r\n0 4\r\n4 2\r\n4 1\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n2 2\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "3\r\n1 2\r\n2 3\r\n3 1\r\n",
+                "3 -\r\n2 -\r\n1 -\r\n"
+            ],
+            [
+                "2\r\n3 4\r\n3 5\r\n",
+                "2 -\r\n1 +\r\n"
+            ],
+            [
+                "7\r\n0 0\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "3\r\n0 1\r\n0 2\r\n0 3\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "3\r\n1 2\r\n2 3\r\n4 3\r\n",
+                "3 +\r\n2 -\r\n1 -\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n2 1\r\n",
+                "1 +\r\n2 +\r\n"
+            ],
+            [
+                "1\r\n6 6\r\n",
+                "1 +\r\n"
+            ],
+            [
+                "1\r\n6 0\r\n",
+                "1 +\r\n"
+            ],
+            [
+                "2\r\n6 0\r\n5 1\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "2\r\n0 0\r\n1 1\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "1\r\n0 1\r\n",
+                "1 -\r\n"
+            ],
+            [
+                "3\r\n1 0\r\n0 0\r\n1 0\r\n",
+                "3 -\r\n1 +\r\n2 +\r\n"
+            ],
+            [
+                "4\r\n1 2\r\n2 1\r\n3 4\r\n4 3\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "2\r\n0 1\r\n1 0\r\n",
+                "1 +\r\n2 +\r\n"
+            ],
+            [
+                "4\r\n1 2\r\n1 2\r\n3 4\r\n3 4\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "4\r\n1 2\r\n2 1\r\n5 6\r\n6 5\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "4\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n",
+                "4 -\r\n3 -\r\n2 -\r\n1 -\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n1 2\r\n",
+                "2 +\r\n1 -\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n3 4\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "1\r\n1 1\r\n",
+                "1 +\r\n"
+            ],
+            [
+                "5\r\n1 2\r\n1 2\r\n3 4\r\n3 4\r\n5 5\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "41\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 3\r\n1 4\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "6\r\n0 1\r\n0 2\r\n1 2\r\n3 4\r\n3 5\r\n4 5\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "2\r\n0 3\r\n3 0\r\n",
+                "1 +\r\n2 +\r\n"
+            ],
+            [
+                "7\r\n0 1\r\n1 2\r\n2 3\r\n3 1\r\n4 5\r\n5 6\r\n6 4\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "100\r\n2 5\r\n4 2\r\n6 2\r\n5 1\r\n4 2\r\n3 2\r\n3 2\r\n6 5\r\n1 1\r\n5 5\r\n6 3\r\n4 4\r\n3 3\r\n3 2\r\n2 2\r\n6 1\r\n1 1\r\n6 4\r\n2 5\r\n2 5\r\n4 4\r\n4 6\r\n3 2\r\n3 3\r\n6 1\r\n6 5\r\n2 3\r\n3 4\r\n3 3\r\n5 2\r\n4 4\r\n3 4\r\n3 6\r\n5 4\r\n2 6\r\n1 4\r\n1 4\r\n3 4\r\n3 3\r\n4 3\r\n2 1\r\n1 3\r\n3 1\r\n4 6\r\n3 2\r\n1 1\r\n3 1\r\n2 5\r\n5 1\r\n1 6\r\n4 5\r\n3 5\r\n6 4\r\n6 3\r\n4 1\r\n5 3\r\n2 3\r\n3 2\r\n4 6\r\n5 6\r\n5 4\r\n4 2\r\n4 6\r\n4 6\r\n4 2\r\n4 5\r\n6 4\r\n1 6\r\n5 6\r\n6 3\r\n5 4\r\n3 6\r\n4 6\r\n1 1\r\n5 6\r\n5 4\r\n1 6\r\n3 2\r\n3 4\r\n2 6\r\n6 5\r\n3 3\r\n2 3\r\n2 5\r\n3 5\r\n1 5\r\n6 3\r\n4 4\r\n6 2\r\n4 5\r\n5 6\r\n6 5\r\n6 6\r\n1 2\r\n3 2\r\n6 2\r\n4 2\r\n3 3\r\n4 4\r\n1 4\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "100\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n4 2\r\n1 3\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "3\r\n2 3\r\n3 4\r\n4 2\r\n",
+                "3 -\r\n2 -\r\n1 -\r\n"
+            ],
+            [
+                "3\r\n1 2\r\n2 1\r\n3 4\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "100\r\n1 2\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n2 4\r\n4 5\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "3\r\n1 2\r\n1 3\r\n1 4\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "10\r\n6 6\r\n6 6\r\n1 6\r\n6 6\r\n6 2\r\n6 6\r\n6 6\r\n6 6\r\n6 6\r\n6 6\r\n",
+                "5 -\r\n10 +\r\n9 +\r\n8 +\r\n7 +\r\n6 +\r\n4 +\r\n2 +\r\n1 +\r\n3 -\r\n"
+            ],
+            [
+                "99\r\n0 0\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "1\r\n0 6\r\n",
+                "1 -\r\n"
+            ],
+            [
+                "100\r\n5 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 3\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n1 2\r\n2 4\r\n2 4\r\n6 4\r\n2 1\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "6\r\n0 1\r\n1 2\r\n2 0\r\n3 4\r\n4 5\r\n5 3\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "100\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n0 6\r\n",
+                "No solution\r\n"
+            ],
+            [
+                "10\r\n6 6\r\n6 6\r\n6 2\r\n6 6\r\n6 6\r\n6 6\r\n6 1\r\n6 6\r\n6 6\r\n6 6\r\n",
+                "3 -\r\n10 +\r\n9 +\r\n8 +\r\n6 +\r\n5 +\r\n4 +\r\n2 +\r\n1 +\r\n7 +\r\n"
+            ]
+        ]
+    }
+]

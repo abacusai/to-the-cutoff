@@ -1,0 +1,83 @@
+[
+    {
+        "name": "Clockwork Bomb",
+        "description": "My name is James diGriz, I'm the most clever robber and treasure hunter in the\nwhole galaxy. There are books written about my adventures and songs about my\noperations, though you were able to catch me up in a pretty awkward moment. I\nwas able to hide from cameras, outsmart all the guards and pass numerous\ntraps, but when I finally reached the treasure box and opened it, I have\naccidentally started the clockwork bomb! Luckily, I have met such kind of\nbombs before and I know that the clockwork mechanism can be stopped by\nconnecting contacts with wires on the control panel of the bomb in a certain\nmanner. I see n contacts connected by n - 1 wires. Contacts are numbered with\nintegers from 1 to n. Bomb has a security mechanism that ensures the following\ncondition: if there exist k \u2265 2 contacts c1, c2, ..., ck forming a circuit, i.\ne. there exist k distinct wires between contacts c1 and c2, c2 and c3, ..., ck\nand c1, then the bomb immediately explodes and my story ends here. In\nparticular, if two contacts are connected by more than one wire they form a\ncircuit of length 2. It is also prohibited to connect a contact with itself.\nOn the other hand, if I disconnect more than one wire (i. e. at some moment\nthere will be no more than n - 2 wires in the scheme) then the other security\ncheck fails and the bomb also explodes. So, the only thing I can do is to\nunplug some wire and plug it into a new place ensuring the fact that no\ncircuits appear. I know how I should put the wires in order to stop the\nclockwork. But my time is running out! Help me get out of this alive: find the\nsequence of operations each of which consists of unplugging some wire and\nputting it into another place so that the bomb is defused. Input The first\nline of the input contains n (2 \u2264 n \u2264 500 000), the number of contacts. Each\nof the following n - 1 lines contains two of integers xi and yi (1 \u2264 xi, yi \u2264\nn, xi \u2260 yi) denoting the contacts currently connected by the i-th wire. The\nremaining n - 1 lines contain the description of the sought scheme in the same\nformat. It is guaranteed that the starting and the ending schemes are correct\n(i. e. do not contain cicuits nor wires connecting contact with itself).\nOutput The first line should contain k (k \u2265 0) \u2014 the minimum number of moves\nof unplugging and plugging back some wire required to defuse the bomb. In each\nof the following k lines output four integers ai, bi, ci, di meaning that on\nthe i-th step it is neccesary to unplug the wire connecting the contacts ai\nand bi and plug it to the contacts ci and di. Of course the wire connecting\ncontacts ai and bi should be present in the scheme. If there is no correct\nsequence transforming the existing scheme into the sought one, output -1.\nExamples Input 3 1 2 2 3 1 3 3 2 Output 1 1 2 1 3 Input 4 1 2 2 3 3 4 2 4 4 1\n1 3 Output 3 1 2 1 3 4 3 4 1 2 3 2 4 Note Picture with the clarification for\nthe sample tests:\n\n",
+        "cf_contest_id": 650,
+        "cf_index": "E",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "greedy",
+            "trees"
+        ],
+        "time_limit_seconds": 6.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n1 2\r\n2 3\r\n1 3\r\n3 2\r\n",
+                "1\r\n2 1 3 1\r\n"
+            ],
+            [
+                "4\r\n1 2\r\n2 3\r\n3 4\r\n2 4\r\n4 1\r\n1 3\r\n",
+                "3\r\n4 3 4 1\r\n3 2 3 1\r\n2 1 2 4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n1 2\r\n2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "10\r\n2 1\r\n3 1\r\n4 1\r\n5 1\r\n6 5\r\n7 2\r\n8 3\r\n9 4\r\n10 8\r\n2 1\r\n3 1\r\n4 1\r\n6 5\r\n7 2\r\n6 1\r\n8 3\r\n9 4\r\n10 8\r\n",
+                "1\r\n5 1 6 1\r\n"
+            ],
+            [
+                "10\r\n1 2\r\n3 2\r\n9 2\r\n10 2\r\n6 10\r\n4 1\r\n7 3\r\n8 9\r\n5 7\r\n1 2\r\n3 2\r\n9 2\r\n6 10\r\n4 1\r\n6 2\r\n7 3\r\n8 9\r\n5 7\r\n",
+                "1\r\n10 2 6 2\r\n"
+            ],
+            [
+                "10\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n8 9\r\n9 10\r\n1 2\r\n2 7\r\n2 3\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n8 9\r\n9 10\r\n",
+                "1\r\n4 3 7 2\r\n"
+            ],
+            [
+                "10\r\n2 1\r\n1 3\r\n3 9\r\n9 10\r\n10 6\r\n6 4\r\n4 7\r\n7 8\r\n8 5\r\n2 1\r\n1 4\r\n1 3\r\n9 10\r\n10 6\r\n6 4\r\n4 7\r\n7 8\r\n8 5\r\n",
+                "1\r\n9 3 4 1\r\n"
+            ],
+            [
+                "10\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n1 2\r\n1 3\r\n1 4\r\n1 6\r\n1 7\r\n1 8\r\n5 9\r\n1 9\r\n1 10\r\n",
+                "1\r\n5 1 5 9\r\n"
+            ],
+            [
+                "10\r\n2 1\r\n2 3\r\n2 9\r\n2 10\r\n2 6\r\n2 4\r\n2 7\r\n2 8\r\n2 5\r\n2 1\r\n2 3\r\n2 9\r\n2 6\r\n2 4\r\n2 7\r\n10 8\r\n2 8\r\n2 5\r\n",
+                "1\r\n10 2 10 8\r\n"
+            ],
+            [
+                "5\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n2 5\r\n5 3\r\n3 1\r\n1 4\r\n",
+                "4\r\n5 4 5 3\r\n4 3 4 1\r\n3 2 3 1\r\n2 1 2 5\r\n"
+            ],
+            [
+                "6\r\n2 1\r\n3 2\r\n4 3\r\n5 3\r\n6 4\r\n2 1\r\n3 1\r\n4 1\r\n5 4\r\n6 4\r\n",
+                "3\r\n4 3 4 1\r\n5 3 5 4\r\n3 2 3 1\r\n"
+            ],
+            [
+                "5\r\n2 1\r\n3 2\r\n4 3\r\n5 4\r\n2 1\r\n3 1\r\n4 1\r\n5 1\r\n",
+                "3\r\n5 4 5 1\r\n4 3 4 1\r\n3 2 3 1\r\n"
+            ]
+        ]
+    }
+]

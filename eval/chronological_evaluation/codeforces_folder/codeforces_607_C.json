@@ -1,0 +1,64 @@
+[
+    {
+        "name": "Marbles",
+        "description": "In the spirit of the holidays, Saitama has given Genos two grid paths of\nlength n (a weird gift even by Saitama's standards). A grid path is an ordered\nsequence of neighbouring squares in an infinite grid. Two squares are\nneighbouring if they share a side. One example of a grid path is (0, 0) \u2192 (0,\n1) \u2192 (0, 2) \u2192 (1, 2) \u2192 (1, 1) \u2192 (0, 1) \u2192 ( - 1, 1). Note that squares in this\nsequence might be repeated, i.e. path has self intersections. Movement within\na grid path is restricted to adjacent squares within the sequence. That is,\nfrom the i-th square, one can only move to the (i - 1)-th or (i + 1)-th\nsquares of this path. Note that there is only a single valid move from the\nfirst and last squares of a grid path. Also note, that even if there is some\nj-th square of the path that coincides with the i-th square, only moves to (i\n- 1)-th and (i + 1)-th squares are available. For example, from the second\nsquare in the above sequence, one can only move to either the first or third\nsquares. To ensure that movement is not ambiguous, the two grid paths will not\nhave an alternating sequence of three squares. For example, a contiguous\nsubsequence (0, 0) \u2192 (0, 1) \u2192 (0, 0) cannot occur in a valid grid path. One\nmarble is placed on the first square of each grid path. Genos wants to get\nboth marbles to the last square of each grid path. However, there is a catch.\nWhenever he moves one marble, the other marble will copy its movement if\npossible. For instance, if one marble moves east, then the other marble will\ntry and move east as well. By try, we mean if moving east is a valid move,\nthen the marble will move east. Moving north increases the second coordinate\nby 1, while moving south decreases it by 1. Similarly, moving east increases\nfirst coordinate by 1, while moving west decreases it. Given these two valid\ngrid paths, Genos wants to know if it is possible to move both marbles to the\nends of their respective paths. That is, if it is possible to move the marbles\nsuch that both marbles rest on the last square of their respective paths.\nInput The first line of the input contains a single integer n (2 \u2264 n \u2264 1 000\n000) \u2014 the length of the paths. The second line of the input contains a string\nconsisting of n - 1 characters (each of which is either 'N', 'E', 'S', or 'W')\n\u2014 the first grid path. The characters can be thought of as the sequence of\nmoves needed to traverse the grid path. For example, the example path in the\nproblem statement can be expressed by the string \"NNESWW\". The third line of\nthe input contains a string of n - 1 characters (each of which is either 'N',\n'E', 'S', or 'W') \u2014 the second grid path. Output Print \"YES\" (without quotes)\nif it is possible for both marbles to be at the end position at the same time.\nPrint \"NO\" (without quotes) otherwise. In both cases, the answer is case-\ninsensitive. Examples Input 7 NNESWW SWSWSW Output YES Input 3 NN SS Output NO\nNote In the first sample, the first grid path is the one described in the\nstatement. Moreover, the following sequence of moves will get both marbles to\nthe end: NNESWWSWSW. In the second sample, no sequence of moves can get both\nmarbles to the end.\n\n",
+        "cf_contest_id": 607,
+        "cf_index": "C",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "hashing",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7\r\nNNESWW\r\nSWSWSW\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3\r\nNN\r\nSS\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\nES\r\nNW\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\nWSSE\r\nWNNE\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2\r\nE\r\nE\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2\r\nW\r\nS\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2\r\nS\r\nN\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100\r\nWNWWSWWSESWWWSSSSWSSEENWNWWWWNNENESWSESSENEENNWWWWWSSWSWSENESWNEENESWWNNEESESWSEEENWWNWNNWWNNWWWWSW\r\nEESEESSENWNWWWNWWNWWNWWSWNNWNWNWSWNNEENWSWNNESWSWNWSESENWSWSWWWWNNEESSSWSSESWWSSWSSWSWNEEESWWSSSSEN\r\n",
+                "NO\r\n"
+            ],
+            [
+                "200\r\nNESENEESEESWWWNWWSWSWNWNNWNNESWSWNNWNWNENESENNESSWSESWWSSSEEEESSENNNESSWWSSSSESWSWWNNEESSWWNNWSWSSWWNWNNEENNENWWNESSSENWNESWNESWNESEESSWNESSSSSESESSWNNENENESSWWNNWWSWWNESEENWWWWNWWNWWNENESESSWWSWWSES\r\nNWNESESSENNNESWNWWSWWWNWSESSSWWNWWNNWSENWSWNENNNWWSWWSWNNNESWWWSSESSWWWSSENWSENWWNENESESWNENNESWNWNNENNWWWSENWSWSSSENNWWNEESENNESEESSEESWWWWWWNWNNNESESWSSEEEESWNENWSESEEENWNNWWNWNNNNWWSSWNEENENEEEEEE\r\n",
+                "YES\r\n"
+            ],
+            [
+                "11\r\nWWNNNNWNWN\r\nENWSWWSSEE\r\n",
+                "YES\r\n"
+            ],
+            [
+                "12\r\nWNNWSWWSSSE\r\nNESWNNNWSSS\r\n",
+                "YES\r\n"
+            ]
+        ]
+    }
+]

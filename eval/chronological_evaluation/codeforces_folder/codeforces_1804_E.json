@@ -1,0 +1,375 @@
+[
+    {
+        "name": "Routing",
+        "description": "Ada operates a network that consists of \n    n\n servers and \n    m\n direct\nconnections between them. Each direct connection between a pair of distinct\nservers allows bidirectional transmission of information between these two\nservers. Ada knows that these \n    m\n direct connections allow to directly or\nindirectly transmit information between any two servers in this network. We\nsay that server \n    v\n is a neighbor of server \n    u\n if there exists a\ndirect connection between these two servers. Ada needs to configure her\nnetwork's WRP (Weird Routing Protocol). For each server \n    u\n she needs to\nselect exactly one of its neighbors as an auxiliary server \n    a(u)\n. After\nall \n    a(u)\n are set, routing works as follows. Suppose server \n    u\n wants\nto find a path to server \n    v\n (different from \n    u\n). Server \n    u\n\nchecks all of its direct connections to other servers. If it sees a direct\nconnection with server \n    v\n, it knows the path and the process terminates.\nIf the path was not found at the first step, server \n    u\n asks its auxiliary\nserver \n    a(u)\n to find the path. Auxiliary server \n    a(u)\n follows this\nprocess starting from the first step. After \n    a(u)\n finds the path, it\nreturns it to \n    u\n. Then server \n    u\n constructs the resulting path as\nthe direct connection between \n    u\n and \n    a(u)\n plus the path from\n\n    a(u)\n to \n    v\n. As you can see, this procedure either produces a\ncorrect path and finishes or keeps running forever. Thus, it is critically\nimportant for Ada to configure her network's WRP properly. Your goal is to\nassign an auxiliary server \n    a(u)\n for each server \n    u\n in the given\nnetwork. Your assignment should make it possible to construct a path from any\nserver \n    u\n to any other server \n    v\n using the aforementioned procedure.\nOr you should report that such an assignment doesn't exist. Input The first\nline of the input contains two integers \n    n\n and \n    m\n (\n    2 \n    \u2264 n\n    \n    \u2264 20\n, \n    n - 1 \n    \u2264 m \n    \u2264\n    n \n    \u00b7 (n - 1)/2\n) \u2014 the\nnumber of servers and the number of direct connections in the given network.\nThen follow \n    m\n lines containing two integers \n    u_i\n and \n    v_i\n\n(\n    1 \n    \u2264 u_i, v_i \n    \u2264 n\n, \n    u_i \n     v_i\n) each, the \n    i\n-th\nline describes the \n    i\n-th direct connection. It is guaranteed that there\nis no more than one direct connection between any two servers. It is\nguaranteed that there is a direct or indirect route (consisting only of the\ngiven direct connections) between any two servers. Output If there is no way\nto assign an auxiliary server \n    a(u)\n for each server \n    u\n in such a way\nthat WRP will be able to find a path from any server \n    u\n to any other\nserver \n    v\n, print \"No\" in the only line of the output. Otherwise, print\n\"Yes\" in the first line of the output. In the second line of the output print\n\n    n\n integers, the \n    i\n-th of these integers should be equal to\n\n    a(i)\n \u2013 the index of the auxiliary server for server \n    i\n. Do not\nforget that there must be a direct connection between server \n    i\n and\nserver \n    a(i)\n. You can output the answer in any case (upper or lower). For\nexample, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will be recognized as\npositive responses. Examples Input 6 7 1 2 2 3 3 1 4 5 5 6 4 6 2 5 Output Yes\n2 5 2 5 2 5 Input 3 2 1 2 2 3 Output Yes 2 1 2 Input 4 4 1 3 2 3 4 1 4 2\nOutput Yes 3 3 1 1 Input 6 5 1 2 2 3 3 4 4 5 5 6 Output No\n\n",
+        "cf_contest_id": 1804,
+        "cf_index": "E",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "6 7\r\n1 2\r\n2 3\r\n3 1\r\n4 5\r\n5 6\r\n4 6\r\n2 5\r\n",
+                "Yes\r\n2 5 2 5 2 5 "
+            ],
+            [
+                "3 2\r\n1 2\r\n2 3\r\n",
+                "Yes\r\n2 1 2 "
+            ],
+            [
+                "4 4\r\n1 3\r\n2 3\r\n4 1\r\n4 2\r\n",
+                "Yes\r\n3 3 1 1 "
+            ],
+            [
+                "6 5\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n",
+                "No"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n1 2\r\n",
+                "Yes\r\n2 1 "
+            ],
+            [
+                "4 3\r\n1 2\r\n2 3\r\n3 4\r\n",
+                "Yes\r\n2 3 2 3 "
+            ],
+            [
+                "4 6\r\n1 2\r\n1 3\r\n1 4\r\n2 3\r\n2 4\r\n3 4\r\n",
+                "Yes\r\n2 1 1 1 "
+            ],
+            [
+                "20 20\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n8 9\r\n9 10\r\n10 1\r\n1 11\r\n2 12\r\n3 13\r\n4 14\r\n5 15\r\n6 16\r\n7 17\r\n8 18\r\n9 19\r\n10 20\r\n",
+                "Yes\r\n2 3 4 5 6 7 8 9 10 1 1 2 3 4 5 6 7 8 9 10 "
+            ],
+            [
+                "20 40\r\n11 19\r\n17 10\r\n16 4\r\n13 15\r\n2 19\r\n20 6\r\n5 16\r\n20 1\r\n8 9\r\n12 8\r\n10 12\r\n3 2\r\n3 10\r\n10 18\r\n8 6\r\n14 6\r\n9 7\r\n2 12\r\n8 5\r\n13 7\r\n7 14\r\n20 18\r\n11 6\r\n17 13\r\n4 14\r\n11 16\r\n5 2\r\n14 18\r\n15 18\r\n6 19\r\n6 4\r\n3 13\r\n19 3\r\n16 9\r\n7 6\r\n15 17\r\n16 6\r\n2 18\r\n5 4\r\n1 12\r\n",
+                "Yes\r\n20 12 10 6 8 8 13 9 7 12 6 1 15 6 18 9 10 10 6 6 "
+            ],
+            [
+                "20 32\r\n2 4\r\n19 16\r\n18 9\r\n8 18\r\n5 9\r\n5 8\r\n10 5\r\n2 11\r\n20 17\r\n4 11\r\n11 14\r\n2 8\r\n12 1\r\n15 7\r\n13 5\r\n12 2\r\n20 7\r\n3 19\r\n10 1\r\n7 4\r\n9 13\r\n10 6\r\n13 4\r\n2 19\r\n17 15\r\n3 9\r\n13 2\r\n3 17\r\n20 10\r\n5 2\r\n10 7\r\n6 20\r\n",
+                "Yes\r\n10 11 19 7 9 10 15 5 3 5 4 2 5 11 17 19 20 9 2 10 "
+            ],
+            [
+                "10 9\r\n6 10\r\n9 4\r\n5 3\r\n7 6\r\n4 3\r\n1 8\r\n8 6\r\n8 2\r\n6 9\r\n",
+                "No"
+            ],
+            [
+                "10 10\r\n4 10\r\n5 2\r\n9 5\r\n2 6\r\n1 4\r\n2 1\r\n5 7\r\n3 2\r\n9 6\r\n6 8\r\n",
+                "No"
+            ],
+            [
+                "10 11\r\n7 4\r\n10 7\r\n1 2\r\n6 9\r\n10 6\r\n9 8\r\n6 2\r\n3 4\r\n5 2\r\n8 5\r\n7 2\r\n",
+                "No"
+            ],
+            [
+                "10 12\r\n10 3\r\n1 5\r\n4 9\r\n6 3\r\n7 4\r\n9 2\r\n3 2\r\n4 10\r\n1 7\r\n9 5\r\n10 5\r\n8 3\r\n",
+                "Yes\r\n5 3 10 7 9 3 1 3 2 4 "
+            ],
+            [
+                "10 15\r\n9 8\r\n8 7\r\n4 6\r\n5 9\r\n6 5\r\n4 10\r\n2 1\r\n6 8\r\n2 7\r\n2 3\r\n2 5\r\n8 5\r\n6 1\r\n8 3\r\n10 2\r\n",
+                "Yes\r\n2 7 2 6 6 1 8 9 5 2 "
+            ],
+            [
+                "10 20\r\n4 6\r\n4 1\r\n3 5\r\n6 7\r\n2 8\r\n10 1\r\n1 9\r\n1 2\r\n3 8\r\n7 8\r\n8 6\r\n4 7\r\n3 1\r\n6 3\r\n4 8\r\n7 10\r\n3 10\r\n10 4\r\n7 3\r\n7 2\r\n",
+                "Yes\r\n4 8 1 6 3 7 8 3 1 1 "
+            ],
+            [
+                "20 25\r\n14 12\r\n9 1\r\n8 9\r\n16 9\r\n5 16\r\n17 10\r\n10 13\r\n11 14\r\n2 6\r\n16 7\r\n4 2\r\n18 5\r\n17 1\r\n10 6\r\n5 20\r\n14 4\r\n15 5\r\n5 17\r\n16 3\r\n16 8\r\n11 15\r\n2 20\r\n11 10\r\n9 19\r\n18 16\r\n",
+                "Yes\r\n9 4 16 14 20 2 16 16 8 17 10 14 10 11 5 5 1 5 9 2 "
+            ],
+            [
+                "20 26\r\n12 17\r\n10 11\r\n3 14\r\n7 9\r\n16 3\r\n16 5\r\n7 17\r\n1 2\r\n20 4\r\n9 6\r\n4 9\r\n7 10\r\n7 19\r\n1 8\r\n18 12\r\n5 15\r\n18 4\r\n14 7\r\n13 16\r\n7 15\r\n8 18\r\n6 16\r\n19 20\r\n2 19\r\n5 20\r\n6 2\r\n",
+                "No"
+            ],
+            [
+                "20 27\r\n14 18\r\n15 5\r\n11 17\r\n3 9\r\n8 2\r\n2 9\r\n6 9\r\n17 7\r\n18 11\r\n10 5\r\n19 6\r\n10 18\r\n1 17\r\n19 16\r\n13 7\r\n14 8\r\n17 9\r\n2 15\r\n15 10\r\n16 1\r\n4 10\r\n9 13\r\n17 5\r\n13 18\r\n5 12\r\n7 20\r\n12 8\r\n",
+                "Yes\r\n17 9 9 10 10 19 13 12 6 15 17 5 18 8 2 1 7 14 16 7 "
+            ],
+            [
+                "20 28\r\n19 2\r\n20 6\r\n16 2\r\n13 2\r\n11 10\r\n15 3\r\n12 1\r\n15 7\r\n13 7\r\n9 14\r\n12 15\r\n12 10\r\n16 14\r\n4 12\r\n17 15\r\n18 1\r\n20 16\r\n8 15\r\n2 3\r\n9 5\r\n18 20\r\n18 11\r\n5 11\r\n17 16\r\n11 1\r\n15 18\r\n1 10\r\n7 20\r\n",
+                "Yes\r\n12 13 2 12 11 20 20 15 5 1 10 15 7 9 3 14 15 1 2 16 "
+            ],
+            [
+                "20 29\r\n4 1\r\n12 7\r\n1 20\r\n19 6\r\n5 10\r\n19 5\r\n18 14\r\n15 13\r\n14 16\r\n6 11\r\n2 4\r\n9 1\r\n8 16\r\n8 5\r\n13 12\r\n16 12\r\n15 16\r\n3 14\r\n6 20\r\n20 12\r\n8 14\r\n2 19\r\n12 8\r\n13 11\r\n17 5\r\n18 13\r\n16 19\r\n13 14\r\n20 10\r\n",
+                "Yes\r\n4 19 14 2 10 11 12 5 1 20 13 16 12 8 13 14 5 14 6 1 "
+            ],
+            [
+                "20 30\r\n1 18\r\n20 3\r\n19 17\r\n3 4\r\n11 19\r\n14 7\r\n5 16\r\n12 17\r\n2 16\r\n5 15\r\n7 20\r\n2 3\r\n8 20\r\n15 10\r\n12 20\r\n2 11\r\n6 5\r\n8 10\r\n2 18\r\n8 9\r\n12 8\r\n7 4\r\n6 7\r\n1 5\r\n2 4\r\n8 4\r\n3 16\r\n13 9\r\n6 2\r\n1 13\r\n",
+                "Yes\r\n18 11 4 7 15 5 6 9 13 8 19 20 1 7 10 5 12 2 17 3 "
+            ],
+            [
+                "20 80\r\n1 9\r\n1 3\r\n16 5\r\n14 13\r\n10 15\r\n18 12\r\n17 19\r\n2 3\r\n3 10\r\n15 20\r\n4 10\r\n20 1\r\n12 14\r\n8 14\r\n7 15\r\n14 3\r\n5 4\r\n8 4\r\n5 13\r\n12 5\r\n2 16\r\n7 4\r\n1 19\r\n8 19\r\n1 11\r\n12 11\r\n17 4\r\n1 18\r\n7 5\r\n8 1\r\n17 10\r\n3 9\r\n7 17\r\n20 3\r\n3 15\r\n5 19\r\n17 2\r\n6 5\r\n9 19\r\n18 8\r\n16 11\r\n8 3\r\n14 2\r\n18 7\r\n15 12\r\n15 9\r\n15 2\r\n9 16\r\n17 3\r\n20 2\r\n6 10\r\n20 12\r\n10 16\r\n6 13\r\n8 10\r\n19 14\r\n7 2\r\n8 11\r\n14 6\r\n18 17\r\n8 2\r\n13 4\r\n16 14\r\n16 15\r\n19 12\r\n17 13\r\n7 11\r\n6 11\r\n19 20\r\n10 1\r\n6 7\r\n14 18\r\n14 1\r\n18 13\r\n16 18\r\n3 4\r\n8 15\r\n5 8\r\n4 18\r\n12 10\r\n",
+                "Yes\r\n9 16 2 10 4 5 15 4 3 15 1 5 5 3 20 5 4 1 1 1 "
+            ],
+            [
+                "20 40\r\n10 14\r\n7 3\r\n17 15\r\n7 16\r\n8 11\r\n1 17\r\n6 18\r\n5 19\r\n4 6\r\n15 13\r\n4 17\r\n7 12\r\n10 20\r\n10 5\r\n14 2\r\n13 3\r\n9 4\r\n20 17\r\n20 1\r\n4 7\r\n19 13\r\n2 8\r\n3 4\r\n19 6\r\n19 14\r\n9 10\r\n8 12\r\n11 20\r\n4 13\r\n16 12\r\n9 14\r\n9 18\r\n15 18\r\n11 7\r\n11 9\r\n13 12\r\n1 18\r\n10 12\r\n1 4\r\n7 17\r\n",
+                "Yes\r\n17 14 7 1 19 18 16 11 4 14 20 8 3 19 13 12 15 9 6 10 "
+            ],
+            [
+                "20 41\r\n9 10\r\n2 10\r\n11 1\r\n17 20\r\n13 6\r\n11 16\r\n17 3\r\n9 20\r\n18 17\r\n19 4\r\n20 7\r\n8 12\r\n12 15\r\n9 19\r\n2 5\r\n15 2\r\n13 7\r\n17 6\r\n2 6\r\n6 20\r\n5 12\r\n18 16\r\n9 6\r\n7 15\r\n17 19\r\n16 12\r\n1 16\r\n7 3\r\n1 10\r\n12 14\r\n13 10\r\n16 13\r\n1 3\r\n14 15\r\n19 11\r\n11 4\r\n16 19\r\n5 4\r\n12 20\r\n4 6\r\n18 4\r\n",
+                "Yes\r\n11 5 1 11 12 17 3 12 10 2 16 15 7 12 7 18 20 17 9 9 "
+            ],
+            [
+                "20 43\r\n17 8\r\n7 10\r\n4 1\r\n3 20\r\n7 20\r\n5 20\r\n11 10\r\n8 2\r\n7 15\r\n3 15\r\n1 3\r\n4 2\r\n6 13\r\n16 5\r\n13 5\r\n11 14\r\n10 19\r\n14 6\r\n12 16\r\n3 11\r\n1 14\r\n17 4\r\n17 2\r\n10 15\r\n19 14\r\n16 6\r\n6 1\r\n19 3\r\n3 10\r\n12 11\r\n15 16\r\n4 18\r\n11 17\r\n2 7\r\n3 12\r\n20 18\r\n6 3\r\n7 9\r\n7 12\r\n11 6\r\n3 5\r\n11 19\r\n9 20\r\n",
+                "Yes\r\n4 8 15 2 13 14 20 17 7 7 10 16 6 1 16 5 11 4 10 3 "
+            ],
+            [
+                "20 45\r\n12 16\r\n1 16\r\n12 9\r\n14 9\r\n5 15\r\n4 17\r\n19 18\r\n18 8\r\n11 6\r\n20 16\r\n9 7\r\n10 20\r\n2 1\r\n2 16\r\n17 14\r\n10 15\r\n2 19\r\n4 15\r\n13 7\r\n4 12\r\n19 3\r\n10 19\r\n10 2\r\n3 6\r\n3 18\r\n14 19\r\n15 20\r\n8 15\r\n5 7\r\n3 7\r\n12 15\r\n14 6\r\n19 9\r\n4 7\r\n8 5\r\n13 11\r\n3 9\r\n19 1\r\n6 19\r\n13 9\r\n1 11\r\n10 3\r\n17 15\r\n20 5\r\n15 11\r\n",
+                "Yes\r\n16 1 19 15 7 3 13 15 14 15 6 9 11 17 5 12 4 19 2 16 "
+            ],
+            [
+                "20 47\r\n11 15\r\n20 15\r\n12 8\r\n6 9\r\n3 17\r\n13 15\r\n19 4\r\n7 9\r\n16 13\r\n17 11\r\n17 20\r\n9 15\r\n19 18\r\n6 16\r\n13 19\r\n2 17\r\n12 16\r\n9 1\r\n17 15\r\n15 4\r\n7 4\r\n9 14\r\n4 20\r\n2 5\r\n5 10\r\n1 3\r\n3 9\r\n15 6\r\n18 11\r\n18 5\r\n11 7\r\n13 4\r\n16 10\r\n19 10\r\n5 20\r\n17 6\r\n4 3\r\n19 8\r\n15 19\r\n13 3\r\n19 14\r\n5 16\r\n15 10\r\n16 15\r\n1 6\r\n5 1\r\n18 12\r\n",
+                "Yes\r\n9 17 4 19 1 16 9 19 6 5 17 16 15 9 11 13 3 5 18 15 "
+            ],
+            [
+                "20 21\r\n13 5\r\n19 17\r\n3 9\r\n16 18\r\n3 19\r\n19 7\r\n1 6\r\n1 9\r\n18 2\r\n20 4\r\n12 1\r\n14 20\r\n15 3\r\n20 5\r\n4 11\r\n20 15\r\n19 14\r\n7 20\r\n7 8\r\n16 13\r\n10 12\r\n",
+                "No"
+            ],
+            [
+                "7 6\r\n3 7\r\n3 1\r\n3 2\r\n4 3\r\n3 6\r\n5 2\r\n",
+                "Yes\r\n3 3 2 3 2 3 3 "
+            ],
+            [
+                "7 7\r\n6 2\r\n3 1\r\n4 6\r\n4 1\r\n2 3\r\n5 6\r\n5 7\r\n",
+                "No"
+            ],
+            [
+                "7 8\r\n4 3\r\n3 2\r\n1 7\r\n5 7\r\n7 6\r\n5 3\r\n3 6\r\n5 2\r\n",
+                "Yes\r\n7 3 6 3 2 7 5 "
+            ],
+            [
+                "7 9\r\n3 1\r\n3 6\r\n5 6\r\n5 4\r\n2 4\r\n4 1\r\n3 7\r\n7 2\r\n1 2\r\n",
+                "Yes\r\n3 1 6 2 4 5 3 "
+            ],
+            [
+                "7 10\r\n6 7\r\n3 5\r\n5 1\r\n2 7\r\n3 1\r\n4 1\r\n6 5\r\n7 1\r\n1 2\r\n5 2\r\n",
+                "Yes\r\n5 1 1 1 3 5 1 "
+            ],
+            [
+                "7 13\r\n1 5\r\n5 2\r\n6 3\r\n6 7\r\n1 7\r\n6 1\r\n6 5\r\n2 6\r\n4 5\r\n4 3\r\n7 2\r\n2 4\r\n3 2\r\n",
+                "Yes\r\n5 6 6 5 2 7 1 "
+            ],
+            [
+                "7 15\r\n6 4\r\n7 4\r\n2 6\r\n5 2\r\n5 1\r\n5 6\r\n1 2\r\n4 5\r\n7 1\r\n4 1\r\n5 3\r\n3 6\r\n3 7\r\n4 2\r\n3 2\r\n",
+                "Yes\r\n5 6 5 7 2 4 1 "
+            ],
+            [
+                "7 18\r\n1 6\r\n2 7\r\n7 3\r\n2 5\r\n6 2\r\n2 3\r\n5 7\r\n3 4\r\n5 6\r\n5 1\r\n3 1\r\n1 2\r\n4 6\r\n5 3\r\n7 6\r\n2 4\r\n4 1\r\n4 7\r\n",
+                "Yes\r\n6 6 1 6 6 1 6 "
+            ],
+            [
+                "7 20\r\n1 2\r\n4 7\r\n5 2\r\n6 7\r\n6 2\r\n3 7\r\n6 1\r\n1 7\r\n2 7\r\n1 4\r\n2 4\r\n4 5\r\n6 3\r\n3 2\r\n6 5\r\n6 4\r\n1 5\r\n3 5\r\n1 3\r\n5 7\r\n",
+                "Yes\r\n2 1 2 1 2 2 1 "
+            ],
+            [
+                "20 20\r\n7 2\r\n14 2\r\n1 4\r\n2 16\r\n6 1\r\n7 3\r\n2 17\r\n13 2\r\n2 19\r\n15 7\r\n7 8\r\n1 2\r\n2 20\r\n1 7\r\n7 5\r\n7 9\r\n12 7\r\n11 1\r\n2 10\r\n1 18\r\n",
+                "Yes\r\n2 7 7 1 7 1 1 7 7 2 1 7 2 2 7 2 2 1 2 2 "
+            ],
+            [
+                "20 20\r\n5 12\r\n12 14\r\n7 8\r\n15 5\r\n9 7\r\n5 3\r\n5 1\r\n20 12\r\n7 19\r\n20 18\r\n5 4\r\n4 7\r\n7 20\r\n6 5\r\n10 5\r\n11 7\r\n13 20\r\n7 17\r\n12 16\r\n2 20\r\n",
+                "Yes\r\n5 20 5 5 12 5 4 7 7 5 7 20 20 12 5 12 7 20 7 7 "
+            ],
+            [
+                "20 20\r\n2 4\r\n9 1\r\n18 6\r\n2 11\r\n2 19\r\n10 6\r\n16 2\r\n17 18\r\n6 7\r\n9 6\r\n9 8\r\n19 5\r\n15 5\r\n20 2\r\n3 13\r\n12 5\r\n9 14\r\n18 3\r\n9 5\r\n3 20\r\n",
+                "Yes\r\n9 19 20 2 9 18 6 9 6 6 2 5 3 9 5 2 18 3 5 2 "
+            ],
+            [
+                "20 20\r\n16 15\r\n9 14\r\n20 19\r\n18 7\r\n19 12\r\n15 9\r\n2 11\r\n8 2\r\n12 6\r\n9 7\r\n2 7\r\n17 2\r\n4 17\r\n15 6\r\n19 13\r\n10 17\r\n10 5\r\n1 15\r\n10 13\r\n13 3\r\n",
+                "Yes\r\n15 7 13 17 10 12 9 2 15 17 2 19 10 9 6 15 2 7 13 19 "
+            ],
+            [
+                "20 20\r\n15 7\r\n20 6\r\n20 19\r\n11 18\r\n8 18\r\n17 18\r\n9 14\r\n8 1\r\n7 3\r\n12 4\r\n15 2\r\n10 15\r\n5 14\r\n19 18\r\n5 10\r\n1 16\r\n12 16\r\n9 6\r\n13 8\r\n3 12\r\n",
+                "Yes\r\n8 15 12 12 10 9 3 18 14 15 18 16 8 5 7 1 18 19 20 6 "
+            ],
+            [
+                "20 20\r\n14 6\r\n4 17\r\n18 15\r\n2 20\r\n8 3\r\n14 11\r\n4 19\r\n5 1\r\n8 9\r\n13 7\r\n11 12\r\n20 10\r\n1 15\r\n17 3\r\n10 7\r\n6 19\r\n18 2\r\n5 12\r\n7 16\r\n13 9\r\n",
+                "Yes\r\n5 18 8 17 12 19 10 9 13 20 14 11 7 6 1 7 3 15 4 2 "
+            ],
+            [
+                "20 20\r\n18 19\r\n9 8\r\n7 6\r\n12 8\r\n13 1\r\n13 14\r\n14 20\r\n4 17\r\n10 15\r\n7 2\r\n11 15\r\n5 16\r\n18 16\r\n10 1\r\n9 6\r\n2 3\r\n20 3\r\n12 4\r\n5 17\r\n19 11\r\n",
+                "Yes\r\n13 7 2 17 16 9 6 12 8 1 15 4 14 20 10 18 5 19 11 3 "
+            ],
+            [
+                "20 19\r\n4 6\r\n7 5\r\n6 3\r\n1 2\r\n3 12\r\n14 6\r\n18 13\r\n6 1\r\n6 11\r\n15 10\r\n3 19\r\n14 10\r\n8 15\r\n16 8\r\n18 19\r\n12 17\r\n5 12\r\n9 8\r\n6 20\r\n",
+                "No"
+            ],
+            [
+                "20 20\r\n20 2\r\n4 19\r\n1 7\r\n12 10\r\n15 9\r\n8 13\r\n14 4\r\n2 3\r\n6 12\r\n13 5\r\n11 7\r\n20 15\r\n17 8\r\n7 4\r\n3 17\r\n2 12\r\n16 2\r\n18 10\r\n19 17\r\n2 19\r\n",
+                "No"
+            ],
+            [
+                "20 22\r\n5 17\r\n6 13\r\n11 14\r\n17 2\r\n4 12\r\n6 14\r\n9 5\r\n7 12\r\n3 17\r\n15 3\r\n3 20\r\n13 14\r\n4 10\r\n3 7\r\n19 5\r\n15 18\r\n8 13\r\n4 15\r\n7 18\r\n3 1\r\n16 15\r\n11 4\r\n",
+                "No"
+            ],
+            [
+                "20 23\r\n19 4\r\n13 1\r\n1 14\r\n7 9\r\n2 17\r\n11 18\r\n15 12\r\n7 10\r\n17 9\r\n11 1\r\n17 8\r\n18 15\r\n6 10\r\n11 15\r\n13 20\r\n18 5\r\n3 16\r\n7 4\r\n5 12\r\n6 3\r\n20 12\r\n20 6\r\n1 8\r\n",
+                "No"
+            ],
+            [
+                "20 24\r\n7 15\r\n5 10\r\n17 20\r\n4 6\r\n18 1\r\n16 3\r\n6 9\r\n3 20\r\n10 11\r\n14 7\r\n9 17\r\n15 19\r\n2 5\r\n9 14\r\n8 20\r\n12 18\r\n10 3\r\n12 16\r\n1 11\r\n6 20\r\n17 18\r\n5 16\r\n19 6\r\n13 4\r\n",
+                "No"
+            ],
+            [
+                "20 20\r\n17 19\r\n7 9\r\n17 15\r\n2 15\r\n13 20\r\n3 10\r\n8 12\r\n8 5\r\n3 20\r\n18 4\r\n18 6\r\n11 1\r\n14 10\r\n1 13\r\n16 9\r\n11 5\r\n19 16\r\n2 12\r\n6 14\r\n7 4\r\n",
+                "Yes\r\n11 15 20 18 8 14 4 12 7 3 5 2 1 10 17 9 19 6 16 13 "
+            ],
+            [
+                "20 22\r\n2 4\r\n8 10\r\n14 15\r\n12 20\r\n19 18\r\n18 8\r\n17 9\r\n3 13\r\n20 16\r\n17 10\r\n2 11\r\n4 7\r\n1 5\r\n5 14\r\n9 12\r\n3 12\r\n2 12\r\n9 15\r\n7 19\r\n1 6\r\n13 11\r\n16 6\r\n",
+                "Yes\r\n5 11 12 2 14 1 4 18 17 8 13 20 3 15 9 6 10 19 7 16 "
+            ],
+            [
+                "20 24\r\n14 13\r\n8 17\r\n2 8\r\n18 9\r\n10 9\r\n18 20\r\n6 1\r\n18 13\r\n4 15\r\n20 7\r\n14 2\r\n1 15\r\n11 4\r\n11 10\r\n3 16\r\n12 2\r\n9 16\r\n19 3\r\n17 10\r\n6 12\r\n8 11\r\n13 12\r\n5 7\r\n5 19\r\n",
+                "Yes\r\n6 14 16 15 19 12 5 2 10 11 4 2 18 13 1 9 10 20 3 7 "
+            ],
+            [
+                "20 26\r\n4 5\r\n5 20\r\n12 13\r\n4 12\r\n10 6\r\n17 13\r\n18 15\r\n1 19\r\n6 2\r\n18 3\r\n3 13\r\n9 8\r\n3 8\r\n4 13\r\n17 1\r\n7 2\r\n10 19\r\n17 11\r\n9 1\r\n7 12\r\n4 14\r\n14 7\r\n16 11\r\n20 15\r\n14 16\r\n7 6\r\n",
+                "Yes\r\n19 7 8 5 20 2 12 9 1 6 16 13 17 4 18 14 11 3 10 15 "
+            ],
+            [
+                "20 28\r\n19 18\r\n16 12\r\n6 14\r\n4 17\r\n18 8\r\n11 17\r\n7 5\r\n2 16\r\n13 18\r\n18 4\r\n17 15\r\n2 10\r\n3 5\r\n16 5\r\n19 8\r\n1 12\r\n7 4\r\n10 13\r\n19 9\r\n14 11\r\n6 1\r\n14 20\r\n12 3\r\n15 19\r\n9 11\r\n18 9\r\n16 9\r\n20 15\r\n",
+                "Yes\r\n12 10 12 17 16 1 4 18 11 13 14 16 18 6 17 2 11 4 18 14 "
+            ],
+            [
+                "20 30\r\n17 7\r\n15 13\r\n9 5\r\n10 4\r\n12 7\r\n13 12\r\n2 8\r\n14 2\r\n12 15\r\n20 2\r\n18 3\r\n19 1\r\n3 8\r\n15 16\r\n20 11\r\n2 4\r\n13 18\r\n8 20\r\n6 1\r\n19 9\r\n16 14\r\n1 5\r\n12 10\r\n6 2\r\n11 19\r\n10 11\r\n9 15\r\n4 14\r\n8 9\r\n17 5\r\n",
+                "Yes\r\n19 6 8 10 17 1 12 2 5 11 20 13 15 4 16 14 7 13 9 8 "
+            ],
+            [
+                "20 32\r\n15 20\r\n7 14\r\n2 1\r\n11 15\r\n19 16\r\n4 7\r\n12 9\r\n13 7\r\n17 18\r\n1 9\r\n10 18\r\n16 8\r\n8 14\r\n1 13\r\n7 2\r\n5 16\r\n8 19\r\n12 19\r\n6 16\r\n16 13\r\n20 10\r\n20 5\r\n19 20\r\n17 11\r\n9 20\r\n11 12\r\n5 6\r\n2 4\r\n3 10\r\n1 6\r\n19 4\r\n15 3\r\n",
+                "Yes\r\n2 7 10 7 6 1 14 16 12 20 15 11 7 8 3 19 11 10 12 5 "
+            ],
+            [
+                "20 34\r\n16 17\r\n16 3\r\n5 8\r\n7 1\r\n2 12\r\n10 1\r\n15 8\r\n11 15\r\n18 16\r\n17 11\r\n17 4\r\n8 17\r\n6 11\r\n2 5\r\n6 8\r\n18 14\r\n2 19\r\n20 12\r\n14 6\r\n20 2\r\n10 5\r\n7 18\r\n13 19\r\n20 3\r\n4 9\r\n13 7\r\n13 17\r\n15 14\r\n10 9\r\n16 10\r\n10 18\r\n13 6\r\n2 15\r\n1 12\r\n",
+                "Yes\r\n7 5 16 17 10 13 18 6 10 1 15 2 19 18 8 17 11 16 2 2 "
+            ],
+            [
+                "20 36\r\n15 13\r\n13 19\r\n2 12\r\n7 11\r\n10 1\r\n1 18\r\n18 14\r\n5 17\r\n3 17\r\n11 14\r\n16 11\r\n15 9\r\n19 20\r\n15 5\r\n15 8\r\n2 5\r\n11 4\r\n7 2\r\n7 18\r\n18 20\r\n12 19\r\n11 3\r\n11 13\r\n1 17\r\n8 6\r\n20 13\r\n12 6\r\n12 11\r\n16 4\r\n15 19\r\n5 20\r\n8 10\r\n6 5\r\n13 1\r\n3 4\r\n9 3\r\n",
+                "Yes\r\n10 12 17 11 17 5 2 15 15 8 7 6 19 11 13 11 1 14 20 18 "
+            ],
+            [
+                "20 38\r\n19 12\r\n3 11\r\n18 12\r\n5 20\r\n13 6\r\n5 18\r\n10 16\r\n10 2\r\n19 3\r\n16 4\r\n17 20\r\n2 3\r\n4 9\r\n8 9\r\n15 8\r\n13 1\r\n16 13\r\n2 12\r\n1 9\r\n7 14\r\n10 15\r\n14 1\r\n11 17\r\n3 5\r\n18 16\r\n20 7\r\n8 1\r\n5 15\r\n14 5\r\n19 5\r\n19 14\r\n19 20\r\n9 15\r\n6 5\r\n10 17\r\n2 6\r\n19 8\r\n4 14\r\n",
+                "Yes\r\n13 10 19 14 20 5 14 9 4 15 3 18 6 1 8 10 11 16 12 17 "
+            ],
+            [
+                "20 40\r\n7 2\r\n3 17\r\n18 7\r\n11 6\r\n19 9\r\n20 14\r\n7 3\r\n16 4\r\n1 10\r\n16 19\r\n20 9\r\n10 19\r\n2 20\r\n4 14\r\n7 16\r\n11 5\r\n17 8\r\n5 3\r\n9 15\r\n4 8\r\n6 15\r\n17 5\r\n8 2\r\n15 12\r\n16 20\r\n10 11\r\n18 16\r\n11 17\r\n12 1\r\n7 1\r\n20 6\r\n18 13\r\n1 3\r\n11 12\r\n9 10\r\n2 13\r\n14 13\r\n9 11\r\n10 3\r\n14 6\r\n",
+                "Yes\r\n10 8 5 16 11 15 2 17 20 19 6 1 2 4 12 7 3 7 9 14 "
+            ],
+            [
+                "20 42\r\n20 5\r\n17 3\r\n9 10\r\n11 4\r\n6 7\r\n14 6\r\n4 19\r\n12 5\r\n6 15\r\n5 9\r\n3 8\r\n13 9\r\n19 20\r\n7 20\r\n16 7\r\n2 11\r\n18 2\r\n7 18\r\n9 19\r\n16 18\r\n2 3\r\n13 18\r\n10 5\r\n18 6\r\n12 14\r\n10 17\r\n18 15\r\n15 13\r\n10 1\r\n12 6\r\n14 13\r\n1 15\r\n13 12\r\n1 12\r\n15 16\r\n17 9\r\n8 5\r\n7 13\r\n4 10\r\n3 10\r\n10 8\r\n6 19\r\n",
+                "Yes\r\n10 18 2 11 20 14 6 5 5 9 2 13 15 12 1 7 10 7 4 19 "
+            ],
+            [
+                "20 44\r\n12 9\r\n15 3\r\n14 6\r\n17 5\r\n6 1\r\n10 1\r\n11 2\r\n4 17\r\n4 3\r\n17 20\r\n6 7\r\n19 20\r\n18 10\r\n11 1\r\n18 2\r\n14 20\r\n15 6\r\n12 2\r\n12 17\r\n10 4\r\n19 5\r\n10 11\r\n17 19\r\n9 8\r\n11 5\r\n6 8\r\n7 13\r\n5 4\r\n16 17\r\n5 9\r\n19 15\r\n20 6\r\n6 10\r\n20 3\r\n11 12\r\n8 16\r\n9 4\r\n15 8\r\n14 11\r\n19 6\r\n8 13\r\n5 16\r\n9 1\r\n17 3\r\n",
+                "Yes\r\n6 11 15 17 19 14 6 9 12 1 1 2 8 20 8 17 5 2 15 17 "
+            ],
+            [
+                "20 46\r\n15 16\r\n20 14\r\n17 3\r\n14 8\r\n18 6\r\n12 14\r\n4 20\r\n15 7\r\n8 13\r\n8 10\r\n11 17\r\n9 5\r\n7 11\r\n3 13\r\n4 15\r\n9 20\r\n9 1\r\n3 19\r\n12 15\r\n13 10\r\n4 14\r\n4 11\r\n15 8\r\n8 12\r\n5 1\r\n7 9\r\n19 17\r\n11 8\r\n7 17\r\n9 10\r\n16 5\r\n6 3\r\n20 10\r\n11 3\r\n11 2\r\n13 9\r\n2 4\r\n13 16\r\n14 13\r\n18 1\r\n5 6\r\n4 8\r\n5 12\r\n18 9\r\n2 15\r\n20 11\r\n",
+                "Yes\r\n9 11 6 20 16 18 11 13 5 8 4 14 3 8 7 15 3 1 3 14 "
+            ],
+            [
+                "20 48\r\n2 18\r\n13 1\r\n15 8\r\n6 16\r\n10 11\r\n14 7\r\n13 16\r\n5 4\r\n11 16\r\n7 11\r\n2 16\r\n4 2\r\n19 1\r\n9 15\r\n10 17\r\n5 15\r\n13 3\r\n17 9\r\n19 20\r\n1 12\r\n2 14\r\n3 11\r\n4 12\r\n19 5\r\n18 8\r\n20 18\r\n5 2\r\n17 4\r\n3 9\r\n10 8\r\n7 10\r\n9 7\r\n15 17\r\n6 13\r\n18 14\r\n3 10\r\n19 17\r\n18 4\r\n2 15\r\n6 20\r\n18 7\r\n14 8\r\n13 15\r\n14 3\r\n20 9\r\n16 5\r\n15 4\r\n19 14\r\n",
+                "Yes\r\n13 4 13 12 15 20 18 18 15 8 16 1 16 2 8 6 4 2 5 19 "
+            ],
+            [
+                "20 50\r\n17 3\r\n16 14\r\n11 4\r\n3 2\r\n1 8\r\n19 4\r\n16 10\r\n11 8\r\n20 16\r\n7 16\r\n10 7\r\n14 19\r\n7 13\r\n18 5\r\n5 11\r\n18 2\r\n1 12\r\n14 2\r\n8 4\r\n17 6\r\n14 18\r\n10 15\r\n12 8\r\n4 10\r\n20 5\r\n6 19\r\n13 3\r\n8 15\r\n11 2\r\n8 14\r\n5 1\r\n5 9\r\n15 12\r\n4 12\r\n13 15\r\n4 13\r\n9 14\r\n19 20\r\n9 12\r\n3 16\r\n9 1\r\n4 1\r\n18 11\r\n5 8\r\n9 4\r\n19 18\r\n7 1\r\n12 20\r\n6 11\r\n19 15\r\n",
+                "Yes\r\n8 18 2 19 20 19 13 11 5 7 4 1 3 16 10 10 3 5 14 12 "
+            ],
+            [
+                "20 21\r\n19 2\r\n4 11\r\n10 3\r\n16 12\r\n17 14\r\n13 6\r\n20 12\r\n7 19\r\n20 6\r\n1 18\r\n1 17\r\n14 8\r\n10 13\r\n18 11\r\n2 16\r\n10 8\r\n19 9\r\n18 19\r\n5 4\r\n17 5\r\n15 8\r\n",
+                "Yes\r\n18 19 10 5 17 20 19 10 19 13 4 16 6 8 8 2 14 11 18 12 "
+            ],
+            [
+                "20 23\r\n7 18\r\n6 19\r\n4 10\r\n2 1\r\n7 2\r\n11 4\r\n9 12\r\n17 9\r\n9 3\r\n8 11\r\n6 15\r\n9 15\r\n14 8\r\n16 18\r\n4 20\r\n4 5\r\n2 10\r\n12 14\r\n20 7\r\n13 1\r\n16 6\r\n20 1\r\n19 15\r\n",
+                "Yes\r\n2 7 9 20 4 19 18 11 12 4 4 14 1 8 9 6 9 16 15 1 "
+            ],
+            [
+                "20 25\r\n14 8\r\n6 10\r\n20 15\r\n19 11\r\n19 16\r\n7 18\r\n10 13\r\n7 15\r\n2 4\r\n2 16\r\n15 17\r\n4 8\r\n11 20\r\n5 6\r\n18 3\r\n17 9\r\n12 1\r\n6 14\r\n10 12\r\n6 1\r\n9 16\r\n20 7\r\n3 9\r\n18 20\r\n12 3\r\n",
+                "Yes\r\n12 4 18 8 6 10 15 14 16 12 19 3 10 6 20 2 15 7 16 11 "
+            ],
+            [
+                "20 27\r\n6 7\r\n14 8\r\n20 4\r\n7 14\r\n6 17\r\n3 18\r\n3 4\r\n12 11\r\n9 6\r\n20 13\r\n19 5\r\n16 9\r\n9 10\r\n15 11\r\n1 19\r\n3 15\r\n3 16\r\n8 17\r\n15 16\r\n2 8\r\n6 20\r\n4 13\r\n11 16\r\n17 9\r\n19 20\r\n1 17\r\n10 19\r\n",
+                "Yes\r\n19 8 15 3 19 7 14 17 6 9 16 11 20 8 11 9 1 3 20 4 "
+            ],
+            [
+                "20 29\r\n19 18\r\n2 7\r\n19 14\r\n7 15\r\n7 11\r\n7 3\r\n8 16\r\n6 9\r\n2 1\r\n17 12\r\n19 20\r\n11 4\r\n15 17\r\n3 12\r\n1 16\r\n1 4\r\n20 13\r\n14 10\r\n11 19\r\n14 18\r\n3 14\r\n8 12\r\n8 9\r\n1 9\r\n17 20\r\n5 19\r\n13 6\r\n5 9\r\n6 7\r\n",
+                "Yes\r\n2 7 14 1 19 9 15 16 8 14 7 3 6 19 17 1 12 19 20 13 "
+            ],
+            [
+                "20 31\r\n12 17\r\n14 19\r\n6 11\r\n8 10\r\n14 1\r\n1 9\r\n2 20\r\n11 12\r\n3 19\r\n10 15\r\n10 6\r\n17 5\r\n9 8\r\n10 17\r\n6 14\r\n9 2\r\n19 20\r\n12 18\r\n19 4\r\n20 16\r\n3 17\r\n11 13\r\n19 12\r\n17 20\r\n15 5\r\n5 20\r\n15 7\r\n1 19\r\n10 7\r\n16 11\r\n4 11\r\n",
+                "Yes\r\n14 9 17 19 17 10 10 9 1 8 6 11 11 19 10 11 12 12 3 19 "
+            ],
+            [
+                "20 33\r\n6 1\r\n1 7\r\n18 10\r\n6 2\r\n5 20\r\n14 2\r\n5 16\r\n4 5\r\n3 18\r\n15 16\r\n18 2\r\n12 2\r\n6 7\r\n10 3\r\n6 17\r\n17 19\r\n6 5\r\n14 12\r\n5 14\r\n3 15\r\n3 4\r\n13 8\r\n11 7\r\n14 17\r\n16 11\r\n17 8\r\n9 5\r\n7 19\r\n19 9\r\n14 11\r\n13 9\r\n4 16\r\n19 2\r\n",
+                "Yes\r\n6 14 15 3 4 2 1 17 5 3 7 2 9 17 16 11 19 3 9 5 "
+            ],
+            [
+                "20 35\r\n13 5\r\n16 3\r\n19 6\r\n7 2\r\n18 15\r\n8 13\r\n4 15\r\n14 6\r\n2 19\r\n17 1\r\n1 11\r\n5 10\r\n2 17\r\n15 9\r\n17 12\r\n20 4\r\n14 11\r\n10 12\r\n20 7\r\n13 16\r\n4 17\r\n9 14\r\n11 7\r\n5 17\r\n7 8\r\n9 19\r\n12 20\r\n8 18\r\n11 9\r\n6 16\r\n15 20\r\n15 10\r\n1 18\r\n5 3\r\n3 17\r\n",
+                "Yes\r\n17 7 16 15 3 19 20 13 14 5 1 17 5 11 18 6 2 8 9 4 "
+            ],
+            [
+                "20 37\r\n16 1\r\n19 5\r\n4 8\r\n18 17\r\n15 18\r\n14 9\r\n4 11\r\n11 1\r\n2 15\r\n7 14\r\n10 7\r\n14 12\r\n17 7\r\n8 18\r\n19 18\r\n18 12\r\n14 16\r\n13 20\r\n15 20\r\n19 1\r\n13 15\r\n9 18\r\n10 13\r\n2 13\r\n3 5\r\n11 16\r\n5 1\r\n3 20\r\n8 3\r\n6 15\r\n5 17\r\n18 4\r\n11 10\r\n2 1\r\n8 9\r\n18 5\r\n10 16\r\n",
+                "Yes\r\n16 1 20 18 1 15 10 18 18 13 1 14 20 9 2 14 7 17 18 15 "
+            ],
+            [
+                "20 39\r\n15 14\r\n8 3\r\n14 10\r\n7 5\r\n15 19\r\n13 9\r\n19 14\r\n11 8\r\n17 7\r\n8 19\r\n18 19\r\n3 13\r\n15 1\r\n9 1\r\n6 13\r\n18 15\r\n5 8\r\n12 7\r\n13 12\r\n6 20\r\n1 12\r\n11 16\r\n10 19\r\n17 2\r\n2 13\r\n5 17\r\n5 9\r\n13 18\r\n7 4\r\n15 17\r\n17 11\r\n13 5\r\n16 1\r\n11 13\r\n12 11\r\n20 4\r\n7 19\r\n10 12\r\n2 20\r\n",
+                "Yes\r\n15 17 13 20 7 13 4 3 5 19 16 7 9 10 14 1 11 19 8 2 "
+            ],
+            [
+                "20 49\r\n11 17\r\n13 19\r\n16 1\r\n13 1\r\n2 5\r\n1 8\r\n9 6\r\n12 6\r\n10 18\r\n2 9\r\n5 6\r\n16 8\r\n14 1\r\n19 17\r\n10 15\r\n14 6\r\n18 8\r\n6 3\r\n13 6\r\n6 16\r\n3 16\r\n14 18\r\n6 18\r\n13 4\r\n16 13\r\n13 18\r\n20 5\r\n6 7\r\n2 17\r\n1 10\r\n11 7\r\n2 11\r\n2 7\r\n17 15\r\n8 14\r\n5 18\r\n11 10\r\n2 8\r\n11 15\r\n9 17\r\n14 13\r\n3 4\r\n10 20\r\n8 3\r\n11 6\r\n2 14\r\n5 11\r\n20 2\r\n1 12\r\n",
+                "Yes\r\n16 14 6 13 2 9 6 18 2 15 7 6 1 13 17 8 11 10 13 10 "
+            ],
+            [
+                "20 30\r\n7 4\r\n3 12\r\n18 10\r\n19 6\r\n18 16\r\n5 19\r\n4 2\r\n7 18\r\n9 17\r\n18 14\r\n13 3\r\n19 2\r\n17 3\r\n4 19\r\n8 2\r\n7 2\r\n5 13\r\n8 7\r\n19 18\r\n6 15\r\n11 2\r\n7 20\r\n5 15\r\n4 18\r\n4 17\r\n4 9\r\n9 16\r\n19 11\r\n13 4\r\n17 1\r\n",
+                "Yes\r\n17 4 13 7 19 19 18 2 17 18 2 3 5 18 5 9 3 16 2 7 "
+            ],
+            [
+                "20 50\r\n15 4\r\n20 2\r\n15 11\r\n1 6\r\n16 2\r\n19 6\r\n12 13\r\n7 4\r\n8 11\r\n3 4\r\n19 10\r\n11 16\r\n1 5\r\n18 16\r\n19 5\r\n3 11\r\n4 20\r\n19 17\r\n4 11\r\n10 9\r\n3 15\r\n6 11\r\n16 15\r\n12 17\r\n20 9\r\n8 10\r\n8 15\r\n9 4\r\n10 18\r\n7 11\r\n3 17\r\n11 5\r\n17 7\r\n13 2\r\n5 6\r\n16 9\r\n8 5\r\n4 1\r\n10 17\r\n17 9\r\n10 15\r\n1 16\r\n12 3\r\n17 14\r\n13 3\r\n11 13\r\n18 17\r\n6 18\r\n8 13\r\n18 20\r\n",
+                "Yes\r\n6 16 4 7 1 19 17 5 20 9 15 13 8 17 4 11 12 16 10 2 "
+            ],
+            [
+                "20 60\r\n1 6\r\n9 17\r\n5 19\r\n10 2\r\n9 11\r\n9 13\r\n16 18\r\n7 2\r\n12 5\r\n20 1\r\n2 9\r\n16 5\r\n17 19\r\n8 9\r\n14 7\r\n15 13\r\n20 16\r\n3 4\r\n7 19\r\n17 20\r\n14 13\r\n15 11\r\n20 10\r\n15 6\r\n7 10\r\n14 4\r\n13 16\r\n17 7\r\n16 11\r\n18 9\r\n6 12\r\n15 9\r\n2 20\r\n8 2\r\n1 3\r\n20 7\r\n5 14\r\n20 13\r\n11 6\r\n15 10\r\n11 13\r\n9 20\r\n16 10\r\n19 20\r\n5 1\r\n5 11\r\n3 13\r\n8 11\r\n7 1\r\n14 6\r\n12 2\r\n13 7\r\n1 19\r\n13 6\r\n13 17\r\n12 17\r\n16 4\r\n8 14\r\n8 18\r\n5 13\r\n",
+                "Yes\r\n6 10 1 14 12 15 1 14 17 20 9 2 9 7 13 18 19 8 5 16 "
+            ],
+            [
+                "20 76\r\n19 18\r\n17 3\r\n13 16\r\n17 14\r\n8 6\r\n6 5\r\n18 20\r\n19 16\r\n4 11\r\n15 20\r\n8 14\r\n5 17\r\n10 15\r\n17 11\r\n13 10\r\n14 4\r\n4 8\r\n9 15\r\n11 10\r\n12 3\r\n13 5\r\n6 10\r\n20 10\r\n3 14\r\n5 14\r\n1 2\r\n18 5\r\n20 6\r\n19 6\r\n14 15\r\n5 1\r\n7 15\r\n10 2\r\n9 6\r\n12 1\r\n8 20\r\n13 12\r\n2 20\r\n7 16\r\n3 6\r\n18 15\r\n18 16\r\n3 13\r\n10 12\r\n7 18\r\n17 7\r\n15 5\r\n16 12\r\n2 9\r\n6 11\r\n3 8\r\n19 11\r\n12 19\r\n10 4\r\n10 14\r\n2 7\r\n3 15\r\n15 12\r\n18 9\r\n18 6\r\n5 11\r\n10 17\r\n4 18\r\n19 15\r\n16 11\r\n11 1\r\n1 19\r\n5 2\r\n9 4\r\n15 13\r\n14 16\r\n4 6\r\n17 4\r\n6 12\r\n9 16\r\n13 19\r\n",
+                "Yes\r\n2 10 12 14 6 8 15 14 15 15 17 1 5 17 20 13 3 19 16 18 "
+            ],
+            [
+                "20 28\r\n8 19\r\n14 18\r\n5 10\r\n9 19\r\n19 16\r\n8 9\r\n7 20\r\n4 13\r\n20 15\r\n19 11\r\n5 4\r\n16 4\r\n3 13\r\n1 17\r\n11 18\r\n10 4\r\n6 18\r\n4 8\r\n12 5\r\n18 8\r\n5 1\r\n9 3\r\n2 1\r\n15 12\r\n1 10\r\n14 17\r\n7 14\r\n8 12\r\n",
+                "Yes\r\n17 1 13 5 10 18 20 18 3 1 19 8 4 7 12 19 14 11 9 15 "
+            ],
+            [
+                "20 33\r\n13 16\r\n7 15\r\n20 7\r\n17 6\r\n17 8\r\n16 19\r\n11 9\r\n3 13\r\n2 5\r\n7 3\r\n9 7\r\n3 17\r\n8 5\r\n1 2\r\n15 9\r\n19 14\r\n12 5\r\n10 17\r\n3 6\r\n9 2\r\n11 1\r\n4 20\r\n15 1\r\n8 6\r\n11 3\r\n18 4\r\n12 17\r\n5 16\r\n10 4\r\n3 5\r\n3 19\r\n4 5\r\n13 12\r\n",
+                "Yes\r\n2 5 19 20 8 3 15 6 11 4 1 17 12 19 9 13 10 4 16 7 "
+            ],
+            [
+                "20 35\r\n1 2\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n1 11\r\n1 12\r\n1 13\r\n1 14\r\n1 15\r\n1 16\r\n1 17\r\n1 18\r\n1 20\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n8 9\r\n9 10\r\n10 11\r\n11 12\r\n12 13\r\n13 14\r\n14 15\r\n15 16\r\n16 17\r\n17 18\r\n18 19\r\n19 20\r\n",
+                "Yes\r\n2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 1 18 1 "
+            ],
+            [
+                "20 24\r\n4 12\r\n12 15\r\n15 13\r\n13 9\r\n9 8\r\n8 10\r\n10 1\r\n1 19\r\n19 6\r\n6 17\r\n17 7\r\n7 5\r\n5 20\r\n16 2\r\n20 16\r\n2 14\r\n14 11\r\n11 18\r\n18 3\r\n3 4\r\n20 6\r\n6 15\r\n11 17\r\n8 4\r\n",
+                "Yes\r\n10 16 18 3 7 19 17 9 13 8 14 4 15 2 12 20 6 11 1 5 "
+            ],
+            [
+                "20 32\r\n1 2\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n1 11\r\n1 12\r\n1 13\r\n1 14\r\n1 15\r\n1 16\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n7 8\r\n6 7\r\n8 9\r\n9 10\r\n10 11\r\n11 12\r\n12 13\r\n13 14\r\n14 15\r\n15 16\r\n16 17\r\n17 18\r\n18 19\r\n19 1\r\n20 8\r\n",
+                "Yes\r\n2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 1 8 "
+            ],
+            [
+                "20 32\r\n1 2\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n1 11\r\n1 12\r\n1 13\r\n1 14\r\n1 15\r\n1 16\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n7 8\r\n6 7\r\n8 9\r\n9 10\r\n19 1\r\n15 16\r\n10 11\r\n11 12\r\n12 13\r\n13 14\r\n14 15\r\n18 19\r\n16 17\r\n17 18\r\n20 8\r\n",
+                "Yes\r\n2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 1 8 "
+            ],
+            [
+                "20 26\r\n9 6\r\n9 11\r\n9 8\r\n9 2\r\n11 20\r\n6 5\r\n9 14\r\n20 19\r\n9 12\r\n2 13\r\n20 15\r\n20 17\r\n19 7\r\n5 4\r\n7 10\r\n13 1\r\n17 16\r\n8 18\r\n16 3\r\n17 11\r\n12 10\r\n18 20\r\n11 12\r\n6 16\r\n12 5\r\n11 5\r\n",
+                "No"
+            ]
+        ]
+    }
+]

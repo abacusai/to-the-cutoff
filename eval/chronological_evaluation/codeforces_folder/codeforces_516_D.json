@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Drazil and Morning Exercise",
+        "description": "Drazil and Varda are the earthworm couple. They want to find a good place to\nbring up their children. They found a good ground containing nature hole. The\nhole contains many rooms, some pairs of rooms are connected by small tunnels\nsuch that earthworm can move between them. Let's consider rooms and small\ntunnels as the vertices and edges in a graph. This graph is a tree. In the\nother words, any pair of vertices has an unique path between them. Each room\nthat is leaf in the graph is connected with a ground by a vertical tunnel.\nHere, leaf is a vertex that has only one outgoing edge in the graph. Each room\nis large enough only to fit one earthworm living in it. Earthworm can't live\nin a tunnel. Drazil and Varda have a plan to educate their children. They want\nall their children to do morning exercises immediately after getting up! When\nthe morning is coming, all earthworm children get up in the same time, then\neach of them chooses the farthest path to the ground for gathering with others\n(these children are lazy, so they all want to do exercises as late as\npossible). Drazil and Varda want the difference between the time first\nearthworm child arrives outside and the time the last earthworm child arrives\noutside to be not larger than l (otherwise children will spread around the\nground and it will be hard to keep them exercising together). Also, The rooms\nthat are occupied by their children should form a connected set. In the other\nwords, for any two rooms that are occupied with earthworm children, all rooms\nthat lie on the path between them should be occupied with earthworm children\ntoo. How many children Drazil and Varda may have at most in order to satisfy\nall conditions above? Drazil and Varda want to know the answer for many\ndifferent choices of l. (Drazil and Varda don't live in the hole with their\nchildren) Input The first line contains one integer n denoting how many rooms\nthere are in the hole (2 \u2264 n \u2264 10^5). Then there are n - 1 lines following.\nEach of these lines contains three integers x, y, v (1 \u2264 x, y \u2264 n, 1 \u2264 v \u2264\n10^6) denoting there is a small tunnel between room x and room y that takes\ntime v to pass. Suppose that the time for an earthworm to get out to the\nground from any leaf room is the same. The next line contains an integer q (1\n\u2264 q \u2264 50), denoting the number of different value of l you need to process.\nThe last line contains q numbers, each number denoting a value of l (1 \u2264 l \u2264\n10^11). Output You should print q lines. Each line should contain one integer\ndenoting the answer for a corresponding value of l. Examples Input 5 1 2 3 2 3\n4 4 5 3 3 4 2 5 1 2 3 4 5 Output 1 3 3 3 5 Input 12 5 9 3 2 1 7 11 7 2 6 5 5 2\n5 3 6 7 2 1 4 4 8 5 7 1 3 8 11 12 3 10 8 2 10 13 14 14 13 13 4 6 7 2 1 Output\n10 10 10 10 10 3 3 5 2 1 Note For the first sample the hole looks like the\nfollowing. Rooms 1 and 5 are leaves, so they contain a vertical tunnel\nconnecting them to the ground. The lengths of farthest path from rooms 1 \u2013 5\nto the ground are 12, 9, 7, 9, 12 respectively. If l = 1, we may only choose\nany single room. If l = 2..4, we may choose rooms 2, 3, and 4 as the answer.\nIf l = 5, we may choose all rooms.\n\n",
+        "cf_contest_id": 516,
+        "cf_index": "D",
+        "cf_rating": 2800,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "trees",
+            "two pointers"
+        ],
+        "time_limit_seconds": 3.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n1 2 3\r\n2 3 4\r\n4 5 3\r\n3 4 2\r\n5\r\n1 2 3 4 5\r\n",
+                "1\r\n3\r\n3\r\n3\r\n5\r\n"
+            ],
+            [
+                "12\r\n5 9 3\r\n2 1 7\r\n11 7 2\r\n6 5 5\r\n2 5 3\r\n6 7 2\r\n1 4 4\r\n8 5 7\r\n1 3 8\r\n11 12 3\r\n10 8 2\r\n10\r\n13 14 14 13 13 4 6 7 2 1\r\n",
+                "10\r\n10\r\n10\r\n10\r\n10\r\n3\r\n3\r\n5\r\n2\r\n1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n1 2 1\r\n1 3 2\r\n1 4 3\r\n1 5 4\r\n1 6 5\r\n1 7 6\r\n1 8 7\r\n1 9 8\r\n1 10 9\r\n5\r\n1 2 3 4 5\r\n",
+                "2\r\n3\r\n4\r\n5\r\n6\r\n"
+            ],
+            [
+                "6\r\n1 2 10\r\n2 3 1\r\n3 4 1\r\n4 5 2\r\n5 6 9\r\n3\r\n1 2 3\r\n",
+                "3\r\n4\r\n4\r\n"
+            ],
+            [
+                "6\r\n1 2 9\r\n2 3 2\r\n3 4 1\r\n4 5 1\r\n5 6 10\r\n3\r\n1 2 3\r\n",
+                "3\r\n4\r\n4\r\n"
+            ],
+            [
+                "2\r\n2 1 2\r\n4\r\n1 10 100 100000000000\r\n",
+                "2\r\n2\r\n2\r\n2\r\n"
+            ],
+            [
+                "8\r\n1 2 1\r\n1 3 1\r\n1 4 1\r\n1 5 1\r\n1 6 10000\r\n6 7 10000\r\n7 8 1\r\n5\r\n1 2 10000 10001 10002\r\n",
+                "5\r\n5\r\n5\r\n8\r\n8\r\n"
+            ]
+        ]
+    }
+]

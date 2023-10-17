@@ -1,0 +1,97 @@
+[
+    {
+        "name": "Text Messaging",
+        "description": "Fangy the little walrus, as all the modern walruses, loves to communicate via\ntext messaging. One day he faced the following problem: When he sends large\ntexts, they are split into parts each containing n characters (which is the\nsize of one text message). Thus, whole sentences and words get split! Fangy\ndid not like it, so he faced the task of breaking the text into minimal\nmessages on his own so that no sentence were broken into pieces when it is\nsent and the number of text messages to be sent would be minimal. If two\nconsecutive sentences are in different messages, the space between them can be\nignored (Fangy does not write this space). The little walrus's text looks in\nthe following manner: TEXT ::= SENTENCE | SENTENCE SPACE TEXT SENTENCE ::=\nWORD SPACE SENTENCE | WORD END END ::= '.', '?', '!' WORD ::= LETTER |\nLETTER WORD LETTER ::= 'a'..'z', 'A'..'Z' SPACE ::= ' ' SPACE stands for the\nsymbol of a space. So, how many messages did Fangy send? Input The first line\ncontains an integer n, which is the size of one message (2 \u2264 n \u2264 255). The\nsecond line contains the text. The length of the text does not exceed 10^4\ncharacters. It is guaranteed that the text satisfies the above described\nformat. Specifically, this implies that the text is not empty. Output On the\nfirst and only line print the number of text messages Fangy will need. If it\nis impossible to split the text, print \"Impossible\" without the quotes.\nExamples Input 25 Hello. I am a little walrus. Output 2 Input 2 How are you?\nOutput Impossible Input 19 Hello! Do you like fish? Why? Output 3 Note Let's\ntake a look at the third sample. The text will be split into three messages:\n\"Hello!\", \"Do you like fish?\" and \"Why?\".\n\n",
+        "cf_contest_id": 70,
+        "cf_index": "B",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "expression parsing",
+            "greedy",
+            "strings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "25\r\nHello. I am a little walrus.\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\nHow are you?\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "19\r\nHello! Do you like fish? Why?\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\na. A.\r\n",
+                "2\r\n"
+            ],
+            [
+                "191\r\nEvx vnxZtUSgtzH yDNXCsTaxCKQus gVZLHppOplkGGekIK xbme. krbusMqUs YEnBBTJpjNicZPlx TqEtBPcbejZMzvn fFTub CHYWLmiOFkDdzR! LoQmXPfHJ KVnfrbrFooVSkj xwAZwrRr DdILZ kpco cLoRmJbVKhnbOEhnHKpci. PgYhxFPXdlvlrp mDLZBnVRf AgRMUjxepFuLyKlIAhLS wtmEiLDNUAHpZEsKnkOu!\r\n",
+                "2\r\n"
+            ],
+            [
+                "146\r\niIQVkDsPqzAJyBrtHk EhBSN gzDoigItCMzETerb cIbXhTPbKYMdMoYqyFTEN. qcrrseVwmaZEiQUQoGT SUyErST lJDejKkjqTdoUrHR tsZYDyI? pmuNNHYqQUISxdZfWOB XdEECvNz hnNmVfODaIC qjhRIEPAlEsQBxo apZ! gCpqoiUFIwWLBOmYubywj qJojFVhLd dCpovICpXHfgihydEOoij?\r\n",
+                "2\r\n"
+            ],
+            [
+                "151\r\nayDIuxJXWNqu OImqJLodviANkQNxZ OpDpwyoPQdZyosXJpqRx! ZFQNQJPnoEVUEEbjqs iyfUYK HuGCOtlsEllsCiHIdEuW ZmlRSWVOmLAD MSYsC? CGKxobjmddejDDdF qbQsAWi qxViwV iLmPHfhLjP ZfNCItjZikwaQyhQGC? bvSaaZhwHdbNKSiiI bEJXRjANEasfrElNHPA UuQCajtuODHgxwgL qbssJss TqT.\r\n",
+                "2\r\n"
+            ],
+            [
+                "123\r\nOjg CVJm qfE RnHislFds nNKKt TCPLWukqNGAsVBplYbTfq? VeYKjfFGTzXWA ydpVZLIImNub yApKnAHv iXQmqv GjQvxrnAgtfTApiQyCKtg. GdmapGwvI udRqxTbnzgnOUNZx slAuEuLGCJycZJvtCczQ vommS xuuT eIK! DOJeFEaubbz HYLGlIIlNKfyaJQKVN eFNnUvKKCQLXvGhwX gjmRscMkedELUlHq? aTbyMGB EofzX wcAEjyRQpxghWvXhdJb cwIz FEUsEFicYZ.\r\n",
+                "3\r\n"
+            ],
+            [
+                "126\r\ntjQvloOnRednqfvIRudX wAPhGdwEZ BiuuuAW EfSzDuRTdC rptjpHnxyM? FkLaTBruN IwuIQMdpdUpn etTVVJUsKztaR YNY EAENiDgJwYXDDrayjyuKp! yKqRNHznLRpnTqjisR LuapWDnWmwYDE NcClOZBNzMYrpa? SEZdSZIgBekpCPvyEiO AMjztArkFRJuS ilycvolFExqxrXJK. sLvBUxjIOomxUqYd jZsOXWN iBtqSykbeUbAsQgRVs DinPLrpzt.\r\n",
+                "3\r\n"
+            ],
+            [
+                "118\r\ngweVo bjbEKaZQw PpSi AWOYt sQSvAHNRswh vUaGuLbtExNECz! USsQxMCjaGOmUESwHvyY SshkERibaWkmNLSZOtWZy FFTUWQgekPRjLRetAdSFt! sIhcimZTisFvndrYioLF HetLn wjoaDUKfbkagupl QdYb fFiV GNqBygStKQw. XLiYZEOGnTLSHmCwktEr pVBePMoRGopNt LdEujxuxzmlbycQdR?\r\n",
+                "4\r\n"
+            ],
+            [
+                "16\r\nAbacaba. Abacaba. abacaba. abacab.\r\n",
+                "3\r\n"
+            ],
+            [
+                "21\r\nHello. I am a little walrus.\r\n",
+                "2\r\n"
+            ],
+            [
+                "16\r\nAbacaba. Abacab. abacaba. abacaba.\r\n",
+                "3\r\n"
+            ],
+            [
+                "10\r\nhello! how are you?\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "5\r\nabc. abcd.\r\n",
+                "2\r\n"
+            ],
+            [
+                "16\r\nabacaba. abacab. Abacaba. Abacaba.\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\na. b. c. d.\r\n",
+                "2\r\n"
+            ],
+            [
+                "8\r\nabc! ab.\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\na. b.\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

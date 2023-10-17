@@ -1,0 +1,193 @@
+[
+    {
+        "name": "Packmen Strike Back",
+        "description": "Game field is represented by a line of n square cells. In some cells there are\npackmen, in some cells there are asterisks and the rest of the cells are\nempty. Packmen eat asterisks. Before the game starts you can choose a movement\ndirection, left or right, for each packman. Once the game begins all the\npackmen simultaneously start moving according their directions. A packman\ncan't change the given direction. Once a packman enters a cell containing an\nasterisk, packman immediately eats the asterisk. Once the packman leaves the\ncell it becomes empty. Each packman moves at speed 1 cell per second. If a\npackman enters a border cell, the packman stops. Packmen do not interfere with\nthe movement of other packmen; in one cell there can be any number of packmen\nmoving in any directions. Your task is to assign a direction to each packman\nso that they eat the maximal number of asterisks. If there are multiple ways\nto assign directions to eat the maximal number of asterisks, you should choose\nthe way which minimizes the time to do that. Input The first line contains\ninteger number n (2 \u2264 n \u2264 1 000 000) \u2014 the number of cells in the game field.\nThe second line contains n characters. If the i-th character is '.', the i-th\ncell is empty. If the i-th character is '*', the i-th cell contains an\nasterisk. If the i-th character is 'P', the i-th cell contains a packman. The\nfield contains at least one asterisk and at least one packman. Output Print\ntwo integer numbers \u2014 the maximal number of asterisks packmen can eat and the\nminimal time to do it. Examples Input 6 *.P*P* Output 3 4 Input 8 *...P..*\nOutput 1 3 Note In the first example the leftmost packman should move to the\nright, the rightmost packman should move to the left. All the asterisks will\nbe eaten, the last asterisk will be eaten after 4 seconds.\n\n",
+        "cf_contest_id": 883,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "dp",
+            "math"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n*.P*P*\r\n",
+                "3 4\r\n"
+            ],
+            [
+                "8\r\n*...P..*\r\n",
+                "1 3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n*P\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "3\r\n.P*\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "3\r\n**P\r\n",
+                "2 2\r\n"
+            ],
+            [
+                "3\r\n*PP\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "4\r\nP*..\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "4\r\nP.**\r\n",
+                "2 3\r\n"
+            ],
+            [
+                "4\r\n**P*\r\n",
+                "2 2\r\n"
+            ],
+            [
+                "4\r\nP.*P\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "4\r\n**PP\r\n",
+                "2 2\r\n"
+            ],
+            [
+                "4\r\nP*PP\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "5\r\n.*..P\r\n",
+                "1 3\r\n"
+            ],
+            [
+                "5\r\n..**P\r\n",
+                "2 2\r\n"
+            ],
+            [
+                "5\r\nP***.\r\n",
+                "3 3\r\n"
+            ],
+            [
+                "5\r\n*P***\r\n",
+                "3 3\r\n"
+            ],
+            [
+                "5\r\nP.P.*\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "5\r\n*P.*P\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "5\r\n*P**P\r\n",
+                "3 2\r\n"
+            ],
+            [
+                "5\r\nPP*P.\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "5\r\nP*P*P\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "5\r\nPPPP*\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "6\r\n.**.P.\r\n",
+                "2 3\r\n"
+            ],
+            [
+                "6\r\n*..*P*\r\n",
+                "2 4\r\n"
+            ],
+            [
+                "6\r\n.**P**\r\n",
+                "2 2\r\n"
+            ],
+            [
+                "6\r\n*P****\r\n",
+                "4 4\r\n"
+            ],
+            [
+                "6\r\n*.PP..\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "6\r\n*.*PP.\r\n",
+                "2 3\r\n"
+            ],
+            [
+                "6\r\n*P*P*.\r\n",
+                "3 3\r\n"
+            ],
+            [
+                "6\r\n***P*P\r\n",
+                "4 3\r\n"
+            ],
+            [
+                "6\r\n.PPP.*\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "6\r\n*PPP.*\r\n",
+                "2 2\r\n"
+            ],
+            [
+                "6\r\n***PPP\r\n",
+                "3 3\r\n"
+            ],
+            [
+                "6\r\nPP.*PP\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "6\r\nPPPP**\r\n",
+                "2 2\r\n"
+            ],
+            [
+                "6\r\nPPP*PP\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "100\r\n************************************************************P***************************************\r\n",
+                "60 60\r\n"
+            ],
+            [
+                "19\r\n**P.*..*..P..*.*P**\r\n",
+                "8 12\r\n"
+            ],
+            [
+                "12\r\nP**.*P*P*P**\r\n",
+                "7 3\r\n"
+            ],
+            [
+                "100\r\nPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP*PPPPPPPPPPPPP\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "100\r\nP***PP*P*PP*PPPPPP**P****P***PP*****PPPPP***P**PPPP*PP**P**PPP**PP**P***PPP****PPP*PP***PP**P*PPP*P*\r\n",
+                "50 3\r\n"
+            ],
+            [
+                "2\r\nP*\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "2\r\n*P\r\n",
+                "1 1\r\n"
+            ]
+        ]
+    }
+]

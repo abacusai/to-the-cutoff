@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Snowy Mountain",
+        "description": "There are \n    n\n locations on a snowy mountain range (numbered from \n    1\n\nto \n    n\n), connected by \n    n-1\n trails in the shape of a tree. Each trail\nhas length \n    1\n. Some of the locations are base lodges. The height\n\n    h_i\n of each location is equal to the distance to the nearest base lodge\n(a base lodge has height \n    0\n). There is a skier at each location, each\nskier has initial kinetic energy \n    0\n. Each skier wants to ski along as\nmany trails as possible. Suppose that the skier is skiing along a trail from\nlocation \n    i\n to \n    j\n. Skiers are not allowed to ski uphill (i.e., if\n\n    h_i < h_j\n). It costs one unit of kinetic energy to ski along flat ground\n(i.e., if \n    h_i = h_j\n), and a skier gains one unit of kinetic energy by\nskiing downhill (i.e., if \n    h_i > h_j\n). For each location, compute the\nlength of the longest sequence of trails that the skier starting at that\nlocation can ski along without their kinetic energy ever becoming negative.\nSkiers are allowed to visit the same location or trail multiple times. Input\nThe first line contains a single integer \n    n\n (\n    2 \n    \u2264 n \n    \u2264 2 \n    \u00b7\n    10^5\n). The second line contains \n    n\n integers \n    l_1, l_2, \n    \u2026,\n    l_n\n (\n    0 \n    \u2264 l_i \n    \u2264 1\n). If \n    l_i = 1\n, location \n    i\n is a\nbase lodge; if \n    l_i = 0\n, location \n    i\n is not a base lodge. It is\nguaranteed that there is at least \n    1\n base lodge. Each of the next\n\n    n-1\n lines contains two integers \n    u, v\n (\n    1 \n    \u2264 u, v \n    \u2264\n    n\n, \n    u \n    \u2260 v\n), meaning that there is a trail that connects the\nlocations \n    u\n and \n    v\n. It is guaranteed that the given trails form a\ntree. Output Print \n    n\n integers: the \n    i\n-th integer is equal to the\nlength of the longest sequence of trails that the skier starting at location\n\n    i\n can ski along without their kinetic energy ever becoming negative.\nExamples Input 6 1 1 0 0 0 0 1 3 2 4 3 4 4 5 5 6 Output 0 0 1 1 3 5 Input 9 0\n0 0 0 0 0 1 1 1 1 3 2 3 2 5 3 6 4 5 4 7 5 8 6 9 Output 5 3 2 1 1 1 0 0 0 Input\n14 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 2 2 5 3 4 4 5 3 6 4 8 5 9 7 8 6 11 7 12 8 13\n9 14 10 11 Output 8 5 4 3 2 2 1 1 1 0 0 0 0 0 Input 20 0 0 0 0 0 0 0 0 0 0 0 0\n0 1 1 1 0 1 0 1 17 3 11 12 6 10 18 19 8 14 16 20 5 3 2 11 7 10 2 15 8 3 3 15 9\n16 7 13 16 1 19 2 2 16 6 1 4 17 Output 2 2 1 5 3 4 8 1 2 6 4 6 10 0 0 0 3 0 1\n0 Note In the first test, \n    h = [0, 0, 1, 1, 2, 3]\n. The skier starting\nfrom \n    6\n can ski along at most \n    5\n trails, in the path \n    6\n    \n    \u2192 5 \n    \u2192 4 \n    \u2192 3 \n    \u2192 4 \n    \u2192\n    2\n (notice that a skier can ski multiple times along the same trail and can\nvisit more than once the same location): at the location \n    6\n, the kinetic\nenergy is \n    0\n; at the location \n    5\n, the kinetic energy increases by\n\n    1\n (because \n    h_5 < h_6\n), so it becomes \n    1\n; at the location\n\n    4\n, the kinetic energy increases by \n    1\n (because \n    h_4 < h_5\n), so\nit becomes \n    2\n; at the location \n    3\n, the kinetic energy decreases by\n\n    1\n (because \n    h_3 = h_4\n), so it becomes \n    1\n; at the location\n\n    4\n, the kinetic energy decreases by \n    1\n (because \n    h_4 = h_3\n), so\nit becomes \n    0\n; at the location \n    2\n, the kinetic energy increases by\n\n    1\n (because \n    h_2 < h_4\n), so it becomes \n    1\n. There isn't any\nsequence of trails of length greater than \n    5\n such that the kinetic energy\nis always non-negative. Moreover, the optimal path for the skier starting from\n\n    1\n is \n    1\n (no trails); the optimal path for the skier starting from\n\n    2\n is \n    2\n (no trails); the optimal path for the skier starting from\n\n    3\n is \n    3 \n    \u2192 1\n; the optimal path for the skier starting\nfrom \n    4\n is \n    4 \n    \u2192 2\n; the optimal path for the skier\nstarting from \n    5\n is \n    5 \n    \u2192 4 \n    \u2192 3 \n    \u2192\n    1\n. In the second test, \n    h = [3, 2, 2, 1, 1, 1, 0, 0, 0]\n. The skier\nstarting from \n    1\n can ski along at most \n    5\n trails, in the path \n    1\n    \n    \u2192 3 \n    \u2192 2 \n    \u2192 5 \n    \u2192 4 \n    \u2192\n    7\n. at the location \n    1\n, the kinetic energy is \n    0\n; at the location\n\n    3\n, the kinetic energy increases by \n    1\n (because \n    h_3 < h_1\n), so\nit becomes \n    1\n; at the location \n    2\n, the kinetic energy decreases by\n\n    1\n (because \n    h_2 = h_3\n), so it becomes \n    0\n; at the location\n\n    5\n, the kinetic energy increases by \n    1\n (because \n    h_5 < h_2\n), so\nit becomes \n    1\n; at the location \n    4\n, the kinetic energy decreases by\n\n    1\n (because \n    h_4 = h_5\n), so it becomes \n    0\n; at the location\n\n    7\n, the kinetic energy increases by \n    1\n (because \n    h_7 < h_4\n), so\nit becomes \n    1\n. There isn't any sequence of trails of length greater than\n\n    5\n such that the kinetic energy is always non-negative. In the third\ntest, for the skier starting from vertex \n    1\n, the optimal path is \n    1\n    \n    \u2192 2 \n    \u2192 5 \n    \u2192 4 \n    \u2192 3 \n    \u2192\n    6 \n    \u2192 11 \n    \u2192 10 \n    \u2192 11\n. Here are pictures of\nthe first, second, and third test, with the base lodges shown in red:\n\n",
+        "cf_contest_id": 1654,
+        "cf_index": "G",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "greedy",
+            "shortest paths",
+            "trees"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 1024.0,
+        "public_cases": [
+            [
+                "6\r\n1 1 0 0 0 0\r\n1 3\r\n2 4\r\n3 4\r\n4 5\r\n5 6\r\n",
+                "0 0 1 1 3 5 "
+            ],
+            [
+                "9\r\n0 0 0 0 0 0 1 1 1\r\n1 3\r\n2 3\r\n2 5\r\n3 6\r\n4 5\r\n4 7\r\n5 8\r\n6 9\r\n",
+                "5 3 2 1 1 1 0 0 0 "
+            ],
+            [
+                "14\r\n0 0 0 0 0 0 0 0 0 1 1 1 1 1\r\n1 2\r\n2 5\r\n3 4\r\n4 5\r\n3 6\r\n4 8\r\n5 9\r\n7 8\r\n6 11\r\n7 12\r\n8 13\r\n9 14\r\n10 11\r\n",
+                "8 5 4 3 2 2 1 1 1 0 0 0 0 0 "
+            ],
+            [
+                "20\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1 0 1\r\n17 3\r\n11 12\r\n6 10\r\n18 19\r\n8 14\r\n16 20\r\n5 3\r\n2 11\r\n7 10\r\n2 15\r\n8 3\r\n3 15\r\n9 16\r\n7 13\r\n16 1\r\n19 2\r\n2 16\r\n6 1\r\n4 17\r\n",
+                "2 2 1 5 3 4 8 1 2 6 4 6 10 0 0 0 3 0 1 0 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n0 1\r\n1 2\r\n",
+                "1 0 "
+            ],
+            [
+                "2\r\n1 1\r\n1 2\r\n",
+                "0 0 "
+            ],
+            [
+                "3\r\n1 0 1\r\n1 3\r\n2 1\r\n",
+                "0 2 0 "
+            ],
+            [
+                "3\r\n1 1 1\r\n1 3\r\n1 2\r\n",
+                "0 0 0 "
+            ],
+            [
+                "50\r\n0 0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 0 0 0 0 1 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0\r\n18 12\r\n29 31\r\n12 31\r\n41 8\r\n11 25\r\n49 4\r\n39 43\r\n25 30\r\n33 22\r\n35 39\r\n20 47\r\n12 36\r\n35 1\r\n25 23\r\n4 31\r\n16 44\r\n17 40\r\n23 21\r\n42 9\r\n44 38\r\n14 25\r\n1 20\r\n10 3\r\n12 41\r\n5 19\r\n23 2\r\n27 19\r\n45 26\r\n13 1\r\n34 12\r\n15 27\r\n28 10\r\n9 31\r\n50 29\r\n28 50\r\n6 4\r\n46 43\r\n1 29\r\n16 32\r\n48 6\r\n31 44\r\n44 24\r\n21 27\r\n41 23\r\n9 37\r\n26 50\r\n40 22\r\n7 44\r\n44 22\r\n",
+                "1 4 12 0 10 1 3 0 4 10 2 2 0 2 8 3 0 4 8 3 4 0 2 3 0 8 6 8 4 0 1 6 1 4 1 4 6 0 0 1 0 6 1 1 10 2 5 2 1 6 "
+            ],
+            [
+                "20\r\n0 0 1 0 0 0 0 1 0 0 0 1 0 1 0 0 0 0 0 1\r\n15 13\r\n4 15\r\n5 14\r\n12 13\r\n10 11\r\n13 10\r\n14 8\r\n15 1\r\n13 17\r\n15 16\r\n14 17\r\n15 20\r\n16 9\r\n13 2\r\n8 3\r\n6 5\r\n8 7\r\n11 18\r\n17 19\r\n",
+                "3 4 0 3 2 4 2 0 6 4 6 0 1 0 1 3 2 8 4 0 "
+            ],
+            [
+                "10\r\n0 1 1 0 0 0 1 0 1 0\r\n7 10\r\n9 6\r\n10 5\r\n4 5\r\n1 8\r\n1 6\r\n9 2\r\n10 1\r\n3 1\r\n",
+                "1 0 0 6 3 2 0 4 0 1 "
+            ]
+        ]
+    }
+]

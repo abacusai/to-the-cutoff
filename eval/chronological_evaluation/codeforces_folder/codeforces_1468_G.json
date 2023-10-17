@@ -1,0 +1,276 @@
+[
+    {
+        "name": "Hobbits",
+        "description": "The hobbits Frodo and Sam are carrying the One Ring to Mordor. In order not to\nbe spotted by orcs, they decided to go through the mountains. The mountain\nrelief can be represented as a polyline with \n    n\n points \n    (x_i, y_i)\n,\nnumbered from \n    1\n to \n    n\n (\n    x_i < x_i + 1\n for \n    1 \n    \u2264 i \n    \u2264\n    n - 1\n). Hobbits start their journey at the point \n    (x_1, y_1)\n and\nshould reach the point \n    (x_n, y_n)\n to complete their mission. The problem\nis that there is a tower with the Eye of Sauron, which watches them. The tower\nis located at the point \n    (x_n, y_n)\n and has the height \n    H\n, so the\nEye is located at the point \n    (x_n, y_n + H)\n. In order to complete the\nmission successfully, the hobbits have to wear cloaks all the time when the\nSauron Eye can see them, i. e. when there is a direct line from the Eye to the\nhobbits which is not intersected by the relief. The hobbits are low, so their\nheight can be considered negligibly small, but still positive, so when a\ndirect line from the Sauron Eye to the hobbits only touches the relief, the\nEye can see them. The Sauron Eye can't see hobbits when they are in the left\nposition, but can see them when they are in the right position. The hobbits do\nnot like to wear cloaks, so they wear them only when they can be spotted by\nthe Eye. Your task is to calculate the total distance the hobbits have to walk\nwhile wearing cloaks. Input The first line of the input contains two integers\n\n    n\n and \n    H\n (\n    2 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5\n; \n    1 \n    \u2264 H \n    \u2264\n    10^4\n) \u2014 the number of vertices in polyline and the tower height. The next\n\n    n\n lines contain two integers \n    x_i, y_i\n each (\n    0 \n    \u2264 x_i \n    \u2264 4\n    \n    \u00b7 10^5\n; \n    0 \n    \u2264 y_i \n    \u2264 10^4\n) \u2014 the coordinates of the\npolyline vertices. It is guaranteed that \n    x_i < x_i + 1\n for \n    1 \n    \u2264\n    i \n    \u2264 n - 1\n. Output Print one real number \u2014 the total distance the\nhobbits have to walk while wearing cloaks. Your answer will be considered\ncorrect if its absolute or relative error does not exceed \n    10^-6\n \u2014\nformally, if your answer is \n    a\n, and the jury's answer is \n    b\n, your\nanswer will be accepted if \n    |a - b|\n    max(1, b)\n    \u2264\n    10^-6\n. Examples Input 6 10 10 40 20 10 25 30 30 15 50 15 65 30 Output\n70.4034587602 Input 9 5 0 0 5 10 15 10 20 0 25 11 30 0 35 10 50 10 60 5 Output\n27.2787986124 Input 2 10000 0 10000 400000 0 Output 400124.9804748512\n\n",
+        "cf_contest_id": 1468,
+        "cf_index": "G",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "geometry"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "6 10\r\n10 40\r\n20 10\r\n25 30\r\n30 15\r\n50 15\r\n65 30\r\n",
+                "70.403458760\r\n"
+            ],
+            [
+                "9 5\r\n0 0\r\n5 10\r\n15 10\r\n20 0\r\n25 11\r\n30 0\r\n35 10\r\n50 10\r\n60 5\r\n",
+                "27.278798612\r\n"
+            ],
+            [
+                "2 10000\r\n0 10000\r\n400000 0\r\n",
+                "400124.980474851\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n0 0\r\n1 0\r\n",
+                "1.000000000\r\n"
+            ],
+            [
+                "4 1\r\n0 0\r\n2 6\r\n7 5\r\n10 0\r\n",
+                "5.830951895\r\n"
+            ],
+            [
+                "4 1\r\n0 0\r\n2 6\r\n7 2\r\n10 0\r\n",
+                "10.008675513\r\n"
+            ],
+            [
+                "4 6\r\n0 0\r\n2 1\r\n7 5\r\n10 0\r\n",
+                "5.830951895\r\n"
+            ],
+            [
+                "4 6\r\n0 0\r\n2 4\r\n7 5\r\n10 0\r\n",
+                "10.929971408\r\n"
+            ],
+            [
+                "4 6\r\n0 0\r\n4 4\r\n7 5\r\n10 0\r\n",
+                "8.993229555\r\n"
+            ],
+            [
+                "4 1\r\n0 0\r\n1 4\r\n7 2\r\n10 0\r\n",
+                "9.930106596\r\n"
+            ],
+            [
+                "5 2\r\n1 3\r\n4 4\r\n5 1\r\n7 5\r\n10 4\r\n",
+                "6.324555320\r\n"
+            ],
+            [
+                "5 1\r\n1 5\r\n4 4\r\n5 1\r\n7 3\r\n10 1\r\n",
+                "6.767828936\r\n"
+            ],
+            [
+                "5 2\r\n1 3\r\n4 4\r\n5 7\r\n7 5\r\n10 4\r\n",
+                "5.990704785\r\n"
+            ],
+            [
+                "5 1\r\n1 5\r\n4 4\r\n6 7\r\n7 3\r\n10 1\r\n",
+                "7.728656901\r\n"
+            ],
+            [
+                "4 9989\r\n0 0\r\n375751 10000\r\n378176 9999\r\n400000 1\r\n",
+                "24005.144865216\r\n"
+            ],
+            [
+                "4 9989\r\n0 0\r\n375751 10000\r\n378176 9998\r\n400000 1\r\n",
+                "26429.729213124\r\n"
+            ],
+            [
+                "5 9990\r\n300000 909\r\n366685 9999\r\n370849 9998\r\n379178 9996\r\n400000 1\r\n",
+                "25178.660186549\r\n"
+            ],
+            [
+                "4 90\r\n362174 10000\r\n365957 9999\r\n373522 9997\r\n400000 9990\r\n",
+                "37826.001321842\r\n"
+            ],
+            [
+                "2 1\r\n0 0\r\n400000 10000\r\n",
+                "400124.980474851\r\n"
+            ],
+            [
+                "3 1\r\n0 0\r\n200000 5001\r\n400000 10000\r\n",
+                "200062.465247732\r\n"
+            ],
+            [
+                "3 1\r\n0 0\r\n200000 5000\r\n400000 9999\r\n",
+                "400124.955485158\r\n"
+            ],
+            [
+                "3 1\r\n0 0\r\n200 5\r\n400000 9998\r\n",
+                "399924.868005229\r\n"
+            ],
+            [
+                "3 1\r\n0 0\r\n1 1\r\n10000 9998\r\n",
+                "14139.307267331\r\n"
+            ],
+            [
+                "2 1\r\n2 1\r\n3 0\r\n",
+                "1.414213562\r\n"
+            ],
+            [
+                "2 2\r\n1 6\r\n5 2\r\n",
+                "5.656854249\r\n"
+            ],
+            [
+                "2 6\r\n1 3\r\n7 3\r\n",
+                "6.000000000\r\n"
+            ],
+            [
+                "2 2\r\n1 0\r\n3 3\r\n",
+                "3.605551275\r\n"
+            ],
+            [
+                "3 3\r\n1 1\r\n3 5\r\n4 4\r\n",
+                "5.886349517\r\n"
+            ],
+            [
+                "2 3\r\n0 9\r\n6 3\r\n",
+                "8.485281374\r\n"
+            ],
+            [
+                "3 10\r\n0 0\r\n1 7\r\n2 3\r\n",
+                "4.123105626\r\n"
+            ],
+            [
+                "3 15\r\n0 11\r\n1 7\r\n2 7\r\n",
+                "5.123105626\r\n"
+            ],
+            [
+                "3 2\r\n2 1\r\n5 1\r\n6 1\r\n",
+                "4.000000000\r\n"
+            ],
+            [
+                "4 1\r\n6 2\r\n9 2\r\n10 2\r\n12 0\r\n",
+                "2.828427125\r\n"
+            ],
+            [
+                "2 7\r\n0 9\r\n1 1\r\n",
+                "8.062257748\r\n"
+            ],
+            [
+                "4 4\r\n3 10\r\n6 9\r\n8 10\r\n12 12\r\n",
+                "9.870481593\r\n"
+            ],
+            [
+                "2 5\r\n0 2\r\n2 14\r\n",
+                "12.165525061\r\n"
+            ],
+            [
+                "5 1\r\n2 2\r\n4 0\r\n6 2\r\n8 0\r\n16 0\r\n",
+                "10.828427125\r\n"
+            ],
+            [
+                "5 7\r\n2 0\r\n3 1\r\n4 2\r\n10 1\r\n13 2\r\n",
+                "9.245040190\r\n"
+            ],
+            [
+                "2 3\r\n0 2\r\n1 6\r\n",
+                "4.123105626\r\n"
+            ],
+            [
+                "6 1\r\n6 2\r\n8 4\r\n10 4\r\n14 1\r\n17 3\r\n21 1\r\n",
+                "4.472135955\r\n"
+            ],
+            [
+                "6 1\r\n1 0\r\n2 1\r\n3 0\r\n5 2\r\n6 0\r\n7 3\r\n",
+                "9.640986325\r\n"
+            ],
+            [
+                "3 1\r\n0 1\r\n2 0\r\n7 0\r\n",
+                "7.236067977\r\n"
+            ],
+            [
+                "6 1\r\n0 4\r\n1 2\r\n2 3\r\n6 2\r\n11 2\r\n15 3\r\n",
+                "14.488471239\r\n"
+            ],
+            [
+                "4 2\r\n3 2\r\n4 1\r\n6 1\r\n9 0\r\n",
+                "6.576491223\r\n"
+            ],
+            [
+                "7 2\r\n0 0\r\n1 1\r\n4 1\r\n5 0\r\n8 2\r\n10 0\r\n13 2\r\n",
+                "10.040069927\r\n"
+            ],
+            [
+                "2 6\r\n0 11\r\n1 5\r\n",
+                "6.082762530\r\n"
+            ],
+            [
+                "2 7\r\n1 12\r\n4 7\r\n",
+                "5.830951895\r\n"
+            ],
+            [
+                "6 4\r\n0 0\r\n2 1\r\n3 0\r\n14 1\r\n18 3\r\n25 1\r\n",
+                "15.321540062\r\n"
+            ],
+            [
+                "7 2\r\n5 2\r\n6 0\r\n12 0\r\n13 4\r\n14 0\r\n16 2\r\n17 1\r\n",
+                "8.365746313\r\n"
+            ],
+            [
+                "8 4\r\n0 11\r\n1 1\r\n4 10\r\n5 10\r\n7 7\r\n9 11\r\n15 4\r\n16 0\r\n",
+                "13.342650083\r\n"
+            ],
+            [
+                "2 5\r\n0 7\r\n1 12\r\n",
+                "5.099019514\r\n"
+            ],
+            [
+                "6 9\r\n1 1\r\n2 21\r\n3 14\r\n6 21\r\n7 10\r\n9 5\r\n",
+                "16.430525824\r\n"
+            ],
+            [
+                "4 1\r\n0 0\r\n1 1\r\n4 3\r\n7 0\r\n",
+                "4.242640687\r\n"
+            ],
+            [
+                "7 9\r\n4 5\r\n5 21\r\n7 32\r\n8 12\r\n9 26\r\n10 40\r\n15 5\r\n",
+                "35.355339059\r\n"
+            ],
+            [
+                "7 10\r\n0 9\r\n1 7\r\n2 15\r\n3 19\r\n4 4\r\n5 19\r\n6 9\r\n",
+                "10.049875621\r\n"
+            ],
+            [
+                "7 4\r\n4 6\r\n5 8\r\n6 5\r\n7 5\r\n9 1\r\n12 5\r\n13 8\r\n",
+                "16.796691275\r\n"
+            ],
+            [
+                "4 2\r\n0 2\r\n1 1\r\n2 5\r\n5 0\r\n",
+                "5.830951895\r\n"
+            ],
+            [
+                "7 9\r\n0 1\r\n3 1\r\n5 1\r\n8 2\r\n14 4\r\n16 0\r\n22 2\r\n",
+                "25.283524256\r\n"
+            ],
+            [
+                "7 7\r\n0 6\r\n1 2\r\n2 7\r\n6 5\r\n10 7\r\n11 9\r\n12 2\r\n",
+                "7.071067812\r\n"
+            ],
+            [
+                "7 3\r\n0 0\r\n1 1\r\n2 3\r\n3 3\r\n4 4\r\n5 3\r\n6 3\r\n",
+                "4.828427125\r\n"
+            ],
+            [
+                "3 1\r\n9998 9997\r\n9999 9999\r\n10000 9999\r\n",
+                "1.000000000\r\n"
+            ],
+            [
+                "4 1\r\n0 0\r\n9998 9997\r\n9999 9999\r\n10000 9999\r\n",
+                "1.000000000\r\n"
+            ],
+            [
+                "4 1\r\n0 1\r\n9998 9997\r\n9999 9999\r\n10000 9999\r\n",
+                "7069.946526888\r\n"
+            ],
+            [
+                "4 1\r\n0 2\r\n9998 9997\r\n9999 9999\r\n10000 9999\r\n",
+                "9425.790690278\r\n"
+            ]
+        ]
+    }
+]

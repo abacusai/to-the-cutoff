@@ -1,0 +1,66 @@
+[
+    {
+        "name": "King's Path",
+        "description": "The black king is standing on a chess field consisting of 10^9 rows and 10^9\ncolumns. We will consider the rows of the field numbered with integers from 1\nto 10^9 from top to bottom. The columns are similarly numbered with integers\nfrom 1 to 10^9 from left to right. We will denote a cell of the field that is\nlocated in the i-th row and j-th column as (i, j). You know that some squares\nof the given chess field are allowed. All allowed cells of the chess field are\ngiven as n segments. Each segment is described by three integers ri, ai, bi\n(ai \u2264 bi), denoting that cells in columns from number ai to number bi\ninclusive in the ri-th row are allowed. Your task is to find the minimum\nnumber of moves the king needs to get from square (x0, y0) to square (x1, y1),\nprovided that he only moves along the allowed cells. In other words, the king\ncan be located only on allowed cells on his way. Let us remind you that a\nchess king can move to any of the neighboring cells in one move. Two cells of\na chess field are considered neighboring if they share at least one point.\nInput The first line contains four space-separated integers x0, y0, x1, y1 (1\n\u2264 x0, y0, x1, y1 \u2264 10^9), denoting the initial and the final positions of the\nking. The second line contains a single integer n (1 \u2264 n \u2264 10^5), denoting the\nnumber of segments of allowed cells. Next n lines contain the descriptions of\nthese segments. The i-th line contains three space-separated integers ri, ai,\nbi (1 \u2264 ri, ai, bi \u2264 10^9, ai \u2264 bi), denoting that cells in columns from\nnumber ai to number bi inclusive in the ri-th row are allowed. Note that the\nsegments of the allowed cells can intersect and embed arbitrarily. It is\nguaranteed that the king's initial and final position are allowed cells. It is\nguaranteed that the king's initial and the final positions do not coincide. It\nis guaranteed that the total length of all given segments doesn't exceed 10^5.\nOutput If there is no path between the initial and final position along\nallowed cells, print -1. Otherwise print a single integer \u2014 the minimum number\nof moves the king needs to get from the initial position to the final one.\nExamples Input 5 7 6 11 3 5 3 8 6 7 11 5 2 5 Output 4 Input 3 4 3 10 3 3 1 4 4\n5 9 3 10 10 Output 6 Input 1 1 2 10 2 1 1 3 2 6 10 Output -1\n\n",
+        "cf_contest_id": 242,
+        "cf_index": "C",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs",
+            "hashing",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 7 6 11\r\n3\r\n5 3 8\r\n6 7 11\r\n5 2 5\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 4 3 10\r\n3\r\n3 1 4\r\n4 5 9\r\n3 10 10\r\n",
+                "6\r\n"
+            ],
+            [
+                "1 1 2 10\r\n2\r\n1 1 3\r\n2 6 10\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "9 8 7 8\r\n9\r\n10 6 6\r\n10 6 6\r\n7 7 8\r\n9 5 6\r\n8 9 9\r\n9 5 5\r\n9 8 8\r\n8 5 6\r\n9 10 10\r\n",
+                "2\r\n"
+            ],
+            [
+                "6 15 7 15\r\n9\r\n6 15 15\r\n7 14 14\r\n6 15 15\r\n9 14 14\r\n7 14 16\r\n6 15 15\r\n6 15 15\r\n7 14 14\r\n8 15 15\r\n",
+                "1\r\n"
+            ],
+            [
+                "13 16 20 10\r\n18\r\n13 16 16\r\n20 10 10\r\n19 10 10\r\n12 15 15\r\n20 10 10\r\n18 11 11\r\n19 10 10\r\n19 10 10\r\n20 10 10\r\n19 10 10\r\n20 10 10\r\n20 10 10\r\n19 10 10\r\n18 11 11\r\n13 16 16\r\n12 15 15\r\n19 10 10\r\n19 10 10\r\n",
+                "-1\r\n"
+            ],
+            [
+                "89 29 88 30\r\n16\r\n87 31 31\r\n14 95 95\r\n98 88 89\r\n96 88 88\r\n14 97 97\r\n13 97 98\r\n100 88 88\r\n88 32 32\r\n99 88 89\r\n90 29 29\r\n87 31 31\r\n15 94 96\r\n89 29 29\r\n88 32 32\r\n97 89 89\r\n88 29 30\r\n",
+                "1\r\n"
+            ],
+            [
+                "30 14 39 19\r\n31\r\n35 7 11\r\n37 11 12\r\n32 13 13\r\n37 5 6\r\n46 13 13\r\n37 14 14\r\n31 13 13\r\n43 13 19\r\n45 15 19\r\n46 13 13\r\n32 17 17\r\n41 14 19\r\n30 14 14\r\n43 13 17\r\n34 16 18\r\n44 11 19\r\n38 13 13\r\n40 12 20\r\n37 16 18\r\n46 16 18\r\n34 10 14\r\n36 9 10\r\n36 15 19\r\n38 15 19\r\n42 13 19\r\n33 14 15\r\n35 15 19\r\n33 17 18\r\n39 12 20\r\n36 5 7\r\n45 12 12\r\n",
+                "9\r\n"
+            ],
+            [
+                "2 1 1 1\r\n2\r\n1 1 2\r\n2 1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 1 2\r\n5\r\n1000000000 1 10000\r\n19920401 1188 5566\r\n1000000000 1 10000\r\n1 1 10000\r\n5 100 200\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 1000000000 2\r\n5\r\n1000000000 1 10000\r\n19920401 1188 5566\r\n1000000000 1 10000\r\n1 1 10000\r\n5 100 200\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

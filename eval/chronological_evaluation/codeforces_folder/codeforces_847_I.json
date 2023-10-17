@@ -1,0 +1,125 @@
+[
+    {
+        "name": "Noise Level",
+        "description": "The Berland's capital has the form of a rectangle with sizes n \u00d7 m quarters.\nAll quarters are divided into three types: regular (labeled with the character\n'.') \u2014 such quarters do not produce the noise but are not obstacles to the\npropagation of the noise; sources of noise (labeled with an uppercase Latin\nletter from 'A' to 'Z') \u2014 such quarters are noise sources and are not\nobstacles to the propagation of the noise; heavily built-up (labeled with the\ncharacter '*') \u2014 such quarters are soundproofed, the noise does not penetrate\ninto them and they themselves are obstacles to the propagation of noise. A\nquarter labeled with letter 'A' produces q units of noise. A quarter labeled\nwith letter 'B' produces 2\u00b7q units of noise. And so on, up to a quarter\nlabeled with letter 'Z', which produces 26\u00b7q units of noise. There can be any\nnumber of quarters labeled with each letter in the city. When propagating from\nthe source of the noise, the noise level is halved when moving from one\nquarter to a quarter that shares a side with it (when an odd number is to be\nhalved, it's rounded down). The noise spreads along the chain. For example, if\nsome quarter is located at a distance 2 from the noise source, then the value\nof noise which will reach the quarter is divided by 4. So the noise level that\ncomes from the source to the quarter is determined solely by the length of the\nshortest path between them. Heavily built-up quarters are obstacles, the noise\ndoes not penetrate into them. The values in the cells of the table on the\nright show the total noise level in the respective quarters for q = 100, the\nfirst term in each sum is the noise from the quarter 'A', the second \u2014 the\nnoise from the quarter 'B'. The noise level in quarter is defined as the sum\nof the noise from all sources. To assess the quality of life of the population\nof the capital of Berland, it is required to find the number of quarters whose\nnoise level exceeds the allowed level p. Input The first line contains four\nintegers n, m, q and p (1 \u2264 n, m \u2264 250, 1 \u2264 q, p \u2264 10^6) \u2014 the sizes of\nBerland's capital, the number of noise units that a quarter 'A' produces, and\nthe allowable noise level. Each of the following n lines contains m characters\n\u2014 the description of the capital quarters, in the format that was described in\nthe statement above. It is possible that in the Berland's capital there are no\nquarters of any type. Output Print the number of quarters, in which the noise\nlevel exceeds the allowed level p. Examples Input 3 3 100 140 ... A*. .B.\nOutput 3 Input 3 3 2 8 B*. BB* BBB Output 4 Input 3 4 5 4 ..*B ..** D...\nOutput 7 Note The illustration to the first example is in the main part of the\nstatement.\n\n",
+        "cf_contest_id": 847,
+        "cf_index": "I",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3 100 140\r\n...\r\nA*.\r\n.B.\r\n",
+                "3"
+            ],
+            [
+                "3 3 2 8\r\nB*.\r\nBB*\r\nBBB\r\n",
+                "4"
+            ],
+            [
+                "3 4 5 4\r\n..*B\r\n..**\r\nD...\r\n",
+                "7"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 100 100\r\nC\r\n",
+                "1"
+            ],
+            [
+                "1 1 1 1\r\n.\r\n",
+                "0"
+            ],
+            [
+                "1 1 1 1\r\n*\r\n",
+                "0"
+            ],
+            [
+                "1 1 1 26\r\nZ\r\n",
+                "0"
+            ],
+            [
+                "1 1 1 25\r\nZ\r\n",
+                "1"
+            ],
+            [
+                "1 2 1 1\r\n..\r\n",
+                "0"
+            ],
+            [
+                "1 2 2 1\r\n.A\r\n",
+                "1"
+            ],
+            [
+                "1 2 5 1\r\n*A\r\n",
+                "1"
+            ],
+            [
+                "1 2 2 1\r\nA.\r\n",
+                "1"
+            ],
+            [
+                "1 2 6 1\r\nA*\r\n",
+                "1"
+            ],
+            [
+                "1 2 2 1\r\n.*\r\n",
+                "0"
+            ],
+            [
+                "1 2 2 1\r\n*.\r\n",
+                "0"
+            ],
+            [
+                "1 2 2 1\r\n**\r\n",
+                "0"
+            ],
+            [
+                "1 2 2 4\r\nAB\r\n",
+                "1"
+            ],
+            [
+                "2 1 1 1\r\n.\r\n.\r\n",
+                "0"
+            ],
+            [
+                "2 1 2 1\r\n.\r\nA\r\n",
+                "1"
+            ],
+            [
+                "2 1 5 1\r\n*\r\nA\r\n",
+                "1"
+            ],
+            [
+                "2 1 2 1\r\nA\r\n.\r\n",
+                "1"
+            ],
+            [
+                "2 1 6 1\r\nA\r\n*\r\n",
+                "1"
+            ],
+            [
+                "2 1 2 1\r\n.\r\n*\r\n",
+                "0"
+            ],
+            [
+                "2 1 2 1\r\n*\r\n.\r\n",
+                "0"
+            ],
+            [
+                "2 1 2 1\r\n*\r\n*\r\n",
+                "0"
+            ],
+            [
+                "2 1 2 4\r\nA\r\nB\r\n",
+                "1"
+            ]
+        ]
+    }
+]

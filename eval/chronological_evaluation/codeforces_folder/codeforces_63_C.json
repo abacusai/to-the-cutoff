@@ -1,0 +1,256 @@
+[
+    {
+        "name": "Bulls and Cows",
+        "description": "The \"Bulls and Cows\" game needs two people to play. The thinker thinks of a\nnumber and the guesser tries to guess it. The thinker thinks of a four-digit\nnumber in the decimal system. All the digits in the number are different and\nthe number may have a leading zero. It can't have more than one leading zero,\nbecause all it's digits should be different. The guesser tries to guess the\nnumber. He makes a series of guesses, trying experimental numbers and receives\nanswers from the first person in the format \"x bulls y cows\". x represents the\nnumber of digits in the experimental number that occupy the same positions as\nin the sought number. y represents the number of digits of the experimental\nnumber that present in the sought number, but occupy different positions.\nNaturally, the experimental numbers, as well as the sought number, are\nrepresented by four-digit numbers where all digits are different and a leading\nzero can be present. For example, let's suppose that the thinker thought of\nthe number 0123. Then the guessers' experimental number 1263 will receive a\nreply \"1 bull 2 cows\" (3 occupies the same positions in both numbers and 1 and\n2 are present in both numbers but they occupy different positions). Also, the\nanswer to number 8103 will be \"2 bulls 1 cow\" (analogically, 1 and 3 occupy\nthe same positions and 0 occupies a different one). When the guesser is\nanswered \"4 bulls 0 cows\", the game is over. Now the guesser has already made\nseveral guesses and wants to know whether his next guess can possibly be the\nlast one. Input The first input line contains an integer n (1 \u2264 n \u2264 10) which\nrepresents the number of already made guesses. Then follow n lines in the form\nof \"ai bi ci\", where ai is the i-th experimental number, bi is the number of\nbulls, ci is the number of cows (1 \u2264 i \u2264 n, 0 \u2264 bi, ci, bi + ci \u2264 4). The\nexperimental numbers are correct, i.e., each of them contains exactly four\ndigits, in each of them all the four digits are different, and there can be a\nleading zero. All the experimental numbers are different. As the guesser\nhasn't guessed the number yet, the answer \"4 bulls 0 cows\" is not present.\nOutput If the input data is enough to determine the sought number, print the\nnumber with four digits on a single line. If it has less than four digits, add\nleading zero. If the data is not enough, print \"Need more data\" without the\nquotes. If the thinker happens to have made a mistake in his replies, print\n\"Incorrect data\" without the quotes. Examples Input 2 1263 1 2 8103 2 1 Output\nNeed more data Input 2 1234 2 2 1256 0 2 Output 2134 Input 2 0123 1 1 4567 1 2\nOutput Incorrect data\n\n",
+        "cf_contest_id": 63,
+        "cf_index": "C",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n1263 1 2\r\n8103 2 1\r\n",
+                "Need more data\r\n"
+            ],
+            [
+                "2\r\n1234 2 2\r\n1256 0 2\r\n",
+                "2134\r\n"
+            ],
+            [
+                "2\r\n0123 1 1\r\n4567 1 2\r\n",
+                "Incorrect data\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1234 0 0\r\n",
+                "Need more data\r\n"
+            ],
+            [
+                "4\r\n4789 1 0\r\n7189 1 0\r\n7829 1 0\r\n7893 1 0\r\n",
+                "4123\r\n"
+            ],
+            [
+                "4\r\n1789 1 0\r\n7198 1 0\r\n9817 1 0\r\n8971 1 0\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "6\r\n1234 3 0\r\n1235 3 0\r\n1236 3 0\r\n1237 3 0\r\n1238 3 0\r\n1239 3 0\r\n",
+                "1230\r\n"
+            ],
+            [
+                "3\r\n0123 0 4\r\n1230 0 4\r\n3012 0 4\r\n",
+                "2301\r\n"
+            ],
+            [
+                "1\r\n0714 1 1\r\n",
+                "Need more data\r\n"
+            ],
+            [
+                "2\r\n0159 1 0\r\n0153 1 0\r\n",
+                "Need more data\r\n"
+            ],
+            [
+                "3\r\n9703 3 0\r\n0925 0 2\r\n3059 0 3\r\n",
+                "Need more data\r\n"
+            ],
+            [
+                "4\r\n1689 0 1\r\n0159 0 2\r\n4326 0 1\r\n9048 0 2\r\n",
+                "Need more data\r\n"
+            ],
+            [
+                "5\r\n9084 1 0\r\n4615 0 1\r\n0826 0 2\r\n1275 0 3\r\n5631 0 1\r\n",
+                "Need more data\r\n"
+            ],
+            [
+                "6\r\n1586 0 2\r\n6105 1 1\r\n5382 0 1\r\n8164 0 2\r\n0647 0 1\r\n6059 1 1\r\n",
+                "Need more data\r\n"
+            ],
+            [
+                "7\r\n7401 0 2\r\n1524 0 0\r\n1495 0 0\r\n9230 0 2\r\n9874 1 0\r\n9574 1 0\r\n4693 1 1\r\n",
+                "6073\r\n"
+            ],
+            [
+                "8\r\n7954 0 1\r\n5638 0 1\r\n8204 0 2\r\n8293 1 1\r\n3598 0 1\r\n0894 0 1\r\n6324 1 2\r\n0572 0 1\r\n",
+                "Need more data\r\n"
+            ],
+            [
+                "9\r\n8742 0 1\r\n5183 1 1\r\n6149 1 0\r\n3568 0 2\r\n9258 1 2\r\n5193 1 2\r\n7403 0 1\r\n9124 0 2\r\n3058 0 2\r\n",
+                "5239\r\n"
+            ],
+            [
+                "10\r\n7098 2 1\r\n7693 1 1\r\n6428 0 2\r\n5209 0 2\r\n1683 0 2\r\n0432 0 1\r\n5697 1 1\r\n2437 0 0\r\n4593 1 0\r\n1784 0 1\r\n",
+                "8096\r\n"
+            ],
+            [
+                "10\r\n8795 0 3\r\n4971 1 1\r\n5032 0 1\r\n5479 0 3\r\n2501 0 1\r\n9052 1 0\r\n3649 0 1\r\n1927 1 0\r\n9173 0 1\r\n8014 0 2\r\n",
+                "4857\r\n"
+            ],
+            [
+                "10\r\n0459 2 0\r\n2371 0 1\r\n5209 2 1\r\n1306 0 0\r\n0213 1 0\r\n4173 0 0\r\n5076 0 1\r\n9674 0 1\r\n2894 0 3\r\n3527 0 2\r\n",
+                "8259\r\n"
+            ],
+            [
+                "10\r\n0132 0 1\r\n6801 0 1\r\n8749 1 1\r\n8036 0 0\r\n7384 0 2\r\n8594 1 1\r\n9307 1 0\r\n7390 0 1\r\n6127 1 1\r\n0381 0 1\r\n",
+                "1547\r\n"
+            ],
+            [
+                "10\r\n9360 0 1\r\n5208 0 2\r\n7861 1 0\r\n8916 0 1\r\n5937 1 1\r\n7082 0 1\r\n3402 0 2\r\n7230 1 0\r\n1794 0 1\r\n8293 0 2\r\n",
+                "4835\r\n"
+            ],
+            [
+                "2\r\n3794 2 2\r\n8647 0 4\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "2\r\n9726 3 1\r\n6583 1 1\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "3\r\n6093 3 0\r\n7902 2 0\r\n2305 2 1\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "3\r\n6108 0 3\r\n4975 1 1\r\n0981 1 2\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "4\r\n7153 2 1\r\n5810 1 0\r\n8439 0 2\r\n2794 1 3\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "4\r\n4259 1 3\r\n1985 0 3\r\n5263 2 2\r\n5703 3 1\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "5\r\n9784 3 0\r\n2657 0 3\r\n7536 1 0\r\n0762 1 3\r\n2014 1 1\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "5\r\n2746 0 3\r\n1509 3 0\r\n4135 2 0\r\n7536 0 4\r\n1825 3 0\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "6\r\n5132 1 0\r\n3085 3 0\r\n0523 1 3\r\n6912 3 0\r\n7406 2 1\r\n3179 2 1\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "6\r\n1034 3 0\r\n0514 2 2\r\n1092 2 2\r\n0814 0 4\r\n9182 2 0\r\n9534 0 0\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "7\r\n9230 3 1\r\n7401 3 1\r\n6073 0 0\r\n1495 0 0\r\n9574 2 0\r\n4693 2 2\r\n1524 1 2\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "4\r\n0789 1 0\r\n7189 1 0\r\n7829 1 0\r\n7893 1 0\r\n",
+                "0123\r\n"
+            ],
+            [
+                "1\r\n1234 3 1\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "2\r\n1234 0 0\r\n5678 0 0\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "2\r\n1340 0 0\r\n2435 0 0\r\n",
+                "Need more data\r\n"
+            ],
+            [
+                "3\r\n1024 0 1\r\n5678 3 0\r\n1542 0 0\r\n",
+                "0678\r\n"
+            ],
+            [
+                "3\r\n1234 0 4\r\n2413 0 4\r\n4123 0 4\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "5\r\n0123 0 1\r\n4567 0 1\r\n8901 0 1\r\n6789 0 1\r\n2345 0 1\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "1\r\n1234 2 2\r\n",
+                "Need more data\r\n"
+            ],
+            [
+                "2\r\n1234 2 2\r\n2134 2 2\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "3\r\n6789 0 2\r\n1234 0 2\r\n3467 0 0\r\n",
+                "Need more data\r\n"
+            ],
+            [
+                "3\r\n6789 0 2\r\n1234 2 0\r\n3467 0 0\r\n",
+                "1298\r\n"
+            ],
+            [
+                "4\r\n0123 1 0\r\n0342 1 0\r\n5678 2 0\r\n2981 0 1\r\n",
+                "0679\r\n"
+            ],
+            [
+                "3\r\n1234 3 0\r\n5678 0 0\r\n1239 3 0\r\n",
+                "1230\r\n"
+            ],
+            [
+                "6\r\n3102 3 0\r\n4102 3 0\r\n5102 3 0\r\n6102 3 0\r\n7102 3 0\r\n8102 3 0\r\n",
+                "9102\r\n"
+            ],
+            [
+                "4\r\n0123 1 3\r\n3012 1 3\r\n2301 2 2\r\n1230 0 4\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "10\r\n0231 2 2\r\n3021 2 2\r\n2301 2 2\r\n0451 2 2\r\n5041 2 2\r\n4501 2 2\r\n0671 2 2\r\n7061 2 2\r\n8901 2 2\r\n0891 2 2\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "8\r\n1023 2 2\r\n1032 2 2\r\n1045 2 2\r\n1054 2 2\r\n1067 2 2\r\n1076 2 2\r\n1089 2 2\r\n1098 2 2\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "2\r\n5678 1 3\r\n5432 1 3\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "2\r\n2034 2 2\r\n2056 0 2\r\n",
+                "0234\r\n"
+            ],
+            [
+                "6\r\n0132 2 2\r\n0321 2 2\r\n3120 2 2\r\n0213 2 2\r\n2103 2 2\r\n1023 2 2\r\n",
+                "0123\r\n"
+            ],
+            [
+                "3\r\n0235 3 0\r\n0236 3 0\r\n7894 1 0\r\n",
+                "0234\r\n"
+            ],
+            [
+                "2\r\n1234 0 0\r\n5678 0 0\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "2\r\n1234 3 1\r\n1253 3 1\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "5\r\n3210 0 4\r\n0789 1 0\r\n7189 1 0\r\n7829 1 0\r\n7893 1 0\r\n",
+                "0123\r\n"
+            ],
+            [
+                "2\r\n1234 3 1\r\n1253 3 1\r\n",
+                "Incorrect data\r\n"
+            ],
+            [
+                "2\r\n1234 0 0\r\n5678 0 0\r\n",
+                "Incorrect data\r\n"
+            ]
+        ]
+    }
+]

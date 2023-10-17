@@ -1,0 +1,160 @@
+[
+    {
+        "name": "Noble Knight's Path",
+        "description": "In Berland each feudal owns exactly one castle and each castle belongs to\nexactly one feudal. Each feudal, except one (the King) is subordinate to\nanother feudal. A feudal can have any number of vassals (subordinates). Some\ncastles are connected by roads, it is allowed to move along the roads in both\nways. Two castles have a road between them if and only if the owner of one of\nthese castles is a direct subordinate to the other owner. Each year exactly\none of these two events may happen in Berland. The barbarians attacked castle\nc. The interesting fact is, the barbarians never attacked the same castle\ntwice throughout the whole Berlandian history. A noble knight sets off on a\njourney from castle a to castle b (provided that on his path he encounters\neach castle not more than once). Let's consider the second event in detail. As\nthe journey from a to b is not short, then the knight might want to stop at a\ncastle he encounters on his way to have some rest. However, he can't stop at\njust any castle: his nobility doesn't let him stay in the castle that has been\ndesecrated by the enemy's stench. A castle is desecrated if and only if it has\nbeen attacked after the year of y. So, the knight chooses the k-th castle he\nencounters, starting from a (castles a and b aren't taken into consideration),\nthat hasn't been attacked in years from y + 1 till current year. The knights\ndon't remember which castles were attacked on what years, so he asked the\ncourt scholar, aka you to help them. You've got a sequence of events in the\nBerland history. Tell each knight, in what city he should stop or else deliver\nthe sad news \u2014 that the path from city a to city b has less than k cities that\nmeet his requirements, so the knight won't be able to rest. Input The first\ninput line contains integer n (2 \u2264 n \u2264 10^5) \u2014 the number of feudals. The next\nline contains n space-separated integers: the i-th integer shows either the\nnumber of the i-th feudal's master, or a 0, if the i-th feudal is the King.\nThe third line contains integer m (1 \u2264 m \u2264 10^5) \u2014 the number of queries. Then\nfollow m lines that describe the events. The i-th line (the lines are indexed\nstarting from 1) contains the description of the event that occurred in year\ni. Each event is characterised by type ti (1 \u2264 ti \u2264 2). The description of the\nfirst type event looks as two space-separated integers ti ci (ti = 1; 1 \u2264 ci \u2264\nn), where ci is the number of the castle that was attacked by the barbarians\nin the i-th year. The description of the second type contains five space-\nseparated integers: ti ai bi ki yi (ti = 2; 1 \u2264 ai, bi, ki \u2264 n; ai \u2260 bi; 0 \u2264\nyi < i), where ai is the number of the castle from which the knight is setting\noff, bi is the number of the castle to which the knight is going, ki and yi\nare the k and y from the second event's description. You can consider the\nfeudals indexed from 1 to n. It is guaranteed that there is only one king\namong the feudals. It is guaranteed that for the first type events all values\nci are different. Output For each second type event print an integer \u2014 the\nnumber of the castle where the knight must stay to rest, or -1, if he will\nhave to cover the distance from ai to bi without a rest. Separate the answers\nby whitespaces. Print the answers in the order, in which the second type\nevents are given in the input. Examples Input 3 0 1 2 5 2 1 3 1 0 1 2 2 1 3 1\n0 2 1 3 1 1 2 1 3 1 2 Output 2 -1 -1 2 Input 6 2 5 2 2 0 5 3 2 1 6 2 0 1 2 2 4\n5 1 0 Output 5 -1 Note In the first sample there is only castle 2 on the\nknight's way from castle 1 to castle 3. When the knight covers the path 1 - 3\nfor the first time, castle 2 won't be desecrated by an enemy and the knight\nwill stay there. In the second year the castle 2 will become desecrated, so\nthe knight won't have anywhere to stay for the next two years (as finding a\ncastle that hasn't been desecrated from years 1 and 2, correspondingly, is\nimportant for him). In the fifth year the knight won't consider the castle 2\ndesecrated, so he will stay there again.\n\n",
+        "cf_contest_id": 226,
+        "cf_index": "E",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "trees"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n0 1 2\r\n5\r\n2 1 3 1 0\r\n1 2\r\n2 1 3 1 0\r\n2 1 3 1 1\r\n2 1 3 1 2\r\n",
+                "2\r\n-1\r\n-1\r\n2\r\n"
+            ],
+            [
+                "6\r\n2 5 2 2 0 5\r\n3\r\n2 1 6 2 0\r\n1 2\r\n2 4 5 1 0\r\n",
+                "5\r\n-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n8 9 8 1 8 1 1 0 10 4\r\n3\r\n1 8\r\n2 2 1 1 1\r\n1 6\r\n",
+                "9\r\n"
+            ],
+            [
+                "7\r\n3 7 7 2 2 7 0\r\n6\r\n1 5\r\n2 5 4 1 1\r\n1 4\r\n1 3\r\n1 1\r\n1 6\r\n",
+                "2\r\n"
+            ],
+            [
+                "8\r\n3 5 0 5 1 1 2 6\r\n3\r\n1 1\r\n1 4\r\n1 7\r\n",
+                ""
+            ],
+            [
+                "6\r\n5 5 1 5 0 5\r\n3\r\n2 6 2 1 0\r\n2 1 5 2 1\r\n1 2\r\n",
+                "5\r\n-1\r\n"
+            ],
+            [
+                "8\r\n3 1 0 1 7 1 1 3\r\n2\r\n1 5\r\n1 3\r\n",
+                ""
+            ],
+            [
+                "2\r\n0 1\r\n10\r\n2 2 1 1 0\r\n2 1 2 1 1\r\n2 2 1 1 1\r\n2 1 2 1 3\r\n2 2 1 1 4\r\n2 2 1 1 3\r\n2 2 1 1 2\r\n2 2 1 1 4\r\n2 1 2 1 0\r\n2 2 1 1 7\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "8\r\n3 7 4 0 3 1 8 6\r\n3\r\n1 1\r\n2 8 7 1 0\r\n1 8\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3\r\n3 3 0\r\n8\r\n1 2\r\n2 1 2 1 1\r\n2 3 2 1 2\r\n2 3 2 1 3\r\n2 2 1 1 4\r\n2 2 1 1 0\r\n2 3 1 1 2\r\n2 1 3 1 1\r\n",
+                "3\r\n-1\r\n-1\r\n3\r\n3\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "7\r\n6 3 4 0 4 7 4\r\n7\r\n1 5\r\n2 3 5 2 1\r\n2 5 1 1 2\r\n2 5 7 1 1\r\n1 4\r\n1 3\r\n2 1 6 1 1\r\n",
+                "-1\r\n4\r\n4\r\n-1\r\n"
+            ],
+            [
+                "7\r\n2 4 6 6 1 0 4\r\n8\r\n1 2\r\n2 4 6 1 1\r\n1 6\r\n2 7 6 1 0\r\n1 4\r\n2 1 3 1 1\r\n2 2 6 2 0\r\n2 1 7 1 4\r\n",
+                "-1\r\n4\r\n2\r\n-1\r\n2\r\n"
+            ],
+            [
+                "10\r\n3 5 4 7 7 4 0 10 7 7\r\n8\r\n2 5 1 2 0\r\n1 6\r\n1 1\r\n2 5 8 3 0\r\n1 8\r\n2 7 9 1 4\r\n1 9\r\n2 2 7 3 4\r\n",
+                "4\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "7\r\n3 6 0 1 7 7 3\r\n5\r\n1 7\r\n2 2 5 1 1\r\n1 1\r\n1 5\r\n2 5 6 1 3\r\n",
+                "6\r\n7\r\n"
+            ],
+            [
+                "9\r\n8 6 4 7 3 0 9 2 1\r\n10\r\n1 2\r\n1 1\r\n1 8\r\n1 3\r\n2 4 8 4 3\r\n2 1 7 2 5\r\n1 7\r\n1 4\r\n1 9\r\n2 4 3 6 9\r\n",
+                "-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "9\r\n0 5 1 9 7 4 3 2 8\r\n10\r\n2 3 7 5 0\r\n1 4\r\n1 9\r\n2 2 6 8 1\r\n1 8\r\n2 9 6 6 4\r\n2 5 8 2 6\r\n1 2\r\n2 9 4 4 6\r\n2 3 7 3 2\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "9\r\n4 1 0 6 3 8 5 7 2\r\n9\r\n2 4 9 4 0\r\n2 4 5 8 0\r\n2 1 2 2 0\r\n2 1 9 3 0\r\n2 4 5 3 2\r\n2 6 5 6 5\r\n2 9 1 6 0\r\n2 6 5 1 1\r\n1 7\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n7\r\n-1\r\n-1\r\n8\r\n"
+            ],
+            [
+                "3\r\n2 0 1\r\n4\r\n1 3\r\n2 2 1 1 1\r\n2 3 1 1 1\r\n2 2 3 2 3\r\n",
+                "-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "8\r\n6 0 1 8 2 7 5 3\r\n2\r\n2 5 8 4 0\r\n2 6 8 3 1\r\n",
+                "3\r\n-1\r\n"
+            ],
+            [
+                "7\r\n2 5 1 6 4 0 3\r\n4\r\n1 4\r\n2 2 7 1 1\r\n1 7\r\n2 2 1 6 0\r\n",
+                "1\r\n-1\r\n"
+            ],
+            [
+                "4\r\n4 3 1 0\r\n10\r\n2 4 3 2 0\r\n2 3 1 2 0\r\n2 3 4 2 0\r\n2 3 2 3 2\r\n2 3 2 2 2\r\n2 1 3 3 1\r\n2 1 4 3 6\r\n2 4 1 2 1\r\n1 3\r\n1 2\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "9\r\n8 9 5 6 1 0 2 7 4\r\n1\r\n1 4\r\n",
+                ""
+            ],
+            [
+                "7\r\n0 6 5 3 7 4 1\r\n2\r\n1 2\r\n2 2 7 3 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "7\r\n0 4 1 5 7 2 3\r\n3\r\n2 3 4 3 0\r\n1 6\r\n2 2 5 6 2\r\n",
+                "-1\r\n-1\r\n"
+            ],
+            [
+                "7\r\n0 4 1 1 3 3 4\r\n9\r\n1 6\r\n2 1 2 3 0\r\n2 6 7 5 2\r\n2 3 1 1 0\r\n2 4 3 3 0\r\n1 4\r\n2 7 4 2 0\r\n1 3\r\n1 5\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "9\r\n2 4 8 0 8 4 2 6 6\r\n2\r\n2 4 9 5 0\r\n2 1 9 6 1\r\n",
+                "-1\r\n-1\r\n"
+            ],
+            [
+                "9\r\n0 3 5 3 1 8 8 1 5\r\n1\r\n2 8 2 4 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5\r\n5 5 1 1 0\r\n5\r\n1 2\r\n1 1\r\n2 3 1 3 2\r\n2 1 5 3 3\r\n2 4 2 3 2\r\n",
+                "-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "8\r\n4 5 4 5 0 2 2 7\r\n2\r\n1 6\r\n2 8 4 5 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8\r\n2 7 2 7 4 3 0 4\r\n6\r\n1 3\r\n1 7\r\n2 1 4 1 0\r\n1 5\r\n2 3 7 5 0\r\n1 6\r\n",
+                "2\r\n-1\r\n"
+            ],
+            [
+                "9\r\n9 6 6 0 9 4 3 3 4\r\n5\r\n2 1 8 1 0\r\n2 4 9 3 0\r\n2 1 8 7 1\r\n1 1\r\n1 8\r\n",
+                "9\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "3\r\n2 0 2\r\n8\r\n1 2\r\n2 3 1 2 0\r\n2 1 2 1 2\r\n2 2 1 1 1\r\n2 1 2 1 2\r\n2 3 2 1 4\r\n2 1 3 1 1\r\n2 1 3 2 7\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n2\r\n-1\r\n"
+            ],
+            [
+                "6\r\n3 3 6 6 4 0\r\n10\r\n1 3\r\n2 5 6 5 0\r\n2 6 3 1 0\r\n1 5\r\n2 5 1 1 4\r\n2 6 4 1 0\r\n2 6 1 3 2\r\n2 6 4 1 6\r\n2 4 6 5 0\r\n1 6\r\n",
+                "-1\r\n-1\r\n4\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "2\r\n0 1\r\n5\r\n2 1 2 1 0\r\n2 2 1 1 1\r\n2 2 1 1 1\r\n2 1 2 1 3\r\n2 1 2 1 1\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "66\r\n12 8 1 16 52 49 42 33 7 4 65 7 32 63 5 33 35 59 40 21 9 51 8 51 22 25 22 52 25 41 36 16 0 28 50 2 64 2 53 63 51 52 32 5 48 65 32 62 27 57 33 38 11 12 51 28 60 11 32 62 31 33 60 60 2 60\r\n1\r\n2 54 37 7 0\r\n",
+                "8\r\n"
+            ]
+        ]
+    }
+]

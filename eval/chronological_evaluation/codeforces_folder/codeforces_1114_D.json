@@ -1,0 +1,115 @@
+[
+    {
+        "name": "Flood Fill",
+        "description": "You are given a line of \n    n\n colored squares in a row, numbered from\n\n    1\n to \n    n\n from left to right. The \n    i\n-th square initially has the\ncolor \n    c_i\n. Let's say, that two squares \n    i\n and \n    j\n belong to the\nsame connected component if \n    c_i = c_j\n, and \n    c_i = c_k\n for all\n\n    k\n satisfying \n    i < k < j\n. In other words, all squares on the segment\nfrom \n    i\n to \n    j\n should have the same color. For example, the line\n\n    [3, 3, 3]\n has \n    1\n connected component, while the line \n    [5, 2, 4,\n    4]\n has \n    3\n connected components. The game \"flood fill\" is played on the\ngiven line as follows: At the start of the game you pick any starting square\n(this is not counted as a turn). Then, in each game turn, change the color of\nthe connected component containing the starting square to any other color.\nFind the minimum number of turns needed for the entire line to be changed into\na single color. Input The first line contains a single integer \n    n\n (\n    1\n    \n    \u2264 n \n    \u2264 5000\n) \u2014 the number of squares. The second line contains\nintegers \n    c_1, c_2, \n    \u2026, c_n\n (\n    1 \n    \u2264 c_i \n    \u2264 5000\n) \u2014 the\ninitial colors of the squares. Output Print a single integer \u2014 the minimum\nnumber of the turns needed. Examples Input 4 5 2 2 1 Output 2 Input 8 4 5 2 2\n1 3 5 5 Output 4 Input 1 4 Output 0 Note In the first example, a possible way\nto achieve an optimal answer is to pick square with index \n    2\n as the\nstarting square and then play as follows: \n    [5, 2, 2, 1]\n \n    [5, 5, 5,\n    1]\n \n    [1, 1, 1, 1]\n In the second example, a possible way to achieve an\noptimal answer is to pick square with index \n    5\n as the starting square and\nthen perform recoloring into colors \n    2, 3, 5, 4\n in that order. In the\nthird example, the line already consists of one color only.\n\n",
+        "cf_contest_id": 1114,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n5 2 2 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "8\r\n4 5 2 2 1 3 5 5\r\n",
+                "4\r\n"
+            ],
+            [
+                "1\r\n4\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n4 4 4 4\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n3166 2658\r\n",
+                "1\r\n"
+            ],
+            [
+                "19\r\n26 26 26 26 26 26 26 26 26 26 26 63 63 68 68 68 81 81 81\r\n",
+                "3\r\n"
+            ],
+            [
+                "29\r\n4763 4743 4742 4752 4739 4740 4753 4738 4744 4741 4746 4737 4757 4764 4750 4745 4755 4761 4749 4759 4747 4736 4756 4751 4758 4754 4762 4760 4748\r\n",
+                "28\r\n"
+            ],
+            [
+                "4\r\n1 1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "87\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "172\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "4\r\n1 7 9 7\r\n",
+                "2\r\n"
+            ],
+            [
+                "25\r\n10 8 9 8 7 4 8 4 10 4 7 8 2 7 6 10 10 6 1 4 3 9 5 4 5\r\n",
+                "19\r\n"
+            ],
+            [
+                "1\r\n97\r\n",
+                "0\r\n"
+            ],
+            [
+                "18\r\n88 94 28 7 93 44 61 61 69 27 47 68 90 94 81 10 71 2\r\n",
+                "15\r\n"
+            ],
+            [
+                "8\r\n379 77 816 424 660 447 704 971\r\n",
+                "7\r\n"
+            ],
+            [
+                "44\r\n333 563 429 654 40 572 354 882 968 874 935 398 603 950 833 214 55 59 75 968 442 733 162 864 98 607 145 733 965 603 974 362 67 735 939 422 742 122 222 852 73 699 769 572\r\n",
+                "40\r\n"
+            ],
+            [
+                "93\r\n2805 3621 1888 921 2394 2426 3424 739 4404 1923 2043 1106 305 788 546 1396 2252 4915 1857 1833 2601 3148 1768 1079 893 4669 1939 1231 1019 4578 3202 3645 352 4730 2074 1251 736 168 1377 4630 1542 3083 222 2864 1 4838 1319 1037 4297 552 304 2638 3278 518 4563 513 4313 4620 4907 4990 4785 2808 4135 4171 1240 2807 3158 4682 756 1022 517 2238 38 2082 3346 3482 1742 1760 2917 2745 213 982 3905 3655 4665 2760 3784 2422 3157 1436 4468 42 862\r\n",
+                "92\r\n"
+            ],
+            [
+                "1\r\n980\r\n",
+                "0\r\n"
+            ],
+            [
+                "75\r\n3 5 5 9 9 9 2 2 2 2 1 1 1 1 1 9 9 9 9 9 9 1 1 1 1 1 1 1 1 1 1 7 7 7 7 7 7 8 8 8 8 4 4 4 4 4 4 5 5 5 5 1 1 1 3 3 3 3 3 1 1 1 1 1 1 4 2 2 2 2 2 2 4 5 5\r\n",
+                "13\r\n"
+            ],
+            [
+                "4\r\n35 35 39 84\r\n",
+                "2\r\n"
+            ],
+            [
+                "40\r\n54 54 54 25 25 25 25 25 25 25 25 25 25 10 10 10 10 10 10 10 10 10 62 22 22 22 22 22 22 17 17 17 17 50 39 39 39 1 15 62\r\n",
+                "9\r\n"
+            ],
+            [
+                "3\r\n505 505 258\r\n",
+                "1\r\n"
+            ],
+            [
+                "71\r\n195 195 195 195 195 195 195 195 195 723 723 723 723 723 723 723 723 723 723 723 723 723 632 632 632 632 632 632 632 632 632 632 632 632 632 632 632 632 632 2 2 2 2 2 2 2 2 2 2 768 768 768 768 768 768 768 768 768 768 768 768 768 768 665 665 157 157 838 838 838 298\r\n",
+                "8\r\n"
+            ],
+            [
+                "24\r\n1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668 1668\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

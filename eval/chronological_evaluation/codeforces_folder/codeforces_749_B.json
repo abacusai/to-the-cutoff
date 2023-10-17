@@ -1,0 +1,177 @@
+[
+    {
+        "name": "Parallelogram is Back",
+        "description": "Long time ago Alex created an interesting problem about parallelogram. The\ninput data for this problem contained four integer points on the Cartesian\nplane, that defined the set of vertices of some non-degenerate (positive area)\nparallelogram. Points not necessary were given in the order of clockwise or\ncounterclockwise traversal. Alex had very nice test for this problem, but is\nsomehow happened that the last line of the input was lost and now he has only\nthree out of four points of the original parallelogram. He remembers that test\nwas so good that he asks you to restore it given only these three points.\nInput The input consists of three lines, each containing a pair of integer\ncoordinates xi and yi ( - 1000 \u2264 xi, yi \u2264 1000). It's guaranteed that these\nthree points do not lie on the same line and no two of them coincide. Output\nFirst print integer k \u2014 the number of ways to add one new integer point such\nthat the obtained set defines some parallelogram of positive area. There is no\nrequirement for the points to be arranged in any special order (like\ntraversal), they just define the set of vertices. Then print k lines, each\ncontaining a pair of integer \u2014 possible coordinates of the fourth point.\nExample Input 0 0 1 0 0 1 Output 3 1 -1 -1 1 1 1 Note If you need\nclarification of what parallelogram is, please check Wikipedia page:\nhttps://en.wikipedia.org/wiki/Parallelogram\n\n",
+        "cf_contest_id": 749,
+        "cf_index": "B",
+        "cf_rating": 1200,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "constructive algorithms",
+            "geometry"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "0 0\r\n1 0\r\n0 1\r\n",
+                "3\r\n1 1\r\n-1 1\r\n1 -1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "0 -1\r\n-1 0\r\n1 1\r\n",
+                "3\r\n0 2\r\n2 0\r\n-2 -2\r\n"
+            ],
+            [
+                "-1 -1\r\n0 1\r\n1 1\r\n",
+                "3\r\n2 3\r\n0 -1\r\n-2 -1\r\n"
+            ],
+            [
+                "1000 1000\r\n-1000 -1000\r\n-1000 1000\r\n",
+                "3\r\n-3000 -1000\r\n1000 3000\r\n1000 -1000\r\n"
+            ],
+            [
+                "-1000 1000\r\n1000 -1000\r\n-1000 -1000\r\n",
+                "3\r\n1000 -3000\r\n-3000 1000\r\n1000 1000\r\n"
+            ],
+            [
+                "-4 -5\r\n7 10\r\n3 -10\r\n",
+                "3\r\n14 5\r\n-8 -25\r\n0 15\r\n"
+            ],
+            [
+                "-86 25\r\n-55 18\r\n58 24\r\n",
+                "3\r\n89 17\r\n27 31\r\n-199 19\r\n"
+            ],
+            [
+                "-301 -397\r\n192 317\r\n-98 729\r\n",
+                "3\r\n395 1443\r\n-591 15\r\n-11 -809\r\n"
+            ],
+            [
+                "1000 1000\r\n999 1000\r\n-1000 -1000\r\n",
+                "3\r\n-1001 -1000\r\n-999 -1000\r\n2999 3000\r\n"
+            ],
+            [
+                "-1000 0\r\n999 0\r\n1000 1\r\n",
+                "3\r\n2999 1\r\n-999 1\r\n-1001 -1\r\n"
+            ],
+            [
+                "-1000 1000\r\n1000 -1000\r\n0 1\r\n",
+                "3\r\n2000 -1999\r\n-2000 2001\r\n0 -1\r\n"
+            ],
+            [
+                "1000 -1000\r\n1000 1000\r\n-1000 0\r\n",
+                "3\r\n-1000 2000\r\n-1000 -2000\r\n3000 0\r\n"
+            ],
+            [
+                "-1000 -1000\r\n-1 -1000\r\n-1000 -2\r\n",
+                "3\r\n-1 -2\r\n-1999 -2\r\n-1 -1998\r\n"
+            ],
+            [
+                "0 -1000\r\n0 1000\r\n-1 -1000\r\n",
+                "3\r\n-1 1000\r\n-1 -3000\r\n1 1000\r\n"
+            ],
+            [
+                "0 -1000\r\n0 1000\r\n1 -1000\r\n",
+                "3\r\n1 1000\r\n1 -3000\r\n-1 1000\r\n"
+            ],
+            [
+                "9 5\r\n-6 6\r\n8 -8\r\n",
+                "3\r\n-7 -7\r\n23 -9\r\n-5 19\r\n"
+            ],
+            [
+                "5 0\r\n-7 -7\r\n-3 3\r\n",
+                "3\r\n-15 -4\r\n9 10\r\n1 -10\r\n"
+            ],
+            [
+                "1 -1\r\n1 7\r\n2 9\r\n",
+                "3\r\n2 17\r\n2 1\r\n0 -3\r\n"
+            ],
+            [
+                "-7 -9\r\n1 -10\r\n4 8\r\n",
+                "3\r\n12 7\r\n-4 9\r\n-10 -27\r\n"
+            ],
+            [
+                "10 3\r\n4 -9\r\n-8 -2\r\n",
+                "3\r\n-14 -14\r\n-2 10\r\n22 -4\r\n"
+            ],
+            [
+                "6 -5\r\n4 -4\r\n-6 5\r\n",
+                "3\r\n-8 6\r\n-4 4\r\n16 -14\r\n"
+            ],
+            [
+                "2 7\r\n8 9\r\n-5 4\r\n",
+                "3\r\n1 6\r\n-11 2\r\n15 12\r\n"
+            ],
+            [
+                "-6 2\r\n-10 -7\r\n9 -6\r\n",
+                "3\r\n5 -15\r\n13 3\r\n-25 1\r\n"
+            ],
+            [
+                "-6 -23\r\n-68 -8\r\n-63 71\r\n",
+                "3\r\n-125 86\r\n-1 56\r\n-11 -102\r\n"
+            ],
+            [
+                "-11 -61\r\n56 9\r\n-57 46\r\n",
+                "3\r\n10 116\r\n-124 -24\r\n102 -98\r\n"
+            ],
+            [
+                "-17 0\r\n-95 26\r\n-25 -54\r\n",
+                "3\r\n-103 -28\r\n53 -80\r\n-87 80\r\n"
+            ],
+            [
+                "-22 -38\r\n-70 -58\r\n-19 21\r\n",
+                "3\r\n-67 1\r\n29 41\r\n-73 -117\r\n"
+            ],
+            [
+                "73 -2\r\n79 -16\r\n13 -4\r\n",
+                "3\r\n19 -18\r\n7 10\r\n139 -14\r\n"
+            ],
+            [
+                "-33 60\r\n3 0\r\n-57 97\r\n",
+                "3\r\n-21 37\r\n-93 157\r\n27 -37\r\n"
+            ],
+            [
+                "-38 22\r\n53 -83\r\n-50 -28\r\n",
+                "3\r\n41 -133\r\n-141 77\r\n65 -33\r\n"
+            ],
+            [
+                "57 83\r\n-24 -66\r\n-19 -53\r\n",
+                "3\r\n-100 -202\r\n62 96\r\n52 70\r\n"
+            ],
+            [
+                "21 185\r\n966 -167\r\n-291 -804\r\n",
+                "3\r\n654 -1156\r\n-1236 -452\r\n1278 822\r\n"
+            ],
+            [
+                "-917 -272\r\n-285 -579\r\n318 -437\r\n",
+                "3\r\n950 -744\r\n-314 -130\r\n-1520 -414\r\n"
+            ],
+            [
+                "-969 -199\r\n766 -179\r\n626 -372\r\n",
+                "3\r\n2361 -352\r\n-1109 -392\r\n-829 -6\r\n"
+            ],
+            [
+                "980 -656\r\n-485 -591\r\n-766 880\r\n",
+                "3\r\n-2231 945\r\n699 815\r\n1261 -2127\r\n"
+            ],
+            [
+                "928 1\r\n-319 111\r\n428 -754\r\n",
+                "3\r\n-819 -644\r\n1675 -864\r\n181 866\r\n"
+            ],
+            [
+                "-10 658\r\n732 -301\r\n735 197\r\n",
+                "3\r\n1477 -762\r\n-7 1156\r\n-13 160\r\n"
+            ],
+            [
+                "-948 201\r\n-519 -713\r\n459 564\r\n",
+                "3\r\n888 -350\r\n30 1478\r\n-1926 -1076\r\n"
+            ],
+            [
+                "-114 -28\r\n532 573\r\n766 931\r\n",
+                "3\r\n1412 1532\r\n120 330\r\n-348 -386\r\n"
+            ]
+        ]
+    }
+]

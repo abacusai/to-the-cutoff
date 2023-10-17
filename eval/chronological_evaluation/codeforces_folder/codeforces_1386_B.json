@@ -1,0 +1,91 @@
+[
+    {
+        "name": "Mixture",
+        "description": "Serge, the chef of the famous restaurant \"Salt, Pepper     Garlic\" is trying to\nobtain his first Michelin star. He has been informed that a secret expert\nplans to visit his restaurant this evening. Even though the expert's name\nhasn't been disclosed, Serge is certain he knows which dish from the menu will\nbe ordered as well as what the taste preferences of the expert are. Namely,\nthe expert requires an extremely precise proportion of salt, pepper and garlic\npowder in his dish. Serge keeps a set of bottles with mixtures of salt, pepper\nand garlic powder on a special shelf in the kitchen. For each bottle, he knows\nthe exact amount of each of the ingredients in kilograms. Serge can combine\nany number of bottled mixtures (or just use one of them directly) to get a\nmixture of particular proportions needed for a certain dish. Luckily, the\nabsolute amount of a mixture that needs to be added to a dish is so small that\nyou can assume that the amounts in the bottles will always be sufficient.\nHowever, the numeric values describing the proportions may be quite large.\nSerge would like to know whether it is possible to obtain the expert's\nfavourite mixture from the available bottles, and if so\u2014what is the smallest\npossible number of bottles needed to achieve that. Furthermore, the set of\nbottles on the shelf may change over time as Serge receives new ones or lends\nhis to other chefs. So he would like to answer this question after each such\nchange. For example, assume that expert's favorite mixture is \n    1:1:1\n and\nthere are three bottles of mixtures on the shelf: \n    \n\n    [              ;              ;       Mixture              ;          Salt              ;        Pepper              ; Garlic\n    powder; ; ;              ;             1            10            20            30; ; ;             2           300           200           100; ; ;             3            12            15            27; ; ;              ;              ;  ]\n\n    \n Amount of ingredient in\nthe bottle, kg To obtain the desired mixture it is enough to use an equivalent\namount of mixtures from bottles 1 and 2. If bottle 2 is removed, then it is no\nlonger possible to obtain it. Write a program that helps Serge to solve this\ntask! Input The first row contains three non-negative integers \n    S_f\n,\n\n    P_f\n and \n    G_f\n (\n    0 \n    \u2264 S_f, P_f, G_f\n; \n    0 < S_f+P_f+G_f\n    \n    \u2264 10^6\n) describing the amount of salt, pepper and garlic powder in the\nexpert's favourite mixture. For any real \n    \u03b1>0\n, \n    (\n    \u03b1S_f,\n    \n    \u03b1P_f, \n    \u03b1G_f)\n also is an expert's favourite mixture. In the\nsecond row, there is a positive integer \n    N\n (number of changes on the\nshelf, \n    N \n    \u2264 100\n     000\n). You should assume that initially the shelf\nis empty. Each of the next \n    N\n rows describes a single change on the\nshelf: If a new bottle is added, the row contains capital letter \n    A\n\nfollowed by three non-negative integers \n    S_i\n, \n    P_i\n and \n    G_i\n\n(\n    0 \n    \u2264 S_i, P_i, G_i\n; \n    0 < S_i+P_i+G_i \n    \u2264 10^6\n) describing\nthe amount of salt, pepper and garlic powder in the added bottle. Added\nbottles are numbered consecutively by unique integers starting from \n    1\n,\nthat is, the \n    i\n-th bottle corresponds to the \n    i\n-th added bottle in\nthe input data. If a particular bottle is removed from the shelf, the row\ncontains capital letter \n    R\n followed by the integer\u2014the bottle number\n\n    r_i\n. All values \n    r_i\n in the removals are unique, \n    r_i\n never\nexceeds total number of bottles added thus far. Output Output \n    N\n rows.\nThe \n    j\n-th row (\n    1 \n    \u2264 j \n    \u2264 N\n) should contain the number\n\n    x_j\n, the smallest number of bottles needed to prepare a mixture with the\nexpert's favourite proportions of salt, pepper and garlic powder using the\nbottles available after the first \n    j\n changes on the shelf, or \n    0\n if\nit is not possible. Scoring Subtasks: (13 points) \n    N \n    \u2264 50\n, \n    0 <\n    S_i+P_i+G_i \n    \u2264 10^2\n (17 points) \n    N \n    \u2264 500\n, \n    0 < S_i+P_i+G_i\n    \n    \u2264 10^3\n (30 points) \n    N \n    \u2264 5000\n, \n    0 < S_i+P_i+G_i \n    \u2264\n    10^4\n (40 points) No further constraints Example Input 1 2 3 6 A 5 6 7 A 3\n10 17 R 1 A 15 18 21 A 5 10 15 R 3 Output 0 2 0 2 1 1 Note Pay attention that\nin the example, bottles \n    1\n and \n    3\n contain the same proportions of\nsalt, pepper and garlic powder.\n\n",
+        "cf_contest_id": 1386,
+        "cf_index": "B",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "data structures",
+            "geometry",
+            "math",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1 2 3\r\n6\r\nA 5 6 7\r\nA 3 10 17\r\nR 1\r\nA 15 18 21\r\nA 5 10 15\r\nR 3\r\n",
+                "0\r\n2\r\n0\r\n2\r\n1\r\n1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 2 3\r\n9\r\nA 5 6 7\r\nA 3 10 17\r\nA 5 6 27\r\nA 5 10 15\r\nR 4\r\nR 2\r\nA 2 1 3\r\nA 3 2 1\r\nA 3 1 2\r\n",
+                "0\r\n2\r\n2\r\n1\r\n2\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "4 4 2\r\n50\r\nA 0 0 10\r\nA 1 0 9\r\nA 0 1 9\r\nA 1 1 8\r\nA 2 0 8\r\nA 0 2 8\r\nA 2 1 7\r\nA 1 2 7\r\nA 3 0 7\r\nA 0 3 7\r\nA 2 2 6\r\nA 1 3 6\r\nA 3 1 6\r\nA 2 3 5\r\nA 3 2 5\r\nA 3 3 4\r\nA 1 8 1\r\nA 8 1 1\r\nA 0 8 2\r\nA 7 2 1\r\nA 7 0 3\r\nA 4 0 6\r\nA 5 0 5\r\nA 0 4 6\r\nA 0 5 5\r\nR 1\r\nR 3\r\nR 5\r\nR 7\r\nR 9\r\nR 11\r\nR 13\r\nR 15\r\nR 17\r\nR 19\r\nR 21\r\nR 23\r\nR 25\r\nR 24\r\nR 22\r\nR 20\r\nR 18\r\nR 16\r\nR 14\r\nR 12\r\nR 10\r\nR 8\r\nR 6\r\nR 4\r\nR 2\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n3\r\n3\r\n3\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n3\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "1 2 3\r\n7\r\nA 1 3 2\r\nA 3 1 2\r\nA 3 2 1\r\nA 0 1 5\r\nA 2 1 3\r\nA 2 3 1\r\nA 2 4 6\r\n",
+                "0\r\n0\r\n0\r\n3\r\n3\r\n2\r\n1\r\n"
+            ],
+            [
+                "7 4 9\r\n10\r\nA 20 34 4\r\nA 16 43 34\r\nA 10 30 58\r\nR 1\r\nA 16 12 72\r\nA 11 8 55\r\nA 12 14 63\r\nA 12 43 42\r\nA 12 35 4\r\nA 14 23 14\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "1 1 1\r\n25\r\nA 33 20 13\r\nA 29 3 40\r\nA 71 4 25\r\nA 29 9 1\r\nA 40 16 22\r\nA 69 11 3\r\nA 1 7 16\r\nA 28 5 64\r\nA 57 11 1\r\nA 7 33 20\r\nA 5 4 44\r\nA 4 9 44\r\nA 91 0 0\r\nA 2 15 3\r\nA 8 10 5\r\nA 34 34 17\r\nA 4 35 54\r\nA 12 72 9\r\nA 41 15 16\r\nA 21 0 26\r\nA 3 43 38\r\nA 6 57 22\r\nA 5 10 18\r\nR 18\r\nA 74 6 12\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n"
+            ],
+            [
+                "6 41 53\r\n50\r\nA 5 77 18\r\nA 5 81 14\r\nA 6 25 69\r\nA 6 21 73\r\nA 6 66 28\r\nA 6 57 37\r\nA 6 38 56\r\nR 4\r\nA 5 41 54\r\nA 5 65 30\r\nR 3\r\nA 6 35 59\r\nR 6\r\nA 5 72 23\r\nR 7\r\nA 6 37 57\r\nA 5 42 53\r\nR 5\r\nA 5 9 86\r\nA 5 70 25\r\nR 12\r\nA 5 49 46\r\nA 6 78 16\r\nA 6 88 6\r\nA 5 36 59\r\nR 17\r\nR 10\r\nA 6 27 67\r\nA 5 27 68\r\nA 6 69 25\r\nR 2\r\nA 6 90 4\r\nA 5 33 62\r\nA 5 26 69\r\nA 6 38 56\r\nR 20\r\nA 6 1 93\r\nR 18\r\nA 6 25 69\r\nR 22\r\nA 5 9 86\r\nR 26\r\nR 23\r\nR 29\r\nR 14\r\nR 28\r\nA 6 10 84\r\nR 27\r\nA 6 47 47\r\nR 30\r\n",
+                "0\r\n0\r\n0\r\n0\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n0\r\n0\r\n0\r\n0\r\n0\r\n2\r\n2\r\n2\r\n2\r\n0\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n2\r\n0\r\n"
+            ],
+            [
+                "0 3 2\r\n13\r\nA 0 5 5\r\nR 1\r\nA 1 3 6\r\nA 0 6 4\r\nR 2\r\nA 5 3 2\r\nR 3\r\nA 1 3 6\r\nA 7 2 1\r\nA 2 1 7\r\nR 4\r\nA 6 4 0\r\nR 5\r\n",
+                "0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "3 3 4\r\n13\r\nA 0 5 5\r\nR 1\r\nA 1 3 6\r\nA 0 6 4\r\nR 2\r\nA 5 3 2\r\nR 3\r\nA 1 3 6\r\nA 7 2 1\r\nA 2 1 7\r\nR 4\r\nA 6 4 0\r\nR 5\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n2\r\n2\r\n2\r\n0\r\n3\r\n0\r\n"
+            ],
+            [
+                "15 9 6\r\n20\r\nA 5 3 2\r\nA 25 15 10\r\nA 5 3 2\r\nA 15 9 6\r\nR 4\r\nA 7 2 2\r\nR 3\r\nA 8 7 4\r\nR 2\r\nA 10 9 6\r\nR 1\r\nA 5 0 0\r\nR 5\r\nR 6\r\nA 0 3 0\r\nR 7\r\nA 0 0 2\r\nR 8\r\nR 9\r\nR 10\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n2\r\n2\r\n2\r\n2\r\n2\r\n0\r\n3\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "1 2 4\r\n33\r\nA 5 5 4\r\nA 5 6 26\r\nA 1 26 64\r\nA 19 26 46\r\nA 4 3 0\r\nA 1 7 20\r\nA 5 12 17\r\nA 1 0 7\r\nA 16 26 49\r\nA 7 9 12\r\nA 10 26 55\r\nA 13 11 4\r\nA 5 2 32\r\nA 1 26 64\r\nA 13 26 52\r\nA 5 8 23\r\nR 15\r\nR 6\r\nR 11\r\nR 7\r\nA 5 12 17\r\nR 12\r\nR 1\r\nR 5\r\nR 2\r\nR 8\r\nR 3\r\nR 9\r\nR 4\r\nR 17\r\nR 16\r\nR 14\r\nR 13\r\n",
+                "0\r\n0\r\n3\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n1\r\n1\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n3\r\n3\r\n0\r\n0\r\n"
+            ],
+            [
+                "5 3 2\r\n15\r\nA 2 14 4\r\nA 4 12 4\r\nA 14 26 10\r\nR 1\r\nA 3 5 2\r\nA 20 12 8\r\nA 2 14 4\r\nA 13 27 10\r\nR 5\r\nA 15 25 10\r\nA 7 1 2\r\nA 1 7 2\r\nR 3\r\nR 2\r\nR 4\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n0\r\n0\r\n2\r\n2\r\n2\r\n2\r\n2\r\n"
+            ],
+            [
+                "1 1 1\r\n50\r\nA 17 33 1\r\nR 1\r\nA 17 7 27\r\nR 2\r\nA 17 29 5\r\nA 17 25 9\r\nA 17 33 1\r\nA 17 21 13\r\nR 3\r\nA 17 11 23\r\nA 17 23 11\r\nA 17 13 21\r\nA 17 23 11\r\nA 17 21 13\r\nA 17 5 29\r\nA 17 23 11\r\nA 17 25 9\r\nA 17 9 25\r\nA 17 5 29\r\nR 4\r\nR 5\r\nA 17 15 19\r\nA 17 5 29\r\nR 7\r\nA 17 23 11\r\nA 17 19 15\r\nA 17 31 3\r\nA 17 9 25\r\nR 6\r\nR 8\r\nA 17 9 25\r\nA 17 1 33\r\nA 17 29 5\r\nA 17 9 25\r\nA 17 11 23\r\nA 17 5 29\r\nA 17 9 25\r\nR 16\r\nA 17 29 5\r\nA 17 29 5\r\nR 9\r\nR 10\r\nA 17 31 3\r\nA 17 27 7\r\nA 17 13 21\r\nR 33\r\nA 17 7 27\r\nR 23\r\nR 34\r\nR 24\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n"
+            ],
+            [
+                "0 7 0\r\n49\r\nA 2 0 81\r\nA 89 4 4\r\nA 10 0 60\r\nA 15 16 16\r\nA 77 0 6\r\nR 1\r\nA 61 0 22\r\nA 49 24 24\r\nA 53 22 22\r\nA 4 0 79\r\nA 87 5 5\r\nA 85 6 6\r\nA 41 0 42\r\nA 95 1 1\r\nA 0 0 17\r\nA 56 0 14\r\nA 69 0 1\r\nA 73 0 10\r\nA 32 0 51\r\nA 30 0 40\r\nA 49 0 34\r\nA 75 0 8\r\nA 3 47 47\r\nR 4\r\nR 15\r\nA 21 0 49\r\nA 25 11 11\r\nA 25 0 58\r\nA 47 0 36\r\nA 38 0 0\r\nA 63 0 7\r\nA 43 2 2\r\nA 18 0 52\r\nA 3 47 47\r\nA 6 0 77\r\nA 64 0 6\r\nA 39 0 31\r\nA 9 0 74\r\nR 23\r\nA 6 0 77\r\nA 25 0 45\r\nA 27 0 43\r\nA 4 0 79\r\nA 19 0 64\r\nA 63 0 7\r\nR 24\r\nA 6 0 0\r\nA 1 0 82\r\nA 0 3 0\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n"
+            ],
+            [
+                "0 0 3\r\n50\r\nA 10 0 74\r\nR 1\r\nA 0 0 84\r\nA 0 60 12\r\nA 5 5 17\r\nA 5 5 35\r\nA 0 19 53\r\nA 0 71 4\r\nA 9 9 0\r\nA 16 0 68\r\nA 41 0 43\r\nA 41 0 34\r\nR 7\r\nA 32 0 25\r\nA 0 68 4\r\nR 8\r\nR 4\r\nA 8 0 67\r\nA 0 1 71\r\nA 26 0 31\r\nA 36 0 39\r\nA 13 13 1\r\nR 14\r\nR 2\r\nA 0 41 31\r\nA 0 23 49\r\nA 0 0 33\r\nA 0 11 25\r\nR 5\r\nA 0 1 71\r\nA 43 0 14\r\nA 0 0 27\r\nA 3 0 30\r\nA 8 0 67\r\nA 0 32 40\r\nR 11\r\nA 30 0 54\r\nA 26 0 49\r\nA 21 0 12\r\nR 21\r\nA 26 0 58\r\nA 0 8 67\r\nR 32\r\nA 0 33 3\r\nA 46 0 38\r\nA 31 0 53\r\nA 36 0 21\r\nA 0 33 39\r\nA 0 1 35\r\nR 3\r\n",
+                "0\r\n0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "99947 5 3\r\n5\r\nA 99989 1 1\r\nA 99961 7 3\r\nA 99962 7 3\r\nA 99999 1 0\r\nA 99923 1 5\r\n",
+                "0\r\n0\r\n0\r\n0\r\n3\r\n"
+            ],
+            [
+                "998544 15 10\r\n10\r\nA 999907 11 13\r\nA 999931 17 11\r\nA 999953 19 7\r\nA 999959 13 11\r\nA 999907 13 11\r\nA 584402 4 2\r\nR 1\r\nA 414142 11 8\r\nR 6\r\nA 292201 2 1\r\n",
+                "0\r\n0\r\n3\r\n3\r\n3\r\n3\r\n3\r\n2\r\n3\r\n2\r\n"
+            ]
+        ]
+    }
+]

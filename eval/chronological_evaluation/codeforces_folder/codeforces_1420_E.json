@@ -1,0 +1,124 @@
+[
+    {
+        "name": "Battle Lemmings",
+        "description": "A lighthouse keeper Peter commands an army of \n    n\n battle lemmings. He\nordered his army to stand in a line and numbered the lemmings from \n    1\n to\n\n    n\n from left to right. Some of the lemmings hold shields. Each lemming\ncannot hold more than one shield. The more protected Peter's army is, the\nbetter. To calculate the protection of the army, he finds the number of\nprotected pairs of lemmings, that is such pairs that both lemmings in the pair\ndon't hold a shield, but there is a lemming with a shield between them. Now\nit's time to prepare for defence and increase the protection of the army. To\ndo this, Peter can give orders. He chooses a lemming with a shield and gives\nhim one of the two orders: give the shield to the left neighbor if it exists\nand doesn't have a shield; give the shield to the right neighbor if it exists\nand doesn't have a shield. In one second Peter can give exactly one order.\nIt's not clear how much time Peter has before the defence. So he decided to\ndetermine the maximal value of army protection for each \n    k\n from \n    0\n\nto \n    n(n-1)/2\n, if he gives no more that \n    k\n orders. Help Peter\nto calculate it! Input First line contains a single integer \n    n\n (\n    1\n    \n    \u2264 n \n    \u2264 80\n), the number of lemmings in Peter's army. Second line\ncontains \n    n\n integers \n    a_i\n (\n    0 \n    \u2264 a_i \n    \u2264 1\n). If \n    a_i =\n    1\n, then the \n    i\n-th lemming has a shield, otherwise \n    a_i = 0\n.\nOutput Print \n    n(n-1)/2 + 1\n numbers, the greatest possible\nprotection after no more than \n    0, 1, \n    \u2026, \n    n(n-1)/2\n orders.\nExamples Input 5 1 0 0 0 1 Output 0 2 3 3 3 3 3 3 3 3 3 Input 12 0 0 0 0 1 1 1\n1 0 1 1 0 Output 9 12 13 14 14 14 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15\n15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15\n15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 Note Consider the\nfirst example. The protection is initially equal to zero, because for each\npair of lemmings without shields there is no lemmings with shield. In one\nsecond Peter can order the first lemming give his shield to the right\nneighbor. In this case, the protection is two, as there are two protected\npairs of lemmings, \n    (1, 3)\n and \n    (1, 4)\n. In two seconds Peter can act\nin the following way. First, he orders the fifth lemming to give a shield to\nthe left neighbor. Then, he orders the first lemming to give a shield to the\nright neighbor. In this case Peter has three protected pairs of lemmings \u2014\n\n    (1, 3)\n, \n    (1, 5)\n and \n    (3, 5)\n. You can make sure that it's\nimpossible to give orders in such a way that the protection becomes greater\nthan three.\n\n",
+        "cf_contest_id": 1420,
+        "cf_index": "E",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5\r\n1 0 0 0 1\r\n",
+                "0 2 3 3 3 3 3 3 3 3 3 "
+            ],
+            [
+                "12\r\n0 0 0 0 1 1 1 1 0 1 1 0\r\n",
+                "9 12 13 14 14 14 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n0 1\r\n",
+                "0 0 "
+            ],
+            [
+                "1\r\n0\r\n",
+                "0 "
+            ],
+            [
+                "1\r\n1\r\n",
+                "0 "
+            ],
+            [
+                "2\r\n1 0\r\n",
+                "0 0 "
+            ],
+            [
+                "2\r\n0 0\r\n",
+                "0 0 "
+            ],
+            [
+                "2\r\n1 1\r\n",
+                "0 0 "
+            ],
+            [
+                "3\r\n0 0 0\r\n",
+                "0 0 0 0 "
+            ],
+            [
+                "3\r\n0 0 1\r\n",
+                "0 1 1 1 "
+            ],
+            [
+                "3\r\n0 1 0\r\n",
+                "1 1 1 1 "
+            ],
+            [
+                "3\r\n0 1 1\r\n",
+                "0 0 0 0 "
+            ],
+            [
+                "3\r\n1 0 0\r\n",
+                "0 1 1 1 "
+            ],
+            [
+                "3\r\n1 0 1\r\n",
+                "0 0 0 0 "
+            ],
+            [
+                "3\r\n1 1 0\r\n",
+                "0 0 0 0 "
+            ],
+            [
+                "3\r\n1 1 1\r\n",
+                "0 0 0 0 "
+            ],
+            [
+                "10\r\n0 0 0 0 1 0 0 1 0 0\r\n",
+                "20 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 21 "
+            ],
+            [
+                "10\r\n0 1 1 0 0 1 1 1 0 0\r\n",
+                "8 9 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 "
+            ],
+            [
+                "10\r\n0 1 0 1 1 0 0 1 0 0\r\n",
+                "13 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 "
+            ],
+            [
+                "10\r\n0 1 1 1 1 0 1 1 0 0\r\n",
+                "5 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 "
+            ],
+            [
+                "10\r\n0 0 1 0 0 1 0 1 1 0\r\n",
+                "13 13 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 "
+            ],
+            [
+                "10\r\n0 0 0 0 1 0 0 1 1 0\r\n",
+                "14 15 17 17 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 "
+            ],
+            [
+                "10\r\n0 0 1 0 0 0 1 1 1 0\r\n",
+                "11 13 13 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 "
+            ],
+            [
+                "10\r\n0 1 0 1 0 1 0 1 1 0\r\n",
+                "10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 "
+            ],
+            [
+                "10\r\n0 1 1 1 1 0 1 0 1 0\r\n",
+                "6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 "
+            ],
+            [
+                "10\r\n1 1 1 1 1 0 0 0 1 0\r\n",
+                "3 5 5 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 "
+            ]
+        ]
+    }
+]

@@ -1,0 +1,548 @@
+[
+    {
+        "name": "Is it rated?",
+        "description": "Is it rated? Here it is. The Ultimate Question of Competitive Programming,\nCodeforces, and Everything. And you are here to answer it. Another Codeforces\nround has been conducted. No two participants have the same number of points.\nFor each participant, from the top to the bottom of the standings, their\nrating before and after the round is known. It's known that if at least one\nparticipant's rating has changed, then the round was rated for sure. It's also\nknown that if the round was rated and a participant with lower rating took a\nbetter place in the standings than a participant with higher rating, then at\nleast one round participant's rating has changed. In this problem, you should\nnot make any other assumptions about the rating system. Determine if the\ncurrent round is rated, unrated, or it's impossible to determine whether it is\nrated of not. Input The first line contains a single integer n (2 \u2264 n \u2264 1000)\n\u2014 the number of round participants. Each of the next n lines contains two\nintegers ai and bi (1 \u2264 ai, bi \u2264 4126) \u2014 the rating of the i-th participant\nbefore and after the round, respectively. The participants are listed in order\nfrom the top to the bottom of the standings. Output If the round is rated for\nsure, print \"rated\". If the round is unrated for sure, print \"unrated\". If\nit's impossible to determine whether the round is rated or not, print \"maybe\".\nExamples Input 6 3060 3060 2194 2194 2876 2903 2624 2624 3007 2991 2884 2884\nOutput rated Input 4 1500 1500 1300 1300 1200 1200 1400 1400 Output unrated\nInput 5 3123 3123 2777 2777 2246 2246 2246 2246 1699 1699 Output maybe Note In\nthe first example, the ratings of the participants in the third and fifth\nplaces have changed, therefore, the round was rated. In the second example, no\none's rating has changed, but the participant in the second place has lower\nrating than the participant in the fourth place. Therefore, if the round was\nrated, someone's rating would've changed for sure. In the third example, no\none's rating has changed, and the participants took places in non-increasing\norder of their rating. Therefore, it's impossible to determine whether the\nround is rated or not.\n\n",
+        "cf_contest_id": 807,
+        "cf_index": "A",
+        "cf_rating": 900,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n3060 3060\r\n2194 2194\r\n2876 2903\r\n2624 2624\r\n3007 2991\r\n2884 2884\r\n",
+                "rated"
+            ],
+            [
+                "4\r\n1500 1500\r\n1300 1300\r\n1200 1200\r\n1400 1400\r\n",
+                "unrated"
+            ],
+            [
+                "5\r\n3123 3123\r\n2777 2777\r\n2246 2246\r\n2246 2246\r\n1699 1699\r\n",
+                "maybe"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n1 1\r\n1 1\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n4126 4126\r\n4126 4126\r\n",
+                "maybe"
+            ],
+            [
+                "10\r\n446 446\r\n1331 1331\r\n3594 3594\r\n1346 1902\r\n91 91\r\n3590 3590\r\n2437 2437\r\n4007 3871\r\n2797 699\r\n1423 1423\r\n",
+                "rated"
+            ],
+            [
+                "10\r\n4078 4078\r\n2876 2876\r\n1061 1061\r\n3721 3721\r\n143 143\r\n2992 2992\r\n3279 3279\r\n3389 3389\r\n1702 1702\r\n1110 1110\r\n",
+                "unrated"
+            ],
+            [
+                "10\r\n4078 4078\r\n3721 3721\r\n3389 3389\r\n3279 3279\r\n2992 2992\r\n2876 2876\r\n1702 1702\r\n1110 1110\r\n1061 1061\r\n143 143\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n3936 3936\r\n2967 2967\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n1 1\r\n2 2\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n2 2\r\n1 1\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n2 1\r\n1 2\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n2967 2967\r\n3936 3936\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n1200 1200\r\n1200 1200\r\n1300 1300\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n3 3\r\n2 2\r\n1 1\r\n",
+                "maybe"
+            ],
+            [
+                "3\r\n1 1\r\n1 1\r\n2 2\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n3 2\r\n3 2\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n5 5\r\n4 4\r\n3 4\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n200 200\r\n200 200\r\n300 300\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n1 1\r\n2 2\r\n3 3\r\n",
+                "unrated"
+            ],
+            [
+                "5\r\n3123 3123\r\n2777 2777\r\n2246 2246\r\n2245 2245\r\n1699 1699\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n10 10\r\n8 8\r\n",
+                "maybe"
+            ],
+            [
+                "3\r\n1500 1500\r\n1500 1500\r\n1600 1600\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n1500 1500\r\n1500 1500\r\n1700 1700\r\n",
+                "unrated"
+            ],
+            [
+                "4\r\n100 100\r\n100 100\r\n70 70\r\n80 80\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n1 2\r\n2 1\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n5 5\r\n4 3\r\n3 3\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n1600 1650\r\n1500 1550\r\n1400 1450\r\n",
+                "rated"
+            ],
+            [
+                "4\r\n2000 2000\r\n1500 1500\r\n1500 1500\r\n1700 1700\r\n",
+                "unrated"
+            ],
+            [
+                "4\r\n1500 1500\r\n1400 1400\r\n1400 1400\r\n1700 1700\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n1600 1600\r\n1400 1400\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n3 1\r\n9 8\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n2 1\r\n1 1\r\n",
+                "rated"
+            ],
+            [
+                "4\r\n4123 4123\r\n4123 4123\r\n2670 2670\r\n3670 3670\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n2 2\r\n3 3\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n10 11\r\n5 4\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n15 14\r\n13 12\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n2 1\r\n2 2\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n2670 2670\r\n3670 3670\r\n4106 4106\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n4 5\r\n3 3\r\n2 2\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n10 9\r\n10 10\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n1011 1011\r\n1011 999\r\n2200 2100\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n3 3\r\n5 5\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n1500 1500\r\n3000 2000\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n5 6\r\n5 5\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n2000 2000\r\n1500 1501\r\n500 500\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n2 3\r\n2 2\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n3 3\r\n2 2\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n1 2\r\n1 1\r\n",
+                "rated"
+            ],
+            [
+                "4\r\n3123 3123\r\n2777 2777\r\n2246 2246\r\n1699 1699\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n15 14\r\n14 13\r\n",
+                "rated"
+            ],
+            [
+                "4\r\n3000 3000\r\n2900 2900\r\n3000 3000\r\n2900 2900\r\n",
+                "unrated"
+            ],
+            [
+                "6\r\n30 3060\r\n24 2194\r\n26 2903\r\n24 2624\r\n37 2991\r\n24 2884\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n100 99\r\n100 100\r\n",
+                "rated"
+            ],
+            [
+                "4\r\n2 2\r\n1 1\r\n1 1\r\n2 2\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n100 101\r\n100 100\r\n100 100\r\n",
+                "rated"
+            ],
+            [
+                "4\r\n1000 1001\r\n900 900\r\n950 950\r\n890 890\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n2 3\r\n1 1\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n2 2\r\n1 1\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n3 2\r\n2 2\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n3 2\r\n3 3\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n1 1\r\n2 2\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n3 2\r\n3 3\r\n3 3\r\n",
+                "rated"
+            ],
+            [
+                "4\r\n1500 1501\r\n1300 1300\r\n1200 1200\r\n1400 1400\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n1000 1000\r\n500 500\r\n400 300\r\n",
+                "rated"
+            ],
+            [
+                "5\r\n3123 3123\r\n2777 2777\r\n2246 2246\r\n2246 2246\r\n3000 3000\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n1 1\r\n2 3\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n6 2\r\n6 2\r\n",
+                "rated"
+            ],
+            [
+                "5\r\n3123 3123\r\n1699 1699\r\n2777 2777\r\n2246 2246\r\n2246 2246\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n1500 1500\r\n1600 1600\r\n",
+                "unrated"
+            ],
+            [
+                "5\r\n3123 3123\r\n2777 2777\r\n2246 2246\r\n2241 2241\r\n1699 1699\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n20 30\r\n10 5\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n1 1\r\n2 2\r\n1 1\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n1 2\r\n3 3\r\n",
+                "rated"
+            ],
+            [
+                "5\r\n5 5\r\n4 4\r\n3 3\r\n2 2\r\n1 1\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n2 2\r\n2 1\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n100 100\r\n90 89\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n1000 900\r\n2000 2000\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n50 10\r\n10 50\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n200 200\r\n100 100\r\n",
+                "maybe"
+            ],
+            [
+                "3\r\n2 2\r\n2 2\r\n3 3\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n1000 1000\r\n300 300\r\n100 100\r\n",
+                "maybe"
+            ],
+            [
+                "4\r\n2 2\r\n2 2\r\n3 3\r\n4 4\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n5 3\r\n6 3\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n1200 1100\r\n1200 1000\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n5 5\r\n4 4\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n5 5\r\n3 3\r\n",
+                "maybe"
+            ],
+            [
+                "5\r\n1500 1500\r\n1300 1300\r\n1200 1200\r\n1400 1400\r\n1100 1100\r\n",
+                "unrated"
+            ],
+            [
+                "5\r\n10 10\r\n9 9\r\n8 8\r\n7 7\r\n6 6\r\n",
+                "maybe"
+            ],
+            [
+                "3\r\n1000 1000\r\n300 300\r\n10 10\r\n",
+                "maybe"
+            ],
+            [
+                "5\r\n6 6\r\n5 5\r\n4 4\r\n3 3\r\n2 2\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n3 3\r\n1 1\r\n",
+                "maybe"
+            ],
+            [
+                "4\r\n2 2\r\n2 2\r\n2 2\r\n3 3\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n1000 1000\r\n700 700\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n4 3\r\n5 3\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n1000 1000\r\n1100 1100\r\n",
+                "unrated"
+            ],
+            [
+                "4\r\n5 5\r\n4 4\r\n3 3\r\n2 2\r\n",
+                "maybe"
+            ],
+            [
+                "3\r\n1 1\r\n2 3\r\n2 2\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n1 2\r\n1 3\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n3 3\r\n1 2\r\n",
+                "rated"
+            ],
+            [
+                "4\r\n1501 1500\r\n1300 1300\r\n1200 1200\r\n1400 1400\r\n",
+                "rated"
+            ],
+            [
+                "5\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n10 10\r\n1 2\r\n",
+                "rated"
+            ],
+            [
+                "6\r\n3123 3123\r\n2777 2777\r\n2246 2246\r\n2246 2246\r\n1699 1699\r\n1900 1900\r\n",
+                "unrated"
+            ],
+            [
+                "6\r\n3123 3123\r\n2777 2777\r\n3000 3000\r\n2246 2246\r\n2246 2246\r\n1699 1699\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n100 100\r\n110 110\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n3 3\r\n3 3\r\n4 4\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n3 3\r\n3 2\r\n4 4\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n5 2\r\n4 4\r\n3 3\r\n",
+                "rated"
+            ],
+            [
+                "4\r\n4 4\r\n3 3\r\n2 2\r\n1 1\r\n",
+                "maybe"
+            ],
+            [
+                "2\r\n1 1\r\n3 2\r\n",
+                "rated"
+            ],
+            [
+                "5\r\n3123 3123\r\n2777 2777\r\n2246 2246\r\n2246 2246\r\n2699 2699\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n3 3\r\n3 3\r\n3 4\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n1 2\r\n2 2\r\n3 3\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n1 2\r\n1 2\r\n1 2\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n2 1\r\n2 1\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n1 2\r\n3 4\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n3 2\r\n2 3\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n1500 1500\r\n1600 1600\r\n1600 1600\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n1 1\r\n3 3\r\n4 4\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n1 1\r\n2 2\r\n2 2\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n10 12\r\n8 8\r\n",
+                "rated"
+            ],
+            [
+                "5\r\n1200 1200\r\n1500 1500\r\n1500 1500\r\n1500 1500\r\n1500 1500\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n1 2\r\n2 2\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n1500 1400\r\n1200 1200\r\n1100 1100\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n10 12\r\n10 10\r\n",
+                "rated"
+            ],
+            [
+                "3\r\n1500 1500\r\n1400 1400\r\n1300 1300\r\n",
+                "maybe"
+            ],
+            [
+                "3\r\n3 3\r\n4 4\r\n5 5\r\n",
+                "unrated"
+            ],
+            [
+                "3\r\n2 6\r\n3 5\r\n4 4\r\n",
+                "rated"
+            ],
+            [
+                "2\r\n5 6\r\n4 6\r\n",
+                "rated"
+            ],
+            [
+                "4\r\n10 10\r\n10 10\r\n7 7\r\n8 8\r\n",
+                "unrated"
+            ],
+            [
+                "2\r\n4 4\r\n3 3\r\n",
+                "maybe"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Minlexes",
+        "description": "Some time ago Lesha found an entertaining string \n    s\n consisting of\nlowercase English letters. Lesha immediately developed an unique algorithm for\nthis string and shared it with you. The algorithm is as follows. Lesha chooses\nan arbitrary (possibly zero) number of pairs on positions \n    (i, i + 1)\n in\nsuch a way that the following conditions are satisfied: for each pair \n    (i, i\n    + 1)\n the inequality \n    0 \n    \u2264 i < |s| - 1\n holds; for each pair \n    (i, i\n    + 1)\n the equality \n    s_i = s_i + 1\n holds; there is no index that is\ncontained in more than one pair. After that Lesha removes all characters on\nindexes contained in these pairs and the algorithm is over. Lesha is\ninterested in the lexicographically smallest strings he can obtain by applying\nthe algorithm to the suffixes of the given string. Input The only line\ncontains the string \n    s\n (\n    1 \n    \u2264 |s| \n    \u2264 10^5\n) \u2014 the initial\nstring consisting of lowercase English letters only. Output In \n    |s|\n lines\nprint the lengths of the answers and the answers themselves, starting with the\nanswer for the longest suffix. The output can be large, so, when some answer\nis longer than \n    10\n characters, instead print the first \n    5\n\ncharacters, then \"...\", then the last \n    2\n characters of the answer.\nExamples Input abcdd Output 3 abc 2 bc 1 c 0 1 d Input\nabbcdddeaaffdfouurtytwoo Output 18 abbcd...tw 17 bbcdd...tw 16 bcddd...tw 15\ncddde...tw 14 dddea...tw 13 ddeaa...tw 12 deaad...tw 11 eaadf...tw 10\naadfortytw 9 adfortytw 8 dfortytw 9 fdfortytw 8 dfortytw 7 fortytw 6 ortytw 5\nrtytw 6 urtytw 5 rtytw 4 tytw 3 ytw 2 tw 1 w 0 1 o Note Consider the first\nexample. The longest suffix is the whole string \"abcdd\". Choosing one pair\n\n    (4, 5)\n, Lesha obtains \"abc\". The next longest suffix is \"bcdd\". Choosing\none pair \n    (3, 4)\n, we obtain \"bc\". The next longest suffix is \"cdd\".\nChoosing one pair \n    (2, 3)\n, we obtain \"c\". The next longest suffix is\n\"dd\". Choosing one pair \n    (1, 2)\n, we obtain \"\" (an empty string). The last\nsuffix is the string \"d\". No pair can be chosen, so the answer is \"d\". In the\nsecond example, for the longest suffix \"abbcdddeaaffdfouurtytwoo\" choose three\npairs \n    (11, 12)\n, \n    (16, 17)\n, \n    (23, 24)\n and we obtain\n\"abbcdddeaadfortytw\"\n\n",
+        "cf_contest_id": 1422,
+        "cf_index": "E",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "abcdd\r\n",
+                "3 abc\r\n2 bc\r\n1 c\r\n0 \r\n1 d\r\n"
+            ],
+            [
+                "abbcdddeaaffdfouurtytwoo\r\n",
+                "18 abbcd...tw\r\n17 bbcdd...tw\r\n16 bcddd...tw\r\n15 cddde...tw\r\n14 dddea...tw\r\n13 ddeaa...tw\r\n12 deaad...tw\r\n11 eaadf...tw\r\n10 aadfortytw\r\n9 adfortytw\r\n8 dfortytw\r\n9 fdfortytw\r\n8 dfortytw\r\n7 fortytw\r\n6 ortytw\r\n5 rtytw\r\n6 urtytw\r\n5 rtytw\r\n4 tytw\r\n3 ytw\r\n2 tw\r\n1 w\r\n0 \r\n1 o\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "g\r\n",
+                "1 g\r\n"
+            ],
+            [
+                "tt\r\n",
+                "0 \r\n1 t\r\n"
+            ],
+            [
+                "go\r\n",
+                "2 go\r\n1 o\r\n"
+            ],
+            [
+                "eefffffffkkkkxxxx\r\n",
+                "3 eef\r\n2 ef\r\n1 f\r\n0 \r\n1 f\r\n0 \r\n1 f\r\n0 \r\n1 f\r\n0 \r\n1 k\r\n0 \r\n1 k\r\n0 \r\n1 x\r\n0 \r\n1 x\r\n"
+            ],
+            [
+                "jjjjjjjjkkdddddiirg\r\n",
+                "9 dddddiirg\r\n10 jdddddiirg\r\n9 dddddiirg\r\n10 jdddddiirg\r\n9 dddddiirg\r\n10 jdddddiirg\r\n9 dddddiirg\r\n10 jdddddiirg\r\n9 dddddiirg\r\n10 kdddddiirg\r\n9 dddddiirg\r\n8 ddddiirg\r\n7 dddiirg\r\n6 ddiirg\r\n5 diirg\r\n4 iirg\r\n3 irg\r\n2 rg\r\n1 g\r\n"
+            ],
+            [
+                "kkkkkccaaaaaqqqqqqqq\r\n",
+                "2 ka\r\n1 a\r\n2 ka\r\n1 a\r\n2 ka\r\n1 a\r\n2 ca\r\n1 a\r\n0 \r\n1 a\r\n0 \r\n1 a\r\n0 \r\n1 q\r\n0 \r\n1 q\r\n0 \r\n1 q\r\n0 \r\n1 q\r\n"
+            ],
+            [
+                "xxxxxxxxxxxxxxtttttt\r\n",
+                "0 \r\n1 x\r\n0 \r\n1 x\r\n0 \r\n1 x\r\n0 \r\n1 x\r\n0 \r\n1 x\r\n0 \r\n1 x\r\n0 \r\n1 x\r\n0 \r\n1 t\r\n0 \r\n1 t\r\n0 \r\n1 t\r\n"
+            ],
+            [
+                "iiiiiitttttyyyyyyyyp\r\n",
+                "8 iiiiiitp\r\n7 iiiiitp\r\n6 iiiitp\r\n5 iiitp\r\n4 iitp\r\n3 itp\r\n2 tp\r\n1 p\r\n2 tp\r\n1 p\r\n2 tp\r\n1 p\r\n2 yp\r\n1 p\r\n2 yp\r\n1 p\r\n2 yp\r\n1 p\r\n2 yp\r\n1 p\r\n"
+            ],
+            [
+                "jvzzkkhhssppkxxegfcc\r\n",
+                "8 jvhhkegf\r\n7 vhhkegf\r\n6 hhkegf\r\n7 zhhkegf\r\n6 hhkegf\r\n7 khhkegf\r\n6 hhkegf\r\n5 hkegf\r\n4 kegf\r\n5 skegf\r\n4 kegf\r\n5 pkegf\r\n4 kegf\r\n3 egf\r\n4 xegf\r\n3 egf\r\n2 gf\r\n1 f\r\n0 \r\n1 c\r\n"
+            ],
+            [
+                "qqppennigzzyydookjjl\r\n",
+                "8 eigdkjjl\r\n9 qeigdkjjl\r\n8 eigdkjjl\r\n9 peigdkjjl\r\n8 eigdkjjl\r\n7 igdkjjl\r\n8 nigdkjjl\r\n7 igdkjjl\r\n6 gdkjjl\r\n5 dkjjl\r\n6 zdkjjl\r\n5 dkjjl\r\n6 ydkjjl\r\n5 dkjjl\r\n4 kjjl\r\n5 okjjl\r\n4 kjjl\r\n3 jjl\r\n2 jl\r\n1 l\r\n"
+            ],
+            [
+                "bbbbbbkkyya\r\n",
+                "1 a\r\n2 ba\r\n1 a\r\n2 ba\r\n1 a\r\n2 ba\r\n1 a\r\n2 ka\r\n1 a\r\n2 ya\r\n1 a\r\n"
+            ],
+            [
+                "iiiiiddddpx\r\n",
+                "7 iddddpx\r\n6 ddddpx\r\n7 iddddpx\r\n6 ddddpx\r\n7 iddddpx\r\n6 ddddpx\r\n5 dddpx\r\n4 ddpx\r\n3 dpx\r\n2 px\r\n1 x\r\n"
+            ],
+            [
+                "nnnnnnnnnnnnnnnnaaag\r\n",
+                "4 aaag\r\n5 naaag\r\n4 aaag\r\n5 naaag\r\n4 aaag\r\n5 naaag\r\n4 aaag\r\n5 naaag\r\n4 aaag\r\n5 naaag\r\n4 aaag\r\n5 naaag\r\n4 aaag\r\n5 naaag\r\n4 aaag\r\n5 naaag\r\n4 aaag\r\n3 aag\r\n2 ag\r\n1 g\r\n"
+            ],
+            [
+                "ttttpppppppppopppppo\r\n",
+                "4 popo\r\n5 tpopo\r\n4 popo\r\n5 tpopo\r\n4 popo\r\n3 opo\r\n4 popo\r\n3 opo\r\n4 popo\r\n3 opo\r\n4 popo\r\n3 opo\r\n4 popo\r\n3 opo\r\n2 po\r\n1 o\r\n2 po\r\n1 o\r\n2 po\r\n1 o\r\n"
+            ],
+            [
+                "rrrccccccyyyyyyyyyyf\r\n",
+                "8 rccccccf\r\n7 ccccccf\r\n8 rccccccf\r\n7 ccccccf\r\n6 cccccf\r\n5 ccccf\r\n4 cccf\r\n3 ccf\r\n2 cf\r\n1 f\r\n2 yf\r\n1 f\r\n2 yf\r\n1 f\r\n2 yf\r\n1 f\r\n2 yf\r\n1 f\r\n2 yf\r\n1 f\r\n"
+            ],
+            [
+                "abba\r\n",
+                "2 aa\r\n1 a\r\n2 ba\r\n1 a\r\n"
+            ],
+            [
+                "yzzyx\r\n",
+                "3 yyx\r\n2 yx\r\n3 zyx\r\n2 yx\r\n1 x\r\n"
+            ],
+            [
+                "bbccccbbbccccbbbccccbbbcccca\r\n",
+                "4 bbba\r\n5 bbbba\r\n4 bbba\r\n5 cbbba\r\n4 bbba\r\n5 cbbba\r\n4 bbba\r\n3 bba\r\n4 bbba\r\n3 bba\r\n4 cbba\r\n3 bba\r\n4 cbba\r\n3 bba\r\n2 ba\r\n3 bba\r\n2 ba\r\n3 cba\r\n2 ba\r\n3 cba\r\n2 ba\r\n1 a\r\n2 ba\r\n1 a\r\n2 ca\r\n1 a\r\n2 ca\r\n1 a\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,504 @@
+[
+    {
+        "name": "Downloading B++",
+        "description": "Only T milliseconds left before the start of well-known online programming\ncontest Codehorses Round 2017. Polycarp needs to download B++ compiler to take\npart in the contest. The size of the file is f bytes. Polycarp's internet\ntariff allows to download data at the rate of one byte per t0 milliseconds.\nThis tariff is already prepaid, and its use does not incur any expense for\nPolycarp. In addition, the Internet service provider offers two additional\npackages: download a1 bytes at the rate of one byte per t1 milliseconds,\npaying p1 burles for the package; download a2 bytes at the rate of one byte\nper t2 milliseconds, paying p2 burles for the package. Polycarp can buy any\npackage many times. When buying a package, its price (p1 or p2) is prepaid\nbefore usage. Once a package is bought it replaces the regular tariff until\npackage data limit is completely used. After a package is consumed Polycarp\ncan immediately buy a new package or switch to the regular tariff without\nloosing any time. While a package is in use Polycarp can't buy another package\nor switch back to the regular internet tariff. Find the minimum amount of\nmoney Polycarp has to spend to download an f bytes file no more than in T\nmilliseconds. Note that because of technical reasons Polycarp can download\nonly integer number of bytes using regular tariff and both packages. I.e. in\neach of three downloading modes the number of downloaded bytes will be\ninteger. It means that Polycarp can't download a byte partially using the\nregular tariff or/and both packages. Input The first line contains three\ninteger numbers f, T and t0 (1 \u2264 f, T, t0 \u2264 10^7) \u2014 size of the file to\ndownload (in bytes), maximal time to download the file (in milliseconds) and\nnumber of milliseconds to download one byte using the regular internet tariff.\nThe second line contains a description of the first additional package. The\nline contains three integer numbers a1, t1 and p1 (1 \u2264 a1, t1, p1 \u2264 10^7),\nwhere a1 is maximal sizes of downloaded data (in bytes), t1 is time to\ndownload one byte (in milliseconds), p1 is price of the package (in burles).\nThe third line contains a description of the second additional package. The\nline contains three integer numbers a2, t2 and p2 (1 \u2264 a2, t2, p2 \u2264 10^7),\nwhere a2 is maximal sizes of downloaded data (in bytes), t2 is time to\ndownload one byte (in milliseconds), p2 is price of the package (in burles).\nPolycarp can buy any package many times. Once package is bought it replaces\nthe regular tariff until package data limit is completely used. While a\npackage is in use Polycarp can't buy another package or switch back to the\nregular internet tariff. Output Print the minimum amount of money that\nPolycarp needs to pay to download B++ compiler no more than in T milliseconds.\nIf there is no solution, print the only integer -1. Examples Input 120 964 20\n26 8 8 13 10 4 Output 40 Input 10 200 20 1 1 1 2 2 3 Output 0 Input 8 81 11 4\n10 16 3 10 12 Output 28 Input 8 79 11 4 10 16 3 10 12 Output -1 Note In the\nfirst example Polycarp has to buy the first additional package 5 times and do\nnot buy the second additional package. He downloads 120 bytes (of total 26\u00b75 =\n130 bytes) in 120\u00b78 = 960 milliseconds (960 \u2264 964). He spends 8\u00b75 = 40 burles\non it. In the second example Polycarp has enough time to download 10 bytes. It\ntakes 10\u00b720 = 200 milliseconds which equals to upper constraint on download\ntime. In the third example Polycarp has to buy one first additional package\nand one second additional package. In the fourth example Polycarp has no way\nto download the file on time.\n\n",
+        "cf_contest_id": 883,
+        "cf_index": "C",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "120 964 20\r\n26 8 8\r\n13 10 4\r\n",
+                "40\r\n"
+            ],
+            [
+                "10 200 20\r\n1 1 1\r\n2 2 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "8 81 11\r\n4 10 16\r\n3 10 12\r\n",
+                "28\r\n"
+            ],
+            [
+                "8 79 11\r\n4 10 16\r\n3 10 12\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "62 10000 209\r\n95 106 79\r\n84 92 57\r\n",
+                "57\r\n"
+            ],
+            [
+                "705 100000 157\r\n31 123 36\r\n37 111 10\r\n",
+                "70\r\n"
+            ],
+            [
+                "5848 10000000 3431\r\n85 1154 19\r\n92 1093 35\r\n",
+                "1004\r\n"
+            ],
+            [
+                "66983 1000000 19\r\n34 10 96\r\n5 7 7\r\n",
+                "31815\r\n"
+            ],
+            [
+                "455314 1000000 5\r\n1 2 42\r\n57 2 60\r\n",
+                "447960\r\n"
+            ],
+            [
+                "3982256 10000000 6\r\n34 2 11\r\n80 1 83\r\n",
+                "1123749\r\n"
+            ],
+            [
+                "97 10000 229\r\n76 64 67\r\n38 75 21\r\n",
+                "63\r\n"
+            ],
+            [
+                "804 100000 190\r\n13 115 24\r\n86 91 65\r\n",
+                "438\r\n"
+            ],
+            [
+                "6794 10000000 1720\r\n63 1386 3\r\n46 1367 90\r\n",
+                "243\r\n"
+            ],
+            [
+                "66287 1000000 44\r\n4 15 88\r\n66 14 63\r\n",
+                "60984\r\n"
+            ],
+            [
+                "482426 1000000 2\r\n82 1 34\r\n10 1 16\r\n",
+                "0\r\n"
+            ],
+            [
+                "3601769 10000000 6\r\n16 2 87\r\n37 2 42\r\n",
+                "3294942\r\n"
+            ],
+            [
+                "86 10000 283\r\n46 86 59\r\n99 65 80\r\n",
+                "80\r\n"
+            ],
+            [
+                "985 100000 203\r\n90 93 12\r\n48 66 21\r\n",
+                "132\r\n"
+            ],
+            [
+                "9177 10000000 3121\r\n45 600 95\r\n3 1018 54\r\n",
+                "15675\r\n"
+            ],
+            [
+                "59251 1000000 24\r\n85 16 76\r\n20 8 18\r\n",
+                "23742\r\n"
+            ],
+            [
+                "674801 1000000 1\r\n60 1 19\r\n64 1 71\r\n",
+                "0\r\n"
+            ],
+            [
+                "3919525 10000000 3\r\n85 1 79\r\n91 1 98\r\n",
+                "817255\r\n"
+            ],
+            [
+                "96 10000 184\r\n28 76 43\r\n49 92 36\r\n",
+                "72\r\n"
+            ],
+            [
+                "902 100000 265\r\n72 87 100\r\n2 78 80\r\n",
+                "1100\r\n"
+            ],
+            [
+                "8622 10000000 2094\r\n18 967 79\r\n57 1021 9\r\n",
+                "1188\r\n"
+            ],
+            [
+                "65359 1000000 24\r\n63 11 60\r\n73 10 78\r\n",
+                "41676\r\n"
+            ],
+            [
+                "867175 1000000 1\r\n33 1 11\r\n25 1 31\r\n",
+                "0\r\n"
+            ],
+            [
+                "4825706 10000000 5\r\n63 2 67\r\n45 2 53\r\n",
+                "5008543\r\n"
+            ],
+            [
+                "99 10000 173\r\n5 78 35\r\n10 89 91\r\n",
+                "560\r\n"
+            ],
+            [
+                "912 100000 206\r\n42 102 92\r\n55 76 44\r\n",
+                "572\r\n"
+            ],
+            [
+                "8249 10000000 1757\r\n92 1030 67\r\n14 970 65\r\n",
+                "4556\r\n"
+            ],
+            [
+                "67872 1000000 39\r\n45 13 52\r\n31 12 33\r\n",
+                "64944\r\n"
+            ],
+            [
+                "789332 1000000 2\r\n7 1 99\r\n75 1 86\r\n",
+                "663576\r\n"
+            ],
+            [
+                "3215535 10000000 8\r\n40 2 55\r\n10 1 9\r\n",
+                "2021697\r\n"
+            ],
+            [
+                "85 10000 217\r\n83 66 23\r\n64 108 51\r\n",
+                "23\r\n"
+            ],
+            [
+                "975 100000 231\r\n19 96 76\r\n17 77 99\r\n",
+                "3724\r\n"
+            ],
+            [
+                "7683 10000000 2221\r\n70 902 59\r\n76 1138 24\r\n",
+                "2064\r\n"
+            ],
+            [
+                "64431 1000000 18\r\n22 14 40\r\n84 14 89\r\n",
+                "42355\r\n"
+            ],
+            [
+                "530692 1000000 3\r\n85 1 87\r\n37 1 41\r\n",
+                "303016\r\n"
+            ],
+            [
+                "4121717 10000000 4\r\n18 2 43\r\n64 1 68\r\n",
+                "2297448\r\n"
+            ],
+            [
+                "80 10000 344\r\n53 87 11\r\n18 63 10\r\n",
+                "21\r\n"
+            ],
+            [
+                "952 100000 283\r\n97 52 64\r\n66 71 58\r\n",
+                "506\r\n"
+            ],
+            [
+                "6584 10000000 4115\r\n51 1248 43\r\n29 1290 80\r\n",
+                "5031\r\n"
+            ],
+            [
+                "66326 1000000 20\r\n88 13 20\r\n46 12 60\r\n",
+                "10620\r\n"
+            ],
+            [
+                "788404 1000000 2\r\n66 1 75\r\n90 1 1\r\n",
+                "6409\r\n"
+            ],
+            [
+                "4857625 10000000 6\r\n100 2 35\r\n21 2 24\r\n",
+                "1675275\r\n"
+            ],
+            [
+                "92 10000 275\r\n34 73 99\r\n83 77 66\r\n",
+                "66\r\n"
+            ],
+            [
+                "666 100000 397\r\n75 102 56\r\n28 123 18\r\n",
+                "396\r\n"
+            ],
+            [
+                "9951 10000000 2037\r\n29 545 35\r\n79 794 35\r\n",
+                "3675\r\n"
+            ],
+            [
+                "79855 1000000 20\r\n69 11 8\r\n100 9 15\r\n",
+                "7694\r\n"
+            ],
+            [
+                "636673 1000000 1\r\n44 1 63\r\n44 1 56\r\n",
+                "0\r\n"
+            ],
+            [
+                "2827186 10000000 9\r\n69 3 19\r\n75 2 91\r\n",
+                "708814\r\n"
+            ],
+            [
+                "1 1 1\r\n1 1 1\r\n1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "10000000 10000000 10000000\r\n10000000 10000000 10000000\r\n10000000 10000000 10000000\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10000000 10000000 10000000\r\n1 1 10000000\r\n1 1 10000000\r\n",
+                "100000000000000\r\n"
+            ],
+            [
+                "49266 10000000 10000000\r\n2 120 48\r\n3 193 90\r\n",
+                "1182384\r\n"
+            ],
+            [
+                "49038 10000000 10000000\r\n2 142 69\r\n3 170 73\r\n",
+                "1193258\r\n"
+            ],
+            [
+                "49470 10000000 10000000\r\n1 114 51\r\n2 141 56\r\n",
+                "1385160\r\n"
+            ],
+            [
+                "543948 10000000 10000000\r\n1 14 52\r\n2 16 75\r\n",
+                "20398050\r\n"
+            ],
+            [
+                "2400000 10000000 7\r\n7 3 5\r\n19 5 2\r\n",
+                "861658\r\n"
+            ],
+            [
+                "6666666 10000000 4\r\n1 1 3\r\n1 2 2\r\n",
+                "16666664\r\n"
+            ],
+            [
+                "2860000 9360000 65\r\n5 2 47\r\n7 5 6\r\n",
+                "16518696\r\n"
+            ],
+            [
+                "4614000 9997000 6\r\n2 1 70\r\n3 3 5\r\n",
+                "71773335\r\n"
+            ],
+            [
+                "6666666 8888888 4\r\n1 1 3\r\n1 2 2\r\n",
+                "17777776\r\n"
+            ],
+            [
+                "6666666 7777777 4\r\n1 1 3\r\n1 2 2\r\n",
+                "18888887\r\n"
+            ],
+            [
+                "6000000 10000000 3\r\n2 1 5\r\n3 2 2\r\n",
+                "7666668\r\n"
+            ],
+            [
+                "76050 76050 1000000\r\n101 1 101\r\n313 1 313\r\n",
+                "76050\r\n"
+            ],
+            [
+                "152380 152380 1000000\r\n277 1 277\r\n229 1 229\r\n",
+                "152380\r\n"
+            ],
+            [
+                "160702 160702 1000000\r\n223 1 223\r\n347 1 347\r\n",
+                "160702\r\n"
+            ],
+            [
+                "60632 60632 1000000\r\n269 1 269\r\n109 1 109\r\n",
+                "60632\r\n"
+            ],
+            [
+                "152118 152118 1000000\r\n199 1 199\r\n167 1 167\r\n",
+                "152118\r\n"
+            ],
+            [
+                "191864 191864 1000000\r\n137 1 137\r\n499 1 499\r\n",
+                "191864\r\n"
+            ],
+            [
+                "161084 161084 1000000\r\n443 1 443\r\n317 1 317\r\n",
+                "161084\r\n"
+            ],
+            [
+                "204520 204520 1000000\r\n211 1 211\r\n337 1 337\r\n",
+                "204520\r\n"
+            ],
+            [
+                "124908 124908 1000000\r\n173 1 173\r\n157 1 157\r\n",
+                "124908\r\n"
+            ],
+            [
+                "123510 123510 1000000\r\n263 1 263\r\n251 1 251\r\n",
+                "123510\r\n"
+            ],
+            [
+                "2000000 10000000 9\r\n3 3 5\r\n5 7 2\r\n",
+                "2066668\r\n"
+            ],
+            [
+                "7000000 10000000 9\r\n3 1 5\r\n5 2 2\r\n",
+                "7866670\r\n"
+            ],
+            [
+                "7000000 10000000 5\r\n3 1 5\r\n5 3 2\r\n",
+                "9766670\r\n"
+            ],
+            [
+                "10 12 14\r\n19 2 4\r\n8 1 10\r\n",
+                "14\r\n"
+            ],
+            [
+                "4 5 6\r\n7 2 2\r\n3 1 7\r\n",
+                "9\r\n"
+            ],
+            [
+                "9 39 22\r\n7 9 13\r\n8 3 22\r\n",
+                "35\r\n"
+            ],
+            [
+                "5 15 2\r\n21 11 9\r\n15 2 6\r\n",
+                "0\r\n"
+            ],
+            [
+                "15 464 32\r\n65 28 96\r\n33 93 48\r\n",
+                "96\r\n"
+            ],
+            [
+                "15 419 32\r\n65 28 96\r\n33 93 48\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8581 3000000 3019\r\n2151 140 4553\r\n5920 883 9170\r\n",
+                "18212\r\n"
+            ],
+            [
+                "8581 1201339 3019\r\n2151 140 4553\r\n5920 883 9170\r\n",
+                "-1\r\n"
+            ],
+            [
+                "31 530 58\r\n12 16 35\r\n8 92 1\r\n",
+                "105\r\n"
+            ],
+            [
+                "31 830 58\r\n12 16 35\r\n8 92 1\r\n",
+                "70\r\n"
+            ],
+            [
+                "31 490 58\r\n12 16 35\r\n8 92 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 14 5\r\n2 4 9\r\n7 6 11\r\n",
+                "9\r\n"
+            ],
+            [
+                "3 15 5\r\n2 4 9\r\n7 6 11\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 12 5\r\n2 4 9\r\n7 6 11\r\n",
+                "18\r\n"
+            ],
+            [
+                "3 11 5\r\n2 4 9\r\n7 6 11\r\n",
+                "-1\r\n"
+            ],
+            [
+                "343 50397 187\r\n735 732 357\r\n147 864 838\r\n",
+                "-1\r\n"
+            ],
+            [
+                "23 264 90\r\n66 99 60\r\n80 12 94\r\n",
+                "-1\r\n"
+            ],
+            [
+                "68 1034 84\r\n78 59 3\r\n5 9 29\r\n",
+                "351\r\n"
+            ],
+            [
+                "68 734 84\r\n78 59 3\r\n5 9 29\r\n",
+                "406\r\n"
+            ],
+            [
+                "68 534 84\r\n78 59 3\r\n5 9 29\r\n",
+                "-1\r\n"
+            ],
+            [
+                "65 649 24\r\n90 9 5\r\n23 92 71\r\n",
+                "5\r\n"
+            ],
+            [
+                "65 580 24\r\n90 9 5\r\n23 92 71\r\n",
+                "-1\r\n"
+            ],
+            [
+                "20 30 21\r\n9 6 14\r\n6 1 21\r\n",
+                "77\r\n"
+            ],
+            [
+                "1 2 2\r\n2 2 2\r\n1 2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1 3\r\n3 3 2\r\n2 2 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 1 1\r\n3 3 2\r\n2 3 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 1 5\r\n4 3 5\r\n4 5 5\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 2 2\r\n6 6 5\r\n4 3 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 3 2\r\n6 3 5\r\n2 4 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 3 3\r\n1 1 5\r\n7 3 7\r\n",
+                "15\r\n"
+            ],
+            [
+                "9 3 8\r\n1 2 1\r\n8 2 6\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8 8 1\r\n1 1 2\r\n7 7 8\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 2 1\r\n9 6 2\r\n8 8 11\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 7 6\r\n7 12 7\r\n10 7 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 2 5\r\n2 4 9\r\n7 6 11\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 4 1\r\n6 9 7\r\n4 3 6\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 14 3\r\n5 1 14\r\n2 7 8\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 16 1\r\n5 10 2\r\n11 15 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "17 1 3\r\n10 1 3\r\n16 16 5\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6 9 2\r\n18 18 16\r\n3 3 14\r\n",
+                "-1\r\n"
+            ],
+            [
+                "11 3 17\r\n11 15 5\r\n2 10 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "20 4 1\r\n20 10 14\r\n14 10 4\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

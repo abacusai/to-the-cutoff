@@ -1,0 +1,73 @@
+[
+    {
+        "name": "T-shirt",
+        "description": "You are going to work in Codeforces as an intern in a team of n engineers,\nnumbered 1 through n. You want to give each engineer a souvenir: a T-shirt\nfrom your country (T-shirts are highly desirable in Codeforces). Unfortunately\nyou don't know the size of the T-shirt each engineer fits in. There are m\ndifferent sizes, numbered 1 through m, and each engineer will fit in a T-shirt\nof exactly one size. You don't know the engineers' exact sizes, so you asked\nyour friend, Gerald. Unfortunately, he wasn't able to obtain the exact sizes\neither, but he managed to obtain for each engineer i and for all sizes j, the\nprobability that the size of the T-shirt that fits engineer i is j. Since\nyou're planning to give each engineer one T-shirt, you are going to bring with\nyou exactly n T-shirts. For those n T-shirts, you can bring any combination of\nsizes (you can bring multiple T-shirts with the same size too!). You don't\nknow the sizes of T-shirts for each engineer when deciding what sizes to\nbring, so you have to pick this combination based only on the probabilities\ngiven by your friend, Gerald. Your task is to maximize the expected number of\nengineers that receive a T-shirt of his size. This is defined more formally as\nfollows. When you finally arrive at the office, you will ask each engineer his\nT-shirt size. Then, if you still have a T-shirt of that size, you will give\nhim one of them. Otherwise, you don't give him a T-shirt. You will ask the\nengineers in order starting from engineer 1, then engineer 2, and so on until\nengineer n. Input The first line contains two space-separated integers n and m\n(1 \u2264 n \u2264 3000, 1 \u2264 m \u2264 300), denoting the number of engineers and the number\nof T-shirt sizes, respectively. Then n lines follow, each line contains m\nspace-separated integers. The j-th integer in the i-th line represents the\nprobability that the i-th engineer fits in a T-shirt of size j. Each\nprobability will be given as an integer between 0 and 1000, inclusive. The\nactual probability should be calculated as the given number divided by 1000.\nIt is guaranteed that for any engineer, the sum of the probabilities for all m\nT-shirts is equal to one. Output Print a single real number denoting the\nmaximum possible expected number of engineers that will receive a T-shirt. For\nthe answer the absolute or relative error of 10^-9 is acceptable. Examples\nInput 2 2 500 500 500 500 Output 1.500000000000 Input 3 3 1000 0 0 1000 0 0 0\n1000 0 Output 3.000000000000 Input 1 4 100 200 300 400 Output 0.400000000000\nNote For the first example, bring one T-shirt of each size. With 0.5 chance,\neither both engineers fit inside T-shirts of size 1 or both fit inside\nT-shirts of size 2. With the other 0.5 chance, one engineer fits inside a\nT-shirt of size 1 and the other inside a T-shirt of size 2. If the first is\ntrue, the number of engineers that receive a T-shirt is one. If the second is\ntrue, the number of such engineers is two. Hence, the expected number of\nengineers who receive a T-shirt is 1.5. This is maximum possible expected\nnumber of engineers for all sets of T-shirts. For the second example, bring\ntwo T-shirts of size 1 and one T-shirt of size 2. This way, each engineer will\ndefinitely receive a T-shirt of his size. For the third example, bring one\nT-shirt of size 4.\n\n",
+        "cf_contest_id": 183,
+        "cf_index": "D",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "probabilities"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2\r\n500 500\r\n500 500\r\n",
+                "1.5000000000\r\n"
+            ],
+            [
+                "3 3\r\n1000 0 0\r\n1000 0 0\r\n0 1000 0\r\n",
+                "3.0000000000\r\n"
+            ],
+            [
+                "1 4\r\n100 200 300 400\r\n",
+                "0.4000000000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 5\r\n200 200 200 200 200\r\n200 200 200 200 200\r\n200 200 200 200 200\r\n200 200 200 200 200\r\n200 200 200 200 200\r\n",
+                "3.3616000000\r\n"
+            ],
+            [
+                "4 1\r\n1000\r\n1000\r\n1000\r\n1000\r\n",
+                "4.0000000000\r\n"
+            ],
+            [
+                "4 4\r\n100 200 300 400\r\n100 200 300 400\r\n100 200 300 400\r\n100 200 300 400\r\n",
+                "2.7455000000\r\n"
+            ],
+            [
+                "8 3\r\n200 300 500\r\n100 400 500\r\n200 300 500\r\n100 400 500\r\n200 300 500\r\n100 400 500\r\n200 300 500\r\n100 400 500\r\n",
+                "6.5588720400\r\n"
+            ],
+            [
+                "5 5\r\n100 200 100 300 300\r\n300 200 100 100 300\r\n300 300 200 100 100\r\n100 100 200 300 300\r\n100 300 200 100 300\r\n",
+                "3.3725300000\r\n"
+            ],
+            [
+                "1 1\r\n1000\r\n",
+                "1.0000000000\r\n"
+            ],
+            [
+                "1 2\r\n349 651\r\n",
+                "0.6510000000\r\n"
+            ],
+            [
+                "2 1\r\n1000\r\n1000\r\n",
+                "2.0000000000\r\n"
+            ],
+            [
+                "2 2\r\n223 777\r\n414 586\r\n",
+                "1.4523560000\r\n"
+            ],
+            [
+                "10 10\r\n194 116 104 162 254 3 32 24 99 12\r\n10 99 5 72 13 34 182 216 69 300\r\n77 12 192 13 186 96 170 75 73 106\r\n104 159 219 54 27 49 64 109 13 202\r\n64 143 87 47 107 94 184 1 124 149\r\n40 34 111 203 220 71 50 33 168 70\r\n12 58 177 58 407 9 31 54 52 142\r\n286 114 77 32 38 27 32 91 216 87\r\n220 113 105 54 157 79 89 16 138 29\r\n89 143 24 85 163 13 217 88 69 109\r\n",
+                "6.5559896455\r\n"
+            ]
+        ]
+    }
+]

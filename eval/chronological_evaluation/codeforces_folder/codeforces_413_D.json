@@ -1,0 +1,132 @@
+[
+    {
+        "name": "2048",
+        "description": "The programmers from the R2 company love playing 2048. One day, they decided\nto invent their own simplified version of this game \u2014 2^k on a stripe. Imagine\nan infinite in one direction stripe, consisting of unit squares (the side of\neach square is equal to the height of the stripe). Each square can either be\nempty or contain some number. Initially, all squares are empty. Then at\ninfinity one of the unit squares number 2 or 4 appears. Then the player\npresses a button once, and the appeared number begins to move towards the\nbeginning of the stripe. Let's assume that some number x moves to the\nbeginning of the stripe, then it will stop if: it either gets in the first\nsquare of the stripe; or it is in the square that is preceded by a square with\nnumber y (y \u2260 x). But if number x at some point of time gets to the square\nwith the same number then both numbers add to each other and result in 2x. The\nnew number 2x continues moving to the beginning of the stripe by the same\nrules. After the final stop of the number moving process, the infinity gets a\nnew number 2 or 4 and the process repeats. Read the notes to the test samples\nto better understand the moving strategy. I guess you've understood that the\ngame progress fully depends on the order in which numbers 2 and 4 appear.\nLet's look at some sequence of numbers 2 and 4 in the game. We assume that the\nsequence is winning if it results in at least one square getting the number\ngreater or equal than 2^k. The goal of the game is to make up a winning\nsequence of n numbers. But not everything is so simple, some numbers in the\nsequence are identified beforehand. You are given a sequence consisting of\nnumbers 0, 2, 4. Count how many ways there are to replace each 0 of the\nsequence with 2 or 4 to get a winning sequence. Input The first line contains\ntwo integers n and k (1 \u2264 n \u2264 2000; 3 \u2264 k \u2264 11). The next line contains\nsequence of n integers, each of them is either 0, or 2, or 4. Output Print a\nsingle integer \u2014 the number of ways to replace zeroes by numbers 2 or 4 to get\na winning sequence. As this number can be rather large, print it modulo\n1000000007 (10^9 + 7). Examples Input 7 4 2 2 4 2 2 2 2 Output 1 Input 1 3 0\nOutput 0 Input 2 3 0 4 Output 1 Input 5 4 2 0 0 4 4 Output 2 Note Consider the\nfirst example. The beginning of the strip will look as follows: 2 \u2192 4 \u2192 8 \u2192 8\n2 \u2192 8 4 \u2192 8 4 2 \u2192 16. To better understand the game, you can see the original\ngame on http://gabrielecirulli.github.io/2048/. Please note that the game that\nis described on the strip is slightly different from the original game (when\nthe two numbers add up in the original game, they do not keep moving). Be\ncareful, the game is addictive, there isn't much time for the contest!\n\n",
+        "cf_contest_id": 413,
+        "cf_index": "D",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dp"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7 4\r\n2 2 4 2 2 2 2\r\n",
+                "1"
+            ],
+            [
+                "1 3\r\n0\r\n",
+                "0"
+            ],
+            [
+                "2 3\r\n0 4\r\n",
+                "1"
+            ],
+            [
+                "5 4\r\n2 0 0 4 4\r\n",
+                "2"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 3\r\n4 4 0 0 0\r\n",
+                "8"
+            ],
+            [
+                "6 4\r\n4 2 0 4 4 0\r\n",
+                "3"
+            ],
+            [
+                "50 5\r\n2 4 4 0 4 2 0 0 4 2 4 4 2 4 4 0 0 0 4 0 4 2 4 0 2 4 4 0 4 2 2 0 4 4 4 2 0 0 4 2 4 4 0 2 4 4 0 4 4 2\r\n",
+                "8464"
+            ],
+            [
+                "100 6\r\n0 2 2 2 0 4 0 4 2 2 0 0 4 2 4 0 2 2 4 4 2 0 2 2 0 4 2 4 4 4 4 0 0 0 2 0 0 4 4 2 2 4 4 2 0 2 0 0 4 4 0 4 4 2 0 2 0 2 2 2 0 4 2 4 2 2 4 2 4 0 2 0 0 2 0 0 2 2 2 2 0 0 2 0 0 2 2 4 4 2 2 4 0 2 4 2 0 0 4 4\r\n",
+                "728238080"
+            ],
+            [
+                "3 3\r\n0 4 0\r\n",
+                "3"
+            ],
+            [
+                "3 11\r\n4 2 2\r\n",
+                "0"
+            ],
+            [
+                "4 3\r\n4 0 4 2\r\n",
+                "1"
+            ],
+            [
+                "5 3\r\n4 4 0 0 0\r\n",
+                "8"
+            ],
+            [
+                "10 5\r\n4 0 4 2 4 4 0 2 4 0\r\n",
+                "0"
+            ],
+            [
+                "100 5\r\n2 0 4 4 4 0 2 0 2 4 2 4 4 4 4 0 4 0 0 0 0 4 2 2 0 0 4 4 2 0 2 2 2 4 0 2 0 4 2 0 4 2 2 0 0 2 4 0 4 0 2 4 0 0 2 4 2 4 4 4 0 0 0 2 4 0 2 0 0 2 4 2 2 2 4 0 0 4 0 2 2 4 4 0 4 0 0 0 4 2 2 0 2 2 2 4 0 0 4 0\r\n",
+                "10992604"
+            ],
+            [
+                "200 7\r\n2 0 2 2 2 2 0 2 2 4 4 2 4 2 4 0 4 4 4 4 0 4 4 0 2 2 4 2 2 2 2 4 4 0 4 4 4 4 2 0 2 0 4 4 4 4 2 0 4 2 4 4 2 2 2 0 0 2 4 2 2 2 4 4 0 2 2 4 2 2 4 2 0 0 2 4 0 2 4 0 2 0 4 0 4 2 0 4 2 2 0 0 2 0 4 4 4 2 2 4 4 2 4 4 4 4 0 2 0 4 0 4 4 2 4 2 0 4 0 4 2 0 4 0 4 2 4 2 2 2 0 2 2 4 4 0 0 4 0 4 4 4 0 4 0 4 2 0 4 0 4 0 4 0 2 4 2 0 4 0 2 4 2 4 4 0 2 2 0 4 4 0 2 0 0 4 4 4 4 0 2 2 0 4 4 4 4 0 4 2 0 0 0 2 4 0 0 2 0 4\r\n",
+                "0"
+            ],
+            [
+                "2 3\r\n4 2\r\n",
+                "0"
+            ],
+            [
+                "2 3\r\n0 0\r\n",
+                "1"
+            ],
+            [
+                "3 3\r\n4 4 4\r\n",
+                "1"
+            ],
+            [
+                "3 3\r\n0 0 0\r\n",
+                "5"
+            ],
+            [
+                "4 3\r\n2 4 4 4\r\n",
+                "1"
+            ],
+            [
+                "4 3\r\n0 0 0 0\r\n",
+                "13"
+            ],
+            [
+                "1 3\r\n2\r\n",
+                "0"
+            ],
+            [
+                "2 3\r\n2 4\r\n",
+                "0"
+            ],
+            [
+                "2 3\r\n4 4\r\n",
+                "1"
+            ],
+            [
+                "3 3\r\n4 4 2\r\n",
+                "1"
+            ],
+            [
+                "3 3\r\n4 2 4\r\n",
+                "0"
+            ],
+            [
+                "4 4\r\n4 4 4 4\r\n",
+                "1"
+            ],
+            [
+                "6 4\r\n2 2 4 2 2 4\r\n",
+                "1"
+            ]
+        ]
+    }
+]

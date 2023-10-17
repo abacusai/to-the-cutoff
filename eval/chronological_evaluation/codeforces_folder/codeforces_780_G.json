@@ -1,0 +1,60 @@
+[
+    {
+        "name": "Andryusha and Nervous Barriers",
+        "description": "Andryusha has found a perplexing arcade machine. The machine is a vertically\nadjusted board divided into square cells. The board has w columns numbered\nfrom 1 to w from left to right, and h rows numbered from 1 to h from the\nbottom to the top. Further, there are barriers in some of board rows. There\nare n barriers in total, and i-th of them occupied the cells li through ri of\nthe row ui. Andryusha recollects well that no two barriers share the same row.\nFurthermore, no row is completely occupied with a barrier, that is, at least\none cell in each row is free. The player can throw a marble to any column of\nthe machine from above. A marble falls downwards until it encounters a\nbarrier, or falls through the bottom of the board. A marble disappears once it\nencounters a barrier but is replaced by two more marbles immediately to the\nleft and to the right of the same barrier. In a situation when the barrier is\nat an edge of the board, both marbles appear next to the barrier at the side\nopposite to the edge. More than one marble can occupy the same place of the\nboard, without obstructing each other's movement. Ultimately, all marbles are\nbound to fall from the bottom of the machine. Examples of marble-barrier\ninteraction. Peculiarly, sometimes marbles can go through barriers as if they\nwere free cells. That is so because the barriers are in fact alive, and\nfrightened when a marble was coming at them from a very high altitude. More\nspecifically, if a marble falls towards the barrier i from relative height\nmore than si (that is, it started its fall strictly higher than ui + si), then\nthe barrier evades the marble. If a marble is thrown from the top of the\nboard, it is considered to appear at height (h + 1). Andryusha remembers to\nhave thrown a marble once in each of the columns. Help him find the total\nnumber of marbles that came down at the bottom of the machine. Since the\nanswer may be large, print it modulo 10^9 + 7. Input The first line contains\nthree integers h, w, and n (1 \u2264 h \u2264 10^9, 2 \u2264 w \u2264 10^5, 0 \u2264 n \u2264 10^5) \u2014 the\nnumber of rows, columns, and barriers in the machine respectively. Next n\nlines describe barriers. i-th of these lines containts four integers ui, li,\nri, and si (1 \u2264 ui \u2264 h, 1 \u2264 li \u2264 ri \u2264 w, 1 \u2264 si \u2264 10^9) \u2014 row index, leftmost\nand rightmost column index of i-th barrier, and largest relative fall height\nsuch that the barrier does not evade a falling marble. It is guaranteed that\neach row has at least one free cell, and that all ui are distinct. Output\nPrint one integer \u2014 the answer to the problem modulo 10^9 + 7. Examples Input\n10 5 1 3 2 3 10 Output 7 Input 10 5 2 3 1 3 10 5 3 5 10 Output 16 Input 10 5 2\n3 1 3 7 5 3 5 10 Output 14 Input 10 15 4 7 3 9 5 6 4 10 1 1 1 4 10 4 11 11 20\nOutput 53 Note In the first sample case, there is a single barrier: if one\nthrows a marble in the second or the third column, two marbles come out,\notherwise there is only one. The total answer is 7. In the second sample case,\nthe numbers of resulting marbles are 2, 2, 4, 4, 4 in order of indexing\ncolumns with the initial marble. In the third sample case, the numbers of\nresulting marbles are 1, 1, 4, 4, 4. Note that the first barrier evades the\nmarbles falling from the top of the board, but does not evade the marbles\nfalling from the second barrier. In the fourth sample case, the numbers of\nresulting marbles are 2, 2, 6, 6, 6, 6, 6, 6, 6, 1, 2, 1, 1, 1, 1. The picture\nbelow shows the case when a marble is thrown into the seventh column. The\nresult of throwing a marble into the seventh column.\n\n",
+        "cf_contest_id": 780,
+        "cf_index": "G",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dp"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 5 1\r\n3 2 3 10\r\n",
+                "7"
+            ],
+            [
+                "10 5 2\r\n3 1 3 10\r\n5 3 5 10\r\n",
+                "16"
+            ],
+            [
+                "10 5 2\r\n3 1 3 7\r\n5 3 5 10\r\n",
+                "14"
+            ],
+            [
+                "10 15 4\r\n7 3 9 5\r\n6 4 10 1\r\n1 1 4 10\r\n4 11 11 20\r\n",
+                "53"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 5 0\r\n",
+                "5"
+            ],
+            [
+                "50 10 10\r\n25 3 9 875592072\r\n31 7 9 608289145\r\n7 3 4 535302651\r\n44 2 8 886371915\r\n18 2 7 608582186\r\n13 6 10 938694748\r\n28 2 10 918979371\r\n27 4 7 677633252\r\n14 5 6 18800216\r\n40 3 3 576464516\r\n",
+                "42"
+            ],
+            [
+                "50 10 20\r\n40 2 9 884895728\r\n24 5 8 790420689\r\n49 4 8 268685616\r\n47 9 9 151990421\r\n16 3 10 900506075\r\n5 1 6 841222579\r\n12 2 8 747105240\r\n37 3 10 338931058\r\n13 1 5 40927359\r\n32 3 5 411411738\r\n19 7 8 532358798\r\n23 2 10 855756266\r\n29 1 5 502261977\r\n36 3 10 837693190\r\n34 1 7 135542048\r\n10 7 9 880969466\r\n20 1 9 597033772\r\n39 6 10 526884384\r\n35 6 7 432442880\r\n27 5 9 863972096\r\n",
+                "30080"
+            ],
+            [
+                "50 10 20\r\n20 8 8 4\r\n26 5 6 8\r\n42 4 5 4\r\n4 8 9 9\r\n30 3 10 7\r\n45 1 3 5\r\n29 3 7 2\r\n25 3 4 10\r\n10 9 9 4\r\n27 5 10 3\r\n3 3 4 9\r\n2 5 7 3\r\n31 8 8 6\r\n44 4 10 5\r\n35 4 9 7\r\n21 5 10 1\r\n7 3 10 8\r\n33 5 8 4\r\n40 6 7 3\r\n47 6 10 7\r\n",
+                "25"
+            ],
+            [
+                "10 50 6\r\n7 19 27 5\r\n9 31 48 5\r\n10 14 25 3\r\n1 26 27 1\r\n8 23 32 1\r\n3 30 45 5\r\n",
+                "148"
+            ],
+            [
+                "1000000000 100 10\r\n2768727 10 25 109956099\r\n379202341 87 89 195895534\r\n784414356 34 48 863091641\r\n506523844 68 96 404099975\r\n665014056 23 63 478632238\r\n569390601 2 53 394536376\r\n767013120 50 68 303526117\r\n522877824 27 98 233058216\r\n42792778 2 60 938786470\r\n114785014 12 100 377608378\r\n",
+                "519"
+            ]
+        ]
+    }
+]

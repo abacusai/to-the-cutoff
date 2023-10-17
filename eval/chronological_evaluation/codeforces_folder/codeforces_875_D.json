@@ -1,0 +1,115 @@
+[
+    {
+        "name": "High Cry",
+        "description": "Disclaimer: there are lots of untranslateable puns in the Russian version of\nthe statement, so there is one more reason for you to learn Russian :) Rick\nand Morty like to go to the ridge High Cry for crying loudly \u2014 there is an\nextraordinary echo. Recently they discovered an interesting acoustic\ncharacteristic of this ridge: if Rick and Morty begin crying simultaneously\nfrom different mountains, their cry would be heard between these mountains up\nto the height equal the bitwise OR of mountains they've climbed and all the\nmountains between them. Bitwise OR is a binary operation which is determined\nthe following way. Consider representation of numbers x and y in binary\nnumeric system (probably with leading zeroes) x = xk... x1x0 and y = yk...\ny1y0. Then z = x | y is defined following way: z = zk... z1z0, where zi = 1,\nif xi = 1 or yi = 1, and zi = 0 otherwise. In the other words, digit of\nbitwise OR of two numbers equals zero if and only if digits at corresponding\npositions is both numbers equals zero. For example bitwise OR of numbers 10 =\n10102 and 9 = 10012 equals 11 = 10112. In programming languages\nC/C++/Java/Python this operation is defined as \u00ab|\u00bb, and in Pascal as \u00abor\u00bb.\nHelp Rick and Morty calculate the number of ways they can select two mountains\nin such a way that if they start crying from these mountains their cry will be\nheard above these mountains and all mountains between them. More formally you\nshould find number of pairs l and r (1 \u2264 l < r \u2264 n) such that bitwise OR of\nheights of all mountains between l and r (inclusive) is larger than the height\nof any mountain at this interval. Input The first line contains integer n (1 \u2264\nn \u2264 200 000), the number of mountains in the ridge. Second line contains n\nintegers ai (0 \u2264 ai \u2264 10^9), the heights of mountains in order they are\nlocated in the ridge. Output Print the only integer, the number of ways to\nchoose two different mountains. Examples Input 5 3 2 1 6 5 Output 8 Input 4 3\n3 3 3 Output 0 Note In the first test case all the ways are pairs of mountains\nwith the numbers (numbering from one): (1, 4), (1, 5), (2, 3), (2, 4), (2, 5),\n(3, 4), (3, 5), (4, 5) In the second test case there are no such pairs because\nfor any pair of mountains the height of cry from them is 3, and this height is\nequal to the height of any mountain.\n\n",
+        "cf_contest_id": 875,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "bitmasks",
+            "combinatorics",
+            "data structures",
+            "divide and conquer"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5\r\n3 2 1 6 5\r\n",
+                "8\r\n"
+            ],
+            [
+                "4\r\n3 3 3 3\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\n1000000000\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\n6\r\n",
+                "0\r\n"
+            ],
+            [
+                "228\r\n1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 31 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 63 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 31 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 127 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 31 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 63 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 31 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 255 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 31 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 63 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 31 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 127 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 31 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 63 1 3 1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "50\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "81\r\n52673 19697 35512 34827 62387 60516 43450 22979 133 42838 16525 37792 12752 47765 45874 64082 14727 51748 56809 604 51751 59450 43797 31724 1024 9648 59503 53771 60868 38612 62867 57026 62297 15806 10549 7660 47983 30060 20829 46168 64832 18145 32300 53558 56554 33754 21953 58346 13894 6318 33563 63571 41705 49407 26794 51159 29011 43310 6847 11688 45129 2180 50406 12475 58021 58899 32867 15910 25819 33961 18759 64166 34472 57376 10903 16958 22656 14459 26900 33012 11615\r\n",
+                "3239\r\n"
+            ],
+            [
+                "69\r\n3 4 2 4 5 2 0 5 2 8 8 0 0 8 6 4 3 0 0 1 2 5 8 1 7 4 6 0 6 1 8 4 2 0 4 3 5 6 2 8 3 7 7 6 0 3 8 6 2 6 0 2 4 5 0 3 6 8 8 8 3 2 2 6 7 8 5 3 5\r\n",
+                "2262\r\n"
+            ],
+            [
+                "92\r\n7 1 1 2 5 8 3 4 1 3 0 7 5 2 0 7 2 7 3 2 7 3 7 7 7 0 8 2 0 7 4 7 6 7 3 6 2 0 2 4 1 6 6 4 5 7 3 2 8 6 7 8 8 2 4 2 7 2 2 4 7 5 4 3 4 4 1 2 2 1 4 4 1 8 0 7 8 0 8 6 7 3 2 6 7 2 7 3 1 0 3 6\r\n",
+                "3630\r\n"
+            ],
+            [
+                "79\r\n48952 12057 54091 43986 4825 65319 8888 63361 37922 29880 42348 16202 7107 33942 28418 5373 37969 36323 36644 8650 2951 22084 38174 65285 4123 19887 46516 40807 40062 20157 58343 52857 42065 28397 15571 29810 17508 34053 2732 26989 37441 53824 23112 13218 6696 46519 10848 37031 16381 32753 39768 8870 61745 57147 47588 1759 25424 29718 34450 31641 64681 59257 47088 36889 31207 23425 25712 41458 27960 49566 50455 10157 53577 34807 39258 31040 39873 10859 24672\r\n",
+                "3081\r\n"
+            ],
+            [
+                "80\r\n2 3 2 2 3 5 4 0 2 3 3 8 4 8 3 8 4 0 0 8 1 7 3 0 7 2 8 5 5 3 0 0 2 7 4 1 6 0 6 2 5 3 0 4 8 6 7 0 3 2 3 3 8 5 6 5 5 6 3 4 0 5 8 3 6 3 6 8 1 7 8 8 3 0 3 8 0 4 2 3\r\n",
+                "2997\r\n"
+            ],
+            [
+                "74\r\n63528 64641 32712 5228 59859 45909 4464 57592 27841 17687 62064 19286 40682 40598 63681 18441 53374 38527 16119 35588 42691 4015 20251 13679 50493 37149 34328 37977 24309 8750 54309 44091 12187 21917 24216 31326 40587 52208 19362 1642 13268 6596 10380 4937 37224 25970 59246 63483 20707 47702 57607 26046 30796 32636 7168 8816 11892 12934 53913 704 61887 65147 52243 14676 20993 33174 40778 23764 37017 5206 22521 55323 36803 9943\r\n",
+                "2691\r\n"
+            ],
+            [
+                "47\r\n4 4 3 1 0 1 2 8 6 3 1 5 6 5 4 5 3 8 4 8 7 6 8 1 4 8 1 5 7 4 8 7 8 7 5 6 7 5 5 5 6 5 3 0 2 5 6\r\n",
+                "1010\r\n"
+            ],
+            [
+                "53\r\n1 2 0 1 0 1 1 1 1 2 0 2 1 0 2 2 1 1 2 0 0 2 1 2 2 1 1 0 0 1 0 1 2 2 1 1 1 1 1 1 2 1 0 1 2 1 0 0 0 1 2 0 2\r\n",
+                "1288\r\n"
+            ],
+            [
+                "85\r\n4 4 4 4 2 1 2 0 0 3 1 0 4 3 2 2 3 4 1 0 0 0 0 2 1 1 1 1 0 1 4 2 2 1 0 4 4 1 4 0 3 2 3 4 0 4 3 0 3 1 0 1 3 1 2 0 2 3 1 1 2 4 0 4 1 1 1 3 3 4 3 1 0 3 0 0 0 4 2 3 1 1 4 0 0\r\n",
+                "3346\r\n"
+            ],
+            [
+                "100\r\n1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 31 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 63 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 31 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 127 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 31 1 3 1 7 1 3 1 15 1 3 1 7 1 3 1 63 1 3 1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "100\r\n1 2 1 4 1 2 1 8 1 2 1 4 1 2 1 16 1 2 1 4 1 2 1 8 1 2 1 4 1 2 1 32 1 2 1 4 1 2 1 8 1 2 1 4 1 2 1 16 1 2 1 4 1 2 1 8 1 2 1 4 1 2 1 64 1 2 1 4 1 2 1 8 1 2 1 4 1 2 1 16 1 2 1 4 1 2 1 8 1 2 1 4 1 2 1 32 1 2 1 4\r\n",
+                "4950\r\n"
+            ],
+            [
+                "100\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "100\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "100\r\n1 2 4 8 16 32 64 128 256 512 1 2 4 8 16 32 64 128 256 512 1 2 4 8 16 32 64 128 256 512 1 2 4 8 16 32 64 128 256 512 1 2 4 8 16 32 64 128 256 512 1 2 4 8 16 32 64 128 256 512 1 2 4 8 16 32 64 128 256 512 1 2 4 8 16 32 64 128 256 512 1 2 4 8 16 32 64 128 256 512 1 2 4 8 16 32 64 128 256 512\r\n",
+                "4950\r\n"
+            ],
+            [
+                "100\r\n1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 4 4 4 4 4 4 4 4 4 4 8 8 8 8 8 8 8 8 8 8 16 16 16 16 16 16 16 16 16 16 32 32 32 32 32 32 32 32 32 32 64 64 64 64 64 64 64 64 64 64 128 128 128 128 128 128 128 128 128 128 256 256 256 256 256 256 256 256 256 256 512 512 512 512 512 512 512 512 512 512\r\n",
+                "4500\r\n"
+            ]
+        ]
+    }
+]

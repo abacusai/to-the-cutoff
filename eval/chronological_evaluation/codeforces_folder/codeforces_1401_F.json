@@ -1,0 +1,45 @@
+[
+    {
+        "name": "Reverse and Swap",
+        "description": "You are given an array \n    a\n of length \n    2^n\n. You should process \n    q\n\nqueries on it. Each query has one of the following \n    4\n types:\n\n    Replace(x, k)\n \u2014 change \n    a_x\n to \n    k\n; \n    Reverse(k)\n \u2014 reverse\neach subarray \n    [(i-1) \n    \u00b7 2^k+1, i \n    \u00b7 2^k]\n for all \n    i\n (\n    i\n    \n    \u2265 1\n); \n    Swap(k)\n \u2014 swap subarrays \n    [(2i-2) \n    \u00b7 2^k+1, (2i-1)\n    \n    \u00b7 2^k]\n and \n    [(2i-1) \n    \u00b7 2^k+1, 2i \n    \u00b7 2^k]\n for all\n\n    i\n (\n    i \n    \u2265 1\n); \n    Sum(l, r)\n \u2014 print the sum of the elements of\nsubarray \n    [l, r]\n. Write a program that can quickly process given queries.\nInput The first line contains two integers \n    n\n, \n    q\n (\n    0 \n    \u2264 n\n    \n    \u2264 18\n; \n    1 \n    \u2264 q \n    \u2264 10^5\n) \u2014 the length of array \n    a\n and the\nnumber of queries. The second line contains \n    2^n\n integers \n    a_1, a_2,\n    \n    \u2026, a_2^n\n (\n    0 \n    \u2264 a_i \n    \u2264 10^9\n). Next \n    q\n lines\ncontains queries \u2014 one per line. Each query has one of \n    4\n types: \"\n    1\n\n\n    x\n \n    k\n\" (\n    1 \n    \u2264 x \n    \u2264 2^n\n; \n    0 \n    \u2264 k \n    \u2264 10^9\n) \u2014\n\n    Replace(x, k)\n; \"\n    2\n \n    k\n\" (\n    0 \n    \u2264 k \n    \u2264 n\n) \u2014\n\n    Reverse(k)\n; \"\n    3\n \n    k\n\" (\n    0 \n    \u2264 k < n\n) \u2014 \n    Swap(k)\n;\n\"\n    4\n \n    l\n \n    r\n\" (\n    1 \n    \u2264 l \n    \u2264 r \n    \u2264 2^n\n) \u2014 \n    Sum(l,\n    r)\n. It is guaranteed that there is at least one \n    Sum\n query. Output\nPrint the answer for each \n    Sum\n query. Examples Input 2 3 7 4 9 9 1 2 8 3\n1 4 2 4 Output 24 Input 3 8 7 0 8 8 7 1 5 2 4 3 7 2 1 3 2 4 1 6 2 3 1 5 16 4 8\n8 3 0 Output 29 22 1 Note In the first sample, initially, the array \n    a\n is\nequal to \n    7,4,9,9\n. After processing the first query. the array\n\n    a\n becomes \n    7,8,9,9\n. After processing the second query,\nthe array \n    a_i\n becomes \n    9,9,7,8\n Therefore, the answer to\nthe third query is \n    9+7+8=24\n. In the second sample, initially, the array\n\n    a\n is equal to \n    7,0,8,8,7,1,5,2\n. What happens next is:\n\n    Sum(3, 7)\n \n    \u2192\n \n    8 + 8 + 7 + 1 + 5 = 29\n; \n    Reverse(1)\n\n\n    \u2192\n \n    0,7,8,8,1,7,2,5\n; \n    Swap(2)\n \n    \u2192\n\n\n    1,7,2,5,0,7,8,8\n; \n    Sum(1, 6)\n \n    \u2192\n \n    1 + 7 + 2 + 5\n    + 0 + 7 = 22\n; \n    Reverse(3)\n \n    \u2192\n \n    8,8,7,0,5,2,7,1\n;\n\n    Replace(5, 16)\n \n    \u2192\n \n    8,8,7,0,16,2,7,1\n; \n    Sum(8,\n    8)\n \n    \u2192\n \n    1\n; \n    Swap(0)\n \n    \u2192\n\n\n    8,8,0,7,2,16,1,7\n.\n\n",
+        "cf_contest_id": 1401,
+        "cf_index": "F",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "bitmasks",
+            "data structures"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 3\r\n7 4 9 9\r\n1 2 8\r\n3 1\r\n4 2 4\r\n",
+                "24\r\n"
+            ],
+            [
+                "3 8\r\n7 0 8 8 7 1 5 2\r\n4 3 7\r\n2 1\r\n3 2\r\n4 1 6\r\n2 3\r\n1 5 16\r\n4 8 8\r\n3 0\r\n",
+                "29\r\n22\r\n1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "0 1\r\n102372403\r\n4 1 1\r\n",
+                "102372403\r\n"
+            ],
+            [
+                "0 2\r\n394521962\r\n4 1 1\r\n2 0\r\n",
+                "394521962\r\n"
+            ],
+            [
+                "1 1\r\n765529946 133384866\r\n4 1 2\r\n",
+                "898914812\r\n"
+            ],
+            [
+                "2 1\r\n170229564 772959316 149804289 584342409\r\n4 2 4\r\n",
+                "1507106014\r\n"
+            ]
+        ]
+    }
+]

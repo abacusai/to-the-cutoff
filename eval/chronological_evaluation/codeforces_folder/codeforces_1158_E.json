@@ -1,0 +1,110 @@
+[
+    {
+        "name": "Strange device",
+        "description": "It is an interactive problem. Vasya enjoys solving quizzes. He found a strange\ndevice and wants to know how it works. This device encrypted with the tree\n(connected undirected graph without cycles) with \n    n\n vertices, numbered\nwith integers from \n    1\n to \n    n\n. To solve this quiz you should guess\nthis tree. Fortunately, this device can make one operation, using which you\nshould guess the cipher. You can give the device an array \n    d_1, d_2,\n    \n    \u2026, d_n\n of non-negative integers. On the device, there are \n    n\n\nlamps, \n    i\n-th of them is connected with \n    i\n-th vertex of the tree. For\nall \n    i\n the light will turn on the \n    i\n-th lamp, if there exist such\nvertex of the tree with number \n    j \n    \u2260 i\n that \n    dist(i, j) \n    \u2264\n    d_j\n. Let's define \n    dist(i, j)\n as the distance between vertices \n    i\n\nand \n    j\n in tree or number of edges on the simple path between vertices\n\n    i\n and \n    j\n. Vasya wants to solve this quiz using \n    \u2264 80\n\noperations with the device and guess the tree. Help him! Interaction In the\nbeginning, your program should read one integer \n    n\n \u2014 the number of\nvertices of the tree which encrypts the device (\n    2 \n    \u2264 n \n    \u2264 1000\n).\nAfter that, you can make several operations in the following format. To do\noperation print a symbol\"?\" (without quotes) and \n    n\n integers \n    d_1, d_2,\n    \n    \u2026, d_n\n, separated by spaces after it. Please note, that for all\n\n    i\n you can only use the numbers, satisfying the inequality \n    0 \n    \u2264\n    d_i < n\n. After that, you should read a string \n    s\n with length \n    n\n,\nconsisting of symbols \"0\" and \"1\" (without quotes). For all \n    i\n the symbol\n\n    s_i\n is equal to \"0\", if the lamp on the device, connected with\n\n    i\n-th vertex of the tree is switched off and \"1\" otherwise. After several\noperations, you should print guessed tree. To do it print the only symbol \"!\"\n(without quotes). In the next \n    n-1\n lines print \n    2\n integers\n\n    a_i\n, \n    b_i\n \u2014 indexes of the vertices connected by \n    i\n-th edge of\nthe tree. This numbers should satisfy the conditions \n    1 \n    \u2264 a_i, b_i\n    \n    \u2264 n\n and \n    a_i \n    \u2260 b_i\n. This edges should form a tree, which is\nequal to the hidden tree. After that, your program should terminate. It is\nguaranteed, that in each test the tree is fixed before and won't change\ndepending on your program's operations. Your program can make from \n    0\n to\n\n    80\n operations with the device and after that guess the tree equal with\nthe hidden. If your program will make more than \n    80\n operations it can get\nany verdict, because it will continue reading from closed input. If your\nprogram will make operation or print the answer in the incorrect format, it\ncan get any verdict too. Be careful. Don't forget to flush the output after\nprinting questions and answers. To flush the output, you can use:\nfflush(stdout) in C++. System.out.flush() in Java. stdout.flush() in Python.\nflush(output) in Pascal. See the documentation for other languages. Hacks: The\nfirst line should contain one integer \n    n\n \u2014 the number of vertices in the\ntree (\n    2 \n    \u2264 n \n    \u2264 1000\n). Next \n    n-1\n lines should contain\n\n    2\n integers \n    a_i\n, \n    b_i\n \u2014 indexes of the vertices connected by\n\n    i\n-th edge of the tree (\n    1 \n    \u2264 a_i, b_i \n    \u2264 n\n, \n    a_i \n    \u2260\n    b_i\n). All edges should form a tree. Be careful, extra spaces or line breaks\nare not allowed. Example Input 5 00000 11011 11100 10010 Output ? 0 0 0 0 0 ?\n1 1 2 0 2 ? 0 0 0 1 0 ? 0 1 0 0 1 ! 4 2 1 5 3 4 4 1 Note It is a picture of\nthe tree which encrypt the device from the first test: It is a table of\npairwise distances between vertices in this tree: If you make operation where\n\n    d = [0, 0, 0, 0, 0]\n, no lamp will switch on, because \n    dist(i, j) >\n    0\n for all \n    i \n    \u2260 j\n. If you make operation where \n    d = [1, 1, 2, 0,\n    2]\n, all lamps except the lamp connected with the \n    3\n-rd vertex will\nswitch on. For example, lamp connected with the \n    1\n-st vertex will switch\non, because \n    dist(1, 5) = 1 \n    \u2264 2 = d_5\n. If you make operation where\n\n    d = [0, 0, 0, 1, 0]\n, all lamps except lamps connected with the\n\n    4\n-th and \n    5\n-th vertices will switch on. If you make operation where\n\n    d = [0, 1, 0, 0, 1]\n, only lamps connected with the \n    1\n-st and\n\n    4\n-th vertices will switch on.\n\n",
+        "cf_contest_id": 1158,
+        "cf_index": "E",
+        "cf_rating": 3400,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "interactive",
+            "math",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n4 2\r\n1 5\r\n3 4\r\n4 1\r\n",
+                "21\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n1 2\r\n",
+                "14\r\n"
+            ],
+            [
+                "5\r\n1 2\r\n5 2\r\n3 5\r\n3 4\r\n",
+                "21\r\n"
+            ],
+            [
+                "10\r\n2 1\r\n6 9\r\n7 5\r\n8 9\r\n8 10\r\n9 1\r\n4 3\r\n4 6\r\n7 4\r\n",
+                "28\r\n"
+            ],
+            [
+                "20\r\n11 13\r\n20 16\r\n14 17\r\n1 11\r\n8 11\r\n4 16\r\n12 2\r\n2 20\r\n19 5\r\n10 7\r\n19 16\r\n8 7\r\n15 16\r\n17 10\r\n18 4\r\n3 7\r\n9 1\r\n1 12\r\n6 1\r\n",
+                "35\r\n"
+            ],
+            [
+                "3\r\n1 2\r\n2 3\r\n",
+                "14\r\n"
+            ],
+            [
+                "3\r\n2 3\r\n1 3\r\n",
+                "14\r\n"
+            ],
+            [
+                "3\r\n2 3\r\n2 1\r\n",
+                "14\r\n"
+            ],
+            [
+                "3\r\n1 3\r\n3 2\r\n",
+                "14\r\n"
+            ],
+            [
+                "3\r\n2 1\r\n1 3\r\n",
+                "14\r\n"
+            ],
+            [
+                "4\r\n3 4\r\n1 3\r\n3 2\r\n",
+                "21\r\n"
+            ],
+            [
+                "4\r\n2 1\r\n4 2\r\n2 3\r\n",
+                "21\r\n"
+            ],
+            [
+                "4\r\n2 3\r\n4 3\r\n4 1\r\n",
+                "21\r\n"
+            ],
+            [
+                "5\r\n1 5\r\n3 2\r\n5 3\r\n3 4\r\n",
+                "21\r\n"
+            ],
+            [
+                "5\r\n1 4\r\n2 5\r\n1 5\r\n1 3\r\n",
+                "21\r\n"
+            ],
+            [
+                "6\r\n6 5\r\n3 4\r\n4 6\r\n1 3\r\n2 5\r\n",
+                "21\r\n"
+            ],
+            [
+                "7\r\n1 3\r\n3 2\r\n6 5\r\n5 7\r\n5 4\r\n3 6\r\n",
+                "21\r\n"
+            ],
+            [
+                "8\r\n5 6\r\n8 1\r\n8 2\r\n4 6\r\n1 3\r\n1 6\r\n2 7\r\n",
+                "28\r\n"
+            ],
+            [
+                "9\r\n4 7\r\n8 5\r\n5 3\r\n7 5\r\n7 6\r\n1 9\r\n2 4\r\n2 9\r\n",
+                "28\r\n"
+            ],
+            [
+                "15\r\n8 2\r\n2 1\r\n11 15\r\n3 9\r\n3 11\r\n10 6\r\n5 3\r\n3 10\r\n2 14\r\n7 10\r\n8 6\r\n8 4\r\n13 8\r\n1 12\r\n",
+                "28\r\n"
+            ],
+            [
+                "26\r\n18 20\r\n1 26\r\n4 8\r\n5 19\r\n17 16\r\n9 13\r\n8 20\r\n12 13\r\n13 11\r\n7 4\r\n21 2\r\n25 18\r\n17 15\r\n24 14\r\n14 5\r\n10 21\r\n16 24\r\n15 26\r\n9 20\r\n18 3\r\n21 24\r\n18 22\r\n8 17\r\n26 6\r\n20 23\r\n",
+                "35\r\n"
+            ],
+            [
+                "37\r\n19 23\r\n6 30\r\n20 24\r\n34 15\r\n24 10\r\n37 15\r\n26 6\r\n12 11\r\n10 13\r\n9 18\r\n12 21\r\n15 19\r\n24 29\r\n24 32\r\n1 7\r\n5 22\r\n32 3\r\n8 34\r\n10 2\r\n16 24\r\n8 14\r\n25 30\r\n27 18\r\n1 26\r\n35 29\r\n26 21\r\n22 29\r\n31 12\r\n9 6\r\n16 28\r\n33 16\r\n25 36\r\n37 4\r\n30 24\r\n13 17\r\n28 19\r\n",
+                "42\r\n"
+            ]
+        ]
+    }
+]

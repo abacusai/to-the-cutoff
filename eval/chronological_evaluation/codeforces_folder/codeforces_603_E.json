@@ -1,0 +1,75 @@
+[
+    {
+        "name": "Pastoral Oddities",
+        "description": "In the land of Bovinia there are n pastures, but no paths connecting the\npastures. Of course, this is a terrible situation, so Kevin Sun is planning to\nrectify it by constructing m undirected paths connecting pairs of distinct\npastures. To make transportation more efficient, he also plans to pave some of\nthese new paths. Kevin is very particular about certain aspects of path-\npaving. Since he loves odd numbers, he wants each pasture to have an odd\nnumber of paved paths connected to it. Thus we call a paving sunny if each\npasture is incident to an odd number of paved paths. He also enjoys short\npaths more than long paths, so he would like the longest paved path to be as\nshort as possible. After adding each path, Kevin wants to know if a sunny\npaving exists for the paths of Bovinia, and if at least one does, the minimum\npossible length of the longest path in such a paving. Note that \"longest path\"\nhere means maximum-weight edge. Input The first line contains two integers n\n(2 \u2264 n \u2264 100 000) and m (1 \u2264 m \u2264 300 000), denoting the number of pastures and\npaths, respectively. The next m lines each contain three integers ai, bi and\nli, describing the i-th path. The i-th path connects pastures ai and bi (1 \u2264\nai, bi \u2264 n; ai \u2260 bi) and has length li (1 \u2264 li \u2264 10^9). Paths are given in the\norder in which they are constructed. Output Output m lines. The i-th line\nshould contain a single integer denoting the minimum possible length of the\nlongest path (maximum-weight edge) in a sunny paving using only the first i\npaths. If Kevin cannot pave a set of paths so that each pasture is incident to\nan odd number of paved paths, output - 1. Note that the paving is only\nhypothetical\u2014your answer after adding the i-th path should not be affected by\nany of your previous answers. Examples Input 4 4 1 3 4 2 4 8 1 2 2 3 4 3\nOutput -1 8 8 3 Input 3 2 1 2 3 2 3 4 Output -1 -1 Input 4 10 2 1 987 3 2 829\n4 1 768 4 2 608 3 4 593 3 2 488 4 2 334 2 1 204 1 3 114 1 4 39 Output -1 -1\n829 829 768 768 768 488 334 204 Note For the first sample, these are the paths\nthat Kevin should pave after building the i-th path: No set of paths works.\nPaths 1 (length 4) and 2 (length 8). Paths 1 (length 4) and 2 (length 8).\nPaths 3 (length 2) and 4 (length 3). In the second sample, there never exists\na paving that makes Kevin happy.\n\n",
+        "cf_contest_id": 603,
+        "cf_index": "E",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "divide and conquer",
+            "dsu",
+            "math",
+            "trees"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 4\r\n1 3 4\r\n2 4 8\r\n1 2 2\r\n3 4 3\r\n",
+                "-1\r\n8\r\n8\r\n3\r\n"
+            ],
+            [
+                "3 2\r\n1 2 3\r\n2 3 4\r\n",
+                "-1\r\n-1\r\n"
+            ],
+            [
+                "4 10\r\n2 1 987\r\n3 2 829\r\n4 1 768\r\n4 2 608\r\n3 4 593\r\n3 2 488\r\n4 2 334\r\n2 1 204\r\n1 3 114\r\n1 4 39\r\n",
+                "-1\r\n-1\r\n829\r\n829\r\n768\r\n768\r\n768\r\n488\r\n334\r\n204\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 8\r\n2 1 979\r\n2 1 734\r\n1 2 145\r\n1 2 491\r\n1 2 928\r\n2 1 20\r\n2 1 136\r\n2 1 398\r\n",
+                "979\r\n734\r\n145\r\n145\r\n145\r\n20\r\n20\r\n20\r\n"
+            ],
+            [
+                "2 6\r\n2 1 607\r\n2 1 794\r\n1 2 169\r\n2 1 264\r\n2 1 865\r\n2 1 740\r\n",
+                "607\r\n607\r\n169\r\n169\r\n169\r\n169\r\n"
+            ],
+            [
+                "2 10\r\n2 1 861\r\n2 1 168\r\n1 2 506\r\n1 2 448\r\n2 1 45\r\n1 2 659\r\n1 2 922\r\n1 2 943\r\n1 2 222\r\n1 2 68\r\n",
+                "861\r\n168\r\n168\r\n168\r\n45\r\n45\r\n45\r\n45\r\n45\r\n45\r\n"
+            ],
+            [
+                "2 5\r\n1 2 114\r\n2 1 474\r\n1 2 273\r\n1 2 35\r\n2 1 466\r\n",
+                "114\r\n114\r\n114\r\n35\r\n35\r\n"
+            ],
+            [
+                "2 10\r\n2 1 999999002\r\n2 1 859\r\n1 2 714\r\n1 2 641\r\n2 1 555\r\n2 1 407\r\n1 2 386\r\n2 1 289\r\n2 1 121\r\n1 2 9\r\n",
+                "999999002\r\n859\r\n714\r\n641\r\n555\r\n407\r\n386\r\n289\r\n121\r\n9\r\n"
+            ],
+            [
+                "2 10\r\n2 1 999999237\r\n1 2 809\r\n2 1 722\r\n2 1 686\r\n1 2 534\r\n2 1 441\r\n2 1 386\r\n2 1 277\r\n2 1 103\r\n2 1 68\r\n",
+                "999999237\r\n809\r\n722\r\n686\r\n534\r\n441\r\n386\r\n277\r\n103\r\n68\r\n"
+            ],
+            [
+                "4 7\r\n2 1 740\r\n4 3 789\r\n1 4 379\r\n2 4 599\r\n1 2 230\r\n3 2 143\r\n1 3 290\r\n",
+                "-1\r\n789\r\n789\r\n789\r\n789\r\n379\r\n379\r\n"
+            ],
+            [
+                "4 10\r\n4 3 600\r\n3 2 871\r\n3 1 325\r\n4 2 636\r\n4 1 645\r\n2 4 433\r\n4 3 836\r\n4 2 575\r\n4 1 757\r\n1 2 902\r\n",
+                "-1\r\n-1\r\n871\r\n636\r\n636\r\n433\r\n433\r\n433\r\n433\r\n433\r\n"
+            ],
+            [
+                "4 10\r\n3 2 178\r\n3 1 459\r\n1 4 775\r\n3 2 286\r\n1 3 832\r\n2 4 814\r\n4 2 859\r\n3 1 937\r\n2 3 751\r\n1 2 915\r\n",
+                "-1\r\n-1\r\n775\r\n775\r\n775\r\n775\r\n775\r\n775\r\n775\r\n775\r\n"
+            ],
+            [
+                "4 10\r\n2 1 999999641\r\n3 2 999999249\r\n4 1 999999745\r\n2 1 640\r\n1 4 559\r\n1 2 490\r\n1 3 353\r\n3 2 242\r\n4 3 180\r\n3 4 40\r\n",
+                "-1\r\n-1\r\n999999745\r\n999999745\r\n999999249\r\n999999249\r\n559\r\n559\r\n353\r\n353\r\n"
+            ]
+        ]
+    }
+]

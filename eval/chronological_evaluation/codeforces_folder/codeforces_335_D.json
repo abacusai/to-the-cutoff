@@ -1,0 +1,76 @@
+[
+    {
+        "name": "Rectangles and Square",
+        "description": "You are given n rectangles, labeled 1 through n. The corners of rectangles\nhave integer coordinates and their edges are parallel to the Ox and Oy axes.\nThe rectangles may touch each other, but they do not overlap (that is, there\nare no points that belong to the interior of more than one rectangle). Your\ntask is to determine if there's a non-empty subset of the rectangles that\nforms a square. That is, determine if there exists a subset of the rectangles\nand some square for which every point that belongs to the interior or the\nborder of that square belongs to the interior or the border of at least one of\nthe rectangles in the subset, and every point that belongs to the interior or\nthe border of at least one rectangle in the subset belongs to the interior or\nthe border of that square. Input First line contains a single integer n (1 \u2264 n\n\u2264 10^5) \u2014 the number of rectangles. Each of the next n lines contains a\ndescription of a rectangle, with the i-th such line describing the rectangle\nlabeled i. Each rectangle description consists of four integers: x1, y1, x2,\ny2 \u2014 coordinates of the bottom left and the top right corners (0 \u2264 x1 < x2 \u2264\n3000, 0 \u2264 y1 < y2 \u2264 3000). No two rectangles overlap (that is, there are no\npoints that belong to the interior of more than one rectangle). Output If such\na subset exists, print \"YES\" (without quotes) on the first line of the output\nfile, followed by k, the number of rectangles in the subset. On the second\nline print k numbers \u2014 the labels of rectangles in the subset in any order. If\nmore than one such subset exists, print any one. If no such subset exists,\nprint \"NO\" (without quotes). Examples Input 9 0 0 1 9 1 0 9 1 1 8 9 9 8 1 9 8\n2 2 3 6 3 2 7 3 2 6 7 7 5 3 7 6 3 3 5 6 Output YES 5 5 6 7 8 9 Input 4 0 0 1 9\n1 0 9 1 1 8 9 9 8 1 9 8 Output NO Note The first test case looks as follows:\nNote that rectangles 6, 8, and 9 form a square as well, and would be an\nacceptable answer. The second test case looks as follows:\n\n",
+        "cf_contest_id": 335,
+        "cf_index": "D",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dp"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "9\r\n0 0 1 9\r\n1 0 9 1\r\n1 8 9 9\r\n8 1 9 8\r\n2 2 3 6\r\n3 2 7 3\r\n2 6 7 7\r\n5 3 7 6\r\n3 3 5 6\r\n",
+                "YES 5\r\n5 6 7 8 9 "
+            ],
+            [
+                "4\r\n0 0 1 9\r\n1 0 9 1\r\n1 8 9 9\r\n8 1 9 8\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n0 0 1 1\r\n",
+                "YES 1\r\n1 "
+            ],
+            [
+                "3\r\n0 0 1 2\r\n1 0 2 2\r\n12 13 15 14\r\n",
+                "YES 2\r\n1 2 "
+            ],
+            [
+                "1\r\n228 501 230 504\r\n",
+                "NO\r\n"
+            ],
+            [
+                "16\r\n1497 1499 1498 1503\r\n1503 1496 1504 1504\r\n1499 1501 1501 1502\r\n1496 1498 1497 1504\r\n1495 1497 1496 1505\r\n1496 1504 1504 1505\r\n1500 1498 1501 1501\r\n1502 1496 1503 1503\r\n1495 1496 1502 1497\r\n1497 1498 1500 1499\r\n1496 1497 1501 1498\r\n1501 1497 1502 1502\r\n1498 1499 1499 1502\r\n1497 1503 1503 1504\r\n1498 1502 1502 1503\r\n1499 1499 1500 1501\r\n",
+                "YES 16\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 "
+            ],
+            [
+                "17\r\n1498 1502 1502 1503\r\n1500 1498 1501 1501\r\n1502 1501 1503 1503\r\n1496 1497 1501 1498\r\n1498 1499 1499 1502\r\n1496 1504 1504 1505\r\n1497 1499 1498 1503\r\n1495 1497 1496 1505\r\n1501 1497 1502 1502\r\n1502 1496 1503 1500\r\n1495 1496 1502 1497\r\n1499 1499 1500 1501\r\n1503 1496 1504 1504\r\n1497 1503 1503 1504\r\n1496 1498 1497 1504\r\n1497 1498 1500 1499\r\n1499 1501 1501 1502\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n0 0 1 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n0 0 3000 3000\r\n",
+                "YES 1\r\n1 "
+            ],
+            [
+                "2\r\n0 0 1 1\r\n1 1 2 2\r\n",
+                "YES 1\r\n1 "
+            ],
+            [
+                "3\r\n10 10 11 13\r\n11 9 12 12\r\n12 10 13 13\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n0 2999 1 3000\r\n",
+                "YES 1\r\n1 "
+            ],
+            [
+                "1\r\n2999 0 3000 1\r\n",
+                "YES 1\r\n1 "
+            ],
+            [
+                "1\r\n2999 2999 3000 3000\r\n",
+                "YES 1\r\n1 "
+            ]
+        ]
+    }
+]

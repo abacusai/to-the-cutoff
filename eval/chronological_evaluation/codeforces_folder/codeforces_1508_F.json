@@ -1,0 +1,36 @@
+[
+    {
+        "name": "Optimal Encoding",
+        "description": "Touko's favorite sequence of numbers is a permutation \n    a_1, a_2, \n    \u2026,\n    a_n\n of \n    1, 2, \n    \u2026, n\n, and she wants some collection of\npermutations that are similar to her favorite permutation. She has a\ncollection of \n    q\n intervals of the form \n    [l_i, r_i]\n with \n    1 \n    \u2264\n    l_i \n    \u2264 r_i \n    \u2264 n\n. To create permutations that are similar to her\nfavorite permutation, she coined the following definition: A permutation\n\n    b_1, b_2, \n    \u2026, b_n\n allows an interval \n    [l', r']\n to holds its\nshape if for any pair of integers \n    (x, y)\n such that \n    l' \n    \u2264 x < y\n    \n    \u2264 r'\n, we have \n    b_x < b_y\n if and only if \n    a_x < a_y\n. A\npermutation \n    b_1, b_2, \n    \u2026, b_n\n is \n    k\n-similar if \n    b\n allows\nall intervals \n    [l_i, r_i]\n for all \n    1 \n    \u2264 i \n    \u2264 k\n to hold their\nshapes. Yuu wants to figure out all \n    k\n-similar permutations for Touko,\nbut it turns out this is a very hard task; instead, Yuu will encode the set of\nall \n    k\n-similar permutations with directed acylic graphs (DAG). Yuu also\ncoined the following definitions for herself: A permutation \n    b_1, b_2,\n    \n    \u2026, b_n\n satisfies a DAG \n    G'\n if for all edge \n    u \n    \u2192 v\n in\n\n    G'\n, we must have \n    b_u < b_v\n. A \n    k\n-encoding is a DAG \n    G_k\n\non the set of vertices \n    1, 2, \n    \u2026, n\n such that a permutation \n    b_1,\n    b_2, \n    \u2026, b_n\n satisfies \n    G_k\n if and only if \n    b\n is\n\n    k\n-similar. Since Yuu is free today, she wants to figure out the minimum\nnumber of edges among all \n    k\n-encodings for each \n    k\n from \n    1\n to\n\n    q\n. Input The first line contains two integers \n    n\n and \n    q\n (\n    1\n    \n    \u2264 n \n    \u2264 25\n     000\n, \n    1 \n    \u2264 q \n    \u2264 100\n     000\n). The second line\ncontains \n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n which form a\npermutation of \n    1, 2, \n    \u2026, n\n. The \n    i\n-th of the following \n    q\n\nlines contains two integers \n    l_i\n and \n    r_i\n. (\n    1 \n    \u2264 l_i \n    \u2264 r_i\n    \n    \u2264 n\n). Output Print \n    q\n lines. The \n    k\n-th of them should contain\na single integer \u2014 The minimum number of edges among all \n    k\n-encodings.\nExamples Input 4 3 2 4 1 3 1 3 2 4 1 4 Output 2 4 3 Input 8 4 3 7 4 8 1 5 2 6\n3 6 1 6 3 8 1 8 Output 3 5 9 7 Input 10 10 10 5 1 2 7 3 9 4 6 8 2 2 4 5 6 8 4\n10 4 4 2 7 2 2 7 8 3 7 2 10 Output 0 1 3 6 6 9 9 9 9 8 Note For the first test\ncase: All \n    1\n-similar permutations must allow the interval \n    [1, 3]\n to\nhold its shape. Therefore, the set of all \n    1\n-similar permutations is\n\n    [3, 4, 2, 1], [3, 4, 1, 2], [2, 4, 1, 3], [2, 3, 1, 4]\n. The\noptimal encoding of these permutations is All \n    2\n-similar permutations\nmust allow the intervals \n    [1, 3]\n and \n    [2, 4]\n to hold their shapes.\nTherefore, the set of all \n    2\n-similar permutations is \n    [3, 4, 1,\n    2], [2, 4, 1, 3]\n. The optimal encoding of these permutations is All\n\n    3\n-similar permutations must allow the intervals \n    [1, 3]\n, \n    [2,\n    4]\n, and \n    [1, 4]\n to hold their shapes. Therefore, the set of all\n\n    3\n-similar permutations only includes \n    [2, 4, 1, 3]\n. The optimal\nencoding of this permutation is\n\n",
+        "cf_contest_id": 1508,
+        "cf_index": "F",
+        "cf_rating": 3500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "data structures"
+        ],
+        "time_limit_seconds": 7.0,
+        "memory_limit_bytes": 1024.0,
+        "public_cases": [
+            [
+                "4 3\r\n2 4 1 3\r\n1 3\r\n2 4\r\n1 4\r\n",
+                "2\r\n4\r\n3\r\n"
+            ],
+            [
+                "8 4\r\n3 7 4 8 1 5 2 6\r\n3 6\r\n1 6\r\n3 8\r\n1 8\r\n",
+                "3\r\n5\r\n9\r\n7\r\n"
+            ],
+            [
+                "10 10\r\n10 5 1 2 7 3 9 4 6 8\r\n2 2\r\n4 5\r\n6 8\r\n4 10\r\n4 4\r\n2 7\r\n2 2\r\n7 8\r\n3 7\r\n2 10\r\n",
+                "0\r\n1\r\n3\r\n6\r\n6\r\n9\r\n9\r\n9\r\n9\r\n8\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n1\r\n1 1\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

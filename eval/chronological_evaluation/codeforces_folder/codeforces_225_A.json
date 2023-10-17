@@ -1,0 +1,188 @@
+[
+    {
+        "name": "Dice Tower",
+        "description": "A dice is a cube, its faces contain distinct integers from 1 to 6 as black\npoints. The sum of numbers at the opposite dice faces always equals 7. Please\nnote that there are only two dice (these dices are mirror of each other) that\nsatisfy the given constraints (both of them are shown on the picture on the\nleft). Alice and Bob play dice. Alice has built a tower from n dice. We know\nthat in this tower the adjacent dice contact with faces with distinct numbers.\nBob wants to uniquely identify the numbers written on the faces of all dice,\nfrom which the tower is built. Unfortunately, Bob is looking at the tower from\nthe face, and so he does not see all the numbers on the faces. Bob sees the\nnumber on the top of the tower and the numbers on the two adjacent sides (on\nthe right side of the picture shown what Bob sees). Help Bob, tell whether it\nis possible to uniquely identify the numbers on the faces of all the dice in\nthe tower, or not. Input The first line contains a single integer n (1 \u2264 n \u2264\n100) \u2014 the number of dice in the tower. The second line contains an integer x\n(1 \u2264 x \u2264 6) \u2014 the number Bob sees at the top of the tower. Next n lines\ncontain two space-separated integers each: the i-th line contains numbers ai,\nbi (1 \u2264 ai, bi \u2264 6; ai \u2260 bi) \u2014 the numbers Bob sees on the two sidelong faces\nof the i-th dice in the tower. Consider the dice in the tower indexed from top\nto bottom from 1 to n. That is, the topmost dice has index 1 (the dice whose\ntop face Bob can see). It is guaranteed that it is possible to make a dice\ntower that will look as described in the input. Output Print \"YES\" (without\nthe quotes), if it is possible to to uniquely identify the numbers on the\nfaces of all the dice in the tower. If it is impossible, print \"NO\" (without\nthe quotes). Examples Input 3 6 3 2 5 4 2 4 Output YES Input 3 3 2 6 4 1 5 3\nOutput NO\n\n",
+        "cf_contest_id": 225,
+        "cf_index": "A",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n6\r\n3 2\r\n5 4\r\n2 4\r\n",
+                "YES\n"
+            ],
+            [
+                "3\r\n3\r\n2 6\r\n4 1\r\n5 3\r\n",
+                "NO\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n3\r\n2 1\r\n",
+                "YES\n"
+            ],
+            [
+                "2\r\n2\r\n3 1\r\n1 5\r\n",
+                "NO\n"
+            ],
+            [
+                "3\r\n2\r\n1 4\r\n5 3\r\n6 4\r\n",
+                "NO\n"
+            ],
+            [
+                "4\r\n3\r\n5 6\r\n1 3\r\n1 5\r\n4 1\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n2\r\n3 1\r\n1 3\r\n",
+                "YES\n"
+            ],
+            [
+                "3\r\n2\r\n1 4\r\n3 1\r\n4 6\r\n",
+                "YES\n"
+            ],
+            [
+                "4\r\n3\r\n5 6\r\n1 5\r\n5 1\r\n1 5\r\n",
+                "YES\n"
+            ],
+            [
+                "5\r\n1\r\n2 3\r\n5 3\r\n5 4\r\n5 1\r\n3 5\r\n",
+                "NO\n"
+            ],
+            [
+                "10\r\n5\r\n1 3\r\n2 3\r\n6 5\r\n6 5\r\n4 5\r\n1 3\r\n1 2\r\n3 2\r\n4 2\r\n1 2\r\n",
+                "NO\n"
+            ],
+            [
+                "15\r\n4\r\n2 1\r\n2 4\r\n6 4\r\n5 3\r\n4 1\r\n4 2\r\n6 3\r\n4 5\r\n3 5\r\n2 6\r\n5 6\r\n1 5\r\n3 5\r\n6 4\r\n3 2\r\n",
+                "NO\n"
+            ],
+            [
+                "20\r\n6\r\n3 2\r\n4 6\r\n3 6\r\n6 4\r\n5 1\r\n1 5\r\n2 6\r\n1 2\r\n1 4\r\n5 3\r\n2 3\r\n6 2\r\n5 4\r\n2 6\r\n1 3\r\n4 6\r\n4 5\r\n6 3\r\n3 1\r\n6 2\r\n",
+                "NO\n"
+            ],
+            [
+                "25\r\n4\r\n1 2\r\n4 1\r\n3 5\r\n2 1\r\n3 5\r\n6 5\r\n3 5\r\n5 6\r\n1 2\r\n2 4\r\n6 2\r\n2 3\r\n2 4\r\n6 5\r\n2 3\r\n6 3\r\n2 3\r\n1 3\r\n2 1\r\n3 1\r\n5 6\r\n3 1\r\n6 4\r\n3 6\r\n2 3\r\n",
+                "NO\n"
+            ],
+            [
+                "5\r\n1\r\n2 3\r\n3 5\r\n4 5\r\n5 4\r\n5 3\r\n",
+                "YES\n"
+            ],
+            [
+                "10\r\n5\r\n1 3\r\n3 1\r\n6 3\r\n6 3\r\n4 6\r\n3 1\r\n1 4\r\n3 1\r\n4 6\r\n1 3\r\n",
+                "YES\n"
+            ],
+            [
+                "15\r\n4\r\n2 1\r\n2 6\r\n6 5\r\n5 1\r\n1 5\r\n2 1\r\n6 5\r\n5 1\r\n5 1\r\n6 2\r\n6 5\r\n5 1\r\n5 1\r\n6 5\r\n2 6\r\n",
+                "YES\n"
+            ],
+            [
+                "20\r\n6\r\n3 2\r\n4 2\r\n3 5\r\n4 2\r\n5 3\r\n5 4\r\n2 3\r\n2 3\r\n4 5\r\n3 5\r\n3 2\r\n2 4\r\n4 5\r\n2 4\r\n3 2\r\n4 2\r\n5 4\r\n3 2\r\n3 5\r\n2 4\r\n",
+                "YES\n"
+            ],
+            [
+                "25\r\n4\r\n1 2\r\n1 5\r\n5 6\r\n1 2\r\n5 1\r\n5 6\r\n5 1\r\n6 5\r\n2 1\r\n2 6\r\n2 6\r\n2 6\r\n2 6\r\n5 6\r\n2 6\r\n6 5\r\n2 1\r\n1 5\r\n1 2\r\n1 2\r\n6 5\r\n1 2\r\n6 5\r\n6 2\r\n2 6\r\n",
+                "YES\n"
+            ],
+            [
+                "3\r\n6\r\n3 2\r\n5 4\r\n2 6\r\n",
+                "NO\n"
+            ],
+            [
+                "4\r\n1\r\n2 3\r\n2 3\r\n2 3\r\n1 3\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n6\r\n3 2\r\n6 4\r\n",
+                "NO\n"
+            ],
+            [
+                "3\r\n6\r\n3 2\r\n5 6\r\n2 4\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n5\r\n6 3\r\n4 5\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n6\r\n3 2\r\n6 5\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n1\r\n3 2\r\n1 2\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n3\r\n5 1\r\n3 5\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n1\r\n2 3\r\n1 2\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n1\r\n2 3\r\n2 1\r\n",
+                "NO\n"
+            ],
+            [
+                "3\r\n1\r\n4 5\r\n4 1\r\n4 5\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n4\r\n2 6\r\n5 4\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n6\r\n3 2\r\n6 2\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n3\r\n2 1\r\n3 5\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n3\r\n1 2\r\n3 1\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n3\r\n2 6\r\n5 3\r\n",
+                "NO\n"
+            ],
+            [
+                "3\r\n3\r\n1 2\r\n3 2\r\n3 1\r\n",
+                "NO\n"
+            ],
+            [
+                "3\r\n5\r\n3 1\r\n1 3\r\n2 3\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n6\r\n2 4\r\n6 5\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n6\r\n4 5\r\n6 5\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n6\r\n3 5\r\n3 6\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n4\r\n1 2\r\n4 5\r\n",
+                "NO\n"
+            ],
+            [
+                "2\r\n3\r\n2 6\r\n3 1\r\n",
+                "NO\n"
+            ]
+        ]
+    }
+]

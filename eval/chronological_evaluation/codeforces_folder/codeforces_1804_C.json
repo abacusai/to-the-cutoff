@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Pull Your Luck",
+        "description": "While James is gone on business, Vesper takes her time and explores what the\nlegendary Casino Royale has to offer to people who are fond of competitive\nprogramming. Her attention was grabbed by the very new \"Pull Your Luck\"\nroulette which functions in a pretty peculiar way. The roulette's wheel\nconsists of \n    n\n sectors number from \n    0\n to \n    n - 1\n. There is no\nball and the winning sector is determined by a static arrow pointing to one of\nthe sectors. Sectors' indexes go in the natural order and the wheel always\nspins in the direction of indexes increment. That means that sector \n    i +\n    1\n goes right after sector \n    i\n for all \n    i\n from \n    0\n to \n    n -\n    2\n, and sector \n    0\n goes right after sector \n    n - 1\n. After a bet is\nmade, the player is allowed to pull the triggering handle herself and cause\nthe wheel to spin. If the player's initial pull is made with the force equal\nto positive integer \n    f\n, the wheel will spin for \n    f\n seconds. During\nthe first second it will advance \n    f\n sectors, the next second it will\nadvance \n    f - 1\n sectors, then \n    f - 2\n sectors, and so on until it\ncomes to a complete stop. After the wheel comes to a complete stop, the sector\nwhich the arrow is pointing to is the winning one. The roulette's arrow\ncurrently points at sector \n    x\n. Vesper knows that she can pull the handle\nwith any integer force from \n    1\n to \n    p\n inclusive. Note that it is not\nallowed to pull the handle with force \n    0\n, i. e. not pull it all. The\nbiggest prize is awarded if the winning sector is \n    0\n. Now Vesper wonders\nif she can make sector \n    0\n win by pulling the triggering handle exactly\nonce? Input The first line of the input contains a single integer \n    t\n\n(\n    1 \n    \u2264 t \n    \u2264 10^4\n) \u2014 the number of test cases. Then follow \n    t\n\nlines containing one test description each. Each test description consists of\nthree integers \n    n\n, \n    x\n and \n    p\n (\n    3 \n    \u2264 n \n    \u2264 10^5\n,\n\n    0 \n    \u2264 x < n\n, \n    1 \n    \u2264 p \n    \u2264 10^9\n). They are the number of\nsectors on the wheel, the current sector the arrow points at, and the maximum\nforce that Vesper can pull the handle with, respectively. It is guaranteed\nthat the sum of \n    n\n over all test cases doesn't exceed \n    2 \n    \u00b7\n    10^5\n. Output Print \n    t\n lines, the \n    i\n-th line should contain the\nanswer for the \n    i\n-th test case. If it is possible to pull the handle with\nthe integer force from \n    1\n to \n    p\n in order to make sector \n    0\n win,\nprint \"Yes\". Otherwise, print \"No\". You can output the answer in any case\n(upper or lower). For example, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will\nbe recognized as positive responses. Example Input 7 5 2 1 5 2 2 10 0 100 11 7\n100 3 1 1000 31 0 10 100 49 7 Output No Yes Yes Yes No No No Note In the first\nexample, the only possible way to pull the handle is with force \n    1\n. That\nis not enough to make the arrow point at sector \n    0\n, at least force\n\n    2\n is required to do so. In the second example, Vesper can pull the\nhandle with the force \n    2\n so the wheel will spin \n    2 + 1 = 3\n sectors\nahead and the arrow will point at sector \n    0\n. In the third example, Vesper\ncan pull the handle with the force \n    4\n so the wheel will spin \n    4 + 3 + 2\n    + 1 = 10\n sectors and will point at sector \n    0\n again. In the fourth\nexample, Vesper can pull the handle with the force \n    5\n so the wheel will\nspin \n    5 + 4 + 3 + 2 + 1 = 15\n sectors. That will make the wheel make one\nfull turn plus \n    4\n more sectors. In the fifth example, whatever force\nVesper chooses to pull the handle with, she can only make sectors \n    1\n and\n\n    2\n win.\n\n",
+        "cf_contest_id": 1804,
+        "cf_index": "C",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy",
+            "math",
+            "number theory"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "7\r\n5 2 1\r\n5 2 2\r\n10 0 100\r\n11 7 100\r\n3 1 1000\r\n31 0 10\r\n100 49 7\r\n",
+                "No\r\nYes\r\nYes\r\nYes\r\nNo\r\nNo\r\nNo\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n100000 0 1000000000\r\n100000 99998 1000000000\r\n",
+                "Yes\r\nNo\r\n"
+            ],
+            [
+                "2\r\n100000 0 90624\r\n100000 0 90623\r\n",
+                "Yes\r\nNo\r\n"
+            ],
+            [
+                "2\r\n100000 43993 1000000\r\n100000 85118 1000000\r\n",
+                "No\r\nNo\r\n"
+            ],
+            [
+                "10\r\n20000 1131 10000\r\n20000 2601 10000\r\n20000 19504 10000\r\n20000 13039 10000\r\n20000 2960 10000\r\n20000 16248 10000\r\n20000 2208 10000\r\n20000 2047 10000\r\n20000 3999 10000\r\n20000 11505 10000\r\n",
+                "No\r\nNo\r\nYes\r\nYes\r\nYes\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\n"
+            ],
+            [
+                "10\r\n33364 20806 29009\r\n11247 6094 14691\r\n12128 897 36288\r\n7838 7206 3737\r\n12924 8974 42429\r\n6683 5510 12181\r\n16289 10273 9577\r\n22637 19596 4470\r\n29909 13005 380\r\n32212 5002 35690\r\n",
+                "No\r\nNo\r\nYes\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\n"
+            ],
+            [
+                "15\r\n65536 0 1000000000\r\n32768 0 1000000000\r\n16384 0 1000000000\r\n8192 0 1000000000\r\n4096 0 1000000000\r\n2048 0 1000000000\r\n1024 0 1000000000\r\n512 0 1000000000\r\n256 0 1000000000\r\n128 0 1000000000\r\n64 0 1000000000\r\n32 0 1000000000\r\n16 0 1000000000\r\n8 0 1000000000\r\n4 0 1000000000\r\n",
+                "Yes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "2\r\n100000 49999 28126\r\n100000 49999 28125\r\n",
+                "Yes\r\nNo\r\n"
+            ],
+            [
+                "2\r\n100000 99995 26214\r\n100000 99995 26213\r\n",
+                "Yes\r\nNo\r\n"
+            ],
+            [
+                "1\r\n128 0 1000000000\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "4\r\n50000 1 1000000000\r\n50000 1 1000000000\r\n50000 1 1000000000\r\n50000 1 1000000000\r\n",
+                "No\r\nNo\r\nNo\r\nNo\r\n"
+            ],
+            [
+                "2\r\n100000 1 1000000000\r\n100000 1 1000000000\r\n",
+                "No\r\nNo\r\n"
+            ],
+            [
+                "2\r\n99882 1 1000000000\r\n99883 1 1000000000\r\n",
+                "No\r\nNo\r\n"
+            ],
+            [
+                "3\r\n99999 1 1000000000\r\n99998 1 1000000000\r\n3 1 1000000000\r\n",
+                "No\r\nNo\r\nNo\r\n"
+            ],
+            [
+                "2\r\n99999 1 1000000000\r\n99998 1 1000000000\r\n",
+                "No\r\nNo\r\n"
+            ],
+            [
+                "2\r\n99997 1 1000000000\r\n99996 1 1000000000\r\n",
+                "No\r\nNo\r\n"
+            ]
+        ]
+    }
+]

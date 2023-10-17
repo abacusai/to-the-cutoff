@@ -1,0 +1,81 @@
+[
+    {
+        "name": "General Mobilization",
+        "description": "The Berland Kingdom is a set of n cities connected with each other with n - 1\nrailways. Each road connects exactly two different cities. The capital is\nlocated in city 1. For each city there is a way to get from there to the\ncapital by rail. In the i-th city there is a soldier division number i, each\ndivision is characterized by a number of ai. It represents the priority, the\nsmaller the number, the higher the priority of this division. All values of ai\nare different. One day the Berland King Berl Great declared a general\nmobilization, and for that, each division should arrive in the capital. Every\nday from every city except the capital a train departs. So there are exactly n\n- 1 departing trains each day. Each train moves toward the capital and\nfinishes movement on the opposite endpoint of the railway on the next day. It\nhas some finite capacity of cj, expressed in the maximum number of divisions,\nwhich this train can transport in one go. Each train moves in the direction of\nreducing the distance to the capital. So each train passes exactly one railway\nmoving from a city to the neighboring (where it stops) toward the capital. In\nthe first place among the divisions that are in the city, division with the\nsmallest number of ai get on the train, then with the next smallest and so on,\nuntil either the train is full or all the divisions are be loaded. So it is\npossible for a division to stay in a city for a several days. The duration of\ntrain's progress from one city to another is always equal to 1 day. All\ndivisions start moving at the same time and end up in the capital, from where\nthey don't go anywhere else any more. Each division moves along a simple path\nfrom its city to the capital, regardless of how much time this journey will\ntake. Your goal is to find for each division, in how many days it will arrive\nto the capital of Berland. The countdown begins from day 0. Input The first\nline contains the single integer n (1 \u2264 n \u2264 5000). It is the number of cities\nin Berland. The second line contains n space-separated integers a1, a2, ...,\nan, where ai represents the priority of the division, located in the city\nnumber i. All numbers a1, a2, ..., an are different (1 \u2264 ai \u2264 10^9). Then n -\n1 lines contain the descriptions of the railway roads. Each description\nconsists of three integers vj, uj, cj, where vj, uj are number of cities\nconnected by the j-th rail, and cj stands for the maximum capacity of a train\nriding on this road (1 \u2264 vj, uj \u2264 n, vj \u2260 uj, 1 \u2264 cj \u2264 n). Output Print\nsequence t1, t2, ..., tn, where ti stands for the number of days it takes for\nthe division of city i to arrive to the capital. Separate numbers with spaces.\nExamples Input 4 40 10 30 20 1 2 1 2 3 1 4 2 1 Output 0 1 3 2 Input 5 5 4 3 2\n1 1 2 1 2 3 1 2 4 1 4 5 1 Output 0 1 4 2 3\n\n",
+        "cf_contest_id": 82,
+        "cf_index": "C",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n40 10 30 20\r\n1 2 1\r\n2 3 1\r\n4 2 1\r\n",
+                "0 1 3 2 "
+            ],
+            [
+                "5\r\n5 4 3 2 1\r\n1 2 1\r\n2 3 1\r\n2 4 1\r\n4 5 1\r\n",
+                "0 1 4 2 3 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "5\r\n1 2 3 4 5\r\n1 2 1\r\n1 3 1\r\n1 4 1\r\n1 5 1\r\n",
+                "0 1 1 1 1 "
+            ],
+            [
+                "4\r\n5 4 1 3\r\n1 2 1\r\n2 3 1\r\n3 4 1\r\n",
+                "0 1 2 3 "
+            ],
+            [
+                "11\r\n1000 3 100 4 5 6 7 8 9 10 11\r\n1 2 2\r\n2 3 2\r\n2 4 2\r\n2 5 2\r\n3 6 2\r\n3 7 2\r\n4 8 2\r\n4 9 2\r\n5 10 2\r\n5 11 2\r\n",
+                "0 1 6 2 2 3 3 4 4 5 5 "
+            ],
+            [
+                "7\r\n4 1 5 7 3 6 2\r\n1 2 5\r\n1 3 3\r\n3 4 1\r\n4 5 3\r\n5 6 1\r\n1 7 2\r\n",
+                "0 1 1 2 3 4 1 "
+            ],
+            [
+                "13\r\n1 2 3 4 13 5 12 6 11 7 10 8 9\r\n1 2 2\r\n2 3 2\r\n2 4 3\r\n3 5 1\r\n3 6 1\r\n3 7 1\r\n3 8 1\r\n4 9 1\r\n4 10 1\r\n4 11 1\r\n4 12 1\r\n4 13 1\r\n",
+                "0 1 2 2 7 3 6 3 6 4 5 4 5 "
+            ],
+            [
+                "1\r\n1\r\n",
+                "0 "
+            ],
+            [
+                "2\r\n1 2\r\n1 2 1\r\n",
+                "0 1 "
+            ],
+            [
+                "10\r\n1 3 10 8 7 4 5 9 6 2\r\n1 2 10\r\n2 3 8\r\n1 4 10\r\n2 5 2\r\n4 6 2\r\n5 7 6\r\n6 8 8\r\n6 9 5\r\n7 10 8\r\n",
+                "0 1 2 1 2 2 3 3 3 4 "
+            ],
+            [
+                "10\r\n1 3 10 8 7 4 5 9 6 2\r\n1 2 10\r\n1 3 10\r\n2 4 6\r\n3 5 8\r\n4 6 5\r\n5 7 10\r\n6 8 2\r\n7 9 2\r\n8 10 10\r\n",
+                "0 1 1 2 2 3 3 4 4 5 "
+            ],
+            [
+                "20\r\n5 9 14 1 18 11 3 19 7 15 13 2 16 10 6 4 8 17 12 20\r\n1 2 18\r\n2 3 3\r\n2 4 1\r\n2 5 13\r\n3 6 11\r\n1 7 16\r\n6 8 18\r\n5 9 18\r\n5 10 12\r\n2 11 14\r\n1 12 9\r\n6 13 20\r\n5 14 16\r\n4 15 20\r\n7 16 14\r\n11 17 16\r\n1 18 12\r\n16 19 16\r\n5 20 1\r\n",
+                "0 1 2 2 2 3 1 4 3 3 2 1 4 3 3 2 3 1 3 3 "
+            ],
+            [
+                "20\r\n17 7 20 9 3 5 14 4 2 19 18 6 16 12 1 10 11 8 13 15\r\n1 2 2\r\n2 3 9\r\n1 4 9\r\n2 5 20\r\n2 6 19\r\n4 7 2\r\n6 8 4\r\n6 9 18\r\n9 10 19\r\n3 11 6\r\n6 12 1\r\n12 13 6\r\n7 14 16\r\n1 15 3\r\n9 16 18\r\n12 17 3\r\n3 18 12\r\n11 19 16\r\n7 20 3\r\n",
+                "0 1 8 1 2 2 2 3 3 7 7 4 6 3 1 5 5 4 6 3 "
+            ],
+            [
+                "20\r\n9 2 19 15 13 1 14 20 4 17 18 3 10 16 5 6 11 12 7 8\r\n1 2 7\r\n1 3 18\r\n1 4 8\r\n1 5 18\r\n1 6 20\r\n1 7 4\r\n1 8 4\r\n2 9 5\r\n2 10 10\r\n2 11 15\r\n2 12 19\r\n2 13 10\r\n2 14 1\r\n3 15 11\r\n3 16 9\r\n3 17 10\r\n3 18 6\r\n3 19 16\r\n3 20 15\r\n",
+                "0 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 "
+            ],
+            [
+                "3\r\n3 1 2\r\n1 3 1\r\n3 2 1\r\n",
+                "0 2 1 "
+            ]
+        ]
+    }
+]

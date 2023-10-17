@@ -1,0 +1,503 @@
+[
+    {
+        "name": "Swap Adjacent Elements",
+        "description": "You have an array a consisting of n integers. Each integer from 1 to n appears\nexactly once in this array. For some indices i (1 \u2264 i \u2264 n - 1) it is possible\nto swap i-th element with (i + 1)-th, for other indices it is not possible.\nYou may perform any number of swapping operations any order. There is no limit\non the number of times you swap i-th element with (i + 1)-th (if the position\nis not forbidden). Can you make this array sorted in ascending order\nperforming some sequence of swapping operations? Input The first line contains\none integer n (2 \u2264 n \u2264 200000) \u2014 the number of elements in the array. The\nsecond line contains n integers a1, a2, ..., an (1 \u2264 ai \u2264 200000) \u2014 the\nelements of the array. Each integer from 1 to n appears exactly once. The\nthird line contains a string of n - 1 characters, each character is either 0\nor 1. If i-th character is 1, then you can swap i-th element with (i + 1)-th\nany number of times, otherwise it is forbidden to swap i-th element with (i +\n1)-th. Output If it is possible to sort the array in ascending order using any\nsequence of swaps you are allowed to make, print YES. Otherwise, print NO.\nExamples Input 6 1 2 5 3 4 6 01110 Output YES Input 6 1 2 5 3 4 6 01010 Output\nNO Note In the first example you may swap a3 and a4, and then swap a4 and a5.\n\n",
+        "cf_contest_id": 920,
+        "cf_index": "C",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "greedy",
+            "math",
+            "sortings",
+            "two pointers"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n1 2 5 3 4 6\r\n01110\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6\r\n1 2 5 3 4 6\r\n01010\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6\r\n1 6 3 4 5 2\r\n01101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n2 3 1 4 5 6\r\n01111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n2 3 1 4\r\n011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 2 4 5 3\r\n0101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 2 4 5 3\r\n0001\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 4 5 2 3\r\n0110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n4 5 1 2 3\r\n0111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n2 3 4 5 1\r\n0011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "16\r\n3 4 14 16 11 7 13 9 10 8 6 5 15 12 1 2\r\n111111101111111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 5 3 4 2\r\n1101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n6 1 2 3 4 5\r\n11101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n01\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n1 6 3 4 5 2\r\n01110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7\r\n1 7 3 4 5 6 2\r\n010001\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n5 2 3 4 1\r\n1001\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 3 4 2\r\n001\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n4 5 1 2 3\r\n1011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n1 5 3 4 2 6\r\n11011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 4 2 5 3\r\n1101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n3 2 4 1 5\r\n1010\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n1 4 3 5 6 2\r\n01101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n2 3 4 5 1 6\r\n00010\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n5 2 7 9 1 10 3 4 6 8\r\n111101000\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n2 4 3 1 5\r\n0110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n3 1 2 4\r\n100\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n1 5 3 4 2 6\r\n01010\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n3 1 2 4\r\n101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n2 4 3 1\r\n011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n2 3 4 1\r\n001\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n3 4 1 2\r\n011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n2 4 1 3 5\r\n0110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 3 4 2\r\n101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "20\r\n20 19 18 17 16 15 1 2 3 4 5 14 13 12 11 10 9 8 7 6\r\n1111111011111111111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n6 5 4 1 2 3\r\n11100\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n2 3 5 1 4\r\n0011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 4 2 3\r\n010\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n1 6 3 4 5 2\r\n01001\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7\r\n1 7 2 4 3 5 6\r\n011110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 3 4 2 5\r\n0010\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n5 4 3 1 2\r\n1110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n2 5 4 3 1\r\n0111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n2 3 4 1\r\n101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 4 5 2 3\r\n1011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 3 2 5 4\r\n1110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n3 2 4 1 5 6\r\n10111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7\r\n3 1 7 4 5 2 6\r\n101110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n5 4 10 9 2 1 6 7 3 8\r\n011111111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 5 3 2 4\r\n1110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n2 3 4 1\r\n011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n5 4 3 2 1\r\n0000\r\n",
+                "NO\r\n"
+            ],
+            [
+                "12\r\n6 9 11 1 12 7 5 8 10 4 3 2\r\n11111111110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n3 1 5 2 4\r\n1011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n4 5 1 2 3\r\n1110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n1 2 3 4 5 6 8 9 7 10\r\n000000000\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n5 6 3 2 4 1\r\n01111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 3 4 2 5\r\n0100\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n2 1 4 3\r\n100\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n1 2 3 4 6 5\r\n00000\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n4 6 5 3 2 1\r\n01111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n3 1 4 5 2\r\n1001\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n5 2 3 1 4\r\n1011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n6 5 9 4 3 2 8 10 7 1\r\n111111110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7\r\n1 2 7 3 4 5 6\r\n111101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n5 6 1 2 4 3\r\n11101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n4 6 3 5 2 1\r\n11110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n5 4 2 3 1\r\n1110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3\r\n1 3 2\r\n10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n3 4 5 1 2\r\n1110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n3 4 2 1 5\r\n0110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n6 1 2 3 4 5\r\n10001\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n1 2 3 4 5 6 7 8 9 10\r\n000000000\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n00\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n5 4 3 2 1\r\n1110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n3 1 2 5 6 4\r\n10011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n3 2 1 6 5 4\r\n11000\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n0\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "11\r\n1 2 3 4 5 6 7 8 9 10 11\r\n0000000000\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4\r\n2 4 3 1\r\n101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n3 4 1 2\r\n101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\n1 3 2\r\n01\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6\r\n6 2 3 1 4 5\r\n11110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\n2 1 3\r\n01\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 5 4 3 2\r\n0111\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6\r\n1 2 6 3 4 5\r\n11110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7\r\n2 3 1 7 6 5 4\r\n011111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n5 6 1 2 3 4\r\n01111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 2 4 3\r\n001\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6\r\n1 2 3 6 4 5\r\n11001\r\n",
+                "NO\r\n"
+            ],
+            [
+                "11\r\n9 8 10 11 1 2 3 4 5 6 7\r\n1101111111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 5 3 4 2\r\n0101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n9 1 2 3 7 8 5 6 4 10\r\n110111100\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7\r\n1 2 7 3 4 5 6\r\n111011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n3 10 1 2 6 4 5 7 8 9\r\n111111001\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n1 3 6 5 2 9 7 8 4 10\r\n001101111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n1 8 9 7 6 10 4 2 3 5\r\n111111101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7\r\n1 2 5 3 6 4 7\r\n111011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n2 4 3 1\r\n100\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n1 2 3 4 6 5\r\n00001\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6\r\n2 1 3 4 5 6\r\n10000\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5\r\n3 2 1 5 4\r\n1100\r\n",
+                "NO\r\n"
+            ],
+            [
+                "9\r\n2 1 3 6 5 4 7 9 8\r\n10011001\r\n",
+                "YES\r\n"
+            ],
+            [
+                "8\r\n2 6 4 1 5 7 3 8\r\n1010010\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 2 4 5 3\r\n1101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n1 3 5 2 4 6\r\n00110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n1 3 6 2 4 5\r\n10111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "9\r\n9 8 7 6 5 4 3 1 2\r\n11111110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n6 7 8 9 10 1 2 3 4 5\r\n111111110\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8\r\n6 1 7 8 3 2 5 4\r\n1011111\r\n",
+                "NO\r\n"
+            ],
+            [
+                "70\r\n4 65 66 30 67 16 39 35 57 14 42 51 5 21 61 53 63 13 60 29 68 70 69 46 20 2 43 47 49 52 26 44 54 62 25 19 12 28 27 24 18 36 6 33 7 8 11 1 45 32 64 38 23 22 56 59 15 9 41 37 40 55 3 31 34 48 50 10 17 58\r\n111111101101111111111110101111111111111101101111010010110011011110010\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n5 3 2 4 1\r\n0100\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n3 2 6 5 1 4\r\n11011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n1 2 4 5 6 3\r\n10011\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7\r\n1 7 3 2 5 6 4\r\n111001\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

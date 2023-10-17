@@ -1,0 +1,110 @@
+[
+    {
+        "name": "Berland and the Shortest Paths",
+        "description": "There are \n    n\n cities in Berland. Some pairs of cities are connected by\nroads. All roads are bidirectional. Each road connects two different cities.\nThere is at most one road between a pair of cities. The cities are numbered\nfrom \n    1\n to \n    n\n. It is known that, from the capital (the city with the\nnumber \n    1\n), you can reach any other city by moving along the roads. The\nPresident of Berland plans to improve the country's road network. The budget\nis enough to repair exactly \n    n-1\n roads. The President plans to choose a\nset of \n    n-1\n roads such that: it is possible to travel from the capital to\nany other city along the \n    n-1\n chosen roads, if \n    d_i\n is the number of\nroads needed to travel from the capital to city \n    i\n, moving only along the\n\n    n-1\n chosen roads, then \n    d_1 + d_2 + \n    \u2026 + d_n\n is minimized\n(i.e. as minimal as possible). In other words, the set of \n    n-1\n roads\nshould preserve the connectivity of the country, and the sum of distances from\ncity \n    1\n to all cities should be minimized (where you can only use the\n\n    n-1\n chosen roads). The president instructed the ministry to prepare\n\n    k\n possible options to choose \n    n-1\n roads so that both conditions\nabove are met. Write a program that will find \n    k\n possible ways to choose\nroads for repair. If there are fewer than \n    k\n ways, then the program\nshould output all possible valid ways to choose roads. Input The first line of\nthe input contains integers \n    n\n, \n    m\n and \n    k\n (\n    2 \n    \u2264 n \n    \u2264\n    2\n    \u00b710^5, n-1 \n    \u2264 m \n    \u2264 2\n    \u00b710^5, 1 \n    \u2264 k \n    \u2264\n    2\n    \u00b710^5\n), where \n    n\n is the number of cities in the country,\n\n    m\n is the number of roads and \n    k\n is the number of options to choose\na set of roads for repair. It is guaranteed that \n    m \n    \u00b7 k \n    \u2264 10^6\n.\nThe following \n    m\n lines describe the roads, one road per line. Each line\ncontains two integers \n    a_i\n, \n    b_i\n (\n    1 \n    \u2264 a_i, b_i \n    \u2264 n\n,\n\n    a_i \n     b_i\n) \u2014 the numbers of the cities that the \n    i\n-th road\nconnects. There is at most one road between a pair of cities. The given set of\nroads is such that you can reach any city from the capital. Output Print\n\n    t\n (\n    1 \n    \u2264 t \n    \u2264 k\n) \u2014 the number of ways to choose a set of\nroads for repair. Recall that you need to find \n    k\n different options; if\nthere are fewer than \n    k\n of them, then you need to find all possible\ndifferent valid options. In the following \n    t\n lines, print the options,\none per line. Print an option as a string of \n    m\n characters where the\n\n    j\n-th character is equal to '1' if the \n    j\n-th road is included in the\noption, and is equal to '0' if the road is not included. The roads should be\nnumbered according to their order in the input. The options can be printed in\nany order. All the \n    t\n lines should be different. Since it is guaranteed\nthat \n    m \n    \u00b7 k \n    \u2264 10^6\n, the total length of all the \n    t\n lines\nwill not exceed \n    10^6\n. If there are several answers, output any of them.\nExamples Input 4 4 3 1 2 2 3 1 4 4 3 Output 2 1110 1011 Input 4 6 3 1 2 2 3 1\n4 4 3 2 4 1 3 Output 1 101001 Input 5 6 2 1 2 1 3 2 4 2 5 3 4 3 5 Output 2\n111100 110110\n\n",
+        "cf_contest_id": 1005,
+        "cf_index": "F",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dfs and similar",
+            "graphs",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 4 3\r\n1 2\r\n2 3\r\n1 4\r\n4 3\r\n",
+                "2\r\n1110\r\n1011\r\n"
+            ],
+            [
+                "4 6 3\r\n1 2\r\n2 3\r\n1 4\r\n4 3\r\n2 4\r\n1 3\r\n",
+                "1\r\n101001\r\n"
+            ],
+            [
+                "5 6 2\r\n1 2\r\n1 3\r\n2 4\r\n2 5\r\n3 4\r\n3 5\r\n",
+                "2\r\n111100\r\n111001\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1 200000\r\n2 1\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "3 2 100000\r\n1 2\r\n2 3\r\n",
+                "1\r\n11\r\n"
+            ],
+            [
+                "3 2 100000\r\n1 2\r\n1 3\r\n",
+                "1\r\n11\r\n"
+            ],
+            [
+                "3 3 1000\r\n1 2\r\n2 3\r\n3 1\r\n",
+                "1\r\n101\r\n"
+            ],
+            [
+                "5 6 166666\r\n1 2\r\n1 3\r\n2 4\r\n2 5\r\n3 4\r\n3 5\r\n",
+                "4\r\n111100\r\n111001\r\n110110\r\n110011\r\n"
+            ],
+            [
+                "5 6 10\r\n4 5\r\n3 2\r\n3 5\r\n1 3\r\n5 1\r\n1 2\r\n",
+                "1\r\n100111\r\n"
+            ],
+            [
+                "6 9 10\r\n3 5\r\n3 2\r\n1 3\r\n2 1\r\n6 3\r\n1 6\r\n4 2\r\n1 5\r\n6 5\r\n",
+                "1\r\n001101110\r\n"
+            ],
+            [
+                "10 14 100\r\n2 8\r\n4 7\r\n1 4\r\n9 1\r\n6 9\r\n8 6\r\n10 2\r\n8 4\r\n1 7\r\n6 5\r\n10 9\r\n3 10\r\n6 2\r\n1 3\r\n",
+                "6\r\n10111001111001\r\n10111001110101\r\n00111011111001\r\n00111011110101\r\n00111001111011\r\n00111001110111\r\n"
+            ],
+            [
+                "15 20 100\r\n6 7\r\n15 11\r\n2 15\r\n9 5\r\n9 1\r\n8 2\r\n2 10\r\n2 12\r\n3 11\r\n5 12\r\n14 9\r\n4 11\r\n11 2\r\n13 5\r\n12 7\r\n6 1\r\n13 3\r\n8 6\r\n10 8\r\n3 7\r\n",
+                "4\r\n10111100111101010111\r\n10111100101101110111\r\n10111100011111010111\r\n10111100001111110111\r\n"
+            ],
+            [
+                "16 20 100\r\n9 12\r\n7 1\r\n9 6\r\n1 5\r\n5 14\r\n9 11\r\n6 1\r\n3 1\r\n1 16\r\n5 6\r\n11 3\r\n9 5\r\n10 7\r\n13 1\r\n4 3\r\n5 16\r\n9 8\r\n15 13\r\n9 2\r\n14 3\r\n",
+                "4\r\n11111011101011101110\r\n11110011101011101111\r\n11011011101111101110\r\n11010011101111101111\r\n"
+            ],
+            [
+                "16 20 100\r\n8 4\r\n2 16\r\n8 7\r\n6 11\r\n8 9\r\n10 4\r\n1 4\r\n3 9\r\n5 8\r\n3 14\r\n5 6\r\n11 4\r\n10 15\r\n1 16\r\n9 5\r\n13 10\r\n5 14\r\n3 1\r\n12 16\r\n6 1\r\n",
+                "2\r\n11110111011011010111\r\n11100111011111010111\r\n"
+            ],
+            [
+                "16 20 100\r\n7 8\r\n6 5\r\n15 1\r\n7 2\r\n2 12\r\n1 7\r\n7 9\r\n13 15\r\n11 14\r\n3 10\r\n8 3\r\n2 14\r\n3 4\r\n1 5\r\n4 15\r\n10 12\r\n11 4\r\n4 8\r\n7 16\r\n14 13\r\n",
+                "8\r\n11111111011101101010\r\n11111111011001101011\r\n11111111001101111010\r\n11111111001001111011\r\n11111111010111101010\r\n11111111010011101011\r\n11111111000111111010\r\n11111111000011111011\r\n"
+            ],
+            [
+                "16 20 100\r\n6 3\r\n15 16\r\n14 2\r\n15 5\r\n6 12\r\n13 16\r\n9 12\r\n16 3\r\n5 11\r\n16 14\r\n10 8\r\n4 3\r\n2 7\r\n8 14\r\n2 3\r\n1 3\r\n13 15\r\n14 3\r\n3 5\r\n8 2\r\n",
+                "4\r\n11001111101111110110\r\n10011111101111110110\r\n11001111101110110111\r\n10011111101110110111\r\n"
+            ],
+            [
+                "16 20 100\r\n4 6\r\n7 15\r\n10 5\r\n8 6\r\n9 11\r\n12 15\r\n14 1\r\n13 7\r\n12 2\r\n4 12\r\n14 16\r\n3 16\r\n9 15\r\n4 5\r\n8 15\r\n6 3\r\n2 11\r\n9 12\r\n5 15\r\n3 11\r\n",
+                "6\r\n11111011101111011001\r\n11111011101101111001\r\n11111011011111011001\r\n11111011011101111001\r\n11111011001111011101\r\n11111011001101111101\r\n"
+            ],
+            [
+                "18 23 100\r\n5 13\r\n10 2\r\n6 3\r\n8 2\r\n1 16\r\n18 10\r\n12 1\r\n2 1\r\n18 2\r\n6 2\r\n4 1\r\n16 7\r\n15 18\r\n17 11\r\n9 17\r\n17 3\r\n16 15\r\n12 14\r\n14 17\r\n5 9\r\n9 2\r\n17 13\r\n7 10\r\n",
+                "4\r\n11111011111101101101100\r\n11111011111101001111100\r\n01111011111101101101110\r\n01111011111101001111110\r\n"
+            ],
+            [
+                "18 23 100\r\n12 14\r\n2 11\r\n1 13\r\n2 7\r\n18 17\r\n16 13\r\n9 13\r\n15 1\r\n9 12\r\n3 4\r\n10 11\r\n18 4\r\n2 18\r\n13 8\r\n5 6\r\n9 2\r\n9 4\r\n13 5\r\n5 15\r\n15 4\r\n18 1\r\n10 9\r\n16 5\r\n",
+                "4\r\n11111111110111100100110\r\n11111111110111100010110\r\n11111111110011100101110\r\n11111111110011100011110\r\n"
+            ],
+            [
+                "18 23 100\r\n14 1\r\n4 3\r\n2 9\r\n16 10\r\n10 12\r\n10 1\r\n6 15\r\n1 8\r\n3 12\r\n11 14\r\n9 8\r\n15 1\r\n15 9\r\n7 10\r\n1 5\r\n18 16\r\n3 1\r\n8 14\r\n4 9\r\n11 13\r\n13 6\r\n10 17\r\n13 15\r\n",
+                "4\r\n11111111011101111000011\r\n11110111111101111000011\r\n11111111010111111000011\r\n11110111110111111000011\r\n"
+            ],
+            [
+                "18 23 100\r\n5 13\r\n6 7\r\n8 2\r\n13 7\r\n18 12\r\n11 18\r\n9 5\r\n5 4\r\n17 15\r\n11 4\r\n6 13\r\n13 15\r\n18 16\r\n14 15\r\n4 8\r\n7 2\r\n12 14\r\n12 1\r\n2 10\r\n13 4\r\n8 5\r\n3 18\r\n1 10\r\n",
+                "4\r\n01111110110011011110111\r\n01101110110111011110111\r\n01111110100011111110111\r\n01101110100111111110111\r\n"
+            ],
+            [
+                "18 23 100\r\n4 16\r\n12 17\r\n2 12\r\n16 13\r\n5 8\r\n2 18\r\n5 15\r\n11 5\r\n15 11\r\n13 9\r\n10 4\r\n15 10\r\n13 7\r\n14 15\r\n4 9\r\n5 1\r\n6 13\r\n3 17\r\n18 11\r\n15 3\r\n9 5\r\n1 9\r\n3 5\r\n",
+                "4\r\n11001111011011111110011\r\n01011111011011111110011\r\n11001111010111111110011\r\n01011111010111111110011\r\n"
+            ]
+        ]
+    }
+]

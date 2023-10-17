@@ -1,0 +1,112 @@
+[
+    {
+        "name": "Heroes",
+        "description": "The year of 2012 is coming... According to an ancient choradrican legend in\nthis very year, in 2012, Diablo and his brothers Mephisto and Baal will escape\nfrom hell, and innumerable hordes of demons will enslave the human world. But\nseven brave heroes have already gathered on the top of a mountain Arreat to\nprotect us mere mortals from the effect of this terrible evil. The seven great\nheroes are: amazon Anka, barbarian Chapay, sorceress Cleo, druid Troll,\nnecromancer Dracul, paladin Snowy and a professional hit girl Hexadecimal.\nHeroes already know how much experience will be given for each of the three\nmegabosses: a for Mephisto, b for Diablo and c for Baal. Here's the problem:\nheroes are as much as seven and megabosses are only three! Then our heroes\ndecided to split into three teams, where each team will go to destroy their\nown megaboss. Each team member will receive a of experience, rounded down,\nwhere x will be the amount of experience for the killed megaboss and y \u2014 the\nnumber of people in the team. Heroes do not want to hurt each other's\nfeelings, so they want to split into teams so that the difference between the\nhero who received the maximum number of experience and the hero who received\nthe minimum number of experience were minimal. Since there can be several\ndivisions into teams, then you need to find the one in which the total amount\nof liking in teams were maximum. It is known that some heroes like others. But\nif hero p likes hero q, this does not mean that the hero q likes hero p. No\nhero likes himself. The total amount of liking in teams is the amount of\nordered pairs (p, q), such that heroes p and q are in the same group, and hero\np likes hero q (but it is not important if hero q likes hero p). In case of\nheroes p and q likes each other and they are in the same group, this pair\nshould be counted twice, as (p, q) and (q, p). A team can consist even of a\nsingle hero, but it is important that every megaboss was destroyed. All heroes\nmust be involved in the campaign against evil. None of the heroes can be in\nmore than one team. It is guaranteed that every hero is able to destroy any\nmegaboss alone. Input The first line contains a single non-negative integer n\n(0 \u2264 n \u2264 42) \u2014 amount of liking between the heroes. Next n lines describe\nliking in the form \"p likes q\", meaning that the hero p likes the hero q (p \u2260\nq). Every liking is described in the input exactly once, no hero likes\nhimself. In the last line are given three integers a, b and c (1 \u2264 a, b, c \u2264\n2\u00b710^9), separated by spaces: the experience for Mephisto, the experience for\nDiablo and experience for Baal. In all the pretests, except for examples from\nthe statement, the following condition is satisfied: a = b = c. Output Print\ntwo integers \u2014 the minimal difference in the experience between two heroes who\nwill receive the maximum and minimum number of experience points, and the\nmaximal total amount of liking in teams (the number of friendships between\nheroes that end up in one team). When calculating the second answer, the team\ndivision should satisfy the difference-minimizing contraint. I.e. primary you\nshould minimize the difference in the experience and secondary you should\nmaximize the total amount of liking. Examples Input 3 Troll likes Dracul\nDracul likes Anka Snowy likes Hexadecimal 210 200 180 Output 30 3 Input 2 Anka\nlikes Chapay Chapay likes Anka 10000 50 50 Output 1950 2 Note A note to first\nexample: it the first team should be Dracul, Troll and Anka, in the second one\nHexadecimal and Snowy, and in the third Cleo \u0438 Chapay.\n\n",
+        "cf_contest_id": 77,
+        "cf_index": "A",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\nTroll likes Dracul\r\nDracul likes Anka\r\nSnowy likes Hexadecimal\r\n210 200 180\r\n",
+                "30 3"
+            ],
+            [
+                "2\r\nAnka likes Chapay\r\nChapay likes Anka\r\n10000 50 50\r\n",
+                "1950 2"
+            ]
+        ],
+        "private_cases": [
+            [
+                "11\r\nSnowy likes Dracul\r\nAnka likes Dracul\r\nChapay likes Snowy\r\nHexadecimal likes Troll\r\nAnka likes Cleo\r\nChapay likes Dracul\r\nAnka likes Chapay\r\nSnowy likes Troll\r\nAnka likes Hexadecimal\r\nCleo likes Chapay\r\nTroll likes Cleo\r\n100 100 100\r\n",
+                "17 5"
+            ],
+            [
+                "4\r\nAnka likes Cleo\r\nSnowy likes Cleo\r\nAnka likes Hexadecimal\r\nCleo likes Snowy\r\n1 1 1\r\n",
+                "0 3"
+            ],
+            [
+                "8\r\nSnowy likes Anka\r\nHexadecimal likes Snowy\r\nTroll likes Dracul\r\nHexadecimal likes Troll\r\nSnowy likes Troll\r\nAnka likes Snowy\r\nSnowy likes Chapay\r\nAnka likes Chapay\r\n70 70 70\r\n",
+                "12 5"
+            ],
+            [
+                "0\r\n100 300 600\r\n",
+                "50 0"
+            ],
+            [
+                "3\r\nChapay likes Hexadecimal\r\nAnka likes Cleo\r\nTroll likes Snowy\r\n15 15000 90\r\n",
+                "2985 2"
+            ],
+            [
+                "0\r\n1 1 10000\r\n",
+                "1999 0"
+            ],
+            [
+                "0\r\n2000000000 2000000000 2000000000\r\n",
+                "333333334 0"
+            ],
+            [
+                "2\r\nSnowy likes Hexadecimal\r\nTroll likes Dracul\r\n2000000000 2000000000 2000000000\r\n",
+                "333333334 2"
+            ],
+            [
+                "8\r\nAnka likes Chapay\r\nDracul likes Snowy\r\nSnowy likes Cleo\r\nCleo likes Anka\r\nCleo likes Troll\r\nHexadecimal likes Troll\r\nTroll likes Cleo\r\nSnowy likes Dracul\r\n325432666 254352394 547360304\r\n",
+                "55277237 6"
+            ],
+            [
+                "6\r\nChapay likes Troll\r\nTroll likes Cleo\r\nCleo likes Troll\r\nChapay likes Snowy\r\nAnka likes Snowy\r\nTroll likes Dracul\r\n987499608 272739716 133573597\r\n",
+                "113301305 5"
+            ],
+            [
+                "6\r\nAnka likes Troll\r\nTroll likes Chapay\r\nTroll likes Hexadecimal\r\nHexadecimal likes Cleo\r\nSnowy likes Hexadecimal\r\nChapay likes Troll\r\n740076959 230477703 987799796\r\n",
+                "98788895 5"
+            ],
+            [
+                "1\r\nHexadecimal likes Chapay\r\n848189141 631955593 79523012\r\n",
+                "203206701 1"
+            ],
+            [
+                "0\r\n477107314 230715335 261545417\r\n",
+                "43678104 0"
+            ],
+            [
+                "5\r\nTroll likes Chapay\r\nAnka likes Snowy\r\nAnka likes Dracul\r\nChapay likes Anka\r\nSnowy likes Troll\r\n709201888 431802832 597079932\r\n",
+                "82638550 3"
+            ],
+            [
+                "6\r\nTroll likes Chapay\r\nHexadecimal likes Snowy\r\nCleo likes Dracul\r\nCleo likes Anka\r\nChapay likes Anka\r\nAnka likes Chapay\r\n758376921 432619768 578580897\r\n",
+                "72980564 5"
+            ],
+            [
+                "5\r\nChapay likes Cleo\r\nAnka likes Hexadecimal\r\nAnka likes Chapay\r\nCleo likes Troll\r\nAnka likes Cleo\r\n299076810 225593528 36830738\r\n",
+                "62861532 3"
+            ],
+            [
+                "2\r\nTroll likes Cleo\r\nAnka likes Cleo\r\n14344913 559182022 405430772\r\n",
+                "172049094 2"
+            ],
+            [
+                "5\r\nTroll likes Dracul\r\nAnka likes Chapay\r\nCleo likes Anka\r\nChapay likes Cleo\r\nSnowy likes Hexadecimal\r\n222 400 400\r\n",
+                "89 5"
+            ],
+            [
+                "0\r\n2000000000 2000000000 1\r\n",
+                "666666665 0"
+            ],
+            [
+                "0\r\n1200000000 1200000000 1200000000\r\n",
+                "200000000 0"
+            ],
+            [
+                "0\r\n1 2000000000 2000000000\r\n",
+                "666666665 0"
+            ]
+        ]
+    }
+]

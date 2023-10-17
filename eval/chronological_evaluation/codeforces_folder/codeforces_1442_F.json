@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Differentiating Games",
+        "description": "This is an interactive problem Ginny is taking an exam on game theory. The\nprofessor is tired of hearing the same answers over and over again, so he\noffered Ginny to play a game instead of a standard exam. As known from the\ncourse, a combinatorial game on a graph with multiple starting positions is a\ngame with a directed graph and multiple starting vertices holding a token\neach. Two players take turns moving one of the tokens along the graph edges on\neach turn. The player who can't make a move loses the game. If both players\ncan play an infinitely long game without losing, a draw is called. For the\nexam, the professor drew an acyclic directed graph and chose one of its\nvertices. Ginny needs to guess the vertex the professor chose. To do so, Ginny\ncan choose a multiset of vertices \n    S\n several times and ask the professor:\n\"If I put one token in each vertex of the given graph for each occurrence of\nthe vertex in the multiset \n    S\n, and then one more in the selected vertex,\nwhat would be the result of the combinatorial game?\". Having given the task,\nthe professor left the room to give Ginny some time to prepare for the game.\nGinny thinks that she's being tricked because the problem is impossible to\nsolve. Therefore, while the professor is away, she wants to add or remove\nseveral edges from the graph. Even though the original graph was acyclic,\nedges could be added to the graph to make cycles appear. Interaction In this\ntask, interaction consists of several phases. In the first phase, the\ninteractor gives as an input to your program three integers \n    N\n (\n    1\n    \n    \u2264 N \n    \u2264 1000\n), \n    M\n (\n    0 \n    \u2264 M \n    \u2264 100\n     000\n), \n    T\n\n(\n    1 \n    \u2264 T \n    \u2264 2000\n): the number of vertices and edges in the initial\ngraph, and the number of times Ginny has to guess the chosen vertex. The next\n\n    M\n lines contain pairs of vertices \n    a_i\n \n    b_i\n (\n    1 \n    \u2264 a_i,\n    b_i \n    \u2264 N\n): beginning and end of corresponding graph edges. The graph is\nguaranteed to be acyclic and all of its edges to be distinct. The solution\nshould print an integer \n    K\n (\n    0 \n    \u2264 K \n    \u2264 4242\n): the number of\nedges to change in the graph. The next \n    K\n lines should contain either \"+\n\n    a_i\n \n    b_i\n\" or \"- \n    a_i\n \n    b_i\n\": the beginning and the end of\nan edge that Ginny has to add or remove accordingly. You are allowed to add\npreexisting edges to the graph. Operations are performed in the order of\nappearance, so Ginny is allowed to remove an edge added by the solution. You\ncan only remove an existing edge. The operations can create cycles in the\ngraph. The next \n    T\n phases are dedicated to guessing the chosen vertices.\nIn each phase, the solution can make at most 20 queries and then print the\nanswer. To query a multiset \n    S\n, the solution should print \"?\n\n    |S|\u00a0S_1\u00a0S_2\u00a0\n    \u2026\u00a0S_|S|\n\". The total size of all multisets in a\nsingle phase should not exceed 20. The interactor will reply with one of the\nfollowing words: \"Win\", if the winner of a combinatorial game with tokens in\nmultiset \n    S\n and the selected vertex is the first player. \"Lose\", if the\nwinner of a combinatorial game with tokens in multiset \n    S\n and the\nselected vertex is the second player. \"Draw\", if a combinatorial game with\ntokens in multiset \n    S\n and selected vertex ends in a draw. \"Slow\", if the\nsolution made a 21-st request, or the total size of all multisets in a single\nphase exceeded 20. In this case, the solution should terminate and receive\nWrong Answer verdict. As soon as the selected vertex is guessed, that solution\nshould print \"! v\". If the chosen vertex is guessed correctly, the interactor\nwill print Correct and the solution should either move on to the next phase of\nguessing or finish its execution if it's the last phase. Otherwise, the\ninteractor will print Wrong, which means that the solution should terminate\nand will receive the Wrong Answer verdict. The interactor can change the\nchosen vertex based on graph changes and solution actions, but at every given\nmoment of time, at least one vertex that corresponds to all given interactor\nanswers will exist. Hack format Hacks have the following extra limitations:\n\n    T = 1\n you need to specify a single vertex, chosen by the interactor.\nHack test format. The first line of input contains three integers \n    N\u00a0M\u00a01\n.\nThe next \n    M\n lines on input contain edge description in the same format as\nin the input. The next line contains a single integer \n    v\n: the number of\nthe chosen vertex. The hack will be successful even if the solution guesses\nthe vertex right, but the vertex will not be the single one to match all\nperformed queries. Example Input 3 2 3 1 2 2 3 Lose Correct Win Correct Draw\nCorrect Output 6  2 2 \u00ad 1 2  2 3 \u00ad 2 2  3 1  2 2 ? 0 ! 1 ? 1 2 ! 3 ?\n5 1 3 1 3 1 ! 2 Note In the sample test, the empty lines represent waiting for\nthe input by the other side of the interaction. The real interactor will not\nprint empty lines, and the solution should not print them either. The image\nabove illustrates the sample test. Added edges are coloured in red, and the\nremoved edges are drawn with a dotted line. Three guessing phases denote\ndifferent ways of getting the answer. If the solution will query just the\nchosen vertex, the interactor will return the result of the game in that\nvertex. The first player loses only if the chosen vertex has the number\n\n    1\n. If we add a single vertex \n    2\n to the chosen vertex, then if the\nchosen vertex is either \n    1\n or \n    2\n, the game should end in a draw. If\nvertex number \n    3\n is chosen, then the first player wins. If we place three\ntokens in vertex \n    1\n and two tokens in vertex \n    3\n, then the game will\nend in a draw only if vertex \n    2\n is chosen. If the professor chose vertex\n\n    3\n, the first player will win, if the professor chose vertex \n    1\n,\nthen the second player will win. In the first test, the interactor will behave\nas if the chosen vertices are the same as those in the example above. However,\nif you will try to guess the answer before it limits the options to one single\nvertex, the solution will get \"Wrong Answer\", even if you print the same\nanswers. That's because the interactor is allowed to change the chosen vertex\nif it's consistent with the previous query answers.\n\n",
+        "cf_contest_id": 1442,
+        "cf_index": "F",
+        "cf_rating": 3400,
+        "difficulty": 0,
+        "cf_tags": [
+            "games",
+            "interactive"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3 2 3\r\n1 2\r\n2 3\r\n1 3 2\r\n",
+                "OK 3 3 3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 0 2\r\n-1 1\r\n",
+                "OK 0 1 1\r\n"
+            ],
+            [
+                "2 0 4\r\n-1 1 2 1\r\n",
+                "OK 1 2 2\r\n"
+            ],
+            [
+                "2 1 4\r\n2 1\r\n2 1 -1 2\r\n",
+                "OK 1 2 2\r\n"
+            ],
+            [
+                "10 0 20\r\n6 7 9 5 10 -1 2 8 4 5 4 8 8 7 9 6 9 3 1 3\r\n",
+                "OK 45 10 10\r\n"
+            ],
+            [
+                "10 1 20\r\n4 7\r\n8 9 9 7 4 -1 1 4 7 6 5 3 6 10 5 4 2 1 4 2\r\n",
+                "OK 45 10 10\r\n"
+            ],
+            [
+                "10 2 20\r\n2 4\r\n2 9\r\n9 7 3 5 7 3 2 9 1 8 9 7 4 6 10 5 -1 7 3 2\r\n",
+                "OK 45 10 10\r\n"
+            ],
+            [
+                "10 10 20\r\n4 7\r\n2 1\r\n5 7\r\n8 7\r\n2 4\r\n8 10\r\n2 10\r\n4 1\r\n3 10\r\n3 5\r\n1 4 2 6 9 4 8 10 3 1 8 9 5 7 10 -1 6 7 7 8\r\n",
+                "OK 45 10 10\r\n"
+            ]
+        ]
+    }
+]

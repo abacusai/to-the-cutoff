@@ -1,0 +1,119 @@
+[
+    {
+        "name": "Walking Robot",
+        "description": "There is a robot staying at \n    X=0\n on the \n    Ox\n axis. He has to walk to\n\n    X=n\n. You are controlling this robot and controlling how he goes. The\nrobot has a battery and an accumulator with a solar panel. The \n    i\n-th\nsegment of the path (from \n    X=i-1\n to \n    X=i\n) can be exposed to sunlight\nor not. The array \n    s\n denotes which segments are exposed to sunlight: if\nsegment \n    i\n is exposed, then \n    s_i = 1\n, otherwise \n    s_i = 0\n. The\nrobot has one battery of capacity \n    b\n and one accumulator of capacity\n\n    a\n. For each segment, you should choose which type of energy storage\nrobot will use to go to the next point (it can be either battery or\naccumulator). If the robot goes using the battery, the current charge of the\nbattery is decreased by one (the robot can't use the battery if its charge is\nzero). And if the robot goes using the accumulator, the current charge of the\naccumulator is decreased by one (and the robot also can't use the accumulator\nif its charge is zero). If the current segment is exposed to sunlight and the\nrobot goes through it using the battery, the charge of the accumulator\nincreases by one (of course, its charge can't become higher than it's maximum\ncapacity). If accumulator is used to pass some segment, its charge decreases\nby 1 no matter if the segment is exposed or not. You understand that it is not\nalways possible to walk to \n    X=n\n. You want your robot to go as far as\npossible. Find the maximum number of segments of distance the robot can pass\nif you control him optimally. Input The first line of the input contains three\nintegers \n    n, b, a\n (\n    1 \n    \u2264 n, b, a \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the\nrobot's destination point, the battery capacity and the accumulator capacity,\nrespectively. The second line of the input contains \n    n\n integers \n    s_1,\n    s_2, \n    \u2026, s_n\n (\n    0 \n    \u2264 s_i \n    \u2264 1\n), where \n    s_i\n is \n    1\n\nif the \n    i\n-th segment of distance is exposed to sunlight, and \n    0\n\notherwise. Output Print one integer \u2014 the maximum number of segments the robot\ncan pass if you control him optimally. Examples Input 5 2 1 0 1 0 1 0 Output 5\nInput 6 2 1 1 0 0 1 0 1 Output 3 Note In the first example the robot can go\nthrough the first segment using the accumulator, and charge levels become\n\n    b=2\n and \n    a=0\n. The second segment can be passed using the battery,\nand charge levels become \n    b=1\n and \n    a=1\n. The third segment can be\npassed using the accumulator, and charge levels become \n    b=1\n and\n\n    a=0\n. The fourth segment can be passed using the battery, and charge\nlevels become \n    b=0\n and \n    a=1\n. And the fifth segment can be passed\nusing the accumulator. In the second example the robot can go through the\nmaximum number of segments using battery two times and accumulator one time in\nany order.\n\n",
+        "cf_contest_id": 1154,
+        "cf_index": "D",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 2 1\r\n0 1 0 1 0\r\n",
+                "5\r\n"
+            ],
+            [
+                "6 2 1\r\n1 0 0 1 0 1\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "100 1 1\r\n0 0 0 1 1 0 1 0 1 0 1 0 0 1 0 0 1 1 0 0 1 0 1 1 1 1 1 1 1 0 1 1 1 0 0 0 0 0 0 1 1 0 0 0 1 0 1 0 0 1 0 1 1 0 0 1 0 0 0 1 1 1 1 1 0 0 0 0 0 1 0 0 0 0 1 0 0 0 1 1 0 1 1 0 1 1 1 0 1 1 0 1 1 0 0 1 1 0 1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "100 1 1\r\n0 0 1 0 0 0 0 0 1 1 0 0 1 0 1 0 0 0 1 0 0 1 0 1 0 0 1 1 1 0 0 1 0 0 0 1 1 1 0 0 0 1 0 1 1 0 1 0 0 1 1 0 1 0 1 0 1 1 0 0 0 1 0 0 1 0 1 0 1 1 1 0 1 0 1 1 1 0 1 1 0 0 0 0 1 1 1 1 1 1 1 0 0 0 1 0 1 0 0 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "100 2 1\r\n0 0 1 1 1 0 0 1 0 1 0 1 0 1 1 0 0 1 1 0 1 0 1 1 1 1 1 1 1 1 1 1 1 0 0 1 1 1 1 0 1 1 1 1 1 0 1 1 0 1 1 0 0 0 1 1 0 1 1 1 1 1 1 0 1 0 0 0 0 1 0 1 1 0 1 0 1 0 0 1 1 0 1 0 1 0 1 1 1 0 0 1 0 1 1 1 1 1 1 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "100 5 5\r\n1 1 0 0 0 0 1 1 1 0 1 1 0 0 0 1 0 0 0 1 0 0 1 0 1 1 0 0 0 0 1 0 0 0 1 1 0 1 1 1 1 0 0 0 0 0 1 0 1 1 1 1 0 1 1 0 0 1 0 1 1 1 0 0 1 1 0 0 1 0 0 1 1 1 0 0 1 0 1 1 1 0 1 0 0 1 0 1 0 1 0 1 0 1 1 0 1 1 1 1\r\n",
+                "15\r\n"
+            ],
+            [
+                "100 7 4\r\n0 0 1 1 0 1 0 0 1 0 1 1 1 1 1 1 0 0 1 0 1 1 1 1 0 0 0 0 0 1 1 0 1 1 0 0 1 0 1 0 1 1 0 0 1 1 1 0 0 0 1 1 1 0 1 0 1 1 1 1 0 1 1 0 0 1 1 1 0 0 0 1 1 0 0 1 0 1 0 1 0 0 1 1 1 1 1 0 0 0 1 1 1 1 1 1 1 1 0 1\r\n",
+                "18\r\n"
+            ],
+            [
+                "100 20 13\r\n1 1 0 1 1 0 0 1 0 1 1 1 0 1 0 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0 1 1 0 0 0 1 1 1 1 0 0 0 0 0 1 0 1 0 1 1 0 1 0 0 1 0 0 1 1 1 0 0 0 1 1 0 1 1 0 0 0 0 1 0 1 1 0 1 1 1 1 0 0 1 1 1 1 0 0 0 0 0 0 1 1 0 1 1 0 1\r\n",
+                "53\r\n"
+            ],
+            [
+                "100 11 39\r\n1 0 1 1 1 1 0 1 0 0 1 0 0 0 1 0 1 0 1 1 1 1 1 1 1 1 0 0 1 1 1 0 0 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 1 1 1 0 0 0 1 0 0 1 0 0 0 0 0 1 1 0 0 1 0 0 0 0 1 1 1 0 1 0 0 1 0 1\r\n",
+                "61\r\n"
+            ],
+            [
+                "100 8 9\r\n1 0 0 0 0 0 1 0 0 0 1 1 1 1 0 1 1 0 0 0 0 0 0 1 0 0 1 1 0 0 1 0 0 1 1 0 0 0 0 1 1 1 0 0 1 0 0 0 1 0 0 1 0 0 1 1 1 0 0 0 0 1 0 0 0 0 0 1 0 1 1 1 0 1 0 1 1 0 0 0 1 1 0 1 0 0 1 1 0 1 0 1 0 0 0 1 1 0 1 1\r\n",
+                "25\r\n"
+            ],
+            [
+                "100 18 14\r\n0 0 1 0 0 0 1 1 0 1 0 1 0 0 1 0 1 0 1 0 0 1 1 0 1 1 0 0 1 1 0 1 0 0 0 0 1 0 1 0 0 0 0 1 1 0 0 0 1 1 0 0 0 1 1 0 0 1 0 0 1 1 1 0 1 1 0 1 1 0 1 0 0 1 0 0 1 0 0 1 0 1 1 1 1 1 0 1 0 0 0 0 0 1 1 1 1 1 1 0\r\n",
+                "50\r\n"
+            ],
+            [
+                "100 25 5\r\n1 0 0 1 1 0 1 1 0 0 0 0 1 1 0 0 1 1 0 1 1 1 0 0 1 0 1 1 1 1 1 0 1 0 0 1 1 1 0 1 1 0 1 0 1 0 0 1 0 1 1 0 0 0 0 1 1 1 1 1 0 1 1 1 1 1 1 1 0 1 0 0 0 0 1 1 0 0 0 1 0 1 0 1 1 0 0 0 1 1 1 1 1 1 1 0 1 1 0 0\r\n",
+                "55\r\n"
+            ],
+            [
+                "100 3 49\r\n1 0 1 0 0 0 1 1 1 0 0 0 0 1 0 1 0 0 1 0 1 1 0 0 1 1 0 0 1 1 0 1 1 1 0 0 1 0 1 1 0 0 1 1 0 1 0 0 1 0 1 1 0 0 0 0 1 0 1 0 1 0 0 0 1 0 0 0 1 0 1 0 0 0 0 1 1 0 0 1 1 1 1 1 0 1 0 0 1 1 0 0 0 1 1 0 1 1 0 1\r\n",
+                "55\r\n"
+            ],
+            [
+                "100 25 40\r\n1 0 0 1 1 0 1 1 0 0 1 1 0 1 1 0 1 0 0 0 0 0 1 1 0 0 0 1 1 0 1 1 0 1 1 0 1 0 1 0 0 0 1 1 1 0 0 1 1 0 0 0 0 0 1 1 0 1 1 0 0 0 1 1 0 1 1 1 0 1 1 0 1 1 1 0 0 0 1 1 0 0 0 0 0 0 1 1 1 1 1 1 0 0 0 1 0 0 1 1\r\n",
+                "90\r\n"
+            ],
+            [
+                "1 1 1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1 1\r\n0 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 1 1\r\n1 1 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "4 1 1\r\n1 1 1 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "4 2 1\r\n1 1 1 0\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 2 1\r\n0 1 1 1 0\r\n",
+                "5\r\n"
+            ],
+            [
+                "5 1 2\r\n0 1 1 1 0\r\n",
+                "4\r\n"
+            ],
+            [
+                "47 4 9\r\n0 1 1 0 0 0 0 1 1 0 0 0 0 0 0 0 0 1 1 1 1 0 1 0 0 0 1 0 0 0 1 1 0 0 1 1 0 1 0 0 0 1 1 1 0 0 0\r\n",
+                "16\r\n"
+            ],
+            [
+                "78 14 2\r\n0 1 0 0 0 0 0 0 1 1 0 1 0 1 1 1 0 0 1 1 0 0 0 1 0 0 1 0 1 0 1 1 1 1 0 0 0 1 1 0 1 0 1 1 0 0 1 1 1 1 0 1 0 0 0 1 0 1 1 1 1 1 1 1 0 0 0 1 0 0 1 1 0 0 0 1 0 1\r\n",
+                "25\r\n"
+            ],
+            [
+                "11 3 1\r\n1 1 0 0 1 0 0 1 1 0 0\r\n",
+                "6\r\n"
+            ],
+            [
+                "81 36 6\r\n1 1 1 1 0 1 0 0 0 1 0 0 1 0 1 0 0 0 1 0 1 0 0 0 1 0 1 1 0 1 0 1 1 0 1 0 1 0 0 0 0 0 1 1 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 1 1 1 1 1 0 0 0 1 0 0 0 1 1 1 1 0 0 1 0 1 1\r\n",
+                "71\r\n"
+            ]
+        ]
+    }
+]

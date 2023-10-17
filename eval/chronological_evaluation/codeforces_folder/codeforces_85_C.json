@@ -1,0 +1,63 @@
+[
+    {
+        "name": "Petya and Tree",
+        "description": "One night, having had a hard day at work, Petya saw a nightmare. There was a\nbinary search tree in the dream. But it was not the actual tree that scared\nPetya. The horrifying thing was that Petya couldn't search for elements in\nthis tree. Petya tried many times to choose key and look for it in the tree,\nand each time he arrived at a wrong place. Petya has been racking his brains\nfor long, choosing keys many times, but the result was no better. But the\nmoment before Petya would start to despair, he had an epiphany: every time he\nwas looking for keys, the tree didn't have the key, and occured exactly one\nmistake. \"That's not a problem!\", thought Petya. \"Why not count the\nexpectation value of an element, which is found when I search for the key\".\nThe moment he was about to do just that, however, Petya suddenly woke up.\nThus, you are given a binary search tree, that is a tree containing some\nnumber written in the node. This number is called the node key. The number of\nchildren of every node of the tree is equal either to 0 or to 2. The nodes\nthat have 0 children are called leaves and the nodes that have 2 children, are\ncalled inner. An inner node has the left child, that is the child whose key is\nless than the current node's key, and the right child, whose key is more than\nthe current node's key. Also, a key of any node is strictly larger than all\nthe keys of the left subtree of the node and strictly smaller than all the\nkeys of the right subtree of the node. Also you are given a set of search\nkeys, all of which are distinct and differ from the node keys contained in the\ntree. For each key from the set its search in the tree is realised. The search\nis arranged like this: initially we are located in the tree root, if the key\nof the current node is larger that our search key, then we move to the left\nchild of the node, otherwise we go to the right child of the node and the\nprocess is repeated. As it is guaranteed that the search key is not contained\nin the tree, the search will always finish in some leaf. The key lying in the\nleaf is declared the search result. It is known for sure that during the\nsearch we make a mistake in comparing exactly once, that is we go the wrong\nway, but we won't make any mistakes later. All possible mistakes are\nequiprobable, that is we should consider all such searches where exactly one\nmistake occurs. Your task is to find the expectation (the average value) of\nthe search result for every search key, considering that exactly one mistake\noccurs in the search. That is, for a set of paths containing exactly one\nmistake in the given key search, you should count the average value of keys\ncontaining in the leaves of those paths. Input The first line contains an odd\ninteger n (3 \u2264 n < 10^5), which represents the number of tree nodes. Next n\nlines contain node descriptions. The (i + 1)-th line contains two space-\nseparated integers. The first number is the number of parent of the i-st node\nand the second number is the key lying in the i-th node. The next line\ncontains an integer k (1 \u2264 k \u2264 10^5), which represents the number of keys for\nwhich you should count the average value of search results containing one\nmistake. Next k lines contain the actual keys, one key per line. All node keys\nand all search keys are positive integers, not exceeding 10^9. All n + k keys\nare distinct. All nodes are numbered from 1 to n. For the tree root \"-1\"\n(without the quote) will be given instead of the parent's node number. It is\nguaranteed that the correct binary search tree is given. For each node except\nfor the root, it could be determined according to its key whether it is the\nleft child or the right one. Output Print k real numbers which are the\nexpectations of answers for the keys specified in the input. The answer should\ndiffer from the correct one with the measure of absolute or relative error not\nexceeding 10^-9. Examples Input 7 -1 8 1 4 1 12 2 2 2 6 3 10 3 14 1 1 Output\n8.0000000000 Input 3 -1 5 1 3 1 7 6 1 2 4 6 8 9 Output 7.0000000000\n7.0000000000 7.0000000000 3.0000000000 3.0000000000 3.0000000000 Note In the\nfirst sample the search of key 1 with one error results in two paths in the\ntrees: (1, 2, 5) and (1, 3, 6), in parentheses are listed numbers of nodes\nfrom the root to a leaf. The keys in the leaves of those paths are equal to 6\nand 10 correspondingly, that's why the answer is equal to 8.\n\n",
+        "cf_contest_id": 85,
+        "cf_index": "C",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "dfs and similar",
+            "probabilities",
+            "sortings",
+            "trees"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7\r\n-1 8\r\n1 4\r\n1 12\r\n2 2\r\n2 6\r\n3 10\r\n3 14\r\n1\r\n1\r\n",
+                "8.00000000000\r\n"
+            ],
+            [
+                "3\r\n-1 5\r\n1 3\r\n1 7\r\n6\r\n1\r\n2\r\n4\r\n6\r\n8\r\n9\r\n",
+                "7.00000000000\r\n7.00000000000\r\n7.00000000000\r\n3.00000000000\r\n3.00000000000\r\n3.00000000000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5\r\n2 5\r\n-1 10\r\n1 3\r\n1 7\r\n2 15\r\n6\r\n1\r\n4\r\n6\r\n8\r\n11\r\n20\r\n",
+                "11.00000000000\r\n11.00000000000\r\n9.00000000000\r\n9.00000000000\r\n7.00000000000\r\n7.00000000000\r\n"
+            ],
+            [
+                "9\r\n9 10\r\n9 30\r\n2 20\r\n2 50\r\n4 40\r\n4 2000000\r\n6 1000000\r\n6 3000000\r\n-1 15\r\n3\r\n1\r\n1500000\r\n1000000000\r\n",
+                "20.00000000000\r\n750017.50000000000\r\n250017.50000000000\r\n"
+            ],
+            [
+                "11\r\n6 13\r\n7 22\r\n2 23\r\n8 28\r\n2 17\r\n7 11\r\n9 15\r\n-1 25\r\n8 7\r\n6 10\r\n9 6\r\n8\r\n26\r\n5\r\n4\r\n3\r\n29\r\n8\r\n18\r\n2\r\n",
+                "23.00000000000\r\n19.00000000000\r\n19.00000000000\r\n19.00000000000\r\n23.00000000000\r\n16.00000000000\r\n17.50000000000\r\n19.00000000000\r\n"
+            ],
+            [
+                "7\r\n6 30\r\n-1 6\r\n6 26\r\n3 9\r\n3 27\r\n2 29\r\n2 4\r\n10\r\n24\r\n28\r\n2\r\n18\r\n1\r\n23\r\n10\r\n20\r\n12\r\n22\r\n",
+                "20.33333333333\r\n14.33333333333\r\n9.00000000000\r\n20.33333333333\r\n9.00000000000\r\n20.33333333333\r\n20.33333333333\r\n20.33333333333\r\n20.33333333333\r\n20.33333333333\r\n"
+            ],
+            [
+                "13\r\n11 14\r\n13 11\r\n8 20\r\n8 1\r\n3 13\r\n11 19\r\n13 6\r\n-1 4\r\n3 29\r\n9 21\r\n5 15\r\n9 30\r\n5 8\r\n8\r\n12\r\n9\r\n27\r\n17\r\n10\r\n3\r\n2\r\n18\r\n",
+                "10.50000000000\r\n10.50000000000\r\n16.66666666667\r\n11.75000000000\r\n10.50000000000\r\n6.00000000000\r\n6.00000000000\r\n11.75000000000\r\n"
+            ],
+            [
+                "9\r\n9 14\r\n3 26\r\n-1 11\r\n3 7\r\n4 3\r\n4 10\r\n2 27\r\n9 24\r\n2 21\r\n3\r\n18\r\n16\r\n22\r\n",
+                "20.33333333333\r\n20.33333333333\r\n17.00000000000\r\n"
+            ],
+            [
+                "13\r\n12 19\r\n3 22\r\n6 10\r\n13 9\r\n2 30\r\n-1 3\r\n1 20\r\n6 2\r\n12 13\r\n1 16\r\n13 6\r\n2 15\r\n3 8\r\n6\r\n5\r\n7\r\n24\r\n27\r\n14\r\n17\r\n",
+                "8.00000000000\r\n8.00000000000\r\n10.33333333333\r\n10.33333333333\r\n14.25000000000\r\n14.80000000000\r\n"
+            ],
+            [
+                "7\r\n2 13\r\n-1 22\r\n4 21\r\n1 19\r\n4 16\r\n1 1\r\n2 27\r\n1\r\n24\r\n",
+                "21.00000000000\r\n"
+            ]
+        ]
+    }
+]

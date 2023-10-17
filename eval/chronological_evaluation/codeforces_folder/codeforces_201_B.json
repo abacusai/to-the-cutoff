@@ -1,0 +1,84 @@
+[
+    {
+        "name": "Guess That Car!",
+        "description": "A widely known among some people Belarusian sport programmer Yura possesses\nlots of information about cars. That is why he has been invited to participate\nin a game show called \"Guess That Car!\". The game show takes place on a giant\nparking lot, which is 4n meters long from north to south and 4m meters wide\nfrom west to east. The lot has n + 1 dividing lines drawn from west to east\nand m + 1 dividing lines drawn from north to south, which divide the parking\nlot into n\u00b7m 4 by 4 meter squares. There is a car parked strictly inside each\nsquare. The dividing lines are numbered from 0 to n from north to south and\nfrom 0 to m from west to east. Each square has coordinates (i, j) so that the\nsquare in the north-west corner has coordinates (1, 1) and the square in the\nsouth-east corner has coordinates (n, m). See the picture in the notes for\nclarifications. Before the game show the organizers offer Yura to occupy any\nof the (n + 1)\u00b7(m + 1) intersection points of the dividing lines. After that\nhe can start guessing the cars. After Yura chooses a point, he will be\nprohibited to move along the parking lot before the end of the game show. As\nYura is a car expert, he will always guess all cars he is offered, it's just a\nmatter of time. Yura knows that to guess each car he needs to spend time equal\nto the square of the euclidean distance between his point and the center of\nthe square with this car, multiplied by some coefficient characterizing the\nmachine's \"rarity\" (the rarer the car is, the harder it is to guess it). More\nformally, guessing a car with \"rarity\" c placed in a square whose center is at\ndistance d from Yura takes c\u00b7d^2 seconds. The time Yura spends on turning his\nhead can be neglected. It just so happened that Yura knows the \"rarity\" of\neach car on the parking lot in advance. Help him choose his point so that the\ntotal time of guessing all cars is the smallest possible. Input The first line\ncontains two integers n and m (1 \u2264 n, m \u2264 1000) \u2014 the sizes of the parking\nlot. Each of the next n lines contains m integers: the j-th number in the i-th\nline describes the \"rarity\" cij (0 \u2264 cij \u2264 100000) of the car that is located\nin the square with coordinates (i, j). Output In the first line print the\nminimum total time Yura needs to guess all offered cars. In the second line\nprint two numbers li and lj (0 \u2264 li \u2264 n, 0 \u2264 lj \u2264 m) \u2014 the numbers of dividing\nlines that form a junction that Yura should choose to stand on at the\nbeginning of the game show. If there are multiple optimal starting points,\nprint the point with smaller li. If there are still multiple such points,\nprint the point with smaller lj. Please do not use the \nor write 64-bit integers in \u0421++. It is preferred to use the cin, cout streams\nor the \n4 1 0 0 0 0 0 3 0 0 0 5 5 Output 240 2 3 Note In the first test case the total\ntime of guessing all cars is equal to 3\u00b78 + 3\u00b78 + 4\u00b78 + 9\u00b78 + 5\u00b740 + 1\u00b740 =\n392. The coordinate system of the field:\n\n",
+        "cf_contest_id": 201,
+        "cf_index": "B",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "math",
+            "ternary search"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 3\r\n3 4 5\r\n3 9 1\r\n",
+                "392\r\n1 1\r\n"
+            ],
+            [
+                "3 4\r\n1 0 0 0\r\n0 0 3 0\r\n0 0 5 5\r\n",
+                "240\r\n2 3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 7\r\n91811 50656 97940 70982 88108 31856 80371\r\n94488 4672 15935 10209 22935 55803 57593\r\n79510 213 92494 7670 49727 97141 54221\r\n89004 67886 99994 22224 65646 24548 25509\r\n",
+                "148553968\r\n2 3\r\n"
+            ],
+            [
+                "7 4\r\n0 0 0 0\r\n0 1 0 3\r\n0 1 0 0\r\n0 0 3 0\r\n0 0 0 2\r\n0 3 0 1\r\n0 0 2 6\r\n",
+                "1552\r\n5 3\r\n"
+            ],
+            [
+                "5 5\r\n0 0 15380 0 0\r\n0 0 26291 0 0\r\n0 0 0 0 0\r\n0 0 0 0 0\r\n0 0 0 0 0\r\n",
+                "333368\r\n1 2\r\n"
+            ],
+            [
+                "10 10\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 1585 1564 3603 1095 1364 1029 3189 1331\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 1749\r\n0 3495 1540 641 1093 702 2249 983 1218 2108\r\n0 1397 1105 3119 1194 839 1286 2979 2941 1911\r\n0 1818 2264 631 3342 3511 2434 2960 667 2411\r\n",
+                "14833240\r\n7 6\r\n"
+            ],
+            [
+                "10 10\r\n0 0 0 0 0 0 0 0 0 0\r\n0 87000 0 0 0 0 0 0 0 0\r\n96879 0 0 0 80529 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 82797 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n97471 0 0 0 0 0 43355 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 80167 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n",
+                "138865744\r\n4 4\r\n"
+            ],
+            [
+                "8 8\r\n0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 807 825\r\n0 0 0 0 0 0 1226 1489\r\n0 0 0 0 0 0 908 502\r\n0 0 0 0 0 0 527 765\r\n0 0 0 0 0 0 1642 757\r\n0 0 0 0 0 0 1502 1760\r\n0 0 0 0 0 0 1243 884\r\n",
+                "1046376\r\n5 7\r\n"
+            ],
+            [
+                "1 1\r\n92660\r\n",
+                "741280\r\n0 0\r\n"
+            ],
+            [
+                "1 2\r\n19378 47762\r\n",
+                "537120\r\n0 1\r\n"
+            ],
+            [
+                "2 1\r\n2157\r\n33017\r\n",
+                "281392\r\n1 0\r\n"
+            ],
+            [
+                "6 5\r\n0 0 0 0 0\r\n0 0 0 0 0\r\n0 3 3 3 0\r\n0 3 3 3 0\r\n0 3 3 3 0\r\n0 0 0 0 0\r\n",
+                "792\r\n3 2\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n",
+                "8\r\n0 0\r\n"
+            ],
+            [
+                "100 1\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n",
+                "2434000\r\n35 0\r\n"
+            ],
+            [
+                "1 1\r\n0\r\n",
+                "0\r\n0 0\r\n"
+            ],
+            [
+                "2 3\r\n0 0 0\r\n0 0 0\r\n",
+                "0\r\n0 0\r\n"
+            ]
+        ]
+    }
+]

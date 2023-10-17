@@ -1,0 +1,248 @@
+[
+    {
+        "name": "Electric Charges",
+        "description": "Programmer Sasha is a student at MIPT (Moscow Institute of Physics and\nTechnology) and he needs to make a laboratory work to pass his finals. A\nlaboratory unit is a plane with standard coordinate axes marked on it.\nPhysicists from Moscow Institute of Physics and Technology charged the axes by\nlarge electric charges: axis X is positive and axis Y is negative. Experienced\nlaboratory worker marked n points with integer coordinates (xi, yi) on the\nplane and stopped the time. Sasha should use \"atomic tweezers\" to place\nelementary particles in these points. He has an unlimited number of electrons\n(negatively charged elementary particles) and protons (positively charged\nelementary particles). He can put either an electron or a proton at each\nmarked point. As soon as all marked points are filled with particles,\nlaboratory worker will turn on the time again and the particles will come in\nmotion and after some time they will stabilize in equilibrium. The objective\nof the laboratory work is to arrange the particles in such a way, that the\ndiameter of the resulting state (the maximum distance between the pairs of\npoints of the set) is as small as possible. Since Sasha is a programmer, he\nnaively thinks that all the particles will simply \"fall\" into their\nprojections on the corresponding axes: electrons will fall on axis X, while\nprotons will fall on axis Y. As we are programmers too, we will consider the\nsame model as Sasha. That is, a particle gets from point (x, y) to point (x,\n0) if it is an electron and to point (0, y) if it is a proton. As the\nlaboratory has high background radiation and Sasha takes care of his laptop,\nhe did not take it with him, and now he can't write a program that computes\nthe minimum possible diameter of the resulting set. Therefore, you will have\nto do it for him. Print a square of the minimum possible diameter of the set.\nInput The first line of the input contains a single integer n (1 \u2264 n \u2264 100\n000) \u2014 the number of points marked on the plane. Each of the next n lines\ncontains two integers xi and yi ( - 10^8 \u2264 xi, yi \u2264 10^8) \u2014 the coordinates of\nthe i-th point. It is guaranteed that no two points coincide. Output Print a\nsingle integer \u2014 the square of the minimum possible diameter of the set.\nExamples Input 3 1 10 1 20 1 30 Output 0 Input 2 1 10 10 1 Output 2 Note In\nthe first sample Sasha puts electrons at all points, all particles eventually\nfall at a single point (1, 0). In the second sample Sasha puts an electron at\npoint (1, 10), and a proton at point (10, 1). The result is a set of two\npoints (1, 0) and (0, 1), which has a diameter of .\n\n",
+        "cf_contest_id": 623,
+        "cf_index": "C",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n1 10\r\n1 20\r\n1 30\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n1 10\r\n10 1\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n1 6\r\n2 2\r\n-1 9\r\n-8 8\r\n-4 10\r\n-10 -6\r\n5 -1\r\n-3 -7\r\n-4 3\r\n9 4\r\n",
+                "100\r\n"
+            ],
+            [
+                "18\r\n-14 -745\r\n87 -4611\r\n89 -3748\r\n-77 273\r\n-21 -4654\r\n-86 -5108\r\n-70 3232\r\n25 -6313\r\n-71 -4846\r\n88 -1894\r\n-65 9707\r\n-51 -3290\r\n-19 -580\r\n-62 -2408\r\n1 -6832\r\n52 -4279\r\n21 -7322\r\n55 9392\r\n",
+                "30625\r\n"
+            ],
+            [
+                "12\r\n996 -72\r\n-145 68\r\n-514 79\r\n743 -96\r\n765 -52\r\n720 86\r\n-615 -57\r\n690 81\r\n-885 -5\r\n265 4\r\n-533 -23\r\n-693 -72\r\n",
+                "33124\r\n"
+            ],
+            [
+                "17\r\n-10 -36\r\n1 -10\r\n53 -2\r\n-23 5\r\n7 -19\r\n10 -33\r\n9 78\r\n-7 -3\r\n70 2\r\n5 -1\r\n7 -93\r\n9 -2\r\n2 -82\r\n16 2\r\n8 48\r\n52 2\r\n-76 -6\r\n",
+                "400\r\n"
+            ],
+            [
+                "16\r\n22 -370\r\n90 -8\r\n46 235\r\n336 51\r\n-447 5\r\n-105 -53\r\n212 87\r\n245 -90\r\n7 -63\r\n-44 -56\r\n-426 2\r\n-485 26\r\n-31 37\r\n-93 -410\r\n39 -108\r\n-202 -85\r\n",
+                "31329\r\n"
+            ],
+            [
+                "20\r\n857 286\r\n-653 -1302\r\n761 1685\r\n-783 -94\r\n208 -1381\r\n-229 -1333\r\n664 -296\r\n-1157 -189\r\n-2124 956\r\n837 -2086\r\n-1872 16\r\n474 797\r\n-984 -1224\r\n188 -1104\r\n2017 850\r\n-2211 222\r\n955 -2275\r\n-100 1708\r\n152 199\r\n-1340 -462\r\n",
+                "3759721\r\n"
+            ],
+            [
+                "10\r\n-594331 634748\r\n-438198 823828\r\n-1450064 -200132\r\n-832505 -718261\r\n-830561 867133\r\n1104363 -90870\r\n696748 -925127\r\n-755002 -110409\r\n-1721605 -870036\r\n344418 -761993\r\n",
+                "1545691540850\r\n"
+            ],
+            [
+                "14\r\n17434000 -29825809\r\n3349481 -27203247\r\n79083185 21513757\r\n-53052180 -83100420\r\n543299 -43187896\r\n-30785780 18551223\r\n9271044 -77707401\r\n65259560 -30266930\r\n-65672492 -20223080\r\n-37161541 -4703585\r\n99525015 2119039\r\n-13413357 -52673928\r\n83407206 -6063556\r\n3333364 -56550616\r\n",
+                "3884184249754176\r\n"
+            ],
+            [
+                "14\r\n3 44\r\n-99 -1\r\n-11 -9\r\n3 -57\r\n83 5\r\n4 -45\r\n4 -62\r\n46 -4\r\n36 6\r\n3 -22\r\n-69 -2\r\n3 75\r\n-3 -37\r\n46 -8\r\n",
+                "225\r\n"
+            ],
+            [
+                "19\r\n174 17\r\n-65 458\r\n460 -6\r\n141 8\r\n53 -441\r\n-71 -1\r\n415 -3\r\n46 -337\r\n-4 319\r\n307 -17\r\n-84 208\r\n-428 5\r\n-91 336\r\n-301 -12\r\n40 -5\r\n218 -13\r\n423 8\r\n-110 -6\r\n-24 -20\r\n",
+                "20736\r\n"
+            ],
+            [
+                "1\r\n42 100000000\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n-100000000 100000000\r\n1 -35\r\n",
+                "10000000000000001\r\n"
+            ],
+            [
+                "4\r\n100000000 100000000\r\n100000000 -100000000\r\n-100000000 100000000\r\n-100000000 -100000000\r\n",
+                "40000000000000000\r\n"
+            ],
+            [
+                "5\r\n25367999 -12921025\r\n88213873 -62251536\r\n29698878 -60793556\r\n69696879 -57681615\r\n4150867 -42378134\r\n",
+                "2433499315521121\r\n"
+            ],
+            [
+                "10\r\n52725948 -50921428\r\n22965991 -854605\r\n19081182 -54959209\r\n46359108 -78898591\r\n12280123 -98335714\r\n96326175 -61967241\r\n36354396 -64148342\r\n8164394 -70121916\r\n94434246 -46350207\r\n6706998 -57888515\r\n",
+                "5989105851707745\r\n"
+            ],
+            [
+                "10\r\n6 -50790171\r\n-2 218761\r\n-1 6364807\r\n-5 -96100004\r\n6 13672536\r\n-31685933 2\r\n-87361182 6\r\n6 79979970\r\n-4 20223120\r\n3 -33646313\r\n",
+                "121\r\n"
+            ],
+            [
+                "20\r\n544 -4618768\r\n8229332 791\r\n-19838403 912\r\n714 81730211\r\n685 86922721\r\n976 74377764\r\n691 -75144278\r\n767 -14551029\r\n592 52209892\r\n868 -16289108\r\n652 44552695\r\n963 -60723986\r\n-98704842 668\r\n900 28147242\r\n49913319 735\r\n534 -69309373\r\n841 -1918555\r\n571 -70059713\r\n821 -70358434\r\n605 81860132\r\n",
+                "1784320\r\n"
+            ],
+            [
+                "9\r\n-99999999 -99999999\r\n-99999999 -100000000\r\n99999999 99999999\r\n100000000 -99999999\r\n-99999999 100000000\r\n-100000000 100000000\r\n-99999999 99999999\r\n99999999 100000000\r\n99999999 -99999999\r\n",
+                "39999999600000001\r\n"
+            ],
+            [
+                "1\r\n100000000 100000000\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n100000000 100000000\r\n100000000 -100000000\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n-100000000 100000000\r\n100000000 100000000\r\n",
+                "0\r\n"
+            ],
+            [
+                "4\r\n100000000 -100000000\r\n-100000000 -100000000\r\n100000000 100000000\r\n-100000000 100000000\r\n",
+                "40000000000000000\r\n"
+            ],
+            [
+                "5\r\n46954043 53045957\r\n86519258 13480742\r\n12941533 87058467\r\n53212386 46787614\r\n57186237 42813763\r\n",
+                "2981356830435938\r\n"
+            ],
+            [
+                "5\r\n635720 157\r\n702516 142\r\n286757 348\r\n756308 132\r\n751562 133\r\n",
+                "46656\r\n"
+            ],
+            [
+                "5\r\n99857497 5336678\r\n78010540 62564811\r\n51604294 85656271\r\n88779790 46023350\r\n99288757 11905571\r\n",
+                "2328371599759209\r\n"
+            ],
+            [
+                "10\r\n-88884243 11115757\r\n-38391053 61608947\r\n-67774598 32225402\r\n-62658046 37341954\r\n-32014021 67985979\r\n-49601142 50398858\r\n-13046283 86953717\r\n-91869075 8130925\r\n-85955759 14044241\r\n-81154428 18845572\r\n",
+                "3854694816242280\r\n"
+            ],
+            [
+                "10\r\n484 206445\r\n417 239562\r\n135 736435\r\n100 995898\r\n669 149428\r\n148148 675\r\n162 615397\r\n400 249827\r\n102 973876\r\n173 575939\r\n",
+                "903186\r\n"
+            ],
+            [
+                "10\r\n22080299 -97531842\r\n99982368 -1877760\r\n82007780 -57225204\r\n95632512 -29230506\r\n40850397 -91275654\r\n39838009 -91722041\r\n2527763 -99968046\r\n30181880 -95336530\r\n59384374 -80458039\r\n32198040 -94674633\r\n",
+                "6801227848213492\r\n"
+            ],
+            [
+                "13\r\n-2 0\r\n0 2\r\n2 0\r\n-1 1\r\n0 0\r\n0 -1\r\n1 -1\r\n0 -2\r\n0 1\r\n1 0\r\n1 1\r\n-1 0\r\n-1 -1\r\n",
+                "4\r\n"
+            ],
+            [
+                "81\r\n-2 -1\r\n-3 1\r\n2 1\r\n1 0\r\n-3 -1\r\n1 2\r\n-1 1\r\n-3 3\r\n0 -3\r\n3 1\r\n-1 -2\r\n2 3\r\n2 2\r\n1 -2\r\n3 -1\r\n-1 -4\r\n1 3\r\n3 3\r\n2 -3\r\n0 -4\r\n1 -1\r\n0 3\r\n-2 0\r\n-4 1\r\n0 -5\r\n-4 3\r\n2 -4\r\n4 2\r\n-3 -4\r\n-3 4\r\n-3 0\r\n-2 4\r\n1 1\r\n4 1\r\n-4 0\r\n0 -1\r\n0 4\r\n4 0\r\n-4 -1\r\n3 -4\r\n-2 1\r\n3 2\r\n0 2\r\n-1 0\r\n-3 -2\r\n3 -3\r\n0 1\r\n2 0\r\n2 -1\r\n-2 3\r\n1 -3\r\n-1 -1\r\n-2 -3\r\n3 4\r\n2 -2\r\n1 -4\r\n3 -2\r\n4 -1\r\n4 -3\r\n1 4\r\n3 0\r\n-3 -3\r\n-1 2\r\n-5 0\r\n-2 -2\r\n-4 -2\r\n4 3\r\n0 -2\r\n-4 -3\r\n-4 2\r\n-2 2\r\n-1 -3\r\n5 0\r\n-1 3\r\n2 4\r\n0 5\r\n-2 -4\r\n-3 2\r\n4 -2\r\n0 0\r\n-1 4\r\n",
+                "36\r\n"
+            ],
+            [
+                "21\r\n5 0\r\n2 2\r\n0 1\r\n0 2\r\n2 0\r\n4 0\r\n1 1\r\n3 0\r\n3 2\r\n1 0\r\n1 2\r\n3 1\r\n1 3\r\n2 3\r\n0 3\r\n0 5\r\n0 4\r\n0 0\r\n2 1\r\n1 4\r\n4 1\r\n",
+                "8\r\n"
+            ],
+            [
+                "66\r\n3 0\r\n2 7\r\n0 5\r\n5 1\r\n6 4\r\n0 2\r\n3 1\r\n3 4\r\n4 1\r\n7 0\r\n10 0\r\n0 6\r\n7 1\r\n7 2\r\n5 0\r\n1 1\r\n6 0\r\n2 3\r\n3 5\r\n0 10\r\n3 6\r\n4 0\r\n1 8\r\n2 2\r\n1 6\r\n6 2\r\n0 3\r\n0 9\r\n2 0\r\n8 1\r\n4 4\r\n2 4\r\n1 3\r\n1 9\r\n3 3\r\n9 0\r\n7 3\r\n2 8\r\n4 5\r\n0 8\r\n5 4\r\n3 7\r\n8 2\r\n5 5\r\n1 4\r\n1 5\r\n4 2\r\n4 3\r\n3 2\r\n1 7\r\n6 1\r\n1 0\r\n0 0\r\n6 3\r\n2 1\r\n8 0\r\n9 1\r\n0 1\r\n0 7\r\n2 6\r\n1 2\r\n4 6\r\n0 4\r\n5 2\r\n5 3\r\n2 5\r\n",
+                "41\r\n"
+            ],
+            [
+                "1\r\n-32222 98\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\n-1 -1\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n10 10\r\n10 20\r\n20 10\r\n",
+                "100\r\n"
+            ],
+            [
+                "2\r\n5 5\r\n1000 1000\r\n",
+                "990025\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n-1 -1\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n-1 7\r\n8 2\r\n5 -3\r\n",
+                "25\r\n"
+            ],
+            [
+                "11\r\n86252958 -8453022\r\n20979758 -6495116\r\n-78204472 -7527274\r\n66289339 9784937\r\n-15941740 412492\r\n58997345 9109992\r\n90222551 -4687529\r\n12732746 9064427\r\n-85673028 -8886670\r\n37578830 -8279001\r\n59212726 788692\r\n",
+                "348628907962449\r\n"
+            ],
+            [
+                "10\r\n-8055884 -28179455\r\n-9336503 98988615\r\n19433716 53975448\r\n58614993 -69147933\r\n-53287109 35247908\r\n-75259375 94365460\r\n43802543 96926279\r\n53740260 -15640682\r\n-97179864 -25661311\r\n-17951783 -51266382\r\n",
+                "14175740317838724\r\n"
+            ],
+            [
+                "14\r\n-66 7\r\n2 71\r\n3 -36\r\n5 26\r\n-21 6\r\n41 -5\r\n32 -2\r\n-26 -5\r\n2 -60\r\n86 -6\r\n34 -8\r\n-24 9\r\n-75 -8\r\n-92 1\r\n",
+                "289\r\n"
+            ],
+            [
+                "16\r\n-68 259\r\n-90 65\r\n65 454\r\n242 74\r\n358 -86\r\n-441 -80\r\n44 -422\r\n67 178\r\n15 -425\r\n88 109\r\n-66 -246\r\n-24 285\r\n-131 60\r\n-152 52\r\n-18 -129\r\n204 -11\r\n",
+                "25600\r\n"
+            ],
+            [
+                "10\r\n622 1946\r\n422 1399\r\n165 -203\r\n-903 -2133\r\n-1152 964\r\n-842 -1150\r\n1849 5\r\n-11 471\r\n1966 -379\r\n67 776\r\n",
+                "2325625\r\n"
+            ],
+            [
+                "15\r\n-128458 573454\r\n751293 1852055\r\n1546241 438377\r\n642614 -1677745\r\n1768534 -919019\r\n205820 357582\r\n-877851 792499\r\n313687 -491257\r\n1334705 533906\r\n-136082 -42692\r\n-1948794 304398\r\n-602602 -557714\r\n-847986 -1248897\r\n-1915382 76977\r\n-1118694 -705173\r\n",
+                "2654110172736\r\n"
+            ],
+            [
+                "12\r\n-3979966 -64785636\r\n54498897 11255152\r\n52322390 -67233168\r\n32879609 -16571480\r\n50371826 19645523\r\n-68348841 22478633\r\n3424248 90696875\r\n-42961539 -43574884\r\n36163900 62201849\r\n-53982801 42129019\r\n-55804340 70782236\r\n13142275 39447287\r\n",
+                "8458157168697600\r\n"
+            ],
+            [
+                "18\r\n3 -55\r\n-54 -2\r\n2 -42\r\n-8 68\r\n82 4\r\n-2 -73\r\n1 44\r\n-29 3\r\n-48 -3\r\n91 4\r\n4 -16\r\n24 -2\r\n-5 36\r\n46 -2\r\n24 -3\r\n76 4\r\n51 1\r\n-76 -1\r\n",
+                "144\r\n"
+            ],
+            [
+                "17\r\n337 -16\r\n-53 16\r\n-247 -10\r\n-88 -224\r\n62 -426\r\n67 2\r\n320 19\r\n239 3\r\n82 269\r\n76 -237\r\n-8 -1\r\n195 -18\r\n82 131\r\n31 -276\r\n48 -2\r\n-66 228\r\n-463 -18\r\n",
+                "28900\r\n"
+            ],
+            [
+                "18\r\n745 1353\r\n248 -68\r\n-636 -647\r\n-335 712\r\n270 5\r\n-402 128\r\n29 -1871\r\n648 -182\r\n-403 -469\r\n616 -1341\r\n898 2358\r\n361 2296\r\n1074 9\r\n-452 1480\r\n993 -2039\r\n-491 1690\r\n-656 1759\r\n2087 30\r\n",
+                "2719201\r\n"
+            ],
+            [
+                "14\r\n88 242\r\n-1763 920\r\n-160 -1921\r\n2368 562\r\n123 -2003\r\n165 656\r\n-20 2333\r\n-1786 -771\r\n-1648 -242\r\n-1842 150\r\n-2078 -428\r\n-1865 860\r\n-140 -311\r\n-2453 571\r\n",
+                "2859481\r\n"
+            ],
+            [
+                "20\r\n-691166 1857437\r\n308748 757809\r\n-908302 1208183\r\n213496 81845\r\n1882976 -9001\r\n-1459847 -58718\r\n902599 -1235585\r\n499018 1161414\r\n658542 -86418\r\n-803191 -1737709\r\n1682313 -49632\r\n-166179 1387536\r\n-203007 18260\r\n1579851 -79901\r\n128002 906577\r\n-57584 -70366\r\n-493935 -15924\r\n1900231 6581\r\n894309 851468\r\n954724 1678804\r\n",
+                "3090265147225\r\n"
+            ],
+            [
+                "16\r\n840204 -563586\r\n-1482 -306408\r\n-45167 -1969028\r\n73804 525097\r\n69604 198191\r\n65491 -1345144\r\n-1609018 -285663\r\n404867 -210266\r\n255601 832851\r\n4999 1764313\r\n541223 736278\r\n-20170 1911573\r\n-281805 251017\r\n52312 1029263\r\n72529 -38660\r\n32894 1380373\r\n",
+                "663578047609\r\n"
+            ],
+            [
+                "12\r\n-44489842 18113240\r\n-2081704 -1338672\r\n-3803741 36271320\r\n40239596 12868007\r\n-97939521 33357113\r\n60348507 -45490328\r\n59546944 -64898105\r\n1073008 86908503\r\n5160027 39955776\r\n1531464 64470852\r\n51713010 -35029180\r\n43419463 -8413764\r\n",
+                "4754639284823818\r\n"
+            ],
+            [
+                "14\r\n-4788460 -58174715\r\n3667616 -42701029\r\n58801800 -67135593\r\n-27712521 33013050\r\n70162832 21395449\r\n430668 18516811\r\n27425137 13550355\r\n73782530 -33761391\r\n-3092363 29002645\r\n-79768595 21183779\r\n-434563 -46164603\r\n3072648 -44934958\r\n2954859 6384655\r\n-9768771 -50164937\r\n",
+                "4701923207266041\r\n"
+            ],
+            [
+                "1\r\n0 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n0 0\r\n-1 5\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

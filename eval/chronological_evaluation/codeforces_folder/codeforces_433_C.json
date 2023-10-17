@@ -1,0 +1,109 @@
+[
+    {
+        "name": "Ryouko's Memory Note",
+        "description": "Ryouko is an extremely forgetful girl, she could even forget something that\nhas just happened. So in order to remember, she takes a notebook with her,\ncalled Ryouko's Memory Note. She writes what she sees and what she hears on\nthe notebook, and the notebook became her memory. Though Ryouko is forgetful,\nshe is also born with superb analyzing abilities. However, analyzing depends\ngreatly on gathered information, in other words, memory. So she has to shuffle\nthrough her notebook whenever she needs to analyze, which is tough work.\nRyouko's notebook consists of n pages, numbered from 1 to n. To make life (and\nthis problem) easier, we consider that to turn from page x to page y, |x - y|\npages should be turned. During analyzing, Ryouko needs m pieces of\ninformation, the i-th piece of information is on page ai. Information must be\nread from the notebook in order, so the total number of pages that Ryouko\nneeds to turn is . Ryouko wants to decrease the number of pages that need to\nbe turned. In order to achieve this, she can merge two pages of her notebook.\nIf Ryouko merges page x to page y, she would copy all the information on page\nx to y (1 \u2264 x, y \u2264 n), and consequently, all elements in sequence a that was x\nwould become y. Note that x can be equal to y, in which case no changes take\nplace. Please tell Ryouko the minimum number of pages that she needs to turn.\nNote she can apply the described operation at most once before the reading.\nNote that the answer can exceed 32-bit integers. Input The first line of input\ncontains two integers n and m (1 \u2264 n, m \u2264 10^5). The next line contains m\nintegers separated by spaces: a1, a2, ..., am (1 \u2264 ai \u2264 n). Output Print a\nsingle integer \u2014 the minimum number of pages Ryouko needs to turn. Examples\nInput 4 6 1 2 3 4 3 2 Output 3 Input 10 5 9 4 3 8 8 Output 6 Note In the first\nsample, the optimal solution is to merge page 4 to 3, after merging sequence a\nbecomes 1, 2, 3, 3, 3, 2, so the number of pages Ryouko needs to turn is |1\n- 2| + |2 - 3| + |3 - 3| + |3 - 3| + |3 - 2| = 3. In the second sample,\noptimal solution is achieved by merging page 9 to 4.\n\n",
+        "cf_contest_id": 433,
+        "cf_index": "C",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "math",
+            "sortings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 6\r\n1 2 3 4 3 2\r\n",
+                "3\r\n"
+            ],
+            [
+                "10 5\r\n9 4 3 8 8\r\n",
+                "6\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 10\r\n2 5 2 2 3 5 3 2 1 3\r\n",
+                "7\r\n"
+            ],
+            [
+                "10 20\r\n6 3 9 6 1 9 1 9 8 2 7 6 9 8 4 7 1 2 4 2\r\n",
+                "52\r\n"
+            ],
+            [
+                "100 100\r\n28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28 28\r\n",
+                "0\r\n"
+            ],
+            [
+                "100000 1\r\n97735\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 100\r\n3 2 5 7 1 1 5 10 1 4 7 4 4 10 1 3 8 1 7 4 4 8 5 7 2 10 10 2 2 4 4 5 5 4 8 8 8 9 10 5 1 3 10 3 6 10 6 4 9 10 10 4 10 1 2 5 9 8 9 7 10 9 10 1 6 3 4 7 8 6 3 5 7 10 5 5 8 3 1 2 1 7 6 10 4 4 2 9 9 9 9 8 8 5 4 3 9 7 7 10\r\n",
+                "218\r\n"
+            ],
+            [
+                "100000 1\r\n14542\r\n",
+                "0\r\n"
+            ],
+            [
+                "44 44\r\n22 26 30 41 2 32 7 12 13 22 5 43 33 12 40 14 32 40 3 28 35 26 26 43 3 14 15 16 18 13 42 10 21 19 1 17 34 26 10 40 7 25 20 12\r\n",
+                "568\r\n"
+            ],
+            [
+                "2 3\r\n1 1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "100000 50\r\n43104 45692 17950 43454 99127 33540 80887 7990 116 79790 66870 61322 5479 24876 7182 99165 81535 3498 54340 7460 43666 921 1905 68827 79308 59965 8437 13422 40523 59605 39474 22019 65794 40905 35727 78900 41981 91502 66506 1031 92025 84135 19675 67950 81327 95915 92076 89843 43174 73177\r\n",
+                "1583927\r\n"
+            ],
+            [
+                "100 100\r\n11 41 76 12 57 12 31 68 92 52 63 40 71 18 69 21 15 27 80 72 69 43 67 37 21 98 36 100 39 93 24 98 6 72 37 33 60 4 38 52 92 60 21 39 65 60 57 87 68 34 23 72 45 13 7 55 81 61 61 49 10 89 52 63 12 21 75 2 69 38 71 35 80 41 1 57 22 60 50 60 40 83 22 70 84 40 61 14 65 93 41 96 51 19 21 36 96 97 12 69\r\n",
+                "3302\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "11 5\r\n1 1 1 10 11\r\n",
+                "1\r\n"
+            ],
+            [
+                "100 6\r\n1 1 3 3 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 14\r\n1 2 100 100 100 100 100 100 100 100 100 100 2 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "1000 10\r\n1 1 1 1 1 1000 1000 1000 1000 1000\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 6\r\n1 1 1 3 3 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 4\r\n7 1 1 8\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 18\r\n1 1 1 1 1 1 1 1 1 3 3 3 3 3 3 3 3 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 4\r\n5 5 2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 10\r\n8 8 8 7 7 7 6 1 1 1\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,36 @@
+[
+    {
+        "name": "Queen",
+        "description": "You are given a rooted tree with vertices numerated from \n    1\n to \n    n\n. A\ntree is a connected graph without cycles. A rooted tree has a special vertex\nnamed root. Ancestors of the vertex \n    i\n are all vertices on the path from\nthe root to the vertex \n    i\n, except the vertex \n    i\n itself. The parent\nof the vertex \n    i\n is the nearest to the vertex \n    i\n ancestor of\n\n    i\n. Each vertex is a child of its parent. In the given tree the parent of\nthe vertex \n    i\n is the vertex \n    p_i\n. For the root, the value \n    p_i\n\nis \n    -1\n. An example of a tree with \n    n=8\n, the root is vertex \n    5\n.\nThe parent of the vertex \n    2\n is vertex \n    3\n, the parent of the vertex\n\n    1\n is vertex \n    5\n. The ancestors of the vertex \n    6\n are vertices\n\n    4\n and \n    5\n, the ancestors of the vertex \n    7\n are vertices \n    8\n,\n\n    3\n and \n    5\n You noticed that some vertices do not respect others. In\nparticular, if \n    c_i = 1\n, then the vertex \n    i\n does not respect any of\nits ancestors, and if \n    c_i = 0\n, it respects all of them. You decided to\ndelete vertices from the tree one by one. On each step you select such a non-\nroot vertex that it does not respect its parent and none of its children\nrespects it. If there are several such vertices, you select the one with the\nsmallest number. When you delete this vertex \n    v\n, all children of \n    v\n\nbecome connected with the parent of \n    v\n. An example of deletion of the\nvertex \n    7\n. Once there are no vertices matching the criteria for deletion,\nyou stop the process. Print the order in which you will delete the vertices.\nNote that this order is unique. Input The first line contains a single integer\n\n    n\n (\n    1 \n    \u2264 n \n    \u2264 10^5\n) \u2014 the number of vertices in the tree. The\nnext \n    n\n lines describe the tree: the \n    i\n-th line contains two\nintegers \n    p_i\n and \n    c_i\n (\n    1 \n    \u2264 p_i \n    \u2264 n\n, \n    0 \n    \u2264 c_i\n    \n    \u2264 1\n), where \n    p_i\n is the parent of the vertex \n    i\n, and \n    c_i =\n    0\n, if the vertex \n    i\n respects its parents, and \n    c_i = 1\n, if the\nvertex \n    i\n does not respect any of its parents. The root of the tree has\n\n    -1\n instead of the parent index, also, \n    c_i=0\n for the root. It is\nguaranteed that the values \n    p_i\n define a rooted tree with \n    n\n\nvertices. Output In case there is at least one vertex to delete, print the\nonly line containing the indices of the vertices you will delete in the order\nyou delete them. Otherwise print a single integer \n    -1\n. Examples Input 5 3\n1 1 1 -1 0 2 1 3 0 Output 1 2 4 Input 5 -1 0 1 1 1 1 2 0 3 0 Output -1 Input 8\n2 1 -1 0 1 0 1 1 1 1 4 0 5 1 7 0 Output 5 Note The deletion process in the\nfirst example is as follows (see the picture below, the vertices with\n\n    c_i=1\n are in yellow): first you will delete the vertex \n    1\n, because\nit does not respect ancestors and all its children (the vertex \n    2\n) do not\nrespect it, and \n    1\n is the smallest index among such vertices; the vertex\n\n    2\n will be connected with the vertex \n    3\n after deletion; then you\nwill delete the vertex \n    2\n, because it does not respect ancestors and all\nits children (the only vertex \n    4\n) do not respect it; the vertex \n    4\n\nwill be connected with the vertex \n    3\n; then you will delete the vertex\n\n    4\n, because it does not respect ancestors and all its children (there are\nnone) do not respect it (vacuous truth); you will just delete the vertex\n\n    4\n; there are no more vertices to delete. In the second example you don't\nneed to delete any vertex: vertices \n    2\n and \n    3\n have children that\nrespect them; vertices \n    4\n and \n    5\n respect ancestors. In the third\nexample the tree will change this way:\n\n",
+        "cf_contest_id": 1143,
+        "cf_index": "C",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n3 1\r\n1 1\r\n-1 0\r\n2 1\r\n3 0\r\n",
+                "1 2 4\r\n"
+            ],
+            [
+                "5\r\n-1 0\r\n1 1\r\n1 1\r\n2 0\r\n3 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8\r\n2 1\r\n-1 0\r\n1 0\r\n1 1\r\n1 1\r\n4 0\r\n5 1\r\n7 0\r\n",
+                "5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n-1 0\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

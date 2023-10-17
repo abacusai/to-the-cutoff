@@ -1,0 +1,179 @@
+[
+    {
+        "name": "Nanami's Power Plant",
+        "description": "Nanami likes playing games, and is also really good at it. This day she was\nplaying a new game which involved operating a power plant. Nanami's job is to\ncontrol the generators in the plant and produce maximum output. There are n\ngenerators in the plant. Each generator should be set to a generating level.\nGenerating level is an integer (possibly zero or negative), the generating\nlevel of the i-th generator should be between li and ri (both inclusive). The\noutput of a generator can be calculated using a certain quadratic function\nf(x), where x is the generating level of the generator. Each generator has its\nown function, the function of the i-th generator is denoted as fi(x). However,\nthere are m further restrictions to the generators. Let the generating level\nof the i-th generator be xi. Each restriction is of the form xu \u2264 xv + d,\nwhere u and v are IDs of two different generators and d is an integer. Nanami\nfound the game tedious but giving up is against her creed. So she decided to\nhave a program written to calculate the answer for her (the maximum total\noutput of generators). Somehow, this became your job. Input The first line\ncontains two integers n and m (1 \u2264 n \u2264 50; 0 \u2264 m \u2264 100) \u2014 the number of\ngenerators and the number of restrictions. Then follow n lines, each line\ncontains three integers ai, bi, and ci (|ai| \u2264 10; |bi|, |ci| \u2264 1000) \u2014 the\ncoefficients of the function fi(x). That is, fi(x) = aix^2 + bix + ci. Then\nfollow another n lines, each line contains two integers li and ri ( - 100 \u2264 li\n\u2264 ri \u2264 100). Then follow m lines, each line contains three integers ui, vi,\nand di (1 \u2264 ui, vi \u2264 n; ui \u2260 vi; |di| \u2264 200), describing a restriction. The\ni-th restriction is xui \u2264 xvi + di. Output Print a single line containing a\nsingle integer \u2014 the maximum output of all the generators. It is guaranteed\nthat there exists at least one valid configuration. Examples Input 3 3 0 1 0 0\n1 1 0 1 2 0 3 1 2 -100 100 1 2 0 2 3 0 3 1 0 Output 9 Input 5 8 1 -8 20 2 -4 0\n-1 10 -10 0 1 0 0 -1 1 1 9 1 4 0 10 3 11 7 9 2 1 3 1 2 3 2 3 3 3 2 3 3 4 3 4 3\n3 4 5 3 5 4 3 Output 46 Note In the first sample, f1(x) = x, f2(x) = x + 1,\nand f3(x) = x + 2, so we are to maximize the sum of the generating levels. The\nrestrictions are x1 \u2264 x2, x2 \u2264 x3, and x3 \u2264 x1, which gives us x1 = x2 = x3.\nThe optimal configuration is x1 = x2 = x3 = 2, which produces an output of 9.\nIn the second sample, restrictions are equal to |xi - xi + 1| \u2264 3 for 1 \u2264 i <\nn. One of the optimal configurations is x1 = 1, x2 = 4, x3 = 5, x4 = 8 and x5\n= 7.\n\n",
+        "cf_contest_id": 434,
+        "cf_index": "D",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "flows"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3 3\r\n0 1 0\r\n0 1 1\r\n0 1 2\r\n0 3\r\n1 2\r\n-100 100\r\n1 2 0\r\n2 3 0\r\n3 1 0\r\n",
+                "9"
+            ],
+            [
+                "5 8\r\n1 -8 20\r\n2 -4 0\r\n-1 10 -10\r\n0 1 0\r\n0 -1 1\r\n1 9\r\n1 4\r\n0 10\r\n3 11\r\n7 9\r\n2 1 3\r\n1 2 3\r\n2 3 3\r\n3 2 3\r\n3 4 3\r\n4 3 3\r\n4 5 3\r\n5 4 3\r\n",
+                "46"
+            ]
+        ],
+        "private_cases": [
+            [
+                "15 4\r\n1 -346 509\r\n-8 -796 -585\r\n2 326 -667\r\n1 522 318\r\n-7 804 -488\r\n10 332 30\r\n10 364 922\r\n-2 370 -611\r\n-9 736 -572\r\n-7 969 -781\r\n0 -557 377\r\n-2 -522 213\r\n0 631 -176\r\n7 -812 364\r\n-1 -777 -45\r\n-41 -32\r\n-52 26\r\n-74 84\r\n37 86\r\n-37 46\r\n52 74\r\n-57 29\r\n26 33\r\n-26 53\r\n-49 -9\r\n40 74\r\n-78 18\r\n-9 26\r\n5 97\r\n-76 82\r\n5 1 182\r\n9 4 -82\r\n15 4 165\r\n1 12 52\r\n",
+                "324334"
+            ],
+            [
+                "5 9\r\n10 115 1000\r\n7 115 964\r\n8 112 999\r\n9 101 1000\r\n9 112 981\r\n-74 -28\r\n41 86\r\n57 58\r\n-73 -67\r\n-81 -67\r\n1 4 8\r\n1 2 -111\r\n1 2 -117\r\n1 5 40\r\n2 3 -4\r\n3 4 126\r\n2 3 -9\r\n2 1 129\r\n1 5 4\r\n",
+                "187812"
+            ],
+            [
+                "5 0\r\n-10 -279 -854\r\n2 652 466\r\n1 269 -891\r\n0 -986 407\r\n-4 680 -561\r\n-15 34\r\n-74 -2\r\n9 89\r\n-42 47\r\n-82 94\r\n",
+                "101391"
+            ],
+            [
+                "2 1\r\n3 552 -33\r\n2 534 -95\r\n56 90\r\n-27 83\r\n2 1 -59\r\n",
+                "92328"
+            ],
+            [
+                "4 1\r\n-2 -384 396\r\n8 -320 656\r\n-4 -232 336\r\n0 0 342\r\n65 100\r\n-33 -13\r\n16 32\r\n-62 -30\r\n4 2 141\r\n",
+                "-17144"
+            ],
+            [
+                "15 14\r\n8 922 -586\r\n10 916 -606\r\n5 916 -586\r\n10 929 -562\r\n4 922 -531\r\n10 918 -611\r\n9 916 -521\r\n4 919 -578\r\n5 918 -553\r\n5 926 -571\r\n10 926 -538\r\n7 919 -517\r\n9 916 -537\r\n10 930 -573\r\n5 922 -595\r\n-100 -87\r\n-87 -74\r\n-74 -61\r\n-61 -48\r\n-48 -35\r\n-35 -22\r\n-22 -9\r\n-9 4\r\n4 17\r\n17 30\r\n30 43\r\n43 56\r\n56 69\r\n69 82\r\n82 95\r\n2 1 7\r\n3 2 12\r\n4 3 13\r\n5 4 20\r\n6 5 0\r\n7 6 22\r\n8 7 9\r\n9 8 13\r\n10 9 19\r\n11 10 8\r\n12 11 10\r\n13 12 21\r\n14 13 10\r\n15 14 17\r\n",
+                "346749"
+            ],
+            [
+                "7 7\r\n10 920 -578\r\n-9 1000 990\r\n6 -264 -397\r\n-4 -312 -818\r\n4 -160 -52\r\n9 -720 -111\r\n5 -610 767\r\n-53 -46\r\n-92 -77\r\n-85 30\r\n-68 47\r\n9 24\r\n-77 18\r\n36 72\r\n7 3 140\r\n1 3 -9\r\n3 2 107\r\n6 7 -45\r\n4 1 52\r\n3 5 9\r\n2 7 -141\r\n",
+                "-32229"
+            ],
+            [
+                "13 13\r\n-8 119 730\r\n-8 101 728\r\n-7 106 785\r\n-10 105 703\r\n-9 108 708\r\n-10 111 747\r\n-10 110 748\r\n-7 109 705\r\n-10 106 712\r\n-7 110 713\r\n-7 110 712\r\n-5 119 781\r\n-7 107 753\r\n-22 49\r\n-32 85\r\n-87 8\r\n2 63\r\n-38 96\r\n-47 99\r\n54 89\r\n-10 0\r\n77 89\r\n-100 -83\r\n-81 58\r\n44 77\r\n-74 -3\r\n3 8 -9\r\n13 8 -36\r\n1 3 37\r\n5 9 -47\r\n5 11 33\r\n8 5 -33\r\n6 2 -87\r\n6 13 79\r\n4 1 12\r\n8 3 21\r\n4 3 43\r\n7 8 57\r\n6 7 -92\r\n",
+                "-180739"
+            ],
+            [
+                "8 15\r\n-6 96 -9\r\n4 -88 -715\r\n7 -112 789\r\n1 106 -129\r\n-7 840 325\r\n8 -1000 169\r\n-6 252 -194\r\n5 -850 670\r\n-21 44\r\n-35 38\r\n5 14\r\n51 64\r\n-88 -32\r\n-73 -73\r\n-26 -20\r\n-100 -60\r\n5 3 -51\r\n8 2 -74\r\n8 1 -123\r\n8 3 -84\r\n5 8 28\r\n4 3 47\r\n2 7 57\r\n3 1 -11\r\n8 2 -87\r\n7 1 -37\r\n6 5 -5\r\n8 5 -10\r\n6 2 -89\r\n7 2 -32\r\n6 3 -85\r\n",
+                "157719"
+            ],
+            [
+                "2 4\r\n-7 -476 257\r\n1 158 644\r\n34 100\r\n-79 -56\r\n2 1 -131\r\n1 2 135\r\n1 2 149\r\n1 2 141\r\n",
+                "-49020"
+            ],
+            [
+                "6 12\r\n-1 -102 800\r\n-2 -105 826\r\n-3 -93 876\r\n0 -103 870\r\n2 -98 845\r\n-1 -92 894\r\n50 57\r\n-78 -35\r\n28 29\r\n30 83\r\n-95 -51\r\n-4 68\r\n3 4 147\r\n1 4 109\r\n4 6 156\r\n2 5 -8\r\n3 4 11\r\n3 1 76\r\n2 5 1\r\n6 3 71\r\n5 2 115\r\n2 1 10\r\n5 4 155\r\n2 4 122\r\n",
+                "2499"
+            ],
+            [
+                "2 2\r\n-6 347 -908\r\n-4 343 -873\r\n-64 49\r\n-14 60\r\n1 2 -95\r\n2 1 147\r\n",
+                "-15096"
+            ],
+            [
+                "4 3\r\n-2 -244 563\r\n-7 -257 471\r\n-7 -254 531\r\n-3 -260 513\r\n69 78\r\n87 95\r\n-13 13\r\n-87 -13\r\n4 2 -124\r\n3 4 72\r\n1 2 59\r\n",
+                "-91870"
+            ],
+            [
+                "7 2\r\n6 446 242\r\n2 -857 -815\r\n9 -395 -602\r\n1 388 321\r\n-8 -4 165\r\n6 -576 619\r\n-10 -895 503\r\n-26 -14\r\n-39 59\r\n-24 5\r\n-4 70\r\n-34 -22\r\n-3 58\r\n-54 90\r\n2 1 13\r\n7 2 27\r\n",
+                "96577"
+            ],
+            [
+                "16 12\r\n-2 774 -573\r\n-7 773 -638\r\n-4 783 -616\r\n-7 772 -592\r\n-2 784 -591\r\n-2 776 -609\r\n-5 774 -563\r\n-6 773 -639\r\n-4 777 -643\r\n-5 770 -614\r\n-5 766 -589\r\n-1 778 -654\r\n-2 786 -650\r\n-2 786 -581\r\n-5 770 -606\r\n-7 771 -619\r\n8 36\r\n-7 9\r\n-21 70\r\n48 75\r\n-13 28\r\n-78 -59\r\n-46 43\r\n-8 83\r\n-41 -36\r\n31 85\r\n52 90\r\n-79 -70\r\n-79 81\r\n-50 -14\r\n-88 10\r\n-47 86\r\n2 16 -74\r\n5 11 -53\r\n9 7 -60\r\n11 15 157\r\n2 14 22\r\n4 16 111\r\n12 6 -3\r\n10 14 99\r\n11 3 5\r\n10 16 117\r\n7 11 -40\r\n7 15 67\r\n",
+                "116077"
+            ],
+            [
+                "4 4\r\n-10 897 575\r\n-9 911 670\r\n-10 912 619\r\n-10 893 607\r\n-61 -9\r\n-83 85\r\n-5 40\r\n-37 56\r\n2 4 -71\r\n3 4 -36\r\n2 3 -20\r\n2 4 48\r\n",
+                "10786"
+            ],
+            [
+                "17 11\r\n3 -222 457\r\n-5 520 -53\r\n2 -192 -695\r\n3 234 548\r\n-6 780 180\r\n8 -912 -221\r\n-10 1000 -520\r\n-2 260 -400\r\n-9 -54 -473\r\n0 0 -394\r\n-10 600 145\r\n9 1000 -216\r\n-9 1000 -166\r\n7 -238 352\r\n-8 752 284\r\n-2 272 -801\r\n5 -400 977\r\n28 37\r\n-52 53\r\n-79 -41\r\n31 99\r\n63 87\r\n-83 -40\r\n-90 -71\r\n45 70\r\n-4 5\r\n26 68\r\n-50 41\r\n-98 95\r\n-15 85\r\n-89 28\r\n-58 -42\r\n68 78\r\n-43 97\r\n9 15 52\r\n5 14 119\r\n1 2 -22\r\n15 2 -75\r\n5 6 137\r\n17 8 -75\r\n7 16 -143\r\n13 5 -23\r\n6 10 -104\r\n11 1 -65\r\n15 4 -108\r\n",
+                "307592"
+            ],
+            [
+                "13 6\r\n10 -855 -903\r\n10 -857 -882\r\n8 -857 -926\r\n10 -856 -905\r\n10 -844 -940\r\n10 -860 -947\r\n7 -845 -946\r\n10 -846 -899\r\n10 -845 -867\r\n7 -863 -887\r\n10 -854 -925\r\n10 -851 -933\r\n10 -850 -904\r\n54 80\r\n77 81\r\n-84 -47\r\n-27 47\r\n-43 -20\r\n-93 33\r\n-70 13\r\n-23 80\r\n-6 4\r\n-15 -8\r\n-15 48\r\n-48 -19\r\n-39 -26\r\n7 9 -64\r\n3 2 -156\r\n7 4 -50\r\n7 5 26\r\n11 3 69\r\n7 9 -51\r\n",
+                "616193"
+            ],
+            [
+                "2 4\r\n-1 -190 308\r\n1 904 975\r\n19 29\r\n-73 48\r\n2 1 -12\r\n1 2 49\r\n2 1 -44\r\n2 1 -47\r\n",
+                "-21016"
+            ],
+            [
+                "5 7\r\n8 -464 -257\r\n5 340 -755\r\n2 -132 -567\r\n-6 -708 -252\r\n-8 1000 -496\r\n-84 -24\r\n10 70\r\n-37 88\r\n38 69\r\n18 78\r\n3 1 161\r\n3 4 109\r\n5 3 139\r\n1 4 29\r\n5 4 19\r\n2 3 149\r\n1 5 -82\r\n",
+                "144459"
+            ],
+            [
+                "3 2\r\n-2 127 -848\r\n1 -128 -916\r\n-8 190 -866\r\n-30 -9\r\n-8 76\r\n-25 70\r\n2 1 184\r\n3 1 160\r\n",
+                "-1719"
+            ],
+            [
+                "11 18\r\n-10 460 721\r\n-10 448 773\r\n-10 452 758\r\n-10 465 725\r\n-7 456 781\r\n-10 454 693\r\n-10 466 775\r\n-10 468 705\r\n-9 453 739\r\n-10 448 688\r\n-10 450 691\r\n-23 82\r\n-69 3\r\n69 84\r\n-33 88\r\n-9 61\r\n-90 41\r\n-82 6\r\n-68 -26\r\n-29 94\r\n-80 10\r\n-74 96\r\n8 4 -70\r\n3 4 42\r\n3 11 83\r\n10 1 -112\r\n2 7 10\r\n6 7 55\r\n5 4 11\r\n7 11 -81\r\n10 5 -59\r\n3 11 37\r\n7 3 -80\r\n11 6 89\r\n3 2 120\r\n9 1 12\r\n4 8 114\r\n11 1 0\r\n5 9 -90\r\n8 1 -73\r\n",
+                "-163450"
+            ],
+            [
+                "5 8\r\n1 -8 20\r\n2 -4 0\r\n-1 10 -10\r\n0 1 0\r\n0 -1 1\r\n1 9\r\n1 4\r\n0 10\r\n3 11\r\n7 9\r\n2 1 3\r\n1 2 3\r\n2 3 3\r\n3 2 3\r\n3 4 3\r\n4 3 3\r\n4 5 3\r\n5 4 3\r\n",
+                "46"
+            ],
+            [
+                "12 0\r\n10 464 118\r\n9 458 102\r\n10 462 118\r\n7 464 59\r\n10 464 55\r\n9 460 122\r\n8 452 59\r\n10 451 114\r\n8 455 62\r\n7 471 112\r\n9 464 121\r\n10 460 90\r\n-53 -38\r\n-38 41\r\n-11 15\r\n-61 72\r\n-30 39\r\n-70 18\r\n-52 -11\r\n-86 8\r\n-83 85\r\n75 81\r\n-39 4\r\n-46 77\r\n",
+                "473184"
+            ],
+            [
+                "7 12\r\n-2 -975 163\r\n-1 -964 192\r\n-3 -962 161\r\n-4 -966 204\r\n-6 -963 181\r\n-6 -968 167\r\n-4 -971 199\r\n-45 14\r\n-87 -27\r\n-29 32\r\n71 95\r\n50 64\r\n-54 91\r\n-47 -44\r\n1 3 -28\r\n6 7 50\r\n6 3 59\r\n5 4 59\r\n7 6 152\r\n5 1 134\r\n2 1 51\r\n7 4 9\r\n2 5 85\r\n6 5 79\r\n1 6 -20\r\n4 5 191\r\n",
+                "38229"
+            ],
+            [
+                "23 5\r\n5 -374 725\r\n7 -383 781\r\n5 -391 744\r\n7 -383 812\r\n6 -377 754\r\n4 -387 781\r\n6 -375 727\r\n3 -394 790\r\n6 -384 747\r\n5 -388 801\r\n6 -375 796\r\n7 -390 729\r\n5 -383 750\r\n7 -375 723\r\n5 -390 760\r\n7 -386 790\r\n5 -389 753\r\n5 -378 787\r\n6 -384 757\r\n9 -386 761\r\n6 -394 734\r\n5 -383 819\r\n8 -382 789\r\n-37 99\r\n-58 -27\r\n17 65\r\n-48 90\r\n-32 -9\r\n26 73\r\n7 23\r\n-23 31\r\n-47 76\r\n-39 15\r\n-20 6\r\n-4 87\r\n58 87\r\n-73 38\r\n39 89\r\n-15 -15\r\n-94 -62\r\n-38 27\r\n35 37\r\n28 52\r\n-33 87\r\n-6 83\r\n-65 78\r\n19 4 -32\r\n12 1 28\r\n13 10 99\r\n8 20 -39\r\n6 5 96\r\n",
+                "448831"
+            ],
+            [
+                "17 1\r\n4 -384 108\r\n9 90 -365\r\n0 0 -778\r\n0 0 -517\r\n1 22 682\r\n2 -216 -657\r\n5 380 774\r\n-3 72 -699\r\n-6 -96 -858\r\n-6 -240 209\r\n5 170 -203\r\n4 -528 202\r\n-4 -88 182\r\n1 158 598\r\n4 -176 370\r\n-5 -510 613\r\n10 1000 69\r\n11 97\r\n-36 33\r\n-58 -43\r\n-15 70\r\n-2 69\r\n36 58\r\n-44 62\r\n8 13\r\n-13 -2\r\n-95 44\r\n5 67\r\n58 75\r\n-4 100\r\n62 85\r\n-69 24\r\n-51 0\r\n-93 -53\r\n17 10 196\r\n",
+                "135341"
+            ],
+            [
+                "9 16\r\n-4 -208 -385\r\n-4 -80 824\r\n-9 -1000 -177\r\n6 288 -499\r\n9 -360 278\r\n-2 128 801\r\n-7 -14 -753\r\n-5 -110 -472\r\n6 84 465\r\n-39 27\r\n-69 26\r\n48 94\r\n-46 22\r\n-65 82\r\n-79 56\r\n-29 80\r\n2 58\r\n1 45\r\n1 9 161\r\n8 2 165\r\n5 2 -79\r\n1 4 -48\r\n1 2 81\r\n6 2 90\r\n9 3 -70\r\n1 8 -61\r\n6 8 134\r\n6 7 193\r\n8 2 163\r\n5 7 -122\r\n4 3 -53\r\n7 6 99\r\n4 1 57\r\n5 9 -75\r\n",
+                "-92670"
+            ],
+            [
+                "9 6\r\n6 -60 874\r\n-1 -90 -646\r\n-10 60 -977\r\n-2 -200 922\r\n9 1000 -683\r\n9 198 -862\r\n-6 -1000 -794\r\n7 1000 -390\r\n-4 184 -39\r\n-21 75\r\n-84 -44\r\n-51 80\r\n17 100\r\n-37 66\r\n-5 39\r\n83 89\r\n-82 -55\r\n15 97\r\n3 1 -49\r\n2 6 -18\r\n9 7 154\r\n2 1 -142\r\n3 1 -97\r\n9 1 168\r\n",
+                "-11370"
+            ],
+            [
+                "4 7\r\n-10 -927 -178\r\n-9 -923 -215\r\n-9 -912 -129\r\n-9 -915 -184\r\n-23 -20\r\n-63 -42\r\n-99 85\r\n-78 71\r\n4 2 1\r\n1 3 110\r\n1 2 39\r\n4 2 17\r\n3 1 -49\r\n1 2 92\r\n3 4 123\r\n",
+                "81253"
+            ],
+            [
+                "25 0\r\n0 -149 66\r\n-3 -155 -242\r\n-7 208 -851\r\n-2 650 -889\r\n7 524 68\r\n-6 -308 -135\r\n7 999 -606\r\n-4 615 -619\r\n5 277 68\r\n-9 794 -9\r\n9 715 -557\r\n-5 -566 827\r\n-7 287 715\r\n5 387 -343\r\n9 -690 329\r\n-2 -795 -495\r\n5 11 539\r\n-3 -591 -284\r\n-2 -921 557\r\n-5 -137 982\r\n7 198 -415\r\n4 559 -806\r\n5 -952 337\r\n-9 -696 219\r\n-6 -986 -823\r\n-49 72\r\n46 71\r\n-46 49\r\n-96 92\r\n-20 27\r\n-29 6\r\n-10 50\r\n-94 -63\r\n-73 -50\r\n49 92\r\n0 75\r\n-14 45\r\n33 49\r\n-12 28\r\n-4 88\r\n35 71\r\n-87 87\r\n-95 -42\r\n-44 22\r\n-49 -38\r\n42 70\r\n-40 15\r\n-98 -13\r\n-73 3\r\n-38 70\r\n",
+                "545655"
+            ],
+            [
+                "15 1\r\n5 340 765\r\n7 332 765\r\n4 326 796\r\n5 324 803\r\n7 333 796\r\n5 326 737\r\n7 330 821\r\n6 330 790\r\n4 339 811\r\n7 334 757\r\n8 337 819\r\n5 328 823\r\n8 324 762\r\n8 323 757\r\n9 337 781\r\n-18 54\r\n-70 -28\r\n11 12\r\n-66 70\r\n-44 78\r\n-17 69\r\n-66 3\r\n39 94\r\n40 52\r\n36 62\r\n-99 -38\r\n-73 3\r\n-93 5\r\n23 42\r\n2 73\r\n13 8 -130\r\n",
+                "578166"
+            ],
+            [
+                "8 6\r\n5 -490 507\r\n1 -182 -71\r\n-1 -695 -238\r\n-6 -734 -854\r\n4 -721 163\r\n0 -550 780\r\n-7 -287 -854\r\n6 -905 -286\r\n-10 19\r\n-25 -19\r\n-96 68\r\n-22 11\r\n-60 10\r\n-60 51\r\n35 55\r\n-91 -17\r\n5 7 -38\r\n6 5 -58\r\n5 4 87\r\n8 5 -51\r\n2 3 -79\r\n8 4 27\r\n",
+                "129615"
+            ],
+            [
+                "17 16\r\n-8 1000 -906\r\n3 486 422\r\n-8 -1000 128\r\n-6 -768 594\r\n10 920 316\r\n-8 -720 -896\r\n-5 -340 -684\r\n-9 -414 -445\r\n2 16 637\r\n-2 0 512\r\n10 280 -53\r\n-2 -100 622\r\n-7 532 -503\r\n-4 368 -680\r\n-4 520 -873\r\n-10 1000 -615\r\n2 -308 -641\r\n-100 -89\r\n-89 -78\r\n-78 -67\r\n-67 -56\r\n-56 -45\r\n-45 -34\r\n-34 -23\r\n-23 -12\r\n-12 -1\r\n-1 10\r\n10 21\r\n21 32\r\n32 43\r\n43 54\r\n54 65\r\n65 76\r\n76 87\r\n2 1 3\r\n3 2 16\r\n4 3 7\r\n5 4 10\r\n6 5 12\r\n7 6 18\r\n8 7 11\r\n9 8 3\r\n10 9 11\r\n11 10 12\r\n12 11 18\r\n13 12 1\r\n14 13 20\r\n15 14 5\r\n16 15 9\r\n17 16 16\r\n",
+                "-68810"
+            ],
+            [
+                "3 1\r\n4 -472 -537\r\n-7 602 282\r\n6 -276 -443\r\n-76 70\r\n20 85\r\n-90 58\r\n3 2 -12\r\n",
+                "144661"
+            ],
+            [
+                "15 0\r\n-5 -590 230\r\n-5 873 -889\r\n8 863 129\r\n-7 -168 759\r\n-5 -774 378\r\n-8 -235 -457\r\n6 -595 371\r\n-4 -437 44\r\n7 106 -557\r\n-8 -856 751\r\n4 -537 306\r\n6 672 -584\r\n-2 -854 -396\r\n3 -982 -731\r\n-9 39 -593\r\n-55 76\r\n12 75\r\n-2 24\r\n-58 -49\r\n-29 52\r\n-75 85\r\n-72 -44\r\n-46 25\r\n-60 51\r\n-4 53\r\n7 40\r\n-30 79\r\n-96 16\r\n-85 87\r\n-91 -28\r\n",
+                "450158"
+            ],
+            [
+                "2 2\r\n-1 644 -717\r\n-1 633 -743\r\n-16 4\r\n-35 47\r\n1 2 -28\r\n2 1 41\r\n",
+                "27560"
+            ],
+            [
+                "1 0\r\n1 1 1\r\n1 1\r\n",
+                "3"
+            ]
+        ]
+    }
+]

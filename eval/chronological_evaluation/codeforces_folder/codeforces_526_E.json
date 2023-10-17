@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Transmitting Levels",
+        "description": "Optimizing the amount of data transmitted via a network is an important and\ninteresting part of developing any network application. In one secret game\ndeveloped deep in the ZeptoLab company, the game universe consists of n\nlevels, located in a circle. You can get from level i to levels i - 1 and i +\n1, also you can get from level 1 to level n and vice versa. The map of the\ni-th level description size is ai bytes. In order to reduce the transmitted\ntraffic, the game gets levels as follows. All the levels on the server are\ndivided into m groups and each time a player finds himself on one of the\nlevels of a certain group for the first time, the server sends all levels of\nthe group to the game client as a single packet. Thus, when a player travels\ninside the levels of a single group, the application doesn't need any new\ninformation. Due to the technical limitations the packet can contain an\narbitrary number of levels but their total size mustn't exceed b bytes, where\nb is some positive integer constant. Usual situation is that players finish\nlevels one by one, that's why a decision was made to split n levels into m\ngroups so that each group was a continuous segment containing multiple\nneighboring levels (also, the group can have two adjacent levels, n and 1).\nSpecifically, if the descriptions of all levels have the total weight of at\nmost b bytes, then they can all be united into one group to be sent in a\nsingle packet. Determine, what minimum number of groups do you need to make in\norder to organize the levels of the game observing the conditions above? As\ndeveloping a game is a long process and technology never stagnates, it is yet\nimpossible to predict exactly what value will take constant value b limiting\nthe packet size when the game is out. That's why the developers ask you to\nfind the answer for multiple values of b. Input The first line contains two\nintegers n, q (2 \u2264 n \u2264 10^6, 1 \u2264 q \u2264 50) \u2014 the number of levels in the game\nuniverse and the number of distinct values of b that you need to process. The\nsecond line contains n integers ai (1 \u2264 ai \u2264 10^9) \u2014 the sizes of the levels\nin bytes. The next q lines contain integers bj (), determining the values of\nconstant b, for which you need to determine the answer. Output For each value\nof kj from the input print on a single line integer mj (1 \u2264 mj \u2264 n),\ndetermining the minimum number of groups to divide game levels into for\ntransmission via network observing the given conditions. Examples Input 6 3 2\n4 2 1 3 2 7 4 6 Output 2 4 3 Note In the test from the statement you can do in\nthe following manner. at b = 7 you can divide into two segments: 2|421|32\n(note that one of the segments contains the fifth, sixth and first levels); at\nb = 4 you can divide into four segments: 2|4|21|3|2; at b = 6 you can divide\ninto three segments: 24|21|32|.\n\n",
+        "cf_contest_id": 526,
+        "cf_index": "E",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 3\r\n2 4 2 1 3 2\r\n7\r\n4\r\n6\r\n",
+                "2\r\n4\r\n3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "47 50\r\n14 89 36 41 94 7 63 34 45 63 15 87 31 10 57 55 56 61 87 97 3 88 6 22 29 20 73 99 23 41 68 24 7 1 86 2 12 95 28 11 16 73 36 16 73 3 19\r\n104\r\n104\r\n100\r\n102\r\n104\r\n107\r\n108\r\n103\r\n105\r\n100\r\n101\r\n102\r\n100\r\n101\r\n109\r\n99\r\n100\r\n104\r\n103\r\n106\r\n103\r\n101\r\n108\r\n100\r\n103\r\n106\r\n103\r\n107\r\n99\r\n100\r\n102\r\n99\r\n108\r\n106\r\n104\r\n103\r\n99\r\n99\r\n100\r\n103\r\n100\r\n105\r\n109\r\n109\r\n107\r\n108\r\n106\r\n109\r\n105\r\n108\r\n",
+                "25\r\n25\r\n26\r\n26\r\n25\r\n25\r\n24\r\n25\r\n25\r\n26\r\n26\r\n26\r\n26\r\n26\r\n24\r\n27\r\n26\r\n25\r\n25\r\n25\r\n25\r\n26\r\n24\r\n26\r\n25\r\n25\r\n25\r\n25\r\n27\r\n26\r\n26\r\n27\r\n24\r\n25\r\n25\r\n25\r\n27\r\n27\r\n26\r\n25\r\n26\r\n25\r\n24\r\n24\r\n25\r\n24\r\n25\r\n24\r\n25\r\n24\r\n"
+            ],
+            [
+                "50 49\r\n2 7 2 2 7 5 7 6 2 10 5 1 10 10 4 10 9 8 7 2 9 4 3 7 8 5 9 6 6 10 9 6 9 5 3 5 4 10 10 8 1 6 8 8 5 2 4 9 5 6\r\n12\r\n16\r\n16\r\n20\r\n16\r\n17\r\n14\r\n17\r\n10\r\n15\r\n12\r\n18\r\n14\r\n20\r\n13\r\n15\r\n12\r\n11\r\n18\r\n19\r\n11\r\n20\r\n16\r\n17\r\n16\r\n11\r\n10\r\n17\r\n10\r\n15\r\n10\r\n13\r\n15\r\n11\r\n17\r\n14\r\n10\r\n18\r\n13\r\n17\r\n10\r\n20\r\n16\r\n10\r\n15\r\n18\r\n18\r\n12\r\n19\r\n",
+                "35\r\n23\r\n23\r\n18\r\n23\r\n23\r\n29\r\n23\r\n39\r\n25\r\n35\r\n21\r\n29\r\n18\r\n32\r\n25\r\n35\r\n37\r\n21\r\n19\r\n37\r\n18\r\n23\r\n23\r\n23\r\n37\r\n39\r\n23\r\n39\r\n25\r\n39\r\n32\r\n25\r\n37\r\n23\r\n29\r\n39\r\n21\r\n32\r\n23\r\n39\r\n18\r\n23\r\n39\r\n25\r\n21\r\n21\r\n35\r\n19\r\n"
+            ],
+            [
+                "2 2\r\n1 3\r\n4\r\n3\r\n",
+                "1\r\n2\r\n"
+            ],
+            [
+                "9 20\r\n1 3 2 2 4 3 1 3 4\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n18\r\n19\r\n20\r\n21\r\n22\r\n23\r\n",
+                "6\r\n6\r\n5\r\n4\r\n3\r\n3\r\n3\r\n3\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n1\r\n"
+            ],
+            [
+                "4 30\r\n1 2 1 2\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n1000000002\r\n1000000003\r\n1000000004\r\n1000000005\r\n1000000006\r\n1000000007\r\n1000000008\r\n1000000009\r\n1000000010\r\n1000000011\r\n100000000000002\r\n100000000000003\r\n100000000000004\r\n100000000000005\r\n100000000000006\r\n100000000000007\r\n100000000000008\r\n100000000000009\r\n100000000000010\r\n100000000000011\r\n",
+                "4\r\n2\r\n2\r\n2\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ]
+        ]
+    }
+]

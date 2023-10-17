@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Bananas in a Microwave",
+        "description": "You have a malfunctioning microwave in which you want to put some bananas. You\nhave \n    n\n time-steps before the microwave stops working completely. At each\ntime-step, it displays a new operation. Let \n    k\n be the number of bananas\nin the microwave currently. Initially, \n    k = 0\n. In the \n    i\n-th\noperation, you are given three parameters \n    t_i\n, \n    x_i\n, \n    y_i\n in\nthe input. Based on the value of \n    t_i\n, you must do one of the following:\nType 1: (\n    t_i=1\n, \n    x_i\n, \n    y_i\n) \u2014 pick an \n    a_i\n, such that\n\n    0 \n    \u2264 a_i \n    \u2264 y_i\n, and perform the following update \n    a_i\n times:\n\n    k:=\n    \u2308 (k + x_i) \n    \u2309\n. Type 2: (\n    t_i=2\n, \n    x_i\n,\n\n    y_i\n) \u2014 pick an \n    a_i\n, such that \n    0 \n    \u2264 a_i \n    \u2264 y_i\n, and\nperform the following update \n    a_i\n times: \n    k:=\n    \u2308 (k \n    \u00b7 x_i)\n    \n    \u2309\n. Note that \n    x_i\n can be a fractional value. See input format\nfor more details. Also, \n    \u2308 x \n    \u2309\n is the smallest integer\n\n    \u2265 x\n. At the \n    i\n-th time-step, you must apply the \n    i\n-th\noperation exactly once. For each \n    j\n such that \n    1 \n    \u2264 j \n    \u2264 m\n,\noutput the earliest time-step at which you can create exactly \n    j\n bananas.\nIf you cannot create exactly \n    j\n bananas, output \n    -1\n. Input The first\nline contains two space-separated integers \n    n\n \n    (1 \n    \u2264 n \n    \u2264 200)\n\nand \n    m\n \n    (2 \n    \u2264 m \n    \u2264 10^5)\n. Then, \n    n\n lines follow, where\nthe \n    i\n-th line denotes the operation for the \n    i\n-th timestep. Each\nsuch line contains three space-separated integers \n    t_i\n, \n    x'_i\n and\n\n    y_i\n (\n    1 \n    \u2264 t_i \n    \u2264 2\n, \n    1\n    \u2264 y_i\n    \u2264 m\n). Note that you\nare given \n    x'_i\n, which is \n    10^5 \n    \u00b7 x_i\n. Thus, to obtain\n\n    x_i\n, use the formula \n    x_i= \n    x'_i10^5\n. For type 1\noperations, \n    1 \n    \u2264 x'_i \n    \u2264 10^5 \n    \u00b7 m\n, and for type 2\noperations, \n    10^5 < x'_i \n    \u2264 10^5 \n    \u00b7 m\n. Output Print \n    m\n\nintegers, where the \n    i\n-th integer is the earliest time-step when you can\nobtain exactly \n    i\n bananas (or \n    -1\n if it is impossible). Examples\nInput 3 20 1 300000 2 2 400000 2 1 1000000 3 Output -1 -1 1 -1 -1 1 -1 -1 -1 3\n-1 2 3 -1 -1 3 -1 -1 -1 3 Input 3 20 1 399999 2 2 412345 2 1 1000001 3 Output\n-1 -1 -1 1 -1 -1 -1 1 -1 -1 3 -1 -1 -1 3 -1 2 -1 3 -1 Note In the first sample\ninput, let us see how to create \n    16\n number of bananas in three timesteps.\nInitially, \n    k=0\n. In timestep 1, we choose \n    a_1=2\n, so we apply the\ntype 1 update \u2014 \n    k := \n    \u2308(k+3)\n    \u2309\n \u2014 two times. Hence, \n    k\n\nis now 6. In timestep 2, we choose \n    a_2=0\n, hence value of \n    k\n remains\nunchanged. In timestep 3, we choose \n    a_3=1\n, so we are applying the type 1\nupdate \n    k:= \n    \u2308(k+10)\n    \u2309\n once. Hence, \n    k\n is now 16. It can\nbe shown that \n    k=16\n cannot be reached in fewer than three timesteps with\nthe given operations. In the second sample input, let us see how to create\n\n    17\n number of bananas in two timesteps. Initially, \n    k=0\n. In timestep\n1, we choose \n    a_1=1\n, so we apply the type 1 update \u2014 \n    k :=\n    \n    \u2308(k+3.99999)\n    \u2309\n \u2014 once. Hence, \n    k\n is now 4. In timestep 2,\nwe choose \n    a_2=1\n, so we apply the type 2 update \u2014 \n    k :=\n    \n    \u2308(k\n    \u00b7 4.12345)\n    \u2309\n \u2014 once. Hence, \n    k\n is now 17. It can\nbe shown that \n    k=17\n cannot be reached in fewer than two timesteps with\nthe given operations.\n\n",
+        "cf_contest_id": 1498,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 20\r\n1 300000 2\r\n2 400000 2\r\n1 1000000 3\r\n",
+                "-1 -1 1 -1 -1 1 -1 -1 -1 3 -1 2 3 -1 -1 3 -1 -1 -1 3 "
+            ],
+            [
+                "3 20\r\n1 399999 2\r\n2 412345 2\r\n1 1000001 3\r\n",
+                "-1 -1 -1 1 -1 -1 -1 1 -1 -1 3 -1 -1 -1 3 -1 2 -1 3 -1 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 20\r\n1 100000 1\r\n2 200000 1\r\n2 200000 1\r\n",
+                "1 2 -1 3 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 "
+            ],
+            [
+                "1 2\r\n1 1 1\r\n",
+                "1 -1 "
+            ],
+            [
+                "1 2\r\n1 1 2\r\n",
+                "1 1 "
+            ]
+        ]
+    }
+]

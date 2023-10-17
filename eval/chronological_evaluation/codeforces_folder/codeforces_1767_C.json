@@ -1,0 +1,64 @@
+[
+    {
+        "name": "Count Binary Strings",
+        "description": "You are given an integer \n    n\n. You have to calculate the number of binary\n(consisting of characters 0 and/or 1) strings \n    s\n meeting the following\nconstraints. For every pair of integers \n    (i, j)\n such that \n    1 \n    \u2264 i\n    \n    \u2264 j \n    \u2264 n\n, an integer \n    a_i,j\n is given. It imposes the\nfollowing constraint on the string \n    s_i s_i+1 s_i+2\n    \u2026 s_j\n: if\n\n    a_i,j = 1\n, all characters in \n    s_i s_i+1 s_i+2\n    \u2026 s_j\n\nshould be the same; if \n    a_i,j = 2\n, there should be at least two\ndifferent characters in \n    s_i s_i+1 s_i+2\n    \u2026 s_j\n; if \n    a_i,j =\n    0\n, there are no additional constraints on the string \n    s_i s_i+1 s_i+2\n    \u2026 s_j\n. Count the number of binary strings \n    s\n of length \n    n\n\nmeeting the aforementioned constraints. Since the answer can be large, print\nit modulo \n    998244353\n. Input The first line contains one integer \n    n\n\n(\n    2 \n    \u2264 n \n    \u2264 100\n). Then \n    n\n lines follow. The \n    i\n-th of them\ncontains \n    n-i+1\n integers \n    a_i,i, a_i,i+1, a_i,i+2, \n    \u2026,\n    a_i,n\n (\n    0 \n    \u2264 a_i,j\n    \u2264 2\n). Output Print one integer \u2014 the\nnumber of strings meeting the constraints, taken modulo \n    998244353\n.\nExamples Input 3 1 0 2 1 0 1 Output 6 Input 3 1 1 2 1 0 1 Output 2 Input 3 1 2\n1 1 0 1 Output 0 Input 3 2 0 2 0 1 1 Output 0 Note In the first example, the\nstrings meeting the constraints are 001, 010, 011, 100, 101, 110. In the\nsecond example, the strings meeting the constraints are 001, 110.\n\n",
+        "cf_contest_id": 1767,
+        "cf_index": "C",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3\r\n1 0 2\r\n1 0\r\n1\r\n",
+                "6"
+            ],
+            [
+                "3\r\n1 1 2\r\n1 0\r\n1\r\n",
+                "2"
+            ],
+            [
+                "3\r\n1 2 1\r\n1 0\r\n1\r\n",
+                "0"
+            ],
+            [
+                "3\r\n2 0 2\r\n0 1\r\n1\r\n",
+                "0"
+            ]
+        ],
+        "private_cases": [
+            [
+                "20\r\n2 1 1 0 1 2 2 2 2 0 0 2 2 2 0 1 1 2 2 2\r\n1 1 1 1 1 2 0 0 1 0 1 1 1 2 2 0 2 2 2\r\n2 0 1 0 2 0 1 1 0 0 0 2 1 2 2 1 0 2\r\n2 0 1 2 1 2 1 2 1 1 0 1 1 2 2 2 1\r\n2 1 2 1 0 1 1 2 0 0 1 2 2 1 2 1\r\n0 1 0 0 1 1 0 2 1 1 1 1 1 1 2\r\n2 1 1 2 0 0 0 2 1 1 1 0 2 1\r\n1 1 2 0 1 1 1 1 2 0 2 0 0\r\n1 2 2 1 2 2 2 0 0 1 1 2\r\n1 0 0 1 2 1 2 2 2 0 1\r\n1 1 2 0 2 2 0 0 2 1\r\n0 2 2 1 1 2 1 0 1\r\n2 1 1 2 2 2 1 2\r\n1 0 2 2 0 1 0\r\n0 1 0 1 0 1\r\n2 2 1 0 1\r\n1 1 1 0\r\n1 0 2\r\n0 0\r\n0\r\n",
+                "0"
+            ],
+            [
+                "20\r\n1 1 2 0 0 2 0 2 2 2 0 0 2 2 2 0 2 0 0 0\r\n0 0 0 0 0 0 0 0 0 2 0 2 0 0 0 2 0 0 0\r\n0 1 2 0 2 2 2 2 0 0 2 0 2 2 0 2 2 2\r\n1 2 2 2 2 2 2 2 0 2 2 2 0 2 2 2 2\r\n0 2 0 0 2 2 2 0 2 2 0 0 2 0 0 0\r\n1 1 1 0 2 0 0 0 0 0 2 0 2 0 2\r\n1 0 1 2 2 2 0 0 2 0 0 0 2 0\r\n0 1 2 0 0 0 0 0 0 0 0 2 0\r\n0 0 0 0 0 0 0 0 0 0 2 2\r\n0 2 0 2 2 0 2 0 2 0 0\r\n1 1 2 0 2 2 2 2 0 0\r\n0 2 0 2 2 0 2 2 0\r\n1 1 0 2 2 0 0 0\r\n0 0 2 2 2 2 0\r\n1 0 0 2 2 0\r\n1 2 2 2 0\r\n0 0 2 2\r\n1 0 0\r\n0 1\r\n1\r\n",
+                "18"
+            ],
+            [
+                "2\r\n0 0\r\n2\r\n",
+                "0"
+            ],
+            [
+                "7\r\n1 1 0 0 0 0 0\r\n0 0 0 0 0 1\r\n1 2 0 0 0\r\n0 0 0 0\r\n0 0 0\r\n0 0\r\n0\r\n",
+                "0"
+            ],
+            [
+                "2\r\n1 0\r\n2\r\n",
+                "0"
+            ],
+            [
+                "2\r\n1 2\r\n2\r\n",
+                "0"
+            ],
+            [
+                "3\r\n0 0 0\r\n2 0\r\n2\r\n",
+                "0"
+            ]
+        ]
+    }
+]

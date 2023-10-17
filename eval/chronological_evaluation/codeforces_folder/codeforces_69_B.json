@@ -1,0 +1,96 @@
+[
+    {
+        "name": "Bets",
+        "description": "In Chelyabinsk lives a much respected businessman Nikita with a strange\nnickname \"Boss\". Once Nikita decided to go with his friend Alex to the Summer\nBiathlon World Cup. Nikita, as a very important person, received a token which\nallows to place bets on each section no more than on one competitor. To begin\nwith friends learned the rules: in the race there are n sections of equal\nlength and m participants. The participants numbered from 1 to m. About each\nparticipant the following is known: li \u2014 the number of the starting section,\nri \u2014 the number of the finishing section (li \u2264 ri), ti \u2014 the time a biathlete\nneeds to complete an section of the path, ci \u2014 the profit in roubles. If the\ni-th sportsman wins on one of the sections, the profit will be given to the\nman who had placed a bet on that sportsman. The i-th biathlete passes the\nsections from li to ri inclusive. The competitor runs the whole way in (ri -\nli + 1)\u00b7ti time units. It takes him exactly ti time units to pass each\nsection. In case of the athlete's victory on k sections the man who has betted\non him receives k\u00b7ci roubles. In each section the winner is determined\nindependently as follows: if there is at least one biathlete running this in\nthis section, then among all of them the winner is the one who has ran this\nsection in minimum time (spent minimum time passing this section). In case of\nequality of times the athlete with the smaller index number wins. If there are\nno participants in this section, then the winner in this section in not\ndetermined. We have to say that in the summer biathlon all the participants\nare moving at a constant speed. We should also add that Nikita can bet on each\nsection and on any contestant running in this section. Help the friends find\nthe maximum possible profit. Input The first line contains two integers n and\nm (1 \u2264 n, m \u2264 100). Then follow m lines, each containing 4 integers li, ri,\nti, ci (1 \u2264 li \u2264 ri \u2264 n, 1 \u2264 ti, ci \u2264 1000). Output Print a single integer,\nthe maximal profit in roubles that the friends can get. In each of n sections\nit is not allowed to place bets on more than one sportsman. Examples Input 4 4\n1 4 20 5 1 3 21 10 3 3 4 30 3 4 4 20 Output 60 Input 8 4 1 5 24 10 2 4 6 15 4\n6 30 50 6 7 4 20 Output 105 Note In the first test the optimal bet is: in the\n1-2 sections on biathlete 1, in section 3 on biathlete 3, in section 4 on\nbiathlete 4. Total: profit of 5 rubles for 1 section, the profit of 5 rubles\nfor 2 section, profit of 30 rubles for a 3 section, profit of 20 rubles for 4\nsection. Total profit 60 rubles. In the second test the optimal bet is: on 1\nand 5 sections on biathlete 1, in the 2-4 sections on biathlete 2, in the 6-7\nsections on athlete 4. There is no winner in the 8 section. Total: profit of\n10 rubles for 1 section, the profit of 15 rubles for 2,3,4 section, profit of\n10 rubles for a 5 section, profit of 20 rubles for 6, 7 section. Total profit\n105 rubles.\n\n",
+        "cf_contest_id": 69,
+        "cf_index": "B",
+        "cf_rating": 1200,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 4\r\n1 4 20 5\r\n1 3 21 10\r\n3 3 4 30\r\n3 4 4 20\r\n",
+                "60\r\n"
+            ],
+            [
+                "8 4\r\n1 5 24 10\r\n2 4 6 15\r\n4 6 30 50\r\n6 7 4 20\r\n",
+                "105\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\n1 2 3 1\r\n2 2 3 10\r\n",
+                "2\r\n"
+            ],
+            [
+                "20 30\r\n15 17 54 46\r\n4 18 26 18\r\n18 20 49 94\r\n12 12 83 12\r\n11 13 88 47\r\n8 8 8 12\r\n18 18 94 2\r\n14 17 88 96\r\n19 19 62 97\r\n1 12 81 67\r\n10 12 78 26\r\n19 20 63 93\r\n9 20 38 32\r\n7 9 90 17\r\n9 10 19 60\r\n16 16 47 29\r\n1 6 62 29\r\n12 18 74 89\r\n5 5 97 92\r\n5 17 16 25\r\n11 19 2 76\r\n3 15 61 29\r\n5 7 73 54\r\n19 20 91 91\r\n4 17 28 61\r\n9 13 56 81\r\n10 11 82 80\r\n10 11 82 70\r\n5 10 66 38\r\n10 19 22 61\r\n",
+                "958\r\n"
+            ],
+            [
+                "20 30\r\n4 13 78 11\r\n13 19 56 41\r\n15 15 46 83\r\n4 9 74 72\r\n17 20 97 7\r\n15 20 29 48\r\n8 17 44 85\r\n4 18 26 46\r\n16 17 9 90\r\n16 16 39 89\r\n13 14 46 63\r\n14 18 67 18\r\n12 20 84 48\r\n10 20 49 32\r\n10 14 14 11\r\n6 18 80 84\r\n3 20 13 97\r\n12 20 62 42\r\n12 14 64 71\r\n5 19 38 17\r\n17 18 99 18\r\n11 15 83 22\r\n4 11 65 99\r\n8 16 89 45\r\n11 20 15 39\r\n8 13 85 26\r\n5 19 84 3\r\n10 16 26 45\r\n13 16 81 37\r\n3 5 100 42\r\n",
+                "1732\r\n"
+            ],
+            [
+                "20 30\r\n4 12 30 83\r\n3 3 91 46\r\n5 11 82 84\r\n20 20 29 36\r\n3 13 89 29\r\n11 14 40 80\r\n9 20 90 21\r\n14 19 23 74\r\n8 9 13 88\r\n12 18 13 95\r\n13 18 48 29\r\n8 17 13 15\r\n7 15 18 51\r\n9 20 87 51\r\n12 20 40 32\r\n4 11 34 11\r\n3 19 22 20\r\n19 19 53 5\r\n16 18 52 30\r\n5 19 52 71\r\n19 19 99 95\r\n14 18 15 28\r\n20 20 91 64\r\n15 16 55 47\r\n1 9 40 40\r\n9 17 93 82\r\n7 16 10 75\r\n1 15 100 24\r\n10 10 35 84\r\n1 2 4 7\r\n",
+                "1090\r\n"
+            ],
+            [
+                "20 30\r\n20 20 43 41\r\n5 13 99 35\r\n9 15 79 12\r\n4 20 75 16\r\n20 20 4 94\r\n14 14 1 1\r\n5 5 4 92\r\n14 19 52 30\r\n19 20 61 14\r\n10 12 34 89\r\n11 15 27 12\r\n14 18 64 25\r\n11 14 37 14\r\n19 19 56 20\r\n19 20 61 11\r\n13 16 48 36\r\n14 16 82 73\r\n16 17 82 26\r\n1 5 55 91\r\n10 13 24 33\r\n3 19 91 70\r\n10 15 87 53\r\n3 5 92 80\r\n10 10 13 24\r\n9 9 38 20\r\n13 20 80 38\r\n5 10 71 23\r\n6 19 43 90\r\n13 20 10 55\r\n11 14 29 62\r\n",
+                "1261\r\n"
+            ],
+            [
+                "20 30\r\n15 15 14 51\r\n17 20 3 20\r\n14 16 59 66\r\n14 15 48 22\r\n18 19 72 26\r\n13 14 60 72\r\n8 13 69 57\r\n4 12 3 82\r\n1 8 80 37\r\n18 19 40 33\r\n9 9 32 55\r\n13 15 67 5\r\n10 13 37 1\r\n19 19 39 11\r\n17 19 28 88\r\n8 19 88 87\r\n16 20 26 2\r\n18 18 11 46\r\n14 14 14 20\r\n15 15 78 100\r\n18 19 53 32\r\n12 13 59 66\r\n11 18 38 36\r\n5 8 14 97\r\n8 18 80 97\r\n6 19 81 17\r\n13 19 65 93\r\n8 10 77 3\r\n20 20 70 60\r\n17 17 28 35\r\n",
+                "1003\r\n"
+            ],
+            [
+                "20 30\r\n5 10 38 50\r\n17 18 86 42\r\n4 13 91 90\r\n20 20 45 31\r\n3 3 16 11\r\n16 16 80 66\r\n19 19 96 26\r\n15 20 7 84\r\n9 18 45 36\r\n5 19 89 6\r\n9 9 4 58\r\n9 14 97 31\r\n6 12 74 90\r\n4 5 84 2\r\n12 19 92 48\r\n16 16 92 55\r\n9 15 88 38\r\n6 14 8 66\r\n14 17 71 91\r\n20 20 58 20\r\n8 18 5 47\r\n7 19 67 43\r\n19 19 88 80\r\n9 12 35 86\r\n4 4 82 22\r\n7 8 72 82\r\n8 10 61 92\r\n20 20 77 93\r\n15 19 66 20\r\n20 20 8 10\r\n",
+                "911\r\n"
+            ],
+            [
+                "20 30\r\n1 20 49 91\r\n15 15 60 37\r\n14 14 3 79\r\n11 12 81 66\r\n8 12 71 31\r\n3 13 8 14\r\n2 10 11 35\r\n19 20 40 28\r\n12 14 6 75\r\n16 18 100 100\r\n20 20 89 74\r\n16 16 27 98\r\n18 18 21 24\r\n1 18 69 98\r\n7 13 70 57\r\n9 20 41 79\r\n17 17 75 75\r\n11 16 19 14\r\n1 15 62 59\r\n12 15 33 91\r\n3 17 10 79\r\n15 16 100 80\r\n10 16 5 5\r\n9 19 53 100\r\n9 18 65 42\r\n5 13 34 13\r\n6 13 61 47\r\n17 19 68 25\r\n5 5 42 59\r\n6 8 48 92\r\n",
+                "492\r\n"
+            ],
+            [
+                "100 1\r\n22 59 287 173\r\n",
+                "6574\r\n"
+            ],
+            [
+                "100 1\r\n8 31 93 267\r\n",
+                "6408\r\n"
+            ],
+            [
+                "100 1\r\n72 82 727 390\r\n",
+                "4290\r\n"
+            ],
+            [
+                "100 1\r\n14 25 343 50\r\n",
+                "600\r\n"
+            ],
+            [
+                "100 1\r\n73 75 59 176\r\n",
+                "528\r\n"
+            ],
+            [
+                "21 2\r\n19 20 253 233\r\n3 17 23 150\r\n",
+                "2716\r\n"
+            ],
+            [
+                "47 18\r\n14 38 376 96\r\n21 34 749 32\r\n7 20 409 146\r\n41 41 740 9\r\n14 16 526 128\r\n38 47 518 147\r\n3 26 7 16\r\n25 31 155 75\r\n32 36 164 12\r\n5 33 436 150\r\n22 41 477 52\r\n4 13 166 6\r\n38 44 664 133\r\n2 33 452 16\r\n30 40 623 48\r\n37 37 250 122\r\n25 34 506 109\r\n36 38 716 78\r\n",
+                "2091\r\n"
+            ],
+            [
+                "1 1\r\n1 1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1\r\n1 1 1000 1000\r\n",
+                "1000\r\n"
+            ]
+        ]
+    }
+]

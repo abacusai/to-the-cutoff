@@ -1,0 +1,160 @@
+[
+    {
+        "name": "Draw!",
+        "description": "You still have partial information about the score during the historic\nfootball match. You are given a set of pairs \n    (a_i, b_i)\n, indicating that\nat some point during the match the score was \"\n    a_i\n: \n    b_i\n\". It is\nknown that if the current score is \u00ab\n    x\n:\n    y\n\u00bb, then after the goal it\nwill change to \"\n    x+1\n:\n    y\n\" or \"\n    x\n:\n    y+1\n\". What is the largest\nnumber of times a draw could appear on the scoreboard? The pairs\n\"\n    a_i\n:\n    b_i\n\" are given in chronological order (time increases), but\nyou are given score only for some moments of time. The last pair corresponds\nto the end of the match. Input The first line contains a single integer\n\n    n\n (\n    1 \n    \u2264 n \n    \u2264 10000\n) \u2014 the number of known moments in the\nmatch. Each of the next \n    n\n lines contains integers \n    a_i\n and\n\n    b_i\n (\n    0 \n    \u2264 a_i, b_i \n    \u2264 10^9\n), denoting the score of the match\nat that moment (that is, the number of goals by the first team and the number\nof goals by the second team). All moments are given in chronological order,\nthat is, sequences \n    x_i\n and \n    y_j\n are non-decreasing. The last score\ndenotes the final result of the match. Output Print the maximum number of\nmoments of time, during which the score was a draw. The starting moment of the\nmatch (with a score 0:0) is also counted. Examples Input 3 2 0 3 1 3 4 Output\n2 Input 3 0 0 0 0 0 0 Output 1 Input 1 5 4 Output 5 Note In the example one of\nthe possible score sequences leading to the maximum number of draws is as\nfollows: 0:0, 1:0, 2:0, 2:1, 3:1, 3:2, 3:3, 3:4.\n\n",
+        "cf_contest_id": 1131,
+        "cf_index": "B",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n2 0\r\n3 1\r\n3 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n0 0\r\n0 0\r\n0 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n5 4\r\n",
+                "5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n0 0\r\n2 2\r\n6 5\r\n7 7\r\n",
+                "8\r\n"
+            ],
+            [
+                "1\r\n1000000000 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n1000000000 1000000000\r\n",
+                "1000000001\r\n"
+            ],
+            [
+                "2\r\n500000000 500000000\r\n500000000 1000000000\r\n",
+                "500000001\r\n"
+            ],
+            [
+                "1\r\n0 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "11\r\n0 100000000\r\n200000000 100000000\r\n200000000 300000000\r\n400000000 300000000\r\n400000000 500000000\r\n600000000 500000000\r\n600000000 700000000\r\n800000000 700000000\r\n800000000 900000000\r\n1000000000 900000000\r\n1000000000 1000000000\r\n",
+                "11\r\n"
+            ],
+            [
+                "5\r\n0 0\r\n1 1\r\n2 4\r\n5 7\r\n9 9\r\n",
+                "8\r\n"
+            ],
+            [
+                "6\r\n5 5\r\n6 5\r\n6 8\r\n6 8\r\n8 8\r\n8 9\r\n",
+                "8\r\n"
+            ],
+            [
+                "7\r\n0 0\r\n0 0\r\n0 0\r\n2 1\r\n2 2\r\n6 7\r\n7 7\r\n",
+                "8\r\n"
+            ],
+            [
+                "8\r\n0 0\r\n2 1\r\n3 3\r\n3 5\r\n5 7\r\n7 7\r\n9 9\r\n9 9\r\n",
+                "8\r\n"
+            ],
+            [
+                "9\r\n0 0\r\n0 0\r\n1 2\r\n1 2\r\n2 4\r\n3 4\r\n7 8\r\n7 8\r\n8 9\r\n",
+                "8\r\n"
+            ],
+            [
+                "10\r\n0 0\r\n0 1\r\n2 1\r\n2 3\r\n4 3\r\n5 4\r\n5 4\r\n5 5\r\n5 6\r\n7 8\r\n",
+                "8\r\n"
+            ],
+            [
+                "1\r\n9 8\r\n",
+                "9\r\n"
+            ],
+            [
+                "2\r\n3 5\r\n9 9\r\n",
+                "9\r\n"
+            ],
+            [
+                "3\r\n0 0\r\n4 4\r\n8 8\r\n",
+                "9\r\n"
+            ],
+            [
+                "4\r\n1 1\r\n6 5\r\n6 5\r\n8 9\r\n",
+                "9\r\n"
+            ],
+            [
+                "5\r\n0 1\r\n3 2\r\n3 3\r\n5 4\r\n9 8\r\n",
+                "9\r\n"
+            ],
+            [
+                "6\r\n2 0\r\n5 4\r\n5 5\r\n6 7\r\n7 7\r\n9 9\r\n",
+                "9\r\n"
+            ],
+            [
+                "7\r\n1 1\r\n1 1\r\n4 4\r\n7 6\r\n8 7\r\n8 8\r\n8 8\r\n",
+                "9\r\n"
+            ],
+            [
+                "8\r\n1 0\r\n2 3\r\n2 3\r\n5 4\r\n7 6\r\n8 7\r\n8 9\r\n8 9\r\n",
+                "9\r\n"
+            ],
+            [
+                "9\r\n1 0\r\n4 2\r\n4 4\r\n4 5\r\n4 5\r\n7 6\r\n7 7\r\n9 9\r\n9 9\r\n",
+                "9\r\n"
+            ],
+            [
+                "10\r\n0 1\r\n3 2\r\n3 3\r\n3 4\r\n3 4\r\n4 4\r\n6 5\r\n7 7\r\n8 7\r\n8 8\r\n",
+                "9\r\n"
+            ],
+            [
+                "1\r\n9 9\r\n",
+                "10\r\n"
+            ],
+            [
+                "2\r\n1 0\r\n9 9\r\n",
+                "10\r\n"
+            ],
+            [
+                "3\r\n5 4\r\n6 7\r\n9 9\r\n",
+                "10\r\n"
+            ],
+            [
+                "4\r\n7 7\r\n8 7\r\n8 8\r\n9 9\r\n",
+                "10\r\n"
+            ],
+            [
+                "5\r\n0 0\r\n0 0\r\n2 2\r\n4 5\r\n9 9\r\n",
+                "10\r\n"
+            ],
+            [
+                "6\r\n0 0\r\n0 1\r\n1 1\r\n8 7\r\n8 8\r\n9 9\r\n",
+                "10\r\n"
+            ],
+            [
+                "7\r\n0 1\r\n1 1\r\n1 2\r\n1 2\r\n9 9\r\n9 9\r\n9 9\r\n",
+                "10\r\n"
+            ],
+            [
+                "8\r\n0 0\r\n1 1\r\n3 4\r\n5 5\r\n5 5\r\n6 5\r\n8 9\r\n9 9\r\n",
+                "10\r\n"
+            ],
+            [
+                "9\r\n0 0\r\n3 3\r\n6 6\r\n6 6\r\n7 6\r\n7 8\r\n7 8\r\n8 8\r\n9 9\r\n",
+                "10\r\n"
+            ],
+            [
+                "10\r\n0 0\r\n2 2\r\n4 5\r\n4 5\r\n6 5\r\n6 6\r\n6 6\r\n6 7\r\n9 9\r\n9 9\r\n",
+                "10\r\n"
+            ]
+        ]
+    }
+]

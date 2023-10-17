@@ -1,0 +1,64 @@
+[
+    {
+        "name": "Falling Blocks",
+        "description": "Recently, Polycarp has invented a new mobile game with falling blocks. In the\ngame, \n    n\n blocks are falling down, one at a time, towards a flat surface\nwith length \n    d\n units. Each block can be represented as a rectangle with\ncoordinates from \n    l_i\n to \n    r_i\n and unit height, dropped downwards\nfrom very high up. A block falls until it comes in contact with the flat\nsurface or any other block. Let's define that block \n    a\n covers block\n\n    b\n if \n    l_a \n    \u2264 l_b \n    \u2264 r_b \n    \u2264 r_a\n. Consider what happens when\na new block \n    i\n falls. If the new (upper) block \n    i\n comes in contact\nwith any block \n    j\n such that block \n    i\n does not cover block \n    j\n,\nblock \n    i\n will stick to block \n    j\n, and no blocks will disappear.\nOtherwise, all blocks that block \n    i\n covers and is in contact with will be\nvaporized, and block \n    i\n will continue falling with the ability to\nvaporize lower blocks. For example, consider what happens when three blocks\n\n    (1,2)\n, \n    (2,3)\n and \n    (1,3)\n fall, in that order. The first block\nwill stick to the flat surface. Then, the second block will stick to the first\nblock. Finally, the third block will vaporize the second block, keep falling,\nvaporize the first block, and stick to the flat surface. Here is a graphic for\nthe first example. After each block falls, help Polycarp determine how many\nblocks will remain! Input The first line contains two integers \n    n\n and\n\n    d\n (\n    1 \n    \u2264 n, d \n    \u2264 10^5\n) \u2014 the number of falling blocks and the\nlength of the flat surface. The \n    i\n-th of the following \n    n\n lines\ncontains integers \n    l_i\n and \n    r_i\n (\n    1 \n    \u2264 l_i \n    \u2264 r_i \n    \u2264\n    d\n) \u2014 the coordinates of the \n    i\n-th block. Output Output \n    n\n\nintegers. The \n    i\n-th integer should be the number of blocks that will be\nleft after the \n    i\n-th block falls. Examples Input 3 3 1 2 2 3 1 3 Output 1\n2 1 Input 8 6 1 2 3 3 2 3 1 3 2 4 3 6 1 5 1 5 Output 1 2 3 1 2 3 4 4 Note The\nfirst example is explained above. In the second example, this is what happens\nafter each block falls: Block \n    1\n will stick to the flat surface. Block\n\n    2\n will stick to the flat surface. Block \n    3\n will stick to blocks\n\n    1\n and \n    2\n. Note that block \n    3\n will not vaporize block \n    2\n\nbecause it does not cover block \n    1\n and is in contact with it. Block\n\n    4\n will vaporize all the blocks and stick to the flat surface. Block\n\n    5\n will stick to block \n    4\n Block \n    6\n will stick to block \n    5\n.\nBlock \n    7\n will stick to block \n    6\n. Note that no blocks are vaporized\nbecause although block \n    7\n covers block \n    4\n and block \n    5\n, they\nnever come in contact. Block \n    8\n vaporizes block \n    7\n and sticks to\nblock \n    6\n.\n\n",
+        "cf_contest_id": 1297,
+        "cf_index": "I",
+        "cf_rating": 0,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "data structures"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3 3\r\n1 2\r\n2 3\r\n1 3\r\n",
+                "1\n2\n1\n"
+            ],
+            [
+                "8 6\r\n1 2\r\n3 3\r\n2 3\r\n1 3\r\n2 4\r\n3 6\r\n1 5\r\n1 5\r\n",
+                "1\n2\n3\n1\n2\n3\n4\n4\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 7\r\n1 4\r\n5 6\r\n2 5\r\n3 7\r\n",
+                "1\n2\n3\n4\n"
+            ],
+            [
+                "5 4\r\n1 1\r\n3 4\r\n1 2\r\n4 4\r\n2 4\r\n",
+                "1\n2\n2\n3\n3\n"
+            ],
+            [
+                "5 3\r\n1 1\r\n3 3\r\n1 2\r\n3 3\r\n2 3\r\n",
+                "1\n2\n2\n2\n3\n"
+            ],
+            [
+                "3 3\r\n1 2\r\n2 3\r\n2 3\r\n",
+                "1\n2\n2\n"
+            ],
+            [
+                "5 20\r\n1 3\r\n4 7\r\n9 10\r\n11 12\r\n14 16\r\n",
+                "1\n2\n3\n4\n5\n"
+            ],
+            [
+                "10 10\r\n1 9\r\n6 7\r\n2 4\r\n7 8\r\n1 3\r\n10 10\r\n3 5\r\n6 7\r\n1 10\r\n6 6\r\n",
+                "1\n2\n3\n4\n5\n6\n7\n8\n1\n2\n"
+            ],
+            [
+                "10 10\r\n8 8\r\n9 10\r\n7 9\r\n6 9\r\n3 7\r\n2 7\r\n3 9\r\n2 9\r\n2 10\r\n1 10\r\n",
+                "1\n2\n3\n3\n4\n4\n5\n3\n1\n1\n"
+            ],
+            [
+                "1 100000\r\n69 420\r\n",
+                "1\n"
+            ],
+            [
+                "1 1\r\n1 1\r\n",
+                "1\n"
+            ]
+        ]
+    }
+]

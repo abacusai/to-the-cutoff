@@ -1,0 +1,238 @@
+[
+    {
+        "name": "Bank Hacking",
+        "description": "Although Inzane successfully found his beloved bone, Zane, his owner, has yet\nto return. To search for Zane, he would need a lot of money, of which he sadly\nhas none. To deal with the problem, he has decided to hack the banks. There\nare n banks, numbered from 1 to n. There are also n - 1 wires connecting the\nbanks. All banks are initially online. Each bank also has its initial\nstrength: bank i has initial strength ai. Let us define some keywords before\nwe proceed. Bank i and bank j are neighboring if and only if there exists a\nwire directly connecting them. Bank i and bank j are semi-neighboring if and\nonly if there exists an online bank k such that bank i and bank k are\nneighboring and bank k and bank j are neighboring. When a bank is hacked, it\nbecomes offline (and no longer online), and other banks that are neighboring\nor semi-neighboring to it have their strengths increased by 1. To start his\nplan, Inzane will choose a bank to hack first. Indeed, the strength of such\nbank must not exceed the strength of his computer. After this, he will\nrepeatedly choose some bank to hack next until all the banks are hacked, but\nhe can continue to hack bank x if and only if all these conditions are met:\nBank x is online. That is, bank x is not hacked yet. Bank x is neighboring to\nsome offline bank. The strength of bank x is less than or equal to the\nstrength of Inzane's computer. Determine the minimum strength of the computer\nInzane needs to hack all the banks. Input The first line contains one integer\nn (1 \u2264 n \u2264 3\u00b710^5) \u2014 the total number of banks. The second line contains n\nintegers a1, a2, ..., an ( - 10^9 \u2264 ai \u2264 10^9) \u2014 the strengths of the banks.\nEach of the next n - 1 lines contains two integers ui and vi (1 \u2264 ui, vi \u2264 n,\nui \u2260 vi) \u2014 meaning that there is a wire directly connecting banks ui and vi.\nIt is guaranteed that the wires connect the banks in such a way that Inzane\ncan somehow hack all the banks using a computer with appropriate strength.\nOutput Print one integer \u2014 the minimum strength of the computer Inzane needs\nto accomplish the goal. Examples Input 5 1 2 3 4 5 1 2 2 3 3 4 4 5 Output 5\nInput 7 38 -29 87 93 39 28 -55 1 2 2 5 3 2 2 4 1 7 7 6 Output 93 Input 5 1 2 7\n6 7 1 5 5 3 3 4 2 4 Output 8 Note In the first sample, Inzane can hack all\nbanks using a computer with strength 5. Here is how: Initially, strengths of\nthe banks are [1, 2, 3, 4, 5]. He hacks bank 5, then strengths of the banks\nbecome [1, 2, 4, 5, - ]. He hacks bank 4, then strengths of the banks become\n[1, 3, 5, - , - ]. He hacks bank 3, then strengths of the banks become [2, 4,\n- , - , - ]. He hacks bank 2, then strengths of the banks become [3, - , - , -\n, - ]. He completes his goal by hacking bank 1. In the second sample, Inzane\ncan hack banks 4, 2, 3, 1, 5, 7, and 6, in this order. This way, he can hack\nall banks using a computer with strength 93.\n\n",
+        "cf_contest_id": 796,
+        "cf_index": "C",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n1 2 3 4 5\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n",
+                "5"
+            ],
+            [
+                "7\r\n38 -29 87 93 39 28 -55\r\n1 2\r\n2 5\r\n3 2\r\n2 4\r\n1 7\r\n7 6\r\n",
+                "93"
+            ],
+            [
+                "5\r\n1 2 7 6 7\r\n1 5\r\n5 3\r\n3 4\r\n2 4\r\n",
+                "8"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n2 2 2\r\n3 2\r\n1 2\r\n",
+                "3"
+            ],
+            [
+                "3\r\n999397 999397 999397\r\n2 3\r\n2 1\r\n",
+                "999398"
+            ],
+            [
+                "5\r\n1000000000 0 1000000000 0 1000000000\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n",
+                "1000000002"
+            ],
+            [
+                "10\r\n-1000000000 -1000000000 -1000000000 -1000000000 -1000000000 -1000000000 -1000000000 -1000000000 -1000000000 -1000000000\r\n10 3\r\n7 4\r\n2 6\r\n9 2\r\n5 10\r\n1 8\r\n7 8\r\n7 2\r\n10 6\r\n",
+                "-999999998"
+            ],
+            [
+                "1\r\n0\r\n",
+                "0"
+            ],
+            [
+                "2\r\n0 0\r\n2 1\r\n",
+                "1"
+            ],
+            [
+                "3\r\n0 0 0\r\n1 3\r\n2 3\r\n",
+                "1"
+            ],
+            [
+                "1\r\n0\r\n",
+                "0"
+            ],
+            [
+                "2\r\n0 0\r\n2 1\r\n",
+                "1"
+            ],
+            [
+                "2\r\n0 1\r\n2 1\r\n",
+                "1"
+            ],
+            [
+                "3\r\n0 0 0\r\n1 3\r\n2 3\r\n",
+                "1"
+            ],
+            [
+                "3\r\n1 0 0\r\n2 1\r\n3 2\r\n",
+                "2"
+            ],
+            [
+                "3\r\n-2 -2 2\r\n1 3\r\n2 1\r\n",
+                "2"
+            ],
+            [
+                "4\r\n0 0 0 0\r\n2 4\r\n1 4\r\n3 2\r\n",
+                "2"
+            ],
+            [
+                "4\r\n0 0 0 -1\r\n3 1\r\n4 1\r\n2 4\r\n",
+                "2"
+            ],
+            [
+                "4\r\n1 -2 2 2\r\n4 3\r\n2 4\r\n1 2\r\n",
+                "3"
+            ],
+            [
+                "5\r\n0 0 0 0 0\r\n3 2\r\n1 2\r\n5 1\r\n4 2\r\n",
+                "2"
+            ],
+            [
+                "5\r\n-1 -1 -1 0 0\r\n4 3\r\n5 3\r\n1 4\r\n2 5\r\n",
+                "1"
+            ],
+            [
+                "5\r\n-2 -1 -2 1 0\r\n3 1\r\n5 1\r\n2 1\r\n4 2\r\n",
+                "2"
+            ],
+            [
+                "1\r\n-1000000000\r\n",
+                "-1000000000"
+            ],
+            [
+                "2\r\n-1000000000 -1000000000\r\n2 1\r\n",
+                "-999999999"
+            ],
+            [
+                "2\r\n-999999999 -1000000000\r\n1 2\r\n",
+                "-999999999"
+            ],
+            [
+                "3\r\n-1000000000 -1000000000 -1000000000\r\n3 1\r\n2 1\r\n",
+                "-999999999"
+            ],
+            [
+                "3\r\n-1000000000 -999999999 -1000000000\r\n1 2\r\n3 1\r\n",
+                "-999999998"
+            ],
+            [
+                "3\r\n-999999999 -999999998 -1000000000\r\n2 3\r\n1 2\r\n",
+                "-999999998"
+            ],
+            [
+                "1\r\n1000000000\r\n",
+                "1000000000"
+            ],
+            [
+                "2\r\n1000000000 1000000000\r\n2 1\r\n",
+                "1000000001"
+            ],
+            [
+                "2\r\n999999999 1000000000\r\n2 1\r\n",
+                "1000000000"
+            ],
+            [
+                "3\r\n1000000000 1000000000 1000000000\r\n1 3\r\n2 1\r\n",
+                "1000000001"
+            ],
+            [
+                "3\r\n999999999 1000000000 1000000000\r\n2 1\r\n3 2\r\n",
+                "1000000001"
+            ],
+            [
+                "3\r\n999999998 999999998 999999998\r\n1 3\r\n2 1\r\n",
+                "999999999"
+            ],
+            [
+                "3\r\n1000000000 -1000000000 1000000000\r\n1 2\r\n2 3\r\n",
+                "1000000001"
+            ],
+            [
+                "4\r\n1000000000 -1000000000 -1000000000 1000000000\r\n1 2\r\n3 2\r\n4 3\r\n",
+                "1000000002"
+            ],
+            [
+                "1\r\n-1000000000\r\n",
+                "-1000000000"
+            ],
+            [
+                "2\r\n-1000000000 -1\r\n1 2\r\n",
+                "-1"
+            ],
+            [
+                "3\r\n-1 -1000000000 -1000000000\r\n2 1\r\n3 1\r\n",
+                "-1"
+            ],
+            [
+                "5\r\n-1 -1000000000 -1 -2 -1\r\n5 2\r\n1 2\r\n3 2\r\n4 1\r\n",
+                "0"
+            ],
+            [
+                "10\r\n-2 -1000000000 -2 -1000000000 -2 -5 -3 -1 -2 -1000000000\r\n8 6\r\n10 6\r\n5 10\r\n3 10\r\n7 5\r\n2 8\r\n1 6\r\n4 1\r\n9 5\r\n",
+                "0"
+            ],
+            [
+                "4\r\n1 2 2 2\r\n1 2\r\n1 3\r\n1 4\r\n",
+                "3"
+            ],
+            [
+                "5\r\n1 1 7 7 7\r\n1 3\r\n2 3\r\n3 4\r\n4 5\r\n",
+                "8"
+            ],
+            [
+                "3\r\n10 1 10\r\n1 2\r\n2 3\r\n",
+                "11"
+            ],
+            [
+                "3\r\n8 7 8\r\n1 2\r\n2 3\r\n",
+                "9"
+            ],
+            [
+                "1\r\n-11\r\n",
+                "-11"
+            ],
+            [
+                "6\r\n10 1 10 1 1 1\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n",
+                "11"
+            ],
+            [
+                "3\r\n7 6 7\r\n1 2\r\n2 3\r\n",
+                "8"
+            ],
+            [
+                "7\r\n5 0 0 0 0 5 5\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n4 6\r\n4 7\r\n",
+                "6"
+            ],
+            [
+                "4\r\n7 1 1 7\r\n1 2\r\n1 3\r\n3 4\r\n",
+                "8"
+            ],
+            [
+                "6\r\n5 5 5 4 4 4\r\n1 2\r\n1 3\r\n3 4\r\n3 5\r\n3 6\r\n",
+                "6"
+            ],
+            [
+                "4\r\n1 93 93 93\r\n1 2\r\n1 3\r\n1 4\r\n",
+                "94"
+            ],
+            [
+                "3\r\n2 1 2\r\n1 2\r\n2 3\r\n",
+                "3"
+            ],
+            [
+                "6\r\n10 10 10 1 1 1\r\n1 2\r\n2 3\r\n3 4\r\n1 5\r\n1 6\r\n",
+                "11"
+            ]
+        ]
+    }
+]

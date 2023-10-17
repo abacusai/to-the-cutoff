@@ -1,0 +1,145 @@
+[
+    {
+        "name": "Power Tower",
+        "description": "Priests of the Quetzalcoatl cult want to build a tower to represent a power of\ntheir god. Tower is usually made of power-charged rocks. It is built with the\nhelp of rare magic by levitating the current top of tower and adding rocks at\nits bottom. If top, which is built from k - 1 rocks, possesses power p and we\nwant to add the rock charged with power wk then value of power of a new tower\nwill be wk^p. Rocks are added from the last to the first. That is for\nsequence w1, ..., wm value of power will be After tower is built, its power\nmay be extremely large. But still priests want to get some information about\nit, namely they want to know a number called cumulative power which is the\ntrue value of power taken modulo m. Priests have n rocks numbered from 1 to n.\nThey ask you to calculate which value of cumulative power will the tower\npossess if they will build it from rocks numbered l, l + 1, ..., r. Input\nFirst line of input contains two integers n (1 \u2264 n \u2264 10^5) and m (1 \u2264 m \u2264\n10^9). Second line of input contains n integers wk (1 \u2264 wk \u2264 10^9) which is\nthe power of rocks that priests have. Third line of input contains single\ninteger q (1 \u2264 q \u2264 10^5) which is amount of queries from priests to you. k^th\nof next q lines contains two integers lk and rk (1 \u2264 lk \u2264 rk \u2264 n). Output\nOutput q integers. k-th of them must be the amount of cumulative power the\ntower will have if is built from rocks lk, lk + 1, ..., rk. Example Input 6\n1000000000 1 2 2 3 3 3 8 1 1 1 6 2 2 2 3 2 4 4 4 4 5 4 6 Output 1 1 2 4 256 3\n27 597484987 Note 3^27 = 7625597484987\n\n",
+        "cf_contest_id": 906,
+        "cf_index": "D",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "chinese remainder theorem",
+            "math",
+            "number theory"
+        ],
+        "time_limit_seconds": 4.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 1000000000\r\n1 2 2 3 3 3\r\n8\r\n1 1\r\n1 6\r\n2 2\r\n2 3\r\n2 4\r\n4 4\r\n4 5\r\n4 6\r\n",
+                "1\r\n1\r\n2\r\n4\r\n256\r\n3\r\n27\r\n597484987\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 20\r\n792708224 4633945 600798790 384332600 283309209 762285205 750900274 160512987 390669628 205259431\r\n10\r\n5 9\r\n10 10\r\n8 10\r\n7 10\r\n7 10\r\n10 10\r\n4 4\r\n10 10\r\n7 7\r\n4 8\r\n",
+                "9\r\n11\r\n1\r\n4\r\n4\r\n11\r\n0\r\n11\r\n14\r\n0\r\n"
+            ],
+            [
+                "10 18634\r\n157997476 953632869 382859292 108314887 739258690 110965928 172586126 28393671 86410659 427585718\r\n10\r\n8 10\r\n6 10\r\n5 10\r\n1 5\r\n10 10\r\n2 5\r\n9 9\r\n7 10\r\n10 10\r\n7 8\r\n",
+                "15189\r\n1038\r\n6792\r\n3640\r\n9954\r\n18165\r\n4801\r\n10646\r\n9954\r\n7258\r\n"
+            ],
+            [
+                "10 50836233\r\n851634701 930436567 638750681 245433831 713210442 596964772 755991944 672347390 511061574 910341009\r\n10\r\n2 7\r\n6 8\r\n5 8\r\n9 10\r\n2 6\r\n1 10\r\n7 9\r\n5 9\r\n7 7\r\n1 9\r\n",
+                "12393313\r\n39557380\r\n49292502\r\n46903641\r\n12393313\r\n7141667\r\n33887764\r\n49292502\r\n44284682\r\n7141667\r\n"
+            ],
+            [
+                "10 1\r\n688064407 427303738 659797188 392572027 589349296 634815051 224079967 887153080 734271558 734494149\r\n10\r\n6 6\r\n3 5\r\n1 8\r\n3 6\r\n3 10\r\n4 7\r\n8 10\r\n8 8\r\n8 8\r\n10 10\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "10 2\r\n955038141 449680214 399763026 876295481 481249362 481742997 44362794 989248781 543311754 393585591\r\n10\r\n10 10\r\n7 10\r\n7 9\r\n5 5\r\n8 10\r\n7 10\r\n9 9\r\n2 9\r\n1 1\r\n2 5\r\n",
+                "1\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n1\r\n0\r\n"
+            ],
+            [
+                "10 1000000000\r\n641599168 361387653 420063230 331976084 135516559 581380892 330923930 354835866 161468011 903819305\r\n10\r\n5 7\r\n3 4\r\n6 9\r\n8 8\r\n9 9\r\n10 10\r\n2 4\r\n1 10\r\n8 10\r\n9 9\r\n",
+                "566300161\r\n0\r\n787109376\r\n354835866\r\n161468011\r\n903819305\r\n1\r\n766599168\r\n508591616\r\n161468011\r\n"
+            ],
+            [
+                "10 13\r\n26 81 5 48 77 72 64 31 64 64\r\n10\r\n2 9\r\n3 6\r\n6 10\r\n3 9\r\n3 3\r\n10 10\r\n6 9\r\n7 8\r\n7 9\r\n7 7\r\n",
+                "3\r\n1\r\n9\r\n1\r\n5\r\n12\r\n9\r\n12\r\n12\r\n12\r\n"
+            ],
+            [
+                "10 11626\r\n75 62 33 89 15 23 79 44 42 64\r\n10\r\n3 10\r\n8 9\r\n4 6\r\n1 3\r\n8 9\r\n2 7\r\n10 10\r\n4 8\r\n4 4\r\n9 10\r\n",
+                "9537\r\n4034\r\n1353\r\n6273\r\n4034\r\n4810\r\n64\r\n475\r\n89\r\n1090\r\n"
+            ],
+            [
+                "10 493276887\r\n45 69 40 89 90 36 66 45 80 79\r\n10\r\n6 8\r\n7 10\r\n9 10\r\n2 4\r\n3 3\r\n4 10\r\n6 10\r\n2 6\r\n1 9\r\n7 8\r\n",
+                "9246240\r\n133793487\r\n168548840\r\n347974281\r\n40\r\n335479897\r\n429073974\r\n253420560\r\n465717924\r\n439476282\r\n"
+            ],
+            [
+                "10 1\r\n90 2 82 24 22 84 7 7 71 96\r\n10\r\n5 7\r\n2 9\r\n5 5\r\n9 10\r\n1 2\r\n10 10\r\n2 4\r\n7 8\r\n4 8\r\n2 7\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "10 2\r\n82 24 48 92 69 79 34 61 22 51\r\n10\r\n7 9\r\n3 8\r\n10 10\r\n6 10\r\n4 10\r\n7 10\r\n2 2\r\n7 10\r\n9 10\r\n4 7\r\n",
+                "0\r\n0\r\n1\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "10 1000000000\r\n38 41 74 34 75 43 34 67 80 61\r\n10\r\n3 9\r\n3 8\r\n3 4\r\n8 9\r\n3 3\r\n5 5\r\n10 10\r\n6 10\r\n8 9\r\n10 10\r\n",
+                "678552576\r\n678552576\r\n570840576\r\n371278401\r\n74\r\n75\r\n61\r\n683084801\r\n371278401\r\n61\r\n"
+            ],
+            [
+                "10 17\r\n3 1 4 3 2 3 2 4 1 2\r\n10\r\n8 10\r\n3 6\r\n10 10\r\n2 4\r\n2 9\r\n2 4\r\n10 10\r\n10 10\r\n1 6\r\n8 9\r\n",
+                "4\r\n4\r\n2\r\n1\r\n1\r\n1\r\n2\r\n2\r\n3\r\n4\r\n"
+            ],
+            [
+                "10 16228\r\n2 1 1 3 2 1 1 3 2 4\r\n10\r\n8 10\r\n2 5\r\n9 10\r\n8 9\r\n3 4\r\n5 7\r\n1 3\r\n6 6\r\n8 10\r\n2 8\r\n",
+                "10065\r\n1\r\n16\r\n9\r\n1\r\n2\r\n2\r\n1\r\n10065\r\n1\r\n"
+            ],
+            [
+                "10 544434102\r\n1 4 4 2 3 1 1 2 3 2\r\n10\r\n3 9\r\n8 10\r\n8 8\r\n10 10\r\n1 10\r\n4 9\r\n3 8\r\n2 7\r\n10 10\r\n10 10\r\n",
+                "65536\r\n512\r\n2\r\n2\r\n1\r\n8\r\n65536\r\n127776064\r\n2\r\n2\r\n"
+            ],
+            [
+                "10 1\r\n2 1 1 4 2 1 2 3 4 1\r\n10\r\n6 8\r\n9 9\r\n10 10\r\n9 9\r\n10 10\r\n3 7\r\n5 7\r\n5 5\r\n9 9\r\n1 6\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "10 2\r\n2 1 3 2 2 3 1 2 2 4\r\n10\r\n5 7\r\n9 10\r\n6 8\r\n8 10\r\n10 10\r\n3 10\r\n8 10\r\n2 7\r\n9 10\r\n10 10\r\n",
+                "0\r\n0\r\n1\r\n0\r\n0\r\n1\r\n0\r\n1\r\n0\r\n0\r\n"
+            ],
+            [
+                "10 1000000000\r\n1 1 4 4 4 1 1 2 1 2\r\n10\r\n3 7\r\n3 9\r\n2 5\r\n3 9\r\n1 9\r\n7 10\r\n5 10\r\n3 9\r\n5 5\r\n10 10\r\n",
+                "6084096\r\n6084096\r\n1\r\n6084096\r\n1\r\n1\r\n4\r\n6084096\r\n4\r\n2\r\n"
+            ],
+            [
+                "10 17\r\n3 1 4 3 2 3 2 4 1 2\r\n10\r\n8 10\r\n3 4\r\n10 10\r\n2 2\r\n2 4\r\n2 5\r\n10 10\r\n10 10\r\n1 1\r\n8 9\r\n",
+                "4\r\n13\r\n2\r\n1\r\n1\r\n1\r\n2\r\n2\r\n3\r\n4\r\n"
+            ],
+            [
+                "10 16228\r\n2 1 1 3 2 1 1 3 2 4\r\n10\r\n8 10\r\n2 6\r\n9 10\r\n8 9\r\n3 4\r\n5 8\r\n1 3\r\n6 6\r\n8 10\r\n2 6\r\n",
+                "10065\r\n1\r\n16\r\n9\r\n1\r\n2\r\n2\r\n1\r\n10065\r\n1\r\n"
+            ],
+            [
+                "10 544434102\r\n1 4 4 2 3 1 1 2 3 2\r\n10\r\n3 3\r\n8 10\r\n8 8\r\n10 10\r\n1 5\r\n4 7\r\n3 4\r\n2 5\r\n10 10\r\n10 10\r\n",
+                "4\r\n512\r\n2\r\n2\r\n1\r\n8\r\n16\r\n127776064\r\n2\r\n2\r\n"
+            ],
+            [
+                "10 1\r\n2 1 1 4 2 1 2 3 4 1\r\n10\r\n6 8\r\n9 9\r\n10 10\r\n9 9\r\n10 10\r\n3 7\r\n5 9\r\n5 9\r\n9 9\r\n1 1\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "10 2\r\n2 1 3 2 2 3 1 2 2 4\r\n10\r\n5 8\r\n9 10\r\n6 8\r\n8 10\r\n10 10\r\n3 6\r\n8 10\r\n2 4\r\n9 10\r\n10 10\r\n",
+                "0\r\n0\r\n1\r\n0\r\n0\r\n1\r\n0\r\n1\r\n0\r\n0\r\n"
+            ],
+            [
+                "10 1000000000\r\n1 1 4 4 4 1 1 2 1 2\r\n10\r\n3 6\r\n3 5\r\n2 2\r\n3 3\r\n1 4\r\n7 10\r\n5 8\r\n3 4\r\n5 6\r\n10 10\r\n",
+                "6084096\r\n6084096\r\n1\r\n4\r\n1\r\n1\r\n4\r\n256\r\n4\r\n2\r\n"
+            ],
+            [
+                "10 20\r\n792708224 4633945 600798790 384332600 283309209 762285205 750900274 160512987 390669628 205259431\r\n10\r\n5 9\r\n10 10\r\n8 10\r\n7 10\r\n7 10\r\n10 10\r\n4 6\r\n10 10\r\n7 7\r\n4 5\r\n",
+                "9\r\n11\r\n1\r\n4\r\n4\r\n11\r\n0\r\n11\r\n14\r\n0\r\n"
+            ],
+            [
+                "10 18634\r\n157997476 953632869 382859292 108314887 739258690 110965928 172586126 28393671 86410659 427585718\r\n10\r\n8 10\r\n6 10\r\n5 7\r\n1 5\r\n10 10\r\n2 4\r\n9 9\r\n7 10\r\n10 10\r\n7 8\r\n",
+                "15189\r\n1038\r\n8556\r\n3640\r\n9954\r\n2093\r\n4801\r\n10646\r\n9954\r\n7258\r\n"
+            ],
+            [
+                "10 50836233\r\n851634701 930436567 638750681 245433831 713210442 596964772 755991944 672347390 511061574 910341009\r\n10\r\n2 3\r\n6 8\r\n5 7\r\n9 10\r\n2 4\r\n1 5\r\n7 9\r\n5 6\r\n7 7\r\n1 4\r\n",
+                "50678308\r\n39557380\r\n29895264\r\n46903641\r\n9930496\r\n7141667\r\n33887764\r\n3470796\r\n44284682\r\n7141667\r\n"
+            ],
+            [
+                "10 1\r\n688064407 427303738 659797188 392572027 589349296 634815051 224079967 887153080 734271558 734494149\r\n10\r\n6 6\r\n3 5\r\n1 3\r\n3 4\r\n3 7\r\n4 8\r\n8 10\r\n8 8\r\n8 8\r\n10 10\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "10 2\r\n955038141 449680214 399763026 876295481 481249362 481742997 44362794 989248781 543311754 393585591\r\n10\r\n10 10\r\n7 10\r\n7 9\r\n5 6\r\n8 10\r\n7 10\r\n9 9\r\n2 3\r\n1 1\r\n2 5\r\n",
+                "1\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n1\r\n0\r\n"
+            ],
+            [
+                "10 1000000000\r\n641599168 361387653 420063230 331976084 135516559 581380892 330923930 354835866 161468011 903819305\r\n10\r\n5 8\r\n3 7\r\n6 9\r\n8 8\r\n9 9\r\n10 10\r\n2 4\r\n1 5\r\n8 10\r\n9 9\r\n",
+                "20733441\r\n0\r\n787109376\r\n354835866\r\n161468011\r\n903819305\r\n1\r\n766599168\r\n508591616\r\n161468011\r\n"
+            ]
+        ]
+    }
+]

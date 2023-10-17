@@ -1,0 +1,94 @@
+[
+    {
+        "name": "Tree Shuffling",
+        "description": "Ashish has a tree consisting of \n    n\n nodes numbered \n    1\n to \n    n\n\nrooted at node \n    1\n. The \n    i\n-th node in the tree has a cost \n    a_i\n,\nand binary digit \n    b_i\n is written in it. He wants to have binary digit\n\n    c_i\n written in the \n    i\n-th node in the end. To achieve this, he can\nperform the following operation any number of times: Select any \n    k\n nodes\nfrom the subtree of any node \n    u\n, and shuffle the digits in these nodes as\nhe wishes, incurring a cost of \n    k \n    \u00b7 a_u\n. Here, he can choose\n\n    k\n ranging from \n    1\n to the size of the subtree of \n    u\n. He wants\nto perform the operations in such a way that every node finally has the digit\ncorresponding to its target. Help him find the minimum total cost he needs to\nspend so that after all the operations, every node \n    u\n has digit \n    c_u\n\nwritten in it, or determine that it is impossible. Input First line contains a\nsingle integer \n    n\n \n    (1 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5)\n denoting the\nnumber of nodes in the tree. \n    i\n-th line of the next \n    n\n lines\ncontains 3 space-separated integers \n    a_i\n, \n    b_i\n, \n    c_i\n \n    (1\n    \n    \u2264 a_i \n    \u2264 10^9, 0 \n    \u2264 b_i, c_i \n    \u2264 1)\n \u2014 the cost of the\n\n    i\n-th node, its initial digit and its goal digit. Each of the next \n    n -\n    1\n lines contain two integers \n    u\n, \n    v\n \n    (1 \n    \u2264 u, v \n    \u2264 n,\n    \n     u \n     v)\n, meaning that there is an edge between nodes \n    u\n\nand \n    v\n in the tree. Output Print the minimum total cost to make every\nnode reach its target digit, and \n    -1\n if it is impossible. Examples Input\n5 1 0 1 20 1 0 300 0 1 4000 0 0 50000 1 0 1 2 2 3 2 4 1 5 Output 4 Input 5\n10000 0 1 2000 1 0 300 0 1 40 0 0 1 1 0 1 2 2 3 2 4 1 5 Output 24000 Input 2\n109 0 1 205 0 1 1 2 Output -1 Note The tree corresponding to samples \n    1\n\nand \n    2\n are: In sample \n    1\n, we can choose node \n    1\n and \n    k = 4\n\nfor a cost of \n    4 \n    \u00b7 1\n = \n    4\n and select nodes \n    1, 2, 3, 5\n,\nshuffle their digits and get the desired digits in every node. In sample\n\n    2\n, we can choose node \n    1\n and \n    k = 2\n for a cost of \n    10000\n    \n    \u00b7 2\n, select nodes \n    1, 5\n and exchange their digits, and\nsimilarly, choose node \n    2\n and \n    k = 2\n for a cost of \n    2000 \n    \u00b7\n    2\n, select nodes \n    2, 3\n and exchange their digits to get the desired\ndigits in every node. In sample \n    3\n, it is impossible to get the desired\ndigits, because there is no node with digit \n    1\n initially.\n\n",
+        "cf_contest_id": 1363,
+        "cf_index": "E",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n1 0 1\r\n20 1 0\r\n300 0 1\r\n4000 0 0\r\n50000 1 0\r\n1 2\r\n2 3\r\n2 4\r\n1 5\r\n",
+                "4\r\n"
+            ],
+            [
+                "5\r\n10000 0 1\r\n2000 1 0\r\n300 0 1\r\n40 0 0\r\n1 1 0\r\n1 2\r\n2 3\r\n2 4\r\n1 5\r\n",
+                "24000\r\n"
+            ],
+            [
+                "2\r\n109 0 1\r\n205 0 1\r\n1 2\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "8\r\n82 0 0\r\n3 1 1\r\n53 0 0\r\n5 0 0\r\n81 0 1\r\n56 1 0\r\n99 1 0\r\n87 0 1\r\n5 7\r\n2 8\r\n4 7\r\n4 1\r\n3 2\r\n2 5\r\n8 6\r\n",
+                "16\r\n"
+            ],
+            [
+                "10\r\n64 0 0\r\n10 0 0\r\n17 0 1\r\n90 1 1\r\n97 1 1\r\n19 1 0\r\n26 1 1\r\n95 1 1\r\n46 0 0\r\n86 0 0\r\n5 4\r\n7 1\r\n9 5\r\n6 8\r\n1 6\r\n7 5\r\n8 10\r\n3 7\r\n3 2\r\n",
+                "128\r\n"
+            ],
+            [
+                "1\r\n98 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "5\r\n17 1 1\r\n64 0 0\r\n41 1 1\r\n100 0 0\r\n37 1 1\r\n5 4\r\n3 5\r\n3 1\r\n5 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "9\r\n71 1 1\r\n59 0 0\r\n87 0 0\r\n9 0 1\r\n39 1 1\r\n3 1 1\r\n72 0 0\r\n96 1 0\r\n100 1 1\r\n1 4\r\n3 7\r\n9 5\r\n1 8\r\n3 2\r\n6 8\r\n4 5\r\n3 5\r\n",
+                "142\r\n"
+            ],
+            [
+                "7\r\n28 0 1\r\n56 1 0\r\n40 1 0\r\n34 1 0\r\n12 0 0\r\n27 0 1\r\n15 0 1\r\n4 6\r\n4 7\r\n6 1\r\n5 3\r\n3 2\r\n4 5\r\n",
+                "164\r\n"
+            ],
+            [
+                "7\r\n62 1 1\r\n72 1 1\r\n95 1 1\r\n59 0 0\r\n52 1 1\r\n99 0 1\r\n1 1 0\r\n4 3\r\n1 6\r\n5 3\r\n2 6\r\n7 4\r\n2 5\r\n",
+                "124\r\n"
+            ],
+            [
+                "10\r\n92 0 1\r\n19 1 0\r\n46 1 0\r\n53 1 0\r\n13 1 0\r\n63 0 1\r\n3 0 1\r\n67 1 0\r\n20 0 1\r\n82 0 1\r\n6 5\r\n9 1\r\n3 7\r\n10 4\r\n4 8\r\n2 8\r\n5 2\r\n3 8\r\n9 10\r\n",
+                "330\r\n"
+            ],
+            [
+                "7\r\n87 1 0\r\n69 0 0\r\n61 0 0\r\n88 0 1\r\n46 0 1\r\n39 1 0\r\n91 1 1\r\n6 4\r\n5 6\r\n2 7\r\n2 4\r\n3 7\r\n6 1\r\n",
+                "252\r\n"
+            ],
+            [
+                "1\r\n35 0 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n57 1 0\r\n6 0 1\r\n76 1 1\r\n1 3\r\n3 2\r\n",
+                "114\r\n"
+            ],
+            [
+                "7\r\n43 0 1\r\n41 1 0\r\n53 1 0\r\n52 1 0\r\n35 0 1\r\n36 0 0\r\n96 0 1\r\n6 4\r\n5 7\r\n2 1\r\n6 2\r\n5 3\r\n6 3\r\n",
+                "230\r\n"
+            ],
+            [
+                "3\r\n82 0 0\r\n2 1 1\r\n88 0 0\r\n3 1\r\n3 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "7\r\n3 1 0\r\n5 0 1\r\n16 0 1\r\n64 0 1\r\n37 1 0\r\n97 1 1\r\n36 1 0\r\n7 1\r\n1 4\r\n4 5\r\n2 4\r\n4 6\r\n1 3\r\n",
+                "18\r\n"
+            ],
+            [
+                "5\r\n67 0 0\r\n96 1 0\r\n40 0 1\r\n59 0 0\r\n17 0 0\r\n4 5\r\n1 4\r\n5 2\r\n5 3\r\n",
+                "34\r\n"
+            ]
+        ]
+    }
+]

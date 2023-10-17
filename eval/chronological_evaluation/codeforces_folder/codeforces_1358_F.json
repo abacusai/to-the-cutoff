@@ -1,0 +1,330 @@
+[
+    {
+        "name": "Tasty Cookie",
+        "description": "Oh, no! The coronavirus has caught you, and now you're sitting in a dark\ncellar, with tied legs (but not hands). You have a delicious cookie, a laptop\nin front of you, and your ideal development environment is open. The\ncoronavirus convinces you to solve the following problem. You are given two\narrays \n    A\n and \n    B\n of size \n    n\n. You can do operations of two types\nwith array \n    A\n: Reverse array \n    A\n. That is the array \n    [A_1,\n    A_2,\n     \n    \u2026,\n     A_n]\n transformes into \n    [A_n,\n     A_n-1,\n    \n    \u2026,\n     A_1]\n. Replace \n    A\n with an array of its prefix sums. That\nis, the array \n    [A_1,\n     A_2,\n     \n    \u2026,\n     A_n]\n goes to \n    [A_1,\n    (A_1+A_2),\n     \n    \u2026,\n     (A_1+A_2+\n    \u2026+A_n)]\n. You need to understand\nif you can get an array \n    B\n from the array \n    A\n. If it is possible, you\nwill have to restore the order of these operations by minimizing the number of\noperations of the second type. Fortunately, the coronavirus is good today, so\nhe has allowed you not to restore actions if the minimum number of second type\noperations is more than \n    2\n    \u00b7 10^5\n. But coronavirus resents you, so\nif you restore the answer, the total number of operations should not exceed\n\n    5\n    \u00b7 10^5\n. Solve this problem and get the cookie, or the coronavirus\nwill extend the quarantine for five years and make the whole economy collapse!\nInput The first line contains a single integer \n    n\n (\n    1\n    \u2264 n \n    \u2264\n    2\n    \u00b7 10^5\n). The second line contains \n    n\n integers \n    A_1, A_2,\n    \n    \u2026, A_n\n (\n    1 \n    \u2264 A_i \n    \u2264 10 ^ 12\n). The third line contains\n\n    n\n integers \n    B_1, B_2, \n    \u2026, B_n\n (\n    1 \n    \u2264 B_i \n    \u2264 10 ^\n    12\n). Output If you cannot get \n    B\n from the \n    A\n array, print\n\"IMPOSSIBLE\" (without quotes) on a single line. If the minimum number of\noperations of the second type exceeds \n    2\n    \u00b7 10^5\n, print \"BIG\"\n(without quotes). In the second line print the number of operations of the\nsecond type, that needs to be applied to get array \n    B\n from \n    A\n.\nOtherwise, in the first line print \"SMALL\" (without quotes). In the second\nline print the total number of operations of the first and second types \n    m\n    \n    \u2264 5\n    \u00b7 10^5\n (it is guaranteed that in this case there is such a\nsequence of actions). In the third line print a line of length \n    m\n,\nconsisting of characters 'R\"and 'P' (without quotes). The \n    i\n-th character\nshould be 'R', if the \n    i\n-th action is of the first type, and should be\n'P', otherwise. If there are several such sequences, you can print any of\nthem. You can print each character in the uppercase or in the lowercase.\nExamples Input 2 5 7 5 7 Output SMALL 0 Input 2 1 1 300000 1 Output BIG 299999\nInput 2 10 1 13 14 Output SMALL 6 RPPPRP Input 3 1 2 1 2 1 2 Output IMPOSSIBLE\nNote In the first example, the arrays \n    A\n and \n    B\n already equal, so\nthe number of required operations \n    =0\n. In the second example, we need to\nreplace \n    A\n with the prefix sums \n    299999\n times and then reverse the\narray. Since \n    299999>2\n    \u00b7 10^5\n, there is no need to restore the\nanswer. In the fourth example, you cannot get \n    B\n from the \n    A\n.\n\n",
+        "cf_contest_id": 1358,
+        "cf_index": "F",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n5 7\r\n5 7\r\n",
+                "SMALL\r\n0\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n300000 1\r\n",
+                "BIG\r\n299999"
+            ],
+            [
+                "2\r\n10 1\r\n13 14\r\n",
+                "SMALL\r\n6\r\nRPPPRP"
+            ],
+            [
+                "3\r\n1 2 1\r\n2 1 2\r\n",
+                "IMPOSSIBLE"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n887 6212 3503 3195\r\n144935 192803 203450 204337\r\n",
+                "SMALL\r\n7\r\nPPPPPRP"
+            ],
+            [
+                "3\r\n2244 9486 6364\r\n126396 710090 2318558\r\n",
+                "SMALL\r\n11\r\nPPRPPRPPPPP"
+            ],
+            [
+                "3\r\n2 4 2\r\n10 7 6\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "1\r\n4295\r\n4295\r\n",
+                "SMALL\r\n0"
+            ],
+            [
+                "4\r\n6509 60 2960 6896\r\n292776 199367 112854 43093\r\n",
+                "SMALL\r\n7\r\nRPPRPPR"
+            ],
+            [
+                "5\r\n8 4 7 1 6\r\n9 9 2 7 5\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "1\r\n8\r\n9\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "2\r\n1 1\r\n1000000000000 1\r\n",
+                "BIG\r\n999999999999"
+            ],
+            [
+                "3\r\n1 1 1\r\n908617379176 908617379175 908616031128\r\n",
+                "BIG\r\n1348047"
+            ],
+            [
+                "2\r\n7 1\r\n1 7\r\n",
+                "SMALL\r\n1\r\nR"
+            ],
+            [
+                "3\r\n3 10 3\r\n886158649587 886158649555 886151118723\r\n",
+                "BIG\r\n235341"
+            ],
+            [
+                "2\r\n2 3\r\n920769104014 460384552003\r\n",
+                "BIG\r\n57548069004"
+            ],
+            [
+                "3\r\n7 6 6\r\n528332661181 528332661162 528328180494\r\n",
+                "BIG\r\n235826"
+            ],
+            [
+                "3\r\n5 8 2\r\n996763085081 664507670998 332252256930\r\n",
+                "BIG\r\n210478"
+            ],
+            [
+                "10\r\n8754 7755 7831 4703 2647 7279 2722 9401 2516 6441\r\n946144308051 225391145120 49059505408 9613207221 1662811839 247103432 30322106 2884200 189305 6441\r\n",
+                "SMALL\r\n31\r\nRPPPPPPPPPPPPPPPPPPPPPPPPPPPPPR"
+            ],
+            [
+                "2\r\n2 3\r\n230254780039 337634453113\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "3\r\n1 1 1\r\n1 48781451250 298187927643\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "10\r\n2225 572 4254 2220 1650 2202 1222 4841 8216 5743\r\n2225 73997 1271355 15026119 137268769 1032708987 6657959617 37798849034 192734907254 895923059285\r\n",
+                "SMALL\r\n33\r\nPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"
+            ],
+            [
+                "5\r\n7650 8632 1950 6633 1702\r\n35646396 967627221 13614628453 132223566037 996017069323\r\n",
+                "SMALL\r\n51\r\nRPPPPPPPPPPPPPPPPPPPPPPRPPPPPPPPPPPPPPPPPPPPPPPPPPP"
+            ],
+            [
+                "7\r\n7307 3682 1473 5663 4425 1950 2761\r\n7307 471330 15435681 342126815 5772588377 79070751326 915723822681\r\n",
+                "SMALL\r\n64\r\nPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"
+            ],
+            [
+                "10\r\n268 1991 4440 9938 5588 4628 3737 2566 693 6250\r\n6250 181943 2741413 28473356 229094246 1521569845 8681380193 43727181450 198321160377 822120061393\r\n",
+                "SMALL\r\n30\r\nRPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"
+            ],
+            [
+                "8\r\n5885 3991 3400 179 2156 3906 1845 4994\r\n4994 241557 5965410 100241764 1288859723 13519376788 120463481015 937494773653\r\n",
+                "SMALL\r\n49\r\nRPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"
+            ],
+            [
+                "9\r\n4747 1106 7495 2396 3530 4781 8751 4111 7948\r\n4747 176745 3385558 44440062 449297231 3728786230 26440112662 164641366535 918448486398\r\n",
+                "SMALL\r\n37\r\nPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"
+            ],
+            [
+                "2\r\n1 1\r\n896068846633 298689615544\r\n",
+                "BIG\r\n298689615546"
+            ],
+            [
+                "2\r\n2 1\r\n908094831814 227023707953\r\n",
+                "BIG\r\n113511853980"
+            ],
+            [
+                "3\r\n2 1 2\r\n939048212026 939050150115 939050150117\r\n",
+                "BIG\r\n969045"
+            ],
+            [
+                "6\r\n3 3 2 2 3 2\r\n513021362076 513021362074 513021361083 513021115069 512980318324 507896131083\r\n",
+                "SMALL\r\n498\r\nRPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPRPR"
+            ],
+            [
+                "32\r\n1 2 1 1 2 3 3 3 1 1 1 3 1 2 1 2 1 1 1 2 2 2 2 2 1 1 3 1 1 3 3 2\r\n79081348469 134495545222 172936782373 199321451441 217227937991 229236059356 237187011172 242380797657 245724866960 247844967439 249167004535 249976841425 250463488747 250749915944 250914742648 251007292731 251057881493 251084728238 251098516951 251105345605 251108591929 251110065415 251110699725 251110956541 251111053290 251111086729 251111097132 251111099968 251111100619 251111100737 251111100752 251111100753\r\n",
+                "SMALL\r\n15\r\nPPPPPPPPPPPPPRP"
+            ],
+            [
+                "12\r\n2 2 2 1 3 3 1 1 2 3 2 1\r\n639160912 3135144911 9223458473 21096813506 41344558142 72892308815 118942067345 182913367128 268386405795 379048740935 518648012321 690954378764\r\n",
+                "SMALL\r\n19\r\nPPPPRPPPPPPRPPRPPPP"
+            ],
+            [
+                "2\r\n2 1\r\n768816015401 236766656640\r\n",
+                "SMALL\r\n128\r\nRPPRPPRPPPPRPPPPPPPPPPRPPPPRPPPPPRPPPRPRPPPRPPPPPPPPPPPPPPPPPPPPRPPPPPPPPPPPPPRPPPRPPPPPPPRPRPRPRPPPPPPPPPPPPPPPPPPPPPRPPPPRPPPR"
+            ],
+            [
+                "35\r\n2 1 2 2 3 2 2 3 2 1 2 2 2 1 2 2 1 1 1 1 1 2 1 2 2 3 2 2 1 1 1 1 1 3 1\r\n139334 975336 3901331 11703934 29259623 64370525 128739315 239083075 418385890 697289869 1115624170 1724071477 2585971222 3779258664 5398538729 7557293278 10390220202 14055702443 18738404707 24651995268 32041989860 41188714216 52410381337 66066279059 82560062930 102343148810 125918198962 153842694709 186732587989 225266023346 270187121049 322309811132 382521707195 451788007798 531155412214\r\n",
+                "SMALL\r\n12\r\nPPPRPRPPPPPP"
+            ],
+            [
+                "14\r\n3 1 3 1 1 3 3 1 1 1 1 2 1 2\r\n266140495699 239149576268 212318179245 185878003665 160091993323 135235960657 111590726560 89438938456 69063861326 50748951078 34777716611 21433679693 11000364725 3761296535\r\n",
+                "SMALL\r\n23\r\nPPPPPPPPPPPPPPPPRPPRPPR"
+            ],
+            [
+                "8\r\n16 41 26 27 10 23 12 50\r\n675291828040 672689634923 662684630486 638679765964 592676931947 515656862399 397930143144 229440948972\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "10\r\n7 14 36 9 6 2 1 31 24 21\r\n209740352808 318651411694 371947853154 396228420209 406356628921 410134569949 411350632783 411669215329 411730024072 411736419846\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "3\r\n1 1 1\r\n994501956360 1410320 1\r\n",
+                "BIG\r\n1410319"
+            ],
+            [
+                "3\r\n1 1 1\r\n1 1337297 894182301753\r\n",
+                "BIG\r\n1337296"
+            ],
+            [
+                "3\r\n2 1 1\r\n1 1411660 996392683631\r\n",
+                "BIG\r\n1411659"
+            ],
+            [
+                "3\r\n2 1 1\r\n2 1967113 967384372249\r\n",
+                "BIG\r\n983556"
+            ],
+            [
+                "2\r\n1 1\r\n985378042066 1\r\n",
+                "BIG\r\n985378042065"
+            ],
+            [
+                "2\r\n1 1\r\n1 782434755987\r\n",
+                "BIG\r\n782434755986"
+            ],
+            [
+                "2\r\n2 1\r\n1 965275254594\r\n",
+                "BIG\r\n965275254592"
+            ],
+            [
+                "2\r\n2 1\r\n2 401311224537\r\n",
+                "BIG\r\n200655612268"
+            ],
+            [
+                "3\r\n3 1 1\r\n587693188205 587696943813 587696943825\r\n",
+                "BIG\r\n312971"
+            ],
+            [
+                "3\r\n1 2 3\r\n589930404073 589930404067 589927743406\r\n",
+                "BIG\r\n443445"
+            ],
+            [
+                "3\r\n2 2 1\r\n820568677866 820568677857 820564834664\r\n",
+                "BIG\r\n427024"
+            ],
+            [
+                "2\r\n2 2\r\n918165411234 153027568538\r\n",
+                "BIG\r\n25504594764"
+            ],
+            [
+                "2\r\n3 2\r\n805611872979 402805936486\r\n",
+                "BIG\r\n57543705216"
+            ],
+            [
+                "3\r\n5 8 9\r\n658439757037 658439757015 658434374544\r\n",
+                "BIG\r\n244659"
+            ],
+            [
+                "3\r\n3 5 4\r\n807236934079 807241335628 807241335640\r\n",
+                "BIG\r\n366797"
+            ],
+            [
+                "2\r\n10 1\r\n385378445946 770756891903\r\n",
+                "BIG\r\n35034404179"
+            ],
+            [
+                "2\r\n5 1\r\n445571166217 891142332442\r\n",
+                "BIG\r\n55696395782"
+            ],
+            [
+                "2\r\n1 10\r\n260697203425 782091610291\r\n",
+                "BIG\r\n16293575223"
+            ],
+            [
+                "2\r\n1 1\r\n1 200002\r\n",
+                "BIG\r\n200001"
+            ],
+            [
+                "8\r\n269 287 247 250 7 273 191 165\r\n162 253 188 263 97 229 87 182\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "22\r\n266 66 269 269 63 195 132 215 96 244 243 225 13 34 285 34 234 226 137 122 84 23\r\n81 18 20 5 40 261 217 147 41 268 275 256 124 85 83 216 113 29 76 92 191 293\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "12\r\n215 283 187 124 105 263 228 150 289 110 72 3\r\n211 159 103 227 178 194 31 101 26 212 150 16\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "2\r\n2 2\r\n1000000000000 1\r\n",
+                "IMPOSSIBLE\r\n"
+            ],
+            [
+                "3\r\n1 2 1\r\n994501956360 1410320 1\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "3\r\n2 1 2\r\n1 1411660 996392683631\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "2\r\n2 2\r\n985378042066 1\r\n",
+                "IMPOSSIBLE\r\n"
+            ],
+            [
+                "2\r\n2 2\r\n1 965275254594\r\n",
+                "IMPOSSIBLE\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n587693188205 587696943813 587696943825\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "2\r\n2 2\r\n920769104014 460384552003\r\n",
+                "IMPOSSIBLE\r\n"
+            ],
+            [
+                "3\r\n3 11 3\r\n886158649587 886158649555 886151118723\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "2\r\n10 2\r\n385378445946 770756891903\r\n",
+                "IMPOSSIBLE\r\n"
+            ],
+            [
+                "3\r\n1 1 1\r\n1 1414213 999999911791\r\n",
+                "BIG\r\n1414212"
+            ],
+            [
+                "2\r\n5 1\r\n143925122929 580945599639\r\n",
+                "SMALL\r\n183\r\nRPPPPPPPPPPPPPPPPPPPPPPRPRPRPPPPRPPPPPRPPRPPPPPPPPRPRPRPRPRPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPRPRPRPPPPPPPPPPPPRPRPRPRPPPRPPRPPPPPPPPPPPPPPPPPPPPPPPPPPPRPPPP"
+            ],
+            [
+                "3\r\n3 4 1\r\n95150776333 105726061071 368629910985\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "2\r\n3 2\r\n94510201460 920557982800\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "2\r\n1 2\r\n225127803212 804147354148\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "3\r\n3 4 5\r\n1000 1000 1000\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "5\r\n5 4 3 2 4\r\n1000 1000 1000 1000 1000\r\n",
+                "IMPOSSIBLE"
+            ],
+            [
+                "2\r\n57 2\r\n2 179\r\n",
+                "SMALL\r\n62\r\nRPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"
+            ]
+        ]
+    }
+]

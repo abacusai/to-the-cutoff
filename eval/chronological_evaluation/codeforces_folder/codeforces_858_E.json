@@ -1,0 +1,604 @@
+[
+    {
+        "name": "Tests Renumeration",
+        "description": "The All-Berland National Olympiad in Informatics has just ended! Now Vladimir\nwants to upload the contest from the Olympiad as a gym to a popular Codehorses\nwebsite. Unfortunately, the archive with Olympiad's data is a mess. For\nexample, the files with tests are named arbitrary without any logic. Vladimir\nwants to rename the files with tests so that their names are distinct integers\nstarting from 1 without any gaps, namely, \"1\", \"2\", ..., \"n', where n is the\ntotal number of tests. Some of the files contain tests from statements\n(examples), while others contain regular tests. It is possible that there are\nno examples, and it is possible that all tests are examples. Vladimir wants to\nrename the files so that the examples are the first several tests, all all the\nnext files contain regular tests only. The only operation Vladimir can perform\nis the \"move\" command. Vladimir wants to write a script file, each of the\nlines in which is \"move file_1 file_2\", that means that the file \"file_1\" is\nto be renamed to \"file_2\". If there is a file \"file_2\" at the moment of this\nline being run, then this file is to be rewritten. After the line \"move file_1\nfile_2\" the file \"file_1\" doesn't exist, but there is a file \"file_2\" with\ncontent equal to the content of \"file_1\" before the \"move\" command. Help\nVladimir to write the script file with the minimum possible number of lines so\nthat after this script is run: all examples are the first several tests having\nfilenames \"1\", \"2\", ..., \"e\", where e is the total number of examples; all\nother files contain regular tests with filenames \"e + 1\", \"e + 2\", ..., \"n\",\nwhere n is the total number of all tests. Input The first line contains single\ninteger n (1 \u2264 n \u2264 10^5) \u2014 the number of files with tests. n lines follow,\neach describing a file with test. Each line has a form of \"name_i type_i\",\nwhere \"name_i\" is the filename, and \"type_i\" equals \"1\", if the i-th file\ncontains an example test, and \"0\" if it contains a regular test. Filenames of\neach file are strings of digits and small English letters with length from 1\nto 6 characters. The filenames are guaranteed to be distinct. Output In the\nfirst line print the minimum number of lines in Vladimir's script file. After\nthat print the script file, each line should be \"move file_1 file_2\", where\n\"file_1\" is an existing at the moment of this line being run filename, and\n\"file_2\" \u2014 is a string of digits and small English letters with length from 1\nto 6. Examples Input 5 01 0 2 1 2extra 0 3 1 99 0 Output 4 move 3 1 move 01 5\nmove 2extra 4 move 99 3 Input 2 1 0 2 1 Output 3 move 1 3 move 2 1 move 3 2\nInput 5 1 0 11 1 111 0 1111 1 11111 0 Output 5 move 1 5 move 11 1 move 1111 2\nmove 111 4 move 11111 3\n\n",
+        "cf_contest_id": 858,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n01 0\r\n2 1\r\n2extra 0\r\n3 1\r\n99 0\r\n",
+                "4\r\nmove 3 1\r\nmove 01 3\r\nmove 2extra 4\r\nmove 99 5\r\n"
+            ],
+            [
+                "2\r\n1 0\r\n2 1\r\n",
+                "3\r\nmove 2 0\r\nmove 1 2\r\nmove 0 1\r\n"
+            ],
+            [
+                "5\r\n1 0\r\n11 1\r\n111 0\r\n1111 1\r\n11111 0\r\n",
+                "5\r\nmove 1 5\r\nmove 11 1\r\nmove 1111 2\r\nmove 111 3\r\nmove 11111 4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\nir7oz8 1\r\nvj4v5t 1\r\nkwkahb 1\r\nj5s8o1 0\r\n",
+                "4\r\nmove ir7oz8 1\r\nmove vj4v5t 2\r\nmove kwkahb 3\r\nmove j5s8o1 4\r\n"
+            ],
+            [
+                "4\r\n3 1\r\n1o0bp2 0\r\n9tn379 0\r\nv04v6j 1\r\n",
+                "4\r\nmove 3 2\r\nmove v04v6j 1\r\nmove 1o0bp2 3\r\nmove 9tn379 4\r\n"
+            ],
+            [
+                "4\r\n1 0\r\nsc7czx 0\r\nfr4033 1\r\n3 0\r\n",
+                "3\r\nmove 1 4\r\nmove fr4033 1\r\nmove sc7czx 2\r\n"
+            ],
+            [
+                "4\r\n4 0\r\n1 0\r\n2 0\r\nizfotg 1\r\n",
+                "2\r\nmove 1 3\r\nmove izfotg 1\r\n"
+            ],
+            [
+                "4\r\n2 0\r\n3 0\r\n1 1\r\n4 1\r\n",
+                "3\r\nmove 4 0\r\nmove 2 4\r\nmove 0 2\r\n"
+            ],
+            [
+                "5\r\npuusew 1\r\npvoy4h 0\r\nwdzx4r 0\r\n1z84cx 0\r\nozsuvd 0\r\n",
+                "5\r\nmove puusew 1\r\nmove pvoy4h 2\r\nmove wdzx4r 3\r\nmove 1z84cx 4\r\nmove ozsuvd 5\r\n"
+            ],
+            [
+                "5\r\n949pnr 1\r\n9sxhcr 0\r\n5 1\r\nx8srx3 1\r\ncl7ppd 1\r\n",
+                "5\r\nmove 5 4\r\nmove 949pnr 1\r\nmove x8srx3 2\r\nmove cl7ppd 3\r\nmove 9sxhcr 5\r\n"
+            ],
+            [
+                "5\r\n2 0\r\n1 0\r\np2gcxf 1\r\nwfyoiq 1\r\nzjw3vg 1\r\n",
+                "5\r\nmove 2 5\r\nmove 1 4\r\nmove p2gcxf 1\r\nmove wfyoiq 2\r\nmove zjw3vg 3\r\n"
+            ],
+            [
+                "5\r\nogvgi7 0\r\n3 1\r\n4 1\r\n1 1\r\nm5nhux 0\r\n",
+                "3\r\nmove 4 2\r\nmove ogvgi7 4\r\nmove m5nhux 5\r\n"
+            ],
+            [
+                "5\r\nt6kdte 1\r\n2 1\r\n4 1\r\n5 1\r\n3 1\r\n",
+                "1\r\nmove t6kdte 1\r\n"
+            ],
+            [
+                "5\r\n2 0\r\n3 1\r\n4 0\r\n1 1\r\n5 1\r\n",
+                "3\r\nmove 5 0\r\nmove 2 5\r\nmove 0 2\r\n"
+            ],
+            [
+                "1\r\nsd84r7 1\r\n",
+                "1\r\nmove sd84r7 1\r\n"
+            ],
+            [
+                "1\r\n1 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n5xzjm4 0\r\njoa6mr 1\r\n",
+                "2\r\nmove joa6mr 1\r\nmove 5xzjm4 2\r\n"
+            ],
+            [
+                "2\r\n1 0\r\nxdkh5a 1\r\n",
+                "2\r\nmove 1 2\r\nmove xdkh5a 1\r\n"
+            ],
+            [
+                "2\r\n1 0\r\n2 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\nz1nwrd 1\r\nt0xrja 0\r\n106qy1 0\r\n",
+                "3\r\nmove z1nwrd 1\r\nmove t0xrja 2\r\nmove 106qy1 3\r\n"
+            ],
+            [
+                "3\r\nt4hdos 0\r\ndhje0g 0\r\n3 0\r\n",
+                "2\r\nmove t4hdos 1\r\nmove dhje0g 2\r\n"
+            ],
+            [
+                "3\r\n3 0\r\n26mp5s 0\r\n1 1\r\n",
+                "1\r\nmove 26mp5s 2\r\n"
+            ],
+            [
+                "3\r\n2 1\r\n1 0\r\n3 0\r\n",
+                "3\r\nmove 2 0\r\nmove 1 2\r\nmove 0 1\r\n"
+            ],
+            [
+                "1\r\nprzvln 0\r\n",
+                "1\r\nmove przvln 1\r\n"
+            ],
+            [
+                "2\r\nkfsipl 0\r\n1jj1ol 0\r\n",
+                "2\r\nmove kfsipl 1\r\nmove 1jj1ol 2\r\n"
+            ],
+            [
+                "3\r\n2x7a4g 0\r\n27lqe6 0\r\nzfo3sp 0\r\n",
+                "3\r\nmove 2x7a4g 1\r\nmove 27lqe6 2\r\nmove zfo3sp 3\r\n"
+            ],
+            [
+                "1\r\nxzp9ni 1\r\n",
+                "1\r\nmove xzp9ni 1\r\n"
+            ],
+            [
+                "1\r\nabbdf7 1\r\n",
+                "1\r\nmove abbdf7 1\r\n"
+            ],
+            [
+                "2\r\ndbif39 1\r\ne8dkf8 0\r\n",
+                "2\r\nmove dbif39 1\r\nmove e8dkf8 2\r\n"
+            ],
+            [
+                "2\r\n2 0\r\njkwekx 1\r\n",
+                "1\r\nmove jkwekx 1\r\n"
+            ],
+            [
+                "3\r\nn3pmj8 0\r\n2alui6 0\r\ne7lf4u 1\r\n",
+                "3\r\nmove e7lf4u 1\r\nmove n3pmj8 2\r\nmove 2alui6 3\r\n"
+            ],
+            [
+                "3\r\ndr1lp8 0\r\n1 0\r\n6a2egk 1\r\n",
+                "3\r\nmove 1 3\r\nmove 6a2egk 1\r\nmove dr1lp8 2\r\n"
+            ],
+            [
+                "4\r\nyi9ta0 1\r\nmeljgm 0\r\nf7bqon 0\r\n5bbvun 0\r\n",
+                "4\r\nmove yi9ta0 1\r\nmove meljgm 2\r\nmove f7bqon 3\r\nmove 5bbvun 4\r\n"
+            ],
+            [
+                "4\r\n0la3gu 0\r\nzhrmyb 1\r\n3iprc0 0\r\n3 0\r\n",
+                "3\r\nmove zhrmyb 1\r\nmove 0la3gu 2\r\nmove 3iprc0 4\r\n"
+            ],
+            [
+                "1\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n17dgbb 0\r\n2 1\r\n",
+                "2\r\nmove 2 1\r\nmove 17dgbb 2\r\n"
+            ],
+            [
+                "2\r\n1 0\r\n2 1\r\n",
+                "3\r\nmove 2 0\r\nmove 1 2\r\nmove 0 1\r\n"
+            ],
+            [
+                "3\r\nscrn8k 0\r\n3 1\r\nycvm9s 0\r\n",
+                "3\r\nmove 3 1\r\nmove scrn8k 2\r\nmove ycvm9s 3\r\n"
+            ],
+            [
+                "3\r\nt0dfz3 0\r\n3 0\r\n1 1\r\n",
+                "1\r\nmove t0dfz3 2\r\n"
+            ],
+            [
+                "4\r\nkgw83p 0\r\np3p3ch 0\r\n4 1\r\n0te9lv 0\r\n",
+                "4\r\nmove 4 1\r\nmove kgw83p 2\r\nmove p3p3ch 3\r\nmove 0te9lv 4\r\n"
+            ],
+            [
+                "4\r\n3 1\r\nnj94jx 0\r\n3a5ad1 0\r\n1 0\r\n",
+                "4\r\nmove 1 4\r\nmove 3 1\r\nmove nj94jx 2\r\nmove 3a5ad1 3\r\n"
+            ],
+            [
+                "2\r\no9z069 1\r\n5hools 1\r\n",
+                "2\r\nmove o9z069 1\r\nmove 5hools 2\r\n"
+            ],
+            [
+                "2\r\nyzzyab 1\r\n728oq0 1\r\n",
+                "2\r\nmove yzzyab 1\r\nmove 728oq0 2\r\n"
+            ],
+            [
+                "2\r\nqy2kmc 1\r\nqb4crj 1\r\n",
+                "2\r\nmove qy2kmc 1\r\nmove qb4crj 2\r\n"
+            ],
+            [
+                "3\r\nunw560 1\r\n0iswxk 0\r\ndonjp9 1\r\n",
+                "3\r\nmove unw560 1\r\nmove donjp9 2\r\nmove 0iswxk 3\r\n"
+            ],
+            [
+                "3\r\n2 0\r\nuv8c54 1\r\n508bb0 1\r\n",
+                "3\r\nmove 2 3\r\nmove uv8c54 1\r\nmove 508bb0 2\r\n"
+            ],
+            [
+                "3\r\n9afh0z 1\r\n0qcaht 1\r\n3 0\r\n",
+                "2\r\nmove 9afh0z 1\r\nmove 0qcaht 2\r\n"
+            ],
+            [
+                "4\r\n2kk04q 0\r\nkdktvk 1\r\nc4i5k8 1\r\nawaock 0\r\n",
+                "4\r\nmove kdktvk 1\r\nmove c4i5k8 2\r\nmove 2kk04q 3\r\nmove awaock 4\r\n"
+            ],
+            [
+                "4\r\n2 0\r\nmqbjos 0\r\n6mhijg 1\r\n6wum8y 1\r\n",
+                "4\r\nmove 2 4\r\nmove 6mhijg 1\r\nmove 6wum8y 2\r\nmove mqbjos 3\r\n"
+            ],
+            [
+                "4\r\n4 0\r\npa613p 1\r\nuuizq7 1\r\n2 0\r\n",
+                "3\r\nmove 2 3\r\nmove pa613p 1\r\nmove uuizq7 2\r\n"
+            ],
+            [
+                "5\r\nw0g96a 1\r\nv99tdi 0\r\nmywrle 0\r\nweh22w 1\r\n9hywt4 0\r\n",
+                "5\r\nmove w0g96a 1\r\nmove weh22w 2\r\nmove v99tdi 3\r\nmove mywrle 4\r\nmove 9hywt4 5\r\n"
+            ],
+            [
+                "5\r\n5 0\r\n12qcjd 1\r\nuthzbz 0\r\nb3670z 0\r\nl2u93o 1\r\n",
+                "4\r\nmove 12qcjd 1\r\nmove l2u93o 2\r\nmove uthzbz 3\r\nmove b3670z 4\r\n"
+            ],
+            [
+                "5\r\n0jc7xb 1\r\n2 0\r\n1m7l9s 0\r\n9xzkau 1\r\n1 0\r\n",
+                "5\r\nmove 2 5\r\nmove 1 4\r\nmove 0jc7xb 1\r\nmove 9xzkau 2\r\nmove 1m7l9s 3\r\n"
+            ],
+            [
+                "2\r\n1 1\r\nvinxur 1\r\n",
+                "1\r\nmove vinxur 2\r\n"
+            ],
+            [
+                "2\r\n1qe46n 1\r\n1 1\r\n",
+                "1\r\nmove 1qe46n 2\r\n"
+            ],
+            [
+                "2\r\n1 1\r\ng5jlzp 1\r\n",
+                "1\r\nmove g5jlzp 2\r\n"
+            ],
+            [
+                "3\r\nc8p28p 1\r\n2 1\r\nvk4gdf 0\r\n",
+                "2\r\nmove c8p28p 1\r\nmove vk4gdf 3\r\n"
+            ],
+            [
+                "3\r\n2 1\r\n3 0\r\nhs9j9t 1\r\n",
+                "1\r\nmove hs9j9t 1\r\n"
+            ],
+            [
+                "3\r\n2 1\r\n1 0\r\nomitxh 1\r\n",
+                "2\r\nmove 1 3\r\nmove omitxh 1\r\n"
+            ],
+            [
+                "4\r\n4 1\r\nu9do88 1\r\n787at9 0\r\nfcud6k 0\r\n",
+                "4\r\nmove 4 2\r\nmove u9do88 1\r\nmove 787at9 3\r\nmove fcud6k 4\r\n"
+            ],
+            [
+                "4\r\n3 0\r\nqvw4ow 1\r\nne0ng9 0\r\n1 1\r\n",
+                "2\r\nmove qvw4ow 2\r\nmove ne0ng9 4\r\n"
+            ],
+            [
+                "4\r\ng6ugrm 1\r\n1 1\r\n3 0\r\n2 0\r\n",
+                "2\r\nmove 2 4\r\nmove g6ugrm 2\r\n"
+            ],
+            [
+                "5\r\n5 1\r\nz9zr7d 0\r\ne8rwo4 1\r\nrfpjp6 0\r\ngz6dhj 0\r\n",
+                "5\r\nmove 5 2\r\nmove e8rwo4 1\r\nmove z9zr7d 3\r\nmove rfpjp6 4\r\nmove gz6dhj 5\r\n"
+            ],
+            [
+                "5\r\n5sn77g 0\r\nsetddt 1\r\nbz16cb 0\r\n4 1\r\n2 0\r\n",
+                "5\r\nmove 2 5\r\nmove 4 2\r\nmove setddt 1\r\nmove 5sn77g 3\r\nmove bz16cb 4\r\n"
+            ],
+            [
+                "5\r\n1 1\r\nx2miqh 1\r\n3 0\r\n2 0\r\n1rq643 0\r\n",
+                "3\r\nmove 2 5\r\nmove x2miqh 2\r\nmove 1rq643 4\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n3 1\r\nav5vex 0\r\n1 1\r\n",
+                "2\r\nmove 3 2\r\nmove av5vex 3\r\n"
+            ],
+            [
+                "3\r\n3 1\r\n1 0\r\n2 1\r\n",
+                "3\r\nmove 3 0\r\nmove 1 3\r\nmove 0 1\r\n"
+            ],
+            [
+                "3\r\n3 1\r\n1 0\r\n2 1\r\n",
+                "3\r\nmove 3 0\r\nmove 1 3\r\nmove 0 1\r\n"
+            ],
+            [
+                "4\r\ny9144q 0\r\n3 1\r\n2 1\r\ns0bdnf 0\r\n",
+                "3\r\nmove 3 1\r\nmove y9144q 3\r\nmove s0bdnf 4\r\n"
+            ],
+            [
+                "4\r\n4 1\r\n1 0\r\n3 1\r\nmod9zl 0\r\n",
+                "4\r\nmove 4 2\r\nmove 1 4\r\nmove 3 1\r\nmove mod9zl 3\r\n"
+            ],
+            [
+                "4\r\n4 1\r\n3 1\r\n1 0\r\n2 0\r\n",
+                "5\r\nmove 4 0\r\nmove 2 4\r\nmove 3 2\r\nmove 1 3\r\nmove 0 1\r\n"
+            ],
+            [
+                "5\r\n1 1\r\nnoidnv 0\r\n3 1\r\nx3xiiz 0\r\n1lfa9v 0\r\n",
+                "4\r\nmove 3 2\r\nmove noidnv 3\r\nmove x3xiiz 4\r\nmove 1lfa9v 5\r\n"
+            ],
+            [
+                "5\r\n1 1\r\nvsyajx 0\r\n783b38 0\r\n4 0\r\n2 1\r\n",
+                "2\r\nmove vsyajx 3\r\nmove 783b38 5\r\n"
+            ],
+            [
+                "5\r\n3 1\r\n5 0\r\ncvfl8i 0\r\n4 1\r\n2 0\r\n",
+                "4\r\nmove 4 1\r\nmove 2 4\r\nmove 3 2\r\nmove cvfl8i 3\r\n"
+            ],
+            [
+                "3\r\nbxo0pe 1\r\nbt50pa 1\r\n2tx68t 1\r\n",
+                "3\r\nmove bxo0pe 1\r\nmove bt50pa 2\r\nmove 2tx68t 3\r\n"
+            ],
+            [
+                "3\r\nj9rnac 1\r\noetwfz 1\r\nd6n3ww 1\r\n",
+                "3\r\nmove j9rnac 1\r\nmove oetwfz 2\r\nmove d6n3ww 3\r\n"
+            ],
+            [
+                "3\r\naf2f6j 1\r\nmjni5l 1\r\njvyxgc 1\r\n",
+                "3\r\nmove af2f6j 1\r\nmove mjni5l 2\r\nmove jvyxgc 3\r\n"
+            ],
+            [
+                "3\r\nr2qlj2 1\r\nt8wf1y 1\r\nigids8 1\r\n",
+                "3\r\nmove r2qlj2 1\r\nmove t8wf1y 2\r\nmove igids8 3\r\n"
+            ],
+            [
+                "4\r\nuilh9a 0\r\n4lxxh9 1\r\nkqdpzy 1\r\nn1d7hd 1\r\n",
+                "4\r\nmove 4lxxh9 1\r\nmove kqdpzy 2\r\nmove n1d7hd 3\r\nmove uilh9a 4\r\n"
+            ],
+            [
+                "4\r\n3 0\r\niipymv 1\r\nvakd5b 1\r\n2ktczv 1\r\n",
+                "4\r\nmove 3 4\r\nmove iipymv 1\r\nmove vakd5b 2\r\nmove 2ktczv 3\r\n"
+            ],
+            [
+                "4\r\nq4b449 1\r\n3 0\r\ncjg1x2 1\r\ne878er 1\r\n",
+                "4\r\nmove 3 4\r\nmove q4b449 1\r\nmove cjg1x2 2\r\nmove e878er 3\r\n"
+            ],
+            [
+                "4\r\n9f4aoa 1\r\n4 0\r\nf4m1ec 1\r\nqyr2h6 1\r\n",
+                "3\r\nmove 9f4aoa 1\r\nmove f4m1ec 2\r\nmove qyr2h6 3\r\n"
+            ],
+            [
+                "5\r\n73s1nt 1\r\nsbngv2 0\r\n4n3qri 1\r\nbyhzp8 1\r\nadpjs4 0\r\n",
+                "5\r\nmove 73s1nt 1\r\nmove 4n3qri 2\r\nmove byhzp8 3\r\nmove sbngv2 4\r\nmove adpjs4 5\r\n"
+            ],
+            [
+                "5\r\n7ajg8o 1\r\np7cqxy 1\r\n3qrp34 0\r\nh93m07 1\r\n2 0\r\n",
+                "5\r\nmove 2 5\r\nmove 7ajg8o 1\r\nmove p7cqxy 2\r\nmove h93m07 3\r\nmove 3qrp34 4\r\n"
+            ],
+            [
+                "5\r\ny0wnwz 1\r\n5 0\r\n0totai 1\r\n1 0\r\nym8xwz 1\r\n",
+                "4\r\nmove 1 4\r\nmove y0wnwz 1\r\nmove 0totai 2\r\nmove ym8xwz 3\r\n"
+            ],
+            [
+                "5\r\n5 0\r\n4 0\r\n5nvzu4 1\r\nvkpzzk 1\r\nzamzcz 1\r\n",
+                "3\r\nmove 5nvzu4 1\r\nmove vkpzzk 2\r\nmove zamzcz 3\r\n"
+            ],
+            [
+                "6\r\np1wjw9 1\r\nueksby 0\r\nu1ixfc 1\r\nj3lk2e 1\r\n36iskv 0\r\n9imqi1 0\r\n",
+                "6\r\nmove p1wjw9 1\r\nmove u1ixfc 2\r\nmove j3lk2e 3\r\nmove ueksby 4\r\nmove 36iskv 5\r\nmove 9imqi1 6\r\n"
+            ],
+            [
+                "6\r\n6slonw 1\r\nptk9mc 1\r\n57a4nq 0\r\nhiq2f7 1\r\n2 0\r\nc0gtv3 0\r\n",
+                "6\r\nmove 2 6\r\nmove 6slonw 1\r\nmove ptk9mc 2\r\nmove hiq2f7 3\r\nmove 57a4nq 4\r\nmove c0gtv3 5\r\n"
+            ],
+            [
+                "6\r\n5 0\r\n2 0\r\ncbhvyf 1\r\nl1z5mg 0\r\nwkwhby 1\r\nx7fdh9 1\r\n",
+                "5\r\nmove 2 6\r\nmove cbhvyf 1\r\nmove wkwhby 2\r\nmove x7fdh9 3\r\nmove l1z5mg 4\r\n"
+            ],
+            [
+                "6\r\n1t68ks 1\r\npkbj1g 1\r\n5 0\r\n5pw8wm 1\r\n1 0\r\n4 0\r\n",
+                "4\r\nmove 1 6\r\nmove 1t68ks 1\r\nmove pkbj1g 2\r\nmove 5pw8wm 3\r\n"
+            ],
+            [
+                "3\r\n1 1\r\n7ph5fw 1\r\ntfxz1j 1\r\n",
+                "2\r\nmove 7ph5fw 2\r\nmove tfxz1j 3\r\n"
+            ],
+            [
+                "3\r\norwsz0 1\r\nmbt097 1\r\n3 1\r\n",
+                "2\r\nmove orwsz0 1\r\nmove mbt097 2\r\n"
+            ],
+            [
+                "3\r\n1 1\r\nzwfnx2 1\r\n7g8t6z 1\r\n",
+                "2\r\nmove zwfnx2 2\r\nmove 7g8t6z 3\r\n"
+            ],
+            [
+                "3\r\nqmf7iz 1\r\ndjwdce 1\r\n1 1\r\n",
+                "2\r\nmove qmf7iz 2\r\nmove djwdce 3\r\n"
+            ],
+            [
+                "4\r\n4i2i2a 0\r\n4 1\r\npf618n 1\r\nlx6nmh 1\r\n",
+                "4\r\nmove 4 3\r\nmove pf618n 1\r\nmove lx6nmh 2\r\nmove 4i2i2a 4\r\n"
+            ],
+            [
+                "4\r\nxpteku 1\r\n1 0\r\n4 1\r\n73xpqz 1\r\n",
+                "4\r\nmove 4 3\r\nmove 1 4\r\nmove xpteku 1\r\nmove 73xpqz 2\r\n"
+            ],
+            [
+                "4\r\n1wp56i 1\r\n2 1\r\n1 0\r\n6m76jb 1\r\n",
+                "3\r\nmove 1 4\r\nmove 1wp56i 1\r\nmove 6m76jb 3\r\n"
+            ],
+            [
+                "4\r\n3 1\r\nyumiqt 1\r\n1 0\r\nt19jus 1\r\n",
+                "3\r\nmove 1 4\r\nmove yumiqt 1\r\nmove t19jus 2\r\n"
+            ],
+            [
+                "5\r\nynagvf 1\r\n3 1\r\nojz4mm 1\r\ndovec3 0\r\nnc1jye 0\r\n",
+                "4\r\nmove ynagvf 1\r\nmove ojz4mm 2\r\nmove dovec3 4\r\nmove nc1jye 5\r\n"
+            ],
+            [
+                "5\r\n5 1\r\nwje9ts 1\r\nkytn5q 1\r\n7frk8z 0\r\n3 0\r\n",
+                "5\r\nmove 3 4\r\nmove 5 3\r\nmove wje9ts 1\r\nmove kytn5q 2\r\nmove 7frk8z 5\r\n"
+            ],
+            [
+                "5\r\n1 0\r\n4 1\r\n3 0\r\nlog9cm 1\r\nu5m0ls 1\r\n",
+                "5\r\nmove 3 5\r\nmove 4 3\r\nmove 1 4\r\nmove log9cm 1\r\nmove u5m0ls 2\r\n"
+            ],
+            [
+                "5\r\nh015vv 1\r\n3 1\r\n1 0\r\n9w2keb 1\r\n2 0\r\n",
+                "4\r\nmove 2 5\r\nmove 1 4\r\nmove h015vv 1\r\nmove 9w2keb 2\r\n"
+            ],
+            [
+                "6\r\n0zluka 0\r\nqp7q8l 1\r\nwglqu8 1\r\n9i7kta 0\r\nnwf8m3 0\r\n3 1\r\n",
+                "5\r\nmove qp7q8l 1\r\nmove wglqu8 2\r\nmove 0zluka 4\r\nmove 9i7kta 5\r\nmove nwf8m3 6\r\n"
+            ],
+            [
+                "6\r\n3 1\r\n1h3t85 1\r\n5 0\r\nrf2ikt 0\r\n3vhl6e 1\r\n5l3oka 0\r\n",
+                "4\r\nmove 1h3t85 1\r\nmove 3vhl6e 2\r\nmove rf2ikt 4\r\nmove 5l3oka 6\r\n"
+            ],
+            [
+                "6\r\n2 0\r\n3 0\r\nw9h0pv 1\r\n5 1\r\nq92z4i 0\r\n6qb4ia 1\r\n",
+                "6\r\nmove 3 6\r\nmove 2 4\r\nmove 5 2\r\nmove w9h0pv 1\r\nmove 6qb4ia 3\r\nmove q92z4i 5\r\n"
+            ],
+            [
+                "6\r\n4 1\r\n410jiy 1\r\n1 0\r\n6 0\r\nxc98l2 1\r\n5 0\r\n",
+                "4\r\nmove 4 3\r\nmove 1 4\r\nmove 410jiy 1\r\nmove xc98l2 2\r\n"
+            ],
+            [
+                "3\r\n1 1\r\nc9qyld 1\r\n3 1\r\n",
+                "1\r\nmove c9qyld 2\r\n"
+            ],
+            [
+                "3\r\ngdm5ri 1\r\n1 1\r\n2 1\r\n",
+                "1\r\nmove gdm5ri 3\r\n"
+            ],
+            [
+                "3\r\n3 1\r\n2 1\r\ni19lnk 1\r\n",
+                "1\r\nmove i19lnk 1\r\n"
+            ],
+            [
+                "3\r\ncxbbpd 1\r\n3 1\r\n1 1\r\n",
+                "1\r\nmove cxbbpd 2\r\n"
+            ],
+            [
+                "4\r\nwy6i6o 0\r\n1 1\r\n3 1\r\niy1dq6 1\r\n",
+                "2\r\nmove iy1dq6 2\r\nmove wy6i6o 4\r\n"
+            ],
+            [
+                "4\r\n4 1\r\nwgh8s0 1\r\n1 0\r\n2 1\r\n",
+                "3\r\nmove 4 3\r\nmove 1 4\r\nmove wgh8s0 1\r\n"
+            ],
+            [
+                "4\r\nhex0ur 1\r\n4 1\r\n3 0\r\n2 1\r\n",
+                "3\r\nmove 4 1\r\nmove 3 4\r\nmove hex0ur 3\r\n"
+            ],
+            [
+                "4\r\n4 1\r\n1 1\r\n3 0\r\n4soxj3 1\r\n",
+                "3\r\nmove 4 2\r\nmove 3 4\r\nmove 4soxj3 3\r\n"
+            ],
+            [
+                "5\r\n5sbtul 1\r\n2 1\r\n8i2duz 0\r\n5 1\r\n4b85z6 0\r\n",
+                "4\r\nmove 5 3\r\nmove 5sbtul 1\r\nmove 8i2duz 4\r\nmove 4b85z6 5\r\n"
+            ],
+            [
+                "5\r\n3 1\r\n4 0\r\nejo0a4 1\r\ngqzdbk 0\r\n1 1\r\n",
+                "2\r\nmove ejo0a4 2\r\nmove gqzdbk 5\r\n"
+            ],
+            [
+                "5\r\n2y4agr 1\r\n5 0\r\n3 0\r\n1 1\r\n4 1\r\n",
+                "3\r\nmove 4 2\r\nmove 3 4\r\nmove 2y4agr 3\r\n"
+            ],
+            [
+                "5\r\n2 0\r\n1 1\r\nq4hyeg 1\r\n5 0\r\n4 1\r\n",
+                "3\r\nmove 4 3\r\nmove 2 4\r\nmove q4hyeg 2\r\n"
+            ],
+            [
+                "6\r\n5 1\r\nrdm6fu 0\r\n4 1\r\noclx1h 0\r\n7l3kg1 1\r\nq25te0 0\r\n",
+                "6\r\nmove 5 3\r\nmove 4 2\r\nmove 7l3kg1 1\r\nmove rdm6fu 4\r\nmove oclx1h 5\r\nmove q25te0 6\r\n"
+            ],
+            [
+                "6\r\n1 0\r\np4tuyt 0\r\n5 1\r\n2 1\r\nwrrcmu 1\r\n3r4wqz 0\r\n",
+                "5\r\nmove 1 6\r\nmove 5 1\r\nmove wrrcmu 3\r\nmove p4tuyt 4\r\nmove 3r4wqz 5\r\n"
+            ],
+            [
+                "6\r\n5 1\r\n6 0\r\nxhfzge 0\r\n3 1\r\n1 0\r\n1n9mqv 1\r\n",
+                "4\r\nmove 1 4\r\nmove 5 1\r\nmove 1n9mqv 2\r\nmove xhfzge 5\r\n"
+            ],
+            [
+                "6\r\nhmpfsz 1\r\n6 0\r\n5 1\r\n4 0\r\n1 0\r\n3 1\r\n",
+                "3\r\nmove 5 2\r\nmove 1 5\r\nmove hmpfsz 1\r\n"
+            ],
+            [
+                "3\r\n1 1\r\n3 1\r\n2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n2 1\r\n3 1\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n2 1\r\n1 1\r\n3 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n1 1\r\n2 1\r\n3 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "4\r\n3 1\r\n1 1\r\n4 1\r\nd1cks2 0\r\n",
+                "2\r\nmove 4 2\r\nmove d1cks2 4\r\n"
+            ],
+            [
+                "4\r\n4 0\r\n3 1\r\n1 1\r\n2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "4\r\n2 1\r\n4 1\r\n1 0\r\n3 1\r\n",
+                "3\r\nmove 4 0\r\nmove 1 4\r\nmove 0 1\r\n"
+            ],
+            [
+                "4\r\n4 1\r\n1 1\r\n3 1\r\n2 0\r\n",
+                "3\r\nmove 4 0\r\nmove 2 4\r\nmove 0 2\r\n"
+            ],
+            [
+                "5\r\n4 1\r\nhvshea 0\r\naio11n 0\r\n2 1\r\n3 1\r\n",
+                "3\r\nmove 4 1\r\nmove hvshea 4\r\nmove aio11n 5\r\n"
+            ],
+            [
+                "5\r\n5 0\r\nts7a1c 0\r\n4 1\r\n1 1\r\n2 1\r\n",
+                "2\r\nmove 4 3\r\nmove ts7a1c 4\r\n"
+            ],
+            [
+                "5\r\n4 0\r\n3 1\r\n5 0\r\n2 1\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "5\r\n3 1\r\n5 0\r\n4 1\r\n1 1\r\n2 0\r\n",
+                "3\r\nmove 4 0\r\nmove 2 4\r\nmove 0 2\r\n"
+            ],
+            [
+                "6\r\neik3kw 0\r\n5 1\r\nzoonoj 0\r\n2 1\r\n1 1\r\nivzfie 0\r\n",
+                "4\r\nmove 5 3\r\nmove eik3kw 4\r\nmove zoonoj 5\r\nmove ivzfie 6\r\n"
+            ],
+            [
+                "6\r\n7igwk9 0\r\n6 1\r\n5 1\r\ndx2yu0 0\r\n2 0\r\n1 1\r\n",
+                "5\r\nmove 2 4\r\nmove 6 2\r\nmove 5 3\r\nmove 7igwk9 5\r\nmove dx2yu0 6\r\n"
+            ],
+            [
+                "6\r\nc3py3h 0\r\n2 1\r\n4 0\r\n3 0\r\n1 1\r\n5 1\r\n",
+                "3\r\nmove 3 6\r\nmove 5 3\r\nmove c3py3h 5\r\n"
+            ],
+            [
+                "6\r\n1 1\r\n3 0\r\n2 1\r\n6 1\r\n4 0\r\n5 0\r\n",
+                "3\r\nmove 6 0\r\nmove 3 6\r\nmove 0 3\r\n"
+            ],
+            [
+                "20\r\nphp8vy 1\r\nkeeona 0\r\n8 0\r\nwzf4eb 0\r\n16 1\r\n9 0\r\nf2548d 0\r\n11 0\r\nyszsig 0\r\nyyf4q2 0\r\n1pon1p 1\r\njvpwuo 0\r\nd9stsx 0\r\ne14bkx 1\r\n5 0\r\n17 0\r\nsbklx4 0\r\nsfms2u 1\r\n6 0\r\n18 1\r\n",
+                "16\r\nmove 6 20\r\nmove 5 19\r\nmove 18 5\r\nmove 16 6\r\nmove php8vy 1\r\nmove 1pon1p 2\r\nmove e14bkx 3\r\nmove sfms2u 4\r\nmove keeona 7\r\nmove wzf4eb 10\r\nmove f2548d 12\r\nmove yszsig 13\r\nmove yyf4q2 14\r\nmove jvpwuo 15\r\nmove d9stsx 16\r\nmove sbklx4 18\r\n"
+            ],
+            [
+                "4\r\n3 1\r\n4 1\r\n1 0\r\n2 0\r\n",
+                "5\r\nmove 4 0\r\nmove 2 4\r\nmove 3 2\r\nmove 1 3\r\nmove 0 1\r\n"
+            ],
+            [
+                "1\r\n01 1\r\n",
+                "1\r\nmove 01 1\r\n"
+            ],
+            [
+                "2\r\n01 0\r\n02 1\r\n",
+                "2\r\nmove 02 1\r\nmove 01 2\r\n"
+            ]
+        ]
+    }
+]

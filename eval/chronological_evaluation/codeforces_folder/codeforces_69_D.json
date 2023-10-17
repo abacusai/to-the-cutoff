@@ -1,0 +1,160 @@
+[
+    {
+        "name": "Dot",
+        "description": "Anton and Dasha like to play different games during breaks on checkered paper.\nBy the 11th grade they managed to play all the games of this type and asked\nVova the programmer to come up with a new game. Vova suggested to them to play\na game under the code name \"dot\" with the following rules: On the checkered\npaper a coordinate system is drawn. A dot is initially put in the position (x,\ny). A move is shifting a dot to one of the pre-selected vectors. Also each\nplayer can once per game symmetrically reflect a dot relatively to the line y\n= x. Anton and Dasha take turns. Anton goes first. The player after whose move\nthe distance from the dot to the coordinates' origin exceeds d, loses. Help\nthem to determine the winner. Input The first line of the input file contains\n4 integers x, y, n, d ( - 200 \u2264 x, y \u2264 200, 1 \u2264 d \u2264 200, 1 \u2264 n \u2264 20) \u2014 the\ninitial coordinates of the dot, the distance d and the number of vectors. It\nis guaranteed that the initial dot is at the distance less than d from the\norigin of the coordinates. The following n lines each contain two non-negative\nnumbers xi and yi (0 \u2264 xi, yi \u2264 200) \u2014 the coordinates of the i-th vector. It\nis guaranteed that all the vectors are nonzero and different. Output You\nshould print \"Anton\", if the winner is Anton in case of both players play the\ngame optimally, and \"Dasha\" otherwise. Examples Input 0 0 2 3 1 1 1 2 Output\nAnton Input 0 0 2 4 1 1 1 2 Output Dasha Note In the first test, Anton goes to\nthe vector (1;2), and Dasha loses. In the second test Dasha with her first\nmove shifts the dot so that its coordinates are (2;3), and Anton loses, as he\nhas the only possible move \u2014 to reflect relatively to the line y = x. Dasha\nwill respond to it with the same move and return the dot in position (2;3).\n\n",
+        "cf_contest_id": 69,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "games"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "0 0 2 3\r\n1 1\r\n1 2\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "0 0 2 4\r\n1 1\r\n1 2\r\n",
+                "Dasha\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "0 0 5 100\r\n12 105\r\n15 59\r\n21 1\r\n27 6\r\n27 76\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "0 0 5 100\r\n16 24\r\n29 6\r\n44 24\r\n66 37\r\n102 19\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "0 0 5 100\r\n4 108\r\n5 170\r\n7 30\r\n7 101\r\n21 117\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "0 0 5 100\r\n30 9\r\n53 14\r\n84 7\r\n94 18\r\n121 16\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "0 0 5 100\r\n52 144\r\n55 58\r\n56 103\r\n98 65\r\n134 16\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "0 0 5 100\r\n17 3\r\n42 24\r\n72 22\r\n72 25\r\n120 25\r\n",
+                "Dasha\r\n"
+            ],
+            [
+                "0 0 5 100\r\n21 38\r\n43 42\r\n59 29\r\n69 3\r\n84 52\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "0 0 5 100\r\n2 164\r\n23 107\r\n30 167\r\n46 178\r\n66 148\r\n",
+                "Dasha\r\n"
+            ],
+            [
+                "3 -1 20 200\r\n2 27\r\n12 61\r\n14 76\r\n16 20\r\n19 72\r\n20 22\r\n30 27\r\n39 61\r\n42 44\r\n45 8\r\n46 23\r\n57 13\r\n62 56\r\n64 67\r\n80 30\r\n94 34\r\n94 77\r\n100 36\r\n101 13\r\n107 9\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "3 -1 20 200\r\n1 139\r\n8 76\r\n10 97\r\n25 99\r\n26 147\r\n29 51\r\n48 79\r\n56 164\r\n67 80\r\n71 35\r\n89 90\r\n108 16\r\n108 127\r\n127 54\r\n137 13\r\n140 156\r\n146 104\r\n160 155\r\n164 138\r\n172 102\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "3 -1 20 200\r\n1 28\r\n9 80\r\n20 92\r\n29 82\r\n38 65\r\n42 9\r\n50 65\r\n67 57\r\n71 60\r\n73 51\r\n78 89\r\n86 31\r\n90 39\r\n97 96\r\n104 27\r\n115 49\r\n119 59\r\n125 18\r\n132 37\r\n133 9\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "3 -1 20 200\r\n3 51\r\n6 75\r\n7 105\r\n8 109\r\n12 59\r\n12 90\r\n15 71\r\n17 150\r\n18 161\r\n19 106\r\n23 71\r\n26 68\r\n34 95\r\n36 47\r\n38 29\r\n38 153\r\n41 91\r\n43 128\r\n43 164\r\n44 106\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "3 -1 20 200\r\n19 12\r\n24 121\r\n25 32\r\n28 19\r\n28 87\r\n29 49\r\n32 88\r\n33 70\r\n37 77\r\n54 33\r\n56 27\r\n61 59\r\n67 42\r\n73 15\r\n76 40\r\n80 73\r\n83 39\r\n91 34\r\n91 112\r\n95 95\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "-3 -14 20 200\r\n6 90\r\n7 12\r\n15 24\r\n16 67\r\n26 35\r\n34 63\r\n35 48\r\n36 30\r\n48 28\r\n56 35\r\n59 91\r\n60 34\r\n76 43\r\n77 90\r\n77 95\r\n79 34\r\n87 69\r\n93 6\r\n99 10\r\n99 41\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "-3 -14 20 200\r\n5 54\r\n10 62\r\n20 43\r\n20 79\r\n21 47\r\n32 75\r\n33 48\r\n40 61\r\n44 65\r\n52 7\r\n52 28\r\n55 65\r\n55 67\r\n59 78\r\n68 52\r\n70 20\r\n71 72\r\n76 50\r\n90 100\r\n99 9\r\n",
+                "Dasha\r\n"
+            ],
+            [
+                "-3 -14 20 200\r\n1 60\r\n5 47\r\n10 6\r\n14 17\r\n14 32\r\n34 93\r\n40 9\r\n43 85\r\n44 47\r\n49 59\r\n57 85\r\n68 50\r\n69 93\r\n71 42\r\n71 57\r\n73 5\r\n74 70\r\n83 41\r\n83 83\r\n89 8\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "-3 -14 20 200\r\n14 51\r\n26 54\r\n30 50\r\n38 41\r\n40 68\r\n47 12\r\n50 86\r\n63 4\r\n65 52\r\n67 83\r\n70 88\r\n71 61\r\n79 82\r\n82 53\r\n89 84\r\n90 16\r\n92 79\r\n97 37\r\n100 37\r\n100 93\r\n",
+                "Dasha\r\n"
+            ],
+            [
+                "-3 -14 20 200\r\n11 24\r\n13 8\r\n14 8\r\n15 44\r\n15 54\r\n20 79\r\n24 72\r\n27 7\r\n28 6\r\n30 18\r\n46 34\r\n51 5\r\n64 83\r\n69 48\r\n78 76\r\n79 2\r\n89 43\r\n92 31\r\n94 76\r\n99 64\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "12 -11 20 200\r\n12 147\r\n14 181\r\n14 198\r\n33 51\r\n34 93\r\n43 29\r\n47 44\r\n56 161\r\n66 111\r\n96 119\r\n102 71\r\n117 184\r\n133 69\r\n151 189\r\n152 28\r\n173 27\r\n173 120\r\n176 12\r\n183 1\r\n188 196\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "12 -11 20 200\r\n6 108\r\n14 188\r\n23 60\r\n28 44\r\n35 151\r\n36 82\r\n58 49\r\n65 81\r\n97 100\r\n104 26\r\n114 143\r\n136 156\r\n139 112\r\n142 119\r\n147 184\r\n148 46\r\n149 152\r\n175 178\r\n184 85\r\n187 12\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "12 -11 20 200\r\n11 189\r\n12 108\r\n19 190\r\n21 27\r\n24 193\r\n26 86\r\n26 123\r\n31 180\r\n39 196\r\n107 193\r\n122 46\r\n129 103\r\n131 129\r\n132 135\r\n142 51\r\n157 22\r\n161 27\r\n195 163\r\n198 55\r\n199 64\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "12 -11 20 200\r\n8 176\r\n11 162\r\n25 130\r\n32 124\r\n58 175\r\n59 170\r\n61 98\r\n66 37\r\n78 5\r\n87 150\r\n94 172\r\n99 171\r\n121 11\r\n121 31\r\n124 172\r\n131 71\r\n134 190\r\n162 50\r\n182 99\r\n194 119\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "12 -11 20 200\r\n6 80\r\n12 62\r\n14 15\r\n16 133\r\n41 28\r\n43 47\r\n79 136\r\n90 196\r\n99 151\r\n99 187\r\n119 42\r\n121 11\r\n147 132\r\n149 166\r\n161 102\r\n174 4\r\n182 122\r\n194 50\r\n200 182\r\n200 197\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "0 0 19 27\r\n1 25\r\n11 3\r\n12 38\r\n27 52\r\n35 111\r\n36 51\r\n44 7\r\n45 106\r\n58 104\r\n63 108\r\n75 4\r\n76 84\r\n89 2\r\n89 44\r\n92 23\r\n98 66\r\n111 58\r\n113 9\r\n114 76\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "0 0 15 98\r\n5 14\r\n9 133\r\n10 128\r\n15 140\r\n17 53\r\n33 43\r\n50 15\r\n69 55\r\n74 134\r\n77 100\r\n99 82\r\n100 140\r\n102 12\r\n110 65\r\n128 110\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "0 0 19 34\r\n0 116\r\n6 11\r\n6 32\r\n9 84\r\n14 3\r\n27 85\r\n42 58\r\n46 31\r\n52 104\r\n65 83\r\n66 37\r\n68 130\r\n69 69\r\n78 7\r\n78 23\r\n81 66\r\n90 27\r\n91 39\r\n96 10\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "0 0 17 141\r\n9 30\r\n9 55\r\n11 64\r\n18 37\r\n20 94\r\n23 37\r\n23 140\r\n28 134\r\n36 43\r\n38 77\r\n50 47\r\n54 42\r\n70 32\r\n74 151\r\n85 68\r\n87 53\r\n88 91\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "0 0 17 160\r\n31 75\r\n32 149\r\n49 132\r\n54 98\r\n54 100\r\n57 48\r\n65 20\r\n67 177\r\n72 76\r\n74 25\r\n99 49\r\n105 86\r\n128 116\r\n147 176\r\n156 130\r\n160 26\r\n178 177\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "-100 -100 10 200\r\n0 1\r\n1 0\r\n1 1\r\n31 41\r\n3 4\r\n5 2\r\n1 2\r\n3 3\r\n9 8\r\n10 2\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "-140 -140 2 200\r\n1 0\r\n0 1\r\n",
+                "Dasha\r\n"
+            ],
+            [
+                "-130 -130 20 200\r\n0 1\r\n1 0\r\n1 1\r\n31 41\r\n3 4\r\n5 2\r\n1 2\r\n3 3\r\n9 8\r\n10 2\r\n0 2\r\n0 3\r\n0 4\r\n0 5\r\n0 6\r\n2 0\r\n3 0\r\n4 0\r\n5 0\r\n6 0\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "-133 -133 20 200\r\n1 0\r\n0 1\r\n1 1\r\n2 0\r\n0 2\r\n2 1\r\n1 2\r\n3 0\r\n0 3\r\n3 1\r\n3 2\r\n3 3\r\n2 2\r\n2 3\r\n1 3\r\n4 0\r\n0 4\r\n4 1\r\n1 4\r\n2 4\r\n",
+                "Anton\r\n"
+            ],
+            [
+                "-12 -34 5 200\r\n1 0\r\n2 0\r\n3 1\r\n10 3\r\n11 4\r\n",
+                "Dasha\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,106 @@
+[
+    {
+        "name": "National Property",
+        "description": "You all know that the Library of Bookland is the largest library in the world.\nThere are dozens of thousands of books in the library. Some long and\nuninteresting story was removed... The alphabet of Bookland is so large that\nits letters are denoted by positive integers. Each letter can be small or\nlarge, the large version of a letter x is denoted by x'. BSCII encoding, which\nis used everywhere in Bookland, is made in that way so that large letters are\npresented in the order of the numbers they are denoted by, and small letters\nare presented in the order of the numbers they are denoted by, but all large\nletters are before all small letters. For example, the following conditions\nhold: 2 < 3, 2' < 3', 3' < 2\u0226 word x1, x2, ..., xa is not lexicographically\ngreater than y1, y2, ..., yb if one of the two following conditions holds: a \u2264\nb and x1 = y1, ..., xa = ya, i.e. the first word is the prefix of the second\nword; there is a position 1 \u2264 j \u2264 min(a, b), such that x1 = y1, ..., xj - 1 =\nyj - 1 and xj < yj, i.e. at the first position where the words differ the\nfirst word has a smaller letter than the second word has. For example, the\nword \"3' 7 5\" is before the word \"2 4' 6\" in lexicographical order. It is said\nthat sequence of words is in lexicographical order if each word is not\nlexicographically greater than the next word in the sequence. Denis has a\nsequence of words consisting of small letters only. He wants to change some\nletters to large (let's call this process a capitalization) in such a way that\nthe sequence of words is in lexicographical order. However, he soon realized\nthat for some reason he can't change a single letter in a single word. He only\ncan choose a letter and change all of its occurrences in all words to large\nletters. He can perform this operation any number of times with arbitrary\nletters of Bookland's alphabet. Help Denis to choose which letters he needs to\ncapitalize (make large) in order to make the sequence of words\nlexicographically ordered, or determine that it is impossible. Note that some\nwords can be equal. Input The first line contains two integers n and m (2 \u2264 n\n\u2264 100 000, 1 \u2264 m \u2264 100 000) \u2014 the number of words and the number of letters in\nBookland's alphabet, respectively. The letters of Bookland's alphabet are\ndenoted by integers from 1 to m. Each of the next n lines contains a\ndescription of one word in format li, si, 1, si, 2, ..., si, li (1 \u2264 li \u2264 100\n000, 1 \u2264 si, j \u2264 m), where li is the length of the word, and si, j is the\nsequence of letters in the word. The words are given in the order Denis has\nthem in the sequence. It is guaranteed that the total length of all words is\nnot greater than 100 000. Output In the first line print \"Yes\" (without\nquotes), if it is possible to capitalize some set of letters in such a way\nthat the sequence of words becomes lexicographically ordered. Otherwise, print\n\"No\" (without quotes). If the required is possible, in the second line print k\n\u2014 the number of letters Denis has to capitalize (make large), and in the third\nline print k distinct integers \u2014 these letters. Note that you don't need to\nminimize the value k. You can print the letters in any order. If there are\nmultiple answers, print any of them. Examples Input 4 3 1 2 1 1 3 1 3 2 2 1 1\nOutput Yes 2 2 3 Input 6 5 2 1 2 2 1 2 3 1 2 3 2 1 5 2 4 4 2 4 4 Output Yes 0\nInput 4 3 4 3 2 2 1 3 1 1 3 3 2 3 3 2 3 1 Output No Note In the first example\nafter Denis makes letters 2 and 3 large, the sequence looks like the\nfollowing: 2' 1 1 3' 2' 1 1 The condition 2' < 1 holds, so the first word is\nnot lexicographically larger than the second word. The second word is the\nprefix of the third word, so the are in lexicographical order. As the first\nletters of the third and the fourth words are the same, and 3' < 1, then the\nthird word is not lexicographically larger than the fourth word. In the second\nexample the words are in lexicographical order from the beginning, so Denis\ncan do nothing. In the third example there is no set of letters such that if\nDenis capitalizes them, the sequence becomes lexicographically ordered.\n\n",
+        "cf_contest_id": 875,
+        "cf_index": "C",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "2-sat",
+            "dfs and similar",
+            "graphs",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "4 3\r\n1 2\r\n1 1\r\n3 1 3 2\r\n2 1 1\r\n",
+                "Yes\r\n2\r\n2 3 "
+            ],
+            [
+                "6 5\r\n2 1 2\r\n2 1 2\r\n3 1 2 3\r\n2 1 5\r\n2 4 4\r\n2 4 4\r\n",
+                "Yes\r\n0\r\n"
+            ],
+            [
+                "4 3\r\n4 3 2 2 1\r\n3 1 1 3\r\n3 2 3 3\r\n2 3 1\r\n",
+                "No\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 4\r\n3 3 4 1\r\n4 3 4 2 2\r\n4 2 1 2 3\r\n3 4 2 2\r\n",
+                "Yes\r\n1\r\n3 "
+            ],
+            [
+                "3 5\r\n2 1 2\r\n2 1 5\r\n2 4 4\r\n",
+                "Yes\r\n0\r\n"
+            ],
+            [
+                "2 1\r\n10 1 1 1 1 1 1 1 1 1 1\r\n25 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "Yes\r\n0\r\n"
+            ],
+            [
+                "10 3\r\n2 3 2\r\n1 3\r\n3 1 3 3\r\n1 2\r\n2 1 2\r\n3 2 2 3\r\n3 3 2 1\r\n1 2\r\n2 1 2\r\n4 1 2 2 3\r\n",
+                "No\r\n"
+            ],
+            [
+                "10 3\r\n2 3 1\r\n1 2\r\n1 1\r\n1 1\r\n2 3 1\r\n1 2\r\n2 3 1\r\n1 1\r\n1 3\r\n2 3 2\r\n",
+                "No\r\n"
+            ],
+            [
+                "10 10\r\n8 1 1 6 10 2 2 9 7\r\n6 2 7 1 9 5 10\r\n1 5\r\n7 3 6 9 6 3 7 6\r\n10 3 9 10 3 6 7 10 6 9 6\r\n10 4 4 9 8 2 10 3 6 2 9\r\n8 4 8 6 4 6 4 8 6\r\n2 7 5\r\n6 8 6 2 1 9 8\r\n3 10 2 10\r\n",
+                "Yes\r\n3\r\n5 2 1 "
+            ],
+            [
+                "10 10\r\n8 2 1 3 2 10 5 4 1\r\n6 2 1 7 5 7 1\r\n9 2 1 7 5 8 2 8 2 9\r\n3 2 1 9\r\n7 2 9 2 2 10 1 7\r\n10 2 9 2 2 10 1 7 4 1 10\r\n5 3 5 2 4 4\r\n7 3 5 9 6 6 5 4\r\n2 5 6\r\n6 5 9 8 7 6 9\r\n",
+                "Yes\r\n0\r\n"
+            ],
+            [
+                "10 4\r\n2 1 4\r\n2 1 4\r\n9 1 4 1 2 3 1 4 4 2\r\n1 4\r\n4 4 1 4 3\r\n7 4 4 4 4 1 4 2\r\n4 4 2 4 3\r\n4 2 4 4 4\r\n1 3\r\n9 3 3 3 4 2 3 3 2 4\r\n",
+                "Yes\r\n2\r\n4 1 "
+            ],
+            [
+                "3 3\r\n1 3\r\n1 2\r\n1 1\r\n",
+                "No\r\n"
+            ],
+            [
+                "2 2\r\n2 1 2\r\n1 1\r\n",
+                "No\r\n"
+            ],
+            [
+                "2 3\r\n3 1 2 3\r\n2 1 2\r\n",
+                "No\r\n"
+            ],
+            [
+                "2 100000\r\n5 1 2 3 1 5\r\n3 1 2 3\r\n",
+                "No\r\n"
+            ],
+            [
+                "4 5\r\n2 1 5\r\n2 1 4\r\n2 2 3\r\n2 2 5\r\n",
+                "Yes\r\n2\r\n5 3 "
+            ],
+            [
+                "2 100\r\n3 1 2 3\r\n1 1\r\n",
+                "No\r\n"
+            ],
+            [
+                "5 5\r\n1 5\r\n1 4\r\n1 3\r\n1 2\r\n1 1\r\n",
+                "No\r\n"
+            ],
+            [
+                "2 1\r\n2 1 1\r\n1 1\r\n",
+                "No\r\n"
+            ],
+            [
+                "2 3\r\n2 1 3\r\n1 1\r\n",
+                "No\r\n"
+            ],
+            [
+                "6 100\r\n1 3\r\n1 5\r\n2 7 5\r\n2 7 2\r\n3 7 7 2\r\n3 7 7 3\r\n",
+                "No\r\n"
+            ]
+        ]
+    }
+]

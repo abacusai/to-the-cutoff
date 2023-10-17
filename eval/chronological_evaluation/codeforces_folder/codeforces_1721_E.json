@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Prefix Function Queries",
+        "description": "You are given a string \n    s\n, consisting of lowercase Latin letters. You are\nasked \n    q\n queries about it: given another string \n    t\n, consisting of\nlowercase Latin letters, perform the following steps: concatenate \n    s\n and\n\n    t\n; calculate the prefix function of the resulting string \n    s+t\n;\nprint the values of the prefix function on positions \n    |s|+1, |s|+2, \n    \u2026,\n    |s|+|t|\n (\n    |s|\n and \n    |t|\n denote the lengths of strings \n    s\n and\n\n    t\n, respectively); revert the string back to \n    s\n. The prefix function\nof a string \n    a\n is a sequence \n    p_1, p_2, \n    \u2026, p_|a|\n, where\n\n    p_i\n is the maximum value of \n    k\n such that \n    k < i\n and\n\n    a[1..k]=a[i-k+1..i]\n (\n    a[l..r]\n denotes a contiguous substring of a\nstring \n    a\n from a position \n    l\n to a position \n    r\n, inclusive). In\nother words, it's the longest proper prefix of the string \n    a[1..i]\n that\nis equal to its suffix of the same length. Input The first line contains a\nnon-empty string \n    s\n (\n    1 \n    \u2264 |s| \n    \u2264 10^6\n), consisting of\nlowercase Latin letters. The second line contains a single integer \n    q\n\n(\n    1 \n    \u2264 q \n    \u2264 10^5\n) \u2014 the number of queries. Each of the next \n    q\n\nlines contains a query: a non-empty string \n    t\n (\n    1 \n    \u2264 |t| \n    \u2264\n    10\n), consisting of lowercase Latin letters. Output For each query, print\nthe values of the prefix function of a string \n    s+t\n on positions \n    |s|+1,\n    |s|+2, \n    \u2026, |s|+|t|\n. Examples Input aba 6 caba aba bababa aaaa b forces\nOutput 0 1 2 3 1 2 3 2 3 4 5 6 7 1 1 1 1 2 0 0 0 0 0 0 Input aacba 4 aaca cbbb\naab ccaca Output 2 2 3 1 0 0 0 0 2 2 0 0 0 1 0 1\n\n",
+        "cf_contest_id": 1721,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "hashing",
+            "string suffix structures",
+            "strings",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "aba\r\n6\r\ncaba\r\naba\r\nbababa\r\naaaa\r\nb\r\nforces\r\n",
+                "0 1 2 3\r\n1 2 3\r\n2 3 4 5 6 7\r\n1 1 1 1\r\n2\r\n0 0 0 0 0 0\r\n"
+            ],
+            [
+                "aacba\r\n4\r\naaca\r\ncbbb\r\naab\r\nccaca\r\n",
+                "2 2 3 1\r\n0 0 0 0\r\n2 2 0\r\n0 0 1 0 1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "bcbabccbac\r\n10\r\nabaab\r\nbc\r\ncacc\r\naba\r\nbaba\r\nbc\r\nabbcb\r\nbb\r\ncab\r\nbbab\r\n",
+                "0 1 0 0 1\r\n1 2\r\n0 0 0 0\r\n0 1 0\r\n1 0 1 0\r\n1 2\r\n0 1 1 2 3\r\n1 1\r\n0 0 1\r\n1 1 0 1\r\n"
+            ],
+            [
+                "a\r\n1\r\na\r\n",
+                "1\r\n"
+            ],
+            [
+                "zicrdzacxnofotwf\r\n1\r\nxnofotwf\r\n",
+                "0 0 0 0 0 0 0 0\r\n"
+            ],
+            [
+                "lsdcmckivbbwtfcf\r\n1\r\nvbbwtfcf\r\n",
+                "0 0 0 0 0 0 0 0\r\n"
+            ],
+            [
+                "vqxjbray\r\n1\r\najwpqidg\r\n",
+                "0 0 0 0 0 0 0 0\r\n"
+            ],
+            [
+                "abaabaabaab\r\n1\r\naaba\r\n",
+                "9 10 11 12\r\n"
+            ],
+            [
+                "babbbabbbabbbabbb\r\n5\r\nbaaaaaabba\r\nabbb\r\nabbbaba\r\nbb\r\naaaabaa\r\n",
+                "1 2 0 0 0 0 0 1 1 2\r\n14 15 16 17\r\n14 15 16 17 18 19 2\r\n1 1\r\n14 0 0 0 1 2 0\r\n"
+            ],
+            [
+                "aaaabbbbaaaaxaaaabbbbaaaa\r\n1\r\na\r\n",
+                "4\r\n"
+            ],
+            [
+                "aacbaaaacbaaaacbaaaac\r\n1\r\na\r\n",
+                "1\r\n"
+            ],
+            [
+                "aacbaaaacbaaaacbaaaacxaacbaaaacbaaaacbaaaac\r\n1\r\na\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

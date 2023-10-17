@@ -1,0 +1,209 @@
+[
+    {
+        "name": "FreeDiv",
+        "description": "Vasya plays FreeDiv. In this game he manages a huge state, which has n cities\nand m two-way roads between them. Unfortunately, not from every city you can\nreach any other one moving along these roads. Therefore Vasya decided to\ndivide the state into provinces so that in every province, one could reach\nfrom every city all the cities of the province, but there are no roads between\nprovinces. Unlike other turn-based strategies, in FreeDiv a player has the\nopportunity to build tunnels between cities. The tunnels are two-way roads\nalong which one can move armies undetected by the enemy. However, no more than\none tunnel can be connected to each city. As for Vasya, he wants to build a\nnetwork of tunnels so that any pair of cities in his state were reachable by\nsome path consisting of roads and a tunnels. But at that no more than k\ntunnels are connected to each province (otherwise, the province will be\ndifficult to keep in case other provinces are captured by enemy armies). Vasya\ndiscovered that maybe he will not be able to build such a network for the\ncurrent condition of the state. Maybe he'll have first to build several roads\nbetween cities in different provinces to merge the provinces. Your task is to\ndetermine the minimum number of roads Vasya needs to build so that it was\npossible to build the required network of tunnels in the resulting state.\nInput The first line contains three integers n, m and k (1 \u2264 n, k \u2264 10^6, 0 \u2264\nm \u2264 10^6). Each of the next m lines contains two integers. They are the\nnumbers of cities connected by a corresponding road. No road connects city to\nitself and there is at most one road between each pair of cities. Output Print\na single number, the minimum number of additional roads. Examples Input 3 3 2\n1 2 2 3 3 1 Output 0 Input 4 2 2 1 2 3 4 Output 0 Input 4 0 2 Output 1 Note In\nthe first example only one province exists, so it is not necessary to build\nany tunnels or roads. In the second example two provinces exist. It is\npossible to merge the provinces by building a tunnel between cities 1 and 3.\nIn the third example at least one additional road is necessary. For example it\nis possible to build additional road between cities 1 and 2 and build two\ntunnels between cities 1 and 3, 2 and 4 after that.\n\n",
+        "cf_contest_id": 73,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs",
+            "greedy"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3 2\r\n1 2\r\n2 3\r\n3 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 2 2\r\n1 2\r\n3 4\r\n",
+                "0"
+            ],
+            [
+                "4 0 2\r\n",
+                "1"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 0 3\r\n",
+                "1"
+            ],
+            [
+                "8 3 4\r\n1 4\r\n4 8\r\n8 1\r\n",
+                "1"
+            ],
+            [
+                "8 3 2\r\n1 4\r\n4 8\r\n8 1\r\n",
+                "2"
+            ],
+            [
+                "8 3 3\r\n1 4\r\n4 8\r\n8 1\r\n",
+                "1"
+            ],
+            [
+                "8 0 3\r\n",
+                "3"
+            ],
+            [
+                "50 0 50\r\n",
+                "24"
+            ],
+            [
+                "50 0 2\r\n",
+                "24"
+            ],
+            [
+                "50 0 100\r\n",
+                "24"
+            ],
+            [
+                "100 0 1\r\n",
+                "98"
+            ],
+            [
+                "3289 0 2\r\n",
+                "1644"
+            ],
+            [
+                "1000000 0 1\r\n",
+                "999998"
+            ],
+            [
+                "1000000 0 2\r\n",
+                "499999"
+            ],
+            [
+                "1000000 0 1000000\r\n",
+                "499999"
+            ],
+            [
+                "1000000 0 100\r\n",
+                "499999"
+            ],
+            [
+                "999999 0 1\r\n",
+                "999997"
+            ],
+            [
+                "999999 0 2\r\n",
+                "499999"
+            ],
+            [
+                "999999 0 999999\r\n",
+                "499999"
+            ],
+            [
+                "102 1 1\r\n23 58\r\n",
+                "99"
+            ],
+            [
+                "102 1 2\r\n1 62\r\n",
+                "49"
+            ],
+            [
+                "102 1 10000\r\n66 45\r\n",
+                "49"
+            ],
+            [
+                "1000000 1 1\r\n663349 495214\r\n",
+                "999997"
+            ],
+            [
+                "1000000 1 2\r\n998708 47343\r\n",
+                "499998"
+            ],
+            [
+                "1000000 1 5\r\n789076 458264\r\n",
+                "499998"
+            ],
+            [
+                "11 5 1\r\n8 11\r\n11 2\r\n2 5\r\n5 7\r\n8 2\r\n",
+                "5"
+            ],
+            [
+                "11 5 2\r\n1 6\r\n6 7\r\n7 2\r\n2 11\r\n2 1\r\n",
+                "2"
+            ],
+            [
+                "11 5 3\r\n2 7\r\n7 9\r\n9 8\r\n8 3\r\n8 7\r\n",
+                "2"
+            ],
+            [
+                "11 5 4\r\n9 8\r\n8 4\r\n4 1\r\n1 10\r\n8 1\r\n",
+                "1"
+            ],
+            [
+                "11 5 5\r\n10 8\r\n8 7\r\n7 11\r\n11 6\r\n10 7\r\n",
+                "1"
+            ],
+            [
+                "11 5 6\r\n10 1\r\n1 8\r\n8 7\r\n7 3\r\n10 7\r\n",
+                "1"
+            ],
+            [
+                "3 2 1\r\n1 2\r\n2 3\r\n",
+                "0"
+            ],
+            [
+                "2 0 1\r\n",
+                "0"
+            ],
+            [
+                "1 0 1\r\n",
+                "0"
+            ],
+            [
+                "3 0 1\r\n",
+                "1"
+            ],
+            [
+                "4 0 1\r\n",
+                "2"
+            ],
+            [
+                "4 1 1\r\n1 2\r\n",
+                "1"
+            ],
+            [
+                "4 2 1\r\n1 2\r\n3 4\r\n",
+                "0"
+            ],
+            [
+                "4 3 1\r\n1 2\r\n2 3\r\n3 4\r\n",
+                "0"
+            ],
+            [
+                "2 1 1\r\n1 2\r\n",
+                "0"
+            ],
+            [
+                "5 0 1\r\n",
+                "3"
+            ],
+            [
+                "5 1 1\r\n1 2\r\n",
+                "2"
+            ],
+            [
+                "5 2 1\r\n1 2\r\n2 3\r\n",
+                "1"
+            ],
+            [
+                "5 2 1\r\n1 2\r\n3 4\r\n",
+                "1"
+            ],
+            [
+                "5 3 1\r\n1 2\r\n2 3\r\n4 5\r\n",
+                "0"
+            ],
+            [
+                "10 0 1\r\n",
+                "8"
+            ]
+        ]
+    }
+]

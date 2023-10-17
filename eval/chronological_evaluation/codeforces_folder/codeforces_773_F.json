@@ -1,0 +1,444 @@
+[
+    {
+        "name": "Test Data Generation",
+        "description": "Test data generation is not an easy task! Often, generating big random test\ncases is not enough to ensure thorough testing of solutions for correctness.\nFor example, consider a problem from an old Codeforces round. Its input format\nlooks roughly as follows: The first line contains a single integer n (1 \u2264 n \u2264\nmaxn) \u2014 the size of the set. The second line contains n distinct integers a1,\na2, ..., an (1 \u2264 ai \u2264 maxa) \u2014 the elements of the set in increasing order. If\nyou don't pay attention to the problem solution, it looks fairly easy to\ngenerate a good test case for this problem. Let n = maxn, take random distinct\nai from 1 to maxa, sort them... Soon you understand that it's not that easy.\nHere is the actual problem solution. Let g be the greatest common divisor of\na1, a2, ..., an. Let x = an / g - n. Then the correct solution outputs \"Alice\"\nif x is odd, and \"Bob\" if x is even. Consider two wrong solutions to this\nproblem which differ from the correct one only in the formula for calculating\nx. The first wrong solution calculates x as x = an / g (without subtracting\nn). The second wrong solution calculates x as x = an - n (without dividing by\ng). A test case is interesting if it makes both wrong solutions output an\nincorrect answer. Given maxn, maxa and q, find the number of interesting test\ncases satisfying the constraints, and output it modulo q. Input The only line\ncontains three integers maxn, maxa and q (1 \u2264 maxn \u2264 30 000; maxn \u2264 maxa \u2264\n10^9; 10^4 \u2264 q \u2264 10^5 + 129). Output Output a single integer \u2014 the number of\ntest cases which satisfy the constraints and make both wrong solutions output\nan incorrect answer, modulo q. Examples Input 3 6 100000 Output 4 Input 6 21\n100129 Output 154 Input 58 787788 50216 Output 46009 Note In the first\nexample, interesting test cases look as follows: 1 1 1 3 2 4 6 2 4 6\n\n",
+        "cf_contest_id": 773,
+        "cf_index": "F",
+        "cf_rating": 3400,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "divide and conquer",
+            "dp",
+            "fft",
+            "math",
+            "number theory"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 6 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "6 21 100129\r\n",
+                "154\r\n"
+            ],
+            [
+                "58 787788 50216\r\n",
+                "46009\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 10000\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 20 100000\r\n",
+                "10\r\n"
+            ],
+            [
+                "2 20 100000\r\n",
+                "10\r\n"
+            ],
+            [
+                "100 12345 100000\r\n",
+                "22765\r\n"
+            ],
+            [
+                "30000 1000000000 100123\r\n",
+                "21272\r\n"
+            ],
+            [
+                "30000 536870911 100123\r\n",
+                "82802\r\n"
+            ],
+            [
+                "200 1000000000 100123\r\n",
+                "88152\r\n"
+            ],
+            [
+                "200 536870911 100123\r\n",
+                "11017\r\n"
+            ],
+            [
+                "200 536870912 100123\r\n",
+                "11018\r\n"
+            ],
+            [
+                "1000 536870911 100123\r\n",
+                "64128\r\n"
+            ],
+            [
+                "2000 536870911 100123\r\n",
+                "95429\r\n"
+            ],
+            [
+                "4000 536870911 100123\r\n",
+                "9643\r\n"
+            ],
+            [
+                "8000 536870911 100123\r\n",
+                "84503\r\n"
+            ],
+            [
+                "16000 536870911 100123\r\n",
+                "57489\r\n"
+            ],
+            [
+                "16000 1000000000 100123\r\n",
+                "89479\r\n"
+            ],
+            [
+                "10 20 100000\r\n",
+                "184\r\n"
+            ],
+            [
+                "20 25 100000\r\n",
+                "698\r\n"
+            ],
+            [
+                "5 5 100000\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 7 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "1 2 100123\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 536870911 100123\r\n",
+                "5692\r\n"
+            ],
+            [
+                "1 536870912 100123\r\n",
+                "5693\r\n"
+            ],
+            [
+                "1 1000000000 100123\r\n",
+                "85861\r\n"
+            ],
+            [
+                "2 1000000000 100123\r\n",
+                "85861\r\n"
+            ],
+            [
+                "2 2 100123\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 3 100123\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 3 100123\r\n",
+                "1\r\n"
+            ],
+            [
+                "16383 1000000000 100129\r\n",
+                "92305\r\n"
+            ],
+            [
+                "16384 1000000000 100129\r\n",
+                "92305\r\n"
+            ],
+            [
+                "16385 1000000000 100129\r\n",
+                "498\r\n"
+            ],
+            [
+                "30000 999999999 100129\r\n",
+                "23865\r\n"
+            ],
+            [
+                "30000 536870912 100129\r\n",
+                "90668\r\n"
+            ],
+            [
+                "30000 536870913 100129\r\n",
+                "90668\r\n"
+            ],
+            [
+                "29673 671088479 10000\r\n",
+                "67\r\n"
+            ],
+            [
+                "29804 939519871 100000\r\n",
+                "99167\r\n"
+            ],
+            [
+                "29097 671084543 100123\r\n",
+                "69927\r\n"
+            ],
+            [
+                "29364 536805295 100128\r\n",
+                "55925\r\n"
+            ],
+            [
+                "29465 805306303 100129\r\n",
+                "71904\r\n"
+            ],
+            [
+                "29441 671087487 65535\r\n",
+                "40129\r\n"
+            ],
+            [
+                "29923 989593598 65536\r\n",
+                "7161\r\n"
+            ],
+            [
+                "29909 794820607 59049\r\n",
+                "20195\r\n"
+            ],
+            [
+                "29459 805306359 46656\r\n",
+                "36813\r\n"
+            ],
+            [
+                "29521 536575999 30030\r\n",
+                "13478\r\n"
+            ],
+            [
+                "29327 771678207 60060\r\n",
+                "15506\r\n"
+            ],
+            [
+                "29523 939524027 90090\r\n",
+                "37791\r\n"
+            ],
+            [
+                "29182 804781951 10201\r\n",
+                "8309\r\n"
+            ],
+            [
+                "29292 671087615 91809\r\n",
+                "62523\r\n"
+            ],
+            [
+                "29939 981434367 97969\r\n",
+                "45387\r\n"
+            ],
+            [
+                "29928 938995199 96721\r\n",
+                "17029\r\n"
+            ],
+            [
+                "29811 803209213 97343\r\n",
+                "75766\r\n"
+            ],
+            [
+                "29216 939522047 79507\r\n",
+                "7416\r\n"
+            ],
+            [
+                "29622 805175167 83521\r\n",
+                "30548\r\n"
+            ],
+            [
+                "29825 201293823 67228\r\n",
+                "62779\r\n"
+            ],
+            [
+                "29244 922681341 78125\r\n",
+                "11842\r\n"
+            ],
+            [
+                "29782 536870845 100126\r\n",
+                "74061\r\n"
+            ],
+            [
+                "29725 535755775 100118\r\n",
+                "6811\r\n"
+            ],
+            [
+                "29393 536870879 10001\r\n",
+                "6365\r\n"
+            ],
+            [
+                "29875 805036031 10002\r\n",
+                "3441\r\n"
+            ],
+            [
+                "29876 804782015 100106\r\n",
+                "35274\r\n"
+            ],
+            [
+                "1 1 100000\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 2 100000\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2 100000\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 3 100000\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 3 100000\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 3 100000\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 4 100000\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 4 100000\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 4 100000\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 4 100000\r\n",
+                "2\r\n"
+            ],
+            [
+                "1 5 100000\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 5 100000\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 5 100000\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 5 100000\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 5 100000\r\n",
+                "2\r\n"
+            ],
+            [
+                "1 6 100000\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 6 100000\r\n",
+                "3\r\n"
+            ],
+            [
+                "3 6 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "4 6 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 6 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "6 6 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "1 7 100000\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 7 100000\r\n",
+                "3\r\n"
+            ],
+            [
+                "3 7 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "4 7 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 7 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "6 7 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "7 7 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "1 8 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "2 8 100000\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 8 100000\r\n",
+                "5\r\n"
+            ],
+            [
+                "4 8 100000\r\n",
+                "5\r\n"
+            ],
+            [
+                "5 8 100000\r\n",
+                "5\r\n"
+            ],
+            [
+                "6 8 100000\r\n",
+                "5\r\n"
+            ],
+            [
+                "7 8 100000\r\n",
+                "5\r\n"
+            ],
+            [
+                "8 8 100000\r\n",
+                "5\r\n"
+            ],
+            [
+                "30000 30000 30000\r\n",
+                "13816\r\n"
+            ],
+            [
+                "30000 59999 10000\r\n",
+                "1987\r\n"
+            ],
+            [
+                "30000 60000 10000\r\n",
+                "5379\r\n"
+            ],
+            [
+                "30000 60001 10000\r\n",
+                "5379\r\n"
+            ],
+            [
+                "30000 60002 10000\r\n",
+                "66\r\n"
+            ],
+            [
+                "29999 30000 10007\r\n",
+                "2397\r\n"
+            ],
+            [
+                "29999 29999 29999\r\n",
+                "8411\r\n"
+            ]
+        ]
+    }
+]

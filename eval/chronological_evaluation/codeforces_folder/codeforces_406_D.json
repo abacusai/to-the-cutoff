@@ -1,0 +1,69 @@
+[
+    {
+        "name": "Hill Climbing",
+        "description": "This problem has nothing to do with Little Chris. It is about hill climbers\ninstead (and Chris definitely isn't one). There are n hills arranged on a\nline, each in the form of a vertical line segment with one endpoint on the\nground. The hills are numbered with numbers from 1 to n from left to right.\nThe i-th hill stands at position xi with its top at height yi. For every two\nhills a and b, if the top of hill a can be seen from the top of hill b, their\ntops are connected by a rope. Formally, the tops of two hills are connected if\nthe segment connecting their top points does not intersect or touch any of the\nother hill segments. Using these ropes, the hill climbers can move from hill\nto hill. There are m teams of climbers, each composed of exactly two members.\nThe first and the second climbers of the i-th team are located at the top of\nthe ai-th and bi-th hills, respectively. They want to meet together at the top\nof some hill. Now, each of two climbers move according to the following\nprocess: if a climber is at the top of the hill where the other climber is\nalready located or will come eventually, the former climber stays at this\nhill; otherwise, the climber picks a hill to the right of his current hill\nthat is reachable by a rope and is the rightmost possible, climbs this hill\nand continues the process (the climber can also climb a hill whose top is\nlower than the top of his current hill). For each team of climbers, determine\nthe number of the meeting hill for this pair! Input The first line of input\ncontains a single integer n (1 \u2264 n \u2264 10^5), the number of hills. The next n\nlines describe the hills. The i-th of them contains two space-separated\nintegers xi, yi (1 \u2264 xi \u2264 10^7; 1 \u2264 yi \u2264 10^11), the position and the height\nof the i-th hill. The hills are given in the ascending order of xi, i.e., xi <\nxj for i < j. The next line of input contains a single integer m (1 \u2264 m \u2264\n10^5), the number of teams. The next m lines describe the teams. The i-th of\nthem contains two space-separated integers ai, bi (1 \u2264 ai, bi \u2264 n), the\nnumbers of the hills where the climbers of the i-th team are located. It is\npossible that ai = bi. Output In a single line output m space-separated\nintegers, where the i-th integer is the number of the meeting hill for the\nmembers of the i-th team. Examples Input 6 1 4 2 1 3 2 4 3 6 4 7 4 3 3 1 5 6 2\n3 Output 5 6 3\n\n",
+        "cf_contest_id": 406,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "geometry",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n1 4\r\n2 1\r\n3 2\r\n4 3\r\n6 4\r\n7 4\r\n3\r\n3 1\r\n5 6\r\n2 3\r\n",
+                "5 6 3 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1 1\r\n1\r\n1 1\r\n",
+                "1 "
+            ],
+            [
+                "2\r\n1 1\r\n10000000 100000000000\r\n1\r\n1 2\r\n",
+                "2 "
+            ],
+            [
+                "3\r\n1 1\r\n999999 9999999999\r\n1000000 10000000000\r\n9\r\n1 2\r\n1 3\r\n2 3\r\n2 1\r\n3 1\r\n3 2\r\n1 1\r\n2 2\r\n3 3\r\n",
+                "2 3 3 2 3 3 1 2 3 "
+            ],
+            [
+                "8\r\n1 100000000000\r\n10 100000000000\r\n100 100000000000\r\n1000 100000000000\r\n10000 100000000000\r\n100000 100000000000\r\n1000000 100000000000\r\n10000000 100000000000\r\n64\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n2 1\r\n2 2\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n3 1\r\n3 2\r\n3 3\r\n3 4\r\n3 5\r\n3 6\r\n3 7\r\n3 8\r\n4 1\r\n4 2\r\n4 3\r\n4 4\r\n4 5\r\n4 6\r\n4 7\r\n4 8\r\n5 1\r\n5 2\r\n5 3\r\n5 4\r\n5 5\r\n5 6\r\n5 7\r\n5 8\r\n6 1\r\n6 2\r\n6 3\r\n6 4\r\n6 5\r\n6 6\r\n6 7\r\n6 8\r\n7 1\r\n7 2\r\n7 3\r\n7 4\r\n7 5\r\n7 6\r\n7 7\r\n7 8\r\n8 1\r\n8 2\r\n8 3\r\n8 4\r\n8 5\r\n8 6\r\n8 7\r\n8 8\r\n",
+                "1 2 3 4 5 6 7 8 2 2 3 4 5 6 7 8 3 3 3 4 5 6 7 8 4 4 4 4 5 6 7 8 5 5 5 5 5 6 7 8 6 6 6 6 6 6 7 8 7 7 7 7 7 7 7 8 8 8 8 8 8 8 8 8 "
+            ],
+            [
+                "5\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n25\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n2 1\r\n2 2\r\n2 3\r\n2 4\r\n2 5\r\n3 1\r\n3 2\r\n3 3\r\n3 4\r\n3 5\r\n4 1\r\n4 2\r\n4 3\r\n4 4\r\n4 5\r\n5 1\r\n5 2\r\n5 3\r\n5 4\r\n5 5\r\n",
+                "1 2 3 4 5 2 2 3 4 5 3 3 3 4 5 4 4 4 4 5 5 5 5 5 5 "
+            ],
+            [
+                "5\r\n1 5\r\n2 4\r\n3 3\r\n4 2\r\n5 1\r\n25\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n2 1\r\n2 2\r\n2 3\r\n2 4\r\n2 5\r\n3 1\r\n3 2\r\n3 3\r\n3 4\r\n3 5\r\n4 1\r\n4 2\r\n4 3\r\n4 4\r\n4 5\r\n5 1\r\n5 2\r\n5 3\r\n5 4\r\n5 5\r\n",
+                "1 2 3 4 5 2 2 3 4 5 3 3 3 4 5 4 4 4 4 5 5 5 5 5 5 "
+            ],
+            [
+                "5\r\n1 10\r\n2 1\r\n3 1\r\n4 10\r\n5 1\r\n25\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n2 1\r\n2 2\r\n2 3\r\n2 4\r\n2 5\r\n3 1\r\n3 2\r\n3 3\r\n3 4\r\n3 5\r\n4 1\r\n4 2\r\n4 3\r\n4 4\r\n4 5\r\n5 1\r\n5 2\r\n5 3\r\n5 4\r\n5 5\r\n",
+                "1 4 4 4 5 4 2 4 4 5 4 4 3 4 5 4 4 4 4 5 5 5 5 5 5 "
+            ],
+            [
+                "4\r\n1 10\r\n2 9\r\n3 6\r\n4 1\r\n16\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n2 1\r\n2 2\r\n2 3\r\n2 4\r\n3 1\r\n3 2\r\n3 3\r\n3 4\r\n4 1\r\n4 2\r\n4 3\r\n4 4\r\n",
+                "1 2 3 4 2 2 3 4 3 3 3 4 4 4 4 4 "
+            ],
+            [
+                "5\r\n10 9\r\n20 8\r\n21 7\r\n22 5\r\n30 1000\r\n25\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n2 1\r\n2 2\r\n2 3\r\n2 4\r\n2 5\r\n3 1\r\n3 2\r\n3 3\r\n3 4\r\n3 5\r\n4 1\r\n4 2\r\n4 3\r\n4 4\r\n4 5\r\n5 1\r\n5 2\r\n5 3\r\n5 4\r\n5 5\r\n",
+                "1 5 5 5 5 5 2 5 5 5 5 5 3 5 5 5 5 5 4 5 5 5 5 5 5 "
+            ],
+            [
+                "5\r\n1 100\r\n2 2\r\n3 10\r\n4 2\r\n5 2\r\n25\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n2 1\r\n2 2\r\n2 3\r\n2 4\r\n2 5\r\n3 1\r\n3 2\r\n3 3\r\n3 4\r\n3 5\r\n4 1\r\n4 2\r\n4 3\r\n4 4\r\n4 5\r\n5 1\r\n5 2\r\n5 3\r\n5 4\r\n5 5\r\n",
+                "1 5 5 5 5 5 2 3 5 5 5 3 3 5 5 5 5 5 4 5 5 5 5 5 5 "
+            ],
+            [
+                "5\r\n9999900 1\r\n9999901 2\r\n9999902 4\r\n9999903 7\r\n9999904 11\r\n25\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n2 1\r\n2 2\r\n2 3\r\n2 4\r\n2 5\r\n3 1\r\n3 2\r\n3 3\r\n3 4\r\n3 5\r\n4 1\r\n4 2\r\n4 3\r\n4 4\r\n4 5\r\n5 1\r\n5 2\r\n5 3\r\n5 4\r\n5 5\r\n",
+                "1 5 5 5 5 5 2 5 5 5 5 5 3 5 5 5 5 5 4 5 5 5 5 5 5 "
+            ]
+        ]
+    }
+]

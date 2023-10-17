@@ -1,0 +1,69 @@
+[
+    {
+        "name": "Weighting a Tree",
+        "description": "You are given a connected undirected graph with n vertices and m edges. The\nvertices are enumerated from 1 to n. You are given n integers c1, c2, ..., cn,\neach of them is between - n and n, inclusive. It is also guaranteed that the\nparity of cv equals the parity of degree of vertex v. The degree of a vertex\nis the number of edges connected to it. You are to write a weight between -\n2\u00b7n^2 and 2\u00b7n^2 (inclusive) on each edge in such a way, that for each vertex v\nthe sum of weights on edges connected to this vertex is equal to cv, or\ndetermine that this is impossible. Input The first line contains two integers\nn and m (2 \u2264 n \u2264 10^5, n - 1 \u2264 m \u2264 10^5) \u2014 the number of vertices and the\nnumber of edges. The next line contains n integers c1, c2, ..., cn ( - n \u2264 ci\n\u2264 n), where ci is the required sum of weights of edges connected to vertex i.\nIt is guaranteed that the parity of ci equals the parity of degree of vertex\ni. The next m lines describe edges of the graph. The i-th of these lines\ncontains two integers ai and bi (1 \u2264 ai, bi \u2264 n; ai \u2260 bi), meaning that the\ni-th edge connects vertices ai and bi. It is guaranteed that the given graph\nis connected and does not contain loops and multiple edges. Output If there is\nno solution, print \"NO\". Otherwise print \"YES\" and then m lines, the i-th of\nthem is the weight of the i-th edge wi ( - 2\u00b7n^2 \u2264 wi \u2264 2\u00b7n^2). Examples Input\n3 3 2 2 2 1 2 2 3 1 3 Output YES 1 1 1 Input 4 3 -1 0 2 1 1 2 2 3 3 4 Output\nYES -1 1 1 Input 6 6 3 5 5 5 1 5 1 4 3 2 4 3 4 5 3 5 5 6 Output YES 3 5 3 -1\n-3 5 Input 4 4 4 4 2 4 1 2 2 3 3 4 4 1 Output NO\n\n",
+        "cf_contest_id": 901,
+        "cf_index": "D",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3\r\n2 2 2\r\n1 2\r\n2 3\r\n1 3\r\n",
+                "YES\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "4 3\r\n-1 0 2 1\r\n1 2\r\n2 3\r\n3 4\r\n",
+                "YES\r\n-1\r\n1\r\n1\r\n"
+            ],
+            [
+                "6 6\r\n3 5 5 5 1 5\r\n1 4\r\n3 2\r\n4 3\r\n4 5\r\n3 5\r\n5 6\r\n",
+                "YES\r\n3\r\n5\r\n3\r\n-1\r\n-3\r\n5\r\n"
+            ],
+            [
+                "4 4\r\n4 4 2 4\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n1 1\r\n1 2\r\n",
+                "YES\r\n1\r\n"
+            ],
+            [
+                "5 7\r\n4 1 5 3 -1\r\n2 4\r\n5 4\r\n5 2\r\n1 5\r\n1 2\r\n4 1\r\n1 3\r\n",
+                "YES\r\n3\r\n1\r\n-2\r\n0\r\n0\r\n-1\r\n5\r\n"
+            ],
+            [
+                "10 12\r\n5 1 1 8 -8 10 -3 -2 1 7\r\n5 3\r\n8 2\r\n10 9\r\n4 6\r\n5 6\r\n4 5\r\n5 10\r\n4 7\r\n8 4\r\n3 1\r\n3 6\r\n6 10\r\n",
+                "YES\r\n0\r\n1\r\n1\r\n0\r\n-7\r\n14\r\n-15\r\n-3\r\n-3\r\n5\r\n-4\r\n21\r\n"
+            ],
+            [
+                "20 40\r\n-9 -10 -9 15 -3 -5 -17 -10 -6 2 -13 19 10 -15 15 -14 17 0 7 -8\r\n3 17\r\n6 18\r\n15 12\r\n2 5\r\n18 3\r\n16 20\r\n6 17\r\n20 10\r\n10 18\r\n9 12\r\n15 3\r\n6 4\r\n15 16\r\n20 6\r\n20 9\r\n9 4\r\n4 8\r\n14 5\r\n11 7\r\n12 11\r\n3 13\r\n14 19\r\n7 17\r\n16 14\r\n19 7\r\n12 13\r\n14 13\r\n13 11\r\n9 14\r\n13 17\r\n8 19\r\n5 20\r\n2 17\r\n2 16\r\n12 5\r\n8 1\r\n20 3\r\n6 2\r\n5 18\r\n13 8\r\n",
+                "YES\r\n-17\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n2\r\n9\r\n44\r\n0\r\n-29\r\n28\r\n0\r\n15\r\n0\r\n0\r\n-24\r\n11\r\n0\r\n0\r\n0\r\n15\r\n7\r\n0\r\n0\r\n0\r\n-30\r\n11\r\n0\r\n0\r\n23\r\n0\r\n-1\r\n-9\r\n-36\r\n-33\r\n-2\r\n-1\r\n"
+            ],
+            [
+                "8 12\r\n-6 2 -3 2 6 -7 1 -5\r\n2 1\r\n5 6\r\n1 6\r\n1 4\r\n8 2\r\n2 7\r\n2 5\r\n8 3\r\n8 4\r\n3 7\r\n7 6\r\n3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 13\r\n3 4 -3 8 6 4 -5 1 3 -7\r\n9 5\r\n9 2\r\n10 3\r\n1 4\r\n3 5\r\n9 1\r\n6 10\r\n10 4\r\n3 1\r\n2 7\r\n1 6\r\n1 7\r\n7 8\r\n",
+                "YES\r\n-10\r\n13\r\n-19\r\n0\r\n16\r\n0\r\n4\r\n8\r\n0\r\n-9\r\n0\r\n3\r\n1\r\n"
+            ],
+            [
+                "43 52\r\n-23 -18 -35 21 -12 38 -35 -11 28 -20 27 -5 9 -19 -39 -25 -32 32 -36 28 11 37 1 -25 -22 9 -15 21 25 -39 10 36 -30 -40 22 26 25 -27 -22 -38 -1 18 -13\r\n33 40\r\n31 23\r\n30 26\r\n21 17\r\n6 2\r\n41 19\r\n32 39\r\n32 23\r\n13 14\r\n25 35\r\n31 30\r\n19 32\r\n25 22\r\n34 36\r\n7 40\r\n23 6\r\n40 12\r\n1 3\r\n23 43\r\n36 13\r\n18 33\r\n17 32\r\n7 3\r\n21 34\r\n41 35\r\n20 7\r\n23 1\r\n41 8\r\n25 19\r\n20 29\r\n42 5\r\n40 21\r\n9 37\r\n17 41\r\n30 10\r\n41 18\r\n39 1\r\n20 24\r\n20 4\r\n42 3\r\n20 25\r\n5 16\r\n31 9\r\n42 28\r\n10 11\r\n19 42\r\n31 38\r\n25 2\r\n31 27\r\n17 25\r\n13 15\r\n31 20\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 1\r\n1 1\r\n2 1\r\n",
+                "YES\r\n1\r\n"
+            ]
+        ]
+    }
+]

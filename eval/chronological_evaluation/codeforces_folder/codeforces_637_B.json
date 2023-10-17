@@ -1,0 +1,119 @@
+[
+    {
+        "name": "Chat Order",
+        "description": "Polycarp is a big lover of killing time in social networks. A page with a\nchatlist in his favourite network is made so that when a message is sent to\nsome friend, his friend's chat rises to the very top of the page. The relative\norder of the other chats doesn't change. If there was no chat with this friend\nbefore, then a new chat is simply inserted to the top of the list. Assuming\nthat the chat list is initially empty, given the sequence of Polycaprus'\nmessages make a list of chats after all of his messages are processed. Assume\nthat no friend wrote any message to Polycarpus. Input The first line contains\ninteger n (1 \u2264 n \u2264 200 000) \u2014 the number of Polycarpus' messages. Next n lines\nenlist the message recipients in the order in which the messages were sent.\nThe name of each participant is a non-empty sequence of lowercase English\nletters of length at most 10. Output Print all the recipients to who Polycarp\ntalked to in the order of chats with them, from top to bottom. Examples Input\n4 alex ivan roman ivan Output ivan roman alex Input 8 alina maria ekaterina\ndarya darya ekaterina maria alina Output alina maria ekaterina darya Note In\nthe first test case Polycarpus first writes to friend by name \"alex\", and the\nlist looks as follows: alex Then Polycarpus writes to friend by name \"ivan\"\nand the list looks as follows: ivan alex Polycarpus writes the third message\nto friend by name \"roman\" and the list looks as follows: roman ivan alex\nPolycarpus writes the fourth message to friend by name \"ivan\", to who he has\nalready sent a message, so the list of chats changes as follows: ivan roman\nalex\n\n",
+        "cf_contest_id": 637,
+        "cf_index": "B",
+        "cf_rating": 1200,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "binary search",
+            "constructive algorithms",
+            "data structures",
+            "sortings"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\nalex\r\nivan\r\nroman\r\nivan\r\n",
+                "ivan\r\nroman\r\nalex\r\n"
+            ],
+            [
+                "8\r\nalina\r\nmaria\r\nekaterina\r\ndarya\r\ndarya\r\nekaterina\r\nmaria\r\nalina\r\n",
+                "alina\r\nmaria\r\nekaterina\r\ndarya\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\nwdi\r\n",
+                "wdi\r\n"
+            ],
+            [
+                "2\r\nypg\r\nypg\r\n",
+                "ypg\r\n"
+            ],
+            [
+                "3\r\nexhll\r\nexhll\r\narruapexj\r\n",
+                "arruapexj\r\nexhll\r\n"
+            ],
+            [
+                "3\r\nfv\r\nle\r\nle\r\n",
+                "le\r\nfv\r\n"
+            ],
+            [
+                "8\r\nm\r\nm\r\nm\r\nm\r\nm\r\nm\r\nm\r\nm\r\n",
+                "m\r\n"
+            ],
+            [
+                "10\r\nr\r\nr\r\ni\r\nw\r\nk\r\nr\r\nb\r\nu\r\nu\r\nr\r\n",
+                "r\r\nu\r\nb\r\nk\r\nw\r\ni\r\n"
+            ],
+            [
+                "7\r\ne\r\nfau\r\ncmk\r\nnzs\r\nby\r\nwx\r\ntjmok\r\n",
+                "tjmok\r\nwx\r\nby\r\nnzs\r\ncmk\r\nfau\r\ne\r\n"
+            ],
+            [
+                "6\r\nklrj\r\nwe\r\nklrj\r\nwe\r\nwe\r\nwe\r\n",
+                "we\r\nklrj\r\n"
+            ],
+            [
+                "8\r\nzncybqmh\r\naeebef\r\nzncybqmh\r\nn\r\naeebef\r\nzncybqmh\r\nzncybqmh\r\nzncybqmh\r\n",
+                "zncybqmh\r\naeebef\r\nn\r\n"
+            ],
+            [
+                "30\r\nkqqcbs\r\nvap\r\nkymomn\r\nj\r\nkqqcbs\r\nfuzlzoum\r\nkymomn\r\ndbh\r\nfuzlzoum\r\nkymomn\r\nvap\r\nvlgzs\r\ndbh\r\nvlgzs\r\nbvy\r\ndbh\r\nkymomn\r\nkymomn\r\neoqql\r\nkymomn\r\nkymomn\r\nkqqcbs\r\nvlgzs\r\nkqqcbs\r\nkqqcbs\r\nfuzlzoum\r\nvlgzs\r\nrylgdoo\r\nvlgzs\r\nrylgdoo\r\n",
+                "rylgdoo\r\nvlgzs\r\nfuzlzoum\r\nkqqcbs\r\nkymomn\r\neoqql\r\ndbh\r\nbvy\r\nvap\r\nj\r\n"
+            ],
+            [
+                "40\r\nji\r\nv\r\nv\r\nns\r\nji\r\nn\r\nji\r\nv\r\nfvy\r\nvje\r\nns\r\nvje\r\nv\r\nhas\r\nv\r\nusm\r\nhas\r\nfvy\r\nvje\r\nkdb\r\nn\r\nv\r\nji\r\nji\r\nn\r\nhas\r\nv\r\nji\r\nkdb\r\nr\r\nvje\r\nns\r\nv\r\nusm\r\nn\r\nvje\r\nhas\r\nns\r\nhas\r\nn\r\n",
+                "n\r\nhas\r\nns\r\nvje\r\nusm\r\nv\r\nr\r\nkdb\r\nji\r\nfvy\r\n"
+            ],
+            [
+                "50\r\njcg\r\nvle\r\njopb\r\nepdb\r\nnkef\r\nfv\r\nxj\r\nufe\r\nfuy\r\noqta\r\ngbc\r\nyuz\r\nec\r\nyji\r\nkuux\r\ncwm\r\ntq\r\nnno\r\nhp\r\nzry\r\nxxpp\r\ntjvo\r\ngyz\r\nkwo\r\nvwqz\r\nyaqc\r\njnj\r\nwoav\r\nqcv\r\ndcu\r\ngc\r\nhovn\r\nop\r\nevy\r\ndc\r\ntrpu\r\nyb\r\nuzfa\r\npca\r\noq\r\nnhxy\r\nsiqu\r\nde\r\nhphy\r\nc\r\nwovu\r\nf\r\nbvv\r\ndsik\r\nlwyg\r\n",
+                "lwyg\r\ndsik\r\nbvv\r\nf\r\nwovu\r\nc\r\nhphy\r\nde\r\nsiqu\r\nnhxy\r\noq\r\npca\r\nuzfa\r\nyb\r\ntrpu\r\ndc\r\nevy\r\nop\r\nhovn\r\ngc\r\ndcu\r\nqcv\r\nwoav\r\njnj\r\nyaqc\r\nvwqz\r\nkwo\r\ngyz\r\ntjvo\r\nxxpp\r\nzry\r\nhp\r\nnno\r\ntq\r\ncwm\r\nkuux\r\nyji\r\nec\r\nyuz\r\ngbc\r\noqta\r\nfuy\r\nufe\r\nxj\r\nfv\r\nnkef\r\nepdb\r\njopb\r\nvle\r\njcg\r\n"
+            ],
+            [
+                "100\r\nvhh\r\nvhh\r\nvhh\r\nfa\r\nfa\r\nvhh\r\nvhh\r\nvhh\r\nfa\r\nfa\r\nfa\r\nvhh\r\nfa\r\nvhh\r\nvhh\r\nvhh\r\nfa\r\nvhh\r\nvhh\r\nfa\r\nfa\r\nfa\r\nfa\r\nfa\r\nfa\r\nvhh\r\nfa\r\nfa\r\nvhh\r\nvhh\r\nvhh\r\nfa\r\nfa\r\nfa\r\nvhh\r\nfa\r\nvhh\r\nfa\r\nvhh\r\nvhh\r\nfa\r\nvhh\r\nfa\r\nvhh\r\nvhh\r\nvhh\r\nfa\r\nvhh\r\nfa\r\nfa\r\nvhh\r\nfa\r\nvhh\r\nvhh\r\nvhh\r\nvhh\r\nfa\r\nvhh\r\nvhh\r\nvhh\r\nvhh\r\nfa\r\nvhh\r\nvhh\r\nvhh\r\nvhh\r\nvhh\r\nfa\r\nvhh\r\nvhh\r\nfa\r\nfa\r\nfa\r\nvhh\r\nfa\r\nfa\r\nvhh\r\nfa\r\nvhh\r\nfa\r\nfa\r\nfa\r\nfa\r\nfa\r\nfa\r\nvhh\r\nvhh\r\nfa\r\nvhh\r\nfa\r\nfa\r\nvhh\r\nfa\r\nfa\r\nvhh\r\nfa\r\nvhh\r\nvhh\r\nfa\r\nvhh\r\n",
+                "vhh\r\nfa\r\n"
+            ],
+            [
+                "2\r\naa\r\nbb\r\n",
+                "bb\r\naa\r\n"
+            ],
+            [
+                "2\r\naa\r\na\r\n",
+                "a\r\naa\r\n"
+            ],
+            [
+                "3\r\naa\r\naa\r\naa\r\n",
+                "aa\r\n"
+            ],
+            [
+                "5\r\naa\r\na\r\naa\r\na\r\naa\r\n",
+                "aa\r\na\r\n"
+            ],
+            [
+                "7\r\naaaa\r\naaaa\r\naaa\r\na\r\naa\r\naaaaaaa\r\naaa\r\n",
+                "aaa\r\naaaaaaa\r\naa\r\na\r\naaaa\r\n"
+            ],
+            [
+                "5\r\na\r\naa\r\naaa\r\naaaa\r\na\r\n",
+                "a\r\naaaa\r\naaa\r\naa\r\n"
+            ],
+            [
+                "12\r\naaaaa\r\naaaaaa\r\naaaa\r\naaaaaa\r\naa\r\naaaa\r\naaaa\r\naaaaaa\r\na\r\naaa\r\naaaaaaaa\r\naa\r\n",
+                "aa\r\naaaaaaaa\r\naaa\r\na\r\naaaaaa\r\naaaa\r\naaaaa\r\n"
+            ],
+            [
+                "3\r\na\r\naa\r\naaa\r\n",
+                "aaa\r\naa\r\na\r\n"
+            ],
+            [
+                "9\r\nzzz\r\nzzzzz\r\nzzz\r\nzzzz\r\nzz\r\nzzzz\r\nzzzzz\r\nzzzz\r\nzzzzzzz\r\n",
+                "zzzzzzz\r\nzzzz\r\nzzzzz\r\nzz\r\nzzz\r\n"
+            ]
+        ]
+    }
+]

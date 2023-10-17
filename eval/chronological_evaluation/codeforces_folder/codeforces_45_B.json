@@ -1,0 +1,92 @@
+[
+    {
+        "name": "School",
+        "description": "There are n students studying in the 6th grade, in group \"B\" of a berland\nsecondary school. Every one of them has exactly one friend whom he calls when\nhe has some news. Let us denote the friend of the person number i by g(i).\nNote that the friendships are not mutual, i.e. g(g(i)) is not necessarily\nequal to i. On day i the person numbered as ai learns the news with the rating\nof bi (bi \u2265 1). He phones the friend immediately and tells it. While he is\ndoing it, the news becomes old and its rating falls a little and becomes equal\nto bi - 1. The friend does the same thing \u2014 he also calls his friend and also\ntells the news. The friend of the friend gets the news already rated as bi -\n2. It all continues until the rating of the news reaches zero as nobody wants\nto tell the news with zero rating. More formally, everybody acts like this: if\na person x learns the news with a non-zero rating y, he calls his friend g(i)\nand his friend learns the news with the rating of y - 1 and, if it is\npossible, continues the process. Let us note that during a day one and the\nsame person may call his friend and tell him one and the same news with\ndifferent ratings. Thus, the news with the rating of bi will lead to as much\nas bi calls. Your task is to count the values of resi \u2014 how many students\nlearned their first news on day i. The values of bi are known initially,\nwhereas ai is determined from the following formula: where mod stands for the\noperation of taking the excess from the cleavage, res0 is considered equal to\nzero and vi \u2014 some given integers. Input The first line contains two space-\nseparated integers n and m (2 \u2264 n, m \u2264 10^5) \u2014 the number of students and the\nnumber of days. The second line contains n space-separated integers g(i) (1 \u2264\ng(i) \u2264 n, g(i) \u2260 i) \u2014 the number of a friend of the i-th student. The third\nline contains m space-separated integers vi (1 \u2264 vi \u2264 10^7). The fourth line\ncontains m space-separated integers bi (1 \u2264 bi \u2264 10^7). Output Print m lines\ncontaining one number each. The i-th line should contain resi \u2014 for what\nnumber of students the first news they've learned over the m days in question,\nwas the news number i. The number of the news is the number of the day on\nwhich it can be learned. The days are numbered starting from one in the order\nin which they are given in the input file. Don't output res0. Examples Input 3\n4 2 3 1 1 2 3 4 1 2 3 4 Output 1 1 1 0 Input 8 6 7 6 4 2 3 5 5 7 10 4 3 8 9 1\n1 1 1 2 2 2 Output 1 1 1 2 1 1\n\n",
+        "cf_contest_id": 45,
+        "cf_index": "B",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "dsu"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 4\r\n2 3 1\r\n1 2 3 4\r\n1 2 3 4\r\n",
+                "1\r\n1\r\n1\r\n0\r\n"
+            ],
+            [
+                "8 6\r\n7 6 4 2 3 5 5 7\r\n10 4 3 8 9 1\r\n1 1 1 2 2 2\r\n",
+                "1\r\n1\r\n1\r\n2\r\n1\r\n1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\n2 1\r\n3304501 9446989\r\n1 1\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "7 3\r\n7 5 5 1 1 1 1\r\n9034254 4422892 8872331\r\n1 2 2\r\n",
+                "1\r\n2\r\n1\r\n"
+            ],
+            [
+                "15 10\r\n15 3 15 10 11 8 12 5 12 1 4 14 2 2 1\r\n7571484 4599112 1145547 6936854 5801110 425356 2034668 588381 3181461 3390332\r\n3 3 1 1 3 1 1 3 1 3\r\n",
+                "3\r\n3\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n0\r\n2\r\n"
+            ],
+            [
+                "25 4\r\n14 12 6 19 13 19 15 25 25 3 17 2 5 23 6 20 7 2 14 6 4 24 16 11 21\r\n8811002 2094993 3283083 1356127\r\n55 9 24 47\r\n",
+                "2\r\n6\r\n0\r\n0\r\n"
+            ],
+            [
+                "5 4\r\n3 3 5 5 3\r\n5565507 7260433 6435867 7566379\r\n2 2 2 2\r\n",
+                "2\r\n1\r\n0\r\n1\r\n"
+            ],
+            [
+                "10 3\r\n5 8 2 5 7 4 9 7 3 3\r\n2012655 2536652 4223787\r\n1 1 2\r\n",
+                "1\r\n1\r\n2\r\n"
+            ],
+            [
+                "17 13\r\n16 17 15 6 14 9 6 12 2 2 7 14 15 11 5 2 10\r\n6955062 519705 8301513 1608820 1677389 4161932 3375638 7503103 9463040 865894 7904301 3677834 9386753\r\n3 3 1 3 2 1 3 1 3 2 2 3 2\r\n",
+                "3\r\n3\r\n1\r\n2\r\n0\r\n0\r\n0\r\n0\r\n2\r\n0\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "29 8\r\n21 24 10 12 18 17 10 10 7 18 8 17 11 10 19 21 12 21 21 17 10 6 18 13 19 15 25 13 17\r\n2652976 6233829 2019117 8215448 7685251 3135510 273031 3269699\r\n48 17 24 29 46 37 35 34\r\n",
+                "6\r\n4\r\n0\r\n2\r\n0\r\n1\r\n2\r\n0\r\n"
+            ],
+            [
+                "7 5\r\n5 4 7 1 7 4 4\r\n9652529 4807563 4640440 7951551 5100424\r\n2 1 1 2 1\r\n",
+                "2\r\n0\r\n0\r\n2\r\n1\r\n"
+            ],
+            [
+                "15 10\r\n13 14 11 8 11 9 12 13 5 12 2 1 6 10 10\r\n1887488 3965543 7457763 2544663 3384503 677356 9960202 1594306 6779776 1802114\r\n2 1 3 3 1 3 1 2 2 1\r\n",
+                "2\r\n1\r\n1\r\n0\r\n0\r\n2\r\n1\r\n2\r\n2\r\n0\r\n"
+            ],
+            [
+                "25 5\r\n8 9 6 25 7 5 2 17 15 24 19 14 23 16 11 1 18 22 12 4 13 21 20 3 10\r\n9107232 33274 4726680 4798292 9082258\r\n27 21 7 22 36\r\n",
+                "25\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "2 2\r\n2 1\r\n8893795 1438648\r\n2 1\r\n",
+                "2\r\n0\r\n"
+            ],
+            [
+                "3 3\r\n2 1 2\r\n1350221 5736109 1940982\r\n1 1 2\r\n",
+                "1\r\n0\r\n1\r\n"
+            ],
+            [
+                "7 7\r\n2 1 6 2 2 1 4\r\n841742 5157415 9495311 7797906 3221678 1825961 2551965\r\n4 2 3 2 2 1 1\r\n",
+                "3\r\n2\r\n0\r\n0\r\n1\r\n0\r\n1\r\n"
+            ],
+            [
+                "9 9\r\n2 1 1 3 1 2 1 9 2\r\n953141 8428759 1620190 1239444 6268195 865401 8834020 4980241 1094078\r\n1 4 2 1 1 4 1 3 1\r\n",
+                "1\r\n4\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "10 10\r\n2 1 1 8 8 2 6 1 6 1\r\n391307 9236442 3605210 6745077 9187730 2029623 6504653 7767163 3211044 5628051\r\n1 1 3 2 1 2 1 2 6 3\r\n",
+                "1\r\n1\r\n2\r\n2\r\n0\r\n0\r\n0\r\n0\r\n2\r\n0\r\n"
+            ]
+        ]
+    }
+]

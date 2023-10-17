@@ -1,0 +1,520 @@
+[
+    {
+        "name": "Help Chef Gerasim",
+        "description": "In a far away kingdom young pages help to set the table for the King. As they\nare terribly mischievous, one needs to keep an eye on the control whether they\nhave set everything correctly. This time the royal chef Gerasim had the\nimpression that the pages have played a prank again: they had poured the juice\nfrom one cup to another. Now Gerasim wants to check his hypothesis. The good\nthing is that chef Gerasim always pour the same number of milliliters of juice\nto all cups in the royal kitchen. Having thoroughly measured the juice in each\ncup, Gerasim asked you to write a program that will determine from which cup\njuice was poured to which one; otherwise, the program should determine that\nthis time the pages set the table diligently. To simplify your task we shall\nconsider the cups to be bottomless so that the juice never overfills a cup and\npours out, however much it can be. Besides, by some strange reason in a far\naway kingdom one can only pour to a cup or from one cup to another an integer\nnumber of milliliters of juice. Input The first line contains integer n \u2014 the\nnumber of cups on the royal table (1 \u2264 n \u2264 1000). Next n lines contain volumes\nof juice in each cup \u2014 non-negative integers, not exceeding 10^4. Output If\nthe pages didn't pour the juice, print \"Exemplary pages.\" (without the\nquotes). If you can determine the volume of juice poured during exactly one\njuice pouring, print \"v ml. from cup #a to cup #b.\" (without the quotes),\nwhere v represents the volume of poured juice, a represents the number of the\ncup from which the juice was poured (the cups are numbered with consecutive\npositive integers starting from one in the order in which the cups are\ndescribed in the input data), b represents the number of the cup into which\nthe juice was poured. Finally, if the given juice's volumes cannot be obtained\nusing no more than one pouring (for example, the pages poured the juice from\none cup to another more than once or the royal kitchen maids poured the juice\ninto the cups incorrectly), print \"Unrecoverable configuration.\" (without the\nquotes). Examples Input 5 270 250 250 230 250 Output 20 ml. from cup #4 to cup\n#1. Input 5 250 250 250 250 250 Output Exemplary pages. Input 5 270 250 249\n230 250 Output Unrecoverable configuration.\n\n",
+        "cf_contest_id": 99,
+        "cf_index": "B",
+        "cf_rating": 1300,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 0.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n270\r\n250\r\n250\r\n230\r\n250\r\n",
+                "20 ml. from cup #4 to cup #1.\r\n"
+            ],
+            [
+                "5\r\n250\r\n250\r\n250\r\n250\r\n250\r\n",
+                "Exemplary pages.\r\n"
+            ],
+            [
+                "5\r\n270\r\n250\r\n249\r\n230\r\n250\r\n",
+                "Unrecoverable configuration.\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n200\r\n190\r\n210\r\n200\r\n",
+                "10 ml. from cup #2 to cup #3.\r\n"
+            ],
+            [
+                "4\r\n1\r\n2\r\n3\r\n4\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "1\r\n0\r\n",
+                "Exemplary pages.\r\n"
+            ],
+            [
+                "2\r\n0\r\n0\r\n",
+                "Exemplary pages.\r\n"
+            ],
+            [
+                "2\r\n0\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "2\r\n0\r\n2\r\n",
+                "1 ml. from cup #1 to cup #2.\r\n"
+            ],
+            [
+                "2\r\n1\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "2\r\n1\r\n1\r\n",
+                "Exemplary pages.\r\n"
+            ],
+            [
+                "2\r\n1\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "2\r\n2\r\n0\r\n",
+                "1 ml. from cup #2 to cup #1.\r\n"
+            ],
+            [
+                "2\r\n2\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "2\r\n2\r\n2\r\n",
+                "Exemplary pages.\r\n"
+            ],
+            [
+                "3\r\n0\r\n0\r\n0\r\n",
+                "Exemplary pages.\r\n"
+            ],
+            [
+                "3\r\n0\r\n0\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n0\r\n0\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n0\r\n1\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n0\r\n1\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n0\r\n1\r\n2\r\n",
+                "1 ml. from cup #1 to cup #3.\r\n"
+            ],
+            [
+                "3\r\n0\r\n2\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n0\r\n2\r\n1\r\n",
+                "1 ml. from cup #1 to cup #2.\r\n"
+            ],
+            [
+                "3\r\n0\r\n2\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n1\r\n0\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n1\r\n0\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n1\r\n0\r\n2\r\n",
+                "1 ml. from cup #2 to cup #3.\r\n"
+            ],
+            [
+                "3\r\n1\r\n1\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n1\r\n1\r\n1\r\n",
+                "Exemplary pages.\r\n"
+            ],
+            [
+                "3\r\n1\r\n1\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n1\r\n2\r\n0\r\n",
+                "1 ml. from cup #3 to cup #2.\r\n"
+            ],
+            [
+                "3\r\n1\r\n2\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n1\r\n2\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n2\r\n0\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n2\r\n0\r\n1\r\n",
+                "1 ml. from cup #2 to cup #1.\r\n"
+            ],
+            [
+                "3\r\n2\r\n0\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n2\r\n1\r\n0\r\n",
+                "1 ml. from cup #3 to cup #1.\r\n"
+            ],
+            [
+                "3\r\n2\r\n1\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n2\r\n1\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n2\r\n2\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n2\r\n2\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "3\r\n2\r\n2\r\n2\r\n",
+                "Exemplary pages.\r\n"
+            ],
+            [
+                "4\r\n0\r\n0\r\n0\r\n0\r\n",
+                "Exemplary pages.\r\n"
+            ],
+            [
+                "4\r\n0\r\n0\r\n0\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n0\r\n0\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n0\r\n1\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n0\r\n1\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n0\r\n1\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n0\r\n2\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n0\r\n2\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n0\r\n2\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n1\r\n0\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n1\r\n0\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n1\r\n0\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n1\r\n1\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n1\r\n1\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n1\r\n1\r\n2\r\n",
+                "1 ml. from cup #1 to cup #4.\r\n"
+            ],
+            [
+                "4\r\n0\r\n1\r\n2\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n1\r\n2\r\n1\r\n",
+                "1 ml. from cup #1 to cup #3.\r\n"
+            ],
+            [
+                "4\r\n0\r\n1\r\n2\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n2\r\n0\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n2\r\n0\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n2\r\n0\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n2\r\n1\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n2\r\n1\r\n1\r\n",
+                "1 ml. from cup #1 to cup #2.\r\n"
+            ],
+            [
+                "4\r\n0\r\n2\r\n1\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n2\r\n2\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n2\r\n2\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n0\r\n2\r\n2\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n0\r\n0\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n0\r\n0\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n0\r\n0\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n0\r\n1\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n0\r\n1\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n0\r\n1\r\n2\r\n",
+                "1 ml. from cup #2 to cup #4.\r\n"
+            ],
+            [
+                "4\r\n1\r\n0\r\n2\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n0\r\n2\r\n1\r\n",
+                "1 ml. from cup #2 to cup #3.\r\n"
+            ],
+            [
+                "4\r\n1\r\n0\r\n2\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n1\r\n0\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n1\r\n0\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n1\r\n0\r\n2\r\n",
+                "1 ml. from cup #3 to cup #4.\r\n"
+            ],
+            [
+                "4\r\n1\r\n1\r\n1\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n1\r\n1\r\n1\r\n",
+                "Exemplary pages.\r\n"
+            ],
+            [
+                "4\r\n1\r\n1\r\n1\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n1\r\n2\r\n0\r\n",
+                "1 ml. from cup #4 to cup #3.\r\n"
+            ],
+            [
+                "4\r\n1\r\n1\r\n2\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n1\r\n2\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n2\r\n0\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n2\r\n0\r\n1\r\n",
+                "1 ml. from cup #3 to cup #2.\r\n"
+            ],
+            [
+                "4\r\n1\r\n2\r\n0\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n2\r\n1\r\n0\r\n",
+                "1 ml. from cup #4 to cup #2.\r\n"
+            ],
+            [
+                "4\r\n1\r\n2\r\n1\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n2\r\n1\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n2\r\n2\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n2\r\n2\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n1\r\n2\r\n2\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n0\r\n0\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n0\r\n0\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n0\r\n0\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n0\r\n1\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n0\r\n1\r\n1\r\n",
+                "1 ml. from cup #2 to cup #1.\r\n"
+            ],
+            [
+                "4\r\n2\r\n0\r\n1\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n0\r\n2\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n0\r\n2\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n0\r\n2\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n1\r\n0\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n1\r\n0\r\n1\r\n",
+                "1 ml. from cup #3 to cup #1.\r\n"
+            ],
+            [
+                "4\r\n2\r\n1\r\n0\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n1\r\n1\r\n0\r\n",
+                "1 ml. from cup #4 to cup #1.\r\n"
+            ],
+            [
+                "4\r\n2\r\n1\r\n1\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n1\r\n1\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n1\r\n2\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n1\r\n2\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n1\r\n2\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n2\r\n0\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n2\r\n0\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n2\r\n0\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n2\r\n1\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n2\r\n1\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n2\r\n1\r\n2\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n2\r\n2\r\n0\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n2\r\n2\r\n1\r\n",
+                "Unrecoverable configuration.\r\n"
+            ],
+            [
+                "4\r\n2\r\n2\r\n2\r\n2\r\n",
+                "Exemplary pages.\r\n"
+            ],
+            [
+                "27\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n2626\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n8572\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n5599\r\n",
+                "2973 ml. from cup #11 to cup #17.\r\n"
+            ],
+            [
+                "19\r\n5001\r\n5001\r\n5001\r\n5001\r\n5001\r\n5001\r\n5001\r\n5001\r\n5001\r\n5001\r\n5001\r\n5001\r\n5001\r\n5001\r\n82\r\n5001\r\n9919\r\n5001\r\n5001\r\n",
+                "Unrecoverable configuration.\r\n"
+            ]
+        ]
+    }
+]

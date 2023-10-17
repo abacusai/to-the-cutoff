@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Sheikh (Hard Version)",
+        "description": "This is the hard version of the problem. The only difference is that in this\nversion \n    q = n\n. You are given an array of integers \n    a_1, a_2, \n    \u2026,\n    a_n\n. The cost of a subsegment of the array \n    [l, r]\n, \n    1 \n    \u2264 l\n    \n    \u2264 r \n    \u2264 n\n, is the value \n    f(l, r) = \n    sum(l, r) -\n    \n    xor(l, r)\n, where \n    sum(l, r) = a_l +\n    a_l+1 + \n    \u2026 + a_r\n, and \n    xor(l, r) = a_l \n    \u2295\n    a_l+1\n    \u2295\n    \u2026\n    \u2295 a_r\n (\n    \u2295\n stands for bitwise\nXOR). You will have \n    q\n queries. Each query is given by a pair of numbers\n\n    L_i\n, \n    R_i\n, where \n    1 \n    \u2264 L_i \n    \u2264 R_i \n    \u2264 n\n. You need\nto find the subsegment \n    [l, r]\n, \n    L_i \n    \u2264 l \n    \u2264 r \n    \u2264 R_i\n,\nwith maximum value \n    f(l, r)\n. If there are several answers, then among\nthem you need to find a subsegment with the minimum length, that is, the\nminimum value of \n    r - l + 1\n. Input Each test consists of multiple test\ncases. The first line contains an integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264\n    10^4\n) \u2014 the number of test cases. The description of test cases follows.\nThe first line of each test case contains two integers \n    n\n and \n    q\n\n(\n    1 \n    \u2264 n \n    \u2264 10^5\n, \n    q = n\n) \u2014 the length of the array and the\nnumber of queries. The second line of each test case contains \n    n\n integers\n\n    a_1, a_2, \n    \u2026, a_n\n (\n    0 \n    \u2264 a_i \n    \u2264 10^9\n) \u2014 array\nelements. \n    i\n-th of the next \n    q\n lines of each test case contains two\nintegers \n    L_i\n and \n    R_i\n (\n    1 \n    \u2264 L_i \n    \u2264 R_i \n    \u2264 n\n) \u2014\nthe boundaries in which we need to find the segment. It is guaranteed that the\nsum of \n    n\n over all test cases does not exceed \n    2 \n    \u00b7 10^5\n. It is\nguaranteed that \n    L_1 = 1\n and \n    R_1 = n\n. Output For each test case\nprint \n    q\n pairs of numbers \n    L_i \n    \u2264 l \n    \u2264 r \n    \u2264 R_i\n such\nthat the value \n    f(l, r)\n is maximum and among such the length \n    r - l +\n    1\n is minimum. If there are several correct answers, print any of them.\nExample Input 6 1 1 0 1 1 2 2 5 10 1 2 2 2 3 3 0 2 4 1 3 1 2 2 3 4 4 0 12 8 3\n1 4 1 3 2 4 2 3 5 5 21 32 32 32 10 1 5 1 4 1 3 2 5 3 5 7 7 0 1 0 1 0 1 0 1 7 3\n6 2 5 1 4 4 7 2 6 2 7 Output 1 1 1 1 2 2 1 1 1 1 2 2 2 3 2 3 2 3 2 3 2 3 2 3 2\n3 2 3 3 4 2 4 4 6 2 4 2 4 4 6 2 4 2 4 Note In all test cases, the first query\nis considered. In the first test case, \n    f(1, 1) = 0 - 0 = 0\n. In the\nsecond test case, \n    f(1, 1) = 5 - 5 = 0\n, \n    f(2, 2) = 10 - 10 = 0\n. Note\nthat \n    f(1, 2) = (10 + 5) - (10 \n    \u2295 5) = 0\n, but we need to find a\nsubsegment with the minimum length among the maximum values of \n    f(l, r)\n.\nSo, only segments \n    [1, 1]\n and \n    [2, 2]\n are the correct answers. In\nthe fourth test case, \n    f(2, 3) = (12 + 8) - (12 \n    \u2295 8) = 16\n. There\nare two correct answers in the fifth test case, since \n    f(2, 3) = f(3, 4)\n\nand their lengths are equal.\n\n",
+        "cf_contest_id": 1732,
+        "cf_index": "C2",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "greedy",
+            "implementation",
+            "two pointers"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n1 1\r\n0\r\n1 1\r\n2 2\r\n5 10\r\n1 2\r\n2 2\r\n3 3\r\n0 2 4\r\n1 3\r\n1 2\r\n2 3\r\n4 4\r\n0 12 8 3\r\n1 4\r\n1 3\r\n2 4\r\n2 3\r\n5 5\r\n21 32 32 32 10\r\n1 5\r\n1 4\r\n1 3\r\n2 5\r\n3 5\r\n7 7\r\n0 1 0 1 0 1 0\r\n1 7\r\n3 6\r\n2 5\r\n1 4\r\n4 7\r\n2 6\r\n2 7\r\n",
+                "1 1\r\n1 1\r\n2 2\r\n2 2\r\n2 2\r\n2 2\r\n2 3\r\n2 3\r\n2 3\r\n2 3\r\n2 3\r\n2 3\r\n2 3\r\n2 3\r\n3 4\r\n2 4\r\n4 6\r\n2 4\r\n2 4\r\n4 6\r\n2 4\r\n2 4\r\n"
+            ]
+        ],
+        "private_cases": []
+    }
+]

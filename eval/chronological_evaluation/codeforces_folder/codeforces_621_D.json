@@ -1,0 +1,629 @@
+[
+    {
+        "name": "Rat Kwesh and Cheese",
+        "description": "Wet Shark asked Rat Kwesh to generate three positive real numbers x, y and z,\nfrom 0.1 to 200.0, inclusive. Wet Krash wants to impress Wet Shark, so all\ngenerated numbers will have exactly one digit after the decimal point. Wet\nShark knows Rat Kwesh will want a lot of cheese. So he will give the Rat an\nopportunity to earn a lot of cheese. He will hand the three numbers x, y and z\nto Rat Kwesh, and Rat Kwesh will pick one of the these twelve options: a1 =\nx^y^z; a2 = x^z^y; a3 = (x^y)^z; a4 = (x^z)^y; a5 = y^x^z; a6 = y^z^x; a7 =\n(y^x)^z; a8 = (y^z)^x; a9 = z^x^y; a10 = z^y^x; a11 = (z^x)^y; a12 = (z^y)^x.\nLet m be the maximum of all the ai, and c be the smallest index (from 1 to 12)\nsuch that ac = m. Rat's goal is to find that c, and he asks you to help him.\nRat Kwesh wants to see how much cheese he gets, so he you will have to print\nthe expression corresponding to that ac. Input The only line of the input\ncontains three space-separated real numbers x, y and z (0.1 \u2264 x, y, z \u2264\n200.0). Each of x, y and z is given with exactly one digit after the decimal\npoint. Output Find the maximum value of expression among x^y^z, x^z^y,\n(x^y)^z, (x^z)^y, y^x^z, y^z^x, (y^x)^z, (y^z)^x, z^x^y, z^y^x, (z^x)^y,\n(z^y)^x and print the corresponding expression. If there are many maximums,\nprint the one that comes first in the list. x^y^z should be outputted as x^y^z\n(without brackets), and (x^y)^z should be outputted as (x^y)^z (quotes for\nclarity). Examples Input 1.1 3.4 2.5 Output z^y^x Input 2.0 2.0 2.0 Output\nx^y^z Input 1.9 1.8 1.7 Output (x^y)^z\n\n",
+        "cf_contest_id": 621,
+        "cf_index": "D",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "constructive algorithms",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1.1 3.4 2.5\r\n",
+                "z^y^x\r\n"
+            ],
+            [
+                "2.0 2.0 2.0\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "1.9 1.8 1.7\r\n",
+                "(x^y)^z\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2.0 2.1 2.2\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "1.5 1.7 2.5\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "1.1 1.1 1.1\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "4.2 1.1 1.2\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "113.9 125.2 88.8\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "185.9 9.6 163.4\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "198.7 23.7 89.1\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "141.1 108.1 14.9\r\n",
+                "z^y^x\r\n"
+            ],
+            [
+                "153.9 122.1 89.5\r\n",
+                "z^y^x\r\n"
+            ],
+            [
+                "25.9 77.0 144.8\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "38.7 142.2 89.8\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "51.5 156.3 145.1\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "193.9 40.7 19.7\r\n",
+                "z^y^x\r\n"
+            ],
+            [
+                "51.8 51.8 7.1\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "64.6 117.1 81.6\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "7.0 131.1 7.4\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "149.4 15.5 82.0\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "91.8 170.4 7.7\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "104.6 184.4 82.3\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "117.4 68.8 137.7\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "189.4 63.7 63.4\r\n",
+                "z^y^x\r\n"
+            ],
+            [
+                "2.2 148.1 138.0\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "144.6 103.0 193.4\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "144.0 70.4 148.1\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "156.9 154.8 73.9\r\n",
+                "z^y^x\r\n"
+            ],
+            [
+                "28.9 39.3 148.4\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "41.7 104.5 74.2\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "184.1 118.5 129.5\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "196.9 3.0 4.1\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "139.3 87.4 129.9\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "81.7 171.9 4.4\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "94.5 56.3 59.8\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "36.9 51.1 4.8\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "55.5 159.4 140.3\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "3.9 0.2 3.8\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "0.9 4.6 3.4\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "3.7 3.7 4.1\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "1.1 3.1 4.9\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "3.9 2.1 4.5\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "0.9 2.0 4.8\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "3.7 2.2 4.8\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "1.5 1.3 0.1\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "3.9 0.7 4.7\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "1.8 1.8 2.1\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "4.6 2.1 1.6\r\n",
+                "z^y^x\r\n"
+            ],
+            [
+                "2.0 1.1 2.4\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "4.4 0.5 2.0\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "1.8 0.4 2.7\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "4.6 4.4 2.3\r\n",
+                "z^y^x\r\n"
+            ],
+            [
+                "2.4 3.8 2.7\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "4.4 3.7 3.4\r\n",
+                "z^y^x\r\n"
+            ],
+            [
+                "2.2 3.1 3.0\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "4.6 3.0 3.4\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "4.0 0.4 3.1\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "1.9 4.8 3.9\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "3.9 4.3 3.4\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "1.7 4.5 4.2\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "4.1 3.5 4.5\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "1.9 3.0 4.1\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "4.3 2.4 4.9\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "1.7 1.9 4.4\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "4.5 1.3 4.8\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "1.9 1.1 4.8\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "0.4 0.2 0.3\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.4 1.1 0.9\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "0.2 0.7 0.6\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "0.1 0.1 0.4\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "1.4 1.1 1.0\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "1.4 0.5 0.8\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "1.2 0.7 1.3\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "1.0 0.3 1.1\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "0.9 1.2 0.2\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "0.8 0.3 0.6\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.6 0.6 1.1\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "0.5 0.1 0.9\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "0.4 1.0 1.5\r\n",
+                "z^y^x\r\n"
+            ],
+            [
+                "0.3 0.4 1.2\r\n",
+                "z^y^x\r\n"
+            ],
+            [
+                "0.1 1.4 0.3\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "1.4 0.8 0.2\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "1.4 1.2 1.4\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "1.2 0.6 0.5\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "1.1 1.5 0.4\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "1.5 1.4 1.1\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "1.4 0.8 0.9\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "1.4 0.3 1.4\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "1.2 0.5 1.2\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "1.1 1.5 1.0\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "0.9 1.0 0.1\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "0.8 0.4 1.4\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "0.7 1.4 0.4\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "0.5 0.8 0.3\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "0.4 1.1 0.8\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "0.2 0.1 0.2\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.1 0.2 0.6\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "0.1 0.2 0.6\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "0.5 0.1 0.3\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.1 0.1 0.1\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.5 0.5 0.1\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.5 0.2 0.2\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.3 0.4 0.4\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "0.1 0.3 0.5\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "0.3 0.3 0.5\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "0.2 0.6 0.3\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "0.6 0.3 0.2\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.2 0.1 0.6\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "0.4 0.1 0.6\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "0.6 0.4 0.3\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.4 0.2 0.3\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.2 0.2 0.5\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "0.2 0.3 0.2\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "0.6 0.3 0.2\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.2 0.6 0.4\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "0.6 0.2 0.5\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.5 0.2 0.3\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.5 0.3 0.2\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.3 0.5 0.6\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "0.5 0.3 0.1\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.3 0.4 0.1\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "0.5 0.4 0.5\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.1 0.5 0.4\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "0.5 0.5 0.6\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "0.1 0.5 0.2\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "1.0 2.0 4.0\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "1.0 4.0 2.0\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "2.0 1.0 4.0\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "2.0 4.0 1.0\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "4.0 1.0 2.0\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "4.0 2.0 1.0\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "3.0 3.0 3.1\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "0.1 0.2 0.3\r\n",
+                "(z^x)^y\r\n"
+            ],
+            [
+                "200.0 200.0 200.0\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "1.0 1.0 200.0\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "1.0 200.0 1.0\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "200.0 1.0 1.0\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "200.0 200.0 1.0\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "200.0 1.0 200.0\r\n",
+                "x^z^y\r\n"
+            ],
+            [
+                "1.0 200.0 200.0\r\n",
+                "y^z^x\r\n"
+            ],
+            [
+                "1.0 1.0 1.0\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "200.0 0.1 0.1\r\n",
+                "x^y^z\r\n"
+            ],
+            [
+                "200.0 0.1 200.0\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.1 200.0 200.0\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "200.0 200.0 0.1\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.1 200.0 0.1\r\n",
+                "y^x^z\r\n"
+            ],
+            [
+                "0.1 0.1 200.0\r\n",
+                "z^x^y\r\n"
+            ],
+            [
+                "0.1 0.1 0.1\r\n",
+                "(x^y)^z\r\n"
+            ],
+            [
+                "0.1 0.4 0.2\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "0.2 0.3 0.1\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "0.1 0.4 0.3\r\n",
+                "(y^x)^z\r\n"
+            ],
+            [
+                "1.0 2.0 1.0\r\n",
+                "y^x^z\r\n"
+            ]
+        ]
+    }
+]

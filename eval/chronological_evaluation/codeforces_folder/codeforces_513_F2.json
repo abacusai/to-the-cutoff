@@ -1,0 +1,75 @@
+[
+    {
+        "name": "Scaygerboss",
+        "description": "Cthulhu decided to catch Scaygerboss. Scaygerboss found it out and is trying\nto hide in a pack of his scaygers. Each scayger except Scaygerboss is either a\nmale or a female. Scaygerboss's gender is \"other\". Scaygers are scattered on a\ntwo-dimensional map divided into cells. A scayger looks nerdy and loveable if\nit is staying in the same cell with exactly one scayger of a gender that is\ndifferent from its own gender. Cthulhu will not be able to catch Scaygerboss\nif all the scaygers on the map look nerdy and loveable. The scaygers can move\naround at different speeds. For each scayger, we are given the time it takes\nthis scayger to move from a cell to an adjacent cell. Cells are adjacent if\nthey share a common side. At any point of time, each cell that does not\ncontain an obstacle can be occupied by an arbitrary number of scaygers.\nScaygers cannot move to cells with obstacles. Calculate minimal time in order\nto make all scaygers look nerdy and loveable if they move optimally toward\nthis goal. Input The first line contains 4 integers: n, m, males, females (0 \u2264\nmales, females \u2264 n\u00b7m). n and m are dimensions of the map; males and females\nare numbers of male scaygers and female scaygers. Next n lines describe the\nmap. Each of these lines contains m characters. Character '.' stands for a\nfree cell; character '#' stands for a cell with an obstacle. The next line\ncontains 3 integers r, c, and t (1 \u2264 r \u2264 n, 1 \u2264 c \u2264 m, 1 \u2264 t \u2264 10^9): the\ncurrent coordinates of Scaygerboss and the time it takes Scaygerboss to move\nto an adjacent cell. The next males lines contain coordinates and times of\nmale scaygers in the same format as for Scaygerboss. The next females lines\ncontain coordinates and times of female scaygers in the same format as for\nScaygerboss. (The coordinates and times adhere to the same limits as for\nScaygerboss.) All scaygers reside in cells without obstacles. The problem\nconsists of two subproblems. The subproblems have different constraints on the\ninput. You will get some score for the correct submission of the subproblem.\nThe description of the subproblems follows. In subproblem F1 (14 points), the\nconstraints 1 \u2264 n, m \u2264 11 will hold. In subproblem F2 (6 points), the\nconstraints 1 \u2264 n, m \u2264 22 will hold. Output Output the minimum possible time\nit takes to make all scaygers look nerdy and loveable or -1 if it is\nimpossible. Examples Input 4 4 2 3 .... .### #### #### 2 1 1 2 1 2 2 1 2 2 1 2\n2 1 2 1 1 2 Output 2 Input 2 4 2 2 .... .### 2 1 1 2 1 2 2 1 2 2 1 2 2 1 2\nOutput -1 Note Consider the first sample test. The scaygers are hiding on a 4\nby 4 map. Scaygerboss initially resides in the cell (2, 1) and can move\nbetween cells in 1 unit of time. There are also 2 male and 3 female scaygers\non the map. One of the females initially is in the cell (1, 1), and all the\nother scaygers are in the cell (2, 1). All the scaygers move between cells in\n2 units of time. If Scaygerboss and the female scayger from the cell (1, 1)\nmove to the cell (1, 2), and a male and a female scayger from those residing\nin the cell (2, 1) move to the cell (1, 1), then all the scaygers will look\nnerdy and lovable in 2 units of time.\n\n",
+        "cf_contest_id": 513,
+        "cf_index": "F2",
+        "cf_rating": 2800,
+        "difficulty": 0,
+        "cf_tags": [
+            "flows"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 4 2 3\r\n....\r\n.###\r\n####\r\n####\r\n2 1 1\r\n2 1 2\r\n2 1 2\r\n2 1 2\r\n2 1 2\r\n1 1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 4 2 2\r\n....\r\n.###\r\n2 1 1\r\n2 1 2\r\n2 1 2\r\n2 1 2\r\n2 1 2\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 0 0\r\n.\r\n1 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 1 1 0\r\n.\r\n1 1 1\r\n1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1 0 1\r\n.\r\n1 1 1\r\n1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1 1 1\r\n.\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6 2 4 4\r\n.#\r\n..\r\n#.\r\n#.\r\n.#\r\n.#\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 2 2\r\n#.\r\n#.\r\n1 2 1\r\n1 2 1\r\n1 2 1\r\n1 2 1\r\n1 2 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 5 6 5\r\n###.#\r\n..#.#\r\n##.##\r\n.#.#.\r\n1 4 1\r\n1 4 1\r\n1 4 1\r\n1 4 1\r\n1 4 1\r\n1 4 1\r\n1 4 1\r\n1 4 1\r\n1 4 1\r\n1 4 1\r\n1 4 1\r\n1 4 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 4 2 3\r\n..#.\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9 1 1 2\r\n#\r\n.\r\n#\r\n.\r\n#\r\n.\r\n#\r\n#\r\n#\r\n2 1 1\r\n2 1 1\r\n2 1 1\r\n2 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 4 3 2\r\n..##\r\n.#..\r\n1 1 1\r\n1 1 1\r\n1 1 6\r\n1 1 2\r\n1 1 1\r\n1 1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 2 1 2\r\n.#\r\n#.\r\n#.\r\n..\r\n..\r\n4 2 18\r\n2 2 6\r\n1 1 9\r\n1 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8 2 7 6\r\n..\r\n..\r\n..\r\n..\r\n##\r\n..\r\n..\r\n..\r\n8 1 1\r\n2 1 29\r\n2 1 17\r\n6 1 23\r\n3 2 31\r\n8 1 11\r\n1 1 35\r\n6 1 6\r\n6 2 19\r\n2 1 35\r\n3 1 8\r\n6 2 22\r\n2 2 10\r\n7 2 4\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

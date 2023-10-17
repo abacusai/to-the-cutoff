@@ -1,0 +1,81 @@
+[
+    {
+        "name": "Andrew and Chemistry",
+        "description": "During the chemistry lesson Andrew learned that the saturated hydrocarbons\n(alkanes) enter into radical chlorination reaction. Andrew is a very curious\nboy, so he wondered how many different products of the reaction may be forms\nfor a given alkane. He managed to solve the task for small molecules, but for\nlarge ones he faced some difficulties and asks you to help. Formally, you are\ngiven a tree consisting of n vertices, such that the degree of each vertex\ndoesn't exceed 4. You have to count the number of distinct non-isomorphic\ntrees that can be obtained by adding to this tree one new vertex and one new\nedge, such that the graph is still the tree and the degree of each vertex\ndoesn't exceed 4. Two trees are isomorphic if there exists a bijection f(v)\nsuch that vertices u and v are connected by an edge if and only if vertices\nf(v) and f(u) are connected by an edge. Input The first line of the input\ncontains an integer n (1 \u2264 n \u2264 100 000) \u2014 the number of vertices in the tree.\nThen follow n - 1 lines with edges descriptions. Each edge is given by two\nintegers ui and vi (1 \u2264 ui, vi \u2264 n) \u2014 indices of vertices connected by an\nedge. It's guaranteed that the given graph is a tree and the degree of each\nvertex doesn't exceed 4. Output Print one integer \u2014 the answer to the\nquestion. Examples Input 4 1 2 2 3 2 4 Output 2 Input 5 1 2 1 3 1 4 1 5 Output\n1 Input 5 2 5 5 3 4 3 4 1 Output 3 Note In the first sample, one can add new\nvertex to any existing vertex, but the trees we obtain by adding a new vertex\nto vertices 1, 3 and 4 are isomorphic, thus the answer is 2. In the second\nsample, one can't add new vertex to the first vertex, as its degree is already\nequal to four. Trees, obtained by adding a new vertex to vertices 2, 3, 4 and\n5 are isomorphic, thus the answer is 1.\n\n",
+        "cf_contest_id": 718,
+        "cf_index": "D",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "hashing",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n1 2\r\n2 3\r\n2 4\r\n",
+                "2"
+            ],
+            [
+                "5\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n",
+                "1"
+            ],
+            [
+                "5\r\n2 5\r\n5 3\r\n4 3\r\n4 1\r\n",
+                "3"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5\r\n5 4\r\n2 4\r\n2 1\r\n4 3\r\n",
+                "4"
+            ],
+            [
+                "5\r\n1 4\r\n4 2\r\n2 3\r\n5 4\r\n",
+                "4"
+            ],
+            [
+                "4\r\n1 4\r\n2 4\r\n3 2\r\n",
+                "2"
+            ],
+            [
+                "18\r\n5 15\r\n15 16\r\n10 16\r\n8 10\r\n8 17\r\n6 17\r\n6 7\r\n6 9\r\n9 1\r\n13 1\r\n13 14\r\n14 18\r\n18 12\r\n4 12\r\n11 12\r\n11 2\r\n3 2\r\n",
+                "18"
+            ],
+            [
+                "75\r\n50 31\r\n31 36\r\n3 36\r\n8 3\r\n32 8\r\n8 69\r\n62 69\r\n62 66\r\n66 35\r\n4 62\r\n35 64\r\n64 30\r\n35 61\r\n73 61\r\n37 73\r\n58 37\r\n63 58\r\n75 58\r\n25 58\r\n72 30\r\n51 25\r\n51 49\r\n51 71\r\n71 27\r\n67 49\r\n16 67\r\n42 16\r\n51 59\r\n16 41\r\n16 19\r\n67 5\r\n70 71\r\n5 68\r\n67 12\r\n12 13\r\n12 6\r\n15 19\r\n59 23\r\n1 41\r\n1 39\r\n39 74\r\n10 74\r\n7 12\r\n45 74\r\n39 38\r\n39 9\r\n38 55\r\n55 34\r\n5 26\r\n56 55\r\n20 38\r\n57 34\r\n56 65\r\n65 48\r\n55 52\r\n43 48\r\n40 9\r\n46 48\r\n29 65\r\n48 2\r\n33 43\r\n18 33\r\n46 53\r\n11 33\r\n54 18\r\n17 54\r\n44 54\r\n21 44\r\n21 47\r\n21 24\r\n24 22\r\n28 56\r\n14 47\r\n14 60\r\n",
+                "61"
+            ],
+            [
+                "56\r\n45 17\r\n51 17\r\n41 51\r\n41 4\r\n47 4\r\n8 47\r\n4 24\r\n8 26\r\n11 26\r\n20 11\r\n9 20\r\n9 34\r\n34 52\r\n52 49\r\n39 49\r\n36 39\r\n36 30\r\n16 39\r\n30 31\r\n22 30\r\n30 55\r\n32 31\r\n13 31\r\n16 48\r\n32 44\r\n53 44\r\n50 48\r\n44 19\r\n38 44\r\n38 10\r\n46 53\r\n10 7\r\n38 35\r\n33 7\r\n7 14\r\n14 1\r\n37 1\r\n1 27\r\n6 7\r\n2 38\r\n1 25\r\n19 56\r\n25 54\r\n54 42\r\n42 3\r\n3 15\r\n28 3\r\n43 54\r\n43 12\r\n54 18\r\n21 12\r\n12 23\r\n3 5\r\n6 29\r\n40 12\r\n",
+                "37"
+            ],
+            [
+                "1\r\n",
+                "1"
+            ],
+            [
+                "2\r\n1 2\r\n",
+                "1"
+            ],
+            [
+                "3\r\n1 3\r\n2 3\r\n",
+                "2"
+            ],
+            [
+                "6\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n",
+                "3"
+            ],
+            [
+                "17\r\n1 2\r\n2 10\r\n3 14\r\n1 5\r\n4 15\r\n4 17\r\n2 11\r\n4 16\r\n2 9\r\n3 12\r\n3 13\r\n1 4\r\n1 3\r\n5 8\r\n5 6\r\n5 7\r\n",
+                "1"
+            ],
+            [
+                "53\r\n19 24\r\n42 45\r\n6 9\r\n7 14\r\n1 3\r\n2 20\r\n8 17\r\n30 35\r\n8 15\r\n5 7\r\n44 52\r\n20 28\r\n8 16\r\n5 8\r\n20 29\r\n31 38\r\n7 13\r\n44 53\r\n2 19\r\n1 4\r\n3 31\r\n3 30\r\n42 46\r\n5 6\r\n4 43\r\n30 33\r\n6 10\r\n31 37\r\n42 47\r\n32 40\r\n18 21\r\n7 12\r\n43 48\r\n6 11\r\n19 25\r\n32 39\r\n20 27\r\n2 18\r\n4 42\r\n43 50\r\n32 41\r\n19 26\r\n30 34\r\n4 44\r\n44 51\r\n3 32\r\n18 22\r\n31 36\r\n43 49\r\n1 2\r\n18 23\r\n1 5\r\n",
+                "1"
+            ]
+        ]
+    }
+]

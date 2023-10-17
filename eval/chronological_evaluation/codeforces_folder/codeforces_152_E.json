@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Garden",
+        "description": "Vasya has a very beautiful country garden that can be represented as an n \u00d7 m\nrectangular field divided into n\u00b7m squares. One beautiful day Vasya remembered\nthat he needs to pave roads between k important squares that contain\nbuildings. To pave a road, he can cover some squares of his garden with\nconcrete. For each garden square we know number aij that represents the number\nof flowers that grow in the square with coordinates (i, j). When a square is\ncovered with concrete, all flowers that grow in the square die. Vasya wants to\ncover some squares with concrete so that the following conditions were\nfulfilled: all k important squares should necessarily be covered with concrete\nfrom each important square there should be a way to any other important\nsquare. The way should go be paved with concrete-covered squares considering\nthat neighboring squares are squares that have a common side the total number\nof dead plants should be minimum As Vasya has a rather large garden, he asks\nyou to help him. Input The first input line contains three integers n, m and k\n(1 \u2264 n, m \u2264 100, n\u00b7m \u2264 200, 1 \u2264 k \u2264 min(n\u00b7m, 7)) \u2014 the garden's sizes and the\nnumber of the important squares. Each of the next n lines contains m numbers\naij (1 \u2264 aij \u2264 1000) \u2014 the numbers of flowers in the squares. Next k lines\ncontain coordinates of important squares written as \"x y\" (without quotes) (1\n\u2264 x \u2264 n, 1 \u2264 y \u2264 m). The numbers written on one line are separated by spaces.\nIt is guaranteed that all k important squares have different coordinates.\nOutput In the first line print the single integer \u2014 the minimum number of\nplants that die during the road construction. Then print n lines each\ncontaining m characters \u2014 the garden's plan. In this plan use character \"X\"\n(uppercase Latin letter X) to represent a concrete-covered square and use\ncharacter \".\" (dot) for a square that isn't covered with concrete. If there\nare multiple solutions, print any of them. Examples Input 3 3 2 1 2 3 1 2 3 1\n2 3 1 2 3 3 Output 9 .X. .X. .XX Input 4 5 4 1 4 5 1 2 2 2 2 2 7 2 4 1 4 5 3 2\n1 7 1 1 1 1 5 4 1 4 4 Output 26 X..XX XXXX. X.X.. X.XX.\n\n",
+        "cf_contest_id": 152,
+        "cf_index": "E",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dp",
+            "graphs",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3 2\r\n1 2 3\r\n1 2 3\r\n1 2 3\r\n1 2\r\n3 3\r\n",
+                "9\r\n.X.\r\n.X.\r\n.XX\r\n"
+            ],
+            [
+                "4 5 4\r\n1 4 5 1 2\r\n2 2 2 2 7\r\n2 4 1 4 5\r\n3 2 1 7 1\r\n1 1\r\n1 5\r\n4 1\r\n4 4\r\n",
+                "26\r\nX..XX\r\nXXXX.\r\nX.X..\r\nX.XX.\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 1\r\n1\r\n1 1\r\n",
+                "1\r\nX\r\n"
+            ],
+            [
+                "2 3 3\r\n1 1 3\r\n3 1 3\r\n2 2\r\n1 3\r\n1 1\r\n",
+                "6\r\nXXX\r\n.X.\r\n"
+            ],
+            [
+                "4 5 4\r\n3 10 9 9 4\r\n9 3 4 6 9\r\n10 7 6 4 1\r\n3 6 3 7 1\r\n1 5\r\n4 2\r\n1 2\r\n4 3\r\n",
+                "50\r\n.X..X\r\n.XX.X\r\n..XXX\r\n.XX..\r\n"
+            ],
+            [
+                "5 1 3\r\n6\r\n7\r\n2\r\n7\r\n8\r\n4 1\r\n3 1\r\n1 1\r\n",
+                "22\r\nX\r\nX\r\nX\r\nX\r\n.\r\n"
+            ],
+            [
+                "100 1 7\r\n83\r\n174\r\n191\r\n145\r\n167\r\n55\r\n232\r\n157\r\n51\r\n209\r\n85\r\n73\r\n216\r\n39\r\n72\r\n76\r\n132\r\n70\r\n22\r\n215\r\n137\r\n35\r\n62\r\n22\r\n155\r\n183\r\n113\r\n125\r\n88\r\n21\r\n65\r\n133\r\n31\r\n24\r\n187\r\n126\r\n131\r\n191\r\n31\r\n21\r\n128\r\n75\r\n28\r\n13\r\n202\r\n37\r\n182\r\n167\r\n202\r\n34\r\n154\r\n188\r\n146\r\n152\r\n38\r\n215\r\n5\r\n200\r\n211\r\n133\r\n218\r\n92\r\n61\r\n214\r\n80\r\n175\r\n15\r\n155\r\n57\r\n106\r\n40\r\n71\r\n216\r\n179\r\n178\r\n88\r\n77\r\n93\r\n199\r\n158\r\n5\r\n36\r\n45\r\n128\r\n148\r\n31\r\n1\r\n35\r\n29\r\n23\r\n149\r\n172\r\n189\r\n116\r\n99\r\n66\r\n77\r\n4\r\n40\r\n207\r\n52 1\r\n54 1\r\n64 1\r\n25 1\r\n92 1\r\n62 1\r\n31 1\r\n",
+                "7409\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\nX\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n"
+            ]
+        ]
+    }
+]

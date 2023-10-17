@@ -1,0 +1,221 @@
+[
+    {
+        "name": "Peculiar apple-tree",
+        "description": "In Arcady's garden there grows a peculiar apple-tree that fruits one time per\nyear. Its peculiarity can be explained in following way: there are n\ninflorescences, numbered from 1 to n. Inflorescence number 1 is situated near\nbase of tree and any other inflorescence with number i (i > 1) is situated at\nthe top of branch, which bottom is pi-th inflorescence and pi < i. Once tree\nstarts fruiting, there appears exactly one apple in each inflorescence. The\nsame moment as apples appear, they start to roll down along branches to the\nvery base of tree. Each second all apples, except ones in first inflorescence\nsimultaneously roll down one branch closer to tree base, e.g. apple in a-th\ninflorescence gets to pa-th inflorescence. Apples that end up in first\ninflorescence are gathered by Arcady in exactly the same moment. Second\npeculiarity of this tree is that once two apples are in same inflorescence\nthey annihilate. This happens with each pair of apples, e.g. if there are 5\napples in same inflorescence in same time, only one will not be annihilated\nand if there are 8 apples, all apples will be annihilated. Thus, there can be\nno more than one apple in each inflorescence in each moment of time. Help\nArcady with counting number of apples he will be able to collect from first\ninflorescence during one harvest. Input First line of input contains single\ninteger number n (2 \u2264 n \u2264 100 000) \u2014 number of inflorescences. Second line of\ninput contains sequence of n - 1 integer numbers p2, p3, ..., pn (1 \u2264 pi < i),\nwhere pi is number of inflorescence into which the apple from i-th\ninflorescence rolls down. Output Single line of output should contain one\ninteger number: amount of apples that Arcady will be able to collect from\nfirst inflorescence during one harvest. Examples Input 3 1 1 Output 1 Input 5\n1 2 2 2 Output 3 Input 18 1 1 1 4 4 3 2 2 2 10 8 9 9 9 10 10 4 Output 4 Note\nIn first example Arcady will be able to collect only one apple, initially\nsituated in 1st inflorescence. In next second apples from 2nd and 3rd\ninflorescences will roll down and annihilate, and Arcady won't be able to\ncollect them. In the second example Arcady will be able to collect 3 apples.\nFirst one is one initially situated in first inflorescence. In a second apple\nfrom 2nd inflorescence will roll down to 1st (Arcady will collect it) and\napples from 3rd, 4th, 5th inflorescences will roll down to 2nd. Two of them\nwill annihilate and one not annihilated will roll down from 2-nd inflorescence\nto 1st one in the next second and Arcady will collect it.\n\n",
+        "cf_contest_id": 930,
+        "cf_index": "A",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n1 1\r\n",
+                "1"
+            ],
+            [
+                "5\r\n1 2 2 2\r\n",
+                "3"
+            ],
+            [
+                "18\r\n1 1 1 4 4 3 2 2 2 10 8 9 9 9 10 10 4\r\n",
+                "4"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n1\r\n",
+                "2"
+            ],
+            [
+                "3\r\n1 2\r\n",
+                "3"
+            ],
+            [
+                "20\r\n1 1 1 1 1 4 1 2 4 1 2 1 7 1 2 2 9 7 1\r\n",
+                "2"
+            ],
+            [
+                "20\r\n1 2 1 2 2 1 2 4 1 6 2 2 4 3 2 6 2 5 9\r\n",
+                "2"
+            ],
+            [
+                "20\r\n1 1 1 4 2 4 3 1 2 8 3 2 11 13 15 1 12 13 12\r\n",
+                "4"
+            ],
+            [
+                "20\r\n1 2 2 4 3 5 5 6 6 9 11 9 9 12 13 10 15 13 15\r\n",
+                "4"
+            ],
+            [
+                "20\r\n1 2 3 4 5 6 7 8 9 6 11 12 12 7 13 15 16 11 13\r\n",
+                "8"
+            ],
+            [
+                "10\r\n1 1 1 2 1 3 4 2 1\r\n",
+                "2"
+            ],
+            [
+                "30\r\n1 1 1 2 1 2 1 1 2 1 1 1 2 2 4 3 6 2 3 5 3 4 11 5 3 3 4 7 6\r\n",
+                "4"
+            ],
+            [
+                "40\r\n1 1 1 1 1 1 1 1 1 3 4 3 3 1 3 6 7 4 5 2 4 3 9 1 4 2 5 3 5 9 5 9 10 12 3 7 2 11 1\r\n",
+                "2"
+            ],
+            [
+                "50\r\n1 1 1 1 1 2 3 3 2 1 1 2 3 1 3 1 5 6 4 1 1 2 1 2 1 10 17 2 2 4 12 9 6 6 5 13 1 3 2 8 25 3 22 1 10 13 6 3 2\r\n",
+                "4"
+            ],
+            [
+                "10\r\n1 1 1 1 2 1 3 4 3\r\n",
+                "2"
+            ],
+            [
+                "30\r\n1 2 1 1 1 2 1 4 2 3 9 2 3 2 1 1 4 3 12 4 8 8 3 7 9 1 9 19 1\r\n",
+                "2"
+            ],
+            [
+                "40\r\n1 1 1 2 3 1 2 1 3 7 1 3 4 3 2 3 4 1 2 2 4 1 7 4 1 3 2 1 4 5 3 10 14 11 10 13 8 7 4\r\n",
+                "2"
+            ],
+            [
+                "50\r\n1 2 1 1 1 3 1 3 1 5 3 2 7 3 6 6 3 1 4 2 3 10 8 9 1 4 5 2 8 6 12 9 7 5 7 19 3 15 10 4 12 4 19 5 16 5 3 13 5\r\n",
+                "2"
+            ],
+            [
+                "10\r\n1 1 1 2 3 2 1 2 3\r\n",
+                "2"
+            ],
+            [
+                "30\r\n1 1 1 1 2 1 4 4 2 3 2 1 1 1 1 3 1 1 3 2 3 5 1 2 9 16 2 4 3\r\n",
+                "2"
+            ],
+            [
+                "40\r\n1 1 1 2 1 2 1 2 4 8 1 7 1 6 2 8 2 12 4 11 5 5 15 3 12 11 22 11 13 13 24 6 10 15 3 6 7 1 2\r\n",
+                "2"
+            ],
+            [
+                "50\r\n1 1 1 1 3 4 1 2 3 5 1 2 1 5 1 10 4 11 1 8 8 4 4 12 5 3 4 1 1 2 5 13 13 2 2 10 12 3 19 14 1 1 15 3 23 21 12 3 14\r\n",
+                "4"
+            ],
+            [
+                "10\r\n1 1 1 1 2 4 1 1 3\r\n",
+                "2"
+            ],
+            [
+                "30\r\n1 1 1 1 3 3 2 3 7 4 1 2 4 6 2 8 1 2 13 7 5 15 3 3 8 4 4 18 3\r\n",
+                "2"
+            ],
+            [
+                "40\r\n1 1 1 2 2 1 1 4 6 4 7 7 7 4 4 8 10 7 5 1 5 13 7 8 2 11 18 2 1 20 7 3 12 16 2 22 4 22 14\r\n",
+                "4"
+            ],
+            [
+                "50\r\n1 1 1 2 2 1 3 5 3 1 9 4 4 2 12 15 3 13 8 8 4 13 20 17 19 2 4 3 9 5 17 9 17 1 5 7 6 5 20 11 31 33 32 20 6 25 1 2 6\r\n",
+                "4"
+            ],
+            [
+                "10\r\n1 1 1 3 3 5 6 8 3\r\n",
+                "4"
+            ],
+            [
+                "30\r\n1 2 2 1 5 5 5 1 7 4 10 2 4 11 2 3 10 10 7 13 12 4 10 3 22 25 8 1 1\r\n",
+                "6"
+            ],
+            [
+                "40\r\n1 2 2 2 2 4 2 2 6 9 3 9 9 9 3 5 7 7 2 17 4 4 8 8 25 18 12 27 8 19 26 15 33 26 33 9 24 4 27\r\n",
+                "4"
+            ],
+            [
+                "50\r\n1 1 3 3 4 5 5 2 4 3 9 9 1 5 5 7 5 5 16 1 18 3 6 5 6 13 26 12 23 20 17 21 9 17 19 34 12 24 11 9 32 10 40 42 7 40 11 25 3\r\n",
+                "6"
+            ],
+            [
+                "10\r\n1 2 1 2 5 5 6 6 6\r\n",
+                "2"
+            ],
+            [
+                "30\r\n1 1 3 3 5 6 7 5 7 6 5 4 8 6 10 12 14 9 15 20 6 21 14 24 17 23 23 18 8\r\n",
+                "2"
+            ],
+            [
+                "40\r\n1 2 2 3 1 2 5 6 4 8 11 12 9 5 12 7 4 16 16 15 6 22 17 24 10 8 22 4 27 9 19 23 16 18 28 22 5 35 19\r\n",
+                "4"
+            ],
+            [
+                "50\r\n1 2 3 4 5 5 5 7 1 2 11 5 7 11 11 11 15 3 17 10 6 18 14 14 24 11 10 7 17 18 8 7 19 18 31 27 21 30 34 32 27 39 38 22 32 23 31 48 25\r\n",
+                "2"
+            ],
+            [
+                "10\r\n1 2 2 4 5 5 6 4 7\r\n",
+                "2"
+            ],
+            [
+                "30\r\n1 2 3 3 5 6 3 8 9 10 10 10 11 7 8 8 15 16 13 13 19 12 15 18 18 24 27 25 10\r\n",
+                "6"
+            ],
+            [
+                "40\r\n1 2 3 4 5 6 6 8 7 10 11 3 12 11 15 12 17 15 10 20 16 20 12 20 15 21 20 26 29 23 29 30 23 24 35 33 25 32 36\r\n",
+                "8"
+            ],
+            [
+                "50\r\n1 2 2 2 5 6 7 7 9 10 7 4 5 4 15 15 16 17 10 19 18 16 15 24 20 8 27 16 19 24 23 32 17 23 29 18 35 35 38 35 39 41 42 38 19 46 38 28 29\r\n",
+                "6"
+            ],
+            [
+                "10\r\n1 2 3 4 5 5 5 7 9\r\n",
+                "8"
+            ],
+            [
+                "30\r\n1 2 3 4 5 6 5 3 6 7 8 11 12 13 15 15 13 13 19 10 14 10 15 23 21 9 27 22 28\r\n",
+                "4"
+            ],
+            [
+                "40\r\n1 2 2 3 3 6 5 5 9 7 8 11 13 7 10 10 16 14 18 20 11 19 23 18 20 21 25 16 29 25 27 31 26 34 33 23 36 33 32\r\n",
+                "6"
+            ],
+            [
+                "50\r\n1 2 2 4 5 5 7 6 9 10 11 12 13 7 14 15 14 17 10 14 9 21 23 23 19 26 19 25 11 24 22 27 26 34 35 30 37 31 38 32 40 32 42 44 37 21 40 40 48\r\n",
+                "10"
+            ],
+            [
+                "10\r\n1 2 3 4 3 6 6 6 7\r\n",
+                "4"
+            ],
+            [
+                "30\r\n1 2 2 4 5 6 5 7 9 6 4 12 7 14 12 12 15 17 13 12 8 20 21 15 17 24 21 19 16\r\n",
+                "4"
+            ],
+            [
+                "40\r\n1 2 3 4 4 6 6 4 9 9 10 12 10 12 12 16 8 13 18 14 17 20 21 23 25 22 25 26 29 26 27 27 33 31 33 34 36 29 34\r\n",
+                "10"
+            ],
+            [
+                "50\r\n1 2 3 3 4 3 6 7 8 10 11 10 12 11 11 14 13 8 17 20 21 19 15 18 21 18 17 23 25 28 25 27 29 32 32 34 37 29 30 39 41 35 24 41 37 36 41 35 43\r\n",
+                "10"
+            ],
+            [
+                "99\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "1"
+            ],
+            [
+                "99\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98\r\n",
+                "99"
+            ],
+            [
+                "100\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "2"
+            ],
+            [
+                "100\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99\r\n",
+                "100"
+            ]
+        ]
+    }
+]

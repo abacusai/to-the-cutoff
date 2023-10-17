@@ -1,0 +1,106 @@
+[
+    {
+        "name": "Connected Components?",
+        "description": "You are given an undirected graph consisting of n vertices and edges. Instead\nof giving you the edges that exist in the graph, we give you m unordered pairs\n(x, y) such that there is no edge between x and y, and if some pair of\nvertices is not listed in the input, then there is an edge between these\nvertices. You have to find the number of connected components in the graph and\nthe size of each component. A connected component is a set of vertices X such\nthat for every two vertices from this set there exists at least one path in\nthe graph connecting these vertices, but adding any other vertex to X violates\nthis rule. Input The first line contains two integers n and m (1 \u2264 n \u2264 200000,\n). Then m lines follow, each containing a pair of integers x and y (1 \u2264 x, y \u2264\nn, x \u2260 y) denoting that there is no edge between x and y. Each pair is listed\nat most once; (x, y) and (y, x) are considered the same (so they are never\nlisted in the same test). If some pair of vertices is not listed in the input,\nthen there exists an edge between those vertices. Output Firstly print k \u2014 the\nnumber of connected components in this graph. Then print k integers \u2014 the\nsizes of components. You should output these integers in non-descending order.\nExample Input 5 5 1 2 3 4 3 2 4 2 2 5 Output 2 1 4\n\n",
+        "cf_contest_id": 920,
+        "cf_index": "E",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 5\r\n1 2\r\n3 4\r\n3 2\r\n4 2\r\n2 5\r\n",
+                "2\r\n1 4 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "8 15\r\n2 1\r\n4 5\r\n2 4\r\n3 4\r\n2 5\r\n3 5\r\n2 6\r\n3 6\r\n5 6\r\n4 6\r\n2 7\r\n3 8\r\n2 8\r\n3 7\r\n6 7\r\n",
+                "1\r\n8 "
+            ],
+            [
+                "12 58\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 10\r\n1 11\r\n1 12\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n2 9\r\n2 10\r\n2 11\r\n2 12\r\n3 4\r\n3 5\r\n3 6\r\n3 7\r\n3 8\r\n3 9\r\n3 10\r\n3 11\r\n3 12\r\n4 5\r\n4 6\r\n4 8\r\n4 11\r\n4 12\r\n5 6\r\n5 7\r\n5 8\r\n5 9\r\n5 10\r\n5 11\r\n6 7\r\n6 8\r\n6 9\r\n6 10\r\n6 11\r\n6 12\r\n7 8\r\n7 9\r\n7 10\r\n7 11\r\n7 12\r\n8 9\r\n8 10\r\n8 11\r\n9 10\r\n9 11\r\n9 12\r\n10 12\r\n",
+                "4\r\n1 1 1 9 "
+            ],
+            [
+                "5 7\r\n1 2\r\n2 3\r\n3 4\r\n1 5\r\n2 5\r\n3 5\r\n4 5\r\n",
+                "2\r\n1 4 "
+            ],
+            [
+                "6 10\r\n1 2\r\n1 3\r\n1 4\r\n1 6\r\n2 3\r\n2 4\r\n2 5\r\n3 5\r\n3 6\r\n4 6\r\n",
+                "1\r\n6 "
+            ],
+            [
+                "8 23\r\n1 2\r\n1 4\r\n1 6\r\n1 8\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n3 4\r\n3 5\r\n3 6\r\n3 7\r\n3 8\r\n4 5\r\n4 6\r\n4 7\r\n5 6\r\n5 7\r\n5 8\r\n6 8\r\n7 8\r\n",
+                "3\r\n1 2 5 "
+            ],
+            [
+                "4 3\r\n2 1\r\n3 1\r\n4 2\r\n",
+                "1\r\n4 "
+            ],
+            [
+                "6 9\r\n1 2\r\n1 4\r\n1 5\r\n2 3\r\n2 5\r\n2 6\r\n3 5\r\n4 6\r\n5 6\r\n",
+                "1\r\n6 "
+            ],
+            [
+                "2 0\r\n",
+                "1\r\n2 "
+            ],
+            [
+                "8 18\r\n1 4\r\n1 6\r\n1 7\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n3 4\r\n3 8\r\n4 7\r\n5 6\r\n5 7\r\n5 8\r\n6 7\r\n6 8\r\n7 8\r\n",
+                "1\r\n8 "
+            ],
+            [
+                "4 3\r\n1 2\r\n3 1\r\n4 3\r\n",
+                "1\r\n4 "
+            ],
+            [
+                "8 23\r\n2 7\r\n7 5\r\n8 6\r\n8 2\r\n6 3\r\n3 5\r\n8 1\r\n8 4\r\n8 3\r\n3 4\r\n1 2\r\n2 6\r\n5 2\r\n6 4\r\n7 6\r\n6 5\r\n7 8\r\n7 1\r\n5 4\r\n3 7\r\n1 4\r\n3 1\r\n3 2\r\n",
+                "3\r\n1 3 4 "
+            ],
+            [
+                "4 4\r\n2 1\r\n3 1\r\n1 4\r\n3 2\r\n",
+                "2\r\n1 3 "
+            ],
+            [
+                "2 1\r\n1 2\r\n",
+                "2\r\n1 1 "
+            ],
+            [
+                "4 3\r\n1 3\r\n1 4\r\n2 3\r\n",
+                "1\r\n4 "
+            ],
+            [
+                "3 1\r\n2 3\r\n",
+                "1\r\n3 "
+            ],
+            [
+                "5 4\r\n1 4\r\n2 3\r\n4 3\r\n4 2\r\n",
+                "1\r\n5 "
+            ],
+            [
+                "10 36\r\n7 8\r\n7 9\r\n2 3\r\n2 4\r\n2 5\r\n9 10\r\n2 7\r\n2 8\r\n2 9\r\n2 10\r\n4 5\r\n4 6\r\n4 7\r\n4 8\r\n4 10\r\n6 7\r\n6 9\r\n6 10\r\n1 2\r\n1 3\r\n1 4\r\n8 9\r\n1 5\r\n8 10\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n3 4\r\n3 6\r\n3 7\r\n3 9\r\n5 6\r\n5 7\r\n5 9\r\n5 10\r\n",
+                "2\r\n2 8 "
+            ],
+            [
+                "10 34\r\n7 10\r\n2 3\r\n2 4\r\n2 5\r\n9 10\r\n2 7\r\n2 8\r\n2 10\r\n4 5\r\n4 6\r\n4 7\r\n4 8\r\n4 9\r\n6 7\r\n6 8\r\n6 9\r\n6 10\r\n1 2\r\n1 3\r\n1 5\r\n8 9\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n3 4\r\n3 5\r\n3 6\r\n3 8\r\n3 10\r\n5 6\r\n5 9\r\n5 10\r\n",
+                "1\r\n10 "
+            ],
+            [
+                "12 56\r\n9 5\r\n2 6\r\n9 8\r\n5 4\r\n1 11\r\n1 6\r\n4 1\r\n1 10\r\n10 3\r\n8 4\r\n5 1\r\n9 1\r\n5 10\r\n2 7\r\n11 5\r\n6 11\r\n5 8\r\n7 6\r\n3 2\r\n12 7\r\n8 6\r\n12 3\r\n1 2\r\n8 1\r\n2 11\r\n10 12\r\n4 6\r\n5 12\r\n2 4\r\n10 2\r\n7 3\r\n12 11\r\n7 10\r\n7 1\r\n9 2\r\n11 9\r\n9 10\r\n8 7\r\n11 3\r\n7 9\r\n5 7\r\n4 12\r\n3 5\r\n12 2\r\n4 10\r\n9 12\r\n5 2\r\n9 4\r\n11 8\r\n8 2\r\n3 6\r\n4 11\r\n8 10\r\n6 10\r\n3 9\r\n3 4\r\n",
+                "3\r\n1 4 7 "
+            ],
+            [
+                "11 49\r\n10 3\r\n6 4\r\n11 3\r\n7 6\r\n10 6\r\n6 1\r\n4 3\r\n10 2\r\n4 5\r\n9 2\r\n10 1\r\n5 7\r\n1 5\r\n9 7\r\n2 11\r\n8 6\r\n3 9\r\n2 5\r\n9 5\r\n6 5\r\n1 4\r\n11 9\r\n1 7\r\n8 10\r\n3 6\r\n3 7\r\n11 5\r\n6 9\r\n4 10\r\n8 7\r\n4 9\r\n8 2\r\n4 2\r\n8 11\r\n7 4\r\n9 10\r\n8 1\r\n10 7\r\n3 2\r\n5 8\r\n8 9\r\n1 3\r\n2 7\r\n10 11\r\n5 3\r\n10 5\r\n4 11\r\n1 11\r\n8 3\r\n",
+                "5\r\n1 1 1 2 6 "
+            ]
+        ]
+    }
+]

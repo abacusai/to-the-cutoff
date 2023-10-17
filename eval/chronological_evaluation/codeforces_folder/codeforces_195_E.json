@@ -1,0 +1,129 @@
+[
+    {
+        "name": "Building Forest",
+        "description": "An oriented weighted forest is an acyclic weighted digraph in which from each\nvertex at most one edge goes. The root of vertex v of an oriented weighted\nforest is a vertex from which no edge goes and which can be reached from\nvertex v moving along the edges of the weighted oriented forest. We denote the\nroot of vertex v as root(v). The depth of vertex v is the sum of weights of\npaths passing from the vertex v to its root. Let's denote the depth of the\nvertex v as depth(v). Let's consider the process of constructing a weighted\ndirected forest. Initially, the forest does not contain vertices. Vertices are\nadded sequentially one by one. Overall, there are n performed operations of\nadding. The i-th (i > 0) adding operation is described by a set of numbers (k,\nv1, x1, v2, x2, ... , vk, xk) and means that we should add vertex number i and\nk edges to the graph: an edge from vertex root(v1) to vertex i with weight\ndepth(v1) + x1, an edge from vertex root(v2) to vertex i with weight depth(v2)\n+ x2 and so on. If k = 0, then only vertex i is added to the graph, there are\nno added edges. Your task is like this: given the operations of adding\nvertices, calculate the sum of the weights of all edges of the forest,\nresulting after the application of all defined operations, modulo 1000000007\n(10^9 + 7). Input The first line contains a single integer n (1 \u2264 n \u2264 10^5) \u2014\nthe number of operations of adding a vertex. Next n lines contain descriptions\nof the operations, the i-th line contains the description of the operation of\nadding the i-th vertex in the following format: the first number of a line is\nan integer k (0 \u2264 k \u2264 i - 1), then follow 2k space-separated integers: v1, x1,\nv2, x2, ... , vk, xk (1 \u2264 vj \u2264 i - 1, |xj| \u2264 10^9). The operations are given\nin the order, in which they should be applied to the graph. It is guaranteed\nthat sum k of all operations does not exceed 10^5, also that applying\noperations of adding vertexes does not result in loops and multiple edges.\nOutput Print a single number \u2014 the sum of weights of all edges of the\nresulting graph modulo 1000000007 (10^9 + 7). Examples Input 6 0 0 1 2 1 2 1 5\n2 2 1 1 2 1 3 4 Output 30 Input 5 0 1 1 5 0 0 2 3 1 4 3 Output 9 Note Conside\nthe first sample: Vertex 1 is added. k = 0, thus no edges are added. Vertex 2\nis added. k = 0, thus no edges are added. Vertex 3 is added. k = 1. v1 = 2, x1\n= 1. Edge from vertex root(2) = 2 to vertex 3 with weight depth(2) + x1 = 0 +\n1 = 1 is added. Vertex 4 is added. k = 2. v1 = 1, x1 = 5. Edge from vertex\nroot(1) = 1 to vertex 4 with weight depth(1) + x1 = 0 + 5 = 5 is added. v2 =\n2, x2 = 2. Edge from vertex root(2) = 3 to vertex 4 with weight depth(2) + x1\n= 1 + 2 = 3 is added. Vertex 5 is added. k = 1. v1 = 1, x1 = 2. Edge from\nvertex root(1) = 4 to vertex 5 with weight depth(1) + x1 = 5 + 2 = 7 is added.\nVertex 6 is added. k = 1. v1 = 3, x1 = 4. Edge from vertex root(3) = 5 to\nvertex 6 with weight depth(3) + x1 = 10 + 4 = 14 is added.The resulting graph\nis shown on the pictore below:\n\n",
+        "cf_contest_id": 195,
+        "cf_index": "E",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dsu",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n0\r\n0\r\n1 2 1\r\n2 1 5 2 2\r\n1 1 2\r\n1 3 4\r\n",
+                "30"
+            ],
+            [
+                "5\r\n0\r\n1 1 5\r\n0\r\n0\r\n2 3 1 4 3\r\n",
+                "9"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n0\r\n0\r\n2 2 -374193106 1 -913650000\r\n0\r\n1 4 -830023515\r\n2 5 476706422 1 872194721\r\n0\r\n0\r\n2 7 -744760916 8 969988972\r\n2 4 -948233977 8 -287955363\r\n",
+                "923095138"
+            ],
+            [
+                "10\r\n0\r\n0\r\n0\r\n1 3 -823680354\r\n1 3 -850620736\r\n2 3 640948460 2 -822416813\r\n0\r\n1 7 668611485\r\n0\r\n3 4 -642324044 8 609375785 9 -62137735\r\n",
+                "864760239"
+            ],
+            [
+                "10\r\n0\r\n1 1 447652405\r\n1 1 -555393128\r\n0\r\n1 4 -52388704\r\n0\r\n2 6 694583541 4 753478051\r\n0\r\n0\r\n2 9 -444370877 8 -551201330\r\n",
+                "687623659"
+            ],
+            [
+                "10\r\n0\r\n0\r\n0\r\n0\r\n1 4 50956040\r\n4 4 325613823 3 -386018070 1 209513702 2 -205596506\r\n0\r\n1 7 -580712376\r\n1 7 886941425\r\n2 1 -620978961 9 643639291\r\n",
+                "3115734"
+            ],
+            [
+                "10\r\n0\r\n0\r\n0\r\n0\r\n2 3 79773777 4 706833048\r\n3 1 -710754345 5 -563509705 2 670150655\r\n0\r\n1 7 -902026753\r\n1 8 290914674\r\n2 1 -723115032 7 -315425062\r\n",
+                "210974854"
+            ],
+            [
+                "5\r\n0\r\n0\r\n1 2 -765892257\r\n1 3 -745481083\r\n2 3 816128947 1 -394672376\r\n",
+                "164602162"
+            ],
+            [
+                "5\r\n0\r\n1 1 884173316\r\n0\r\n1 3 -226567259\r\n2 3 -252775199 1 -697369518\r\n",
+                "365067397"
+            ],
+            [
+                "5\r\n0\r\n0\r\n1 2 -711115541\r\n0\r\n3 2 -136783734 1 -845666504 4 410305609\r\n",
+                "5624303"
+            ],
+            [
+                "5\r\n0\r\n1 1 184304460\r\n0\r\n1 3 -945649820\r\n2 3 685530683 1 -521616924\r\n",
+                "641223053"
+            ],
+            [
+                "5\r\n0\r\n0\r\n1 2 -460597263\r\n2 3 -131768702 1 59077479\r\n1 2 -433740627\r\n",
+                "440604936"
+            ],
+            [
+                "5\r\n0\r\n0\r\n1 2 -810531691\r\n2 3 534628769 1 -766736875\r\n1 1 -345864330\r\n",
+                "844759019"
+            ],
+            [
+                "5\r\n0\r\n1 1 596444090\r\n0\r\n1 3 -703367615\r\n2 3 459326275 1 -501077825\r\n",
+                "744401407"
+            ],
+            [
+                "5\r\n0\r\n0\r\n2 2 -350122921 1 11876951\r\n0\r\n2 4 448513220 2 889774172\r\n",
+                "649918501"
+            ],
+            [
+                "5\r\n0\r\n1 1 581069062\r\n0\r\n0\r\n3 2 392991130 4 65208312 3 28757677\r\n",
+                "68026174"
+            ],
+            [
+                "5\r\n0\r\n0\r\n2 2 -838294018 1 -201546768\r\n0\r\n2 2 591485667 4 169079644\r\n",
+                "882430521"
+            ],
+            [
+                "5\r\n0\r\n0\r\n2 1 753797787 2 423680027\r\n1 2 831697198\r\n0\r\n",
+                "432855025"
+            ],
+            [
+                "5\r\n0\r\n1 1 -900281515\r\n0\r\n1 3 -438403774\r\n1 3 -23542181\r\n",
+                "199368770"
+            ],
+            [
+                "5\r\n0\r\n0\r\n1 2 373958682\r\n2 2 -874440841 1 131828341\r\n0\r\n",
+                "5304864"
+            ],
+            [
+                "5\r\n0\r\n0\r\n2 1 453067672 2 233408933\r\n0\r\n1 4 -513073381\r\n",
+                "173403224"
+            ],
+            [
+                "5\r\n0\r\n0\r\n2 2 237209369 1 -415651501\r\n0\r\n1 4 -863007810\r\n",
+                "958550072"
+            ],
+            [
+                "10\r\n0\r\n0\r\n0\r\n3 2 -25259349 3 -157685403 1 566300066\r\n0\r\n0\r\n1 6 -826871575\r\n0\r\n2 7 326395924 8 71809586\r\n2 8 327070134 5 -987409553\r\n",
+                "366159423"
+            ],
+            [
+                "10\r\n0\r\n0\r\n0\r\n2 3 858288840 2 748458152\r\n2 1 447634156 2 -445652349\r\n0\r\n0\r\n0\r\n1 8 1659648\r\n3 7 -796819966 6 -649699060 9 -918150492\r\n",
+                "994177088"
+            ],
+            [
+                "10\r\n0\r\n0\r\n1 2 -233933257\r\n0\r\n0\r\n2 5 -887217585 4 -872831660\r\n1 5 -807076284\r\n0\r\n1 8 611865072\r\n3 6 905832117 3 -448204482 8 801272150\r\n",
+                "100059710"
+            ],
+            [
+                "10\r\n0\r\n0\r\n1 2 -932163843\r\n1 3 361384113\r\n0\r\n0\r\n0\r\n3 5 991449212 6 559875894 7 -839025192\r\n0\r\n3 9 -195383133 5 -993810885 2 -970844660\r\n",
+                "402151002"
+            ],
+            [
+                "10\r\n0\r\n0\r\n1 2 -634790518\r\n0\r\n1 4 -500694950\r\n1 4 -607075294\r\n0\r\n4 4 -603548977 3 78300213 7 485904301 1 785629211\r\n0\r\n1 9 -813237350\r\n",
+                "81326520"
+            ]
+        ]
+    }
+]

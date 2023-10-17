@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Campus",
+        "description": "Oscolcovo city has a campus consisting of n student dormitories, n\nuniversities and n military offices. Initially, the i-th dormitory belongs to\nthe i-th university and is assigned to the i-th military office. Life goes on\nand the campus is continuously going through some changes. The changes can be\nof four types: University aj merges with university bj. After that all the\ndormitories that belonged to university bj are assigned to to university aj,\nand university bj disappears. Military office cj merges with military office\ndj. After that all the dormitories that were assigned to military office dj,\nare assigned to military office cj, and military office dj disappears.\nStudents of university xj move in dormitories. Lets kxj is the number of\ndormitories that belong to this university at the time when the students move\nin. Then the number of students in each dormitory of university xj increases\nby kxj (note that the more dormitories belong to the university, the more\nstudents move in each dormitory of the university). Military office number yj\nconducts raids on all the dormitories assigned to it and takes all students\nfrom there. Thus, at each moment of time each dormitory is assigned to exactly\none university and one military office. Initially, all the dormitory are\nempty. Your task is to process the changes that take place in the campus and\nanswer the queries, how many people currently live in dormitory qj. Input The\nfirst line contains two integers, n and m (1 \u2264 n, m \u2264 5\u00b710^5) \u2014 the number of\ndormitories and the number of queries, respectively. Next m lines contain the\nqueries, each of them is given in one of the following formats: \u00abU aj bj\u00bb \u2014\nmerging universities; \u00abM cj dj\u00bb \u2014 merging military offices; \u00abA xj\u00bb \u2014 students\nof university xj moving in the dormitories; \u00abZ yj\u00bb \u2014 a raid in military office\nyj; \u00abQ qj\u00bb \u2014 a query asking the number of people in dormitory qj. All the\nnumbers in the queries are positive integers and do not exceed n. It is\nguaranteed that at the moment of the query the universities and military\noffices, that are present in the query, exist. Output In the i-th line print\nthe answer to the i-th query asking the number of people in the dormitory.\nExamples Input 2 7 A 1 Q 1 U 1 2 A 1 Z 1 Q 1 Q 2 Output 1 0 2 Input 5 12 U 1 2\nM 4 5 A 1 Q 1 A 3 A 4 Q 3 Q 4 Z 4 Q 4 A 5 Q 5 Output 2 1 1 0 1 Note Consider\nthe first sample test: In the first query university 1 owns only dormitory 1,\nso after the query dormitory 1 will have 1 student. After the third query\nuniversity 1 owns dormitories 1 and 2. The fourth query increases by 2 the\nnumber of students living in dormitories 1 and 2 that belong to university\nnumber 1. After that 3 students live in the first dormitory and 2 students\nlive in the second dormitory. At the fifth query the number of students living\nin dormitory 1, assigned to the military office 1, becomes zero.\n\n",
+        "cf_contest_id": 571,
+        "cf_index": "D",
+        "cf_rating": 3100,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "dsu",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 7\r\nA 1\r\nQ 1\r\nU 1 2\r\nA 1\r\nZ 1\r\nQ 1\r\nQ 2\r\n",
+                "1\r\n0\r\n2\r\n"
+            ],
+            [
+                "5 12\r\nU 1 2\r\nM 4 5\r\nA 1\r\nQ 1\r\nA 3\r\nA 4\r\nQ 3\r\nQ 4\r\nZ 4\r\nQ 4\r\nA 5\r\nQ 5\r\n",
+                "2\r\n1\r\n1\r\n0\r\n1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 24\r\nU 1 2\r\nM 1 3\r\nU 3 4\r\nM 2 4\r\nA 1\r\nA 3\r\nA 5\r\nQ 1\r\nQ 2\r\nQ 3\r\nQ 4\r\nQ 5\r\nZ 5\r\nQ 5\r\nZ 1\r\nQ 1\r\nQ 2\r\nQ 3\r\nZ 2\r\nQ 1\r\nQ 2\r\nQ 3\r\nQ 4\r\nQ 5\r\n",
+                "2\r\n2\r\n2\r\n2\r\n1\r\n0\r\n0\r\n2\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "2 9\r\nA 1\r\nQ 1\r\nZ 1\r\nQ 1\r\nU 1 2\r\nA 1\r\nQ 1\r\nZ 1\r\nQ 1\r\n",
+                "1\r\n0\r\n2\r\n0\r\n"
+            ],
+            [
+                "1 1\r\nA 1\r\n",
+                ""
+            ],
+            [
+                "10 70\r\nZ 2\r\nA 3\r\nU 2 8\r\nZ 1\r\nQ 1\r\nQ 2\r\nQ 3\r\nQ 4\r\nQ 5\r\nQ 6\r\nQ 7\r\nQ 8\r\nQ 9\r\nQ 10\r\nM 1 8\r\nM 10 9\r\nZ 7\r\nZ 6\r\nQ 1\r\nQ 2\r\nQ 3\r\nQ 4\r\nQ 5\r\nQ 6\r\nQ 7\r\nQ 8\r\nQ 9\r\nQ 10\r\nM 4 5\r\nA 3\r\nA 7\r\nU 5 1\r\nQ 1\r\nQ 2\r\nQ 3\r\nQ 4\r\nQ 5\r\nQ 6\r\nQ 7\r\nQ 8\r\nQ 9\r\nQ 10\r\nA 10\r\nM 10 6\r\nM 7 1\r\nM 2 7\r\nQ 1\r\nQ 2\r\nQ 3\r\nQ 4\r\nQ 5\r\nQ 6\r\nQ 7\r\nQ 8\r\nQ 9\r\nQ 10\r\nU 5 6\r\nA 3\r\nA 10\r\nA 2\r\nQ 1\r\nQ 2\r\nQ 3\r\nQ 4\r\nQ 5\r\nQ 6\r\nQ 7\r\nQ 8\r\nQ 9\r\nQ 10\r\n",
+                "0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n2\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n2\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n1\r\n0\r\n2\r\n3\r\n0\r\n0\r\n0\r\n1\r\n2\r\n0\r\n2\r\n"
+            ],
+            [
+                "10 70\r\nM 3 4\r\nZ 5\r\nM 2 1\r\nA 10\r\nQ 1\r\nQ 2\r\nQ 3\r\nQ 4\r\nQ 5\r\nQ 6\r\nQ 7\r\nQ 8\r\nQ 9\r\nQ 10\r\nU 5 1\r\nZ 5\r\nZ 6\r\nM 2 5\r\nQ 1\r\nQ 2\r\nQ 3\r\nQ 4\r\nQ 5\r\nQ 6\r\nQ 7\r\nQ 8\r\nQ 9\r\nQ 10\r\nM 9 6\r\nZ 3\r\nA 9\r\nZ 8\r\nQ 1\r\nQ 2\r\nQ 3\r\nQ 4\r\nQ 5\r\nQ 6\r\nQ 7\r\nQ 8\r\nQ 9\r\nQ 10\r\nA 7\r\nM 2 8\r\nM 9 7\r\nU 4 7\r\nQ 1\r\nQ 2\r\nQ 3\r\nQ 4\r\nQ 5\r\nQ 6\r\nQ 7\r\nQ 8\r\nQ 9\r\nQ 10\r\nM 10 9\r\nA 9\r\nU 9 5\r\nU 9 2\r\nQ 1\r\nQ 2\r\nQ 3\r\nQ 4\r\nQ 5\r\nQ 6\r\nQ 7\r\nQ 8\r\nQ 9\r\nQ 10\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n1\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n2\r\n1\r\n"
+            ]
+        ]
+    }
+]

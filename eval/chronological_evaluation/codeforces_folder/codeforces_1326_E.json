@@ -1,0 +1,48 @@
+[
+    {
+        "name": "Bombs",
+        "description": "You are given a permutation, \n    p_1, p_2, \n    \u2026, p_n\n. Imagine that some\npositions of the permutation contain bombs, such that there exists at least\none position without a bomb. For some fixed configuration of bombs, consider\nthe following process. Initially, there is an empty set, \n    A\n. For each\n\n    i\n from \n    1\n to \n    n\n: Add \n    p_i\n to \n    A\n. If the \n    i\n-th\nposition contains a bomb, remove the largest element in \n    A\n.After the\nprocess is completed, \n    A\n will be non-empty. The cost of the configuration\nof bombs equals the largest element in \n    A\n. You are given another\npermutation, \n    q_1, q_2, \n    \u2026, q_n\n. For each \n    1 \n    \u2264 i \n    \u2264\n    n\n, find the cost of a configuration of bombs such that there exists a bomb\nin positions \n    q_1, q_2, \n    \u2026, q_i-1\n. For example, for \n    i=1\n,\nyou need to find the cost of a configuration without bombs, and for \n    i=n\n,\nyou need to find the cost of a configuration with bombs in positions \n    q_1,\n    q_2, \n    \u2026, q_n-1\n. Input The first line contains a single integer,\n\n    n\n (\n    2 \n    \u2264 n \n    \u2264 300\n     000\n). The second line contains \n    n\n\ndistinct integers \n    p_1, p_2, \n    \u2026, p_n\n (\n    1 \n    \u2264 p_i \n    \u2264 n)\n.\nThe third line contains \n    n\n distinct integers \n    q_1, q_2, \n    \u2026,\n    q_n\n (\n    1 \n    \u2264 q_i \n    \u2264 n)\n. Output Print \n    n\n space-separated\nintegers, such that the \n    i\n-th of them equals the cost of a configuration\nof bombs in positions \n    q_1, q_2, \n    \u2026, q_i-1\n. Examples Input 3 3 2\n1 1 2 3 Output 3 2 1 Input 6 2 3 6 1 5 4 5 2 1 4 6 3 Output 6 5 5 5 4 1 Note\nIn the first test: If there are no bombs, \n    A\n is equal to \n    1, 2,\n    3\n at the end of the process, so the cost of the configuration is\n\n    3\n. If there is one bomb in position \n    1\n, \n    A\n is equal to\n\n    1, 2\n at the end of the process, so the cost of the\nconfiguration is \n    2\n; If there are two bombs in positions \n    1\n and\n\n    2\n, \n    A\n is equal to \n    1\n at the end of the process, so\nthe cost of the configuration is \n    1\n. In the second test: Let's consider\nthe process for \n    i = 4\n. There are three bombs on positions \n    q_1 = 5\n,\n\n    q_2 = 2\n, and \n    q_3 = 1\n. At the beginning, \n    A =\n.\nOperation \n    1\n: Add \n    p_1 = 2\n to \n    A\n, so \n    A\n is equal to\n\n    2\n. There exists a bomb in position \n    1\n, so we should\ndelete the largest element from \n    A\n. \n    A\n is equal to \n    \n.\nOperation \n    2\n: Add \n    p_2 = 3\n to \n    A\n, so \n    A\n is equal to\n\n    3\n. There exists a bomb in position \n    2\n, so we should\ndelete the largest element from \n    A\n. \n    A\n is equal to \n    \n.\nOperation \n    3\n: Add \n    p_3 = 6\n to \n    A\n, so \n    A\n is equal to\n\n    6\n. There is no bomb in position \n    3\n, so we do nothing.\nOperation \n    4\n: Add \n    p_4 = 1\n to \n    A\n, so \n    A\n is equal to\n\n    1, 6\n. There is no bomb in position \n    4\n, so we do nothing.\nOperation \n    5\n: Add \n    p_5 = 5\n to \n    A\n, so \n    A\n is equal to\n\n    1, 5, 6\n. There exists a bomb in position \n    5\n, so we delete\nthe largest element from \n    A\n. Now, \n    A\n is equal to \n    1,\n    5\n. Operation \n    6\n: Add \n    p_6 = 4\n to \n    A\n, so \n    A\n is\nequal to \n    1, 4, 5\n. There is no bomb in position \n    6\n, so we\ndo nothing. In the end, we have \n    A = \n    \n    1, 4, 5\n, so the cost of\nthe configuration is equal to \n    5\n.\n\n",
+        "cf_contest_id": 1326,
+        "cf_index": "E",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "two pointers"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n3 2 1\r\n1 2 3\r\n",
+                "3 2 1 "
+            ],
+            [
+                "6\r\n2 3 6 1 5 4\r\n5 2 1 4 6 3\r\n",
+                "6 5 5 5 4 1 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n7 10 1 8 3 9 2 4 6 5\r\n7 6 5 3 8 10 4 1 9 2\r\n",
+                "10 9 8 7 6 6 5 5 5 1 "
+            ],
+            [
+                "2\r\n1 2\r\n1 2\r\n",
+                "2 2 "
+            ],
+            [
+                "2\r\n1 2\r\n2 1\r\n",
+                "2 1 "
+            ],
+            [
+                "2\r\n2 1\r\n1 2\r\n",
+                "2 1 "
+            ],
+            [
+                "2\r\n2 1\r\n2 1\r\n",
+                "2 1 "
+            ]
+        ]
+    }
+]

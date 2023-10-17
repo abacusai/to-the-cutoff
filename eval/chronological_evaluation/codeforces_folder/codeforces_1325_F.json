@@ -1,0 +1,110 @@
+[
+    {
+        "name": "Ehab's Last Theorem",
+        "description": "It's the year 5555. You have a graph, and you want to find a long cycle and a\nhuge independent set, just because you can. But for now, let's just stick with\nfinding either. Given a connected graph with \n    n\n vertices, you can choose\nto either: find an independent set that has exactly\n\n    \u2308\n    \u221a(n)\n    \u2309\n vertices. find a simple cycle of length at\nleast \n    \u2308\n    \u221a(n)\n    \u2309\n. An independent set is a set of\nvertices such that no two of them are connected by an edge. A simple cycle is\na cycle that doesn't contain any vertex twice. I have a proof you can always\nsolve one of these problems, but it's too long to fit this margin. Input The\nfirst line contains two integers \n    n\n and \n    m\n (\n    5 \n    \u2264 n \n    \u2264\n    10^5\n, \n    n-1 \n    \u2264 m \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the number of vertices and\nedges in the graph. Each of the next \n    m\n lines contains two space-\nseparated integers \n    u\n and \n    v\n (\n    1 \n    \u2264 u,v \n    \u2264 n\n) that mean\nthere's an edge between vertices \n    u\n and \n    v\n. It's guaranteed that the\ngraph is connected and doesn't contain any self-loops or multiple edges.\nOutput If you choose to solve the first problem, then on the first line print\n\"1\", followed by a line containing \n    \u2308\n    \u221a(n)\n    \u2309\n distinct\nintegers not exceeding \n    n\n, the vertices in the desired independent set.\nIf you, however, choose to solve the second problem, then on the first line\nprint \"2\", followed by a line containing one integer, \n    c\n, representing\nthe length of the found cycle, followed by a line containing \n    c\n distinct\nintegers integers not exceeding \n    n\n, the vertices in the desired cycle, in\nthe order they appear in the cycle. Examples Input 6 6 1 3 3 4 4 2 2 6 5 6 5 1\nOutput 1 1 6 4 Input 6 8 1 3 3 4 4 2 2 6 5 6 5 1 1 4 2 5 Output 2 4 1 5 2 4\nInput 5 4 1 2 1 3 2 4 2 5 Output 1 3 4 5 Note In the first sample: Notice that\nyou can solve either problem, so printing the cycle \n    2-4-3-1-5-6\n is also\nacceptable. In the second sample: Notice that if there are multiple answers\nyou can print any, so printing the cycle \n    2-5-6\n, for example, is\nacceptable. In the third sample:\n\n",
+        "cf_contest_id": 1325,
+        "cf_index": "F",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 6\r\n1 3\r\n3 4\r\n4 2\r\n2 6\r\n5 6\r\n5 1\r\n",
+                "2\r\n6\r\n1 3 4 2 6 5 "
+            ],
+            [
+                "6 8\r\n1 3\r\n3 4\r\n4 2\r\n2 6\r\n5 6\r\n5 1\r\n1 4\r\n2 5\r\n",
+                "2\r\n6\r\n1 3 4 2 6 5 "
+            ],
+            [
+                "5 4\r\n1 2\r\n1 3\r\n2 4\r\n2 5\r\n",
+                "1\r\n4 5 3 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 7\r\n3 4\r\n4 5\r\n4 2\r\n4 1\r\n2 3\r\n5 3\r\n2 5\r\n",
+                "2\r\n3\r\n4 3 2 "
+            ],
+            [
+                "10 18\r\n9 1\r\n1 10\r\n3 6\r\n6 4\r\n2 10\r\n4 7\r\n8 3\r\n2 8\r\n5 10\r\n2 9\r\n7 2\r\n3 7\r\n2 6\r\n1 4\r\n5 9\r\n8 6\r\n5 3\r\n10 6\r\n",
+                "2\r\n4\r\n1 9 2 10 "
+            ],
+            [
+                "17 51\r\n3 12\r\n6 13\r\n15 1\r\n3 10\r\n13 2\r\n17 8\r\n3 14\r\n13 17\r\n2 6\r\n16 2\r\n1 10\r\n3 17\r\n3 15\r\n9 12\r\n7 8\r\n2 8\r\n7 13\r\n9 2\r\n2 14\r\n5 6\r\n12 8\r\n15 13\r\n14 8\r\n4 14\r\n16 12\r\n5 14\r\n15 14\r\n10 7\r\n15 6\r\n17 5\r\n16 5\r\n8 4\r\n15 11\r\n17 7\r\n15 8\r\n12 7\r\n4 13\r\n8 16\r\n1 2\r\n2 11\r\n2 7\r\n7 9\r\n16 1\r\n4 16\r\n4 1\r\n17 9\r\n15 2\r\n17 11\r\n10 9\r\n12 2\r\n9 11\r\n",
+                "2\r\n8\r\n3 12 9 2 13 6 5 14 "
+            ],
+            [
+                "5 4\r\n5 4\r\n2 3\r\n1 5\r\n3 5\r\n",
+                "1\r\n4 2 1 "
+            ],
+            [
+                "5 4\r\n1 5\r\n2 4\r\n2 1\r\n3 4\r\n",
+                "1\r\n5 3 2 "
+            ],
+            [
+                "5 5\r\n1 3\r\n2 3\r\n1 4\r\n4 5\r\n1 2\r\n",
+                "2\r\n3\r\n1 3 2 "
+            ],
+            [
+                "5 5\r\n1 2\r\n1 3\r\n2 3\r\n1 4\r\n4 5\r\n",
+                "2\r\n3\r\n1 2 3 "
+            ],
+            [
+                "9 11\r\n2 4\r\n5 4\r\n8 1\r\n9 3\r\n8 7\r\n2 5\r\n1 6\r\n8 5\r\n8 6\r\n7 3\r\n9 7\r\n",
+                "2\r\n3\r\n7 3 9 "
+            ],
+            [
+                "10 12\r\n1 2\r\n2 3\r\n2 4\r\n3 4\r\n1 5\r\n5 6\r\n5 7\r\n6 7\r\n1 10\r\n8 9\r\n8 10\r\n9 10\r\n",
+                "1\r\n4 7 9 1 "
+            ],
+            [
+                "17 28\r\n2 15\r\n7 12\r\n11 8\r\n9 4\r\n6 17\r\n1 13\r\n11 4\r\n8 4\r\n6 16\r\n12 13\r\n10 12\r\n6 3\r\n2 14\r\n16 3\r\n5 15\r\n11 9\r\n8 9\r\n17 3\r\n10 16\r\n10 9\r\n5 14\r\n10 2\r\n2 5\r\n12 1\r\n7 1\r\n7 13\r\n15 14\r\n17 16\r\n",
+                "1\r\n7 3 8 14 10 "
+            ],
+            [
+                "5 4\r\n1 2\r\n2 3\r\n1 5\r\n4 5\r\n",
+                "1\r\n3 4 1 "
+            ],
+            [
+                "26 59\r\n9 23\r\n16 21\r\n20 14\r\n20 17\r\n24 20\r\n12 8\r\n18 21\r\n3 14\r\n3 18\r\n3 1\r\n2 8\r\n26 5\r\n12 2\r\n10 8\r\n23 22\r\n16 18\r\n24 25\r\n19 21\r\n3 4\r\n16 6\r\n2 4\r\n12 10\r\n3 26\r\n3 2\r\n7 13\r\n10 2\r\n16 19\r\n7 5\r\n20 25\r\n15 23\r\n1 22\r\n3 10\r\n6 19\r\n15 22\r\n5 13\r\n11 7\r\n14 25\r\n9 22\r\n26 13\r\n14 17\r\n11 13\r\n1 9\r\n3 12\r\n1 15\r\n11 5\r\n6 21\r\n1 23\r\n19 18\r\n10 4\r\n24 17\r\n24 14\r\n9 15\r\n12 4\r\n6 18\r\n26 7\r\n17 25\r\n3 8\r\n4 8\r\n11 26\r\n",
+                "2\r\n6\r\n3 4 2 8 12 10 "
+            ],
+            [
+                "10 14\r\n8 1\r\n7 1\r\n7 2\r\n7 10\r\n6 2\r\n2 9\r\n10 5\r\n7 9\r\n6 9\r\n7 6\r\n3 10\r\n3 5\r\n4 8\r\n4 1\r\n",
+                "2\r\n4\r\n7 2 6 9 "
+            ],
+            [
+                "10 14\r\n1 4\r\n2 3\r\n2 4\r\n3 4\r\n1 5\r\n5 6\r\n5 7\r\n6 7\r\n1 9\r\n8 9\r\n8 10\r\n9 10\r\n1 8\r\n1 10\r\n",
+                "2\r\n4\r\n1 9 8 10 "
+            ],
+            [
+                "6 5\r\n1 2\r\n1 3\r\n4 5\r\n4 1\r\n1 6\r\n",
+                "1\r\n2 3 5 "
+            ],
+            [
+                "10 9\r\n1 9\r\n1 8\r\n9 10\r\n10 5\r\n1 4\r\n8 3\r\n9 2\r\n9 7\r\n8 6\r\n",
+                "1\r\n5 2 7 3 "
+            ],
+            [
+                "5 4\r\n4 3\r\n5 2\r\n4 1\r\n3 5\r\n",
+                "1\r\n2 3 1 "
+            ],
+            [
+                "6 5\r\n2 3\r\n2 4\r\n1 6\r\n2 5\r\n3 1\r\n",
+                "1\r\n6 4 5 "
+            ],
+            [
+                "10 17\r\n1 3\r\n3 5\r\n5 7\r\n7 9\r\n2 4\r\n4 6\r\n6 8\r\n8 10\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n8 9\r\n9 10\r\n",
+                "2\r\n9\r\n1 3 5 7 9 8 6 4 2 "
+            ]
+        ]
+    }
+]

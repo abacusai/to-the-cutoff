@@ -1,0 +1,237 @@
+[
+    {
+        "name": "Correct Bracket Sequence Editor",
+        "description": "Recently Polycarp started to develop a text editor that works only with\ncorrect bracket sequences (abbreviated as CBS). Note that a bracket sequence\nis correct if it is possible to get a correct mathematical expression by\nadding \"+\"-s and \"1\"-s to it. For example, sequences \"(())()\", \"()\" and\n\"(()(()))\" are correct, while \")(\", \"(()\" and \"(()))(\" are not. Each bracket\nin CBS has a pair. For example, in \"(()(()))\": 1st bracket is paired with 8th,\n2d bracket is paired with 3d, 3d bracket is paired with 2d, 4th bracket is\npaired with 7th, 5th bracket is paired with 6th, 6th bracket is paired with\n5th, 7th bracket is paired with 4th, 8th bracket is paired with 1st.\nPolycarp's editor currently supports only three operations during the use of\nCBS. The cursor in the editor takes the whole position of one of the brackets\n(not the position between the brackets!). There are three operations being\nsupported: \u00abL\u00bb \u2014 move the cursor one position to the left, \u00abR\u00bb \u2014 move the\ncursor one position to the right, \u00abD\u00bb \u2014 delete the bracket in which the cursor\nis located, delete the bracket it's paired to and all brackets between them\n(that is, delete a substring between the bracket in which the cursor is\nlocated and the one it's paired to). After the operation \"D\" the cursor moves\nto the nearest bracket to the right (of course, among the non-deleted). If\nthere is no such bracket (that is, the suffix of the CBS was deleted), then\nthe cursor moves to the nearest bracket to the left (of course, among the non-\ndeleted). There are pictures illustrated several usages of operation \"D\"\nbelow. All incorrect operations (shift cursor over the end of CBS, delete the\nwhole CBS, etc.) are not supported by Polycarp's editor. Polycarp is very\nproud of his development, can you implement the functionality of his editor?\nInput The first line contains three positive integers n, m and p (2 \u2264 n \u2264 500\n000, 1 \u2264 m \u2264 500 000, 1 \u2264 p \u2264 n) \u2014 the number of brackets in the correct\nbracket sequence, the number of operations and the initial position of cursor.\nPositions in the sequence are numbered from left to right, starting from one.\nIt is guaranteed that n is even. It is followed by the string of n characters\n\"(\" and \")\" forming the correct bracket sequence. Then follow a string of m\ncharacters \"L\", \"R\" and \"D\" \u2014 a sequence of the operations. Operations are\ncarried out one by one from the first to the last. It is guaranteed that the\ngiven operations never move the cursor outside the bracket sequence, as well\nas the fact that after all operations a bracket sequence will be non-empty.\nOutput Print the correct bracket sequence, obtained as a result of applying\nall operations to the initial sequence. Examples Input 8 4 5 (())()() RDLD\nOutput () Input 12 5 3 ((()())(())) RRDLD Output (()(())) Input 8 8 8 (())()()\nLLLLLLDD Output ()() Note In the first sample the cursor is initially at\nposition 5. Consider actions of the editor: command \"R\" \u2014 the cursor moves to\nthe position 6 on the right; command \"D\" \u2014 the deletion of brackets from the\nposition 5 to the position 6. After that CBS takes the form (())(), the cursor\nis at the position 5; command \"L\" \u2014 the cursor moves to the position 4 on the\nleft; command \"D\" \u2014 the deletion of brackets from the position 1 to the\nposition 4. After that CBS takes the form (), the cursor is at the position 1.\nThus, the answer is equal to ().\n\n",
+        "cf_contest_id": 670,
+        "cf_index": "E",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dsu",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "8 4 5\r\n(())()()\r\nRDLD\r\n",
+                "()\r\n"
+            ],
+            [
+                "12 5 3\r\n((()())(()))\r\nRRDLD\r\n",
+                "(()(()))\r\n"
+            ],
+            [
+                "8 8 8\r\n(())()()\r\nLLLLLLDD\r\n",
+                "()()\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 2 2\r\n()()\r\nLD\r\n",
+                "()\r\n"
+            ],
+            [
+                "6 4 1\r\n()()()\r\nDRRD\r\n",
+                "()\r\n"
+            ],
+            [
+                "8 2 4\r\n(())()()\r\nRR\r\n",
+                "(())()()\r\n"
+            ],
+            [
+                "10 7 3\r\n(()())()()\r\nRDLRDRD\r\n",
+                "()\r\n"
+            ],
+            [
+                "12 10 11\r\n(())()()()()\r\nDLRDLRDDLR\r\n",
+                "(())\r\n"
+            ],
+            [
+                "14 8 13\r\n((())())((()))\r\nDLRLLRLR\r\n",
+                "((())())()\r\n"
+            ],
+            [
+                "16 2 10\r\n(((())())())()()\r\nLD\r\n",
+                "(())()()\r\n"
+            ],
+            [
+                "18 8 11\r\n((()))(()()()())()\r\nLLLRRRRD\r\n",
+                "((()))(()()())()\r\n"
+            ],
+            [
+                "20 16 3\r\n(()()())()(())()()()\r\nLDRRRRRRLRLRLLLL\r\n",
+                "(()())()(())()()()\r\n"
+            ],
+            [
+                "22 9 12\r\n(()())((()()())())()()\r\nRDLLLRDRL\r\n",
+                "(()())((())())()()\r\n"
+            ],
+            [
+                "24 15 14\r\n((()())()()())(())()()()\r\nLDRRLDLDRRDDLRL\r\n",
+                "()\r\n"
+            ],
+            [
+                "26 3 15\r\n((())())(((())()()))(())()\r\nRDL\r\n",
+                "((())())(((())()))(())()\r\n"
+            ],
+            [
+                "28 13 16\r\n(()()())(()()())(())(())()()\r\nLRLDRRRRRLLLR\r\n",
+                "(()()())(()())(())(())()()\r\n"
+            ],
+            [
+                "30 18 15\r\n(()((()()())()(())())())()()()\r\nRRRLRRRLRRDLLLDRDR\r\n",
+                "()()\r\n"
+            ],
+            [
+                "32 6 19\r\n((()())((())())())((())()(()))()\r\nLDRLRR\r\n",
+                "((())()(()))()\r\n"
+            ],
+            [
+                "34 8 20\r\n(())((()())()((())())()()())()()()\r\nRLLDLRRL\r\n",
+                "(())((()())()((()))()()())()()()\r\n"
+            ],
+            [
+                "36 11 36\r\n(()()()()())((())())(()()())((())())\r\nLDLRLLLLRLR\r\n",
+                "(()()()()())((())())(()()())((()))\r\n"
+            ],
+            [
+                "38 8 26\r\n((((())())(()))(()()))(((())())())()()\r\nDDDLRLDR\r\n",
+                "((((())())(()))(()()))(())()()\r\n"
+            ],
+            [
+                "40 22 35\r\n(((()()()())()()())((())())()(())())()()\r\nDRRLDRLRLLLDLLLDRLLRLD\r\n",
+                "(())()\r\n"
+            ],
+            [
+                "42 7 29\r\n(((())()(()())())(((()())())(()())())())()\r\nDDRRRRD\r\n",
+                "(((())()(()())())(((()())()))())\r\n"
+            ],
+            [
+                "44 13 42\r\n((()()())()()()())(((()()())())()())(()())()\r\nLRRRLLDRDLDLR\r\n",
+                "((()()())()()()())(((()()())())())\r\n"
+            ],
+            [
+                "46 3 11\r\n(()()(())())(()())((()((())())(()())(())())())\r\nDDD\r\n",
+                "((()((())())(()())(())())())\r\n"
+            ],
+            [
+                "48 33 11\r\n((((())())((()()())())()()(()()))()(()())())()()\r\nRLRDLDRLLLRRRLRDLRLDDRRDRLRRDRLRD\r\n",
+                "(()(()())())()()\r\n"
+            ],
+            [
+                "50 32 32\r\n(()()())(())(())((()())())((())())((()())())(())()\r\nLRLLLRDRRDLRRRLRLLDDRLLRDLRDLRLD\r\n",
+                "(()()())(())(())((()()))\r\n"
+            ],
+            [
+                "52 24 39\r\n((()(()())(()())()())()())((()())(())())(())(()())()\r\nDRRDLDRLRRLLRRDRRLDRRLLL\r\n",
+                "((()(()())(()())()())()())((()())(()))()()\r\n"
+            ],
+            [
+                "54 22 3\r\n(((()())(())()())((()())())())((())((()()())()())())()\r\nLRLRDLRDLLRLDRLRRDRLRD\r\n",
+                "(()())()\r\n"
+            ],
+            [
+                "56 43 9\r\n(((((())())(()()))()()()())(()()(()))(()())(())())()()()\r\nRLRLDLRLLRLRLDLLRLRRLLLRLRRLDLDRDLLRLRRLLDR\r\n",
+                "()()()\r\n"
+            ],
+            [
+                "58 3 22\r\n((((())()())())((())())(())())(((())()()())(())()())()(())\r\nLLR\r\n",
+                "((((())()())())((())())(())())(((())()()())(())()())()(())\r\n"
+            ],
+            [
+                "60 50 23\r\n((((())(()())()())(()())()()()(()())())((())()())()())(())()\r\nDRDLLDDLLLLDDRRDRDLLLRRRLRLDDDLRLLRRDLRLRRDDDRDRRL\r\n",
+                "(()())(())()\r\n"
+            ],
+            [
+                "62 34 43\r\n(()((()())()()))(((())())()(()())(())())((())(()(()())()))()()\r\nRLDDDDDDLRDLLRLDRLLDLRLDLLDRLLRRLL\r\n",
+                "(())\r\n"
+            ],
+            [
+                "64 19 15\r\n((((())((())())()())(())())(()())(()())())((()()())(())())()()()\r\nDRRLRLRDDDDLLDRLRLD\r\n",
+                "()()()\r\n"
+            ],
+            [
+                "66 55 24\r\n(((())(((()())()()))(()())(()())())(())((()())())(()()())())()()()\r\nRDLRLRRRLRDLRRLLDDRDRRDLRLDRRDRDLRDDLLRRDRDRLRRLLLDLRRR\r\n",
+                "()()()()\r\n"
+            ],
+            [
+                "68 34 8\r\n((()(()())()())(()))((()())()())((()()())())(((())(()))(())()(())())\r\nDLRRLRRRDLLDLLDDDLRRLRLRRRDDRLRRLL\r\n",
+                "((()())()())((()()())())(((())(()))(())()(())())\r\n"
+            ],
+            [
+                "70 33 26\r\n((()(())()())((())())(()())(())())((()((()())()())())()()(())())(()())\r\nDLDRRRLRLDLRLLRDDRLRRLLLRDRLRLDRL\r\n",
+                "(()())\r\n"
+            ],
+            [
+                "72 23 38\r\n(((((()()())()())(((()()))(())())()(()())(()(())())))(())((())())())()()\r\nRDLRLRRRDLLRDLRDLLRRLLD\r\n",
+                "()()\r\n"
+            ],
+            [
+                "74 26 27\r\n(((()()())())(())()())((()()(())())()())((()()())()())(()()())(()()())()()\r\nLDRLLRLRLLDDDLDRRDRLLRDLRD\r\n",
+                "()()()\r\n"
+            ],
+            [
+                "76 51 69\r\n(((())()())())(()()()()())(((((())(())())())())(((()(())())(()()())())()))()\r\nLRLLRRLLLDRDDRLLDLRLRDRLRDLRLRLRLLDLRLRLLLDDLLRRDLD\r\n",
+                "(((())()()))\r\n"
+            ],
+            [
+                "78 33 22\r\n(((()((()()())())()()())((()())()())(())())(((((())())()())()())(())())())()()\r\nRDRRRRRLDRDLDRLLLLDRDRRRDLDRDLLRD\r\n",
+                "((((((())())()())()())(())())())()()\r\n"
+            ],
+            [
+                "2 1 1\r\n()\r\nR\r\n",
+                "()\r\n"
+            ],
+            [
+                "80 31 30\r\n(((()()())(((())())((()())()()())()()))(()()()())(()())(()())(())(())()()()())()\r\nDDDLLDLDDLRLRLDDRDRRLDRDLLDRLRL\r\n",
+                "()\r\n"
+            ],
+            [
+                "82 16 6\r\n(((())())(())()())(((()()((()()))())()(())())(()())(())((())())()()())(()()()())()\r\nRLLLLRRDDRRLRRRL\r\n",
+                "((())(())()())(((()()((()()))())()(())())(()())(())((())())()()())(()()()())()\r\n"
+            ],
+            [
+                "84 18 78\r\n(())(((()(()))()((((()())())(()())())()())((()())())())(((())(())())(())())())()()()\r\nLLLRDDLRDRLDDLLRRL\r\n",
+                "(())\r\n"
+            ],
+            [
+                "86 11 62\r\n(((())())(((()())())()()())(()())(()()())()())((()()())())(((())()())((())(()())())())\r\nDLDLRLRLRRR\r\n",
+                "(((())())(((()())())()()())(()())(()()())()())((()()())())((()())((())(()())())())\r\n"
+            ],
+            [
+                "88 33 12\r\n(())((((())()((()())())())(((())())(())()())(()))((()())())())(((())()())(())()())()()()\r\nLLLRRLRDRDRLDDLLRDLLDRLRDDLDRDLRR\r\n",
+                "(())()()\r\n"
+            ],
+            [
+                "90 44 6\r\n(((((())()())(((()())())())()()))(()())((())()())(()())((())())(()()())())(())((())())()()\r\nRLDLRRLLDRDDDLRDRRDLLRRDDDDLRLRDRLLDRDLRDDRR\r\n",
+                "()()\r\n"
+            ],
+            [
+                "92 51 30\r\n(()(((()())(()())())())(()())()()()())((()()())(())(())(()((())()())())(())())((())()())()()\r\nLRLRLLLLRRRLLRRLDLRLRRLRDLDLDLDDRRLRRRLLRDRLDDRLRRD\r\n",
+                "(()()())()()\r\n"
+            ],
+            [
+                "94 48 47\r\n(((()(())())(((())())())()())()()())((()()())(()(()()()())())())(()())(()(())(())()())(()())()\r\nLLLLLLDLDRLLDLRRDLLLLRLLDLLRRDDRDRRLLRRDRRRDRLLD\r\n",
+                "((())()())(()())()\r\n"
+            ],
+            [
+                "96 37 18\r\n((()()()())((((())()())())(())()())()()())(((())()(()(())())()()())(())())((()())()()())(()())()\r\nDDLRRDDLDLRDDDRLDLRRDDDLLDRRRDDLDLLRL\r\n",
+                "((()()()))((()())()()())(()())()\r\n"
+            ],
+            [
+                "98 38 40\r\n((()((((()))(())(()(())))))((())()())(())()())((((()())(((()()))()))()(())()()())())((()))(())()()\r\nLRLRRDLDDRRLRDRDDLDRDLDRDLRLRLRLRLRLRR\r\n",
+                "()()()\r\n"
+            ],
+            [
+                "100 57 80\r\n(((())(()))(()())())((((()()()())((())())()())(()((()())()()()))())()()())((())()((())()))((()))()()\r\nLLRRLLLRLRLRLDLLRRRDDLRDDDLRLRLLLRLRRRLLDRLRDLLDLRLRLDDLR\r\n",
+                "(((())(()))(()())())\r\n"
+            ],
+            [
+                "10 3 3\r\n(())((()))\r\nDRD\r\n",
+                "()\r\n"
+            ]
+        ]
+    }
+]

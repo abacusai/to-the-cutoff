@@ -1,0 +1,131 @@
+[
+    {
+        "name": "Christmas Chocolates",
+        "description": "Christmas is coming, Icy has just received a box of chocolates from her\ngrandparents! The box contains \n    n\n chocolates. The \n    i\n-th chocolate\nhas a non-negative integer type \n    a_i\n. Icy believes that good things come\nin pairs. Unfortunately, all types of chocolates are distinct (all \n    a_i\n\nare distinct). Icy wants to make at least one pair of chocolates the same\ntype. As a result, she asks her grandparents to perform some chocolate\nexchanges. Before performing any chocolate exchanges, Icy chooses two\nchocolates with indices \n    x\n and \n    y\n (\n    1 \n    \u2264 x, y \n    \u2264 n\n, \n    x\n    \n     y\n). In a chocolate exchange, Icy's grandparents choose a non-negative\ninteger \n    k\n, such that \n    2^k \n    \u2265 a_x\n, and change the type of the\nchocolate \n    x\n from \n    a_x\n to \n    2^k - a_x\n (that is, perform \n    a_x\n    := 2^k - a_x\n). The chocolate exchanges will be stopped only when \n    a_x =\n    a_y\n. Note that other pairs of equal chocolate types do not stop the\nprocedure. Icy's grandparents are smart, so they would choose the sequence of\nchocolate exchanges that minimizes the number of exchanges needed. Since Icy\nlikes causing trouble, she wants to maximize the minimum number of exchanges\nneeded by choosing \n    x\n and \n    y\n appropriately. She wonders what is the\noptimal pair \n    (x, y)\n such that the minimum number of exchanges needed is\nmaximized across all possible choices of \n    (x, y)\n. Since Icy is not good\nat math, she hopes that you can help her solve the problem. Input The first\nline of the input contains a single integer \n    n\n (\n    2 \n    \u2264 n \n    \u2264 2\n    \n    \u00b7 10^5\n) \u2014 the number of chocolates. The second line of the input\ncontains \n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    0 \n    \u2264 a_i \n    \u2264\n    10^9\n). It is guaranteed that all \n    a_i\n are distinct. Output Output\nthree integers \n    x\n, \n    y\n, and \n    m\n. \n    x\n and \n    y\n are indices\nof the optimal chocolates to perform exchanges on. Your output must satisfy\n\n    1 \n    \u2264 x, y \n    \u2264 n\n, \n    x \n     y\n. \n    m\n is the number of\nexchanges needed to obtain \n    a_x = a_y\n. We can show that \n    m \n    \u2264\n    10^9\n for any pair of chocolates. If there are multiple solutions, output\nany. Examples Input 5 5 6 7 8 9 Output 2 5 5 Input 2 4 8 Output 1 2 2 Note In\nthe first test case, the minimum number of exchanges needed to exchange a\nchocolate of type \n    6\n to a chocolate of type \n    9\n is \n    5\n. The\nsequence of exchanges is as follows: \n    6 \n    \u2192 2 \n    \u2192 0\n    \n    \u2192 1 \n    \u2192 7 \n    \u2192 9\n. In the second test case,\nthe minimum number of exchanges needed to exchange a chocolate of type \n    4\n\nto a chocolate of type \n    8\n is \n    2\n. The sequence of exchanges is as\nfollows: \n    4 \n    \u2192 0 \n    \u2192 8\n.\n\n",
+        "cf_contest_id": 1617,
+        "cf_index": "E",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "games",
+            "graphs",
+            "implementation",
+            "math",
+            "number theory",
+            "shortest paths",
+            "trees"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5\r\n5 6 7 8 9\r\n",
+                "1 2 5\r\n"
+            ],
+            [
+                "2\r\n4 8\r\n",
+                "1 2 2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n8 6\r\n",
+                "2 1 3\r\n"
+            ],
+            [
+                "2\r\n529 302\r\n",
+                "2 1 11\r\n"
+            ],
+            [
+                "10\r\n60253 56012 398 14855 99307 93134 50355 82806 42446 67694\r\n",
+                "1 2 21\r\n"
+            ],
+            [
+                "73\r\n565 927 81 544 585 496 213 892 13 630 162 547 55 241 988 985 950 287 108 515 639 104 225 836 799 797 313 992 525 393 914 26 612 381 429 231 398 775 528 674 472 42 101 158 531 35 666 785 573 192 107 763 392 245 337 440 588 133 32 448 380 776 729 378 382 495 126 832 607 288 858 746 627\r\n",
+                "1 40 14\r\n"
+            ],
+            [
+                "100\r\n992 505 272 422 137 719 29 841 468 494 460 284 914 776 524 482 115 132 116 92 577 666 560 36 700 366 899 21 939 265 975 967 165 964 783 539 241 712 683 412 592 233 854 471 384 999 97 257 563 811 714 375 860 11 901 981 850 133 160 232 991 508 693 296 997 223 649 566 716 703 305 204 307 746 635 464 512 404 457 195 290 127 868 663 814 553 604 790 537 987 951 743 47 357 153 493 13 601 490 530\r\n",
+                "39 43 18\r\n"
+            ],
+            [
+                "2\r\n0 1\r\n",
+                "2 1 1\r\n"
+            ],
+            [
+                "5\r\n0 3 1 2 4\r\n",
+                "2 4 3\r\n"
+            ],
+            [
+                "10\r\n4 0 5 1 7 2 3 9 8 6\r\n",
+                "3 10 5\r\n"
+            ],
+            [
+                "13\r\n5 7 3 11 12 1 9 10 8 6 2 4 0\r\n",
+                "4 8 7\r\n"
+            ],
+            [
+                "17\r\n11 13 8 3 5 10 0 1 15 14 9 7 4 16 6 12 2\r\n",
+                "1 6 7\r\n"
+            ],
+            [
+                "50\r\n42 39 27 31 49 28 44 48 1 4 22 6 30 34 37 3 15 7 19 32 12 38 8 16 17 36 41 24 13 40 9 26 2 47 25 18 46 23 20 5 10 33 29 21 43 45 0 11 35 14\r\n",
+                "45 1 11\r\n"
+            ],
+            [
+                "16\r\n9260395 11200954 12565768 9097948 2148381 13208278 8853864 7915641 3971192 2777328 6820143 155663 11055052 2624039 6069297 9303161\r\n",
+                "1 2 35\r\n"
+            ],
+            [
+                "32\r\n823660 11344325 5298940 6280378 15694184 3424995 2140609 13618136 8594136 11132237 7864395 9307374 2549838 3716880 8109447 1989734 12950900 14771702 15314771 1563916 15846364 10489467 3074912 7059563 8946652 5477362 5922853 16291445 3508052 16086447 10352431 277463\r\n",
+                "10 30 31\r\n"
+            ],
+            [
+                "8\r\n7133779 11010202 10352361 12948862 2541393 5835697 6588686 9297238\r\n",
+                "1 8 32\r\n"
+            ],
+            [
+                "3\r\n2 23 27\r\n",
+                "2 3 6\r\n"
+            ],
+            [
+                "3\r\n681 1365 2\r\n",
+                "2 1 18\r\n"
+            ],
+            [
+                "2\r\n7 9\r\n",
+                "2 1 1\r\n"
+            ],
+            [
+                "2\r\n4 12\r\n",
+                "2 1 1\r\n"
+            ],
+            [
+                "2\r\n1000000000 1\r\n",
+                "1 2 14\r\n"
+            ],
+            [
+                "2\r\n9 7\r\n",
+                "1 2 1\r\n"
+            ],
+            [
+                "3\r\n7 9 23\r\n",
+                "3 1 2\r\n"
+            ],
+            [
+                "3\r\n23 9 7\r\n",
+                "1 3 2\r\n"
+            ],
+            [
+                "2\r\n13 27\r\n",
+                "2 1 3\r\n"
+            ],
+            [
+                "2\r\n38 22\r\n",
+                "1 2 4\r\n"
+            ]
+        ]
+    }
+]

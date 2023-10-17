@@ -1,0 +1,141 @@
+[
+    {
+        "name": "Party",
+        "description": "A company has n employees numbered from 1 to n. Each employee either has no\nimmediate manager or exactly one immediate manager, who is another employee\nwith a different number. An employee A is said to be the superior of another\nemployee B if at least one of the following is true: Employee A is the\nimmediate manager of employee B Employee B has an immediate manager employee C\nsuch that employee A is the superior of employee C. The company will not have\na managerial cycle. That is, there will not exist an employee who is the\nsuperior of his/her own immediate manager. Today the company is going to\narrange a party. This involves dividing all n employees into several groups:\nevery employee must belong to exactly one group. Furthermore, within any\nsingle group, there must not be two employees A and B such that A is the\nsuperior of B. What is the minimum number of groups that must be formed? Input\nThe first line contains integer n (1 \u2264 n \u2264 2000) \u2014 the number of employees.\nThe next n lines contain the integers pi (1 \u2264 pi \u2264 n or pi = -1). Every pi\ndenotes the immediate manager for the i-th employee. If pi is -1, that means\nthat the i-th employee does not have an immediate manager. It is guaranteed,\nthat no employee will be the immediate manager of him/herself (pi \u2260 i). Also,\nthere will be no managerial cycles. Output Print a single integer denoting the\nminimum number of groups that will be formed in the party. Examples Input 5 -1\n1 2 1 -1 Output 3 Note For the first example, three groups are sufficient, for\nexample: Employee 1 Employees 2 and 4 Employees 3 and 5\n\n",
+        "cf_contest_id": 115,
+        "cf_index": "A",
+        "cf_rating": 900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs",
+            "trees"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n-1\r\n1\r\n2\r\n1\r\n-1\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n-1\r\n1\r\n2\r\n3\r\n",
+                "4\r\n"
+            ],
+            [
+                "12\r\n-1\r\n1\r\n2\r\n3\r\n-1\r\n5\r\n6\r\n7\r\n-1\r\n9\r\n10\r\n11\r\n",
+                "4\r\n"
+            ],
+            [
+                "6\r\n-1\r\n-1\r\n2\r\n3\r\n1\r\n1\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n-1\r\n1\r\n1\r\n",
+                "2\r\n"
+            ],
+            [
+                "1\r\n-1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n2\r\n-1\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n-1\r\n-1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n2\r\n-1\r\n1\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n-1\r\n-1\r\n-1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\n4\r\n5\r\n1\r\n-1\r\n4\r\n",
+                "3\r\n"
+            ],
+            [
+                "12\r\n-1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n3\r\n4\r\n3\r\n3\r\n4\r\n7\r\n",
+                "4\r\n"
+            ],
+            [
+                "12\r\n-1\r\n-1\r\n1\r\n-1\r\n1\r\n1\r\n5\r\n11\r\n8\r\n6\r\n6\r\n4\r\n",
+                "5\r\n"
+            ],
+            [
+                "12\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n2\r\n-1\r\n-1\r\n-1\r\n",
+                "2\r\n"
+            ],
+            [
+                "12\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n",
+                "1\r\n"
+            ],
+            [
+                "12\r\n3\r\n4\r\n2\r\n8\r\n7\r\n1\r\n10\r\n12\r\n5\r\n-1\r\n9\r\n11\r\n",
+                "12\r\n"
+            ],
+            [
+                "12\r\n5\r\n6\r\n7\r\n1\r\n-1\r\n9\r\n12\r\n4\r\n8\r\n-1\r\n3\r\n2\r\n",
+                "11\r\n"
+            ],
+            [
+                "12\r\n-1\r\n9\r\n11\r\n6\r\n6\r\n-1\r\n6\r\n3\r\n8\r\n6\r\n1\r\n6\r\n",
+                "6\r\n"
+            ],
+            [
+                "12\r\n7\r\n8\r\n4\r\n12\r\n7\r\n9\r\n-1\r\n-1\r\n-1\r\n8\r\n6\r\n-1\r\n",
+                "3\r\n"
+            ],
+            [
+                "12\r\n-1\r\n10\r\n-1\r\n1\r\n-1\r\n5\r\n9\r\n12\r\n-1\r\n-1\r\n3\r\n-1\r\n",
+                "2\r\n"
+            ],
+            [
+                "12\r\n-1\r\n7\r\n9\r\n12\r\n1\r\n7\r\n-1\r\n-1\r\n8\r\n5\r\n4\r\n-1\r\n",
+                "3\r\n"
+            ],
+            [
+                "12\r\n11\r\n11\r\n8\r\n9\r\n1\r\n1\r\n2\r\n-1\r\n10\r\n3\r\n-1\r\n8\r\n",
+                "5\r\n"
+            ],
+            [
+                "12\r\n-1\r\n8\r\n9\r\n-1\r\n4\r\n2\r\n11\r\n1\r\n-1\r\n6\r\n-1\r\n10\r\n",
+                "6\r\n"
+            ],
+            [
+                "12\r\n7\r\n4\r\n4\r\n-1\r\n6\r\n7\r\n9\r\n7\r\n-1\r\n7\r\n4\r\n1\r\n",
+                "4\r\n"
+            ],
+            [
+                "12\r\n-1\r\n6\r\n10\r\n6\r\n1\r\n11\r\n5\r\n9\r\n11\r\n5\r\n1\r\n9\r\n",
+                "4\r\n"
+            ],
+            [
+                "12\r\n8\r\n6\r\n6\r\n8\r\n6\r\n-1\r\n6\r\n6\r\n8\r\n6\r\n8\r\n8\r\n",
+                "3\r\n"
+            ],
+            [
+                "12\r\n3\r\n8\r\n9\r\n12\r\n2\r\n8\r\n11\r\n12\r\n2\r\n9\r\n-1\r\n11\r\n",
+                "7\r\n"
+            ],
+            [
+                "7\r\n7\r\n6\r\n-1\r\n-1\r\n4\r\n4\r\n-1\r\n",
+                "3\r\n"
+            ],
+            [
+                "77\r\n53\r\n-1\r\n48\r\n-1\r\n51\r\n-1\r\n54\r\n43\r\n70\r\n19\r\n64\r\n31\r\n45\r\n58\r\n6\r\n61\r\n41\r\n56\r\n34\r\n-1\r\n54\r\n-1\r\n66\r\n65\r\n74\r\n16\r\n38\r\n1\r\n2\r\n61\r\n-1\r\n34\r\n-1\r\n-1\r\n7\r\n19\r\n57\r\n13\r\n61\r\n42\r\n-1\r\n34\r\n65\r\n16\r\n31\r\n61\r\n6\r\n5\r\n34\r\n15\r\n-1\r\n13\r\n4\r\n22\r\n74\r\n7\r\n-1\r\n70\r\n38\r\n61\r\n45\r\n53\r\n46\r\n22\r\n-1\r\n65\r\n34\r\n19\r\n43\r\n48\r\n33\r\n58\r\n36\r\n-1\r\n47\r\n24\r\n34\r\n",
+                "6\r\n"
+            ],
+            [
+                "5\r\n2\r\n3\r\n4\r\n5\r\n-1\r\n",
+                "5\r\n"
+            ]
+        ]
+    }
+]

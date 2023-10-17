@@ -1,0 +1,69 @@
+[
+    {
+        "name": "Something with XOR Queries",
+        "description": "This is an interactive problem. Jury has hidden a permutation p of integers\nfrom 0 to n - 1. You know only the length n. Remind that in permutation all\nintegers are distinct. Let b be the inverse permutation for p, i.e. pbi = i\nfor all i. The only thing you can do is to ask xor of elements pi and bj,\nprinting two indices i and j (not necessarily distinct). As a result of the\nquery with indices i and j you'll get the value , where denotes the xor\noperation. You can find the description of xor operation in notes. Note that\nsome permutations can remain indistinguishable from the hidden one, even if\nyou make all possible n^2 queries. You have to compute the number of\npermutations indistinguishable from the hidden one, and print one of such\npermutations, making no more than 2n queries. The hidden permutation does not\ndepend on your queries. Input The first line contains single integer n (1 \u2264 n\n\u2264 5000) \u2014 the length of the hidden permutation. You should read this integer\nfirst. Output When your program is ready to print the answer, print three\nlines. In the first line print \"!\". In the second line print single integer\nanswers_cnt \u2014 the number of permutations indistinguishable from the hidden\none, including the hidden one. In the third line print n integers p0, p1, ...,\npn - 1 (0 \u2264 pi < n, all pi should be distinct) \u2014 one of the permutations\nindistinguishable from the hidden one. Your program should terminate after\nprinting the answer. Interaction To ask about xor of two elements, print a\nstring \"? i j\", where i and j \u2014 are integers from 0 to n - 1 \u2014 the index of\nthe permutation element and the index of the inverse permutation element you\nwant to know the xor-sum for. After that print a line break and make flush\noperation. After printing the query your program should read single integer \u2014\nthe value of . For a permutation of length n your program should make no more\nthan 2n queries about xor-sum. Note that printing answer doesn't count as a\nquery. Note that you can't ask more than 2n questions. If you ask more than 2n\nquestions or at least one incorrect question, your solution will get \"Wrong\nanswer\". If at some moment your program reads -1 as an answer, it should\nimmediately exit (for example, by calling exit(0)). You will get \"Wrong\nanswer\" in this case, it means that you asked more than 2n questions, or asked\nan invalid question. If you ignore this, you can get other verdicts since your\nprogram will continue to read from a closed stream. Your solution will get\n\"Idleness Limit Exceeded\", if you don't print anything or forget to flush the\noutput, including for the final answer . To flush you can use (just after\nprinting line break): fflush(stdout) in C++; System.out.flush() in Java;\nstdout.flush() in Python; flush(output) in Pascal; For other languages see the\ndocumentation. Hacking For hacking use the following format: n p0 p1 ... pn -\n1 Contestant programs will not be able to see this input. Examples Input 3 0 0\n3 2 3 2 Output ? 0 0 ? 1 1 ? 1 2 ? 0 2 ? 2 1 ? 2 0 ! 1 0 1 2 Input 4 2 3 2 0 2\n3 2 0 Output ? 0 1 ? 1 2 ? 2 3 ? 3 3 ? 3 2 ? 2 1 ? 1 0 ? 0 0 ! 2 3 1 2 0 Note\nxor operation, or bitwise exclusive OR, is an operation performed over two\nintegers, in which the i-th digit in binary representation of the result is\nequal to 1 if and only if exactly one of the two integers has the i-th digit\nin binary representation equal to 1. For more information, see here. In the\nfirst example p = [0, 1, 2], thus b = [0, 1, 2], the values are correct for\nthe given i, j. There are no other permutations that give the same answers for\nthe given queries. The answers for the queries are: , , , , , . In the second\nexample p = [3, 1, 2, 0], and b = [3, 1, 2, 0], the values match for all pairs\ni, j. But there is one more suitable permutation p = [0, 2, 1, 3], b = [0, 2,\n1, 3] that matches all n^2 possible queries as well. All other permutations do\nnot match even the shown queries.\n\n",
+        "cf_contest_id": 870,
+        "cf_index": "D",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "interactive",
+            "probabilities"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n0 1 2\r\n",
+                "1\r\n0 1 2 \r\n"
+            ],
+            [
+                "4\r\n3 1 2 0\r\n",
+                "2\r\n0 2 1 3 \r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n3 2 1 0\r\n",
+                "4\r\n0 1 2 3 \r\n"
+            ],
+            [
+                "8\r\n2 3 0 1 4 5 6 7\r\n",
+                "4\r\n0 1 2 3 6 7 4 5 \r\n"
+            ],
+            [
+                "1\r\n0\r\n",
+                "1\r\n0 \r\n"
+            ],
+            [
+                "10\r\n0 1 2 3 4 5 6 7 8 9\r\n",
+                "2\r\n0 1 2 3 4 5 6 7 8 9 \r\n"
+            ],
+            [
+                "6\r\n0 1 2 4 3 5\r\n",
+                "1\r\n0 1 2 4 3 5 \r\n"
+            ],
+            [
+                "2\r\n0 1\r\n",
+                "2\r\n0 1 \r\n"
+            ],
+            [
+                "10\r\n6 7 4 5 0 1 8 9 2 3\r\n",
+                "2\r\n6 7 4 5 0 1 8 9 2 3 \r\n"
+            ],
+            [
+                "10\r\n9 8 1 7 6 4 5 2 0 3\r\n",
+                "1\r\n9 8 1 7 6 4 5 2 0 3 \r\n"
+            ],
+            [
+                "64\r\n0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 62 63 60 61\r\n",
+                "4\r\n0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 62 63 60 61 \r\n"
+            ],
+            [
+                "128\r\n0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 126 123 124 125 122 127\r\n",
+                "2\r\n0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 126 123 124 125 122 127 \r\n"
+            ]
+        ]
+    }
+]

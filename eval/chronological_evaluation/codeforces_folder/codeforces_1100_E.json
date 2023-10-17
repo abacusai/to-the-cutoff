@@ -1,0 +1,133 @@
+[
+    {
+        "name": "Andrew and Taxi",
+        "description": "Andrew prefers taxi to other means of transport, but recently most taxi\ndrivers have been acting inappropriately. In order to earn more money, taxi\ndrivers started to drive in circles. Roads in Andrew's city are one-way, and\npeople are not necessary able to travel from one part to another, but it pales\nin comparison to insidious taxi drivers. The mayor of the city decided to\nchange the direction of certain roads so that the taxi drivers wouldn't be\nable to increase the cost of the trip endlessly. More formally, if the taxi\ndriver is on a certain crossroads, they wouldn't be able to reach it again if\nhe performs a nonzero trip. Traffic controllers are needed in order to change\nthe direction the road goes. For every road it is known how many traffic\ncontrollers are needed to change the direction of the road to the opposite\none. It is allowed to change the directions of roads one by one, meaning that\neach traffic controller can participate in reversing two or more roads. You\nneed to calculate the minimum number of traffic controllers that you need to\nhire to perform the task and the list of the roads that need to be reversed.\nInput The first line contains two integers \n    n\n and \n    m\n (\n    2 \n    \u2264 n\n    \n    \u2264 100\n     000\n, \n    1 \n    \u2264 m \n    \u2264 100\n     000\n) \u2014 the number of\ncrossroads and the number of roads in the city, respectively. Each of the\nfollowing \n    m\n lines contain three integers \n    u_i\n, \n    v_i\n and\n\n    c_i\n (\n    1 \n    \u2264 u_i, v_i\n    \u2264 n\n, \n    1 \n    \u2264 c_i\n    \u2264\n    10^9\n, \n    u_i\n     v_i\n) \u2014 the crossroads the road starts at, the\ncrossroads the road ends at and the number of traffic controllers required to\nreverse this road. Output In the first line output two integers the minimal\namount of traffic controllers required to complete the task and amount of\nroads \n    k\n which should be reversed. \n    k\n should not be minimized. In\nthe next line output \n    k\n integers separated by spaces \u2014 numbers of roads,\nthe directions of which should be reversed. The roads are numerated from\n\n    1\n in the order they are written in the input. If there are many\nsolutions, print any of them. Examples Input 5 6 2 1 1 5 2 6 2 3 2 3 4 3 4 5 5\n1 5 4 Output 2 2 1 3 Input 5 7 2 1 5 3 2 3 1 3 3 2 4 1 4 3 5 5 4 1 1 5 3\nOutput 3 3 3 4 7 Note There are two simple cycles in the first example: \n    1\n    \n    \u2192 5 \n    \u2192 2 \n    \u2192 1\n and \n    2 \n    \u2192 3\n    \n    \u2192 4 \n    \u2192 5 \n    \u2192 2\n. One traffic controller can\nonly reverse the road \n    2 \n    \u2192 1\n and he can't destroy the second\ncycle by himself. Two traffic controllers can reverse roads \n    2 \n    \u2192\n    1\n and \n    2 \n    \u2192 3\n which would satisfy the condition. In the\nsecond example one traffic controller can't destroy the cycle \n    1\n    \n    \u2192 3 \n    \u2192 2 \n    \u2192 1\n. With the help of three\ncontrollers we can, for example, reverse roads \n    1 \n    \u2192 3\n ,\n    2\n    \n    \u2192 4\n, \n    1 \n    \u2192 5\n.\n\n",
+        "cf_contest_id": 1100,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "dfs and similar",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 6\r\n2 1 1\r\n5 2 6\r\n2 3 2\r\n3 4 3\r\n4 5 5\r\n1 5 4\r\n",
+                "2 2\r\n1 3 "
+            ],
+            [
+                "5 7\r\n2 1 5\r\n3 2 3\r\n1 3 3\r\n2 4 1\r\n4 3 5\r\n5 4 1\r\n1 5 3\r\n",
+                "3 3\r\n3 4 7 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 45\r\n5 6 8\r\n9 4 8\r\n7 1 1\r\n9 7 1\r\n7 2 1\r\n1 4 2\r\n5 7 7\r\n10 5 7\r\n7 8 8\r\n8 5 4\r\n4 7 3\r\n1 8 7\r\n3 1 9\r\n9 1 3\r\n10 2 7\r\n6 2 7\r\n2 5 7\r\n5 4 7\r\n6 7 6\r\n4 2 7\r\n6 8 10\r\n6 10 2\r\n3 6 3\r\n10 3 6\r\n4 3 6\r\n3 9 8\r\n5 1 4\r\n2 3 7\r\n3 8 1\r\n9 10 4\r\n9 8 7\r\n4 6 6\r\n2 8 1\r\n7 3 5\r\n9 5 4\r\n7 10 2\r\n4 8 8\r\n10 4 10\r\n10 8 5\r\n10 1 10\r\n5 3 9\r\n9 6 2\r\n6 1 5\r\n2 1 1\r\n2 9 5\r\n",
+                "7 19\r\n4 6 7 10 11 12 17 19 22 23 25 28 30 32 33 35 36 42 45 "
+            ],
+            [
+                "10 45\r\n5 6 894\r\n9 4 197\r\n7 1 325\r\n9 7 232\r\n7 2 902\r\n1 4 183\r\n5 7 41\r\n10 5 481\r\n7 8 495\r\n8 5 266\r\n4 7 152\r\n1 8 704\r\n3 1 790\r\n9 1 458\r\n10 2 546\r\n6 2 258\r\n2 5 30\r\n5 4 366\r\n6 7 747\r\n4 2 546\r\n6 8 332\r\n6 10 816\r\n3 6 523\r\n10 3 683\r\n4 3 771\r\n3 9 152\r\n5 1 647\r\n2 3 967\r\n3 8 785\r\n9 10 793\r\n9 8 62\r\n4 6 915\r\n2 8 864\r\n7 3 667\r\n9 5 972\r\n7 10 536\r\n4 8 678\r\n10 4 183\r\n10 8 290\r\n10 1 164\r\n5 3 533\r\n9 6 374\r\n6 1 932\r\n2 1 943\r\n2 9 508\r\n",
+                "523 8\r\n6 8 10 17 23 26 38 45 "
+            ],
+            [
+                "10 16\r\n1 4 8\r\n1 2 8\r\n10 4 1\r\n9 10 1\r\n10 8 1\r\n1 3 2\r\n7 1 7\r\n10 6 7\r\n1 6 8\r\n9 1 4\r\n10 3 3\r\n1 5 7\r\n10 2 9\r\n10 5 3\r\n10 7 7\r\n1 8 7\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "10 16\r\n1 4 894\r\n1 2 197\r\n10 4 325\r\n9 10 232\r\n10 8 902\r\n1 3 183\r\n7 1 41\r\n10 6 481\r\n1 6 495\r\n9 1 266\r\n10 3 152\r\n1 5 704\r\n10 2 790\r\n10 5 458\r\n10 7 546\r\n1 8 258\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "10 16\r\n1 4 142098087\r\n1 2 687355301\r\n10 4 987788392\r\n9 10 75187408\r\n10 8 868856364\r\n1 3 52638784\r\n7 1 63648080\r\n10 6 336568389\r\n1 6 157036117\r\n9 1 20266475\r\n10 3 871417500\r\n1 5 977101406\r\n10 2 998009456\r\n10 5 602055818\r\n10 7 197218634\r\n1 8 260501249\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "10 16\r\n1 4 1000000000\r\n1 2 1000000000\r\n10 4 1000000000\r\n9 10 1000000000\r\n10 8 1000000000\r\n1 3 1000000000\r\n7 1 1000000000\r\n10 6 1000000000\r\n1 6 1000000000\r\n9 1 1000000000\r\n10 3 1000000000\r\n1 5 1000000000\r\n10 2 1000000000\r\n10 5 1000000000\r\n10 7 1000000000\r\n1 8 1000000000\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "10 10\r\n6 3 142098087\r\n1 10 687355301\r\n2 1 987788392\r\n6 1 75187408\r\n7 10 868856364\r\n8 5 52638784\r\n1 3 63648080\r\n2 9 336568389\r\n3 4 157036117\r\n2 6 20266475\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "10 10\r\n10 9 4\r\n5 1 1\r\n10 5 6\r\n8 10 3\r\n9 7 4\r\n10 4 8\r\n1 10 8\r\n9 8 5\r\n3 4 5\r\n9 6 2\r\n",
+                "3 3\r\n2 4 10 "
+            ],
+            [
+                "10 10\r\n6 5 614\r\n7 2 390\r\n2 5 579\r\n2 3 867\r\n6 5 622\r\n9 3 759\r\n9 7 31\r\n5 1 770\r\n3 5 741\r\n1 7 739\r\n",
+                "390 1\r\n2 "
+            ],
+            [
+                "10 10\r\n5 4 800546695\r\n10 2 740550268\r\n6 3 957684175\r\n3 6 625144947\r\n8 10 272466594\r\n6 2 504951255\r\n5 2 845441013\r\n6 7 246349125\r\n1 2 50331379\r\n7 10 424414040\r\n",
+                "625144947 5\r\n4 5 8 9 10 "
+            ],
+            [
+                "10 10\r\n2 1 1\r\n9 6 3\r\n5 10 4\r\n7 3 2\r\n10 4 1\r\n1 9 3\r\n3 10 5\r\n10 4 2\r\n4 3 3\r\n2 4 7\r\n",
+                "2 2\r\n5 8 "
+            ],
+            [
+                "10 10\r\n4 3 307\r\n7 9 429\r\n6 9 496\r\n4 1 916\r\n2 3 301\r\n2 10 812\r\n3 9 894\r\n7 8 123\r\n3 7 320\r\n6 5 125\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "10 10\r\n2 10 474807135\r\n4 2 962520591\r\n3 9 126082193\r\n1 4 760844264\r\n1 10 52802539\r\n7 3 746816967\r\n6 1 222270586\r\n6 7 820057433\r\n6 5 215955595\r\n8 7 695795595\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1000 10\r\n868 438 2\r\n343 550 7\r\n398 889 5\r\n124 36 2\r\n135 199 5\r\n457 601 3\r\n399 457 5\r\n207 830 1\r\n993 9 6\r\n94 532 2\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1000 10\r\n436 98 469\r\n575 59 231\r\n977 843 329\r\n954 122 235\r\n312 2 146\r\n185 544 592\r\n443 934 802\r\n455 908 673\r\n885 996 482\r\n332 544 14\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1000 10\r\n324 678 209049436\r\n620 410 28063150\r\n831 742 637678127\r\n100 945 470355488\r\n647 176 985761444\r\n723 980 556667715\r\n434 639 555861099\r\n229 163 646697450\r\n737 502 162139510\r\n130 776 123933989\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1000 10\r\n692 941 4\r\n706 229 6\r\n491 831 2\r\n38 786 7\r\n976 884 8\r\n473 458 6\r\n270 282 1\r\n966 498 9\r\n739 68 7\r\n750 195 7\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1000 10\r\n508 977 625\r\n758 499 322\r\n573 300 51\r\n845 512 687\r\n90 320 3\r\n957 201 905\r\n313 352 93\r\n887 721 403\r\n71 930 583\r\n743 325 203\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1000 10\r\n860 480 675641884\r\n205 565 250735259\r\n93 465 636750880\r\n693 878 692229871\r\n33 663 6377793\r\n36 850 585986498\r\n775 21 943422995\r\n600 893 34454857\r\n90 851 471673964\r\n318 859 921258233\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "100000 10\r\n36835 34680 2\r\n31672 38787 4\r\n18053 82257 4\r\n55217 4509 8\r\n96399 41247 9\r\n23297 65923 2\r\n72094 31661 8\r\n58678 87631 5\r\n96350 65916 3\r\n39733 99143 5\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "100000 10\r\n90447 32247 783\r\n95724 67801 599\r\n32051 53091 935\r\n27723 85779 50\r\n10543 35000 469\r\n8453 53025 284\r\n74612 14434 226\r\n5304 85825 14\r\n18919 76244 416\r\n37240 58135 776\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "100000 10\r\n46122 79638 789057278\r\n86778 33379 443285900\r\n21112 73244 633154007\r\n77248 23596 430537716\r\n41202 48487 549896573\r\n38675 77119 815675406\r\n71488 96154 374480841\r\n84312 84448 419663315\r\n51244 87732 26745557\r\n22188 58973 334627707\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "100000 10\r\n15612 30855 2\r\n35854 31931 5\r\n8690 55672 7\r\n2528 59672 6\r\n56320 3908 10\r\n8836 17518 5\r\n91320 31532 3\r\n60787 31063 5\r\n26425 53154 2\r\n97628 951 2\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "100000 10\r\n28423 74435 965\r\n99267 27544 329\r\n79968 56118 685\r\n58445 25827 828\r\n51022 84926 677\r\n66018 14543 154\r\n66364 52179 659\r\n7413 13129 89\r\n6157 66354 531\r\n4398 56620 756\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "100000 10\r\n6562 83820 726857368\r\n36406 45916 871757814\r\n20802 43322 925441947\r\n31106 834 452851573\r\n10004 51410 868578181\r\n82093 44286 365017697\r\n73596 39586 645348275\r\n14387 71686 30879416\r\n84320 5847 914903745\r\n15975 38488 903061429\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2 1\r\n1 2 3\r\n",
+                "0 0\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,74 @@
+[
+    {
+        "name": "RPD and Rap Sheet (Hard Version)",
+        "description": "This is the hard version of the problem. The only difference is that here\n\n    2\n    \u2264 k\n    \u2264 100\n. You can make hacks only if both the versions of the\nproblem are solved. This is an interactive problem! Every decimal number has a\nbase \n    k\n equivalent. The individual digits of a base \n    k\n number are\ncalled \n    k\n-its. Let's define the \n    k\n-itwise XOR of two \n    k\n-its\n\n    a\n and \n    b\n as \n    (a + b)\n     k\n. The \n    k\n-itwise XOR of two\nbase \n    k\n numbers is equal to the new number formed by taking the\n\n    k\n-itwise XOR of their corresponding \n    k\n-its. The \n    k\n-itwise XOR\nof two decimal numbers \n    a\n and \n    b\n is denoted by \n    a\n    \u2295_k b\n\nand is equal to the decimal representation of the \n    k\n-itwise XOR of the\nbase \n    k\n representations of \n    a\n and \n    b\n. All further numbers used\nin the statement below are in decimal unless specified. You have hacked the\ncriminal database of Rockport Police Department (RPD), also known as the Rap\nSheet. But in order to access it, you require a password. You don't know it,\nbut you are quite sure that it lies between \n    0\n and \n    n-1\n inclusive.\nSo, you have decided to guess it. Luckily, you can try at most \n    n\n times\nwithout being blocked by the system. But the system is adaptive. Each time you\nmake an incorrect guess, it changes the password. Specifically, if the\npassword before the guess was \n    x\n, and you guess a different number\n\n    y\n, then the system changes the password to a number \n    z\n such that\n\n    x\n    \u2295_k z=y\n. Guess the password and break into the system. Input\nThe first line of input contains a single integer \n    t\n (\n    1\n    \u2264 t\n    \u2264\n    10\n     000\n) denoting the number of test cases. \n    t\n test cases follow.\nThe first line of each test case contains two integers \n    n\n (\n    1\n    \u2264\n    n\n    \u2264 2\n    \u00b7 10^5\n) and \n    k\n \n    (2\n    \u2264 k\n    \u2264 100)\n. It is\nguaranteed that the sum of \n    n\n over all test cases does not exceed\n\n    2\n    \u00b7 10^5\n. Interaction For each test case, first read two integers\n\n    n\n and \n    k\n. Then you may ask up to \n    n\n queries. For each query,\nprint a single integer \n    y\n (\n    0\n    \u2264 y\n    \u2264 2\n    \u00b7 10^7\n). Let the\ncurrent password be \n    x\n. After that, read an integer \n    r\n. If\n\n    x=y\n, you will read \n    r=1\n and the test case is solved. You must then\ncontinue solving the remaining test cases. Else, you will read \n    r=0\n. At\nthis moment the password is changed to a number \n    z\n such that\n\n    x\n    \u2295_k z=y\n. After printing a query, do not forget to output the\nend of line and flush the output. Otherwise, you will get the Idleness limit\nexceeded verdict. To do this, use: fflush(stdout) or cout.flush() in C++;\nSystem.out.flush() in Java; flush(output) in Pascal; stdout.flush() in Python;\nsee documentation for other languages. If you ask an invalid query or exceed\n\n    n\n queries, you will read \n    r=-1\n and you will receive the Wrong\nAnswer verdict. Make sure to exit immediately to avoid unexpected verdicts.\nNote that the interactor is adaptive. That is, the original password is not\nfixed in the beginning and may depend on your queries. But it is guaranteed\nthat at any moment there is at least one initial password such that all the\nanswers to the queries are consistent. Hacks: To use hacks, use the following\nformat of tests: The first line should contain a single integer \n    t\n\n(\n    1\n    \u2264 t\n    \u2264 10\n     000\n) \u2014 the number of test cases. The first and\nonly line of each test case should contain two integers \n    n\n (\n    1\n    \u2264\n    n\n    \u2264 2\n    \u00b7 10^5\n) and \n    k\n (\n    2\n    \u2264 k\n    \u2264 100\n) denoting the\nnumber of queries and the base respectively. The optimal original password is\nautomatically decided by the adaptive interactor. You must ensure that the sum\nof \n    n\n over all test cases does not exceed \n    2\n    \u00b7 10^5\n. Example\nInput 2 5 2 0 0 1 5 3 0 0 1 Output 3 4 5 1 4 6 Note Test Case 1: In this case,\nthe hidden password is \n    2\n. The first query is \n    3\n. It is not equal to\nthe current password. So, \n    0\n is returned, and the password is changed to\n\n    1\n since \n    2\n    \u2295_2 1=3\n. The second query is \n    4\n. It is not\nequal to the current password. So, \n    0\n is returned, and the password is\nchanged to \n    5\n since \n    1\n    \u2295_2 5=4\n. The third query is \n    5\n. It\nis equal to the current password. So, \n    1\n is returned, and the job is\ndone. Test Case 2: In this case, the hidden password is \n    3\n. The first\nquery is \n    1\n. It is not equal to the current password. So, \n    0\n is\nreturned, and the password is changed to \n    7\n since \n    3\n    \u2295_3 7=1\n.\n\n    [3=(10)_3\n, \n    7=(21)_3\n, \n    1=(01)_3\n and \n    (10)_3\n    \u2295_3 (21)_3\n    = (01)_3]\n. The second query is \n    4\n. It is not equal to the current\npassword. So, \n    0\n is returned, and the password is changed to \n    6\n\nsince \n    7\n    \u2295_3 6=4\n. \n    [7=(21)_3\n, \n    6=(20)_3\n, \n    4=(11)_3\n\nand \n    (21)_3\n    \u2295_3 (20)_3 = (11)_3]\n. The third query is \n    6\n. It is\nequal to the current password. So, \n    1\n is returned, and the job is done.\nNote that these initial passwords are taken just for the sake of explanation.\nIn reality, the grader might behave differently because it is adaptive.\n\n",
+        "cf_contest_id": 1543,
+        "cf_index": "D2",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "constructive algorithms",
+            "interactive",
+            "math"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n5 2\r\n5 3\r\n",
+                ""
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n200000 2\r\n",
+                ""
+            ],
+            [
+                "1\r\n200000 8\r\n",
+                ""
+            ],
+            [
+                "1\r\n200000 32\r\n",
+                ""
+            ],
+            [
+                "1\r\n200000 69\r\n",
+                ""
+            ],
+            [
+                "1\r\n200000 100\r\n",
+                ""
+            ],
+            [
+                "32\r\n8581 60\r\n6058 58\r\n3019 48\r\n2151 29\r\n4140 19\r\n4553 51\r\n5920 43\r\n9883 84\r\n9170 64\r\n318 47\r\n1527 65\r\n6945 14\r\n5345 71\r\n5007 46\r\n6709 98\r\n7960 57\r\n7659 74\r\n7507 55\r\n7188 91\r\n3939 32\r\n4849 64\r\n3336 62\r\n7426 5\r\n9064 29\r\n4765 63\r\n9262 93\r\n9265 38\r\n8162 89\r\n8985 10\r\n2298 12\r\n9285 12\r\n7280 46\r\n",
+                ""
+            ],
+            [
+                "18\r\n19135 91\r\n18239 93\r\n12273 33\r\n12416 30\r\n10316 47\r\n5837 60\r\n75 44\r\n14065 89\r\n19609 33\r\n10062 55\r\n4721 76\r\n13378 96\r\n5668 62\r\n2924 37\r\n14431 42\r\n2414 36\r\n18381 62\r\n14452 23\r\n",
+                ""
+            ],
+            [
+                "8\r\n17692 48\r\n10864 66\r\n23137 13\r\n40234 47\r\n13161 85\r\n7801 8\r\n45246 63\r\n36612 67\r\n",
+                ""
+            ],
+            [
+                "3\r\n41764 5\r\n97259 66\r\n54586 59\r\n",
+                ""
+            ],
+            [
+                "3\r\n104982 66\r\n915 88\r\n52978 81\r\n",
+                ""
+            ],
+            [
+                "2\r\n19683 27\r\n177147 3\r\n",
+                ""
+            ],
+            [
+                "2\r\n65536 16\r\n131072 2\r\n",
+                ""
+            ]
+        ]
+    }
+]

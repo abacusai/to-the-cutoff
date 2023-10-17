@@ -1,0 +1,90 @@
+[
+    {
+        "name": "TV Shows",
+        "description": "There are \n    n\n TV shows you want to watch. Suppose the whole time is split\ninto equal parts called \"minutes\". The \n    i\n-th of the shows is going from\n\n    l_i\n-th to \n    r_i\n-th minute, both ends inclusive. You need a TV to\nwatch a TV show and you can't watch two TV shows which air at the same time on\nthe same TV, so it is possible you will need multiple TVs in some minutes. For\nexample, if segments \n    [l_i, r_i]\n and \n    [l_j, r_j]\n intersect, then\nshows \n    i\n and \n    j\n can't be watched simultaneously on one TV. Once you\nstart watching a show on some TV it is not possible to \"move\" it to another TV\n(since it would be too distracting), or to watch another show on the same TV\nuntil this show ends. There is a TV Rental shop near you. It rents a TV for\n\n    x\n rupees, and charges \n    y\n (\n    y < x\n) rupees for every extra\nminute you keep the TV. So in order to rent a TV for minutes \n    [a; b]\n you\nwill need to pay \n    x + y \n    \u00b7 (b - a)\n. You can assume, that taking and\nreturning of the TV doesn't take any time and doesn't distract from watching\nother TV shows. Find the minimum possible cost to view all shows. Since this\nvalue could be too large, print it modulo \n    10^9 + 7\n. Input The first line\ncontains integers \n    n\n, \n    x\n and \n    y\n (\n    1 \n    \u2264 n \n    \u2264 10^5\n,\n\n    1 \n    \u2264 y < x \n    \u2264 10^9\n) \u2014 the number of TV shows, the cost to rent a\nTV for the first minute and the cost to rent a TV for every subsequent minute.\nEach of the next \n    n\n lines contains two integers \n    l_i\n and \n    r_i\n\n(\n    1 \n    \u2264 l_i \n    \u2264 r_i \n    \u2264 10^9\n) denoting the start and the end minute\nof the \n    i\n-th TV show. Output Print exactly one integer \u2014 the minimum cost\nto view all the shows taken modulo \n    10^9 + 7\n. Examples Input 5 4 3 1 2 4\n10 2 4 10 11 5 9 Output 60 Input 6 3 2 8 20 6 22 4 15 20 28 17 25 20 27 Output\n142 Input 2 1000000000 2 1 2 2 3 Output 999999997 Note In the first example,\nthe optimal strategy would be to rent \n    3\n TVs to watch: Show \n    [1, 2]\n\non the first TV, Show \n    [4, 10]\n on the second TV, Shows \n    [2, 4], [5, 9],\n    [10, 11]\n on the third TV. This way the cost for the first TV is \n    4 + 3\n    \n    \u00b7 (2 - 1) = 7\n, for the second is \n    4 + 3 \n    \u00b7 (10 - 4) = 22\n\nand for the third is \n    4 + 3 \n    \u00b7 (11 - 2) = 31\n, which gives \n    60\n\nint total. In the second example, it is optimal watch each show on a new TV.\nIn third example, it is optimal to watch both shows on a new TV. Note that the\nanswer is to be printed modulo \n    10^9 + 7\n.\n\n",
+        "cf_contest_id": 1061,
+        "cf_index": "D",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "greedy",
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 4 3\r\n1 2\r\n4 10\r\n2 4\r\n10 11\r\n5 9\r\n",
+                "60\r\n"
+            ],
+            [
+                "6 3 2\r\n8 20\r\n6 22\r\n4 15\r\n20 28\r\n17 25\r\n20 27\r\n",
+                "142\r\n"
+            ],
+            [
+                "2 1000000000 2\r\n1 2\r\n2 3\r\n",
+                "999999997\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2 1\r\n24 25\r\n18 23\r\n",
+                "9\r\n"
+            ],
+            [
+                "4 5 1\r\n19 29\r\n1 4\r\n20 29\r\n29 30\r\n",
+                "43\r\n"
+            ],
+            [
+                "1 8 1\r\n18 20\r\n",
+                "10\r\n"
+            ],
+            [
+                "7 7 4\r\n28 29\r\n28 28\r\n22 30\r\n30 30\r\n7 26\r\n30 30\r\n20 30\r\n",
+                "198\r\n"
+            ],
+            [
+                "12 3 1\r\n24 25\r\n12 24\r\n16 28\r\n7 12\r\n17 30\r\n5 17\r\n25 29\r\n14 14\r\n26 27\r\n19 25\r\n1 8\r\n28 29\r\n",
+                "101\r\n"
+            ],
+            [
+                "3 6 2\r\n21 29\r\n18 24\r\n11 24\r\n",
+                "72\r\n"
+            ],
+            [
+                "15 5 4\r\n3 5\r\n1 14\r\n2 29\r\n8 30\r\n15 21\r\n20 25\r\n26 30\r\n11 30\r\n19 22\r\n29 30\r\n7 12\r\n25 29\r\n6 20\r\n17 19\r\n1 24\r\n",
+                "670\r\n"
+            ],
+            [
+                "5 9 5\r\n25 27\r\n23 24\r\n9 29\r\n25 30\r\n20 20\r\n",
+                "181\r\n"
+            ],
+            [
+                "9 288243228 34715941\r\n996451829 999802844\r\n921286045 995978054\r\n950042823 978343507\r\n808030400 831031876\r\n625244090 897833308\r\n712959420 884928198\r\n356295385 714670803\r\n960571044 980531247\r\n500557538 810738339\r\n",
+                "707681932\r\n"
+            ],
+            [
+                "14 10 1\r\n27 28\r\n9 13\r\n14 17\r\n12 12\r\n26 26\r\n10 16\r\n13 21\r\n7 20\r\n27 30\r\n10 11\r\n28 28\r\n24 24\r\n25 30\r\n23 23\r\n",
+                "118\r\n"
+            ],
+            [
+                "10 798547896 459313948\r\n40312491 40315265\r\n40299842 40315264\r\n40296035 40315263\r\n40282844 40315262\r\n40304824 40315261\r\n40280414 40315260\r\n40299203 40315259\r\n40301967 40315258\r\n40276169 40315257\r\n40286575 40315256\r\n",
+                "236433977\r\n"
+            ],
+            [
+                "20 10 2\r\n11 30\r\n20 27\r\n24 25\r\n24 29\r\n16 21\r\n30 30\r\n28 29\r\n29 30\r\n21 29\r\n20 26\r\n29 29\r\n29 30\r\n25 28\r\n26 26\r\n20 27\r\n2 18\r\n27 29\r\n6 22\r\n27 27\r\n16 29\r\n",
+                "346\r\n"
+            ],
+            [
+                "11 4 3\r\n26 29\r\n5 28\r\n20 27\r\n12 16\r\n27 27\r\n25 28\r\n20 25\r\n9 15\r\n18 21\r\n9 20\r\n6 10\r\n",
+                "250\r\n"
+            ],
+            [
+                "2 2 1\r\n1000000000 1000000000\r\n1 1000000000\r\n",
+                "1000000003\r\n"
+            ]
+        ]
+    }
+]

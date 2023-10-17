@@ -1,0 +1,346 @@
+[
+    {
+        "name": "Brackets in Implications",
+        "description": "Implication is a function of two logical arguments, its value is false if and\nonly if the value of the first argument is true and the value of the second\nargument is false. Implication is written by using character \u201d, and the\narguments and the result of the implication are written as '0' (false) and '1'\n(true). According to the definition of the implication: When a logical\nexpression contains multiple implications, then when there are no brackets, it\nwill be calculated from left to fight. For example, . When there are brackets,\nwe first calculate the expression in brackets. For example, . For the given\nlogical expression determine if it is possible to place there brackets so that\nthe value of a logical expression is false. If it is possible, your task is to\nfind such an arrangement of brackets. Input The first line contains integer n\n(1 \u2264 n \u2264 100 000) \u2014 the number of arguments in a logical expression. The\nsecond line contains n numbers a1, a2, ..., an (), which means the values of\narguments in the expression in the order they occur. Output Print \"NO\"\n(without the quotes), if it is impossible to place brackets in the expression\nso that its value was equal to 0. Otherwise, print \"YES\" in the first line and\nthe logical expression with the required arrangement of brackets in the second\nline. The expression should only contain characters '0', '1', '-' (character\nwith ASCII code 45), '>' (character with ASCII code 62), '(' and ')'.\nCharacters '-' and '>' can occur in an expression only paired like that:\n(\"->\") and represent implication. The total number of logical arguments (i.e.\ndigits '0' and '1') in the expression must be equal to n. The order in which\nthe digits follow in the expression from left to right must coincide with a1,\na2, ..., an. The expression should be correct. More formally, a correct\nexpression is determined as follows: Expressions \"0\", \"1\" (without the quotes)\nare correct. If v1, v2 are correct, then v1->v2 is a correct expression. If v\nis a correct expression, then (v) is a correct expression. The total number of\ncharacters in the resulting expression mustn't exceed 10^6. If there are\nmultiple possible answers, you are allowed to print any of them. Examples\nInput 4 0 1 1 0 Output YES (((0)->1)->(1->0)) Input 2 1 1 Output NO Input 1 0\nOutput YES 0\n\n",
+        "cf_contest_id": 550,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n0 1 1 0\r\n",
+                "YES\r\n0->1->1->0\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n0\r\n",
+                "YES\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n0 0 0 0\r\n",
+                "YES\r\n0->(0->(0))->0\r\n"
+            ],
+            [
+                "6\r\n0 0 0 0 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "20\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "20\r\n1 1 1 0 1 0 1 1 0 1 1 1 0 1 0 0 1 1 0 0\r\n",
+                "YES\r\n1->1->1->0->1->0->1->1->0->1->1->1->0->1->0->(0->(1->1->0))->0\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2\r\n0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2\r\n0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2\r\n1 0\r\n",
+                "YES\r\n1->0\r\n"
+            ],
+            [
+                "3\r\n0 0 0\r\n",
+                "YES\r\n(0->(0))->0\r\n"
+            ],
+            [
+                "3\r\n0 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\n0 1 0\r\n",
+                "YES\r\n0->1->0\r\n"
+            ],
+            [
+                "3\r\n0 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\n1 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\n1 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\n1 1 0\r\n",
+                "YES\r\n1->1->0\r\n"
+            ],
+            [
+                "3\r\n1 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n0 0 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n0 0 1 0\r\n",
+                "YES\r\n0->0->1->0\r\n"
+            ],
+            [
+                "4\r\n0 0 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n0 1 0 0\r\n",
+                "YES\r\n(0->(1->0))->0\r\n"
+            ],
+            [
+                "4\r\n0 1 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n0 1 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 0 0 0\r\n",
+                "YES\r\n1->(0->(0))->0\r\n"
+            ],
+            [
+                "4\r\n1 0 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 0 1 0\r\n",
+                "YES\r\n1->0->1->0\r\n"
+            ],
+            [
+                "4\r\n1 0 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 1 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 1 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 1 1 0\r\n",
+                "YES\r\n1->1->1->0\r\n"
+            ],
+            [
+                "4\r\n1 1 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n0 0 0 0 0\r\n",
+                "YES\r\n0->0->(0->(0))->0\r\n"
+            ],
+            [
+                "5\r\n0 0 0 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n0 0 0 1 0\r\n",
+                "YES\r\n0->0->0->1->0\r\n"
+            ],
+            [
+                "5\r\n0 0 0 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n0 0 1 0 0\r\n",
+                "YES\r\n0->(0->(1->0))->0\r\n"
+            ],
+            [
+                "5\r\n0 0 1 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n0 0 1 1 0\r\n",
+                "YES\r\n0->0->1->1->0\r\n"
+            ],
+            [
+                "5\r\n0 0 1 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n0 1 0 0 0\r\n",
+                "YES\r\n0->1->(0->(0))->0\r\n"
+            ],
+            [
+                "5\r\n0 1 0 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n0 1 0 1 0\r\n",
+                "YES\r\n0->1->0->1->0\r\n"
+            ],
+            [
+                "5\r\n0 1 0 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n0 1 1 0 0\r\n",
+                "YES\r\n(0->(1->1->0))->0\r\n"
+            ],
+            [
+                "5\r\n0 1 1 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n0 1 1 1 0\r\n",
+                "YES\r\n0->1->1->1->0\r\n"
+            ],
+            [
+                "5\r\n0 1 1 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 0 0 0 0\r\n",
+                "YES\r\n1->0->(0->(0))->0\r\n"
+            ],
+            [
+                "5\r\n1 0 0 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 0 0 1 0\r\n",
+                "YES\r\n1->0->0->1->0\r\n"
+            ],
+            [
+                "5\r\n1 0 0 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 0 1 0 0\r\n",
+                "YES\r\n1->(0->(1->0))->0\r\n"
+            ],
+            [
+                "5\r\n1 0 1 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 0 1 1 0\r\n",
+                "YES\r\n1->0->1->1->0\r\n"
+            ],
+            [
+                "5\r\n1 0 1 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 1 0 0 0\r\n",
+                "YES\r\n1->1->(0->(0))->0\r\n"
+            ],
+            [
+                "5\r\n1 1 0 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 1 0 1 0\r\n",
+                "YES\r\n1->1->0->1->0\r\n"
+            ],
+            [
+                "5\r\n1 1 0 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 1 1 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 1 1 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n1 1 1 1 0\r\n",
+                "YES\r\n1->1->1->1->0\r\n"
+            ],
+            [
+                "5\r\n1 1 1 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n1 1 1 1 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n0 1 1 1 0 0\r\n",
+                "YES\r\n(0->(1->1->1->0))->0\r\n"
+            ],
+            [
+                "6\r\n1 1 1 0 0 0\r\n",
+                "YES\r\n1->1->1->(0->(0))->0\r\n"
+            ],
+            [
+                "6\r\n0 0 0 0 0 0\r\n",
+                "YES\r\n0->0->0->(0->(0))->0\r\n"
+            ],
+            [
+                "6\r\n1 0 0 1 0 0\r\n",
+                "YES\r\n1->0->(0->(1->0))->0\r\n"
+            ],
+            [
+                "6\r\n1 0 1 1 0 0\r\n",
+                "YES\r\n1->(0->(1->1->0))->0\r\n"
+            ],
+            [
+                "6\r\n0 0 1 1 0 0\r\n",
+                "YES\r\n0->(0->(1->1->0))->0\r\n"
+            ],
+            [
+                "6\r\n0 0 0 1 0 0\r\n",
+                "YES\r\n0->0->(0->(1->0))->0\r\n"
+            ],
+            [
+                "6\r\n0 0 1 0 0 0\r\n",
+                "YES\r\n0->0->1->(0->(0))->0\r\n"
+            ],
+            [
+                "200\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "40\r\n1 0 1 0 1 0 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0\r\n",
+                "YES\r\n1->0->1->0->1->0->1->(0->(1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->0))->0\r\n"
+            ],
+            [
+                "40\r\n0 0 1 0 0 0 0 0 0 1 1 0 1 0 1 0 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0\r\n",
+                "YES\r\n0->0->1->0->0->0->0->0->0->1->1->0->1->0->1->0->1->(0->(1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->0))->0\r\n"
+            ],
+            [
+                "40\r\n0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0\r\n",
+                "YES\r\n(0->(1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->1->0))->0\r\n"
+            ],
+            [
+                "40\r\n1 1 0 1 0 1 1 1 1 1 0 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 1 0 0 0 1 0 1 0 0 1 0 0 0\r\n",
+                "YES\r\n1->1->0->1->0->1->1->1->1->1->0->1->0->0->1->1->1->0->0->0->0->1->1->1->1->1->0->1->0->0->0->1->0->1->0->0->1->(0->(0))->0\r\n"
+            ],
+            [
+                "45\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "YES\r\n0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->0->(0->(0))->0\r\n"
+            ],
+            [
+                "20\r\n1 1 1 1 1 0 0 0 0 0 1 1 1 1 1 0 0 0 0 0\r\n",
+                "YES\r\n1->1->1->1->1->0->0->0->0->0->1->1->1->1->1->0->0->(0->(0))->0\r\n"
+            ]
+        ]
+    }
+]

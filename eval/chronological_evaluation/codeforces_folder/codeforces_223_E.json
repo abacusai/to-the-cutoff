@@ -1,0 +1,73 @@
+[
+    {
+        "name": "Planar Graph",
+        "description": "A graph is called planar, if it can be drawn in such a way that its edges\nintersect only at their vertexes. An articulation point is such a vertex of an\nundirected graph, that when removed increases the number of connected\ncomponents of the graph. A bridge is such an edge of an undirected graph, that\nwhen removed increases the number of connected components of the graph. You've\ngot a connected undirected planar graph consisting of n vertexes, numbered\nfrom 1 to n, drawn on the plane. The graph has no bridges, articulation\npoints, loops and multiple edges. You are also given q queries. Each query is\na cycle in the graph. The query response is the number of graph vertexes,\nwhich (if you draw a graph and the cycle on the plane) are located either\ninside the cycle, or on it. Write a program that, given the graph and the\nqueries, will answer each query. Input The first line contains two space-\nseparated integers n and m (3 \u2264 n, m \u2264 10^5) \u2014 the number of vertexes and\nedges of the graph. Next m lines contain the edges of the graph: the i-th line\ncontains two space-separated integers ui and vi (1 \u2264 ui, vi \u2264 n) \u2014 the numbers\nof vertexes, connecting the i-th edge. The next n lines contain the positions\nof the planar graph vertexes on the plane: the i-th line contains a pair of\nspace-separated integers xi and yi (|xi|, |yi| \u2264 10^9) \u2014 the coordinates of\nthe i-th vertex of the graph on the plane. The next line contains integer q (1\n\u2264 q \u2264 10^5) \u2014 the number of queries. Then follow q lines that describe the\nqueries: the i-th line contains the sequence of space-separated integers ki,\na1, a2, ..., aki (1 \u2264 aj \u2264 n; ki > 2), where ki is the cycle length in the\ni-th query, aj are numbers of the vertexes that form a cycle. The numbers of\nvertexes in the cycle are given in the clockwise or counterclockwise order.\nThe given cycles are simple, that is they cannot go through a graph vertex\nmore than once. The total length of all cycles in all queries does not exceed\n10^5. It is guaranteed that the given graph contains no bridges, articulation\npoints, loops and multiple edges. It is guaranteed that the edge segments can\nhave common points only at the graph's vertexes. Output For each query print a\nsingle integer \u2014 the number of vertexes inside the cycle or on it. Print the\nanswers in the order, in which the queries follow in the input. Separate the\nnumbers by spaces. Examples Input 3 3 1 2 2 3 3 1 0 0 1 0 0 1 1 3 1 2 3 Output\n3 Input 5 8 1 2 2 3 3 4 4 1 1 5 2 5 3 5 4 5 0 0 2 0 2 2 0 2 1 1 1 4 1 2 3 4\nOutput 5 Input 4 5 1 2 2 3 3 4 4 1 2 4 0 0 1 0 1 1 0 1 3 3 1 2 4 3 4 2 3 4 1 2\n3 4 Output 3 3 4\n\n",
+        "cf_contest_id": 223,
+        "cf_index": "E",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "flows",
+            "geometry",
+            "graphs"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3\r\n1 2\r\n2 3\r\n3 1\r\n0 0\r\n1 0\r\n0 1\r\n1\r\n3 1 2 3\r\n",
+                "3\r\n"
+            ],
+            [
+                "5 8\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n1 5\r\n2 5\r\n3 5\r\n4 5\r\n0 0\r\n2 0\r\n2 2\r\n0 2\r\n1 1\r\n1\r\n4 1 2 3 4\r\n",
+                "5\r\n"
+            ],
+            [
+                "4 5\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n2 4\r\n0 0\r\n1 0\r\n1 1\r\n0 1\r\n3\r\n3 1 2 4\r\n3 4 2 3\r\n4 1 2 3 4\r\n",
+                "3\r\n3\r\n4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "21 40\r\n5 13\r\n18 21\r\n11 20\r\n4 15\r\n7 6\r\n14 12\r\n18 14\r\n11 19\r\n17 3\r\n12 21\r\n5 15\r\n2 3\r\n17 1\r\n20 6\r\n1 5\r\n10 4\r\n3 5\r\n15 7\r\n19 2\r\n1 9\r\n9 13\r\n9 21\r\n7 14\r\n12 9\r\n8 16\r\n13 21\r\n19 17\r\n16 20\r\n14 21\r\n6 12\r\n2 10\r\n4 16\r\n15 18\r\n20 17\r\n13 18\r\n16 7\r\n6 1\r\n3 4\r\n8 11\r\n10 8\r\n-21 15\r\n-42 -30\r\n-31 -22\r\n12 -37\r\n-21 -15\r\n8 24\r\n26 0\r\n52 0\r\n-10 7\r\n16 -49\r\n16 49\r\n4 12\r\n-10 -7\r\n13 0\r\n8 -24\r\n39 0\r\n-31 22\r\n4 -12\r\n-42 30\r\n12 37\r\n0 0\r\n3\r\n7 3 5 15 7 6 20 17\r\n7 1 17 3 4 16 7 6\r\n4 17 19 2 3\r\n",
+                "14\r\n15\r\n4\r\n"
+            ],
+            [
+                "4 4\r\n2 1\r\n4 3\r\n4 2\r\n3 1\r\n1 1\r\n0 1\r\n1 0\r\n0 0\r\n2\r\n4 1 3 4 2\r\n4 3 1 2 4\r\n",
+                "4\r\n4\r\n"
+            ],
+            [
+                "24 38\r\n12 15\r\n8 11\r\n8 3\r\n24 6\r\n17 19\r\n3 24\r\n4 16\r\n12 4\r\n16 9\r\n5 6\r\n18 22\r\n1 10\r\n23 13\r\n9 11\r\n7 21\r\n7 23\r\n6 13\r\n13 22\r\n23 18\r\n15 14\r\n20 17\r\n9 1\r\n4 20\r\n16 2\r\n2 1\r\n1 7\r\n11 5\r\n19 10\r\n2 19\r\n5 23\r\n14 8\r\n11 7\r\n21 18\r\n10 21\r\n20 2\r\n14 9\r\n3 5\r\n15 16\r\n2 2\r\n2 1\r\n0 4\r\n1 0\r\n1 4\r\n1 5\r\n2 3\r\n0 3\r\n1 2\r\n3 2\r\n1 3\r\n0 0\r\n2 5\r\n0 2\r\n0 1\r\n1 1\r\n3 0\r\n3 4\r\n3 1\r\n2 0\r\n3 3\r\n3 5\r\n2 4\r\n0 5\r\n7\r\n6 23 5 3 24 6 13\r\n4 21 18 23 7\r\n4 2 1 9 16\r\n4 19 2 20 17\r\n4 9 16 2 1\r\n12 20 4 16 9 1 7 23 18 21 10 19 17\r\n4 21 18 23 7\r\n",
+                "6\r\n4\r\n4\r\n4\r\n4\r\n13\r\n4\r\n"
+            ],
+            [
+                "9 16\r\n3 4\r\n6 7\r\n1 8\r\n5 6\r\n2 9\r\n5 9\r\n8 9\r\n2 3\r\n3 9\r\n4 9\r\n1 9\r\n4 5\r\n1 2\r\n6 9\r\n7 8\r\n7 9\r\n20 0\r\n14 14\r\n0 20\r\n-14 14\r\n-20 0\r\n-14 -14\r\n0 -20\r\n14 -14\r\n0 0\r\n22\r\n3 4 5 9\r\n4 2 1 8 9\r\n3 4 5 9\r\n7 6 7 8 1 2 3 9\r\n3 5 9 4\r\n9 8 1 2 3 4 5 6 7 9\r\n4 9 8 7 6\r\n6 1 2 3 4 5 9\r\n3 9 1 8\r\n4 9 2 3 4\r\n3 9 6 7\r\n4 9 4 3 2\r\n5 9 1 8 7 6\r\n3 9 3 2\r\n4 9 6 7 8\r\n3 6 9 7\r\n3 9 7 8\r\n8 1 2 3 4 5 6 7 8\r\n4 3 2 1 9\r\n8 1 9 3 4 5 6 7 8\r\n4 7 8 1 9\r\n3 3 9 4\r\n",
+                "3\r\n4\r\n3\r\n7\r\n3\r\n9\r\n4\r\n6\r\n3\r\n4\r\n3\r\n4\r\n5\r\n3\r\n4\r\n3\r\n3\r\n9\r\n4\r\n8\r\n4\r\n3\r\n"
+            ],
+            [
+                "10 19\r\n5 8\r\n4 6\r\n4 9\r\n1 2\r\n3 10\r\n9 10\r\n6 7\r\n5 7\r\n5 6\r\n1 4\r\n4 5\r\n1 5\r\n4 10\r\n3 5\r\n6 8\r\n2 3\r\n4 7\r\n3 4\r\n3 9\r\n200 0\r\n0 200\r\n-200 0\r\n0 -200\r\n0 0\r\n66 -66\r\n22 -88\r\n29 -51\r\n-66 -66\r\n-88 -88\r\n25\r\n3 3 9 10\r\n4 4 1 2 3\r\n3 4 6 7\r\n4 4 1 2 3\r\n4 3 5 1 2\r\n3 6 5 8\r\n5 4 10 3 2 1\r\n5 4 1 5 3 10\r\n4 1 4 3 2\r\n3 1 5 4\r\n3 6 7 5\r\n3 5 6 8\r\n3 7 4 6\r\n5 5 4 7 6 8\r\n3 5 8 6\r\n4 1 5 7 4\r\n4 3 5 7 4\r\n4 5 1 2 3\r\n4 7 5 1 4\r\n3 10 9 4\r\n7 4 6 8 5 1 2 3\r\n3 3 4 9\r\n5 1 4 9 3 2\r\n4 6 8 5 7\r\n5 7 6 8 5 4\r\n",
+                "3\r\n10\r\n3\r\n10\r\n4\r\n3\r\n10\r\n9\r\n10\r\n6\r\n4\r\n3\r\n3\r\n5\r\n3\r\n6\r\n6\r\n4\r\n6\r\n3\r\n10\r\n4\r\n9\r\n4\r\n5\r\n"
+            ],
+            [
+                "21 40\r\n5 13\r\n18 21\r\n11 20\r\n4 15\r\n7 6\r\n14 12\r\n18 14\r\n11 19\r\n17 3\r\n12 21\r\n5 15\r\n2 3\r\n17 1\r\n20 6\r\n1 5\r\n10 4\r\n3 5\r\n15 7\r\n19 2\r\n1 9\r\n9 13\r\n9 21\r\n7 14\r\n12 9\r\n8 16\r\n13 21\r\n19 17\r\n16 20\r\n14 21\r\n6 12\r\n2 10\r\n4 16\r\n15 18\r\n20 17\r\n13 18\r\n16 7\r\n6 1\r\n3 4\r\n8 11\r\n10 8\r\n-21 15\r\n-42 -30\r\n-31 -22\r\n12 -37\r\n-21 -15\r\n8 24\r\n26 0\r\n52 0\r\n-10 7\r\n16 -49\r\n16 49\r\n4 12\r\n-10 -7\r\n13 0\r\n8 -24\r\n39 0\r\n-31 22\r\n4 -12\r\n-42 30\r\n12 37\r\n0 0\r\n5\r\n3 18 21 13\r\n5 19 11 8 10 2\r\n4 17 3 5 1\r\n4 1 6 20 17\r\n4 3 5 1 17\r\n",
+                "3\r\n21\r\n4\r\n4\r\n4\r\n"
+            ],
+            [
+                "4 4\r\n2 1\r\n4 3\r\n4 2\r\n3 1\r\n1 1\r\n0 1\r\n1 0\r\n0 0\r\n2\r\n4 3 4 2 1\r\n4 3 4 2 1\r\n",
+                "4\r\n4\r\n"
+            ],
+            [
+                "24 38\r\n12 15\r\n8 11\r\n8 3\r\n24 6\r\n17 19\r\n3 24\r\n4 16\r\n12 4\r\n16 9\r\n5 6\r\n18 22\r\n1 10\r\n23 13\r\n9 11\r\n7 21\r\n7 23\r\n6 13\r\n13 22\r\n23 18\r\n15 14\r\n20 17\r\n9 1\r\n4 20\r\n16 2\r\n2 1\r\n1 7\r\n11 5\r\n19 10\r\n2 19\r\n5 23\r\n14 8\r\n11 7\r\n21 18\r\n10 21\r\n20 2\r\n14 9\r\n3 5\r\n15 16\r\n2 2\r\n2 1\r\n0 4\r\n1 0\r\n1 4\r\n1 5\r\n2 3\r\n0 3\r\n1 2\r\n3 2\r\n1 3\r\n0 0\r\n2 5\r\n0 2\r\n0 1\r\n1 1\r\n3 0\r\n3 4\r\n3 1\r\n2 0\r\n3 3\r\n3 5\r\n2 4\r\n0 5\r\n7\r\n4 23 7 21 18\r\n4 7 11 9 1\r\n4 8 14 9 11\r\n16 6 13 22 18 21 10 19 17 20 4 12 15 14 8 3 24\r\n4 18 23 7 21\r\n4 15 12 4 16\r\n4 8 11 5 3\r\n",
+                "4\r\n4\r\n4\r\n24\r\n4\r\n4\r\n4\r\n"
+            ],
+            [
+                "9 16\r\n3 4\r\n6 7\r\n1 8\r\n5 6\r\n2 9\r\n5 9\r\n8 9\r\n2 3\r\n3 9\r\n4 9\r\n1 9\r\n4 5\r\n1 2\r\n6 9\r\n7 8\r\n7 9\r\n20 0\r\n14 14\r\n0 20\r\n-14 14\r\n-20 0\r\n-14 -14\r\n0 -20\r\n14 -14\r\n0 0\r\n26\r\n8 7 6 5 4 3 2 1 8\r\n3 7 9 6\r\n3 7 8 9\r\n3 9 4 5\r\n3 3 4 9\r\n3 3 4 9\r\n3 9 8 1\r\n3 5 6 9\r\n3 3 9 2\r\n3 3 4 9\r\n3 9 2 3\r\n3 9 1 2\r\n8 5 4 3 2 1 8 7 6\r\n8 3 2 1 8 7 6 5 4\r\n3 4 5 9\r\n3 3 9 2\r\n3 9 2 3\r\n3 2 9 1\r\n3 9 1 2\r\n3 8 1 9\r\n3 1 9 8\r\n3 1 9 8\r\n3 9 1 2\r\n3 1 2 9\r\n8 5 4 3 2 1 8 7 6\r\n3 3 4 9\r\n",
+                "9\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n9\r\n9\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n9\r\n3\r\n"
+            ],
+            [
+                "10 19\r\n5 8\r\n4 6\r\n4 9\r\n1 2\r\n3 10\r\n9 10\r\n6 7\r\n5 7\r\n5 6\r\n1 4\r\n4 5\r\n1 5\r\n4 10\r\n3 5\r\n6 8\r\n2 3\r\n4 7\r\n3 4\r\n3 9\r\n200 0\r\n0 200\r\n-200 0\r\n0 -200\r\n0 0\r\n66 -66\r\n22 -88\r\n29 -51\r\n-66 -66\r\n-88 -88\r\n29\r\n3 7 5 4\r\n4 4 1 5 6\r\n3 7 5 4\r\n3 4 6 7\r\n4 5 1 2 3\r\n4 5 7 6 8\r\n4 1 4 3 2\r\n3 5 4 7\r\n3 7 4 6\r\n3 3 4 10\r\n4 6 8 5 7\r\n4 6 4 1 5\r\n3 7 5 4\r\n3 7 4 6\r\n3 4 7 5\r\n4 2 3 5 1\r\n3 6 5 8\r\n3 7 4 6\r\n3 6 7 4\r\n4 1 5 6 4\r\n4 5 3 9 4\r\n3 7 4 6\r\n3 7 5 4\r\n3 7 4 6\r\n4 2 3 5 1\r\n4 4 5 3 9\r\n4 1 5 6 4\r\n3 4 9 10\r\n3 5 8 6\r\n",
+                "3\r\n4\r\n3\r\n3\r\n4\r\n4\r\n10\r\n3\r\n3\r\n3\r\n4\r\n4\r\n3\r\n3\r\n3\r\n4\r\n3\r\n3\r\n3\r\n4\r\n4\r\n3\r\n3\r\n3\r\n4\r\n4\r\n4\r\n3\r\n3\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,213 @@
+[
+    {
+        "name": "Memory for Arrays",
+        "description": "You get to work and turn on the computer. You start coding and give little\nthought to the RAM role in the whole process. In this problem your task is to\nsolve one of the problems you encounter in your computer routine. We'll\nconsider the RAM as a sequence of cells that can contain data. Some cells\nalready contain some data, some are empty. The empty cells form the so-called\nmemory clusters. Thus, a memory cluster is a sequence of some consecutive\nempty memory cells. You have exactly n memory clusters, the i-th cluster\nconsists of ai cells. You need to find memory for m arrays in your program.\nThe j-th array takes 2^bj consecutive memory cells. There possibly isn't\nenough memory for all m arrays, so your task is to determine what maximum\nnumber of arrays can be located in the available memory clusters. Of course,\nthe arrays cannot be divided between the memory clusters. Also, no cell can\nbelong to two arrays. Input The first line of the input contains two integers\nn and m (1 \u2264 n, m \u2264 10^6). The next line contains n integers a1, a2, ..., an\n(1 \u2264 ai \u2264 10^9). The next line contains m integers b1, b2, ..., bm (1 \u2264 2^bi \u2264\n10^9). Output Print a single integer \u2014 the answer to the problem. Examples\nInput 5 3 8 4 3 2 2 3 2 2 Output 2 Input 10 6 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0\nOutput 6 Note In the first example you are given memory clusters with sizes 8,\n4, 3, 2, 2 and arrays with sizes 8, 4, 4. There are few ways to obtain an\nanswer equals 2: you can locate array with size 8 to the cluster with size 8,\nand one of the arrays with size 4 to the cluster with size 4. Another way is\nto locate two arrays with size 4 to the one cluster with size 8. In the second\nexample you are given 10 memory clusters with size 1 and 6 arrays with size 1.\nYou can choose any 6 clusters and locate all given arrays to them.\n\n",
+        "cf_contest_id": 309,
+        "cf_index": "C",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "bitmasks",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 3\r\n8 4 3 2 2\r\n3 2 2\r\n",
+                "2"
+            ],
+            [
+                "10 6\r\n1 1 1 1 1 1 1 1 1 1\r\n0 0 0 0 0 0\r\n",
+                "6"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 10\r\n4 4 3 3 3\r\n0 0 0 0 0 2 0 2 0 0\r\n",
+                "10"
+            ],
+            [
+                "5 10\r\n3 4 5 4 3\r\n1 2 1 0 1 2 1 0 2 0\r\n",
+                "9"
+            ],
+            [
+                "5 10\r\n4 3 3 4 3\r\n0 0 1 2 0 0 0 1 2 2\r\n",
+                "9"
+            ],
+            [
+                "1 1\r\n536870912\r\n29\r\n",
+                "1"
+            ],
+            [
+                "5 10\r\n4 3 3 3 4\r\n1 2 2 0 1 2 1 1 0 2\r\n",
+                "7"
+            ],
+            [
+                "5 10\r\n5 4 4 5 4\r\n1 2 2 0 2 2 1 0 1 2\r\n",
+                "8"
+            ],
+            [
+                "5 10\r\n5 5 5 3 3\r\n1 2 0 2 0 1 2 0 2 2\r\n",
+                "8"
+            ],
+            [
+                "5 10\r\n3 3 3 4 3\r\n2 1 2 1 2 1 1 2 1 2\r\n",
+                "5"
+            ],
+            [
+                "5 10\r\n4 3 4 4 4\r\n2 1 1 0 1 2 1 1 0 1\r\n",
+                "9"
+            ],
+            [
+                "5 10\r\n4 5 5 3 3\r\n2 1 1 0 1 1 2 0 2 1\r\n",
+                "8"
+            ],
+            [
+                "5 10\r\n4 3 4 4 3\r\n2 1 0 1 0 1 2 2 2 1\r\n",
+                "8"
+            ],
+            [
+                "5 10\r\n4 5 5 4 5\r\n2 1 0 2 0 2 0 2 2 1\r\n",
+                "9"
+            ],
+            [
+                "5 10\r\n5 3 4 3 3\r\n2 0 1 1 2 1 0 0 1 0\r\n",
+                "9"
+            ],
+            [
+                "5 10\r\n4 5 5 4 5\r\n0 1 2 2 1 1 0 2 2 1\r\n",
+                "9"
+            ],
+            [
+                "5 10\r\n5 4 5 5 4\r\n1 0 0 0 2 1 1 2 1 1\r\n",
+                "10"
+            ],
+            [
+                "5 10\r\n5 5 5 4 4\r\n1 1 0 2 0 0 1 2 2 1\r\n",
+                "10"
+            ],
+            [
+                "5 10\r\n5 4 5 3 3\r\n0 0 1 1 2 1 2 2 2 0\r\n",
+                "8"
+            ],
+            [
+                "5 10\r\n5 3 5 4 4\r\n1 1 2 1 1 0 2 2 1 1\r\n",
+                "8"
+            ],
+            [
+                "5 10\r\n4 5 5 3 3\r\n1 2 1 1 1 0 1 1 1 0\r\n",
+                "9"
+            ],
+            [
+                "5 10\r\n3 4 5 5 4\r\n1 1 1 1 0 2 2 0 0 0\r\n",
+                "10"
+            ],
+            [
+                "5 10\r\n4 5 3 4 4\r\n2 2 0 2 2 0 2 0 2 0\r\n",
+                "8"
+            ],
+            [
+                "5 10\r\n4 3 4 5 5\r\n2 0 0 1 2 0 0 2 0 0\r\n",
+                "10"
+            ],
+            [
+                "5 10\r\n5 4 5 4 5\r\n2 2 1 2 1 2 0 2 1 0\r\n",
+                "8"
+            ],
+            [
+                "5 10\r\n4 4 4 5 5\r\n0 2 2 0 0 1 0 2 2 1\r\n",
+                "9"
+            ],
+            [
+                "5 10\r\n5 3 5 5 5\r\n2 2 2 2 0 0 0 1 0 0\r\n",
+                "10"
+            ],
+            [
+                "5 10\r\n5 4 3 3 4\r\n2 2 0 1 0 0 1 0 2 0\r\n",
+                "9"
+            ],
+            [
+                "5 10\r\n5 4 5 5 3\r\n2 2 1 1 2 0 1 0 2 0\r\n",
+                "9"
+            ],
+            [
+                "5 10\r\n5 3 3 3 3\r\n0 2 2 0 2 2 2 2 1 0\r\n",
+                "5"
+            ],
+            [
+                "5 10\r\n4 3 5 4 4\r\n0 2 0 1 0 2 1 1 2 2\r\n",
+                "8"
+            ],
+            [
+                "1 2\r\n128\r\n5 6\r\n",
+                "2"
+            ],
+            [
+                "1 2\r\n2\r\n0 0\r\n",
+                "2"
+            ],
+            [
+                "1 4\r\n4\r\n0 0 0 0\r\n",
+                "4"
+            ],
+            [
+                "1 2\r\n9\r\n3 0\r\n",
+                "2"
+            ],
+            [
+                "3 4\r\n1 2 3\r\n0 0 1 1\r\n",
+                "4"
+            ],
+            [
+                "1 3\r\n8\r\n3 2 2\r\n",
+                "2"
+            ],
+            [
+                "2 3\r\n4 5\r\n0 2 2\r\n",
+                "3"
+            ],
+            [
+                "1 3\r\n8\r\n3 0 0\r\n",
+                "2"
+            ],
+            [
+                "1 2\r\n4\r\n0 1\r\n",
+                "2"
+            ],
+            [
+                "1 8\r\n8\r\n0 0 0 0 0 0 0 0\r\n",
+                "8"
+            ],
+            [
+                "1 3\r\n2\r\n0 0 1\r\n",
+                "2"
+            ],
+            [
+                "2 12\r\n8 8\r\n0 0 0 0 0 0 0 0 1 1 1 1\r\n",
+                "12"
+            ],
+            [
+                "8 8\r\n1 1 1 1 1 1 8 8\r\n1 1 1 2 2 2 3 3\r\n",
+                "5"
+            ],
+            [
+                "1 6\r\n8\r\n0 0 0 0 0 1\r\n",
+                "6"
+            ],
+            [
+                "1 3\r\n2\r\n1 0 0\r\n",
+                "2"
+            ],
+            [
+                "1 3\r\n4\r\n0 0 1\r\n",
+                "3"
+            ],
+            [
+                "2 10\r\n4 4\r\n2 2 0 0 0 0 0 0 0 0\r\n",
+                "8"
+            ]
+        ]
+    }
+]

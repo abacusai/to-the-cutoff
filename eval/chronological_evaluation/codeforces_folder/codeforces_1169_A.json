@@ -1,0 +1,360 @@
+[
+    {
+        "name": "Circle Metro",
+        "description": "The circle line of the Roflanpolis subway has \n    n\n stations. There are two\nparallel routes in the subway. The first one visits stations in order \n    1\n    \n    \u2192 2 \n    \u2192\n    \u2026\n    \u2192 n \n    \u2192 1 \n    \u2192 2 \n    \u2192\n    \u2026\n (so the next\nstop after station \n    x\n is equal to \n    (x+1)\n if \n    x < n\n and \n    1\n\notherwise). The second route visits stations in order \n    n \n    \u2192 (n-1) \n    \u2192\n    \u2026\n    \u2192 1 \n    \u2192 n \n    \u2192 (n-1) \n    \u2192\n    \u2026\n (so the next stop after\nstation \n    x\n is equal to \n    (x-1)\n if \n    x>1\n and \n    n\n otherwise).\nAll trains depart their stations simultaneously, and it takes exactly \n    1\n\nminute to arrive at the next station. Two toads live in this city, their names\nare Daniel and Vlad. Daniel is currently in a train of the first route at\nstation \n    a\n and will exit the subway when his train reaches station\n\n    x\n. Coincidentally, Vlad is currently in a train of the second route at\nstation \n    b\n and he will exit the subway when his train reaches station\n\n    y\n. Surprisingly, all numbers \n    a,x,b,y\n are distinct. Toad Ilya asks\nyou to check if Daniel and Vlad will ever be at the same station at the same\ntime during their journey. In other words, check if there is a moment when\ntheir trains stop at the same station. Note that this includes the moments\nwhen Daniel or Vlad enter or leave the subway. Input The first line contains\nfive space-separated integers \n    n\n, \n    a\n, \n    x\n, \n    b\n, \n    y\n\n(\n    4 \n    \u2264 n \n    \u2264 100\n, \n    1 \n    \u2264 a, x, b, y \n    \u2264 n\n, all numbers\namong \n    a\n, \n    x\n, \n    b\n, \n    y\n are distinct) \u2014 the number of\nstations in Roflanpolis, Daniel's start station, Daniel's finish station,\nVlad's start station and Vlad's finish station, respectively. Output Output\n\"YES\" if there is a time moment when Vlad and Daniel are at the same station,\nand \"NO\" otherwise. You can print each letter in any case (upper or lower).\nExamples Input 5 1 4 3 2 Output YES Input 10 2 1 9 10 Output NO Note In the\nfirst example, Daniel and Vlad start at the stations \n    (1, 3)\n. One minute\nlater they are at stations \n    (2, 2)\n. They are at the same station at this\nmoment. Note that Vlad leaves the subway right after that. Consider the second\nexample, let's look at the stations Vlad and Daniel are at. They are:\ninitially \n    (2, 9)\n, after \n    1\n minute \n    (3, 8)\n, after \n    2\n\nminutes \n    (4, 7)\n, after \n    3\n minutes \n    (5, 6)\n, after \n    4\n\nminutes \n    (6, 5)\n, after \n    5\n minutes \n    (7, 4)\n, after \n    6\n\nminutes \n    (8, 3)\n, after \n    7\n minutes \n    (9, 2)\n, after \n    8\n\nminutes \n    (10, 1)\n, after \n    9\n minutes \n    (1, 10)\n. After that, they\nboth leave the subway because they are at their finish stations, so there is\nno moment when they both are at the same station.\n\n",
+        "cf_contest_id": 1169,
+        "cf_index": "A",
+        "cf_rating": 900,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 1 4 3 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 2 1 9 10\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 3 4 2 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 2 97 84 89\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 43 55 42 15\r\n",
+                "NO\r\n"
+            ],
+            [
+                "47 15 45 28 38\r\n",
+                "YES\r\n"
+            ],
+            [
+                "17 14 2 12 10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "82 9 11 15 79\r\n",
+                "NO\r\n"
+            ],
+            [
+                "53 10 34 1 48\r\n",
+                "NO\r\n"
+            ],
+            [
+                "55 55 27 45 50\r\n",
+                "NO\r\n"
+            ],
+            [
+                "33 15 6 1 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "45 26 22 39 10\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 3 2 4 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "20 19 10 17 8\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 26 63 60 23\r\n",
+                "YES\r\n"
+            ],
+            [
+                "7 2 5 6 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "50 22 39 33 9\r\n",
+                "NO\r\n"
+            ],
+            [
+                "50 40 10 4 34\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 3 1 2 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 1 2 3 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 1 2 4 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 1 3 2 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 1 3 4 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 1 4 2 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 1 4 3 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 2 1 3 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 2 1 4 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 2 3 1 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 2 3 4 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 2 4 1 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 2 4 3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 3 1 2 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 3 1 4 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 3 2 1 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 3 2 4 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 3 4 1 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 4 1 2 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 4 1 3 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 4 2 1 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 4 2 3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 4 3 1 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 4 3 2 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 9 10 3 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "60 1 50 51 49\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 1 4 3 9\r\n",
+                "YES\r\n"
+            ],
+            [
+                "9 7 2 6 8\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 4 2 1 5\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 4 2 1 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 3 1 2 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 4 3 6 5\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 10 9 6 7\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 1 3 2 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 5 4 1 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 5 10 3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 5 3 2 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 4 1 2 5\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 2 1 4 5\r\n",
+                "YES\r\n"
+            ],
+            [
+                "7 1 6 5 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "13 1 9 2 13\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 1 4 5 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 3 1 5 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "43 41 39 40 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "8 7 2 3 5\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 2 5 8 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "8 1 4 5 6\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 1 5 20 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 5 6 3 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 9 10 5 8\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 5 6 3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 7 1 2 6\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 2 4 7 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 3 2 5 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 5 2 3 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "91 36 25 5 91\r\n",
+                "NO\r\n"
+            ],
+            [
+                "90 1 2 5 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 4 5 3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 5 4 1 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "7 5 3 1 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 5 1 2 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "24 14 23 18 21\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 9 10 1 8\r\n",
+                "YES\r\n"
+            ],
+            [
+                "20 19 2 1 20\r\n",
+                "YES\r\n"
+            ],
+            [
+                "7 1 5 4 7\r\n",
+                "NO\r\n"
+            ],
+            [
+                "20 19 2 1 18\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 5 1 2 4\r\n",
+                "YES\r\n"
+            ]
+        ]
+    }
+]

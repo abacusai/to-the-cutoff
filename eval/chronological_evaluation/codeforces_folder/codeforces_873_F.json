@@ -1,0 +1,117 @@
+[
+    {
+        "name": "Forbidden Indices",
+        "description": "You are given a string s consisting of n lowercase Latin letters. Some indices\nin this string are marked as forbidden. You want to find a string a such that\nthe value of |a|\u00b7f(a) is maximum possible, where f(a) is the number of\noccurences of a in s such that these occurences end in non-forbidden indices.\nSo, for example, if s is aaaa, a is aa and index 3 is forbidden, then f(a) = 2\nbecause there are three occurences of a in s (starting in indices 1, 2 and 3),\nbut one of them (starting in index 2) ends in a forbidden index. Calculate the\nmaximum possible value of |a|\u00b7f(a) you can get. Input The first line contains\nan integer number n (1 \u2264 n \u2264 200000) \u2014 the length of s. The second line\ncontains a string s, consisting of n lowercase Latin letters. The third line\ncontains a string t, consisting of n characters 0 and 1. If i-th character in\nt is 1, then i is a forbidden index (otherwise i is not forbidden). Output\nPrint the maximum possible value of |a|\u00b7f(a). Examples Input 5 ababa 00100\nOutput 5 Input 5 ababa 00000 Output 6 Input 5 ababa 11111 Output 0\n\n",
+        "cf_contest_id": 873,
+        "cf_index": "F",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "dsu",
+            "string suffix structures",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\nababa\r\n00100\r\n",
+                "5"
+            ],
+            [
+                "5\r\nababa\r\n00000\r\n",
+                "6"
+            ],
+            [
+                "5\r\nababa\r\n11111\r\n",
+                "0"
+            ]
+        ],
+        "private_cases": [
+            [
+                "100\r\neebdeddddbecdbddaaecbbaccbecdeacedddcaddcdebedbabbceeeadecadbbeaecdaeabbceacbdbdbbdacebbbccdcbbeedbe\r\n1101101101110110001000001101001000100001010111001001111000111011000111111010110100000111001100100000\r\n",
+                "100"
+            ],
+            [
+                "100\r\nabbbafdcebdafbfdbbcfbdbeaceccccaaabddccbeccedbdaffdccbababbbdcefbecbfaeadbddebeeaaeaaeeccbefaefbadff\r\n0111100010011011011011001100111001011111011101110001001001110111101110111110100101010111100111001001\r\n",
+                "99"
+            ],
+            [
+                "100\r\necagcedagfdeccefgfcfecdbgefegfgeaccdgagccfebecdcbeeegcdgbeecdebbgcfddggdfegbffdgccdaabfabadbbdedcagg\r\n1000101111001110110011111100111011000010000001101010010001111101111010010001111100100000110010001100\r\n",
+                "100"
+            ],
+            [
+                "100\r\neaagbfedbcgfddhdcacfccaagcfgfdadadhbggbfbdchhfcgbdgchagabdfcaafedgaacaadhehgagafhgedcggfdfacagdcecde\r\n1011001000111111100100111001111110001101010111011010001001111110000101000101011101010001011001101101\r\n",
+                "99"
+            ],
+            [
+                "200\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n11011010000011010010011110001000001101110111001110000101001100000001010100001101111100010000101111100110010001111011010010000100111111000101110101110111110110000110100011011101001010000000111000100010\r\n",
+                "5200"
+            ],
+            [
+                "200\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001\r\n",
+                "10000"
+            ],
+            [
+                "200\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\r\n",
+                "10100"
+            ],
+            [
+                "200\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n01111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111\r\n",
+                "1"
+            ],
+            [
+                "200\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111\r\n",
+                "0"
+            ],
+            [
+                "200\r\nbaaaabbbaabbaaababbbabbbababbabbbbaaabbaabbbbbabaaabbbbbabbbbaabbaaaabababbaaaaabaabaabbabbabbaabbaabaaabbaaabaaabbbbbaaaabaabbaaaabbaabaaaaabaabbabababbbabababaabbaabbbbabbabbababaaaabaaababbaaaababb\r\n00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001\r\n",
+                "199"
+            ],
+            [
+                "200\r\nbaabaaabaabbbbbaabbaababbbbaabbbabbbaabaabaabbbbabaaabbbbbabaabbaababbbabaaaabbabbbabbbbabbbbabbbaabaabbbbbbaabbaababbababbabbbaaaabbbabbabbaabbbbbabbababbbabbbbaaaaaaababbababaabbabbbbabaabaaaaaababa\r\n00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\r\n",
+                "200"
+            ],
+            [
+                "200\r\nbbbbaaaababaaaaabbaabbbbbabaaaababaaababbaaababaabbbbaaabaababaaaaaabaaabbbbbabbbaabbaaabbbabbabbbbaaabbbaabbaaaaaaaaaabaabaababbbbbbbbabbbbabababbaababbabbbbbababbaaaaaabaabaaaababbabaabaabbbaaaaabbb\r\n01111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111\r\n",
+                "1"
+            ],
+            [
+                "200\r\naaaaaaaaabbbbababaaabbbabbabbaaabababbaabaaaaaabaaababbaabbbabbbaabbbabbabbbbabbbbaabababbabbbababbbaaabaaabaaaaababaabbbabaabbbbababaaaaabbbabbabaabbabbabbaaabbbaababaabbbabbbaababaaabbaabaaabbbbbaba\r\n11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111\r\n",
+                "0"
+            ],
+            [
+                "200\r\nbaabccacbabbbbcaccbcbcbbbbcbaccacbbcacabcbbaaccaacbaaabcabccbaccccbacaacbabcacbabaacbbaccbaaaccbaacbbaacaabcaaacbbbabaaabcaaabacccbbaabbbacaabbabccbbbcbbccabababbccbbbcbcccacbcacbabccababaccbcbbaaabcb\r\n00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001\r\n",
+                "199"
+            ],
+            [
+                "200\r\ncbccbabbbbaacbbabccaababcaabbacbccaccbbcaaccbbaccccccbaabbcabaabaaaaabbcbbbcababcabcaaabccaacaccbcacaababbbaccabbcbcbbbabbbbcbaaaaacbaabccbbbabaccacbcbbaabaaabcbaabbacabcbabcacbabaabcbcacbcabbbbaaabac\r\n00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\r\n",
+                "200"
+            ],
+            [
+                "200\r\ncacaacabcabaccbcbaaaababbbcacbaaacbbaccabcacabaccbbbaaacabcacaabbabcacabbaacccbcbcbaccbbabbcbbbbabbaabaccbcbbabcacbbabbcacccbacabccbccacabaabccaabccaabbbabaabccbbaabccaccaabacbbbbbcacacbbcccbbbacbcbbb\r\n01111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111\r\n",
+                "1"
+            ],
+            [
+                "200\r\naacccbcbbabcbbccbcacaacabccaabbbacbbccbcaaccacacabcbababbbbaaacaaaaaacaaacbbaaaacccabaaccbcccacbccbcbcaacbccabbcbbcccaacbacacbbabccbbcccbcccaaabacbbbabcbaccccbacccbaaabacacabbaccacbaaaaccbccbaaaabcbcb\r\n11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111\r\n",
+                "0"
+            ],
+            [
+                "1\r\na\r\n0\r\n",
+                "1"
+            ],
+            [
+                "1\r\nt\r\n1\r\n",
+                "0"
+            ],
+            [
+                "11\r\nbaaaaaaaaaa\r\n00000000000\r\n",
+                "30"
+            ],
+            [
+                "7\r\ncaaaaaa\r\n0000000\r\n",
+                "12"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,76 @@
+[
+    {
+        "name": "Largest Submatrix 3",
+        "description": "You are given matrix a of size n \u00d7 m, its elements are integers. We will\nassume that the rows of the matrix are numbered from top to bottom from 1 to\nn, the columns are numbered from left to right from 1 to m. We will denote the\nelement on the intersecting of the i-th row and the j-th column as aij. We'll\ncall submatrix i1, j1, i2, j2 (1 \u2264 i1 \u2264 i2 \u2264 n; 1 \u2264 j1 \u2264 j2 \u2264 m) such elements\naij of the given matrix that i1 \u2264 i \u2264 i2 AND j1 \u2264 j \u2264 j2. We'll call the area\nof the submatrix number (i2 - i1 + 1)\u00b7(j2 - j1 + 1). We'll call a submatrix\ninhomogeneous, if all its elements are distinct. Find the largest (in area)\ninhomogenous submatrix of the given matrix. Input The first line contains two\nintegers n, m (1 \u2264 n, m \u2264 400) \u2014 the number of rows and columns of the matrix,\ncorrespondingly. Each of the next n lines contains m integers aij (1 \u2264 aij \u2264\n160000) \u2014 the elements of the matrix. Output Print a single integer \u2014 the area\nof the optimal inhomogenous submatrix. Examples Input 3 3 1 3 1 4 5 6 2 6 1\nOutput 6 Input 3 4 5 2 3 1 3 3 5 3 4 4 4 5 Output 4 Input 2 6 1 2 3 4 5 6 8 6\n7 8 9 1 Output 8\n\n",
+        "cf_contest_id": 407,
+        "cf_index": "D",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "hashing"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3\r\n1 3 1\r\n4 5 6\r\n2 6 1\r\n",
+                "6\r\n"
+            ],
+            [
+                "3 4\r\n5 2 3 1\r\n3 3 5 3\r\n4 4 4 5\r\n",
+                "4\r\n"
+            ],
+            [
+                "2 6\r\n1 2 3 4 5 6\r\n8 6 7 8 9 1\r\n",
+                "8\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 4\r\n1 2 3 1\r\n2 3 1 2\r\n3 1 2 3\r\n",
+                "3\r\n"
+            ],
+            [
+                "3 4\r\n1 2 3 4\r\n5 6 7 8\r\n9 10 11 12\r\n",
+                "12\r\n"
+            ],
+            [
+                "10 10\r\n37 14 27 24 13 5 11 34 3 27\r\n1 18 23 9 30 18 28 30 16 12\r\n24 16 27 11 26 4 5 14 36 7\r\n21 25 3 1 1 2 32 11 1 26\r\n27 2 17 18 14 8 30 7 3 3\r\n8 1 24 11 34 36 10 7 15 7\r\n31 9 20 10 20 15 2 32 37 32\r\n36 19 4 23 5 32 12 20 21 27\r\n32 22 24 10 35 28 28 22 5 24\r\n22 33 6 14 27 13 3 33 32 16\r\n",
+                "18\r\n"
+            ],
+            [
+                "2 20\r\n43 61 28 21 92 109 81 71 34 23 64 7 38 96 87 113 48 95 80 42\r\n43 4 39 85 31 59 119 81 55 91 80 37 5 28 9 15 31 29 51 57\r\n",
+                "22\r\n"
+            ],
+            [
+                "5 5\r\n8 7 9 4 6\r\n8 10 7 5 8\r\n4 4 2 4 10\r\n10 10 5 8 10\r\n7 1 7 2 6\r\n",
+                "6\r\n"
+            ],
+            [
+                "20 2\r\n43 59\r\n80 3\r\n59 77\r\n61 32\r\n13 37\r\n20 22\r\n76 35\r\n39 46\r\n46 72\r\n37 61\r\n58 78\r\n34 22\r\n58 26\r\n39 79\r\n39 21\r\n46 60\r\n47 62\r\n30 34\r\n70 39\r\n16 64\r\n",
+                "14\r\n"
+            ],
+            [
+                "1 34\r\n30 22 1 10 8 5 3 9 22 34 5 2 26 21 13 30 9 29 10 13 34 32 17 32 17 17 11 23 26 23 22 15 6 17\r\n",
+                "11\r\n"
+            ],
+            [
+                "37 1\r\n20\r\n40\r\n5\r\n14\r\n3\r\n11\r\n10\r\n2\r\n3\r\n31\r\n22\r\n3\r\n37\r\n16\r\n6\r\n3\r\n25\r\n37\r\n37\r\n9\r\n7\r\n14\r\n9\r\n35\r\n7\r\n23\r\n38\r\n20\r\n18\r\n31\r\n21\r\n35\r\n12\r\n14\r\n38\r\n4\r\n26\r\n",
+                "10\r\n"
+            ],
+            [
+                "10 10\r\n52 99 7 91 34 76 13 9 83 46\r\n79 88 98 10 28 66 61 48 2 26\r\n1 17 20 70 51 14 24 81 96 77\r\n47 32 71 86 42 56 80 92 75 4\r\n95 74 33 41 94 49 3 72 31 100\r\n15 50 44 12 84 6 40 54 43 90\r\n68 5 23 78 63 82 59 64 57 16\r\n37 69 58 30 8 21 87 22 62 67\r\n25 29 85 55 73 93 45 38 18 35\r\n89 53 65 36 11 39 97 19 27 60\r\n",
+                "100\r\n"
+            ],
+            [
+                "10 10\r\n21 4523 95 50964 53 30 54 55999 26 16\r\n55999 55999 25 4523 28 82 50964 66 4523 1\r\n18 3 55999 81 50964 47 100 55999 98 50964\r\n2 50964 45 24 76 14 36 4523 44 23\r\n4523 4523 55999 62 55999 50964 77 46 78 79\r\n69 42 65 50964 64 57 89 12 4523 85\r\n38 50964 19 97 55999 50964 29 22 5 61\r\n52 4523 55999 72 94 55999 9 84 87 50964\r\n80 56 4523 55999 39 34 63 75 50964 91\r\n55999 32 4 55999 41 68 43 93 50964 4523\r\n",
+                "18\r\n"
+            ],
+            [
+                "5 5\r\n1 2 3 4 5\r\n2 3 4 5 1\r\n3 4 5 1 2\r\n4 5 1 2 3\r\n5 1 2 3 4\r\n",
+                "5\r\n"
+            ]
+        ]
+    }
+]

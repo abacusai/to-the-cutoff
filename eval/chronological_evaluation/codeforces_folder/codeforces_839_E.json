@@ -1,0 +1,70 @@
+[
+    {
+        "name": "Mother of Dragons",
+        "description": "There are n castles in the Lannister's Kingdom and some walls connect two\ncastles, no two castles are connected by more than one wall, no wall connects\na castle to itself. Sir Jaime Lannister has discovered that Daenerys Targaryen\nis going to attack his kingdom soon. Therefore he wants to defend his kingdom.\nHe has k liters of a strange liquid. He wants to distribute that liquid among\nthe castles, so each castle may contain some liquid (possibly zero or non-\ninteger number of liters). After that the stability of a wall is defined as\nfollows: if the wall connects two castles a and b, and they contain x and y\nliters of that liquid, respectively, then the strength of that wall is x\u00b7y.\nYour task is to print the maximum possible sum of stabilities of the walls\nthat Sir Jaime Lannister can achieve. Input The first line of the input\ncontains two integers n and k (1 \u2264 n \u2264 40, 1 \u2264 k \u2264 1000). Then n lines\nfollows. The i-th of these lines contains n integers ai, 1, ai, 2, ..., ai, n\n(). If castles i and j are connected by a wall, then ai, j = 1. Otherwise it\nis equal to 0. It is guaranteed that ai, j = aj, i and ai, i = 0 for all 1 \u2264\ni, j \u2264 n. Output Print the maximum possible sum of stabilities of the walls\nthat Sir Jaime Lannister can achieve. Your answer will be considered correct\nif its absolute or relative error does not exceed 10^-6. Namely: let's assume\nthat your answer is a, and the answer of the jury is b. The checker program\nwill consider your answer correct, if . Examples Input 3 1 0 1 0 1 0 0 0 0 0\nOutput 0.250000000000 Input 4 4 0 1 0 1 1 0 1 0 0 1 0 1 1 0 1 0 Output\n4.000000000000 Note In the first sample, we can assign 0.5, 0.5, 0 liters of\nliquid to castles 1, 2, 3, respectively, to get the maximum sum (0.25). In the\nsecond sample, we can assign 1.0, 1.0, 1.0, 1.0 liters of liquid to castles 1,\n2, 3, 4, respectively, to get the maximum sum (4.0)\n\n",
+        "cf_contest_id": 839,
+        "cf_index": "E",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "graphs",
+            "math",
+            "meet-in-the-middle"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 1\r\n0 1 0\r\n1 0 0\r\n0 0 0\r\n",
+                "0.25000000\r\n"
+            ],
+            [
+                "4 4\r\n0 1 0 1\r\n1 0 1 0\r\n0 1 0 1\r\n1 0 1 0\r\n",
+                "4.00000000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 252\r\n0\r\n",
+                "0.00000000\r\n"
+            ],
+            [
+                "5 21\r\n0 1 1 1 1\r\n1 0 1 1 1\r\n1 1 0 1 1\r\n1 1 1 0 1\r\n1 1 1 1 0\r\n",
+                "176.40000000\r\n"
+            ],
+            [
+                "6 743\r\n0 0 1 0 1 0\r\n0 0 1 1 1 1\r\n1 1 0 1 1 1\r\n0 1 1 0 1 1\r\n1 1 1 1 0 0\r\n0 1 1 1 0 0\r\n",
+                "207018.37500000\r\n"
+            ],
+            [
+                "10 158\r\n0 0 0 0 0 0 0 1 0 1\r\n0 0 1 0 1 0 1 0 1 0\r\n0 1 0 0 0 0 1 1 1 0\r\n0 0 0 0 1 0 0 0 0 0\r\n0 1 0 1 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 1 1 0\r\n0 1 1 0 0 0 0 0 0 0\r\n1 0 1 0 0 1 0 0 1 0\r\n0 1 1 0 0 1 0 1 0 0\r\n1 0 0 0 0 0 0 0 0 0\r\n",
+                "8321.33333333\r\n"
+            ],
+            [
+                "9 18\r\n0 1 1 0 1 1 1 1 0\r\n1 0 1 1 1 1 1 1 1\r\n1 1 0 1 1 0 1 1 1\r\n0 1 1 0 1 0 1 1 1\r\n1 1 1 1 0 1 0 1 1\r\n1 1 0 0 1 0 1 1 1\r\n1 1 1 1 0 1 0 1 1\r\n1 1 1 1 1 1 1 0 1\r\n0 1 1 1 1 1 1 1 0\r\n",
+                "135.00000000\r\n"
+            ],
+            [
+                "13 263\r\n0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0 0 1 0\r\n0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 1 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 1 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0 0 1 1\r\n0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 1 0 0 0 0 0 0 1 0 0 0 1\r\n0 0 0 0 0 0 0 0 1 0 0 1 0\r\n",
+                "23056.33333333\r\n"
+            ],
+            [
+                "8 474\r\n0 1 1 1 1 1 1 1\r\n1 0 1 1 1 1 1 1\r\n1 1 0 1 1 1 1 1\r\n1 1 1 0 1 1 1 1\r\n1 1 1 1 0 1 0 1\r\n1 1 1 1 1 0 1 1\r\n1 1 1 1 0 1 0 1\r\n1 1 1 1 1 1 1 0\r\n",
+                "96289.71428571\r\n"
+            ],
+            [
+                "2 72\r\n0 0\r\n0 0\r\n",
+                "0.00000000\r\n"
+            ],
+            [
+                "10 720\r\n0 1 1 1 1 1 1 1 1 1\r\n1 0 1 1 1 1 1 1 1 1\r\n1 1 0 1 1 1 1 1 1 1\r\n1 1 1 0 1 1 1 0 1 1\r\n1 1 1 1 0 1 1 1 1 1\r\n1 1 1 1 1 0 1 1 1 1\r\n1 1 1 1 1 1 0 1 1 1\r\n1 1 1 0 1 1 1 0 1 1\r\n1 1 1 1 1 1 1 1 0 1\r\n1 1 1 1 1 1 1 1 1 0\r\n",
+                "230400.00000000\r\n"
+            ],
+            [
+                "15 420\r\n0 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n1 0 1 1 1 1 1 1 1 1 1 1 0 1 1\r\n1 1 0 1 1 1 1 1 1 1 1 1 1 1 1\r\n1 1 1 0 1 1 1 1 1 1 1 1 1 1 1\r\n1 1 1 1 0 1 1 1 1 1 1 1 1 1 1\r\n1 1 1 1 1 0 1 1 1 1 1 1 1 1 1\r\n1 1 1 1 1 1 0 1 1 1 1 1 1 1 1\r\n1 1 1 1 1 1 1 0 1 1 1 1 1 1 1\r\n1 1 1 1 1 1 1 1 0 1 1 1 1 1 1\r\n1 1 1 1 1 1 1 1 1 0 1 1 1 1 1\r\n1 1 1 1 1 1 1 1 1 1 0 1 1 1 1\r\n1 1 1 1 1 1 1 1 1 1 1 0 1 0 1\r\n1 0 1 1 1 1 1 1 1 1 1 1 0 1 0\r\n1 1 1 1 1 1 1 1 1 1 1 0 1 0 1\r\n1 1 1 1 1 1 1 1 1 1 1 1 0 1 0\r\n",
+                "81415.38461538\r\n"
+            ]
+        ]
+    }
+]

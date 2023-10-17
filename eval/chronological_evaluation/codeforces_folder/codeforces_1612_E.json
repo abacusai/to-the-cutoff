@@ -1,0 +1,99 @@
+[
+    {
+        "name": "Messages",
+        "description": "Monocarp is a tutor of a group of \n    n\n students. He communicates with them\nusing a conference in a popular messenger. Today was a busy day for Monocarp \u2014\nhe was asked to forward a lot of posts and announcements to his group, that's\nwhy he had to write a very large number of messages in the conference.\nMonocarp knows the students in the group he is tutoring quite well, so he\nunderstands which message should each student read: Monocarp wants the student\n\n    i\n to read the message \n    m_i\n. Of course, no one's going to read all\nthe messages in the conference. That's why Monocarp decided to pin some of\nthem. Monocarp can pin any number of messages, and if he wants anyone to read\nsome message, he should pin it \u2014 otherwise it will definitely be skipped by\neveryone. Unfortunately, even if a message is pinned, some students may skip\nit anyway. For each student \n    i\n, Monocarp knows that they will read at\nmost \n    k_i\n messages. Suppose Monocarp pins \n    t\n messages; if \n    t \n    \u2264\n    k_i\n, then the \n    i\n-th student will read all the pinned messages; but if\n\n    t > k_i\n, the \n    i\n-th student will choose exactly \n    k_i\n random\npinned messages (all possible subsets of pinned messages of size \n    k_i\n are\nequiprobable) and read only the chosen messages. Monocarp wants to maximize\nthe expected number of students that read their respective messages (i.e. the\nnumber of such indices \n    i\n that student \n    i\n reads the message\n\n    m_i\n). Help him to choose how many (and which) messages should he pin!\nInput The first line contains one integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264 2\n    \n    \u00b7 10^5\n) \u2014 the number of students in the conference. Then \n    n\n\nlines follow. The \n    i\n-th line contains two integers \n    m_i\n and\n\n    k_i\n (\n    1 \n    \u2264 m_i \n    \u2264 2 \n    \u00b7 10^5\n; \n    1 \n    \u2264 k_i \n    \u2264 20\n)\n\u2014 the index of the message which Monocarp wants the \n    i\n-th student to read\nand the maximum number of messages the \n    i\n-th student will read,\nrespectively. Output In the first line, print one integer \n    t\n (\n    1 \n    \u2264\n    t \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the number of messages Monocarp should pin. In\nthe second line, print \n    t\n distinct integers \n    c_1\n, \n    c_2\n, ...,\n\n    c_t\n (\n    1 \n    \u2264 c_i \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the indices of the\nmessages Monocarp should pin. The messages can be listed in any order. If\nthere are multiple answers, print any of them. Examples Input 3 10 1 10 2 5 2\nOutput 2 5 10 Input 3 10 1 5 2 10 1 Output 1 10 Input 4 1 1 2 2 3 3 4 4 Output\n3 2 3 4 Input 3 13 2 42 2 37 2 Output 3 42 13 37 Note Let's consider the\nexamples from the statement. In the first example, Monocarp pins the messages\n\n    5\n and \n    10\n. if the first student reads the message \n    5\n, the\nsecond student reads the messages \n    5\n and \n    10\n, and the third student\nreads the messages \n    5\n and \n    10\n, the number of students which have\nread their respective messages will be \n    2\n; if the first student reads the\nmessage \n    10\n, the second student reads the messages \n    5\n and \n    10\n,\nand the third student reads the messages \n    5\n and \n    10\n, the number of\nstudents which have read their respective messages will be \n    3\n. So, the\nexpected number of students which will read their respective messages is\n\n    5/2\n. In the second example, Monocarp pins the message\n\n    10\n. if the first student reads the message \n    10\n, the second student\nreads the message \n    10\n, and the third student reads the message \n    10\n,\nthe number of students which have read their respective messages will be\n\n    2\n. So, the expected number of students which will read their respective\nmessages is \n    2\n. If Monocarp had pinned both messages \n    5\n and\n\n    10\n, the expected number of students which read their respective messages\nwould have been \n    2\n as well. In the third example, the expected number of\nstudents which will read their respective messages is \n    8/3\n. In\nthe fourth example, the expected number of students which will read their\nrespective messages is \n    2\n.\n\n",
+        "cf_contest_id": 1612,
+        "cf_index": "E",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "probabilities",
+            "sortings"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3\r\n10 1\r\n10 2\r\n5 2\r\n",
+                "2\r\n5 10 "
+            ],
+            [
+                "3\r\n10 1\r\n5 2\r\n10 1\r\n",
+                "1\r\n10 "
+            ],
+            [
+                "4\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n",
+                "3\r\n2 3 4 "
+            ],
+            [
+                "3\r\n13 2\r\n42 2\r\n37 2\r\n",
+                "2\r\n37 42 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n10151 13\r\n",
+                "1\r\n10151 "
+            ],
+            [
+                "10\r\n3 4\r\n5 5\r\n2 1\r\n3 4\r\n1 9\r\n4 5\r\n3 3\r\n1 9\r\n4 8\r\n5 5\r\n",
+                "4\r\n1 3 4 5 "
+            ],
+            [
+                "10\r\n2 7\r\n3 7\r\n5 6\r\n5 1\r\n1 2\r\n1 8\r\n4 3\r\n4 2\r\n4 5\r\n2 5\r\n",
+                "5\r\n1 2 3 4 5 "
+            ],
+            [
+                "6\r\n6 20\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n",
+                "1\r\n2 "
+            ],
+            [
+                "11\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n2 4\r\n3 4\r\n4 4\r\n",
+                "1\r\n1 "
+            ],
+            [
+                "13\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n2 5\r\n3 5\r\n4 5\r\n5 5\r\n",
+                "1\r\n1 "
+            ],
+            [
+                "14\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n2 4\r\n3 4\r\n4 4\r\n5 20\r\n6 19\r\n7 18\r\n",
+                "1\r\n1 "
+            ],
+            [
+                "14\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n2 5\r\n3 5\r\n4 5\r\n5 5\r\n",
+                "1\r\n1 "
+            ],
+            [
+                "15\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n2 4\r\n3 4\r\n4 4\r\n5 20\r\n6 19\r\n7 18\r\n",
+                "1\r\n1 "
+            ],
+            [
+                "16\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n2 4\r\n3 4\r\n4 4\r\n5 20\r\n6 19\r\n7 18\r\n",
+                "1\r\n1 "
+            ],
+            [
+                "7\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n2 3\r\n3 3\r\n",
+                "1\r\n1 "
+            ],
+            [
+                "13\r\n1 2\r\n1 2\r\n1 2\r\n100 2\r\n100 2\r\n100 2\r\n1 2\r\n100 2\r\n2 5\r\n3 5\r\n4 5\r\n5 5\r\n6 5\r\n",
+                "2\r\n1 100 "
+            ],
+            [
+                "6\r\n10 5\r\n11 5\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n",
+                "1\r\n2 "
+            ],
+            [
+                "6\r\n10 2\r\n10 2\r\n1 1\r\n1 2\r\n3 3\r\n4 3\r\n",
+                "2\r\n1 10 "
+            ],
+            [
+                "63\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n10 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n11 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 10\r\n1 10\r\n1 10\r\n1 10\r\n1 10\r\n2 1\r\n2 10\r\n2 10\r\n2 10\r\n2 10\r\n2 10\r\n2 10\r\n",
+                "4\r\n1 2 10 11 "
+            ]
+        ]
+    }
+]

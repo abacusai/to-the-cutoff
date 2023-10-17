@@ -1,0 +1,80 @@
+[
+    {
+        "name": "The Queue",
+        "description": "Finally! Vasya have come of age and that means he can finally get a passport!\nTo do it, he needs to visit the passport office, but it's not that simple.\nThere's only one receptionist at the passport office and people can queue up\nlong before it actually opens. Vasya wants to visit the passport office\ntomorrow. He knows that the receptionist starts working after ts minutes have\npassed after midnight and closes after tf minutes have passed after midnight\n(so that (tf - 1) is the last minute when the receptionist is still working).\nThe receptionist spends exactly t minutes on each person in the queue. If the\nreceptionist would stop working within t minutes, he stops serving visitors\n(other than the one he already serves). Vasya also knows that exactly n\nvisitors would come tomorrow. For each visitor Vasya knows the point of time\nwhen he would come to the passport office. Each visitor queues up and doesn't\nleave until he was served. If the receptionist is free when a visitor comes\n(in particular, if the previous visitor was just served and the queue is\nempty), the receptionist begins to serve the newcomer immediately. \"Reception\n1\" For each visitor, the point of time when he would come to the passport\noffice is positive. Vasya can come to the office at the time zero (that is, at\nmidnight) if he needs so, but he can come to the office only at integer points\nof time. If Vasya arrives at the passport office at the same time with several\nother visitors, he yields to them and stand in the queue after the last of\nthem. Vasya wants to come at such point of time that he will be served by the\nreceptionist, and he would spend the minimum possible time in the queue. Help\nhim! Input The first line contains three integers: the point of time when the\nreceptionist begins to work ts, the point of time when the receptionist stops\nworking tf and the time the receptionist spends on each visitor t. The second\nline contains one integer n \u2014 the amount of visitors (0 \u2264 n \u2264 100 000). The\nthird line contains positive integers in non-decreasing order \u2014 the points of\ntime when the visitors arrive to the passport office. All times are set in\nminutes and do not exceed 10^12; it is guaranteed that ts < tf. It is also\nguaranteed that Vasya can arrive at the passport office at such a point of\ntime that he would be served by the receptionist. Output Print single non-\nnegative integer \u2014 the point of time when Vasya should arrive at the passport\noffice. If Vasya arrives at the passport office at the same time with several\nother visitors, he yields to them and queues up the last. If there are many\nanswers, you can print any of them. Examples Input 10 15 2 2 10 13 Output 12\nInput 8 17 3 4 3 4 5 8 Output 2 Note In the first example the first visitor\ncomes exactly at the point of time when the receptionist begins to work, and\nhe is served for two minutes. At 12 minutes after the midnight the\nreceptionist stops serving the first visitor, and if Vasya arrives at this\nmoment, he will be served immediately, because the next visitor would only\ncome at 13 minutes after midnight. In the second example, Vasya has to come\nbefore anyone else to be served.\n\n",
+        "cf_contest_id": 767,
+        "cf_index": "B",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 15 2\r\n2\r\n10 13\r\n",
+                "12\r\n"
+            ],
+            [
+                "8 17 3\r\n4\r\n3 4 5 8\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7 14 3\r\n2\r\n1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "30 70 10\r\n3\r\n30 32 35\r\n",
+                "60\r\n"
+            ],
+            [
+                "21 56 7\r\n5\r\n1 2 3 4 5\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 1000000000 25\r\n20\r\n1 1 5 7 8 10 12 22 44 47 73 77 82 83 89 141 142 168 195 199\r\n",
+                "510\r\n"
+            ],
+            [
+                "30 60 3\r\n10\r\n1 5 6 10 12 13 18 23 24 25\r\n",
+                "4\r\n"
+            ],
+            [
+                "61 1000000000 13\r\n55\r\n29 72 85 94 103 123 125 144 147 153 154 184 189 192 212 234 247 265 292 296 299 304 309 365 378 379 393 401 414 417 421 427 439 441 480 500 509 515 522 539 571 582 623 630 634 635 643 649 654 679 680 686 747 748 775\r\n",
+                "360\r\n"
+            ],
+            [
+                "117 120 3\r\n0\r\n",
+                "117\r\n"
+            ],
+            [
+                "37 3813 32\r\n117\r\n1 1 4 5 6 8 10 13 13 16 18 19 20 23 30 32 33 38 49 59 66 69 96 157 160 183 205 292 301 320 349 360 370 372 384 400 410 413 423 434 434 445 451 463 464 490 494 496 497 517 528 532 556 572 607 647 668 689 708 729 748 806 819 879 905 905 915 925 928 931 959 970 1133 1146 1150 1156 1172 1189 1193 1218 1228 1233 1247 1297 1383 1447 1468 1512 1539 1550 1634 1635 1702 1836 1845 1866 1880 2068 2082 2143 2146 2167 2234 2239 2277 2331 2351 2432 2478 2592 2684 2863 2885 3043 3141 3258 3426\r\n",
+                "3781\r\n"
+            ],
+            [
+                "100000000000 200000000000 10000000000\r\n10\r\n1 1 110000000000 110000000000 110000000000 110000000000 110000000000 110000000000 110000000000 110000000000\r\n",
+                "109999999999\r\n"
+            ],
+            [
+                "1 2 1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "50 230 10\r\n20\r\n50 60 70 80 90 100 110 120 130 140 150 160 170 180 190 200 210 220 230 240\r\n",
+                "49\r\n"
+            ],
+            [
+                "100000000000 100000000005 2\r\n0\r\n",
+                "100000000000\r\n"
+            ],
+            [
+                "333 500 5\r\n1\r\n3000\r\n",
+                "333\r\n"
+            ]
+        ]
+    }
+]

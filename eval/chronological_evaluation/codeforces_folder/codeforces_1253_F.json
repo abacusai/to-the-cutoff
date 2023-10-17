@@ -1,0 +1,43 @@
+[
+    {
+        "name": "Cheap Robot",
+        "description": "You're given a simple, undirected, connected, weighted graph with \n    n\n\nnodes and \n    m\n edges. Nodes are numbered from \n    1\n to \n    n\n. There are\nexactly \n    k\n centrals (recharge points), which are nodes \n    1, 2, \n    \u2026,\n    k\n. We consider a robot moving into this graph, with a battery of capacity\n\n    c\n, not fixed by the constructor yet. At any time, the battery contains\nan integer amount \n    x\n of energy between \n    0\n and \n    c\n inclusive.\nTraversing an edge of weight \n    w_i\n is possible only if \n    x \n    \u2265 w_i\n,\nand costs \n    w_i\n energy points (\n    x := x - w_i\n). Moreover, when the\nrobot reaches a central, its battery is entirely recharged (\n    x := c\n).\nYou're given \n    q\n independent missions, the \n    i\n-th mission requires to\nmove the robot from central \n    a_i\n to central \n    b_i\n. For each mission,\nyou should tell the minimum capacity required to acheive it. Input The first\nline contains four integers \n    n\n, \n    m\n, \n    k\n and \n    q\n (\n    2 \n    \u2264\n    k \n    \u2264 n \n    \u2264 10^5\n and \n    1 \n    \u2264 m, q \n    \u2264 3 \n    \u00b7 10^5\n). The\n\n    i\n-th of the next \n    m\n lines contains three integers \n    u_i\n,\n\n    v_i\n and \n    w_i\n (\n    1 \n    \u2264 u_i, v_i \n    \u2264 n\n, \n    u_i \n    \u2260 v_i\n,\n\n    1 \n    \u2264 w_i \n    \u2264 10^9\n), that mean that there's an edge between nodes\n\n    u\n and \n    v\n, with a weight \n    w_i\n. It is guaranteed that the given\ngraph is simple (there is no self-loop, and there is at most one edge between\nevery pair of nodes) and connected. The \n    i\n-th of the next \n    q\n lines\ncontains two integers \n    a_i\n and \n    b_i\n (\n    1 \n    \u2264 a_i, b_i \n    \u2264 k\n,\n\n    a_i \n    \u2260 b_i\n). Output You have to output \n    q\n lines, where the\n\n    i\n-th line contains a single integer : the minimum capacity required to\nacheive the \n    i\n-th mission. Examples Input 10 9 3 1 10 9 11 9 2 37 2 4 4 4\n1 8 1 5 2 5 7 3 7 3 2 3 8 4 8 6 13 2 3 Output 12 Input 9 11 3 2 1 3 99 1 4 5 4\n5 3 5 6 3 6 4 11 6 7 21 7 2 6 7 8 4 8 9 3 9 2 57 9 3 2 3 1 2 3 Output 38 15\nNote In the first example, the graph is the chain \n    10 - 9 - 2^C - 4 - 1^C -\n    5 - 7 - 3^C - 8 - 6\n, where centrals are nodes \n    1\n, \n    2\n and \n    3\n.\nFor the mission \n    (2, 3)\n, there is only one simple path possible. Here is\na simulation of this mission when the capacity is \n    12\n. The robot begins\non the node \n    2\n, with \n    c = 12\n energy points. The robot uses an edge\nof weight \n    4\n. The robot reaches the node \n    4\n, with \n    12 - 4 = 8\n\nenergy points. The robot uses an edge of weight \n    8\n. The robot reaches the\nnode \n    1\n with \n    8 - 8 = 0\n energy points. The robot is on a central, so\nits battery is recharged. He has now \n    c = 12\n energy points. The robot\nuses an edge of weight \n    2\n. The robot is on the node \n    5\n, with \n    12 -\n    2 = 10\n energy points. The robot uses an edge of weight \n    3\n. The robot\nis on the node \n    7\n, with \n    10 - 3 = 7\n energy points. The robot uses an\nedge of weight \n    2\n. The robot is on the node \n    3\n, with \n    7 - 2 = 5\n\nenergy points. The robot is on a central, so its battery is recharged. He has\nnow \n    c = 12\n energy points. End of the simulation. Note that if value of\n\n    c\n was lower than \n    12\n, we would have less than \n    8\n energy points\non node \n    4\n, and we would be unable to use the edge \n    4 \n    \u2194\n    1\n of weight \n    8\n. Hence \n    12\n is the minimum capacity required to\nacheive the mission. \u2014 The graph of the second example is described here\n(centrals are red nodes): The robot can acheive the mission \n    (3, 1)\n with\na battery of capacity \n    c = 38\n, using the path \n    3 \n    \u2192 9\n    \n    \u2192 8 \n    \u2192 7 \n    \u2192 2 \n    \u2192 7 \n    \u2192\n    6 \n    \u2192 5 \n    \u2192 4 \n    \u2192 1\n The robot can acheive the\nmission \n    (2, 3)\n with a battery of capacity \n    c = 15\n, using the path\n\n    2 \n    \u2192 7 \n    \u2192 8 \n    \u2192 9 \n    \u2192 3\n\n\n",
+        "cf_contest_id": 1253,
+        "cf_index": "F",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "dsu",
+            "graphs",
+            "shortest paths",
+            "trees"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "10 9 3 1\r\n10 9 11\r\n9 2 37\r\n2 4 4\r\n4 1 8\r\n1 5 2\r\n5 7 3\r\n7 3 2\r\n3 8 4\r\n8 6 13\r\n2 3\r\n",
+                "12\r\n"
+            ],
+            [
+                "9 11 3 2\r\n1 3 99\r\n1 4 5\r\n4 5 3\r\n5 6 3\r\n6 4 11\r\n6 7 21\r\n7 2 6\r\n7 8 4\r\n8 9 3\r\n9 2 57\r\n9 3 2\r\n3 1\r\n2 3\r\n",
+                "38\r\n15\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1 2 1\r\n2 1 1\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "7 11 2 5\r\n2 6 558745854\r\n5 1 819742031\r\n7 1 76916997\r\n1 4 960801431\r\n3 2 642317821\r\n2 5 5059483\r\n4 5 944115267\r\n6 5 805285829\r\n2 4 90223024\r\n6 3 702508069\r\n3 5 373032697\r\n1 2\r\n2 1\r\n1 2\r\n1 2\r\n2 1\r\n",
+                "824801514\r\n824801514\r\n824801514\r\n824801514\r\n824801514\r\n"
+            ],
+            [
+                "30 35 4 30\r\n14 2 7\r\n22 23 2\r\n5 26 3\r\n28 4 3\r\n7 5 29\r\n19 15 2\r\n11 20 12\r\n1 22 9\r\n30 21 24\r\n24 11 9\r\n29 2 1\r\n12 27 4\r\n9 27 7\r\n10 4 11\r\n4 25 10\r\n6 11 22\r\n5 11 26\r\n9 17 14\r\n19 11 16\r\n20 19 4\r\n18 20 2\r\n23 21 16\r\n21 28 4\r\n3 17 4\r\n4 19 2\r\n2 25 31\r\n16 4 6\r\n25 19 5\r\n26 27 2\r\n30 27 15\r\n17 5 17\r\n15 25 1\r\n8 19 3\r\n27 4 4\r\n13 6 2\r\n3 1\r\n3 1\r\n1 2\r\n1 3\r\n2 1\r\n1 4\r\n1 2\r\n4 1\r\n2 1\r\n3 4\r\n2 1\r\n1 4\r\n2 1\r\n2 3\r\n1 3\r\n2 3\r\n3 4\r\n3 4\r\n4 3\r\n3 1\r\n3 4\r\n4 1\r\n4 1\r\n4 1\r\n4 1\r\n4 2\r\n2 4\r\n2 3\r\n2 4\r\n3 1\r\n",
+                "34\r\n34\r\n36\r\n34\r\n36\r\n34\r\n36\r\n34\r\n36\r\n29\r\n36\r\n34\r\n36\r\n36\r\n34\r\n36\r\n29\r\n29\r\n29\r\n34\r\n29\r\n34\r\n34\r\n34\r\n34\r\n36\r\n36\r\n36\r\n36\r\n34\r\n"
+            ]
+        ]
+    }
+]

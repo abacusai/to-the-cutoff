@@ -1,0 +1,134 @@
+[
+    {
+        "name": "Vitamins",
+        "description": "Berland shop sells \n    n\n kinds of juices. Each juice has its price\n\n    c_i\n. Each juice includes some set of vitamins in it. There are three\ntypes of vitamins: vitamin \"A\", vitamin \"B\" and vitamin \"C\". Each juice can\ncontain one, two or all three types of vitamins in it. Petya knows that he\nneeds all three types of vitamins to stay healthy. What is the minimum total\nprice of juices that Petya has to buy to obtain all three vitamins? Petya\nobtains some vitamin if he buys at least one juice containing it and drinks\nit. Input The first line contains a single integer \n    n\n \n    (1 \n    \u2264 n \n    \u2264\n    1\n     000)\n \u2014 the number of juices. Each of the next \n    n\n lines contains\nan integer \n    c_i\n \n    (1 \n    \u2264 c_i \n    \u2264 100\n     000)\n and a string\n\n    s_i\n \u2014 the price of the \n    i\n-th juice and the vitamins it contains.\nString \n    s_i\n contains from \n    1\n to \n    3\n characters, and the only\npossible characters are \"A\", \"B\" and \"C\". It is guaranteed that each letter\nappears no more than once in each string \n    s_i\n. The order of letters in\nstrings \n    s_i\n is arbitrary. Output Print -1 if there is no way to obtain\nall three vitamins. Otherwise print the minimum total price of juices that\nPetya has to buy to obtain all three vitamins. Examples Input 4 5 C 6 B 16 BAC\n4 A Output 15 Input 2 10 AB 15 BA Output -1 Input 5 10 A 9 BC 11 CA 4 A 5 B\nOutput 13 Input 6 100 A 355 BCA 150 BC 160 AC 180 B 190 CA Output 250 Input 2\n5 BA 11 CB Output 16 Note In the first example Petya buys the first, the\nsecond and the fourth juice. He spends \n    5 + 6 + 4 = 15\n and obtains all\nthree vitamins. He can also buy just the third juice and obtain three\nvitamins, but its cost is \n    16\n, which isn't optimal. In the second example\nPetya can't obtain all three vitamins, as no juice contains vitamin \"C\".\n\n",
+        "cf_contest_id": 1042,
+        "cf_index": "B",
+        "cf_rating": 1200,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n5 C\r\n6 B\r\n16 BAC\r\n4 A\r\n",
+                "15\r\n"
+            ],
+            [
+                "2\r\n10 AB\r\n15 BA\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5\r\n10 A\r\n9 BC\r\n11 CA\r\n4 A\r\n5 B\r\n",
+                "13\r\n"
+            ],
+            [
+                "6\r\n100 A\r\n355 BCA\r\n150 BC\r\n160 AC\r\n180 B\r\n190 CA\r\n",
+                "250\r\n"
+            ],
+            [
+                "2\r\n5 BA\r\n11 CB\r\n",
+                "16\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n9 C\r\n3 B\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5\r\n9 B\r\n10 C\r\n9 B\r\n7 C\r\n9 A\r\n",
+                "25\r\n"
+            ],
+            [
+                "20\r\n10 A\r\n7 A\r\n10 B\r\n9 B\r\n4 C\r\n8 A\r\n10 A\r\n3 A\r\n10 B\r\n5 B\r\n3 B\r\n8 B\r\n1 B\r\n8 A\r\n2 A\r\n5 C\r\n9 A\r\n6 A\r\n6 C\r\n10 A\r\n",
+                "7\r\n"
+            ],
+            [
+                "7\r\n198 BC\r\n259 AC\r\n125 BA\r\n298 CAB\r\n252 CA\r\n98 AC\r\n284 BAC\r\n",
+                "223\r\n"
+            ],
+            [
+                "6\r\n193 B\r\n41 AB\r\n138 C\r\n237 BA\r\n267 ACB\r\n187 BAC\r\n",
+                "179\r\n"
+            ],
+            [
+                "18\r\n5 AC\r\n1 AC\r\n1 AC\r\n4 BA\r\n1 BC\r\n7 CA\r\n6 AC\r\n8 CB\r\n5 AB\r\n7 CA\r\n7 BA\r\n9 AC\r\n9 CA\r\n7 CB\r\n1 CA\r\n3 CA\r\n4 BA\r\n3 CB\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\n292 BCA\r\n247 A\r\n254 CA\r\n178 CA\r\n104 B\r\n",
+                "282\r\n"
+            ],
+            [
+                "10\r\n8 B\r\n9 A\r\n1 C\r\n2 A\r\n7 B\r\n9 B\r\n4 C\r\n9 A\r\n9 B\r\n2 A\r\n",
+                "10\r\n"
+            ],
+            [
+                "2\r\n9 AB\r\n4 BC\r\n",
+                "13\r\n"
+            ],
+            [
+                "5\r\n9 CA\r\n5 CB\r\n3 AB\r\n9 CA\r\n5 CB\r\n",
+                "8\r\n"
+            ],
+            [
+                "10\r\n8 CA\r\n1 AB\r\n1 CA\r\n7 CA\r\n8 BC\r\n3 CA\r\n9 AC\r\n7 CA\r\n7 AB\r\n6 AC\r\n",
+                "2\r\n"
+            ],
+            [
+                "20\r\n10 CA\r\n1 CB\r\n10 BC\r\n4 AC\r\n4 BA\r\n6 CB\r\n10 CB\r\n8 BC\r\n9 BC\r\n1 BA\r\n10 AB\r\n9 AB\r\n9 BA\r\n5 BA\r\n6 CA\r\n10 BA\r\n2 CA\r\n7 CA\r\n6 BA\r\n7 AC\r\n",
+                "2\r\n"
+            ],
+            [
+                "7\r\n10 ABC\r\n4 A\r\n4 B\r\n3 C\r\n5 AB\r\n4 BC\r\n3 AB\r\n",
+                "6\r\n"
+            ],
+            [
+                "25\r\n8 CA\r\n4 AB\r\n8 CA\r\n4 CA\r\n7 CB\r\n4 CB\r\n4 CB\r\n2 AC\r\n2 CA\r\n3 BC\r\n4 AC\r\n7 AB\r\n3 CA\r\n5 BC\r\n7 CB\r\n9 CA\r\n7 AB\r\n7 CA\r\n9 BA\r\n8 AC\r\n6 BA\r\n2 AC\r\n1 CB\r\n5 AB\r\n3 AB\r\n",
+                "3\r\n"
+            ],
+            [
+                "8\r\n99 CA\r\n256 CA\r\n276 BCA\r\n253 B\r\n269 CB\r\n241 CB\r\n249 CBA\r\n109 B\r\n",
+                "208\r\n"
+            ],
+            [
+                "6\r\n297 ACB\r\n144 B\r\n244 AB\r\n260 AB\r\n32 C\r\n149 B\r\n",
+                "276\r\n"
+            ],
+            [
+                "6\r\n231 BAC\r\n211 ACB\r\n275 BCA\r\n257 ACB\r\n24 A\r\n112 BC\r\n",
+                "136\r\n"
+            ],
+            [
+                "1\r\n100 ABC\r\n",
+                "100\r\n"
+            ],
+            [
+                "3\r\n100000 A\r\n100000 B\r\n100000 C\r\n",
+                "300000\r\n"
+            ],
+            [
+                "3\r\n100000 A\r\n100000 B\r\n100000 A\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2\r\n100000 A\r\n100000 BC\r\n",
+                "200000\r\n"
+            ],
+            [
+                "3\r\n99999 A\r\n99999 B\r\n99999 C\r\n",
+                "299997\r\n"
+            ],
+            [
+                "4\r\n5 C\r\n6 B\r\n12 BAC\r\n4 A\r\n",
+                "12\r\n"
+            ]
+        ]
+    }
+]

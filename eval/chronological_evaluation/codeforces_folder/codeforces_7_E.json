@@ -1,0 +1,373 @@
+[
+    {
+        "name": "Defining Macros",
+        "description": "Most C/C++ programmers know about excellent opportunities that preprocessor\n#define directives give; but many know as well about the problems that can\narise because of their careless use. In this problem we consider the following\nmodel of #define constructions (also called macros). Each macro has its name\nand value. The generic syntax for declaring a macro is the following: #define\nmacro_name macro_value After the macro has been declared, \"macro_name\" is\nreplaced with \"macro_value\" each time it is met in the program (only the whole\ntokens can be replaced; i.e. \"macro_name\" is replaced only when it is\nsurrounded by spaces or other non-alphabetic symbol). A \"macro_value\" within\nour model can only be an arithmetic expression consisting of variables, four\narithmetic operations, brackets, and also the names of previously declared\nmacros (in this case replacement is performed sequentially). The process of\nreplacing macros with their values is called substitution. One of the main\nproblems arising while using macros \u2014 the situation when as a result of\nsubstitution we get an arithmetic expression with the changed order of\ncalculation because of different priorities of the operations. Let's consider\nthe following example. Say, we declared such a #define construction: #define\nsum x + y and further in the program the expression \"2 * sum\" is calculated.\nAfter macro substitution is performed we get \"2 * x + y\", instead of\nintuitively expected \"2 * (x + y)\". Let's call the situation \"suspicious\", if\nafter the macro substitution the order of calculation changes, falling outside\nthe bounds of some macro. Thus, your task is to find out by the given set of\n#define definitions and the given expression if this expression is suspicious\nor not. Let's speak more formally. We should perform an ordinary macros\nsubstitution in the given expression. Moreover, we should perform a \"safe\"\nmacros substitution in the expression, putting in brackets each macro value;\nafter this, guided by arithmetic rules of brackets expansion, we can omit some\nof the brackets. If there exist a way to get an expression, absolutely\ncoinciding with the expression that is the result of an ordinary substitution\n(character-by-character, but ignoring spaces), then this expression and the\nmacros system are called correct, otherwise \u2014 suspicious. Note that we\nconsider the \"/\" operation as the usual mathematical division, not the integer\ndivision like in C/C++. That's why, for example, in the expression \"a*(b/c)\"\nwe can omit brackets to get the expression \"a*b/c\". Input The first line\ncontains the only number n (0 \u2264 n \u2264 100) \u2014 the amount of #define constructions\nin the given program. Then there follow n lines, each of them contains just\none #define construction. Each construction has the following syntax: #define\nname expression where name \u2014 the macro name, expression \u2014 the expression with\nwhich the given macro will be replaced. An expression is a non-empty string,\ncontaining digits,names of variables, names of previously declared macros,\nround brackets and operational signs +-*/. It is guaranteed that the\nexpression (before and after macros substitution) is a correct arithmetic\nexpression, having no unary operations. The expression contains only non-\nnegative integers, not exceeding 10^9. All the names (#define constructions'\nnames and names of their arguments) are strings of case-sensitive Latin\ncharacters. It is guaranteed that the name of any variable is different from\nany #define construction. Then, the last line contains an expression that you\nare to check. This expression is non-empty and satisfies the same limitations\nas the expressions in #define constructions. The input lines may contain any\nnumber of spaces anywhere, providing these spaces do not break the word\n\"define\" or the names of constructions and variables. In particular, there can\nbe any number of spaces before and after the \"#\" symbol. The length of any\nline from the input file does not exceed 100 characters. Output Output \"OK\",\nif the expression is correct according to the above given criterion, otherwise\noutput \"Suspicious\". Examples Input 1 #define sum x + y 1 * sum Output\nSuspicious Input 1 #define sum (x + y) sum - sum Output OK Input 4 #define sum\nx + y #define mul a * b #define div a / b #define expr sum + mul * div * mul\nexpr Output OK Input 3 #define SumSafe (a+b) #define DivUnsafe a/b #define\nDenominatorUnsafe a*b ((SumSafe) + DivUnsafe/DivUnsafe + x/DenominatorUnsafe)\nOutput Suspicious\n\n",
+        "cf_contest_id": 7,
+        "cf_index": "E",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "expression parsing",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1\r\n#define sum x + y\r\n1 * sum\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum  (x + y)\r\nsum - sum\r\n",
+                "OK\r\n"
+            ],
+            [
+                "4\r\n#define sum  x + y\r\n#define mul  a * b\r\n#define div  a / b\r\n#define expr sum + mul * div * mul\r\nexpr\r\n",
+                "OK\r\n"
+            ],
+            [
+                "3\r\n#define SumSafe   (a+b)\r\n#define DivUnsafe  a/b\r\n#define DenominatorUnsafe  a*b\r\n((SumSafe) + DivUnsafe/DivUnsafe + x/DenominatorUnsafe)\r\n",
+                "Suspicious\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "0\r\naa + b - c * (ddd * eee / fff * a / b * c + d - b + c - (a + b)) - d\r\n",
+                "OK\r\n"
+            ],
+            [
+                "2\r\n#define a b\r\n#define c d\r\na + b + c + d + 1234567 -10*(2-2+1000*1000*1000*1000*1000)\r\n",
+                "OK\r\n"
+            ],
+            [
+                "2\r\n  #  define  macros    (  x  +  y  ) \r\n # define  Macros (x+y)\r\nmacros/Macros\r\n",
+                "OK\r\n"
+            ],
+            [
+                "2\r\n#define A v\r\n#define a v/v/v\r\nv/A\r\n",
+                "OK\r\n"
+            ],
+            [
+                "2\r\n#define A v\r\n#define a v/v/v\r\nv/a\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "2\r\n#define A v\r\n#define a v/v/v\r\nv/(a)\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define a x*y\r\nc/a\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define a b*c\r\na/a*a\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "3\r\n#define mul  x*y\r\n#define bad  x/mul\r\n#define good x/(mul)\r\ngood\r\n",
+                "OK\r\n"
+            ],
+            [
+                "4\r\n#define sum   xx+yy\r\n#define difference  aaaa-bbbBBBB\r\n#define mult   a*b\r\n#define division  aaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\r\nsum+difference+(sum)*(difference)-mult+mult*division+division*mult+division/(mult+sum-(difference))\r\n",
+                "OK\r\n"
+            ],
+            [
+                "4\r\n#define sum   xx+yy\r\n#define difference  aaaa-bbbBBBB\r\n#define multiplication   a*b\r\n#define division  aaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\r\n(difference/division)+sum\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "4\r\n#define sum   xx+yy\r\n#define difference  aaaa-bbbBBBB\r\n#define multiplication   a*b\r\n#define division  aaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\r\n(difference)*sum\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "4\r\n#define sum   xx+yy\r\n#define difference  aaaa-bbbBBBB\r\n#define multiplication   a*b\r\n#define division  aaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\r\n(sum)/multiplication\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "4\r\n#define sum   xx+yy\r\n#define difference  aaaa-bbbBBBB\r\n#define multiplication   a*b\r\n#define division  aaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\r\nsum/(multiplication)\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "5\r\n#define sum   xx+yy\r\n#define difference  aaaa-bbbBBBB\r\n#define multiplication   a*b\r\n#define division  aaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\r\n#define res (0-difference)\r\nsum+res*multiplication\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "4\r\n#define sum   xx+yy\r\n#define difference  aaaa-bbbBBBB\r\n#define multiplication   a*b\r\n#define division  aaaaaaaaaaaaaaaaaaaaa/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\r\ndivision/(multiplication/(division)/DIVISION/(sum-division-multiplication-(difference)))\r\n",
+                "OK\r\n"
+            ],
+            [
+                "3\r\n#define sum  x + y\r\n#define SomeBad  (2 * sum)\r\n#define SomePossiblyGood  0 * SomeBad + (x + x - 2*x) * SomeBad\r\nSomePossiblyGood\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "2\r\n#define a  0\r\n#define b  (a-a)*(x/x-1)\r\nb-b/b*b\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "2\r\n#define fkdsjfslkjfsdk x/0\r\n#define fkdsjfslkjfsdksdds 0/(0-0)\r\nfkdsjfslkjfsdk + fkdsjfslkjfsdks + fkdsjfslkjfsdkssds\r\n",
+                "OK\r\n"
+            ],
+            [
+                "3\r\n#define null x/0\r\n#define some x/x\r\n#define bad 1/x\r\nbad/0+0/bad+0/0*bad\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "3\r\n#define MWjGY x+x*53 *x\r\n#define ovqZ 2/926+x/A\r\n#define uU 55-qRj*A*2\r\nx*A/x-A\r\n",
+                "OK\r\n"
+            ],
+            [
+                "4\r\n#define zz 5+7/x*x*9\r\n#define mlTL 6+x/7+x/x\r\n#define DUO 7*7-x+zz\r\n#define IH 6*4-x+x\r\n67/(5)-IH\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "5\r\n#define Oc 9/51+65+vN\r\n#define gga 53/ 94/x/x\r\n#define ArB x/x/9-77-8\r\n#define j 76-6/93+vN\r\n#define cALNN Oc+60499\r\n8*6-66/x*x\r\n",
+                "OK\r\n"
+            ],
+            [
+                "3\r\n#define fSdvwOj (W)*W+73\r\n#define NAZjc 7695*55-x\r\n#define AHGGglVwch (6-a-W)\r\n((5))+W+W\r\n",
+                "OK\r\n"
+            ],
+            [
+                "4\r\n#define m bJJD +x \r\n#define yYkQNzjR (x*19)-892\r\n#define MNvfxqfbq (x-6*x/8)\r\n#define nJZdvO 8/4 *m/m\r\n 9+m/x+x\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "5\r\n#define Sl x*7-(x)/O\r\n#define srAOHccTln 3+x*2*O\r\n#define OFAZk 239751817\r\n#define JYWrOEgazV (x-O/4)-x\r\n#define XsOZvalgOh 89905879/7\r\nx/Sl-(Sl)\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "3\r\n#define uYdw ((9-x-3) )\r\n#define fy (((x+21)))\r\n#define nY ((2+x)-46)\r\n141141432\r\n",
+                "OK\r\n"
+            ],
+            [
+                "4\r\n#define GCvqH (58 )-(x)\r\n#define g ((x/x+x))\r\n#define spst hQTJ\r\n#define i GCvqH\r\n(((x+6)))\r\n",
+                "OK\r\n"
+            ],
+            [
+                "5\r\n#define rg (67)+((x))\r\n#define ya x-(6/x)*rg\r\n#define anTxe 10*ya*(x)\r\n#define xcmo ((x)*(vT))\r\n#define eg ((vT)) -ya\r\n((x*(Ii)))\r\n",
+                "OK\r\n"
+            ],
+            [
+                "3\r\n#define T ((b/1 +1))\r\n#define pm (s)-43-(s)\r\n#define jkNBpvDZl ((x ))/65\r\n(((58*7)))\r\n",
+                "OK\r\n"
+            ],
+            [
+                "4\r\n#define cJitUt 21/(4)+4+4\r\n#define zHwBOLIvF 4*((41/x))\r\n#define GbtYVo (E)+(x+3)\r\n#define zTcZBaby (58)+x-x+x\r\n(E+E)/8 *4\r\n",
+                "OK\r\n"
+            ],
+            [
+                "5\r\n#define mBURKdeKvy 266693986\r\n#define nWi ( ((x))-4)\r\n#define iYreeOt ((7/x+42))\r\n#define laLzP ((aB/35)) \r\n#define dXjRJ (((B*hX)))\r\n(1*2+(67))\r\n",
+                "OK\r\n"
+            ],
+            [
+                "3\r\n#define UVMQLGvEqOxaAgRkvJH tBd\r\n#define QoAsBMaUcJzXai x/x-hm/83+8*8/5/hm /x/hm\r\n#define QtxtzEHCmidm 75 +491928441\r\n((x)/VUpYoEdDUtLFanGyqfQR  )\r\n",
+                "OK\r\n"
+            ],
+            [
+                "4\r\n#define efemx 2/1*3*69+81+10/690445104\r\n#define AyjrEzAjMKZpRPfCOaO 21*9+( j*40+3*4)*ND+w-j*j+x*55\r\n#define YkJkHcNhXcci 85*3215/40/365819568\r\n#define MUzvOZSXJujI 9-4/j*j-7-w*23*5+j+9-9*ND*2/37\r\nND/j*28 -1* ND+22889023/j/j/j\r\n",
+                "OK\r\n"
+            ],
+            [
+                "5\r\n#define QNUkjqPcGWF 6*4/908975666-7/10-x*7\r\n#define xqwhNWiiMaZOcmgiXYY 3936*(e*5*H+2)-TsA+(e)/1-25\r\n#define tRsSqfqJt ((uT*82/e)+e/(23+(45)-9)+(50))\r\n#define DtIOWRkYe (8*3/9)*e*x *60041512*2-(e)\r\n#define qgPgxja (4/x+e/uT*16358009- 6/13*5)\r\ne+x*e/84/x+uT*H\r\n",
+                "OK\r\n"
+            ],
+            [
+                "3\r\n#define lTCUUO JQmj\r\n#define oUeQMB (12*x+x+x)-75-(79/1)-(7)*1/mr\r\n#define LAQu xwvBtky\r\n8654 *1*5-mr-3*J/oUeQMB/x/6/9\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "4\r\n#define VLuQIO 1-x/33+ Fk+wS/35-wS-(x*iz )\r\n#define BCIsIR 5*(wS)/x/iz/1+x-x-4-x/68/x/8*x\r\n#define QPUpmTiB 21-x/895912506+2\r\n#define wcZLUIqJS 7/65-x*61-(24+iz)+x+315670+x/x\r\nBCIsIR/VLuQIO\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "5\r\n#define FDmMYOENCOKmYwYlOl 6-(L)/((((ud/x))/ud-26*8-5))\r\n#define QkopKBjKdJxhc (6)*4/7-L/781844832  \r\n#define UjgTieUBXTSTbiLFAhkV 3*1*(52)/6-6*65/x+((L-56))+x+x\r\n#define yWVYDuqliezpKLwnI 8/4+1+88+97946+(1)-((68))-L/L\r\n#define AvvED 719901121+95/2/78/1-10+37\r\n(1*x+ 528176190+17/ud)\r\n",
+                "OK\r\n"
+            ],
+            [
+                "3\r\n#define e x *R/5+(x)+4/18/x*R/x-8+1+R\r\n#define GgGqGYjXoJjIezAVu (( 491563947*R))*9-e-3/4\r\n#define XgznGUWMxQwh (8/R+4*(e)+10/4*x+24*R+21)-224\r\n (82493582)\r\n",
+                "OK\r\n"
+            ],
+            [
+                "4\r\n#define MrKSTrKhPLeJqOcEPvv (x+x/x)/Qdf-x-x-(2/23)+9442-x\r\n#define zPHUgmIYE 10- 7*x/x+VwRUuIRezDR*80\r\n#define OsfThxasHeFZCEZTfD 271456028-(x*x)-8+2*x*x*x+(x)\r\n#define zVYasB x/x -x-(51)-x*x*((x))  /x \r\n(x/64-x*( (5+x+x)-(37)/3*22))\r\n",
+                "OK\r\n"
+            ],
+            [
+                "5\r\n#define WREol (fcdGZaLzhiFpVQmhHO)\r\n#define lDTNxcMqPPP 3+(57)/x/91540-x*71-x*6-((1))\r\n#define afFJVBkr ((12*x-8+9 *lDlx+7+lDlx))\r\n#define mYEizEWrNtRSQNCcDQrn 732480960+9+x-78-x/1+12*x\r\n#define IZTmjheAahbNSNFa ((x-x*7+407643063 ))\r\nXQvMxLNpQnhpimNhAkfX\r\n",
+                "OK\r\n"
+            ],
+            [
+                "3\r\n#define Mc x+x*55231- x/x/x+35/x*(5*(x)) -5*x*(1-2-(29/1))\r\n#define afSVLCdjvylSu bgqv/6+4*x*((Mc/1318/x-8-4)-Mc/Mc/(9))\r\n#define ZOSV (1+2/x+6* 174806683)-x/x*Mc+52*x-x\r\nbgqv-x-6*x/72/(x )/afSVLCdjvylSu\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "4\r\n#define RJIiiGQqn dmpWFcrqQeM+V-o* 55/9*o-o/V*V*o\r\n#define ElDZlrtzDkeKgsX 498718105* 3/(y)/(4)-(5*x)*1\r\n#define qwKl jHqPHX\r\n#define qXzAZkCuchBYR  (qy*qwKl-6+5*1+2)-7-3+(38)-o*4/4-1-V*x/6+1*x/o\r\no*((V))-o+2+((((2*V)/V-o*V/4)))/o*33+y/7  -x+x \r\n",
+                "OK\r\n"
+            ],
+            [
+                "5\r\n#define WTovyGexUNjGMRJv (MQG*18-6)/x/x*x/x-x*akNyw*x+x-x/2/x*20\r\n#define hpextyhVCa 70*x/67-x*87931-(497612505-7*x-MQG)-x\r\n#define MRkKnCXFt x-5-21962-x/sOmThNSS/x/6-4+(65+57+x+x+7-7+x/x)\r\n#define ajsczBLLklBSqqh nGj-38*9 *x/47/8*5/5-72/x*x-x*x*31  /7-44-3+64\r\n#define jgqfv WTovyGexUNjGMRJv\r\n  4+338/x*x+13 -795*3-74*2/4+563-x/76401438/83025\r\n",
+                "OK\r\n"
+            ],
+            [
+                "3\r\n#define G u+13-35348/2-(u/u)-u/u*u*(OC)-OC -u-u/u*u/9 \r\n#define RNRQ G*G*u+G/755750/G/G +((u-6*G+6)*2)- 5*96+5/u*275-u\r\n#define Zg 94363/u*u-41+Gm*G-81/5-1-G*G*x-(5517*5/4)*21 +75\r\n406690013/WM*G+(u+u)*Zg+2\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "4\r\n#define RMWAZhIp x*x+12+94*12*5*1-x-141915293\r\n#define EeguG 9-55+x/29+x+x/E*8*81/x-x*75-4*17-81/x/6+619978*x*x\r\n#define HvUYEvQTyYmBGvqHSb 454574730/644135926*x/23+E-sy/14\r\n#define BqMGcT x/(43)+819897061-x*(7/x)-(x)+sy-E-x*79-E+(x)/6/63\r\n76+3/x/8*x+E-76+sy-sy+9*6/66/sy-77+x-x*sy+E/50/64\r\n",
+                "OK\r\n"
+            ],
+            [
+                "5\r\n#define cbt ((((d))+9-3+ (d)/d/6*SDDNqj*50/d+d-m+8/d/1)) \r\n#define gLrUE 18+ 70*d/3-d*d-d/35 +33-5/9+d-d*387+d-1\r\n#define AvjmK 9-d-8+(d+m+5/2/x*d+1)/x/d-5-2*(m)+d+17/d+ 4/52/8\r\n#define SjrJ 90/7/5/d+ 254877982+(m) *x-19\r\n#define PlykoqfDbwxR  540304590 +d*x/11-(m+d-d-4)*(d-3-1)/d\r\nd-2+1+46-29620+9-(9*3 /d)*6*m/d+9+(1670)/cbt/d+d\r\n",
+                "OK\r\n"
+            ],
+            [
+                "3\r\n#define BuAiJLgAlkj x-3+419032556/409023036-(17*84)+x+8+A\r\n#define wU 516506880\r\n#define HeyDGlnaGxBaHjzelvF iRSPqHfgHw/4-(99)*(I)+A+I-9*46*x\r\nI/CRklg-HeyDGlnaGxBaHjzelvF/3+5 \r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "4\r\n#define SOlTohcPGckDyF ((D)/G-83+KHGSuJFLHqD/5)\r\n#define KEUXeOYpg 9+x-8-8/x/9-65-6+4+55*x-58/x+84+D*2-7+D/x-x*G/4-2\r\n#define YZl (1/67*x*6/2*G)-D/1595107*D+6/x*1+D+3/9/x/26-6+9 \r\n#define gCatFsZn uBBqilYclMhpVfKKTkGK\r\n(28682537+ YZl*(4*52)  )*x/8- gCatFsZn*x/54/7\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "5\r\n#define iiXEqDYeyVmIYsOaO fj/x-9-6/x*x+ 1/ 7*2-x -x+9+235*23*Ww+x-2*K+2-x/70\r\n#define XVgLzhoTUxoBr ( x+x/x/x*6-x)* x+K/24206-2 /5/8-x-7/Ww/K-x+6 \r\n#define QdfRBaJk 470551685-(  54-x)-30\r\n#define gEJcAGnF x+x-x+(x/x+9)/x-41-1/fj/1157561+x/x -x/26/x+K*x\r\n#define lO 7-1*(x*58 )-K*fj  /722113691/x/K+2\r\n2+4*85/86/x*27 /49252-x*x/6-83-7/x+x+K-lO+8-K-x\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x+y\r\nr-sum\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x+y\r\nr+sum\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x+y\r\nr*sum\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x+y\r\nr/sum\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x-y\r\nr+sum\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x-y\r\nr-sum\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x-y\r\nr*sum\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x-y\r\nr/sum\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x*y\r\nr+sum\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x*y\r\nr-sum\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x*y\r\nr*sum\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x*y\r\nr/sum\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x/y\r\nr+sum\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x/y\r\nr-sum\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x/y\r\nr*sum\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x/y\r\nr/sum\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x+y\r\nsum+r\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x+y\r\nsum-r\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x+y\r\nsum*r\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x+y\r\nsum/r\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x-y\r\nsum+r\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x-y\r\nsum-r\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x-y\r\nsum*r\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x-y\r\nsum/r\r\n",
+                "Suspicious\r\n"
+            ],
+            [
+                "1\r\n#define sum x*y\r\nsum+r\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x*y\r\nsum-r\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x*y\r\nsum*r\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x*y\r\nsum/r\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x/y\r\nsum+r\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x/y\r\nsum-r\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x/y\r\nsum*r\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define sum x/y\r\nsum/r\r\n",
+                "OK\r\n"
+            ],
+            [
+                "1\r\n#define x 3/2\r\n2*x\r\n",
+                "OK\r\n"
+            ],
+            [
+                "2\r\n   #    define     sum     1000000000   +   1000000000       +     1000000000      \r\n    #    define      a    b     +      45    *   sum    \r\n       a       \r\n",
+                "Suspicious\r\n"
+            ]
+        ]
+    }
+]

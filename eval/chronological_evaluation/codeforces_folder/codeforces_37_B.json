@@ -1,0 +1,124 @@
+[
+    {
+        "name": "Computer Game",
+        "description": "Vasya\u2019s elder brother Petya loves playing computer games. In one of his\nfavourite computer games Petya reached the final level where a fight with the\nboss take place. While playing the game Petya found spell scrolls and now he\nis about to use them. Let\u2019s describe the way fighting goes on this level: 1)\nThe boss has two parameters: max \u2014 the initial amount of health and reg \u2014\nregeneration rate per second. 2) Every scroll also has two parameters: powi \u2014\nspell power measured in percents \u2014 the maximal amount of health counted off\nthe initial one, which allows to use the scroll (i.e. if the boss has more\nthan powi percent of health the scroll cannot be used); and dmgi the damage\nper second inflicted upon the boss if the scroll is used. As soon as a scroll\nis used it disappears and another spell is cast upon the boss that inflicts\ndmgi of damage per second upon him until the end of the game. During the\nbattle the actions per second are performed in the following order: first the\nboss gets the damage from all the spells cast upon him, then he regenerates\nreg of health (at the same time he can\u2019t have more than max of health), then\nthe player may use another scroll (no more than one per second). The boss is\nconsidered to be defeated if at the end of a second he has nonpositive ( \u2264 0)\namount of health. Help Petya to determine whether he can win with the set of\nscrolls available to him and if he can, determine the minimal number of\nseconds he needs to do it. Input The first line contains three integers N, max\nand reg (1 \u2264 N, max, reg \u2264 1000) \u2013\u2013 the amount of scrolls and the parameters\nof the boss. The next N lines contain two integers powi and dmgi each \u2014 the\nparameters of the i-th scroll (0 \u2264 powi \u2264 100, 1 \u2264 dmgi \u2264 2000). Output In\ncase Petya can\u2019t complete this level, output in the single line NO. Otherwise,\noutput on the first line YES. On the second line output the minimal time after\nwhich the boss can be defeated and the number of used scrolls. In the next\nlines for each used scroll output space-separated number of seconds passed\nfrom the start of the battle to the moment the scroll was used and the number\nof the scroll. Scrolls are numbered starting from 1 in the input order. The\nfirst scroll is considered to be available to be used after 0 seconds. Output\nscrolls in the order they were used. It is not allowed to use scrolls after\nthe boss is defeated. Examples Input 2 10 3 100 3 99 1 Output NO Input 2 100\n10 100 11 90 9 Output YES 19 2 0 1 10 2\n\n",
+        "cf_contest_id": 37,
+        "cf_index": "B",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 10 3\r\n100 3\r\n99 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 100 10\r\n100 11\r\n90 9\r\n",
+                "YES\r\n19 2\r\n0 1\r\n10 2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 100 5\r\n61 3\r\n55 2\r\n12 6\r\n39 5\r\n21 10\r\n39 7\r\n16 1\r\n10 1\r\n70 5\r\n100 7\r\n",
+                "YES\r\n21 6\r\n0 10\r\n15 9\r\n17 1\r\n18 2\r\n19 6\r\n20 5\r\n"
+            ],
+            [
+                "20 1000 35\r\n10 6\r\n66 38\r\n81 11\r\n18 46\r\n80 54\r\n76 55\r\n100 7\r\n96 23\r\n24 37\r\n4 24\r\n4 50\r\n71 4\r\n83 15\r\n7 23\r\n100 44\r\n99 34\r\n100 17\r\n100 66\r\n23 15\r\n90 35\r\n",
+                "YES\r\n7 7\r\n0 18\r\n1 15\r\n2 20\r\n3 5\r\n4 6\r\n5 2\r\n6 4\r\n"
+            ],
+            [
+                "20 1000 100\r\n49 26\r\n46 36\r\n1 114\r\n80 4\r\n80 125\r\n100 17\r\n6 184\r\n100 20\r\n59 60\r\n47 92\r\n52 20\r\n44 50\r\n3 15\r\n10 192\r\n6 13\r\n60 3\r\n63 102\r\n78 17\r\n0 124\r\n31 100\r\n",
+                "NO\r\n"
+            ],
+            [
+                "35 999 199\r\n95 80\r\n79 279\r\n14 291\r\n100 88\r\n64 55\r\n100 209\r\n85 4\r\n14 237\r\n75 126\r\n41 260\r\n81 67\r\n99 311\r\n71 220\r\n98 312\r\n53 213\r\n55 377\r\n78 374\r\n79 308\r\n34 40\r\n92 281\r\n53 119\r\n96 170\r\n90 7\r\n87 176\r\n27 50\r\n78 95\r\n31 327\r\n56 138\r\n91 221\r\n7 144\r\n100 335\r\n29 139\r\n61 247\r\n38 203\r\n100 242\r\n",
+                "YES\r\n3 3\r\n0 31\r\n1 14\r\n2 16\r\n"
+            ],
+            [
+                "50 1000 17\r\n26 1\r\n96 22\r\n100 27\r\n99 30\r\n97 5\r\n39 14\r\n100 17\r\n100 8\r\n98 21\r\n100 17\r\n100 34\r\n75 11\r\n68 31\r\n100 13\r\n3 5\r\n74 4\r\n100 12\r\n100 25\r\n100 32\r\n3 14\r\n100 10\r\n100 2\r\n75 28\r\n24 16\r\n27 20\r\n34 13\r\n64 29\r\n50 19\r\n90 22\r\n42 7\r\n48 12\r\n97 34\r\n22 1\r\n57 33\r\n100 13\r\n100 31\r\n61 12\r\n100 18\r\n64 19\r\n29 24\r\n100 33\r\n87 10\r\n35 33\r\n77 28\r\n100 15\r\n87 34\r\n68 2\r\n44 29\r\n55 3\r\n41 5\r\n",
+                "YES\r\n8 8\r\n0 11\r\n1 41\r\n2 32\r\n3 46\r\n4 19\r\n5 36\r\n6 34\r\n7 43\r\n"
+            ],
+            [
+                "70 1000 1\r\n91 2\r\n43 1\r\n100 1\r\n79 2\r\n26 1\r\n68 2\r\n4 2\r\n64 1\r\n100 1\r\n80 2\r\n20 2\r\n70 1\r\n25 1\r\n99 1\r\n64 1\r\n35 2\r\n60 1\r\n63 2\r\n93 1\r\n40 2\r\n100 1\r\n54 1\r\n100 1\r\n15 2\r\n72 1\r\n28 1\r\n5 1\r\n93 1\r\n100 2\r\n39 2\r\n54 2\r\n100 1\r\n55 1\r\n43 1\r\n20 1\r\n28 2\r\n21 1\r\n100 2\r\n98 1\r\n35 1\r\n12 2\r\n50 2\r\n7 2\r\n7 2\r\n12 2\r\n100 2\r\n44 1\r\n40 2\r\n56 2\r\n5 1\r\n100 1\r\n94 2\r\n100 2\r\n74 1\r\n83 2\r\n100 2\r\n81 2\r\n37 2\r\n29 1\r\n100 2\r\n99 1\r\n39 2\r\n83 2\r\n96 2\r\n30 2\r\n39 1\r\n38 1\r\n51 1\r\n11 1\r\n100 2\r\n",
+                "YES\r\n34 34\r\n0 70\r\n1 60\r\n2 56\r\n3 53\r\n4 46\r\n5 38\r\n6 29\r\n7 64\r\n8 52\r\n9 51\r\n10 1\r\n11 32\r\n12 23\r\n13 21\r\n14 63\r\n15 55\r\n16 57\r\n17 10\r\n18 4\r\n19 6\r\n20 9\r\n21 18\r\n22 3\r\n23 49\r\n24 31\r\n25 42\r\n26 48\r\n27 20\r\n28 62\r\n29 30\r\n30 58\r\n31 16\r\n32 65\r\n33 36\r\n"
+            ],
+            [
+                "4 660 722\r\n67 360\r\n96 778\r\n6 1041\r\n62 395\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 328 249\r\n62 265\r\n32 271\r\n72 237\r\n28 99\r\n22 364\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 351 183\r\n16 337\r\n19 221\r\n81 359\r\n87 253\r\n5 240\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 439 283\r\n25 510\r\n31 547\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 337 873\r\n62 81\r\n87 481\r\n39 1189\r\n45 450\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 940 591\r\n92 762\r\n59 255\r\n15 1061\r\n53 1016\r\n10 527\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 851 931\r\n88 401\r\n48 1196\r\n86 1817\r\n20 1575\r\n30 1474\r\n",
+                "NO\r\n"
+            ],
+            [
+                "29 634 982\r\n60 1351\r\n54 640\r\n1 253\r\n72 24\r\n40 529\r\n52 339\r\n73 21\r\n34 1284\r\n32 1264\r\n76 1346\r\n92 320\r\n11 1441\r\n67 1215\r\n69 1524\r\n77 1672\r\n83 412\r\n48 241\r\n25 894\r\n91 1474\r\n18 1743\r\n98 1944\r\n48 788\r\n77 860\r\n31 629\r\n91 1042\r\n36 1116\r\n41 1162\r\n63 129\r\n15 1125\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 1000 8\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n",
+                "YES\r\n509 10\r\n0 10\r\n1 9\r\n2 8\r\n3 7\r\n4 6\r\n5 5\r\n6 4\r\n7 3\r\n8 2\r\n9 1\r\n"
+            ],
+            [
+                "11 2 10\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n100 1\r\n",
+                "YES\r\n12 11\r\n0 11\r\n1 10\r\n2 9\r\n3 8\r\n4 7\r\n5 6\r\n6 5\r\n7 4\r\n8 3\r\n9 2\r\n10 1\r\n"
+            ],
+            [
+                "3 200 10\r\n100 3\r\n100 8\r\n50 1000\r\n",
+                "YES\r\n102 3\r\n0 2\r\n1 1\r\n101 3\r\n"
+            ],
+            [
+                "2 100 2\r\n100 2\r\n100 2\r\n",
+                "YES\r\n51 2\r\n0 2\r\n1 1\r\n"
+            ],
+            [
+                "2 1000 1\r\n100 1\r\n100 1\r\n",
+                "YES\r\n1001 2\r\n0 2\r\n1 1\r\n"
+            ],
+            [
+                "6 1000 53\r\n100 10\r\n100 10\r\n100 10\r\n100 10\r\n100 10\r\n100 10\r\n",
+                "YES\r\n148 6\r\n0 6\r\n1 5\r\n2 4\r\n3 3\r\n4 2\r\n5 1\r\n"
+            ],
+            [
+                "3 100 2\r\n100 1\r\n100 1\r\n100 1\r\n",
+                "YES\r\n102 3\r\n0 3\r\n1 2\r\n2 1\r\n"
+            ],
+            [
+                "3 100 3\r\n100 1\r\n100 1\r\n100 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 100 4\r\n100 1\r\n100 1\r\n100 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 100 5\r\n100 1\r\n100 1\r\n100 1\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

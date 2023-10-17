@@ -1,0 +1,168 @@
+[
+    {
+        "name": "Occurrences",
+        "description": "A subarray of array \n    a\n from index \n    l\n to the index \n    r\n is the\narray \n    [a_l, a_l+1, \n    \u2026, a_r]\n. The number of occurrences of the\narray \n    b\n in the array \n    a\n is the number of subarrays of \n    a\n such\nthat they are equal to \n    b\n. You are given \n    n\n arrays \n    A_1, A_2,\n    \n    \u2026, A_n\n; the elements of these arrays are integers from \n    1\n to\n\n    k\n. You have to build an array \n    a\n consisting of \n    m\n integers\nfrom \n    1\n to \n    k\n in such a way that, for every given subarray\n\n    A_i\n, the number of occurrences of \n    A_i\n in the array \n    a\n is not\nless than the number of occurrences of each non-empty subarray of \n    A_i\n in\n\n    a\n. Note that if \n    A_i\n doesn't occur in \n    a\n, and no subarray of\n\n    A_i\n occurs in \n    a\n, this condition is still met for \n    A_i\n. Your\ntask is to calculate the number of different arrays \n    a\n you can build, and\nprint it modulo \n    998244353\n. Input The first line contains three integers\n\n    n\n, \n    m\n and \n    k\n (\n    1 \n    \u2264 n, m, k \n    \u2264 3 \n    \u00b7 10^5\n) \u2014\nthe number of the given arrays, the desired length of the array \n    a\n, and\nthe upper bound on the values in the arrays. Then \n    n\n lines follow. The\n\n    i\n-th line represents the array \n    A_i\n. The first integer in the\n\n    i\n-th line is \n    c_i\n (\n    1 \n    \u2264 c_i \n    \u2264 m\n) \u2014 the number of\nelements in \n    A_i\n; then, \n    c_i\n integers from \n    1\n to \n    k\n follow\n\u2014 the elements of the array \n    A_i\n. Additional constraint on the input:\n\n    \u2211\n    _i=1^n c_i \n    \u2264 3 \n    \u00b7 10^5\n; i. e., the number of\nelements in the given arrays in total does not exceed \n    3 \n    \u00b7 10^5\n.\nOutput Print one integer \u2014 the number of different arrays \n    a\n you can\nbuild, taken modulo \n    998244353\n. Examples Input 2 4 3 2 1 2 1 3 Output 5\nInput 2 4 3 2 1 2 3 3 2 1 Output 0 Input 1 42 1337 2 13 31 Output 721234447\n\n",
+        "cf_contest_id": 1574,
+        "cf_index": "F",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "fft",
+            "graphs"
+        ],
+        "time_limit_seconds": 7.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "2 4 3\r\n2 1 2\r\n1 3\r\n",
+                "5"
+            ],
+            [
+                "2 4 3\r\n2 1 2\r\n3 3 2 1\r\n",
+                "0"
+            ],
+            [
+                "1 42 1337\r\n2 13 31\r\n",
+                "721234447"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 300000 300000\r\n1 230443\r\n",
+                "607932985"
+            ],
+            [
+                "1 300000 300000\r\n1 73406\r\n",
+                "607932985"
+            ],
+            [
+                "1 300000 300000\r\n1 55320\r\n",
+                "607932985"
+            ],
+            [
+                "5 300000 300000\r\n1 76819\r\n1 211218\r\n1 67217\r\n1 116533\r\n1 243417\r\n",
+                "607932985"
+            ],
+            [
+                "5 300000 300000\r\n1 47097\r\n1 289489\r\n1 283007\r\n1 262491\r\n1 220076\r\n",
+                "607932985"
+            ],
+            [
+                "5 300000 300000\r\n1 211013\r\n1 73557\r\n1 59163\r\n1 287725\r\n1 252022\r\n",
+                "607932985"
+            ],
+            [
+                "1 5 3\r\n4 1 2 1 2\r\n",
+                "1"
+            ],
+            [
+                "3 5 3\r\n2 1 2\r\n2 2 3\r\n2 3 1\r\n",
+                "0"
+            ],
+            [
+                "2 3 3\r\n2 2 1\r\n2 3 1\r\n",
+                "0"
+            ],
+            [
+                "2 4 4\r\n3 1 2 3\r\n2 4 3\r\n",
+                "0"
+            ],
+            [
+                "2 2 3\r\n2 1 2\r\n2 3 2\r\n",
+                "0"
+            ],
+            [
+                "2 3 3\r\n2 1 2\r\n2 1 3\r\n",
+                "0"
+            ],
+            [
+                "57 2 76\r\n2 28 15\r\n2 66 13\r\n1 26\r\n1 50\r\n1 35\r\n2 68 21\r\n1 71\r\n1 23\r\n2 40 7\r\n2 6 53\r\n2 57 25\r\n2 17 47\r\n2 44 61\r\n1 49\r\n2 47 15\r\n2 37 9\r\n2 48 1\r\n1 60\r\n1 49\r\n2 12 12\r\n1 40\r\n1 5\r\n1 14\r\n1 71\r\n2 15 72\r\n1 75\r\n2 62 12\r\n2 76 61\r\n2 8 9\r\n1 24\r\n1 31\r\n2 41 52\r\n2 53 20\r\n1 9\r\n2 67 22\r\n2 1 67\r\n2 72 4\r\n1 49\r\n1 32\r\n1 4\r\n1 12\r\n1 57\r\n1 51\r\n1 29\r\n2 29 20\r\n1 21\r\n2 1 30\r\n1 8\r\n1 11\r\n2 58 32\r\n2 61 68\r\n2 65 40\r\n2 8 12\r\n2 50 68\r\n2 24 56\r\n2 48 8\r\n1 40\r\n",
+                "1374"
+            ],
+            [
+                "48 3 63\r\n3 59 8 11\r\n1 62\r\n2 1 23\r\n1 55\r\n2 15 27\r\n1 14\r\n1 28\r\n1 19\r\n2 26 20\r\n1 9\r\n3 42 17 23\r\n1 49\r\n2 28 54\r\n1 26\r\n2 8 26\r\n3 38 15 35\r\n3 42 11 62\r\n1 37\r\n3 43 9 40\r\n3 5 46 27\r\n1 63\r\n2 15 48\r\n1 40\r\n3 35 2 26\r\n3 25 37 14\r\n3 7 62 17\r\n2 60 41\r\n2 11 21\r\n2 49 18\r\n3 31 42 46\r\n1 26\r\n1 11\r\n3 34 47 31\r\n2 9 9\r\n2 43 20\r\n3 49 19 47\r\n3 13 25 53\r\n1 43\r\n1 7\r\n1 49\r\n2 36 32\r\n3 61 26 10\r\n1 60\r\n2 22 29\r\n2 28 23\r\n2 48 55\r\n3 1 38 27\r\n1 60\r\n",
+                "5940"
+            ],
+            [
+                "6 10 94\r\n5 27 15 11 28 91\r\n2 25 79\r\n4 25 21 78 71\r\n4 19 83 4 23\r\n2 9 40\r\n7 43 83 40 18 16 86 92\r\n",
+                "911055783"
+            ],
+            [
+                "4 4 8\r\n3 1 2 3\r\n2 4 3\r\n3 7 5 6\r\n2 7 8\r\n",
+                "0"
+            ],
+            [
+                "3 100 5\r\n2 2 3\r\n2 3 4\r\n2 1 3\r\n",
+                "1"
+            ],
+            [
+                "26 5 88\r\n5 19 24 67 87 4\r\n3 78 28 76\r\n4 13 88 73 82\r\n5 35 75 62 54 4\r\n5 4 55 56 28 77\r\n3 19 48 81\r\n1 66\r\n4 28 40 83 59\r\n4 22 46 68 10\r\n5 52 67 53 62 53\r\n4 4 56 55 7\r\n3 87 11 75\r\n2 29 10\r\n5 79 51 17 82 2\r\n2 53 71\r\n2 74 50\r\n2 7 78\r\n1 60\r\n1 26\r\n5 30 81 28 37 79\r\n1 23\r\n1 35\r\n1 50\r\n4 17 12 76 75\r\n4 63 15 59 72\r\n1 85\r\n",
+                "130987710"
+            ],
+            [
+                "58 3 60\r\n3 59 45 6\r\n3 30 4 1\r\n1 45\r\n1 50\r\n2 43 32\r\n2 13 20\r\n2 26 20\r\n2 29 41\r\n2 49 39\r\n2 19 47\r\n3 31 37 45\r\n3 13 14 31\r\n1 44\r\n1 21\r\n1 48\r\n3 5 53 7\r\n1 12\r\n3 35 2 1\r\n1 37\r\n2 46 38\r\n1 32\r\n2 22 60\r\n1 50\r\n3 37 20 17\r\n2 19 37\r\n3 58 31 42\r\n2 37 57\r\n2 9 24\r\n1 1\r\n1 22\r\n3 7 51 25\r\n3 37 38 30\r\n3 27 33 36\r\n3 41 47 57\r\n2 24 54\r\n2 5 35\r\n3 53 27 24\r\n2 4 25\r\n3 25 6 36\r\n3 30 58 44\r\n1 19\r\n1 26\r\n1 10\r\n1 24\r\n3 52 40 11\r\n1 19\r\n1 11\r\n1 60\r\n2 57 7\r\n2 21 28\r\n2 26 56\r\n2 47 53\r\n1 46\r\n3 11 11 45\r\n2 6 8\r\n2 49 40\r\n1 25\r\n2 17 35\r\n",
+                "1397"
+            ],
+            [
+                "8 3 3\r\n1 2\r\n2 1 2\r\n1 3\r\n2 2 3\r\n1 3\r\n3 1 2 3\r\n2 3 1\r\n2 3 1\r\n",
+                "0"
+            ],
+            [
+                "16 2 2\r\n2 2 1\r\n2 2 1\r\n1 2\r\n1 2\r\n1 2\r\n1 2\r\n2 1 2\r\n1 2\r\n1 1\r\n1 1\r\n1 2\r\n2 2 1\r\n1 1\r\n1 2\r\n1 2\r\n1 1\r\n",
+                "0"
+            ],
+            [
+                "2 7 5\r\n2 1 2\r\n3 4 1 5\r\n",
+                "1"
+            ],
+            [
+                "2 5 10\r\n2 9 4\r\n5 8 7 6 9 2\r\n",
+                "1024"
+            ],
+            [
+                "4 7 9\r\n3 5 8 1\r\n3 4 6 7\r\n2 9 5\r\n2 7 5\r\n",
+                "128"
+            ],
+            [
+                "2 7 8\r\n4 1 4 8 3\r\n2 8 2\r\n",
+                "2187"
+            ],
+            [
+                "2 5 4\r\n2 1 2\r\n2 1 3\r\n",
+                "1"
+            ],
+            [
+                "9 8 2\r\n2 2 1\r\n1 1\r\n2 2 1\r\n2 2 1\r\n2 2 1\r\n2 1 2\r\n2 1 2\r\n2 1 2\r\n2 2 1\r\n",
+                "0"
+            ],
+            [
+                "19 6 2\r\n2 1 2\r\n1 1\r\n2 1 2\r\n2 2 1\r\n2 1 2\r\n1 1\r\n2 2 1\r\n1 2\r\n2 1 2\r\n1 2\r\n1 2\r\n2 1 2\r\n2 2 1\r\n2 2 1\r\n2 2 1\r\n2 1 2\r\n1 2\r\n2 1 2\r\n2 1 2\r\n",
+                "0"
+            ],
+            [
+                "14 4 9\r\n2 5 6\r\n1 1\r\n4 5 2 1 8\r\n2 4 6\r\n2 1 6\r\n2 4 9\r\n4 6 2 9 5\r\n1 4\r\n3 5 8 7\r\n3 5 3 2\r\n3 5 7 9\r\n3 5 2 4\r\n3 5 4 8\r\n3 6 8 4\r\n",
+                "0"
+            ],
+            [
+                "15 10 2\r\n2 2 1\r\n1 2\r\n2 2 1\r\n2 2 1\r\n2 2 1\r\n2 1 2\r\n2 2 1\r\n1 2\r\n2 1 2\r\n2 2 1\r\n2 1 2\r\n1 1\r\n2 1 2\r\n1 2\r\n2 1 2\r\n",
+                "0"
+            ],
+            [
+                "2 3 3\r\n2 1 2\r\n2 2 1\r\n",
+                "1"
+            ],
+            [
+                "11 3 52\r\n2 18 9\r\n3 36 12 35\r\n1 38\r\n1 43\r\n3 20 32 24\r\n3 21 7 37\r\n2 12 36\r\n1 50\r\n3 11 26 17\r\n3 29 11 29\r\n2 47 38\r\n",
+                "43017"
+            ],
+            [
+                "2 114514 1919\r\n2 2 1\r\n2 3 1\r\n",
+                "394617181"
+            ]
+        ]
+    }
+]

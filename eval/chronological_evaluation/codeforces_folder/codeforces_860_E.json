@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Arkady and a Nobody-men",
+        "description": "Arkady words in a large company. There are n employees working in a system of\na strict hierarchy. Namely, each employee, with an exception of the CEO, has\nexactly one immediate manager. The CEO is a manager (through a chain of\nimmediate managers) of all employees. Each employee has an integer rank. The\nCEO has rank equal to 1, each other employee has rank equal to the rank of his\nimmediate manager plus 1. Arkady has a good post in the company, however, he\nfeels that he is nobody in the company's structure, and there are a lot of\npeople who can replace him. He introduced the value of replaceability.\nConsider an employee a and an employee b, the latter being manager of a (not\nnecessarily immediate). Then the replaceability r(a, b) of a with respect to b\nis the number of subordinates (not necessarily immediate) of the manager b,\nwhose rank is not greater than the rank of a. Apart from replaceability,\nArkady introduced the value of negligibility. The negligibility za of employee\na equals the sum of his replaceabilities with respect to all his managers,\ni.e. , where the sum is taken over all his managers b. Arkady is interested\nnot only in negligibility of himself, but also in negligibility of all\nemployees in the company. Find the negligibility of each employee for Arkady.\nInput The first line contains single integer n (1 \u2264 n \u2264 5\u00b710^5) \u2014 the number\nof employees in the company. The second line contains n integers p1, p2, ...,\npn (0 \u2264 pi \u2264 n), where pi = 0 if the i-th employee is the CEO, otherwise pi\nequals the id of the immediate manager of the employee with id i. The\nemployees are numbered from 1 to n. It is guaranteed that there is exactly one\n0 among these values, and also that the CEO is a manager (not necessarily\nimmediate) for all the other employees. Output Print n integers \u2014 the\nnegligibilities of all employees in the order of their ids: z1, z2, ..., zn.\nExamples Input 4 0 1 2 1 Output 0 2 4 2 Input 5 2 3 4 5 0 Output 10 6 3 1 0\nInput 5 0 1 1 1 3 Output 0 3 3 3 5 Note Consider the first example: The CEO\nhas no managers, thus z1 = 0. r(2, 1) = 2 (employees 2 and 4 suit the\nconditions, employee 3 has too large rank). Thus z2 = r(2, 1) = 2. Similarly,\nz4 = r(4, 1) = 2. r(3, 2) = 1 (employee 3 is a subordinate of 2 and has\nsuitable rank). r(3, 1) = 3 (employees 2, 3, 4 suit the conditions). Thus z3 =\nr(3, 2) + r(3, 1) = 4.\n\n",
+        "cf_contest_id": 860,
+        "cf_index": "E",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n0 1 2 1\r\n",
+                "0 2 4 2 "
+            ],
+            [
+                "5\r\n2 3 4 5 0\r\n",
+                "10 6 3 1 0 "
+            ],
+            [
+                "5\r\n0 1 1 1 3\r\n",
+                "0 3 3 3 5 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n0 1 2\r\n",
+                "0 1 3 "
+            ],
+            [
+                "5\r\n3 5 5 2 0\r\n",
+                "5 2 2 5 0 "
+            ],
+            [
+                "5\r\n2 5 0 1 3\r\n",
+                "6 3 0 10 1 "
+            ],
+            [
+                "5\r\n0 1 1 1 1\r\n",
+                "0 4 4 4 4 "
+            ],
+            [
+                "5\r\n2 4 2 0 4\r\n",
+                "6 2 6 0 2 "
+            ],
+            [
+                "20\r\n9 9 9 12 19 15 16 6 0 15 9 9 3 9 3 17 4 14 9 14\r\n",
+                "7 7 7 14 14 22 29 27 0 22 7 7 15 7 15 24 19 15 7 15 "
+            ],
+            [
+                "20\r\n0 16 4 2 15 12 3 18 13 19 1 8 14 7 20 5 6 9 11 10\r\n",
+                "0 36 55 45 21 171 66 136 105 6 1 153 91 78 15 28 190 120 3 10 "
+            ],
+            [
+                "20\r\n9 9 9 9 9 9 9 9 0 9 9 9 9 9 9 9 9 9 9 9\r\n",
+                "19 19 19 19 19 19 19 19 0 19 19 19 19 19 19 19 19 19 19 19 "
+            ],
+            [
+                "20\r\n12 12 1 15 18 8 0 16 19 2 18 16 2 1 8 7 19 20 20 7\r\n",
+                "22 22 38 34 22 22 0 8 22 38 22 8 38 38 22 2 22 8 8 2 "
+            ],
+            [
+                "1\r\n0\r\n",
+                "0 "
+            ],
+            [
+                "2\r\n0 1\r\n",
+                "0 1 "
+            ],
+            [
+                "100\r\n77 12 47 47 38 30 92 39 21 5 72 29 66 23 81 23 38 53 27 57 57 36 9 18 17 17 11 100 5 38 38 53 84 15 9 23 30 0 90 81 38 64 47 29 53 17 37 91 28 17 28 13 66 31 17 47 33 55 31 61 66 31 49 14 57 38 23 27 20 13 5 6 30 54 33 62 84 64 55 50 31 37 88 38 22 36 75 31 18 79 87 32 38 6 14 41 55 33 2 50\r\n",
+                "63 82 94 94 8 33 104 117 110 33 88 63 33 157 68 157 8 68 118 92 92 187 129 92 35 35 101 88 33 8 8 68 32 87 129 157 33 0 104 68 8 212 94 63 68 35 65 123 106 35 106 67 33 35 35 94 65 69 35 66 33 35 119 187 92 8 157 118 110 67 33 65 33 67 65 67 32 212 69 68 35 65 67 8 210 187 90 35 92 89 107 91 8 65 187 31 69 65 95 68 "
+            ],
+            [
+                "100\r\n22 18 95 29 66 84 36 39 55 16 97 64 58 53 57 89 38 60 99 33 6 34 80 100 77 19 68 59 20 31 28 0 23 70 13 78 69 2 43 25 15 51 26 11 48 98 45 9 54 96 50 10 27 90 67 74 91 32 37 41 44 12 4 40 35 14 65 75 94 71 42 93 92 79 56 86 52 81 61 49 46 83 72 82 5 24 88 63 85 8 73 7 1 17 21 47 3 87 76 62\r\n",
+                "190 4095 406 2628 903 325 3321 2016 28 1081 465 1378 3 820 3741 1035 4278 4005 1770 2485 351 171 2346 1540 1225 1830 741 4753 2556 4950 4851 0 2415 153 6 3240 4560 4186 1953 1275 3828 105 1891 496 45 3003 55 36 2211 78 91 1128 780 2145 21 630 3655 1 4656 3916 528 1431 2701 1326 10 861 15 703 4465 136 120 231 3486 595 666 1653 1176 3160 561 2278 3081 276 253 300 946 1596 2850 2775 990 2080 3570 3403 210 4371 378 66 435 2926 1711 1485 "
+            ],
+            [
+                "100\r\n52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 0 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52 52\r\n",
+                "99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 0 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 99 "
+            ],
+            [
+                "100\r\n100 23 37 82 100 46 12 51 84 49 15 56 14 39 88 26 81 63 46 37 65 24 17 40 7 90 19 19 72 18 25 48 1 76 33 63 43 78 81 64 26 70 80 36 76 12 14 5 56 6 90 13 74 74 6 75 68 89 78 36 18 25 64 85 10 23 72 39 65 7 97 5 17 88 89 10 97 1 70 58 58 68 73 43 75 51 15 49 0 80 48 13 84 47 33 24 40 47 73 85\r\n",
+                "52 114 114 168 52 114 52 114 114 52 213 22 114 52 114 114 22 114 114 114 213 213 52 114 114 52 213 213 213 213 213 213 114 213 213 114 52 213 22 52 114 213 22 213 213 52 114 114 22 213 52 172 213 213 213 8 114 2 213 213 213 213 52 22 114 114 213 52 213 114 213 114 52 114 2 114 213 114 213 8 8 114 114 52 8 114 213 52 0 22 213 172 114 172 213 213 114 172 114 22 "
+            ]
+        ]
+    }
+]

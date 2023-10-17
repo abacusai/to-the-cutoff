@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Ticks",
+        "description": "Casimir has a rectangular piece of paper with a checkered field of size \n    n\n    \n    \u00d7 m\n. Initially, all cells of the field are white. Let us denote the\ncell with coordinates \n    i\n vertically and \n    j\n horizontally by \n    (i,\n    j)\n. The upper left cell will be referred to as \n    (1, 1)\n and the lower\nright cell as \n    (n, m)\n. Casimir draws ticks of different sizes on the\nfield. A tick of size \n    d\n (\n    d > 0\n) with its center in cell \n    (i,\n    j)\n is drawn as follows: First, the center cell \n    (i, j)\n is painted\nblack. Then exactly \n    d\n cells on the top-left diagonally to the center and\nexactly \n    d\n cells on the top-right diagonally to the center are also\npainted black. That is all the cells with coordinates \n    (i - h, j \n    \u00b1 h)\n\nfor all \n    h\n between \n    0\n and \n    d\n are painted. In particular, a tick\nconsists of \n    2d + 1\n black cells. An already painted cell will remain\nblack if painted again. Below you can find an example of the \n    4 \n    \u00d7\n    9\n box, with two ticks of sizes \n    2\n and \n    3\n. You are given a\ndescription of a checkered field of size \n    n \n    \u00d7 m\n. Casimir claims\nthat this field came about after he drew some (possibly \n    0\n) ticks on it.\nThe ticks could be of different sizes, but the size of each tick is at least\n\n    k\n (that is, \n    d \n    \u2265 k\n for all the ticks). Determine whether this\nfield can indeed be obtained by drawing some (possibly none) ticks of sizes\n\n    d \n    \u2265 k\n or not. Input The first line contains an integer \n    t\n (\n    1\n    \n    \u2264 t \n    \u2264 100\n) \u2014 the number test cases. The following lines contain\nthe descriptions of the test cases. The first line of the test case\ndescription contains the integers \n    n\n, \n    m\n, and \n    k\n (\n    1 \n    \u2264 k\n    \n    \u2264 n \n    \u2264 10\n; \n    1 \n    \u2264 m \n    \u2264 19\n) \u2014 the field size and the\nminimum size of the ticks that Casimir drew. The following \n    n\n lines\ndescribe the field: each line consists of \n    m\n characters either being '.'\nif the corresponding cell is not yet painted or '*' otherwise. Output Print\n\n    t\n lines, each line containing the answer to the corresponding test case.\nThe answer to a test case should be YES if the given field can be obtained by\ndrawing ticks of at least the given size and NO otherwise. You may print every\nletter in any case you want (so, for example, the strings yEs, yes, Yes, and\nYES will all be recognized as positive answers). Example Input 8 2 3 1 *.* ...\n4 9 2 *.*.*...* .*.*...*. ..*.*.*.. .....*... 4 4 1 *.*. **** .**. .... 5 5 1\n..... *...* .*.*. ..*.* ...*. 5 5 2 ..... *...* .*.*. ..*.* ...*. 4 7 1\n*.....* .....*. ..*.*.. ...*... 3 3 1 *** *** *** 3 5 1 *...* .***. .**..\nOutput NO YES YES YES NO NO NO NO Note The first sample test case consists of\ntwo asterisks neither of which can be independent ticks since ticks of size\n\n    0\n don't exist. The second sample test case is already described in the\nstatement (check the picture in the statement). This field can be obtained by\ndrawing ticks of sizes \n    2\n and \n    3\n, as shown in the figure. The field\nin the third sample test case corresponds to three ticks of size \n    1\n.\nTheir center cells are marked with \n    blue\n,\n\n    red\n and \n    green\n\ncolors:\n*.*.*\n    *\n**.\n    *\n    \n    *\n.....\nThe field in the fourth sample test case could have been obtained by drawing\ntwo ticks of sizes \n    1\n and \n    2\n. Their vertices are marked below with\n\n    blue\n and \n    red\n\ncolors respectively:\n.....*...*.*.*...\n    *\n.*...\n    *\n.\nThe field in the fifth sample test case can not be obtained because \n    k =\n    2\n, and the last asterisk in the fourth row from the top with coordinates\n\n    (4, 5)\n can only be a part of a tick of size \n    1\n. The field in the\nsixth sample test case can not be obtained because the top left asterisk\n\n    (1, 1)\n can't be an independent tick, since the sizes of the ticks must\nbe positive, and cannot be part of a tick with the center cell in the last\nrow, since it is separated from it by a gap (a point, '.') in \n    (2, 2)\n. In\nthe seventh sample test case, similarly, the field can not be obtained by the\ndescribed process because the asterisks with coordinates \n    (1, 2)\n (second\ncell in the first row), \n    (3, 1)\n and \n    (3, 3)\n (leftmost and rightmost\ncells in the bottom) can not be parts of any ticks.\n\n",
+        "cf_contest_id": 1579,
+        "cf_index": "C",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "8\r\n2 3 1\r\n*.*\r\n...\r\n4 9 2\r\n*.*.*...*\r\n.*.*...*.\r\n..*.*.*..\r\n.....*...\r\n4 4 1\r\n*.*.\r\n****\r\n.**.\r\n....\r\n5 5 1\r\n.....\r\n*...*\r\n.*.*.\r\n..*.*\r\n...*.\r\n5 5 2\r\n.....\r\n*...*\r\n.*.*.\r\n..*.*\r\n...*.\r\n4 7 1\r\n*.....*\r\n.....*.\r\n..*.*..\r\n...*...\r\n3 3 1\r\n***\r\n***\r\n***\r\n3 5 1\r\n*...*\r\n.***.\r\n.**..\r\n",
+                "NO\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1 1 1\r\n.\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1\r\n1 1 1\r\n*\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,83 @@
+[
+    {
+        "name": "X-OR",
+        "description": "This is an interactive problem! Ehab has a hidden permutation \n    p\n of\nlength \n    n\n consisting of the elements from \n    0\n to \n    n-1\n. You, for\nsome reason, want to figure out the permutation. To do that, you can give Ehab\n\n    2\n different indices \n    i\n and \n    j\n, and he'll reply with\n\n    (p_i|p_j)\n where \n    |\n is the bitwise-or operation. Ehab has just\nenough free time to answer \n    4269\n questions, and while he's OK with\nanswering that many questions, he's too lazy to play your silly games, so\nhe'll fix the permutation beforehand and will not change it depending on your\nqueries. Can you guess the permutation? Input The only line contains the\ninteger \n    n\n \n    (3 \n    \u2264 n \n    \u2264 2048)\n \u2014 the length of the permutation.\nInteraction To ask a question, print \"? \n    i\n \n    j\n\" (without quotes, \n    i\n    \n    \u2260 j\n) Then, you should read the answer, which will be \n    (p_i|p_j)\n.\nIf we answer with \n    -1\n instead of a valid answer, that means you exceeded\nthe number of queries or made an invalid query. Exit immediately after\nreceiving \n    -1\n and you will see wrong answer verdict. Otherwise, you can\nget an arbitrary verdict because your solution will continue to read from a\nclosed stream. To print the answer, print \"! \n    p_1\n \n    p_2\n\n\n    \u2026\n \n    p_n\n\" (without quotes). Note that answering doesn't count\nas one of the \n    4269\n queries. After printing a query or printing the\nanswer, do not forget to output end of line and flush the output. Otherwise,\nyou will get idleness limit exceeded. To do this, use: fflush(stdout) or\ncout.flush() in C++; System.out.flush() in Java; flush(output) in Pascal;\nstdout.flush() in Python; See the documentation for other languages.Hacks: The\nfirst line should contain the integer \n    n\n (\n    3 \n    \u2264 n \n    \u2264 2^11\n) \u2014\nthe length of the permutation \n    p\n. The second line should contain \n    n\n\nspace-separated integers \n    p_1\n, \n    p_2\n, \n    \u2026\n, \n    p_n\n (\n    0\n    \n    \u2264 p_i < n\n) \u2014 the elements of the permutation \n    p\n. Example Input 3 1\n3 2 Output ? 1 2 ? 1 3 ? 2 3 ! 1 0 2 Note In the first sample, the permutation\nis \n    [1,0,2]\n. You start by asking about \n    p_1|p_2\n and Ehab replies\nwith \n    1\n. You then ask about \n    p_1|p_3\n and Ehab replies with \n    3\n.\nFinally, you ask about \n    p_2|p_3\n and Ehab replies with \n    2\n. You then\nguess the permutation.\n\n",
+        "cf_contest_id": 1364,
+        "cf_index": "E",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "constructive algorithms",
+            "divide and conquer",
+            "interactive",
+            "probabilities"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n1 0 2\r\n",
+                "26\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n1 2 0\r\n",
+                "25\r\n"
+            ],
+            [
+                "4\r\n2 3 1 0\r\n",
+                "39\r\n"
+            ],
+            [
+                "5\r\n3 2 0 1 4\r\n",
+                "50\r\n"
+            ],
+            [
+                "6\r\n5 1 3 4 2 0\r\n",
+                "51\r\n"
+            ],
+            [
+                "7\r\n5 1 6 3 2 4 0\r\n",
+                "11\r\n"
+            ],
+            [
+                "76\r\n0 65 47 17 52 2 73 22 16 71 21 11 28 61 72 23 37 42 7 32 51 3 8 60 45 36 34 15 49 14 25 4 67 53 39 48 6 75 70 30 10 43 58 40 9 18 33 38 68 13 62 24 44 57 31 59 55 12 5 66 54 63 26 74 56 69 41 19 27 64 35 1 29 46 50 20\r\n",
+                "154\r\n"
+            ],
+            [
+                "4\r\n3 1 0 2\r\n",
+                "49\r\n"
+            ],
+            [
+                "8\r\n7 0 5 3 6 2 1 4\r\n",
+                "38\r\n"
+            ],
+            [
+                "16\r\n4 9 0 6 3 10 1 12 15 14 8 13 7 5 11 2\r\n",
+                "46\r\n"
+            ],
+            [
+                "32\r\n18 3 27 24 0 5 12 22 7 26 20 30 17 15 9 8 21 23 1 16 29 4 2 10 19 28 11 6 31 14 13 25\r\n",
+                "80\r\n"
+            ],
+            [
+                "64\r\n17 8 4 9 24 49 52 25 33 56 2 63 16 12 62 47 59 28 39 5 22 32 53 61 3 46 19 43 13 35 7 26 0 29 27 34 40 48 20 6 14 50 38 21 30 42 31 10 54 51 11 45 55 37 1 44 15 58 41 60 18 57 23 36\r\n",
+                "162\r\n"
+            ],
+            [
+                "128\r\n49 64 93 66 79 101 57 76 30 25 31 104 39 15 24 51 83 117 73 41 46 77 50 16 61 32 112 95 100 68 52 116 91 40 54 125 113 89 10 84 106 23 12 3 75 36 4 45 58 9 13 53 11 67 121 107 99 108 102 110 21 28 29 22 109 35 90 55 1 71 74 103 59 92 97 86 81 118 127 34 0 48 85 119 44 80 94 69 63 62 6 7 14 123 105 42 111 43 38 70 82 18 5 60 114 37 33 78 72 124 19 98 26 65 47 122 56 27 17 96 2 87 115 20 88 126 120 8\r\n",
+                "275\r\n"
+            ],
+            [
+                "35\r\n2 10 25 13 29 11 32 15 27 6 0 19 20 31 18 7 3 34 30 8 21 26 17 24 22 16 28 1 9 23 4 14 12 33 5\r\n",
+                "98\r\n"
+            ],
+            [
+                "74\r\n42 14 0 33 54 26 60 35 61 53 32 25 66 57 7 16 15 23 24 39 4 71 64 58 46 52 10 67 63 44 1 30 3 62 40 17 43 51 34 9 22 13 70 6 36 20 8 29 73 50 2 11 65 69 56 55 48 12 68 47 41 59 18 49 45 19 28 38 31 21 72 27 5 37\r\n",
+                "112\r\n"
+            ]
+        ]
+    }
+]

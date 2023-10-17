@@ -1,0 +1,41 @@
+[
+    {
+        "name": "Keep the Average High",
+        "description": "You are given an array of integers \n    a_1, a_2, \n    \u2026, a_n\n and an\ninteger \n    x\n. You need to select the maximum number of elements in the\narray, such that for every subsegment \n    a_l, a_l + 1, \n    \u2026, a_r\n\ncontaining strictly more than one element \n    (l < r)\n, either: At least one\nelement on this subsegment is not selected, or \n    a_l + a_l+1 + \n    \u2026 +\n    a_r \n    \u2265 x \n    \u00b7 (r - l + 1)\n. Input The first line of input contains\none integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264 10\n): the number of test cases.\nThe descriptions of \n    t\n test cases follow, three lines per test case. In\nthe first line you are given one integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264\n    50\n     000\n): the number of integers in the array. The second line contains\n\n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    -100\n     000 \n    \u2264 a_i\n    \n    \u2264 100\n     000\n). The third line contains one integer \n    x\n\n(\n    -100\n     000 \n    \u2264 x \n    \u2264 100\n     000\n). Output For each test case,\nprint one integer: the maximum number of elements that you can select. Example\nInput 4 5 1 2 3 4 5 2 10 2 4 2 4 2 4 2 4 2 4 3 3 -10 -5 -10 -8 3 9 9 -3 5\nOutput 4 8 2 2 Note In the first example, one valid way to select the elements\nis \n    [\n    1, 2, \n    3, \n    4,\n    \n    5]\n. All subsegments satisfy at least one of the criteria. For\nexample, for the subsegment \n    l = 1\n, \n    r = 2\n we have that the element\n\n    2\n is not selected, satisfying the first criterion. For the subsegment\n\n    l = 3\n, \n    r = 5\n we have \n    3 + 4 + 5 = 12 \n    \u2265 2 \n    \u00b7 3\n,\nsatisfying the second criterion. We can't select all elements, because in this\ncase for \n    l = 1\n, \n    r = 2\n all elements are selected and we have \n    a_1\n    + a_2 = 3 < 2 \n    \u00b7 2\n. Thus, the maximum number of selected elements is\n\n    4\n. In the second example, one valid solution is \n    [\n    2,\n    \n    4, 2, \n    4, \n    2, \n    4, 2,\n    \n    4, \n    2, \n    4]\n. In the third example,\none valid solution is \n    [\n    -10, -5, \n    -10]\n. In the\nfourth example, one valid solution is \n    [\n    9, \n    9,\n    -3]\n.\n\n",
+        "cf_contest_id": 1616,
+        "cf_index": "D",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "math"
+        ],
+        "time_limit_seconds": 1.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n5\r\n1 2 3 4 5\r\n2\r\n10\r\n2 4 2 4 2 4 2 4 2 4\r\n3\r\n3\r\n-10 -5 -10\r\n-8\r\n3\r\n9 9 -3\r\n5\r\n",
+                "4\r\n8\r\n2\r\n2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n10\r\n5 -9 -1 6 -6 5 -6 -8 5 3\r\n0\r\n",
+                "6\r\n"
+            ],
+            [
+                "10\r\n1\r\n62169\r\n62169\r\n1\r\n49900\r\n49900\r\n1\r\n-45220\r\n-45220\r\n1\r\n45734\r\n45734\r\n1\r\n-77581\r\n-77581\r\n1\r\n-48287\r\n-48287\r\n1\r\n53304\r\n53304\r\n1\r\n13558\r\n13558\r\n1\r\n18202\r\n18202\r\n1\r\n33613\r\n33613\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "10\r\n2\r\n89390 -71766\r\n89390\r\n2\r\n-14330 18110\r\n1890\r\n2\r\n-51060 -90730\r\n-70895\r\n2\r\n31775 450\r\n16112\r\n2\r\n-50057 -45526\r\n-47791\r\n2\r\n27119 -93868\r\n-93868\r\n2\r\n-63505 9891\r\n-63505\r\n2\r\n46435 -78715\r\n-16140\r\n2\r\n-69774 -64015\r\n-66894\r\n2\r\n-78662 -90415\r\n-84538\r\n",
+                "1\r\n2\r\n2\r\n2\r\n1\r\n2\r\n2\r\n2\r\n1\r\n1\r\n"
+            ],
+            [
+                "10\r\n3\r\n-54528 42942 -6804\r\n-54528\r\n3\r\n18649 67840 -26344\r\n43244\r\n3\r\n13902 51617 -4691\r\n32759\r\n3\r\n77397 -38549 -51828\r\n-45188\r\n3\r\n21750 -55472 -47700\r\n-55472\r\n3\r\n59264 11044 -311\r\n35154\r\n3\r\n-13132 88555 -52791\r\n-13132\r\n3\r\n-82155 25593 -3193\r\n-28281\r\n3\r\n-1405 586 77255\r\n586\r\n3\r\n30756 83299 50338\r\n54797\r\n",
+                "3\r\n2\r\n2\r\n2\r\n3\r\n2\r\n3\r\n3\r\n2\r\n3\r\n"
+            ]
+        ]
+    }
+]

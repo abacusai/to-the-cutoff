@@ -1,0 +1,127 @@
+[
+    {
+        "name": "Priority Queue",
+        "description": "You are given a sequence \n    A\n, where its elements are either in the form +\nx or -, where \n    x\n is an integer. For such a sequence \n    S\n where its\nelements are either in the form + x or -, define \n    f(S)\n as follows:\niterate through \n    S\n's elements from the first one to the last one, and\nmaintain a multiset \n    T\n as you iterate through it. for each element, if\nit's in the form + x, add \n    x\n to \n    T\n; otherwise, erase the smallest\nelement from \n    T\n (if \n    T\n is empty, do nothing). after iterating\nthrough all \n    S\n's elements, compute the sum of all elements in \n    T\n.\n\n    f(S)\n is defined as the sum. The sequence \n    b\n is a subsequence of the\nsequence \n    a\n if \n    b\n can be derived from \n    a\n by removing zero or\nmore elements without changing the order of the remaining elements. For all\n\n    A\n's subsequences \n    B\n, compute the sum of \n    f(B)\n, modulo\n\n    998\n     244\n     353\n. Input The first line contains an integer \n    n\n\n(\n    1\n    \u2264 n\n    \u2264 500\n) \u2014 the length of \n    A\n. Each of the next \n    n\n\nlines begins with an operator + or -. If the operator is +, then it's followed\nby an integer \n    x\n (\n    1\n    \u2264 x<998\n     244\n     353\n). The \n    i\n-th line\nof those \n    n\n lines describes the \n    i\n-th element in \n    A\n. Output\nPrint one integer, which is the answer to the problem, modulo\n\n    998\n     244\n     353\n. Examples Input 4 \u00ad  1  2 \u00ad Output 16 Input 15\n 2432543 \u00ad  4567886  65638788 \u00ad  578943 \u00ad \u00ad  62356680 \u00ad \n711111 \u00ad  998244352 \u00ad \u00ad Output 750759115 Note In the first example, the\nfollowing are all possible pairs of \n    B\n and \n    f(B)\n: \n    B=\n ,\n\n    f(B)=0\n. \n    B=\n -, \n    f(B)=0\n. \n    B=\n + 1, -, \n    f(B)=0\n.\n\n    B=\n -, + 1, -, \n    f(B)=0\n. \n    B=\n + 2, -, \n    f(B)=0\n. \n    B=\n\n-, + 2, -, \n    f(B)=0\n. \n    B=\n -, \n    f(B)=0\n. \n    B=\n -, -,\n\n    f(B)=0\n. \n    B=\n + 1, + 2, \n    f(B)=3\n. \n    B=\n + 1, + 2, -,\n\n    f(B)=2\n. \n    B=\n -, + 1, + 2, \n    f(B)=3\n. \n    B=\n -, + 1, + 2, -,\n\n    f(B)=2\n. \n    B=\n -, + 1, \n    f(B)=1\n. \n    B=\n + 1, \n    f(B)=1\n.\n\n    B=\n -, + 2, \n    f(B)=2\n. \n    B=\n + 2, \n    f(B)=2\n. The sum of\nthese values is \n    16\n.\n\n",
+        "cf_contest_id": 1542,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "dp",
+            "implementation",
+            "math",
+            "ternary search"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "4\r\n-\r\n+ 1\r\n+ 2\r\n-\r\n",
+                "16"
+            ],
+            [
+                "15\r\n+ 2432543\r\n-\r\n+ 4567886\r\n+ 65638788\r\n-\r\n+ 578943\r\n-\r\n-\r\n+ 62356680\r\n-\r\n+ 711111\r\n-\r\n+ 998244352\r\n-\r\n-\r\n",
+                "750759115"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n-\r\n",
+                "0"
+            ],
+            [
+                "1\r\n+ 194959066\r\n",
+                "194959066"
+            ],
+            [
+                "2\r\n-\r\n-\r\n",
+                "0"
+            ],
+            [
+                "2\r\n-\r\n+ 470437382\r\n",
+                "940874764"
+            ],
+            [
+                "2\r\n+ 480447249\r\n+ 480447249\r\n",
+                "923544643"
+            ],
+            [
+                "3\r\n+ 59671102\r\n+ 59671102\r\n-\r\n",
+                "298355510"
+            ],
+            [
+                "4\r\n+ 637139306\r\n-\r\n+ 637139306\r\n-\r\n",
+                "466997730"
+            ],
+            [
+                "4\r\n-\r\n+ 389245653\r\n+ 389245653\r\n+ 225287031\r\n",
+                "44271872"
+            ],
+            [
+                "4\r\n+ 525931171\r\n+ 710156085\r\n+ 710156085\r\n-\r\n",
+                "355065906"
+            ],
+            [
+                "2\r\n+ 717107178\r\n+ 717107178\r\n",
+                "871940006"
+            ],
+            [
+                "3\r\n-\r\n-\r\n-\r\n",
+                "0"
+            ],
+            [
+                "3\r\n-\r\n+ 351651123\r\n-\r\n",
+                "703302246"
+            ],
+            [
+                "3\r\n+ 462776116\r\n-\r\n+ 380581534\r\n",
+                "451389662"
+            ],
+            [
+                "3\r\n+ 489111368\r\n+ 489111368\r\n+ 489111368\r\n",
+                "878114651"
+            ],
+            [
+                "3\r\n+ 202794029\r\n+ 810021800\r\n+ 810021800\r\n",
+                "303640045"
+            ],
+            [
+                "3\r\n+ 84007770\r\n+ 132687880\r\n+ 132687880\r\n",
+                "399289767"
+            ],
+            [
+                "4\r\n-\r\n-\r\n-\r\n-\r\n",
+                "0"
+            ],
+            [
+                "4\r\n-\r\n-\r\n+ 929119327\r\n-\r\n",
+                "721744249"
+            ],
+            [
+                "4\r\n+ 208445053\r\n-\r\n-\r\n+ 208445053\r\n",
+                "87961824"
+            ],
+            [
+                "4\r\n+ 68335221\r\n+ 68335221\r\n+ 68335221\r\n-\r\n",
+                "163454404"
+            ],
+            [
+                "4\r\n+ 774599552\r\n+ 774599552\r\n+ 774599552\r\n+ 774599552\r\n",
+                "829321192"
+            ],
+            [
+                "4\r\n+ 97265632\r\n+ 267294833\r\n+ 267294833\r\n+ 97265632\r\n",
+                "841745675"
+            ],
+            [
+                "4\r\n+ 418176064\r\n+ 148508573\r\n+ 148508573\r\n+ 148508573\r\n",
+                "920148146"
+            ],
+            [
+                "4\r\n+ 646243272\r\n+ 646243272\r\n+ 646243272\r\n+ 147162825\r\n",
+                "715231480"
+            ]
+        ]
+    }
+]

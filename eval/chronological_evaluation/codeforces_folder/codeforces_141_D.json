@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Take-off Ramps",
+        "description": "Vasya participates in a ski race along the X axis. The start is at point 0,\nand the finish is at L, that is, at a distance L meters from the start in the\npositive direction of the axis. Vasya has been training so hard that he can\nrun one meter in exactly one second. Besides, there are n take-off ramps on\nthe track, each ramp is characterized by four numbers: xi represents the\nramp's coordinate di represents from how many meters Vasya will land if he\ngoes down this ramp ti represents the flight time in seconds pi is the number,\nindicating for how many meters Vasya should gather speed to get ready and fly\noff the ramp. As Vasya gathers speed, he should ski on the snow (that is, he\nshould not be flying), but his speed still equals one meter per second. Vasya\nis allowed to move in any direction on the X axis, but he is prohibited to\ncross the start line, that is go to the negative semiaxis. Vasya himself\nchooses which take-off ramps he will use and in what order, that is, he is not\nobliged to take off from all the ramps he encounters. Specifically, Vasya can\nskip the ramp. It is guaranteed that xi + di \u2264 L, that is, Vasya cannot cross\nthe finish line in flight. Vasya can jump from the ramp only in the positive\ndirection of X axis. More formally, when using the i-th ramp, Vasya starts\ngathering speed at point xi - pi, jumps at point xi, and lands at point xi +\ndi. He cannot use the ramp in opposite direction. Your task is to find the\nminimum time that Vasya will spend to cover the distance. Input The first line\ncontains two integers n and L (0 \u2264 n \u2264 10^5, 1 \u2264 L \u2264 10^9). Then n lines\ncontain the descriptions of the ramps, each description is on a single line.\nEach description is a group of four non-negative integers xi, di, ti, pi (0 \u2264\nxi \u2264 L, 1 \u2264 di, ti, pi \u2264 10^9, xi + di \u2264 L). Output Print in the first line\nthe minimum time in seconds Vasya needs to complete the track. Print in the\nsecond line k \u2014 the number of take-off ramps that Vasya needs to use, and\nprint on the third line of output k numbers the number the take-off ramps\nVasya used in the order in which he used them. Print each number exactly once,\nseparate the numbers with a space. The ramps are numbered starting from 1 in\nthe order in which they are given in the input. Examples Input 2 20 5 10 5 5 4\n16 1 7 Output 15 1 1 Input 2 20 9 8 12 6 15 5 1 1 Output 16 1 2 Note In the\nfirst sample, Vasya cannot use ramp 2, because then he will need to gather\nspeed starting from point -3, which is not permitted by the statement. The\noptimal option is using ramp 1, the resulting time is: moving to the point of\ngathering speed + gathering speed until reaching the takeoff ramp + flight\ntime + moving to the finish line = 0 + 5 + 5 + 5 = 15. In the second sample\nusing ramp 1 is not optimal for Vasya as t1 > d1. The optimal option is using\nramp 2, the resulting time is: moving to the point of gathering speed +\ngathering speed until reaching the takeoff ramp + flight time + moving to the\nfinish line = 14 + 1 + 1 + 0 = 16.\n\n",
+        "cf_contest_id": 141,
+        "cf_index": "D",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "graphs",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 20\r\n5 10 5 5\r\n4 16 1 7\r\n",
+                "15\r\n1\r\n1 "
+            ],
+            [
+                "2 20\r\n9 8 12 6\r\n15 5 1 1\r\n",
+                "16\r\n1\r\n2 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "0 10\r\n",
+                "10\r\n0\r\n"
+            ],
+            [
+                "1 20\r\n2 1 10 1\r\n",
+                "20\r\n0\r\n"
+            ],
+            [
+                "3 50\r\n44 3 4 47\r\n2 40 33 2\r\n28 16 3 31\r\n",
+                "43\r\n1\r\n2 "
+            ],
+            [
+                "0 100\r\n",
+                "100\r\n0\r\n"
+            ],
+            [
+                "5 100\r\n84 5 19 103\r\n45 39 105 63\r\n16 67 59 24\r\n6 89 104 8\r\n94 5 3 19\r\n",
+                "98\r\n1\r\n5 "
+            ],
+            [
+                "10 10\r\n8 1 4 1\r\n1 6 3 1\r\n1 5 6 1\r\n2 8 13 2\r\n6 4 8 1\r\n9 1 2 1\r\n7 3 1 2\r\n6 2 5 2\r\n3 2 10 1\r\n1 8 9 1\r\n",
+                "7\r\n1\r\n2 "
+            ],
+            [
+                "15 30\r\n12 7 13 1\r\n29 1 1 1\r\n20 2 10 3\r\n0 24 17 1\r\n24 1 1 11\r\n17 12 8 1\r\n27 3 1 1\r\n20 4 1 2\r\n1 29 11 1\r\n25 1 3 2\r\n13 3 7 1\r\n0 26 2 1\r\n9 10 11 1\r\n0 7 15 1\r\n26 1 4 4\r\n",
+                "12\r\n1\r\n9 "
+            ],
+            [
+                "0 1\r\n",
+                "1\r\n0\r\n"
+            ],
+            [
+                "0 1000000000\r\n",
+                "1000000000\r\n0\r\n"
+            ],
+            [
+                "0 10\r\n",
+                "10\r\n0\r\n"
+            ],
+            [
+                "1 20\r\n7 1 5 1\r\n",
+                "20\r\n0\r\n"
+            ],
+            [
+                "3 50\r\n28 1 1 3\r\n21 1 1 1\r\n34 1 1 1\r\n",
+                "50\r\n0\r\n"
+            ],
+            [
+                "0 100\r\n",
+                "100\r\n0\r\n"
+            ],
+            [
+                "5 100\r\n85 5 4 6\r\n46 5 6 10\r\n15 5 4 9\r\n25 3 6 3\r\n26 2 2 8\r\n",
+                "98\r\n2\r\n3 1 "
+            ],
+            [
+                "10 10\r\n3 2 2 91\r\n3 4 1 75\r\n7 3 6 47\r\n5 5 5 83\r\n1 2 2 18\r\n0 2 2 28\r\n5 5 3 88\r\n5 3 2 26\r\n9 1 5 90\r\n8 1 2 34\r\n",
+                "10\r\n0\r\n"
+            ],
+            [
+                "15 30\r\n9 3 32 1\r\n0 16 38 2\r\n1 8 50 2\r\n16 14 21 2\r\n5 18 68 3\r\n25 2 49 1\r\n17 6 52 2\r\n17 3 94 1\r\n1 25 40 2\r\n27 1 49 2\r\n29 1 31 3\r\n19 3 30 1\r\n20 4 17 3\r\n18 9 66 2\r\n8 20 78 3\r\n",
+                "30\r\n0\r\n"
+            ]
+        ]
+    }
+]

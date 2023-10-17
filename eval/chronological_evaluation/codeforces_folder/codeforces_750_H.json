@@ -1,0 +1,34 @@
+[
+    {
+        "name": "New Year and Snowy Grid",
+        "description": "Pay attention to the output section below, where you will see the information\nabout flushing the output. Bearland is a grid with h rows and w columns. Rows\nare numbered 1 through h from top to bottom. Columns are numbered 1 through w\nfrom left to right. Every cell is either allowed (denoted by '.' in the input)\nor permanently blocked (denoted by '#'). Bearland is a cold land, where heavy\nsnow often makes travelling harder. Every day a few allowed cells are\ntemporarily blocked by snow. Note, that this block works only on this\nparticular day and next day any of these cells might be allowed again (unless\nthere is another temporarily block). It's possible to move directly between\ntwo cells only if they share a side and none of them is permanently or\ntemporarily blocked. Limak is a little polar bear who lives in Bearland. His\nhouse is at the top left cell, while his school is at the bottom right cell.\nEvery day Limak should first go from his house to the school and then return\nback to his house. Since he gets bored easily, he doesn't want to visit the\nsame cell twice on one day, except for the cell with his house, where he\nstarts and ends. If Limak can reach a school and return home avoiding\nrevisiting cells, he calls a day interesting. There are q days you must\nprocess, one after another. For each of these days you should check if it's\ninteresting and print \"YES\" or \"NO\" on a separate line. In order to be able to\nread the description of the next day you should print the answer for the\nprevious one and flush the output. It's guaranteed that a day with no cells\ntemporarily blocked by snow would be interesting. It's also guaranteed that\ncells with Limak's house and school are never blocked (neither permanently or\ntemporarily). Input The first line of the input contains three integers h, w\nand q (2 \u2264 h, w \u2264 1000, 1 \u2264 q \u2264 10 000) \u2014 the height and the width of the\ngrid, and the number of days, respectively. Next h lines describe which cells\nare allowed and which permanently blocked. The i-th line contains a string of\nlength w, describing the i-th row. Every character is either '.' (denoting an\nallowed cell) or '#' (denoting a permanently blocked cell). It's guaranteed\nthat a day with no cells temporarily blocked by snow would be interesting.\nThen, the description of q days is given. The description of the i-th day\nstarts with a line containing a single integer ki (1 \u2264 ki \u2264 10) \u2014 the number\nof cells that are temporarily blocked by snow on that day. Each of next ki\nlines contains two integers ri, j and ci, j (1 \u2264 ri, j \u2264 h, 1 \u2264 ci, j \u2264 w),\nrepresenting a cell at the intersection of the row ri, j and the column ci, j.\nThe given ki cells are distinct and none of them is permanently blocked. Also,\nnone of them contains Limak's house or school. Output For each of q days print\n\"YES\" if that day is interesting, and otherwise print \"NO\", both without the\nquotes. After printing an answer, you have to both print the end-of-line\ncharacter and flush the output. Then you can proceed to the next day. You can\nget Idleness Limit Exceeded if you don't print anything or if you forget to\nflush the output. To flush you can use (just after printing a YES/NO and end-\nof-line): fflush(stdout) in C++; System.out.flush() in Java; stdout.flush() in\nPython; flush(output) in Pascal; See the documentation for other languages.\nExamples Input 3 5 4 ..... ..... .#... 1 1 4 1 1 5 2 2 4 3 1 2 1 5 3 3 Output\nNO YES YES NO Input 9 31 5 ...............................\n............................... .###.###.#.###...###.###.#.###.\n...#.#.#.#.#.......#.#.#.#...#. .###.#.#.#.###...###.#.#.#...#.\n.#...#.#.#.#.#...#...#.#.#...#. .###.###.#.###...###.###.#...#.\n............................... ............................... 5 6 5 2 11 1\n14 8 15 2 14 5 2 14 1 14 8 16 6 5 2 11 3 2 2 1 4 8 30 10 3 1 3 11 5 16 7 21 4\n16 3 5 7 31 3 9 7 25 3 27 10 3 1 3 9 7 25 3 27 7 21 4 17 3 5 7 31 4 16 3 11\nOutput NO YES YES YES NO Note In the first sample, there are 4 days. Drawings\nbelow show how Limak could go to school and return to his home in the second\nand the third day (on the left and on the right respectively). A permanently\nblocked cell is painted red, while cells temporarily blocked by snow are\npainted orange. Black and green arrows should Limak's way to the school and\nback to the house respectively. For the second sample, below you can see how\nthe grid looks like on each day, where '#' denotes a cell that is blocked,\neither temporarily or permanently.\n\n",
+        "cf_contest_id": 750,
+        "cf_index": "H",
+        "cf_rating": 3500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "interactive"
+        ],
+        "time_limit_seconds": 9.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 5 4\r\n.....\r\n.....\r\n.#...\r\n1\r\n1 4\r\n1\r\n1 5\r\n2\r\n2 4\r\n3 1\r\n2\r\n1 5\r\n3 3\r\n",
+                "NO\r\nYES\r\nYES\r\nNO\r\n"
+            ],
+            [
+                "9 31 5\r\n...............................\r\n...............................\r\n.###.###.#.###...###.###.#.###.\r\n...#.#.#.#.#.......#.#.#.#...#.\r\n.###.#.#.#.###...###.#.#.#...#.\r\n.#...#.#.#.#.#...#...#.#.#...#.\r\n.###.###.#.###...###.###.#...#.\r\n...............................\r\n...............................\r\n5\r\n6 5\r\n2 11\r\n1 14\r\n8 15\r\n2 14\r\n5\r\n2 14\r\n1 14\r\n8 16\r\n6 5\r\n2 11\r\n3\r\n2 2\r\n1 4\r\n8 30\r\n10\r\n3 1\r\n3 11\r\n5 16\r\n7 21\r\n4 16\r\n3 5\r\n7 31\r\n3 9\r\n7 25\r\n3 27\r\n10\r\n3 1\r\n3 9\r\n7 25\r\n3 27\r\n7 21\r\n4 17\r\n3 5\r\n7 31\r\n4 16\r\n3 11\r\n",
+                "NO\r\nYES\r\nYES\r\nYES\r\nNO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2 4\r\n..\r\n..\r\n1\r\n1 2\r\n1\r\n2 1\r\n2\r\n1 2\r\n2 1\r\n1\r\n2 1\r\n",
+                "NO\r\nNO\r\nNO\r\nNO\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,54 @@
+[
+    {
+        "name": "Dungeons and Candies",
+        "description": "During the loading of the game \"Dungeons and Candies\" you are required to get\ndescriptions of k levels from the server. Each description is a map of an n \u00d7\nm checkered rectangular field. Some cells of the field contain candies (each\ncell has at most one candy). An empty cell is denoted as \".\" on the map, but\nif a cell has a candy, it is denoted as a letter of the English alphabet. A\nlevel may contain identical candies, in this case the letters in the\ncorresponding cells of the map will be the same. When you transmit information\nvia a network, you want to minimize traffic \u2014 the total size of the\ntransferred data. The levels can be transmitted in any order. There are two\nways to transmit the current level A: You can transmit the whole level A. Then\nyou need to transmit n\u00b7m bytes via the network. You can transmit the\ndifference between level A and some previously transmitted level B (if it\nexists); this operation requires to transmit dA, B\u00b7w bytes, where dA, B is the\nnumber of cells of the field that are different for A and B, and w is a\nconstant. Note, that you should compare only the corresponding cells of levels\nA and B to calculate dA, B. You cannot transform the maps of levels, i.e.\nrotate or shift them relatively to each other. Your task is to find a way to\ntransfer all the k levels and minimize the traffic. Input The first line\ncontains four integers n, m, k, w (1 \u2264 n, m \u2264 10; 1 \u2264 k, w \u2264 1000). Then\nfollows the description of k levels. Each level is described by n lines, each\nline contains m characters. Each character is either a letter of the English\nalphabet or a dot (\".\"). Please note that the case of the letters matters.\nOutput In the first line print the required minimum number of transferred\nbytes. Then print k pairs of integers x1, y1, x2, y2, ..., xk, yk, describing\nthe way to transfer levels. Pair xi, yi means that level xi needs to be\ntransferred by way yi. If yi equals 0, that means that the level must be\ntransferred using the first way, otherwise yi must be equal to the number of a\npreviously transferred level. It means that you will transfer the difference\nbetween levels yi and xi to transfer level xi. Print the pairs in the order of\ntransferring levels. The levels are numbered 1 through k in the order they\nfollow in the input. If there are multiple optimal solutions, you can print\nany of them. Examples Input 2 3 3 2 A.A ... A.a ..C X.Y ... Output 14 1 0 2 1\n3 1 Input 1 1 4 1 A . B . Output 3 1 0 2 0 4 2 3 0 Input 1 3 5 2 ABA BBB BBA\nBAB ABB Output 11 1 0 3 1 2 3 4 2 5 1\n\n",
+        "cf_contest_id": 436,
+        "cf_index": "C",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "dsu",
+            "graphs",
+            "greedy",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 3 3 2\r\nA.A\r\n...\r\nA.a\r\n..C\r\nX.Y\r\n...\r\n",
+                "14\r\n1 0\r\n2 1\r\n3 1\r\n"
+            ],
+            [
+                "1 1 4 1\r\nA\r\n.\r\nB\r\n.\r\n",
+                "3\r\n1 0\r\n2 0\r\n4 2\r\n3 0\r\n"
+            ],
+            [
+                "1 3 5 2\r\nABA\r\nBBB\r\nBBA\r\nBAB\r\nABB\r\n",
+                "11\r\n1 0\r\n3 1\r\n2 3\r\n4 2\r\n5 1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2 5 1\r\n..\r\nBA\r\n.A\r\nB.\r\n..\r\nA.\r\nAB\r\n.B\r\n..\r\n..\r\n",
+                "12\r\n1 0\r\n2 1\r\n3 1\r\n5 3\r\n4 5\r\n"
+            ],
+            [
+                "3 1 5 1\r\nB\r\nA\r\nB\r\nA\r\nA\r\nB\r\nA\r\nA\r\nA\r\nA\r\nA\r\nA\r\nA\r\nA\r\nA\r\n",
+                "5\r\n1 0\r\n2 1\r\n3 2\r\n4 3\r\n5 3\r\n"
+            ],
+            [
+                "3 2 10 1\r\nAB\r\nBA\r\nAB\r\nAA\r\nAA\r\nBA\r\nAA\r\nAA\r\nAB\r\nAB\r\nAB\r\nBA\r\nBA\r\nAB\r\nAA\r\nBB\r\nAB\r\nBA\r\nBB\r\nBB\r\nBA\r\nAA\r\nAA\r\nAB\r\nAB\r\nAB\r\nBA\r\nBB\r\nAB\r\nAA\r\n",
+                "16\r\n1 0\r\n3 1\r\n8 3\r\n2 3\r\n4 2\r\n9 4\r\n6 4\r\n7 6\r\n10 6\r\n5 10\r\n"
+            ],
+            [
+                "2 3 10 2\r\nABB\r\nABA\r\nAAB\r\nBAB\r\nAAA\r\nBBA\r\nBBB\r\nBAA\r\nBBB\r\nABB\r\nABA\r\nBBA\r\nBBB\r\nAAB\r\nABA\r\nABB\r\nBBA\r\nBAB\r\nBBB\r\nBBB\r\n",
+                "38\r\n1 0\r\n5 1\r\n7 5\r\n10 5\r\n4 7\r\n6 1\r\n3 6\r\n8 1\r\n9 7\r\n2 0\r\n"
+            ],
+            [
+                "1 1 1 1\r\n.\r\n",
+                "1\r\n1 0\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,245 @@
+[
+    {
+        "name": "Efim and Strange Grade",
+        "description": "Efim just received his grade for the last test. He studies in a special school\nand his grade can be equal to any positive decimal fraction. First he got\ndisappointed, as he expected a way more pleasant result. Then, he developed a\ntricky plan. Each second, he can ask his teacher to round the grade at any\nplace after the decimal point (also, he can ask to round to the nearest\ninteger). There are t seconds left till the end of the break, so Efim has to\nact fast. Help him find what is the maximum grade he can get in no more than t\nseconds. Note, that he can choose to not use all t seconds. Moreover, he can\neven choose to not round the grade at all. In this problem, classic rounding\nrules are used: while rounding number to the n-th digit one has to take a look\nat the digit n + 1. If it is less than 5 than the n-th digit remain unchanged\nwhile all subsequent digits are replaced with 0. Otherwise, if the n + 1 digit\nis greater or equal to 5, the digit at the position n is increased by 1 (this\nmight also change some other digits, if this one was equal to 9) and all\nsubsequent digits are replaced with 0. At the end, all trailing zeroes are\nthrown away. For example, if the number 1.14 is rounded to the first decimal\nplace, the result is 1.1, while if we round 1.5 to the nearest integer, the\nresult is 2. Rounding number 1.299996121 in the fifth decimal place will\nresult in number 1.3. Input The first line of the input contains two integers\nn and t (1 \u2264 n \u2264 200 000, 1 \u2264 t \u2264 10^9) \u2014 the length of Efim's grade and the\nnumber of seconds till the end of the break respectively. The second line\ncontains the grade itself. It's guaranteed that the grade is a positive\nnumber, containing at least one digit after the decimal points, and it's\nrepresentation doesn't finish with 0. Output Print the maximum grade that Efim\ncan get in t seconds. Do not print trailing zeroes. Examples Input 6 1 10.245\nOutput 10.25 Input 6 2 10.245 Output 10.3 Input 3 100 9.2 Output 9.2 Note In\nthe first two samples Efim initially has grade 10.245. During the first second\nEfim can obtain grade 10.25, and then 10.3 during the next second. Note, that\nthe answer 10.30 will be considered incorrect. In the third sample the optimal\nstrategy is to not perform any rounding at all.\n\n",
+        "cf_contest_id": 718,
+        "cf_index": "A",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 1\r\n10.245\r\n",
+                "10.25\r\n"
+            ],
+            [
+                "6 2\r\n10.245\r\n",
+                "10.3\r\n"
+            ],
+            [
+                "3 100\r\n9.2\r\n",
+                "9.2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "12 5\r\n872.04488525\r\n",
+                "872.1\r\n"
+            ],
+            [
+                "35 8\r\n984227318.2031144444444444494637612\r\n",
+                "984227318.2031144445\r\n"
+            ],
+            [
+                "320 142\r\n2704701300865535.432223312233434114130011113220102420131323010344144201124303144444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444447444444444444444444444444444444615444444482101673308979557675074444444444444446867245414595534444693160202254444449544495367\r\n",
+                "2704701300865535.4322233122334341141300111132201024201313230103441442011243032\r\n"
+            ],
+            [
+                "5 10\r\n1.555\r\n",
+                "2\r\n"
+            ],
+            [
+                "6 1\r\n0.9454\r\n",
+                "1\r\n"
+            ],
+            [
+                "7 1000000000\r\n239.923\r\n",
+                "240\r\n"
+            ],
+            [
+                "7 235562\r\n999.999\r\n",
+                "1000\r\n"
+            ],
+            [
+                "9 2\r\n23999.448\r\n",
+                "23999.5\r\n"
+            ],
+            [
+                "9 3\r\n23999.448\r\n",
+                "24000\r\n"
+            ],
+            [
+                "13 1\r\n761.044449428\r\n",
+                "761.04445\r\n"
+            ],
+            [
+                "3 1\r\n0.1\r\n",
+                "0.1\r\n"
+            ],
+            [
+                "3 1\r\n9.9\r\n",
+                "10\r\n"
+            ],
+            [
+                "3 1\r\n0.9\r\n",
+                "1\r\n"
+            ],
+            [
+                "31 15\r\n2707786.24030444444444444724166\r\n",
+                "2707786.24031\r\n"
+            ],
+            [
+                "4 100\r\n99.9\r\n",
+                "100\r\n"
+            ],
+            [
+                "3 10\r\n9.9\r\n",
+                "10\r\n"
+            ],
+            [
+                "22 100\r\n11111111111111111111.5\r\n",
+                "11111111111111111112\r\n"
+            ],
+            [
+                "3 1\r\n9.5\r\n",
+                "10\r\n"
+            ],
+            [
+                "8 100\r\n9.444445\r\n",
+                "10\r\n"
+            ],
+            [
+                "6 2\r\n999.45\r\n",
+                "1000\r\n"
+            ],
+            [
+                "3 100\r\n9.9\r\n",
+                "10\r\n"
+            ],
+            [
+                "18 100\r\n9.4444444444454444\r\n",
+                "10\r\n"
+            ],
+            [
+                "16 999\r\n9595959.95959595\r\n",
+                "9595960\r\n"
+            ],
+            [
+                "4 100\r\n99.5\r\n",
+                "100\r\n"
+            ],
+            [
+                "5 1\r\n999.9\r\n",
+                "1000\r\n"
+            ],
+            [
+                "4 1\r\n5.59\r\n",
+                "6\r\n"
+            ],
+            [
+                "4 1\r\n99.5\r\n",
+                "100\r\n"
+            ],
+            [
+                "4 1\r\n99.9\r\n",
+                "100\r\n"
+            ],
+            [
+                "18 6\r\n102345678999.44449\r\n",
+                "102345679000\r\n"
+            ],
+            [
+                "3 3\r\n9.9\r\n",
+                "10\r\n"
+            ],
+            [
+                "5 1\r\n99.99\r\n",
+                "100\r\n"
+            ],
+            [
+                "7 1\r\n99999.9\r\n",
+                "100000\r\n"
+            ],
+            [
+                "3 121\r\n9.9\r\n",
+                "10\r\n"
+            ],
+            [
+                "8 6\r\n9.444445\r\n",
+                "10\r\n"
+            ],
+            [
+                "3 100\r\n8.9\r\n",
+                "9\r\n"
+            ],
+            [
+                "10 1\r\n999.999999\r\n",
+                "1000\r\n"
+            ],
+            [
+                "5 100\r\n6.666\r\n",
+                "7\r\n"
+            ],
+            [
+                "4 100\r\n9.99\r\n",
+                "10\r\n"
+            ],
+            [
+                "6 1\r\n9.9999\r\n",
+                "10\r\n"
+            ],
+            [
+                "4 10\r\n99.9\r\n",
+                "100\r\n"
+            ],
+            [
+                "5 1\r\n9.999\r\n",
+                "10\r\n"
+            ],
+            [
+                "3 1231\r\n9.9\r\n",
+                "10\r\n"
+            ],
+            [
+                "5 2\r\n999.9\r\n",
+                "1000\r\n"
+            ],
+            [
+                "5 100\r\n144.5\r\n",
+                "145\r\n"
+            ],
+            [
+                "5 100\r\n99.45\r\n",
+                "100\r\n"
+            ],
+            [
+                "10 1\r\n0.50444445\r\n",
+                "1\r\n"
+            ],
+            [
+                "7 1\r\n1.51111\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 1\r\n199.9\r\n",
+                "200\r\n"
+            ],
+            [
+                "3 100\r\n9.5\r\n",
+                "10\r\n"
+            ],
+            [
+                "7 1000\r\n409.659\r\n",
+                "410\r\n"
+            ],
+            [
+                "4 10\r\n99.5\r\n",
+                "100\r\n"
+            ],
+            [
+                "4 10\r\n10.9\r\n",
+                "11\r\n"
+            ],
+            [
+                "4 1\r\n19.5\r\n",
+                "20\r\n"
+            ]
+        ]
+    }
+]

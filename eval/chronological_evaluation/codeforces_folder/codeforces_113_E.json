@@ -1,0 +1,221 @@
+[
+    {
+        "name": "Sleeping",
+        "description": "One day Vasya was lying in bed watching his electronic clock to fall asleep\nquicker. Vasya lives in a strange country, where days have h hours, and every\nhour has m minutes. Clock shows time in decimal number system, in format H:M,\nwhere the string H always has a fixed length equal to the number of digits in\nthe decimal representation of number h - 1. To achieve this, leading zeros are\nadded if necessary. The string M has a similar format, and its length is\nalways equal to the number of digits in the decimal representation of number m\n- 1. For example, if h = 17, m = 1000, then time equal to 13 hours and 75\nminutes will be displayed as \"13:075\". Vasya had been watching the clock from\nh1 hours m1 minutes to h2 hours m2 minutes inclusive, and then he fell asleep.\nNow he asks you to count how many times he saw the moment at which at least k\ndigits changed on the clock simultaneously. For example, when switching 04:19\n\u2192 04:20 two digits change. When switching 23:59 \u2192 00:00, four digits change.\nConsider that Vasya has been watching the clock for strictly less than one\nday. Note that the last time Vasya saw on the clock before falling asleep was\n\"h2:m2\". That is, Vasya didn't see the moment at which time \"h2:m2\" switched\nto the next value. Input The first line of the input file contains three\nspace-separated integers h, m and k (2 \u2264 h, m \u2264 10^9, 1 \u2264 k \u2264 20). The second\nline contains space-separated integers h1, m1 (0 \u2264 h1 < h, 0 \u2264 m1 < m). The\nthird line contains space-separated integers h2, m2 (0 \u2264 h2 < h, 0 \u2264 m2 < m).\nOutput Print a single number \u2014 the number of times Vasya saw the moment of\nchanging at least k digits simultaneously. Please do not use the \nspecificator to read or write 64-bit integers in C++. It is preferred to use\nthe cin stream (also you may use the \n4 4 2 1 Output 3 Input 24 60 1 0 0 23 59 Output 1439 Input 24 60 3 23 59 23 59\nOutput 0 Note In the first example Vasya will see the following moments of\ntime: 4:4 0:0 \u2192 0:1 \u2192 0:2 \u2192 0:3 \u2192 0:4 1:0 \u2192 1:1 \u2192 1:2 \u2192 1:3 \u2192 1:4 2:0 \u2192 2:1 \u2192\n2:2 \u2192 2:3 \u2192 2:4. Double arrow () marks the sought moments of time (in this\nexample \u2014 when Vasya sees two numbers changing simultaneously). In the second\nexample k = 1. Any switching time can be accepted, since during switching of\nthe clock at least one digit is changed. Total switching equals to 24\u00b760 =\n1440, but Vasya have not seen one of them \u2014 the switching of 23:59 00:00. In\nthe third example Vasya fell asleep immediately after he began to look at the\nclock, so he did not see any change.\n\n",
+        "cf_contest_id": 113,
+        "cf_index": "E",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 5 2\r\n4 4\r\n2 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "24 60 1\r\n0 0\r\n23 59\r\n",
+                "1439\r\n"
+            ],
+            [
+                "24 60 3\r\n23 59\r\n23 59\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "23 110 4\r\n0 0\r\n22 109\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 2 2\r\n1 1\r\n1 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 2 2\r\n0 1\r\n0 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "8 10 2\r\n6 6\r\n1 2\r\n",
+                "3\r\n"
+            ],
+            [
+                "314 107 5\r\n180 33\r\n299 42\r\n",
+                "1\r\n"
+            ],
+            [
+                "92 270 2\r\n29 48\r\n17 44\r\n",
+                "2160\r\n"
+            ],
+            [
+                "93 52 5\r\n29 6\r\n65 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "1000000000 1000000000 1\r\n0 0\r\n999999999 999999999\r\n",
+                "999999999999999999\r\n"
+            ],
+            [
+                "1000000000 1000000000 10\r\n10000 10000\r\n1 1\r\n",
+                "999990001\r\n"
+            ],
+            [
+                "10010000 10010003 3\r\n0 0\r\n9010000 10010002\r\n",
+                "901910110100\r\n"
+            ],
+            [
+                "9 9 13\r\n3 2\r\n0 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "144 283 19\r\n134 149\r\n38 75\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 5 7\r\n0 2\r\n1 4\r\n",
+                "0\r\n"
+            ],
+            [
+                "9 8 12\r\n3 2\r\n6 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "344 67 20\r\n226 14\r\n10 40\r\n",
+                "0\r\n"
+            ],
+            [
+                "17 90909090 9\r\n8 9466488\r\n7 86570640\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 9 7\r\n4 5\r\n4 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "494 415 2\r\n374 387\r\n326 104\r\n",
+                "18704\r\n"
+            ],
+            [
+                "12486 348765 4\r\n5259 93081\r\n4525 300108\r\n",
+                "4101655\r\n"
+            ],
+            [
+                "909712 972351 6\r\n571890 860668\r\n257786 905994\r\n",
+                "5956081\r\n"
+            ],
+            [
+                "100500 100500 15\r\n62919 53446\r\n50150 12489\r\n",
+                "0\r\n"
+            ],
+            [
+                "267 52 3\r\n230 23\r\n119 30\r\n",
+                "156\r\n"
+            ],
+            [
+                "393 10101010 5\r\n18 1491558\r\n22 3874303\r\n",
+                "4282\r\n"
+            ],
+            [
+                "7777 7777 7\r\n4887 3774\r\n1455 1107\r\n",
+                "44\r\n"
+            ],
+            [
+                "90 324 1\r\n5 236\r\n53 102\r\n",
+                "15418\r\n"
+            ],
+            [
+                "10000000 111111111 11\r\n9306147 20593072\r\n1491402 56765362\r\n",
+                "21853\r\n"
+            ],
+            [
+                "5 10 15\r\n4 6\r\n3 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "10011001 10010010 6\r\n3 5\r\n2 0\r\n",
+                "1001200111\r\n"
+            ],
+            [
+                "456789 12345 3\r\n435346 2775\r\n432389 7873\r\n",
+                "56275219\r\n"
+            ],
+            [
+                "919293 949596 7\r\n644065 398988\r\n355484 582660\r\n",
+                "630712\r\n"
+            ],
+            [
+                "6 5 13\r\n0 0\r\n0 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "60 386 14\r\n56 107\r\n1 195\r\n",
+                "0\r\n"
+            ],
+            [
+                "666 666 6\r\n177 433\r\n22 97\r\n",
+                "6\r\n"
+            ],
+            [
+                "100000007 100000009 8\r\n91354347 99963211\r\n33362117 22829926\r\n",
+                "420078183\r\n"
+            ],
+            [
+                "2 1000000000 5\r\n1 317613872\r\n0 50279695\r\n",
+                "73266\r\n"
+            ],
+            [
+                "1000000000 2 4\r\n177263138 1\r\n626372207 1\r\n",
+                "4491091\r\n"
+            ],
+            [
+                "499999999 500000001 3\r\n487531335 134347190\r\n78529957 153957869\r\n",
+                "454993114295969\r\n"
+            ],
+            [
+                "1000000000 101 2\r\n23 100\r\n2 0\r\n",
+                "10999999759\r\n"
+            ],
+            [
+                "2345 99999 5\r\n2 0\r\n0 1232\r\n",
+                "23430\r\n"
+            ],
+            [
+                "1000000000 1000000000 18\r\n0 1\r\n0 0\r\n",
+                "10\r\n"
+            ],
+            [
+                "1000000000 1000000000 8\r\n0 1\r\n0 0\r\n",
+                "100000000000\r\n"
+            ],
+            [
+                "2 2 20\r\n1 1\r\n0 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 100 4\r\n6 5\r\n6 4\r\n",
+                "0\r\n"
+            ],
+            [
+                "99 99 2\r\n0 0\r\n98 98\r\n",
+                "989\r\n"
+            ],
+            [
+                "10000001 10000001 7\r\n0 0\r\n10000000 10000000\r\n",
+                "100000110\r\n"
+            ],
+            [
+                "10000001 10000001 8\r\n0 0\r\n10000000 10000000\r\n",
+                "10000011\r\n"
+            ],
+            [
+                "1000000000 1000000000 1\r\n0 1\r\n0 0\r\n",
+                "999999999999999999\r\n"
+            ]
+        ]
+    }
+]

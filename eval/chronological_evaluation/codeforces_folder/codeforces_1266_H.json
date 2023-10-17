@@ -1,0 +1,55 @@
+[
+    {
+        "name": "Red-Blue Graph",
+        "description": "There is a directed graph on \n    n\n vertices numbered \n    1\n through \n    n\n\nwhere each vertex (except \n    n\n) has two outgoing arcs, red and blue. At any\npoint in time, exactly one of the arcs is active for each vertex. Initially,\nall blue arcs are active and there is a token located at vertex \n    1\n. In\none second, the vertex with token first switches its active arcs \u2014 the\ninactive arc becomes active and vice versa. Then, the token is moved along the\nactive arc. When the token reaches the vertex \n    n\n, it stops. It is\nguaranteed that \n    n\n is reachable via arcs from every vertex. You are given\n\n    q\n queries. Each query contains a state of the graph \u2014 a pair \n    (v,\n    s)\n of the following form: \n    v\n is the vertex where the token is\ncurrently located; \n    s\n is a string consisting of \n    n - 1\n characters.\nThe \n    i\n-th character corresponds to the color of the active edge leading\nfrom the \n    i\n-th vertex (the character is 'R' if red arc is active,\notherwise the character is 'B'). For each query, determine whether the given\nstate is reachable from the initial state and the first time this\nconfiguration appears. Note that the two operations (change active arc and\ntraverse it) are atomic \u2014 a state is not considered reached if it appears\nafter changing the active arc but before traversing it. Input The first line\ncontains a single integer \n    n\n (\n    2 \n    \u2264 n \n    \u2264 58\n) \u2014 the number of\nvertices. \n    n-1\n lines follow, \n    i\n-th of contains two space separated\nintegers \n    b_i\n and \n    r_i\n (\n    1 \n    \u2264 b_i, r_i \n    \u2264 n\n)\nrepresenting a blue arc \n    (i, b_i)\n and red arc \n    (i, r_i)\n,\nrespectively. It is guaranteed that vertex \n    n\n is reachable from every\nvertex. The next line contains a single integer \n    q\n (\n    1 \n    \u2264 q \n    \u2264\n    5000\n) \u2014 the number of queries. Then \n    q\n lines with queries follow. The\n\n    j\n-th of these lines contains an integer \n    v\n (\n    1 \n    \u2264 v < n\n)\nand a string \n    s\n of length \n    n-1\n consiting only of characters 'R' and\n'B'. The \n    i\n-th of these characters is 'R' if the red arc going from\n\n    i\n is active and 'B' otherwise. Output Output \n    q\n lines, each\ncontaining answer to a single query. If the state in the \n    i\n-th query is\nunreachable, output the integer \n    -1\n. Otherwise, output \n    t_i\n \u2014 the\nfirst time when the state appears (measured in seconds, starting from the\ninitial state of the graph which appears in time \n    0\n). Example Input 6 2 1\n5 5 2 1 6 3 4 3 21 1 BBBBB 1 RBBBB 2 BBBBB 5 BRBBB 3 BRBBR 1 BRRBR 1 RRRBR 2\nBRRBR 5 BBRBR 4 BBRBB 3 BBRRB 2 BBBRB 5 BRBRB 3 BRBRR 1 BRRRR 1 RRRRR 2 BRRRR\n5 BBRRR 4 BBRRB 2 BRBBB 4 BRBBR Output 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15\n16 17 18 -1 -1 Note The graph in the first example is depticed in the figure\nbelow. The first \n    19\n queries denote the journey of the token. On the\n\n    19\n-th move the token would reach the vertex \n    6\n. The last two\nqueries show states that are unreachable.\n\n",
+        "cf_contest_id": 1266,
+        "cf_index": "H",
+        "cf_rating": 3400,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "graphs",
+            "math",
+            "matrices",
+            "meet-in-the-middle"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "6\r\n2 1\r\n5 5\r\n2 1\r\n6 3\r\n4 3\r\n21\r\n1 BBBBB\r\n1 RBBBB\r\n2 BBBBB\r\n5 BRBBB\r\n3 BRBBR\r\n1 BRRBR\r\n1 RRRBR\r\n2 BRRBR\r\n5 BBRBR\r\n4 BBRBB\r\n3 BBRRB\r\n2 BBBRB\r\n5 BRBRB\r\n3 BRBRR\r\n1 BRRRR\r\n1 RRRRR\r\n2 BRRRR\r\n5 BBRRR\r\n4 BBRRB\r\n2 BRBBB\r\n4 BRBBR\r\n",
+                "0\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n18\r\n-1\r\n-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "20\r\n2 1\r\n3 1\r\n4 1\r\n5 1\r\n6 1\r\n7 1\r\n8 1\r\n9 1\r\n10 1\r\n11 1\r\n12 1\r\n13 1\r\n14 1\r\n15 1\r\n16 1\r\n17 1\r\n18 1\r\n19 1\r\n20 1\r\n4\r\n1 RRRRRRRRRRRRRRRRRRR\r\n4 BBBRRBRRBBBRBRRBBBB\r\n7 BBBBBBRRBRRRRRBRRRR\r\n6 BBBBBBBBRRBRRRBRBRR\r\n",
+                "1048555\r\n53687\r\n1015283\r\n882230\r\n"
+            ],
+            [
+                "7\r\n2 1\r\n3 1\r\n4 1\r\n5 1\r\n6 1\r\n7 1\r\n27\r\n1 BBBBBB\r\n1 RBBBBB\r\n2 BBBBBB\r\n1 BRBBBB\r\n1 RRBBBB\r\n2 BRBBBB\r\n3 BBBBBB\r\n1 BBRBBB\r\n1 RBRBBB\r\n2 BBRBBB\r\n1 BRRBBB\r\n1 RRRBBB\r\n2 BRRBBB\r\n3 BBRBBB\r\n4 BBBBBB\r\n1 BBBRBB\r\n1 RBBRBB\r\n2 BBBRBB\r\n1 BRBRBB\r\n1 RRBRBB\r\n2 BRBRBB\r\n3 BBBRBB\r\n1 BBRRBB\r\n1 RBRRBB\r\n2 BBRRBB\r\n1 BRRRBB\r\n1 RRRRBB\r\n",
+                "0\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n18\r\n19\r\n20\r\n21\r\n22\r\n23\r\n24\r\n25\r\n26\r\n"
+            ],
+            [
+                "3\r\n2 2\r\n3 3\r\n4\r\n2 BB\r\n2 RB\r\n2 BR\r\n2 RR\r\n",
+                "-1\r\n1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "3\r\n1 2\r\n2 3\r\n1\r\n2 RR\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n2\r\n1 B\r\n1 R\r\n",
+                "0\r\n-1\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n2\r\n1 B\r\n1 R\r\n",
+                "0\r\n1\r\n"
+            ],
+            [
+                "2\r\n2 2\r\n2\r\n1 B\r\n1 R\r\n",
+                "0\r\n-1\r\n"
+            ]
+        ]
+    }
+]

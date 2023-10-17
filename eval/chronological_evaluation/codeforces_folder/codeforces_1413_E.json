@@ -1,0 +1,41 @@
+[
+    {
+        "name": "Solo mid Oracle",
+        "description": "Meka-Naruto plays a computer game. His character has the following ability:\ngiven an enemy hero, deal \n    a\n instant damage to him, and then heal that\nenemy \n    b\n health points at the end of every second, for exactly \n    c\n\nseconds, starting one second after the ability is used. That means that if the\nability is used at time \n    t\n, the enemy's health decreases by \n    a\n at\ntime \n    t\n, and then increases by \n    b\n at time points \n    t + 1\n, \n    t +\n    2\n, ..., \n    t + c\n due to this ability. The ability has a cooldown of\n\n    d\n seconds, i. e. if Meka-Naruto uses it at time moment \n    t\n, next\ntime he can use it is the time \n    t + d\n. Please note that he can only use\nthe ability at integer points in time, so all changes to the enemy's health\nalso occur at integer times only. The effects from different uses of the\nability may stack with each other; that is, the enemy which is currently under\n\n    k\n spells gets \n    k\n    \u00b7 b\n amount of heal this time. Also, if\nseveral health changes occur at the same moment, they are all counted at once.\nNow Meka-Naruto wonders if he can kill the enemy by just using the ability\neach time he can (that is, every \n    d\n seconds). The enemy is killed if\ntheir health points become \n    0\n or less. Assume that the enemy's health is\nnot affected in any way other than by Meka-Naruto's character ability. What is\nthe maximal number of health points the enemy can have so that Meka-Naruto is\nable to kill them? Input The first line contains an integer \n    t\n\n(\n    1\n    \u2264 t\n    \u2264 10^5\n) standing for the number of testcases. Each test\ncase is described with one line containing four numbers \n    a\n, \n    b\n,\n\n    c\n and \n    d\n (\n    1\n    \u2264 a, b, c, d\n    \u2264 10^6\n) denoting the amount\nof instant damage, the amount of heal per second, the number of heals and the\nability cooldown, respectively. Output For each testcase in a separate line\nprint \n    -1\n if the skill can kill an enemy hero with an arbitrary number of\nhealth points, otherwise print the maximal number of health points of the\nenemy that can be killed. Example Input 7 1 1 1 1 2 2 2 2 1 2 3 4 4 3 2 1 228\n21 11 3 239 21 11 3 1000000 1 1000000 1 Output 1 2 1 5 534 -1 500000500000\nNote In the first test case of the example each unit of damage is cancelled in\na second, so Meka-Naruto cannot deal more than 1 damage. In the fourth test\ncase of the example the enemy gets: \n    4\n damage (\n    1\n-st spell cast) at\ntime \n    0\n; \n    4\n damage (\n    2\n-nd spell cast) and \n    3\n heal\n(\n    1\n-st spell cast) at time \n    1\n (the total of \n    5\n damage to the\ninitial health); \n    4\n damage (\n    3\n-nd spell cast) and \n    6\n heal\n(\n    1\n-st and \n    2\n-nd spell casts) at time \n    2\n (the total of \n    3\n\ndamage to the initial health); and so on. One can prove that there is no time\nwhere the enemy gets the total of \n    6\n damage or more, so the answer is\n\n    5\n. Please note how the health is recalculated: for example,\n\n    8\n-health enemy would not die at time \n    1\n, as if we first subtracted\n\n    4\n damage from his health and then considered him dead, before adding\n\n    3\n heal. In the sixth test case an arbitrarily healthy enemy can be\nkilled in a sufficient amount of time. In the seventh test case the answer\ndoes not fit into a 32-bit integer type.\n\n",
+        "cf_contest_id": 1413,
+        "cf_index": "E",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "math",
+            "ternary search"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7\r\n1 1 1 1\r\n2 2 2 2\r\n1 2 3 4\r\n4 3 2 1\r\n228 21 11 3\r\n239 21 11 3\r\n1000000 1 1000000 1\r\n",
+                "1\n2\n1\n5\n534\n-1\n500000500000\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1000000 1000000 1 1000000\r\n",
+                "1000000\n"
+            ],
+            [
+                "2\r\n395916 225366 921987 169483\r\n604656 668976 459504 264596\r\n",
+                "395916\n604656\n"
+            ],
+            [
+                "4\r\n568133 729913 934882 371491\r\n916127 997180 932938 203988\r\n112133 793452 857041 842130\r\n572010 190716 396183 683429\r\n",
+                "568133\n916127\n112133\n572010\n"
+            ],
+            [
+                "6\r\n879274 712902 672766 383030\r\n997653 839911 351405 69197\r\n31160 917403 281506 245835\r\n234837 489356 452352 448472\r\n382561 916024 805514 657373\r\n287796 831046 710305 568719\r\n",
+                "879274\n997653\n31160\n234837\n382561\n287796\n"
+            ]
+        ]
+    }
+]

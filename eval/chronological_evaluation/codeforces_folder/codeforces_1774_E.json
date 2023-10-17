@@ -1,0 +1,98 @@
+[
+    {
+        "name": "Two Chess Pieces",
+        "description": "Cirno_9baka has a tree with \n    n\n nodes. He is willing to share it with you,\nwhich means you can operate on it. Initially, there are two chess pieces on\nthe node \n    1\n of the tree. In one step, you can choose any piece, and move\nit to the neighboring node. You are also given an integer \n    d\n. You need to\nensure that the distance between the two pieces doesn't ever exceed \n    d\n.\nEach of these two pieces has a sequence of nodes which they need to pass in\nany order, and eventually, they have to return to the root. As a curious boy,\nhe wants to know the minimum steps you need to take. Input The first line\ncontains two integers \n    n\n and \n    d\n (\n    2 \n    \u2264 d \n    \u2264 n \n    \u2264 2\n    \u00b7\n    10^5\n). The \n    i\n-th of the following \n    n - 1\n lines contains two\nintegers \n    u_i, v_i\n \n    (1 \n    \u2264 u_i, v_i \n    \u2264 n)\n, denoting the edge\nbetween the nodes \n    u_i, v_i\n of the tree. It's guaranteed that these edges\nform a tree. The next line contains an integer \n    m_1\n (\n    1 \n    \u2264 m_1 \n    \u2264\n    n\n) and \n    m_1\n integers \n    a_1, a_2, \n    \u2026, a_m_1\n (\n    1 \n    \u2264 a_i\n    \n    \u2264 n\n, all \n    a_i\n are distinct) \u2014 the sequence of nodes that the first\npiece needs to pass. The second line contains an integer \n    m_2\n (\n    1 \n    \u2264\n    m_2 \n    \u2264 n\n) and \n    m_2\n integers \n    b_1, b_2, \n    \u2026, b_m_2\n (\n    1\n    \n    \u2264 b_i \n    \u2264 n\n, all \n    b_i\n are distinct) \u2014 the sequence of nodes that\nthe second piece needs to pass. Output Output a single integer \u2014 the minimum\nsteps you need to take. Examples Input 4 2 1 2 1 3 2 4 1 3 1 4 Output 6 Input\n4 2 1 2 2 3 3 4 4 1 2 3 4 1 1 Output 8 Note In the first sample, here is one\npossible sequence of steps of length \n    6\n. The second piece moves by the\nroute \n    1 \n    \u2192 2 \n    \u2192 4 \n    \u2192 2 \n    \u2192 1\n. Then, the first piece moves by\nthe route \n    1 \n    \u2192 3 \n    \u2192 1\n. In the second sample, here is one possible\nsequence of steps of length \n    8\n: The first piece moves by the route \n    1\n    \n    \u2192 2 \n    \u2192 3\n. Then, the second piece moves by the route \n    1 \n    \u2192 2\n.\nThen, the first piece moves by the route \n    3 \n    \u2192 4 \n    \u2192 3 \n    \u2192 2 \n    \u2192\n    1\n. Then, the second piece moves by the route \n    2 \n    \u2192 1\n.\n\n",
+        "cf_contest_id": 1774,
+        "cf_index": "E",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 2\r\n1 2\r\n1 3\r\n2 4\r\n1 3\r\n1 4\r\n",
+                "6"
+            ],
+            [
+                "4 2\r\n1 2\r\n2 3\r\n3 4\r\n4 1 2 3 4\r\n1 1\r\n",
+                "8"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\n2 1\r\n1 2\r\n1 1\r\n",
+                "2"
+            ],
+            [
+                "2 2\r\n2 1\r\n1 1\r\n2 1 2\r\n",
+                "2"
+            ],
+            [
+                "10 2\r\n5 6\r\n4 7\r\n7 1\r\n8 2\r\n6 9\r\n4 8\r\n10 5\r\n9 2\r\n3 5\r\n5 5 1 3 2 7\r\n3 7 8 4\r\n",
+                "28"
+            ],
+            [
+                "10 10\r\n9 1\r\n5 4\r\n4 6\r\n2 7\r\n1 4\r\n8 3\r\n10 8\r\n8 6\r\n10 7\r\n4 9 3 4 8\r\n10 8 3 1 6 9 10 2 4 7 5\r\n",
+                "28"
+            ],
+            [
+                "15 6\r\n5 15\r\n7 9\r\n2 3\r\n10 6\r\n9 1\r\n11 8\r\n8 13\r\n14 7\r\n12 6\r\n2 14\r\n13 10\r\n9 10\r\n5 4\r\n4 9\r\n4 11 4 2 7\r\n4 2 5 9 12\r\n",
+                "36"
+            ],
+            [
+                "15 2\r\n4 13\r\n8 5\r\n15 1\r\n7 6\r\n15 10\r\n11 8\r\n6 1\r\n1 9\r\n15 12\r\n13 1\r\n14 15\r\n15 2\r\n6 3\r\n8 1\r\n1 12\r\n7 1 12 9 11 3 10 6\r\n",
+                "20"
+            ],
+            [
+                "2 2\r\n1 2\r\n1 2\r\n1 1\r\n",
+                "2"
+            ],
+            [
+                "2 2\r\n1 2\r\n1 2\r\n2 1 2\r\n",
+                "4"
+            ],
+            [
+                "10 2\r\n4 5\r\n7 2\r\n8 7\r\n5 9\r\n3 4\r\n6 3\r\n6 2\r\n8 1\r\n10 9\r\n5 8 6 5 3 4\r\n3 6 5 8\r\n",
+                "28"
+            ],
+            [
+                "10 10\r\n3 5\r\n6 5\r\n9 5\r\n10 8\r\n1 4\r\n5 4\r\n3 8\r\n7 8\r\n2 10\r\n4 7 9 8 10\r\n10 8 5 4 6 2 10 3 9 7 1\r\n",
+                "32"
+            ],
+            [
+                "15 6\r\n11 8\r\n9 12\r\n7 12\r\n14 13\r\n12 4\r\n12 13\r\n1 7\r\n10 6\r\n12 8\r\n3 5\r\n3 2\r\n15 2\r\n6 8\r\n12 2\r\n4 14 11 10 2\r\n4 12 5 8 9\r\n",
+                "32"
+            ],
+            [
+                "15 2\r\n5 1\r\n15 8\r\n9 3\r\n2 10\r\n15 13\r\n12 1\r\n14 15\r\n2 1\r\n6 15\r\n13 7\r\n11 1\r\n1 15\r\n15 4\r\n1 9\r\n1 14\r\n7 5 15 1 7 11 2 13\r\n",
+                "16"
+            ],
+            [
+                "2 2\r\n2 1\r\n1 1\r\n1 1\r\n",
+                "0"
+            ],
+            [
+                "10 2\r\n1 3\r\n10 4\r\n9 10\r\n9 8\r\n7 8\r\n5 2\r\n6 7\r\n3 6\r\n5 4\r\n5 10 1 2 9 8\r\n3 9 8 4\r\n",
+                "32"
+            ],
+            [
+                "10 10\r\n2 8\r\n4 6\r\n5 7\r\n2 5\r\n9 8\r\n6 1\r\n3 5\r\n4 2\r\n9 10\r\n4 9 7 4 6\r\n10 7 1 10 3 2 8 9 6 5 4\r\n",
+                "32"
+            ],
+            [
+                "15 6\r\n11 10\r\n7 14\r\n13 12\r\n15 8\r\n7 9\r\n2 9\r\n3 6\r\n11 8\r\n5 3\r\n11 1\r\n12 9\r\n14 11\r\n4 6\r\n5 9\r\n4 13 11 1 4\r\n4 8 12 14 6\r\n",
+                "38"
+            ],
+            [
+                "15 2\r\n14 7\r\n5 1\r\n14 12\r\n1 6\r\n13 7\r\n1 15\r\n3 1\r\n2 8\r\n14 10\r\n1 14\r\n8 1\r\n3 9\r\n11 1\r\n4 14\r\n1 10\r\n7 9 2 4 5 7 8 14\r\n",
+                "20"
+            ]
+        ]
+    }
+]

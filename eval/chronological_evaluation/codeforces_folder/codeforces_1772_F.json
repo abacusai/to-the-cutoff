@@ -1,0 +1,63 @@
+[
+    {
+        "name": "Copy of a Copy of a Copy",
+        "description": "It all started with a black-and-white picture, that can be represented as an\n\n    n \n    \u00d7 m\n matrix such that all its elements are either \n    0\n or\n\n    1\n. The rows are numbered from \n    1\n to \n    n\n, the columns are\nnumbered from \n    1\n to \n    m\n. Several operations were performed on the\npicture (possibly, zero), each of one of the two kinds: choose a cell such\nthat it's not on the border (neither row \n    1\n or \n    n\n, nor column\n\n    1\n or \n    m\n) and it's surrounded by four cells of the opposite color\n(four zeros if it's a one and vice versa) and paint it the opposite color\nitself; make a copy of the current picture. Note that the order of operations\ncould be arbitrary, they were not necessarily alternating. You are presented\nwith the outcome: all \n    k\n copies that were made. Additionally, you are\ngiven the initial picture. However, all \n    k+1\n pictures are shuffled.\nRestore the sequence of the operations. If there are multiple answers, print\nany of them. The tests are constructed from the real sequence of operations,\ni. e. at least one answer always exists. Input The first line contains three\nintegers \n    n, m\n and \n    k\n (\n    3 \n    \u2264 n, m \n    \u2264 30\n; \n    0 \n    \u2264 k\n    \n    \u2264 100\n) \u2014 the number of rows and columns of the pictures and the number\nof copies made, respectively. Then \n    k+1\n pictures follow \u2014 \n    k\n copies\nand the initial picture. Their order is arbitrary. Each picture consists of\n\n    n\n lines, each consisting of \n    m\n characters, each character is either\n\n    0\n or \n    1\n. There is an empty line before each picture. Output In the\nfirst line, print a single integer \u2014 the index of the initial picture. The\npictures are numbered from \n    1\n to \n    k+1\n in the order they appear in\nthe input. In the second line, print a single integer \n    q\n \u2014 the number of\noperations. Each of the next \n    q\n lines should contain an operation. The\noperations should be listed in order they were applied. Each operation is one\nof two types: \n    1\n \n    x\n \n    y\n \u2014 recolor a cell \n    (x, y)\n (the\n\n    y\n-th cell in the \n    x\n-th row, it should not be on the border and it\nshould be surrounded by four cells of opposite color to itself); \n    2\n\n\n    i\n \u2014 make a copy of the current picture and assign it index \n    i\n\n(picture with index the \n    i\n should be equal to the current picture). Each\nindex from \n    1\n to \n    k+1\n should appear in the output exactly once \u2014 one\nof them is the index of the initial picture, the remaining \n    k\n are\narguments of the operations of the second kind. If there are multiple answers,\nprint any of them. The tests are constructed from the real sequence of\noperations, i. e. at least one answer always exists. Examples Input 3 3 1 010\n111 010 010 101 010 Output 2 2 1 2 2 2 1 Input 4 5 3 00000 01000 11100 01000\n00000 01000 10100 01000 00000 01010 10100 01000 00000 01000 10100 01000 Output\n3 5 1 2 4 2 2 2 4 1 3 2 2 1 Input 5 3 0 110 010 001 011 001 Output 1 0\n\n",
+        "cf_contest_id": 1772,
+        "cf_index": "F",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3 1\r\n\r\n010\r\n111\r\n010\r\n\r\n010\r\n101\r\n010\r\n",
+                "2\r\n2\r\n1 2 2\r\n2 1\r\n"
+            ],
+            [
+                "4 5 3\r\n\r\n00000\r\n01000\r\n11100\r\n01000\r\n\r\n00000\r\n01000\r\n10100\r\n01000\r\n\r\n00000\r\n01010\r\n10100\r\n01000\r\n\r\n00000\r\n01000\r\n10100\r\n01000\r\n",
+                "3\r\n5\r\n1 2 4\r\n2 2\r\n2 4\r\n1 3 2\r\n2 1\r\n"
+            ],
+            [
+                "5 3 0\r\n\r\n110\r\n010\r\n001\r\n011\r\n001\r\n",
+                "1\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 6 5\r\n\r\n100111\r\n001110\r\n001111\r\n111100\r\n\r\n100111\r\n001010\r\n001111\r\n111100\r\n\r\n100111\r\n001110\r\n001111\r\n111100\r\n\r\n100111\r\n001110\r\n001111\r\n111100\r\n\r\n100111\r\n001110\r\n001111\r\n111100\r\n\r\n100111\r\n001110\r\n001111\r\n111100\r\n",
+                "2\r\n6\r\n1 2 4\r\n2 1\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n"
+            ],
+            [
+                "6 4 7\r\n\r\n1010\r\n0001\r\n0001\r\n1000\r\n0111\r\n0101\r\n\r\n1010\r\n0001\r\n0001\r\n1000\r\n0111\r\n0101\r\n\r\n1010\r\n0001\r\n0001\r\n1000\r\n0111\r\n0101\r\n\r\n1010\r\n0001\r\n0001\r\n1000\r\n0111\r\n0101\r\n\r\n1010\r\n0001\r\n0001\r\n1000\r\n0111\r\n0101\r\n\r\n1010\r\n0001\r\n0001\r\n1000\r\n0111\r\n0101\r\n\r\n1010\r\n0001\r\n0001\r\n1000\r\n0111\r\n0101\r\n\r\n1010\r\n0001\r\n0001\r\n1000\r\n0111\r\n0101\r\n",
+                "1\r\n7\r\n2 2\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n"
+            ],
+            [
+                "5 5 5\r\n\r\n00000\r\n01111\r\n01001\r\n00110\r\n00000\r\n\r\n00000\r\n01111\r\n01001\r\n00110\r\n00000\r\n\r\n00000\r\n01111\r\n01001\r\n00110\r\n00000\r\n\r\n00000\r\n01111\r\n01001\r\n00110\r\n00000\r\n\r\n00000\r\n01111\r\n01001\r\n00110\r\n00000\r\n\r\n00000\r\n01111\r\n01001\r\n00110\r\n00000\r\n",
+                "1\r\n5\r\n2 2\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n"
+            ],
+            [
+                "3 3 0\r\n\r\n000\r\n000\r\n000\r\n",
+                "1\r\n0\r\n"
+            ],
+            [
+                "5 5 1\r\n\r\n00000\r\n00100\r\n01010\r\n00100\r\n00000\r\n\r\n00000\r\n00100\r\n01110\r\n00100\r\n00000\r\n",
+                "1\r\n2\r\n1 3 3\r\n2 2\r\n"
+            ],
+            [
+                "5 5 1\r\n\r\n00000\r\n00100\r\n01010\r\n00100\r\n00000\r\n\r\n00000\r\n00000\r\n01010\r\n00000\r\n00000\r\n",
+                "1\r\n3\r\n1 2 3\r\n1 4 3\r\n2 2\r\n"
+            ],
+            [
+                "5 5 1\r\n\r\n00000\r\n00100\r\n01010\r\n00100\r\n00000\r\n\r\n00000\r\n00000\r\n00000\r\n00000\r\n00000\r\n",
+                "1\r\n5\r\n1 2 3\r\n1 3 2\r\n1 3 4\r\n1 4 3\r\n2 2\r\n"
+            ]
+        ]
+    }
+]

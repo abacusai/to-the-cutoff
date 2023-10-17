@@ -1,0 +1,116 @@
+[
+    {
+        "name": "Square Tiling",
+        "description": "You have an n \u00d7 m rectangle table, its cells are not initially painted. Your\ntask is to paint all cells of the table. The resulting picture should be a\ntiling of the table with squares. More formally: each cell must be painted\nsome color (the colors are marked by uppercase Latin letters); we will assume\nthat two cells of the table are connected if they are of the same color and\nshare a side; each connected region of the table must form a square. Given n\nand m, find lexicographically minimum coloring of the table that meets the\ndescribed properties. Input The first line contains two integers, n and m (1 \u2264\nn, m \u2264 100). Output Print lexicographically minimum coloring of the table that\nmeets the described conditions. One coloring (let's call it X) is considered\nlexicographically less than the other one (let's call it Y), if: consider all\nthe table cells from left to right and from top to bottom (first, the first\ncell in the first row, then the second cell in the first row and so on); let's\nfind in this order the first cell that has distinct colors in two colorings;\nthe letter that marks the color of the cell in X, goes alphabetically before\nthe letter that marks the color of the cell in Y. Examples Input 1 3 Output\nABA Input 2 2 Output AA AA Input 3 4 Output AAAB AAAC AAAB\n\n",
+        "cf_contest_id": 432,
+        "cf_index": "E",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1 3\r\n",
+                "ABA\r\n"
+            ],
+            [
+                "2 2\r\n",
+                "AA\r\nAA\r\n"
+            ],
+            [
+                "3 4\r\n",
+                "AAAB\r\nAAAC\r\nAAAB\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 3\r\n",
+                "AAA\r\nAAA\r\nAAA\r\nBCB\r\n"
+            ],
+            [
+                "1 1\r\n",
+                "A\r\n"
+            ],
+            [
+                "13 5\r\n",
+                "AAAAA\r\nAAAAA\r\nAAAAA\r\nAAAAA\r\nAAAAA\r\nBBBBB\r\nBBBBB\r\nBBBBB\r\nBBBBB\r\nBBBBB\r\nAAACA\r\nAAABB\r\nAAABB\r\n"
+            ],
+            [
+                "6 24\r\n",
+                "AAAAAABAAAAAABAAAAAABAAA\r\nAAAAAACAAAAAACAAAAAACAAA\r\nAAAAAABAAAAAABAAAAAABAAA\r\nAAAAAACAAAAAACAAAAAACBBB\r\nAAAAAABAAAAAABAAAAAADBBB\r\nAAAAAACAAAAAACAAAAAACBBB\r\n"
+            ],
+            [
+                "24 6\r\n",
+                "AAAAAA\r\nAAAAAA\r\nAAAAAA\r\nAAAAAA\r\nAAAAAA\r\nAAAAAA\r\nBBBBBB\r\nBBBBBB\r\nBBBBBB\r\nBBBBBB\r\nBBBBBB\r\nBBBBBB\r\nAAAAAA\r\nAAAAAA\r\nAAAAAA\r\nAAAAAA\r\nAAAAAA\r\nAAAAAA\r\nBBBBBB\r\nBBBBBB\r\nBBBBBB\r\nBBBBBB\r\nBBBBBB\r\nBBBBBB\r\n"
+            ],
+            [
+                "24 5\r\n",
+                "AAAAA\r\nAAAAA\r\nAAAAA\r\nAAAAA\r\nAAAAA\r\nBBBBB\r\nBBBBB\r\nBBBBB\r\nBBBBB\r\nBBBBB\r\nAAAAA\r\nAAAAA\r\nAAAAA\r\nAAAAA\r\nAAAAA\r\nBBBBB\r\nBBBBB\r\nBBBBB\r\nBBBBB\r\nBBBBB\r\nAAAAC\r\nAAAAB\r\nAAAAC\r\nAAAAB\r\n"
+            ],
+            [
+                "10 27\r\n",
+                "AAAAAAAAAABAAAAAAAAAABAAAAA\r\nAAAAAAAAAACAAAAAAAAAACAAAAA\r\nAAAAAAAAAABAAAAAAAAAABAAAAA\r\nAAAAAAAAAACAAAAAAAAAACAAAAA\r\nAAAAAAAAAABAAAAAAAAAABAAAAA\r\nAAAAAAAAAACAAAAAAAAAACBBBBB\r\nAAAAAAAAAABAAAAAAAAAADBBBBB\r\nAAAAAAAAAACAAAAAAAAAACBBBBB\r\nAAAAAAAAAABAAAAAAAAAADBBBBB\r\nAAAAAAAAAACAAAAAAAAAACBBBBB\r\n"
+            ],
+            [
+                "1 100\r\n",
+                "ABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB\r\n"
+            ],
+            [
+                "2 100\r\n",
+                "AABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABAABA\r\nAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACAACB\r\n"
+            ],
+            [
+                "3 100\r\n",
+                "AAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAAB\r\nAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAACAAAC\r\nAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAABAAAB\r\n"
+            ],
+            [
+                "5 100\r\n",
+                "AAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAA\r\nAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAA\r\nAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAA\r\nAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAAACAAAA\r\nAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABAAAAABCBCB\r\n"
+            ],
+            [
+                "21 12\r\n",
+                "AAAAAAAAAAAA\r\nAAAAAAAAAAAA\r\nAAAAAAAAAAAA\r\nAAAAAAAAAAAA\r\nAAAAAAAAAAAA\r\nAAAAAAAAAAAA\r\nAAAAAAAAAAAA\r\nAAAAAAAAAAAA\r\nAAAAAAAAAAAA\r\nAAAAAAAAAAAA\r\nAAAAAAAAAAAA\r\nAAAAAAAAAAAA\r\nBBBBBBBBBCBB\r\nBBBBBBBBBABB\r\nBBBBBBBBBCAA\r\nBBBBBBBBBDAA\r\nBBBBBBBBBABB\r\nBBBBBBBBBCBB\r\nBBBBBBBBBAAA\r\nBBBBBBBBBAAA\r\nBBBBBBBBBAAA\r\n"
+            ],
+            [
+                "100 1\r\n",
+                "A\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\nA\r\nB\r\n"
+            ],
+            [
+                "100 2\r\n",
+                "AA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\nAA\r\nAA\r\nBB\r\nBB\r\n"
+            ],
+            [
+                "100 3\r\n",
+                "AAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBBB\r\nBBB\r\nBBB\r\nAAA\r\nAAA\r\nAAA\r\nBCB\r\n"
+            ],
+            [
+                "2 3\r\n",
+                "AAB\r\nAAC\r\n"
+            ],
+            [
+                "3 2\r\n",
+                "AA\r\nAA\r\nBC\r\n"
+            ],
+            [
+                "1 2\r\n",
+                "AB\r\n"
+            ],
+            [
+                "2 1\r\n",
+                "A\r\nB\r\n"
+            ],
+            [
+                "2 2\r\n",
+                "AA\r\nAA\r\n"
+            ],
+            [
+                "3 3\r\n",
+                "AAA\r\nAAA\r\nAAA\r\n"
+            ]
+        ]
+    }
+]

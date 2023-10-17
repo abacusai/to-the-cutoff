@@ -1,0 +1,60 @@
+[
+    {
+        "name": "Stand-up Comedian",
+        "description": "Eve is a beginner stand-up comedian. Her first show gathered a grand total of\ntwo spectators: Alice and Bob. Eve prepared \n    a_1 + a_2 + a_3 + a_4\n jokes\nto tell, grouped by their type: type 1: both Alice and Bob like them; type 2:\nAlice likes them, but Bob doesn't; type 3: Bob likes them, but Alice doesn't;\ntype 4: neither Alice nor Bob likes them. Initially, both spectators have\ntheir mood equal to \n    0\n. When a spectator hears a joke he/she likes,\nhis/her mood increases by \n    1\n. When a spectator hears a joke he/she\ndoesn't like, his/her mood decreases by \n    1\n. If the mood of a spectator\nbecomes negative (strictly below zero), he/she leaves. When someone leaves,\nEve gets sad and ends the show. If no one leaves, and Eve is out of jokes, she\nalso ends the show. Thus, Eve wants to arrange her jokes in such a way that\nthe show lasts as long as possible. Help her to calculate the maximum number\nof jokes she can tell before the show ends. Input The first line contains a\nsingle integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264 10^4\n) \u2014 the number of testcases.\nThe only line of each testcase contains four integers \n    a_1, a_2, a_3, a_4\n\n(\n    0 \n    \u2264 a_1, a_2, a_3, a_4 \n    \u2264 10^8\n; \n    a_1 + a_2 + a_3 + a_4 \n    \u2265\n    1\n) \u2014 the number of jokes of each type Eve prepared. Output For each\ntestcase, print a single integer \u2014 the maximum number of jokes Eve can tell\nbefore at least one of the spectators leaves or before she runs out of jokes.\nExample Input 4 5 0 0 0 0 0 0 5 2 5 10 6 3 0 0 7 Output 5 1 15 7 Note In the\nfirst testcase, Eve only has jokes of the first type. Thus, there's no order\nto choose. She tells all her jokes, both Alice and Bob like them. Their mood\nbecomes \n    5\n. The show ends after Eve runs out of jokes. In the second\ntestcase, Eve only has jokes of the fourth type. Thus, once again no order to\nchoose. She tells a joke, and neither Alice, nor Bob likes it. Their mood\ndecrease by one, becoming \n    -1\n. They both have negative mood, thus, both\nleave, and the show ends. In the third testcase, first, Eve tells both jokes\nof the first type. Both Alice and Bob has mood \n    2\n. Then she can tell\n\n    2\n jokes of the third type. Alice's mood becomes \n    0\n. Bob's mood\nbecomes \n    4\n. Then \n    4\n jokes of the second type. Alice's mood becomes\n\n    4\n. Bob's mood becomes \n    0\n. Then another \n    4\n jokes of the third\ntype. Alice's mood becomes \n    0\n. Bob's mood becomes \n    4\n. Then the\nremaining joke of the second type. Alice's mood becomes \n    1\n. Bob's mood\nbecomes \n    3\n. Then one more joke of the third type, and a joke of the\nfourth type, for example. Alice's mood becomes \n    -1\n, she leaves, and the\nshow ends. In the fourth testcase, Eve should first tell the jokes both\nspectators like, then the jokes they don't. She can tell \n    4\n jokes of the\nfourth type until the spectators leave.\n\n",
+        "cf_contest_id": 1792,
+        "cf_index": "B",
+        "cf_rating": 1200,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n5 0 0 0\r\n0 0 0 5\r\n2 5 10 6\r\n3 0 0 7\r\n",
+                "5\r\n1\r\n15\r\n7\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1001 100000000 100000000 100000000\r\n",
+                "200002003\r\n"
+            ],
+            [
+                "1\r\n1 100000000 100000000 100000000\r\n",
+                "200000003\r\n"
+            ],
+            [
+                "1\r\n25 5 5 5\r\n",
+                "40\r\n"
+            ],
+            [
+                "1\r\n4001 0 0 0\r\n",
+                "4001\r\n"
+            ],
+            [
+                "1\r\n1 100000000 100000000 1234\r\n",
+                "200000003\r\n"
+            ],
+            [
+                "1\r\n1 100000000 100000000 1238\r\n",
+                "200000003\r\n"
+            ],
+            [
+                "1\r\n1 100000000 100000000 1\r\n",
+                "200000002\r\n"
+            ],
+            [
+                "5\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n",
+                "200000003\r\n200000003\r\n200000003\r\n200000003\r\n200000003\r\n"
+            ],
+            [
+                "15\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n1 100000000 100000000 100000000\r\n",
+                "200000003\r\n200000003\r\n200000003\r\n200000003\r\n200000003\r\n200000003\r\n200000003\r\n200000003\r\n200000003\r\n200000003\r\n200000003\r\n200000003\r\n200000003\r\n200000003\r\n200000003\r\n"
+            ]
+        ]
+    }
+]

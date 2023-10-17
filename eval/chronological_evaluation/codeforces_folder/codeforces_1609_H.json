@@ -1,0 +1,41 @@
+[
+    {
+        "name": "Pushing Robots",
+        "description": "There're \n    n\n robots placed on a number line. Initially, \n    i\n-th of them\noccupies unit segment \n    [x_i, x_i + 1]\n. Each robot has a program,\nconsisting of \n    k\n instructions numbered from \n    1\n to \n    k\n. The robot\nperforms instructions in a cycle. Each instruction is described by an integer\nnumber. Let's denote the number corresponding to the \n    j\n-th instruction of\nthe \n    i\n-th robot as \n    f_i, j\n. Initial placement of robots\ncorresponds to the moment of time \n    0\n. During one second from moment of\ntime \n    t\n (\n    0 \n    \u2264 t\n) until \n    t + 1\n the following process occurs:\nEach robot performs \n    (t \n     k + 1)\n-th instruction from its list of\ninstructions. Robot number \n    i\n takes number \n    F = f_i, (t \n     k +\n    1)\n. If this number is negative (less than zero), the robot is trying to\nmove to the left with force \n    |F|\n. If the number is positive (more than\nzero), the robot is trying to move to the right with force \n    F\n. Otherwise,\nthe robot does nothing. Let's imaginary divide robots into groups of\nconsecutive, using the following algorithm: Initially, each robot belongs to\nits own group. Let's sum up numbers corresponding to the instructions of the\nrobots from one group. Note that we are summing numbers without taking them by\nabsolute value. Denote this sum as \n    S\n. We say that the whole group moves\ntogether, and does it with force \n    S\n by the same rules as a single robot.\nThat is if \n    S\n is negative, the group is trying to move to the left with\nforce \n    |S|\n. If \n    S\n is positive, the group is trying to move to the\nright with force \n    S\n. Otherwise, the group does nothing. If one group is\ntrying to move, and in the direction of movement touches another group, let's\nunite them. One group is touching another if their outermost robots occupy\nadjacent unit segments. Continue this process until groups stop uniting. Each\nrobot moves by \n    1\n in the direction of movement of its group or stays in\nplace if its group isn't moving. But there's one exception. The exception is\nif there're two groups of robots, divided by exactly one unit segment, such\nthat the left group is trying to move to the right and the right group is\ntrying to move to the left. Let's denote sum in the left group as \n    S_l\n\nand sum in the right group as \n    S_r\n. If \n    |S_l| \n    \u2264 |S_r|\n only the\nright group will move. Otherwise, only the left group will move. Note that\nrobots from one group don't glue together. They may separate in the future.\nThe division into groups is imaginary and is needed only to understand how\nrobots will move during one second \n    [t, t + 1]\n. An illustration of the\nprocess happening during one second: Rectangles represent robots. Numbers\ninside rectangles correspond to instructions of robots. The final division\ninto groups is marked with arcs. Below are the positions of the robots after\nmoving. Only the left of the two rightmost groups moved. That's because these\ntwo groups tried to move towards each other, and were separated by exactly one\nunit segment. Look at the examples for a better understanding of the process.\nYou need to answer several questions. What is the position of \n    a_i\n-th\nrobot at the moment of time \n    t_i\n? Input The first line contains two\ninteger numbers \n    n\n and \n    k\n \u2014 the number of robots and the number of\ninstructions in the program of one robot (\n    1 \n    \u2264 n \n    \u2264 100\n, \n    1\n    \n    \u2264 k \n    \u2264 50\n). The next line contains \n    n\n integer numbers \n    x_i\n\n\u2014 positions of robots at moment of time \n    0\n (\n    -10^9 \n    \u2264 x_1 < x_2 <\n    \n    \u2026 < x_n < 10^9\n). The next \n    n\n lines contain descriptions of\nrobots' programs. The \n    i\n-th of these lines contains \n    k\n integer\nnumbers \n    f_i, j\n (\n    |f_i, j| \n    \u2264 10^6\n). The next line contains a\nsingle integer number \n    q\n \u2014 the number of questions you to answer (\n    1\n    \n    \u2264 q \n    \u2264 1000\n). The next \n    q\n lines contain two integer number\n\n    a_i\n and \n    t_i\n each, meaning that you should find a position of\n\n    a_i\n-th robot at moment of time \n    t_i\n (\n    1 \n    \u2264 a_i \n    \u2264 n\n,\n\n    0 \n    \u2264 t_i \n    \u2264 10^18\n). Output For every question output a single\ninteger on the new line. Coordinate of the left border of unit segment\noccupied by the \n    a_i\n-th robot at the moment of time \n    t_i\n. Examples\nInput 2 1 0 4 1 -1 8 1 0 2 0 1 1 2 1 1 2 2 2 1 3 2 3 Output 0 4 1 3 1 2 1 2\nInput 2 1 0 4 2 -1 8 1 0 2 0 1 1 2 1 1 2 2 2 1 3 2 3 Output 0 4 1 3 2 3 3 4\nInput 2 2 0 1 1 -1 -1 1 4 1 0 1 1 1 2 1 3 Output 0 0 -1 0 Input 1 3 0 3 -2 1 3\n1 5 1 10 1 15 Output 1 4 5 Input 4 3 -8 -4 2 5 -1 3 0 1 -3 -4 2 -5 2 -1 -4 2 5\n3 12 4 18 4 11 1 6 1 10 Output 6 9 6 -8 -9\n\n",
+        "cf_contest_id": 1609,
+        "cf_index": "H",
+        "cf_rating": 3500,
+        "difficulty": 0,
+        "cf_tags": [],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 1\r\n0 4\r\n1\r\n-1\r\n8\r\n1 0\r\n2 0\r\n1 1\r\n2 1\r\n1 2\r\n2 2\r\n1 3\r\n2 3\r\n",
+                "0\r\n4\r\n1\r\n3\r\n1\r\n2\r\n1\r\n2\r\n"
+            ],
+            [
+                "2 1\r\n0 4\r\n2\r\n-1\r\n8\r\n1 0\r\n2 0\r\n1 1\r\n2 1\r\n1 2\r\n2 2\r\n1 3\r\n2 3\r\n",
+                "0\r\n4\r\n1\r\n3\r\n2\r\n3\r\n3\r\n4\r\n"
+            ],
+            [
+                "2 2\r\n0 1\r\n1 -1\r\n-1 1\r\n4\r\n1 0\r\n1 1\r\n1 2\r\n1 3\r\n",
+                "0\r\n0\r\n-1\r\n0\r\n"
+            ],
+            [
+                "1 3\r\n0\r\n3 -2 1\r\n3\r\n1 5\r\n1 10\r\n1 15\r\n",
+                "1\r\n4\r\n5\r\n"
+            ],
+            [
+                "4 3\r\n-8 -4 2 5\r\n-1 3 0\r\n1 -3 -4\r\n2 -5 2\r\n-1 -4 2\r\n5\r\n3 12\r\n4 18\r\n4 11\r\n1 6\r\n1 10\r\n",
+                "6\r\n9\r\n6\r\n-8\r\n-9\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 3\r\n-10 -5 -2 2 3\r\n-4 -10 -7\r\n9 -5 0\r\n4 10 7\r\n7 1 10\r\n-9 -1 7\r\n50\r\n2 5\r\n4 11\r\n2 10\r\n4 1\r\n2 16\r\n3 1\r\n3 20\r\n4 3\r\n5 18\r\n1 4\r\n4 18\r\n2 8\r\n2 8\r\n2 12\r\n2 2\r\n5 9\r\n4 20\r\n4 3\r\n3 1\r\n3 10\r\n3 8\r\n1 6\r\n2 1\r\n1 15\r\n2 1\r\n2 15\r\n4 0\r\n1 7\r\n1 13\r\n3 20\r\n3 10\r\n3 5\r\n1 3\r\n3 18\r\n4 19\r\n2 19\r\n2 9\r\n3 4\r\n4 6\r\n1 1\r\n2 2\r\n3 15\r\n4 2\r\n4 11\r\n5 11\r\n2 13\r\n1 19\r\n3 14\r\n1 0\r\n4 11\r\n",
+                "-5\r\n10\r\n-4\r\n1\r\n-4\r\n-1\r\n18\r\n2\r\n18\r\n-14\r\n17\r\n-5\r\n-5\r\n-5\r\n-5\r\n9\r\n19\r\n2\r\n-1\r\n8\r\n6\r\n-16\r\n-4\r\n-25\r\n-4\r\n-5\r\n2\r\n-17\r\n-23\r\n18\r\n8\r\n3\r\n-13\r\n16\r\n18\r\n-4\r\n-5\r\n2\r\n5\r\n-11\r\n-5\r\n13\r\n1\r\n10\r\n11\r\n-4\r\n-29\r\n12\r\n-10\r\n10\r\n"
+            ]
+        ]
+    }
+]

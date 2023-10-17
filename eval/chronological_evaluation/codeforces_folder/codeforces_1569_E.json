@@ -1,0 +1,215 @@
+[
+    {
+        "name": "Playoff Restoration",
+        "description": "\n    2^k\n teams participate in a playoff tournament. The tournament consists\nof \n    2^k - 1\n games. They are held as follows: first of all, the teams are\nsplit into pairs: team \n    1\n plays against team \n    2\n, team \n    3\n plays\nagainst team \n    4\n (exactly in this order), and so on (so, \n    2^k-1\n\ngames are played in that phase). When a team loses a game, it is eliminated,\nand each game results in elimination of one team (there are no ties). After\nthat, only \n    2^k-1\n teams remain. If only one team remains, it is\ndeclared the champion; otherwise, \n    2^k-2\n games are played: in the first\none of them, the winner of the game \"\n    1\n vs \n    2\n\" plays against the\nwinner of the game \"\n    3\n vs \n    4\n\", then the winner of the game \"\n    5\n\nvs \n    6\n\" plays against the winner of the game \"\n    7\n vs \n    8\n\", and so\non. This process repeats until only one team remains. After the tournament\nends, the teams are assigned places according to the tournament phase when\nthey were eliminated. In particular: the winner of the tournament gets place\n\n    1\n; the team eliminated in the finals gets place \n    2\n; both teams\neliminated in the semifinals get place \n    3\n; all teams eliminated in the\nquarterfinals get place \n    5\n; all teams eliminated in the 1/8 finals get\nplace \n    9\n, and so on. For example, this picture describes one of the\npossible ways the tournament can go with \n    k = 3\n, and the resulting places\nof the teams: After a tournament which was conducted by the aforementioned\nrules ended, its results were encoded in the following way. Let \n    p_i\n be\nthe place of the \n    i\n-th team in the tournament. The hash value of the\ntournament \n    h\n is calculated as \n    h = (\n    \u2211\n    _i=1^2^k i\n    \n    \u00b7 A^p_i) \n     998244353\n, where \n    A\n is some given integer.\nUnfortunately, due to a system crash, almost all tournament-related data was\nlost. The only pieces of data that remain are the values of \n    k\n, \n    A\n\nand \n    h\n. You are asked to restore the resulting placing of the teams in\nthe tournament, if it is possible at all. Input The only line contains three\nintegers \n    k\n, \n    A\n and \n    h\n (\n    1 \n    \u2264 k \n    \u2264 5\n; \n    100 \n    \u2264 A\n    \n    \u2264 10^8\n; \n    0 \n    \u2264 h \n    \u2264 998244352\n). Output If it is impossible to\nfind any placing of the teams that is consistent with the data you have, print\none integer \n    -1\n. Otherwise, print \n    2^k\n integers, where \n    i\n-th\ninteger should be equal to \n    p_i\n (the place of the \n    i\n-th team). Note\nthat your answer should be consistent with one of the possible ways the\ntournament could go, and note that the initial structure of the tournament is\nfixed (for example, teams \n    1\n and \n    2\n always play in the first phase\nof the tournament against each other). If there are multiple ways to restore\nthe places of the teams which are consistent with the data you have, print any\nof them. Examples Input 3 1337 75275197 Output 5 3 5 2 1 5 5 3 Input 2 100\n5040100 Output 1 3 3 2 Input 2 100 7020100 Output -1 Note The tournament for\nthe first example is described in the statement. For the third example, the\nplacing \n    [1, 2, 3, 3]\n (team \n    1\n gets place \n    1\n, team \n    2\n gets\nplace \n    2\n, teams \n    3\n and \n    4\n get place \n    3\n) could result in a\nhash value of \n    7020100\n with \n    A = 100\n, but no tournament can result\nin such placing since teams \n    1\n and \n    2\n play against each other in the\nsemifinals, so they cannot get two first places.\n\n",
+        "cf_contest_id": 1569,
+        "cf_index": "E",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "hashing",
+            "implementation",
+            "meet-in-the-middle"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3 1337 75275197\r\n",
+                "5 3 5 2 1 5 5 3\r\n"
+            ],
+            [
+                "2 100 5040100\r\n",
+                "1 3 3 2\r\n"
+            ],
+            [
+                "2 100 7020100\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1337 3576475\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "2 100000000 131387633\r\n",
+                "2 3 3 1\r\n"
+            ],
+            [
+                "5 123 947732549\r\n",
+                "5 17 9 17 17 1 9 17 9 17 17 3 17 5 9 17 9 17 17 5 9 17 17 3 17 9 17 2 17 9 17 5\r\n"
+            ],
+            [
+                "5 123 114020556\r\n",
+                "5 17 9 17 17 1 9 17 3 17 9 17 5 17 9 17 3 17 9 17 9 17 17 5 17 9 2 17 17 9 17 5\r\n"
+            ],
+            [
+                "5 123 811176743\r\n",
+                "1 17 9 17 5 17 9 17 3 17 9 17 5 17 17 9 17 9 5 17 17 9 3 17 17 2 17 9 17 9 17 5\r\n"
+            ],
+            [
+                "5 123 21854524\r\n",
+                "9 17 1 17 5 17 9 17 3 17 9 17 17 5 9 17 9 17 17 3 17 9 17 5 17 2 17 9 17 9 17 5\r\n"
+            ],
+            [
+                "5 123 393917244\r\n",
+                "5 17 9 17 9 17 17 1 3 17 9 17 5 17 9 17 17 5 9 17 17 9 3 17 17 2 17 9 17 5 17 9\r\n"
+            ],
+            [
+                "5 456 718949117\r\n",
+                "3 17 9 17 5 17 17 9 17 9 5 17 17 1 17 9 17 9 17 5 17 9 17 2 17 9 17 5 17 9 17 3\r\n"
+            ],
+            [
+                "5 456 932476736\r\n",
+                "17 3 9 17 5 17 9 17 9 17 1 17 5 17 17 9 5 17 17 9 17 9 17 2 17 9 17 5 17 9 17 3\r\n"
+            ],
+            [
+                "5 456 773490478\r\n",
+                "3 17 9 17 5 17 9 17 17 5 9 17 9 17 17 1 17 9 17 5 17 9 17 2 17 9 17 5 17 3 17 9\r\n"
+            ],
+            [
+                "5 456 904943609\r\n",
+                "3 17 9 17 5 17 9 17 17 1 9 17 5 17 17 9 17 5 17 9 17 2 17 9 17 3 17 9 17 5 17 9\r\n"
+            ],
+            [
+                "5 456 282015221\r\n",
+                "17 3 9 17 5 17 9 17 17 5 9 17 17 1 17 9 17 9 17 5 17 2 17 9 17 9 17 5 17 9 17 3\r\n"
+            ],
+            [
+                "5 789 980768147\r\n",
+                "17 3 9 17 5 17 9 17 17 9 17 2 17 9 5 17 9 17 17 3 9 17 17 5 1 17 9 17 9 17 17 5\r\n"
+            ],
+            [
+                "5 789 432699580\r\n",
+                "3 17 9 17 5 17 9 17 5 17 9 17 17 9 2 17 17 9 5 17 17 9 17 3 1 17 17 9 17 9 17 5\r\n"
+            ],
+            [
+                "5 789 100516449\r\n",
+                "3 17 9 17 5 17 9 17 17 9 2 17 17 9 5 17 9 17 17 5 9 17 17 3 17 9 17 1 17 9 17 5\r\n"
+            ],
+            [
+                "5 789 233419982\r\n",
+                "3 17 9 17 5 17 9 17 9 17 17 5 17 2 9 17 17 3 17 9 17 9 17 5 17 9 1 17 17 9 17 5\r\n"
+            ],
+            [
+                "5 789 451680750\r\n",
+                "3 17 9 17 5 17 9 17 2 17 9 17 5 17 9 17 17 9 3 17 17 5 17 9 17 1 17 9 17 9 17 5\r\n"
+            ],
+            [
+                "5 152163 481301896\r\n",
+                "9 17 3 17 5 17 9 17 5 17 17 9 17 9 17 1 17 5 17 9 17 9 17 2 17 5 17 9 17 9 17 3\r\n"
+            ],
+            [
+                "5 152163 879149534\r\n",
+                "5 17 9 17 3 17 9 17 9 17 17 1 5 17 17 9 17 5 17 9 17 9 17 2 17 9 17 5 17 9 17 3\r\n"
+            ],
+            [
+                "5 152163 673838731\r\n",
+                "17 3 9 17 5 17 9 17 5 17 9 17 1 17 9 17 5 17 9 17 17 9 17 2 17 9 17 3 17 5 17 9\r\n"
+            ],
+            [
+                "5 152163 339455024\r\n",
+                "3 17 9 17 5 17 9 17 17 9 1 17 17 9 5 17 17 9 17 5 17 9 17 2 17 9 17 5 17 9 17 3\r\n"
+            ],
+            [
+                "5 152163 423041504\r\n",
+                "5 17 9 17 9 17 17 3 17 5 9 17 9 17 1 17 9 17 17 5 17 9 17 2 17 9 17 5 17 9 17 3\r\n"
+            ],
+            [
+                "5 162632 413445046\r\n",
+                "9 17 3 17 5 17 9 17 17 2 17 9 17 9 5 17 9 17 17 5 9 17 3 17 9 17 17 5 17 9 1 17\r\n"
+            ],
+            [
+                "5 162632 10782426\r\n",
+                "5 17 9 17 3 17 9 17 9 17 17 5 9 17 17 2 9 17 17 5 9 17 17 3 17 9 17 5 17 9 1 17\r\n"
+            ],
+            [
+                "5 162632 438392706\r\n",
+                "5 17 9 17 17 1 9 17 3 17 9 17 5 17 9 17 9 17 17 2 17 9 5 17 17 9 17 5 3 17 17 9\r\n"
+            ],
+            [
+                "5 162632 723872007\r\n",
+                "5 17 9 17 1 17 9 17 3 17 9 17 17 5 9 17 17 2 17 9 17 9 17 5 17 3 17 9 17 9 17 5\r\n"
+            ],
+            [
+                "5 162632 114919442\r\n",
+                "1 17 9 17 5 17 9 17 9 17 3 17 5 17 9 17 9 17 17 2 9 17 5 17 17 9 17 5 17 9 17 3\r\n"
+            ],
+            [
+                "5 152616 360148277\r\n",
+                "9 17 1 17 5 17 9 17 3 17 9 17 9 17 17 5 2 17 9 17 9 17 17 5 17 9 17 5 17 3 17 9\r\n"
+            ],
+            [
+                "5 152616 22782768\r\n",
+                "1 17 9 17 5 17 9 17 3 17 9 17 5 17 9 17 9 17 2 17 17 9 17 5 17 9 17 3 17 9 17 5\r\n"
+            ],
+            [
+                "5 152616 677537194\r\n",
+                "5 17 9 17 1 17 9 17 9 17 3 17 17 5 9 17 17 2 9 17 17 9 17 5 17 9 17 5 17 9 17 3\r\n"
+            ],
+            [
+                "5 152616 740017710\r\n",
+                "5 17 9 17 1 17 9 17 3 17 9 17 17 5 9 17 9 17 2 17 9 17 17 5 9 17 17 3 17 9 17 5\r\n"
+            ],
+            [
+                "5 152616 657627093\r\n",
+                "9 17 17 1 5 17 9 17 3 17 17 9 5 17 17 9 17 9 17 2 17 5 17 9 17 9 17 5 17 3 17 9\r\n"
+            ],
+            [
+                "5 86589 718408392\r\n",
+                "17 3 9 17 5 17 9 17 5 17 17 9 1 17 17 9 17 9 17 5 2 17 17 9 17 9 17 5 17 9 17 3\r\n"
+            ],
+            [
+                "5 86589 200590490\r\n",
+                "17 3 9 17 5 17 9 17 9 17 1 17 5 17 17 9 17 5 17 9 17 9 17 2 17 9 17 5 17 9 17 3\r\n"
+            ],
+            [
+                "5 86589 520369903\r\n",
+                "3 17 9 17 5 17 9 17 17 9 5 17 17 9 17 1 9 17 17 5 9 17 2 17 9 17 17 3 9 17 17 5\r\n"
+            ],
+            [
+                "5 86589 455712817\r\n",
+                "17 3 9 17 5 17 9 17 1 17 9 17 5 17 9 17 17 9 5 17 17 9 2 17 17 3 17 9 17 9 17 5\r\n"
+            ],
+            [
+                "5 86589 480444402\r\n",
+                "3 17 9 17 5 17 17 9 17 9 17 5 1 17 17 9 17 9 17 5 17 9 2 17 17 9 17 5 17 9 17 3\r\n"
+            ],
+            [
+                "5 100 100\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 100 10200\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "5 98849987 157498432\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 100000000 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 99999999 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 99999999 338487949\r\n",
+                "17 9 5 17 3 17 17 9 17 9 17 2 17 9 17 5 17 9 1 17 17 9 17 5 17 9 17 5 17 9 17 3\r\n"
+            ],
+            [
+                "5 21214 10\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 214 142\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

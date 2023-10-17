@@ -1,0 +1,421 @@
+[
+    {
+        "name": "Knightmare (hard)",
+        "description": "This is an interactive problem. Alice and Bob are playing a game on the\nchessboard of size \n    n \n    \u00d7 m\n where \n    n\n and \n    m\n are even. The\nrows are numbered from \n    1\n to \n    n\n and the columns are numbered from\n\n    1\n to \n    m\n. There are two knights on the chessboard. A white one\ninitially is on the position \n    (x_1, y_1)\n, while the black one is on the\nposition \n    (x_2, y_2)\n. Alice will choose one of the knights to play with,\nand Bob will use the other one. The Alice and Bob will play in turns and\nwhoever controls the white knight starts the game. During a turn, the player\nmust move their knight adhering the chess rules. That is, if the knight is\ncurrently on the position \n    (x, y)\n, it can be moved to any of those\npositions (as long as they are inside the chessboard): \n    (x+1, y+2)\n,\n\n    (x+1, y-2)\n, \n    (x-1, y+2)\n, \n    (x-1, y-2)\n,\n    (x+2, y+1)\n,\n\n    (x+2, y-1)\n, \n    (x-2, y+1)\n, \n    (x-2, y-1)\n. We all know that knights\nare strongest in the middle of the board. Both knight have a single position\nthey want to reach: the owner of the white knight wins if it captures the\nblack knight or if the white knight is at \n    (n/2, m/2)\n and this position\nis not under attack of the black knight at this moment; The owner of the black\nknight wins if it captures the white knight or if the black knight is at\n\n    (n/2+1, m/2)\n and this position is not under attack of the white knight\nat this moment. Formally, the player who captures the other knight wins. The\nplayer who is at its target square (\n    (n/2, m/2)\n for white, \n    (n/2+1,\n    m/2)\n for black) and this position is not under opponent's attack, also\nwins. A position is under attack of a knight if it can move into this\nposition. Capturing a knight means that a player moves their knight to the\ncell where the opponent's knight is. If Alice made \n    350\n moves and nobody\nwon, the game is a draw. Alice is unsure in her chess skills, so she asks you\nfor a help. Choose a knight and win the game for her. It can be shown, that\nAlice always has a winning strategy. Interaction The interaction starts with\ntwo integers \n    n\n and \n    m\n (\n    6 \n    \u2264 n,m \n    \u2264 1000\n, \n    n\n and\n\n    m\n are even) \u2014 the dimensions of the chessboard. The second line contains\nfour integers \n    x_1, y_1, x_2, y_2\n (\n    1 \n    \u2264 x_1, x_2 \n    \u2264 n\n, \n    1\n    \n    \u2264 y_1, y_2 \n    \u2264 m\n) \u2014 the positions of the white and the black knight.\nIt is guaranteed that the two knights have different starting positions. It is\nalso guaranteed that none of the knights are in their own target square in the\nbeginning of the game (however, they can be on the opponent's target\nposition). Your program should reply with either \"WHITE\" or \"BLACK\", depending\non the knight you want to play with. In case you select the white knight, you\nstart the game. During every your turn, you need to print two integers:\n\n    x\n and \n    y\n, the position to move the knight. If you won the game by\nthis turn, you must terminate your program immediately. After every turn of\nthe opponent, you will receive two integers: \n    x\n and \n    y\n, the position\nwhere Bob moved his knight. If your last move was illegal or you lost the game\nafter jury's turn, or you made \n    350\n moves, and haven't won, you will\nreceive \"-1 -1\". In such cases, you should terminate your program and then you\nwill get a Wrong Answer verdict. After printing anything, do not forget to\noutput the end of line and flush the output. Otherwise, you might get Idleness\nlimit exceeded. To do this, use: fflush(stdout) or cout.flush() in C++;\nSystem.out.flush() in Java; flush(output) in Pascal; stdout.flush() in Python;\nsee documentation for other languages.Hacks are disabled for this problem.\nJury's program is adaptive: the moves of jury may depend on the moves made by\nyour program. Examples Input 8 8 2 3 1 8 Output WHITE 4 4 Input 6 6 4 4 2 2 6\n3 Output BLACK 4 3 Note In the first example, the white knight can reach it's\ntarget square in one move. In the second example black knight wins, no matter\nwhat white knight moves.\n\n",
+        "cf_contest_id": 1201,
+        "cf_index": "E2",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "graphs",
+            "interactive",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "8 8\r\n2 3 1 8\r\n0 1\r\n",
+                "WHITE\r\nplayer 4 4\r\n"
+            ],
+            [
+                "6 6\r\n4 4 2 2\r\n0 1\r\n",
+                "BLACK\r\njury 5 2\r\nplayer 4 3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6 6\r\n5 4 4 6\r\n0 0\r\n",
+                "WHITE\r\nplayer 3 3\r\n"
+            ],
+            [
+                "6 8\r\n6 6 1 7\r\n0 1\r\n",
+                "BLACK\r\njury 5 8\r\nplayer 3 6\r\njury 4 6\r\nplayer 4 4\r\n"
+            ],
+            [
+                "8 6\r\n8 6 7 6\r\n0 1\r\n",
+                "WHITE\r\nplayer 7 4\r\njury 6 4\r\nplayer 6 2\r\njury 7 2\r\nplayer 4 3\r\n"
+            ],
+            [
+                "8 8\r\n2 1 6 5\r\n0 1\r\n",
+                "BLACK\r\njury 3 3\r\nplayer 7 3\r\njury 2 5\r\nplayer 5 4\r\n"
+            ],
+            [
+                "8 8\r\n3 6 7 2\r\n0 1\r\n",
+                "WHITE\r\nplayer 4 4\r\n"
+            ],
+            [
+                "6 6\r\n1 3 6 4\r\n0 1\r\n",
+                "BLACK\r\njury 2 5\r\nplayer 4 3\r\n"
+            ],
+            [
+                "6 6\r\n3 6 1 3\r\n1 0\r\n",
+                "WHITE\r\nplayer 4 4\r\njury 2 5\r\nplayer 5 2\r\njury 3 3\r\nplayer 3 3\r\n"
+            ],
+            [
+                "6 6\r\n5 1 2 6\r\n0 1\r\n",
+                "BLACK\r\njury 4 3\r\nplayer 4 5\r\njury 3 5\r\nplayer 6 4\r\njury 5 4\r\nplayer 4 3\r\n"
+            ],
+            [
+                "6 6\r\n1 5 5 2\r\n1 1\r\n",
+                "WHITE\r\nplayer 3 6\r\njury 3 3\r\nplayer 5 5\r\njury 4 5\r\nplayer 4 3\r\njury 3 3\r\nplayer 6 4\r\njury 4 1\r\nplayer 5 2\r\njury 5 3\r\nplayer 3 3\r\n"
+            ],
+            [
+                "6 6\r\n6 3 6 5\r\n0 0\r\n",
+                "BLACK\r\njury 4 4\r\nplayer 5 3\r\njury 5 2\r\nplayer 4 1\r\njury 3 3\r\nplayer 3 3\r\n"
+            ],
+            [
+                "10 6\r\n7 5 9 2\r\n0 1\r\n",
+                "WHITE\r\nplayer 6 3\r\njury 10 4\r\nplayer 8 4\r\njury 8 3\r\nplayer 7 2\r\njury 7 5\r\nplayer 5 3\r\n"
+            ],
+            [
+                "6 10\r\n2 1 1 10\r\n0 0\r\n",
+                "BLACK\r\njury 3 3\r\nplayer 3 9\r\njury 5 4\r\nplayer 4 7\r\njury 3 5\r\nplayer 3 5\r\n"
+            ],
+            [
+                "6 12\r\n5 1 3 8\r\n0 0\r\n",
+                "BLACK\r\njury 6 3\r\nplayer 4 6\r\n"
+            ],
+            [
+                "12 6\r\n4 5 1 4\r\n1 1\r\n",
+                "BLACK\r\njury 5 3\r\nplayer 3 5\r\njury 6 5\r\nplayer 5 4\r\njury 5 3\r\nplayer 7 3\r\n"
+            ],
+            [
+                "100 100\r\n82 51 81 14\r\n0 0\r\n",
+                "WHITE\r\nplayer 81 49\r\njury 80 16\r\nplayer 80 47\r\njury 79 18\r\nplayer 78 46\r\njury 78 20\r\nplayer 76 45\r\njury 77 22\r\nplayer 74 44\r\njury 76 24\r\nplayer 72 43\r\njury 75 26\r\nplayer 70 42\r\njury 74 28\r\nplayer 68 41\r\njury 73 30\r\nplayer 66 42\r\njury 72 32\r\nplayer 64 43\r\njury 71 34\r\nplayer 62 44\r\njury 70 36\r\nplayer 60 45\r\njury 69 38\r\nplayer 58 46\r\njury 68 40\r\nplayer 56 47\r\njury 67 42\r\nplayer 54 48\r\njury 65 43\r\nplayer 52 49\r\njury 63 44\r\nplayer 50 50\r\n"
+            ],
+            [
+                "100 100\r\n38 14 68 17\r\n0 1\r\n",
+                "WHITE\r\nplayer 39 16\r\njury 67 19\r\nplayer 40 18\r\njury 66 21\r\nplayer 41 20\r\njury 65 23\r\nplayer 42 22\r\njury 64 25\r\nplayer 43 24\r\njury 63 27\r\nplayer 44 26\r\njury 62 29\r\nplayer 45 28\r\njury 61 31\r\nplayer 46 30\r\njury 60 33\r\nplayer 47 32\r\njury 59 35\r\nplayer 48 34\r\njury 58 37\r\nplayer 49 36\r\njury 57 39\r\nplayer 50 38\r\njury 56 41\r\nplayer 51 40\r\njury 55 43\r\nplayer 52 42\r\njury 54 45\r\nplayer 53 44\r\njury 53 47\r\nplayer 52 46\r\njury 52 49\r\nplayer 51 48\r\njury 53 51\r\nplayer 50 50\r\n"
+            ],
+            [
+                "100 100\r\n55 51 55 55\r\n1 1\r\n",
+                "BLACK\r\njury 54 49\r\nplayer 54 53\r\njury 52 48\r\nplayer 53 51\r\njury 53 50\r\nplayer 51 50\r\n"
+            ],
+            [
+                "100 100\r\n37 61 38 62\r\n1 1\r\n",
+                "BLACK\r\njury 38 59\r\nplayer 40 61\r\njury 39 57\r\nplayer 42 60\r\njury 40 55\r\nplayer 44 59\r\njury 42 54\r\nplayer 46 58\r\njury 44 53\r\nplayer 47 56\r\njury 46 52\r\nplayer 48 54\r\njury 48 51\r\nplayer 49 52\r\njury 49 49\r\nplayer 50 50\r\njury 51 50\r\nplayer 51 52\r\njury 52 52\r\nplayer 53 51\r\njury 53 54\r\nplayer 51 50\r\n"
+            ],
+            [
+                "10 10\r\n2 4 7 8\r\n0 0\r\n",
+                "WHITE\r\nplayer 3 6\r\njury 8 6\r\nplayer 5 5\r\n"
+            ],
+            [
+                "10 10\r\n5 10 9 2\r\n1 1\r\n",
+                "BLACK\r\njury 6 8\r\nplayer 7 3\r\njury 7 6\r\nplayer 6 5\r\n"
+            ],
+            [
+                "10 10\r\n5 3 7 6\r\n0 1\r\n",
+                "WHITE\r\nplayer 7 4\r\njury 8 4\r\nplayer 5 5\r\n"
+            ],
+            [
+                "10 10\r\n2 7 4 5\r\n1 1\r\n",
+                "BLACK\r\njury 4 6\r\nplayer 5 7\r\njury 5 8\r\nplayer 6 5\r\n"
+            ],
+            [
+                "10 10\r\n1 9 7 6\r\n1 1\r\n",
+                "WHITE\r\nplayer 3 8\r\njury 5 5\r\nplayer 5 7\r\njury 6 7\r\nplayer 6 5\r\njury 5 5\r\nplayer 8 6\r\njury 6 3\r\nplayer 7 4\r\njury 7 5\r\nplayer 5 5\r\n"
+            ],
+            [
+                "10 10\r\n6 9 8 7\r\n0 1\r\n",
+                "BLACK\r\njury 5 7\r\nplayer 9 5\r\njury 3 6\r\nplayer 7 4\r\njury 4 8\r\nplayer 5 5\r\njury 5 10\r\nplayer 6 7\r\njury 6 8\r\nplayer 8 6\r\njury 7 6\r\nplayer 6 5\r\n"
+            ],
+            [
+                "12 8\r\n2 2 11 7\r\n1 1\r\n",
+                "WHITE\r\nplayer 4 3\r\njury 10 5\r\nplayer 6 4\r\n"
+            ],
+            [
+                "12 8\r\n1 4 6 7\r\n1 1\r\n",
+                "BLACK\r\njury 2 6\r\nplayer 8 6\r\njury 4 5\r\nplayer 7 4\r\n"
+            ],
+            [
+                "12 8\r\n6 8 7 6\r\n0 1\r\n",
+                "WHITE\r\nplayer 7 6\r\n"
+            ],
+            [
+                "12 8\r\n7 8 7 6\r\n0 0\r\n",
+                "BLACK\r\njury 6 6\r\nplayer 9 5\r\njury 8 5\r\nplayer 7 4\r\n"
+            ],
+            [
+                "12 8\r\n4 6 4 1\r\n0 1\r\n",
+                "WHITE\r\nplayer 5 8\r\njury 5 3\r\nplayer 6 6\r\njury 6 5\r\nplayer 7 4\r\njury 7 7\r\nplayer 9 5\r\njury 8 5\r\nplayer 8 3\r\njury 9 3\r\nplayer 6 4\r\n"
+            ],
+            [
+                "12 8\r\n8 8 3 3\r\n1 1\r\n",
+                "BLACK\r\njury 7 6\r\nplayer 4 5\r\njury 9 5\r\nplayer 6 4\r\njury 7 4\r\nplayer 7 6\r\njury 8 6\r\nplayer 9 5\r\njury 9 8\r\nplayer 7 4\r\n"
+            ],
+            [
+                "8 12\r\n2 5 6 8\r\n1 1\r\n",
+                "WHITE\r\nplayer 4 6\r\n"
+            ],
+            [
+                "8 12\r\n5 5 6 8\r\n0 1\r\n",
+                "BLACK\r\njury 6 7\r\nplayer 5 6\r\n"
+            ],
+            [
+                "8 12\r\n3 10 6 2\r\n1 1\r\n",
+                "WHITE\r\nplayer 5 9\r\njury 5 4\r\nplayer 6 7\r\njury 6 6\r\nplayer 4 6\r\n"
+            ],
+            [
+                "8 12\r\n5 11 8 6\r\n0 0\r\n",
+                "BLACK\r\njury 6 9\r\nplayer 6 5\r\njury 7 7\r\nplayer 7 7\r\n"
+            ],
+            [
+                "8 12\r\n2 4 8 3\r\n0 1\r\n",
+                "WHITE\r\nplayer 3 6\r\njury 7 5\r\nplayer 4 8\r\njury 8 7\r\nplayer 5 6\r\njury 7 9\r\nplayer 7 7\r\njury 6 7\r\nplayer 6 5\r\njury 7 5\r\nplayer 4 6\r\n"
+            ],
+            [
+                "8 12\r\n4 7 4 1\r\n0 1\r\n",
+                "BLACK\r\njury 3 5\r\nplayer 5 3\r\njury 2 7\r\nplayer 6 5\r\njury 3 9\r\nplayer 4 6\r\njury 4 11\r\nplayer 5 8\r\njury 5 9\r\nplayer 7 7\r\njury 6 7\r\nplayer 5 6\r\n"
+            ],
+            [
+                "6 6\r\n1 1 4 4\r\n0 0\r\n",
+                "BLACK\r\njury 2 3\r\nplayer 5 6\r\njury 3 5\r\nplayer 6 4\r\njury 5 4\r\nplayer 4 3\r\n"
+            ],
+            [
+                "6 6\r\n1 1 2 3\r\n0 1\r\n",
+                "WHITE\r\nplayer 2 3\r\n"
+            ],
+            [
+                "1000 1000\r\n1000 1000 999 998\r\n1 1\r\n",
+                "WHITE\r\nplayer 999 998\r\n"
+            ],
+            [
+                "1000 998\r\n51 821 50 820\r\n0 0\r\n",
+                "BLACK\r\njury 52 819\r\nplayer 52 819\r\n"
+            ],
+            [
+                "6 6\r\n5 4 6 5\r\n0 0\r\n",
+                "WHITE\r\nplayer 3 3\r\n"
+            ],
+            [
+                "8 6\r\n2 5 1 3\r\n0 0\r\n",
+                "WHITE\r\nplayer 4 6\r\njury 3 4\r\nplayer 6 5\r\njury 5 3\r\nplayer 5 3\r\n"
+            ],
+            [
+                "6 8\r\n1 3 1 4\r\n1 1\r\n",
+                "WHITE\r\nplayer 3 4\r\n"
+            ],
+            [
+                "8 8\r\n2 1 1 2\r\n0 1\r\n",
+                "BLACK\r\njury 4 2\r\nplayer 3 3\r\njury 6 3\r\nplayer 5 4\r\n"
+            ],
+            [
+                "1000 1000\r\n501 500 499 502\r\n0 1\r\n",
+                "BLACK\r\njury 500 502\r\nplayer 500 500\r\njury 501 504\r\nplayer 501 502\r\njury 500 502\r\nplayer 503 501\r\njury 502 501\r\nplayer 501 500\r\n"
+            ],
+            [
+                "1000 1000\r\n498 502 500 500\r\n0 1\r\n",
+                "BLACK\r\njury 499 504\r\nplayer 501 502\r\njury 500 502\r\nplayer 503 501\r\njury 502 501\r\nplayer 501 500\r\n"
+            ],
+            [
+                "6 1000\r\n4 500 5 501\r\n0 1\r\n",
+                "BLACK\r\njury 3 498\r\nplayer 6 499\r\njury 5 499\r\nplayer 4 500\r\n"
+            ],
+            [
+                "6 1000\r\n4 501 3 500\r\n0 1\r\n",
+                "BLACK\r\njury 5 503\r\nplayer 4 502\r\njury 3 502\r\nplayer 6 501\r\njury 5 501\r\nplayer 4 500\r\n"
+            ],
+            [
+                "1000 6\r\n501 3 499 2\r\n1 1\r\n",
+                "WHITE\r\nplayer 503 4\r\njury 498 4\r\nplayer 502 2\r\njury 499 6\r\nplayer 500 3\r\n"
+            ],
+            [
+                "1000 6\r\n498 2 500 3\r\n1 1\r\n",
+                "WHITE\r\nplayer 500 3\r\n"
+            ],
+            [
+                "6 6\r\n4 3 4 2\r\n0 1\r\n",
+                "WHITE\r\nplayer 6 4\r\njury 5 4\r\nplayer 5 2\r\njury 6 2\r\nplayer 3 3\r\n"
+            ],
+            [
+                "6 6\r\n6 6 3 3\r\n1 0\r\n",
+                "BLACK\r\njury 5 4\r\nplayer 4 5\r\njury 6 2\r\nplayer 6 4\r\njury 4 3\r\nplayer 4 3\r\n"
+            ],
+            [
+                "8 8\r\n5 4 6 1\r\n1 0\r\n",
+                "BLACK\r\njury 6 6\r\nplayer 7 3\r\njury 5 4\r\nplayer 5 4\r\n"
+            ],
+            [
+                "8 8\r\n5 1 4 4\r\n1 0\r\n",
+                "BLACK\r\njury 6 3\r\nplayer 5 6\r\njury 7 5\r\nplayer 7 5\r\n"
+            ],
+            [
+                "996 998\r\n499 499 496 500\r\n1 1\r\n",
+                "BLACK\r\njury 500 501\r\nplayer 498 501\r\njury 501 503\r\nplayer 499 499\r\n"
+            ],
+            [
+                "996 998\r\n495 500 498 499\r\n1 1\r\n",
+                "BLACK\r\njury 496 502\r\nplayer 499 501\r\njury 498 501\r\nplayer 501 500\r\njury 499 503\r\nplayer 499 499\r\n"
+            ],
+            [
+                "1000 1000\r\n501 500 500 500\r\n0 0\r\n",
+                "WHITE\r\nplayer 503 501\r\njury 501 502\r\nplayer 502 499\r\njury 503 501\r\nplayer 500 500\r\n"
+            ],
+            [
+                "6 6\r\n3 4 3 2\r\n0 1\r\n",
+                "BLACK\r\njury 2 2\r\nplayer 5 1\r\njury 1 4\r\nplayer 4 3\r\n"
+            ],
+            [
+                "6 6\r\n3 1 5 4\r\n1 1\r\n",
+                "WHITE\r\nplayer 5 2\r\njury 6 6\r\nplayer 3 3\r\n"
+            ],
+            [
+                "8 8\r\n3 7 3 3\r\n0 1\r\n",
+                "BLACK\r\njury 5 6\r\nplayer 5 4\r\n"
+            ],
+            [
+                "20 20\r\n11 10 10 9\r\n1 1\r\n",
+                "BLACK\r\njury 12 12\r\nplayer 12 8\r\njury 13 14\r\nplayer 11 10\r\n"
+            ],
+            [
+                "20 20\r\n10 8 12 11\r\n0 1\r\n",
+                "WHITE\r\nplayer 12 9\r\njury 13 9\r\nplayer 10 10\r\n"
+            ],
+            [
+                "20 20\r\n10 13 7 13\r\n1 1\r\n",
+                "WHITE\r\nplayer 12 14\r\njury 8 11\r\nplayer 11 12\r\njury 9 9\r\nplayer 10 10\r\n"
+            ],
+            [
+                "6 6\r\n2 4 2 3\r\n0 1\r\n",
+                "WHITE\r\nplayer 4 5\r\njury 3 5\r\nplayer 3 3\r\n"
+            ],
+            [
+                "6 6\r\n2 2 2 3\r\n0 1\r\n",
+                "WHITE\r\nplayer 4 1\r\njury 3 5\r\nplayer 3 3\r\n"
+            ],
+            [
+                "8 8\r\n3 5 7 4\r\n0 1\r\n",
+                "WHITE\r\nplayer 5 6\r\njury 6 6\r\nplayer 4 4\r\n"
+            ],
+            [
+                "20 20\r\n9 9 10 10\r\n1 1\r\n",
+                "BLACK\r\njury 11 10\r\nplayer 11 12\r\njury 12 12\r\nplayer 13 11\r\njury 13 14\r\nplayer 11 10\r\n"
+            ],
+            [
+                "20 20\r\n9 8 10 9\r\n1 1\r\n",
+                "WHITE\r\nplayer 10 10\r\n"
+            ],
+            [
+                "20 20\r\n13 11 10 10\r\n0 1\r\n",
+                "BLACK\r\njury 14 13\r\nplayer 11 12\r\njury 15 15\r\nplayer 13 11\r\njury 13 14\r\nplayer 11 10\r\n"
+            ],
+            [
+                "6 6\r\n3 4 3 2\r\n1 1\r\n",
+                "BLACK\r\njury 2 2\r\nplayer 5 1\r\njury 3 4\r\nplayer 4 3\r\n"
+            ],
+            [
+                "6 6\r\n1 4 3 5\r\n0 1\r\n",
+                "WHITE\r\nplayer 3 3\r\n"
+            ],
+            [
+                "8 8\r\n6 4 7 5\r\n0 1\r\n",
+                "BLACK\r\njury 5 2\r\nplayer 5 4\r\n"
+            ],
+            [
+                "20 20\r\n9 11 10 11\r\n0 1\r\n",
+                "WHITE\r\nplayer 11 12\r\njury 9 9\r\nplayer 10 10\r\n"
+            ],
+            [
+                "20 20\r\n8 11 8 8\r\n1 1\r\n",
+                "WHITE\r\nplayer 10 10\r\n"
+            ],
+            [
+                "20 20\r\n9 10 10 8\r\n0 1\r\n",
+                "WHITE\r\nplayer 10 12\r\njury 11 6\r\nplayer 11 10\r\njury 12 4\r\nplayer 13 11\r\njury 13 6\r\nplayer 12 9\r\njury 12 8\r\nplayer 10 10\r\n"
+            ],
+            [
+                "6 6\r\n3 2 3 4\r\n1 1\r\n",
+                "BLACK\r\njury 2 4\r\nplayer 5 5\r\njury 3 2\r\nplayer 4 3\r\n"
+            ],
+            [
+                "6 6\r\n5 5 2 2\r\n0 1\r\n",
+                "BLACK\r\njury 6 3\r\nplayer 4 3\r\n"
+            ],
+            [
+                "8 8\r\n2 2 7 6\r\n1 1\r\n",
+                "WHITE\r\nplayer 3 4\r\njury 8 4\r\nplayer 4 6\r\njury 6 3\r\nplayer 6 5\r\njury 7 5\r\nplayer 4 4\r\n"
+            ],
+            [
+                "20 20\r\n10 9 10 10\r\n0 1\r\n",
+                "WHITE\r\nplayer 11 11\r\njury 11 12\r\nplayer 12 9\r\njury 9 11\r\nplayer 10 10\r\n"
+            ],
+            [
+                "20 20\r\n11 9 8 10\r\n1 1\r\n",
+                "BLACK\r\njury 12 11\r\nplayer 9 12\r\njury 13 9\r\nplayer 10 10\r\njury 11 10\r\nplayer 11 12\r\njury 12 12\r\nplayer 13 11\r\njury 13 14\r\nplayer 11 10\r\n"
+            ],
+            [
+                "20 20\r\n8 12 11 9\r\n1 1\r\n",
+                "BLACK\r\njury 9 14\r\nplayer 12 11\r\njury 10 16\r\nplayer 13 9\r\njury 11 14\r\nplayer 11 10\r\n"
+            ],
+            [
+                "6 6\r\n4 3 4 4\r\n0 1\r\n",
+                "WHITE\r\nplayer 6 4\r\njury 3 6\r\nplayer 5 2\r\njury 2 4\r\nplayer 3 3\r\n"
+            ],
+            [
+                "6 6\r\n2 3 1 1\r\n1 1\r\n",
+                "WHITE\r\nplayer 3 5\r\njury 3 2\r\nplayer 5 4\r\njury 2 4\r\nplayer 3 3\r\n"
+            ],
+            [
+                "8 8\r\n1 4 7 7\r\n1 1\r\n",
+                "WHITE\r\nplayer 3 5\r\njury 6 5\r\nplayer 5 6\r\njury 7 3\r\nplayer 4 4\r\n"
+            ],
+            [
+                "20 20\r\n10 9 10 10\r\n0 1\r\n",
+                "WHITE\r\nplayer 11 11\r\njury 11 12\r\nplayer 12 9\r\njury 9 11\r\nplayer 10 10\r\n"
+            ],
+            [
+                "20 20\r\n9 9 12 12\r\n0 1\r\n",
+                "BLACK\r\njury 8 11\r\nplayer 11 10\r\n"
+            ],
+            [
+                "20 20\r\n7 11 13 13\r\n1 1\r\n",
+                "BLACK\r\njury 8 9\r\nplayer 12 11\r\njury 9 11\r\nplayer 10 10\r\njury 11 10\r\nplayer 11 12\r\njury 12 12\r\nplayer 13 11\r\njury 13 14\r\nplayer 11 10\r\n"
+            ],
+            [
+                "16 14\r\n8 9 10 5\r\n0 1\r\n",
+                "BLACK\r\njury 10 8\r\nplayer 9 7\r\n"
+            ],
+            [
+                "16 14\r\n8 9 6 7\r\n0 1\r\n",
+                "BLACK\r\njury 10 8\r\nplayer 7 9\r\njury 11 10\r\nplayer 8 7\r\njury 12 12\r\nplayer 9 9\r\njury 13 14\r\nplayer 11 8\r\njury 12 12\r\nplayer 9 7\r\n"
+            ],
+            [
+                "12 14\r\n6 8 6 5\r\n0 1\r\n",
+                "WHITE\r\nplayer 8 9\r\njury 7 3\r\nplayer 7 7\r\njury 8 1\r\nplayer 9 8\r\njury 9 3\r\nplayer 8 6\r\njury 8 5\r\nplayer 6 7\r\n"
+            ],
+            [
+                "38 20\r\n18 8 18 11\r\n1 1\r\n",
+                "WHITE\r\nplayer 19 10\r\n"
+            ],
+            [
+                "12 16\r\n5 8 5 7\r\n1 1\r\n",
+                "WHITE\r\nplayer 6 10\r\njury 7 6\r\nplayer 7 8\r\njury 6 8\r\nplayer 9 9\r\njury 7 6\r\nplayer 8 7\r\njury 8 8\r\nplayer 6 8\r\n"
+            ],
+            [
+                "42 22\r\n22 14 19 11\r\n0 1\r\n",
+                "BLACK\r\njury 23 12\r\nplayer 20 13\r\njury 24 14\r\nplayer 21 11\r\njury 25 16\r\nplayer 22 13\r\njury 26 18\r\nplayer 24 12\r\njury 25 16\r\nplayer 22 11\r\n"
+            ],
+            [
+                "14 12\r\n8 4 6 4\r\n0 1\r\n",
+                "BLACK\r\njury 9 6\r\nplayer 7 6\r\njury 10 8\r\nplayer 8 8\r\njury 11 6\r\nplayer 10 7\r\njury 9 7\r\nplayer 8 6\r\n"
+            ],
+            [
+                "34 10\r\n17 4 17 3\r\n0 1\r\n",
+                "WHITE\r\nplayer 19 3\r\njury 16 5\r\nplayer 18 5\r\njury 15 7\r\nplayer 20 6\r\njury 16 9\r\nplayer 19 4\r\njury 17 7\r\nplayer 17 5\r\n"
+            ],
+            [
+                "22 14\r\n10 9 10 8\r\n1 1\r\n",
+                "WHITE\r\nplayer 11 7\r\n"
+            ],
+            [
+                "24 16\r\n11 9 14 6\r\n0 1\r\n",
+                "BLACK\r\njury 10 7\r\nplayer 13 8\r\n"
+            ],
+            [
+                "48 22\r\n26 10 23 9\r\n0 1\r\n",
+                "BLACK\r\njury 27 12\r\nplayer 24 11\r\njury 28 14\r\nplayer 25 13\r\njury 29 16\r\nplayer 27 12\r\njury 27 15\r\nplayer 25 11\r\n"
+            ]
+        ]
+    }
+]

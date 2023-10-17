@@ -1,0 +1,152 @@
+[
+    {
+        "name": "Intergalaxy Trips",
+        "description": "The scientists have recently discovered wormholes \u2014 objects in space that\nallow to travel very long distances between galaxies and star systems. The\nscientists know that there are n galaxies within reach. You are in the galaxy\nnumber 1 and you need to get to the galaxy number n. To get from galaxy i to\ngalaxy j, you need to fly onto a wormhole (i, j) and in exactly one galaxy day\nyou will find yourself in galaxy j. Unfortunately, the required wormhole is\nnot always available. Every galaxy day they disappear and appear at random.\nHowever, the state of wormholes does not change within one galaxy day. A\nwormhole from galaxy i to galaxy j exists during each galaxy day taken\nseparately with probability pij. You can always find out what wormholes exist\nat the given moment. At each moment you can either travel to another galaxy\nthrough one of wormholes that exist at this moment or you can simply wait for\none galaxy day to see which wormholes will lead from your current position at\nthe next day. Your task is to find the expected value of time needed to travel\nfrom galaxy 1 to galaxy n, if you act in the optimal way. It is guaranteed\nthat this expected value exists. Input The first line of the input contains a\nsingle integer n (1 \u2264 n \u2264 1000) \u2014 the number of galaxies within reach. Then\nfollows a matrix of n rows and n columns. Each element pij represents the\nprobability that there is a wormhole from galaxy i to galaxy j. All the\nprobabilities are given in percents and are integers. It is guaranteed that\nall the elements on the main diagonal are equal to 100. Output Print a single\nreal value \u2014 the expected value of the time needed to travel from galaxy 1 to\ngalaxy n if one acts in an optimal way. Your answer will be considered correct\nif its absolute or relative error does not exceed 10^-6. Namely: let's assume\nthat your answer is a, and the answer of the jury is b. The checker program\nwill consider your answer correct, if . Examples Input 3 100 50 50 0 100 80 0\n0 100 Output 1.750000000000000 Input 2 100 30 40 100 Output 3.333333333333333\nNote In the second sample the wormhole from galaxy 1 to galaxy 2 appears every\nday with probability equal to 0.3. The expected value of days one needs to\nwait before this event occurs is .\n\n",
+        "cf_contest_id": 605,
+        "cf_index": "E",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "probabilities",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n100 50 50\r\n0 100 80\r\n0 0 100\r\n",
+                "1.7500000"
+            ],
+            [
+                "2\r\n100 30\r\n40 100\r\n",
+                "3.3333333"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n100\r\n",
+                "0.0000000\r\n"
+            ],
+            [
+                "2\r\n100 100\r\n0 100\r\n",
+                "1.0000000"
+            ],
+            [
+                "3\r\n100 30 0\r\n50 100 40\r\n0 60 100\r\n",
+                "5.8333333"
+            ],
+            [
+                "4\r\n100 10 70 0\r\n0 100 20 80\r\n0 0 100 10\r\n0 0 0 100\r\n",
+                "10.1712329"
+            ],
+            [
+                "4\r\n100 10 70 0\r\n0 100 20 80\r\n0 40 100 10\r\n0 0 0 100\r\n",
+                "4.2614652"
+            ],
+            [
+                "5\r\n100 0 0 100 0\r\n0 100 100 0 0\r\n0 0 100 0 100\r\n0 100 0 100 0\r\n0 0 0 0 100\r\n",
+                "4.0000000"
+            ],
+            [
+                "5\r\n100 1 2 100 3\r\n4 100 100 5 6\r\n7 8 100 9 100\r\n10 100 11 100 12\r\n13 14 15 16 100\r\n",
+                "3.4999393"
+            ],
+            [
+                "6\r\n100 0 0 25 0 0\r\n0 100 0 0 0 75\r\n0 0 100 0 0 0\r\n0 50 0 100 0 0\r\n0 0 0 0 100 0\r\n0 0 0 0 0 100\r\n",
+                "7.3333333"
+            ],
+            [
+                "4\r\n100 21 7 71\r\n33 100 42 75\r\n44 50 100 75\r\n54 6 29 100\r\n",
+                "1.4011067"
+            ],
+            [
+                "4\r\n100 70 71 35\r\n9 100 78 39\r\n39 87 100 39\r\n50 16 53 100\r\n",
+                "2.6728143"
+            ],
+            [
+                "4\r\n100 59 20 45\r\n3 100 92 93\r\n55 70 100 93\r\n9 87 2 100\r\n",
+                "1.7050017"
+            ],
+            [
+                "10\r\n100 0 1 1 0 1 1 1 1 0\r\n0 100 0 1 1 0 1 1 1 0\r\n0 0 100 1 1 1 0 1 0 0\r\n1 0 1 100 1 0 0 1 0 1\r\n0 1 1 0 100 1 1 1 0 1\r\n1 1 1 0 1 100 0 0 0 1\r\n0 1 0 0 0 1 100 0 0 1\r\n1 1 1 0 0 0 0 100 0 1\r\n0 1 1 1 1 1 0 1 100 1\r\n0 1 1 0 1 0 1 1 0 100\r\n",
+                "120.4040200"
+            ],
+            [
+                "10\r\n100 2 0 2 4 1 5 0 1 2\r\n3 100 1 4 4 5 1 1 3 0\r\n3 1 100 2 4 0 2 1 3 5\r\n3 1 4 100 1 0 3 0 4 4\r\n5 4 0 1 100 4 3 5 2 0\r\n2 0 3 0 5 100 3 1 1 0\r\n3 5 1 2 3 4 100 5 4 2\r\n5 5 2 4 5 0 0 100 3 4\r\n2 4 1 0 2 3 2 5 100 1\r\n3 1 4 2 3 1 3 2 4 100\r\n",
+                "31.9210189"
+            ],
+            [
+                "10\r\n100 3 3 3 5 6 9 3 1 7\r\n3 100 9 10 8 2 5 1 3 2\r\n0 2 100 10 1 9 2 10 10 2\r\n3 8 5 100 5 9 8 6 4 2\r\n9 3 7 2 100 1 4 5 0 4\r\n4 9 5 7 8 100 5 4 1 6\r\n9 2 7 3 6 10 100 2 2 2\r\n2 7 10 4 6 6 8 100 7 7\r\n5 8 7 4 10 5 6 0 100 6\r\n0 0 6 9 2 2 5 7 8 100\r\n",
+                "14.2857143"
+            ],
+            [
+                "10\r\n100 14 20 5 13 18 18 2 14 3\r\n13 100 0 16 17 7 0 18 1 7\r\n13 10 100 6 12 19 0 11 18 15\r\n12 3 12 100 3 20 17 9 20 8\r\n12 14 14 6 100 19 15 9 20 12\r\n20 4 19 2 12 100 13 3 19 9\r\n16 19 14 3 16 19 100 14 6 11\r\n20 5 19 7 10 5 6 100 17 18\r\n6 5 2 13 17 12 6 20 100 15\r\n3 11 2 10 3 16 19 13 19 100\r\n",
+                "7.6917560"
+            ],
+            [
+                "10\r\n100 8 17 12 24 12 3 2 25 30\r\n15 100 18 20 26 28 13 14 14 30\r\n1 9 100 26 4 8 11 15 21 7\r\n3 8 6 100 29 19 5 28 17 4\r\n27 30 23 18 100 23 23 24 23 16\r\n14 29 27 13 12 100 24 27 20 28\r\n20 16 1 3 4 5 100 14 20 6\r\n13 18 8 29 15 30 3 100 2 23\r\n5 23 0 2 27 16 26 27 100 22\r\n2 8 7 21 27 26 15 1 3 100\r\n",
+                "3.3333333"
+            ],
+            [
+                "10\r\n100 15 6 4 0 24 32 29 20 8\r\n27 100 21 37 34 34 9 16 12 2\r\n10 38 100 10 9 22 17 12 34 18\r\n32 28 31 100 34 38 37 28 25 13\r\n38 36 11 14 100 36 27 36 13 14\r\n12 28 7 29 7 100 30 0 27 37\r\n7 2 22 2 1 38 100 25 17 7\r\n23 36 17 35 17 39 14 100 13 40\r\n35 34 21 20 30 25 5 38 100 23\r\n18 22 37 37 13 16 4 38 28 100\r\n",
+                "3.9633221"
+            ],
+            [
+                "10\r\n100 30 34 41 49 33 50 24 43 46\r\n48 100 27 17 48 9 4 41 49 30\r\n45 16 100 24 30 39 42 42 44 31\r\n17 4 26 100 46 11 20 38 27 41\r\n16 8 6 41 100 29 2 32 35 30\r\n1 36 12 6 25 100 8 27 0 20\r\n50 43 15 9 28 2 100 9 50 29\r\n13 34 2 29 14 11 16 100 16 12\r\n40 50 36 37 7 36 1 44 100 29\r\n19 30 32 32 9 19 28 45 31 100\r\n",
+                "2.1739130"
+            ],
+            [
+                "10\r\n100 23 13 2 11 23 14 0 2 2\r\n39 100 4 60 9 58 56 23 23 58\r\n6 12 100 59 30 54 8 26 24 49\r\n1 59 9 100 31 31 21 8 17 40\r\n50 23 39 39 100 38 42 25 52 29\r\n23 4 52 12 0 100 41 49 0 4\r\n32 42 40 29 31 22 100 32 41 12\r\n21 55 33 5 46 7 49 100 35 7\r\n35 49 19 2 22 52 52 20 100 32\r\n59 1 57 21 4 36 53 51 24 100\r\n",
+                "3.8209201"
+            ],
+            [
+                "10\r\n100 63 48 36 7 7 52 16 37 15\r\n14 100 10 21 47 31 0 30 13 14\r\n38 5 100 44 54 62 23 34 50 30\r\n22 56 24 100 22 54 26 68 20 24\r\n65 39 29 4 100 27 57 59 11 11\r\n58 2 59 18 29 100 39 25 17 1\r\n48 17 5 33 48 25 100 17 9 23\r\n62 18 51 13 51 14 65 100 30 52\r\n8 40 58 40 1 21 35 54 100 18\r\n45 33 34 42 16 56 16 67 11 100\r\n",
+                "3.2570060"
+            ],
+            [
+                "10\r\n100 66 13 2 48 68 15 62 43 76\r\n0 100 29 49 37 25 3 41 47 44\r\n69 68 100 79 11 2 3 5 62 30\r\n15 24 66 100 22 31 11 28 39 80\r\n16 77 28 28 100 46 3 64 66 55\r\n61 27 14 16 4 100 14 1 31 79\r\n79 75 13 71 75 53 100 11 14 5\r\n20 29 3 0 16 13 74 100 68 2\r\n9 46 65 13 42 74 36 8 100 62\r\n8 24 67 37 71 4 27 73 66 100\r\n",
+                "1.3066944"
+            ],
+            [
+                "10\r\n100 39 42 86 23 58 29 48 49 35\r\n74 100 70 82 7 89 43 64 84 79\r\n19 15 100 25 41 83 45 29 41 74\r\n57 75 48 100 49 21 2 88 86 86\r\n8 64 68 28 100 7 3 33 35 52\r\n20 88 11 62 51 100 57 59 44 65\r\n45 24 31 4 75 18 100 51 32 58\r\n73 36 12 4 75 7 20 100 89 30\r\n19 20 58 57 30 64 8 12 100 54\r\n21 49 40 26 19 85 10 44 37 100\r\n",
+                "1.7740060"
+            ],
+            [
+                "10\r\n100 61 30 6 7 39 54 2 62 70\r\n93 100 82 6 6 31 11 76 83 76\r\n46 66 100 91 87 70 63 50 41 24\r\n29 79 81 100 13 25 13 26 50 36\r\n75 27 88 28 100 76 35 84 50 56\r\n9 32 71 25 22 100 57 14 31 10\r\n95 28 61 67 88 44 100 9 79 12\r\n92 64 89 10 78 26 75 100 2 72\r\n11 45 74 52 42 12 90 21 100 40\r\n57 79 32 52 70 11 39 32 77 100\r\n",
+                "1.4051160"
+            ],
+            [
+                "10\r\n100 48 47 4 21 29 81 91 58 44\r\n22 100 61 48 23 36 47 6 64 37\r\n31 73 100 53 38 20 70 10 19 9\r\n73 52 26 100 42 64 41 91 49 4\r\n90 75 2 46 100 83 10 80 91 14\r\n67 2 42 77 4 100 35 41 96 15\r\n27 2 88 90 84 9 100 50 30 5\r\n95 88 46 94 85 67 63 100 98 41\r\n28 48 95 9 46 76 58 72 100 46\r\n81 44 67 79 14 6 5 58 75 100\r\n",
+                "2.2307622"
+            ],
+            [
+                "10\r\n100 0 56 45 88 48 68 28 55 17\r\n24 100 34 0 17 82 55 72 98 95\r\n9 78 100 29 95 99 81 67 18 35\r\n73 32 97 100 10 89 78 27 67 33\r\n71 79 9 79 100 66 32 0 52 0\r\n84 85 44 88 22 100 78 33 88 64\r\n83 62 26 8 13 96 100 34 86 5\r\n75 79 57 90 78 70 75 100 38 11\r\n77 0 13 91 62 39 48 44 100 39\r\n97 9 97 98 7 78 53 53 86 100\r\n",
+                "2.3523604"
+            ],
+            [
+                "10\r\n100 10 3 3 1 1 2 1 2 0\r\n3 100 3 1 2 0 1 0 4 3\r\n2 2 100 4 8 9 3 5 1 3\r\n1 1 1 100 0 1 1 6 4 2\r\n3 1 5 3 100 2 8 4 0 6\r\n4 5 0 3 8 100 3 6 3 0\r\n0 4 4 5 7 1 100 10 3 3\r\n4 0 5 1 2 3 4 100 6 2\r\n4 3 3 1 8 1 10 0 100 4\r\n1 0 9 0 4 0 2 6 4 100\r\n",
+                "27.0628757"
+            ],
+            [
+                "10\r\n100 4 0 1 0 2 5 0 8 0\r\n3 100 4 3 6 1 0 3 5 1\r\n5 3 100 4 3 2 3 1 2 4\r\n0 1 0 100 1 0 6 3 2 2\r\n1 3 0 4 100 6 2 3 2 2\r\n0 3 4 0 4 100 7 4 5 0\r\n3 6 0 0 6 1 100 2 2 4\r\n2 2 3 0 1 0 3 100 0 1\r\n0 1 1 3 2 0 0 4 100 4\r\n0 2 2 2 5 2 0 1 4 100\r\n",
+                "32.5233381"
+            ],
+            [
+                "10\r\n100 1 0 0 2 0 0 4 4 1\r\n1 100 4 1 0 4 2 0 3 2\r\n0 0 100 2 3 4 0 4 1 3\r\n0 2 3 100 1 0 1 3 4 0\r\n2 1 3 2 100 5 3 1 2 4\r\n3 5 3 9 3 100 0 3 2 2\r\n0 2 0 2 1 1 100 2 0 1\r\n2 1 4 4 0 1 0 100 1 1\r\n0 1 0 5 8 4 1 4 100 1\r\n4 3 0 1 4 1 0 1 1 100\r\n",
+                "39.8962681"
+            ],
+            [
+                "10\r\n100 70 63 17 88 74 40 73 72 78\r\n81 100 70 69 77 59 86 77 52 65\r\n11 77 100 32 72 83 80 48 52 89\r\n72 75 48 100 43 70 63 35 86 32\r\n44 42 74 34 100 42 61 72 58 87\r\n46 75 69 55 20 100 82 73 81 70\r\n63 67 83 72 38 14 100 34 65 84\r\n40 30 76 60 40 40 66 100 83 82\r\n25 29 84 69 88 68 79 27 100 84\r\n71 87 68 32 84 34 39 69 25 100\r\n",
+                "1.2494721"
+            ],
+            [
+                "10\r\n100 70 90 81 71 73 53 58 47 61\r\n51 100 59 75 78 56 84 83 61 85\r\n73 85 100 56 39 86 86 77 29 69\r\n52 90 53 100 69 86 28 73 83 71\r\n58 72 38 77 100 47 57 88 78 13\r\n83 90 35 28 87 100 80 59 73 50\r\n90 82 87 35 79 74 100 66 81 68\r\n83 56 90 57 56 37 48 100 58 53\r\n90 75 71 70 77 68 80 73 100 67\r\n81 75 80 71 90 59 84 50 83 100\r\n",
+                "1.4793612"
+            ],
+            [
+                "10\r\n100 71 77 72 68 46 73 63 83 73\r\n82 100 29 83 60 86 71 85 54 62\r\n83 72 100 69 78 79 69 90 90 54\r\n49 69 71 100 84 89 90 78 34 81\r\n86 90 73 87 100 81 51 68 64 89\r\n86 83 44 85 71 100 77 51 68 90\r\n63 69 90 72 80 47 100 54 79 89\r\n90 87 82 89 82 63 89 100 78 87\r\n87 25 27 88 79 79 70 81 100 38\r\n43 77 62 80 75 50 67 75 89 100\r\n",
+                "1.3023814"
+            ]
+        ]
+    }
+]

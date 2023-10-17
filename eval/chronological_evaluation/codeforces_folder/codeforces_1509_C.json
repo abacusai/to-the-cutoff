@@ -1,0 +1,56 @@
+[
+    {
+        "name": "The Sports Festival",
+        "description": "The student council is preparing for the relay race at the sports festival.\nThe council consists of \n    n\n members. They will run one after the other in\nthe race, the speed of member \n    i\n is \n    s_i\n. The discrepancy \n    d_i\n\nof the \n    i\n-th stage is the difference between the maximum and the minimum\nrunning speed among the first \n    i\n members who ran. Formally, if \n    a_i\n\ndenotes the speed of the \n    i\n-th member who participated in the race, then\n\n    d_i = \n    max(a_1, a_2, \n    \u2026, a_i) - \n    min(a_1, a_2, \n    \u2026, a_i)\n.\nYou want to minimize the sum of the discrepancies \n    d_1 + d_2 + \n    \u2026 +\n    d_n\n. To do this, you are allowed to change the order in which the members\nrun. What is the minimum possible sum that can be achieved? Input The first\nline contains a single integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264 2000\n) \u2014 the\nnumber of members of the student council. The second line contains \n    n\n\nintegers \n    s_1, s_2, \n    \u2026, s_n\n (\n    1 \n    \u2264 s_i \n    \u2264 10^9\n) \u2013 the\nrunning speeds of the members. Output Print a single integer \u2014 the minimum\npossible value of \n    d_1 + d_2 + \n    \u2026 + d_n\n after choosing the order of\nthe members. Examples Input 3 3 1 2 Output 3 Input 1 5 Output 0 Input 6 1 6 3\n3 6 3 Output 11 Input 6 104 943872923 6589 889921234 1000000000 69 Output\n2833800505 Note In the first test case, we may choose to make the third member\nrun first, followed by the first member, and finally the second. Thus \n    a_1 =\n    2\n, \n    a_2 = 3\n, and \n    a_3 = 1\n. We have: \n    d_1 = \n    max(2) -\n    \n    min(2) = 2 - 2 = 0\n. \n    d_2 = \n    max(2, 3) - \n    min(2, 3) = 3 - 2 = 1\n.\n\n    d_3 = \n    max(2, 3, 1) - \n    min(2, 3, 1) = 3 - 1 = 2\n. The resulting sum\nis \n    d_1 + d_2 + d_3 = 0 + 1 + 2 = 3\n. It can be shown that it is\nimpossible to achieve a smaller value. In the second test case, the only\npossible rearrangement gives \n    d_1 = 0\n, so the minimum possible result is\n\n    0\n.\n\n",
+        "cf_contest_id": 1509,
+        "cf_index": "C",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n3 1 2\r\n",
+                "3\r\n"
+            ],
+            [
+                "1\r\n5\r\n",
+                "0\r\n"
+            ],
+            [
+                "6\r\n1 6 3 3 6 3\r\n",
+                "11\r\n"
+            ],
+            [
+                "6\r\n104 943872923 6589 889921234 1000000000 69\r\n",
+                "2833800505\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "20\r\n293434130 567534945 339132630 291152695 959629878 416618095 149341899 479358017 509348379 335313693 386003521 360528367 387150541 724271523 741417449 63831275 308645820 457460287 716709394 977143845\r\n",
+                "5734409263\r\n"
+            ],
+            [
+                "35\r\n361 329 122 933 329 326 430 52 651 78 98 208 218 430 890 208 263 863 411 890 683 863 69 527 218 758 630 683 353 417 361 310 411 417 19\r\n",
+                "12030\r\n"
+            ],
+            [
+                "100\r\n9135 4978 1897 347 918 9160 9413 1712 2884 347 8724 4978 7037 7498 9022 814 6342 927 8180 1712 1897 9022 6046 6305 3146 6598 8489 9227 4319 4016 6046 4978 1712 4118 3120 568 9160 3015 195 3146 2463 3126 7037 5235 4025 4912 4118 4025 4168 9808 5235 9160 4308 6342 8910 4319 5816 8910 9022 3120 2486 189 9022 4118 9135 3443 1220 5885 1204 3126 1712 7341 3015 6598 3443 568 9135 2884 3443 1204 8180 4016 6100 9160 6046 3443 7037 7262 9227 6305 1897 1897 7037 568 2884 3126 3126 2370 8180 7037\r\n",
+                "434092\r\n"
+            ],
+            [
+                "100\r\n8217 8217 707 707 3502 9570 1009 1009 1009 643 1009 3826 643 707 7485 5007 8054 1009 4041 944 4041 3136 7384 4041 2750 6267 3826 3502 9570 643 7485 4041 707 3502 944 944 6267 944 1009 3502 8217 6267 1009 944 7384 643 2940 9570 9570 3136 7485 5007 8217 2750 8054 2940 7384 6267 643 8217 9116 5007 3136 9116 3136 7441 3502 8054 3826 944 3502 2940 7441 9570 3502 8217 643 3826 3136 7441 1009 2750 8054 3826 4041 3502 8217 7441 3826 9116 8092 2750 4041 1009 3136 9116 8054 8092 9570 3826\r\n",
+                "394947\r\n"
+            ],
+            [
+                "100\r\n5308 1343 7447 104 957 1911 9274 2915 224 6316 107 3842 4798 6632 4753 9329 2951 5764 4855 8153 5174 7061 4451 302 460 1333 6154 269 6206 7717 3483 1075 9824 2308 2962 3987 496 7333 2804 339 7143 8105 7456 8649 86 4878 4666 4161 3633 8721 4476 7841 5050 5168 8633 9270 9787 5205 8058 6758 136 8539 2630 8229 9828 3899 2448 1687 811 3321 5999 7319 9485 1828 4749 7349 6649 7421 2005 7601 9291 1279 4445 2685 9235 5913 7266 2881 3440 3516 138 3084 9772 5397 1361 9327 4726 7584 678 3265\r\n",
+                "476329\r\n"
+            ]
+        ]
+    }
+]

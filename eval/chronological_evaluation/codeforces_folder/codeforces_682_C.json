@@ -1,0 +1,94 @@
+[
+    {
+        "name": "Alyona and the Tree",
+        "description": "Alyona decided to go on a diet and went to the forest to get some apples.\nThere she unexpectedly found a magic rooted tree with root in the vertex 1,\nevery vertex and every edge of which has a number written on. The girl noticed\nthat some of the tree's vertices are sad, so she decided to play with them.\nLet's call vertex v sad if there is a vertex u in subtree of vertex v such\nthat dist(v, u) > au, where au is the number written on vertex u, dist(v, u)\nis the sum of the numbers written on the edges on the path from v to u. Leaves\nof a tree are vertices connected to a single vertex by a single edge, but the\nroot of a tree is a leaf if and only if the tree consists of a single vertex \u2014\nroot. Thus Alyona decided to remove some of tree leaves until there will be no\nany sad vertex left in the tree. What is the minimum number of leaves Alyona\nneeds to remove? Input In the first line of the input integer n (1 \u2264 n \u2264 10^5)\nis given \u2014 the number of vertices in the tree. In the second line the sequence\nof n integers a1, a2, ..., an (1 \u2264 ai \u2264 10^9) is given, where ai is the number\nwritten on vertex i. The next n - 1 lines describe tree edges: i^th of them\nconsists of two integers pi and ci (1 \u2264 pi \u2264 n, - 10^9 \u2264 ci \u2264 10^9), meaning\nthat there is an edge connecting vertices i + 1 and pi with number ci written\non it. Output Print the only integer \u2014 the minimum number of leaves Alyona\nneeds to remove such that there will be no any sad vertex left in the tree.\nExample Input 9 88 22 83 14 95 91 98 53 11 3 24 7 -8 1 67 1 64 9 65 5 12 6 -80\n3 8 Output 5 Note The following image represents possible process of removing\nleaves from the tree:\n\n",
+        "cf_contest_id": 682,
+        "cf_index": "C",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "9\r\n88 22 83 14 95 91 98 53 11\r\n3 24\r\n7 -8\r\n1 67\r\n1 64\r\n9 65\r\n5 12\r\n6 -80\r\n3 8\r\n",
+                "5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6\r\n53 82 15 77 71 23\r\n5 -77\r\n6 -73\r\n2 0\r\n1 26\r\n4 -92\r\n",
+                "0\r\n"
+            ],
+            [
+                "10\r\n99 60 68 46 51 11 96 41 48 99\r\n4 50\r\n6 -97\r\n3 -92\r\n7 1\r\n9 99\r\n2 79\r\n1 -15\r\n8 -68\r\n5 -84\r\n",
+                "7\r\n"
+            ],
+            [
+                "8\r\n53 41 22 22 34 95 56 24\r\n3 -20\r\n7 -56\r\n5 -3\r\n3 22\r\n1 37\r\n6 -34\r\n2 32\r\n",
+                "1\r\n"
+            ],
+            [
+                "8\r\n2 19 83 95 9 87 15 6\r\n6 16\r\n7 98\r\n5 32\r\n7 90\r\n8 37\r\n2 -34\r\n1 -83\r\n",
+                "5\r\n"
+            ],
+            [
+                "6\r\n60 89 33 64 92 75\r\n4 50\r\n1 32\r\n5 21\r\n3 77\r\n1 86\r\n",
+                "4\r\n"
+            ],
+            [
+                "4\r\n14 66 86 37\r\n3 -9\r\n1 93\r\n2 -57\r\n",
+                "3\r\n"
+            ],
+            [
+                "9\r\n59 48 48 14 51 51 86 53 58\r\n1 -47\r\n5 10\r\n8 -6\r\n9 46\r\n2 -69\r\n8 -79\r\n9 92\r\n6 12\r\n",
+                "5\r\n"
+            ],
+            [
+                "3\r\n17 26 6\r\n1 -41\r\n2 -66\r\n",
+                "0\r\n"
+            ],
+            [
+                "7\r\n63 3 67 55 14 19 96\r\n4 35\r\n1 -23\r\n3 -66\r\n2 80\r\n3 80\r\n2 -42\r\n",
+                "4\r\n"
+            ],
+            [
+                "5\r\n91 61 4 61 35\r\n5 75\r\n2 13\r\n2 -15\r\n1 90\r\n",
+                "4\r\n"
+            ],
+            [
+                "19\r\n40 99 20 54 5 31 67 73 10 46 70 68 80 74 7 58 75 25 13\r\n13 -28\r\n12 -33\r\n9 -62\r\n12 34\r\n15 70\r\n5 -22\r\n7 83\r\n2 -24\r\n6 -64\r\n17 62\r\n14 -28\r\n1 -83\r\n4 34\r\n8 -24\r\n11 19\r\n6 31\r\n7 -8\r\n16 90\r\n",
+                "11\r\n"
+            ],
+            [
+                "39\r\n98 80 74 31 81 15 23 52 54 86 56 9 95 91 29 20 97 78 62 65 17 95 12 39 77 17 60 78 76 51 36 56 74 66 43 23 17 9 13\r\n15 21\r\n34 -35\r\n28 80\r\n13 -15\r\n29 -34\r\n38 -8\r\n18 10\r\n18 19\r\n27 54\r\n7 42\r\n16 49\r\n12 90\r\n39 33\r\n20 53\r\n2 91\r\n33 59\r\n29 -93\r\n36 29\r\n26 50\r\n5 -12\r\n33 -6\r\n17 -60\r\n27 7\r\n17 85\r\n31 63\r\n26 80\r\n1 -99\r\n4 -40\r\n10 -39\r\n11 36\r\n21 22\r\n16 -15\r\n14 -25\r\n25 30\r\n33 97\r\n38 26\r\n8 -78\r\n10 -7\r\n",
+                "37\r\n"
+            ],
+            [
+                "19\r\n51 5 39 54 26 71 97 99 73 16 31 9 52 38 89 87 55 12 3\r\n18 -94\r\n19 -48\r\n2 -61\r\n10 72\r\n1 -82\r\n13 4\r\n19 -40\r\n16 -96\r\n6 -16\r\n19 -40\r\n13 44\r\n11 38\r\n15 -7\r\n6 8\r\n18 -32\r\n8 -75\r\n3 58\r\n10 -15\r\n",
+                "7\r\n"
+            ],
+            [
+                "39\r\n100 83 92 26 10 63 56 85 12 64 25 50 75 51 11 41 78 53 52 96 63 12 48 88 57 57 25 52 69 45 4 97 5 87 58 15 72 59 100\r\n35 -60\r\n33 -39\r\n1 65\r\n11 -65\r\n34 -63\r\n38 84\r\n4 76\r\n22 -9\r\n6 -91\r\n23 -65\r\n18 7\r\n2 -17\r\n29 -15\r\n19 26\r\n29 23\r\n14 -12\r\n30 -72\r\n9 14\r\n12 -1\r\n27 -21\r\n32 -67\r\n7 -3\r\n26 -18\r\n12 -45\r\n33 75\r\n14 -86\r\n34 -46\r\n24 -44\r\n27 -29\r\n22 -39\r\n17 -73\r\n36 -72\r\n18 -76\r\n27 -65\r\n8 65\r\n24 -15\r\n35 79\r\n27 61\r\n",
+                "38\r\n"
+            ],
+            [
+                "2\r\n83 33\r\n1 67\r\n",
+                "1\r\n"
+            ],
+            [
+                "6\r\n538779323 241071283 506741761 673531032 208769045 334127496\r\n1 -532301622\r\n5 -912729787\r\n6 -854756762\r\n4 -627791911\r\n2 -289935846\r\n",
+                "0\r\n"
+            ],
+            [
+                "10\r\n909382626 193846090 573881879 291637627 123338066 411896152 123287948 171497812 135534629 568762298\r\n9 -257478179\r\n4 -502075958\r\n2 -243790121\r\n2 -927464462\r\n8 -89981403\r\n1 -792322781\r\n10 -326468006\r\n7 -261940740\r\n4 -565652087\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

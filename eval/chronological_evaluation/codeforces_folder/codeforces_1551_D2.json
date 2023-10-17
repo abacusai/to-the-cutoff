@@ -1,0 +1,241 @@
+[
+    {
+        "name": "Domino (hard version)",
+        "description": "The only difference between this problem and D1 is that you don't have to\nprovide the way to construct the answer in D1, but you have to do it in this\nproblem. There's a table of \n    n \n    \u00d7 m\n cells (\n    n\n rows and \n    m\n\ncolumns). The value of \n    n \n    \u00b7 m\n is even. A domino is a figure that\nconsists of two cells having a common side. It may be horizontal (one of the\ncells is to the right of the other) or vertical (one of the cells is above the\nother). You need to place \n    nm/2\n dominoes on the table so that\nexactly \n    k\n of them are horizontal and all the other dominoes are\nvertical. The dominoes cannot overlap and must fill the whole table. Input The\nfirst line contains one integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264 10\n) \u2014 the\nnumber of test cases. Then \n    t\n test cases follow. Each test case consists\nof a single line. The line contains three integers \n    n\n, \n    m\n, \n    k\n\n(\n    1 \n    \u2264 n,m \n    \u2264 100\n, \n    0 \n    \u2264 k \n    \u2264\n    nm/2\n, \n    n\n    \n    \u00b7 m\n is even) \u2014 the count of rows, columns and horizontal dominoes,\nrespectively. Output For each test case: print \"NO\" if it's not possible to\nplace the dominoes on the table in the described way; otherwise, print \"YES\"\non a separate line, then print \n    n\n lines so that each of them contains\n\n    m\n lowercase letters of the Latin alphabet \u2014 the layout of the dominoes\non the table. Each cell of the table must be marked by the letter so that for\nevery two cells having a common side, they are marked by the same letters if\nand only if they are occupied by the same domino. I.e. both cells of the same\ndomino must be marked with the same letter, but two dominoes that share a side\nmust be marked with different letters. If there are multiple solutions, print\nany of them. Example Input 8 4 4 2 2 3 0 3 2 3 1 2 0 2 4 2 5 2 2 2 17 16 2 1 1\nOutput YES accx aegx bega bdda YES aha aha YES zz aa zz NO YES aaza bbza NO\nYES bbaabbaabbaabbaay ddccddccddccddccy NO\n\n",
+        "cf_contest_id": 1551,
+        "cf_index": "D2",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "8\r\n4 4 2\r\n2 3 0\r\n3 2 3\r\n1 2 0\r\n2 4 2\r\n5 2 2\r\n2 17 16\r\n2 1 1\r\n",
+                "YES\r\naacd\r\nbbcd\r\nefgh\r\nefgh\r\nYES\r\nabc\r\nabc\r\nYES\r\naa\r\nbb\r\ncc\r\nNO\r\nYES\r\naacd\r\nbbcd\r\nNO\r\nYES\r\naaccaaccaaccaacca\r\nbbddbbddbbddbbdda\r\nNO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n4 1 1\r\n10 2 2\r\n2 1 1\r\n5 2 2\r\n5 6 8\r\n2 2 1\r\n1 32 8\r\n11 2 3\r\n2 17 16\r\n2 7 3\r\n",
+                "NO\r\nYES\r\naa\r\nbb\r\nef\r\nef\r\nab\r\nab\r\nef\r\nef\r\nab\r\nab\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nYES\r\nab\r\nab\r\ncd\r\ncd\r\nab\r\nab\r\ncd\r\ncd\r\naa\r\nbb\r\ncc\r\nYES\r\naaccaaccaaccaacca\r\nbbddbbddbbddbbdda\r\nNO\r\n"
+            ],
+            [
+                "1\r\n5 24 10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n32 1 8\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n2 1 0\r\n",
+                "YES\r\na\r\na\r\n"
+            ],
+            [
+                "8\r\n32 1 8\r\n2 1 0\r\n17 22 3\r\n1 6 3\r\n3 4 2\r\n5 6 5\r\n6 3 8\r\n6 5 14\r\n",
+                "NO\r\nYES\r\na\r\na\r\nNO\r\nYES\r\naaeeaa\r\nYES\r\nabef\r\nabef\r\nccgg\r\nYES\r\nabefab\r\nabefab\r\ncdghcc\r\ncdghdd\r\naaeeaa\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "1\r\n4 1 0\r\n",
+                "YES\r\na\r\na\r\ne\r\ne\r\n"
+            ],
+            [
+                "1\r\n1 12 6\r\n",
+                "YES\r\naaeeaaeeaaee\r\n"
+            ],
+            [
+                "10\r\n4 1 1\r\n10 2 2\r\n2 1 1\r\n5 2 2\r\n5 6 8\r\n2 2 1\r\n1 32 8\r\n11 2 3\r\n2 17 16\r\n2 7 3\r\n",
+                "NO\r\nYES\r\naa\r\nbb\r\nef\r\nef\r\nab\r\nab\r\nef\r\nef\r\nab\r\nab\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nYES\r\nab\r\nab\r\ncd\r\ncd\r\nab\r\nab\r\ncd\r\ncd\r\naa\r\nbb\r\ncc\r\nYES\r\naaccaaccaaccaacca\r\nbbddbbddbbddbbdda\r\nNO\r\n"
+            ],
+            [
+                "1\r\n1 10 5\r\n",
+                "YES\r\naaeeaaeeaa\r\n"
+            ],
+            [
+                "1\r\n6 1 0\r\n",
+                "YES\r\na\r\na\r\ne\r\ne\r\na\r\na\r\n"
+            ],
+            [
+                "1\r\n8 3 10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n1 2 1\r\n",
+                "YES\r\naa\r\n"
+            ],
+            [
+                "1\r\n6 3 8\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n1 4 2\r\n",
+                "YES\r\naaee\r\n"
+            ],
+            [
+                "1\r\n7 4 2\r\n",
+                "YES\r\nabef\r\nabef\r\ncdgh\r\ncdgh\r\nabef\r\nabef\r\nccgg\r\n"
+            ],
+            [
+                "1\r\n60 1 0\r\n",
+                "YES\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\n"
+            ],
+            [
+                "1\r\n3 20 24\r\n",
+                "YES\r\nabefabeeaaeeaaeeaaee\r\nabefabffbbffbbffbbff\r\nccggccggccggccggccgg\r\n"
+            ],
+            [
+                "1\r\n38 1 10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n20 19 186\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n86 51 2176\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8\r\n6 6 17\r\n7 6 2\r\n2 5 0\r\n2 2 1\r\n1 2 1\r\n10 6 11\r\n7 8 2\r\n1 2 1\r\n",
+                "NO\r\nNO\r\nYES\r\nabcda\r\nabcda\r\nNO\r\nYES\r\naa\r\nNO\r\nNO\r\nYES\r\naa\r\n"
+            ],
+            [
+                "10\r\n1 2 0\r\n1 2 1\r\n1 4 0\r\n1 4 1\r\n1 4 2\r\n1 6 0\r\n1 6 1\r\n1 6 2\r\n1 6 3\r\n1 8 0\r\n",
+                "NO\r\nYES\r\naa\r\nNO\r\nNO\r\nYES\r\naaee\r\nNO\r\nNO\r\nNO\r\nYES\r\naaeeaa\r\nNO\r\n"
+            ],
+            [
+                "7\r\n1 6 3\r\n4 1 2\r\n6 1 2\r\n8 1 2\r\n8 1 4\r\n10 1 2\r\n10 1 4\r\n",
+                "YES\r\naaeeaa\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "1\r\n8 1 0\r\n",
+                "YES\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\n"
+            ],
+            [
+                "1\r\n3 6 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n1 6 3\r\n",
+                "YES\r\naaeeaa\r\n"
+            ],
+            [
+                "1\r\n73 34 11\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n3 2 1\r\n",
+                "YES\r\nab\r\nab\r\ncc\r\n"
+            ],
+            [
+                "1\r\n5 4 2\r\n",
+                "YES\r\nabef\r\nabef\r\ncdgh\r\ncdgh\r\naaee\r\n"
+            ],
+            [
+                "1\r\n82 1 24\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n6 7 20\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\n6 1 0\r\n2 7 4\r\n10 2 10\r\n",
+                "YES\r\na\r\na\r\ne\r\ne\r\na\r\na\r\nYES\r\naaccabc\r\nbbddabc\r\nYES\r\naa\r\nbb\r\nee\r\nff\r\naa\r\nbb\r\nee\r\nff\r\naa\r\nbb\r\n"
+            ],
+            [
+                "10\r\n8 5 8\r\n7 4 0\r\n10 10 47\r\n5 2 2\r\n6 3 2\r\n8 4 7\r\n10 4 20\r\n2 6 5\r\n3 8 9\r\n9 8 32\r\n",
+                "YES\r\naacda\r\nbbcda\r\neeghe\r\nffghe\r\naacda\r\nbbcda\r\neeghe\r\nffghe\r\nNO\r\nNO\r\nNO\r\nYES\r\naac\r\nbbc\r\nefg\r\nefg\r\nabc\r\nabc\r\nNO\r\nYES\r\naacc\r\nbbdd\r\neegg\r\nffhh\r\naacc\r\nbbdd\r\neegg\r\nffhh\r\naacc\r\nbbdd\r\nNO\r\nNO\r\nYES\r\nabefaaee\r\nabefbbff\r\nccggccgg\r\nddhhddhh\r\naaeeaaee\r\nbbffbbff\r\nccggccgg\r\nddhhddhh\r\naaeeaaee\r\n"
+            ],
+            [
+                "4\r\n1 100 50\r\n1 2 0\r\n70 75 2592\r\n4 5 10\r\n",
+                "YES\r\naaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaee\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "6\r\n9 4 12\r\n10 3 14\r\n9 10 15\r\n4 8 7\r\n5 2 0\r\n10 2 3\r\n",
+                "YES\r\nabef\r\nabef\r\ncdgg\r\ncdhh\r\naaee\r\nbbff\r\nccgg\r\nddhh\r\naaee\r\nNO\r\nYES\r\nabefabefab\r\nabefabefab\r\ncdghcdghcd\r\ncdghcdghcd\r\nabefabefab\r\nabefabefab\r\nccggccggcc\r\nddhhddhhdd\r\naaeeaaeeaa\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "7\r\n2 1 0\r\n8 5 5\r\n8 1 4\r\n7 2 3\r\n1 6 3\r\n10 3 3\r\n7 10 17\r\n",
+                "YES\r\na\r\na\r\nNO\r\nNO\r\nYES\r\nab\r\nab\r\ncd\r\ncd\r\naa\r\nbb\r\ncc\r\nYES\r\naaeeaa\r\nNO\r\nYES\r\nabefabefab\r\nabefabefab\r\ncdghcdghcc\r\ncdghcdghdd\r\naaeeaaeeaa\r\nbbffbbffbb\r\nccggccggcc\r\n"
+            ],
+            [
+                "10\r\n1 10 2\r\n1 10 3\r\n1 10 4\r\n1 10 5\r\n1 12 0\r\n1 12 1\r\n1 12 2\r\n1 12 3\r\n1 12 4\r\n1 12 5\r\n",
+                "NO\r\nNO\r\nNO\r\nYES\r\naaeeaaeeaa\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "5\r\n1 2 1\r\n2 1 0\r\n2 1 1\r\n5 6 2\r\n6 5 14\r\n",
+                "YES\r\naa\r\nYES\r\na\r\na\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10\r\n4 2 0\r\n4 2 1\r\n4 2 2\r\n4 2 3\r\n4 2 4\r\n4 3 0\r\n4 3 1\r\n4 3 2\r\n4 3 3\r\n4 3 4\r\n",
+                "YES\r\nab\r\nab\r\nef\r\nef\r\nNO\r\nYES\r\naa\r\nbb\r\nef\r\nef\r\nNO\r\nYES\r\naa\r\nbb\r\nee\r\nff\r\nYES\r\nabc\r\nabc\r\nefg\r\nefg\r\nNO\r\nYES\r\naac\r\nbbc\r\nefg\r\nefg\r\nNO\r\nYES\r\naac\r\nbbc\r\neeg\r\nffg\r\n"
+            ],
+            [
+                "10\r\n1 10 1\r\n1 10 2\r\n1 10 3\r\n1 10 4\r\n1 10 5\r\n1 12 0\r\n1 12 1\r\n1 12 2\r\n1 12 3\r\n1 12 4\r\n",
+                "NO\r\nNO\r\nNO\r\nNO\r\nYES\r\naaeeaaeeaa\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "7\r\n1 100 50\r\n2 1 0\r\n100 1 0\r\n1 2 0\r\n70 75 2592\r\n4 5 10\r\n99 98 47\r\n",
+                "YES\r\naaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaeeaaee\r\nYES\r\na\r\na\r\nYES\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10\r\n2 30 26\r\n2 30 27\r\n2 30 28\r\n2 30 29\r\n2 30 30\r\n3 2 0\r\n3 2 1\r\n3 2 2\r\n3 2 3\r\n3 4 0\r\n",
+                "YES\r\naaccaaccaaccaaccaaccaaccaacdab\r\nbbddbbddbbddbbddbbddbbddbbcdab\r\nNO\r\nYES\r\naaccaaccaaccaaccaaccaaccaaccab\r\nbbddbbddbbddbbddbbddbbddbbddab\r\nNO\r\nYES\r\naaccaaccaaccaaccaaccaaccaaccaa\r\nbbddbbddbbddbbddbbddbbddbbddbb\r\nNO\r\nYES\r\nab\r\nab\r\ncc\r\nNO\r\nYES\r\naa\r\nbb\r\ncc\r\nNO\r\n"
+            ],
+            [
+                "1\r\n3 8 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n2 30 28\r\n2 30 29\r\n2 30 30\r\n3 2 0\r\n3 2 1\r\n3 2 2\r\n3 2 3\r\n3 4 0\r\n3 4 1\r\n3 4 2\r\n",
+                "YES\r\naaccaaccaaccaaccaaccaaccaaccab\r\nbbddbbddbbddbbddbbddbbddbbddab\r\nNO\r\nYES\r\naaccaaccaaccaaccaaccaaccaaccaa\r\nbbddbbddbbddbbddbbddbbddbbddbb\r\nNO\r\nYES\r\nab\r\nab\r\ncc\r\nNO\r\nYES\r\naa\r\nbb\r\ncc\r\nNO\r\nNO\r\nYES\r\nabef\r\nabef\r\nccgg\r\n"
+            ],
+            [
+                "4\r\n1 8 0\r\n1 8 4\r\n8 1 0\r\n8 1 4\r\n",
+                "NO\r\nYES\r\naaeeaaee\r\nYES\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\nNO\r\n"
+            ],
+            [
+                "1\r\n6 3 2\r\n",
+                "YES\r\naac\r\nbbc\r\nefg\r\nefg\r\nabc\r\nabc\r\n"
+            ],
+            [
+                "1\r\n74 3 92\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n3 2 1\r\n4 5 2\r\n4 6 10\r\n4 6 1\r\n4 6 8\r\n4 1 0\r\n1 4 1\r\n8 5 3\r\n1 4 0\r\n5 4 2\r\n",
+                "YES\r\nab\r\nab\r\ncc\r\nYES\r\naacda\r\nbbcda\r\nefghe\r\nefghe\r\nYES\r\naaccaa\r\nbbddbb\r\neeggef\r\nffhhef\r\nNO\r\nYES\r\naaccab\r\nbbddab\r\neeggef\r\nffhhef\r\nYES\r\na\r\na\r\ne\r\ne\r\nNO\r\nNO\r\nNO\r\nYES\r\nabef\r\nabef\r\ncdgh\r\ncdgh\r\naaee\r\n"
+            ],
+            [
+                "1\r\n3 8 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\n6 1 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\n2 1 0\r\n2 1 1\r\n2 2 0\r\n2 2 1\r\n2 2 2\r\n2 3 0\r\n2 3 1\r\n2 3 2\r\n2 3 3\r\n2 4 0\r\n",
+                "YES\r\na\r\na\r\nNO\r\nYES\r\nab\r\nab\r\nNO\r\nYES\r\naa\r\nbb\r\nYES\r\nabc\r\nabc\r\nNO\r\nYES\r\naac\r\nbbc\r\nNO\r\nYES\r\nabcd\r\nabcd\r\n"
+            ],
+            [
+                "2\r\n2 1 0\r\n10 1 0\r\n",
+                "YES\r\na\r\na\r\nYES\r\na\r\na\r\ne\r\ne\r\na\r\na\r\ne\r\ne\r\na\r\na\r\n"
+            ],
+            [
+                "1\r\n8 5 2\r\n",
+                "YES\r\naacda\r\nbbcda\r\nefghe\r\nefghe\r\nabcda\r\nabcda\r\nefghe\r\nefghe\r\n"
+            ],
+            [
+                "1\r\n3 4 2\r\n",
+                "YES\r\nabef\r\nabef\r\nccgg\r\n"
+            ]
+        ]
+    }
+]

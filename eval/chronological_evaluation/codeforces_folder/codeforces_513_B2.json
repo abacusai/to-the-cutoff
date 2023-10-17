@@ -1,0 +1,149 @@
+[
+    {
+        "name": "Permutations",
+        "description": "You are given a permutation p of numbers 1, 2, ..., n. Let's define f(p) as\nthe following sum: Find the lexicographically m-th permutation of length n in\nthe set of permutations having the maximum possible value of f(p). Input The\nsingle line of input contains two integers n and m (1 \u2264 m \u2264 cntn), where cntn\nis the number of permutations of length n with maximum possible value of f(p).\nThe problem consists of two subproblems. The subproblems have different\nconstraints on the input. You will get some score for the correct submission\nof the subproblem. The description of the subproblems follows. In subproblem\nB1 (3 points), the constraint 1 \u2264 n \u2264 8 will hold. In subproblem B2 (4\npoints), the constraint 1 \u2264 n \u2264 50 will hold. Output Output n number forming\nthe required permutation. Examples Input 2 2 Output 2 1 Input 3 2 Output 1 3 2\nNote In the first example, both permutations of numbers 1, 2 yield maximum\npossible f(p) which is equal to 4. Among them, (2, 1) comes second in\nlexicographical order.\n\n",
+        "cf_contest_id": 513,
+        "cf_index": "B2",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "divide and conquer",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2\r\n",
+                "2\r\n1\r\n"
+            ],
+            [
+                "3 2\r\n",
+                "1\r\n3\r\n2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 1\r\n",
+                "1\r\n2\r\n3\r\n"
+            ],
+            [
+                "3 3\r\n",
+                "2\r\n3\r\n1\r\n"
+            ],
+            [
+                "3 4\r\n",
+                "3\r\n2\r\n1\r\n"
+            ],
+            [
+                "4 1\r\n",
+                "1\r\n2\r\n3\r\n4\r\n"
+            ],
+            [
+                "4 3\r\n",
+                "1\r\n3\r\n4\r\n2\r\n"
+            ],
+            [
+                "4 4\r\n",
+                "1\r\n4\r\n3\r\n2\r\n"
+            ],
+            [
+                "4 8\r\n",
+                "4\r\n3\r\n2\r\n1\r\n"
+            ],
+            [
+                "5 2\r\n",
+                "1\r\n2\r\n3\r\n5\r\n4\r\n"
+            ],
+            [
+                "5 7\r\n",
+                "1\r\n4\r\n5\r\n3\r\n2\r\n"
+            ],
+            [
+                "5 15\r\n",
+                "4\r\n5\r\n3\r\n2\r\n1\r\n"
+            ],
+            [
+                "6 23\r\n",
+                "2\r\n5\r\n6\r\n4\r\n3\r\n1\r\n"
+            ],
+            [
+                "7 7\r\n",
+                "1\r\n2\r\n3\r\n6\r\n7\r\n5\r\n4\r\n"
+            ],
+            [
+                "7 44\r\n",
+                "2\r\n4\r\n7\r\n6\r\n5\r\n3\r\n1\r\n"
+            ],
+            [
+                "8 1\r\n",
+                "1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n"
+            ],
+            [
+                "8 127\r\n",
+                "7\r\n8\r\n6\r\n5\r\n4\r\n3\r\n2\r\n1\r\n"
+            ],
+            [
+                "8 128\r\n",
+                "8\r\n7\r\n6\r\n5\r\n4\r\n3\r\n2\r\n1\r\n"
+            ],
+            [
+                "49 120715613380345\r\n",
+                "1\r\n4\r\n7\r\n11\r\n12\r\n14\r\n16\r\n17\r\n19\r\n20\r\n22\r\n25\r\n27\r\n28\r\n29\r\n30\r\n31\r\n33\r\n34\r\n35\r\n40\r\n46\r\n47\r\n48\r\n49\r\n45\r\n44\r\n43\r\n42\r\n41\r\n39\r\n38\r\n37\r\n36\r\n32\r\n26\r\n24\r\n23\r\n21\r\n18\r\n15\r\n13\r\n10\r\n9\r\n8\r\n6\r\n5\r\n3\r\n2\r\n"
+            ],
+            [
+                "42 345287088783\r\n",
+                "1\r\n2\r\n4\r\n6\r\n7\r\n8\r\n9\r\n10\r\n13\r\n14\r\n16\r\n17\r\n19\r\n22\r\n25\r\n28\r\n31\r\n33\r\n35\r\n36\r\n37\r\n41\r\n42\r\n40\r\n39\r\n38\r\n34\r\n32\r\n30\r\n29\r\n27\r\n26\r\n24\r\n23\r\n21\r\n20\r\n18\r\n15\r\n12\r\n11\r\n5\r\n3\r\n"
+            ],
+            [
+                "42 916944885285\r\n",
+                "1\r\n4\r\n6\r\n8\r\n10\r\n17\r\n18\r\n19\r\n21\r\n24\r\n25\r\n27\r\n28\r\n30\r\n33\r\n34\r\n35\r\n37\r\n38\r\n40\r\n41\r\n42\r\n39\r\n36\r\n32\r\n31\r\n29\r\n26\r\n23\r\n22\r\n20\r\n16\r\n15\r\n14\r\n13\r\n12\r\n11\r\n9\r\n7\r\n5\r\n3\r\n2\r\n"
+            ],
+            [
+                "42 1490750165435\r\n",
+                "2\r\n4\r\n7\r\n10\r\n11\r\n12\r\n14\r\n19\r\n21\r\n22\r\n23\r\n25\r\n26\r\n28\r\n30\r\n31\r\n32\r\n35\r\n39\r\n41\r\n42\r\n40\r\n38\r\n37\r\n36\r\n34\r\n33\r\n29\r\n27\r\n24\r\n20\r\n18\r\n17\r\n16\r\n15\r\n13\r\n9\r\n8\r\n6\r\n5\r\n3\r\n1\r\n"
+            ],
+            [
+                "48 114212593995090\r\n",
+                "3\r\n4\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n20\r\n21\r\n22\r\n24\r\n25\r\n26\r\n29\r\n30\r\n31\r\n32\r\n33\r\n34\r\n35\r\n38\r\n40\r\n42\r\n44\r\n45\r\n46\r\n48\r\n47\r\n43\r\n41\r\n39\r\n37\r\n36\r\n28\r\n27\r\n23\r\n19\r\n18\r\n10\r\n9\r\n8\r\n7\r\n6\r\n5\r\n2\r\n1\r\n"
+            ],
+            [
+                "42 850453132167\r\n",
+                "1\r\n4\r\n5\r\n6\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n17\r\n22\r\n24\r\n25\r\n30\r\n31\r\n35\r\n36\r\n37\r\n38\r\n41\r\n42\r\n40\r\n39\r\n34\r\n33\r\n32\r\n29\r\n28\r\n27\r\n26\r\n23\r\n21\r\n20\r\n19\r\n18\r\n16\r\n8\r\n7\r\n3\r\n2\r\n"
+            ],
+            [
+                "42 1422110928669\r\n",
+                "2\r\n4\r\n5\r\n7\r\n10\r\n11\r\n12\r\n16\r\n17\r\n18\r\n21\r\n23\r\n25\r\n27\r\n29\r\n34\r\n35\r\n36\r\n40\r\n41\r\n42\r\n39\r\n38\r\n37\r\n33\r\n32\r\n31\r\n30\r\n28\r\n26\r\n24\r\n22\r\n20\r\n19\r\n15\r\n14\r\n13\r\n9\r\n8\r\n6\r\n3\r\n1\r\n"
+            ],
+            [
+                "50 1\r\n",
+                "1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n18\r\n19\r\n20\r\n21\r\n22\r\n23\r\n24\r\n25\r\n26\r\n27\r\n28\r\n29\r\n30\r\n31\r\n32\r\n33\r\n34\r\n35\r\n36\r\n37\r\n38\r\n39\r\n40\r\n41\r\n42\r\n43\r\n44\r\n45\r\n46\r\n47\r\n48\r\n49\r\n50\r\n"
+            ],
+            [
+                "50 7\r\n",
+                "1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n18\r\n19\r\n20\r\n21\r\n22\r\n23\r\n24\r\n25\r\n26\r\n27\r\n28\r\n29\r\n30\r\n31\r\n32\r\n33\r\n34\r\n35\r\n36\r\n37\r\n38\r\n39\r\n40\r\n41\r\n42\r\n43\r\n44\r\n45\r\n46\r\n49\r\n50\r\n48\r\n47\r\n"
+            ],
+            [
+                "50 562949953421312\r\n",
+                "50\r\n49\r\n48\r\n47\r\n46\r\n45\r\n44\r\n43\r\n42\r\n41\r\n40\r\n39\r\n38\r\n37\r\n36\r\n35\r\n34\r\n33\r\n32\r\n31\r\n30\r\n29\r\n28\r\n27\r\n26\r\n25\r\n24\r\n23\r\n22\r\n21\r\n20\r\n19\r\n18\r\n17\r\n16\r\n15\r\n14\r\n13\r\n12\r\n11\r\n10\r\n9\r\n8\r\n7\r\n6\r\n5\r\n4\r\n3\r\n2\r\n1\r\n"
+            ],
+            [
+                "50 562949953421311\r\n",
+                "49\r\n50\r\n48\r\n47\r\n46\r\n45\r\n44\r\n43\r\n42\r\n41\r\n40\r\n39\r\n38\r\n37\r\n36\r\n35\r\n34\r\n33\r\n32\r\n31\r\n30\r\n29\r\n28\r\n27\r\n26\r\n25\r\n24\r\n23\r\n22\r\n21\r\n20\r\n19\r\n18\r\n17\r\n16\r\n15\r\n14\r\n13\r\n12\r\n11\r\n10\r\n9\r\n8\r\n7\r\n6\r\n5\r\n4\r\n3\r\n2\r\n1\r\n"
+            ],
+            [
+                "50 562949953421310\r\n",
+                "48\r\n50\r\n49\r\n47\r\n46\r\n45\r\n44\r\n43\r\n42\r\n41\r\n40\r\n39\r\n38\r\n37\r\n36\r\n35\r\n34\r\n33\r\n32\r\n31\r\n30\r\n29\r\n28\r\n27\r\n26\r\n25\r\n24\r\n23\r\n22\r\n21\r\n20\r\n19\r\n18\r\n17\r\n16\r\n15\r\n14\r\n13\r\n12\r\n11\r\n10\r\n9\r\n8\r\n7\r\n6\r\n5\r\n4\r\n3\r\n2\r\n1\r\n"
+            ],
+            [
+                "50 500000000000007\r\n",
+                "4\r\n5\r\n6\r\n9\r\n11\r\n18\r\n20\r\n22\r\n23\r\n25\r\n26\r\n29\r\n30\r\n31\r\n34\r\n36\r\n37\r\n38\r\n39\r\n40\r\n41\r\n42\r\n43\r\n44\r\n45\r\n46\r\n49\r\n50\r\n48\r\n47\r\n35\r\n33\r\n32\r\n28\r\n27\r\n24\r\n21\r\n19\r\n17\r\n16\r\n15\r\n14\r\n13\r\n12\r\n10\r\n8\r\n7\r\n3\r\n2\r\n1\r\n"
+            ]
+        ]
+    }
+]

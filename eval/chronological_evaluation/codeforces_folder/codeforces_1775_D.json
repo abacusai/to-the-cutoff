@@ -1,0 +1,191 @@
+[
+    {
+        "name": "Friendly Spiders",
+        "description": "Mars is home to an unusual species of spiders \u2014 Binary spiders. Right now,\nMartian scientists are observing a colony of \n    n\n spiders, the \n    i\n-th\nof which has \n    a_i\n legs. Some of the spiders are friends with each other.\nNamely, the \n    i\n-th and \n    j\n-th spiders are friends if \n    (a_i,\n    a_j) \n     1\n, i. e., there is some integer \n    k \n    \u2265 2\n such that\n\n    a_i\n and \n    a_j\n are simultaneously divided by \n    k\n without a\nremainder. Here \n    (x, y)\n denotes the greatest common divisor (GCD)\nof integers \n    x\n and \n    y\n. Scientists have discovered that spiders can\nsend messages. If two spiders are friends, then they can transmit a message\ndirectly in one second. Otherwise, the spider must pass the message to his\nfriend, who in turn must pass the message to his friend, and so on until the\nmessage reaches the recipient. Let's look at an example. Suppose a spider with\neight legs wants to send a message to a spider with \n    15\n legs. He can't do\nit directly, because \n    (8, 15) = 1\n. But he can send a message\nthrough the spider with six legs because \n    (8, 6) = 2\n and\n\n    (6, 15) = 3\n. Thus, the message will arrive in two seconds. Right\nnow, scientists are observing how the \n    s\n-th spider wants to send a\nmessage to the \n    t\n-th spider. The researchers have a hypothesis that\nspiders always transmit messages optimally. For this reason, scientists would\nneed a program that could calculate the minimum time to send a message and\nalso deduce one of the optimal routes. Input The first line of input contains\nan integer \n    n\n (\n    2 \n    \u2264 n \n    \u2264 3\n    \u00b710^5\n) \u2014 the number of\nspiders in the colony. The second line of input contains \n    n\n integers\n\n    a_1, a_2, \n    \u2026, a_n\n (\n    1 \n    \u2264 a_i \n    \u2264 3\n    \u00b710^5\n) \u2014 the\nnumber of legs the spiders have. The third line of input contains two integers\n\n    s\n and \n    t\n (\n    1 \n    \u2264 s, t \n    \u2264 n\n) \u2014the spiders between which\nthe message must be sent. Output If it is impossible to transmit a message\nbetween the given pair of spiders, print \n    -1\n. Otherwise, in the first\nline of the output print the integer \n    t\n (\n    t \n    \u2265 1\n) \u2014 the number of\nspiders that participate in the message transmission (i. e. the minimum time\nof message delivery in seconds plus one). In the second line, print \n    t\n\ndifferent integers \n    b_1, b_2, \n    \u2026, b_t\n (\n    1 \n    \u2264 b_i \n    \u2264 n\n) \u2014\nthe ids of the spiders through which the message should follow, in order from\nsender to receiver. If there are several optimal routes for the message,\noutput any of them. Examples Input 7 2 14 9 6 8 15 11 5 6 Output 3 5 4 6 Input\n7 2 14 9 6 8 15 11 5 7 Output -1 Input 7 2 14 9 6 8 15 11 5 5 Output 1 5 Note\nThe first example is shown above. It shows that the message from the\n\n    5\n-th spider (with eight legs) to the \n    6\n-th spider (with \n    15\n\nlegs) is optimal to pass through the \n    4\n-th spider (with six legs). In the\nsecond example, the spider number \n    7\n (with \n    11\n legs) is not friends\nwith anyone, so it is impossible to send him a message.\n\n",
+        "cf_contest_id": 1775,
+        "cf_index": "D",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs",
+            "math",
+            "number theory",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7\r\n2 14 9 6 8 15 11\r\n5 6\r\n",
+                "3\r\n5 4 6\r\n"
+            ],
+            [
+                "7\r\n2 14 9 6 8 15 11\r\n5 7\r\n",
+                "-1\r\n"
+            ],
+            [
+                "7\r\n2 14 9 6 8 15 11\r\n5 5\r\n",
+                "1\r\n5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n1 1\r\n1 1\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n2 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n2 2\r\n",
+                "1\r\n2\r\n"
+            ],
+            [
+                "2\r\n2 2\r\n1 1\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "2\r\n2 2\r\n1 2\r\n",
+                "2\r\n1 2\r\n"
+            ],
+            [
+                "2\r\n2 2\r\n2 1\r\n",
+                "2\r\n2 1\r\n"
+            ],
+            [
+                "2\r\n2 2\r\n2 2\r\n",
+                "1\r\n2\r\n"
+            ],
+            [
+                "2\r\n20365 278599\r\n1 1\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "2\r\n208980 53676\r\n1 2\r\n",
+                "2\r\n1 2\r\n"
+            ],
+            [
+                "2\r\n244042 211153\r\n2 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2\r\n66451 2137\r\n2 2\r\n",
+                "1\r\n2\r\n"
+            ],
+            [
+                "2\r\n27 36\r\n1 2\r\n",
+                "2\r\n1 2\r\n"
+            ],
+            [
+                "2\r\n2 3\r\n1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2\r\n2048 729\r\n1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2\r\n2048 1458\r\n1 2\r\n",
+                "2\r\n1 2\r\n"
+            ],
+            [
+                "2\r\n14 7\r\n2 1\r\n",
+                "2\r\n2 1\r\n"
+            ],
+            [
+                "5\r\n5 9 9 6 8\r\n3 5\r\n",
+                "3\r\n3 4 5\r\n"
+            ],
+            [
+                "5\r\n65 99 69 76 78\r\n3 1\r\n",
+                "3\r\n3 5 1\r\n"
+            ],
+            [
+                "10\r\n5 9 9 6 8 8 5 9 10 10\r\n6 3\r\n",
+                "3\r\n6 4 3\r\n"
+            ],
+            [
+                "28\r\n65 99 69 76 78 78 5 39 20 80 32 3 96 43 4 22 75 48 41 6 33 12 68 16 71 13 8 53\r\n26 12\r\n",
+                "3\r\n26 8 12\r\n"
+            ],
+            [
+                "100\r\n65 99 69 76 78 78 5 39 20 80 32 3 96 43 4 22 75 48 41 6 33 12 68 16 71 13 8 53 94 40 4 14 55 68 16 51 14 78 46 89 55 32 92 3 32 11 4 35 78 14 7 95 71 71 35 93 52 62 16 16 79 83 93 73 3 74 8 9 94 16 21 65 23 62 96 46 31 55 58 18 4 45 29 74 30 89 51 39 20 73 86 71 6 47 44 3 42 79 65 95\r\n76 17\r\n",
+                "3\r\n76 93 17\r\n"
+            ],
+            [
+                "5\r\n1 2 3 4 5\r\n1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10\r\n1 2 3 4 5 6 7 8 9 10\r\n1 7\r\n",
+                "-1\r\n"
+            ],
+            [
+                "100\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100\r\n51 37\r\n",
+                "4\r\n51 6 74 37\r\n"
+            ],
+            [
+                "5\r\n46 23 39 26 21\r\n2 5\r\n",
+                "5\r\n2 1 4 3 5\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n1 1\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "5\r\n1 2 3 4 5\r\n5 4\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10\r\n1 2 3 4 5 6 7 8 9 10\r\n5 9\r\n",
+                "4\r\n5 10 6 9\r\n"
+            ],
+            [
+                "100\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100\r\n65 99\r\n",
+                "3\r\n65 15 99\r\n"
+            ],
+            [
+                "5\r\n46 23 51 34 21\r\n2 5\r\n",
+                "5\r\n2 1 4 3 5\r\n"
+            ],
+            [
+                "10\r\n93 95 86 65 91 57 82 47 62 94\r\n8 5\r\n",
+                "8\r\n8 10 9 1 6 2 4 5\r\n"
+            ],
+            [
+                "20\r\n93 95 46 65 34 57 87 33 62 22 86 58 74 69 94 82 51 91 47 85\r\n19 18\r\n",
+                "6\r\n19 15 5 20 4 18\r\n"
+            ],
+            [
+                "20\r\n993 995 689 695 901 597 893 713 662 799 623 949 803 817 998 979 989 973 499 899\r\n19 20\r\n",
+                "20\r\n19 15 9 1 6 2 4 18 11 16 13 12 3 5 10 7 14 17 8 20\r\n"
+            ],
+            [
+                "50\r\n862 995 982 695 622 898 893 842 746 799 623 694 866 698 998 718 778 973 499 934 689 922 949 626 818 886 766 634 597 817 794 993 838 926 713 662 803 989 674 901 802 958 979 734 878 706 914 974 899 758\r\n19 49\r\n",
+                "20\r\n19 15 36 32 29 2 4 18 11 43 37 23 21 40 10 7 30 38 35 49\r\n"
+            ],
+            [
+                "100\r\n862 995 982 566 622 898 466 346 386 799 623 939 254 202 998 358 778 514 499 934 554 478 394 482 262 879 502 634 597 817 614 993 838 926 166 458 194 989 674 298 74 274 542 734 302 951 562 382 899 758 142 226 314 914 689 979 214 713 334 82 626 134 893 362 958 695 802 949 746 586 662 718 158 973 454 446 921 118 326 818 218 974 866 422 901 698 803 526 842 794 922 886 206 766 933 706 694 538 878 122\r\n19 49\r\n",
+                "20\r\n19 15 70 26 29 2 66 74 11 56 87 68 55 85 10 63 30 38 58 49\r\n"
+            ],
+            [
+                "50\r\n4717 4985 4553 3545 4778 4687 4997 4399 4918 4471 3143 4834 4183 4846 4954 4882 4891 4963 2477 4847 3809 4633 4979 4786 4661 4429 4946 4798 2991 4009 4453 4989 4897 4181 3841 3326 4213 4853 4822 4981 4819 4061 4939 4894 4841 4874 4469 4867 4843 4934\r\n19 17\r\n",
+                "38\r\n19 15 36 32 29 2 4 18 11 43 37 23 21 40 10 7 30 38 35 49 3 48 42 20 34 22 47 6 26 45 13 1 8 33 25 41 31 17\r\n"
+            ],
+            [
+                "11\r\n1 2 3 4 5 6 7 8 9 10 11\r\n11 7\r\n",
+                "-1\r\n"
+            ],
+            [
+                "101\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101\r\n80 1\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Cities Excursions",
+        "description": "There are n cities in Berland. Some pairs of them are connected with m\ndirected roads. One can use only these roads to move from one city to another.\nThere are no roads that connect a city to itself. For each pair of cities (x,\ny) there is at most one road from x to y. A path from city s to city t is a\nsequence of cities p1, p2, ... , pk, where p1 = s, pk = t, and there is a road\nfrom city pi to city pi + 1 for each i from 1 to k - 1. The path can pass\nmultiple times through each city except t. It can't pass through t more than\nonce. A path p from s to t is ideal if it is the lexicographically minimal\nsuch path. In other words, p is ideal path from s to t if for any other path q\nfrom s to t pi < qi, where i is the minimum integer such that pi \u2260 qi. There\nis a tourist agency in the country that offers q unusual excursions: the j-th\nexcursion starts at city sj and ends in city tj. For each pair sj, tj help the\nagency to study the ideal path from sj to tj. Note that it is possible that\nthere is no ideal path from sj to tj. This is possible due to two reasons:\nthere is no path from sj to tj; there are paths from sj to tj, but for every\nsuch path p there is another path q from sj to tj, such that pi > qi, where i\nis the minimum integer for which pi \u2260 qi. The agency would like to know for\nthe ideal path from sj to tj the kj-th city in that path (on the way from sj\nto tj). For each triple sj, tj, kj (1 \u2264 j \u2264 q) find if there is an ideal path\nfrom sj to tj and print the kj-th city in that path, if there is any. Input\nThe first line contains three integers n, m and q (2 \u2264 n \u2264 3000,0 \u2264 m \u2264 3000,\n1 \u2264 q \u2264 4\u00b710^5) \u2014 the number of cities, the number of roads and the number of\nexcursions. Each of the next m lines contains two integers xi and yi (1 \u2264 xi,\nyi \u2264 n, xi \u2260 yi), denoting that the i-th road goes from city xi to city yi.\nAll roads are one-directional. There can't be more than one road in each\ndirection between two cities. Each of the next q lines contains three integers\nsj, tj and kj (1 \u2264 sj, tj \u2264 n, sj \u2260 tj, 1 \u2264 kj \u2264 3000). Output In the j-th\nline print the city that is the kj-th in the ideal path from sj to tj. If\nthere is no ideal path from sj to tj, or the integer kj is greater than the\nlength of this path, print the string '-1' (without quotes) in the j-th line.\nExample Input 7 7 5 1 2 2 3 1 3 3 4 4 5 5 3 4 6 1 4 2 2 6 1 1 7 3 1 3 2 1 3 5\nOutput 2 -1 -1 2 -1\n\n",
+        "cf_contest_id": 864,
+        "cf_index": "F",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7 7 5\r\n1 2\r\n2 3\r\n1 3\r\n3 4\r\n4 5\r\n5 3\r\n4 6\r\n1 4 2\r\n2 6 1\r\n1 7 3\r\n1 3 2\r\n1 3 5\r\n",
+                "2\r\n-1\r\n-1\r\n2\r\n-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 4 5\r\n1 3\r\n2 1\r\n3 1\r\n3 2\r\n1 2 1\r\n2 3 2\r\n2 3 3\r\n1 3 1\r\n3 2 1\r\n",
+                "-1\r\n1\r\n3\r\n1\r\n-1\r\n"
+            ],
+            [
+                "2 0 2\r\n2 1 2\r\n2 1 1\r\n",
+                "-1\r\n-1\r\n"
+            ],
+            [
+                "4 0 1\r\n3 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 1 3\r\n1 2\r\n1 2 1\r\n1 2 2\r\n1 2 1\r\n",
+                "1\r\n2\r\n1\r\n"
+            ],
+            [
+                "2 1 5\r\n1 2\r\n1 2 1\r\n1 2 1\r\n1 2 1\r\n1 2 1\r\n1 2 1\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "2 0 1\r\n2 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 7 10\r\n2 5\r\n3 5\r\n5 4\r\n5 2\r\n4 1\r\n1 4\r\n2 4\r\n4 2 3\r\n5 2 1\r\n1 3 3\r\n1 3 3\r\n3 2 2\r\n4 2 2\r\n3 5 3\r\n1 5 1\r\n3 5 1\r\n5 2 2\r\n",
+                "-1\r\n5\r\n-1\r\n-1\r\n5\r\n-1\r\n-1\r\n-1\r\n3\r\n2\r\n"
+            ],
+            [
+                "10 11 10\r\n10 9\r\n5 10\r\n5 8\r\n2 5\r\n1 8\r\n3 4\r\n7 2\r\n4 6\r\n8 10\r\n6 7\r\n9 3\r\n3 2 1\r\n10 7 1\r\n7 5 2\r\n7 5 3\r\n10 5 2\r\n2 5 2\r\n10 4 2\r\n6 2 2\r\n6 2 1\r\n1 3 1\r\n",
+                "3\r\n10\r\n2\r\n5\r\n9\r\n5\r\n9\r\n7\r\n6\r\n1\r\n"
+            ],
+            [
+                "10 15 10\r\n7 8\r\n1 4\r\n5 6\r\n10 9\r\n3 4\r\n10 3\r\n8 10\r\n1 2\r\n8 9\r\n10 1\r\n10 2\r\n4 5\r\n6 7\r\n2 3\r\n9 10\r\n2 1 3\r\n1 2 2\r\n2 3 1\r\n5 4 3\r\n3 5 2\r\n8 6 2\r\n2 7 1\r\n9 8 2\r\n1 9 2\r\n8 10 3\r\n",
+                "4\r\n2\r\n2\r\n7\r\n4\r\n9\r\n2\r\n10\r\n2\r\n10\r\n"
+            ],
+            [
+                "10 16 20\r\n5 9\r\n6 3\r\n2 1\r\n9 2\r\n4 6\r\n5 10\r\n10 5\r\n6 8\r\n4 7\r\n4 8\r\n8 7\r\n7 4\r\n3 10\r\n9 10\r\n7 8\r\n1 2\r\n4 5 1\r\n9 1 1\r\n6 3 2\r\n6 3 2\r\n9 2 3\r\n3 2 6\r\n3 10 2\r\n6 10 3\r\n4 3 1\r\n6 10 3\r\n1 2 1\r\n4 3 3\r\n7 4 1\r\n7 1 7\r\n4 10 3\r\n5 9 2\r\n3 10 1\r\n3 1 1\r\n8 1 6\r\n6 10 3\r\n",
+                "4\r\n9\r\n3\r\n3\r\n-1\r\n-1\r\n10\r\n10\r\n4\r\n10\r\n1\r\n3\r\n7\r\n9\r\n3\r\n9\r\n3\r\n3\r\n10\r\n10\r\n"
+            ],
+            [
+                "15 25 20\r\n9 7\r\n3 1\r\n7 3\r\n11 13\r\n1 6\r\n6 15\r\n12 13\r\n8 12\r\n4 11\r\n4 8\r\n3 5\r\n1 14\r\n3 12\r\n15 13\r\n5 2\r\n13 5\r\n15 10\r\n13 6\r\n13 9\r\n14 9\r\n2 14\r\n10 1\r\n13 10\r\n11 12\r\n2 12\r\n7 3 2\r\n10 8 2\r\n11 12 2\r\n4 8 1\r\n13 9 1\r\n6 8 1\r\n4 8 1\r\n9 8 1\r\n14 8 1\r\n11 1 2\r\n9 1 1\r\n7 6 1\r\n7 4 2\r\n11 2 1\r\n4 8 1\r\n12 5 1\r\n13 14 1\r\n9 3 1\r\n14 8 2\r\n7 10 2\r\n",
+                "3\r\n-1\r\n12\r\n4\r\n-1\r\n-1\r\n4\r\n-1\r\n-1\r\n-1\r\n9\r\n7\r\n-1\r\n11\r\n4\r\n12\r\n-1\r\n9\r\n-1\r\n3\r\n"
+            ],
+            [
+                "20 20 40\r\n4 5\r\n6 7\r\n13 14\r\n10 11\r\n9 10\r\n19 20\r\n2 3\r\n1 2\r\n16 17\r\n8 9\r\n7 8\r\n15 16\r\n11 12\r\n5 6\r\n18 19\r\n17 18\r\n2 6\r\n14 15\r\n12 13\r\n3 4\r\n3 19 9\r\n3 18 13\r\n2 19 19\r\n2 18 12\r\n3 18 12\r\n1 18 8\r\n1 20 29\r\n3 19 12\r\n3 20 28\r\n1 19 27\r\n2 18 5\r\n2 18 28\r\n2 20 30\r\n1 20 26\r\n3 20 7\r\n1 20 23\r\n2 18 26\r\n3 18 21\r\n2 20 23\r\n1 20 23\r\n3 20 19\r\n2 18 27\r\n2 19 16\r\n2 18 10\r\n1 18 3\r\n3 18 25\r\n2 19 24\r\n3 18 21\r\n2 19 28\r\n2 20 23\r\n1 19 17\r\n2 19 28\r\n3 18 15\r\n3 19 29\r\n1 20 16\r\n2 19 22\r\n2 19 4\r\n1 20 22\r\n1 20 20\r\n2 19 13\r\n",
+                "11\r\n15\r\n-1\r\n13\r\n14\r\n8\r\n-1\r\n14\r\n-1\r\n-1\r\n6\r\n-1\r\n-1\r\n-1\r\n9\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n17\r\n11\r\n3\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n17\r\n-1\r\n17\r\n-1\r\n16\r\n-1\r\n5\r\n-1\r\n20\r\n14\r\n"
+            ],
+            [
+                "20 20 40\r\n3 4\r\n12 13\r\n2 3\r\n12 17\r\n4 5\r\n9 10\r\n11 12\r\n10 11\r\n12 15\r\n8 9\r\n5 6\r\n12 20\r\n12 16\r\n12 18\r\n1 2\r\n6 7\r\n15 11\r\n12 19\r\n12 14\r\n7 8\r\n3 9 19\r\n3 9 5\r\n2 9 22\r\n1 6 3\r\n2 9 22\r\n2 6 21\r\n3 6 21\r\n2 9 5\r\n1 4 29\r\n3 8 13\r\n2 5 19\r\n1 3 10\r\n1 3 4\r\n1 5 19\r\n2 6 24\r\n3 9 21\r\n2 3 9\r\n2 9 24\r\n2 3 30\r\n1 9 22\r\n2 8 28\r\n2 6 27\r\n1 3 17\r\n2 5 9\r\n3 2 30\r\n2 6 16\r\n1 6 21\r\n2 8 15\r\n3 5 23\r\n3 8 17\r\n1 5 12\r\n2 5 10\r\n3 9 4\r\n1 2 29\r\n1 2 26\r\n3 5 28\r\n2 4 28\r\n2 7 19\r\n3 8 5\r\n2 4 23\r\n",
+                "-1\r\n7\r\n-1\r\n3\r\n-1\r\n-1\r\n-1\r\n6\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n6\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n7\r\n-1\r\n"
+            ]
+        ]
+    }
+]

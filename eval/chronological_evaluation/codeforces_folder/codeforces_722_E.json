@@ -1,0 +1,96 @@
+[
+    {
+        "name": "Research Rover",
+        "description": "Unfortunately, the formal description of the task turned out to be too long,\nso here is the legend. Research rover finally reached the surface of Mars and\nis ready to complete its mission. Unfortunately, due to the mistake in the\nnavigation system design, the rover is located in the wrong place. The rover\nwill operate on the grid consisting of n rows and m columns. We will define as\n(r, c) the cell located in the row r and column c. From each cell the rover is\nable to move to any cell that share a side with the current one. The rover is\ncurrently located at cell (1, 1) and has to move to the cell (n, m). It will\nrandomly follow some shortest path between these two cells. Each possible way\nis chosen equiprobably. The cargo section of the rover contains the battery\nrequired to conduct the research. Initially, the battery charge is equal to s\nunits of energy. Some of the cells contain anomaly. Each time the rover gets\nto the cell with anomaly, the battery looses half of its charge rounded down.\nFormally, if the charge was equal to x before the rover gets to the cell with\nanomaly, the charge will change to . While the rover picks a random shortest\npath to proceed, compute the expected value of the battery charge after it\nreaches cell (n, m). If the cells (1, 1) and (n, m) contain anomaly, they also\naffect the charge of the battery. Input The first line of the input contains\nfour integers n, m, k and s (1 \u2264 n, m \u2264 100 000, 0 \u2264 k \u2264 2000, 1 \u2264 s \u2264 1 000\n000) \u2014 the number of rows and columns of the field, the number of cells with\nanomaly and the initial charge of the battery respectively. The follow k lines\ncontaining two integers ri and ci (1 \u2264 ri \u2264 n, 1 \u2264 ci \u2264 m) \u2014 coordinates of\nthe cells, containing anomaly. It's guaranteed that each cell appears in this\nlist no more than once. Output The answer can always be represented as an\nirreducible fraction . Print the only integer P\u00b7Q^-1 modulo 10^9 + 7. Examples\nInput 3 3 2 11 2 1 2 3 Output 333333342 Input 4 5 3 17 1 2 3 3 4 1 Output\n514285727 Input 1 6 2 15 1 1 1 5 Output 4 Note In the first sample, the rover\npicks one of the following six routes: , after passing cell (2, 3) charge is\nequal to 6. , after passing cell (2, 3) charge is equal to 6. , charge remains\nunchanged and equals 11. , after passing cells (2, 1) and (2, 3) charge equals\n6 and then 3. , after passing cell (2, 1) charge is equal to 6. , after\npassing cell (2, 1) charge is equal to 6. Expected value of the battery charge\nis calculated by the following formula: . Thus P = 19, and Q = 3. 3^-1 modulo\n10^9 + 7 equals 333333336. 19\u00b7333333336 = 333333342 (mod 10^9 + 7)\n\n",
+        "cf_contest_id": 722,
+        "cf_index": "E",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "dp"
+        ],
+        "time_limit_seconds": 2.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3 2 11\r\n2 1\r\n2 3\r\n",
+                "333333342"
+            ],
+            [
+                "4 5 3 17\r\n1 2\r\n3 3\r\n4 1\r\n",
+                "514285727"
+            ],
+            [
+                "1 6 2 15\r\n1 1\r\n1 5\r\n",
+                "4"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 3 0 11\r\n",
+                "11"
+            ],
+            [
+                "1 7 3 17\r\n1 7\r\n1 6\r\n1 1\r\n",
+                "3"
+            ],
+            [
+                "9 1 4 23\r\n3 1\r\n7 1\r\n6 1\r\n2 1\r\n",
+                "2"
+            ],
+            [
+                "7 13 11 239\r\n4 7\r\n2 8\r\n5 6\r\n7 12\r\n7 13\r\n2 12\r\n6 8\r\n2 11\r\n3 6\r\n5 11\r\n2 2\r\n",
+                "952542584"
+            ],
+            [
+                "19 19 23 1001\r\n13 19\r\n11 4\r\n8 4\r\n3 1\r\n16 6\r\n12 15\r\n13 18\r\n12 7\r\n10 18\r\n12 10\r\n10 16\r\n1 18\r\n13 13\r\n6 4\r\n7 11\r\n8 3\r\n19 8\r\n2 12\r\n14 8\r\n2 17\r\n4 8\r\n12 9\r\n13 10\r\n",
+                "156317295"
+            ],
+            [
+                "239 7 55 777\r\n37 4\r\n194 3\r\n29 2\r\n116 2\r\n53 4\r\n237 2\r\n149 4\r\n151 6\r\n187 3\r\n111 3\r\n144 7\r\n45 4\r\n7 2\r\n204 4\r\n31 6\r\n59 3\r\n43 5\r\n54 1\r\n128 2\r\n28 1\r\n144 1\r\n153 2\r\n155 6\r\n30 7\r\n198 2\r\n158 6\r\n47 5\r\n224 6\r\n19 4\r\n174 5\r\n179 6\r\n134 2\r\n105 1\r\n112 6\r\n227 2\r\n172 1\r\n87 1\r\n239 2\r\n161 4\r\n174 6\r\n185 3\r\n150 2\r\n169 7\r\n130 4\r\n43 4\r\n157 3\r\n150 1\r\n124 3\r\n176 7\r\n61 7\r\n234 1\r\n68 5\r\n183 7\r\n89 1\r\n22 3\r\n",
+                "165886071"
+            ],
+            [
+                "789 987 27 23917\r\n485 515\r\n300 639\r\n658 488\r\n238 254\r\n367 234\r\n176 927\r\n248 960\r\n139 740\r\n336 761\r\n18 75\r\n749 531\r\n53 137\r\n446 220\r\n83 340\r\n670 435\r\n462 947\r\n131 934\r\n316 620\r\n254 524\r\n282 348\r\n137 967\r\n47 816\r\n647 750\r\n108 705\r\n52 9\r\n526 281\r\n642 113\r\n",
+                "368826867"
+            ],
+            [
+                "50 1000 25 987654\r\n22 452\r\n34 669\r\n47 796\r\n38 682\r\n21 327\r\n48 808\r\n3 17\r\n45 780\r\n29 622\r\n16 267\r\n8 92\r\n26 594\r\n11 104\r\n2 13\r\n18 317\r\n42 683\r\n43 701\r\n4 27\r\n32 629\r\n23 481\r\n13 250\r\n25 526\r\n49 864\r\n12 162\r\n28 603\r\n",
+                "445462803"
+            ],
+            [
+                "77 1000 33 123456\r\n1 979\r\n69 97\r\n64 181\r\n68 129\r\n51 279\r\n47 303\r\n76 20\r\n61 197\r\n56 225\r\n5 968\r\n35 636\r\n55 241\r\n9 954\r\n37 429\r\n28 708\r\n15 929\r\n42 331\r\n38 345\r\n36 471\r\n21 797\r\n17 904\r\n33 655\r\n14 930\r\n65 140\r\n18 818\r\n26 754\r\n41 344\r\n30 703\r\n72 60\r\n46 314\r\n54 259\r\n67 134\r\n70 67\r\n",
+                "570051474"
+            ],
+            [
+                "1 100000 23 1000000\r\n1 24478\r\n1 95757\r\n1 10597\r\n1 99652\r\n1 24202\r\n1 61392\r\n1 60343\r\n1 82276\r\n1 5291\r\n1 84297\r\n1 64471\r\n1 68220\r\n1 85891\r\n1 49198\r\n1 13546\r\n1 23011\r\n1 39513\r\n1 98644\r\n1 8948\r\n1 82957\r\n1 6226\r\n1 17583\r\n1 31996\r\n",
+                "1"
+            ],
+            [
+                "3 99999 17 999999\r\n2 90390\r\n1 60989\r\n3 69154\r\n2 72066\r\n3 26812\r\n2 88970\r\n2 14341\r\n2 31083\r\n1 65742\r\n1 85185\r\n2 12702\r\n2 7233\r\n2 24997\r\n1 94867\r\n1 78032\r\n3 66866\r\n2 72762\r\n",
+                "598399042"
+            ],
+            [
+                "100000 1 13 987321\r\n35083 1\r\n11564 1\r\n36641 1\r\n28444 1\r\n55450 1\r\n81823 1\r\n27263 1\r\n64736 1\r\n28220 1\r\n67147 1\r\n35905 1\r\n87604 1\r\n73986 1\r\n",
+                "121"
+            ],
+            [
+                "100000 100000 20 1000000\r\n38473 40925\r\n60741 11012\r\n24963 87307\r\n5855 58514\r\n82230 27063\r\n45081 86388\r\n73892 64459\r\n87759 6431\r\n37636 77254\r\n33392 16347\r\n2718 84537\r\n21057 51654\r\n44592 5740\r\n19351 17870\r\n6348 89562\r\n8672 31354\r\n53591 90064\r\n70395 87298\r\n23564 69554\r\n78203 14258\r\n",
+                "164102352"
+            ],
+            [
+                "1 100000 19 654987\r\n1 100000\r\n1 1\r\n1 25561\r\n1 69040\r\n1 18149\r\n1 7490\r\n1 49426\r\n1 58714\r\n1 41578\r\n1 25583\r\n1 20363\r\n1 6151\r\n1 16712\r\n1 57409\r\n1 80808\r\n1 49612\r\n1 11877\r\n1 7341\r\n1 58735\r\n",
+                "2"
+            ],
+            [
+                "100000 1 15 651987\r\n100000 1\r\n1 1\r\n51491 1\r\n53846 1\r\n76413 1\r\n39967 1\r\n14487 1\r\n96476 1\r\n35713 1\r\n53950 1\r\n5776 1\r\n80572 1\r\n28090 1\r\n51280 1\r\n13372 1\r\n",
+                "20"
+            ],
+            [
+                "100000 100000 0 777777\r\n",
+                "777777"
+            ]
+        ]
+    }
+]

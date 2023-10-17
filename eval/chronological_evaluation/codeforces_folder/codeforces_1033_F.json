@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Boolean Computer",
+        "description": "Alice has a computer that operates on \n    w\n-bit integers. The computer has\n\n    n\n registers for values. The current content of the registers is given as\nan array \n    a_1, a_2, \n    \u2026, a_n\n. The computer uses so-called \"number\ngates\" to manipulate this data. Each \"number gate\" takes two registers as\ninputs and calculates a function of the two values stored in those registers.\nNote that you can use the same register as both inputs. Each \"number gate\" is\nassembled from bit gates. There are six types of bit gates: AND, OR, XOR, NOT\nAND, NOT OR, and NOT XOR, denoted \"A\", \"O\", \"X\", \"a\", \"o\", \"x\", respectively.\nEach bit gate takes two bits as input. Its output given the input bits\n\n    b_1\n, \n    b_2\n is given below: \n    b_1     b_2     A     O     X\n        a     o     x \n    \n    \n     0     0     0     0     0     1     1     1 \n    \n    \n     0     1     0     1     1    \n    1     0     0 \n    \n    \n     1     0     0     1     1     1     0     0 \n    \n    \n     1     1     1     1     0     0\n        0     1\n To build a \"number gate\", one takes \n    w\n\nbit gates and assembles them into an array. A \"number gate\" takes two\n\n    w\n-bit integers \n    x_1\n and \n    x_2\n as input. The \"number gate\"\nsplits the integers into \n    w\n bits and feeds the \n    i\n-th bit of each\ninput to the \n    i\n-th bit gate. After that, it assembles the resulting bits\nagain to form an output word. For instance, for \n    4\n-bit computer we might\nhave a \"number gate\" \"AXoA\" (AND, XOR, NOT OR, AND). For two inputs, \n    13 =\n    1101_2\n and \n    10 = 1010_2\n, this returns \n    12 = 1100_2\n, as \n    1\n\nand \n    1\n is \n    1\n, \n    1\n xor \n    0\n is \n    1\n, not (\n    0\n or\n\n    1\n) is \n    0\n, and finally \n    1\n and \n    0\n is \n    0\n. You are given\na description of \n    m\n \"number gates\". For each gate, your goal is to report\nthe number of register pairs for which the \"number gate\" outputs the number\n\n    0\n. In other words, find the number of ordered pairs \n    (i,j)\n where\n\n    1 \n    \u2264 i,j \n    \u2264 n\n, such that \n    w_k(a_i, a_j) = 0\n, where\n\n    w_k\n is the function computed by the \n    k\n-th \"number gate\". Input The\nfirst line contains three integers: \n    w\n, \n    n\n, and \n    m\u00a0(1 \n    \u2264 w\n    \n    \u2264 12, 1 \n    \u2264 n \n    \u2264 3\n    \u00b7 10^4, 1 \n    \u2264 m \n    \u2264 5\n    \u00b7\n    10^4)\n \u2014 the word size, the number of variables, and the number of gates.\nThe second line contains \n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n \n    (0\n    \n    \u2264 a_i < 2^w)\n \u2014 the value of variables stored in the registers. Each of\nthe next \n    m\n lines contains a string \n    g_j\u00a0(|g_j| = w)\n with a\ndescription of a single gate. Each character of \n    g_j\n is one of \"A\", \"O\",\n\"X\", \"a\", \"o\", \"x\". Output Print \n    m\n lines. The \n    i\n-th line should\ncontain the number of ordered pairs of variables for which the \n    i\n-th gate\nreturns zero. Examples Input 4 3 1 13 10 6 AXoA Output 3 Input 1 7 6 0 1 1 0 1\n0 0 A O X a o x Output 40 16 25 9 33 24 Input 6 2 4 47 12 AOXaox AAaaAA xxxxxx\nXXXXXX Output 2 3 0 2 Input 2 2 2 2 0 xO Ox Output 2 0 Note In the first test\ncase, the inputs in binary are \n    1101\n, \n    1010\n, \n    0110\n. The pairs\nthat return \n    0\n are \n    (13, 6)\n, \n    (6, 13)\n, and \n    (6, 6)\n. As it\nwas already mentioned in the problem statement, \n    13 \n    \u2295 10 = 10\n    \n    \u2295 13 = 12\n. The other pairs are \n    13 \n    \u2295 13 = 11\n, \n    10\n    \n    \u2295 10 = 8\n and \n    10 \n    \u2295 6 = 6 \n    \u2295 10 = 4\n.\n\n",
+        "cf_contest_id": 1033,
+        "cf_index": "F",
+        "cf_rating": 2800,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "fft",
+            "math"
+        ],
+        "time_limit_seconds": 7.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 3 1\r\n13 10 6\r\nAXoA\r\n",
+                "3\r\n"
+            ],
+            [
+                "1 7 6\r\n0 1 1 0 1 0 0\r\nA\r\nO\r\nX\r\na\r\no\r\nx\r\n",
+                "40\r\n16\r\n25\r\n9\r\n33\r\n24\r\n"
+            ],
+            [
+                "6 2 4\r\n47 12\r\nAOXaox\r\nAAaaAA\r\nxxxxxx\r\nXXXXXX\r\n",
+                "2\r\n3\r\n0\r\n2\r\n"
+            ],
+            [
+                "2 2 2\r\n2 0\r\nxO\r\nOx\r\n",
+                "2\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 10\r\n1\r\na\r\nA\r\nA\r\nx\r\nx\r\nA\r\nX\r\no\r\no\r\na\r\n",
+                "1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n1\r\n"
+            ]
+        ]
+    }
+]

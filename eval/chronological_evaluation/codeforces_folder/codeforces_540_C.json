@@ -1,0 +1,167 @@
+[
+    {
+        "name": "Ice Cave",
+        "description": "You play a computer game. Your character stands on some level of a multilevel\nice cave. In order to move on forward, you need to descend one level lower and\nthe only way to do this is to fall through the ice. The level of the cave\nwhere you are is a rectangular square grid of n rows and m columns. Each cell\nconsists either from intact or from cracked ice. From each cell you can move\nto cells that are side-adjacent with yours (due to some limitations of the\ngame engine you cannot make jumps on the same place, i.e. jump from a cell to\nitself). If you move to the cell with cracked ice, then your character falls\ndown through it and if you move to the cell with intact ice, then the ice on\nthis cell becomes cracked. Let's number the rows with integers from 1 to n\nfrom top to bottom and the columns with integers from 1 to m from left to\nright. Let's denote a cell on the intersection of the r-th row and the c-th\ncolumn as (r, c). You are staying in the cell (r1, c1) and this cell is\ncracked because you've just fallen here from a higher level. You need to fall\ndown through the cell (r2, c2) since the exit to the next level is there. Can\nyou do this? Input The first line contains two integers, n and m (1 \u2264 n, m \u2264\n500) \u2014 the number of rows and columns in the cave description. Each of the\nnext n lines describes the initial state of the level of the cave, each line\nconsists of m characters \".\" (that is, intact ice) and \"X\" (cracked ice). The\nnext line contains two integers, r1 and c1 (1 \u2264 r1 \u2264 n, 1 \u2264 c1 \u2264 m) \u2014 your\ninitial coordinates. It is guaranteed that the description of the cave\ncontains character 'X' in cell (r1, c1), that is, the ice on the starting cell\nis initially cracked. The next line contains two integers r2 and c2 (1 \u2264 r2 \u2264\nn, 1 \u2264 c2 \u2264 m) \u2014 the coordinates of the cell through which you need to fall.\nThe final cell may coincide with the starting one. Output If you can reach the\ndestination, print 'YES', otherwise print 'NO'. Examples Input 4 6 X...XX\n...XX. .X..X. ...... 1 6 2 2 Output YES Input 5 4 .X.. ...X X.X. .... .XX. 5 3\n1 1 Output NO Input 4 7 ..X.XX. .XX..X. X...X.. X...... 2 2 1 6 Output YES\nNote In the first sample test one possible path is: After the first visit of\ncell (2, 2) the ice on it cracks and when you step there for the second time,\nyour character falls through the ice as intended.\n\n",
+        "cf_contest_id": 540,
+        "cf_index": "C",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 6\r\nX...XX\r\n...XX.\r\n.X..X.\r\n......\r\n1 6\r\n2 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 4\r\n.X..\r\n...X\r\nX.X.\r\n....\r\n.XX.\r\n5 3\r\n1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 7\r\n..X.XX.\r\n.XX..X.\r\nX...X..\r\nX......\r\n2 2\r\n1 6\r\n",
+                "YES\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\nX\r\n1 1\r\n1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 1\r\nX\r\n.\r\n.\r\n.\r\nX\r\n.\r\n.\r\n5 1\r\n3 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 2\r\nXX\r\n1 1\r\n1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 1\r\n.\r\nX\r\n2 1\r\n2 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 4\r\n.X..\r\n..XX\r\n..X.\r\n1 2\r\n3 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 2\r\n..\r\nX.\r\n.X\r\n3 2\r\n3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 2\r\nX.\r\n1 1\r\n1 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 1\r\nX\r\nX\r\n2 1\r\n1 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 2\r\nXX\r\nXX\r\n1 1\r\n2 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 2\r\n..\r\n.X\r\n2 2\r\n1 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 2\r\n.X\r\n.X\r\n1 2\r\n2 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 2\r\n..\r\nXX\r\n2 1\r\n1 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 2\r\nX.\r\n.X\r\n.X\r\nXX\r\n2 2\r\n3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 4\r\nX.XX\r\n.X..\r\n2 2\r\n2 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 4\r\nX..X\r\n..X.\r\n.X..\r\n..X.\r\n.X..\r\nX..X\r\n1 1\r\n6 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 4\r\nX..X\r\n..XX\r\n.X..\r\n2 3\r\n3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 1\r\nX\r\nX\r\n2 1\r\n2 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 2\r\nXX\r\nX.\r\n1 1\r\n2 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 1\r\nX\r\nX\r\n1 1\r\n1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 2\r\nXX\r\n1 2\r\n1 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 2\r\nXX\r\n1 1\r\n1 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 2\r\nXX\r\n1 2\r\n1 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 1\r\nX\r\nX\r\n1 1\r\n2 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 1\r\n.\r\nX\r\n2 1\r\n1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 1\r\nX\r\n.\r\n1 1\r\n2 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 2\r\n.X\r\n1 2\r\n1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 1\r\nX\r\n.\r\n1 1\r\n1 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 2\r\nX.\r\n1 1\r\n1 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 2\r\n.X\r\n1 2\r\n1 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 2\r\nX.\r\n..\r\n1 1\r\n2 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 2\r\n..\r\nX.\r\n2 1\r\n1 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 3\r\n..X\r\n..X\r\n.XX\r\n.XX\r\n4 2\r\n2 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 3\r\nXXX\r\nX..\r\nXXX\r\n2 1\r\n2 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 4\r\nXXXX\r\nX..X\r\nX..X\r\nXXXX\r\nXXXX\r\n4 2\r\n3 3\r\n",
+                "YES\r\n"
+            ]
+        ]
+    }
+]

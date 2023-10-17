@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Find a car",
+        "description": "After a wonderful evening in the restaurant the time to go home came. Leha as\na true gentlemen suggested Noora to give her a lift. Certainly the girl agreed\nwith pleasure. Suddenly one problem appeared: Leha cannot find his car on a\nhuge parking near the restaurant. So he decided to turn to the watchman for\nhelp. Formally the parking can be represented as a matrix 10^9 \u00d7 10^9. There\nis exactly one car in every cell of the matrix. All cars have their own\nmachine numbers represented as a positive integer. Let's index the columns of\nthe matrix by integers from 1 to 10^9 from left to right and the rows by\nintegers from 1 to 10^9 from top to bottom. By coincidence it turned out, that\nfor every cell (x, y) the number of the car, which stands in this cell, is\nequal to the minimum positive integer, which can't be found in the cells (i,\ny) and (x, j), 1 \u2264 i < x, 1 \u2264 j < y. The upper left fragment 5 \u00d7 5 of the\nparking Leha wants to ask the watchman q requests, which can help him to find\nhis car. Every request is represented as five integers x1, y1, x2, y2, k. The\nwatchman have to consider all cells (x, y) of the matrix, such that x1 \u2264 x \u2264\nx2 and y1 \u2264 y \u2264 y2, and if the number of the car in cell (x, y) does not\nexceed k, increase the answer to the request by the number of the car in cell\n(x, y). For each request Leha asks the watchman to tell him the resulting sum.\nDue to the fact that the sum can turn out to be quite large, hacker asks to\ncalculate it modulo 10^9 + 7. However the requests seem to be impracticable\nfor the watchman. Help the watchman to answer all Leha's requests. Input The\nfirst line contains one integer q (1 \u2264 q \u2264 10^4) \u2014 the number of Leha's\nrequests. The next q lines contain five integers x1, y1, x2, y2, k (1 \u2264 x1 \u2264\nx2 \u2264 10^9, 1 \u2264 y1 \u2264 y2 \u2264 10^9, 1 \u2264 k \u2264 2\u00b710^9) \u2014 parameters of Leha's\nrequests. Output Print exactly q lines \u2014 in the first line print the answer to\nthe first request, in the second \u2014 the answer to the second request and so on.\nExample Input 4 1 1 1 1 1 3 2 5 4 5 1 1 5 5 10000 1 4 2 5 2 Output 1 13 93 0\nNote Let's analyze all the requests. In each case the requested submatrix is\nhighlighted in blue. In the first request (k = 1) Leha asks only about the\nupper left parking cell. In this cell the car's number is 1. Consequentally\nthe answer is 1. In the second request (k = 5) suitable numbers are 4, 1, 2,\n3, 2, 1. Consequentally the answer is 4 + 1 + 2 + 3 + 2 + 1 = 13. In the third\nrequest (k = 10000) Leha asks about the upper left frament 5 \u00d7 5 of the\nparking. Since k is big enough, the answer is equal to 93. In the last request\n(k = 2) none of the cur's numbers are suitable, so the answer is 0.\n\n",
+        "cf_contest_id": 809,
+        "cf_index": "C",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "divide and conquer",
+            "dp"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n1 1 1 1 1\r\n3 2 5 4 5\r\n1 1 5 5 10000\r\n1 4 2 5 2\r\n",
+                "1\r\n13\r\n93\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n3 7 4 10 7\r\n6 1 7 10 18\r\n9 6 10 8 3\r\n1 8 3 10 3\r\n10 4 10 5 19\r\n8 9 9 10 10\r\n10 1 10 5 4\r\n8 1 9 4 18\r\n6 3 9 5 1\r\n6 6 9 6 16\r\n",
+                "22\r\n130\r\n0\r\n0\r\n25\r\n3\r\n0\r\n68\r\n0\r\n22\r\n"
+            ],
+            [
+                "10\r\n1 1 2 2 8\r\n3 4 5 9 4\r\n2 10 5 10 6\r\n8 5 10 8 8\r\n1 2 8 2 20\r\n8 6 10 8 20\r\n6 7 6 7 9\r\n8 5 10 10 13\r\n1 8 10 9 13\r\n9 8 10 9 3\r\n",
+                "6\r\n13\r\n0\r\n10\r\n36\r\n95\r\n4\r\n42\r\n94\r\n3\r\n"
+            ],
+            [
+                "10\r\n4 4 9 8 14\r\n5 5 10 10 7\r\n1 1 10 5 14\r\n3 5 8 9 15\r\n3 2 8 7 17\r\n5 1 10 6 7\r\n6 6 10 10 1\r\n3 3 7 10 15\r\n6 6 10 10 17\r\n6 5 10 9 5\r\n",
+                "132\r\n46\r\n291\r\n157\r\n162\r\n92\r\n5\r\n244\r\n205\r\n33\r\n"
+            ],
+            [
+                "10\r\n6 2 10 9 7\r\n4 3 8 7 9\r\n2 1 7 9 5\r\n2 6 10 10 3\r\n1 4 7 8 18\r\n1 2 7 6 14\r\n2 6 6 10 14\r\n3 1 10 9 10\r\n4 6 10 10 14\r\n1 6 9 10 20\r\n",
+                "74\r\n106\r\n90\r\n24\r\n165\r\n155\r\n193\r\n257\r\n158\r\n356\r\n"
+            ],
+            [
+                "10\r\n35670 87689 78020 97199 170735\r\n49603 42971 77473 79458 124936\r\n94018 22571 99563 79717 79594\r\n65172 72864 69350 77801 174349\r\n45117 31256 60374 67497 156317\r\n36047 95407 60232 98208 139099\r\n32487 46904 57699 99668 80778\r\n21651 59154 75570 62785 115538\r\n29698 87365 74417 93703 117692\r\n14164 51564 33862 97087 68406\r\n",
+                "454444876\r\n271069018\r\n549471212\r\n320529941\r\n94517473\r\n311684494\r\n819172459\r\n675269446\r\n7036993\r\n762542106\r\n"
+            ],
+            [
+                "10\r\n51798 36533 70866 80025 119989\r\n28380 14954 62643 52624 29118\r\n54458 49611 75784 95421 49917\r\n69985 20586 84374 81162 14398\r\n65761 87545 72679 89308 70174\r\n22064 89628 77685 93857 38969\r\n75905 57174 86394 88214 107079\r\n48955 26587 98075 76935 72945\r\n69991 81288 96051 90174 75880\r\n66736 31080 84603 89293 196873\r\n",
+                "12182239\r\n653954597\r\n844386299\r\n206168423\r\n437228219\r\n154397952\r\n317840300\r\n905267860\r\n968243748\r\n750471863\r\n"
+            ],
+            [
+                "10\r\n45965 63556 68448 95894 98898\r\n50414 55822 93611 81912 81281\r\n51874 82624 99557 93570 17105\r\n83870 83481 98209 86976 37205\r\n34423 98865 81812 99559 52923\r\n59982 80565 63020 90493 156405\r\n73425 8598 94843 23120 95359\r\n75710 49176 96524 75354 10095\r\n11342 31715 50626 83343 14952\r\n50673 61478 61380 81973 35755\r\n",
+                "199194379\r\n133563355\r\n535853348\r\n105738618\r\n790969580\r\n176118196\r\n203632117\r\n366899916\r\n146517938\r\n749331834\r\n"
+            ],
+            [
+                "10\r\n39453 1588 68666 44518 80856\r\n65967 37333 79860 79474 185463\r\n72918 67988 88918 85752 178916\r\n4960 53963 30061 77750 101446\r\n68699 86791 98399 87875 166780\r\n42051 5526 86018 54457 56275\r\n35111 22360 46210 77033 154364\r\n79350 54886 79640 66722 206\r\n57162 67626 99566 96156 173141\r\n42028 40518 52695 94347 188413\r\n",
+                "974201015\r\n675658286\r\n140222566\r\n668884231\r\n613269116\r\n620825458\r\n239625852\r\n0\r\n193348271\r\n860068784\r\n"
+            ],
+            [
+                "10\r\n60149 83439 91672 93997 29005\r\n2170 81207 33662 85253 169296\r\n84242 35792 96226 46307 32764\r\n48745 41099 63904 50301 99488\r\n20797 58596 98423 69870 151507\r\n79648 84250 95429 93302 160725\r\n29270 74595 41752 87094 46279\r\n97721 20075 99994 24743 121486\r\n44598 9233 59399 56549 114860\r\n81435 24939 83492 87248 55048\r\n",
+                "922941587\r\n694484017\r\n0\r\n117048300\r\n483223856\r\n262420342\r\n0\r\n449352476\r\n757860438\r\n37418807\r\n"
+            ],
+            [
+                "10\r\n17273 60120 44211 66117 121362\r\n38045 49581 43392 60379 106182\r\n29993 28891 49459 68331 170383\r\n13745 94716 99131 96384 163728\r\n35994 29973 69541 91771 65364\r\n93514 84168 95810 91743 60595\r\n57881 7334 95096 48342 39876\r\n41495 70230 56091 84188 78893\r\n12540 23228 26212 81656 105752\r\n83061 65904 87563 68222 150811\r\n",
+                "908485580\r\n424476218\r\n6537747\r\n993909605\r\n825278510\r\n232753578\r\n980640613\r\n0\r\n732434354\r\n794713552\r\n"
+            ],
+            [
+                "10\r\n89912 38588 100000 61519 131263\r\n63723 14623 74226 61508 104495\r\n80783 19628 93957 60942 72631\r\n49607 2064 60475 32125 43001\r\n397 31798 60225 47064 161900\r\n87074 8737 99607 47892 162291\r\n10290 73252 84596 86607 106118\r\n38621 44306 76871 87471 44012\r\n26666 84711 53248 98378 27672\r\n22685 36055 57791 80992 140124\r\n",
+                "191639278\r\n266398397\r\n387687950\r\n268970017\r\n733430769\r\n239026110\r\n569640661\r\n502549869\r\n0\r\n901026605\r\n"
+            ],
+            [
+                "10\r\n25583 8810 71473 84303 56325\r\n52527 14549 67038 87309 41381\r\n85964 55620 99929 76963 34442\r\n28280 87558 56450 98865 107242\r\n61281 44852 99966 67445 108461\r\n58298 39201 70236 74834 62161\r\n54864 73811 68399 96057 132419\r\n11978 85542 35272 97885 1419\r\n89151 60500 99966 89149 185860\r\n48390 40961 87183 97309 35887\r\n",
+                "605688865\r\n873699306\r\n156635112\r\n698424830\r\n86490140\r\n906905842\r\n454122876\r\n0\r\n347292150\r\n987085065\r\n"
+            ],
+            [
+                "10\r\n1 1 100000 100000 124458\r\n1 1 100000 100000 89626\r\n1 1 100000 100000 42210\r\n1 1 100000 100000 65721\r\n1 1 100000 100000 148198\r\n1 1 100000 100000 122029\r\n1 1 100000 100000 50224\r\n1 1 100000 100000 16314\r\n1 1 100000 100000 158599\r\n1 1 100000 100000 142792\r\n",
+                "986777122\r\n640050028\r\n864029027\r\n339397763\r\n973589169\r\n723174232\r\n902088077\r\n287074869\r\n973589169\r\n973589169\r\n"
+            ],
+            [
+                "10\r\n1 1 100000 100000 73712\r\n1 1 100000 100000 193808\r\n1 1 100000 100000 69429\r\n1 1 100000 100000 162666\r\n1 1 100000 100000 94759\r\n1 1 100000 100000 21899\r\n1 1 100000 100000 76524\r\n1 1 100000 100000 182233\r\n1 1 100000 100000 125300\r\n1 1 100000 100000 71258\r\n",
+                "717056579\r\n973589169\r\n625066178\r\n973589169\r\n207662527\r\n561940319\r\n600480675\r\n973589169\r\n665222578\r\n844687430\r\n"
+            ],
+            [
+                "10\r\n63468235 40219768 326916221 835104676 1952530008\r\n297013188 212688608 432392437 887776079 1462376999\r\n153855395 41506149 261808021 778766232 291194343\r\n238640217 22153210 642972954 719331789 371665652\r\n528859722 494055455 831993741 924681396 251221747\r\n19429387 475067059 567446881 908192965 1886584907\r\n472431037 68414189 620339945 605371645 1906964799\r\n741781008 683180935 932571485 883233060 987079989\r\n557448838 174849798 875225676 549316493 360200169\r\n61358988 97847347 487462496 955727516 1024792731\r\n",
+                "383784865\r\n892686589\r\n440520525\r\n909297528\r\n857306896\r\n138121854\r\n327512104\r\n256512043\r\n89816936\r\n158271270\r\n"
+            ],
+            [
+                "10\r\n1 1 1000000000 1000000000 497721466\r\n1 1 1000000000 1000000000 1096400602\r\n1 1 1000000000 1000000000 1120358961\r\n1 1 1000000000 1000000000 232914786\r\n1 1 1000000000 1000000000 601018859\r\n1 1 1000000000 1000000000 310363393\r\n1 1 1000000000 1000000000 636663039\r\n1 1 1000000000 1000000000 1548359129\r\n1 1 1000000000 1000000000 1183677871\r\n1 1 1000000000 1000000000 792703683\r\n",
+                "11780124\r\n248752269\r\n248752269\r\n883198940\r\n218155629\r\n747605194\r\n352461300\r\n248752269\r\n248752269\r\n562283839\r\n"
+            ],
+            [
+                "10\r\n1 1 1000000000 1000000000 1477070720\r\n1 1 1000000000 1000000000 1378704784\r\n1 1 1000000000 1000000000 782520772\r\n1 1 1000000000 1000000000 1377211731\r\n1 1 1000000000 1000000000 623332716\r\n1 1 1000000000 1000000000 497630560\r\n1 1 1000000000 1000000000 47465148\r\n1 1 1000000000 1000000000 790892344\r\n1 1 1000000000 1000000000 1071836060\r\n1 1 1000000000 1000000000 1949232149\r\n",
+                "248752269\r\n248752269\r\n949069688\r\n248752269\r\n840885502\r\n42891263\r\n23378226\r\n985784682\r\n561979540\r\n248752269\r\n"
+            ]
+        ]
+    }
+]

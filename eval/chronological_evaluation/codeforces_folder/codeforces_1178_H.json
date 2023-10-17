@@ -1,0 +1,105 @@
+[
+    {
+        "name": "Stock Exchange",
+        "description": "Warning: This problem has an unusual memory limit! Bob decided that he will\nnot waste his prime years implementing GUI forms for a large corporation and\ninstead will earn his supper on the Stock Exchange Reykjavik. The Stock\nExchange Reykjavik is the only actual stock exchange in the world. The only\ntype of transaction is to take a single share of stock \n    x\n and exchange it\nfor a single share of stock \n    y\n, provided that the current price of share\n\n    x\n is at least the current price of share \n    y\n. There are \n    2n\n\nstocks listed on the SER that are of interest to Bob, numbered from \n    1\n to\n\n    2n\n. Bob owns a single share of stocks \n    1\n through \n    n\n and would\nlike to own a single share of each of \n    n+1\n through \n    2n\n some time in\nthe future. Bob managed to forecast the price of each stock \u2014 in time \n    t\n    \n    \u2265 0\n, the stock \n    i\n will cost \n    a_i \n    \u00b7\n    \u230a t \n    \u230b\n    + b_i\n. The time is currently \n    t = 0\n. Help Bob find the earliest moment\nin time in which he can own a single share of each of \n    n+1\n through\n\n    2n\n, and the minimum number of stock exchanges he has to perform in order\nto do that. You may assume that the Stock Exchange has an unlimited amount of\neach stock at any point in time. Input The first line contains a single\ninteger \n    n\n (\n    1 \n    \u2264 n \n    \u2264 2200\n) \u2014 the number stocks currently\nowned by Bob. Each of the next \n    2n\n lines contains integers \n    a_i\n and\n\n    b_i\n (\n    0 \n    \u2264 a_i, b_i \n    \u2264 10^9\n), representing the stock price\nof stock \n    i\n. Output If it is impossible for Bob to achieve his goal,\noutput a single integer \n    -1\n. Otherwise, output two integers \n    T\n and\n\n    E\n, where \n    T\n is the minimum time in which he can achieve his goal,\nand \n    E\n is the minimum number of exchanges in which he can achieve his\ngoal at time \n    T\n. Examples Input 1 3 10 1 16 Output 3 1 Input 2 3 0 2 1 1\n10 1 11 Output 6 3 Input 1 42 42 47 47 Output -1 Input 8 145 1729363 891\n4194243 424 853731 869 1883440 843 556108 760 1538373 270 762781 986 2589382\n610 99315884 591 95147193 687 99248788 65 95114537 481 99071279 293 98888998\n83 99764577 769 96951171 Output 434847 11 Input 8 261 261639 92 123277 271\n131614 320 154417 97 258799 246 17926 117 222490 110 39356 85 62864876 86\n62781907 165 62761166 252 62828168 258 62794649 125 62817698 182 62651225 16\n62856001 Output 1010327 11 Note In the first example, Bob simply waits until\ntime \n    t = 3\n, when both stocks cost exactly the same amount. In the second\nexample, the optimum strategy is to exchange stock \n    2\n for stock \n    1\n\nat time \n    t = 1\n, then exchange one share of stock \n    1\n for stock\n\n    3\n at time \n    t = 5\n (where both cost \n    15\n) and then at time \n    t =\n    6\n exchange the second on for the stock number \n    4\n (when they cost\n\n    18\n and \n    17\n, respectively). Note that he can achieve his goal also\nwith only two exchanges, but this would take total time of \n    t = 9\n, when\nhe would finally be able to exchange the share number \n    2\n for the share\nnumber \n    3\n. In the third example, Bob can never achieve his goal, as the\nsecond stock is always strictly more expensive than the first one.\n\n",
+        "cf_contest_id": 1178,
+        "cf_index": "H",
+        "cf_rating": 3500,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "flows",
+            "graphs"
+        ],
+        "time_limit_seconds": 6.0,
+        "memory_limit_bytes": 16.0,
+        "public_cases": [
+            [
+                "1\r\n3 10\r\n1 16\r\n",
+                "3 1"
+            ],
+            [
+                "2\r\n3 0\r\n2 1\r\n1 10\r\n1 11\r\n",
+                "6 3"
+            ],
+            [
+                "1\r\n42 42\r\n47 47\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8\r\n145 1729363\r\n891 4194243\r\n424 853731\r\n869 1883440\r\n843 556108\r\n760 1538373\r\n270 762781\r\n986 2589382\r\n610 99315884\r\n591 95147193\r\n687 99248788\r\n65 95114537\r\n481 99071279\r\n293 98888998\r\n83 99764577\r\n769 96951171\r\n",
+                "434847 11"
+            ],
+            [
+                "8\r\n261 261639\r\n92 123277\r\n271 131614\r\n320 154417\r\n97 258799\r\n246 17926\r\n117 222490\r\n110 39356\r\n85 62864876\r\n86 62781907\r\n165 62761166\r\n252 62828168\r\n258 62794649\r\n125 62817698\r\n182 62651225\r\n16 62856001\r\n",
+                "1010327 11"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7\r\n197 64570\r\n241 64934\r\n343 74131\r\n548 80461\r\n283 60390\r\n293 71183\r\n507 65101\r\n464 28961502\r\n379 28921235\r\n284 28937947\r\n277 28918653\r\n84 28900573\r\n46 28933671\r\n486 28909829\r\n",
+                "4809711 8"
+            ],
+            [
+                "6\r\n275 97927\r\n416 33560\r\n651 2071\r\n287 98166\r\n196 46988\r\n760 72562\r\n673 62307527\r\n733 62284545\r\n636 62308717\r\n586 62321660\r\n748 62351252\r\n19 62331566\r\n",
+                "5189891 9"
+            ],
+            [
+                "8\r\n422 58825\r\n1009 329585\r\n960 143721\r\n972 147456\r\n786 52553\r\n338 220899\r\n806 309223\r\n819 2028\r\n168 87340688\r\n930 87276700\r\n980 87260972\r\n259 87267967\r\n188 87199103\r\n284 87283623\r\n925 87441314\r\n72 87367188\r\n",
+                "2997635 8"
+            ],
+            [
+                "2\r\n1 2\r\n2 2\r\n3 0\r\n1 4\r\n",
+                "2 2"
+            ],
+            [
+                "1\r\n129 251089\r\n799 4764870\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n184 372004\r\n308 9584992\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n571 4034563\r\n121 96709380\r\n",
+                "205945 1"
+            ],
+            [
+                "1\r\n377 31358655\r\n41 983011349\r\n",
+                "2832300 1"
+            ],
+            [
+                "8\r\n176 271118\r\n56 153132\r\n121 313532\r\n400 107780\r\n528 167357\r\n607 435433\r\n361 228331\r\n945 241074\r\n889 4939958\r\n940 4731687\r\n518 4712514\r\n449 4602598\r\n341 4543399\r\n822 4959809\r\n864 4560976\r\n232 4595454\r\n",
+                "898123 13"
+            ],
+            [
+                "8\r\n492 23576\r\n304 368053\r\n877 348350\r\n816 430292\r\n148 278739\r\n488 407224\r\n239 328515\r\n825 27101\r\n549 9552348\r\n195 9941157\r\n860 9538834\r\n615 9561749\r\n17 9984412\r\n283 9898870\r\n27 9511733\r\n665 9870068\r\n",
+                "540617 9"
+            ],
+            [
+                "8\r\n689 2858205\r\n602 3801054\r\n390 2957534\r\n971 887242\r\n54 3081064\r\n912 2928178\r\n161 2561576\r\n955 848098\r\n441 99308516\r\n393 96565365\r\n405 98151730\r\n88 97495327\r\n791 96994878\r\n174 97798692\r\n630 99012104\r\n204 97346718\r\n",
+                "533932 10"
+            ],
+            [
+                "8\r\n213 25653538\r\n719 17849271\r\n862 827766\r\n125 32732575\r\n121 30143392\r\n575 44454494\r\n505 22120116\r\n989 22391611\r\n964 989321547\r\n27 988620866\r\n363 954944259\r\n210 998188865\r\n478 976615165\r\n909 990407628\r\n358 959864798\r\n94 987697851\r\n",
+                "38677198 9"
+            ],
+            [
+                "2\r\n8 6\r\n5 2\r\n6 2\r\n8 6\r\n",
+                "0 2"
+            ],
+            [
+                "4\r\n2 1\r\n3 1\r\n4 1\r\n6 1\r\n5 1\r\n5 1\r\n2 1\r\n2 1\r\n",
+                "0 4"
+            ],
+            [
+                "6\r\n296 161241\r\n147 162476\r\n178 366128\r\n46 18386\r\n133 156499\r\n288 406515\r\n62 315289\r\n248 413924\r\n396 74890\r\n179 14761\r\n273 31893\r\n245 548569\r\n",
+                "3137 7"
+            ],
+            [
+                "4\r\n8 4\r\n6 4\r\n6 4\r\n2 3\r\n8 1\r\n8 3\r\n3 3\r\n9 4\r\n",
+                "0 4"
+            ]
+        ]
+    }
+]

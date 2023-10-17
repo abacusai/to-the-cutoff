@@ -1,0 +1,36 @@
+[
+    {
+        "name": "MCMF?",
+        "description": "You are given two integer arrays \n    a\n and \n    b\n (\n    b_i \n    \u2260 0\n and\n\n    |b_i| \n    \u2264 10^9\n). Array \n    a\n is sorted in non-decreasing order. The\ncost of a subarray \n    a[l:r]\n is defined as follows: If \n    \u2211\n    _j = l^r b_j \n    \u2260 0\n, then the cost is not defined.\nOtherwise: Construct a bipartite flow graph with \n    r-l+1\n vertices, labeled\nfrom \n    l\n to \n    r\n, with all vertices having \n    b_i \n     0\n on the\nleft and those with \n    b_i \n     0\n on right. For each \n    i, j\n such that\n\n    l \n    \u2264 i, j \n    \u2264 r\n, \n    b_i<0\n and \n    b_j>0\n, draw an edge from\n\n    i\n to \n    j\n with infinite capacity and cost of unit flow as \n    |a_i-\n    a_j|\n. Add two more vertices: source \n    S\n and sink \n    T\n. For each\n\n    i\n such that \n    l \n    \u2264 i \n    \u2264 r\n and \n    b_i<0\n, add an edge from\n\n    S\n to \n    i\n with cost \n    0\n and capacity \n    |b_i|\n. For each\n\n    i\n such that \n    l \n    \u2264 i \n    \u2264 r\n and \n    b_i>0\n, add an edge from\n\n    i\n to \n    T\n with cost \n    0\n and capacity \n    |b_i|\n. The cost of the\nsubarray is then defined as the minimum cost of maximum flow from \n    S\n to\n\n    T\n.You are given \n    q\n queries in the form of two integers \n    l\n and\n\n    r\n. You have to compute the cost of subarray \n    a[l:r]\n for each query,\nmodulo \n    10^9 + 7\n. If you don't know what the minimum cost of maximum flow\nmeans, read here. Input The first line of input contains two integers \n    n\n\nand \n    q\n \n    (2 \n    \u2264 n \n    \u2264 2\n    \u00b7 10^5, 1 \n    \u2264 q \n    \u2264\n    2\n    \u00b710^5)\n \u2014 length of arrays \n    a\n, \n    b\n and the number of\nqueries. The next line contains \n    n\n integers \n    a_1,a_2 \n    \u2026 a_n\n\n(\n    0 \n    \u2264 a_1 \n    \u2264 a_2 \n    \u2026\n    \u2264 a_n \n    \u2264 10^9)\n \u2014 the array\n\n    a\n. It is guaranteed that \n    a\n is sorted in non-decreasing order. The\nnext line contains \n    n\n integers \n    b_1,b_2 \n    \u2026 b_n\n \n    (-10^9\n    \u2264\n    b_i \n    \u2264 10^9, b_i \n    \u2260 0)\n \u2014 the array \n    b\n. The \n    i\n-th of the\nnext \n    q\n lines contains two integers \n    l_i,r_i\n \n    (1\n    \u2264 l_i \n    \u2264\n    r_i \n    \u2264 n)\n. It is guaranteed that \n    \u2211\n    _j = l_i^r_i\n    b_j = 0\n. Output For each query \n    l_i\n, \n    r_i\n \u2014 print the cost of\nsubarray \n    a[l_i:r_i]\n modulo \n    10^9 + 7\n. Example Input 8 4 1 2 4 5 9\n10 10 13 6 -1 1 -3 2 1 -1 1 2 3 6 7 3 5 2 6 Output 2 0 9 15 Note In the first\nquery, the maximum possible flow is \n    1\n i.e one unit from source to\n\n    2\n, then one unit from \n    2\n to \n    3\n, then one unit from \n    3\n to\nsink. The cost of the flow is \n    0 \n    \u00b7 1 + |2 - 4| \n    \u00b7 1 + 0 \n    \u00b7 1\n    = 2\n. In the second query, the maximum possible flow is again \n    1\n i.e\nfrom source to \n    7\n, \n    7\n to \n    6\n, and \n    6\n to sink with a cost of\n\n    0 \n    \u00b7 |10 - 10| \n    \u00b7 1 + 0 \n    \u00b7 1 = 0\n. In the third query, the\nflow network is shown on the left with capacity written over the edge and the\ncost written in bracket. The image on the right shows the flow through each\nedge in an optimal configuration. Maximum flow is \n    3\n with a cost of \n    0\n    \n    \u00b7 3 + 1 \n    \u00b7 1 + 4 \n    \u00b7 2 + 0 \n    \u00b7 1 + 0 \n    \u00b7 2 = 9\n.In\nthe fourth query, the flow network looks as \u2013 The minimum cost maximum flow is\nachieved in the configuration \u2013 The maximum flow in the above network is 4 and\nthe minimum cost of such flow is 15.\n\n",
+        "cf_contest_id": 1682,
+        "cf_index": "F",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "flows",
+            "graphs",
+            "greedy",
+            "sortings",
+            "two pointers"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "8 4\r\n1 2 4 5 9 10 10 13\r\n6 -1 1 -3 2 1 -1 1\r\n2 3\r\n6 7\r\n3 5\r\n2 6\r\n",
+                "2\r\n0\r\n9\r\n15\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "50 24\r\n45 46 68 84 84 90 117 158 173 187 201 222 227 229 254 271 291 294 309 329 332 336 346 409 425 457 466 496 541 568 627 664 683 694 744 755 776 783 792 798 822 832 852 897 903 921 956 957 966 982\r\n-2 2 1 -1 -3 3 2 -2 -4 4 1 -1 1 -1 3 -3 5 -5 1 -1 2 -2 -4 4 1 -1 -1 1 4 -4 2 -2 -1 1 -1 1 -5 5 -5 5 -3 3 -4 4 1 -1 1 -1 -1 1\r\n21 46\r\n33 42\r\n7 16\r\n10 23\r\n7 38\r\n25 34\r\n43 48\r\n17 24\r\n14 19\r\n11 30\r\n9 40\r\n15 22\r\n39 46\r\n9 48\r\n3 20\r\n23 40\r\n15 46\r\n27 32\r\n31 36\r\n9 28\r\n39 50\r\n20 45\r\n19 28\r\n1 42\r\n",
+                "819\r\n117\r\n212\r\n753\r\n808\r\n255\r\n199\r\n295\r\n106\r\n539\r\n756\r\n94\r\n258\r\n985\r\n281\r\n583\r\n905\r\n212\r\n96\r\n487\r\n275\r\n1175\r\n342\r\n904\r\n"
+            ],
+            [
+                "2 1\r\n3 5\r\n-1 1\r\n1 2\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

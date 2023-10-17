@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Vicky's Delivery Service",
+        "description": "In a magical land there are \n    n\n cities conveniently numbered \n    1, 2,\n    \n    \u2026, n\n. Some pairs of these cities are connected by magical colored\nroads. Magic is unstable, so at any time, new roads may appear between two\ncities. Vicky the witch has been tasked with performing deliveries between\nsome pairs of cities. However, Vicky is a beginner, so she can only complete a\ndelivery if she can move from her starting city to her destination city\nthrough a double rainbow. A double rainbow is a sequence of cities \n    c_1,\n    c_2, \n    \u2026, c_k\n satisfying the following properties: For each \n    i\n\nwith \n    1 \n    \u2264 i \n    \u2264 k - 1\n, the cities \n    c_i\n and \n    c_i + 1\n are\nconnected by a road. For each \n    i\n with \n    1 \n    \u2264 i \n    \u2264\n    k -\n    1/2\n, the roads connecting \n    c_2i\n with \n    c_2i - 1\n and \n    c_2i\n    + 1\n have the same color. For example if \n    k = 5\n, the road between\n\n    c_1\n and \n    c_2\n must be the same color as the road between \n    c_2\n\nand \n    c_3\n, and the road between \n    c_3\n and \n    c_4\n must be the same\ncolor as the road between \n    c_4\n and \n    c_5\n. Vicky has a list of events\nin chronological order, where each event is either a delivery she must\nperform, or appearance of a new road. Help her determine which of her\ndeliveries she will be able to complete. Input The first line contains four\nintegers \n    n\n, \n    m\n, \n    c\n, and \n    q\n (\n    2 \n    \u2264 n \n    \u2264 10^5\n,\n\n    1 \n    \u2264 m, c, q \n    \u2264 10^5\n), denoting respectively the number of cities,\nthe number of roads initially present, the number of different colors the\nroads can take, and the number of events. Each of the following \n    m\n lines\ncontains three integers \n    x\n, \n    y\n, and \n    z\n (\n    1 \n    \u2264 x, y \n    \u2264\n    n\n, \n    1 \n    \u2264 z \n    \u2264 c\n), describing that there initially exists a\nbidirectional road with color \n    z\n between cities \n    x\n and \n    y\n. Then\n\n    q\n lines follow, describing the events. Each event is one of the\nfollowing two types:  x y z (\n    1 \n    \u2264 x, y \n    \u2264 n\n, \n    1 \n    \u2264 z \n    \u2264\n    c\n), meaning a road with color \n    z\n appears between cities \n    x\n and\n\n    y\n; ? x y (\n    1 \n    \u2264 x, y \n    \u2264 n\n), meaning you should determine\nwhether Vicky can make a delivery starting at city \n    x\n and ending at city\n\n    y\n. It is guaranteed that \n    x \n    \u2260 y\n. It is guaranteed that at any\nmoment, there is at most one road connecting any pair of cities, and that no\nroad connects a city to itself. It is guaranteed that the input contains at\nleast one event of the second type. Output For each event of the second type,\nprint a single line containing \"Yes\" (without quotes) if the delivery can be\nmade, or a single line containing \"No\" (without quotes) otherwise. Example\nInput 4 3 2 4 1 2 1 2 3 1 3 4 2 ? 1 4 ? 4 1  3 1 2 ? 4 1 Output Yes No Yes\nNote The following picture corresponds to the sample. For her first delivery,\nVicky can use the sequence 1, 2, 3, 4 which is a double rainbow. However, she\ncannot complete the second delivery, as she can only reach city \n    3\n. After\nadding the road between cities \n    1\n and \n    3\n, she can now complete a\ndelivery from city \n    4\n to city \n    1\n by using the double rainbow 4, 3,\n1.\n\n",
+        "cf_contest_id": 1166,
+        "cf_index": "F",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dsu",
+            "graphs",
+            "hashing"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 3 2 4\r\n1 2 1\r\n2 3 1\r\n3 4 2\r\n? 1 4\r\n? 4 1\r\n+ 3 1 2\r\n? 4 1\r\n",
+                "Yes\r\nNo\r\nYes\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 5 3 1\r\n1 2 1\r\n2 3 1\r\n3 4 2\r\n4 2 2\r\n2 5 3\r\n? 1 5\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "10 20 5 20\r\n8 4 2\r\n2 10 3\r\n2 1 1\r\n9 4 2\r\n8 5 4\r\n9 2 4\r\n5 7 2\r\n10 3 5\r\n4 10 4\r\n7 3 1\r\n2 7 5\r\n5 6 3\r\n4 2 1\r\n2 5 4\r\n7 4 5\r\n10 9 1\r\n1 9 3\r\n4 6 1\r\n4 1 4\r\n10 5 4\r\n? 8 2\r\n? 10 1\r\n? 8 9\r\n? 2 10\r\n? 2 9\r\n+ 9 8 2\r\n+ 1 8 1\r\n? 1 9\r\n+ 7 8 1\r\n? 5 3\r\n? 8 4\r\n? 7 5\r\n? 8 3\r\n? 5 6\r\n+ 1 7 5\r\n? 3 6\r\n? 2 9\r\n? 3 5\r\n+ 1 3 1\r\n? 9 2\r\n",
+                "Yes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "2 1 1 5\r\n2 1 1\r\n? 2 1\r\n? 1 2\r\n? 1 2\r\n? 2 1\r\n? 1 2\r\n",
+                "Yes\r\nYes\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "10 45 3 20\r\n5 1 2\r\n4 1 2\r\n6 4 2\r\n7 8 1\r\n9 6 3\r\n5 10 1\r\n7 5 3\r\n5 4 2\r\n2 6 3\r\n1 10 2\r\n5 3 1\r\n6 3 1\r\n7 6 1\r\n6 8 3\r\n10 2 3\r\n5 9 2\r\n7 9 1\r\n5 6 1\r\n6 1 2\r\n4 8 2\r\n4 9 2\r\n7 4 2\r\n10 6 3\r\n8 2 1\r\n8 10 1\r\n2 5 2\r\n10 4 2\r\n2 4 2\r\n10 3 1\r\n7 2 1\r\n10 7 3\r\n2 9 2\r\n8 5 3\r\n4 3 3\r\n3 7 1\r\n3 2 1\r\n1 9 1\r\n7 1 2\r\n8 3 3\r\n1 2 3\r\n8 1 3\r\n9 10 2\r\n9 8 1\r\n9 3 3\r\n3 1 2\r\n? 7 8\r\n? 9 2\r\n? 7 1\r\n? 5 10\r\n? 3 7\r\n? 8 7\r\n? 3 2\r\n? 7 2\r\n? 6 5\r\n? 5 4\r\n? 2 4\r\n? 7 8\r\n? 5 3\r\n? 8 1\r\n? 8 10\r\n? 5 3\r\n? 7 10\r\n? 5 10\r\n? 10 9\r\n? 10 6\r\n",
+                "Yes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "10 35 3 30\r\n4 8 1\r\n6 8 3\r\n6 10 1\r\n1 4 2\r\n4 7 3\r\n1 10 2\r\n7 2 3\r\n6 2 1\r\n1 7 2\r\n3 5 2\r\n10 4 1\r\n5 4 2\r\n9 6 2\r\n2 4 3\r\n8 2 2\r\n7 8 2\r\n9 1 3\r\n5 6 1\r\n9 5 2\r\n9 2 1\r\n6 4 2\r\n9 7 3\r\n3 2 1\r\n8 3 3\r\n5 1 1\r\n4 3 3\r\n6 3 1\r\n4 9 3\r\n3 1 3\r\n10 9 2\r\n1 8 3\r\n10 5 2\r\n2 1 1\r\n2 10 1\r\n7 6 3\r\n? 2 8\r\n? 3 7\r\n? 6 1\r\n? 7 8\r\n? 2 10\r\n? 2 10\r\n+ 8 5 1\r\n+ 1 6 3\r\n? 8 6\r\n? 3 4\r\n? 10 2\r\n+ 7 3 1\r\n? 1 3\r\n? 6 4\r\n? 9 8\r\n+ 10 8 1\r\n+ 5 7 1\r\n? 8 10\r\n? 5 2\r\n+ 5 2 3\r\n? 4 10\r\n+ 10 7 1\r\n? 3 4\r\n? 8 7\r\n? 2 10\r\n+ 8 9 1\r\n? 10 1\r\n+ 9 3 1\r\n+ 3 10 2\r\n? 10 5\r\n",
+                "Yes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\n"
+            ]
+        ]
+    }
+]

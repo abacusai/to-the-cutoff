@@ -1,0 +1,97 @@
+[
+    {
+        "name": "Doping",
+        "description": "We call an array \n    a\n of length \n    n\n fancy if for each \n    1 < i \n    \u2264\n    n\n it holds that \n    a_i = a_i-1 + 1\n. Let's call \n    f(p)\n applied to a\npermutation\n    ^\n    \u2020\n of length \n    n\n as the minimum number of\nsubarrays it can be partitioned such that each one of them is fancy. For\nexample \n    f([1,2,3]) = 1\n, while \n    f([3,1,2]) = 2\n and \n    f([3,2,1]) =\n    3\n. Given \n    n\n and a permutation \n    p\n of length \n    n\n, we define a\npermutation \n    p'\n of length \n    n\n to be \n    k\n-special if and only if:\n\n    p'\n is lexicographically smaller\n    ^\n than \n    p\n, and\n\n    f(p') = k\n. Your task is to count for each \n    1 \n    \u2264 k \n    \u2264 n\n the\nnumber of \n    k\n-special permutations modulo \n    m\n. \n    ^\n    \u2020\n A\npermutation is an array consisting of \n    n\n distinct integers from \n    1\n\nto \n    n\n in arbitrary order. For example, \n    [2,3,1,5,4]\n is a\npermutation, but \n    [1,2,2]\n is not a permutation (\n    2\n appears twice in\nthe array) and \n    [1,3,4]\n is also not a permutation (\n    n=3\n but there is\n\n    4\n in the array). \n    ^\n A permutation \n    a\n of length\n\n    n\n is lexicographically smaller than a permutation \n    b\n of length\n\n    n\n if and only if the following holds: in the first position where\n\n    a\n and \n    b\n differ, the permutation \n    a\n has a smaller element than\nthe corresponding element in \n    b\n. Input The first line contains two\nintegers \n    n\n and \n    m\n (\n    1 \n    \u2264 n \n    \u2264 2000\n, \n    10 \n    \u2264 m \n    \u2264\n    10^9\n) \u2014 the length of the permutation and the required modulo. The second\nline contains \n    n\n distinct integers \n    p_1, p_2, \n    \u2026, p_n\n (\n    1\n    \n    \u2264 p_i \n    \u2264 n\n) \u2014 the permutation \n    p\n. Output Print \n    n\n\nintegers, where the \n    k\n-th integer is the number of \n    k\n-special\npermutations modulo \n    m\n. Examples Input 4 666012 1 3 4 2 Output 1 0 1 1\nInput 3 10 3 2 1 Output 1 2 2 Input 7 1000000000 7 2 1 3 5 4 6 Output 1 6 40\n201 705 1635 1854 Input 10 11 10 9 8 7 6 5 4 3 2 1 Output 1 9 9 0 1 5 5 0 1 0\nNote In the first example, the permutations that are lexicographically smaller\nthan \n    [1,3,4,2]\n are: \n    [1,2,3,4]\n, \n    f([1,2,3,4])=1\n;\n\n    [1,2,4,3]\n, \n    f([1,2,4,3])=3\n; \n    [1,3,2,4]\n, \n    f([1,3,2,4])=4\n.\nThus our answer is \n    [1,0,1,1]\n. In the second example, the permutations\nthat are lexicographically smaller than \n    [3,2,1]\n are: \n    [1,2,3]\n,\n\n    f([1,2,3])=1\n; \n    [1,3,2]\n, \n    f([1,3,2])=3\n; \n    [2,1,3]\n,\n\n    f([2,1,3])=3\n; \n    [2,3,1]\n, \n    f([2,3,1])=2\n; \n    [3,1,2]\n,\n\n    f([3,1,2])=2\n. Thus our answer is \n    [1,2,2]\n.\n\n",
+        "cf_contest_id": 1750,
+        "cf_index": "G",
+        "cf_rating": 3300,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "dp",
+            "math"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "4 666012\r\n1 3 4 2\r\n",
+                "1 0 1 1 "
+            ],
+            [
+                "3 10\r\n3 2 1\r\n",
+                "1 2 2 "
+            ],
+            [
+                "7 1000000000\r\n7 2 1 3 5 4 6\r\n",
+                "1 6 40 201 705 1635 1854 "
+            ],
+            [
+                "10 11\r\n10 9 8 7 6 5 4 3 2 1\r\n",
+                "1 9 9 0 1 5 5 0 1 0 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 666012\r\n1\r\n",
+                "0 "
+            ],
+            [
+                "95 26\r\n58 95 30 3 4 70 27 79 13 91 51 56 78 10 40 94 66 47 32 89 80 76 85 84 63 25 60 54 26 18 21 17 69 28 29 20 43 67 65 1 5 49 19 52 64 88 11 6 22 37 39 77 34 75 48 31 14 8 57 12 92 41 61 68 81 62 7 2 9 71 93 23 16 72 45 44 38 90 73 46 42 36 33 87 74 59 83 24 82 55 35 50 53 86 15\r\n",
+                "1 5 0 3 4 20 19 2 15 1 8 25 4 0 23 22 23 1 2 7 14 16 11 20 3 23 10 11 18 18 13 2 18 4 20 8 14 0 20 6 10 22 6 14 14 24 12 6 20 0 16 0 10 8 20 24 18 16 24 4 10 14 12 2 19 21 6 13 6 10 9 10 1 11 14 19 4 16 3 8 7 7 18 15 2 2 13 10 21 13 14 25 1 2 17 "
+            ],
+            [
+                "100 300\r\n96 59 83 61 65 60 24 30 49 11 70 42 32 79 44 35 64 74 27 67 68 53 26 31 45 52 81 9 55 33 18 5 1 76 63 41 6 50 34 46 84 28 75 91 25 98 22 57 13 3 4 62 73 17 92 20 71 8 48 39 51 90 16 69 14 77 89 7 93 29 95 100 82 85 38 36 97 88 37 43 80 87 58 2 56 66 19 47 40 12 54 10 94 78 99 21 72 23 86 15\r\n",
+                "1 94 264 57 86 280 94 36 14 228 218 48 42 100 254 140 276 52 170 294 126 228 186 144 138 192 198 108 54 192 270 288 57 198 6 171 216 204 180 168 120 72 264 60 288 252 156 252 228 96 288 72 192 96 108 120 192 228 12 204 204 24 216 240 27 90 228 291 270 192 18 204 138 12 294 144 186 36 18 264 180 176 254 126 162 232 62 188 30 76 150 124 18 0 26 4 187 153 266 97 "
+            ],
+            [
+                "125 50\r\n119 121 96 62 25 68 107 58 12 67 98 47 7 102 118 14 55 120 8 103 54 10 110 33 117 19 16 113 76 20 114 88 100 46 95 18 109 74 49 53 116 24 72 82 93 57 97 73 79 39 15 94 86 78 52 56 11 92 60 115 90 42 35 51 112 28 9 84 4 17 32 70 85 40 111 61 125 123 59 66 50 80 77 37 48 69 23 65 108 44 75 89 13 36 105 3 26 99 41 30 5 122 64 6 27 38 21 29 2 45 106 63 81 104 22 124 71 83 91 43 1 101 31 34 87\r\n",
+                "1 18 40 0 49 20 32 36 49 36 14 36 17 38 28 38 35 8 32 10 47 34 34 46 17 16 48 20 45 14 40 42 11 24 16 14 1 12 18 48 43 30 48 42 45 32 34 44 11 42 46 48 25 40 14 10 7 26 34 36 49 6 12 18 13 18 0 8 7 30 22 44 39 16 22 6 13 30 10 34 5 32 46 14 11 4 16 22 33 18 8 20 33 32 40 22 49 4 26 12 31 48 10 30 39 0 12 6 29 26 44 16 37 18 18 18 15 28 12 0 27 14 4 26 45 "
+            ],
+            [
+                "5 707218098\r\n3 1 4 5 2\r\n",
+                "1 1 10 18 21 "
+            ],
+            [
+                "6 885301522\r\n4 6 2 3 5 1\r\n",
+                "1 3 22 73 172 194 "
+            ],
+            [
+                "7 63384946\r\n2 4 3 5 6 1 7\r\n",
+                "1 1 20 62 200 372 336 "
+            ],
+            [
+                "8 946501074\r\n1 6 5 4 3 2 7 8\r\n",
+                "1 0 18 56 234 642 1207 1136 "
+            ],
+            [
+                "9 124584498\r\n7 5 6 3 8 2 1 4 9\r\n",
+                "1 5 64 440 2670 12453 42942 97392 109311 "
+            ],
+            [
+                "10 114161684\r\n2 10 8 1 3 4 6 5 9 7\r\n",
+                "1 1 44 252 1746 9215 39286 124799 263374 276969 "
+            ],
+            [
+                "11 292245108\r\n10 9 4 2 6 1 3 11 7 5 8\r\n",
+                "1 8 118 1127 9573 67299 387343 1757063 5907920 13116316 14443652 "
+            ],
+            [
+                "12 175361236\r\n10 6 2 9 8 5 1 3 7 12 4 11\r\n",
+                "1 8 136 1427 13768 111894 766784 4315324 19208751 63532368 139004774 151072135 "
+            ],
+            [
+                "13 648411956\r\n11 8 6 7 1 9 2 3 10 12 5 4 13\r\n",
+                "1 9 166 1947 21143 196660 1573990 10641210 59272218 261676836 211388226 574398909 79769171 "
+            ],
+            [
+                "14 531528084\r\n3 1 12 11 7 6 14 10 5 13 4 2 9 8\r\n",
+                "1 1 91 781 9014 84574 715550 5267658 33166129 173608609 193969013 143445375 472854979 127195280 "
+            ],
+            [
+                "15 709611508\r\n5 4 14 8 7 11 2 10 9 13 1 3 6 15 12\r\n",
+                "1 3 131 1448 18773 206427 2045589 17860740 135636921 168570877 458605023 311676468 667434673 176404197 523915954 "
+            ]
+        ]
+    }
+]

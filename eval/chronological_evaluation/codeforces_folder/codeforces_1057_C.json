@@ -1,0 +1,104 @@
+[
+    {
+        "name": "Tanya and Colored Candies",
+        "description": "There are \n    n\n candy boxes in front of Tania. The boxes are arranged in a\nrow from left to right, numbered from \n    1\n to \n    n\n. The \n    i\n-th box\ncontains \n    r_i\n candies, candies have the color \n    c_i\n (the color can\ntake one of three values \u200b\u200b\u2014 red, green, or blue). All candies inside a single\nbox have the same color (and it is equal to \n    c_i\n). Initially, Tanya is\nnext to the box number \n    s\n. Tanya can move to the neighbor box (that is,\nwith a number that differs by one) or eat candies in the current box. Tanya\neats candies instantly, but the movement takes one second. If Tanya eats\ncandies from the box, then the box itself remains in place, but there is no\nmore candies in it. In other words, Tanya always eats all the candies from the\nbox and candies in the boxes are not refilled. It is known that Tanya cannot\neat candies of the same color one after another (that is, the colors of\ncandies in two consecutive boxes from which she eats candies are always\ndifferent). In addition, Tanya's appetite is constantly growing, so in each\nnext box from which she eats candies, there should be strictly more candies\nthan in the previous one. Note that for the first box from which Tanya will\neat candies, there are no restrictions on the color and number of candies.\nTanya wants to eat at least \n    k\n candies. What is the minimum number of\nseconds she will need? Remember that she eats candies instantly, and time is\nspent only on movements. Input The first line contains three integers \n    n\n,\n\n    s\n and \n    k\n (\n    1 \n    \u2264 n \n    \u2264 50\n, \n    1 \n    \u2264 s \n    \u2264 n\n, \n    1\n    \n    \u2264 k \n    \u2264 2000\n) \u2014 number of the boxes, initial position of Tanya and\nlower bound on number of candies to eat. The following line contains \n    n\n\nintegers \n    r_i\n (\n    1 \n    \u2264 r_i \n    \u2264 50\n) \u2014 numbers of candies in the\nboxes. The third line contains sequence of \n    n\n letters 'R', 'G' and 'B',\nmeaning the colors of candies in the correspondent boxes ('R' for red, 'G' for\ngreen, 'B' for blue). Recall that each box contains candies of only one color.\nThe third line contains no spaces. Output Print minimal number of seconds to\neat at least \n    k\n candies. If solution doesn't exist, print \"-1\". Examples\nInput 5 3 10 1 2 3 4 5 RGBRR Output 4 Input 2 1 15 5 6 RG Output -1 Note The\nsequence of actions of Tanya for the first example: move from the box \n    3\n\nto the box \n    2\n; eat candies from the box \n    2\n; move from the box\n\n    2\n to the box \n    3\n; eat candy from the box \n    3\n; move from the box\n\n    3\n to the box \n    4\n; move from the box \n    4\n to the box \n    5\n; eat\ncandies from the box \n    5\n. Since Tanya eats candy instantly, the required\ntime is four seconds.\n\n",
+        "cf_contest_id": 1057,
+        "cf_index": "C",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 3 10\r\n1 2 3 4 5\r\nRGBRR\r\n",
+                "4\r\n"
+            ],
+            [
+                "2 1 15\r\n5 6\r\nRG\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6 1 21\r\n4 2 3 5 1 6\r\nRGBGRB\r\n",
+                "15\r\n"
+            ],
+            [
+                "6 1 21\r\n6 5 4 3 2 1\r\nRGBRGB\r\n",
+                "10\r\n"
+            ],
+            [
+                "1 1 10\r\n10\r\nR\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1 10\r\n5 5\r\nRG\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 1 10\r\n5 6\r\nRR\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 3 10\r\n1 2 3 4 5\r\nRGBRG\r\n",
+                "2\r\n"
+            ],
+            [
+                "9 1 6\r\n1 1 1 3 3 3 2 2 2\r\nRGGBRRGBB\r\n",
+                "7\r\n"
+            ],
+            [
+                "50 39 2000\r\n48 43 26 24 46 37 15 30 39 34 4 14 29 34 8 18 40 8 17 37 15 29 2 23 41 7 12 13 36 11 24 22 26 46 11 31 10 46 11 35 6 41 16 50 11 1 46 20 46 28\r\nBGBBBBBBRGGBBBRRRRBBGRGGRBBRBBBRBBBBBRRGBGGRRRBBRB\r\n",
+                "-1\r\n"
+            ],
+            [
+                "50 49 1000\r\n30 37 34 31 26 44 32 12 36 15 5 5 31 24 17 24 43 19 17 23 45 2 24 17 23 48 20 44 46 44 13 4 29 49 33 41 14 25 46 43 7 47 28 25 2 30 37 37 19 32\r\nGBBBRBGRBRBRGRGRBBGBGRRBGGRBGRBRRRRRRRBRGRGGGGBRGG\r\n",
+                "-1\r\n"
+            ],
+            [
+                "50 32 600\r\n21 21 18 47 16 11 10 46 9 15 27 5 11 42 29 25 16 41 31 8 12 28 1 24 17 40 45 12 33 32 34 2 45 17 49 17 20 42 15 17 8 29 2 20 4 27 50 1 49 1\r\nBBRBBGBGBBRBGRRGRGGGBGBRRBBBGGBBBBGBGBRBBGRRGGBRGR\r\n",
+                "185\r\n"
+            ],
+            [
+                "50 37 500\r\n25 43 15 16 29 23 46 18 15 21 33 26 38 25 2 17 48 50 33 31 3 45 40 12 42 29 37 42 7 11 47 16 44 17 27 46 32 23 14 7 27 25 13 32 43 33 36 39 35 7\r\nGGBBRGBRRRRBBRGBRRRGGRGGRGGBRRRGBBRRGRGGRBGBGGRGBR\r\n",
+                "86\r\n"
+            ],
+            [
+                "50 4 200\r\n14 10 50 47 41 9 22 21 42 36 50 10 27 28 39 1 36 12 45 35 17 3 15 25 32 4 34 39 44 34 20 15 18 1 38 25 20 45 24 9 18 15 35 36 12 9 28 4 44 10\r\nBGBRRBGBRRRGRGRBRGGGRBRRGBBGGRBRRGGRGGGBRRBRGGBGBG\r\n",
+                "23\r\n"
+            ],
+            [
+                "50 50 1250\r\n1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 50 48 46 44 42 40 38 36 34 32 30 28 26 24 22 20 18 16 14 12 10 8 6 4 2\r\nRRRRRRRRRRRRRRRRRRRRRRRRRGGGGGGGGGGGGGGGGGGGGGGGGG\r\n",
+                "992\r\n"
+            ],
+            [
+                "30 28 208\r\n3 42 42 47 46 44 5 28 35 28 35 44 25 44 47 3 3 35 28 5 3 42 3 46 25 25 5 47 46 3\r\nBGBBGBBBBGRRGGGBRGRGRRGBBRRRRG\r\n",
+                "20\r\n"
+            ],
+            [
+                "39 21 282\r\n13 39 20 29 30 14 29 29 30 29 16 39 50 13 16 45 36 36 13 20 29 21 34 36 39 30 34 21 20 14 16 45 21 45 29 34 50 50 14\r\nGGGBRRGRBGBRRBRGRBRBBGBGBGRRRGGRBBRGBGB\r\n",
+                "24\r\n"
+            ],
+            [
+                "48 2 259\r\n25 31 22 30 30 17 31 50 28 30 46 43 4 6 10 22 50 14 5 46 12 6 46 3 17 12 4 28 25 14 5 5 6 14 22 12 17 43 43 10 4 3 31 3 25 28 50 10\r\nBBBBGGRRBRRBBRGGGBGGRGBRBGRGRGRBBRRBRRGBGBGGGRBR\r\n",
+                "39\r\n"
+            ],
+            [
+                "48 25 323\r\n39 37 32 4 4 32 18 44 49 4 12 12 12 22 22 37 38 32 24 45 44 37 18 39 45 22 24 22 45 39 4 22 24 22 12 49 4 29 18 38 29 29 38 44 12 12 49 4\r\nRRRRRBRRGBBRGRGGBGGBGBBBRBRGGGGBBRGRBGGGRBRBBRBG\r\n",
+                "64\r\n"
+            ],
+            [
+                "48 33 357\r\n18 37 22 21 4 17 39 32 40 43 29 29 50 21 39 43 11 11 4 50 36 40 32 50 18 32 11 36 29 36 22 21 29 43 49 18 17 29 37 40 17 37 49 4 39 49 22 29\r\nGRGGGGBRBRRGGRGBRGBBGRBRRGBBRRBBBGRBBBBGRGGRRBRG\r\n",
+                "63\r\n"
+            ],
+            [
+                "50 50 2000\r\n1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 50 48 46 44 42 40 38 36 34 32 30 28 26 24 22 20 18 16 14 12 10 8 6 4 2\r\nGRGRGBBGGRGGRRRGGBGGGRRRBGRRBGBRGBBGGGGRRGGBBRRRRG\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

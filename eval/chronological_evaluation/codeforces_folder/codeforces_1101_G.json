@@ -1,0 +1,88 @@
+[
+    {
+        "name": "(Zero XOR Subset)-less",
+        "description": "You are given an array \n    a_1, a_2, \n    \u2026, a_n\n of integer numbers. Your\ntask is to divide the array into the maximum number of segments in such a way\nthat: each element is contained in exactly one segment; each segment contains\nat least one element; there doesn't exist a non-empty subset of segments such\nthat bitwise XOR of the numbers from them is equal to \n    0\n. Print the\nmaximum number of segments the array can be divided into. Print -1 if no\nsuitable division exists. Input The first line contains a single integer\n\n    n\n (\n    1 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the size of the array. The\nsecond line contains \n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    0 \n    \u2264\n    a_i \n    \u2264 10^9\n). Output Print the maximum number of segments the array can\nbe divided into while following the given constraints. Print -1 if no suitable\ndivision exists. Examples Input 4 5 5 7 2 Output 2 Input 3 1 2 3 Output -1\nInput 3 3 1 10 Output 3 Note In the first example \n    2\n is the maximum\nnumber. If you divide the array into \n    [5], [5, 7, 2]\n, the XOR\nvalue of the subset of only the second segment is \n    5 \n    \u2295 7 \n    \u2295 2 =\n    0\n. \n    [5, 5], [7, 2]\n has the value of the subset of only the\nfirst segment being \n    5 \n    \u2295 5 = 0\n. However, \n    [5, 5, 7],\n    [2]\n will lead to subsets \n    [5, 5, 7]\n of XOR \n    7\n,\n\n    [2]\n of XOR \n    2\n and \n    [5, 5, 7], [2]\n of XOR\n\n    5 \n    \u2295 5 \n    \u2295 7 \n    \u2295 2 = 5\n. Let's take a look at some\ndivision on \n    3\n segments \u2014 \n    [5], [5, 7], [2]\n. It will\nproduce subsets: \n    [5]\n, XOR \n    5\n; \n    [5, 7]\n, XOR\n\n    2\n; \n    [5], [5, 7]\n, XOR \n    7\n; \n    [2]\n, XOR\n\n    2\n; \n    [5], [2]\n, XOR \n    7\n; \n    [5, 7], [2]\n,\nXOR \n    0\n; \n    [5], [5, 7], [2]\n, XOR \n    5\n; As you can see,\nsubset \n    [5, 7], [2]\n has its XOR equal to \n    0\n, which is\nunacceptable. You can check that for other divisions of size \n    3\n or\n\n    4\n, non-empty subset with \n    0\n XOR always exists. The second example\nhas no suitable divisions. The third example array can be divided into\n\n    [3], [1], [10]\n. No subset of these segments has its XOR equal\nto \n    0\n.\n\n",
+        "cf_contest_id": 1101,
+        "cf_index": "G",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "math",
+            "matrices"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n5 5 7 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3\r\n3 1 10\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n7\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n3 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "10\r\n2 1 0 0 0 2 2 1 1 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "10\r\n5 3 2 0 6 5 4 1 6 2\r\n",
+                "3\r\n"
+            ],
+            [
+                "10\r\n63366411 57391809 217887804 43036621 397716019 878676084 451005539 537039674 935482853 474757099\r\n",
+                "10\r\n"
+            ],
+            [
+                "100\r\n3 2 1 3 2 3 1 2 0 0 1 2 1 3 2 0 2 0 2 3 1 1 1 0 1 0 3 2 2 0 0 1 0 1 3 3 1 2 2 2 3 0 2 1 3 0 2 1 0 0 1 2 2 3 1 3 2 2 2 0 0 1 0 1 0 2 3 2 2 1 0 2 0 2 0 3 3 3 1 1 3 1 1 1 1 0 0 1 0 0 2 3 1 2 1 3 0 3 0 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "100\r\n7 4 5 5 3 0 1 3 4 2 5 0 1 5 5 7 2 4 4 6 7 7 3 6 6 2 0 0 2 7 7 2 6 1 5 7 4 1 0 7 0 7 1 5 7 5 3 4 2 2 0 0 6 3 6 3 7 7 2 5 3 7 3 0 0 1 6 1 5 3 7 6 3 7 4 3 5 7 7 4 7 4 7 2 2 5 5 4 4 4 3 3 0 3 4 3 1 7 1 6\r\n",
+                "3\r\n"
+            ],
+            [
+                "100\r\n116 15 100 97 10 72 118 57 127 14 8 99 78 74 3 22 21 34 36 64 125 102 103 78 4 55 79 17 114 45 34 103 90 7 2 124 107 58 122 69 91 4 110 14 87 66 3 8 123 88 91 73 47 40 115 46 2 55 86 124 26 5 104 107 91 88 108 107 86 14 48 68 26 86 126 92 33 77 53 88 80 114 14 66 19 17 60 62 17 28 41 62 109 15 85 94 31 95 89 117\r\n",
+                "7\r\n"
+            ],
+            [
+                "100\r\n1065 362 1002 1071 502 252 1401 1824 887 1803 1572 1571 502 1408 1699 1750 1785 1507 1616 1458 372 323 939 1208 1639 1517 1145 319 935 1507 1094 156 1062 39 1884 1470 646 917 1699 631 39 789 1030 1589 1700 17 495 32 506 574 1458 206 1091 211 279 1617 1624 1183 572 1496 1014 2007 139 1820 1662 1546 1695 1215 40 1555 686 193 1346 385 919 1812 685 291 151 277 1612 1783 1028 447 1782 549 60 704 2032 1427 1498 271 1530 625 1446 867 1826 1128 644 1280\r\n",
+                "11\r\n"
+            ],
+            [
+                "69\r\n380 150 5 157 175 306 237 3 232 356 148 397 259 176 318 310 362 185 211 413 231 254 97 35 284 67 146 350 351 156 288 380 57 306 341 375 309 30 239 261 168 45 180 78 268 324 342 85 66 77 318 130 83 360 409 122 79 371 363 234 233 160 9 387 177 302 4 330 266\r\n",
+                "9\r\n"
+            ],
+            [
+                "20\r\n6336516 45164 67114498 71304212 7486060 68191796 72498272 70428676 73572450 71318068 71469694 5386788 74459206 4234844 68299902 70263402 69240440 70434322 68299868 70391846\r\n",
+                "16\r\n"
+            ],
+            [
+                "20\r\n1081344 1081344 0 32768 0 1081344 1048576 0 0 32768 1048576 32768 1048576 1081344 1081344 1048576 0 1048576 1048576 1081344\r\n",
+                "2\r\n"
+            ],
+            [
+                "1\r\n23424\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

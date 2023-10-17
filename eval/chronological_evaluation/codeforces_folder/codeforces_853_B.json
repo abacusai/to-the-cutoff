@@ -1,0 +1,157 @@
+[
+    {
+        "name": "Jury Meeting",
+        "description": "Country of Metropolia is holding Olympiad of Metrpolises soon. It mean that\nall jury members of the olympiad should meet together in Metropolis (the\ncapital of the country) for the problem preparation process. There are n + 1\ncities consecutively numbered from 0 to n. City 0 is Metropolis that is the\nmeeting point for all jury members. For each city from 1 to n there is exactly\none jury member living there. Olympiad preparation is a long and demanding\nprocess that requires k days of work. For all of these k days each of the n\njury members should be present in Metropolis to be able to work on problems.\nYou know the flight schedule in the country (jury members consider themselves\nimportant enough to only use flights for transportation). All flights in\nMetropolia are either going to Metropolis or out of Metropolis. There are no\nnight flights in Metropolia, or in the other words, plane always takes off at\nthe same day it arrives. On his arrival day and departure day jury member is\nnot able to discuss the olympiad. All flights in Megapolia depart and arrive\nat the same day. Gather everybody for k days in the capital is a hard\nobjective, doing that while spending the minimum possible money is even\nharder. Nevertheless, your task is to arrange the cheapest way to bring all of\nthe jury members to Metrpolis, so that they can work together for k days and\nthen send them back to their home cities. Cost of the arrangement is defined\nas a total cost of tickets for all used flights. It is allowed for jury member\nto stay in Metropolis for more than k days. Input The first line of input\ncontains three integers n, m and k (1 \u2264 n \u2264 10^5, 0 \u2264 m \u2264 10^5, 1 \u2264 k \u2264 10^6).\nThe i-th of the following m lines contains the description of the i-th flight\ndefined by four integers di, fi, ti and ci (1 \u2264 di \u2264 10^6, 0 \u2264 fi \u2264 n, 0 \u2264 ti\n\u2264 n, 1 \u2264 ci \u2264 10^6, exactly one of fi and ti equals zero), the day of\ndeparture (and arrival), the departure city, the arrival city and the ticket\ncost. Output Output the only integer that is the minimum cost of gathering all\njury members in city 0 for k days and then sending them back to their home\ncities. If it is impossible to gather everybody in Metropolis for k days and\nthen send them back to their home cities, output \"-1\" (without the quotes).\nExamples Input 2 6 5 1 1 0 5000 3 2 0 5500 2 2 0 6000 15 0 2 9000 9 0 1 7000 8\n0 2 6500 Output 24500 Input 2 4 5 1 2 0 5000 2 1 0 4500 2 1 0 3000 8 0 1 6000\nOutput -1 Note The optimal way to gather everybody in Metropolis in the first\nsample test is to use flights that take place on days 1, 2, 8 and 9. The only\nalternative option is to send jury member from second city back home on day\n15, that would cost 2500 more. In the second sample it is impossible to send\njury member from city 2 back home from Metropolis.\n\n",
+        "cf_contest_id": 853,
+        "cf_index": "B",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "sortings",
+            "two pointers"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "2 6 5\r\n1 1 0 5000\r\n3 2 0 5500\r\n2 2 0 6000\r\n15 0 2 9000\r\n9 0 1 7000\r\n8 0 2 6500\r\n",
+                "24500\r\n"
+            ],
+            [
+                "2 4 5\r\n1 2 0 5000\r\n2 1 0 4500\r\n2 1 0 3000\r\n8 0 1 6000\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 5 5\r\n1 1 0 1\r\n2 2 0 100\r\n3 2 0 10\r\n9 0 1 1000\r\n10 0 2 10000\r\n",
+                "11011\r\n"
+            ],
+            [
+                "2 4 5\r\n1 1 0 1\r\n2 2 0 10\r\n8 0 1 100\r\n9 0 2 1000\r\n",
+                "1111\r\n"
+            ],
+            [
+                "1 2 1\r\n10 1 0 16\r\n20 0 1 7\r\n",
+                "23\r\n"
+            ],
+            [
+                "1 2 10\r\n20 0 1 36\r\n10 1 0 28\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 2 9\r\n20 0 1 97\r\n10 1 0 47\r\n",
+                "144\r\n"
+            ],
+            [
+                "2 4 1\r\n20 0 1 72\r\n21 0 2 94\r\n9 2 0 43\r\n10 1 0 91\r\n",
+                "300\r\n"
+            ],
+            [
+                "2 4 10\r\n20 0 1 7\r\n9 2 0 32\r\n10 1 0 27\r\n21 0 2 19\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 4 9\r\n10 1 0 22\r\n21 0 2 92\r\n9 2 0 29\r\n20 0 1 37\r\n",
+                "180\r\n"
+            ],
+            [
+                "3 6 1\r\n10 1 0 62\r\n8 3 0 83\r\n20 0 1 28\r\n22 0 3 61\r\n21 0 2 61\r\n9 2 0 75\r\n",
+                "370\r\n"
+            ],
+            [
+                "3 6 10\r\n22 0 3 71\r\n20 0 1 57\r\n8 3 0 42\r\n10 1 0 26\r\n9 2 0 35\r\n21 0 2 84\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 6 9\r\n10 1 0 93\r\n20 0 1 26\r\n8 3 0 51\r\n22 0 3 90\r\n21 0 2 78\r\n9 2 0 65\r\n",
+                "403\r\n"
+            ],
+            [
+                "4 8 1\r\n9 2 0 3\r\n22 0 3 100\r\n20 0 1 40\r\n10 1 0 37\r\n23 0 4 49\r\n7 4 0 53\r\n21 0 2 94\r\n8 3 0 97\r\n",
+                "473\r\n"
+            ],
+            [
+                "4 8 10\r\n8 3 0 65\r\n21 0 2 75\r\n7 4 0 7\r\n23 0 4 38\r\n20 0 1 27\r\n10 1 0 33\r\n22 0 3 91\r\n9 2 0 27\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 8 9\r\n8 3 0 61\r\n9 2 0 94\r\n23 0 4 18\r\n21 0 2 19\r\n20 0 1 52\r\n10 1 0 68\r\n22 0 3 5\r\n7 4 0 59\r\n",
+                "376\r\n"
+            ],
+            [
+                "5 10 1\r\n24 0 5 61\r\n22 0 3 36\r\n8 3 0 7\r\n21 0 2 20\r\n6 5 0 23\r\n20 0 1 28\r\n23 0 4 18\r\n9 2 0 40\r\n7 4 0 87\r\n10 1 0 8\r\n",
+                "328\r\n"
+            ],
+            [
+                "5 10 10\r\n24 0 5 64\r\n23 0 4 17\r\n20 0 1 91\r\n9 2 0 35\r\n21 0 2 4\r\n22 0 3 51\r\n6 5 0 69\r\n7 4 0 46\r\n8 3 0 92\r\n10 1 0 36\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 10 9\r\n22 0 3 13\r\n9 2 0 30\r\n24 0 5 42\r\n21 0 2 33\r\n23 0 4 36\r\n20 0 1 57\r\n10 1 0 39\r\n8 3 0 68\r\n7 4 0 85\r\n6 5 0 35\r\n",
+                "438\r\n"
+            ],
+            [
+                "1 10 1\r\n278 1 0 4\r\n208 1 0 4\r\n102 0 1 9\r\n499 0 1 7\r\n159 0 1 8\r\n218 1 0 6\r\n655 0 1 5\r\n532 1 0 6\r\n318 0 1 6\r\n304 1 0 7\r\n",
+                "9\r\n"
+            ],
+            [
+                "2 10 1\r\n5 0 2 5\r\n52 2 0 9\r\n627 0 2 6\r\n75 0 1 6\r\n642 0 1 8\r\n543 0 2 7\r\n273 1 0 2\r\n737 2 0 4\r\n576 0 1 7\r\n959 0 2 5\r\n",
+                "23\r\n"
+            ],
+            [
+                "3 10 1\r\n48 2 0 9\r\n98 0 2 5\r\n43 0 1 8\r\n267 0 1 7\r\n394 3 0 7\r\n612 0 3 9\r\n502 2 0 6\r\n36 0 2 9\r\n602 0 1 3\r\n112 1 0 6\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 10 1\r\n988 0 1 1\r\n507 1 0 9\r\n798 1 0 9\r\n246 0 3 7\r\n242 1 0 8\r\n574 4 0 7\r\n458 0 4 9\r\n330 0 2 9\r\n303 2 0 8\r\n293 0 3 9\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 10 1\r\n132 0 4 7\r\n803 0 2 8\r\n280 3 0 5\r\n175 4 0 6\r\n196 1 0 7\r\n801 0 4 6\r\n320 0 5 7\r\n221 0 4 6\r\n446 4 0 8\r\n699 0 5 9\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6 10 1\r\n845 0 4 9\r\n47 0 4 8\r\n762 0 2 8\r\n212 6 0 6\r\n416 0 5 9\r\n112 5 0 9\r\n897 0 6 9\r\n541 0 4 5\r\n799 0 6 7\r\n252 2 0 9\r\n",
+                "-1\r\n"
+            ],
+            [
+                "7 10 1\r\n369 6 0 9\r\n86 7 0 9\r\n696 0 4 8\r\n953 6 0 7\r\n280 4 0 9\r\n244 0 2 9\r\n645 6 0 8\r\n598 7 0 6\r\n598 0 7 8\r\n358 0 4 6\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8 10 1\r\n196 2 0 9\r\n67 2 0 9\r\n372 3 0 6\r\n886 6 0 6\r\n943 0 3 8\r\n430 3 0 6\r\n548 0 4 9\r\n522 0 3 8\r\n1 4 0 3\r\n279 4 0 8\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9 10 1\r\n531 8 0 5\r\n392 2 0 9\r\n627 8 0 9\r\n363 5 0 9\r\n592 0 5 3\r\n483 0 6 7\r\n104 3 0 8\r\n97 8 0 9\r\n591 0 7 9\r\n897 0 6 7\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10 10 1\r\n351 0 3 7\r\n214 0 9 9\r\n606 0 7 8\r\n688 0 9 3\r\n188 3 0 9\r\n994 0 1 7\r\n372 5 0 8\r\n957 0 3 6\r\n458 8 0 7\r\n379 0 4 7\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 2 1\r\n5 0 1 91\r\n1 1 0 87\r\n",
+                "178\r\n"
+            ],
+            [
+                "2 4 1\r\n1 1 0 88\r\n5 2 0 88\r\n3 0 1 46\r\n9 0 2 63\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 6 1\r\n19 0 3 80\r\n11 0 2 32\r\n8 2 0 31\r\n4 0 1 45\r\n1 1 0 63\r\n15 3 0 76\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 0 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 0 1\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

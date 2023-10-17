@@ -1,0 +1,115 @@
+[
+    {
+        "name": "Color with Occurrences",
+        "description": "You are given some text \n    t\n and a set of \n    n\n strings \n    s_1, s_2,\n    \n    \u2026, s_n\n. In one step, you can choose any occurrence of any string\n\n    s_i\n in the text \n    t\n and color the corresponding characters of the\ntext in red. For example, if \n    t=\n and\n\n    s_1=\n, \n    s_2=\n, you can get\n\n    t=\n,\n\n    t=\n or\n\n    t=\n in one step. You want to\ncolor all the letters of the text \n    t\n in red. When you color a letter in\nred again, it stays red. In the example above, three steps are enough: Let's\ncolor \n    t[2 \n    \u2026 4]=s_2=\n in red, we get\n\n    t=\n; Let's color\n\n    t[1 \n    \u2026 2]=s_1=\n in red, we get\n\n    t=\n; Let's color \n    t[4\n    \n    \u2026 6]=s_2=\n in red, we get\n\n    t=\n. Each string \n    s_i\n can be applied\nany number of times (or not at all). Occurrences for coloring can intersect\narbitrarily. Determine the minimum number of steps needed to color all letters\n\n    t\n in red and how to do it. If it is impossible to color all letters of\nthe text \n    t\n in red, output -1. Input The first line of the input contains\nan integer \n    q\n (\n    1 \n    \u2264 q \n    \u2264 100\n) \u2014the number of test cases in\nthe test. The descriptions of the test cases follow. The first line of each\ntest case contains the text \n    t\n (\n    1 \n    \u2264 |t| \n    \u2264 100\n), consisting\nonly of lowercase Latin letters, where \n    |t|\n is the length of the text\n\n    t\n. The second line of each test case contains a single integer \n    n\n\n(\n    1 \n    \u2264 n \n    \u2264 10\n) \u2014 the number of strings in the set. This is\nfollowed by \n    n\n lines, each containing a string \n    s_i\n (\n    1 \n    \u2264\n    |s_i| \n    \u2264 10\n) consisting only of lowercase Latin letters, where\n\n    |s_i|\n \u2014 the length of string \n    s_i\n. Output For each test case, print\nthe answer on a separate line. If it is impossible to color all the letters of\nthe text in red, print a single line containing the number -1. Otherwise, on\nthe first line, print the number \n    m\n \u2014 the minimum number of steps it will\ntake to turn all the letters \n    t\n red. Then in the next \n    m\n lines print\npairs of indices: \n    w_j\n and \n    p_j\n (\n    1 \n    \u2264 j \n    \u2264 m\n), which\ndenote that the string with index \n    w_j\n was used as a substring to cover\nthe occurrences starting in the text \n    t\n from position \n    p_j\n. The\npairs can be output in any order. If there are several answers, output any of\nthem. Example Input 6 bababa 2 ba aba caba 2 bac acab abacabaca 3 aba bac aca\nbaca 3 a c b codeforces 4 def code efo forces aaaabbbbcccceeee 4 eeee cccc\naaaa bbbb Output 3 2 2 1 1 2 4 -1 4 1 1 2 6 3 3 3 7 4 3 1 1 2 2 3 1 4 2 4 5 2\n1 4 3 1 4 5 2 9 1 13 Note The first test case is explained in the problem\nstatement. In the second test case, it is impossible to color all the letters\nof the text in red.\n\n",
+        "cf_contest_id": 1714,
+        "cf_index": "D",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\nbababa\r\n2\r\nba\r\naba\r\ncaba\r\n2\r\nbac\r\nacab\r\nabacabaca\r\n3\r\naba\r\nbac\r\naca\r\nbaca\r\n3\r\na\r\nc\r\nb\r\ncodeforces\r\n4\r\ndef\r\ncode\r\nefo\r\nforces\r\naaaabbbbcccceeee\r\n4\r\neeee\r\ncccc\r\naaaa\r\nbbbb\r\n",
+                "3 2 4 2 2 1 1\r\n-1\r\n4 3 7 1 5 2 2 1 1\r\n4 1 4 2 3 1 2 3 1\r\n2 4 5 2 1\r\n4 1 13 2 9 4 5 3 1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\r\n10\r\na\r\naa\r\naaa\r\naaaa\r\naaaaa\r\naaaaaa\r\naaaaaaa\r\naaaaaaaa\r\naaaaaaaaa\r\naaaaaaaaaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\nabcdefgh\r\n3\r\nabcde\r\ndefg\r\ncdefgh\r\n",
+                "2 3 3 1 1\r\n"
+            ],
+            [
+                "1\r\nabcabcab\r\n3\r\nabcab\r\nca\r\nb\r\n",
+                "2 1 4 1 1\r\n"
+            ],
+            [
+                "1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n10\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\n",
+                "100 1 100 1 99 1 98 1 97 1 96 1 95 1 94 1 93 1 92 1 91 1 90 1 89 1 88 1 87 1 86 1 85 1 84 1 83 1 82 1 81 1 80 1 79 1 78 1 77 1 76 1 75 1 74 1 73 1 72 1 71 1 70 1 69 1 68 1 67 1 66 1 65 1 64 1 63 1 62 1 61 1 60 1 59 1 58 1 57 1 56 1 55 1 54 1 53 1 52 1 51 1 50 1 49 1 48 1 47 1 46 1 45 1 44 1 43 1 42 1 41 1 40 1 39 1 38 1 37 1 36 1 35 1 34 1 33 1 32 1 31 1 30 1 29 1 28 1 27 1 26 1 25 1 24 1 23 1 22 1 21 1 20 1 19 1 18 1 17 1 16 1 15 1 14 1 13 1 12 1 11 1 10 1 9 1 8 1 7 1 6 1 5 1 4 1 3 1 2 1 1\r\n"
+            ],
+            [
+                "1\r\nabcdefabcde\r\n4\r\nabcde\r\ndefa\r\nbcde\r\nabcdef\r\n",
+                "2 1 7 4 1\r\n"
+            ],
+            [
+                "1\r\nabcde\r\n4\r\nabc\r\ncd\r\ne\r\nbcde\r\n",
+                "2 4 2 1 1\r\n"
+            ],
+            [
+                "1\r\nababacabababa\r\n3\r\nababa\r\nac\r\nbacabababa\r\n",
+                "2 3 4 1 1\r\n"
+            ],
+            [
+                "1\r\nabcdefghij\r\n6\r\nabcd\r\nef\r\ngh\r\nij\r\ncdefgh\r\nhij\r\n",
+                "3 6 8 5 3 1 1\r\n"
+            ],
+            [
+                "1\r\ncccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccd\r\n10\r\nc\r\nc\r\nc\r\nc\r\nc\r\nc\r\nc\r\nc\r\nc\r\nc\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n10\r\na\r\naa\r\naaa\r\naaaa\r\naaaaa\r\naaaaaa\r\naaaaaaa\r\naaaaaaaa\r\naaaaaaaaa\r\naaaaaaaaaa\r\n",
+                "10 10 88 10 78 10 68 10 58 10 48 10 38 10 28 10 18 10 8 7 1\r\n"
+            ],
+            [
+                "1\r\nabc\r\n3\r\nabc\r\nab\r\nc\r\n",
+                "1 1 1\r\n"
+            ],
+            [
+                "1\r\nbbbbaabaabbbbbaabaabaabbaaaaabaabababaaabbbaaabbbbbbbbbaababbbbbbaaabaaaaaaaba\r\n9\r\nbaa\r\naaa\r\nbbb\r\nbab\r\naaa\r\nabb\r\nbbb\r\nbab\r\naaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\nabcdef\r\n4\r\nabc\r\nde\r\nef\r\nbcdef\r\n",
+                "2 4 2 1 1\r\n"
+            ],
+            [
+                "1\r\nabcdefgabcde\r\n5\r\nabcde\r\ndefa\r\nbcdeg\r\nabcdef\r\ndefg\r\n",
+                "3 1 8 5 4 1 1\r\n"
+            ],
+            [
+                "1\r\nabcdefabcde\r\n6\r\nabcd\r\ndefa\r\nbcde\r\nbcdef\r\ncdefab\r\nefab\r\n",
+                "3 3 8 5 3 1 1\r\n"
+            ],
+            [
+                "1\r\nabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij\r\n10\r\na\r\nab\r\nabc\r\nabcd\r\nabcde\r\nabcdef\r\nabcdefg\r\nija\r\njabcdefg\r\nhijab\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\nbacbbcdef\r\n4\r\nbac\r\ncbbcdef\r\nbbc\r\ndef\r\n",
+                "2 2 3 1 1\r\n"
+            ],
+            [
+                "1\r\nabbaa\r\n4\r\nab\r\nbaa\r\nabb\r\na\r\n",
+                "2 2 3 1 1\r\n"
+            ],
+            [
+                "3\r\naaaaa\r\n3\r\naaa\r\naaa\r\na\r\nabbaa\r\n4\r\nab\r\nbaa\r\nabb\r\na\r\nabcdefg\r\n10\r\na\r\nb\r\nc\r\nd\r\ne\r\nf\r\ng\r\nh\r\ni\r\nj\r\n",
+                "2 1 3 1 1\r\n2 2 3 1 1\r\n7 7 7 6 6 5 5 4 4 3 3 2 2 1 1\r\n"
+            ],
+            [
+                "5\r\naaaaa\r\n3\r\naaa\r\naaa\r\na\r\nabbaa\r\n4\r\nab\r\nbaa\r\nabb\r\na\r\nabcdefg\r\n10\r\na\r\nb\r\nc\r\nd\r\ne\r\nf\r\ng\r\nh\r\ni\r\nj\r\nabcdefghijklmnop\r\n4\r\nabcdefg\r\nefghijklmo\r\nijklmnop\r\nhijklmnop\r\nababababbababba\r\n5\r\na\r\nabba\r\nb\r\nbb\r\naa\r\n",
+                "2 1 3 1 1\r\n2 2 3 1 1\r\n7 7 7 6 6 5 5 4 4 3 3 2 2 1 1\r\n2 4 8 1 1\r\n9 2 12 3 11 2 7 3 6 1 5 3 4 1 3 3 2 1 1\r\n"
+            ],
+            [
+                "1\r\ncodeforeces\r\n4\r\ncod\r\nforeces\r\ncodef\r\norece\r\n",
+                "2 2 5 3 1\r\n"
+            ],
+            [
+                "1\r\nabcdefgh\r\n4\r\nabcde\r\nbcdefgh\r\nef\r\ngh\r\n",
+                "2 2 2 1 1\r\n"
+            ]
+        ]
+    }
+]

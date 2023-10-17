@@ -1,0 +1,60 @@
+[
+    {
+        "name": "Cut and Paste",
+        "description": "We start with a string \n    s\n consisting only of the digits \n    1\n, \n    2\n,\nor \n    3\n. The length of \n    s\n is denoted by \n    |s|\n. For each \n    i\n\nfrom \n    1\n to \n    |s|\n, the \n    i\n-th character of \n    s\n is denoted by\n\n    s_i\n. There is one cursor. The cursor's location \n    \u2113\n is denoted\nby an integer in \n    0, \n    \u2026, |s|\n, with the following meaning:\nIf \n    \u2113 = 0\n, then the cursor is located before the first character of\n\n    s\n. If \n    \u2113 = |s|\n, then the cursor is located right after the\nlast character of \n    s\n. If \n    0 < \n    \u2113 < |s|\n, then the cursor is\nlocated between \n    s_\n    \u2113\n and \n    s_\n    \u2113+1\n. We denote by\n\n    s_\n    left\n the string to the left of the cursor and\n\n    s_\n    right\n the string to the right of the cursor. We also have a\nstring \n    c\n, which we call our clipboard, which starts out as empty. There\nare three types of actions: The Move action. Move the cursor one step to the\nright. This increments \n    \u2113\n once. The Cut action. Set \n    c\n    \n    \u2190 s_\n    right\n, then set \n    s \n    \u2190\n    s_\n    left\n. The Paste action. Append the value of \n    c\n to the end\nof the string \n    s\n. Note that this doesn't modify \n    c\n. The cursor\ninitially starts at \n    \u2113 = 0\n. Then, we perform the following\nprocedure: Perform the Move action once. Perform the Cut action once. Perform\nthe Paste action \n    s_\n    \u2113\n times. If \n    \u2113 = x\n, stop. Otherwise,\nreturn to step 1. You're given the initial string \n    s\n and the integer\n\n    x\n. What is the length of \n    s\n when the procedure stops? Since this\nvalue may be very large, only find it modulo \n    10^9 + 7\n. It is guaranteed\nthat \n    \u2113\n    \u2264 |s|\n at any time. Input The first line of input\ncontains a single integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264 1000\n) denoting the\nnumber of test cases. The next lines contain descriptions of the test cases.\nThe first line of each test case contains a single integer \n    x\n (\n    1 \n    \u2264\n    x \n    \u2264 10^6\n). The second line of each test case consists of the initial\nstring \n    s\n (\n    1 \n    \u2264 |s| \n    \u2264 500\n). It is guaranteed, that \n    s\n\nconsists of the characters \"1\", \"2\", \"3\". It is guaranteed that the sum of\n\n    x\n in a single file is at most \n    10^6\n. It is guaranteed that in each\ntest case before the procedure will stop it will be true that \n    \u2113\n    \u2264\n    |s|\n at any time. Output For each test case, output a single line containing\na single integer denoting the answer for that test case modulo \n    10^9 + 7\n.\nExample Input 4 5 231 7 2323 6 333 24 133321333 Output 25 1438 1101 686531475\nNote Let's illustrate what happens with the first test case. Initially, we\nhave \n    s =\n 231. Initially, \n    \u2113 = 0\n and \n    c = \n    \u03b5\n\n(the empty string). The following things happen if we follow the procedure\nabove: Step 1, Move once: we get \n    \u2113 = 1\n. Step 2, Cut once: we get\n\n    s =\n 2 and \n    c =\n 31. Step 3, Paste \n    s_\n    \u2113 =\n 2 times: we\nget \n    s =\n 23131. Step 4: \n    \u2113 = 1 \n    \u2260 x = 5\n, so we return to\nstep 1. Step 1, Move once: we get \n    \u2113 = 2\n. Step 2, Cut once: we get\n\n    s =\n 23 and \n    c =\n 131. Step 3, Paste \n    s_\n    \u2113 =\n 3 times: we\nget \n    s =\n 23131131131. Step 4: \n    \u2113 = 2 \n    \u2260 x = 5\n, so we\nreturn to step 1. Step 1, Move once: we get \n    \u2113 = 3\n. Step 2, Cut\nonce: we get \n    s =\n 231 and \n    c =\n 31131131. Step 3, Paste \n    s_\n    \u2113\n    =\n 1 time: we get \n    s =\n 23131131131. Step 4: \n    \u2113 = 3 \n    \u2260 x =\n    5\n, so we return to step 1. Step 1, Move once: we get \n    \u2113 = 4\n. Step\n2, Cut once: we get \n    s =\n 2313 and \n    c =\n 1131131. Step 3, Paste\n\n    s_\n    \u2113 =\n 3 times: we get \n    s =\n 2313113113111311311131131. Step\n4: \n    \u2113 = 4 \n    \u2260 x = 5\n, so we return to step 1. Step 1, Move once:\nwe get \n    \u2113 = 5\n. Step 2, Cut once: we get \n    s =\n 23131 and \n    c =\n 13113111311311131131. Step 3, Paste \n    s_\n    \u2113 =\n 1 times: we get \n    s\n    =\n 2313113113111311311131131. Step 4: \n    \u2113 = 5 = x\n, so we stop. At\nthe end of the procedure, \n    s\n has length \n    25\n.\n\n",
+        "cf_contest_id": 1280,
+        "cf_index": "A",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n5\r\n231\r\n7\r\n2323\r\n6\r\n333\r\n24\r\n133321333\r\n",
+                "25\r\n1438\r\n1101\r\n686531475\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "9\r\n1500\r\n1212\r\n1500\r\n1221\r\n1500\r\n122\r\n1500\r\n12121\r\n1500\r\n22\r\n1500\r\n1111112111111112\r\n1500\r\n1111111111221111111\r\n1500\r\n111111122\r\n1500\r\n11111121111121111111\r\n",
+                "1504\r\n1599\r\n1502\r\n1598\r\n1502\r\n1510\r\n1657\r\n1502\r\n1763\r\n"
+            ],
+            [
+                "1\r\n1000000\r\n22\r\n",
+                "1000002\r\n"
+            ],
+            [
+                "1\r\n1000000\r\n221\r\n",
+                "1001822\r\n"
+            ],
+            [
+                "1\r\n1000000\r\n1221\r\n",
+                "1001823\r\n"
+            ],
+            [
+                "1\r\n1000000\r\n2121\r\n",
+                "1001821\r\n"
+            ],
+            [
+                "1\r\n1000000\r\n2211\r\n",
+                "1002004\r\n"
+            ],
+            [
+                "1\r\n1000000\r\n1212\r\n",
+                "1000004\r\n"
+            ],
+            [
+                "1\r\n1000000\r\n2112\r\n",
+                "1000006\r\n"
+            ],
+            [
+                "1\r\n941759\r\n1223231111\r\n",
+                "374870\r\n"
+            ]
+        ]
+    }
+]

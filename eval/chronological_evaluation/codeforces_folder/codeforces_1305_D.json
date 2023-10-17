@@ -1,0 +1,578 @@
+[
+    {
+        "name": "Kuroni and the Celebration",
+        "description": "This is an interactive problem. After getting AC after 13 Time Limit Exceeded\nverdicts on a geometry problem, Kuroni went to an Italian restaurant to\ncelebrate this holy achievement. Unfortunately, the excess sauce disoriented\nhim, and he's now lost! The United States of America can be modeled as a tree\n(why though) with \n    n\n vertices. The tree is rooted at vertex \n    r\n,\nwherein lies Kuroni's hotel. Kuroni has a phone app designed to help him in\nsuch emergency cases. To use the app, he has to input two vertices \n    u\n and\n\n    v\n, and it'll return a vertex \n    w\n, which is the lowest common\nancestor of those two vertices. However, since the phone's battery has been\nalmost drained out from live-streaming Kuroni's celebration party, he could\nonly use the app at most \n    \u230a\n    n/2\n    \u230b\n times. After\nthat, the phone would die and there will be nothing left to help our dear\nfriend! :( As the night is cold and dark, Kuroni needs to get back, so that he\ncan reunite with his comfy bed and pillow(s). Can you help him figure out his\nhotel's location? Interaction The interaction starts with reading a single\ninteger \n    n\n (\n    2 \n    \u2264 n \n    \u2264 1000\n), the number of vertices of the\ntree. Then you will read \n    n-1\n lines, the \n    i\n-th of them has two\nintegers \n    x_i\n and \n    y_i\n (\n    1 \n    \u2264 x_i, y_i \n    \u2264 n\n, \n    x_i \n    \n    y_i\n), denoting there is an edge connecting vertices \n    x_i\n and\n\n    y_i\n. It is guaranteed that the edges will form a tree. Then you can make\nqueries of type \"? u v\" (\n    1 \n    \u2264 u, v \n    \u2264 n\n) to find the lowest common\nancestor of vertex \n    u\n and \n    v\n. After the query, read the result\n\n    w\n as an integer. In case your query is invalid or you asked more than\n\n    \u230a\n    n/2\n    \u230b\n queries, the program will print\n\n    -1\n and will finish interaction. You will receive a Wrong answer verdict.\nMake sure to exit immediately to avoid getting other verdicts. When you find\nout the vertex \n    r\n, print \"! \n    r\n\" and quit after that. This query does\nnot count towards the \n    \u230a\n    n/2\n    \u230b\n limit. Note that\nthe tree is fixed beforehand and will not change during the queries, i.e. the\ninteractor is not adaptive. After printing any query do not forget to print\nend of line and flush the output. Otherwise, you might get Idleness limit\nexceeded. To do this, use: fflush(stdout) or cout.flush() in C++;\nSystem.out.flush() in Java; flush(output) in Pascal; stdout.flush() in Python;\nsee the documentation for other languages.Hacks To hack, use the following\nformat: The first line should contain two integers \n    n\n and \n    r\n (\n    2\n    \n    \u2264 n \n    \u2264 1000\n, \n    1 \n    \u2264 r \n    \u2264 n\n), denoting the number of\nvertices and the vertex with Kuroni's hotel. The \n    i\n-th of the next\n\n    n-1\n lines should contain two integers \n    x_i\n and \n    y_i\n (\n    1\n    \n    \u2264 x_i, y_i \n    \u2264 n\n) \u2014 denoting there is an edge connecting vertex\n\n    x_i\n and \n    y_i\n. The edges presented should form a tree. Example Input\n6 1 4 4 2 5 3 6 3 2 3 3 4 4 Output ? 5 6 ? 3 1 ? 1 2 ! 4 Note Note that the\nexample interaction contains extra empty lines so that it's easier to read.\nThe real interaction doesn't contain any empty lines and you shouldn't print\nany extra empty lines as well. The image below demonstrates the tree in the\nsample test:\n\n",
+        "cf_contest_id": 1305,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "interactive",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 4\r\n1 4\r\n4 2\r\n5 3\r\n6 3\r\n2 3\r\n",
+                "1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2\r\n2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "9 4\r\n4 2\r\n4 5\r\n4 8\r\n4 9\r\n1 4\r\n3 4\r\n6 4\r\n7 4\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 4\r\n4 1\r\n3 4\r\n9 4\r\n5 4\r\n4 10\r\n4 6\r\n2 4\r\n4 7\r\n8 4\r\n",
+                "5\r\n"
+            ],
+            [
+                "5 5\r\n1 2\r\n1 3\r\n1 4\r\n4 5\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 5\r\n2 1\r\n2 3\r\n2 4\r\n4 5\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 5\r\n3 1\r\n3 2\r\n3 4\r\n4 5\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 5\r\n4 2\r\n4 3\r\n4 1\r\n1 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n5 2\r\n5 3\r\n5 4\r\n4 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n1 2\r\n1 3\r\n1 4\r\n2 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n1 2\r\n1 3\r\n1 4\r\n3 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "9 5\r\n7 2\r\n8 2\r\n5 8\r\n8 1\r\n8 4\r\n8 9\r\n3 8\r\n8 6\r\n",
+                "2\r\n"
+            ],
+            [
+                "9 1\r\n1 3\r\n3 4\r\n6 3\r\n3 2\r\n7 3\r\n3 9\r\n5 3\r\n3 8\r\n",
+                "1\r\n"
+            ],
+            [
+                "9 2\r\n6 7\r\n4 2\r\n1 2\r\n3 2\r\n2 9\r\n2 7\r\n2 8\r\n7 5\r\n",
+                "3\r\n"
+            ],
+            [
+                "5 3\r\n3 2\r\n2 4\r\n4 1\r\n5 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n5 2\r\n2 1\r\n5 3\r\n4 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n1 2\r\n4 1\r\n1 3\r\n2 5\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 2\r\n3 1\r\n1 2\r\n3 5\r\n5 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "6 2\r\n5 1\r\n3 4\r\n3 1\r\n2 4\r\n2 6\r\n",
+                "1\r\n"
+            ],
+            [
+                "6 4\r\n1 5\r\n3 4\r\n6 2\r\n5 6\r\n2 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "42 37\r\n7 25\r\n38 7\r\n7 8\r\n7 42\r\n7 24\r\n7 13\r\n21 7\r\n7 6\r\n7 39\r\n7 26\r\n7 10\r\n28 7\r\n7 2\r\n33 7\r\n31 7\r\n7 27\r\n1 7\r\n29 7\r\n7 3\r\n7 14\r\n22 7\r\n4 7\r\n7 12\r\n41 7\r\n36 7\r\n7 40\r\n7 16\r\n7 19\r\n17 7\r\n7 35\r\n7 5\r\n7 11\r\n37 7\r\n23 7\r\n15 7\r\n20 7\r\n7 32\r\n30 7\r\n34 7\r\n9 7\r\n18 7\r\n",
+                "17\r\n"
+            ],
+            [
+                "54 5\r\n5 22\r\n5 2\r\n24 5\r\n5 4\r\n50 32\r\n5 10\r\n3 5\r\n53 5\r\n5 49\r\n5 45\r\n13 5\r\n5 42\r\n43 5\r\n40 5\r\n5 38\r\n5 35\r\n5 26\r\n8 5\r\n41 5\r\n52 34\r\n5 23\r\n52 5\r\n19 5\r\n29 5\r\n5 20\r\n5 11\r\n18 5\r\n33 5\r\n54 5\r\n5 28\r\n25 5\r\n5 46\r\n5 17\r\n5 9\r\n7 5\r\n27 5\r\n16 5\r\n5 47\r\n52 12\r\n5 31\r\n5 14\r\n5 50\r\n30 5\r\n15 5\r\n39 5\r\n44 5\r\n51 5\r\n5 1\r\n6 5\r\n5 48\r\n5 21\r\n36 5\r\n5 37\r\n",
+                "25\r\n"
+            ],
+            [
+                "73 50\r\n28 64\r\n41 64\r\n26 42\r\n50 64\r\n64 2\r\n9 42\r\n64 7\r\n42 64\r\n61 64\r\n64 8\r\n23 25\r\n44 58\r\n12 38\r\n52 73\r\n42 51\r\n3 24\r\n53 21\r\n30 37\r\n17 64\r\n21 64\r\n30 64\r\n69 24\r\n13 64\r\n12 64\r\n23 64\r\n22 5\r\n52 27\r\n71 42\r\n10 42\r\n35 36\r\n64 22\r\n24 64\r\n49 64\r\n48 42\r\n21 16\r\n44 64\r\n63 64\r\n42 35\r\n23 62\r\n64 68\r\n33 64\r\n32 42\r\n64 70\r\n60 12\r\n64 66\r\n14 21\r\n30 72\r\n11 24\r\n59 64\r\n15 22\r\n34 21\r\n46 24\r\n28 54\r\n56 42\r\n64 19\r\n64 52\r\n1 42\r\n64 65\r\n57 64\r\n55 64\r\n45 64\r\n64 6\r\n40 42\r\n39 21\r\n21 31\r\n29 22\r\n24 18\r\n20 23\r\n67 12\r\n64 4\r\n64 43\r\n47 12\r\n",
+                "3\r\n"
+            ],
+            [
+                "41 21\r\n33 8\r\n8 28\r\n30 8\r\n17 3\r\n8 18\r\n8 12\r\n8 16\r\n8 19\r\n15 40\r\n8 31\r\n17 8\r\n11 13\r\n23 8\r\n8 4\r\n26 8\r\n41 8\r\n34 26\r\n8 38\r\n26 36\r\n26 1\r\n8 39\r\n10 20\r\n8 11\r\n22 11\r\n8 7\r\n29 8\r\n8 20\r\n15 8\r\n6 17\r\n8 27\r\n37 8\r\n35 8\r\n32 26\r\n17 2\r\n11 9\r\n8 21\r\n33 25\r\n14 26\r\n5 8\r\n20 24\r\n",
+                "12\r\n"
+            ],
+            [
+                "12 7\r\n6 2\r\n9 12\r\n4 9\r\n5 3\r\n6 10\r\n12 11\r\n2 5\r\n4 6\r\n10 8\r\n5 1\r\n12 7\r\n",
+                "4\r\n"
+            ],
+            [
+                "70 25\r\n3 49\r\n59 36\r\n67 58\r\n22 51\r\n50 42\r\n51 15\r\n59 57\r\n63 37\r\n37 64\r\n25 32\r\n21 31\r\n8 42\r\n28 20\r\n38 42\r\n69 12\r\n35 34\r\n70 34\r\n9 8\r\n48 10\r\n37 11\r\n27 56\r\n66 62\r\n50 62\r\n24 17\r\n37 41\r\n57 49\r\n68 62\r\n23 33\r\n52 18\r\n69 70\r\n37 20\r\n51 60\r\n47 51\r\n33 3\r\n21 57\r\n49 4\r\n70 59\r\n40 44\r\n57 10\r\n62 44\r\n1 18\r\n46 53\r\n48 67\r\n12 46\r\n49 5\r\n37 17\r\n12 45\r\n54 69\r\n19 2\r\n46 14\r\n29 10\r\n18 59\r\n50 56\r\n2 37\r\n36 39\r\n70 47\r\n3 50\r\n20 26\r\n47 61\r\n32 57\r\n11 30\r\n42 43\r\n2 65\r\n57 11\r\n46 6\r\n13 46\r\n56 16\r\n68 7\r\n55 46\r\n",
+                "5\r\n"
+            ],
+            [
+                "60 59\r\n41 36\r\n51 15\r\n44 47\r\n53 24\r\n56 1\r\n15 21\r\n55 14\r\n9 45\r\n50 5\r\n38 12\r\n25 41\r\n22 60\r\n24 20\r\n54 56\r\n28 38\r\n18 27\r\n13 58\r\n30 39\r\n32 18\r\n11 42\r\n55 45\r\n5 56\r\n24 44\r\n32 49\r\n15 10\r\n37 16\r\n21 28\r\n12 33\r\n47 43\r\n17 1\r\n41 29\r\n37 23\r\n15 42\r\n19 7\r\n16 7\r\n19 9\r\n34 35\r\n46 38\r\n16 4\r\n59 17\r\n26 8\r\n1 6\r\n8 31\r\n57 12\r\n39 35\r\n26 27\r\n34 5\r\n33 58\r\n60 53\r\n35 4\r\n48 37\r\n25 49\r\n3 27\r\n13 24\r\n26 14\r\n40 33\r\n52 6\r\n40 2\r\n23 42\r\n",
+                "1\r\n"
+            ],
+            [
+                "14 1\r\n5 13\r\n7 5\r\n3 12\r\n6 1\r\n9 1\r\n9 13\r\n3 8\r\n14 5\r\n11 4\r\n6 2\r\n4 12\r\n3 7\r\n10 8\r\n",
+                "1\r\n"
+            ],
+            [
+                "72 55\r\n25 72\r\n60 36\r\n26 27\r\n27 24\r\n72 28\r\n8 63\r\n38 9\r\n37 6\r\n52 37\r\n65 49\r\n20 5\r\n55 69\r\n53 66\r\n5 42\r\n45 65\r\n47 36\r\n7 16\r\n54 16\r\n43 27\r\n33 59\r\n51 19\r\n71 13\r\n63 62\r\n48 14\r\n13 43\r\n52 12\r\n24 62\r\n63 40\r\n50 26\r\n44 3\r\n31 68\r\n64 71\r\n30 61\r\n12 42\r\n70 62\r\n57 68\r\n2 66\r\n68 23\r\n34 9\r\n48 36\r\n60 67\r\n34 10\r\n65 57\r\n44 38\r\n18 43\r\n4 1\r\n36 19\r\n17 2\r\n39 15\r\n63 41\r\n4 31\r\n20 66\r\n11 26\r\n21 22\r\n32 34\r\n30 7\r\n13 46\r\n39 18\r\n33 25\r\n13 59\r\n38 2\r\n54 36\r\n29 66\r\n43 57\r\n32 69\r\n14 28\r\n61 56\r\n35 47\r\n22 3\r\n23 37\r\n12 58\r\n",
+                "6\r\n"
+            ],
+            [
+                "52 11\r\n33 17\r\n14 4\r\n47 15\r\n34 6\r\n37 45\r\n11 27\r\n36 9\r\n46 42\r\n3 42\r\n12 15\r\n16 38\r\n13 24\r\n49 11\r\n23 2\r\n35 25\r\n44 22\r\n12 19\r\n39 10\r\n22 20\r\n32 26\r\n51 30\r\n20 40\r\n27 43\r\n25 17\r\n2 32\r\n28 31\r\n39 26\r\n33 45\r\n7 1\r\n47 4\r\n40 48\r\n8 3\r\n6 49\r\n29 1\r\n36 18\r\n12 5\r\n9 13\r\n21 44\r\n23 31\r\n16 10\r\n18 35\r\n52 37\r\n41 28\r\n48 50\r\n52 46\r\n1 14\r\n8 38\r\n7 50\r\n43 21\r\n24 34\r\n30 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "20 14\r\n8 13\r\n10 7\r\n20 18\r\n9 1\r\n4 16\r\n19 10\r\n7 1\r\n3 6\r\n14 15\r\n12 17\r\n8 11\r\n5 2\r\n11 20\r\n4 13\r\n19 5\r\n2 17\r\n15 18\r\n6 12\r\n3 16\r\n",
+                "1\r\n"
+            ],
+            [
+                "9 9\r\n4 1\r\n2 4\r\n3 4\r\n5 4\r\n4 6\r\n7 4\r\n4 8\r\n8 9\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 10\r\n1 5\r\n5 2\r\n5 3\r\n4 5\r\n6 5\r\n5 7\r\n8 5\r\n9 5\r\n10 9\r\n",
+                "4\r\n"
+            ],
+            [
+                "19 19\r\n9 1\r\n9 2\r\n9 3\r\n9 4\r\n5 9\r\n6 9\r\n9 7\r\n9 8\r\n9 10\r\n9 11\r\n9 12\r\n13 9\r\n14 9\r\n15 9\r\n16 9\r\n17 9\r\n18 9\r\n18 19\r\n",
+                "9\r\n"
+            ],
+            [
+                "20 20\r\n10 1\r\n10 2\r\n3 10\r\n4 10\r\n10 5\r\n6 10\r\n10 7\r\n10 8\r\n9 10\r\n11 10\r\n12 10\r\n10 13\r\n14 10\r\n10 15\r\n16 10\r\n10 17\r\n18 10\r\n10 19\r\n20 19\r\n",
+                "9\r\n"
+            ],
+            [
+                "49 49\r\n24 1\r\n2 24\r\n24 3\r\n24 4\r\n5 24\r\n6 24\r\n24 7\r\n24 8\r\n9 24\r\n24 10\r\n11 24\r\n24 12\r\n24 13\r\n24 14\r\n15 24\r\n16 24\r\n24 17\r\n18 24\r\n24 19\r\n20 24\r\n21 24\r\n24 22\r\n24 23\r\n24 25\r\n24 26\r\n27 24\r\n28 24\r\n29 24\r\n24 30\r\n24 31\r\n24 32\r\n33 24\r\n34 24\r\n35 24\r\n24 36\r\n24 37\r\n38 24\r\n39 24\r\n24 40\r\n41 24\r\n24 42\r\n43 24\r\n44 24\r\n24 45\r\n24 46\r\n24 47\r\n24 48\r\n48 49\r\n",
+                "24\r\n"
+            ],
+            [
+                "50 50\r\n25 1\r\n2 25\r\n25 3\r\n25 4\r\n5 25\r\n6 25\r\n25 7\r\n8 25\r\n25 9\r\n25 10\r\n11 25\r\n25 12\r\n25 13\r\n25 14\r\n25 15\r\n16 25\r\n17 25\r\n18 25\r\n25 19\r\n20 25\r\n25 21\r\n25 22\r\n23 25\r\n24 25\r\n26 25\r\n27 25\r\n28 25\r\n25 29\r\n30 25\r\n31 25\r\n25 32\r\n25 33\r\n25 34\r\n35 25\r\n25 36\r\n25 37\r\n25 38\r\n39 25\r\n40 25\r\n25 41\r\n42 25\r\n25 43\r\n44 25\r\n45 25\r\n25 46\r\n25 47\r\n48 25\r\n49 25\r\n49 50\r\n",
+                "24\r\n"
+            ],
+            [
+                "5 2\r\n2 5\r\n1 5\r\n3 1\r\n4 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n3 4\r\n2 4\r\n1 2\r\n5 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n5 1\r\n3 1\r\n2 3\r\n4 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n4 5\r\n1 5\r\n2 1\r\n3 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n5 3\r\n1 3\r\n2 1\r\n4 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n2 3\r\n5 3\r\n1 5\r\n4 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n1 5\r\n3 5\r\n2 3\r\n4 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n4 3\r\n5 3\r\n1 5\r\n2 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n2 5\r\n4 5\r\n1 4\r\n3 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n5 2\r\n4 2\r\n1 4\r\n3 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n5 1\r\n2 1\r\n3 2\r\n4 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n4 1\r\n5 1\r\n2 5\r\n3 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n2 1\r\n5 1\r\n3 5\r\n4 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n5 2\r\n1 2\r\n3 1\r\n4 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n3 1\r\n4 1\r\n2 4\r\n5 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n1 3\r\n4 3\r\n2 4\r\n5 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n3 5\r\n4 5\r\n1 4\r\n2 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n5 4\r\n2 4\r\n1 2\r\n3 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n2 5\r\n3 5\r\n1 3\r\n4 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n3 1\r\n2 1\r\n4 2\r\n5 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n2 1\r\n4 1\r\n3 4\r\n5 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n4 3\r\n1 3\r\n2 1\r\n5 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n2 1\r\n3 1\r\n4 3\r\n5 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n4 1\r\n3 1\r\n2 3\r\n5 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n1 3\r\n2 3\r\n4 2\r\n5 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n2 4\r\n3 4\r\n1 3\r\n5 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n3 2\r\n5 2\r\n1 5\r\n4 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n3 4\r\n1 4\r\n2 1\r\n5 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n1 4\r\n2 4\r\n3 2\r\n5 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n4 5\r\n2 5\r\n1 4\r\n4 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n1 4\r\n5 1\r\n5 2\r\n1 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n4 2\r\n5 3\r\n3 1\r\n3 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 4\r\n1 4\r\n3 2\r\n2 1\r\n2 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n2 4\r\n1 5\r\n5 3\r\n5 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 1\r\n4 5\r\n2 5\r\n1 2\r\n5 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n4 2\r\n3 4\r\n5 1\r\n4 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n2 5\r\n3 1\r\n3 5\r\n5 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n5 4\r\n1 3\r\n1 5\r\n2 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n4 5\r\n3 1\r\n2 4\r\n4 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n4 1\r\n1 2\r\n3 1\r\n4 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n5 1\r\n3 5\r\n4 2\r\n2 5\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 4\r\n1 4\r\n3 2\r\n2 1\r\n5 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n3 4\r\n1 2\r\n5 4\r\n1 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n1 2\r\n1 5\r\n1 3\r\n5 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n5 3\r\n5 1\r\n5 4\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n1 2\r\n3 5\r\n5 4\r\n2 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n2 5\r\n1 5\r\n4 1\r\n1 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n5 1\r\n2 4\r\n4 1\r\n1 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n3 2\r\n3 5\r\n2 4\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n1 4\r\n1 3\r\n5 4\r\n2 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "7 7\r\n1 5\r\n2 5\r\n3 6\r\n4 6\r\n5 7\r\n6 7\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 2\r\n4 5\r\n1 5\r\n5 3\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n2 1\r\n1 3\r\n4 1\r\n5 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n1 4\r\n2 3\r\n5 1\r\n1 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 3\r\n3 5\r\n2 4\r\n2 1\r\n5 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 3\r\n2 3\r\n1 4\r\n1 2\r\n5 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n2 5\r\n2 4\r\n3 5\r\n2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n2 3\r\n2 4\r\n1 2\r\n4 5\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 4\r\n4 3\r\n1 3\r\n5 1\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n3 1\r\n2 3\r\n5 2\r\n4 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n1 2\r\n4 3\r\n2 3\r\n5 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n2 3\r\n4 2\r\n1 5\r\n5 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n5 3\r\n3 2\r\n4 2\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n4 3\r\n2 4\r\n5 3\r\n3 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n3 1\r\n5 4\r\n1 4\r\n2 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n4 5\r\n1 5\r\n3 5\r\n4 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n3 2\r\n5 2\r\n3 4\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n3 4\r\n4 1\r\n2 3\r\n5 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n5 2\r\n1 4\r\n4 5\r\n3 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n1 5\r\n1 3\r\n2 3\r\n4 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n2 3\r\n5 3\r\n1 3\r\n2 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n4 2\r\n3 5\r\n4 1\r\n4 5\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 1\r\n1 2\r\n5 4\r\n5 2\r\n3 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n3 4\r\n4 5\r\n1 5\r\n4 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n1 4\r\n2 3\r\n3 1\r\n5 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n2 1\r\n3 4\r\n2 5\r\n2 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 3\r\n5 2\r\n2 4\r\n3 4\r\n2 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 1\r\n2 4\r\n3 1\r\n5 2\r\n3 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n3 2\r\n3 4\r\n1 5\r\n5 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n2 1\r\n1 4\r\n5 4\r\n3 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n4 5\r\n3 1\r\n4 3\r\n3 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n3 4\r\n4 2\r\n4 5\r\n2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n1 3\r\n1 5\r\n5 4\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n5 2\r\n5 4\r\n3 1\r\n1 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n3 4\r\n4 2\r\n2 1\r\n2 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n3 4\r\n1 4\r\n2 4\r\n5 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 4\r\n3 1\r\n1 2\r\n4 5\r\n1 5\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 1\r\n5 2\r\n4 5\r\n5 3\r\n1 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n5 1\r\n3 1\r\n2 5\r\n4 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n5 4\r\n3 4\r\n1 4\r\n5 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n4 3\r\n5 1\r\n3 5\r\n3 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n3 1\r\n3 2\r\n5 4\r\n5 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 5\r\n3 2\r\n4 2\r\n1 2\r\n1 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n2 5\r\n4 1\r\n1 2\r\n2 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n3 2\r\n2 5\r\n4 1\r\n4 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n2 3\r\n1 5\r\n1 3\r\n1 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n5 2\r\n3 2\r\n3 1\r\n3 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 3\r\n5 1\r\n2 1\r\n4 1\r\n3 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 5\r\n2 4\r\n2 3\r\n3 5\r\n1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 3\r\n4 1\r\n2 1\r\n1 5\r\n3 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2\r\n4 1\r\n4 5\r\n4 3\r\n2 5\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

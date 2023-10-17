@@ -1,0 +1,305 @@
+[
+    {
+        "name": "Evacuation",
+        "description": "They've screwed something up yet again... In one nuclear reactor of a research\nstation an uncontrolled reaction is in progress and explosion which will\ndestroy the whole station will happen soon. The station is represented by a\nsquare n \u00d7 n divided into 1 \u00d7 1 blocks. Each block is either a reactor or a\nlaboratory. There can be several reactors and exactly one of them will explode\nsoon. The reactors can be considered impassable blocks, but one can move\nthrough laboratories. Between any two laboratories, which are in adjacent\nblocks, there is a corridor. Blocks are considered adjacent if they have a\ncommon edge. In each laboratory there is some number of scientists and some\nnumber of rescue capsules. Once the scientist climbs into a capsule, he is\nconsidered to be saved. Each capsule has room for not more than one scientist.\nThe reactor, which is about to explode, is damaged and a toxic coolant\ntrickles from it into the neighboring blocks. The block, which contains the\nreactor, is considered infected. Every minute the coolant spreads over the\nlaboratories through corridors. If at some moment one of the blocks is\ninfected, then the next minute all the neighboring laboratories also become\ninfected. Once a lab is infected, all the scientists there that are not in\nrescue capsules die. The coolant does not spread through reactor blocks. There\nare exactly t minutes to the explosion. Any scientist in a minute can move\ndown the corridor to the next lab, if it is not infected. On any corridor an\nunlimited number of scientists can simultaneously move in both directions. It\nis believed that the scientists inside a lab moves without consuming time.\nMoreover, any scientist could get into the rescue capsule instantly. It is\nalso believed that any scientist at any given moment always has the time to\nperform their actions (move from the given laboratory into the next one, or\nclimb into the rescue capsule) before the laboratory will be infected. Find\nthe maximum number of scientists who will be able to escape. Input The first\nline contains two integers n and t (2 \u2264 n \u2264 10, 1 \u2264 t \u2264 60). Each of the next\nn lines contains n characters. These lines describe the scientists' locations.\nThen exactly one empty line follows. Each of the next n more lines contains n\ncharacters. These lines describe the rescue capsules' locations. In the\ndescription of the scientists' and the rescue capsules' locations the\ncharacter \"Y\" stands for a properly functioning reactor, \"Z\" stands for the\nmalfunctioning reactor. The reactors' positions in both descriptions coincide.\nThere is exactly one malfunctioning reactor on the station. The digits \"0\" -\n\"9\" stand for the laboratories. In the description of the scientists'\nlocations those numbers stand for the number of scientists in the\ncorresponding laboratories. In the rescue capsules' descriptions they stand\nfor the number of such capsules in each laboratory. Output Print a single\nnumber \u2014 the maximum number of scientists who will manage to save themselves.\nExamples Input 3 3 1YZ 1YY 100 0YZ 0YY 003 Output 2 Input 4 4 Y110 1Y1Z 1Y0Y\n0100 Y001 0Y0Z 0Y0Y 0005 Output 3 Note In the second sample the events could\ntake place as follows:\n\n",
+        "cf_contest_id": 78,
+        "cf_index": "E",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "flows",
+            "graphs",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3\r\n1YZ\r\n1YY\r\n100\r\n\r\n0YZ\r\n0YY\r\n003\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 4\r\nY110\r\n1Y1Z\r\n1Y0Y\r\n0100\r\n\r\nY001\r\n0Y0Z\r\n0Y0Y\r\n0005\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 10\r\n111\r\nYZY\r\n111\r\n\r\n000\r\nYZY\r\n009\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 1\r\nZ2\r\n20\r\n\r\nZ1\r\n12\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 4\r\nZY2\r\n0Y3\r\n0Y4\r\n\r\nZY0\r\n9Y0\r\n9Y0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 8\r\n001\r\n0Z0\r\n102\r\n\r\n000\r\n0Z0\r\n000\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 7\r\n20Y00Y\r\nY0Y0Z1\r\n1020Y0\r\n04Y5Y0\r\nYYY00Y\r\n4Y0070\r\n\r\n60Y13Y\r\nY0Y2Z1\r\n0000Y8\r\n10Y0Y5\r\nYYY00Y\r\n3Y1000\r\n",
+                "12\r\n"
+            ],
+            [
+                "5 13\r\nZ110Y\r\nY00Y0\r\n00Y00\r\n0Y000\r\n000Y0\r\n\r\nZ000Y\r\nY00Y0\r\n00Y00\r\n0Y000\r\n000Y2\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\nZY\r\nY1\r\n\r\nZY\r\nY9\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 5\r\n01\r\n0Z\r\n\r\n00\r\n1Z\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 15\r\nZ9\r\n99\r\n\r\nZ9\r\n99\r\n",
+                "27\r\n"
+            ],
+            [
+                "10 60\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n99999999Z9\r\n9999999999\r\n9999999999\r\n\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n99999999Z9\r\n9999999999\r\n9999999999\r\n",
+                "891\r\n"
+            ],
+            [
+                "10 60\r\nZ999999990\r\n9999999990\r\n9999999990\r\n9999999990\r\n9999999990\r\n9999999990\r\n9999999990\r\n9999999990\r\n9999999990\r\n0000000000\r\n\r\nZ000000000\r\n0000000000\r\n8888888888\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n",
+                "710\r\n"
+            ],
+            [
+                "10 60\r\n1111111111\r\n1111111111\r\n1111111111\r\n1111111111\r\n1111111111\r\n1111111111\r\n1111111111\r\n111111111Y\r\nYYYYYYYYYZ\r\n999999999Y\r\n\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n000000000Y\r\nYYYYYYYYYZ\r\n999999999Y\r\n",
+                "81\r\n"
+            ],
+            [
+                "10 60\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n999999999Y\r\nYYYYYYYYYZ\r\n999999999Y\r\n\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n000000000Y\r\nYYYYYYYYYZ\r\n999999999Y\r\n",
+                "81\r\n"
+            ],
+            [
+                "10 60\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n999999999Y\r\nYYYYYYYYYZ\r\n999999999Y\r\n9999999999\r\n9999999999\r\n9999999999\r\n\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n000000000Y\r\nYYYYYYYYYZ\r\n999999999Y\r\n9999999999\r\n9999999999\r\n9999999999\r\n",
+                "351\r\n"
+            ],
+            [
+                "10 60\r\n9999999999\r\n9999999999\r\n9999999999\r\n999999999Y\r\nYYYYYYYYYZ\r\n999999999Y\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n\r\n0000000000\r\n0000000000\r\n0000000000\r\n000000000Y\r\nYYYYYYYYYZ\r\n999999999Y\r\n9999999999\r\n9999999999\r\n9999999999\r\n9999999999\r\n",
+                "441\r\n"
+            ],
+            [
+                "10 60\r\n99999Y9999\r\n99999Y9999\r\n99999Y9999\r\n99999Y9999\r\n99999Y9999\r\n99999Y9999\r\n99999Y9999\r\n99999Y9999\r\n99999Y9999\r\n9999YZY999\r\n\r\n00000Y9999\r\n00000Y9999\r\n00000Y9999\r\n00000Y9999\r\n00000Y9999\r\n00000Y9999\r\n00000Y9999\r\n00000Y9999\r\n00000Y9999\r\n0000YZY999\r\n",
+                "351\r\n"
+            ],
+            [
+                "10 60\r\n9999Y99999\r\n9999Y99999\r\n9999Y99999\r\n9999Y99999\r\n9999Y99999\r\n9999Y99999\r\n9999Y99999\r\n9999Y99999\r\n9999Y99999\r\n999YZY9999\r\n\r\n0000Y99999\r\n0000Y99999\r\n0000Y99999\r\n0000Y99999\r\n0000Y99999\r\n0000Y99999\r\n0000Y99999\r\n0000Y99999\r\n0000Y99999\r\n000YZY9999\r\n",
+                "441\r\n"
+            ],
+            [
+                "10 60\r\n000Y000000\r\n0Y0Y0YYYY0\r\nY00Y0Y0000\r\n00Y00Y0YYY\r\n0Y00Y00Y00\r\n000Y00Y000\r\nYYY00Y00Y0\r\n0000Y00Y00\r\n0YYY00Y00Y\r\n00000YZ009\r\n\r\n000Y000000\r\n9Y0Y0YYYY0\r\nY00Y0Y0000\r\n00Y00Y0YYY\r\n0Y00Y00Y00\r\n000Y00Y000\r\nYYY00Y00Y0\r\n0000Y00Y00\r\n0YYY00Y00Y\r\n00000YZ000\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 60\r\n000Y000000\r\nYY0Y0YYYY0\r\nY00Y0Y0000\r\n00Y00Y0YYY\r\n0Y00Y00Y00\r\n000Y00Y000\r\nYYY00Y00Y0\r\n0000Y00Y00\r\n0YYY00Y00Y\r\n00000YZ009\r\n\r\n900Y000000\r\nYY0Y0YYYY0\r\nY00Y0Y0000\r\n00Y00Y0YYY\r\n0Y00Y00Y00\r\n000Y00Y000\r\nYYY00Y00Y0\r\n0000Y00Y00\r\n0YYY00Y00Y\r\n00000YZ000\r\n",
+                "9\r\n"
+            ],
+            [
+                "2 1\r\n1Z\r\n53\r\n\r\n8Z\r\n65\r\n",
+                "9\r\n"
+            ],
+            [
+                "2 2\r\nZ2\r\n8Y\r\n\r\nZ3\r\n1Y\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 10\r\nYY\r\nZY\r\n\r\nYY\r\nZY\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 60\r\n4Z\r\n21\r\n\r\n5Z\r\n72\r\n",
+                "7\r\n"
+            ],
+            [
+                "3 1\r\n4Z1\r\n908\r\n146\r\n\r\n3Z2\r\n180\r\n811\r\n",
+                "24\r\n"
+            ],
+            [
+                "3 2\r\n953\r\n87Y\r\nZ69\r\n\r\n921\r\n87Y\r\nZ18\r\n",
+                "36\r\n"
+            ],
+            [
+                "3 5\r\nYYY\r\n0Z2\r\n7YY\r\n\r\nYYY\r\n8Z2\r\n6YY\r\n",
+                "9\r\n"
+            ],
+            [
+                "4 1\r\n9726\r\n0Z05\r\n3648\r\nY3Y4\r\n\r\n3539\r\n6Z25\r\n9289\r\nY5Y2\r\n",
+                "57\r\n"
+            ],
+            [
+                "4 2\r\nZ7Y5\r\nY6Y7\r\n7413\r\n1678\r\n\r\nZ5Y9\r\nY0Y3\r\n7673\r\n5456\r\n",
+                "60\r\n"
+            ],
+            [
+                "4 3\r\nZ6Y7\r\nY8Y1\r\n076Y\r\n7Y11\r\n\r\nZ8Y7\r\nY2Y4\r\n913Y\r\n0Y07\r\n",
+                "38\r\n"
+            ],
+            [
+                "4 5\r\nY672\r\n0ZY6\r\n8486\r\n5YY5\r\n\r\nY847\r\n6ZY7\r\n1791\r\n0YY3\r\n",
+                "53\r\n"
+            ],
+            [
+                "4 13\r\n561Y\r\n511Y\r\nY9ZY\r\n34Y2\r\n\r\n668Y\r\n555Y\r\nY4ZY\r\n51Y9\r\n",
+                "37\r\n"
+            ],
+            [
+                "4 23\r\nY616\r\nYY5Z\r\n2Y06\r\n2YY9\r\n\r\nY050\r\nYY5Z\r\n8Y16\r\n7YY7\r\n",
+                "28\r\n"
+            ],
+            [
+                "4 47\r\nYY2Y\r\n5199\r\n4ZY0\r\nY88Y\r\n\r\nYY9Y\r\n6110\r\n5ZY0\r\nY85Y\r\n",
+                "34\r\n"
+            ],
+            [
+                "4 60\r\n956Y\r\nY250\r\n5YYY\r\n5YYZ\r\n\r\n593Y\r\nY311\r\n5YYY\r\n1YYZ\r\n",
+                "28\r\n"
+            ],
+            [
+                "5 1\r\n0YZ52\r\n3Y481\r\n66Y68\r\nY1665\r\n35923\r\n\r\n9YZ89\r\n2Y876\r\n08Y19\r\nY1891\r\n24689\r\n",
+                "88\r\n"
+            ],
+            [
+                "5 2\r\n7Z7Y4\r\n31Y46\r\n70YY0\r\n36391\r\nYYY19\r\n\r\n2Z5Y4\r\n84Y90\r\n25YY1\r\n19239\r\nYYY55\r\n",
+                "69\r\n"
+            ],
+            [
+                "5 5\r\n947YY\r\n7Y9Y9\r\nY1YY0\r\nZY983\r\n18YY0\r\n\r\n181YY\r\n6Y9Y9\r\nY7YY2\r\nZY639\r\n20YY9\r\n",
+                "57\r\n"
+            ],
+            [
+                "5 25\r\nY2518\r\n4850Y\r\n43381\r\n75ZYY\r\n1381Y\r\n\r\nY8050\r\n2735Y\r\n10270\r\n77ZYY\r\n4888Y\r\n",
+                "76\r\n"
+            ],
+            [
+                "5 60\r\n7YZ92\r\n9YY4Y\r\nYY371\r\n85Y2Y\r\nYYYY9\r\n\r\n3YZ06\r\n0YY3Y\r\nYY905\r\n99Y2Y\r\nYYYY9\r\n",
+                "50\r\n"
+            ],
+            [
+                "6 1\r\n925391\r\n584Z56\r\n925934\r\n127259\r\n460771\r\nYY4352\r\n\r\n270817\r\n714Z66\r\n395925\r\n385913\r\n909530\r\nYY4513\r\n",
+                "150\r\n"
+            ],
+            [
+                "6 5\r\nYY35Y6\r\n525928\r\n93Z3Y3\r\nYY6134\r\n5YY413\r\nY81Y74\r\n\r\nYY15Y1\r\n061299\r\n22Z0Y2\r\nYY3258\r\n7YY616\r\nY42Y46\r\n",
+                "92\r\n"
+            ],
+            [
+                "6 11\r\nYYYY09\r\n8YYY42\r\n777883\r\n083YYY\r\n6577Y1\r\n05YZ7Y\r\n\r\nYYYY95\r\n9YYY78\r\n070367\r\n756YYY\r\n8067Y4\r\n54YZ1Y\r\n",
+                "106\r\n"
+            ],
+            [
+                "6 60\r\n494855\r\nYY10ZY\r\n0Y0478\r\n39Y100\r\n065742\r\n93493Y\r\n\r\n872743\r\nYY80ZY\r\n0Y6855\r\n75Y142\r\n126232\r\n69511Y\r\n",
+                "120\r\n"
+            ],
+            [
+                "7 1\r\nY9Y827Y\r\nY7YYYY0\r\nYY4496Y\r\n50YY456\r\n1Y312Z2\r\n5Y72Y3Y\r\n712YYY7\r\n\r\nY8Y930Y\r\nY5YYYY0\r\nYY4261Y\r\n77YY329\r\n1Y507Z0\r\n6Y44Y1Y\r\n570YYY2\r\n",
+                "95\r\n"
+            ],
+            [
+                "7 5\r\nYY557YY\r\nYY33YY7\r\n17YYY5Y\r\nZ963Y89\r\n08YYYY6\r\nY1Y75YY\r\nYY9Y1Y9\r\n\r\nYY121YY\r\nYY37YY2\r\n41YYY7Y\r\nZ432Y90\r\n48YYYY4\r\nY3Y63YY\r\nYY6Y4Y0\r\n",
+                "84\r\n"
+            ],
+            [
+                "7 10\r\nYYY3YYY\r\nYYYYYY2\r\nYYYY1YY\r\nY7YYYY0\r\nYYY259Y\r\nYYYYYYY\r\nYZYYYYY\r\n\r\nYYY8YYY\r\nYYYYYY2\r\nYYYY7YY\r\nY6YYYY1\r\nYYY919Y\r\nYYYYYYY\r\nYZYYYYY\r\n",
+                "28\r\n"
+            ],
+            [
+                "7 34\r\n559087Y\r\n0249738\r\n14YY871\r\n2Y62782\r\nYY28Y13\r\n8235YZ9\r\n783Y53Y\r\n\r\n458480Y\r\n5038138\r\n58YY350\r\n9Y81702\r\nYY75Y62\r\n0301YZ3\r\n450Y69Y\r\n",
+                "149\r\n"
+            ],
+            [
+                "7 59\r\n6YYYY10\r\n04Y1054\r\nZYYY2YY\r\n2Y2YYY2\r\n8YY94YY\r\n9YYYYYY\r\nYY7YYYY\r\n\r\n6YYYY57\r\n99Y4692\r\nZYYY4YY\r\n3Y6YYY1\r\n7YY94YY\r\n3YYYYYY\r\nYY5YYYY\r\n",
+                "57\r\n"
+            ],
+            [
+                "8 2\r\n3412431Y\r\nY9Y63Y35\r\n3Y35Y7Y4\r\n0Y388427\r\n51326171\r\n27284723\r\n21Y23ZYY\r\nY545469Y\r\n\r\n1008881Y\r\nY8Y05Y71\r\n2Y22Y8Y9\r\n9Y929523\r\n21797125\r\n17753725\r\n73Y83ZYY\r\nY527971Y\r\n",
+                "196\r\n"
+            ],
+            [
+                "8 8\r\n33632080\r\n6Y9Y3994\r\n9983Y01Y\r\n58389138\r\n440Y06Y7\r\n55Y92034\r\n99Y4Y047\r\nY449923Z\r\n\r\n94553397\r\n0Y5Y9727\r\n0552Y96Y\r\n65739693\r\n104Y22Y3\r\n41Y63837\r\n39Y8Y412\r\nY609012Z\r\n",
+                "239\r\n"
+            ],
+            [
+                "8 17\r\n8Y6750Y4\r\nY5Z7YYYY\r\n23Y38Y7Y\r\n81057544\r\n4997Y95Y\r\n2YY89509\r\n6417YYYY\r\nY69241Y1\r\n\r\n8Y9490Y6\r\nY2Z8YYYY\r\n23Y19Y0Y\r\n90970295\r\n3910Y39Y\r\n6YY82183\r\n3446YYYY\r\nY85919Y8\r\n",
+                "201\r\n"
+            ],
+            [
+                "8 38\r\nYYYYY9YY\r\nYYY32YYY\r\n3YY77Y7Y\r\n2Y4YY89Y\r\nYYYYYYZY\r\n9YYY0YYY\r\n0Y30YY56\r\n142Y0Y8Y\r\n\r\nYYYYY6YY\r\nYYY30YYY\r\n7YY28Y4Y\r\n1Y3YY21Y\r\nYYYYYYZY\r\n2YYY7YYY\r\n6Y16YY74\r\n613Y8Y0Y\r\n",
+                "64\r\n"
+            ],
+            [
+                "8 60\r\nYYYYYYYY\r\nYYYYY5YZ\r\nYYYYYYYY\r\nYYYYYYYY\r\nYYYYYYYY\r\n2YYYYY7Y\r\nYYYYYYYY\r\nYYYYYYYY\r\n\r\nYYYYYYYY\r\nYYYYY8YZ\r\nYYYYYYYY\r\nYYYYYYYY\r\nYYYYYYYY\r\n1YYYYY2Y\r\nYYYYYYYY\r\nYYYYYYYY\r\n",
+                "8\r\n"
+            ],
+            [
+                "9 1\r\n634986988\r\n579937389\r\n211959999\r\n156427383\r\n247682412\r\n5594026Z4\r\n660120777\r\n530725825\r\n568606117\r\n\r\n356611452\r\n176654482\r\n323322910\r\n699615222\r\n282963554\r\n2442346Z5\r\n998463089\r\n723923655\r\n514611010\r\n",
+                "328\r\n"
+            ],
+            [
+                "9 2\r\n4707YY2Z3\r\nYY78Y2855\r\n8Y8Y894YY\r\n6Y1445329\r\n388Y631Y3\r\n85332907Y\r\nYY309Y330\r\nYY4Y48713\r\n390800Y72\r\n\r\n1089YY9Z1\r\nYY36Y0383\r\n4Y9Y744YY\r\n5Y9929558\r\n180Y969Y5\r\n83505838Y\r\nYY188Y395\r\nYY2Y90862\r\n645519Y55\r\n",
+                "272\r\n"
+            ],
+            [
+                "9 7\r\nY8YY41362\r\nY03941301\r\nYYYY31YY5\r\nY8YY338YY\r\n48Y7Y5Y9Y\r\nYY46YY26Y\r\n64615159Z\r\n36Y2Y815Y\r\n1Y1YY1632\r\n\r\nY1YY00943\r\nY69269785\r\nYYYY37YY4\r\nY6YY907YY\r\n19Y8Y6Y8Y\r\nYY97YY10Y\r\n99207179Z\r\n81Y1Y536Y\r\n2Y4YY8646\r\n",
+                "199\r\n"
+            ],
+            [
+                "9 28\r\nY10Y2YY34\r\nYYY10YY3Y\r\n46Y3YY0YY\r\n6Y8YY32YY\r\nY664915YY\r\n34YY8Y55Y\r\n41YYZYYY8\r\nY8YYYY40Y\r\n0Y5YY7891\r\n\r\nY59Y8YY81\r\nYYY39YY0Y\r\n27Y5YY8YY\r\n5Y8YY43YY\r\nY432528YY\r\n78YY3Y02Y\r\n35YYZYYY5\r\nY6YYYY96Y\r\n6Y8YY5152\r\n",
+                "149\r\n"
+            ],
+            [
+                "9 57\r\nY2Y23YYZ1\r\n1Y4YY01YY\r\nY844YYY82\r\n0YY76YYY5\r\nYYYY887Y9\r\nY5YY203Y4\r\nY49657116\r\n8555Y6Y50\r\nY929Y583Y\r\n\r\nY2Y10YYZ5\r\n3Y4YY60YY\r\nY531YYY53\r\n7YY41YYY5\r\nYYYY158Y3\r\nY4YY203Y2\r\nY01191321\r\n4525Y7Y94\r\nY815Y303Y\r\n",
+                "139\r\n"
+            ],
+            [
+                "10 1\r\nY94YY240Y1\r\n90Y8235Y41\r\n4789763702\r\n138Y833262\r\nYY65953YY3\r\nY9Y1Y72468\r\n3Y906Y0630\r\nZY26549536\r\n77Y1597748\r\n8295Y315Y6\r\n\r\nY60YY720Y7\r\n66Y7086Y76\r\n6686312433\r\n810Y789383\r\nYY93349YY0\r\nY7Y5Y47616\r\n6Y472Y8127\r\nZY24602173\r\n19Y8072703\r\n2418Y832Y4\r\n",
+                "331\r\n"
+            ],
+            [
+                "10 1\r\nYYY9Y71YYY\r\nY0YYY97YYY\r\nYYYZ4868YY\r\nY6YYY55Y5Y\r\n1Y2Y061YYY\r\nYY8YYY86YY\r\nYY72YYYYYY\r\nY52Y6YYYYY\r\nY077YYYYYY\r\n49Y817Y9YY\r\n\r\nYYY1Y78YYY\r\nY4YYY13YYY\r\nYYYZ2518YY\r\nY4YYY52Y5Y\r\n8Y7Y354YYY\r\nYY6YYY34YY\r\nYY87YYYYYY\r\nY76Y8YYYYY\r\nY224YYYYYY\r\n50Y628Y4YY\r\n",
+                "143\r\n"
+            ],
+            [
+                "10 1\r\nYYYYYYYYYY\r\nYYYYYYYYYY\r\nYY6YYYYYYY\r\nYYYZYYYYYY\r\nYYYYYYYYYY\r\nYYYYYYYYYY\r\nYYYYYYYYYY\r\nYYYYYYYYYY\r\nYYYYYYYYYY\r\nYYYYYYYYYY\r\n\r\nYYYYYYYYYY\r\nYYYYYYYYYY\r\nYY4YYYYYYY\r\nYYYZYYYYYY\r\nYYYYYYYYYY\r\nYYYYYYYYYY\r\nYYYYYYYYYY\r\nYYYYYYYYYY\r\nYYYYYYYYYY\r\nYYYYYYYYYY\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 2\r\n8Y80312575\r\n7Y1Y6666YY\r\n22Y13861Y1\r\nY375855376\r\nY1636Y3254\r\n056Y9YY6YY\r\nY5Y2YYYYY0\r\n007781Y728\r\n5ZY6Y96YY6\r\n20Y91YY129\r\n\r\n2Y00998651\r\n7Y1Y4348YY\r\n14Y25601Y3\r\nY712641694\r\nY2721Y3876\r\n428Y8YY9YY\r\nY9Y6YYYYY7\r\n237896Y916\r\n2ZY4Y83YY9\r\n76Y88YY082\r\n",
+                "302\r\n"
+            ],
+            [
+                "10 20\r\n3382300377\r\n0704551998\r\n6905124500\r\n7591098967\r\n6975429270\r\n13Z2020045\r\n3334243650\r\n1402696672\r\n8743582106\r\n8273846236\r\n\r\n5963319405\r\n7167843755\r\n4590648062\r\n4064613666\r\n8315120764\r\n19Z8830522\r\n1907884902\r\n9862721024\r\n0473219912\r\n2691074956\r\n",
+                "414\r\n"
+            ],
+            [
+                "10 19\r\n5YY5848183\r\n18Y7Z53Y94\r\n4250YYY874\r\n97YY32Y883\r\n1743165Y38\r\n5Y783YYY24\r\n0Y81YYY684\r\n79Y6004066\r\nYYY4Y68Y30\r\n9671YY00YY\r\n\r\n6YY2859310\r\n61Y1Z30Y77\r\n6075YYY567\r\n81YY34Y863\r\n6448697Y10\r\n2Y600YYY24\r\n8Y03YYY525\r\n13Y1007783\r\nYYY3Y23Y80\r\n4579YY87YY\r\n",
+                "296\r\n"
+            ],
+            [
+                "10 35\r\nYY484Y80YY\r\nYY0Y112Y8Y\r\nY51450YYY8\r\n662Y00Y735\r\n1YY1YY3Y23\r\n79377Y75Y5\r\n40YY465YYY\r\nYYY10Y994Y\r\nYY7Y64Y7Y3\r\nYY5Y5Y42Z3\r\n\r\nYY688Y22YY\r\nYY6Y233Y4Y\r\nY13301YYY4\r\n468Y59Y758\r\n8YY8YY4Y81\r\n99588Y53Y8\r\n52YY747YYY\r\nYYY01Y477Y\r\nYY0Y22Y0Y3\r\nYY1Y7Y10Z9\r\n",
+                "218\r\n"
+            ],
+            [
+                "10 50\r\nY6Y3810436\r\nY9Y39YY21Z\r\n881Y977446\r\n39Y379YY51\r\n62Y9Y75429\r\nY843779213\r\n9288762Y73\r\nY3Y1Y608YY\r\nY23626YYY6\r\n4487Y4Y2YY\r\n\r\nY8Y4767475\r\nY5Y29YY63Z\r\n812Y598957\r\n17Y966YY59\r\n14Y4Y09918\r\nY552606351\r\n6804285Y46\r\nY2Y5Y217YY\r\nY11107YYY3\r\n7955Y2Y2YY\r\n",
+                "342\r\n"
+            ],
+            [
+                "10 59\r\n9Y6YY7Y1Y6\r\n22Y1YY51Y8\r\n24221YY5Y6\r\n4631948627\r\n560132737Y\r\n6250YY843Y\r\n1Y44448091\r\n6022Y51001\r\n3YY55096Y1\r\n329177Y2Z6\r\n\r\n2Y0YY2Y1Y1\r\n35Y0YY61Y1\r\n03763YY4Y8\r\n4020000198\r\n471537568Y\r\n5583YY230Y\r\n0Y97522772\r\n2296Y37943\r\n1YY90435Y0\r\n351196Y9Z5\r\n",
+                "289\r\n"
+            ],
+            [
+                "10 60\r\n0406099563\r\n1623614663\r\nY035577875\r\n45997Z09Y9\r\n8749154486\r\n9021800174\r\n0132528980\r\n011Y653810\r\n6697173925\r\n11252Y3135\r\n\r\n5037510501\r\n0442291826\r\nY338876577\r\n15857Z22Y2\r\n8981837042\r\n5135756064\r\n8012384904\r\n336Y827810\r\n8607923093\r\n87032Y3753\r\n",
+                "405\r\n"
+            ],
+            [
+                "3 3\r\nY00\r\n50Z\r\n050\r\n\r\nY80\r\n08Z\r\n000\r\n",
+                "8\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,157 @@
+[
+    {
+        "name": "Serval and Snake",
+        "description": "This is an interactive problem. Now Serval is a senior high school student in\nJapari Middle School. However, on the way to the school, he must go across a\npond, in which there is a dangerous snake. The pond can be represented as a\n\n    n \n    \u00d7 n\n grid. The snake has a head and a tail in different cells,\nand its body is a series of adjacent cells connecting the head and the tail\nwithout self-intersecting. If Serval hits its head or tail, the snake will\nbite him and he will die. Luckily, he has a special device which can answer\nthe following question: you can pick a rectangle, it will tell you the number\nof times one needs to cross the border of the rectangle walking cell by cell\nalong the snake from the head to the tail. The pictures below show a possible\nsnake and a possible query to it, which will get an answer of \n    4\n. Today\nServal got up too late and only have time to make \n    2019\n queries. As his\nbest friend, can you help him find the positions of the head and the tail?\nNote that two cells are adjacent if and only if they have a common edge in the\ngrid, and a snake can have a body of length \n    0\n, that means it only has\nadjacent head and tail. Also note that the snake is sleeping, so it won't move\nwhile Serval using his device. And what's obvious is that the snake position\ndoes not depend on your queries. Input The first line contains a single\ninteger \n    n\n (\n    2\n    \u2264 n \n    \u2264 1000\n) \u2014 the size of the grid. Output\nWhen you are ready to answer, you should print ! x1 y1 x2 y2, where \n    (x_1,\n    y_1)\n represents the position of the head and \n    (x_2,y_2)\n represents the\nposition of the tail. You can print head and tail in any order. Interaction To\nmake a query, you should print ? x1 y1 x2 y2 (\n    1 \n    \u2264 x_1 \n    \u2264 x_2\n    \n    \u2264 n\n, \n    1\n    \u2264 y_1 \n    \u2264 y_2 \n    \u2264 n\n), representing a rectangle\nconsisting of all cells \n    (x,y)\n such that \n    x_1 \n    \u2264 x \n    \u2264 x_2\n\nand \n    y_1 \n    \u2264 y \n    \u2264 y_2\n. You will get a single integer as the\nanswer. After printing a query, do not forget to output the end of line and\nflush the output, otherwise you will get Idleness limit exceeded. To do this,\nuse: fflush(stdout) or cout.flush() in C++; System.out.flush() in Java;\nflush(output) in Pascal; stdout.flush() in Python; see documentation for other\nlanguages. Answer \n    -1\n instead of a valid answer means that you made an\ninvalid query or exceeded the maximum number of queries. Exit immediately\nafter receiving \n    -1\n and you will see Wrong answer verdict. Otherwise you\ncan get an arbitrary verdict because your solution will continue to read from\na closed stream. If your program cannot find out the head and tail of the\nsnake correctly, you will also get a Wrong Answer verdict. Hacks To make a\nhack, print a single integer \n    n\n (\n    2 \n    \u2264 n \n    \u2264 1000\n) in the\nfirst line, indicating the size of the grid. Then print an integer \n    k\n\n(\n    2 \n    \u2264 k \n    \u2264 n^2\n) in the second line, indicating the length of the\nsnake. In the next \n    k\n lines, print \n    k\n pairs of integers \n    x_i,\n    y_i\n (\n    1 \n    \u2264 x_i, y_i \n    \u2264 n\n), each pair in a single line,\nindicating the \n    i\n-th cell of snake, such that the adjacent pairs are\nadjacent, and all \n    k\n pairs are distinct. Examples Input 2 1 0 0 Output ?\n1 1 1 1 ? 1 2 1 2 ? 2 2 2 2 ! 1 1 2 1 Input 3 2 0 Output ? 2 2 2 2 ? 2 1 2 3 !\n2 1 2 3 Note The pictures above show our queries and the answers in the first\nexample. We first made a query for \n    (1,1)\n and got an answer \n    1\n, then\nfound that it must be connected to exactly one other cell. Then we made a\nquery for \n    (1,2)\n and got an answer of \n    0\n, then knew that the snake\nnever entered it. So the cell connected to \n    (1,1)\n must be \n    (2,1)\n.\nThen we made a query for \n    (2,2)\n and got an answer \n    0\n, then knew that\nit never entered \n    (2,2)\n as well. So the snake cannot leave \n    (2,1)\n,\nwhich implies that the answer is \n    (1,1)\n and \n    (2,1)\n. The pictures\nabove show our queries and the answers in the second example. By making query\nto \n    (2,2)\n and receiving \n    2\n, we found that the snake occupies\n\n    (2,2)\n. And by making query to rectangle from \n    (2,1)\n to \n    (2,3)\n\nand receiving answer \n    0\n, we knew that it never goes out of the rectangle\nfrom \n    (2,1)\n to \n    (2,3)\n. Since the first answer is \n    2\n, both\n\n    (2,1)\n and \n    (2,3)\n must be occupied but none of others, so the answer\nis \n    (2,1)\n and \n    (2,3)\n.\n\n",
+        "cf_contest_id": 1153,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "brute force",
+            "interactive"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n2\r\n2 1\r\n1 1\r\n",
+                "5\r\n"
+            ],
+            [
+                "3\r\n3\r\n2 1\r\n2 2\r\n2 3\r\n",
+                "8\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1000\r\n2\r\n11 417\r\n11 418\r\n",
+                "2010\r\n"
+            ],
+            [
+                "999\r\n2\r\n364 403\r\n365 403\r\n",
+                "2008\r\n"
+            ],
+            [
+                "1000\r\n2\r\n348 913\r\n348 914\r\n",
+                "2010\r\n"
+            ],
+            [
+                "999\r\n2\r\n128 805\r\n129 805\r\n",
+                "2008\r\n"
+            ],
+            [
+                "1000\r\n2\r\n999 999\r\n999 1000\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n999 999\r\n1000 999\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n999 998\r\n999 999\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n998 999\r\n999 999\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n1 2\r\n2 2\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n2 1\r\n2 2\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n2 2\r\n2 3\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n2 2\r\n3 2\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n2 999\r\n2 1000\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n2 999\r\n1 999\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n2 998\r\n2 999\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n2 999\r\n3 999\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n1 1\r\n1 2\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n1 1000\r\n2 1000\r\n",
+                "2009\r\n"
+            ],
+            [
+                "1000\r\n2\r\n999 1000\r\n1000 1000\r\n",
+                "2009\r\n"
+            ],
+            [
+                "1000\r\n2\r\n500 501\r\n501 501\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n39\r\n371 16\r\n372 16\r\n373 16\r\n374 16\r\n375 16\r\n376 16\r\n377 16\r\n378 16\r\n379 16\r\n380 16\r\n381 16\r\n382 16\r\n383 16\r\n384 16\r\n385 16\r\n386 16\r\n387 16\r\n388 16\r\n389 16\r\n390 16\r\n391 16\r\n392 16\r\n393 16\r\n394 16\r\n395 16\r\n396 16\r\n397 16\r\n398 16\r\n399 16\r\n400 16\r\n401 16\r\n402 16\r\n403 16\r\n404 16\r\n405 16\r\n406 16\r\n407 16\r\n408 16\r\n409 16\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n801 924\r\n802 924\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n694 999\r\n694 1000\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n371 409\r\n372 409\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n533 179\r\n533 180\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n971 461\r\n972 461\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n18 239\r\n19 239\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n222 332\r\n222 333\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n2\r\n657 390\r\n657 391\r\n",
+                "2010\r\n"
+            ],
+            [
+                "1000\r\n50\r\n605 66\r\n605 67\r\n606 67\r\n606 68\r\n605 68\r\n604 68\r\n604 69\r\n605 69\r\n605 70\r\n606 70\r\n606 69\r\n607 69\r\n607 70\r\n608 70\r\n608 71\r\n609 71\r\n609 70\r\n609 69\r\n610 69\r\n610 68\r\n610 67\r\n610 66\r\n611 66\r\n611 65\r\n610 65\r\n609 65\r\n609 64\r\n610 64\r\n611 64\r\n612 64\r\n612 63\r\n613 63\r\n614 63\r\n615 63\r\n615 64\r\n615 65\r\n614 65\r\n614 64\r\n613 64\r\n613 65\r\n612 65\r\n612 66\r\n612 67\r\n612 68\r\n613 68\r\n613 69\r\n612 69\r\n611 69\r\n611 68\r\n611 67\r\n",
+                "2001\r\n"
+            ],
+            [
+                "1000\r\n53\r\n90 710\r\n90 709\r\n91 709\r\n91 710\r\n92 710\r\n92 709\r\n92 708\r\n93 708\r\n93 709\r\n93 710\r\n93 711\r\n92 711\r\n91 711\r\n90 711\r\n89 711\r\n89 712\r\n90 712\r\n90 713\r\n90 714\r\n90 715\r\n91 715\r\n91 716\r\n91 717\r\n92 717\r\n93 717\r\n94 717\r\n95 717\r\n95 718\r\n95 719\r\n96 719\r\n96 720\r\n95 720\r\n94 720\r\n93 720\r\n93 719\r\n94 719\r\n94 718\r\n93 718\r\n92 718\r\n91 718\r\n91 719\r\n90 719\r\n89 719\r\n89 720\r\n89 721\r\n89 722\r\n89 723\r\n88 723\r\n87 723\r\n87 722\r\n87 721\r\n88 721\r\n88 722\r\n",
+                "2001\r\n"
+            ],
+            [
+                "1000\r\n18\r\n789 325\r\n790 325\r\n791 325\r\n792 325\r\n792 326\r\n792 327\r\n793 327\r\n793 328\r\n794 328\r\n794 329\r\n794 330\r\n794 331\r\n793 331\r\n792 331\r\n792 330\r\n792 329\r\n793 329\r\n793 330\r\n",
+                "2001\r\n"
+            ]
+        ]
+    }
+]

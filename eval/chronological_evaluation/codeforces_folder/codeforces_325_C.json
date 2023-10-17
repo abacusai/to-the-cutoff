@@ -1,0 +1,73 @@
+[
+    {
+        "name": "Monsters and Diamonds",
+        "description": "Piegirl has found a monster and a book about monsters and pies. When she is\nreading the book, she found out that there are n types of monsters, each with\nan ID between 1 and n. If you feed a pie to a monster, the monster will split\ninto some number of monsters (possibly zero), and at least one colorful\ndiamond. Monsters may be able to split in multiple ways. At the begining\nPiegirl has exactly one monster. She begins by feeding the monster a pie. She\ncontinues feeding pies to monsters until no more monsters are left. Then she\ncollects all the diamonds that were created. You will be given a list of split\nrules describing the way in which the various monsters can split. Every\nmonster can split in at least one way, and if a monster can split in multiple\nways then each time when it splits Piegirl can choose the way it splits. For\neach monster, determine the smallest and the largest number of diamonds\nPiegirl can possibly collect, if initially she has a single instance of that\nmonster. Piegirl has an unlimited supply of pies. Input The first line\ncontains two integers: m and n (1 \u2264 m, n \u2264 10^5), the number of possible\nsplits and the number of different monster types. Each of the following m\nlines contains a split rule. Each split rule starts with an integer (a monster\nID) mi (1 \u2264 mi \u2264 n), and a positive integer li indicating the number of\nmonsters and diamonds the current monster can split into. This is followed by\nli integers, with positive integers representing a monster ID and -1\nrepresenting a diamond. Each monster will have at least one split rule. Each\nsplit rule will have at least one diamond. The sum of li across all split\nrules will be at most 10^5. Output For each monster, in order of their IDs,\nprint a line with two integers: the smallest and the largest number of\ndiamonds that can possibly be collected by starting with that monster. If\nPiegirl cannot possibly end up in a state without monsters, print -1 for both\nsmallest and the largest value. If she can collect an arbitrarily large number\nof diamonds, print -2 as the largest number of diamonds. If any number in\noutput exceeds 314000000 (but is finite), print 314000000 instead of that\nnumber. Examples Input 6 4 1 3 -1 1 -1 1 2 -1 -1 2 3 -1 3 -1 2 3 -1 -1 -1 3 2\n-1 -1 4 2 4 -1 Output 2 -2 3 4 2 2 -1 -1 Input 3 2 1 2 1 -1 2 2 -1 -1 2 3 2 1\n-1 Output -1 -1 2 2\n\n",
+        "cf_contest_id": 325,
+        "cf_index": "C",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 4\r\n1 3 -1 1 -1\r\n1 2 -1 -1\r\n2 3 -1 3 -1\r\n2 3 -1 -1 -1\r\n3 2 -1 -1\r\n4 2 4 -1\r\n",
+                "2 -2\r\n3 4\r\n2 2\r\n-1 -1\r\n"
+            ],
+            [
+                "3 2\r\n1 2 1 -1\r\n2 2 -1 -1\r\n2 3 2 1 -1\r\n",
+                "-1 -1\r\n2 2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n1 3 -1 1 -1\r\n1 5 -1 -1 -1 -1 -1\r\n",
+                "5 -2\r\n"
+            ],
+            [
+                "5 4\r\n1 2 2 -1\r\n2 2 1 -1\r\n3 4 4 4 4 -1\r\n4 3 -1 -1 -1\r\n3 5 -1 -1 -1 -1 -1\r\n",
+                "-1 -1\r\n-1 -1\r\n5 10\r\n3 3\r\n"
+            ],
+            [
+                "11 10\r\n1 9 -1 -1 -1 -1 -1 -1 -1 -1 -1\r\n1 10 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1\r\n2 11 1 1 1 1 1 1 1 1 1 1 -1\r\n3 11 2 2 2 2 2 2 2 2 2 2 -1\r\n4 11 3 3 3 3 3 3 3 3 3 3 -1\r\n5 11 4 4 4 4 4 4 4 4 4 4 -1\r\n6 11 5 5 5 5 5 5 5 5 5 5 -1\r\n7 11 6 6 6 6 6 6 6 6 6 6 -1\r\n8 11 7 7 7 7 7 7 7 7 7 7 -1\r\n9 11 8 8 8 8 8 8 8 8 8 8 -1\r\n10 11 9 9 9 9 9 9 9 9 9 9 -1\r\n",
+                "9 10\r\n91 101\r\n911 1011\r\n9111 10111\r\n91111 101111\r\n911111 1011111\r\n9111111 10111111\r\n91111111 101111111\r\n314000000 314000000\r\n314000000 314000000\r\n"
+            ],
+            [
+                "6 3\r\n1 3 -1 2 -1\r\n1 2 1 -1\r\n2 3 -1 1 -1\r\n2 2 2 -1\r\n2 2 3 -1\r\n3 1 -1\r\n",
+                "4 -2\r\n2 -2\r\n1 1\r\n"
+            ],
+            [
+                "3 2\r\n1 2 2 -1\r\n2 2 -1 1\r\n2 1 -1\r\n",
+                "2 -2\r\n1 -2\r\n"
+            ],
+            [
+                "1 1\r\n1 1 -1\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "1 1\r\n1 2 1 -1\r\n",
+                "-1 -1\r\n"
+            ],
+            [
+                "5 4\r\n1 3 2 4 -1\r\n2 2 1 -1\r\n3 1 -1\r\n4 2 1 -1\r\n4 2 3 -1\r\n",
+                "-1 -1\r\n-1 -1\r\n1 1\r\n2 2\r\n"
+            ],
+            [
+                "4 3\r\n1 2 1 -1\r\n2 1 -1\r\n3 2 2 -1\r\n3 2 1 -1\r\n",
+                "-1 -1\r\n1 1\r\n2 2\r\n"
+            ],
+            [
+                "4 1\r\n1 3 -1 -1 -1\r\n1 2 -1 -1\r\n1 4 -1 -1 -1 -1\r\n1 3 -1 -1 -1\r\n",
+                "2 4\r\n"
+            ],
+            [
+                "4 3\r\n1 2 2 -1\r\n2 2 3 -1\r\n3 2 2 -1\r\n2 1 -1\r\n",
+                "2 -2\r\n1 -2\r\n2 -2\r\n"
+            ]
+        ]
+    }
+]

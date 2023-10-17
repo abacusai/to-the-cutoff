@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Remove the Substring (hard version)",
+        "description": "The only difference between easy and hard versions is the length of the\nstring. You are given a string \n    s\n and a string \n    t\n, both consisting\nonly of lowercase Latin letters. It is guaranteed that \n    t\n can be obtained\nfrom \n    s\n by removing some (possibly, zero) number of characters (not\nnecessary contiguous) from \n    s\n without changing order of remaining\ncharacters (in other words, it is guaranteed that \n    t\n is a subsequence of\n\n    s\n). For example, the strings \"test\", \"tst\", \"tt\", \"et\" and \"\" are\nsubsequences of the string \"test\". But the strings \"tset\", \"se\", \"contest\" are\nnot subsequences of the string \"test\". You want to remove some substring\n(contiguous subsequence) from \n    s\n of maximum possible length such that\nafter removing this substring \n    t\n will remain a subsequence of \n    s\n. If\nyou want to remove the substring \n    s[l;r]\n then the string \n    s\n will be\ntransformed to \n    s_1 s_2 \n    \u2026 s_l-1 s_r+1 s_r+2\n    \u2026 s_|s|-1\n    s_|s|\n (where \n    |s|\n is the length of \n    s\n). Your task is to find\nthe maximum possible length of the substring you can remove so that \n    t\n is\nstill a subsequence of \n    s\n. Input The first line of the input contains one\nstring \n    s\n consisting of at least \n    1\n and at most \n    2 \n    \u00b7 10^5\n\nlowercase Latin letters. The second line of the input contains one string\n\n    t\n consisting of at least \n    1\n and at most \n    2 \n    \u00b7 10^5\n\nlowercase Latin letters. It is guaranteed that \n    t\n is a subsequence of\n\n    s\n. Output Print one integer \u2014 the maximum possible length of the\nsubstring you can remove so that \n    t\n is still a subsequence of \n    s\n.\nExamples Input bbaba bb Output 3 Input baaba ab Output 2 Input abcde abcde\nOutput 0 Input asdfasdf fasd Output 3\n\n",
+        "cf_contest_id": 1203,
+        "cf_index": "D2",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "greedy",
+            "implementation",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "bbaba\r\nbb\r\n",
+                "3\r\n"
+            ],
+            [
+                "baaba\r\nab\r\n",
+                "2\r\n"
+            ],
+            [
+                "abcde\r\nabcde\r\n",
+                "0\r\n"
+            ],
+            [
+                "asdfasdf\r\nfasd\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "zywmerhahxlqsjekpqsdqxnjiduyjrytswiweohctztgpiorwimhjmdfofqynyggcrtzslbyvkuvqrsgwyacyvcuathplliwwshusluiqwuhutnzwvuchfedhwwfdzizltdxibtsaocpnqezstblgkfdcvfsjjyzwalkksumsaljqljmmkcyejwwdkolmcgmodoiclte\r\nzywmehahxlqjekqsdqjidytswwztgiowimhmffqygctzslbykurwacyvcuaplwshsluiqwuhutnwchfewwfdizttcpnqestgkfvsjylkksumaljmmkcjwwdkolmcgodcle\r\n",
+                "5\r\n"
+            ],
+            [
+                "nqlswpkupyawfzygzjfntqpivmudprpmtkhwjcoabkkxfemjekxvnjikbvtbzgrxyacflvausuwgqfxvfcgxphzeiwpitswykvcsyspvimmynlyeldkqjsogjhszcqtvteiefdcissquzeynmjdhazcygrypyzjhjhsntegsuryjgpknwvnjxplztmjszidqkihuxgzc\r\nnlwkupywfzgzftqpiudprmkhwcozenmjdhacygryjhhntgugpkwvnjxplztszikihgc\r\n",
+                "101\r\n"
+            ],
+            [
+                "mejfmlmclpqwopscpxxtkamtodhogweqtpigxgsbmsdvhcvyenqwsqpuxegugrgkopjwulnuqbqwqsarnymoursenotgeakbslepaacvwiydnqgnetsjaazblnriaqcmolxplvqtfdqtcmwduwrnmemtvlkgbbzkvaplprscuaqfvjlftkblwddcgwsqsfecoqibpncs\r\nm\r\n",
+                "199\r\n"
+            ],
+            [
+                "kbuwmzldbajqgbdyeqqyuvdwsdzvjicqgsadjgruebcsxuhgftlykvuevsldvapqoxkrwjbwjjqquogxkpradzauxxlhrayprgnwxwumabxdojztankeqmraeqbbggrltdvcpiozbrvwhxhjpurwachimqrxrplcavtpaqzemxhrvagbngyqhacuxfbpkwqxyixdfmrj\r\nkbmrxrplcavtpaqemxhagbghacuxbpkwqxidmj\r\n",
+                "150\r\n"
+            ],
+            [
+                "aplxwwvctglkkvfdyfpegleljcjtaxhdjnfonpedzeyvqprewgqwalqafebjvbjmpimoujgcfcnycugvdmgkjeaeggmnrspkydplacliklknqifoenxwxmtxsmakekewtkglligipuhpicngocrzhehelimoiocusgtuzkodlyqeetsiionfrphuoznnnobldhvjagmx\r\naplxwvctgdjfopdzevqpregwqafejvbjpmoujgccncumgkjeaeggnspdplclknifenxxmakekewgligiphingoczheheioiocustuzkodlyeesinfrpuonnobldvagmx\r\n",
+                "21\r\n"
+            ],
+            [
+                "toimpgygoklxroowdhpacrtrrwmkhcgcpidapeyxrjmiqgilveimnazyydvnujtqpenfkeqdbylfdinompxupfwvirxohaampqihjueasygkucweptgcowjibgnwyqetynykgoujeargnhjbmntfovwusqavpdwtpnpqpkcgaxbhgdxloyealksmgkxprtpfugixdyfn\r\npgygkxrowdpcrmkcgciapxjmiqgveimnazydvnujteqdblinmpxpvxoaampesygucweptgcignwytgurgnhjtfovwusqavdtnppcxgdxyalksgkxtid\r\n",
+                "6\r\n"
+            ],
+            [
+                "ziurxtzxixmsmewfuffsqdkpphssdcgybwtmzavkosqtmcntspzvftqybaldjllvgttblectspqinfdhhnpvkcbwjlqlquajueqsgymyekuswjctumsbnvvaiinxjlzcnyixfaykolkeogufvzvhnatqtelgjkqfvexghiznwubwihjkznkhepjzrnyzftmimqtlihpn\r\nzurzximmewfuffskppsdcybwmzavkosqtmctspvftybaljlgtltsqinfdhhpvkcwjlqlqymykusctumsbnvvainxjlcyxfykokeguvvhategjfxinuwihjznkhepjznzftmmqtlihpn\r\n",
+                "8\r\n"
+            ],
+            [
+                "sowebxtwfdqpqkirbgcwzgglhkochlvjydmcksbenikriedfgrutoaqbnfdfzhqzacppcvznjnwmdadlxhowejzderdglkskznacjqqdrgmbnfxhmvgktivxrczqeafsapcbnjpccrbccutaabzwdtvbdpqduhbpcmlfkakimayhdqxhqvajpcfodvkmomvlimooncqi\r\nso\r\n",
+                "198\r\n"
+            ],
+            [
+                "m\r\nm\r\n",
+                "0\r\n"
+            ],
+            [
+                "td\r\nt\r\n",
+                "1\r\n"
+            ],
+            [
+                "ipz\r\nz\r\n",
+                "2\r\n"
+            ],
+            [
+                "cel\r\nc\r\n",
+                "2\r\n"
+            ],
+            [
+                "xmxcpstetnnyxqbdbfsqhyjpdihhcpbxfugnmwhjadphwsialqafdvunwjqpifdqdwoxrkyetoyafjiyaosahwxfoxejwtvtousuailafdlukqfyealdakjxgfagdltxgteasiclclbdutzdxokclotgabcqbytryszetctfvfmxrfouepwyrmvnvvvhoppbcnlkdzio\r\npstnnyxqbfqhdipbxfgmaphialqdvunwjqpifdqdwoxketofjyaohxfoejwtousuaiaukqfyaldakjfgtxgeasiclcldtxokotgabqbrstcffxrfopyrmnvvhoppbcnlkdz\r\n",
+                "4\r\n"
+            ],
+            [
+                "pibvxshjediuehnmfyvprhjtghzadeavjgnlvjwaqzlbexrlrnijokvqirbgfpnwwgnuptzotcdoooorqyqipbfawdslkvqrscnguydrywwzazwohlufbverfvoblvygevornmproyvsnjdxscgyrjmcqsmamfaugfmluuidnkmxbrzfzvmchopukbrlkuinxgridioo\r\npdrwwzzwohlurfvoblvygeonmpoyvjdxscjmcqsmfauguikmxbzfzmchopukbrluidioo\r\n",
+                "101\r\n"
+            ],
+            [
+                "gecewmzjpvbpuvgtxiranywdxlneejahynrmfrpysxwqeymmwtotktkhncrtueulewaunbtcqnglwktiwkkkusjxhnfosjsoujaggwpuaceisnghxvgbdbeadwxshclpmocbyxqqrhthvwpedhorfeytuucbaaxrdrwvwayzadnqxfnhwkeevxzsdytxocjvpqvyxbch\r\nh\r\n",
+                "199\r\n"
+            ],
+            [
+                "eseflxqdffomkoxxhdicryombxleqlvckmqfxxpwipivffhoozteiinpelbaukuifsoygjwyxjlqtazufqrafadzulucrgbtqfsxlnrvauxpojwbpgyzwentjokrkvkepazivjvtxsepruqorgmhvjfnjintftbvnqfwmapmcuilsbkmjgdulgirtpfpywawfpjpbxhy\r\nfnntftvnqwmmulbkmdgifpywfpjpxhy\r\n",
+                "150\r\n"
+            ],
+            [
+                "ppneeasyjzorefvertisgxykuoqsugzppvfoubkybksuwtmmepnauteyemvtwwweftteccshepmnoxoglvpinlcduflxybdkvmjrwxcedsfjskiuxizwlckchsycmbwnlasriohmxwkkqdrpahmeuabdchfmyhbanluynzaaknssnjzbqwhudbupwhqfdvwdbhebykhg\r\nppnuqsppvfoubkybksuwtmmepnauteemvtwweftcsepmnooglvplcuxybdkvjrxcesfskiuzckchsycmwlaomxwkpahmabcmhanlknsnjzbwhudbupwdwdbhebyhg\r\n",
+                "21\r\n"
+            ],
+            [
+                "izoiweukqszkkhwapzxyotbaarpqxbybsjxilhylbbjbvoedrezyluaabsfzvtxxvncdwxrlfdtfvbfoqwlzqwneimwzpoygfdcldmxdhoxzensxlspituzocvzzrfomhggrwurdccgfoorvhyzsdkpjhwakuoxwdjhzaalanyzwuuqwlrtmvmdraleyusjqdyxuztvc\r\noukzkkhwazxbaarpbybsjxlylbbjbrezlasfzvtxvcdxrltffoqwlzqwneizpoygfdcmdxzesxlsitozzrfomhggrwrcfoorvhyzdpjhakuoxdjhzaalanzwqlrtmmraleyjyxutc\r\n",
+                "4\r\n"
+            ],
+            [
+                "qmrzsrvfllfraflralrwlcfjxupnlomnbeuvipcyxxmksztljxqaoqnptwwemhgswpovpnvoqajaqzxpmtqarpgdrgwuuferbhjjowmljtaoiidzkrcaawzomruigpwzgsksgdkbdbrjwaszgdwreyztdctwacfmujdgxvjqoclueiwdgvjcfpfbpmbbmcufjiitndis\r\nqmrzsrflrrwlfjxupnlmevipcyxxmkstljaoqnptweswpovpnvoqajaxptarpgdgwufbhjjoljtiidcawzorugpwzgskgddbrazdwreyztdctcujgxvjqlewvjpfpmbbcjtndis\r\n",
+                "7\r\n"
+            ],
+            [
+                "trlypzzcpqrdgejwjolsefdtaceyixfdnwbphfwutzcweeqjsfqdcuftiscihqbflemognctgylfgtwqhcqjmutymwnxzoobfxopbsduyrvdaptgqecwjtliifaytgqdlbckulbyrpqfcbxmwxzboidqmzeghltlvbobpdidklzrurmfrigprxqowfjeiapiodipbhpt\r\npt\r\n",
+                "198\r\n"
+            ],
+            [
+                "dexradrxekhwsmctzdqyrqctyrduvazzfybzlwdrhjdxawojhilywadneuijwuuwjbnhdjitjekszqjmnhrxulxcwfrwfzjlkzagaygllqzbehxdyiaztrcpjtvrvtmzkhvgnopwdnssyvaagatdvxgwectdpelvjmsgovdxrdeffawhwcdkospyjziiyiwyoofgnxzq\r\ndexrdekhwczqrqtyduvzzyblwhdaojhilwanijuuwbnhjitjeksqjmnhrulxwfwflkgagllbhxyiaztcpjvrvmzkhvnnsaadvxwectdpevjsgodxdefwhwcdospyjziiwoogxz\r\n",
+                "4\r\n"
+            ],
+            [
+                "lyvutlpllxxqnttfihibqdntcxbmnzpyfcpfmcqiazztsesrumkfaksqieruntdgptwgzgsuwezxnzouiyducrcksnxjfnlhiekbnqxdakumkwgunlliwtnkdsletbyeqfxqeitljzgmnqqccuhasbcrarjozprcmxcqvxvjqvjfdljvhvjyrissqopfdcbsajaolxiy\r\nlvuplxntihiqdncbmpyfcfqazztsrumkfasqieuntgtgzguwxnzouiydccksnxjfhieb\r\n",
+                "100\r\n"
+            ],
+            [
+                "ynqvahidlgpkijhypxuxczcgmofasasypqwmloybyaxcjetnwupkkhbfakbkyispgcntzfzokejakhkyzdnndysopyhxivzgfgpqlevpfkyusruchbturvtkmqmmkwdrcnpeotelidokcydqjgmikqwbrulezdkxjrpcfzeblkcgyivijuxquvbeofjgpjlthbiqapdm\r\ny\r\n",
+                "199\r\n"
+            ],
+            [
+                "pofvbxtueyzxgzcrthooeacytrsysourmdvkfhebuqpoofbixkxrveqijcluhgaqbeljezhpeiffpeaejkvvuhbhrlhlwuwpkbmgejmrelsnzlrubrgmqowtfucbjzvqoqcbvrqqljzvlscrrulfahdijkzosggdocqmhpbszktbucsfnfurklmlnxcshtdjhrherwxr\r\npofvbxtuezgrtooacytrssoumdvkuobxr\r\n",
+                "151\r\n"
+            ],
+            [
+                "rycgapxwyctxltrpateousbjtijdfsrxxgexpbiwyijynvomwanlrqbzqbkoaikqyblojwamoqlgoxxtvqatcrmhulzcubrtaguxysvepnrvtppeuzgnncusougnuzcayncuedvadkezhtkqucmfvgtdzcyhlztdtdkaiocdmtmoawzvfojvkdfzlaudxxchpnbbgtkp\r\nrycgpxwytxltrpaeusbjijdxxgexpbiwyjynvoalrbzqaikqywamoloxxtvqrmhulcubtgxysvepnrpzgnunucncuedvequfgtcyhltdtdaiodtmazfov\r\n",
+                "20\r\n"
+            ],
+            [
+                "grkhejdykjmieztowpjdazxmjqlccvlwjjspiupkmhbpuvjfkncwoiastztyekhrpsfwkqwmtrznggbkfwzrtuwswbgowsemwpmssbkzorkmjauqzpsdylnhapjopgiswihierbluojvarvrakdslncrhinbjxyxptiojddnnvxsedklyjehbvsinezsppztbpqswutf\r\nrkhjdykjitopjdxmqlclwjspiupkmhbufknciatzterpsfkmtrznggbkfwzrtwswgowsempsbkzokmauzpsdynhapjpgswibljvaakslncnbjxtjddnnvxyevszspztbpqstf\r\n",
+                "5\r\n"
+            ],
+            [
+                "kxzkueqzheeolprfncwxyxgqqlocajzkusopvpwowdxubsvvtfvnrkyijoxqjawzkvfkainowbxdzcxbgrywttplukaorxvtimqxonumuvsqyfobzorqqsohazhjyvscjhtlgbmetpigfzhtcjipiorcrcsvvdofflgkqzymdxbeaozrgcjxrgtkxrzpshjesucdwhds\r\nkzkqeeolprcxyxgqqloazkuspwouvvvnkyoxjzvkinowxdzbrytluaorximxnmvfoboqqsozjvschtlgbetizhcjipirccvffgkzyxbeozgctkzpsheus\r\n",
+                "5\r\n"
+            ],
+            [
+                "yddetawddikawvqdrlzrupjncowrjegdlffvqomiuczkpezqtnbnuzcalfsvptfvxkwfualvarudertbhngudovyqfqfuccfspgevzqdcknlnxwphudqnbltuvvpojjxnndexpswqcwhadiyryctuychonrgfkxvemyulrelpsjvzdhfhnwugsbtkasxwchysaxervjz\r\nyd\r\n",
+                "198\r\n"
+            ],
+            [
+                "npynh\r\nnnh\r\n",
+                "2\r\n"
+            ],
+            [
+                "aa\r\na\r\n",
+                "1\r\n"
+            ],
+            [
+                "abcc\r\nacc\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

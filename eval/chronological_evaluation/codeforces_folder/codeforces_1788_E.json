@@ -1,0 +1,165 @@
+[
+    {
+        "name": "Sum Over Zero",
+        "description": "You are given an array \n    a_1, a_2, \n    \u2026, a_n\n of \n    n\n integers.\nConsider \n    S\n as a set of segments satisfying the following conditions.\nEach element of \n    S\n should be in form \n    [x, y]\n, where \n    x\n and\n\n    y\n are integers between \n    1\n and \n    n\n, inclusive, and \n    x \n    \u2264\n    y\n. No two segments in \n    S\n intersect with each other. Two segments\n\n    [a, b]\n and \n    [c, d]\n intersect if and only if there exists an integer\n\n    x\n such that \n    a \n    \u2264 x \n    \u2264 b\n and \n    c \n    \u2264 x \n    \u2264 d\n. For\neach \n    [x, y]\n in \n    S\n, \n    a_x+a_x+1+ \n    \u2026 +a_y \n    \u2265 0\n. The\nlength of the segment \n    [x, y]\n is defined as \n    y-x+1\n. \n    f(S)\n is\ndefined as the sum of the lengths of every element in \n    S\n. In a formal\nway, \n    f(S) = \n    \u2211_[x, y] \n    \u2208 S (y - x + 1)\n. Note that if \n    S\n is\nempty, \n    f(S)\n is \n    0\n. What is the maximum \n    f(S)\n among all\npossible \n    S\n? Input The first line contains one integer \n    n\n (\n    1\n    \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5\n). The next line is followed by \n    n\n\nintegers \n    a_1, a_2, \n    \u2026, a_n\n (\n    -10^9 \n    \u2264 a_i \n    \u2264 10^9\n).\nOutput Print a single integer, the maximum \n    f(S)\n among every possible\n\n    S\n. Examples Input 5 3 -3 -2 5 -4 Output 4 Input 10 5 -2 -4 -6 2 3 -6 5 3\n-2 Output 9 Input 4 -1 -2 -3 -4 Output 0 Note In the first example,\n\n    S=\n    \n    [1, 2], [4, 5]\n can be a possible \n    S\n because\n\n    a_1+a_2=0\n and \n    a_4+a_5=1\n. \n    S=\n    \n    [1, 4]\n can also be a\npossible solution. Since there does not exist any \n    S\n that satisfies\n\n    f(S) > 4\n, the answer is \n    4\n. In the second example, \n    S=\n    \n    [1,\n    9]\n is the only set that satisfies \n    f(S)=9\n. Since every possible\n\n    S\n satisfies \n    f(S) \n    \u2264 9\n, the answer is \n    9\n. In the third\nexample, \n    S\n can only be an empty set, so the answer is \n    0\n.\n\n",
+        "cf_contest_id": 1788,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar",
+            "dp"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n3 -3 -2 5 -4\r\n",
+                "4\r\n"
+            ],
+            [
+                "10\r\n5 -2 -4 -6 2 3 -6 5 3 -2\r\n",
+                "9\r\n"
+            ],
+            [
+                "4\r\n-1 -2 -3 -4\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "20\r\n-60877217 183022333 -553243663 223163732 338141900 61581496 -156765526 39472597 384687331 117160357 -195381769 -91427124 -372075513 444619029 -331379833 -545942421 -845913617 -768341467 417761599 -507573094\r\n",
+                "16\r\n"
+            ],
+            [
+                "20\r\n-875462928 187888525 974748543 -42283439 654475992 -326334121 533872958 484300565 -67067746 -569492823 -750329054 338258767 277727139 -671826739 338514621 445782321 460816345 521314146 186403635 -285617866\r\n",
+                "20\r\n"
+            ],
+            [
+                "20\r\n0 -1 1 0 0 -1 1 -1 0 0 0 0 1 1 0 -1 -1 0 -1 -1\r\n",
+                "17\r\n"
+            ],
+            [
+                "20\r\n2 -6 -2 -5 2 -2 -4 -3 2 2 -5 -3 -2 -5 -3 3 2 -2 0 -7\r\n",
+                "11\r\n"
+            ],
+            [
+                "20\r\n-608294260 96515930 50638793 165726137 -705257347 -799558254 -905451268 -237456565 -335548949 -112970349 -430830254 -810415932 -989289871 -236705230 18466457 -124726565 -724908678 464961903 14870134 -819857023\r\n",
+                "6\r\n"
+            ],
+            [
+                "20\r\n-126637978 401805489 612638209 237666608 983022914 734179238 895757996 194069352 470165701 -725464353 339475076 492872603 -137173387 679287049 -481728323 -114269401 -63942279 -441845897 -510830235 -497211239\r\n",
+                "20\r\n"
+            ],
+            [
+                "20\r\n1 0 0 1 1 0 -1 0 0 1 0 -1 1 1 -1 0 0 0 1 -1\r\n",
+                "20\r\n"
+            ],
+            [
+                "20\r\n-3 -1 2 -3 1 3 1 -7 -4 1 -4 -4 1 2 -1 -7 3 -2 -5 0\r\n",
+                "14\r\n"
+            ],
+            [
+                "20\r\n-424695904 -463473940 -960548499 -134693746 18892177 311428458 -270325727 -19849427 395240939 80272052 -374416915 -229687871 -820603153 -358926481 -737053285 -153473854 -501933268 465394348 454950548 275458921\r\n",
+                "13\r\n"
+            ],
+            [
+                "20\r\n-631203277 373739202 605730601 566666420 -198092817 -415677833 965486178 -332775201 -556955845 -340780741 -170465701 -665556246 -842044769 791127882 694659669 786867520 -656319078 601169115 137559135 608824590\r\n",
+                "20\r\n"
+            ],
+            [
+                "20\r\n-1 -1 0 -1 -1 -1 -1 1 1 -1 -1 0 0 -1 -1 -1 1 -1 1 0\r\n",
+                "12\r\n"
+            ],
+            [
+                "20\r\n3 -5 3 1 2 -2 1 -3 -3 0 -5 -3 3 -1 -7 -3 0 2 3 -4\r\n",
+                "15\r\n"
+            ],
+            [
+                "1\r\n2\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n-3\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "10\r\n-6 -7 0 0 -7 -5 -5 -5 1 -5\r\n",
+                "3\r\n"
+            ],
+            [
+                "10\r\n1 -7 -5 -5 -3 -2 -4 -6 3 -6\r\n",
+                "2\r\n"
+            ],
+            [
+                "10\r\n4 0 -1 3 -4 1 4 -6 -4 -1\r\n",
+                "8\r\n"
+            ],
+            [
+                "20\r\n-5 0 -6 -3 -6 -5 -5 -8 -1 -8 0 -4 0 -4 -6 -3 -3 -3 -3 -7\r\n",
+                "3\r\n"
+            ],
+            [
+                "20\r\n-4 -6 -2 3 -7 2 2 -4 1 2 -2 -5 -4 3 -6 -2 -5 -3 -5 -4\r\n",
+                "9\r\n"
+            ],
+            [
+                "20\r\n-3 -6 -4 -6 -5 -2 2 -5 0 -3 -6 1 -6 0 -6 -1 -3 4 3 0\r\n",
+                "10\r\n"
+            ],
+            [
+                "10\r\n1 -1 -8 -4 -4 -2 -8 -1 -8 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "10\r\n3 2 3 -7 -1 -6 -1 -7 -2 -1\r\n",
+                "5\r\n"
+            ],
+            [
+                "10\r\n0 -6 0 -4 -2 1 -5 -3 -3 4\r\n",
+                "5\r\n"
+            ],
+            [
+                "20\r\n-8 -1 1 -6 -3 -3 -7 -3 -5 -5 -2 -4 -5 -4 1 -6 -6 -6 -6 -7\r\n",
+                "3\r\n"
+            ],
+            [
+                "20\r\n0 -2 -6 -4 -3 2 -2 1 2 -4 0 -2 -5 -7 -4 0 1 -3 0 -4\r\n",
+                "10\r\n"
+            ],
+            [
+                "20\r\n-1 -4 -4 -5 3 1 2 0 -4 2 -1 1 3 3 2 -3 1 -5 -5 1\r\n",
+                "16\r\n"
+            ],
+            [
+                "10\r\n-8 -3 0 -6 -8 0 -1 -7 -1 -6\r\n",
+                "2\r\n"
+            ],
+            [
+                "10\r\n-2 0 3 -3 2 -4 -3 -5 -7 -4\r\n",
+                "5\r\n"
+            ],
+            [
+                "10\r\n3 -5 3 -5 -6 -4 -4 -4 -3 0\r\n",
+                "4\r\n"
+            ],
+            [
+                "20\r\n-4 0 -5 1 1 -7 -7 -8 -1 -6 -1 0 0 0 -3 -8 -7 -6 -3 -5\r\n",
+                "6\r\n"
+            ],
+            [
+                "20\r\n-5 0 -5 -5 3 -6 -4 -1 1 2 -1 -3 0 3 -3 1 -2 -6 1 -4\r\n",
+                "11\r\n"
+            ],
+            [
+                "20\r\n1 -5 -4 0 -4 2 2 -1 -5 4 -6 -2 -3 -4 -3 4 -5 0 3 -6\r\n",
+                "11\r\n"
+            ]
+        ]
+    }
+]

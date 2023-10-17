@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Ela and the Wiring Wizard",
+        "description": "Ela needs to send a large package from machine \n    1\n to machine \n    n\n\nthrough a network of machines. Currently, with the network condition, she\ncomplains that the network is too slow and the package can't arrive in time.\nLuckily, a Wiring Wizard offered her a helping hand. The network can be\nrepresented as an undirected connected graph with \n    n\n nodes, each node\nrepresenting a machine. \n    m\n wires are used to connect them. Wire \n    i\n\nis used to connect machines \n    u_i\n and \n    v_i\n, and has a weight\n\n    w_i\n. The aforementioned large package, if going through wire \n    i\n,\nwill move from machine \n    u_i\n to machine \n    v_i\n (or vice versa) in\nexactly \n    w_i\n microseconds. The Wiring Wizard can use his spell an\narbitrary number of times. For each spell, he will choose the wire of index\n\n    i\n, connecting machine \n    u_i\n and \n    v_i\n, and rewire it following\nthese steps: Choose one machine that is connected by this wire. Without loss\nof generality, let's choose \n    v_i\n. Choose a machine that is currently\nconnecting to \n    v_i\n (including \n    u_i\n), call it \n    t_i\n. Disconnect\nthe wire indexed \n    i\n from \n    v_i\n, then using it to connect \n    u_i\n\nand \n    t_i\n. The rewiring of wire \n    i\n will takes \n    w_i\n microseconds,\nand the weight of the wire will not change after this operation. After a\nrewiring, a machine might have some wire connect it with itself. Also, the\nWiring Wizard has warned Ela that rewiring might cause temporary\ndisconnections between some machines, but Ela just ignores it anyway. Her\nmission is to send the large package from machine \n    1\n to machine \n    n\n\nas fast as possible. Note that the Wizard can use his spell on a wire zero,\none, or many times. To make sure the network works seamlessly while\ntransferring the large package, once the package starts transferring from\nmachine \n    1\n, the Wiring Wizard cannot use his spell to move wires around\nanymore. Ela wonders, with the help of the Wiring Wizard, what is the least\namount of time needed to transfer the large package from machine \n    1\n to\n\n    n\n. Input Each test contains multiple test cases. The first line contains\nthe number of test cases \n    t\n (\n    1 \n    \u2264 t \n    \u2264 100\n). The description\nof the test cases follows. The first line contains \n    n\n and \n    m\n (\n    2\n    \n    \u2264 n \n    \u2264 500\n, \n    n - 1 \n    \u2264 m \n    \u2264 250 000\n), the number of nodes\nand number of wires, respectively. For the next \n    m\n lines, \n    i\n-th line\nwill contains \n    u_i\n, \n    v_i\n and \n    w_i\n (\n    1 \n    \u2264 u_i, v_i \n    \u2264\n    n\n, \n    1 \n    \u2264 w_i \n    \u2264 10^9\n) - the indices 2 machines that are\nconnected by the \n    i\n-th edge and the weight of it. It is guaranteed that\nthe sum of \n    n\n over all test cases does not exceed \n    500\n and the sum\nof \n    m\n over all test cases does not exceed \n    250 000\n. The graph in\neach test case is guaranteed to be connected, no self-loops, but it can\ncontain multiple edges. Output For each test case, output one integer denotes\nthe least amount of time needed to transfer the large package from machine\n\n    1\n to \n    n\n. Example Input 3 8 9 1 2 3 6 4 5 3 5 6 6 1 3 7 4 4 3 8 4 2\n3 3 7 8 5 4 5 2 4 5 1 2 1 2 4 1 3 4 1 3 1 1 1 3 2 8 8 4 6 92 7 1 65 6 5 43 6 7\n96 4 3 74 4 8 54 7 4 99 2 5 22 Output 9 2 154 Note Here is the graph in the\nfirst test case in the sample input: Ela can ask the Wiring Wizard to use his\nspell on wire with the index of \n    7\n, which is connecting machines \n    2\n\nand \n    3\n. Then, since the machine \n    8\n is connected to machine \n    3\n,\nthe Wiring Wizard can disconnect wire \n    7\n from machine \n    3\n and connect\nit to machine \n    8\n in \n    3\n microseconds (weight of wire \n    3\n). After\nthat, the package can be sent from machine \n    1\n to machine \n    8\n in\n\n    6\n microseconds. Therefore, the answer is \n    3 + 6 = 9\n microseconds.\nHere is the graph in the third test case in the sample input:\n\n",
+        "cf_contest_id": 1737,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dp",
+            "graphs",
+            "greedy",
+            "implementation",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n8 9\r\n1 2 3\r\n6 4 5\r\n3 5 6\r\n6 1 3\r\n7 4 4\r\n3 8 4\r\n2 3 3\r\n7 8 5\r\n4 5 2\r\n4 5\r\n1 2 1\r\n2 4 1\r\n3 4 1\r\n3 1 1\r\n1 3 2\r\n8 8\r\n4 6 92\r\n7 1 65\r\n6 5 43\r\n6 7 96\r\n4 3 74\r\n4 8 54\r\n7 4 99\r\n2 5 22\r\n",
+                "9\r\n2\r\n154\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n6 6\r\n1 2 1000\r\n2 6 1000\r\n2 3 1000\r\n3 4 1000\r\n3 5 1000\r\n4 5 1\r\n",
+                "6\r\n"
+            ],
+            [
+                "2\r\n6 6\r\n1 2 1000\r\n2 6 1000\r\n2 3 1000\r\n3 4 1000\r\n3 5 1000\r\n4 5 1\r\n5 5\r\n1 2 10\r\n2 3 10\r\n3 4 1\r\n4 2 10\r\n2 5 10\r\n",
+                "6\r\n5\r\n"
+            ],
+            [
+                "1\r\n11 11\r\n1 8 5\r\n8 9 5\r\n9 10 5\r\n10 11 5\r\n1 5 5\r\n5 6 5\r\n6 11 5\r\n1 7 100\r\n2 3 1\r\n3 4 5\r\n4 9 5\r\n",
+                "8\r\n"
+            ],
+            [
+                "1\r\n13 13\r\n1 2 100\r\n2 3 100\r\n3 4 100\r\n4 13 100\r\n1 5 100\r\n5 6 100\r\n6 7 100\r\n7 8 100\r\n8 9 100\r\n9 13 100\r\n7 10 100\r\n10 11 100\r\n11 12 1\r\n",
+                "10\r\n"
+            ]
+        ]
+    }
+]

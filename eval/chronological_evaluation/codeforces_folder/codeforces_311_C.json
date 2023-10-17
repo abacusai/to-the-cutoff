@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Fetch the Treasure",
+        "description": "Rainbow built h cells in a row that are numbered from 1 to h from left to\nright. There are n cells with treasure. We call each of these n cells\n\"Treasure Cell\". The i-th \"Treasure Cell\" is the ai-th cell and the value of\ntreasure in it is ci dollars. Then, Freda went in the first cell. For now, she\ncan go just k cells forward, or return to the first cell. That means Freda was\nable to reach the 1st, (k + 1)-th, (2\u00b7k + 1)-th, (3\u00b7k + 1)-th cells and so on.\nThen Rainbow gave Freda m operations. Each operation is one of the following\nthree types: Add another method x: she can also go just x cells forward at any\nmoment. For example, initially she has only one method k. If at some moment\nshe has methods a1, a2, ..., ar then she can reach all the cells with number\nin form , where vi \u2014 some non-negative integer. Reduce the value of the\ntreasure in the x-th \"Treasure Cell\" by y dollars. In other words, to apply\nassignment cx = cx - y. Ask the value of the most valuable treasure among the\ncells Freda can reach. If Freda cannot reach any cell with the treasure then\nconsider the value of the most valuable treasure equal to 0, and do nothing.\nOtherwise take the most valuable treasure away. If several \"Treasure Cells\"\nhave the most valuable treasure, take the \"Treasure Cell\" with the minimum\nnumber (not necessarily with the minimum number of cell). After that the total\nnumber of cells with a treasure is decreased by one. As a programmer, you are\nasked by Freda to write a program to answer each query. Input The first line\nof the input contains four integers: h (1 \u2264 h \u2264 10^18), n, m (1 \u2264 n, m \u2264 10^5)\nand k (1 \u2264 k \u2264 10^4). Each of the next n lines contains two integers: ai (1 \u2264\nai \u2264 h), ci (1 \u2264 ci \u2264 10^9). That means the i-th \"Treasure Cell\" is the ai-th\ncell and cost of the treasure in that cell is ci dollars. All the ai are\ndistinct. Each of the next m lines is in one of the three following formats:\n\"1 x\" \u2014 an operation of type 1, 1 \u2264 x \u2264 h; \"2 x y\" \u2014 an operation of type 2, 1\n\u2264 x \u2264 n, 0 \u2264 y < cx; \"3\" \u2014 an operation of type 3. There are at most 20\noperations of type 1. It's guaranteed that at any moment treasure in each cell\nhas positive value. It's guaranteed that all operations is correct (no\noperation can decrease the value of the taken tresure). Please, do not use the\n\ncout streams or the \noutput an integer indicates the value (in dollars) of the most valuable\ntreasure among the \"Treasure Cells\" Freda can reach. If there is no such\ntreasure, output 0. Examples Input 10 3 5 2 5 50 7 60 8 100 2 2 5 3 1 3 3 3\nOutput 55 100 50 Note In the sample, there are 10 cells and 3 \"Treasure\nCells\". The first \"Treasure Cell\" is cell 5, having 50 dollars tresure in it.\nThe second \"Treasure Cell\" is cell 7, having 60 dollars tresure in it. The\nthird \"Treasure Cell\" is cell 8, having 100 dollars tresure in it. At first,\nFreda can only reach cell 1, 3, 5, 7 and 9. In the first operation, we reduce\nthe value in the second \"Treasure Cell\" from 60 to 55. Then the most valuable\ntreasure among the \"Treasure Cells\" she can reach is max(50, 55) = 55. After\nthe third operation, she can also go 3 cells forward each step, being able to\nreach cell 1, 3, 4, 5, 6, 7, 8, 9, 10. So the most valuable tresure is 100.\nNoticed that she took the 55 dollars and 100 dollars treasure away, so the\nlast answer is 50.\n\n",
+        "cf_contest_id": 311,
+        "cf_index": "C",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "data structures",
+            "graphs",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 3 5 2\r\n5 50\r\n7 60\r\n8 100\r\n2 2 5\r\n3\r\n1 3\r\n3\r\n3\r\n",
+                "55\r\n100\r\n50\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "484 30 46 67\r\n51 74\r\n105 26\r\n242 24\r\n22 81\r\n48 46\r\n21 11\r\n60 74\r\n160 46\r\n91 3\r\n39 87\r\n100 55\r\n294 58\r\n64 22\r\n380 14\r\n300 33\r\n143 79\r\n15 24\r\n2 40\r\n90 54\r\n323 21\r\n240 6\r\n147 99\r\n187 16\r\n25 30\r\n88 32\r\n130 28\r\n49 98\r\n45 25\r\n14 41\r\n260 74\r\n1 144\r\n1 266\r\n3\r\n2 16 18\r\n1 121\r\n1 270\r\n1 28\r\n1 3\r\n2 24 17\r\n3\r\n2 17 14\r\n2 12 56\r\n3\r\n1 80\r\n1 126\r\n1 99\r\n2 19 0\r\n1 160\r\n3\r\n1 128\r\n1 340\r\n1 130\r\n1 198\r\n2 25 18\r\n1 80\r\n3\r\n1 45\r\n1 126\r\n1 30\r\n1 63\r\n3\r\n3\r\n1 52\r\n3\r\n3\r\n3\r\n3\r\n2 18 37\r\n2 13 4\r\n3\r\n2 25 7\r\n2 10 38\r\n3\r\n3\r\n3\r\n2 23 15\r\n",
+                "0\r\n99\r\n98\r\n81\r\n74\r\n74\r\n61\r\n55\r\n54\r\n46\r\n33\r\n28\r\n26\r\n24\r\n21\r\n"
+            ],
+            [
+                "1444 13 49 42\r\n22 1\r\n306 25\r\n75 9\r\n132 3\r\n651 83\r\n25 43\r\n352 71\r\n646 37\r\n740 92\r\n88 19\r\n408 92\r\n208 93\r\n136 25\r\n2 11 59\r\n1 12\r\n2 5 21\r\n2 13 20\r\n1 66\r\n1 253\r\n1 60\r\n3\r\n3\r\n3\r\n1 1190\r\n1 32\r\n1 570\r\n1 494\r\n2 11 25\r\n2 2 11\r\n3\r\n1 456\r\n3\r\n1 840\r\n2 3 2\r\n3\r\n1 108\r\n2 13 4\r\n1 986\r\n3\r\n1 36\r\n1 299\r\n3\r\n1 780\r\n1 588\r\n2 2 8\r\n1 680\r\n1 135\r\n3\r\n1 56\r\n3\r\n1 108\r\n2 4 0\r\n2 13 0\r\n3\r\n3\r\n3\r\n2 10 3\r\n3\r\n2 1 0\r\n2 1 0\r\n2 10 4\r\n3\r\n",
+                "92\r\n62\r\n43\r\n71\r\n37\r\n8\r\n7\r\n0\r\n93\r\n6\r\n1\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "1444 18 45 31\r\n476 56\r\n176 31\r\n75 47\r\n810 56\r\n324 13\r\n220 17\r\n93 36\r\n84 58\r\n76 58\r\n1036 79\r\n828 13\r\n138 20\r\n750 78\r\n90 3\r\n333 28\r\n442 97\r\n348 16\r\n130 36\r\n3\r\n1 144\r\n1 72\r\n1 210\r\n2 8 43\r\n1 95\r\n1 468\r\n1 580\r\n1 24\r\n2 16 93\r\n2 16 0\r\n2 14 1\r\n3\r\n1 260\r\n2 1 51\r\n2 5 5\r\n3\r\n1 48\r\n1 220\r\n1 504\r\n2 8 10\r\n1 925\r\n3\r\n3\r\n1 180\r\n1 156\r\n2 14 0\r\n2 11 5\r\n1 143\r\n3\r\n1 120\r\n1 256\r\n2 5 1\r\n2 1 2\r\n2 8 0\r\n3\r\n1 627\r\n2 9 9\r\n1 256\r\n1 360\r\n3\r\n2 9 48\r\n3\r\n2 7 6\r\n2 12 16\r\n",
+                "0\r\n79\r\n78\r\n56\r\n31\r\n28\r\n17\r\n16\r\n8\r\n"
+            ]
+        ]
+    }
+]

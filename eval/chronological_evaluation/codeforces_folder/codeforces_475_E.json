@@ -1,0 +1,199 @@
+[
+    {
+        "name": "Strongly Connected City 2",
+        "description": "Imagine a city with n junctions and m streets. Junctions are numbered from 1\nto n. In order to increase the traffic flow, mayor of the city has decided to\nmake each street one-way. This means in the street between junctions u and v,\nthe traffic moves only from u to v or only from v to u. The problem is to\ndirect the traffic flow of streets in a way that maximizes the number of pairs\n(u, v) where 1 \u2264 u, v \u2264 n and it is possible to reach junction v from u by\npassing the streets in their specified direction. Your task is to find out\nmaximal possible number of such pairs. Input The first line of input contains\nintegers n and m, (), denoting the number of junctions and streets of the\ncity. Each of the following m lines contains two integers u and v, (u \u2260 v),\ndenoting endpoints of a street in the city. Between every two junctions there\nwill be at most one street. It is guaranteed that before mayor decision (when\nall streets were two-way) it was possible to reach each junction from any\nother junction. Output Print the maximal number of pairs (u, v) such that that\nit is possible to reach junction v from u after directing the streets.\nExamples Input 5 4 1 2 1 3 1 4 1 5 Output 13 Input 4 5 1 2 2 3 3 4 4 1 1 3\nOutput 16 Input 2 1 1 2 Output 3 Input 6 7 1 2 2 3 1 3 1 4 4 5 5 6 6 4 Output\n27 Note In the first sample, if the mayor makes first and second streets one-\nway towards the junction 1 and third and fourth streets in opposite direction,\nthere would be 13 pairs of reachable junctions: (1, 1), (2, 2), (3, 3), (4,\n4), (5, 5), (2, 1), (3, 1), (1, 4), (1, 5), (2, 4), (2, 5), (3, 4), (3, 5)\n\n",
+        "cf_contest_id": 475,
+        "cf_index": "E",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 4\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n",
+                "13\r\n"
+            ],
+            [
+                "4 5\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n1 3\r\n",
+                "16\r\n"
+            ],
+            [
+                "2 1\r\n1 2\r\n",
+                "3\r\n"
+            ],
+            [
+                "6 7\r\n1 2\r\n2 3\r\n1 3\r\n1 4\r\n4 5\r\n5 6\r\n6 4\r\n",
+                "27\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "17 16\r\n15 6\r\n14 1\r\n16 5\r\n2 16\r\n12 5\r\n4 1\r\n4 3\r\n7 6\r\n6 13\r\n10 11\r\n11 5\r\n8 6\r\n9 5\r\n17 16\r\n5 4\r\n4 15\r\n",
+                "115\r\n"
+            ],
+            [
+                "16 15\r\n16 3\r\n12 14\r\n4 13\r\n8 3\r\n7 10\r\n6 5\r\n9 6\r\n13 9\r\n12 5\r\n16 2\r\n1 11\r\n10 14\r\n8 7\r\n15 2\r\n1 15\r\n",
+                "136\r\n"
+            ],
+            [
+                "16 15\r\n8 3\r\n13 11\r\n5 13\r\n7 14\r\n8 1\r\n10 13\r\n3 12\r\n16 5\r\n9 15\r\n7 15\r\n1 6\r\n1 16\r\n15 10\r\n13 4\r\n10 2\r\n",
+                "114\r\n"
+            ],
+            [
+                "16 15\r\n7 5\r\n2 7\r\n7 1\r\n7 6\r\n7 14\r\n16 7\r\n7 4\r\n7 3\r\n7 8\r\n9 7\r\n7 15\r\n7 11\r\n7 12\r\n7 13\r\n10 7\r\n",
+                "87\r\n"
+            ],
+            [
+                "17 16\r\n15 6\r\n14 1\r\n16 5\r\n2 16\r\n12 5\r\n4 1\r\n4 3\r\n7 6\r\n6 13\r\n10 11\r\n11 5\r\n8 6\r\n9 5\r\n17 16\r\n5 4\r\n4 15\r\n",
+                "115\r\n"
+            ],
+            [
+                "17 16\r\n10 7\r\n7 15\r\n8 6\r\n12 11\r\n17 11\r\n17 5\r\n10 6\r\n2 13\r\n14 9\r\n8 9\r\n5 14\r\n2 3\r\n1 4\r\n16 15\r\n16 4\r\n12 13\r\n",
+                "153\r\n"
+            ],
+            [
+                "17 16\r\n11 1\r\n3 11\r\n13 8\r\n15 4\r\n17 7\r\n8 7\r\n16 5\r\n5 3\r\n9 10\r\n4 7\r\n11 9\r\n12 13\r\n12 14\r\n16 12\r\n4 2\r\n6 2\r\n",
+                "138\r\n"
+            ],
+            [
+                "17 16\r\n9 13\r\n15 6\r\n1 3\r\n13 17\r\n2 9\r\n11 7\r\n5 3\r\n6 16\r\n2 10\r\n15 11\r\n2 12\r\n12 4\r\n1 8\r\n15 14\r\n15 4\r\n13 8\r\n",
+                "134\r\n"
+            ],
+            [
+                "17 16\r\n4 14\r\n2 9\r\n8 5\r\n8 9\r\n6 3\r\n16 4\r\n12 6\r\n7 10\r\n11 15\r\n13 10\r\n17 7\r\n14 15\r\n11 12\r\n2 16\r\n13 1\r\n14 1\r\n",
+                "128\r\n"
+            ],
+            [
+                "17 16\r\n17 12\r\n6 12\r\n1 12\r\n12 10\r\n12 16\r\n12 9\r\n12 2\r\n11 12\r\n12 4\r\n12 3\r\n12 14\r\n8 12\r\n12 15\r\n5 12\r\n12 7\r\n12 13\r\n",
+                "97\r\n"
+            ],
+            [
+                "17 16\r\n15 6\r\n14 1\r\n16 5\r\n2 16\r\n12 5\r\n4 1\r\n4 3\r\n7 6\r\n6 13\r\n10 11\r\n11 5\r\n8 6\r\n9 5\r\n17 16\r\n5 4\r\n4 15\r\n",
+                "115\r\n"
+            ],
+            [
+                "17 16\r\n10 7\r\n7 15\r\n8 6\r\n12 11\r\n17 11\r\n17 5\r\n10 6\r\n2 13\r\n14 9\r\n8 9\r\n5 14\r\n2 3\r\n1 4\r\n16 15\r\n16 4\r\n12 13\r\n",
+                "153\r\n"
+            ],
+            [
+                "17 16\r\n11 1\r\n3 11\r\n13 8\r\n15 4\r\n17 7\r\n8 7\r\n16 5\r\n5 3\r\n9 10\r\n4 7\r\n11 9\r\n12 13\r\n12 14\r\n16 12\r\n4 2\r\n6 2\r\n",
+                "138\r\n"
+            ],
+            [
+                "17 16\r\n9 13\r\n15 6\r\n1 3\r\n13 17\r\n2 9\r\n11 7\r\n5 3\r\n6 16\r\n2 10\r\n15 11\r\n2 12\r\n12 4\r\n1 8\r\n15 14\r\n15 4\r\n13 8\r\n",
+                "134\r\n"
+            ],
+            [
+                "17 16\r\n4 14\r\n2 9\r\n8 5\r\n8 9\r\n6 3\r\n16 4\r\n12 6\r\n7 10\r\n11 15\r\n13 10\r\n17 7\r\n14 15\r\n11 12\r\n2 16\r\n13 1\r\n14 1\r\n",
+                "128\r\n"
+            ],
+            [
+                "17 16\r\n17 12\r\n6 12\r\n1 12\r\n12 10\r\n12 16\r\n12 9\r\n12 2\r\n11 12\r\n12 4\r\n12 3\r\n12 14\r\n8 12\r\n12 15\r\n5 12\r\n12 7\r\n12 13\r\n",
+                "97\r\n"
+            ],
+            [
+                "17 16\r\n13 2\r\n9 7\r\n16 13\r\n13 6\r\n13 15\r\n17 1\r\n4 6\r\n12 15\r\n4 14\r\n16 11\r\n6 10\r\n9 13\r\n3 2\r\n5 6\r\n1 14\r\n8 16\r\n",
+                "113\r\n"
+            ],
+            [
+                "17 16\r\n14 4\r\n2 12\r\n10 5\r\n10 6\r\n14 6\r\n8 15\r\n17 11\r\n4 9\r\n3 12\r\n7 1\r\n15 4\r\n13 16\r\n3 11\r\n9 13\r\n2 7\r\n3 8\r\n",
+                "133\r\n"
+            ],
+            [
+                "17 80\r\n6 5\r\n13 5\r\n5 17\r\n16 15\r\n9 14\r\n3 10\r\n12 11\r\n7 10\r\n6 17\r\n13 11\r\n1 3\r\n13 17\r\n9 1\r\n11 2\r\n12 15\r\n16 4\r\n7 8\r\n2 15\r\n4 11\r\n14 15\r\n12 17\r\n1 11\r\n2 4\r\n8 16\r\n9 2\r\n15 7\r\n16 5\r\n9 11\r\n1 17\r\n13 12\r\n8 3\r\n4 3\r\n13 16\r\n12 4\r\n2 13\r\n15 10\r\n17 2\r\n4 6\r\n6 3\r\n15 1\r\n16 10\r\n16 1\r\n17 10\r\n13 9\r\n6 15\r\n17 4\r\n3 12\r\n12 10\r\n2 7\r\n17 14\r\n6 14\r\n14 3\r\n5 9\r\n8 5\r\n15 8\r\n7 16\r\n13 15\r\n3 11\r\n14 10\r\n1 14\r\n8 11\r\n5 10\r\n7 13\r\n8 14\r\n3 5\r\n17 15\r\n6 10\r\n12 1\r\n7 11\r\n16 2\r\n8 1\r\n5 12\r\n5 4\r\n10 9\r\n10 8\r\n3 2\r\n9 16\r\n2 1\r\n8 4\r\n12 8\r\n",
+                "289\r\n"
+            ],
+            [
+                "17 36\r\n9 10\r\n5 1\r\n1 13\r\n10 7\r\n15 10\r\n16 15\r\n1 4\r\n10 4\r\n1 16\r\n3 6\r\n15 17\r\n3 7\r\n5 17\r\n9 16\r\n17 16\r\n10 1\r\n12 3\r\n15 1\r\n8 3\r\n4 16\r\n14 8\r\n17 11\r\n4 5\r\n2 8\r\n3 14\r\n15 4\r\n5 13\r\n2 12\r\n6 7\r\n13 9\r\n9 11\r\n13 10\r\n1 9\r\n1 11\r\n11 4\r\n11 16\r\n",
+                "219\r\n"
+            ],
+            [
+                "17 20\r\n5 11\r\n16 5\r\n4 3\r\n7 15\r\n9 8\r\n6 11\r\n15 10\r\n9 4\r\n17 1\r\n17 7\r\n8 7\r\n8 15\r\n12 9\r\n1 2\r\n14 5\r\n6 1\r\n10 8\r\n12 3\r\n2 6\r\n4 13\r\n",
+                "167\r\n"
+            ],
+            [
+                "17 24\r\n14 5\r\n3 15\r\n17 5\r\n11 3\r\n1 17\r\n14 15\r\n7 13\r\n4 2\r\n1 6\r\n16 17\r\n16 4\r\n5 3\r\n1 16\r\n5 15\r\n9 4\r\n13 12\r\n15 11\r\n2 17\r\n9 13\r\n14 3\r\n12 8\r\n2 1\r\n10 6\r\n11 5\r\n",
+                "161\r\n"
+            ],
+            [
+                "17 19\r\n14 5\r\n1 15\r\n2 17\r\n17 13\r\n6 13\r\n4 6\r\n13 8\r\n4 2\r\n10 16\r\n9 16\r\n7 14\r\n12 5\r\n3 10\r\n8 12\r\n15 4\r\n10 9\r\n3 13\r\n9 3\r\n11 15\r\n",
+                "156\r\n"
+            ],
+            [
+                "17 24\r\n3 8\r\n10 6\r\n11 3\r\n7 15\r\n5 10\r\n8 17\r\n12 8\r\n11 17\r\n11 12\r\n2 8\r\n8 11\r\n14 8\r\n1 16\r\n7 13\r\n12 17\r\n7 2\r\n1 4\r\n14 12\r\n4 3\r\n5 1\r\n7 9\r\n17 14\r\n3 14\r\n14 11\r\n",
+                "162\r\n"
+            ],
+            [
+                "50 49\r\n22 40\r\n3 30\r\n13 49\r\n38 13\r\n6 48\r\n44 18\r\n17 45\r\n7 22\r\n6 28\r\n35 9\r\n3 49\r\n26 16\r\n33 50\r\n49 2\r\n16 33\r\n46 33\r\n14 29\r\n15 46\r\n18 37\r\n16 25\r\n45 33\r\n3 14\r\n17 5\r\n31 2\r\n19 32\r\n46 34\r\n11 30\r\n1 17\r\n41 17\r\n19 12\r\n16 4\r\n21 27\r\n43 3\r\n23 42\r\n33 9\r\n10 43\r\n33 22\r\n12 2\r\n48 39\r\n14 24\r\n49 45\r\n20 25\r\n18 14\r\n47 20\r\n50 21\r\n23 36\r\n12 23\r\n28 8\r\n48 33\r\n",
+                "801\r\n"
+            ],
+            [
+                "50 49\r\n6 35\r\n44 27\r\n50 8\r\n33 42\r\n34 43\r\n14 3\r\n8 12\r\n16 40\r\n34 2\r\n36 32\r\n30 48\r\n15 37\r\n1 9\r\n30 39\r\n10 5\r\n29 36\r\n50 3\r\n1 21\r\n49 24\r\n13 25\r\n43 14\r\n22 40\r\n33 20\r\n26 46\r\n9 5\r\n27 5\r\n48 11\r\n15 31\r\n39 17\r\n32 41\r\n25 35\r\n11 47\r\n37 26\r\n18 28\r\n29 23\r\n21 41\r\n13 16\r\n18 45\r\n7 10\r\n20 47\r\n7 31\r\n24 4\r\n23 2\r\n45 6\r\n28 46\r\n44 38\r\n42 19\r\n38 19\r\n4 17\r\n",
+                "1019\r\n"
+            ],
+            [
+                "50 49\r\n38 6\r\n5 18\r\n39 42\r\n28 21\r\n40 30\r\n29 25\r\n2 35\r\n1 7\r\n48 8\r\n50 23\r\n39 31\r\n30 18\r\n39 17\r\n45 36\r\n1 40\r\n4 50\r\n48 3\r\n32 9\r\n42 33\r\n28 36\r\n43 33\r\n14 16\r\n24 31\r\n16 26\r\n38 24\r\n43 22\r\n18 12\r\n44 45\r\n38 12\r\n28 46\r\n34 26\r\n9 11\r\n15 19\r\n2 19\r\n21 4\r\n41 27\r\n11 45\r\n32 13\r\n47 1\r\n50 25\r\n3 27\r\n19 13\r\n10 29\r\n3 22\r\n33 37\r\n11 49\r\n26 35\r\n20 10\r\n29 7\r\n",
+                "1088\r\n"
+            ],
+            [
+                "50 49\r\n32 30\r\n48 23\r\n20 34\r\n25 47\r\n5 43\r\n49 16\r\n8 42\r\n42 7\r\n33 41\r\n7 18\r\n28 25\r\n39 23\r\n13 31\r\n33 32\r\n26 8\r\n44 22\r\n17 21\r\n17 25\r\n4 50\r\n19 44\r\n48 50\r\n44 26\r\n1 50\r\n38 13\r\n35 49\r\n41 21\r\n4 27\r\n36 4\r\n39 3\r\n28 40\r\n2 4\r\n33 11\r\n29 21\r\n26 6\r\n27 45\r\n10 19\r\n34 26\r\n32 12\r\n44 37\r\n49 18\r\n9 26\r\n1 24\r\n1 43\r\n45 46\r\n2 30\r\n47 14\r\n42 15\r\n3 49\r\n39 38\r\n",
+                "971\r\n"
+            ],
+            [
+                "50 49\r\n15 42\r\n30 15\r\n20 39\r\n2 48\r\n15 49\r\n17 14\r\n1 44\r\n6 15\r\n5 37\r\n43 36\r\n36 42\r\n16 25\r\n47 38\r\n22 14\r\n19 9\r\n35 16\r\n45 15\r\n2 26\r\n18 30\r\n50 33\r\n46 8\r\n15 31\r\n18 41\r\n15 29\r\n5 29\r\n11 22\r\n31 27\r\n15 17\r\n11 34\r\n20 23\r\n28 3\r\n6 44\r\n15 50\r\n12 1\r\n49 8\r\n21 33\r\n45 4\r\n43 3\r\n27 26\r\n19 41\r\n4 39\r\n24 13\r\n32 37\r\n13 15\r\n35 24\r\n40 7\r\n12 10\r\n38 21\r\n46 7\r\n",
+                "795\r\n"
+            ],
+            [
+                "50 49\r\n22 18\r\n40 22\r\n22 44\r\n37 22\r\n5 22\r\n22 19\r\n14 22\r\n22 3\r\n30 22\r\n22 41\r\n22 15\r\n22 33\r\n36 22\r\n6 22\r\n17 22\r\n22 42\r\n22 1\r\n22 45\r\n22 11\r\n22 50\r\n34 22\r\n43 22\r\n28 22\r\n27 22\r\n22 46\r\n22 35\r\n20 22\r\n22 10\r\n22 16\r\n8 22\r\n25 22\r\n22 2\r\n22 32\r\n22 26\r\n31 22\r\n22 23\r\n38 22\r\n13 22\r\n49 22\r\n22 24\r\n22 47\r\n22 39\r\n22 4\r\n9 22\r\n22 7\r\n22 12\r\n22 48\r\n29 22\r\n22 21\r\n",
+                "699\r\n"
+            ],
+            [
+                "50 49\r\n22 40\r\n3 30\r\n13 49\r\n38 13\r\n6 48\r\n44 18\r\n17 45\r\n7 22\r\n6 28\r\n35 9\r\n3 49\r\n26 16\r\n33 50\r\n49 2\r\n16 33\r\n46 33\r\n14 29\r\n15 46\r\n18 37\r\n16 25\r\n45 33\r\n3 14\r\n17 5\r\n31 2\r\n19 32\r\n46 34\r\n11 30\r\n1 17\r\n41 17\r\n19 12\r\n16 4\r\n21 27\r\n43 3\r\n23 42\r\n33 9\r\n10 43\r\n33 22\r\n12 2\r\n48 39\r\n14 24\r\n49 45\r\n20 25\r\n18 14\r\n47 20\r\n50 21\r\n23 36\r\n12 23\r\n28 8\r\n48 33\r\n",
+                "801\r\n"
+            ],
+            [
+                "50 49\r\n6 35\r\n44 27\r\n50 8\r\n33 42\r\n34 43\r\n14 3\r\n8 12\r\n16 40\r\n34 2\r\n36 32\r\n30 48\r\n15 37\r\n1 9\r\n30 39\r\n10 5\r\n29 36\r\n50 3\r\n1 21\r\n49 24\r\n13 25\r\n43 14\r\n22 40\r\n33 20\r\n26 46\r\n9 5\r\n27 5\r\n48 11\r\n15 31\r\n39 17\r\n32 41\r\n25 35\r\n11 47\r\n37 26\r\n18 28\r\n29 23\r\n21 41\r\n13 16\r\n18 45\r\n7 10\r\n20 47\r\n7 31\r\n24 4\r\n23 2\r\n45 6\r\n28 46\r\n44 38\r\n42 19\r\n38 19\r\n4 17\r\n",
+                "1019\r\n"
+            ],
+            [
+                "50 49\r\n38 6\r\n5 18\r\n39 42\r\n28 21\r\n40 30\r\n29 25\r\n2 35\r\n1 7\r\n48 8\r\n50 23\r\n39 31\r\n30 18\r\n39 17\r\n45 36\r\n1 40\r\n4 50\r\n48 3\r\n32 9\r\n42 33\r\n28 36\r\n43 33\r\n14 16\r\n24 31\r\n16 26\r\n38 24\r\n43 22\r\n18 12\r\n44 45\r\n38 12\r\n28 46\r\n34 26\r\n9 11\r\n15 19\r\n2 19\r\n21 4\r\n41 27\r\n11 45\r\n32 13\r\n47 1\r\n50 25\r\n3 27\r\n19 13\r\n10 29\r\n3 22\r\n33 37\r\n11 49\r\n26 35\r\n20 10\r\n29 7\r\n",
+                "1088\r\n"
+            ],
+            [
+                "50 49\r\n32 30\r\n48 23\r\n20 34\r\n25 47\r\n5 43\r\n49 16\r\n8 42\r\n42 7\r\n33 41\r\n7 18\r\n28 25\r\n39 23\r\n13 31\r\n33 32\r\n26 8\r\n44 22\r\n17 21\r\n17 25\r\n4 50\r\n19 44\r\n48 50\r\n44 26\r\n1 50\r\n38 13\r\n35 49\r\n41 21\r\n4 27\r\n36 4\r\n39 3\r\n28 40\r\n2 4\r\n33 11\r\n29 21\r\n26 6\r\n27 45\r\n10 19\r\n34 26\r\n32 12\r\n44 37\r\n49 18\r\n9 26\r\n1 24\r\n1 43\r\n45 46\r\n2 30\r\n47 14\r\n42 15\r\n3 49\r\n39 38\r\n",
+                "971\r\n"
+            ],
+            [
+                "50 49\r\n15 42\r\n30 15\r\n20 39\r\n2 48\r\n15 49\r\n17 14\r\n1 44\r\n6 15\r\n5 37\r\n43 36\r\n36 42\r\n16 25\r\n47 38\r\n22 14\r\n19 9\r\n35 16\r\n45 15\r\n2 26\r\n18 30\r\n50 33\r\n46 8\r\n15 31\r\n18 41\r\n15 29\r\n5 29\r\n11 22\r\n31 27\r\n15 17\r\n11 34\r\n20 23\r\n28 3\r\n6 44\r\n15 50\r\n12 1\r\n49 8\r\n21 33\r\n45 4\r\n43 3\r\n27 26\r\n19 41\r\n4 39\r\n24 13\r\n32 37\r\n13 15\r\n35 24\r\n40 7\r\n12 10\r\n38 21\r\n46 7\r\n",
+                "795\r\n"
+            ],
+            [
+                "50 49\r\n22 18\r\n40 22\r\n22 44\r\n37 22\r\n5 22\r\n22 19\r\n14 22\r\n22 3\r\n30 22\r\n22 41\r\n22 15\r\n22 33\r\n36 22\r\n6 22\r\n17 22\r\n22 42\r\n22 1\r\n22 45\r\n22 11\r\n22 50\r\n34 22\r\n43 22\r\n28 22\r\n27 22\r\n22 46\r\n22 35\r\n20 22\r\n22 10\r\n22 16\r\n8 22\r\n25 22\r\n22 2\r\n22 32\r\n22 26\r\n31 22\r\n22 23\r\n38 22\r\n13 22\r\n49 22\r\n22 24\r\n22 47\r\n22 39\r\n22 4\r\n9 22\r\n22 7\r\n22 12\r\n22 48\r\n29 22\r\n22 21\r\n",
+                "699\r\n"
+            ],
+            [
+                "50 49\r\n5 21\r\n11 48\r\n14 2\r\n9 24\r\n9 32\r\n1 24\r\n38 3\r\n1 19\r\n6 24\r\n17 25\r\n46 36\r\n3 18\r\n15 33\r\n45 24\r\n36 24\r\n7 30\r\n40 24\r\n32 26\r\n20 22\r\n16 30\r\n45 4\r\n34 37\r\n39 23\r\n36 29\r\n23 42\r\n31 50\r\n3 7\r\n48 10\r\n28 17\r\n8 16\r\n47 40\r\n43 20\r\n2 41\r\n24 7\r\n7 21\r\n4 27\r\n12 41\r\n19 35\r\n50 14\r\n10 7\r\n13 12\r\n47 49\r\n34 6\r\n33 44\r\n2 22\r\n44 7\r\n39 2\r\n2 24\r\n25 7\r\n",
+                "772\r\n"
+            ],
+            [
+                "50 49\r\n27 38\r\n29 16\r\n40 45\r\n16 36\r\n7 20\r\n26 18\r\n32 40\r\n29 22\r\n40 42\r\n12 20\r\n30 42\r\n38 23\r\n24 46\r\n33 49\r\n28 5\r\n46 12\r\n31 39\r\n2 22\r\n12 31\r\n50 18\r\n21 36\r\n11 28\r\n10 23\r\n2 15\r\n13 27\r\n36 23\r\n6 43\r\n25 49\r\n34 40\r\n34 4\r\n8 11\r\n31 19\r\n29 35\r\n17 9\r\n37 39\r\n14 39\r\n25 15\r\n5 30\r\n3 27\r\n43 18\r\n6 47\r\n24 13\r\n48 11\r\n41 10\r\n44 21\r\n43 49\r\n1 19\r\n8 17\r\n26 17\r\n",
+                "1061\r\n"
+            ],
+            [
+                "50 56\r\n6 9\r\n21 15\r\n13 26\r\n10 42\r\n33 45\r\n39 27\r\n7 31\r\n36 39\r\n21 38\r\n29 13\r\n33 12\r\n40 44\r\n41 47\r\n8 34\r\n40 42\r\n35 5\r\n3 48\r\n27 14\r\n1 40\r\n6 18\r\n17 8\r\n21 43\r\n7 16\r\n37 18\r\n48 30\r\n33 20\r\n41 17\r\n31 16\r\n41 48\r\n42 5\r\n25 10\r\n34 49\r\n40 23\r\n2 44\r\n20 27\r\n3 28\r\n23 39\r\n32 49\r\n33 4\r\n5 19\r\n23 16\r\n4 12\r\n11 45\r\n28 30\r\n8 47\r\n15 38\r\n48 9\r\n46 26\r\n37 26\r\n19 24\r\n22 49\r\n32 21\r\n41 8\r\n21 5\r\n10 50\r\n20 4\r\n",
+                "1049\r\n"
+            ],
+            [
+                "50 64\r\n35 11\r\n28 15\r\n5 49\r\n2 39\r\n34 26\r\n42 9\r\n43 27\r\n30 25\r\n7 41\r\n33 18\r\n13 36\r\n7 23\r\n32 11\r\n4 37\r\n22 4\r\n44 26\r\n50 23\r\n14 16\r\n21 35\r\n15 43\r\n36 29\r\n12 14\r\n40 14\r\n17 27\r\n33 46\r\n49 10\r\n17 20\r\n20 27\r\n30 46\r\n19 24\r\n34 19\r\n47 42\r\n15 3\r\n29 13\r\n31 47\r\n44 34\r\n47 9\r\n28 19\r\n5 8\r\n22 6\r\n10 9\r\n13 41\r\n26 48\r\n14 32\r\n33 39\r\n36 25\r\n16 40\r\n20 45\r\n21 32\r\n49 41\r\n18 2\r\n1 46\r\n24 7\r\n8 10\r\n6 37\r\n41 40\r\n37 32\r\n5 10\r\n46 25\r\n38 24\r\n45 27\r\n30 1\r\n41 29\r\n48 34\r\n",
+                "1001\r\n"
+            ],
+            [
+                "50 61\r\n9 41\r\n16 37\r\n38 12\r\n9 32\r\n12 25\r\n27 44\r\n42 1\r\n24 15\r\n36 27\r\n47 14\r\n26 22\r\n26 45\r\n34 48\r\n21 7\r\n17 45\r\n5 2\r\n3 40\r\n30 16\r\n14 44\r\n46 1\r\n50 47\r\n48 33\r\n31 18\r\n15 28\r\n41 8\r\n10 23\r\n3 6\r\n40 6\r\n36 16\r\n10 43\r\n35 13\r\n42 16\r\n49 18\r\n16 26\r\n21 2\r\n4 46\r\n16 15\r\n29 40\r\n11 26\r\n22 43\r\n37 33\r\n36 31\r\n5 21\r\n27 29\r\n11 20\r\n28 24\r\n43 23\r\n44 50\r\n44 47\r\n11 13\r\n29 3\r\n36 5\r\n35 20\r\n4 1\r\n9 16\r\n5 7\r\n19 31\r\n10 22\r\n8 32\r\n39 24\r\n25 30\r\n",
+                "839\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,164 @@
+[
+    {
+        "name": "The Artful Expedient",
+        "description": "Rock... Paper! After Karen have found the deterministic winning (losing?)\nstrategy for rock-paper-scissors, her brother, Koyomi, comes up with a new\ngame as a substitute. The game works as follows. A positive integer n is\ndecided first. Both Koyomi and Karen independently choose n distinct positive\nintegers, denoted by x1, x2, ..., xn and y1, y2, ..., yn respectively. They\nreveal their sequences, and repeat until all of 2n integers become distinct,\nwhich is the only final state to be kept and considered. Then they count the\nnumber of ordered pairs (i, j) (1 \u2264 i, j \u2264 n) such that the value xi xor yj\nequals to one of the 2n integers. Here xor means the bitwise exclusive or\noperation on two integers, and is denoted by operators ^ and/or xor in most\nprogramming languages. Karen claims a win if the number of such pairs is even,\nand Koyomi does otherwise. And you're here to help determine the winner of\ntheir latest game. Input The first line of input contains a positive integer n\n(1 \u2264 n \u2264 2 000) \u2014 the length of both sequences. The second line contains n\nspace-separated integers x1, x2, ..., xn (1 \u2264 xi \u2264 2\u00b710^6) \u2014 the integers\nfinally chosen by Koyomi. The third line contains n space-separated integers\ny1, y2, ..., yn (1 \u2264 yi \u2264 2\u00b710^6) \u2014 the integers finally chosen by Karen.\nInput guarantees that the given 2n integers are pairwise distinct, that is, no\npair (i, j) (1 \u2264 i, j \u2264 n) exists such that one of the following holds: xi =\nyj; i \u2260 j and xi = xj; i \u2260 j and yi = yj. Output Output one line \u2014 the name of\nthe winner, that is, \"Koyomi\" or \"Karen\" (without quotes). Please be aware of\nthe capitalization. Examples Input 3 1 2 3 4 5 6 Output Karen Input 5 2 4 6 8\n10 9 7 5 3 1 Output Karen Note In the first example, there are 6 pairs\nsatisfying the constraint: (1, 1), (1, 2), (2, 1), (2, 3), (3, 2) and (3, 3).\nThus, Karen wins since 6 is an even number. In the second example, there are\n16 such pairs, and Karen wins again.\n\n",
+        "cf_contest_id": 869,
+        "cf_index": "A",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n1 2 3\r\n4 5 6\r\n",
+                "Karen"
+            ],
+            [
+                "5\r\n2 4 6 8 10\r\n9 7 5 3 1\r\n",
+                "Karen"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1\r\n2000000\r\n",
+                "Karen"
+            ],
+            [
+                "2\r\n97153 2000000\r\n1999998 254\r\n",
+                "Karen"
+            ],
+            [
+                "15\r\n31 30 29 28 27 26 25 24 23 22 21 20 19 18 17\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15\r\n",
+                "Karen"
+            ],
+            [
+                "30\r\n79656 68607 871714 1858841 237684 1177337 532141 161161 1111201 527235 323345 1979059 665353 507265 1290761 610606 1238375 743262 106355 1167830 180315 1233029 816465 752968 782570 1499881 1328457 1867240 13948 1302782\r\n322597 1868510 1958236 1348157 765908 1023636 874300 537124 631783 414906 886318 1931572 1381013 992451 1305644 1525745 716087 83173 303248 1572710 43084 333341 992413 267806 70390 644521 1014900 497068 178940 1920268\r\n",
+                "Karen"
+            ],
+            [
+                "30\r\n1143673 436496 1214486 1315862 148404 724601 1430740 1433008 1654610 1635673 614673 1713408 1270999 1697 1463796 50027 525482 1659078 688200 842647 518551 877506 1017082 1807856 3280 759698 1208220 470180 829800 1960886\r\n1312613 1965095 967255 1289012 1950383 582960 856825 49684 808824 319418 1968270 190821 344545 211332 1219388 1773751 1876402 132626 541448 1584672 24276 1053225 1823073 1858232 1209173 1035991 1956373 1237148 1973608 848873\r\n",
+                "Karen"
+            ],
+            [
+                "1\r\n2\r\n3\r\n",
+                "Karen"
+            ],
+            [
+                "1\r\n1048576\r\n1020000\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n9 33 69\r\n71 74 100\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 2 3\r\n9 5 6\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 7 8\r\n9 10 20\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 3 2\r\n4 5 8\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n2 1 100\r\n3 4 9\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n3 1 100\r\n2 1000 100000\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 2 5\r\n3 4 6\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n3 1 8\r\n2 4 17\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 5 6\r\n7 8 3\r\n",
+                "Karen"
+            ],
+            [
+                "1\r\n1\r\n3\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 3 10\r\n2 4 20\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n7 8 10\r\n15 9 11\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n5 6 8\r\n3 100 9\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 2 3\r\n4 5 8\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 2 19\r\n3 7 30\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 2 3\r\n6 7 8\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 4 55\r\n2 3 9\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 100 200\r\n5 4 500\r\n",
+                "Karen"
+            ],
+            [
+                "1\r\n6\r\n7\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 3 5\r\n2 4 13\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n3 1 100\r\n2 1000 10000\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 3 9\r\n2 4 40\r\n",
+                "Karen"
+            ],
+            [
+                "2\r\n1 199999\r\n1935807 2000000\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 3 8\r\n2 4 24\r\n",
+                "Karen"
+            ],
+            [
+                "2\r\n4 1\r\n7 3\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 2 4\r\n3 7 8\r\n",
+                "Karen"
+            ],
+            [
+                "3\r\n1 6 10000\r\n2 3 100000\r\n",
+                "Karen"
+            ]
+        ]
+    }
+]

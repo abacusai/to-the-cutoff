@@ -1,0 +1,152 @@
+[
+    {
+        "name": "Excitation of Atoms",
+        "description": "Mr. Chanek is currently participating in a science fair that is popular in\ntown. He finds an exciting puzzle in the fair and wants to solve it. There are\n\n    N\n atoms numbered from \n    1\n to \n    N\n. These atoms are especially\nquirky. Initially, each atom is in normal state. Each atom can be in an\nexcited. Exciting atom \n    i\n requires \n    D_i\n energy. When atom \n    i\n is\nexcited, it will give \n    A_i\n energy. You can excite any number of atoms\n(including zero). These atoms also form a peculiar one-way bond. For each\n\n    i\n, \n    (1 \n    \u2264 i < N)\n, if atom \n    i\n is excited, atom \n    E_i\n\nwill also be excited at no cost. Initially, \n    E_i\n = \n    i+1\n. Note that\natom \n    N\n cannot form a bond to any atom. Mr. Chanek must change exactly\n\n    K\n bonds. Exactly \n    K\n times, Mr. Chanek chooses an atom \n    i\n,\n\n    (1 \n    \u2264 i < N)\n and changes \n    E_i\n to a different value other than\n\n    i\n and the current \n    E_i\n. Note that an atom's bond can remain\nunchanged or changed more than once. Help Mr. Chanek determine the maximum\nenergy that he can achieve! note: You must first change exactly \n    K\n bonds\nbefore you can start exciting atoms. Input The first line contains two\nintegers \n    N\n \n    K\n \n    (4 \n    \u2264 N \n    \u2264 10^5, 0 \n    \u2264 K < N)\n, the\nnumber of atoms, and the number of bonds that must be changed. The second line\ncontains \n    N\n integers \n    A_i\n \n    (1 \n    \u2264 A_i \n    \u2264 10^6)\n, which\ndenotes the energy given by atom \n    i\n when on excited state. The third line\ncontains \n    N\n integers \n    D_i\n \n    (1 \n    \u2264 D_i \n    \u2264 10^6)\n, which\ndenotes the energy needed to excite atom \n    i\n. Output A line with an\ninteger that denotes the maximum number of energy that Mr. Chanek can get.\nExample Input 6 1 5 6 7 8 10 2 3 5 6 7 1 10 Output 35 Note An optimal solution\nto change \n    E_5\n to 1 and then excite atom 5 with energy 1. It will cause\natoms 1, 2, 3, 4, 5 be excited. The total energy gained by Mr. Chanek is (5 +\n6 + 7 + 8 + 10) - 1 = 35. Another possible way is to change \n    E_3\n to 1 and\nthen exciting atom 3 (which will excite atom 1, 2, 3) and exciting atom 4\n(which will excite atom 4, 5, 6). The total energy gained by Mr. Chanek is (5\n+ 6 + 7 + 8 + 10 + 2) - (6 + 7) = 25 which is not optimal.\n\n",
+        "cf_contest_id": 1425,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 1\r\n5 6 7 8 10 2\r\n3 5 6 7 1 10\r\n",
+                "35\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 0\r\n5 3 2 2\r\n13 8 5 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 0\r\n1 1 1 1 1\r\n10 10 10 10 10\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 1\r\n1 1 1 1 1\r\n10 10 10 10 10\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 2\r\n1 1 1 1\r\n10 10 10 10\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 2\r\n1 2 4 8\r\n1 5 3 5\r\n",
+                "14\r\n"
+            ],
+            [
+                "4 2\r\n1 2 4 8\r\n5 1 3 5\r\n",
+                "14\r\n"
+            ],
+            [
+                "4 2\r\n1 2 4 8\r\n5 3 1 5\r\n",
+                "14\r\n"
+            ],
+            [
+                "4 2\r\n1 2 4 8\r\n6 5 3 1\r\n",
+                "12\r\n"
+            ],
+            [
+                "4 3\r\n1 1 1 1\r\n10 10 10 10\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 3\r\n1 2 4 8\r\n1 5 3 5\r\n",
+                "14\r\n"
+            ],
+            [
+                "4 3\r\n1 2 4 8\r\n5 1 3 5\r\n",
+                "14\r\n"
+            ],
+            [
+                "4 3\r\n1 2 4 8\r\n5 3 1 5\r\n",
+                "14\r\n"
+            ],
+            [
+                "4 3\r\n1 2 4 8\r\n6 5 3 1\r\n",
+                "12\r\n"
+            ],
+            [
+                "4 1\r\n2 5 2 1\r\n101 2 101 100\r\n",
+                "7\r\n"
+            ],
+            [
+                "5 1\r\n1 2 2 2 1\r\n1 101 101 101 100\r\n",
+                "6\r\n"
+            ],
+            [
+                "4 2\r\n1 2 4 8\r\n17 15 16 1\r\n",
+                "7\r\n"
+            ],
+            [
+                "4 3\r\n1 2 4 8\r\n17 15 16 1\r\n",
+                "7\r\n"
+            ],
+            [
+                "4 1\r\n3 2 3 4\r\n8 1 2 8\r\n",
+                "9\r\n"
+            ],
+            [
+                "5 1\r\n3 2 3 4 5\r\n8 1 2 8 8\r\n",
+                "14\r\n"
+            ],
+            [
+                "5 1\r\n3 2 1 4 8\r\n8 1 10 3 5\r\n",
+                "14\r\n"
+            ],
+            [
+                "4 1\r\n3 2 1 5\r\n8 5 4 4\r\n",
+                "3\r\n"
+            ],
+            [
+                "5 1\r\n2 5 11 12 13\r\n1 2 100 100 100\r\n",
+                "40\r\n"
+            ],
+            [
+                "4 1\r\n2 5 11 11\r\n1 2 100 100\r\n",
+                "26\r\n"
+            ],
+            [
+                "4 1\r\n10 10 9 100\r\n1 10 10 1000000\r\n",
+                "119\r\n"
+            ],
+            [
+                "4 1\r\n10 9 10 100\r\n1 10 10 1000000\r\n",
+                "119\r\n"
+            ],
+            [
+                "4 1\r\n10 9 9 7\r\n1 11 11 10\r\n",
+                "27\r\n"
+            ],
+            [
+                "6 1\r\n1 10 10 5 20 100\r\n1000000 1 10 10 100 1000000\r\n",
+                "144\r\n"
+            ],
+            [
+                "6 1\r\n1 10 10 20 5 100\r\n1000000 1 10 100 10 1000000\r\n",
+                "144\r\n"
+            ],
+            [
+                "4 1\r\n1 1 3 5\r\n100 100 1 100\r\n",
+                "7\r\n"
+            ],
+            [
+                "5 1\r\n1 1 4 5 12\r\n100 100 7 2 10\r\n",
+                "15\r\n"
+            ],
+            [
+                "4 1\r\n1 12 13 20\r\n10 5 4 100\r\n",
+                "40\r\n"
+            ],
+            [
+                "5 1\r\n1 12 13 20 30\r\n10 5 4 1 100\r\n",
+                "71\r\n"
+            ]
+        ]
+    }
+]

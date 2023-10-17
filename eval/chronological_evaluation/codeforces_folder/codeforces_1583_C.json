@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Omkar and Determination",
+        "description": "The problem statement looms below, filling you with determination. Consider a\ngrid in which some cells are empty and some cells are filled. Call a cell in\nthis grid exitable if, starting at that cell, you can exit the grid by moving\nup and left through only empty cells. This includes the cell itself, so all\nfilled in cells are not exitable. Note that you can exit the grid from any\nleftmost empty cell (cell in the first column) by going left, and from any\ntopmost empty cell (cell in the first row) by going up. Let's call a grid\ndeterminable if, given only which cells are exitable, we can exactly determine\nwhich cells are filled in and which aren't. You are given a grid \n    a\n of\ndimensions \n    n \n    \u00d7 m\n , i. e. a grid with \n    n\n rows and \n    m\n\ncolumns. You need to answer \n    q\n queries (\n    1 \n    \u2264 q \n    \u2264 2 \n    \u00b7\n    10^5\n). Each query gives two integers \n    x_1, x_2\n (\n    1 \n    \u2264 x_1 \n    \u2264\n    x_2 \n    \u2264 m\n) and asks whether the subgrid of \n    a\n consisting of the\ncolumns \n    x_1, x_1 + 1, \n    \u2026, x_2 - 1, x_2\n is determinable. Input The\nfirst line contains two integers \n    n, m\n (\n    1 \n    \u2264 n, m \n    \u2264 10^6\n,\n\n    nm \n    \u2264 10^6\n) \u2014 the dimensions of the grid \n    a\n. \n    n\n lines\nfollow. The \n    y\n-th line contains \n    m\n characters, the \n    x\n-th of\nwhich is 'X' if the cell on the intersection of the the \n    y\n-th row and\n\n    x\n-th column is filled and \".\" if it is empty. The next line contains a\nsingle integer \n    q\n (\n    1 \n    \u2264 q \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the number\nof queries. \n    q\n lines follow. Each line contains two integers \n    x_1\n\nand \n    x_2\n (\n    1 \n    \u2264 x_1 \n    \u2264 x_2 \n    \u2264 m\n), representing a query\nasking whether the subgrid of \n    a\n containing the columns \n    x_1, x_1 + 1,\n    \n    \u2026, x_2 - 1, x_2\n is determinable. Output For each query, output one\nline containing \"YES\" if the subgrid specified by the query is determinable\nand \"NO\" otherwise. The output is case insensitive (so \"yEs\" and \"No\" will\nalso be accepted). Example Input 4 5 ..XXX ...X. ...X. ...X. 5 1 3 3 3 4 5 5 5\n1 5 Output YES YES NO YES NO Note For each query of the example, the\ncorresponding subgrid is displayed twice below: first in its input format,\nthen with each cell marked as \"E\" if it is exitable and \"N\" otherwise. For the\nfirst query: ..X EEN ... EEE ... EEE ... EEE For the second query: X N . E . E\n. E Note that you can exit the grid by going left from any leftmost cell (or\nup from any topmost cell); you do not need to reach the top left corner cell\nto exit the grid. For the third query: XX NN X. NN X. NN X. NN This subgrid\ncannot be determined only from whether each cell is exitable, because the\nbelow grid produces the above \"exitability grid\" as well: XX XX XX XX For the\nfourth query: X N . E . E . E For the fifth query: ..XXX EENNN ...X. EEENN\n...X. EEENN ...X. EEENN This query is simply the entire grid. It cannot be\ndetermined only from whether each cell is exitable because the below grid\nproduces the above \"exitability grid\" as well: ..XXX ...XX ...XX ...XX\n\n",
+        "cf_contest_id": 1583,
+        "cf_index": "C",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 5\r\n..XXX\r\n...X.\r\n...X.\r\n...X.\r\n5\r\n1 3\r\n3 3\r\n4 5\r\n5 5\r\n1 5\r\n",
+                "Yes\r\nYes\r\nNo\r\nYes\r\nNo\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\nX\r\n1\r\n1 1\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1 1\r\n.\r\n1\r\n1 1\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "3 3\r\n..X\r\n.X.\r\nX..\r\n10\r\n1 3\r\n1 3\r\n1 3\r\n2 3\r\n1 3\r\n1 2\r\n1 3\r\n2 2\r\n2 3\r\n2 2\r\n",
+                "No\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\n"
+            ],
+            [
+                "3 3\r\nXX.\r\nXX.\r\nX..\r\n10\r\n2 3\r\n2 2\r\n2 3\r\n1 3\r\n2 3\r\n1 1\r\n2 3\r\n1 2\r\n3 3\r\n2 3\r\n",
+                "Yes\r\nYes\r\nYes\r\nNo\r\nYes\r\nYes\r\nYes\r\nNo\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "3 3\r\n.XX\r\nX..\r\nXXX\r\n10\r\n2 2\r\n1 1\r\n1 2\r\n1 3\r\n1 3\r\n2 3\r\n1 2\r\n2 3\r\n1 3\r\n1 2\r\n",
+                "Yes\r\nYes\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\n"
+            ],
+            [
+                "3 3\r\n..X\r\n.XX\r\nXXX\r\n10\r\n1 2\r\n1 1\r\n2 2\r\n1 2\r\n1 3\r\n1 2\r\n1 3\r\n2 2\r\n2 3\r\n2 2\r\n",
+                "No\r\nYes\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\n"
+            ],
+            [
+                "3 3\r\nX.X\r\nXX.\r\n..X\r\n10\r\n1 3\r\n1 2\r\n1 2\r\n3 3\r\n1 2\r\n1 2\r\n3 3\r\n1 1\r\n1 3\r\n2 3\r\n",
+                "No\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nNo\r\nNo\r\n"
+            ],
+            [
+                "3 3\r\n.X.\r\nX..\r\nX.X\r\n10\r\n1 2\r\n1 1\r\n2 3\r\n1 2\r\n2 2\r\n1 3\r\n1 2\r\n3 3\r\n2 3\r\n2 3\r\n",
+                "No\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "3 3\r\nXX.\r\nXXX\r\nXX.\r\n10\r\n2 2\r\n3 3\r\n3 3\r\n2 3\r\n2 3\r\n1 2\r\n1 3\r\n1 1\r\n1 3\r\n1 2\r\n",
+                "Yes\r\nYes\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\n"
+            ],
+            [
+                "3 3\r\nX.X\r\n..X\r\nXXX\r\n10\r\n3 3\r\n1 2\r\n3 3\r\n1 2\r\n1 3\r\n1 2\r\n1 1\r\n2 3\r\n2 3\r\n1 2\r\n",
+                "Yes\r\nYes\r\nYes\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nNo\r\nYes\r\n"
+            ],
+            [
+                "3 3\r\n..X\r\nX.X\r\n..X\r\n10\r\n2 3\r\n2 2\r\n3 3\r\n1 3\r\n1 1\r\n3 3\r\n3 3\r\n1 1\r\n1 2\r\n1 1\r\n",
+                "Yes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "3 3\r\nXXX\r\nXX.\r\nXX.\r\n10\r\n1 3\r\n1 2\r\n1 2\r\n1 3\r\n3 3\r\n2 2\r\n2 3\r\n2 3\r\n2 3\r\n2 2\r\n",
+                "No\r\nNo\r\nNo\r\nNo\r\nYes\r\nYes\r\nNo\r\nNo\r\nNo\r\nYes\r\n"
+            ],
+            [
+                "3 3\r\nXX.\r\nXXX\r\n..X\r\n10\r\n1 2\r\n1 2\r\n2 3\r\n1 3\r\n1 1\r\n2 3\r\n1 3\r\n1 1\r\n2 3\r\n2 2\r\n",
+                "No\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "3 3\r\nX..\r\n..X\r\nXX.\r\n10\r\n1 3\r\n2 2\r\n1 2\r\n1 2\r\n2 3\r\n1 3\r\n1 1\r\n2 2\r\n1 3\r\n1 1\r\n",
+                "No\r\nYes\r\nYes\r\nYes\r\nNo\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\n"
+            ],
+            [
+                "3 3\r\n.XX\r\n..X\r\n.X.\r\n10\r\n2 3\r\n1 3\r\n2 3\r\n2 3\r\n1 3\r\n1 1\r\n2 2\r\n1 2\r\n3 3\r\n1 2\r\n",
+                "No\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "3 3\r\n.XX\r\nX..\r\nXXX\r\n10\r\n1 2\r\n1 1\r\n2 3\r\n1 2\r\n2 3\r\n2 3\r\n1 3\r\n2 3\r\n3 3\r\n2 3\r\n",
+                "No\r\nYes\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "3 3\r\nXXX\r\nX..\r\nX..\r\n10\r\n2 2\r\n1 2\r\n2 2\r\n2 3\r\n2 2\r\n3 3\r\n1 1\r\n2 3\r\n2 2\r\n1 3\r\n",
+                "Yes\r\nNo\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\nNo\r\n"
+            ]
+        ]
+    }
+]

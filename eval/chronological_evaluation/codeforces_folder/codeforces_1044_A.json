@@ -1,0 +1,52 @@
+[
+    {
+        "name": "The Tower is Going Home",
+        "description": "On a chessboard with a width of \n    10^9\n and a height of \n    10^9\n, the\nrows are numbered from bottom to top from \n    1\n to \n    10^9\n, and the\ncolumns are numbered from left to right from \n    1\n to \n    10^9\n. Therefore,\nfor each cell of the chessboard you can assign the coordinates \n    (x,y)\n,\nwhere \n    x\n is the column number and \n    y\n is the row number. Every day\nthere are fights between black and white pieces on this board. Today, the\nblack ones won, but at what price? Only the rook survived, and it was driven\ninto the lower left corner \u2014 a cell with coordinates \n    (1,1)\n. But it is\nstill happy, because the victory has been won and it's time to celebrate it!\nIn order to do this, the rook needs to go home, namely \u2014 on the upper side of\nthe field (that is, in any cell that is in the row with number \n    10^9\n).\nEverything would have been fine, but the treacherous white figures put spells\non some places of the field before the end of the game. There are two types of\nspells: Vertical. Each of these is defined by one number \n    x\n. Such spells\ncreate an infinite blocking line between the columns \n    x\n and \n    x+1\n.\nHorizontal. Each of these is defined by three numbers \n    x_1\n, \n    x_2\n,\n\n    y\n. Such spells create a blocking segment that passes through the top\nside of the cells, which are in the row \n    y\n and in columns from \n    x_1\n\nto \n    x_2\n inclusive. The peculiarity of these spells is that it is\nimpossible for a certain pair of such spells to have a common point. Note that\nhorizontal spells can have common points with vertical spells. An example of a\nchessboard. Let's recall that the rook is a chess piece that in one move can\nmove to any point that is in the same row or column with its initial position.\nIn our task, the rook can move from the cell \n    (r_0,c_0)\n into the cell\n\n    (r_1,c_1)\n only under the condition that \n    r_1 = r_0\n or \n    c_1 =\n    c_0\n and there is no blocking lines or blocking segments between these cells\n(For better understanding, look at the samples). Fortunately, the rook can\nremove spells, but for this it has to put tremendous efforts, therefore, it\nwants to remove the minimum possible number of spells in such way, that after\nthis it can return home. Find this number! Input The first line contains two\nintegers \n    n\n and \n    m\n (\n    0 \n    \u2264 n,m \n    \u2264 10^5\n) \u2014 the number of\nvertical and horizontal spells. Each of the following \n    n\n lines contains\none integer \n    x\n (\n    1 \n    \u2264 x < 10^9\n) \u2014 the description of the vertical\nspell. It will create a blocking line between the columns of \n    x\n and\n\n    x+1\n. Each of the following \n    m\n lines contains three integers\n\n    x_1\n, \n    x_2\n and \n    y\n (\n    1 \n    \u2264 x_1\n    \u2264 x_2\n    \u2264 10^9\n,\n\n    1 \n    \u2264 y < 10^9\n) \u2014 the numbers that describe the horizontal spell. It\nwill create a blocking segment that passes through the top sides of the cells\nthat are in the row with the number \n    y\n, in columns from \n    x_1\n to\n\n    x_2\n inclusive. It is guaranteed that all spells are different, as well\nas the fact that for each pair of horizontal spells it is true that the\nsegments that describe them do not have common points. Output In a single line\nprint one integer \u2014 the minimum number of spells the rook needs to remove so\nit can get from the cell \n    (1,1)\n to at least one cell in the row with the\nnumber \n    10^9\n Examples Input 2 3 6 8 1 5 6 1 9 4 2 4 2 Output 1 Input 1 3\n4 1 5 3 1 9 4 4 6 6 Output 1 Input 0 2 1 1000000000 4 1 1000000000 2 Output 2\nInput 0 0 Output 0 Input 2 3 4 6 1 4 3 1 5 2 1 6 5 Output 2 Note In the first\nsample, in order for the rook return home, it is enough to remove the second\nhorizontal spell. Illustration for the first sample. On the left it shows how\nthe field looked at the beginning. On the right it shows how the field looked\nafter the deletion of the second horizontal spell. It also shows the path, on\nwhich the rook would be going home. In the second sample, in order for the\nrook to return home, it is enough to remove the only vertical spell. If we\ntried to remove just one of the horizontal spells, it would not allow the rook\nto get home, because it would be blocked from above by one of the remaining\nhorizontal spells (either first one or second one), and to the right it would\nbe blocked by a vertical spell. Illustration for the second sample. On the\nleft it shows how the field looked at the beginning. On the right it shows how\nit looked after the deletion of the vertical spell. It also shows the path, on\nwhich the rook would be going home. In the third sample, we have two\nhorizontal spells that go through the whole field. These spells can not be\nbypassed, so we need to remove both of them. Illustration for the third\nsample. On the left it shows how the field looked at the beginning. On the\nright it shows how the field looked after the deletion of the horizontal\nspells. It also shows the path, on which the rook would be going home. In the\nfourth sample, we have no spells, which means that we do not need to remove\nanything. In the fifth example, we can remove the first vertical and third\nhorizontal spells. Illustration for the fifth sample. On the left it shows how\nthe field looked at the beginning. On the right it shows how it looked after\nthe deletions. It also shows the path, on which the rook would be going home.\n\n",
+        "cf_contest_id": 1044,
+        "cf_index": "A",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "two pointers"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 3\r\n6\r\n8\r\n1 5 6\r\n1 9 4\r\n2 4 2\r\n",
+                "1"
+            ],
+            [
+                "1 3\r\n4\r\n1 5 3\r\n1 9 4\r\n4 6 6\r\n",
+                "1"
+            ],
+            [
+                "0 2\r\n1 1000000000 4\r\n1 1000000000 2\r\n",
+                "2"
+            ],
+            [
+                "0 0\r\n",
+                "0"
+            ],
+            [
+                "2 3\r\n4\r\n6\r\n1 4 3\r\n1 5 2\r\n1 6 5\r\n",
+                "2"
+            ]
+        ],
+        "private_cases": [
+            [
+                "0 5\r\n1 96762320 50510976\r\n243235878 312125306 50510976\r\n326016273 338641867 50510976\r\n385105810 445224816 50510976\r\n456157384 569789185 50510976\r\n",
+                "0"
+            ],
+            [
+                "4 7\r\n1\r\n2\r\n3\r\n4\r\n1 1000000000 1\r\n1 1000000000 2\r\n1 1000000000 3\r\n1 1000000000 4\r\n1 1000000000 5\r\n1 1000000000 6\r\n1 1000000000 7\r\n",
+                "7"
+            ],
+            [
+                "0 1\r\n1 999999999 1\r\n",
+                "0"
+            ]
+        ]
+    }
+]

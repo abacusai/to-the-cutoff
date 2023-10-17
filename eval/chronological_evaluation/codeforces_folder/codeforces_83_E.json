@@ -1,0 +1,100 @@
+[
+    {
+        "name": "Two Subsequences",
+        "description": "On an IT lesson Valera studied data compression. The teacher told about a new\nmethod, which we shall now describe to you. Let a1, a2, ..., an be the given\nsequence of lines needed to be compressed. Here and below we shall assume that\nall lines are of the same length and consist only of the digits 0 and 1. Let's\ndefine the compression function: f(empty sequence) = empty string f(s) = s.\nf(s1, s2) = the smallest in length string, which has one of the prefixes equal\nto s1 and one of the suffixes equal to s2. For example, f(001, 011) = 0011,\nf(111, 011) = 111011. f(a1, a2, ..., an) = f(f(a1, a2, an - 1), an). For\nexample, f(000, 000, 111) = f(f(000, 000), 111) = f(000, 111) = 000111. Valera\nfaces a real challenge: he should divide the given sequence a1, a2, ..., an\ninto two subsequences b1, b2, ..., bk and c1, c2, ..., cm, m + k = n, so\nthat the value of S = |f(b1, b2, ..., bk)| + |f(c1, c2, ..., cm)| took the\nminimum possible value. Here |p| denotes the length of the string p. Note that\nit is not allowed to change the relative order of lines in the subsequences.\nIt is allowed to make one of the subsequences empty. Each string from the\ninitial sequence should belong to exactly one subsequence. Elements of\nsubsequences b and c don't have to be consecutive in the original sequence a,\ni. e. elements of b and c can alternate in a (see samples 2 and 3). Help\nValera to find the minimum possible value of S. Input The first line of input\ndata contains an integer n \u2014 the number of strings (1 \u2264 n \u2264 2\u00b710^5). Then on n\nlines follow elements of the sequence \u2014 strings whose lengths are from 1 to 20\ncharacters, consisting only of digits 0 and 1. The i + 1-th input line\ncontains the i-th element of the sequence. Elements of the sequence are\nseparated only by a newline. It is guaranteed that all lines have the same\nlength. Output Print a single number \u2014 the minimum possible value of S.\nExamples Input 3 01 10 01 Output 4 Input 4 000 111 110 001 Output 8 Input 5\n10101 01010 11111 01000 10010 Output 17 Note Detailed answers to the tests:\nThe best option is to make one of the subsequences empty, and the second one\nequal to the whole given sequence. |f(01, 10, 01)| = |f(f(01, 10), 01)| =\n|f(010, 01)| = |0101| = 4. The best option is: b = 000, 001, c = 111, 110.\nS = |f(000, 001)| + |f(111, 110)| = |0001| + |1110| = 8. The best option is: b\n= 10101, 01010, 01000, c = 11111, 10010. S = |10101000| + |111110010| =\n17.\n\n",
+        "cf_contest_id": 83,
+        "cf_index": "E",
+        "cf_rating": 2800,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n01\r\n10\r\n01\r\n",
+                "4\r\n"
+            ],
+            [
+                "4\r\n000\r\n111\r\n110\r\n001\r\n",
+                "8\r\n"
+            ],
+            [
+                "5\r\n10101\r\n01010\r\n11111\r\n01000\r\n10010\r\n",
+                "17\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n0\r\n1\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n00\r\n11\r\n00\r\n11\r\n",
+                "4\r\n"
+            ],
+            [
+                "6\r\n11111\r\n11111\r\n11111\r\n11111\r\n11111\r\n00000\r\n",
+                "10\r\n"
+            ],
+            [
+                "8\r\n0110\r\n0001\r\n0110\r\n0110\r\n0111\r\n1001\r\n1000\r\n0001\r\n",
+                "16\r\n"
+            ],
+            [
+                "6\r\n0\r\n1\r\n0\r\n1\r\n0\r\n1\r\n",
+                "2\r\n"
+            ],
+            [
+                "8\r\n11001101\r\n11111001\r\n11110000\r\n10101010\r\n00100011\r\n10100111\r\n00111000\r\n00110110\r\n",
+                "45\r\n"
+            ],
+            [
+                "10\r\n01010\r\n01011\r\n00010\r\n01001\r\n10101\r\n00001\r\n01110\r\n10100\r\n00110\r\n11111\r\n",
+                "35\r\n"
+            ],
+            [
+                "10\r\n1101110111\r\n0010101001\r\n0100100000\r\n1011110110\r\n1000011010\r\n0000111000\r\n0000010000\r\n1000111011\r\n0000001110\r\n0010100101\r\n",
+                "73\r\n"
+            ],
+            [
+                "10\r\n000000110100100\r\n111011011011001\r\n001100110010010\r\n010101110110010\r\n001100010001110\r\n101010000111010\r\n110001100111110\r\n101000000101111\r\n110000010010001\r\n101011111001010\r\n",
+                "129\r\n"
+            ],
+            [
+                "10\r\n11011001111101000000\r\n10001000110010101000\r\n00011010111010100001\r\n00110010111001110101\r\n10010111111100111010\r\n00111000110100100011\r\n11101010001110100011\r\n10000011000000110101\r\n10101010011011110100\r\n00111000110000010111\r\n",
+                "175\r\n"
+            ],
+            [
+                "50\r\n01001\r\n00011\r\n00100\r\n11000\r\n11110\r\n10000\r\n10000\r\n10000\r\n11110\r\n11001\r\n00001\r\n01101\r\n10111\r\n11110\r\n00111\r\n01010\r\n00001\r\n01011\r\n11101\r\n11010\r\n10010\r\n01100\r\n01110\r\n01101\r\n11101\r\n01110\r\n11110\r\n01100\r\n01001\r\n10110\r\n11111\r\n00110\r\n10100\r\n00110\r\n10110\r\n00101\r\n00000\r\n11011\r\n11000\r\n11010\r\n00111\r\n00000\r\n00010\r\n10111\r\n00000\r\n01100\r\n01110\r\n01000\r\n00100\r\n10000\r\n",
+                "136\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n10\r\n",
+                "2\r\n"
+            ],
+            [
+                "1\r\n10000100001000010000\r\n",
+                "20\r\n"
+            ],
+            [
+                "1\r\n11111111111111111111\r\n",
+                "20\r\n"
+            ],
+            [
+                "1\r\n00000000000000000000\r\n",
+                "20\r\n"
+            ]
+        ]
+    }
+]

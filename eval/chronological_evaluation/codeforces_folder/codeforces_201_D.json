@@ -1,0 +1,125 @@
+[
+    {
+        "name": "Brand New Problem",
+        "description": "A widely known among some people Belarusian sport programmer Lesha decided to\nmake some money to buy a one square meter larger flat. To do this, he wants to\nmake and carry out a Super Rated Match (SRM) on the site Torcoder.com. But\nthere's a problem \u2014 a severe torcoder coordinator Ivan does not accept any\nLesha's problem, calling each of them an offensive word \"duped\" (that is,\nduplicated). And one day they nearely quarrelled over yet another problem Ivan\nwouldn't accept. You are invited to act as a fair judge and determine whether\nthe problem is indeed brand new, or Ivan is right and the problem bears some\nresemblance to those used in the previous SRMs. You are given the descriptions\nof Lesha's problem and each of Torcoder.com archive problems. The description\nof each problem is a sequence of words. Besides, it is guaranteed that Lesha's\nproblem has no repeated words, while the description of an archive problem may\ncontain any number of repeated words. The \"similarity\" between Lesha's problem\nand some archive problem can be found as follows. Among all permutations of\nwords in Lesha's problem we choose the one that occurs in the archive problem\nas a subsequence. If there are multiple such permutations, we choose the one\nwith the smallest number of inversions. Then the \"similarity\" of a problem can\nbe written as , where n is the number of words in Lesha's problem and x is the\nnumber of inversions in the chosen permutation. Note that the \"similarity\" p\nis always a positive integer. The problem is called brand new if there is not\na single problem in Ivan's archive which contains a permutation of words from\nLesha's problem as a subsequence. Help the boys and determine whether the\nproposed problem is new, or specify the problem from the archive which\nresembles Lesha's problem the most, otherwise. Input The first line contains a\nsingle integer n (1 \u2264 n \u2264 15) \u2014 the number of words in Lesha's problem. The\nsecond line contains n space-separated words \u2014 the short description of the\nproblem. The third line contains a single integer m (1 \u2264 m \u2264 10) \u2014 the number\nof problems in the Torcoder.com archive. Next m lines contain the descriptions\nof the problems as \"k s1 s2 ... sk\", where k (1 \u2264 k \u2264 500000) is the number of\nwords in the problem and si is a word of the problem description. All words\nfrom all problem descriptions contain no more than 10 lowercase English\nletters. It is guaranteed that the total length of words in all problem\ndescriptions does not exceed 500015. Output If Lesha's problem is brand new,\nprint string \"Brand new problem!\" (without quotes). Otherwise, on the first\nline print the index of the archive problem which resembles Lesha's problem\nmost. If there are multiple such problems, print the one with the smallest\nindex. On the second line print a string consisting of characters [:,\ncharacter | repeated p times, and characters :], where p is the \"similarity\"\nbetween this problem and Lesha's one. The archive problems are numbered\nstarting from one in the order in which they are given in the input. Examples\nInput 4 find the next palindrome 1 10 find the previous palindrome or print\nbetter luck next time Output 1 [:||||||:] Input 3 add two numbers 3 1 add 2\ntwo two 3 numbers numbers numbers Output Brand new problem! Input 4 these\npapers are formulas 3 6 what are these formulas and papers 5 papers are\ndriving me crazy 4 crazy into the night Output 1 [:||||:] Input 3 add two\ndecimals 5 4 please two decimals add 5 decimals want to be added 4 two add\ndecimals add 4 add one two three 7 one plus two plus three equals six Output 3\n[:|||:] Note Let us remind you that the number of inversions is the number of\npairs of words that follow in the permutation not in their original order.\nThus, for example, if the original problem is \"add two numbers\", then\npermutation \"numbers add two\" contains two inversions \u2014 pairs of words\n\"numbers\" and \"add\", \"numbers\" and \"two\". Sequence b1, b2, ..., bk is a\nsubsequence of sequence a1, a2, ..., an if there exists such a set of indices\n1 \u2264 i1 < i2 < ... < ik \u2264 n that aij = bj (in other words, if sequence b can be\nobtained from a by deleting some of its elements). In the first test case the\nfirst problem contains the \"find the palindrome next\" permutation as a\nsubsequence, in which the number of inversions equals 1 (words \"palindrome\"\nand \"next\"). In the second test case there is no problem that contains a\npermutation of words from Lesha's problem as a subsequence.\n\n",
+        "cf_contest_id": 201,
+        "cf_index": "D",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "dp"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\nfind the next palindrome\r\n1\r\n10 find the previous palindrome or print better luck next time\r\n",
+                "1\r\n[:||||||:]\r\n"
+            ],
+            [
+                "3\r\nadd two numbers\r\n3\r\n1 add\r\n2 two two\r\n3 numbers numbers numbers\r\n",
+                "Brand new problem!\r\n"
+            ],
+            [
+                "4\r\nthese papers are formulas\r\n3\r\n6 what are these formulas and papers\r\n5 papers are driving me crazy\r\n4 crazy into the night\r\n",
+                "1\r\n[:||||:]\r\n"
+            ],
+            [
+                "3\r\nadd two decimals\r\n5\r\n4 please two decimals add\r\n5 decimals want to be added\r\n4 two add decimals add\r\n4 add one two three\r\n7 one plus two plus three equals six\r\n",
+                "3\r\n[:|||:]\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\na b c\r\n5\r\n15 f f d o l g p x y o l s b x r\r\n15 g q p p b e t f m i e u p m y\r\n15 j r z i v k c c c i g f h l w\r\n15 e z j n o m x l l q r v x j v\r\n15 x i t c t v q r a p s h p s b\r\n",
+                "5\r\n[:||:]\r\n"
+            ],
+            [
+                "7\r\na b c d e f g\r\n5\r\n45 f m n e c w z v l m a u e q x d t n t h a x d b f w f o m b a x r t q f e u b r y m g e n\r\n45 m g s a n d l f k t x q l f y q u r p d h w p z d x u x l v c c y s e e x l z f u d e s x\r\n45 z y p h u f x a c x j h s m y g v q l a f o t l m v q f o f n b p a r l x g b t k h p t j\r\n45 x g v y i u t a p z u q r i w a k y z q i x e l w x x m n r v x w n i j w g r z z y o z r\r\n45 l r y b l x s e z e q a b k y o z h b j z j g l j g u i z p k l n u c q g x n c p z q z e\r\n",
+                "1\r\n[:||||||||||||||||||:]\r\n"
+            ],
+            [
+                "5\r\na b c d e\r\n10\r\n5 a d b c e\r\n5 e a b c d\r\n5 b a c e d\r\n5 b e d c a\r\n5 a e d c b\r\n5 b c e a d\r\n5 d b c a e\r\n5 a e c d b\r\n5 e d b a c\r\n5 e d a b c\r\n",
+                "1\r\n[:|||||||||:]\r\n"
+            ],
+            [
+                "7\r\na b c d e f g\r\n10\r\n7 a b c f g d e\r\n7 b e a f d g c\r\n7 b e f a d g c\r\n7 g e d c b f a\r\n7 c e f b g d a\r\n7 f g a b e c d\r\n7 f a c b g e d\r\n7 d a g c e f b\r\n7 c b e g a f d\r\n7 a c d b f g e\r\n",
+                "1\r\n[:||||||||||||||||||:]\r\n"
+            ],
+            [
+                "10\r\na b c d e f g h i j\r\n10\r\n10 e a f b h c d j i g\r\n10 f e g c j h a d i b\r\n10 e i f c b h d a g j\r\n10 j e d a f i c h b g\r\n10 d e g a c h f i j b\r\n10 c h g b i f e j a d\r\n10 f i c g h e a d j b\r\n10 f b j c a d g i e h\r\n10 d i c a e f b h g j\r\n10 g f h e j c d b i a\r\n",
+                "1\r\n[:|||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "12\r\na b c d e f g h i j k l\r\n10\r\n12 b c a d e i l h g f k j\r\n12 e h l i a d b g j k c f\r\n12 a h g l e d j k c f b i\r\n12 j e f b k c a i l g d h\r\n12 f k l g i d b j e h a c\r\n12 a k b e c h g i f d j l\r\n12 l g h a k d i f e j c b\r\n12 e a h c k l j f i d g b\r\n12 a c i l b e f h d k j g\r\n12 l h e d g k j i f c b a\r\n",
+                "1\r\n[:|||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "15\r\na b c d e f g h i j k l m n o\r\n10\r\n15 c k b e j i g m o h d l f a n\r\n15 k g h i b a e c f l m d j o n\r\n15 i d k a f e b n m j o g h l c\r\n15 l m d o k e b a n j h g i f c\r\n15 n c k o f b h i l m j d e g a\r\n15 i b e a g j h o n l d k f m c\r\n15 b n d l k i g o h j f c a m e\r\n15 n m e d i k h j a l g c o f b\r\n15 o m c g k n a e j i l d f h b\r\n15 l j e c h k o n b f d a m g i\r\n",
+                "2\r\n[:|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "1\r\nromka\r\n1\r\n3 this is tourist\r\n",
+                "Brand new problem!\r\n"
+            ],
+            [
+                "2\r\nromka tourist\r\n1\r\n2 tourist romka\r\n",
+                "1\r\n[:|:]\r\n"
+            ],
+            [
+                "1\r\ntourist\r\n2\r\n1 romka\r\n1 tourist\r\n",
+                "2\r\n[:|:]\r\n"
+            ],
+            [
+                "15\r\na b c d e f g h i j k l m n o\r\n1\r\n109 i h g f e b c d e f g h i j k l m n b c d e f g h i j k l m n b c d e f g h i j k l m n a n m l k j i h g f e d c b a i o i f e d o c i h g l n j f c i d k n o g m f c e m i d k n g j b c d e f a g h q j k a l a m n a\r\n",
+                "1\r\n[:||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "15\r\na b c d e f g h i j k l m n o\r\n10\r\n15 n m c h i d g k j a o e f b l\r\n15 o l j f e d m h g n k a i c b\r\n15 i a c e b m o l g f j d n k h\r\n15 k a h l m f g j b o d i n e c\r\n15 h c b i f m g d e j o k a n l\r\n15 n i k a l h e g c f m o d j b\r\n15 a h j b c m e g k l f n o d i\r\n15 g d f c o i e b j l k n h a m\r\n15 m o e k l i c b n d h f j a g\r\n15 i g l c n d b h e j a o k m f\r\n",
+                "7\r\n[:||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "7\r\na b c d e f g\r\n10\r\n14 a hl b nr c to f vt g hn d nr e gn\r\n14 d we c rg g ge f qy e gk a xq b vc\r\n14 d sa b xx f vy a bp g lt c zd e pm\r\n14 b ct e vv a yg g xe f xp d aa c ot\r\n14 a bg d vz g ww c ek f cz b op e zp\r\n14 e ja f pl c oc a yr g tl b fu d rl\r\n14 f ni d xa g rd c zg a wp b fo e uy\r\n14 f ag g gh c xt b sc a ej e aj d oi\r\n14 a rw b zv g zq e hd c qe d ex f qe\r\n14 c ou f tv b uo d ft a vp e ib g yc\r\n",
+                "1\r\n[:||||||||||||||||||:]\r\n"
+            ],
+            [
+                "15\r\na b c d e f g h i j k l m n o\r\n1\r\n168 g g f i m f i a i k j a f c g a m k d l a l f h e n i i f b f e b k i l i o c k g b g a i a j b b b n m o l e d c m h a c h b h d a k m b e b l c j a m i f g i k h h c d h d j c l h m o f k c e h l e c l c e g m l n h e m n h j f l f k d i l g f g i g e h i j g j a d m a b i a d b j n f n l f c e c n j h e l m c f n e i d i n b k b e\r\n",
+                "1\r\n[:||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "15\r\na b c d e f g h i j k l m n o\r\n1\r\n221 n g m h n f d a b a m d o n e e c c i a f f f i h m b o l j b d f m f i j c g d k l i b d a h l j e n b d b j o c c b c e c o g n h a b l m m h n a a a n e k m m a e b l i k a g h k k f d j c n g c d k b f k k a k g m b a j b n m f c f f o a b b a e c b a n j j i i b n k h b b d b j m a o a e k o j l c j d e i j f n b l m n d e k h k m c n g m f i f j f h b d h b l f b a e e f i l i d n e k i b g e f h n l b c c a i h h e a m l l e a l n\r\n",
+                "1\r\n[:|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "15\r\na b c d e f g h i j k l m n o\r\n1\r\n146 c j n d g g e n m e b g d a d a b a k a f k c b b i k i h m m h h h l l k d m j b o m l g c a j j i c j g g a g n m g i d l i l d n n l e h d n b b a k f f l m h e e j i g h a f a a f m g f o j k g m k f j b g k a d f b l j m a d a a i n k j m h e n e c n m g h b e f h f g d i c b i j k l e\r\n",
+                "1\r\n[:|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "15\r\na b c d e f g h i j k l m n o\r\n1\r\n179 m g l g f c e k b i d h i j k g d f e m f h b i n l l e e g d b h b i i i i e k b e h c e d n b n j b j f b e k c k f c k j o f n c m d h b k d l m n j l m b h g e i n j i e k f j l l f h k l k d i f h f i k e c a b l b a f o e l e n j o m b f b m d g g f b i c i e a c i n i b d c f i f h g f g i j d c c k m k j j c m g j e g e h g m l d g i l a j f o b b\r\n",
+                "1\r\n[:||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "15\r\na b c d e f g h i j k l m n o\r\n1\r\n109 d c g k j i f a d i g b e k k d j e k k d m j b l i m f h g h d m g d a e a h g c a b b b n d k m o f d b b j e n k n e b m f b d f e f n h d h g f e b d m j d i o f n g h e g e e h i k l n i i l l m d m c f m c a m e\r\n",
+                "1\r\n[:|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "15\r\na b c d e f g h i j k l m n o\r\n1\r\n42 o n m l k j i h g f e d c b a a i m d n f j h n l o m e k b c d e f g h i j k l m n\r\n",
+                "1\r\n[:|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "15\r\na b c d e f g h i j k l m n o\r\n1\r\n47 o n m l k j i h g f e d c b a a e h m b d k g k c o h e a h a n f i o l d e f g h i j k l m n\r\n",
+                "1\r\n[:|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "15\r\na b c d e f g h i j k l m n o\r\n1\r\n56 o n m l k j i h g f e d c b a e d a m h c f d i n g h f c o d n i f j g e k o n c d g b c d e f g h i j k l m n\r\n",
+                "1\r\n[:|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ],
+            [
+                "15\r\na b c d e f g h i j k l m n o\r\n1\r\n59 o n m l k j i h g f e d c b a k n b c l m h f l i o j g a k d h g c f b j k g n d c i n e m l i k d f g h i j k l m n\r\n",
+                "1\r\n[:|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||:]\r\n"
+            ]
+        ]
+    }
+]

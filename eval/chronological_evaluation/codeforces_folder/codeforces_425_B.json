@@ -1,0 +1,180 @@
+[
+    {
+        "name": "Sereja and Table ",
+        "description": "Sereja has an n \u00d7 m rectangular table a, each cell of the table contains a\nzero or a number one. Sereja wants his table to meet the following\nrequirement: each connected component of the same values forms a rectangle\nwith sides parallel to the sides of the table. Rectangles should be filled\nwith cells, that is, if a component form a rectangle of size h \u00d7 w, then the\ncomponent must contain exactly hw cells. A connected component of the same\nvalues is a set of cells of the table that meet the following conditions:\nevery two cells of the set have the same value; the cells of the set form a\nconnected region on the table (two cells are connected if they are adjacent in\nsome row or some column of the table); it is impossible to add any cell to the\nset unless we violate the two previous conditions. Can Sereja change the\nvalues of at most k cells of the table so that the table met the described\nrequirement? What minimum number of table cells should he change in this case?\nInput The first line contains integers n, m and k (1 \u2264 n, m \u2264 100; 1 \u2264 k \u2264\n10). Next n lines describe the table a: the i-th of them contains m integers\nai1, ai2, ..., aim (0 \u2264 ai, j \u2264 1) \u2014 the values in the cells of the i-th row.\nOutput Print -1, if it is impossible to meet the requirement. Otherwise, print\nthe minimum number of cells which should be changed. Examples Input 5 5 2 1 1\n1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 Output 1 Input 3 4 1 1 0 0 0 0 1\n1 1 1 1 1 0 Output -1 Input 3 4 1 1 0 0 1 0 1 1 0 1 0 0 1 Output 0\n\n",
+        "cf_contest_id": 425,
+        "cf_index": "B",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 5 2\r\n1 1 1 1 1\r\n1 1 1 1 1\r\n1 1 0 1 1\r\n1 1 1 1 1\r\n1 1 1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 4 1\r\n1 0 0 0\r\n0 1 1 1\r\n1 1 1 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 4 1\r\n1 0 0 1\r\n0 1 1 0\r\n1 0 0 1\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "8 1 4\r\n0\r\n0\r\n0\r\n1\r\n0\r\n1\r\n1\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 10 7\r\n0 1 0 0 1 0 1 0 0 0\r\n0 0 1 1 0 0 0 1 0 1\r\n1 0 1 1 1 0 1 1 0 0\r\n",
+                "6\r\n"
+            ],
+            [
+                "4 9 7\r\n0 0 0 1 0 1 1 0 0\r\n1 1 1 0 0 0 0 1 1\r\n1 1 0 0 1 1 0 1 0\r\n0 0 0 1 0 1 0 0 0\r\n",
+                "5\r\n"
+            ],
+            [
+                "9 2 5\r\n0 1\r\n0 1\r\n1 1\r\n0 1\r\n0 1\r\n1 0\r\n1 1\r\n1 0\r\n1 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "10 7 8\r\n1 0 1 0 1 1 0\r\n0 1 0 1 0 0 1\r\n1 0 1 0 1 1 0\r\n0 1 0 1 0 0 1\r\n1 0 1 0 1 1 0\r\n1 0 1 0 1 1 0\r\n1 0 1 0 1 1 0\r\n1 0 1 0 1 1 0\r\n0 1 0 1 0 0 1\r\n0 1 0 1 0 0 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "9 2 10\r\n1 0\r\n0 1\r\n1 0\r\n1 1\r\n0 1\r\n1 0\r\n1 0\r\n1 1\r\n0 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 6 3\r\n1 0 0 1 0 0\r\n0 1 1 0 1 1\r\n1 0 0 1 0 0\r\n0 1 1 0 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 4 5\r\n1 0 1 0\r\n0 1 0 1\r\n0 1 0 1\r\n0 1 0 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "6 4 10\r\n0 1 0 0\r\n1 1 1 0\r\n0 1 1 0\r\n0 1 0 0\r\n0 1 0 0\r\n0 0 0 0\r\n",
+                "4\r\n"
+            ],
+            [
+                "1 9 2\r\n1 0 1 0 0 0 0 1 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 63 4\r\n0 0 0 0 0 1 0 0 1 0 1 1 0 0 1 1 1 1 1 1 0 0 0 1 0 0 1 1 0 1 1 0 0 0 1 1 0 0 0 0 0 0 1 0 1 0 1 0 1 1 0 0 1 0 0 0 1 0 1 1 1 1 1\r\n1 1 0 1 1 0 1 1 0 1 0 0 1 1 0 0 0 0 0 0 1 1 1 0 1 1 0 0 1 0 0 0 1 1 0 0 1 1 1 1 1 1 0 1 0 1 0 1 0 0 1 1 0 1 1 1 1 1 0 1 1 0 0\r\n1 1 1 1 1 0 1 1 0 1 0 0 1 1 0 0 0 0 0 0 1 1 1 0 1 1 0 0 1 0 0 1 1 1 0 0 1 1 1 1 1 0 0 1 0 1 0 1 0 0 0 1 0 1 1 1 0 1 0 1 0 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 40 4\r\n1 0 0 0 1 1 1 0 1 1 0 0 1 1 0 0 1 1 0 1 1 1 1 0 1 0 0 1 1 0 0 1 0 0 0 1 1 1 1 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 12 7\r\n0 0 0 1 0 0 1 1 1 1 0 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 35 6\r\n1 1 0 1 1 0 1 1 1 0 0 0 0 1 1 0 1 0 0 1 1 0 0 1 0 1 1 0 1 0 0 0 0 0 0\r\n0 0 1 0 0 1 0 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 1 1 1 0 0 1 0 1 1 1 1 1 1\r\n1 0 0 1 1 0 0 1 1 0 1 0 0 1 1 0 1 0 0 1 1 0 0 1 0 1 1 0 1 0 0 0 0 0 0\r\n0 0 1 0 0 1 0 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 1 1 1 0 0 1 0 1 1 1 1 1 1\r\n",
+                "5\r\n"
+            ],
+            [
+                "5 38 9\r\n0 1 0 0 1 1 0 0 1 0 0 0 0 1 1 1 1 0 0 0 1 1 0 1 1 0 0 0 0 1 0 1 0 0 1 0 0 0\r\n0 1 0 0 1 1 0 0 1 0 0 0 0 1 1 1 1 0 0 0 1 1 0 1 1 0 0 0 1 1 0 1 0 0 1 0 0 0\r\n1 0 1 1 0 0 1 1 0 1 1 1 1 0 0 0 0 1 1 1 0 0 1 0 0 0 1 1 1 0 1 0 1 1 0 1 1 1\r\n1 0 1 1 0 0 1 1 0 1 1 1 1 0 0 0 0 1 1 1 0 0 1 0 0 1 1 1 1 0 1 0 1 1 0 1 1 1\r\n1 0 1 1 0 0 1 1 0 1 1 1 1 0 0 0 0 1 1 1 0 0 1 0 0 1 1 1 1 0 1 0 1 1 0 1 1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 75 7\r\n0 0 1 0 0 0 1 1 0 1 1 1 0 1 1 0 1 1 0 0 0 1 0 1 0 0 0 1 1 0 0 1 0 1 1 1 0 0 0 1 1 1 0 0 0 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 1 0 1 0 0 0 1 0 1 0 0 1 1 1 1\r\n1 1 0 1 1 1 0 0 1 0 0 0 1 0 0 1 0 0 1 1 1 0 0 0 1 1 1 0 0 1 1 0 1 0 0 0 1 1 1 0 0 0 1 1 1 0 1 1 1 1 0 0 0 0 0 0 1 1 1 1 0 1 1 1 1 1 0 1 0 1 1 0 0 0 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "21 10 8\r\n1 1 1 0 0 1 1 1 1 1\r\n1 1 1 0 0 1 1 1 1 1\r\n1 1 1 0 0 1 1 1 1 1\r\n1 1 1 0 0 1 1 1 1 1\r\n1 1 1 0 0 1 1 1 1 1\r\n0 0 1 1 1 0 0 0 0 0\r\n0 0 0 1 1 0 0 0 0 0\r\n1 1 1 0 0 1 1 1 1 1\r\n0 0 0 1 1 0 0 0 0 0\r\n1 1 1 0 0 1 1 1 1 1\r\n1 1 1 0 0 1 1 1 1 1\r\n0 0 0 1 1 0 0 0 0 0\r\n1 0 1 0 0 1 1 1 1 1\r\n0 1 0 1 1 0 0 0 0 0\r\n0 0 0 1 1 0 0 0 0 0\r\n0 0 0 1 1 0 0 0 0 0\r\n0 0 0 1 1 0 0 0 0 0\r\n1 1 1 0 1 1 1 1 1 1\r\n0 0 0 0 1 0 0 0 0 0\r\n1 1 1 0 1 1 1 1 1 1\r\n1 1 1 0 0 1 1 1 1 1\r\n",
+                "6\r\n"
+            ],
+            [
+                "11 9 9\r\n0 0 0 0 0 0 1 1 0\r\n0 0 0 0 0 0 1 1 0\r\n0 0 0 0 0 0 1 0 0\r\n1 1 1 1 1 1 0 0 1\r\n1 1 1 1 1 1 0 0 1\r\n1 1 1 1 1 1 0 0 1\r\n0 0 0 0 0 0 1 1 0\r\n0 0 0 0 0 0 1 1 0\r\n0 0 0 0 0 0 1 1 0\r\n1 1 1 1 1 1 0 0 1\r\n0 0 0 0 0 0 1 1 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "37 4 7\r\n1 0 0 1\r\n0 1 0 1\r\n0 1 1 1\r\n1 0 0 0\r\n0 1 1 1\r\n0 1 1 1\r\n1 0 1 0\r\n1 0 0 0\r\n1 0 0 0\r\n1 0 0 0\r\n0 1 1 1\r\n0 1 1 1\r\n1 0 0 0\r\n0 1 1 0\r\n0 1 1 1\r\n0 1 1 1\r\n0 1 1 0\r\n1 0 0 0\r\n1 0 0 0\r\n0 1 1 1\r\n0 1 1 1\r\n1 0 0 0\r\n1 1 1 1\r\n1 1 1 1\r\n1 1 0 0\r\n0 1 1 1\r\n0 1 0 1\r\n0 1 1 1\r\n0 1 1 1\r\n1 1 0 0\r\n1 0 0 0\r\n0 0 1 1\r\n0 1 1 1\r\n1 0 0 0\r\n1 0 0 0\r\n1 0 0 0\r\n0 0 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 1 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2 1\r\n1 1\r\n1 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 3 1\r\n1 1 1\r\n1 0 1\r\n1 1 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 3 2\r\n1 1 1\r\n1 0 1\r\n1 1 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "9 9 10\r\n0 0 0 0 0 0 1 0 0\r\n1 1 1 1 1 1 1 1 1\r\n0 0 0 0 0 0 0 0 0\r\n1 1 1 1 1 1 1 1 1\r\n1 1 1 0 1 1 1 1 1\r\n1 1 1 1 1 1 1 1 1\r\n0 0 0 0 1 0 1 0 0\r\n0 0 0 0 1 0 0 0 0\r\n0 0 0 0 1 0 0 0 0\r\n",
+                "6\r\n"
+            ],
+            [
+                "9 9 10\r\n0 0 0 0 0 0 1 0 1\r\n1 1 1 1 1 1 1 1 1\r\n0 0 0 0 0 0 1 0 0\r\n1 1 1 1 1 0 1 1 1\r\n1 1 1 0 0 1 1 1 1\r\n1 1 1 0 1 1 1 1 1\r\n0 0 1 0 1 0 1 0 0\r\n0 0 0 0 1 0 0 0 0\r\n0 0 0 0 1 0 0 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10 10 10\r\n1 0 0 0 0 0 0 0 0 0\r\n0 1 0 0 0 0 0 0 0 0\r\n0 0 1 0 0 0 0 0 0 0\r\n0 0 0 1 0 0 0 0 0 0\r\n0 0 0 0 1 0 0 0 0 0\r\n0 0 0 0 0 1 0 0 0 0\r\n0 0 0 0 0 0 1 0 0 0\r\n0 0 0 0 0 0 0 1 0 0\r\n0 0 0 0 0 0 0 0 1 0\r\n0 0 0 0 0 0 0 0 0 1\r\n",
+                "10\r\n"
+            ],
+            [
+                "10 10 9\r\n0 0 0 0 0 0 0 0 0 0\r\n0 1 0 0 0 0 0 0 0 0\r\n0 0 1 0 0 0 0 0 0 0\r\n0 0 0 1 0 0 0 0 0 0\r\n0 0 0 0 1 0 0 0 0 0\r\n0 0 0 0 0 1 0 0 0 0\r\n0 0 0 0 0 0 1 0 0 0\r\n0 0 0 0 0 0 0 1 0 0\r\n0 0 0 0 0 0 0 0 1 0\r\n0 0 0 0 0 0 0 0 0 1\r\n",
+                "9\r\n"
+            ],
+            [
+                "10 10 8\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 1 0 0 0 0 0 0 0\r\n0 0 0 1 0 0 0 0 0 0\r\n0 0 0 0 1 0 0 0 0 0\r\n0 0 0 0 0 1 0 0 0 0\r\n0 0 0 0 0 0 1 0 0 0\r\n0 0 0 0 0 0 0 1 0 0\r\n0 0 0 0 0 0 0 0 1 0\r\n0 0 0 0 0 0 0 0 0 1\r\n",
+                "8\r\n"
+            ],
+            [
+                "10 10 7\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 1 0 0 0 0 0 0\r\n0 0 0 0 1 0 0 0 0 0\r\n0 0 0 0 0 1 0 0 0 0\r\n0 0 0 0 0 0 1 0 0 0\r\n0 0 0 0 0 0 0 1 0 0\r\n0 0 0 0 0 0 0 0 1 0\r\n0 0 0 0 0 0 0 0 0 1\r\n",
+                "7\r\n"
+            ],
+            [
+                "10 10 6\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 1 0 0 0 0 0\r\n0 0 0 0 0 1 0 0 0 0\r\n0 0 0 0 0 0 1 0 0 0\r\n0 0 0 0 0 0 0 1 0 0\r\n0 0 0 0 0 0 0 0 1 0\r\n0 0 0 0 0 0 0 0 0 1\r\n",
+                "6\r\n"
+            ],
+            [
+                "10 10 1\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "4 4 6\r\n1 1 1 0\r\n1 1 0 1\r\n1 0 1 1\r\n0 1 1 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "100 2 10\r\n0 1\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n0 1\r\n0 1\r\n1 0\r\n1 0\r\n0 1\r\n1 0\r\n0 1\r\n0 1\r\n1 0\r\n0 1\r\n0 1\r\n1 0\r\n1 0\r\n1 0\r\n0 1\r\n1 0\r\n0 1\r\n1 0\r\n1 0\r\n1 0\r\n0 1\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n0 1\r\n0 1\r\n0 1\r\n0 1\r\n0 1\r\n1 0\r\n0 1\r\n0 1\r\n1 0\r\n1 0\r\n0 1\r\n0 1\r\n0 1\r\n1 0\r\n1 0\r\n0 1\r\n0 1\r\n0 1\r\n0 1\r\n1 0\r\n0 1\r\n1 0\r\n1 0\r\n0 1\r\n1 0\r\n1 0\r\n0 1\r\n0 1\r\n0 1\r\n0 1\r\n0 1\r\n0 1\r\n1 0\r\n0 1\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n0 1\r\n0 1\r\n0 1\r\n1 0\r\n0 1\r\n1 0\r\n1 0\r\n1 0\r\n0 1\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n0 1\r\n0 1\r\n0 1\r\n0 1\r\n1 0\r\n1 0\r\n1 0\r\n0 1\r\n1 0\r\n0 1\r\n0 1\r\n0 1\r\n0 1\r\n1 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 5 5\r\n0 1 1 1 1\r\n1 0 1 1 1\r\n1 1 0 1 1\r\n1 1 1 0 1\r\n1 1 1 1 0\r\n",
+                "5\r\n"
+            ],
+            [
+                "5 5 10\r\n1 1 1 1 0\r\n1 1 1 0 1\r\n1 1 0 1 1\r\n1 0 1 1 1\r\n0 1 1 1 1\r\n",
+                "5\r\n"
+            ],
+            [
+                "5 5 5\r\n1 1 1 1 0\r\n1 1 1 0 1\r\n1 1 0 1 1\r\n1 0 1 1 1\r\n0 1 1 1 1\r\n",
+                "5\r\n"
+            ],
+            [
+                "4 4 4\r\n0 1 1 1\r\n1 0 1 1\r\n1 1 0 1\r\n1 1 1 0\r\n",
+                "4\r\n"
+            ]
+        ]
+    }
+]

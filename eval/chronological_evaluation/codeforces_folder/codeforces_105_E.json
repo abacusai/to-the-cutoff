@@ -1,0 +1,347 @@
+[
+    {
+        "name": "Lift and Throw",
+        "description": "You are given a straight half-line divided into segments of unit length, which\nwe will call positions. The positions are numbered by positive integers that\nstart with 1 from the end of half-line, i. e. 1, 2, 3 and so on. The distance\nbetween the positions is the absolute difference between the respective\nnumbers. Laharl, Etna and Flonne occupy some positions on the half-line and\nthey want to get to the position with the largest possible number. They are\noriginally placed in different positions. Each of the characters can perform\neach of the following actions no more than once: Move a certain distance. Grab\nanother character and lift him above the head. Throw the lifted character a\ncertain distance. Each character has a movement range parameter. They can only\nmove to free positions, assuming that distance between those positions doesn't\nexceed the movement range. One character can lift another character if the\ndistance between the two characters equals 1, and no one already holds that\nanother character. We can assume that the lifted character moves to the same\nposition as the person who has lifted him, and the position in which he stood\nbefore becomes free. A lifted character cannot perform any actions and the\ncharacter that holds him cannot walk. Also, each character has a throwing\nrange parameter. It is the distance at which this character can throw the one\nlifted above his head. He can only throw a character to a free position, and\nonly when there is a lifted character. We accept the situation when one person\ngrabs another one who in his turn has the third character in his hands. This\nforms a \"column\" of three characters. For example, Laharl can hold Etna while\nEtna holds Flonne. In this case, Etna and the Flonne cannot perform any\nactions, and Laharl can only throw Etna (together with Flonne) at some\ndistance. Laharl, Etna and Flonne perform actions in any order. They perform\nactions in turns, that is no two of them can do actions at the same time.\nDetermine the maximum number of position at least one of the characters can\nreach. That is, such maximal number x so that one of the characters can reach\nposition x. Input The first line contains three integers: Laharl's position,\nhis movement range and throwing range. The second and the third lines describe\nEtna's and Flonne's parameters correspondingly in the similar form. It is\nguaranteed that the three characters occupy distinct positions. All numbers in\nthe input are between 1 and 10, inclusive. Output Print a single number \u2014 the\nmaximum ordinal number of position which either Laharl, Etna or Flonne can\nreach. Examples Input 9 3 3 4 3 1 2 3 3 Output 15 Note Let us explain how to\nreach position 15 in the sample. Initially Laharl occupies position 9, Etna \u2014\nposition 4 and Flonne \u2014 position 2. First Laharl moves to position 6. Then\nFlonne moves to position 5 and grabs Etna. Laharl grabs Flonne and throws to\nposition 9. Flonne throws Etna to position 12. Etna moves to position 15.\n\n",
+        "cf_contest_id": 105,
+        "cf_index": "E",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force"
+        ],
+        "time_limit_seconds": 1.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "9 3 3\r\n4 3 1\r\n2 3 3\r\n",
+                "15\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 4 6\r\n3 5 5\r\n5 6 4\r\n",
+                "24\r\n"
+            ],
+            [
+                "3 8 1\r\n4 7 1\r\n5 6 1\r\n",
+                "15\r\n"
+            ],
+            [
+                "2 1 1\r\n6 1 1\r\n10 1 1\r\n",
+                "11\r\n"
+            ],
+            [
+                "1 5 3\r\n9 4 3\r\n6 3 3\r\n",
+                "17\r\n"
+            ],
+            [
+                "6 5 10\r\n9 7 10\r\n10 10 10\r\n",
+                "42\r\n"
+            ],
+            [
+                "1 1 1\r\n2 1 10\r\n5 1 1\r\n",
+                "15\r\n"
+            ],
+            [
+                "3 1 4\r\n2 1 3\r\n4 1 1\r\n",
+                "12\r\n"
+            ],
+            [
+                "7 1 5\r\n9 2 1\r\n6 3 3\r\n",
+                "19\r\n"
+            ],
+            [
+                "2 1 3\r\n1 1 4\r\n3 1 1\r\n",
+                "11\r\n"
+            ],
+            [
+                "1 1 10\r\n2 1 2\r\n3 5 1\r\n",
+                "20\r\n"
+            ],
+            [
+                "8 10 10\r\n9 10 10\r\n10 10 10\r\n",
+                "42\r\n"
+            ],
+            [
+                "7 9 10\r\n8 10 9\r\n10 9 10\r\n",
+                "40\r\n"
+            ],
+            [
+                "1 1 10\r\n9 3 3\r\n10 2 4\r\n",
+                "17\r\n"
+            ],
+            [
+                "1 1 1\r\n2 1 1\r\n3 1 1\r\n",
+                "7\r\n"
+            ],
+            [
+                "1 10 10\r\n5 10 10\r\n10 10 10\r\n",
+                "42\r\n"
+            ],
+            [
+                "1 1 9\r\n5 1 10\r\n10 1 8\r\n",
+                "11\r\n"
+            ],
+            [
+                "1 3 1\r\n5 1 4\r\n10 2 10\r\n",
+                "20\r\n"
+            ],
+            [
+                "1 2 2\r\n2 2 3\r\n10 1 10\r\n",
+                "11\r\n"
+            ],
+            [
+                "10 10 10\r\n1 1 1\r\n2 1 1\r\n",
+                "20\r\n"
+            ],
+            [
+                "1 2 5\r\n9 5 3\r\n5 5 4\r\n",
+                "20\r\n"
+            ],
+            [
+                "5 1 2\r\n10 5 1\r\n3 1 3\r\n",
+                "15\r\n"
+            ],
+            [
+                "1 2 1\r\n9 4 3\r\n3 4 3\r\n",
+                "13\r\n"
+            ],
+            [
+                "7 1 1\r\n10 3 4\r\n3 5 3\r\n",
+                "17\r\n"
+            ],
+            [
+                "1 5 5\r\n2 3 2\r\n4 3 4\r\n",
+                "16\r\n"
+            ],
+            [
+                "7 4 2\r\n1 2 5\r\n4 4 4\r\n",
+                "17\r\n"
+            ],
+            [
+                "4 5 2\r\n9 2 2\r\n5 2 4\r\n",
+                "17\r\n"
+            ],
+            [
+                "6 4 1\r\n4 1 3\r\n7 3 5\r\n",
+                "20\r\n"
+            ],
+            [
+                "8 3 5\r\n2 5 1\r\n9 1 5\r\n",
+                "19\r\n"
+            ],
+            [
+                "5 5 5\r\n3 5 3\r\n9 3 5\r\n",
+                "22\r\n"
+            ],
+            [
+                "4 5 3\r\n8 1 3\r\n9 3 1\r\n",
+                "18\r\n"
+            ],
+            [
+                "8 2 2\r\n3 5 5\r\n4 3 3\r\n",
+                "18\r\n"
+            ],
+            [
+                "10 9 10\r\n9 10 9\r\n8 10 10\r\n",
+                "41\r\n"
+            ],
+            [
+                "9 9 8\r\n10 10 9\r\n8 10 10\r\n",
+                "40\r\n"
+            ],
+            [
+                "8 10 10\r\n9 10 9\r\n10 10 10\r\n",
+                "41\r\n"
+            ],
+            [
+                "8 9 10\r\n10 8 10\r\n9 10 10\r\n",
+                "41\r\n"
+            ],
+            [
+                "8 10 1\r\n9 10 1\r\n10 10 1\r\n",
+                "24\r\n"
+            ],
+            [
+                "8 10 10\r\n9 10 10\r\n10 9 10\r\n",
+                "41\r\n"
+            ],
+            [
+                "7 10 10\r\n9 10 10\r\n10 10 10\r\n",
+                "42\r\n"
+            ],
+            [
+                "10 9 10\r\n8 10 10\r\n7 10 10\r\n",
+                "41\r\n"
+            ],
+            [
+                "8 1 6\r\n6 4 7\r\n5 8 6\r\n",
+                "28\r\n"
+            ],
+            [
+                "2 8 10\r\n5 9 7\r\n7 2 9\r\n",
+                "35\r\n"
+            ],
+            [
+                "6 6 7\r\n10 2 4\r\n5 5 7\r\n",
+                "28\r\n"
+            ],
+            [
+                "5 1 7\r\n6 8 6\r\n10 9 3\r\n",
+                "27\r\n"
+            ],
+            [
+                "9 7 9\r\n10 5 10\r\n2 7 9\r\n",
+                "37\r\n"
+            ],
+            [
+                "6 7 6\r\n9 2 4\r\n4 2 8\r\n",
+                "27\r\n"
+            ],
+            [
+                "4 4 3\r\n5 8 2\r\n8 6 7\r\n",
+                "25\r\n"
+            ],
+            [
+                "3 1 8\r\n2 5 4\r\n4 4 1\r\n",
+                "22\r\n"
+            ],
+            [
+                "2 4 2\r\n4 7 8\r\n8 8 5\r\n",
+                "25\r\n"
+            ],
+            [
+                "5 10 6\r\n7 7 7\r\n1 6 3\r\n",
+                "27\r\n"
+            ],
+            [
+                "4 6 5\r\n10 6 8\r\n1 3 3\r\n",
+                "23\r\n"
+            ],
+            [
+                "9 8 4\r\n8 2 3\r\n2 1 8\r\n",
+                "21\r\n"
+            ],
+            [
+                "3 3 9\r\n1 5 6\r\n7 2 6\r\n",
+                "24\r\n"
+            ],
+            [
+                "10 8 6\r\n3 9 4\r\n4 4 5\r\n",
+                "25\r\n"
+            ],
+            [
+                "3 4 3\r\n2 5 1\r\n4 5 1\r\n",
+                "15\r\n"
+            ],
+            [
+                "5 9 10\r\n6 10 2\r\n7 1 10\r\n",
+                "38\r\n"
+            ],
+            [
+                "4 2 4\r\n5 7 7\r\n8 8 9\r\n",
+                "27\r\n"
+            ],
+            [
+                "1 8 2\r\n3 9 8\r\n6 4 6\r\n",
+                "25\r\n"
+            ],
+            [
+                "8 7 6\r\n10 5 1\r\n3 1 5\r\n",
+                "22\r\n"
+            ],
+            [
+                "6 3 1\r\n2 3 4\r\n5 7 1\r\n",
+                "19\r\n"
+            ],
+            [
+                "10 10 6\r\n7 10 8\r\n6 5 5\r\n",
+                "35\r\n"
+            ],
+            [
+                "3 3 10\r\n7 6 7\r\n10 5 10\r\n",
+                "35\r\n"
+            ],
+            [
+                "1 8 6\r\n9 8 8\r\n5 6 5\r\n",
+                "30\r\n"
+            ],
+            [
+                "6 6 3\r\n9 10 1\r\n2 7 6\r\n",
+                "30\r\n"
+            ],
+            [
+                "5 2 4\r\n10 10 7\r\n9 5 9\r\n",
+                "30\r\n"
+            ],
+            [
+                "2 2 9\r\n9 5 1\r\n7 4 7\r\n",
+                "24\r\n"
+            ],
+            [
+                "1 10 6\r\n6 1 2\r\n9 9 6\r\n",
+                "25\r\n"
+            ],
+            [
+                "3 8 4\r\n1 7 3\r\n8 5 10\r\n",
+                "26\r\n"
+            ],
+            [
+                "1 7 1\r\n10 9 7\r\n5 10 5\r\n",
+                "25\r\n"
+            ],
+            [
+                "8 10 1\r\n2 5 6\r\n3 5 7\r\n",
+                "31\r\n"
+            ],
+            [
+                "5 5 1\r\n3 4 10\r\n6 5 10\r\n",
+                "32\r\n"
+            ],
+            [
+                "10 3 8\r\n2 3 6\r\n1 1 8\r\n",
+                "23\r\n"
+            ],
+            [
+                "2 10 3\r\n4 10 1\r\n8 8 6\r\n",
+                "25\r\n"
+            ],
+            [
+                "10 2 6\r\n1 5 7\r\n2 8 6\r\n",
+                "25\r\n"
+            ],
+            [
+                "2 5 1\r\n7 9 3\r\n6 2 10\r\n",
+                "29\r\n"
+            ],
+            [
+                "1 1 4\r\n8 10 5\r\n5 3 9\r\n",
+                "28\r\n"
+            ],
+            [
+                "1 7 1\r\n9 9 3\r\n5 4 1\r\n",
+                "20\r\n"
+            ],
+            [
+                "8 6 10\r\n3 7 8\r\n9 2 9\r\n",
+                "33\r\n"
+            ],
+            [
+                "9 6 8\r\n5 5 2\r\n2 5 2\r\n",
+                "22\r\n"
+            ],
+            [
+                "2 1 3\r\n1 3 7\r\n4 5 10\r\n",
+                "22\r\n"
+            ],
+            [
+                "1 10 10\r\n2 10 10\r\n10 10 10\r\n",
+                "42\r\n"
+            ],
+            [
+                "3 10 10\r\n7 10 10\r\n10 10 10\r\n",
+                "42\r\n"
+            ]
+        ]
+    }
+]

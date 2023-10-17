@@ -1,0 +1,64 @@
+[
+    {
+        "name": "Anti-median (Easy Version)",
+        "description": "This is the easy version of the problem. The only difference between the two\nversions is the constraint on \n    n\n. You can make hacks only if all versions\nof the problem are solved. Let's call an array \n    a\n of odd length\n\n    2m+1\n (with \n    m \n    \u2265 1\n) bad, if element \n    a_m+1\n is equal to\nthe median of this array. In other words, the array is bad if, after sorting\nit, the element at \n    m+1\n-st position remains the same. Let's call a\npermutation \n    p\n of integers from \n    1\n to \n    n\n anti-median, if every\nits subarray of odd length \n    \u2265 3\n is not bad. You are already given\nvalues of some elements of the permutation. Find the number of ways to set\nunknown values to obtain an anti-median permutation. As this number can be\nvery large, find it modulo \n    10^9+7\n. Input The first line contains a\nsingle integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264 10^4\n) \u2014 the number of test\ncases. The description of test cases follows. The first line of each test case\ncontains a single integer \n    n\n \n    (2 \n    \u2264 n \n    \u2264 1000)\n \u2014 the length of\nthe permutation. The second line of each test case contains \n    n\n integers\n\n    p_1, p_2, \n    \u2026, p_n\n (\n    1 \n    \u2264 p_i \n    \u2264 n\n, or \n    p_i = -1\n) \u2014\nthe elements of the permutation. If \n    p_i \n    \u2260 -1\n, it's given, else it's\nunknown. It's guaranteed that if for some \n    i \n    \u2260 j\n holds \n    p_i \n    \u2260\n    -1, p_j \n    \u2260 -1\n, then \n    p_i \n    \u2260 p_j\n. It is guaranteed that the sum\nof \n    n^2\n over all test cases does not exceed \n    10^6\n. Output For each\ntest case, output a single integer \u2014 the number of ways to set unknown values\nto obtain an anti-median permutation, modulo \n    10^9+7\n. Example Input 5 2\n-1 -1 3 -1 -1 -1 4 1 2 3 4 6 -1 -1 3 4 -1 -1 8 -1 -1 -1 -1 -1 -1 -1 -1 Output\n2 4 0 1 316 Note In the first test case, both \n    [1, 2]\n and \n    [2, 1]\n\nare anti-median. In the second test case, permutations \n    [1, 3, 2], [2, 1,\n    3], [2, 3, 1], [3, 1, 2]\n are anti-median. The remaining two permutations,\n\n    [1, 2, 3]\n, \n    [3, 2, 1]\n, are bad arrays on their own, as their\nmedian, \n    2\n, is in their middle. In the third test case, \n    [1, 2, 3,\n    4]\n isn't anti-median, as it contains bad subarray \n    [1, 2, 3]\n. In the\nfourth test case, the only anti-median array you can get is \n    [5, 6, 3, 4, 1,\n    2]\n.\n\n",
+        "cf_contest_id": 1761,
+        "cf_index": "F1",
+        "cf_rating": 3100,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n2\r\n-1 -1\r\n3\r\n-1 -1 -1\r\n4\r\n1 2 3 4\r\n6\r\n-1 -1 3 4 -1 -1\r\n8\r\n-1 -1 -1 -1 -1 -1 -1 -1\r\n",
+                "2\r\n4\r\n0\r\n1\r\n316\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7\r\n7\r\n-1 -1 -1 -1 -1 -1 -1\r\n8\r\n-1 -1 -1 -1 -1 -1 -1 -1\r\n5\r\n-1 -1 -1 -1 -1\r\n2\r\n-1 -1\r\n4\r\n-1 -1 -1 -1\r\n6\r\n-1 -1 -1 -1 -1 -1\r\n3\r\n-1 -1 -1\r\n",
+                "136\r\n316\r\n24\r\n2\r\n10\r\n58\r\n4\r\n"
+            ],
+            [
+                "7\r\n3\r\n-1 -1 -1\r\n2\r\n-1 -1\r\n7\r\n7 -1 -1 -1 2 -1 -1\r\n8\r\n-1 -1 -1 -1 -1 -1 -1 -1\r\n4\r\n2 4 1 -1\r\n6\r\n-1 4 5 2 -1 3\r\n5\r\n-1 4 -1 -1 -1\r\n",
+                "4\r\n2\r\n0\r\n316\r\n1\r\n0\r\n4\r\n"
+            ],
+            [
+                "7\r\n3\r\n-1 -1 -1\r\n6\r\n3 -1 -1 -1 -1 -1\r\n2\r\n2 -1\r\n4\r\n1 2 3 4\r\n7\r\n-1 -1 -1 -1 -1 -1 -1\r\n5\r\n3 -1 -1 -1 1\r\n8\r\n-1 -1 -1 -1 -1 -1 -1 -1\r\n",
+                "4\r\n14\r\n1\r\n0\r\n136\r\n2\r\n316\r\n"
+            ],
+            [
+                "7\r\n5\r\n1 4 3 -1 2\r\n6\r\n-1 6 -1 -1 -1 3\r\n8\r\n-1 -1 -1 -1 -1 -1 -1 -1\r\n2\r\n1 -1\r\n4\r\n-1 2 1 3\r\n7\r\n-1 -1 6 -1 -1 -1 -1\r\n3\r\n-1 -1 -1\r\n",
+                "0\r\n4\r\n316\r\n1\r\n0\r\n24\r\n4\r\n"
+            ],
+            [
+                "7\r\n7\r\n-1 4 -1 -1 -1 -1 -1\r\n8\r\n-1 -1 -1 -1 -1 -1 -1 -1\r\n2\r\n2 1\r\n4\r\n-1 -1 -1 -1\r\n3\r\n-1 1 3\r\n5\r\n-1 -1 -1 -1 -1\r\n6\r\n6 2 5 -1 4 -1\r\n",
+                "24\r\n316\r\n1\r\n10\r\n1\r\n24\r\n1\r\n"
+            ],
+            [
+                "7\r\n6\r\n-1 2 -1 5 -1 1\r\n3\r\n-1 -1 -1\r\n4\r\n2 4 1 3\r\n2\r\n-1 -1\r\n5\r\n4 1 2 3 -1\r\n8\r\n-1 -1 -1 -1 -1 -1 -1 -1\r\n7\r\n-1 3 6 2 -1 -1 4\r\n",
+                "0\r\n4\r\n1\r\n2\r\n0\r\n316\r\n2\r\n"
+            ],
+            [
+                "7\r\n7\r\n-1 -1 -1 -1 -1 -1 -1\r\n6\r\n2 -1 6 1 3 -1\r\n3\r\n-1 -1 -1\r\n8\r\n-1 -1 -1 -1 -1 -1 -1 -1\r\n2\r\n-1 -1\r\n4\r\n-1 -1 3 4\r\n5\r\n1 -1 4 2 5\r\n",
+                "136\r\n0\r\n4\r\n316\r\n2\r\n0\r\n0\r\n"
+            ],
+            [
+                "7\r\n7\r\n-1 -1 -1 -1 -1 -1 -1\r\n4\r\n2 -1 -1 -1\r\n6\r\n-1 -1 -1 -1 -1 -1\r\n8\r\n-1 6 -1 -1 -1 -1 5 -1\r\n2\r\n-1 1\r\n3\r\n3 -1 1\r\n5\r\n-1 -1 -1 -1 -1\r\n",
+                "136\r\n3\r\n58\r\n0\r\n1\r\n0\r\n24\r\n"
+            ],
+            [
+                "7\r\n5\r\n3 -1 4 2 5\r\n8\r\n-1 -1 -1 -1 -1 -1 -1 -1\r\n3\r\n1 2 3\r\n2\r\n2 1\r\n7\r\n-1 -1 -1 -1 -1 -1 -1\r\n4\r\n-1 3 2 -1\r\n6\r\n2 1 -1 -1 6 3\r\n",
+                "1\r\n316\r\n0\r\n1\r\n136\r\n1\r\n0\r\n"
+            ],
+            [
+                "7\r\n6\r\n-1 -1 2 -1 -1 -1\r\n3\r\n-1 -1 -1\r\n4\r\n3 4 2 1\r\n8\r\n-1 -1 -1 -1 -1 -1 -1 -1\r\n5\r\n-1 -1 -1 -1 -1\r\n7\r\n-1 -1 -1 -1 -1 -1 -1\r\n2\r\n-1 -1\r\n",
+                "13\r\n4\r\n0\r\n316\r\n24\r\n136\r\n2\r\n"
+            ]
+        ]
+    }
+]

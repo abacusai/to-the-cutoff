@@ -1,0 +1,135 @@
+[
+    {
+        "name": "Increasing Subsequence (easy version)",
+        "description": "The only difference between problems C1 and C2 is that all values in input of\nproblem C1 are distinct (this condition may be false for problem C2). You are\ngiven a sequence \n    a\n consisting of \n    n\n integers. All these integers\nare distinct, each value from \n    1\n to \n    n\n appears in the sequence\nexactly once. You are making a sequence of moves. During each move you must\ntake either the leftmost element of the sequence or the rightmost element of\nthe sequence, write it down and remove it from the sequence. Your task is to\nwrite down a strictly increasing sequence, and among all such sequences you\nshould take the longest (the length of the sequence is the number of elements\nin it). For example, for the sequence \n    [2, 1, 5, 4, 3]\n the answer is\n\n    4\n (you take \n    2\n and the sequence becomes \n    [1, 5, 4, 3]\n, then\nyou take the rightmost element \n    3\n and the sequence becomes \n    [1, 5,\n    4]\n, then you take \n    4\n and the sequence becomes \n    [1, 5]\n and then\nyou take \n    5\n and the sequence becomes \n    [1]\n, the obtained increasing\nsequence is \n    [2, 3, 4, 5]\n). Input The first line of the input contains\none integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the number of\nelements in \n    a\n. The second line of the input contains \n    n\n integers\n\n    a_1, a_2, \n    \u2026, a_n\n (\n    1 \n    \u2264 a_i \n    \u2264 n\n), where \n    a_i\n is\nthe \n    i\n-th element of \n    a\n. All these integers are pairwise distinct.\nOutput In the first line of the output print \n    k\n \u2014 the maximum number of\nelements in a strictly increasing sequence you can obtain. In the second line\nprint a string \n    s\n of length \n    k\n, where the \n    j\n-th character of\nthis string \n    s_j\n should be 'L' if you take the leftmost element during\nthe \n    j\n-th move and 'R' otherwise. If there are multiple answers, you can\nprint any. Examples Input 5 2 1 5 4 3 Output 4 LRRR Input 7 1 3 5 6 7 4 2\nOutput 7 LRLRLLL Input 3 1 2 3 Output 3 LLL Input 4 1 2 4 3 Output 4 LLRL Note\nThe first example is described in the problem statement.\n\n",
+        "cf_contest_id": 1157,
+        "cf_index": "C1",
+        "cf_rating": 1300,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n2 1 5 4 3\r\n",
+                "4 LRRR\r\n"
+            ],
+            [
+                "7\r\n1 3 5 6 7 4 2\r\n",
+                "7 LRLRLLL\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n",
+                "3 LLL\r\n"
+            ],
+            [
+                "4\r\n1 2 4 3\r\n",
+                "4 LLRL\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n1 2 5 9 10 8 7 6 4 3\r\n",
+                "10 LLRRLRRRLL\r\n"
+            ],
+            [
+                "100\r\n2 3 4 6 7 8 9 12 13 14 15 16 17 19 20 21 24 25 27 28 31 32 34 40 42 43 45 46 47 49 54 55 58 59 60 61 62 63 68 71 74 75 80 81 82 85 86 87 88 89 91 92 95 96 98 99 100 97 94 93 90 84 83 79 78 77 76 73 72 70 69 67 66 65 64 57 56 53 52 51 50 48 44 41 39 38 37 36 35 33 30 29 26 23 22 18 11 10 5 1\r\n",
+                "100 RLLLRLLLLRRLLLLLLRLLLRRLLRLLRRLLRLRRRRRLRLLRLLLRLRRRRLLRRLLLLLLRRRRLRRLRRLLRRRRLLLRRLLLLLRLLRRLLRLLL\r\n"
+            ],
+            [
+                "20\r\n1 5 7 8 9 11 13 15 17 20 19 18 16 14 12 4 3 10 6 2\r\n",
+                "13 LRLRLLLRLLLLL\r\n"
+            ],
+            [
+                "51\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51\r\n",
+                "51 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "1 L\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n",
+                "2 LL\r\n"
+            ],
+            [
+                "20\r\n19 20 2 11 16 3 1 12 9 8 18 17 7 15 4 10 6 5 13 14\r\n",
+                "3 RLL\r\n"
+            ],
+            [
+                "19\r\n10 1 11 12 8 5 2 13 6 3 9 17 14 7 18 4 15 19 16\r\n",
+                "3 LRR\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n",
+                "2 RL\r\n"
+            ],
+            [
+                "19\r\n14 1 19 3 4 11 10 5 18 16 12 2 13 6 15 8 7 17 9\r\n",
+                "3 RLR\r\n"
+            ],
+            [
+                "9\r\n3 7 2 5 6 9 4 8 1\r\n",
+                "4 RLLR\r\n"
+            ],
+            [
+                "5\r\n5 1 4 3 2\r\n",
+                "4 RRRL\r\n"
+            ],
+            [
+                "17\r\n10 17 13 12 11 15 6 8 5 3 16 9 2 7 1 4 14\r\n",
+                "3 LRL\r\n"
+            ],
+            [
+                "16\r\n7 15 3 11 4 14 8 9 16 1 2 10 5 6 12 13\r\n",
+                "3 LRL\r\n"
+            ],
+            [
+                "7\r\n3 2 5 6 7 1 4\r\n",
+                "2 LR\r\n"
+            ],
+            [
+                "5\r\n5 3 4 1 2\r\n",
+                "2 RL\r\n"
+            ],
+            [
+                "17\r\n5 15 13 8 2 14 7 9 17 11 10 3 16 6 1 4 12\r\n",
+                "3 LRL\r\n"
+            ],
+            [
+                "3\r\n2 1 3\r\n",
+                "2 LR\r\n"
+            ],
+            [
+                "12\r\n3 10 2 9 5 11 7 8 6 1 4 12\r\n",
+                "3 LLR\r\n"
+            ],
+            [
+                "18\r\n12 9 16 11 2 4 6 15 18 17 7 1 10 13 5 14 8 3\r\n",
+                "4 RRLR\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n",
+                "2 RL\r\n"
+            ],
+            [
+                "4\r\n4 3 2 1\r\n",
+                "4 RRRL\r\n"
+            ],
+            [
+                "6\r\n5 6 3 4 2 1\r\n",
+                "5 RRRLL\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n",
+                "3 RRL\r\n"
+            ],
+            [
+                "12\r\n10 5 9 4 6 1 12 2 8 7 3 11\r\n",
+                "2 LR\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,60 @@
+[
+    {
+        "name": "Favorite Game",
+        "description": "After William is done with work for the day, he enjoys playing his favorite\nvideo game. The game happens in a 2D world, starting at turn \n    0\n. William\ncan pick any cell in the game world and spawn in it. Then, each turn, William\nmay remain at his current location or move from the current location (x, y) to\none of the following locations: (x + 1, y), (x - 1, y), (x, y + 1), (x, y -\n1). To accelerate movement the game has \n    n\n fast travel towers. \n    i\n-th\ntower is located at location (\n    xa_i, ya_i\n). To be able to instantly\ntravel to the tower from any location in the game world it must first be\nactivated. Activation of tower \n    i\n happens at the moment when the player\nis in cell (\n    xa_i, ya_i\n) after this the tower remains active throughout\nthe entire game. William also knows that the game has \n    m\n quests.\n\n    i\n-th quest can be completed instantly by being at location (\n    xb_i,\n    yb_i\n) on turn \n    t_i\n. William wants to find out the maximal number of\nquests he will be able to complete by optimally traversing the game world.\nInput The first line contains two integers \n    n\n and \n    m\n (\n    0 \n    \u2264 n\n    \n    \u2264 14, 1 \n    \u2264 m \n    \u2264 100\n), which are the number of towers and the\nnumber of quests, respectively. Each of the next \n    n\n lines contains two\nintegers \n    xa_i, ya_i\n (\n    1 \n    \u2264 xa_i, ya_i \n    \u2264 10^6\n), which are the\ncoordinates of fast travel towers. Each of the next \n    m\n lines contains two\nintegers \n    xb_i\n, \n    yb_i\n and \n    t_i\n (\n    1 \n    \u2264 xb_i, yb_i \n    \u2264\n    10^6\n, \n    1 \n    \u2264 t_i \n    \u2264 10^9\n), which are the coordinates of quests\nand the turn at which it may be completed. It is guaranteed that all locations\nin a test are different. Output Print a single number \u2014 the maximal number of\nquests William will be able to complete. Example Input 3 4 1 1 2 3 5 2 2 2 12\n5 1 4 6 2 11 3 5 10 Output 3 Note In the first sample test one of the possible\nsequences of William's actions is as follows: Spawn at \n    (3, 2)\n On turn\n\n    1\n move to \n    (4, 2)\n On turn \n    2\n move to \n    (5, 2)\n. By visiting\nthis cell William activates tower number \n    3\n. On turn \n    3\n move to\n\n    (5, 1)\n, where he waits for \n    1\n turn to complete the \n    2\nnd quest\nOn turn \n    5\n move to \n    (5, 2)\n On turn \n    6\n move to \n    (5, 3)\n On\nturn \n    7\n move to \n    (5, 4)\n On turn \n    8\n move to \n    (5, 5)\n On turn\n\n    9\n move to \n    (4, 5)\n On turn \n    10\n move to \n    (3, 5)\n. By moving\nto this location William will complete the \n    4\nth quest On turn \n    10\n\ninstantly move to an already activated fast travel tower at \n    (5, 2)\n On\nturn \n    11\n move to \n    (6, 2)\n. By moving to this location William will\ncomplete the \n    3\nrd quest William will not be able to complete the quest\nnumber \n    1\n, because the tower at \n    (2, 3)\n was not activated\n\n",
+        "cf_contest_id": 1523,
+        "cf_index": "F",
+        "cf_rating": 3300,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 4\r\n1 1\r\n2 3\r\n5 2\r\n2 2 12\r\n5 1 4\r\n6 2 11\r\n3 5 10\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 5\r\n1 1\r\n1 9\r\n2 9\r\n6 7 1\r\n5 3 9\r\n7 4 5\r\n2 3 5\r\n9 9 7\r\n",
+                "3\r\n"
+            ],
+            [
+                "10 10\r\n84 82\r\n54 90\r\n77 100\r\n42 87\r\n50 53\r\n93 44\r\n11 9\r\n27 66\r\n75 36\r\n56 52\r\n53 80 36\r\n21 52 298\r\n32 25 62\r\n71 94 199\r\n26 92 273\r\n97 99 319\r\n58 60 16\r\n13 20 70\r\n81 100 310\r\n36 49 193\r\n",
+                "6\r\n"
+            ],
+            [
+                "7 8\r\n534 91\r\n417 939\r\n176 993\r\n844 482\r\n610 520\r\n490 210\r\n564 624\r\n58 657 661\r\n381 629 446\r\n32 512 1648\r\n425 453 1900\r\n282 395 2348\r\n506 820 2281\r\n856 284 3144\r\n577 826 1000\r\n",
+                "6\r\n"
+            ],
+            [
+                "6 20\r\n8054 2992\r\n2546 5359\r\n2851 9668\r\n6007 5359\r\n9675 9171\r\n8399 7777\r\n58 5920 263\r\n9820 924 23327\r\n5917 7866 16746\r\n7982 2404 3915\r\n8747 6489 17262\r\n6206 649 5975\r\n3473 9499 18979\r\n932 2157 25119\r\n5194 501 1650\r\n1192 7888 22153\r\n653 8632 1096\r\n6693 7738 6375\r\n7824 6050 14356\r\n7674 9492 2035\r\n2107 3134 1535\r\n4762 8787 11406\r\n4823 8345 19065\r\n7715 6306 10522\r\n630 6178 15465\r\n5291 811 18917\r\n",
+                "6\r\n"
+            ],
+            [
+                "6 20\r\n3270 3779\r\n4056 7774\r\n9580 7404\r\n2496 8439\r\n8014 6452\r\n5174 2034\r\n6143 8117 9162\r\n4705 479 10005\r\n7891 91 26305\r\n7056 5034 30238\r\n2142 3056 15794\r\n2347 9420 34912\r\n5896 4127 27534\r\n1684 1278 31969\r\n6361 6938 43234\r\n768 1080 35869\r\n1975 5335 5433\r\n1500 1031 5686\r\n7961 8917 7296\r\n2173 2237 39651\r\n8774 8653 38706\r\n3256 2210 4590\r\n5855 6227 21374\r\n4891 3768 17977\r\n7046 8203 2308\r\n6214 4444 2733\r\n",
+                "10\r\n"
+            ],
+            [
+                "1 1\r\n137960 841492\r\n131684 290309 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1\r\n551101 173210\r\n588367 124626\r\n396372 781886\r\n71473 873065\r\n629662 433284\r\n869527 628676 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 1\r\n802903 420651\r\n42566 75263\r\n445347 861368\r\n791567 921223\r\n607390 248771\r\n482527 56695\r\n241164 790098\r\n803142 819095\r\n218901 466483\r\n74088 758230\r\n342660 320897 9\r\n",
+                "1\r\n"
+            ],
+            [
+                "14 1\r\n892766 4978\r\n190347 767803\r\n893157 164983\r\n364036 788515\r\n827796 385533\r\n822329 337831\r\n394463 193818\r\n232697 11302\r\n689844 732066\r\n598825 560472\r\n227645 221701\r\n855447 637306\r\n766787 102661\r\n396015 438164\r\n623852 339602 10\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

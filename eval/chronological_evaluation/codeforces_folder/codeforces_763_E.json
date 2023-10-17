@@ -1,0 +1,53 @@
+[
+    {
+        "name": "Timofey and our friends animals",
+        "description": "After his birthday party, Timofey went to his favorite tree alley in a park.\nHe wants to feed there his favorite birds \u2014 crows. It's widely known that each\ntree is occupied by a single crow family. The trees in the alley form a row\nand are numbered from 1 to n. Some families are friends to each other. For\nsome reasons, two families can be friends only if they live not too far from\neach other, more precisely, there is no more than k - 1 trees between any pair\nof friend families. Formally, the family on the u-th tree and the family on\nthe v-th tree can be friends only if |u - v| \u2264 k holds. One of the friendship\nfeatures is that if some family learns that Timofey is feeding crows\nsomewhere, it notifies about this all friend families. Thus, after Timofey\nstarts to feed crows under some tree, all the families that are friends to the\nfamily living on this tree, as well as their friends and so on, fly to the\nfeeding place. Of course, the family living on the tree also comes to the\nfeeding place. Today Timofey came to the alley and noticed that all the\nfamilies that live on trees with numbers strictly less than l or strictly\ngreater than r have flown away. Thus, it is not possible to pass the\ninformation about feeding through them. Moreover, there is no need to feed\nthem. Help Timofey to learn what is the minimum number of trees under which he\nhas to feed crows so that all the families that have remained will get the\ninformation about feeding. You are given several situations, described by\nintegers l and r, you need to calculate the answer for all of them. Input The\nfirst line contains integers n and k (1 \u2264 n \u2264 10^5, 1 \u2264 k \u2264 5), where n is the\nnumber of trees, and k is the maximum possible distance between friend\nfamilies. The next line contains single integer m (0 \u2264 m \u2264 n\u00b7k) \u2014 the number\nof pair of friend families. Each of the next m lines contains two integers u\nand v (1 \u2264 u, v \u2264 10^5), that means that the families on trees u and v are\nfriends. It is guaranteed that u \u2260 v and |u - v| \u2264 k. All the given pairs are\ndistinct. The next line contains single integer q (1 \u2264 q \u2264 10^5) \u2014 the number\nof situations you need to calculate the answer in. Each of the next q lines\ncontains two integers l and r (1 \u2264 l \u2264 r \u2264 10^5), that means that in this\nsituation families that have flown away lived on such trees x, so that either\nx < l or x > r. Output Print q lines. Line i should contain single integer \u2014\nthe answer in the i-th situation. Example Input 5 3 3 1 3 2 3 4 5 5 1 1 1 2 2\n3 1 3 1 5 Output 1 2 1 1 2 Note In the first example the following family\npairs are friends: (1, 3), (2, 3) and (4, 5). In the first situation only the\nfirst family has remained, so the answer is 1. In the second situation the\nfirst two families have remained, and they aren't friends, so the answer is 2.\nIn the third situation the families 2 and 3 are friends, so it is enough to\nfeed any of them, the answer is 1. In the fourth situation we can feed the\nfirst family, then the third family will get the information from the first\nfamily, and the second family will get the information from the third. The\nanswer is 1. In the fifth situation we can feed the first and the fifth\nfamilies, so the answer is 2.\n\n",
+        "cf_contest_id": 763,
+        "cf_index": "E",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "divide and conquer",
+            "dsu"
+        ],
+        "time_limit_seconds": 7.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 3\r\n3\r\n1 3\r\n2 3\r\n4 5\r\n5\r\n1 1\r\n1 2\r\n2 3\r\n1 3\r\n1 5\r\n",
+                "1\r\n2\r\n1\r\n1\r\n2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n0\r\n1\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 5\r\n1\r\n1 2\r\n1\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 3\r\n2\r\n1 3\r\n2 3\r\n1\r\n1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "10 5\r\n3\r\n5 7\r\n8 9\r\n3 6\r\n3\r\n7 10\r\n6 8\r\n7 8\r\n",
+                "3\r\n3\r\n2\r\n"
+            ],
+            [
+                "10 5\r\n5\r\n8 9\r\n3 8\r\n2 5\r\n1 3\r\n4 7\r\n3\r\n3 3\r\n4 8\r\n4 8\r\n",
+                "1\r\n4\r\n4\r\n"
+            ],
+            [
+                "10 5\r\n7\r\n7 9\r\n3 4\r\n5 10\r\n1 5\r\n3 8\r\n4 8\r\n2 7\r\n10\r\n8 10\r\n6 9\r\n5 10\r\n2 3\r\n5 6\r\n8 8\r\n3 5\r\n5 7\r\n6 6\r\n7 9\r\n",
+                "3\r\n3\r\n4\r\n2\r\n2\r\n1\r\n2\r\n3\r\n1\r\n2\r\n"
+            ],
+            [
+                "10 5\r\n35\r\n6 9\r\n7 9\r\n5 10\r\n9 10\r\n8 9\r\n2 5\r\n3 4\r\n3 5\r\n4 5\r\n5 6\r\n3 6\r\n6 8\r\n1 4\r\n1 5\r\n4 9\r\n4 8\r\n4 6\r\n6 7\r\n7 8\r\n1 3\r\n4 7\r\n2 3\r\n3 8\r\n5 8\r\n7 10\r\n1 6\r\n8 10\r\n1 2\r\n2 7\r\n2 6\r\n5 9\r\n3 7\r\n2 4\r\n5 7\r\n6 10\r\n10\r\n10 10\r\n1 10\r\n6 6\r\n10 10\r\n8 9\r\n2 5\r\n7 7\r\n2 2\r\n9 9\r\n4 10\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,153 @@
+[
+    {
+        "name": "Preorder",
+        "description": "You are given a rooted tree of \n    2^n - 1\n vertices. Every vertex of this\ntree has either \n    0\n children, or \n    2\n children. All leaves of this tree\nhave the same distance from the root, and for every non-leaf vertex, one of\nits children is the left one, and the other child is the right one. Formally,\nyou are given a perfect binary tree. The vertices of the tree are numbered in\nthe following order: the root has index \n    1\n; if a vertex has index\n\n    x\n, then its left child has index \n    2x\n, and its right child has index\n\n    2x+1\n. Every vertex of the tree has a letter written on it, either A or\nB. Let's define the character on the vertex \n    x\n as \n    s_x\n. Let the\npreorder string of some vertex \n    x\n be defined in the following way: if the\nvertex \n    x\n is a leaf, then the preorder string of \n    x\n be consisting of\nonly one character \n    s_x\n; otherwise, the preorder string of \n    x\n is\n\n    s_x + f(l_x) + f(r_x)\n, where \n    +\n operator defines concatenation of\nstrings, \n    f(l_x)\n is the preorder string of the left child of \n    x\n, and\n\n    f(r_x)\n is the preorder string of the right child of \n    x\n. The\npreorder string of the tree is the preorder string of its root. Now, for the\nproblem itself... You have to calculate the number of different strings that\ncan be obtained as the preorder string of the given tree, if you are allowed\nto perform the following operation any number of times before constructing the\npreorder string of the tree: choose any non-leaf vertex \n    x\n, and swap its\nchildren (so, the left child becomes the right one, and vice versa). Input The\nfirst line contains one integer \n    n\n (\n    2 \n    \u2264 n \n    \u2264 18\n). The second\nline contains a sequence of \n    2^n-1\n characters \n    s_1, s_2, \n    \u2026,\n    s_2^n-1\n. Each character is either A or B. The characters are not\nseparated by spaces or anything else. Output Print one integer \u2014 the number of\ndifferent strings that can be obtained as the preorder string of the given\ntree, if you can apply any number of operations described in the statement.\nSince it can be very large, print it modulo \n    998244353\n. Examples Input 4\nBAAAAAAAABBABAB Output 16 Input 2 BAA Output 1 Input 2 ABA Output 2 Input 2\nAAB Output 2 Input 2 AAA Output 1\n\n",
+        "cf_contest_id": 1671,
+        "cf_index": "E",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "divide and conquer",
+            "dp",
+            "dsu",
+            "hashing",
+            "sortings",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "4\r\nBAAAAAAAABBABAB\r\n",
+                "16\r\n"
+            ],
+            [
+                "2\r\nBAA\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\nABA\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\nAAB\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\nAAA\r\n",
+                "1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\nBBB\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\nBBB\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\nAAB\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\nBBB\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\nAAA\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\nAAA\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\nAAA\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\nBBBBBBBBBBBBBBB\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\nBBBABBBBBABBBBB\r\n",
+                "8\r\n"
+            ],
+            [
+                "4\r\nBBABBBBBBBBBBBB\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\nAAAAAAABAAAAABB\r\n",
+                "16\r\n"
+            ],
+            [
+                "4\r\nAAAABABABABAAAA\r\n",
+                "32\r\n"
+            ],
+            [
+                "4\r\nAAAAAAAAAAAAAAB\r\n",
+                "8\r\n"
+            ],
+            [
+                "4\r\nAAAAAAAAAAAAAAA\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\nBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\nABBBBBBBBBABBBBBBBBBBBBBBBABBBB\r\n",
+                "64\r\n"
+            ],
+            [
+                "5\r\nBABBABBABBBABBABBABBABBBBBABBBA\r\n",
+                "2048\r\n"
+            ],
+            [
+                "5\r\nAAAAABABBBAAAAAAAAABABBAABBAABB\r\n",
+                "128\r\n"
+            ],
+            [
+                "5\r\nAABABAABABBBAAAAAAAAAAAAAAAAAAA\r\n",
+                "32\r\n"
+            ],
+            [
+                "5\r\nAABAAAAABBBAABAAAAAAAAAAAAAAAAA\r\n",
+                "32\r\n"
+            ],
+            [
+                "5\r\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\r\n",
+                "1\r\n"
+            ],
+            [
+                "6\r\nAAAAAAABABBBBBABBAAAAAABABAAABBABABABABABBBBBAAAAAAABABBBAABBBB\r\n",
+                "524288\r\n"
+            ],
+            [
+                "6\r\nAABBBABAABAAABAAAAABBBAABBBAABABBABBBBBABABAAABBBBBABABAAAABBAA\r\n",
+                "131072\r\n"
+            ],
+            [
+                "6\r\nABBAABBBABBBAAAAAAABBABBABBAAAAAABBAAAAAAAABBBBAABBBBBBBBBBAAAA\r\n",
+                "1024\r\n"
+            ],
+            [
+                "8\r\nABBBAAABBBAABABAAAABAABAABBABABBABABBBBBAABBAABBBAABBBBAAABBABAABBBBBAAABBABAABAABBBBBAABBBABAAAAAAABBAAABBAABBABABABABBAABBAAABBBBBAAAABBBBAAAABAABABAABBBAABBBAABBAAABBABAABAAABBBAAAABBAAABABBBABAAAAABBABBABAABBBBBAAABBBBBBAABABBAAABBABBABABAAABBABBABABA\r\n",
+                "479173089\r\n"
+            ],
+            [
+                "8\r\nAAAABBBBABBBAAABAABABABBAABBAAABAAAABBBAABBAABAABBABBBAAAAABBBAABBBABABBBBBAABBAAABBBABBABBBBBBAABBAAABBBAABBBBBAABAABABABAABAABAABAAAAAABBBBBAABBBAABBAAAABBABBBBABBABABBAABBAABBAABABBBBAAAAABABBABBBAAABAAABAABABAABBBAABBBBBBAAABAABBBAAABABAABBAABABBBAAAB\r\n",
+                "982023376\r\n"
+            ],
+            [
+                "8\r\nBBABBBABAAABBBAABBABAAABAABABABAABAABBABBABBABBBABBBBBAABAAABAABBAABBABBBBABBBABBBABABBAAAAABBBAAAABAAAABABBAABBAAABBBABBBBAAAAAABAABBABABABAAABABBBBBBBBBBBBBABBBBBBAAAAAAABBAABAABBAABBBBAAAABAABBABAABAAABBABBBBBBABABBBBBBBBAABBAAABABAAABAAABAAAABBABAAAAA\r\n",
+                "764027380\r\n"
+            ]
+        ]
+    }
+]

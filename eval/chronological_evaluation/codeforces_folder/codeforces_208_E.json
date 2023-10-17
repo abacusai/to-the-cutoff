@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Blood Cousins",
+        "description": "Polycarpus got hold of a family relationship tree. The tree describes family\nrelationships of n people, numbered 1 through n. Each person in the tree has\nno more than one parent. Let's call person a a 1-ancestor of person b, if a is\nthe parent of b. Let's call person a a k-ancestor (k > 1) of person b, if\nperson b has a 1-ancestor, and a is a (k - 1)-ancestor of b's 1-ancestor.\nFamily relationships don't form cycles in the found tree. In other words,\nthere is no person who is his own ancestor, directly or indirectly (that is,\nwho is an x-ancestor for himself, for some x, x > 0). Let's call two people x\nand y (x \u2260 y) p-th cousins (p > 0), if there is person z, who is a p-ancestor\nof x and a p-ancestor of y. Polycarpus wonders how many counsins and what\nkinds of them everybody has. He took a piece of paper and wrote m pairs of\nintegers vi, pi. Help him to calculate the number of pi-th cousins that person\nvi has, for each pair vi, pi. Input The first input line contains a single\ninteger n (1 \u2264 n \u2264 10^5) \u2014 the number of people in the tree. The next line\ncontains n space-separated integers r1, r2, ..., rn, where ri (1 \u2264 ri \u2264 n) is\nthe number of person i's parent or 0, if person i has no parent. It is\nguaranteed that family relationships don't form cycles. The third line\ncontains a single number m (1 \u2264 m \u2264 10^5) \u2014 the number of family relationship\nqueries Polycarus has. Next m lines contain pairs of space-separated integers.\nThe i-th line contains numbers vi, pi (1 \u2264 vi, pi \u2264 n). Output Print m space-\nseparated integers \u2014 the answers to Polycarpus' queries. Print the answers to\nthe queries in the order, in which the queries occur in the input. Examples\nInput 6 0 1 1 0 4 4 7 1 1 1 2 2 1 2 2 4 1 5 1 6 1 Output 0 0 1 0 0 1 1\n\n",
+        "cf_contest_id": 208,
+        "cf_index": "E",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n0 1 1 0 4 4\r\n7\r\n1 1\r\n1 2\r\n2 1\r\n2 2\r\n4 1\r\n5 1\r\n6 1\r\n",
+                "0 0 1 0 0 1 1 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n0\r\n20\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n",
+                "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "
+            ],
+            [
+                "2\r\n0 1\r\n20\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n1 1\r\n1 1\r\n1 1\r\n2 1\r\n1 1\r\n2 1\r\n2 1\r\n2 1\r\n1 1\r\n2 1\r\n2 1\r\n1 1\r\n1 1\r\n2 1\r\n",
+                "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "
+            ],
+            [
+                "3\r\n0 0 2\r\n20\r\n2 1\r\n1 1\r\n1 1\r\n2 1\r\n2 1\r\n1 1\r\n3 1\r\n1 1\r\n2 1\r\n1 1\r\n3 1\r\n2 1\r\n3 1\r\n1 1\r\n3 1\r\n1 1\r\n2 1\r\n3 1\r\n1 1\r\n2 1\r\n",
+                "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "
+            ],
+            [
+                "3\r\n0 0 1\r\n20\r\n3 1\r\n1 1\r\n3 1\r\n1 1\r\n3 1\r\n1 1\r\n3 1\r\n1 1\r\n3 1\r\n1 1\r\n3 1\r\n1 1\r\n2 1\r\n3 1\r\n2 1\r\n3 1\r\n1 1\r\n1 1\r\n1 1\r\n2 1\r\n",
+                "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "
+            ],
+            [
+                "4\r\n0 1 1 0\r\n20\r\n3 1\r\n1 1\r\n1 1\r\n3 1\r\n4 1\r\n3 1\r\n3 1\r\n4 1\r\n2 1\r\n1 1\r\n4 1\r\n4 1\r\n2 1\r\n2 1\r\n3 1\r\n4 1\r\n4 1\r\n1 1\r\n2 1\r\n4 1\r\n",
+                "1 0 0 1 0 1 1 0 1 0 0 0 1 1 1 0 0 0 1 0 "
+            ],
+            [
+                "4\r\n0 0 0 1\r\n20\r\n2 1\r\n2 1\r\n3 1\r\n2 1\r\n4 1\r\n3 1\r\n1 1\r\n3 1\r\n2 1\r\n2 1\r\n3 1\r\n1 1\r\n1 1\r\n1 1\r\n2 1\r\n4 1\r\n4 1\r\n3 1\r\n1 1\r\n2 1\r\n",
+                "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "
+            ]
+        ]
+    }
+]

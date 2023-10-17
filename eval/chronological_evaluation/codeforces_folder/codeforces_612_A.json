@@ -1,0 +1,309 @@
+[
+    {
+        "name": "The Text Splitting",
+        "description": "You are given the string s of length n and the numbers p, q. Split the string\ns to pieces of length p and q. For example, the string \"Hello\" for p = 2, q =\n3 can be split to the two strings \"Hel\" and \"lo\" or to the two strings \"He\"\nand \"llo\". Note it is allowed to split the string s to the strings only of\nlength p or to the strings only of length q (see the second sample test).\nInput The first line contains three positive integers n, p, q (1 \u2264 p, q \u2264 n \u2264\n100). The second line contains the string s consists of lowercase and\nuppercase latin letters and digits. Output If it's impossible to split the\nstring s to the strings of length p and q print the only number \"-1\".\nOtherwise in the first line print integer k \u2014 the number of strings in\npartition of s. Each of the next k lines should contain the strings in\npartition. Each string should be of the length p or q. The string should be in\norder of their appearing in string s \u2014 from left to right. If there are\nseveral solutions print any of them. Examples Input 5 2 3 Hello Output 2 He\nllo Input 10 9 5 Codeforces Output 2 Codef orces Input 6 4 5 Privet Output -1\nInput 8 1 1 abacabac Output 8 a b a c a b a c\n\n",
+        "cf_contest_id": 612,
+        "cf_index": "A",
+        "cf_rating": 1300,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 2 3\r\nHello\r\n",
+                "2\r\nHe\r\nllo\r\n"
+            ],
+            [
+                "10 9 5\r\nCodeforces\r\n",
+                "2\r\nCodef\r\norces\r\n"
+            ],
+            [
+                "6 4 5\r\nPrivet\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8 1 1\r\nabacabac\r\n",
+                "8\r\na\r\nb\r\na\r\nc\r\na\r\nb\r\na\r\nc\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 1\r\n1\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "10 8 1\r\nuTl9w4lcdo\r\n",
+                "10\r\nu\r\nT\r\nl\r\n9\r\nw\r\n4\r\nl\r\nc\r\nd\r\no\r\n"
+            ],
+            [
+                "20 6 4\r\nfmFRpk2NrzSvnQC9gB61\r\n",
+                "5\r\nfmFR\r\npk2N\r\nrzSv\r\nnQC9\r\ngB61\r\n"
+            ],
+            [
+                "30 23 6\r\nWXDjl9kitaDTY673R5xyTlbL9gqeQ6\r\n",
+                "5\r\nWXDjl9\r\nkitaDT\r\nY673R5\r\nxyTlbL\r\n9gqeQ6\r\n"
+            ],
+            [
+                "40 14 3\r\nSOHBIkWEv7ScrkHgMtFFxP9G7JQLYXFoH1sJDAde\r\n",
+                "6\r\nSOHBIkWEv7Scrk\r\nHgMtFFxP9G7JQL\r\nYXF\r\noH1\r\nsJD\r\nAde\r\n"
+            ],
+            [
+                "50 16 3\r\nXCgVJUu4aMQ7HMxZjNxe3XARNiahK303g9y7NV8oN6tWdyXrlu\r\n",
+                "8\r\nXCgVJUu4aMQ7HMxZ\r\njNxe3XARNiahK303\r\ng9y\r\n7NV\r\n8oN\r\n6tW\r\ndyX\r\nrlu\r\n"
+            ],
+            [
+                "60 52 8\r\nhae0PYwXcW2ziQCOSci5VaElHLZCZI81ULSHgpyG3fuZaP0fHjN4hCKogONj\r\n",
+                "2\r\nhae0PYwXcW2ziQCOSci5VaElHLZCZI81ULSHgpyG3fuZaP0fHjN4\r\nhCKogONj\r\n"
+            ],
+            [
+                "70 50 5\r\n1BH1ECq7hjzooQOZdbiYHTAgATcP5mxI7kLI9rqA9AriWc9kE5KoLa1zmuTDFsd2ClAPPY\r\n",
+                "14\r\n1BH1E\r\nCq7hj\r\nzooQO\r\nZdbiY\r\nHTAgA\r\nTcP5m\r\nxI7kL\r\nI9rqA\r\n9AriW\r\nc9kE5\r\nKoLa1\r\nzmuTD\r\nFsd2C\r\nlAPPY\r\n"
+            ],
+            [
+                "80 51 8\r\no2mpu1FCofuiLQb472qczCNHfVzz5TfJtVMrzgN3ff7FwlAY0fQ0ROhWmIX2bggodORNA76bHMjA5yyc\r\n",
+                "10\r\no2mpu1FC\r\nofuiLQb4\r\n72qczCNH\r\nfVzz5TfJ\r\ntVMrzgN3\r\nff7FwlAY\r\n0fQ0ROhW\r\nmIX2bggo\r\ndORNA76b\r\nHMjA5yyc\r\n"
+            ],
+            [
+                "90 12 7\r\nclcImtsw176FFOA6OHGFxtEfEyhFh5bH4iktV0Y8onIcn0soTwiiHUFRWC6Ow36tT5bsQjgrVSTcB8fAVoe7dJIWkE\r\n",
+                "10\r\nclcImtsw176F\r\nFOA6OHGFxtEf\r\nEyhFh5bH4ikt\r\nV0Y8onIcn0so\r\nTwiiHUF\r\nRWC6Ow3\r\n6tT5bsQ\r\njgrVSTc\r\nB8fAVoe\r\n7dJIWkE\r\n"
+            ],
+            [
+                "100 25 5\r\n2SRB9mRpXMRND5zQjeRxc4GhUBlEQSmLgnUtB9xTKoC5QM9uptc8dKwB88XRJy02r7edEtN2C6D60EjzK1EHPJcWNj6fbF8kECeB\r\n",
+                "20\r\n2SRB9\r\nmRpXM\r\nRND5z\r\nQjeRx\r\nc4GhU\r\nBlEQS\r\nmLgnU\r\ntB9xT\r\nKoC5Q\r\nM9upt\r\nc8dKw\r\nB88XR\r\nJy02r\r\n7edEt\r\nN2C6D\r\n60Ejz\r\nK1EHP\r\nJcWNj\r\n6fbF8\r\nkECeB\r\n"
+            ],
+            [
+                "100 97 74\r\nxL8yd8lENYnXZs28xleyci4SxqsjZqkYzkEbQXfLQ4l4gKf9QQ9xjBjeZ0f9xQySf5psDUDkJEtPLsa62n4CLc6lF6E2yEqvt4EJ\r\n",
+                "-1\r\n"
+            ],
+            [
+                "51 25 11\r\nwpk5wqrB6d3qE1slUrzJwMFafnnOu8aESlvTEb7Pp42FDG2iGQn\r\n",
+                "-1\r\n"
+            ],
+            [
+                "70 13 37\r\nfzL91QIJvNoZRP4A9aNRT2GTksd8jEb1713pnWFaCGKHQ1oYvlTHXIl95lqyZRKJ1UPYvT\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10 3 1\r\nXQ2vXLPShy\r\n",
+                "10\r\nX\r\nQ\r\n2\r\nv\r\nX\r\nL\r\nP\r\nS\r\nh\r\ny\r\n"
+            ],
+            [
+                "4 2 3\r\naaaa\r\n",
+                "2\r\naa\r\naa\r\n"
+            ],
+            [
+                "100 1 1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\r\n",
+                "100\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\nb\r\n"
+            ],
+            [
+                "99 2 4\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "11 2 3\r\nhavanahavan\r\n",
+                "4\r\nha\r\nvan\r\naha\r\nvan\r\n"
+            ],
+            [
+                "100 2 2\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "50\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\naa\r\n"
+            ],
+            [
+                "17 3 5\r\ngopstopmipodoshli\r\n",
+                "5\r\ngop\r\nsto\r\npmi\r\npod\r\noshli\r\n"
+            ],
+            [
+                "5 4 3\r\nfoyku\r\n",
+                "-1\r\n"
+            ],
+            [
+                "99 2 2\r\n123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789\r\n",
+                "-1\r\n"
+            ],
+            [
+                "99 2 2\r\nrecursionishellrecursionishellrecursionishellrecursionishellrecursionishellrecursionishelldontuseit\r\n",
+                "-1\r\n"
+            ],
+            [
+                "11 2 3\r\nqibwnnvqqgo\r\n",
+                "4\r\nqi\r\nbwn\r\nnvq\r\nqgo\r\n"
+            ],
+            [
+                "4 4 3\r\nhhhh\r\n",
+                "1\r\nhhhh\r\n"
+            ],
+            [
+                "99 2 2\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "99 2 5\r\nhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh\r\n",
+                "21\r\nhh\r\nhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\nhhhhh\r\n"
+            ],
+            [
+                "10 5 9\r\nCodeforces\r\n",
+                "2\r\nCodef\r\norces\r\n"
+            ],
+            [
+                "10 5 9\r\naaaaaaaaaa\r\n",
+                "2\r\naaaaa\r\naaaaa\r\n"
+            ],
+            [
+                "11 3 2\r\nmlmqpohwtsf\r\n",
+                "5\r\nmlm\r\nqp\r\noh\r\nwt\r\nsf\r\n"
+            ],
+            [
+                "3 3 2\r\nzyx\r\n",
+                "1\r\nzyx\r\n"
+            ],
+            [
+                "100 3 3\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 2 3\r\nzyxw\r\n",
+                "2\r\nzy\r\nxw\r\n"
+            ],
+            [
+                "3 2 3\r\nejt\r\n",
+                "1\r\nejt\r\n"
+            ],
+            [
+                "5 2 4\r\nzyxwv\r\n",
+                "-1\r\n"
+            ],
+            [
+                "100 1 1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "100\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\n"
+            ],
+            [
+                "100 5 4\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "25\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\naaaa\r\n"
+            ],
+            [
+                "3 2 2\r\nzyx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "99 2 2\r\nhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh\r\n",
+                "-1\r\n"
+            ],
+            [
+                "26 8 9\r\nabcabcabcabcabcabcabcabcab\r\n",
+                "3\r\nabcabcab\r\ncabcabcab\r\ncabcabcab\r\n"
+            ],
+            [
+                "6 3 5\r\naaaaaa\r\n",
+                "2\r\naaa\r\naaa\r\n"
+            ],
+            [
+                "3 2 3\r\nzyx\r\n",
+                "1\r\nzyx\r\n"
+            ],
+            [
+                "5 5 2\r\naaaaa\r\n",
+                "1\r\naaaaa\r\n"
+            ],
+            [
+                "4 3 2\r\nzyxw\r\n",
+                "2\r\nzy\r\nxw\r\n"
+            ],
+            [
+                "5 4 3\r\nzyxwv\r\n",
+                "-1\r\n"
+            ],
+            [
+                "95 3 29\r\nabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcab\r\n",
+                "23\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabc\r\nabcabcabcabcabcabcabcabcabcab\r\n"
+            ],
+            [
+                "3 2 2\r\naaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "91 62 3\r\nfjzhkfwzoabaauvbkuzaahkozofaophaafhfpuhobufawkzbavaazwavwppfwapkapaofbfjwaavajojgjguahphofj\r\n",
+                "-1\r\n"
+            ],
+            [
+                "99 2 2\r\nabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabc\r\n",
+                "-1\r\n"
+            ],
+            [
+                "56 13 5\r\nabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcab\r\n",
+                "8\r\nabcabcabcabca\r\nbcabcabcabcab\r\ncabca\r\nbcabc\r\nabcab\r\ncabca\r\nbcabc\r\nabcab\r\n"
+            ],
+            [
+                "79 7 31\r\nabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabcabca\r\n",
+                "-1\r\n"
+            ],
+            [
+                "92 79 6\r\nxlvplpckwnhmctoethhslkcyashqtsoeltriddglfwtgkfvkvgytygbcyohrvcxvosdioqvackxiuifmkgdngvbbudcb\r\n",
+                "-1\r\n"
+            ],
+            [
+                "48 16 13\r\nibhfinipihcbsqnvtgsbkobepmwymlyfmlfgblvhlfhyojsy\r\n",
+                "3\r\nibhfinipihcbsqnv\r\ntgsbkobepmwymlyf\r\nmlfgblvhlfhyojsy\r\n"
+            ],
+            [
+                "16 3 7\r\naaaaaaaaaaaaaaaa\r\n",
+                "4\r\naaa\r\naaa\r\naaa\r\naaaaaaa\r\n"
+            ],
+            [
+                "11 10 3\r\naaaaaaaaaaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "11 8 8\r\naaaaaaaaaaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "11 7 3\r\naaaaaaaaaaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "41 3 4\r\nabcabcabcabcabcabcabcabcabcabcabcabcabcab\r\n",
+                "11\r\nabc\r\nabc\r\nabc\r\nabca\r\nbcab\r\ncabc\r\nabca\r\nbcab\r\ncabc\r\nabca\r\nbcab\r\n"
+            ],
+            [
+                "11 3 2\r\naaaaaaaaaaa\r\n",
+                "5\r\naaa\r\naa\r\naa\r\naa\r\naa\r\n"
+            ],
+            [
+                "14 9 4\r\nabcdefghijklmn\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9 9 5\r\n123456789\r\n",
+                "1\r\n123456789\r\n"
+            ],
+            [
+                "92 10 41\r\nmeotryyfneonmnrvfnhqlehlxtvpracifpadcofecvbikoitrlgeftiqofpvacgocrdiquhatlqosqvtduenaqkwrnnw\r\n",
+                "3\r\nmeotryyfne\r\nonmnrvfnhqlehlxtvpracifpadcofecvbikoitrlg\r\neftiqofpvacgocrdiquhatlqosqvtduenaqkwrnnw\r\n"
+            ],
+            [
+                "17 16 3\r\ndxyhgtsxtuyljmclj\r\n",
+                "-1\r\n"
+            ],
+            [
+                "82 13 30\r\nfmtwumakkejtolxqxrnydhqoufwtdwldfxcfjrndauqcarhbwmdwxsxfbqjsfspuxobywhcrvlndsdmkqd\r\n",
+                "5\r\nfmtwumakkejto\r\nlxqxrnydhqouf\r\nwtdwldfxcfjrn\r\ndauqcarhbwmdw\r\nxsxfbqjsfspuxobywhcrvlndsdmkqd\r\n"
+            ],
+            [
+                "95 3 3\r\nihnfqcswushyoirjxlxxnwqtwtaowounkumxukwpacxwatimhhhoggqwkkspcplvyndfukbxickcixidgxkjtnpkoeiwlor\r\n",
+                "-1\r\n"
+            ],
+            [
+                "7 5 3\r\nzyxwvut\r\n",
+                "-1\r\n"
+            ],
+            [
+                "17 16 4\r\nctvfhkiakagcilrdw\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,112 @@
+[
+    {
+        "name": "Cycle sort",
+        "description": "You are given an array of \n    n\n positive integers \n    a_1, a_2, \n    \u2026,\n    a_n\n. You can perform the following operation any number of times: select\nseveral distinct indices \n    i_1, i_2, \n    \u2026, i_k\n (\n    1 \n    \u2264 i_j \n    \u2264\n    n\n) and move the number standing at the position \n    i_1\n to the position\n\n    i_2\n, the number at the position \n    i_2\n to the position \n    i_3\n,\n..., the number at the position \n    i_k\n to the position \n    i_1\n. In other\nwords, the operation cyclically shifts elements: \n    i_1 \n    \u2192 i_2 \n    \u2192\n    \u2026 i_k \n    \u2192 i_1\n. For example, if you have \n    n=4\n, an array\n\n    a_1=10, a_2=20, a_3=30, a_4=40\n, and you choose three indices\n\n    i_1=2\n, \n    i_2=1\n, \n    i_3=4\n, then the resulting array would become\n\n    a_1=20, a_2=40, a_3=30, a_4=10\n. Your goal is to make the array sorted in\nnon-decreasing order with the minimum number of operations. The additional\nconstraint is that the sum of cycle lengths over all operations should be less\nthan or equal to a number \n    s\n. If it's impossible to sort the array while\nsatisfying that constraint, your solution should report that as well. Input\nThe first line of the input contains two integers \n    n\n and \n    s\n (\n    1\n    \n    \u2264 n \n    \u2264 200\n     000\n, \n    0 \n    \u2264 s \n    \u2264 200\n     000\n)\u2014the number\nof elements in the array and the upper bound on the sum of cycle lengths. The\nnext line contains \n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n\u2014elements of\nthe array (\n    1 \n    \u2264 a_i \n    \u2264 10^9\n). Output If it's impossible to sort\nthe array using cycles of total length not exceeding \n    s\n, print a single\nnumber \"-1\" (quotes for clarity). Otherwise, print a single number \n    q\n\u2014\nthe minimum number of operations required to sort the array. On the next \n    2\n    \n    \u00b7 q\n lines print descriptions of operations in the order they are\napplied to the array. The description of \n    i\n-th operation begins with a\nsingle line containing one integer \n    k\n (\n    1 \n    \u2264 k \n    \u2264 n\n)\u2014the\nlength of the cycle (that is, the number of selected indices). The next line\nshould contain \n    k\n distinct integers \n    i_1, i_2, \n    \u2026, i_k\n (\n    1\n    \n    \u2264 i_j \n    \u2264 n\n)\u2014the indices of the cycle. The sum of lengths of these\ncycles should be less than or equal to \n    s\n, and the array should be sorted\nafter applying these \n    q\n operations. If there are several possible answers\nwith the optimal \n    q\n, print any of them. Examples Input 5 5 3 2 3 1 1\nOutput 1 5 1 4 2 3 5 Input 4 3 2 1 4 3 Output -1 Input 2 0 2 2 Output 0 Note\nIn the first example, it's also possible to sort the array with two operations\nof total length 5: first apply the cycle \n    1 \n    \u2192 4 \n    \u2192 1\n (of length\n2), then apply the cycle \n    2 \n    \u2192 3 \n    \u2192 5 \n    \u2192 2\n (of length 3).\nHowever, it would be wrong answer as you're asked to use the minimal possible\nnumber of operations, which is 1 in that case. In the second example, it's\npossible to the sort the array with two cycles of total length 4 (\n    1 \n    \u2192 2\n    \n    \u2192 1\n and \n    3 \n    \u2192 4 \n    \u2192 3\n). However, it's impossible to achieve\nthe same using shorter cycles, which is required by \n    s=3\n. In the third\nexample, the array is already sorted, so no operations are needed. Total\nlength of empty set of cycles is considered to be zero.\n\n",
+        "cf_contest_id": 1012,
+        "cf_index": "E",
+        "cf_rating": 3100,
+        "difficulty": 0,
+        "cf_tags": [
+            "dsu",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 5\r\n3 2 3 1 1\r\n",
+                "1\r\n5\r\n4 1 5 2 3 \r\n"
+            ],
+            [
+                "4 3\r\n2 1 4 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 0\r\n2 2\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 0\r\n2\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 0\r\n2 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2\r\n2 1\r\n",
+                "1\r\n2\r\n2 1 \r\n"
+            ],
+            [
+                "2 0\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 0\r\n1000000000 1000000000 1000000000 1000000000 1000000000\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 0\r\n258769137\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 0\r\n884430748 884430748 708433020 708433020 708433020\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 4\r\n335381650 691981363 691981363 335381650 335381650\r\n",
+                "1\r\n4\r\n2 4 3 5 \r\n"
+            ],
+            [
+                "5 2\r\n65390026 770505072 65390026 65390026 65390026\r\n",
+                "1\r\n2\r\n2 5 \r\n"
+            ],
+            [
+                "5 200000\r\n682659092 302185582 518778252 29821187 14969298\r\n",
+                "2\r\n2\r\n2 1 \r\n5\r\n5 1 3 4 2 \r\n"
+            ],
+            [
+                "5 4\r\n167616600 574805150 651016425 150949603 379708534\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 5\r\n815605413 4894095 624809427 264202135 152952491\r\n",
+                "2\r\n3\r\n5 2 1 \r\n2\r\n4 3 \r\n"
+            ],
+            [
+                "5 4\r\n201429826 845081337 219611799 598937628 680006294\r\n",
+                "1\r\n4\r\n5 4 3 2 \r\n"
+            ],
+            [
+                "5 5\r\n472778319 561757623 989296065 99763286 352037329\r\n",
+                "1\r\n5\r\n3 5 2 4 1 \r\n"
+            ],
+            [
+                "5 6\r\n971458729 608568364 891718769 464295315 98863653\r\n",
+                "2\r\n2\r\n5 1 \r\n3\r\n3 4 2 \r\n"
+            ],
+            [
+                "5 4\r\n579487081 564229995 665920667 665920667 644707366\r\n",
+                "2\r\n2\r\n2 1 \r\n2\r\n5 3 \r\n"
+            ],
+            [
+                "5 4\r\n81224924 319704343 319704343 210445208 128525140\r\n",
+                "1\r\n4\r\n5 2 4 3 \r\n"
+            ],
+            [
+                "5 5\r\n641494999 641494999 228574099 535883079 535883079\r\n",
+                "1\r\n5\r\n4 3 1 5 2 \r\n"
+            ],
+            [
+                "5 4\r\n812067558 674124159 106041640 106041640 674124159\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

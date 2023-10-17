@@ -1,0 +1,86 @@
+[
+    {
+        "name": "notepad.exe",
+        "description": "This is an interactive problem. There are \n    n\n words in a text editor. The\n\n    i\n-th word has length \n    l_i\n (\n    1 \n    \u2264 l_i \n    \u2264 2000\n). The\narray \n    l\n is hidden and only known by the grader. The text editor displays\nwords in lines, splitting each two words in a line with at least one space.\nNote that a line does not have to end with a space. Let the height of the text\neditor refer to the number of lines used. For the given width, the text editor\nwill display words in such a way that the height is minimized. More formally,\nsuppose that the text editor has width \n    w\n. Let \n    a\n be an array of\nlength \n    k+1\n where \n    1=a_1 < a_2 < \n    \u2026 < a_k+1=n+1\n. \n    a\n is\na valid array if for all \n    1 \n    \u2264 i \n    \u2264 k\n,\n\n    l_a_i+1+l_a_i+1+1+\n    \u2026+1+l_a_i+1-1\n    \u2264 w\n. Then the height\nof the text editor is the minimum \n    k\n over all valid arrays. Note that if\n\n    w < \n    max(l_i)\n, the text editor cannot display all the words properly\nand will crash, and the height of the text editor will be \n    0\n instead. You\ncan ask \n    n+30\n queries. In one query, you provide a width \n    w\n. Then,\nthe grader will return the height \n    h_w\n of the text editor when its width\nis \n    w\n. Find the minimum area of the text editor, which is the minimum\nvalue of \n    w \n    \u00b7 h_w\n over all \n    w\n for which \n    h_w \n    \u2260 0\n.\nThe lengths are fixed in advance. In other words, the interactor is not\nadaptive. Input The first and only line of input contains a single integer\n\n    n\n (\n    1 \n    \u2264 n \n    \u2264 2000\n) \u2014 the number of words on the text\neditor. It is guaranteed that the hidden lengths \n    l_i\n satisfy \n    1 \n    \u2264\n    l_i \n    \u2264 2000\n. Interaction Begin the interaction by reading \n    n\n. To\nmake a query, print \"? \n    w\n\" (without quotes, \n    1 \n    \u2264 w \n    \u2264\n    10^9\n). Then you should read our response from standard input, that is,\n\n    h_w\n. If your program has made an invalid query or has run out of tries,\nthe interactor will terminate immediately and your program will get a verdict\nWrong answer. To give the final answer, print \"! \n    area\n\" (without the\nquotes). Note that giving this answer is not counted towards the limit of\n\n    n+30\n queries. After printing a query do not forget to output end of line\nand flush the output. Otherwise, you will get Idleness limit exceeded. To do\nthis, use: fflush(stdout) or cout.flush() in C++; System.out.flush() in Java;\nflush(output) in Pascal; stdout.flush() in Python; see documentation for other\nlanguages. Hacks The first line of input must contain a single integer \n    n\n\n(\n    1 \n    \u2264 n \n    \u2264 2000\n) \u2014 the number of words in the text editor. The\nsecond line of input must contain exactly \n    n\n space-separated integers\n\n    l_1,l_2,\n    \u2026,l_n\n (\n    1 \n    \u2264 l_i \n    \u2264 2000\n). Example Input 6 0\n4 2 Output ? 1 ? 9 ? 16 ! 32 Note In the first test case, the words are\n\n    ,\n    ,\n    ,\n    ,\n    ,\n,\nso \n    l=\n    \n    5,2,7,3,5,6\n. If \n    w=1\n, then the text editor is not\nable to display all words properly and will crash. The height of the text\neditor is \n    h_1=0\n, so the grader will return \n    0\n. If \n    w=9\n, then a\npossible way that the words will be displayed on the text editor is:\n\n    \n \n    \n\n\n    \n \n    \n The height of the text\neditor is \n    h_9=4\n, so the grader will return \n    4\n. If \n    w=16\n,\nthen a possible way that the words will be displayed on the text editor is:\n\n    \n \n    \n The height\nof the text editor is \n    h_16=2\n, so the grader will return \n    2\n. We\nhave somehow figured out that the minimum area of the text editor is \n    32\n,\nso we answer it.\n\n",
+        "cf_contest_id": 1672,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "constructive algorithms",
+            "greedy",
+            "interactive"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n5 2 7 3 5 6\r\n",
+                "32 28\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "30\r\n3 1470 1903 3 1337 851 824 1901 1046 1788 1911 1155 284 246 1176 1931 1508 1410 1087 913 1753 1587 1616 1347 90 1588 1925 564 652 1408\r\n",
+                "35306 52\r\n"
+            ],
+            [
+                "69\r\n299 38 1906 1330 574 1604 1530 1568 658 1070 1014 1788 1953 1733 1754 450 1993 1504 1692 723 43 1579 778 1476 1629 1890 401 126 1353 1818 1287 1564 1484 1113 465 960 904 1289 1981 542 642 297 1482 638 228 460 1643 766 1340 1943 441 895 268 1031 30 996 1720 1385 1642 1542 123 1969 1601 1570 146 388 666 1224 543\r\n",
+                "75550 91\r\n"
+            ],
+            [
+                "1\r\n2000\r\n",
+                "2000 23\r\n"
+            ],
+            [
+                "40\r\n1640 732 790 721 732 324 837 768 1733 168 174 801 369 32 360 1075 1890 772 1535 763 1054 404 787 1586 542 691 1592 1045 351 55 1605 1779 772 844 837 707 785 1614 264 1707\r\n",
+                "35276 62\r\n"
+            ],
+            [
+                "50\r\n1555 1184 926 1295 1179 551 333 846 160 1941 563 1233 163 1625 168 1057 1493 6 171 107 1390 1124 1578 578 1191 1839 1467 1658 1344 150 694 79 763 1709 1753 1340 255 1900 659 660 1814 1821 713 1069 1791 1474 931 736 1996 1964\r\n",
+                "53045 72\r\n"
+            ],
+            [
+                "60\r\n585 1630 1197 774 532 143 644 1610 1487 1112 1190 825 928 163 1238 180 1362 458 1256 1666 1363 382 820 634 1670 913 630 1116 1715 1116 1249 1833 946 810 1783 1559 532 347 1186 1758 890 866 1759 1997 1947 392 1678 1061 67 503 51 1997 910 479 1368 1917 1201 1476 1513 1187\r\n",
+                "64660 82\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "1 23\r\n"
+            ],
+            [
+                "2\r\n1 2000\r\n",
+                "2002 24\r\n"
+            ],
+            [
+                "2\r\n2000 2000\r\n",
+                "4000 24\r\n"
+            ],
+            [
+                "34\r\n588 250 386 1755 1319 602 965 262 1801 151 943 978 272 977 542 1682 1789 767 1669 1151 870 476 604 1685 803 1077 1709 1492 290 1372 1384 111 1684 568\r\n",
+                "33007 56\r\n"
+            ],
+            [
+                "52\r\n724 110 176 660 1120 914 651 1026 871 288 341 1006 699 138 223 367 12 105 669 658 422 356 1056 531 863 335 764 535 518 112 1070 852 589 631 630 483 1014 621 1082 931 1089 711 846 102 952 1036 554 805 360 463 92 1119\r\n",
+                "32328 74\r\n"
+            ],
+            [
+                "58\r\n363 301 168 292 531 968 910 1098 706 204 482 467 1100 154 457 832 132 974 944 731 829 193 570 795 602 920 145 292 56 407 100 63 1065 1026 690 861 607 526 604 1140 1027 311 438 310 900 440 977 281 187 89 691 1041 1144 450 848 626 123 60\r\n",
+                "33300 80\r\n"
+            ],
+            [
+                "60\r\n813 694 822 231 1073 1578 1182 487 293 532 502 1253 1118 40 637 1555 511 1138 1077 1007 977 227 281 516 375 1551 970 545 32 1110 771 878 1084 1272 1249 744 737 1251 1642 35 865 607 1215 1242 882 241 1051 175 1602 238 363 610 540 118 1166 273 744 624 993 961\r\n",
+                "47355 82\r\n"
+            ],
+            [
+                "60\r\n461 1498 782 789 587 920 1292 494 1491 1251 371 370 616 402 873 418 1457 1253 85 757 629 655 1287 1132 793 422 1511 795 1409 655 504 99 1360 593 1676 118 998 689 1566 1330 892 223 1719 91 506 710 715 496 1026 56 840 228 1237 1307 1751 505 527 79 1165 1214\r\n",
+                "49730 82\r\n"
+            ],
+            [
+                "5\r\n1 1 1 1 2\r\n",
+                "9 27\r\n"
+            ]
+        ]
+    }
+]

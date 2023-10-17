@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Tennis Game",
+        "description": "Petya and Gena love playing table tennis. A single match is played according\nto the following rules: a match consists of multiple sets, each set consists\nof multiple serves. Each serve is won by one of the players, this player\nscores one point. As soon as one of the players scores t points, he wins the\nset; then the next set starts and scores of both players are being set to 0.\nAs soon as one of the players wins the total of s sets, he wins the match and\nthe match is over. Here s and t are some positive integer numbers. To spice it\nup, Petya and Gena choose new numbers s and t before every match. Besides, for\nthe sake of history they keep a record of each match: that is, for each serve\nthey write down the winner. Serve winners are recorded in the chronological\norder. In a record the set is over as soon as one of the players scores t\npoints and the match is over as soon as one of the players wins s sets. Petya\nand Gena have found a record of an old match. Unfortunately, the sequence of\nserves in the record isn't divided into sets and numbers s and t for the given\nmatch are also lost. The players now wonder what values of s and t might be.\nCan you determine all the possible options? Input The first line contains a\nsingle integer n \u2014 the length of the sequence of games (1 \u2264 n \u2264 10^5). The\nsecond line contains n space-separated integers ai. If ai = 1, then the i-th\nserve was won by Petya, if ai = 2, then the i-th serve was won by Gena. It is\nnot guaranteed that at least one option for numbers s and t corresponds to the\ngiven record. Output In the first line print a single number k \u2014 the number of\noptions for numbers s and t. In each of the following k lines print two\nintegers si and ti \u2014 the option for numbers s and t. Print the options in the\norder of increasing si, and for equal si \u2014 in the order of increasing ti.\nExamples Input 5 1 2 1 2 1 Output 2 1 3 3 1 Input 4 1 1 1 1 Output 3 1 4 2 2 4\n1 Input 4 1 2 1 2 Output 0 Input 8 2 1 2 1 1 1 1 1 Output 3 1 6 2 3 6 1\n\n",
+        "cf_contest_id": 496,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n1 2 1 2 1\r\n",
+                "2\r\n1 3\r\n3 1\r\n"
+            ],
+            [
+                "4\r\n1 1 1 1\r\n",
+                "3\r\n1 4\r\n2 2\r\n4 1\r\n"
+            ],
+            [
+                "4\r\n1 2 1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "8\r\n2 1 2 1 1 1 1 1\r\n",
+                "3\r\n1 6\r\n2 3\r\n6 1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "14\r\n2 1 2 1 1 1 1 2 1 1 2 1 2 1\r\n",
+                "3\r\n1 9\r\n3 3\r\n9 1\r\n"
+            ],
+            [
+                "10\r\n1 1 2 2 1 1 2 2 1 1\r\n",
+                "4\r\n1 6\r\n2 3\r\n3 2\r\n6 1\r\n"
+            ],
+            [
+                "20\r\n1 1 2 2 2 2 2 2 2 2 2 2 1 2 2 1 2 2 2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "186\r\n2 1 2 1 1 1 1 1 2 1 1 2 2 2 1 1 2 2 1 1 1 2 1 1 2 2 1 1 1 2 2 1 1 1 1 1 2 1 1 1 2 1 2 1 1 2 1 1 1 2 2 2 2 2 2 2 1 2 1 2 1 1 2 1 2 2 1 1 1 1 1 2 2 1 2 2 1 2 2 1 1 1 2 2 1 1 2 2 1 2 2 1 2 2 2 2 2 1 1 1 1 2 1 1 2 2 2 2 2 2 1 1 1 1 1 2 1 1 2 2 1 2 2 1 1 1 1 1 2 2 1 1 2 2 1 2 2 2 1 2 1 2 1 1 2 1 2 2 2 2 1 2 1 2 2 1 2 1 1 1 1 1 2 1 1 2 2 1 1 1 2 2 2 1 2 2 1 1 2 1 1 1 1 2 1 1\r\n",
+                "8\r\n1 100\r\n2 50\r\n6 11\r\n8 8\r\n19 4\r\n25 3\r\n40 2\r\n100 1\r\n"
+            ],
+            [
+                "82\r\n1 1 1 2 2 2 2 1 1 1 2 2 2 2 1 1 1 2 2 2 1 1 1 1 2 2 2 1 1 1 1 2 2 2 2 1 1 1 1 2 2 2 1 1 1 2 2 2 2 1 1 1 1 2 2 2 1 1 1 2 2 2 1 1 1 2 2 2 2 1 1 1 2 2 2 1 1 1 1 2 2 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "83\r\n1 1 1 1 1 1 2 2 2 2 2 2 1 1 1 1 1 1 2 2 2 2 2 2 2 1 1 1 1 1 1 1 2 2 2 2 2 2 1 1 1 1 1 1 2 2 2 2 2 2 2 1 1 1 1 1 1 1 2 2 2 2 2 2 1 1 1 1 1 1 2 2 2 2 2 2 1 1 1 1 1 1 1\r\n",
+                "5\r\n1 45\r\n3 10\r\n3 15\r\n4 7\r\n45 1\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "1\r\n2\r\n",
+                "1\r\n1 1\r\n"
+            ]
+        ]
+    }
+]

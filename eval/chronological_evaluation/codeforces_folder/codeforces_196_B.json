@@ -1,0 +1,108 @@
+[
+    {
+        "name": "Infinite Maze",
+        "description": "We've got a rectangular n \u00d7 m-cell maze. Each cell is either passable, or is a\nwall (impassable). A little boy found the maze and cyclically tiled a plane\nwith it so that the plane became an infinite maze. Now on this plane cell (x,\ny) is a wall if and only if cell is a wall. In this problem is a remainder of\ndividing number a by number b. The little boy stood at some cell on the plane\nand he wondered whether he can walk infinitely far away from his starting\nposition. From cell (x, y) he can go to one of the following cells: (x, y -\n1), (x, y + 1), (x - 1, y) and (x + 1, y), provided that the cell he goes to\nis not a wall. Input The first line contains two space-separated integers n\nand m (1 \u2264 n, m \u2264 1500) \u2014 the height and the width of the maze that the boy\nused to cyclically tile the plane. Each of the next n lines contains m\ncharacters \u2014 the description of the labyrinth. Each character is either a \"#\",\nthat marks a wall, a \".\", that marks a passable cell, or an \"S\", that marks\nthe little boy's starting point. The starting point is a passable cell. It is\nguaranteed that character \"S\" occurs exactly once in the input. Output Print\n\"Yes\" (without the quotes), if the little boy can walk infinitely far from the\nstarting point. Otherwise, print \"No\" (without the quotes). Examples Input 5 4\n##.# ##S# #..# #.## #..# Output Yes Input 5 4 ##.# ##S# #..# ..#. #.## Output\nNo Note In the first sample the little boy can go up for infinitely long as\nthere is a \"clear path\" that goes vertically. He just needs to repeat the\nfollowing steps infinitely: up, up, left, up, up, right, up. In the second\nsample the vertical path is blocked. The path to the left doesn't work, too \u2014\nthe next \"copy\" of the maze traps the boy.\n\n",
+        "cf_contest_id": 196,
+        "cf_index": "B",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 4\r\n##.#\r\n##S#\r\n#..#\r\n#.##\r\n#..#\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "5 4\r\n##.#\r\n##S#\r\n#..#\r\n..#.\r\n#.##\r\n",
+                "No\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\nS#\r\n#.\r\n",
+                "No\r\n"
+            ],
+            [
+                "3 3\r\n.#.\r\n###\r\n.#S\r\n",
+                "No\r\n"
+            ],
+            [
+                "1 1\r\nS\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "2 2\r\n##\r\nS.\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "2 2\r\n#S\r\n#.\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "5 5\r\n#.#.#\r\n..#..\r\n#####\r\n.S#..\r\n#.#.#\r\n",
+                "No\r\n"
+            ],
+            [
+                "5 5\r\n#.#.#\r\n.#.#.\r\nS.#.#\r\n.#.#.\r\n#.#.#\r\n",
+                "No\r\n"
+            ],
+            [
+                "4 4\r\n#.#.\r\n#S#.\r\n#.#.\r\n#.#.\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "6 7\r\n#.###.#\r\n..##..#\r\n..#..##\r\n..#S#..\r\n##..#.#\r\n#..##.#\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "5 5\r\n##.##\r\n#..##\r\n.S#..\r\n##..#\r\n##.##\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "4 4\r\nS..#\r\n##.#\r\n.#..\r\n.###\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "4 4\r\n##..\r\n#..#\r\n#.##\r\n#.#S\r\n",
+                "No\r\n"
+            ],
+            [
+                "3 3\r\nS#.\r\n##.\r\n##.\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "13 13\r\n#..#..#..#.##\r\n.S##.#..#..#.\r\n###..#.#..#..\r\n###..#.#.#..#\r\n###..#.#.#..#\r\n###..#.#.#..#\r\n###..#.#.#..#\r\n###..#.#.#..#\r\n###..#.#.#..#\r\n###..#.#.#..#\r\n###..#.#.#..#\r\n###..#.#.#..#\r\n##..#..#.#..#\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "9 8\r\n###..###\r\n##..####\r\n#..#####\r\n..######\r\n.######S\r\n######..\r\n#####..#\r\n####..##\r\n###..###\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "5 5\r\n#.#.#\r\n#.S.#\r\n#####\r\n..#..\r\n#.#.#\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "14 30\r\n####.#.#.#..#.#.#.#.#.########\r\n####.#.#..#.#.#.#.#.#.########\r\n####.#..#.#.#.#.#.#.#..#######\r\n####..#.#.#.#.#.#.#..#.#######\r\n#####.#.#.#.#.#.#..#.#.#######\r\n#####.#.#.#.#.#..#.#.#.#######\r\n#####.#.#.#.#.S#.#.#.#.#######\r\n#####.#.#.#..#.#.#.#.#.#######\r\n#####.#.#..#.#.#.#.#.#..######\r\n#####.#..#.#.#.#.#.#..#.######\r\n#####..#.#.#.#.#.#..#.#.######\r\n######.#.#.#.#.#..#.#.#.######\r\n######.#.#.#.#..#.#.#.#.######\r\n######.#.#.#..#.#.#.#.#.######\r\n",
+                "No\r\n"
+            ],
+            [
+                "3 5\r\n#..##\r\n#..#S\r\n#..##\r\n",
+                "No\r\n"
+            ],
+            [
+                "5 96\r\n.#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#.\r\n##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.\r\n#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..\r\n#.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.#\r\n..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#..#.S#\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "6 6\r\n.####.\r\n####..\r\n###..#\r\n##.S##\r\n#..###\r\n..####\r\n",
+                "Yes\r\n"
+            ]
+        ]
+    }
+]

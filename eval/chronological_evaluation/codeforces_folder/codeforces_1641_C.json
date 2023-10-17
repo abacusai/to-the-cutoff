@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Anonymity Is Important",
+        "description": "In the work of a doctor, it is important to maintain the anonymity of clients\nand the results of tests. The test results are sent to everyone personally by\nemail, but people are very impatient and they want to know the results right\naway. That's why in the testing lab \"De-vitro\" doctors came up with an\nexperimental way to report the results. Let's assume that \n    n\n people took\nthe tests in the order of the queue. Then the chief doctor Sam can make\nseveral statements, in each telling if there is a sick person among the people\nin the queue from \n    l\n-th to \n    r\n-th (inclusive), for some values\n\n    l\n and \n    r\n. During the process, Sam will check how well this scheme\nworks and will be interested in whether it is possible to find out the test\nresult of \n    i\n-th person from the information he announced. And if it can\nbe done, then is that patient sick or not. Help Sam to test his scheme. Input\nThe first line contains two integers \n    n\n, \n    q\n (\n    1 \n    \u2264 n, q \n    \u2264 2\n    \n    \u00b7 10^5\n) \u2014 the number of people and the number of queries. In each of\nthe next \n    q\n lines, the description of the query is given. The first\nnumber in the line is \n    t\n (\n    t = 0\n or \n    t = 1\n) \u2014 the type of the\nquery. If \n    t = 0\n, the line contains three more integers \n    l, r, x\n\n(\n    1 \n    \u2264 l \n    \u2264 r \n    \u2264 n\n, \n    x = 0\n or \n    x = 1\n). This query\nmeans that Sam tells that among the people in the queue from \n    l\n-th to\n\n    r\n-th (inclusive): there was at least one sick person, if \n    x=1\n,\nthere is no sick people, if \n    x=0\n. If \n    t = 1\n, the line contains one\nmore integer \n    j\n (\n    1 \n    \u2264 j \n    \u2264 n\n) \u2014 the position of the patient\nin the queue, for which Sam wants to know the status. All queries are correct,\nthat means that there always exists an example of the queue of length \n    n\n\nfor which all reported results (statements from queries with \n    t = 0\n) are\ntrue. Output After each Sam question (query with \n    t = 1\n) print: \"NO\", if\nthe patient is definitely not sick, \"YES\", if the patient is definitely sick.\n\"N/A\", if it is impossible to definitely identify the status of patient having\nthe given information. Example Input 6 9 0 4 5 0 1 5 1 6 0 4 6 1 1 6 0 2 5 1 0\n2 2 0 1 3 1 2 Output NO N/A YES YES NO Note In the first test for the five\nfirst queries: Initially Sam tells that people \n    4\n, \n    5\n are not sick.\nIn the next query Sam asks the status of the patient \n    5\n. From the\nprevious query, we know that the patient is definitely not sick. In the next\nquery Sam asks the status of the patient \n    6\n. We don't know any\ninformation about that patient now. After that Sam tells that there exists a\nsick patient among \n    4\n, \n    5\n, \n    6\n. In the next query Sam asks the\nstatus of the patient \n    6\n. Now we can tell that this patient is definitely\nsick.\n\n",
+        "cf_contest_id": 1641,
+        "cf_index": "C",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dsu",
+            "greedy",
+            "sortings"
+        ],
+        "time_limit_seconds": 1.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 9\r\n0 4 5 0\r\n1 5\r\n1 6\r\n0 4 6 1\r\n1 6\r\n0 2 5 1\r\n0 2 2 0\r\n1 3\r\n1 2\r\n",
+                "NO\r\nN/A\r\nYES\r\nYES\r\nNO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 4\r\n0 4 4 0\r\n0 1 5 1\r\n0 1 3 0\r\n1 5\r\n",
+                "YES\r\n"
+            ],
+            [
+                "200000 36\r\n0 1183 1187 1\r\n1 1186\r\n0 1177 1179 1\r\n0 1174 1174 1\r\n0 1186 1187 0\r\n0 1182 1185 1\r\n0 1187 1188 1\r\n0 1184 1187 1\r\n0 1184 1186 1\r\n0 1186 1189 1\r\n0 1179 1181 1\r\n1 1189\r\n0 1180 1183 1\r\n1 1172\r\n1 1175\r\n0 1182 1184 1\r\n0 1187 1190 1\r\n0 1177 1177 1\r\n0 1178 1179 0\r\n0 1185 1185 0\r\n0 1175 1188 1\r\n0 1177 1178 1\r\n1 1182\r\n0 1178 1180 1\r\n1 1181\r\n0 1189 1189 0\r\n0 1181 1187 1\r\n1 1184\r\n0 1172 1175 1\r\n0 1185 1187 0\r\n0 1177 1182 1\r\n0 1177 1188 1\r\n0 1181 1185 1\r\n1 1183\r\n1 1176\r\n0 1 200000 1\r\n",
+                "N/A\r\nN/A\r\nN/A\r\nN/A\r\nN/A\r\nN/A\r\nYES\r\nN/A\r\nN/A\r\n"
+            ],
+            [
+                "1 1\r\n0 1 1 0\r\n",
+                ""
+            ],
+            [
+                "200000 29\r\n0 11435 11438 1\r\n0 11438 11439 1\r\n1 11432\r\n1 11430\r\n1 11436\r\n1 11437\r\n0 11439 11439 0\r\n0 11435 11439 1\r\n1 11441\r\n0 11429 11432 1\r\n0 11429 11431 1\r\n1 11431\r\n0 11428 11431 1\r\n0 11428 11430 1\r\n0 11428 11429 1\r\n0 11428 11432 1\r\n0 11431 11435 1\r\n0 11431 11437 1\r\n0 11435 11437 0\r\n1 11438\r\n0 11429 11433 1\r\n0 11430 11434 1\r\n0 11433 11435 1\r\n0 11437 11439 1\r\n1 11439\r\n1 11434\r\n0 11428 11437 1\r\n1 11433\r\n0 1 200000 1\r\n",
+                "N/A\r\nN/A\r\nN/A\r\nN/A\r\nN/A\r\nN/A\r\nYES\r\nNO\r\nN/A\r\nN/A\r\n"
+            ],
+            [
+                "200000 15\r\n0 110726 110726 0\r\n0 110729 110729 1\r\n1 110727\r\n1 110726\r\n0 110728 110728 1\r\n0 110727 110728 1\r\n0 110726 110728 1\r\n0 110728 110729 1\r\n0 110726 110727 0\r\n1 110728\r\n0 110727 110729 1\r\n0 110726 110729 1\r\n1 110729\r\n0 110727 110727 0\r\n0 1 200000 1\r\n",
+                "N/A\r\nNO\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "5 10\r\n0 1 2 1\r\n0 1 3 1\r\n0 1 4 1\r\n0 2 2 1\r\n0 3 4 0\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n",
+                "N/A\r\nYES\r\nNO\r\nNO\r\nN/A\r\n"
+            ],
+            [
+                "5 15\r\n0 1 1 0\r\n0 1 4 0\r\n0 1 5 1\r\n0 2 4 0\r\n0 2 5 1\r\n0 3 4 0\r\n0 3 5 1\r\n0 4 4 0\r\n0 4 5 1\r\n0 5 5 1\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n",
+                "NO\r\nNO\r\nNO\r\nNO\r\nYES\r\n"
+            ],
+            [
+                "38 43\r\n0 1 6 1\r\n0 1 7 1\r\n0 12 12 1\r\n0 15 16 1\r\n0 15 17 1\r\n0 15 19 1\r\n0 16 17 0\r\n0 16 19 0\r\n0 18 23 1\r\n0 19 21 1\r\n0 19 22 1\r\n0 22 22 0\r\n0 22 23 0\r\n0 22 24 1\r\n0 22 27 1\r\n0 22 28 1\r\n0 23 26 1\r\n0 24 25 1\r\n0 24 26 1\r\n0 25 27 0\r\n0 25 29 1\r\n0 26 29 1\r\n0 28 29 1\r\n0 3 5 1\r\n0 3 6 1\r\n0 32 35 1\r\n0 35 35 1\r\n0 36 36 1\r\n0 36 37 1\r\n0 5 6 1\r\n0 5 7 1\r\n0 6 10 1\r\n0 8 9 1\r\n1 1\r\n1 16\r\n1 18\r\n1 23\r\n1 26\r\n1 33\r\n1 35\r\n1 6\r\n1 7\r\n1 9\r\n",
+                "N/A\r\nNO\r\nNO\r\nNO\r\nNO\r\nN/A\r\nYES\r\nN/A\r\nN/A\r\nN/A\r\n"
+            ],
+            [
+                "85 2\r\n0 58 70 1\r\n0 59 70 0\r\n",
+                ""
+            ],
+            [
+                "5 10\r\n0 1 3 1\r\n1 3\r\n0 2 4 1\r\n0 3 4 0\r\n0 1 2 1\r\n0 2 5 1\r\n0 2 2 1\r\n0 1 5 1\r\n1 4\r\n1 5\r\n",
+                "N/A\r\nNO\r\nN/A\r\n"
+            ],
+            [
+                "5 14\r\n0 3 5 1\r\n0 3 4 0\r\n1 3\r\n1 2\r\n1 4\r\n1 5\r\n0 4 5 1\r\n0 2 5 1\r\n0 2 4 0\r\n1 1\r\n0 4 4 0\r\n0 1 5 1\r\n0 1 4 0\r\n0 5 5 1\r\n",
+                "NO\r\nN/A\r\nNO\r\nYES\r\nN/A\r\n"
+            ]
+        ]
+    }
+]

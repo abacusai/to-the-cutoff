@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Tree or not Tree",
+        "description": "You are given an undirected connected graph G consisting of n vertexes and n\nedges. G contains no self-loops or multiple edges. Let each edge has two\nstates: on and off. Initially all edges are switched off. You are also given m\nqueries represented as (v, u) \u2014 change the state of all edges on the shortest\npath from vertex v to vertex u in graph G. If there are several such paths,\nthe lexicographically minimal one is chosen. More formally, let us consider\nall shortest paths from vertex v to vertex u as the sequences of vertexes v,\nv1, v2, ..., u. Among such sequences we choose the lexicographically minimal\none. After each query you should tell how many connected components has the\ngraph whose vertexes coincide with the vertexes of graph G and edges coincide\nwith the switched on edges of graph G. Input The first line contains two\nintegers n and m (3 \u2264 n \u2264 10^5, 1 \u2264 m \u2264 10^5). Then n lines describe the graph\nedges as a b (1 \u2264 a, b \u2264 n). Next m lines contain the queries as v u (1 \u2264 v, u\n\u2264 n). It is guaranteed that the graph is connected, does not have any self-\nloops or multiple edges. Output Print m lines, each containing one integer \u2014\nthe query results. Examples Input 5 2 2 1 4 3 2 4 2 5 4 1 5 4 1 5 Output 3 3\nInput 6 2 4 6 4 3 1 2 6 5 1 5 1 4 2 5 2 6 Output 4 3 Note Let's consider the\nfirst sample. We'll highlight the switched on edges blue on the image. The\ngraph before applying any operations. No graph edges are switched on, that's\nwhy there initially are 5 connected components. The graph after query v = 5, u\n= 4. We can see that the graph has three components if we only consider the\nswitched on edges. The graph after query v = 1, u = 5. We can see that the\ngraph has three components if we only consider the switched on edges.\nLexicographical comparison of two sequences of equal length of k numbers\nshould be done as follows. Sequence x is lexicographically less than sequence\ny if exists such i (1 \u2264 i \u2264 k), so that xi < yi, and for any j (1 \u2264 j < i) xj\n= yj.\n\n",
+        "cf_contest_id": 117,
+        "cf_index": "E",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "divide and conquer",
+            "implementation",
+            "trees"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 2\r\n2 1\r\n4 3\r\n2 4\r\n2 5\r\n4 1\r\n5 4\r\n1 5\r\n",
+                "3\r\n3\r\n"
+            ],
+            [
+                "6 2\r\n4 6\r\n4 3\r\n1 2\r\n6 5\r\n1 5\r\n1 4\r\n2 5\r\n2 6\r\n",
+                "4\r\n3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6 4\r\n6 3\r\n4 3\r\n1 5\r\n1 2\r\n5 4\r\n5 6\r\n1 1\r\n3 3\r\n5 2\r\n5 6\r\n",
+                "6\r\n6\r\n4\r\n3\r\n"
+            ],
+            [
+                "7 5\r\n3 7\r\n2 1\r\n6 5\r\n7 1\r\n3 6\r\n3 4\r\n4 2\r\n3 5\r\n3 6\r\n3 5\r\n6 3\r\n6 1\r\n",
+                "5\r\n6\r\n6\r\n7\r\n4\r\n"
+            ],
+            [
+                "8 5\r\n6 5\r\n2 1\r\n6 4\r\n6 8\r\n6 7\r\n6 2\r\n8 3\r\n3 2\r\n8 7\r\n7 2\r\n6 4\r\n3 8\r\n8 3\r\n",
+                "6\r\n6\r\n5\r\n4\r\n5\r\n"
+            ],
+            [
+                "3 5\r\n3 2\r\n3 1\r\n2 1\r\n3 3\r\n1 1\r\n1 1\r\n2 1\r\n3 2\r\n",
+                "3\r\n3\r\n3\r\n2\r\n1\r\n"
+            ],
+            [
+                "4 5\r\n2 1\r\n2 3\r\n1 4\r\n3 4\r\n1 3\r\n2 1\r\n1 2\r\n2 1\r\n4 1\r\n",
+                "2\r\n3\r\n2\r\n3\r\n2\r\n"
+            ],
+            [
+                "5 5\r\n2 3\r\n1 2\r\n4 2\r\n1 4\r\n5 1\r\n4 3\r\n4 5\r\n1 1\r\n3 3\r\n1 1\r\n",
+                "3\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "10 10\r\n3 4\r\n2 8\r\n5 6\r\n1 9\r\n2 1\r\n10 2\r\n3 8\r\n2 7\r\n2 3\r\n7 5\r\n5 10\r\n5 4\r\n4 9\r\n6 3\r\n8 7\r\n5 6\r\n6 4\r\n3 5\r\n6 9\r\n8 1\r\n",
+                "7\r\n7\r\n7\r\n3\r\n3\r\n4\r\n3\r\n2\r\n5\r\n5\r\n"
+            ],
+            [
+                "10 10\r\n8 2\r\n9 6\r\n9 3\r\n6 5\r\n4 10\r\n10 7\r\n9 1\r\n10 9\r\n4 1\r\n8 4\r\n7 7\r\n4 3\r\n1 10\r\n8 9\r\n8 3\r\n7 6\r\n6 1\r\n7 2\r\n5 1\r\n1 3\r\n",
+                "10\r\n7\r\n7\r\n6\r\n8\r\n5\r\n7\r\n7\r\n4\r\n4\r\n"
+            ],
+            [
+                "3 3\r\n1 3\r\n2 3\r\n1 2\r\n2 1\r\n1 2\r\n3 2\r\n",
+                "2\r\n3\r\n2\r\n"
+            ],
+            [
+                "6 2\r\n1 5\r\n2 6\r\n5 2\r\n5 4\r\n1 2\r\n6 3\r\n1 1\r\n6 3\r\n",
+                "6\r\n5\r\n"
+            ],
+            [
+                "6 2\r\n5 4\r\n2 6\r\n3 5\r\n3 2\r\n5 1\r\n4 2\r\n6 5\r\n1 6\r\n",
+                "3\r\n5\r\n"
+            ],
+            [
+                "3 4\r\n1 2\r\n2 3\r\n3 1\r\n1 2\r\n2 3\r\n3 1\r\n2 3\r\n",
+                "2\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "4 4\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n1 3\r\n1 2\r\n1 2\r\n1 4\r\n",
+                "2\r\n3\r\n2\r\n1\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,421 @@
+[
+    {
+        "name": "Masha and geometric depression",
+        "description": "Masha really loves algebra. On the last lesson, her strict teacher Dvastan\ngave she new exercise. You are given geometric progression b defined by two\nintegers b1 and q. Remind that a geometric progression is a sequence of\nintegers b1, b2, b3, ..., where for each i > 1 the respective term satisfies\nthe condition bi = bi - 1\u00b7q, where q is called the common ratio of the\nprogression. Progressions in Uzhlyandia are unusual: both b1 and q can equal\n0. Also, Dvastan gave Masha m \"bad\" integers a1, a2, ..., am, and an integer\nl. Masha writes all progression terms one by one onto the board (including\nrepetitive) while condition |bi| \u2264 l is satisfied (|x| means absolute value of\nx). There is an exception: if a term equals one of the \"bad\" integers, Masha\nskips it (doesn't write onto the board) and moves forward to the next term.\nBut the lesson is going to end soon, so Masha has to calculate how many\nintegers will be written on the board. In order not to get into depression,\nMasha asked you for help: help her calculate how many numbers she will write,\nor print \"inf\" in case she needs to write infinitely many integers. Input The\nfirst line of input contains four integers b1, q, l, m (-10^9 \u2264 b1, q \u2264 10^9,\n1 \u2264 l \u2264 10^9, 1 \u2264 m \u2264 10^5) \u2014 the initial term and the common ratio of\nprogression, absolute value of maximal number that can be written on the board\nand the number of \"bad\" integers, respectively. The second line contains m\ndistinct integers a1, a2, ..., am (-10^9 \u2264 ai \u2264 10^9) \u2014 numbers that will\nnever be written on the board. Output Print the only integer, meaning the\nnumber of progression terms that will be written on the board if it is finite,\nor \"inf\" (without quotes) otherwise. Examples Input 3 2 30 4 6 14 25 48 Output\n3 Input 123 1 2143435 4 123 11 -5453 141245 Output 0 Input 123 1 2143435 4\n54343 -13 6 124 Output inf Note In the first sample case, Masha will write\nintegers 3, 12, 24. Progression term 6 will be skipped because it is a \"bad\"\ninteger. Terms bigger than 24 won't be written because they exceed l by\nabsolute value. In the second case, Masha won't write any number because all\nterms are equal 123 and this is a \"bad\" integer. In the third case, Masha will\nwrite infinitely integers 123.\n\n",
+        "cf_contest_id": 789,
+        "cf_index": "B",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2 30 4\r\n6 14 25 48\r\n",
+                "3\r\n"
+            ],
+            [
+                "123 1 2143435 4\r\n123 11 -5453 141245\r\n",
+                "0\r\n"
+            ],
+            [
+                "123 1 2143435 4\r\n54343 -13 6 124\r\n",
+                "inf\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 2 25 2\r\n379195692 -69874783\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 2 30 3\r\n-691070108 -934106649 -220744807\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 3 104 17\r\n9 -73896485 -290898562 5254410 409659728 -916522518 -435516126 94354167 262981034 -375897180 -80186684 -173062070 -288705544 -699097793 -11447747 320434295 503414250\r\n",
+                "3\r\n"
+            ],
+            [
+                "-1000000000 -1000000000 1 1\r\n232512888\r\n",
+                "0\r\n"
+            ],
+            [
+                "11 0 228 5\r\n-1 0 1 5 -11245\r\n",
+                "1\r\n"
+            ],
+            [
+                "11 0 228 5\r\n-1 -17 1 5 -11245\r\n",
+                "inf\r\n"
+            ],
+            [
+                "0 0 2143435 5\r\n-1 -153 1 5 -11245\r\n",
+                "inf\r\n"
+            ],
+            [
+                "123 0 2143435 4\r\n5433 0 123 -645\r\n",
+                "0\r\n"
+            ],
+            [
+                "123 -1 2143435 5\r\n-123 0 12 5 -11245\r\n",
+                "inf\r\n"
+            ],
+            [
+                "123 0 21 4\r\n543453 -123 6 1424\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 2 115 16\r\n24 48 12 96 3 720031148 -367712651 -838596957 558177735 -963046495 -313322487 -465018432 -618984128 -607173835 144854086 178041956\r\n",
+                "1\r\n"
+            ],
+            [
+                "-3 0 92055 36\r\n-92974174 -486557474 -663622151 695596393 177960746 -563227474 -364263320 -676254242 -614140218 71456762 -764104225 705056581 -106398436 332755134 -199942822 -732751692 658942664 677739866 886535704 183687802 -784248291 -22550621 -938674499 637055091 -704750213 780395802 778342470 -999059668 -794361783 796469192 215667969 354336794 -60195289 -885080928 -290279020 201221317\r\n",
+                "inf\r\n"
+            ],
+            [
+                "0 -3 2143435 5\r\n-1 0 1 5 -11245\r\n",
+                "0\r\n"
+            ],
+            [
+                "123 -1 2143435 5\r\n-123 0 123 -5453 141245\r\n",
+                "0\r\n"
+            ],
+            [
+                "123 0 2143435 4\r\n5433 0 -123 -645\r\n",
+                "1\r\n"
+            ],
+            [
+                "11 0 2 5\r\n-1 0 1 5 -11245\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2 4 1\r\n2\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 -2 1000000000 1\r\n0\r\n",
+                "30\r\n"
+            ],
+            [
+                "0 8 10 1\r\n5\r\n",
+                "inf\r\n"
+            ],
+            [
+                "-1000 0 10 1\r\n5\r\n",
+                "0\r\n"
+            ],
+            [
+                "0 2 2143435 4\r\n54343 -13 6 124\r\n",
+                "inf\r\n"
+            ],
+            [
+                "0 8 5 1\r\n9\r\n",
+                "inf\r\n"
+            ],
+            [
+                "-10 1 5 1\r\n100\r\n",
+                "0\r\n"
+            ],
+            [
+                "123 -1 2143435 4\r\n54343 -13 6 123\r\n",
+                "inf\r\n"
+            ],
+            [
+                "-5 -1 10 1\r\n-5\r\n",
+                "inf\r\n"
+            ],
+            [
+                "2 0 1 1\r\n2\r\n",
+                "0\r\n"
+            ],
+            [
+                "0 5 8 1\r\n10\r\n",
+                "inf\r\n"
+            ],
+            [
+                "0 5 100 2\r\n34 56\r\n",
+                "inf\r\n"
+            ],
+            [
+                "15 -1 15 4\r\n15 -15 1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 -1 2 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 0 2 1\r\n2\r\n",
+                "inf\r\n"
+            ],
+            [
+                "4 0 4 1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 10 10 1\r\n123\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2 4 1\r\n3\r\n",
+                "2\r\n"
+            ],
+            [
+                "0 1 1 1\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 2 30 1\r\n3\r\n",
+                "3\r\n"
+            ],
+            [
+                "1000000000 100000 1000000000 4\r\n5433 13 6 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "-2 0 1 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 -1 10 1\r\n2\r\n",
+                "inf\r\n"
+            ],
+            [
+                "1 -1 2 1\r\n1\r\n",
+                "inf\r\n"
+            ],
+            [
+                "0 10 10 1\r\n2\r\n",
+                "inf\r\n"
+            ],
+            [
+                "0 35 2 1\r\n3\r\n",
+                "inf\r\n"
+            ],
+            [
+                "3 1 3 1\r\n5\r\n",
+                "inf\r\n"
+            ],
+            [
+                "3 2 3 4\r\n6 14 25 48\r\n",
+                "1\r\n"
+            ],
+            [
+                "0 69 12 1\r\n1\r\n",
+                "inf\r\n"
+            ],
+            [
+                "100 0 100000 1\r\n100\r\n",
+                "inf\r\n"
+            ],
+            [
+                "0 4 1000 3\r\n5 6 7\r\n",
+                "inf\r\n"
+            ],
+            [
+                "0 2 100 1\r\n5\r\n",
+                "inf\r\n"
+            ],
+            [
+                "3 2 24 4\r\n6 14 25 48\r\n",
+                "3\r\n"
+            ],
+            [
+                "0 4 1 1\r\n2\r\n",
+                "inf\r\n"
+            ],
+            [
+                "1 5 10000 1\r\n125\r\n",
+                "5\r\n"
+            ],
+            [
+                "2 -1 1 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "0 3 100 1\r\n5\r\n",
+                "inf\r\n"
+            ],
+            [
+                "0 3 3 1\r\n1\r\n",
+                "inf\r\n"
+            ],
+            [
+                "0 2 5 1\r\n1\r\n",
+                "inf\r\n"
+            ],
+            [
+                "5 -1 100 1\r\n5\r\n",
+                "inf\r\n"
+            ],
+            [
+                "-20 0 10 1\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 0 1 1\r\n3\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 -1 3 1\r\n2\r\n",
+                "inf\r\n"
+            ],
+            [
+                "1 1 1000000000 1\r\n100\r\n",
+                "inf\r\n"
+            ],
+            [
+                "5 -1 3 1\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "0 5 10 1\r\n2\r\n",
+                "inf\r\n"
+            ],
+            [
+                "123 0 125 1\r\n123\r\n",
+                "inf\r\n"
+            ],
+            [
+                "2 -1 100 1\r\n2\r\n",
+                "inf\r\n"
+            ],
+            [
+                "5 2 100 1\r\n5\r\n",
+                "4\r\n"
+            ],
+            [
+                "-5 0 1 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "-3 0 1 1\r\n-3\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 -2 10 1\r\n1\r\n",
+                "3\r\n"
+            ],
+            [
+                "0 2 30 4\r\n6 14 25 48\r\n",
+                "inf\r\n"
+            ],
+            [
+                "1 -1 1 1\r\n1\r\n",
+                "inf\r\n"
+            ],
+            [
+                "2 -1 6 1\r\n2\r\n",
+                "inf\r\n"
+            ],
+            [
+                "-3 1 100 1\r\n-3\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 0 2 1\r\n1\r\n",
+                "inf\r\n"
+            ],
+            [
+                "1000000000 999999998 1000000000 1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 0 2143435 4\r\n1 -123 -5453 141245\r\n",
+                "inf\r\n"
+            ],
+            [
+                "-1000 0 100 1\r\n-1000\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 10 2 1\r\n100\r\n",
+                "0\r\n"
+            ],
+            [
+                "-3 1 100 1\r\n3\r\n",
+                "inf\r\n"
+            ],
+            [
+                "123 -1 10000 1\r\n123\r\n",
+                "inf\r\n"
+            ],
+            [
+                "1 -1 2143435 4\r\n1 -123 -5453 141245\r\n",
+                "inf\r\n"
+            ],
+            [
+                "5 1 5 5\r\n1 2 3 4 0\r\n",
+                "inf\r\n"
+            ],
+            [
+                "-100 -1 1 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 -1 3 2\r\n10 8\r\n",
+                "0\r\n"
+            ],
+            [
+                "-10 0 5 1\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 0 3 1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 0 2 1\r\n-1\r\n",
+                "inf\r\n"
+            ],
+            [
+                "5 0 20 1\r\n5\r\n",
+                "inf\r\n"
+            ],
+            [
+                "-4 1 1 1\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "11 0 1111 1\r\n11\r\n",
+                "inf\r\n"
+            ],
+            [
+                "2 0 3 1\r\n2\r\n",
+                "inf\r\n"
+            ],
+            [
+                "-1 -1 2143435 4\r\n-1 -123 -5453 141245\r\n",
+                "inf\r\n"
+            ],
+            [
+                "-100 0 50 1\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 1 2 1\r\n2\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 0 3 1\r\n4\r\n",
+                "inf\r\n"
+            ],
+            [
+                "0 23 3 1\r\n3\r\n",
+                "inf\r\n"
+            ],
+            [
+                "-1000 0 100 1\r\n2\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 -1 10 1\r\n1\r\n",
+                "inf\r\n"
+            ]
+        ]
+    }
+]

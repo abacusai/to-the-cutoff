@@ -1,0 +1,151 @@
+[
+    {
+        "name": "Mausoleum",
+        "description": "King of Berland Berl IV has recently died. Hail Berl V! As a sign of the\nhighest achievements of the deceased king the new king decided to build a\nmausoleum with Berl IV's body on the main square of the capital. The mausoleum\nwill be constructed from 2n blocks, each of them has the shape of a cuboid.\nEach block has the bottom base of a 1 \u00d7 1 meter square. Among the blocks,\nexactly two of them have the height of one meter, exactly two have the height\nof two meters, ..., exactly two have the height of n meters. The blocks are\narranged in a row without spacing one after the other. Of course, not every\narrangement of blocks has the form of a mausoleum. In order to make the given\narrangement in the form of the mausoleum, it is necessary that when you pass\nalong the mausoleum, from one end to the other, the heights of the blocks\nfirst were non-decreasing (i.e., increasing or remained the same), and then \u2014\nnon-increasing (decrease or remained unchanged). It is possible that any of\nthese two areas will be omitted. For example, the following sequences of block\nheight meet this requirement: [1, 2, 2, 3, 4, 4, 3, 1]; [1, 1]; [2, 2, 1, 1];\n[1, 2, 3, 3, 2, 1]. Suddenly, k more requirements appeared. Each of the\nrequirements has the form: \"h[xi] signi h[yi]\", where h[t] is the height of\nthe t-th block, and a signi is one of the five possible signs: '=' (equals),\n'<' (less than), '>' (more than), '<=' (less than or equals), '>=' (more than\nor equals). Thus, each of the k additional requirements is given by a pair of\nindexes xi, yi (1 \u2264 xi, yi \u2264 2n) and sign signi. Find the number of possible\nways to rearrange the blocks so that both the requirement about the shape of\nthe mausoleum (see paragraph 3) and the k additional requirements were met.\nInput The first line of the input contains integers n and k (1 \u2264 n \u2264 35, 0 \u2264 k\n\u2264 100) \u2014 the number of pairs of blocks and the number of additional\nrequirements. Next k lines contain listed additional requirements, one per\nline in the format \"xi signi yi\" (1 \u2264 xi, yi \u2264 2n), and the sign is on of the\nlist of the five possible signs. Output Print the sought number of ways.\nExamples Input 3 0 Output 9 Input 3 1 2 > 3 Output 1 Input 4 1 3 = 6 Output 3\n\n",
+        "cf_contest_id": 567,
+        "cf_index": "F",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 0\r\n",
+                "9"
+            ],
+            [
+                "3 1\r\n2 > 3\r\n",
+                "1"
+            ],
+            [
+                "4 1\r\n3 = 6\r\n",
+                "3"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 2\r\n1 < 2\r\n9 > 10\r\n",
+                "27"
+            ],
+            [
+                "35 0\r\n",
+                "16677181699666569"
+            ],
+            [
+                "10 5\r\n17 <= 10\r\n16 >= 18\r\n9 > 18\r\n8 = 8\r\n6 >= 13\r\n",
+                "6804"
+            ],
+            [
+                "5 2\r\n1 = 10\r\n2 = 9\r\n",
+                "9"
+            ],
+            [
+                "3 3\r\n1 = 2\r\n3 = 4\r\n5 = 6\r\n",
+                "4"
+            ],
+            [
+                "4 3\r\n2 > 3\r\n4 > 5\r\n6 > 7\r\n",
+                "1"
+            ],
+            [
+                "1 1\r\n1 > 2\r\n",
+                "0"
+            ],
+            [
+                "1 1\r\n1 <= 2\r\n",
+                "1"
+            ],
+            [
+                "5 3\r\n2 > 10\r\n4 > 8\r\n3 = 6\r\n",
+                "5"
+            ],
+            [
+                "5 3\r\n2 <= 4\r\n6 <= 7\r\n5 > 6\r\n",
+                "11"
+            ],
+            [
+                "8 5\r\n2 <= 4\r\n5 > 10\r\n3 < 9\r\n4 = 8\r\n12 >= 16\r\n",
+                "0"
+            ],
+            [
+                "5 5\r\n10 <= 8\r\n5 >= 7\r\n10 < 4\r\n5 = 5\r\n10 <= 2\r\n",
+                "40"
+            ],
+            [
+                "6 2\r\n3 <= 7\r\n6 >= 10\r\n",
+                "153"
+            ],
+            [
+                "5 10\r\n5 >= 8\r\n3 > 9\r\n5 >= 9\r\n5 = 6\r\n8 <= 3\r\n6 > 9\r\n3 < 1\r\n1 >= 9\r\n2 > 3\r\n8 <= 1\r\n",
+                "1"
+            ],
+            [
+                "5 8\r\n8 = 9\r\n7 >= 7\r\n3 <= 9\r\n4 > 10\r\n5 >= 1\r\n7 = 7\r\n2 < 6\r\n4 <= 7\r\n",
+                "8"
+            ],
+            [
+                "10 5\r\n11 >= 18\r\n1 > 10\r\n15 >= 19\r\n15 <= 13\r\n2 > 6\r\n",
+                "9"
+            ],
+            [
+                "20 50\r\n26 <= 22\r\n32 >= 40\r\n32 < 14\r\n2 > 22\r\n5 >= 34\r\n33 <= 19\r\n17 > 35\r\n14 >= 22\r\n35 < 25\r\n6 > 7\r\n2 >= 1\r\n35 <= 28\r\n35 < 34\r\n27 <= 15\r\n13 > 20\r\n9 >= 25\r\n8 > 22\r\n18 < 8\r\n12 >= 2\r\n2 > 24\r\n14 = 15\r\n5 >= 17\r\n29 <= 26\r\n25 > 28\r\n3 >= 35\r\n8 > 3\r\n31 < 7\r\n36 = 36\r\n39 <= 7\r\n35 < 18\r\n18 <= 4\r\n26 < 17\r\n20 >= 30\r\n14 <= 12\r\n35 < 8\r\n5 > 28\r\n22 <= 1\r\n19 >= 22\r\n13 < 9\r\n25 <= 2\r\n3 > 37\r\n40 < 4\r\n40 <= 2\r\n26 >= 33\r\n3 > 26\r\n25 >= 32\r\n13 > 14\r\n18 < 10\r\n16 = 1\r\n9 <= 7\r\n",
+                "16"
+            ],
+            [
+                "35 1\r\n26 >= 66\r\n",
+                "16672955716972557"
+            ],
+            [
+                "35 1\r\n2 <= 28\r\n",
+                "16677181687443426"
+            ],
+            [
+                "35 1\r\n69 <= 26\r\n",
+                "16677125911116153"
+            ],
+            [
+                "35 35\r\n54 <= 25\r\n32 >= 61\r\n67 < 45\r\n27 <= 11\r\n32 > 44\r\n32 >= 41\r\n62 < 39\r\n21 > 33\r\n50 >= 66\r\n64 <= 51\r\n53 < 32\r\n22 > 35\r\n50 <= 44\r\n30 >= 35\r\n34 > 60\r\n24 < 20\r\n50 <= 20\r\n12 = 12\r\n53 < 23\r\n40 <= 9\r\n8 >= 53\r\n30 > 51\r\n23 >= 29\r\n58 < 24\r\n7 > 70\r\n20 >= 56\r\n38 <= 19\r\n35 < 21\r\n48 <= 31\r\n42 < 9\r\n25 > 37\r\n2 >= 50\r\n25 > 66\r\n21 >= 22\r\n42 <= 31\r\n",
+                "26126142062"
+            ],
+            [
+                "30 50\r\n56 <= 26\r\n47 >= 42\r\n18 > 7\r\n51 < 28\r\n36 >= 5\r\n58 = 58\r\n49 > 24\r\n2 <= 31\r\n24 < 37\r\n7 >= 2\r\n7 <= 33\r\n14 < 16\r\n11 <= 35\r\n33 > 7\r\n55 < 31\r\n46 >= 41\r\n55 > 5\r\n18 >= 60\r\n12 > 59\r\n10 <= 30\r\n25 >= 23\r\n40 > 3\r\n49 >= 45\r\n20 > 6\r\n60 < 53\r\n21 >= 5\r\n11 <= 50\r\n12 < 33\r\n1 <= 10\r\n44 > 29\r\n48 >= 58\r\n49 > 47\r\n5 < 38\r\n20 <= 33\r\n4 < 7\r\n31 >= 23\r\n24 > 1\r\n18 >= 11\r\n23 <= 31\r\n37 > 13\r\n13 >= 5\r\n4 < 52\r\n40 > 21\r\n18 <= 26\r\n37 >= 27\r\n50 > 36\r\n37 >= 32\r\n54 = 55\r\n31 > 14\r\n58 < 52\r\n",
+                "4805262"
+            ],
+            [
+                "30 50\r\n46 <= 27\r\n19 < 18\r\n44 <= 21\r\n36 < 10\r\n39 >= 51\r\n23 > 60\r\n34 >= 45\r\n17 > 36\r\n34 <= 27\r\n14 >= 55\r\n9 > 12\r\n52 < 31\r\n59 <= 12\r\n59 < 46\r\n37 >= 46\r\n53 <= 28\r\n31 > 59\r\n46 < 24\r\n53 <= 25\r\n4 >= 26\r\n51 > 60\r\n14 < 7\r\n3 >= 22\r\n11 > 46\r\n60 <= 8\r\n6 >= 39\r\n13 > 16\r\n33 < 11\r\n18 >= 26\r\n47 <= 7\r\n47 < 3\r\n6 = 6\r\n56 <= 29\r\n29 > 54\r\n5 >= 34\r\n27 > 51\r\n48 < 3\r\n47 <= 7\r\n8 >= 34\r\n17 > 30\r\n4 >= 7\r\n13 < 9\r\n2 > 28\r\n14 = 14\r\n41 <= 12\r\n17 >= 19\r\n31 > 54\r\n13 >= 32\r\n1 > 7\r\n33 < 16\r\n",
+                "9"
+            ],
+            [
+                "30 0\r\n",
+                "68630377364883"
+            ],
+            [
+                "22 2\r\n32 = 39\r\n27 >= 27\r\n",
+                "209304"
+            ],
+            [
+                "30 50\r\n17 >= 29\r\n19 <= 18\r\n3 > 50\r\n54 >= 56\r\n47 < 15\r\n50 <= 33\r\n49 < 8\r\n57 <= 16\r\n30 > 35\r\n49 < 21\r\n3 >= 37\r\n56 <= 51\r\n46 > 51\r\n35 >= 48\r\n32 < 15\r\n12 <= 4\r\n38 > 57\r\n55 < 9\r\n49 <= 1\r\n9 >= 38\r\n60 = 60\r\n1 > 12\r\n40 >= 43\r\n13 > 38\r\n24 >= 39\r\n9 < 2\r\n12 > 58\r\n15 >= 30\r\n13 > 50\r\n42 <= 16\r\n23 >= 54\r\n16 < 10\r\n1 > 43\r\n4 >= 57\r\n22 > 25\r\n2 >= 53\r\n9 > 55\r\n46 <= 10\r\n44 < 11\r\n51 <= 18\r\n15 >= 31\r\n20 > 23\r\n35 < 13\r\n46 <= 44\r\n10 < 6\r\n13 >= 28\r\n17 > 48\r\n53 <= 36\r\n36 >= 42\r\n29 < 15\r\n",
+                "36"
+            ],
+            [
+                "20 20\r\n26 <= 10\r\n10 >= 22\r\n2 > 17\r\n16 = 16\r\n16 >= 31\r\n31 < 16\r\n28 <= 3\r\n2 > 25\r\n4 >= 30\r\n21 < 9\r\n4 > 5\r\n27 <= 20\r\n27 >= 38\r\n18 > 37\r\n17 < 5\r\n10 <= 8\r\n21 < 10\r\n3 >= 9\r\n35 > 40\r\n19 <= 3\r\n",
+                "102"
+            ],
+            [
+                "20 50\r\n31 >= 18\r\n36 > 9\r\n23 <= 27\r\n8 < 22\r\n17 <= 18\r\n13 < 20\r\n27 >= 4\r\n13 <= 18\r\n25 < 36\r\n25 <= 29\r\n11 > 8\r\n24 < 26\r\n5 <= 35\r\n14 >= 5\r\n1 < 12\r\n40 <= 30\r\n2 < 38\r\n10 <= 27\r\n15 > 1\r\n5 < 16\r\n27 <= 31\r\n24 < 27\r\n21 >= 8\r\n10 <= 36\r\n25 > 6\r\n10 >= 9\r\n34 > 29\r\n3 < 24\r\n26 >= 2\r\n39 <= 6\r\n23 < 28\r\n6 <= 37\r\n36 > 16\r\n35 >= 1\r\n17 > 6\r\n27 = 27\r\n32 = 33\r\n11 < 23\r\n14 <= 20\r\n22 < 24\r\n25 >= 8\r\n32 > 20\r\n20 <= 34\r\n33 >= 26\r\n36 > 9\r\n9 < 31\r\n6 = 5\r\n12 <= 24\r\n32 >= 3\r\n27 > 1\r\n",
+                "8784"
+            ],
+            [
+                "20 10\r\n17 <= 7\r\n22 >= 35\r\n13 < 12\r\n19 > 24\r\n2 >= 21\r\n19 > 35\r\n23 >= 32\r\n34 <= 29\r\n22 > 30\r\n3 >= 28\r\n",
+                "61374"
+            ],
+            [
+                "35 15\r\n31 >= 14\r\n12 <= 62\r\n26 < 34\r\n48 > 46\r\n14 <= 35\r\n28 >= 19\r\n18 < 37\r\n61 > 28\r\n40 <= 54\r\n59 >= 21\r\n7 < 40\r\n6 > 4\r\n2 = 69\r\n48 <= 61\r\n46 >= 30\r\n",
+                "1930894281"
+            ]
+        ]
+    }
+]

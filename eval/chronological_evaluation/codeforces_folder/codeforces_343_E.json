@@ -1,0 +1,73 @@
+[
+    {
+        "name": "Pumping Stations",
+        "description": "Mad scientist Mike has applied for a job. His task is to manage a system of\nwater pumping stations. The system consists of n pumping stations, which are\nnumbered by integers from 1 to n. Some pairs of stations are connected by\nbidirectional pipes through which water can flow in either direction (but only\nin one at a time). For each pipe you know its bandwidth \u2014 the maximum number\nof liters of water that can flow through it in one hour. Each pumping station\ncan pump incoming water from some stations to other stations through the\npipes, provided that in one hour the total influx of water to the station is\nequal to the total outflux of water from the station. It is Mike's\nresponsibility to pump water between stations. From station a to station b\nthrough the pipes (possibly through other stations) within one hour one can\ntransmit a certain number of liters of water according to the rules described\nabove. During this time, water from other stations can not flow into station\na, and can not flow out of the station b. However, any amount of water can\nflow out of station a or in station b. If a total of x litres of water flows\nout of the station a in an hour, then Mike gets x bollars more to his salary.\nTo get paid, Mike needs to work for n - 1 days, according to the contract. On\nthe first day he selects two stations v1 and v2, and within one hour he pumps\na certain amount of water from v1 to v2. Next, on the i-th day Mike chooses a\nstation vi + 1 that has been never selected before, and pumps a certain amount\nof water out of the station vi to station vi + 1 for one hour. The quantity of\nwater he pumps on the i-th day does not depend on the amount of water pumped\non the (i - 1)-th day. Mike needs to earn as much bollars as he can for his\nprojects. Help Mike find such a permutation of station numbers v1, v2, ..., vn\nso Mike will be able to earn the highest possible salary. Input The first line\nof the input contains two space-separated integers n and m (2 \u2264 n \u2264 200, 1 \u2264 m\n\u2264 1000) \u2014 the number of stations and pipes in the system, accordingly. The\ni-th of the next m lines contains three space-separated integers ai, bi and ci\n(1 \u2264 ai, bi \u2264 n, ai \u2260 bi, 1 \u2264 ci \u2264 100) \u2014 the numbers of stations connected by\nthe i-th pipe and the pipe's bandwidth, accordingly. It is guaranteed that any\ntwo stations are connected by at most one pipe and that there is a pipe path\nbetween any two stations. Output On the first line print a single integer \u2014\nthe maximum salary Mike can earn. On the second line print a space-separated\npermutation of n numbers from 1 to n \u2014 the numbers of stations in the sequence\nv1, v2, ..., vn. If there are multiple answers, print any of them. Examples\nInput 6 11 1 2 10 1 6 8 2 3 4 2 5 2 2 6 3 3 4 5 3 5 4 3 6 2 4 5 7 4 6 2 5 6 3\nOutput 77 6 2 1 5 3 4\n\n",
+        "cf_contest_id": 343,
+        "cf_index": "E",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dfs and similar",
+            "divide and conquer",
+            "flows",
+            "graphs",
+            "greedy",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 11\r\n1 2 10\r\n1 6 8\r\n2 3 4\r\n2 5 2\r\n2 6 3\r\n3 4 5\r\n3 5 4\r\n3 6 2\r\n4 5 7\r\n4 6 2\r\n5 6 3\r\n",
+                "77\r\n4 5 3 6 2 1 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 10\r\n2 5 22\r\n4 2 42\r\n4 5 87\r\n5 3 58\r\n4 1 7\r\n4 3 86\r\n3 1 32\r\n2 1 92\r\n1 5 29\r\n2 3 56\r\n",
+                "766\r\n5 4 3 2 1 "
+            ],
+            [
+                "10 45\r\n3 7 37\r\n6 7 51\r\n9 7 51\r\n5 2 20\r\n8 5 40\r\n10 1 75\r\n10 8 12\r\n10 9 21\r\n7 4 64\r\n10 4 64\r\n1 2 91\r\n9 6 36\r\n2 8 9\r\n2 4 20\r\n6 1 27\r\n3 2 52\r\n9 8 24\r\n8 1 64\r\n4 1 22\r\n10 2 12\r\n10 6 15\r\n5 10 18\r\n3 6 40\r\n8 6 84\r\n3 4 6\r\n5 1 93\r\n7 5 19\r\n10 3 28\r\n6 2 94\r\n3 5 79\r\n9 5 96\r\n1 3 63\r\n1 7 35\r\n9 1 46\r\n10 7 37\r\n8 4 58\r\n2 9 15\r\n6 4 21\r\n8 7 100\r\n7 2 83\r\n6 5 90\r\n5 4 91\r\n9 4 43\r\n3 9 50\r\n8 3 29\r\n",
+                "3704\r\n10 9 3 4 2 8 6 7 5 1 "
+            ],
+            [
+                "6 15\r\n1 6 33\r\n1 2 5\r\n2 6 1\r\n1 5 88\r\n3 1 18\r\n2 5 91\r\n5 6 59\r\n3 5 70\r\n4 3 56\r\n4 2 16\r\n1 4 36\r\n3 6 18\r\n4 6 8\r\n3 2 26\r\n4 5 3\r\n",
+                "745\r\n4 6 2 3 5 1 "
+            ],
+            [
+                "10 40\r\n7 5 55\r\n10 7 25\r\n9 5 73\r\n1 2 42\r\n2 8 65\r\n3 9 39\r\n10 6 95\r\n5 3 42\r\n4 8 30\r\n1 8 12\r\n1 3 11\r\n7 6 47\r\n4 9 84\r\n5 2 37\r\n9 2 28\r\n3 2 79\r\n3 4 58\r\n6 3 49\r\n9 8 45\r\n5 1 12\r\n1 7 45\r\n2 10 57\r\n8 5 54\r\n4 2 70\r\n4 5 97\r\n3 10 56\r\n10 1 2\r\n3 8 60\r\n7 4 92\r\n2 7 17\r\n4 6 31\r\n10 8 19\r\n9 1 53\r\n6 2 86\r\n6 1 30\r\n9 6 30\r\n1 4 1\r\n5 6 76\r\n7 8 68\r\n8 6 10\r\n",
+                "3283\r\n10 7 9 8 3 5 6 4 2 1 "
+            ],
+            [
+                "2 1\r\n1 2 1\r\n",
+                "1\r\n2 1 "
+            ],
+            [
+                "5 4\r\n1 2 8\r\n1 3 5\r\n1 4 9\r\n1 5 3\r\n",
+                "25\r\n5 3 2 4 1 "
+            ],
+            [
+                "3 3\r\n1 2 1\r\n2 3 1\r\n3 1 1\r\n",
+                "4\r\n3 2 1 "
+            ],
+            [
+                "10 17\r\n9 1 8\r\n7 10 1\r\n5 4 4\r\n1 10 1\r\n3 10 1\r\n10 5 1\r\n6 3 6\r\n10 4 1\r\n4 6 5\r\n7 5 3\r\n2 10 1\r\n9 3 7\r\n9 10 1\r\n8 10 1\r\n10 6 1\r\n2 7 2\r\n2 8 1\r\n",
+                "65\r\n8 2 7 5 10 4 6 3 9 1 "
+            ],
+            [
+                "5 6\r\n1 3 10\r\n2 1 10\r\n3 5 10\r\n1 4 10\r\n2 5 10\r\n4 5 10\r\n",
+                "90\r\n2 3 4 5 1 "
+            ],
+            [
+                "5 6\r\n2 1 8\r\n5 2 8\r\n5 3 4\r\n4 1 9\r\n3 1 4\r\n5 4 9\r\n",
+                "63\r\n3 2 4 5 1 "
+            ],
+            [
+                "10 23\r\n10 5 94\r\n6 9 20\r\n10 2 79\r\n3 9 63\r\n1 6 80\r\n7 8 21\r\n3 5 6\r\n3 1 94\r\n2 5 21\r\n1 2 100\r\n1 7 79\r\n6 10 59\r\n8 1 60\r\n10 3 37\r\n9 1 37\r\n4 8 40\r\n7 10 100\r\n6 4 41\r\n5 1 79\r\n8 10 79\r\n9 10 80\r\n10 4 60\r\n4 1 59\r\n",
+                "2188\r\n2 3 5 6 7 8 9 4 10 1 "
+            ]
+        ]
+    }
+]

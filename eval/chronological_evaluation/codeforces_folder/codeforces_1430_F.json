@@ -1,0 +1,112 @@
+[
+    {
+        "name": "Realistic Gameplay",
+        "description": "Recently you've discovered a new shooter. They say it has realistic game\nmechanics. Your character has a gun with magazine size equal to \n    k\n and\nshould exterminate \n    n\n waves of monsters. The \n    i\n-th wave consists of\n\n    a_i\n monsters and happens from the \n    l_i\n-th moment of time up to the\n\n    r_i\n-th moments of time. All \n    a_i\n monsters spawn at moment \n    l_i\n\nand you have to exterminate all of them before the moment \n    r_i\n ends (you\ncan kill monsters right at moment \n    r_i\n). For every two consecutive waves,\nthe second wave starts not earlier than the first wave ends (though the second\nwave can start at the same moment when the first wave ends) \u2014 formally, the\ncondition \n    r_i \n    \u2264 l_i + 1\n holds. Take a look at the notes for the\nexamples to understand the process better. You are confident in yours and your\ncharacter's skills so you can assume that aiming and shooting are instant and\nyou need exactly one bullet to kill one monster. But reloading takes exactly\n\n    1\n unit of time. One of the realistic mechanics is a mechanic of\nreloading: when you reload you throw away the old magazine with all remaining\nbullets in it. That's why constant reloads may cost you excessive amounts of\nspent bullets. You've taken a liking to this mechanic so now you are\nwondering: what is the minimum possible number of bullets you need to spend\n(both used and thrown) to exterminate all waves. Note that you don't throw the\nremaining bullets away after eradicating all monsters, and you start with a\nfull magazine. Input The first line contains two integers \n    n\n and \n    k\n\n(\n    1 \n    \u2264 n \n    \u2264 2000\n; \n    1 \n    \u2264 k \n    \u2264 10^9\n) \u2014 the number of waves\nand magazine size. The next \n    n\n lines contain descriptions of waves. The\n\n    i\n-th line contains three integers \n    l_i\n, \n    r_i\n and \n    a_i\n\n(\n    1 \n    \u2264 l_i \n    \u2264 r_i \n    \u2264 10^9\n; \n    1 \n    \u2264 a_i \n    \u2264 10^9\n) \u2014 the\nperiod of time when the \n    i\n-th wave happens and the number of monsters in\nit. It's guaranteed that waves don't overlap (but may touch) and are given in\nthe order they occur, i. e. \n    r_i \n    \u2264 l_i + 1\n. Output If there is no\nway to clear all waves, print \n    -1\n. Otherwise, print the minimum possible\nnumber of bullets you need to spend (both used and thrown) to clear all waves.\nExamples Input 2 3 2 3 6 3 4 3 Output 9 Input 2 5 3 7 11 10 12 15 Output 30\nInput 5 42 42 42 42 42 43 42 43 44 42 44 45 42 45 45 1 Output -1 Input 1 10\n100 111 1 Output 1 Note In the first example: At the moment \n    2\n, the first\nwave occurs and \n    6\n monsters spawn. You kill \n    3\n monsters and start\nreloading. At the moment \n    3\n, the second wave occurs and \n    3\n more\nmonsters spawn. You kill remaining \n    3\n monsters from the first wave and\nstart reloading. At the moment \n    4\n, you kill remaining \n    3\n monsters\nfrom the second wave. In total, you'll spend \n    9\n bullets.In the second\nexample: At moment \n    3\n, the first wave occurs and \n    11\n monsters spawn.\nYou kill \n    5\n monsters and start reloading. At moment \n    4\n, you kill\n\n    5\n more monsters and start reloading. At moment \n    5\n, you kill the\nlast monster and start reloading throwing away old magazine with \n    4\n\nbullets. At moment \n    10\n, the second wave occurs and \n    15\n monsters\nspawn. You kill \n    5\n monsters and start reloading. At moment \n    11\n, you\nkill \n    5\n more monsters and start reloading. At moment \n    12\n, you kill\nlast \n    5\n monsters. In total, you'll spend \n    30\n bullets.\n\n",
+        "cf_contest_id": 1430,
+        "cf_index": "F",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 3\r\n2 3 6\r\n3 4 3\r\n",
+                "9"
+            ],
+            [
+                "2 5\r\n3 7 11\r\n10 12 15\r\n",
+                "30"
+            ],
+            [
+                "5 42\r\n42 42 42\r\n42 43 42\r\n43 44 42\r\n44 45 42\r\n45 45 1\r\n",
+                "-1"
+            ],
+            [
+                "1 10\r\n100 111 1\r\n",
+                "1"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1000000000\r\n1 1 1000000000\r\n",
+                "1000000000"
+            ],
+            [
+                "10 89\r\n1 2 82\r\n2 2 31\r\n3 4 63\r\n6 7 18\r\n9 9 44\r\n10 11 95\r\n13 13 52\r\n13 15 39\r\n15 16 70\r\n17 18 54\r\n",
+                "571"
+            ],
+            [
+                "10 85\r\n3 5 57\r\n6 8 86\r\n9 10 46\r\n11 11 19\r\n11 12 37\r\n12 12 62\r\n14 14 60\r\n15 15 78\r\n16 16 69\r\n19 20 50\r\n",
+                "629"
+            ],
+            [
+                "10 79\r\n2 2 70\r\n2 10 35\r\n10 10 76\r\n11 11 66\r\n12 12 75\r\n12 14 88\r\n15 16 76\r\n17 18 97\r\n19 20 105\r\n20 20 46\r\n",
+                "862"
+            ],
+            [
+                "10 76\r\n1 2 82\r\n4 6 43\r\n9 10 13\r\n12 12 8\r\n14 15 16\r\n15 15 9\r\n16 16 92\r\n16 18 77\r\n18 19 95\r\n20 20 81\r\n",
+                "-1"
+            ],
+            [
+                "10 80\r\n3 3 103\r\n5 5 47\r\n7 9 42\r\n9 10 55\r\n10 11 8\r\n11 13 81\r\n14 15 100\r\n16 17 3\r\n17 18 27\r\n20 20 77\r\n",
+                "-1"
+            ],
+            [
+                "10 94\r\n1 2 11\r\n2 4 101\r\n5 5 17\r\n5 7 10\r\n8 9 47\r\n10 13 2\r\n13 14 10\r\n14 14 30\r\n15 16 17\r\n16 16 73\r\n",
+                "355"
+            ],
+            [
+                "10 60\r\n1 2 24\r\n3 4 50\r\n4 7 105\r\n9 9 57\r\n9 11 93\r\n11 12 75\r\n13 14 85\r\n14 15 2\r\n16 16 53\r\n17 19 61\r\n",
+                "654"
+            ],
+            [
+                "10 75\r\n1 2 44\r\n2 3 105\r\n4 5 30\r\n6 6 104\r\n8 10 26\r\n11 14 101\r\n14 16 93\r\n17 17 20\r\n18 20 43\r\n20 20 57\r\n",
+                "-1"
+            ],
+            [
+                "10 89\r\n2 3 57\r\n3 6 62\r\n8 9 13\r\n9 11 105\r\n12 12 77\r\n13 15 22\r\n15 16 50\r\n16 17 60\r\n19 19 34\r\n20 20 45\r\n",
+                "579"
+            ],
+            [
+                "4 8\r\n1 1 7\r\n4 6 16\r\n6 7 14\r\n9 10 7\r\n",
+                "45"
+            ],
+            [
+                "4 6\r\n1 3 10\r\n4 6 20\r\n6 8 13\r\n8 9 2\r\n",
+                "-1"
+            ],
+            [
+                "4 7\r\n2 3 12\r\n4 4 19\r\n5 9 17\r\n9 10 12\r\n",
+                "-1"
+            ],
+            [
+                "4 9\r\n1 2 14\r\n3 5 11\r\n8 8 5\r\n10 10 2\r\n",
+                "34"
+            ],
+            [
+                "4 7\r\n1 2 16\r\n5 7 10\r\n7 8 8\r\n9 10 16\r\n",
+                "-1"
+            ],
+            [
+                "4 8\r\n4 6 19\r\n7 7 6\r\n7 8 12\r\n9 9 11\r\n",
+                "-1"
+            ],
+            [
+                "4 10\r\n1 3 1\r\n3 3 10\r\n5 6 15\r\n7 8 1\r\n",
+                "36"
+            ],
+            [
+                "4 6\r\n1 4 3\r\n4 4 9\r\n6 6 15\r\n7 9 15\r\n",
+                "-1"
+            ],
+            [
+                "4 7\r\n2 4 9\r\n7 8 13\r\n8 8 7\r\n9 9 5\r\n",
+                "-1"
+            ]
+        ]
+    }
+]

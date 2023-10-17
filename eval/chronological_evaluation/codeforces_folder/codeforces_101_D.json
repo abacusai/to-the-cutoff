@@ -1,0 +1,123 @@
+[
+    {
+        "name": "Castle",
+        "description": "Gerald is positioned in an old castle which consists of n halls connected with\nn - 1 corridors. It is exactly one way to go from any hall to any other one.\nThus, the graph is a tree. Initially, at the moment of time 0, Gerald is\npositioned in hall 1. Besides, some other hall of the castle contains the\ntreasure Gerald is looking for. The treasure's position is not known; it can\nequiprobably be in any of other n - 1 halls. Gerald can only find out where\nthe treasure is when he enters the hall with the treasure. That very moment\nGerald sees the treasure and the moment is regarded is the moment of achieving\nhis goal. The corridors have different lengths. At that, the corridors are\nconsidered long and the halls are considered small and well lit. Thus, it is\npossible not to take the time Gerald spends in the halls into consideration.\nThe castle is very old, that's why a corridor collapses at the moment when\nsomebody visits it two times, no matter in which direction. Gerald can move\naround the castle using the corridors; he will go until he finds the treasure.\nNaturally, Gerald wants to find it as quickly as possible. In other words, he\nwants to act in a manner that would make the average time of finding the\ntreasure as small as possible. Each corridor can be used no more than two\ntimes. That's why Gerald chooses the strategy in such a way, so he can visit\nevery hall for sure. More formally, if the treasure is located in the second\nhall, then Gerald will find it the moment he enters the second hall for the\nfirst time \u2014 let it be moment t2. If the treasure is in the third hall, then\nGerald will find it the moment he enters the third hall for the first time.\nLet it be the moment of time t3. And so on. Thus, the average time of finding\nthe treasure will be equal to . Input The first line contains the only integer\nn (2 \u2264 n \u2264 10^5) \u2014 the number of halls in the castle. Next n - 1 lines each\ncontain three integers. The i-th line contains numbers ai, bi and ti (1 \u2264 ai,\nbi \u2264 n, ai \u2260 bi, 1 \u2264 ti \u2264 1000) \u2014 the numbers of halls connected with the i-th\ncorridor and the time needed to go along the corridor. Initially Gerald is in\nthe hall number 1. It is guaranteed that one can get from any hall to any\nother one using corridors. Output Print the only real number: the sought\nexpectation of time needed to find the treasure. The answer should differ from\nthe right one in no less than 10^-6. Examples Input 2 1 2 1 Output 1.0 Input 4\n1 3 2 4 2 1 3 2 3 Output 4.333333333333334 Input 5 1 2 1 1 3 1 1 4 1 1 5 1\nOutput 4.0 Note In the first test the castle only has two halls which means\nthat the treasure is located in the second hall. Gerald will only need one\nminute to go to the second hall from the first one. In the second test Gerald\ncan only go from the first hall to the third one. He can get from the third\nroom to the first one or to the second one, but he has already visited the\nfirst hall and can get nowhere from there. Thus, he needs to go to the second\nhall. He should go to hall 4 from there, because all other halls have already\nbeen visited. If the treasure is located in the third hall, Gerald will find\nit in a minute, if the treasure is located in the second hall, Gerald finds it\nin two minutes, if the treasure is in the fourth hall, Gerald will find it in\nthree minutes. The average time makes 2 minutes. In the third test Gerald\nneeds to visit 4 halls: the second, third, fourth and fifth ones. All of them\nare only reachable from the first hall. Thus, he needs to go to those 4 halls\none by one and return. Gerald will enter the first of those halls in a minute,\nin the second one \u2014 in three minutes, in the third one - in 5 minutes, in the\nfourth one - in 7 minutes. The average time is 4 minutes.\n\n",
+        "cf_contest_id": 101,
+        "cf_index": "D",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "probabilities",
+            "sortings",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n1 2 1\r\n",
+                "1.000000"
+            ],
+            [
+                "4\r\n1 3 2\r\n4 2 1\r\n3 2 3\r\n",
+                "4.333333"
+            ],
+            [
+                "5\r\n1 2 1\r\n1 3 1\r\n1 4 1\r\n1 5 1\r\n",
+                "4.000000"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n1 2 1\r\n2 3 1\r\n2 4 1\r\n",
+                "2.333333"
+            ],
+            [
+                "4\r\n1 2 1\r\n1 3 1\r\n3 4 1\r\n",
+                "2.666667"
+            ],
+            [
+                "6\r\n1 2 4\r\n2 3 2\r\n1 4 4\r\n4 5 2\r\n5 6 1\r\n",
+                "11.000000"
+            ],
+            [
+                "9\r\n1 4 1\r\n1 5 1\r\n2 5 2\r\n3 5 2\r\n5 7 2\r\n4 6 2\r\n8 4 2\r\n9 4 1\r\n",
+                "10.875000"
+            ],
+            [
+                "11\r\n1 2 4\r\n1 3 4\r\n3 4 1\r\n1 5 4\r\n5 6 1\r\n6 7 1\r\n1 8 4\r\n8 9 1\r\n9 10 1\r\n10 11 1\r\n",
+                "18.000000"
+            ],
+            [
+                "13\r\n1 2 1\r\n2 3 2\r\n3 4 3\r\n4 5 4\r\n5 6 5\r\n6 7 6\r\n1 8 6\r\n2 9 5\r\n3 10 4\r\n4 11 3\r\n5 12 2\r\n6 13 1\r\n",
+                "28.000000"
+            ],
+            [
+                "5\r\n1 2 1\r\n1 3 1\r\n1 4 1\r\n1 5 1\r\n",
+                "4.000000"
+            ],
+            [
+                "8\r\n1 2 1\r\n2 3 2\r\n3 4 8\r\n1 5 1\r\n5 6 2\r\n6 7 3\r\n7 8 4\r\n",
+                "13.571429"
+            ],
+            [
+                "7\r\n4 1 869\r\n5 2 160\r\n6 3 411\r\n3 2 228\r\n2 1 560\r\n1 7 811\r\n",
+                "2107.500000"
+            ],
+            [
+                "5\r\n3 1 709\r\n4 1 97\r\n1 2 555\r\n2 5 469\r\n",
+                "1253.750000"
+            ],
+            [
+                "5\r\n3 1 910\r\n4 1 987\r\n1 2 812\r\n2 5 734\r\n",
+                "3064.750000"
+            ],
+            [
+                "3\r\n2 1 182\r\n1 3 352\r\n",
+                "449.000000"
+            ],
+            [
+                "2\r\n1 2 550\r\n",
+                "550.000000"
+            ],
+            [
+                "6\r\n4 1 233\r\n5 2 76\r\n2 1 455\r\n1 3 725\r\n3 6 444\r\n",
+                "1420.200000"
+            ],
+            [
+                "7\r\n3 1 707\r\n4 2 301\r\n5 2 541\r\n2 1 794\r\n6 1 372\r\n1 7 259\r\n",
+                "2333.666667"
+            ],
+            [
+                "2\r\n1 2 942\r\n",
+                "942.000000"
+            ],
+            [
+                "7\r\n4 1 295\r\n5 2 624\r\n6 2 664\r\n2 1 722\r\n1 3 740\r\n3 7 979\r\n",
+                "3074.333333"
+            ],
+            [
+                "7\r\n3 1 763\r\n1 2 303\r\n4 2 234\r\n5 2 109\r\n6 2 746\r\n2 7 853\r\n",
+                "1965.333333"
+            ],
+            [
+                "23\r\n6 1 760\r\n7 1 15\r\n8 2 341\r\n9 2 322\r\n10 2 51\r\n11 3 859\r\n12 3 868\r\n13 4 755\r\n14 2 234\r\n15 1 980\r\n16 3 515\r\n17 4 781\r\n4 3 37\r\n18 2 389\r\n19 3 691\r\n20 2 189\r\n21 5 819\r\n5 1 529\r\n1 2 230\r\n22 2 570\r\n2 3 400\r\n3 23 45\r\n",
+                "6894.500000"
+            ],
+            [
+                "42\r\n10 1 557\r\n11 1 743\r\n12 2 265\r\n13 1 824\r\n14 3 802\r\n15 2 760\r\n16 2 525\r\n17 2 572\r\n18 3 985\r\n19 1 7\r\n20 3 359\r\n21 4 423\r\n22 1 192\r\n23 2 386\r\n24 4 397\r\n25 2 862\r\n26 3 664\r\n27 1 643\r\n28 4 312\r\n29 1 503\r\n30 3 996\r\n31 3 733\r\n32 3 373\r\n3 5 931\r\n33 6 829\r\n34 6 527\r\n35 2 324\r\n2 6 878\r\n6 4 135\r\n36 1 766\r\n37 7 424\r\n38 7 1000\r\n39 8 836\r\n8 4 192\r\n40 1 483\r\n41 5 739\r\n5 1 59\r\n1 4 954\r\n4 7 717\r\n7 9 476\r\n9 42 485\r\n",
+                "19675.512195"
+            ],
+            [
+                "23\r\n7 1 563\r\n8 1 828\r\n9 2 12\r\n10 1 48\r\n11 1 678\r\n12 3 705\r\n13 2 231\r\n14 3 446\r\n15 4 374\r\n16 4 321\r\n17 5 370\r\n18 3 62\r\n19 1 193\r\n20 6 888\r\n21 1 674\r\n1 6 406\r\n6 3 554\r\n3 4 924\r\n4 2 102\r\n22 2 278\r\n2 5 648\r\n5 23 164\r\n",
+                "6377.954545"
+            ],
+            [
+                "31\r\n7 1 494\r\n8 2 887\r\n9 3 371\r\n10 3 121\r\n11 1 638\r\n12 4 513\r\n13 4 621\r\n14 3 65\r\n15 2 16\r\n16 5 716\r\n17 5 527\r\n18 4 451\r\n19 1 45\r\n20 2 736\r\n21 5 461\r\n22 3 318\r\n23 4 123\r\n24 2 340\r\n25 4 321\r\n26 1 457\r\n1 3 949\r\n27 6 368\r\n6 5 758\r\n5 3 145\r\n28 3 158\r\n29 3 43\r\n3 2 597\r\n2 4 287\r\n30 4 20\r\n4 31 730\r\n",
+                "8916.633333"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,96 @@
+[
+    {
+        "name": "Cinema Cashier",
+        "description": "All cinema halls in Berland are rectangles with K rows of K seats each, and K\nis an odd number. Rows and seats are numbered from 1 to K. For safety reasons\npeople, who come to the box office to buy tickets, are not allowed to choose\nseats themselves. Formerly the choice was made by a cashier, but now this is\nthe responsibility of a special seating program. It was found out that the\nlarge majority of Berland's inhabitants go to the cinema in order to watch a\nmovie, that's why they want to sit as close to the hall center as possible.\nMoreover, a company of M people, who come to watch a movie, want necessarily\nto occupy M successive seats in one row. Let's formulate the algorithm,\naccording to which the program chooses seats and sells tickets. As the request\nfor M seats comes, the program should determine the row number x and the\nsegment [yl, yr] of the seats numbers in this row, where yr - yl + 1 = M. From\nall such possible variants as a final result the program should choose the one\nwith the minimum function value of total seats remoteness from the center.\nSay, \u2014 the row and the seat numbers of the most \"central\" seat. Then the\nfunction value of seats remoteness from the hall center is . If the amount of\nminimum function values is more than one, the program should choose the one\nthat is closer to the screen (i.e. the row number x is lower). If the variants\nare still multiple, it should choose the one with the minimum yl. If you did\nnot get yet, your task is to simulate the work of this program. Input The\nfirst line contains two integers N and K (1 \u2264 N \u2264 1000, 1 \u2264 K \u2264 99) \u2014 the\namount of requests and the hall size respectively. The second line contains N\nspace-separated integers Mi from the range [1, K] \u2014 requests to the program.\nOutput Output N lines. In the i-th line output \u00ab-1\u00bb (without quotes), if it is\nimpossible to find Mi successive seats in one row, otherwise output three\nnumbers x, yl, yr. Separate the numbers with a space. Examples Input 2 1 1 1\nOutput 1 1 1 -1 Input 4 3 1 2 3 1 Output 2 2 2 1 1 2 3 1 3 2 1 1\n\n",
+        "cf_contest_id": 10,
+        "cf_index": "B",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 1\r\n1 1\r\n",
+                "1 1 1\r\n-1\r\n"
+            ],
+            [
+                "4 3\r\n1 2 3 1\r\n",
+                "2 2 2\r\n1 1 2\r\n3 1 3\r\n2 1 1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 3\r\n1\r\n",
+                "2 2 2\r\n"
+            ],
+            [
+                "2 3\r\n3 3\r\n",
+                "2 1 3\r\n1 1 3\r\n"
+            ],
+            [
+                "3 3\r\n3 2 3\r\n",
+                "2 1 3\r\n1 1 2\r\n3 1 3\r\n"
+            ],
+            [
+                "1 5\r\n5\r\n",
+                "3 1 5\r\n"
+            ],
+            [
+                "2 5\r\n3 4\r\n",
+                "3 2 4\r\n2 1 4\r\n"
+            ],
+            [
+                "3 5\r\n2 5 2\r\n",
+                "3 2 3\r\n2 1 5\r\n3 4 5\r\n"
+            ],
+            [
+                "4 5\r\n5 5 3 5\r\n",
+                "3 1 5\r\n2 1 5\r\n4 2 4\r\n1 1 5\r\n"
+            ],
+            [
+                "5 5\r\n4 1 3 1 1\r\n",
+                "3 1 4\r\n2 3 3\r\n4 2 4\r\n1 3 3\r\n2 2 2\r\n"
+            ],
+            [
+                "10 11\r\n3 11 6 4 4 11 9 2 1 9\r\n",
+                "6 5 7\r\n5 1 11\r\n7 3 8\r\n4 4 7\r\n8 4 7\r\n3 1 11\r\n9 2 10\r\n6 3 4\r\n6 8 8\r\n2 2 10\r\n"
+            ],
+            [
+                "10 13\r\n12 8 7 11 11 9 2 12 10 1\r\n",
+                "7 1 12\r\n6 3 10\r\n8 4 10\r\n5 2 12\r\n9 2 12\r\n4 3 11\r\n10 6 7\r\n3 1 12\r\n11 2 11\r\n10 8 8\r\n"
+            ],
+            [
+                "10 15\r\n15 6 1 9 3 10 11 1 14 10\r\n",
+                "8 1 15\r\n7 5 10\r\n9 8 8\r\n6 4 12\r\n10 7 9\r\n5 3 12\r\n11 3 13\r\n9 7 7\r\n4 1 14\r\n12 3 12\r\n"
+            ],
+            [
+                "10 17\r\n5 8 13 5 11 12 10 17 16 7\r\n",
+                "9 7 11\r\n8 5 12\r\n10 3 15\r\n7 7 11\r\n11 4 14\r\n6 3 14\r\n12 4 13\r\n5 1 17\r\n13 1 16\r\n4 6 12\r\n"
+            ],
+            [
+                "10 19\r\n8 19 17 12 4 5 9 16 7 3\r\n",
+                "10 6 13\r\n9 1 19\r\n11 2 18\r\n8 4 15\r\n12 8 11\r\n7 8 12\r\n13 6 14\r\n6 2 17\r\n14 7 13\r\n10 14 16\r\n"
+            ],
+            [
+                "50 21\r\n8 17 19 1 14 17 16 19 6 2 8 5 20 17 6 17 20 4 16 15 16 17 4 3 17 20 17 8 13 10 21 21 6 13 6 13 10 5 12 7 21 21 21 2 12 16 13 5 5 9\r\n",
+                "11 7 14\r\n10 3 19\r\n12 2 20\r\n9 11 11\r\n13 4 17\r\n8 3 19\r\n14 3 18\r\n7 2 20\r\n9 5 10\r\n9 12 13\r\n15 7 14\r\n11 15 19\r\n6 1 20\r\n16 3 19\r\n5 8 13\r\n17 3 19\r\n4 1 20\r\n9 14 17\r\n18 3 18\r\n3 4 18\r\n19 3 18\r\n2 3 19\r\n11 3 6\r\n15 15 17\r\n20 3 19\r\n1 1 20\r\n21 3 19\r\n5 14 21\r\n-1\r\n-1\r\n-1\r\n-1\r\n15 1 6\r\n-1\r\n5 2 7\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n9 3 4\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "50 23\r\n11 20 3 5 5 14 20 18 18 22 9 17 6 13 1 23 21 3 2 3 11 4 16 20 14 22 6 6 19 21 13 10 8 10 21 9 10 9 21 23 6 21 21 17 1 23 15 10 13 20\r\n",
+                "12 7 17\r\n11 2 21\r\n13 11 13\r\n10 10 14\r\n14 10 14\r\n9 5 18\r\n15 2 21\r\n8 3 20\r\n16 3 20\r\n7 1 22\r\n13 2 10\r\n17 4 20\r\n13 14 19\r\n6 6 18\r\n10 9 9\r\n18 1 23\r\n5 2 22\r\n10 15 17\r\n14 8 9\r\n14 15 17\r\n19 7 17\r\n10 5 8\r\n4 4 19\r\n20 2 21\r\n3 5 18\r\n21 1 22\r\n12 1 6\r\n12 18 23\r\n2 3 21\r\n22 2 22\r\n1 6 18\r\n23 7 16\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n14 2 7\r\n-1\r\n-1\r\n-1\r\n10 18 18\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "50 25\r\n19 18 3 12 15 2 22 14 4 4 6 15 16 1 23 1 21 12 13 9 22 5 17 6 8 24 12 2 13 13 22 6 4 7 23 20 8 3 5 6 9 3 1 17 22 7 23 25 23 13\r\n",
+                "13 4 22\r\n12 4 21\r\n14 12 14\r\n11 7 18\r\n15 6 20\r\n10 12 13\r\n16 2 23\r\n9 6 19\r\n14 8 11\r\n14 15 18\r\n17 10 15\r\n8 6 20\r\n18 5 20\r\n10 14 14\r\n7 2 24\r\n10 11 11\r\n19 3 23\r\n6 7 18\r\n20 7 19\r\n10 15 23\r\n5 2 23\r\n10 6 10\r\n21 5 21\r\n14 2 7\r\n17 16 23\r\n4 1 24\r\n22 7 18\r\n14 19 20\r\n3 7 19\r\n23 7 19\r\n2 2 23\r\n11 19 24\r\n17 6 9\r\n24 10 16\r\n1 2 24\r\n25 3 22\r\n24 2 9\r\n11 4 6\r\n14 21 25\r\n9 20 25\r\n24 17 25\r\n12 22 24\r\n13 3 3\r\n-1\r\n-1\r\n6 19 25\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "50 27\r\n12 23 16 12 9 24 3 15 13 23 1 16 17 8 19 17 14 6 22 12 11 16 6 13 15 13 14 19 7 4 23 10 8 4 26 12 8 21 14 6 4 6 12 7 18 2 13 17 24 3\r\n",
+                "14 8 19\r\n13 3 25\r\n15 6 21\r\n12 8 19\r\n16 10 18\r\n11 2 25\r\n17 13 15\r\n10 7 21\r\n18 8 20\r\n9 3 25\r\n17 12 12\r\n19 6 21\r\n8 6 22\r\n20 10 17\r\n7 5 23\r\n21 6 22\r\n6 7 20\r\n17 16 21\r\n22 3 24\r\n5 8 19\r\n17 1 11\r\n23 6 21\r\n14 20 25\r\n4 8 20\r\n24 7 21\r\n3 8 20\r\n25 7 20\r\n2 5 23\r\n14 1 7\r\n16 6 9\r\n26 3 25\r\n20 18 27\r\n16 19 26\r\n12 20 23\r\n1 1 26\r\n27 8 19\r\n20 2 9\r\n-1\r\n-1\r\n12 2 7\r\n15 22 25\r\n17 22 27\r\n-1\r\n18 1 7\r\n-1\r\n15 4 5\r\n-1\r\n-1\r\n-1\r\n16 3 5\r\n"
+            ]
+        ]
+    }
+]

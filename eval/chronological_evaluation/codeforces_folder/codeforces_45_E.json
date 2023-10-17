@@ -1,0 +1,312 @@
+[
+    {
+        "name": "Director",
+        "description": "Vasya is a born Berland film director, he is currently working on a new\nblockbuster, \"The Unexpected\". Vasya knows from his own experience how\nimportant it is to choose the main characters' names and surnames wisely. He\nmade up a list of n names and n surnames that he wants to use. Vasya haven't\ndecided yet how to call characters, so he is free to match any name to any\nsurname. Now he has to make the list of all the main characters in the\nfollowing format: \"Name1 Surname1, Name2 Surname2, ..., Namen Surnamen\", i.e.\nall the name-surname pairs should be separated by exactly one comma and\nexactly one space, and the name should be separated from the surname by\nexactly one space. First of all Vasya wants to maximize the number of the\npairs, in which the name and the surname start from one letter. If there are\nseveral such variants, Vasya wants to get the lexicographically minimal one.\nHelp him. An answer will be verified a line in the format as is shown above,\nincluding the needed commas and spaces. It's the lexicographical minimality of\nsuch a line that needs to be ensured. The output line shouldn't end with a\nspace or with a comma. Input The first input line contains number n (1 \u2264 n \u2264\n100) \u2014 the number of names and surnames. Then follow n lines \u2014 the list of\nnames. Then follow n lines \u2014 the list of surnames. No two from those 2n\nstrings match. Every name and surname is a non-empty string consisting of no\nmore than 10 Latin letters. It is guaranteed that the first letter is\nuppercase and the rest are lowercase. Output The output data consist of a\nsingle line \u2014 the needed list. Note that one should follow closely the output\ndata format! Examples Input 4 Ann Anna Sabrina John Petrov Ivanova Stoltz\nAbacaba Output Ann Abacaba, Anna Ivanova, John Petrov, Sabrina Stoltz Input 4\nAa Ab Ac Ba Ad Ae Bb Bc Output Aa Ad, Ab Ae, Ac Bb, Ba Bc\n\n",
+        "cf_contest_id": 45,
+        "cf_index": "E",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\nAnn\r\nAnna\r\nSabrina\r\nJohn\r\nPetrov\r\nIvanova\r\nStoltz\r\nAbacaba\r\n",
+                "Ann Abacaba, Anna Ivanova, John Petrov, Sabrina Stoltz"
+            ],
+            [
+                "4\r\nAa\r\nAb\r\nAc\r\nBa\r\nAd\r\nAe\r\nBb\r\nBc\r\n",
+                "Aa Ad, Ab Ae, Ac Bb, Ba Bc"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5\r\nDa\r\nEcccdbbdc\r\nD\r\nEabbd\r\nFaafbfdffa\r\nFdfdd\r\nEabececb\r\nFaacca\r\nFdbfa\r\nEb\r\n",
+                "D Faacca, Da Fdbfa, Eabbd Eabececb, Ecccdbbdc Eb, Faafbfdffa Fdfdd"
+            ],
+            [
+                "5\r\nCcbcbaba\r\nAb\r\nCbcbcc\r\nCac\r\nCba\r\nCacabbabbb\r\nAacacbcac\r\nAacbc\r\nBbccc\r\nBbbb\r\n",
+                "Ab Aacacbcac, Cac Aacbc, Cba Bbbb, Cbcbcc Bbccc, Ccbcbaba Cacabbabbb"
+            ],
+            [
+                "6\r\nEjcohjns\r\nUl\r\nBaedlgrca\r\nGorslqhfum\r\nLqdujfs\r\nIlmrum\r\nRoimgd\r\nJg\r\nEnsgdl\r\nJ\r\nPrsraiotmm\r\nDougis\r\n",
+                "Baedlgrca Dougis, Ejcohjns Ensgdl, Gorslqhfum J, Ilmrum Jg, Lqdujfs Prsraiotmm, Ul Roimgd"
+            ],
+            [
+                "4\r\nIdaig\r\nCe\r\nDdgage\r\nGggej\r\nHbagbcgi\r\nEdgag\r\nJibgdcegia\r\nGjbjhji\r\n",
+                "Ce Edgag, Ddgage Hbagbcgi, Gggej Gjbjhji, Idaig Jibgdcegia"
+            ],
+            [
+                "2\r\nHpmftejsc\r\nPisqmdpgtj\r\nStfooeeqct\r\nLicklrsed\r\n",
+                "Hpmftejsc Licklrsed, Pisqmdpgtj Stfooeeqct"
+            ],
+            [
+                "6\r\nEjihbjb\r\nGlaefbebla\r\nAbl\r\nAickhgcjh\r\nFbggidc\r\nCbjamddcj\r\nMjejakadle\r\nE\r\nDbbic\r\nHkeb\r\nKiblfdlhh\r\nAgbljbif\r\n",
+                "Abl Agbljbif, Aickhgcjh Dbbic, Cbjamddcj Hkeb, Ejihbjb E, Fbggidc Kiblfdlhh, Glaefbebla Mjejakadle"
+            ],
+            [
+                "3\r\nB\r\nBabcac\r\nCbbbbbcbb\r\nCcbbca\r\nAabbb\r\nBbbaaacac\r\n",
+                "B Aabbb, Babcac Bbbaaacac, Cbbbbbcbb Ccbbca"
+            ],
+            [
+                "5\r\nBwoxkhem\r\nDbxx\r\nOjnwf\r\nWlbppd\r\nLdj\r\nGjvgshfuwf\r\nMfvk\r\nEcnmumgdl\r\nKdwkdl\r\nVogl\r\n",
+                "Bwoxkhem Ecnmumgdl, Dbxx Gjvgshfuwf, Ldj Kdwkdl, Ojnwf Mfvk, Wlbppd Vogl"
+            ],
+            [
+                "1\r\nC\r\nAccccabcaa\r\n",
+                "C Accccabcaa"
+            ],
+            [
+                "3\r\nBoojbn\r\nDhhfjq\r\nLjgjigqh\r\nP\r\nKjaqjqh\r\nIc\r\n",
+                "Boojbn Ic, Dhhfjq Kjaqjqh, Ljgjigqh P"
+            ],
+            [
+                "5\r\nIqrelephj\r\nOeigtjab\r\nG\r\nEqifrkd\r\nMif\r\nTcaoagse\r\nOgho\r\nIqd\r\nMqm\r\nDis\r\n",
+                "Eqifrkd Dis, G Tcaoagse, Iqrelephj Iqd, Mif Mqm, Oeigtjab Ogho"
+            ],
+            [
+                "3\r\nGefdaeg\r\nCedfadf\r\nAgae\r\nBbcgabbfb\r\nF\r\nFefffggg\r\n",
+                "Agae Bbcgabbfb, Cedfadf F, Gefdaeg Fefffggg"
+            ],
+            [
+                "2\r\nEfgiiibfe\r\nFiegcbdb\r\nDdhcehah\r\nChccffg\r\n",
+                "Efgiiibfe Chccffg, Fiegcbdb Ddhcehah"
+            ],
+            [
+                "2\r\nPqlkixrw\r\nSw\r\nSegmd\r\nPqexkldse\r\n",
+                "Pqlkixrw Pqexkldse, Sw Segmd"
+            ],
+            [
+                "6\r\nAaccaca\r\nCc\r\nCac\r\nBc\r\nCaabccaa\r\nAbcbcabaac\r\nBaa\r\nCacacc\r\nCbcc\r\nAaca\r\nBbcaaca\r\nBbabcaabb\r\n",
+                "Aaccaca Aaca, Abcbcabaac Baa, Bc Bbabcaabb, Caabccaa Bbcaaca, Cac Cacacc, Cc Cbcc"
+            ],
+            [
+                "4\r\nSpg\r\nPvdpe\r\nKralfi\r\nTmlbhakxm\r\nR\r\nGskc\r\nPpowufk\r\nNpacfrtofl\r\n",
+                "Kralfi Gskc, Pvdpe Ppowufk, Spg Npacfrtofl, Tmlbhakxm R"
+            ],
+            [
+                "6\r\nOjli\r\nPpfoa\r\nJhlnelagb\r\nDng\r\nDfrofipdh\r\nKjhpfopf\r\nI\r\nG\r\nObr\r\nJlllilo\r\nMjhbqmjbn\r\nMqecfqgnfl\r\n",
+                "Dfrofipdh G, Dng I, Jhlnelagb Jlllilo, Kjhpfopf Mjhbqmjbn, Ojli Obr, Ppfoa Mqecfqgnfl"
+            ],
+            [
+                "5\r\nFdhfae\r\nDdfci\r\nBaahh\r\nA\r\nCfghicabbg\r\nFa\r\nHcha\r\nAgfcghdbhc\r\nCidece\r\nCaieed\r\n",
+                "A Agfcghdbhc, Baahh Caieed, Cfghicabbg Cidece, Ddfci Hcha, Fdhfae Fa"
+            ],
+            [
+                "6\r\nImlichb\r\nAc\r\nHibm\r\nB\r\nJddle\r\nI\r\nEjaa\r\nIemfcgdi\r\nBbgh\r\nBik\r\nHb\r\nCkedal\r\n",
+                "Ac Bbgh, B Bik, Hibm Hb, I Ckedal, Imlichb Iemfcgdi, Jddle Ejaa"
+            ],
+            [
+                "2\r\nAfmu\r\nJalbdpdrpe\r\nCrifng\r\nQhhlrm\r\n",
+                "Afmu Crifng, Jalbdpdrpe Qhhlrm"
+            ],
+            [
+                "3\r\nKierslt\r\nK\r\nMebfcbg\r\nRar\r\nOddrlc\r\nFhbojgofe\r\n",
+                "K Fhbojgofe, Kierslt Oddrlc, Mebfcbg Rar"
+            ],
+            [
+                "5\r\nAbbaab\r\nBaabbbaaab\r\nAbabbbbaa\r\nBab\r\nAbabbb\r\nBbab\r\nAabaababaa\r\nBbbbaaab\r\nA\r\nBaa\r\n",
+                "Ababbb A, Ababbbbaa Aabaababaa, Abbaab Baa, Baabbbaaab Bbab, Bab Bbbbaaab"
+            ],
+            [
+                "4\r\nDgjlfdie\r\nDdi\r\nLhgdmndo\r\nKh\r\nFob\r\nJikoafoe\r\nNkldlh\r\nGhcnolfe\r\n",
+                "Ddi Fob, Dgjlfdie Ghcnolfe, Kh Jikoafoe, Lhgdmndo Nkldlh"
+            ],
+            [
+                "3\r\nBf\r\nDegagfdc\r\nGcbbcfcfg\r\nE\r\nFbfgdaefga\r\nEeaccga\r\n",
+                "Bf E, Degagfdc Eeaccga, Gcbbcfcfg Fbfgdaefga"
+            ],
+            [
+                "5\r\nEdgkkkij\r\nKefhijgdbd\r\nGakfh\r\nJaiccfkeg\r\nCgaikgj\r\nHccigee\r\nKibjhea\r\nJjdibe\r\nIfbja\r\nDfdkda\r\n",
+                "Cgaikgj Dfdkda, Edgkkkij Hccigee, Gakfh Ifbja, Jaiccfkeg Jjdibe, Kefhijgdbd Kibjhea"
+            ],
+            [
+                "4\r\nXvlusvjxn\r\nUb\r\nWgraue\r\nFuu\r\nVx\r\nKglmq\r\nNlnb\r\nVctx\r\n",
+                "Fuu Kglmq, Ub Nlnb, Wgraue Vctx, Xvlusvjxn Vx"
+            ],
+            [
+                "4\r\nM\r\nHbhqeqoq\r\nEfhomepaj\r\nApjqkep\r\nGdmba\r\nGqgkn\r\nInock\r\nCpknlkn\r\n",
+                "Apjqkep Cpknlkn, Efhomepaj Gdmba, Hbhqeqoq Gqgkn, M Inock"
+            ],
+            [
+                "3\r\nMslgbylj\r\nIrhlscuce\r\nYkgty\r\nEsvtwml\r\nRw\r\nXhnnbck\r\n",
+                "Irhlscuce Esvtwml, Mslgbylj Rw, Ykgty Xhnnbck"
+            ],
+            [
+                "4\r\nIjmgnm\r\nBmj\r\nNg\r\nEci\r\nNfkfammhaf\r\nJf\r\nBgbekid\r\nHfg\r\n",
+                "Bmj Bgbekid, Eci Hfg, Ijmgnm Jf, Ng Nfkfammhaf"
+            ],
+            [
+                "6\r\nEoic\r\nHqrdefsgos\r\nAoqkqn\r\nKkfigffj\r\nCbebkk\r\nHq\r\nCqqooafpmi\r\nEdjsgedhbk\r\nD\r\nF\r\nMc\r\nEqlrqadms\r\n",
+                "Aoqkqn D, Cbebkk Cqqooafpmi, Eoic Edjsgedhbk, Hq Eqlrqadms, Hqrdefsgos F, Kkfigffj Mc"
+            ],
+            [
+                "1\r\nOhhjpmpbn\r\nCwbungcfb\r\n",
+                "Ohhjpmpbn Cwbungcfb"
+            ],
+            [
+                "5\r\nEdbbdfaedb\r\nBfcd\r\nCaabfbda\r\nB\r\nCdefcae\r\nAdf\r\nCda\r\nCaabafcdda\r\nCfbbdcc\r\nEeafc\r\n",
+                "B Adf, Bfcd Caabafcdda, Caabfbda Cda, Cdefcae Cfbbdcc, Edbbdfaedb Eeafc"
+            ],
+            [
+                "1\r\nRf\r\nBkppbiog\r\n",
+                "Rf Bkppbiog"
+            ],
+            [
+                "6\r\nJcv\r\nRhpqmxtlf\r\nXrgwns\r\nGvkkdcgtif\r\nWgkegia\r\nNsknu\r\nAahxuoqsb\r\nWbfgaujsu\r\nOd\r\nPbcll\r\nKctij\r\nI\r\n",
+                "Gvkkdcgtif Aahxuoqsb, Jcv I, Nsknu Kctij, Rhpqmxtlf Od, Wgkegia Wbfgaujsu, Xrgwns Pbcll"
+            ],
+            [
+                "1\r\nA\r\nPlttvbsja\r\n",
+                "A Plttvbsja"
+            ],
+            [
+                "6\r\nInddf\r\nBode\r\nAdmjl\r\nConnfj\r\nPioermlko\r\nIdjb\r\nPjkqhifk\r\nBrpoddj\r\nEdce\r\nQn\r\nMlpqpjrca\r\nPlmjbm\r\n",
+                "Admjl Edce, Bode Brpoddj, Connfj Mlpqpjrca, Idjb Pjkqhifk, Inddf Qn, Pioermlko Plmjbm"
+            ],
+            [
+                "4\r\nFcdadef\r\nCdiggdjbff\r\nCjih\r\nEc\r\nFedicjef\r\nDea\r\nF\r\nHhhcb\r\n",
+                "Cdiggdjbff Dea, Cjih F, Ec Hhhcb, Fcdadef Fedicjef"
+            ],
+            [
+                "4\r\nIhleenbko\r\nL\r\nFghncegei\r\nCd\r\nOggiiijm\r\nOecfbjb\r\nEmjbl\r\nDfl\r\n",
+                "Cd Dfl, Fghncegei Emjbl, Ihleenbko Oecfbjb, L Oggiiijm"
+            ],
+            [
+                "6\r\nTbhssirfl\r\nL\r\nS\r\nTmorp\r\nIqnqdcdj\r\nTcq\r\nJf\r\nLenc\r\nPp\r\nEdiphdpit\r\nJeo\r\nHenqjik\r\n",
+                "Iqnqdcdj Ediphdpit, L Lenc, S Henqjik, Tbhssirfl Jeo, Tcq Jf, Tmorp Pp"
+            ],
+            [
+                "5\r\nAbacbba\r\nBccaa\r\nBbabcaac\r\nA\r\nB\r\nBccc\r\nAcaa\r\nCbbaababa\r\nBcab\r\nCaa\r\n",
+                "A Acaa, Abacbba Caa, B Bcab, Bbabcaac Bccc, Bccaa Cbbaababa"
+            ],
+            [
+                "6\r\nIwmuivuiaj\r\nW\r\nKjp\r\nSankublv\r\nTkvmaci\r\nWblqalbflu\r\nEvtce\r\nFsd\r\nD\r\nWkrpnrirmj\r\nJodiiwh\r\nWbrh\r\n",
+                "Iwmuivuiaj D, Kjp Evtce, Sankublv Fsd, Tkvmaci Jodiiwh, W Wbrh, Wblqalbflu Wkrpnrirmj"
+            ],
+            [
+                "1\r\nEbac\r\nEddddaccef\r\n",
+                "Ebac Eddddaccef"
+            ],
+            [
+                "5\r\nCi\r\nHih\r\nDcg\r\nIib\r\nGcjk\r\nDaahii\r\nEajega\r\nAd\r\nIifdcbd\r\nJdgghe\r\n",
+                "Ci Ad, Dcg Daahii, Gcjk Eajega, Hih Jdgghe, Iib Iifdcbd"
+            ],
+            [
+                "5\r\nEf\r\nFfbihdj\r\nDjj\r\nAigcgdh\r\nFdbf\r\nJcihgfbda\r\nHaacdfi\r\nBaicd\r\nAdbeich\r\nAdd\r\n",
+                "Aigcgdh Adbeich, Djj Add, Ef Baicd, Fdbf Haacdfi, Ffbihdj Jcihgfbda"
+            ],
+            [
+                "5\r\nGdbb\r\nFgfa\r\nBafdfdaa\r\nCbac\r\nGc\r\nCeeefadc\r\nF\r\nAeefebcgg\r\nBcgcgcd\r\nFceagggf\r\n",
+                "Bafdfdaa Bcgcgcd, Cbac Ceeefadc, Fgfa F, Gc Aeefebcgg, Gdbb Fceagggf"
+            ],
+            [
+                "6\r\nBelandfa\r\nFnacibcm\r\nFkknhml\r\nFa\r\nJdkcghgnlj\r\nGgainlk\r\nHlehcg\r\nAbeb\r\nFffbgmndb\r\nMmacnfmma\r\nBbcfilh\r\nBdbe\r\n",
+                "Belandfa Bbcfilh, Fa Abeb, Fkknhml Bdbe, Fnacibcm Fffbgmndb, Ggainlk Hlehcg, Jdkcghgnlj Mmacnfmma"
+            ],
+            [
+                "1\r\nLukbme\r\nOviewxi\r\n",
+                "Lukbme Oviewxi"
+            ],
+            [
+                "4\r\nQ\r\nHkbnq\r\nQmocp\r\nLramnhhe\r\nNoag\r\nQnd\r\nBmrhoio\r\nLrkgag\r\n",
+                "Hkbnq Bmrhoio, Lramnhhe Lrkgag, Q Noag, Qmocp Qnd"
+            ],
+            [
+                "3\r\nHjii\r\nCdh\r\nEahejg\r\nAcbjhb\r\nDebe\r\nJahibe\r\n",
+                "Cdh Acbjhb, Eahejg Debe, Hjii Jahibe"
+            ],
+            [
+                "3\r\nBnoajel\r\nRpoannipj\r\nQbqlm\r\nGcjdornkri\r\nNloimkdkki\r\nAcb\r\n",
+                "Bnoajel Acb, Qbqlm Gcjdornkri, Rpoannipj Nloimkdkki"
+            ],
+            [
+                "4\r\nPpw\r\nHbw\r\nVqvcitemnh\r\nJkmwcaa\r\nWd\r\nEoxyhbhb\r\nPl\r\nE\r\n",
+                "Hbw E, Jkmwcaa Eoxyhbhb, Ppw Pl, Vqvcitemnh Wd"
+            ],
+            [
+                "6\r\nEu\r\nKzdawsv\r\nQh\r\nE\r\nGtsphxqhdu\r\nHylhnikwvi\r\nMcbstghhx\r\nKcjznnkj\r\nJgsdy\r\nXedwpmsmxm\r\nWrlxctnebt\r\nKsvg\r\n",
+                "E Jgsdy, Eu Kcjznnkj, Gtsphxqhdu Mcbstghhx, Hylhnikwvi Wrlxctnebt, Kzdawsv Ksvg, Qh Xedwpmsmxm"
+            ],
+            [
+                "10\r\nVince\r\nH\r\nEpcenhj\r\nBvjvgbsnfi\r\nTtrrj\r\nHj\r\nPmdmxijz\r\nDxbrldlq\r\nCimweepkgg\r\nYsrwelodpn\r\nOtep\r\nBpvkrdh\r\nKjftlvnxib\r\nHxquwm\r\nSfvnmwpapd\r\nYioxis\r\nYh\r\nLyiaq\r\nMecpx\r\nIno\r\n",
+                "Bvjvgbsnfi Bpvkrdh, Cimweepkgg Ino, Dxbrldlq Kjftlvnxib, Epcenhj Lyiaq, H Hxquwm, Hj Mecpx, Pmdmxijz Otep, Ttrrj Sfvnmwpapd, Vince Yh, Ysrwelodpn Yioxis"
+            ],
+            [
+                "14\r\nCfmtbejyil\r\nEcg\r\nZs\r\nBfdq\r\nFvn\r\nIbsyysduj\r\nFmyz\r\nNttfwibmrl\r\nCcewi\r\nD\r\nFclpflh\r\nEdatolifm\r\nOv\r\nLtvbit\r\nJvyejz\r\nVrfcdcrczk\r\nJqagz\r\nJmwonbdcc\r\nRpjbc\r\nV\r\nBaslqgpi\r\nF\r\nAhfzuqlbir\r\nUn\r\nXcjiakbv\r\nUlkd\r\nPlrcdqe\r\nOjn\r\n",
+                "Bfdq Baslqgpi, Ccewi Ahfzuqlbir, Cfmtbejyil Jmwonbdcc, D Jqagz, Ecg Jvyejz, Edatolifm Plrcdqe, Fclpflh F, Fmyz Rpjbc, Fvn Ulkd, Ibsyysduj Un, Ltvbit V, Nttfwibmrl Vrfcdcrczk, Ov Ojn, Zs Xcjiakbv"
+            ],
+            [
+                "18\r\nPbojywwn\r\nYsiaz\r\nOfre\r\nAiamkh\r\nGamwmfr\r\nAceuyny\r\nLtwdwqkm\r\nFfqb\r\nBa\r\nFzoiug\r\nWxzhg\r\nWabuxabbcq\r\nV\r\nRjw\r\nGl\r\nBtt\r\nLhr\r\nKcollntp\r\nQdofbu\r\nVxnotvwp\r\nVaehi\r\nJusoeed\r\nF\r\nNonfp\r\nB\r\nJfca\r\nRyfv\r\nR\r\nH\r\nRyqqz\r\nIulhooucxa\r\nBbojrvmb\r\nNbwhugpj\r\nLhuqkkxabp\r\nIjwbdoqi\r\nUopmvlbmn\r\n",
+                "Aceuyny H, Aiamkh Ijwbdoqi, Ba B, Btt Bbojrvmb, Ffqb F, Fzoiug Iulhooucxa, Gamwmfr Jfca, Gl Jusoeed, Kcollntp Nbwhugpj, Lhr Lhuqkkxabp, Ltwdwqkm Nonfp, Ofre Qdofbu, Pbojywwn R, Rjw Ryfv, V Vaehi, Wabuxabbcq Ryqqz, Wxzhg Uopmvlbmn, Ysiaz Vxnotvwp"
+            ],
+            [
+                "25\r\nQoencmxtab\r\nMcvr\r\nBqddqxfah\r\nWjkqwzvwyh\r\nCckohnzqf\r\nZnj\r\nWxfgfjy\r\nGh\r\nQcjt\r\nN\r\nTglhmv\r\nVictke\r\nNckac\r\nOun\r\nLlfmyajvg\r\nIteljso\r\nWcgs\r\nRhfy\r\nNgyuogj\r\nTgt\r\nBxvqp\r\nRjfowcdrdt\r\nRah\r\nNaok\r\nH\r\nFtagofc\r\nXwvkdup\r\nJlulb\r\nKpdptl\r\nLjt\r\nOrj\r\nRzpn\r\nKbmk\r\nMchws\r\nIwryj\r\nNmwae\r\nAigclj\r\nMuypjgnakb\r\nFsls\r\nPght\r\nHbhxt\r\nZkaymuiz\r\nDgcxsa\r\nHrplllthbi\r\nOjdh\r\nPc\r\nPqqwi\r\nA\r\nVtvwkrj\r\nFyrg\r\n",
+                "Bqddqxfah A, Bxvqp Aigclj, Cckohnzqf Dgcxsa, Gh Fsls, H Hbhxt, Iteljso Iwryj, Llfmyajvg Ljt, Mcvr Mchws, N Ftagofc, Naok Fyrg, Nckac Hrplllthbi, Ngyuogj Nmwae, Oun Ojdh, Qcjt Jlulb, Qoencmxtab Kbmk, Rah Kpdptl, Rhfy Muypjgnakb, Rjfowcdrdt Rzpn, Tglhmv Orj, Tgt Pc, Victke Vtvwkrj, Wcgs Pght, Wjkqwzvwyh Pqqwi, Wxfgfjy Xwvkdup, Znj Zkaymuiz"
+            ],
+            [
+                "30\r\nLkrvu\r\nOjzefo\r\nBbncywtbeh\r\nGm\r\nQfgyxlwl\r\nJich\r\nFafqqx\r\nPbvx\r\nKqpydmiudv\r\nZeudtwvz\r\nBywnnrcabi\r\nMnpicakfk\r\nB\r\nQfe\r\nXwnwyri\r\nRniaxikzx\r\nIhyinmj\r\nMx\r\nXniayl\r\nLvpst\r\nQticaoi\r\nPtzr\r\nYqmoq\r\nQgbgilbsu\r\nVkiwq\r\nEuzrovcmh\r\nXctnh\r\nYekughfot\r\nEmpastx\r\nXuwxqax\r\nRysjtsnvh\r\nDgthyxds\r\nIu\r\nMabdjdt\r\nNesvooryoa\r\nIr\r\nH\r\nTuoja\r\nEiblvkho\r\nScnirn\r\nKpmwnlet\r\nX\r\nUqmpa\r\nExxrtlk\r\nBiyvlaahvk\r\nSagfftl\r\nIjay\r\nCyrz\r\nErfkjemdna\r\nNqii\r\nQvsafpwxe\r\nXxmlrb\r\nBwfbcqw\r\nEhvizbxix\r\nEnnctyw\r\nBnnlwit\r\nHmmkbvol\r\nErgujvfsq\r\nOkurybmipc\r\nDryzynlu\r\n",
+                "B Biyvlaahvk, Bbncywtbeh Bnnlwit, Bywnnrcabi Bwfbcqw, Empastx Ehvizbxix, Euzrovcmh Eiblvkho, Fafqqx Cyrz, Gm Dgthyxds, Ihyinmj Ijay, Jich Dryzynlu, Kqpydmiudv Kpmwnlet, Lkrvu Ennctyw, Lvpst Erfkjemdna, Mnpicakfk Ergujvfsq, Mx Mabdjdt, Ojzefo Okurybmipc, Pbvx Exxrtlk, Ptzr H, Qfe Hmmkbvol, Qfgyxlwl Ir, Qgbgilbsu Iu, Qticaoi Qvsafpwxe, Rniaxikzx Rysjtsnvh, Vkiwq Nesvooryoa, Xctnh Nqii, Xniayl Sagfftl, Xuwxqax X, Xwnwyri Xxmlrb, Yekughfot Scnirn, Yqmoq Tuoja, Zeudtwvz Uqmpa"
+            ],
+            [
+                "4\r\nU\r\nOjrbfile\r\nWfzntvwg\r\nEjmsrokmfp\r\nEhlzpo\r\nZj\r\nThhjz\r\nKqbaidjmu\r\n",
+                "Ejmsrokmfp Ehlzpo, Ojrbfile Kqbaidjmu, U Thhjz, Wfzntvwg Zj"
+            ],
+            [
+                "6\r\nDmdqeyhvbm\r\nTbhmfsimms\r\nDmssv\r\nVufczejycy\r\nIbqholfugr\r\nAvshkju\r\nVxfnonsgba\r\nGcj\r\nWtwqf\r\nKuome\r\nWilcuo\r\nOjqfaahanx\r\n",
+                "Avshkju Gcj, Dmdqeyhvbm Kuome, Dmssv Ojqfaahanx, Ibqholfugr Wilcuo, Tbhmfsimms Wtwqf, Vufczejycy Vxfnonsgba"
+            ],
+            [
+                "10\r\nNewkwj\r\nPwlt\r\nCsmgdpf\r\nSkyqtmtbxc\r\nQzsioma\r\nAqc\r\nNgphmzu\r\nClx\r\nN\r\nYcjbmdb\r\nXzggfs\r\nJngvohpd\r\nTnn\r\nTtkry\r\nBqytgxrfzv\r\nOkwfhrdkal\r\nOakii\r\nF\r\nYubzwo\r\nUrb\r\n",
+                "Aqc Bqytgxrfzv, Clx F, Csmgdpf Jngvohpd, N Oakii, Newkwj Okwfhrdkal, Ngphmzu Tnn, Pwlt Ttkry, Qzsioma Urb, Skyqtmtbxc Xzggfs, Ycjbmdb Yubzwo"
+            ],
+            [
+                "14\r\nHv\r\nUgwe\r\nGgihdhhfv\r\nLchhinoa\r\nWvdztopak\r\nOgocupw\r\nJiebvzwox\r\nPkgkdv\r\nNeoaf\r\nDupbbgww\r\nFj\r\nZslqnclo\r\nInrmh\r\nNtdxo\r\nUteopjiw\r\nParlyfv\r\nJbzzf\r\nF\r\nNhlet\r\nWvpdt\r\nYzutknye\r\nVseglkc\r\nFi\r\nNvzhq\r\nPweehpwfgj\r\nEa\r\nJoa\r\nVaqp\r\n",
+                "Dupbbgww Ea, Fj F, Ggihdhhfv Fi, Hv Jbzzf, Inrmh Parlyfv, Jiebvzwox Joa, Lchhinoa Vaqp, Neoaf Nhlet, Ntdxo Nvzhq, Ogocupw Vseglkc, Pkgkdv Pweehpwfgj, Ugwe Uteopjiw, Wvdztopak Wvpdt, Zslqnclo Yzutknye"
+            ],
+            [
+                "18\r\nCjr\r\nTxixsjahh\r\nUu\r\nEtaeywar\r\nIzyppd\r\nSrwlojju\r\nNuuh\r\nOwrbbjbu\r\nS\r\nSic\r\nCw\r\nTdquovp\r\nZjq\r\nSdkrmyc\r\nHxwvbm\r\nXd\r\nAafk\r\nGhbeztyi\r\nTqpcctoila\r\nHopqjdgn\r\nP\r\nPlrtsrslgh\r\nXfqjqpolh\r\nUjqolvsfhq\r\nThujdq\r\nPwjur\r\nZmmzpgkqc\r\nJczat\r\nVqrufwfixf\r\nZbrdx\r\nUrg\r\nThogqt\r\nIaaqixivfl\r\nVovde\r\nWpaxlbwfr\r\nVcy\r\n",
+                "Aafk Jczat, Cjr P, Cw Plrtsrslgh, Etaeywar Pwjur, Ghbeztyi Thogqt, Hxwvbm Hopqjdgn, Izyppd Iaaqixivfl, Nuuh Ujqolvsfhq, Owrbbjbu Vcy, S Vovde, Sdkrmyc Vqrufwfixf, Sic Wpaxlbwfr, Srwlojju Zbrdx, Tdquovp Thujdq, Txixsjahh Tqpcctoila, Uu Urg, Xd Xfqjqpolh, Zjq Zmmzpgkqc"
+            ],
+            [
+                "25\r\nWctcwhou\r\nOboa\r\nYgcy\r\nNcla\r\nEyds\r\nFunlnpas\r\nGscxstbdgz\r\nDwxxjywit\r\nFnns\r\nKsdkdto\r\nXvvrcxx\r\nVeewcog\r\nZ\r\nFjgpvgtvwq\r\nWop\r\nOz\r\nGzhzas\r\nKxra\r\nAncdrxb\r\nGdwfm\r\nCpzcso\r\nOsjbcmyxz\r\nNtpmkyjde\r\nKmhqusz\r\nOcx\r\nOeeq\r\nK\r\nSyjsfkjju\r\nQiwbitvcrd\r\nY\r\nGxair\r\nA\r\nEst\r\nDqmnoqdzbw\r\nZrmyoq\r\nAvosvzytow\r\nCjcrmi\r\nGozpkircw\r\nFswloprnu\r\nTnnwv\r\nCdjyan\r\nDqbrxq\r\nIyfyphzqaq\r\nTo\r\nNtuphe\r\nU\r\nJg\r\nT\r\nJpniuqb\r\nLsjeclfm\r\n",
+                "Ancdrxb A, Cpzcso Cdjyan, Dwxxjywit Dqbrxq, Eyds Est, Fjgpvgtvwq Avosvzytow, Fnns Cjcrmi, Funlnpas Fswloprnu, Gdwfm Dqmnoqdzbw, Gscxstbdgz Gozpkircw, Gzhzas Gxair, Kmhqusz Iyfyphzqaq, Ksdkdto Jg, Kxra K, Ncla Jpniuqb, Ntpmkyjde Ntuphe, Oboa Lsjeclfm, Ocx Oeeq, Osjbcmyxz Qiwbitvcrd, Oz Syjsfkjju, Veewcog T, Wctcwhou Tnnwv, Wop To, Xvvrcxx U, Ygcy Y, Z Zrmyoq"
+            ],
+            [
+                "30\r\nSfmuqd\r\nLjsmcw\r\nCzgfz\r\nFjcrjda\r\nHbn\r\nXpqn\r\nKxjqcqnq\r\nJqu\r\nIom\r\nE\r\nNnvzvfr\r\nOdkgzrkq\r\nYgorzyck\r\nRpk\r\nTmdc\r\nPhkkilqlgp\r\nI\r\nNl\r\nLtahfgmoo\r\nIawoa\r\nGlao\r\nGktz\r\nWb\r\nO\r\nQfe\r\nCctwmhr\r\nR\r\nUg\r\nQfktr\r\nM\r\nPrsvvfwiov\r\nWmycckk\r\nYuxshzs\r\nPkf\r\nOr\r\nUnyxnk\r\nGsnsecide\r\nS\r\nZxqt\r\nFfkvbgs\r\nFvnismv\r\nUwtqoglgo\r\nLug\r\nFcfcbxik\r\nWycvm\r\nRlvmzreke\r\nL\r\nVgd\r\nQtoflj\r\nVe\r\nJnvcm\r\nCrfgefw\r\nD\r\nBfqh\r\nBf\r\nZchjkgxfiu\r\nDkcdte\r\nFmmjx\r\nLsshf\r\nVfqwyoxki\r\n",
+                "Cctwmhr Bf, Czgfz Crfgefw, E Bfqh, Fjcrjda Fcfcbxik, Gktz D, Glao Gsnsecide, Hbn Dkcdte, I Ffkvbgs, Iawoa Fmmjx, Iom Fvnismv, Jqu Jnvcm, Kxjqcqnq L, Ljsmcw Lsshf, Ltahfgmoo Lug, M Pkf, Nl Unyxnk, Nnvzvfr Ve, O Or, Odkgzrkq Vfqwyoxki, Phkkilqlgp Prsvvfwiov, Qfe Qtoflj, Qfktr Vgd, R Rlvmzreke, Rpk Wmycckk, Sfmuqd S, Tmdc Zchjkgxfiu, Ug Uwtqoglgo, Wb Wycvm, Xpqn Zxqt, Ygorzyck Yuxshzs"
+            ],
+            [
+                "4\r\nToywf\r\nLvbhixy\r\nErnwsstqxz\r\nEfjol\r\nYtxgimclx\r\nEq\r\nWv\r\nLmbq\r\n",
+                "Efjol Eq, Ernwsstqxz Wv, Lvbhixy Lmbq, Toywf Ytxgimclx"
+            ],
+            [
+                "6\r\nSkvknneci\r\nYqtxdtrnzl\r\nRls\r\nLz\r\nX\r\nTop\r\nBvae\r\nQjbgcyl\r\nMgqx\r\nE\r\nYr\r\nAmogkatq\r\n",
+                "Lz Amogkatq, Rls Bvae, Skvknneci E, Top Mgqx, X Qjbgcyl, Yqtxdtrnzl Yr"
+            ],
+            [
+                "10\r\nToxkb\r\nQltc\r\nZrhvwb\r\nVccfmdxbzw\r\nMgcejyragz\r\nD\r\nGkfp\r\nOgyyt\r\nBtb\r\nIzyiekx\r\nQeyqyfmz\r\nY\r\nHwka\r\nXmwtmci\r\nTgqcdz\r\nCp\r\nXnd\r\nAc\r\nLuds\r\nVc\r\n",
+                "Btb Ac, D Cp, Gkfp Hwka, Izyiekx Luds, Mgcejyragz Xmwtmci, Ogyyt Xnd, Qltc Qeyqyfmz, Toxkb Tgqcdz, Vccfmdxbzw Vc, Zrhvwb Y"
+            ],
+            [
+                "14\r\nZ\r\nUjextoqryl\r\nTyolkeuto\r\nOntpojghj\r\nNq\r\nKeq\r\nTetdkxdo\r\nShsxwvqotk\r\nCvhbwqcaz\r\nSfue\r\nTxq\r\nQzznk\r\nAejnvuc\r\nT\r\nWjgnuelt\r\nYjuhi\r\nGmxkgj\r\nKltxoildze\r\nSybzfm\r\nHhdbvdpt\r\nPeedniub\r\nOlskewova\r\nDzhjdzqsj\r\nLtbxltpug\r\nVdtyqse\r\nJ\r\nYl\r\nK\r\n",
+                "Aejnvuc Dzhjdzqsj, Cvhbwqcaz Gmxkgj, Keq K, Nq Hhdbvdpt, Ontpojghj Olskewova, Qzznk J, Sfue Kltxoildze, Shsxwvqotk Sybzfm, T Ltbxltpug, Tetdkxdo Peedniub, Txq Vdtyqse, Tyolkeuto Wjgnuelt, Ujextoqryl Yjuhi, Z Yl"
+            ],
+            [
+                "18\r\nGtbmox\r\nDl\r\nBaxubgvgip\r\nLdn\r\nWgjsblxvg\r\nPwlartghr\r\nU\r\nIfmprj\r\nGawujn\r\nGrth\r\nIzqoddgwtp\r\nIrpwqvt\r\nLwpthqz\r\nWeo\r\nPlhibwks\r\nFop\r\nAgfjasurvq\r\nJxbr\r\nXmyn\r\nOgfx\r\nQvh\r\nOgcocvgerd\r\nJwcbq\r\nI\r\nG\r\nSooticdnj\r\nIuaylf\r\nWhfrxwwv\r\nWyanbbbcuy\r\nIsh\r\nJssvbx\r\nHgooryd\r\nM\r\nJk\r\nAu\r\nDohfynvuj\r\n",
+                "Agfjasurvq Au, Baxubgvgip Hgooryd, Dl Dohfynvuj, Fop Jk, Gawujn G, Grth Jssvbx, Gtbmox M, Ifmprj I, Irpwqvt Ish, Izqoddgwtp Iuaylf, Jxbr Jwcbq, Ldn Ogcocvgerd, Lwpthqz Ogfx, Plhibwks Qvh, Pwlartghr Sooticdnj, U Xmyn, Weo Whfrxwwv, Wgjsblxvg Wyanbbbcuy"
+            ],
+            [
+                "25\r\nFwhxbm\r\nF\r\nHoe\r\nR\r\nKyfxzz\r\nTun\r\nCfmgskyudr\r\nKwppr\r\nDxydvyn\r\nFhzxwrx\r\nXxs\r\nVrz\r\nV\r\nAeluhklihx\r\nMcyxl\r\nPtnezjp\r\nYmakurwz\r\nIvzfugi\r\nK\r\nDe\r\nQuc\r\nIwqz\r\nHavbcqgs\r\nP\r\nWsmoslxl\r\nHpgvuvxbbt\r\nBn\r\nWbutic\r\nLfathrt\r\nIb\r\nLqlsq\r\nQymy\r\nWqdbqzyl\r\nHecvzecwle\r\nWktkp\r\nAmbsjal\r\nLn\r\nWmskelvtsa\r\nIlf\r\nMc\r\nNjbnvskubj\r\nXb\r\nAwkdp\r\nWv\r\nXqostegk\r\nZr\r\nSqihtxfi\r\nRcncgvogf\r\nMtjsjbbbq\r\nYenngpvbwu\r\n",
+                "Aeluhklihx Ambsjal, Cfmgskyudr Awkdp, De Bn, Dxydvyn Lfathrt, F Ln, Fhzxwrx Lqlsq, Fwhxbm Mc, Havbcqgs Hecvzecwle, Hoe Hpgvuvxbbt, Ivzfugi Ib, Iwqz Ilf, K Njbnvskubj, Kwppr Sqihtxfi, Kyfxzz Wbutic, Mcyxl Mtjsjbbbq, P Wktkp, Ptnezjp Wmskelvtsa, Quc Qymy, R Rcncgvogf, Tun Wqdbqzyl, V Xb, Vrz Zr, Wsmoslxl Wv, Xxs Xqostegk, Ymakurwz Yenngpvbwu"
+            ],
+            [
+                "30\r\nB\r\nCjja\r\nK\r\nUnknsyohcw\r\nTz\r\nZcrkmjv\r\nNxnsuiwq\r\nKpt\r\nIg\r\nXhtvgur\r\nRxsr\r\nXjzv\r\nPhyx\r\nP\r\nGgq\r\nSs\r\nJdtfnnmq\r\nDpciytlrzc\r\nYcus\r\nY\r\nPepusf\r\nPkkv\r\nMgqs\r\nGc\r\nU\r\nR\r\nSx\r\nYg\r\nNbelti\r\nAzux\r\nJjqylaprgi\r\nErpx\r\nDusqgbm\r\nPdo\r\nGiehna\r\nOlyp\r\nKzoqwdoy\r\nGdrswibix\r\nZlguvcunbi\r\nH\r\nWuv\r\nVfyxjrpul\r\nWilepwe\r\nFhs\r\nBmyfsojua\r\nTvcvrvb\r\nSqn\r\nAwucqdvuup\r\nDoezapfb\r\nLqkr\r\nUqnjqqrs\r\nWwtyn\r\nDplsjenfg\r\nQffilp\r\nAno\r\nDle\r\nCzfk\r\nVgz\r\nDhzsbsqqbf\r\nMvdlonnngw\r\n",
+                "Azux Ano, B Bmyfsojua, Cjja Czfk, Dpciytlrzc Dhzsbsqqbf, Gc Gdrswibix, Ggq Giehna, Ig Awucqdvuup, Jdtfnnmq Jjqylaprgi, K Dle, Kpt Kzoqwdoy, Mgqs Mvdlonnngw, Nbelti Doezapfb, Nxnsuiwq Dplsjenfg, P Dusqgbm, Pepusf Erpx, Phyx Fhs, Pkkv Pdo, R H, Rxsr Lqkr, Ss Olyp, Sx Sqn, Tz Tvcvrvb, U Qffilp, Unknsyohcw Uqnjqqrs, Xhtvgur Vfyxjrpul, Xjzv Vgz, Y Wilepwe, Ycus Wuv, Yg Wwtyn, Zcrkmjv Zlguvcunbi"
+            ]
+        ]
+    }
+]

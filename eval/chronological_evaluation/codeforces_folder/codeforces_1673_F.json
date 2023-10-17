@@ -1,0 +1,252 @@
+[
+    {
+        "name": "Anti-Theft Road Planning",
+        "description": "This is an interactive problem. A city has \n    n^2\n buildings divided into a\ngrid of \n    n\n rows and \n    n\n columns. You need to build a road of some\nlength \n    D(A,B)\n of your choice between each pair of adjacent by side\nbuildings \n    A\n and \n    B\n. Due to budget limitations and legal\nrestrictions, the length of each road must be a positive integer and the total\nlength of all roads should not exceed \n    48\n     000\n. There is a thief in the\ncity who will start from the topmost, leftmost building (in the first row and\nthe first column) and roam around the city, occasionally stealing artifacts\nfrom some of the buildings. He can move from one building to another adjacent\nbuilding by travelling through the road which connects them. You are unable to\ntrack down what buildings he visits and what path he follows to reach them.\nBut there is one tracking mechanism in the city. The tracker is capable of\nstoring a single integer \n    x\n which is initially \n    0\n. Each time the\nthief travels from a building \n    A\n to another adjacent building \n    B\n\nthrough a road of length \n    D(A,B)\n, the tracker changes \n    x\n to\n\n    x\n    \u2295 D(A,B)\n. Each time the thief steals from a building, the\ntracker reports the value \n    x\n stored in it and resets it back to \n    0\n.\nIt is known beforehand that the thief will steal in exactly \n    k\n buildings\nbut you will know the values returned by the tracker only after the thefts\nactually happen. Your task is to choose the lengths of roads in such a way\nthat no matter what strategy or routes the thief follows, you will be able to\nexactly tell the location of all the buildings where the thefts occurred from\nthe values returned by the tracker. Interaction First read a single line\ncontaining two integers \n    n\n \n    (2\n    \u2264 n\n    \u2264 32)\n and \n    k\n\n\n    (1\n    \u2264 k\n    \u2264 1024)\n denoting the number of rows and number of thefts\nrespectively. Let's denote the \n    j\n-th building in the \n    i\n-th row by\n\n    B_i,j\n. Then print \n    n\n lines each containing \n    n-1\n integers.\nThe \n    j\n-th integer of the \n    i\n-th line must be the value of\n\n    D(B_i,j,B_i,j+1)\n. Then print \n    n-1\n lines each containing \n    n\n\nintegers. The \n    j\n-th integer of the \n    i\n-th line must be the value of\n\n    D(B_i,j,B_i+1,j)\n. Remember that the total length of the roads must\nnot exceed \n    48\n     000\n. Then answer \n    k\n queries. First read the value\n\n    x\n returned by the tracker. Then print two integers denoting the row\nnumber and column number of the building where the theft occurred. After that\nyou will be able to answer the next query (if such exists). After printing the\nanswers do not forget to output end of line and flush the output buffer.\nOtherwise you will get the verdict Idleness limit exceeded. To flush the\nbuffer, use: fflush(stdout) or cout.flush() in C++; System.out.flush() in\nJava; flush(output) in Pascal; stdout.flush() in Python; Read documentation\nfor other languages. Hacks You cannot make hacks in this problem. Example\nInput 2 4 14 1 14 3 Output 1 8 2 4 1 2 1 1 1 2 2 1 Note For the sample test,\n\n    n=2\n and \n    k=4\n. You choose to build the roads of the following\nlengths: The thief follows the following strategy: Start at \n    B_1,1\n.\nMove Right to \n    B_1,2\n. Move Down to \n    B_2,2\n. Move Left to\n\n    B_2,1\n. Move Up to \n    B_1,1\n. Move Right to \n    B_1,2\n. Steal\nfrom \n    B_1,2\n. Move Left to \n    B_1,1\n. Steal from \n    B_1,1\n. Move\nDown to \n    B_2,1\n. Move Right to \n    B_2,2\n. Move Up to \n    B_1,2\n.\nSteal from \n    B_1,2\n. Move Left to \n    B_1,1\n. Move Down to\n\n    B_2,1\n. Steal from \n    B_2,1\n. The tracker responds in the following\nway: Initialize \n    x=0\n. Change \n    x\n to \n    x\n    \u2295 1=0\n    \u22951=1\n.\nChange \n    x\n to \n    x\n    \u2295 4=1\n    \u22954=5\n. Change \n    x\n to\n\n    x\n    \u2295 8=5\n    \u22958=13\n. Change \n    x\n to \n    x\n    \u2295\n    2=13\n    \u22952=15\n. Change \n    x\n to \n    x\n    \u2295 1=15\n    \u22951=14\n.\nReturn \n    x=14\n and re-initialize \n    x=0\n. Change \n    x\n to \n    x\n    \u2295\n    1=0\n    \u22951=1\n. Return \n    x=1\n and re-initialize \n    x=0\n. Change\n\n    x\n to \n    x\n    \u2295 2=0\n    \u22952=2\n. Change \n    x\n to \n    x\n    \u2295\n    8=2\n    \u22958=10\n. Change \n    x\n to \n    x\n    \u2295 4=10\n    \u22954=14\n. Return\n\n    x=14\n and re-initialize \n    x=0\n. Change \n    x\n to \n    x\n    \u2295\n    1=0\n    \u22951=1\n. Change \n    x\n to \n    x\n    \u2295 2=1\n    \u22952=3\n. Return\n\n    x=3\n and re-initialize \n    x=0\n.\n\n",
+        "cf_contest_id": 1673,
+        "cf_index": "F",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "constructive algorithms",
+            "divide and conquer",
+            "greedy",
+            "interactive",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1 2 4\r\nRDLURSLSDRUSLDS\r\n",
+                "Ok\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2 4\r\n2 1\r\n2 2\r\n1 2\r\n2 1\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 3 9\r\n2 3\r\n3 1\r\n2 1\r\n1 1\r\n1 1\r\n1 3\r\n3 2\r\n1 1\r\n3 1\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 4 16\r\n4 3\r\n2 4\r\n3 1\r\n4 3\r\n3 3\r\n4 3\r\n2 3\r\n4 4\r\n1 4\r\n1 2\r\n2 4\r\n3 3\r\n3 2\r\n4 2\r\n1 1\r\n1 1\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 5 25\r\n5 4\r\n4 1\r\n5 4\r\n4 5\r\n5 5\r\n2 2\r\n4 3\r\n2 1\r\n4 4\r\n5 1\r\n4 1\r\n3 2\r\n4 4\r\n1 1\r\n5 1\r\n3 5\r\n2 4\r\n4 2\r\n4 5\r\n5 2\r\n4 4\r\n2 2\r\n2 4\r\n3 2\r\n1 5\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 32 1\r\n1 19\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 32 4\r\n1 24\r\n9 30\r\n32 7\r\n5 6\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 2 4\r\n1 1\r\n2 1\r\n1 2\r\n2 2\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 3 9\r\n1 1\r\n2 2\r\n3 2\r\n3 3\r\n1 2\r\n2 1\r\n1 3\r\n2 3\r\n3 1\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 4 16\r\n2 1\r\n1 4\r\n1 1\r\n4 1\r\n2 4\r\n1 3\r\n2 2\r\n4 4\r\n4 3\r\n3 1\r\n4 2\r\n3 4\r\n3 3\r\n1 2\r\n2 3\r\n3 2\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 5 25\r\n5 1\r\n3 4\r\n1 2\r\n1 3\r\n3 2\r\n4 4\r\n2 3\r\n4 1\r\n4 3\r\n2 2\r\n2 4\r\n4 2\r\n2 5\r\n3 5\r\n1 4\r\n5 4\r\n1 5\r\n1 1\r\n5 3\r\n3 1\r\n5 5\r\n3 3\r\n5 2\r\n2 1\r\n4 5\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 2 4\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 3 9\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 4 16\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 5 25\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 28 784\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 29 841\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 30 900\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 31 961\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 32 1\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 32 4\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 32 256\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 32 1024\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 6 36\r\n3 6\r\n4 2\r\n4 3\r\n2 1\r\n3 3\r\n3 4\r\n1 5\r\n6 4\r\n2 1\r\n1 3\r\n3 1\r\n3 2\r\n4 2\r\n3 6\r\n6 5\r\n3 3\r\n2 1\r\n6 2\r\n6 4\r\n4 3\r\n3 2\r\n4 2\r\n6 1\r\n5 6\r\n1 5\r\n4 4\r\n5 5\r\n6 6\r\n5 1\r\n5 1\r\n1 4\r\n1 3\r\n1 1\r\n1 3\r\n2 6\r\n1 5\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 7 49\r\n1 3\r\n3 7\r\n5 1\r\n7 2\r\n7 5\r\n5 3\r\n7 6\r\n4 7\r\n5 2\r\n2 2\r\n2 2\r\n5 5\r\n6 4\r\n4 6\r\n5 6\r\n1 6\r\n1 1\r\n5 5\r\n6 1\r\n5 2\r\n6 6\r\n2 6\r\n5 2\r\n4 3\r\n5 1\r\n4 7\r\n4 2\r\n6 7\r\n7 4\r\n6 6\r\n6 1\r\n7 1\r\n5 5\r\n4 2\r\n3 2\r\n4 3\r\n3 6\r\n6 1\r\n6 6\r\n7 6\r\n4 2\r\n5 4\r\n4 2\r\n4 4\r\n7 5\r\n2 2\r\n5 3\r\n5 1\r\n5 6\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 8 64\r\n8 2\r\n5 1\r\n7 4\r\n7 2\r\n8 4\r\n6 2\r\n2 6\r\n3 7\r\n7 2\r\n2 4\r\n6 4\r\n5 7\r\n3 3\r\n8 1\r\n6 6\r\n6 1\r\n8 2\r\n2 1\r\n1 5\r\n7 7\r\n5 7\r\n1 6\r\n2 3\r\n2 2\r\n3 3\r\n6 8\r\n8 1\r\n7 3\r\n4 7\r\n1 8\r\n6 8\r\n7 3\r\n8 4\r\n5 8\r\n3 8\r\n3 3\r\n1 4\r\n1 8\r\n2 3\r\n5 4\r\n8 6\r\n6 1\r\n2 2\r\n5 6\r\n5 5\r\n7 5\r\n6 5\r\n4 4\r\n1 1\r\n3 5\r\n5 6\r\n4 5\r\n6 3\r\n4 8\r\n2 5\r\n5 3\r\n4 4\r\n3 1\r\n5 4\r\n8 8\r\n5 5\r\n8 1\r\n6 4\r\n6 3\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 9 81\r\n2 9\r\n9 3\r\n1 7\r\n9 5\r\n8 8\r\n3 7\r\n1 4\r\n8 8\r\n8 7\r\n9 5\r\n2 2\r\n8 7\r\n7 2\r\n5 4\r\n2 3\r\n5 9\r\n3 7\r\n3 8\r\n7 5\r\n2 2\r\n1 5\r\n4 3\r\n1 9\r\n1 8\r\n5 8\r\n4 4\r\n2 6\r\n9 3\r\n8 8\r\n7 6\r\n2 2\r\n9 5\r\n3 5\r\n1 4\r\n2 8\r\n6 7\r\n2 2\r\n1 9\r\n1 1\r\n3 2\r\n5 1\r\n5 5\r\n6 6\r\n7 7\r\n5 9\r\n6 4\r\n6 5\r\n2 2\r\n6 5\r\n1 5\r\n8 5\r\n1 9\r\n1 8\r\n5 6\r\n3 6\r\n4 7\r\n6 5\r\n9 2\r\n7 2\r\n6 1\r\n7 2\r\n7 6\r\n1 6\r\n3 4\r\n2 3\r\n2 9\r\n2 8\r\n9 5\r\n1 1\r\n4 5\r\n9 3\r\n9 9\r\n1 2\r\n9 8\r\n6 3\r\n3 2\r\n1 8\r\n6 4\r\n7 9\r\n7 3\r\n3 5\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 32 16\r\n26 21\r\n27 7\r\n10 31\r\n19 2\r\n17 7\r\n3 15\r\n6 18\r\n31 26\r\n24 20\r\n14 4\r\n8 26\r\n11 3\r\n12 1\r\n7 29\r\n14 28\r\n4 16\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 32 64\r\n15 29\r\n2 5\r\n27 24\r\n26 14\r\n8 2\r\n27 21\r\n24 17\r\n25 16\r\n16 30\r\n11 29\r\n25 8\r\n12 27\r\n32 17\r\n27 14\r\n22 31\r\n27 31\r\n16 29\r\n20 26\r\n8 23\r\n16 15\r\n26 1\r\n31 18\r\n8 17\r\n19 27\r\n23 1\r\n5 7\r\n16 14\r\n14 21\r\n32 27\r\n15 9\r\n24 15\r\n10 12\r\n13 18\r\n6 10\r\n25 20\r\n15 19\r\n24 7\r\n19 26\r\n12 32\r\n6 25\r\n26 26\r\n31 11\r\n11 18\r\n25 17\r\n12 12\r\n19 14\r\n14 13\r\n16 11\r\n6 31\r\n24 19\r\n14 16\r\n21 24\r\n2 19\r\n23 12\r\n4 29\r\n17 9\r\n25 9\r\n25 10\r\n10 21\r\n12 16\r\n4 3\r\n7 29\r\n24 25\r\n15 28\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 6 36\r\n2 2\r\n1 3\r\n3 3\r\n3 2\r\n5 5\r\n3 5\r\n5 3\r\n2 5\r\n3 4\r\n4 3\r\n3 6\r\n5 4\r\n6 4\r\n4 5\r\n6 6\r\n2 6\r\n2 4\r\n1 5\r\n5 6\r\n6 1\r\n5 1\r\n1 6\r\n2 3\r\n1 2\r\n2 1\r\n4 6\r\n3 1\r\n1 1\r\n6 5\r\n1 4\r\n4 1\r\n5 2\r\n6 3\r\n6 2\r\n4 2\r\n4 4\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 7 49\r\n3 7\r\n6 6\r\n5 2\r\n2 3\r\n4 7\r\n1 4\r\n7 3\r\n4 1\r\n4 6\r\n3 6\r\n6 4\r\n3 4\r\n1 5\r\n2 2\r\n5 3\r\n1 6\r\n5 7\r\n7 4\r\n5 4\r\n3 2\r\n6 3\r\n7 2\r\n3 1\r\n2 5\r\n6 2\r\n1 1\r\n6 7\r\n3 5\r\n5 1\r\n1 3\r\n4 2\r\n4 3\r\n6 5\r\n1 7\r\n2 7\r\n7 7\r\n2 4\r\n6 1\r\n5 6\r\n3 3\r\n2 1\r\n1 2\r\n2 6\r\n5 5\r\n7 1\r\n7 5\r\n7 6\r\n4 4\r\n4 5\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 8 64\r\n3 6\r\n6 3\r\n4 2\r\n8 8\r\n3 3\r\n7 2\r\n1 3\r\n6 6\r\n1 6\r\n5 1\r\n5 4\r\n8 7\r\n4 7\r\n7 7\r\n4 4\r\n5 5\r\n2 3\r\n5 2\r\n7 3\r\n2 2\r\n2 4\r\n7 8\r\n8 3\r\n4 5\r\n4 8\r\n1 1\r\n8 2\r\n6 2\r\n3 7\r\n8 5\r\n6 4\r\n3 8\r\n4 6\r\n6 1\r\n3 4\r\n4 3\r\n6 5\r\n2 8\r\n4 1\r\n2 5\r\n1 2\r\n5 3\r\n6 7\r\n1 4\r\n7 4\r\n5 8\r\n3 1\r\n8 6\r\n7 1\r\n1 7\r\n2 7\r\n6 8\r\n7 6\r\n8 4\r\n8 1\r\n2 1\r\n3 2\r\n5 6\r\n7 5\r\n2 6\r\n3 5\r\n5 7\r\n1 5\r\n1 8\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "2 9 81\r\n2 6\r\n2 3\r\n9 3\r\n4 8\r\n3 1\r\n9 9\r\n1 7\r\n9 2\r\n6 4\r\n7 9\r\n3 8\r\n1 6\r\n8 4\r\n3 7\r\n2 5\r\n3 4\r\n8 6\r\n9 4\r\n3 3\r\n9 6\r\n3 2\r\n5 9\r\n5 4\r\n5 5\r\n3 6\r\n2 7\r\n5 6\r\n2 4\r\n9 1\r\n1 1\r\n4 1\r\n4 6\r\n5 2\r\n1 5\r\n2 8\r\n5 3\r\n3 5\r\n8 1\r\n6 2\r\n6 7\r\n8 5\r\n7 3\r\n6 8\r\n4 3\r\n2 9\r\n8 2\r\n4 7\r\n1 8\r\n1 2\r\n1 9\r\n7 5\r\n6 6\r\n9 7\r\n9 5\r\n4 9\r\n9 8\r\n1 4\r\n6 3\r\n7 7\r\n8 9\r\n8 7\r\n6 5\r\n8 8\r\n6 1\r\n4 5\r\n3 9\r\n7 6\r\n5 8\r\n7 1\r\n2 2\r\n4 2\r\n1 3\r\n7 2\r\n4 4\r\n8 3\r\n7 8\r\n5 7\r\n2 1\r\n7 4\r\n5 1\r\n6 9\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 6 36\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 7 49\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 8 64\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 9 81\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 10 100\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 11 121\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 12 144\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 13 169\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 14 196\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 15 225\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 16 256\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 17 289\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 18 324\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 19 361\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 20 400\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 21 441\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 22 484\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 23 529\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 24 576\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 25 625\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 26 676\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 27 729\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 32 16\r\n",
+                "Ok\r\n"
+            ],
+            [
+                "3 32 64\r\n",
+                "Ok\r\n"
+            ]
+        ]
+    }
+]

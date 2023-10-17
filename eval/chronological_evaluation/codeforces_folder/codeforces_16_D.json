@@ -1,0 +1,116 @@
+[
+    {
+        "name": "Logging",
+        "description": "The main server of Gomble company received a log of one top-secret process,\nthe name of which can't be revealed. The log was written in the following\nformat: \u00ab[date:time]: message\u00bb, where for each \u00ab[date:time]\u00bb value existed not\nmore than 10 lines. All the files were encoded in a very complicated manner,\nand only one programmer \u2014 Alex \u2014 managed to decode them. The code was so\ncomplicated that Alex needed four weeks to decode it. Right after the decoding\nprocess was finished, all the files were deleted. But after the files\ndeletion, Alex noticed that he saved the recordings in format \u00ab[time]:\nmessage\u00bb. So, information about the dates was lost. However, as the lines were\nadded into the log in chronological order, it's not difficult to say if the\nrecordings could appear during one day or not. It is possible also to find the\nminimum amount of days during which the log was written. So, to make up for\nhis mistake Alex has to find the minimum amount of days covered by the log.\nNote that Alex doesn't have to find the minimum amount of days between the\nbeginning and the end of the logging, he has to find the minimum amount of\ndates in which records could be done. (See Sample test 2 for further\nclarifications). We should remind you that the process made not more than 10\nrecordings in a minute. Consider that a midnight belongs to coming day. Input\nThe first input line contains number n (1 \u2264 n \u2264 100). The following n lines\ncontain recordings in format \u00ab[time]: message\u00bb, where time is given in format\n\u00abhh:mm x.m.\u00bb. For hh two-digit numbers from 01 to 12 are used, for mm two-\ndigit numbers from 00 to 59 are used, and x is either character \u00aba\u00bb or\ncharacter \u00abp\u00bb. A message is a non-empty sequence of Latin letters and/or\nspaces, it doesn't start or end with a space. The length of each message\ndoesn't exceed 20. Output Output one number \u2014 the minimum amount of days\ncovered by the log. Examples Input 5 [05:00 a.m.]: Server is started [05:00\na.m.]: Rescan initialized [01:13 p.m.]: Request processed [01:10 p.m.]:\nRequest processed [11:40 p.m.]: Rescan completed Output 2 Input 3 [09:00\na.m.]: User logged in [08:00 a.m.]: User logged in [07:00 a.m.]: User logged\nin Output 3 Note Formally the 12-hour time format is described at:\nhttp://en.wikipedia.org/wiki/12-hour_clock. The problem authors recommend you\nto look through these descriptions before you start with the problem.\n\n",
+        "cf_contest_id": 16,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 64.0,
+        "public_cases": [
+            [
+                "5\r\n[05:00 a.m.]: Server is started\r\n[05:00 a.m.]: Rescan initialized\r\n[01:13 p.m.]: Request processed\r\n[01:10 p.m.]: Request processed\r\n[11:40 p.m.]: Rescan completed\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n[09:00 a.m.]: User logged in\r\n[08:00 a.m.]: User logged in\r\n[07:00 a.m.]: User logged in\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n[10:41 a.m.]: apppmama\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n[06:00 p.m.]: uNzO VN Nz h\r\n[06:00 a.m.]: bTJv\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n[06:00 p.m.]: uNzO VN Nz h\r\n[06:00 a.m.]: bTJv\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n[11:35 a.m.]: ampapaammaamamaam\r\n[11:35 a.m.]: ppammpmmppmam\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n[01:58 p.m.]: pamapmppmmampaaama\r\n[01:58 p.m.]: pamapmammapaam\r\n[01:58 p.m.]: paap\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n[05:33 p.m.]: apm\r\n[05:24 p.m.]: mapammmapaaa\r\n[06:01 p.m.]: mpmmmpa\r\n",
+                "2\r\n"
+            ],
+            [
+                "1\r\n[12:00 a.m.]: asZv MF\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n[09:00 p.m.]: Y UnDuXrgurr J\r\n[09:00 p.m.]: Fn FAGSAcNQ\r\n[03:00 p.m.]: YpwvM\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n[05:42 a.m.]: aaaamampmp\r\n[06:18 a.m.]: pamapammpp\r\n[06:08 p.m.]: apa\r\n[11:05 p.m.]: mapmamappmmmpmm\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\n[11:15 p.m.]: apmammaampmaap\r\n[11:18 p.m.]: maaaaappmmma\r\n[11:13 p.m.]: pmpaamppmmpamaa\r\n[11:17 p.m.]: ppm\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n[08:49 a.m.]: pmampaamappapmap\r\n[08:49 a.m.]: mampama\r\n[08:10 p.m.]: pamaaampppaa\r\n[08:10 p.m.]: mmppmmapmmpaa\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\n[07:23 p.m.]: y vTNVMa VWxb  rpE\r\n[12:00 a.m.]: wkr EcZc\r\n[05:16 a.m.]: nWf lypg NT\r\n[04:22 a.m.]: UQIXmL\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\n[10:25 p.m.]: pmpapm\r\n[10:34 p.m.]: pappaaa\r\n[04:36 a.m.]: mmaammpmpmpppaamammm\r\n[05:53 p.m.]: mmmmpmmapaapap\r\n[04:07 p.m.]: mmmmp\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\n[04:39 p.m.]: pmmmpapaampap\r\n[04:39 p.m.]: aappmaaamampapaam\r\n[04:39 p.m.]: ma\r\n[05:02 p.m.]: ppaa\r\n[08:06 p.m.]: maaammmmpmpmp\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\n[11:49 a.m.]: maapapm\r\n[10:05 a.m.]: apampmmapapa\r\n[08:48 a.m.]: pampmapmaaappmpa\r\n[11:15 a.m.]: pmmamppmmapmmpmm\r\n[08:01 a.m.]: mmammppmapppmpapma\r\n",
+                "4\r\n"
+            ],
+            [
+                "5\r\n[12:00 a.m.]: sZvvEvtky\r\n[12:00 a.m.]: rCmNMmEDY\r\n[12:00 a.m.]: tX R mPCwu\r\n[12:00 a.m.]: VEDt LZNguynilskN SK\r\n[12:00 a.m.]: jPFLOr rBoyyBvGerKK\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\n[07:47 a.m.]: mam\r\n[06:54 a.m.]: pp\r\n[05:38 a.m.]: mppmm\r\n[05:07 a.m.]: papmaamppmamppp\r\n[04:09 p.m.]: pppmpammpmpap\r\n",
+                "4\r\n"
+            ],
+            [
+                "5\r\n[09:22 a.m.]: xYv\r\n[12:00 a.m.]: wEMdbcKw  jspxiF\r\n[07:57 a.m.]: zNp  PU\r\n[03:06 a.m.]: IaH c eGuRQ\r\n[07:46 a.m.]: io  r jjhyEP\r\n",
+                "3\r\n"
+            ],
+            [
+                "14\r\n[03:08 p.m.]: aaamm\r\n[01:49 a.m.]: a\r\n[04:55 p.m.]: ammma\r\n[06:00 a.m.]: mamppmapaa\r\n[04:01 a.m.]: amammmaa\r\n[01:24 p.m.]: papmmmpamaapaaampmaa\r\n[05:40 a.m.]: amaaamamammmaa\r\n[03:50 p.m.]: apmp\r\n[07:37 p.m.]: mmpappm\r\n[02:48 a.m.]: aammpampmmmappapam\r\n[05:05 a.m.]: mppmppaam\r\n[04:00 a.m.]: mamammpaaaamamapampa\r\n[05:11 a.m.]: mmpmmppmaapp\r\n[01:07 p.m.]: aappm\r\n",
+                "7\r\n"
+            ],
+            [
+                "14\r\n[12:07 p.m.]: mamaa\r\n[12:36 a.m.]: amaamppa\r\n[01:31 a.m.]: pmpp\r\n[05:47 a.m.]: paapappapaaampm\r\n[12:07 a.m.]: ppamammm\r\n[01:03 a.m.]: aapapmpampamamaaa\r\n[07:55 a.m.]: mpappmmapmpa\r\n[02:49 a.m.]: papmppppmpamppa\r\n[03:12 a.m.]: aaaaaaamam\r\n[04:40 a.m.]: paap\r\n[01:13 a.m.]: ap\r\n[03:22 a.m.]: mpmppmmapmmpp\r\n[01:27 a.m.]: maaamaapmaaaamamam\r\n[12:49 a.m.]: pppmappmammpmamampp\r\n",
+                "7\r\n"
+            ],
+            [
+                "14\r\n[09:37 p.m.]: pamammapampmapaa\r\n[09:37 p.m.]: ppmm\r\n[09:37 p.m.]: aapapppaampmappppppm\r\n[09:37 p.m.]: pmppmpmmpm\r\n[09:37 p.m.]: mmppppamamaa\r\n[09:37 p.m.]: mm\r\n[09:37 p.m.]: apamppmaaapaa\r\n[09:37 p.m.]: pmaammpaa\r\n[09:37 p.m.]: m\r\n[09:37 p.m.]: pppmppa\r\n[09:37 p.m.]: ppmpmm\r\n[09:37 p.m.]: mpamappmpmpamaampmpm\r\n[05:10 a.m.]: a\r\n[05:10 a.m.]: aaapamppaaamppapa\r\n",
+                "3\r\n"
+            ],
+            [
+                "14\r\n[10:19 a.m.]: iC ySL\r\n[06:44 a.m.]: F yD\r\n[06:44 a.m.]: i ZtfBlWwC\r\n[06:44 a.m.]: K F f t Feq\r\n[06:44 a.m.]: Vt vJj cRkqG  mN\r\n[06:44 a.m.]: Ca\r\n[06:44 a.m.]: cC\r\n[06:44 a.m.]: aqIM  FQIahCaVxdwCEG\r\n[04:13 a.m.]: WKeux icvt\r\n[12:44 a.m.]: mC\r\n[02:46 p.m.]: qEM kbX  q\r\n[10:36 p.m.]: WFym ja W s ab\r\n[03:07 p.m.]: xMV hC u\r\n[12:40 p.m.]: U\r\n",
+                "6\r\n"
+            ]
+        ]
+    }
+]

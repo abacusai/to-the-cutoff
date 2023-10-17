@@ -1,0 +1,157 @@
+[
+    {
+        "name": "Tanks",
+        "description": "Petya sometimes has to water his field. To water the field, Petya needs a tank\nwith exactly V ml of water. Petya has got N tanks, i-th of them initially\ncontaining ai ml of water. The tanks are really large, any of them can contain\nany amount of water (no matter how large this amount is). Also Petya has got a\nscoop that can contain up to K ml of water (initially the scoop is empty).\nThis scoop can be used to get some water from some tank, and after that pour\nit all into some tank (it is impossible to get water from multiple tanks\nwithout pouring it, or leave some water in the scoop when pouring it). When\nPetya tries to get some water from a tank, he gets min(v, K) water, where v is\nthe current volume of water in the tank. Is it possible to obtain a tank with\nexactly V ml of water using these operations? If it is possible, print a\nsequence of operations that allows to do it. If there are multiple ways to\nobtain needed amount of water in some tank, print any of them. Input The first\nline contains 3 integers: N (2 \u2264 N \u2264 5000), K (1 \u2264 K \u2264 5000), and V (0 \u2264 V \u2264\n10^9) \u2014 the number of tanks, the maximum volume of water the scoop can\ncontain, and the required amount of water in some tank, respectively. The\nsecond line contains N integers ai (0 \u2264 ai \u2264 10^5), where ai is initial volume\nof water in i-th tank. Output If it is impossible to obtain a tank with\nexactly V ml of water, print NO. Otherwise print YES in the first line, and\nbeginning from the second line, print the sequence of operations in the\nfollowing format: Each line has to contain 3 numbers denoting a compressed\noperation: \"cnt x y\" (1 \u2264 cnt \u2264 10^9, 1 \u2264 x, y \u2264 N), where x is the index of\nthe tank where we get water, y is the index of the tank where we pour water,\nand cnt is the number of times we transfer water from tank x to tank y. The\nnumber of these lines must not exceed N + 5. Examples Input 2 3 5 2 3 Output\nYES 1 2 1 Input 2 3 4 2 3 Output NO Input 5 2 0 1 3 5 7 9 Output YES 2 2 1 3 3\n1 4 4 1 5 5 1\n\n",
+        "cf_contest_id": 920,
+        "cf_index": "D",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 3 5\r\n2 3\r\n",
+                "YES\r\n1 2 1\r\n"
+            ],
+            [
+                "2 3 4\r\n2 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 2 0\r\n1 3 5 7 9\r\n",
+                "YES\r\n5 5 2\r\n4 4 2\r\n3 3 2\r\n12 2 1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 10 3\r\n3 4 5 6 7\r\n",
+                "YES\r\n1 5 4\r\n1 3 1\r\n1 2 1\r\n1 4 1\r\n"
+            ],
+            [
+                "6 4 8\r\n5 5 5 5 5 5\r\n",
+                "YES\r\n2 6 3\r\n2 5 3\r\n2 4 3\r\n2 2 1\r\n3 3 1\r\n"
+            ],
+            [
+                "5 4 24\r\n5 5 5 5 5\r\n",
+                "YES\r\n2 5 2\r\n2 4 2\r\n2 3 2\r\n1 1 2\r\n"
+            ],
+            [
+                "5 4 28\r\n5 5 5 5 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 4 20\r\n3 3 3 3 3 3 3 3\r\n",
+                "YES\r\n1 8 1\r\n1 7 1\r\n1 6 1\r\n1 5 1\r\n1 4 1\r\n1 3 1\r\n1 2 1\r\n1 1 8\r\n"
+            ],
+            [
+                "2 6 1\r\n100 200\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 2 49\r\n3 5 7 9 11 3 5 7 9 11\r\n",
+                "YES\r\n6 10 2\r\n5 9 2\r\n4 8 2\r\n3 7 2\r\n2 6 2\r\n6 5 2\r\n5 4 2\r\n4 3 2\r\n9 2 1\r\n"
+            ],
+            [
+                "10 10 99\r\n10 10 10 10 10 10 10 10 10 10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 6 32\r\n3 6 4 4 4 4 4 4\r\n",
+                "YES\r\n1 8 2\r\n1 7 2\r\n1 6 2\r\n1 5 2\r\n1 4 2\r\n1 3 1\r\n1 1 2\r\n"
+            ],
+            [
+                "6 11 3\r\n6 6 6 6 6 6\r\n",
+                "YES\r\n1 6 1\r\n1 5 1\r\n1 4 1\r\n1 3 1\r\n1 2 1\r\n3 1 6\r\n"
+            ],
+            [
+                "3 1 1000000000\r\n1 100000 100000\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 5000 300000\r\n100000 100000 100000\r\n",
+                "YES\r\n20 3 1\r\n20 2 1\r\n"
+            ],
+            [
+                "6 2308 239412\r\n17844 17834 31745 48432 34124 91715\r\n",
+                "YES\r\n40 6 2\r\n15 5 2\r\n21 4 2\r\n14 3 2\r\n96 2 1\r\n"
+            ],
+            [
+                "6 4642 546\r\n97933 1518 96285 21500 23683 36805\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 403 52\r\n19074 6130 9424 24531 53865 20909\r\n",
+                "YES\r\n52 6 1\r\n134 5 1\r\n61 4 1\r\n24 3 1\r\n317 1 2\r\n"
+            ],
+            [
+                "11 441 510415\r\n21052 19023 45383 65759 26015 81310 58476 17182 81909 18864 75570\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 4656 157012\r\n91715 81600 4215 18658 65170 92910 79441\r\n",
+                "YES\r\n18 7 1\r\n20 6 1\r\n14 5 2\r\n5 4 1\r\n1 3 2\r\n27 1 2\r\n"
+            ],
+            [
+                "8 3537 2935\r\n66115 95378 12352 23457 40700 38935 52481 53067\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 456 224612\r\n10752 31270 71281 86324 25125\r\n",
+                "YES\r\n56 5 1\r\n157 3 1\r\n69 2 1\r\n189 4 1\r\n"
+            ],
+            [
+                "13 2790 2701\r\n10120 25652 53086 363 68272 82632 49990 47260 64566 12290 40055 68058 37429\r\n",
+                "NO\r\n"
+            ],
+            [
+                "14 3551 2645\r\n43615 56455 48651 93362 58302 46167 75164 86724 18015 81757 28424 69700 37004 20927\r\n",
+                "YES\r\n6 14 1\r\n11 13 1\r\n20 12 2\r\n9 11 1\r\n24 10 1\r\n6 9 2\r\n25 8 2\r\n22 7 2\r\n14 6 1\r\n17 5 1\r\n27 4 2\r\n14 3 1\r\n102 1 2\r\n"
+            ],
+            [
+                "11 1454 455074\r\n38670 34998 82377 85327 40505 3835 1746 23484 74691 53060 17024\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 4 4\r\n2 3\r\n",
+                "YES\r\n1 2 1\r\n1 1 2\r\n"
+            ],
+            [
+                "2 3 3\r\n2 2\r\n",
+                "YES\r\n1 2 1\r\n1 1 2\r\n"
+            ],
+            [
+                "2 3 2\r\n1 1\r\n",
+                "YES\r\n1 2 1\r\n"
+            ],
+            [
+                "2 1 0\r\n0 0\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 10 30\r\n31 32 33\r\n",
+                "YES\r\n4 3 1\r\n4 2 1\r\n3 1 3\r\n"
+            ],
+            [
+                "2 4 0\r\n7 3\r\n",
+                "YES\r\n1 2 1\r\n"
+            ],
+            [
+                "6 6 7\r\n0 11 1 4 7 8\r\n",
+                "YES\r\n2 6 1\r\n2 5 1\r\n1 4 1\r\n1 3 1\r\n2 2 1\r\n4 1 6\r\n"
+            ],
+            [
+                "5 3 5\r\n0 3 2 0 1\r\n",
+                "YES\r\n1 3 1\r\n1 2 1\r\n"
+            ],
+            [
+                "5 4 31\r\n5 4 8 8 2\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

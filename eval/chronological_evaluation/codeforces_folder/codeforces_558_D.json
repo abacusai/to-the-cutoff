@@ -1,0 +1,45 @@
+[
+    {
+        "name": "Guess Your Way Out! II",
+        "description": "Amr bought a new video game \"Guess Your Way Out! II\". The goal of the game is\nto find an exit from the maze that looks like a perfect binary tree of height\nh. The player is initially standing at the root of the tree and the exit from\nthe tree is located at some leaf node. Let's index all the nodes of the tree\nsuch that The root is number 1 Each internal node i (i \u2264 2^h-1 - 1) will have\na left child with index = 2i and a right child with index = 2i + 1 The level\nof a node is defined as 1 for a root, or 1 + level of parent of the node\notherwise. The vertices of the level h are called leaves. The exit to the maze\nis located at some leaf node n, the player doesn't know where the exit is so\nhe has to guess his way out! In the new version of the game the player is\nallowed to ask questions on the format \"Does the ancestor(exit, i) node number\nbelong to the range [L, R]?\". Here ancestor(v, i) is the ancestor of a node v\nthat located in the level i. The game will answer with \"Yes\" or \"No\" only. The\ngame is designed such that it doesn't always answer correctly, and sometimes\nit cheats to confuse the player!. Amr asked a lot of questions and got\nconfused by all these answers, so he asked you to help him. Given the\nquestions and its answers, can you identify whether the game is telling\ncontradictory information or not? If the information is not contradictory and\nthe exit node can be determined uniquely, output its number. If the\ninformation is not contradictory, but the exit node isn't defined uniquely,\noutput that the number of questions is not sufficient. Otherwise output that\nthe information is contradictory. Input The first line contains two integers\nh, q (1 \u2264 h \u2264 50, 0 \u2264 q \u2264 10^5), the height of the tree and the number of\nquestions respectively. The next q lines will contain four integers each i, L,\nR, ans (1 \u2264 i \u2264 h, 2^i-1 \u2264 L \u2264 R \u2264 2^i - 1, ), representing a question as\ndescribed in the statement with its answer (ans = 1 if the answer is \"Yes\" and\nans = 0 if the answer is \"No\"). Output If the information provided by the game\nis contradictory output \"Game cheated!\" without the quotes. Else if you can\nuniquely identify the exit to the maze output its index. Otherwise output\n\"Data not sufficient!\" without the quotes. Examples Input 3 1 3 4 6 0 Output 7\nInput 4 3 4 10 14 1 3 6 6 0 2 3 3 1 Output 14 Input 4 2 3 4 6 1 4 12 15 1\nOutput Data not sufficient! Input 4 2 3 4 5 1 2 3 3 1 Output Game cheated!\nNote Node u is an ancestor of node v if and only if u is the same node as v, u\nis the parent of node v, or u is an ancestor of the parent of node v. In the\nfirst sample test there are 4 leaf nodes 4, 5, 6, 7. The first question says\nthat the node isn't in the range [4, 6] so the exit is node number 7. In the\nsecond sample test there are 8 leaf nodes. After the first question the exit\nis in the range [10, 14]. After the second and the third questions only node\nnumber 14 is correct. Check the picture below to fully understand.\n\n",
+        "cf_contest_id": 558,
+        "cf_index": "D",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 1\r\n3 4 6 0\r\n",
+                "7\r\n"
+            ],
+            [
+                "4 3\r\n4 10 14 1\r\n3 6 6 0\r\n2 3 3 1\r\n",
+                "14\r\n"
+            ],
+            [
+                "4 2\r\n3 4 6 1\r\n4 12 15 1\r\n",
+                "Data not sufficient!\r\n"
+            ],
+            [
+                "4 2\r\n3 4 5 1\r\n2 3 3 1\r\n",
+                "Game cheated!\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1\r\n1 1 1 0\r\n",
+                "Game cheated!\r\n"
+            ]
+        ]
+    }
+]

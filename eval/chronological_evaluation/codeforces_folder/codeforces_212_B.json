@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Polycarpus is Looking for Good Substrings",
+        "description": "We'll call string s[a, b] = sasa + 1... sb (1 \u2264 a \u2264 b \u2264 |s|) a substring of\nstring s = s1s2... s|s|, where |s| is the length of string s. The trace of a\nnon-empty string t is a set of characters that the string consists of. For\nexample, the trace of string \"aab\" equals 'a', 'b'. Let's consider an\narbitrary string s and the set of its substrings with trace equal to C. We\nwill denote the number of substrings from this set that are maximal by\ninclusion by r(C, s). Substring s[a, b] of length n = b - a + 1 belonging to\nsome set is called maximal by inclusion, if there is no substring s[x, y] in\nthis set with length greater than n, such that 1 \u2264 x \u2264 a \u2264 b \u2264 y \u2264 |s|. Two\nsubstrings of string s are considered different even if they are equal but\nthey are located at different positions of s. Polycarpus got a challenging\npractical task on a stringology exam. He must do the following: given string s\nand non-empty sets of characters C1, C2, ..., Cm, find r(Ci, s) for each set\nCi. Help Polycarpus to solve the problem as he really doesn't want to be\nexpelled from the university and go to the army! Input The first line contains\na non-empty string s (1 \u2264 |s| \u2264 10^6). The second line contains a single\ninteger m (1 \u2264 m \u2264 10^4). Next m lines contain descriptions of sets Ci. The\ni-th line contains string ci such that its trace equals Ci. It is guaranteed\nthat all characters of each string ci are different. Note that Ci are not\nnecessarily different. All given strings consist of lowercase English letters.\nOutput Print m integers \u2014 the i-th integer must equal r(Ci, s). Examples Input\naaaaa 2 a a Output 1 1 Input abacaba 3 ac ba a Output 1 2 4\n\n",
+        "cf_contest_id": 212,
+        "cf_index": "B",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "hashing",
+            "implementation"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "aaaaa\r\n2\r\na\r\na\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "abacaba\r\n3\r\nac\r\nba\r\na\r\n",
+                "1\r\n2\r\n4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "abababab\r\n3\r\nab\r\nba\r\na\r\n",
+                "1\r\n1\r\n4\r\n"
+            ],
+            [
+                "abcabccbacba\r\n10\r\ncab\r\ncba\r\nc\r\na\r\nb\r\nab\r\nbc\r\nac\r\nz\r\nzasdx\r\n",
+                "1\r\n1\r\n3\r\n4\r\n4\r\n4\r\n3\r\n2\r\n0\r\n0\r\n"
+            ],
+            [
+                "aaaaaaaaaabaaaaaabaabbbaacaabbbaaaabbbaabbbcccc\r\n8\r\na\r\nb\r\nc\r\nab\r\nbc\r\nab\r\nbca\r\nz\r\n",
+                "7\r\n6\r\n2\r\n2\r\n1\r\n2\r\n1\r\n0\r\n"
+            ],
+            [
+                "a\r\n3\r\na\r\na\r\nz\r\n",
+                "1\r\n1\r\n0\r\n"
+            ],
+            [
+                "z\r\n7\r\nz\r\nz\r\na\r\naz\r\nza\r\nazx\r\nz\r\n",
+                "1\r\n1\r\n0\r\n0\r\n0\r\n0\r\n1\r\n"
+            ],
+            [
+                "ygkpypcmqcdyobghazieayxxaoiukrmqrbjepkhswwqhrybvdwwysisnaxjqcuqbqdnmbimwsvgactidnhogjfpfbgsawmynbjgw\r\n10\r\npf\r\nswy\r\npcy\r\nws\r\nawm\r\ncyp\r\nydo\r\nimw\r\nrhy\r\nwqh\r\n",
+                "1\r\n1\r\n1\r\n2\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "qtxskctsxpdhlgqsoqfbltffjjbfjcvxnnekabynugjjpwtpcpsbywrgjwofhcdmdqhstzabziajnkekeymyankekeiaqboeugij\r\n10\r\nnxv\r\nltb\r\ndhp\r\nbza\r\nkct\r\nvcx\r\nbzi\r\nfqb\r\nlhd\r\nke\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n3\r\n"
+            ],
+            [
+                "kjjtvplydbenlmaebgdyxpknqdtrhldgkbbompqiurcooumjalodfnnxtwutmntxteczmrmhewrtabbquolrqudfsdxzjrgsnclw\r\n10\r\nkb\r\nuqd\r\naml\r\noc\r\nqui\r\ntrd\r\nqpm\r\nrwe\r\nmpq\r\nbeg\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "eyxwgccckqetjrmqrxavlkqvxymchummfowszghftdtsmsgdbhlgjbkpdvzgrwiggrwfeiaolkldmqwxjfijfeweabnxfgyigzmi\r\n10\r\nmu\r\nwzs\r\nanb\r\nsdt\r\nqxw\r\netq\r\navx\r\naei\r\ngc\r\nrmj\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "gyxyugstnzijarvqqclfibtvvhxpwktahsqrvduwcdllfyjbumziassaoohwktgawqcphsmaknjtuqzulxwwblfjrdppeuwtvevcasxghdzibsbxhtezkahmwkdlklojnslewwbutyqfqmawumrfhjjdnqjlkrxswgymnyrulgkvmiebgtejhiuaylraxpwbmoihganwstpmdnqgxsrloztxkntpsoubyfqtssyayxcnewhcnzfakmudrfnjqzoajqwirrxddiqzsaqrhagttlcwjbxqbubzrxlvdjjvljbt\r\n10\r\ndj\r\nao\r\ntmp\r\njbl\r\nrdf\r\nkwt\r\ntkn\r\nbs\r\nfq\r\nwpx\r\n",
+                "2\r\n2\r\n1\r\n1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n2\r\n"
+            ],
+            [
+                "anjyetjxumjpawhcetidwxzdfdqzwtbhegnvgtltamdqewcvtgxlfgpsynmjpetlkduwylyfpbcdehwacmtnpsykzddpzkoiozyordhwmfmlbdkdarrzrqltqtudezldbogrvjblwjfwqefyngjxrtyufmcqrlvpptcruozptfatearajhflojtpclaechdsssewjlzdnpcaarttkomlivdnxsfwemgsajbregnchamguuitwqsoxsbdjnceevmgfdrozmynhqqkpwsbdbbiaakluiiqicxvgpuiregjpzag\r\n10\r\nxfl\r\nidv\r\ngdf\r\ndwi\r\nuor\r\nwtz\r\nfpb\r\njmp\r\nswp\r\nmew\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n2\r\n1\r\n1\r\n"
+            ],
+            [
+                "zfvjffzwszjletqzhoyeyydwtqyyyweggxqlqqllzyifyoqqdmmimfoawvsjcbeykcaujqzqvxrrbdrgvhjjrwndxgjtixjutyagspwikeaguidupnmzevllgfbzbxflyvibmgicghjcihywikqeatkdbkiszovqkfdpmounxmxuslboahygerbhtgvctimunurkdpisufnofaalgyuzyvxeszkhmkkvyctvkrtsnuvklxdevyyjjwfazxzzlomiovkiwheksppmjrzayjuemvnwqrtgauskfjzskwrpfmee\r\n4\r\nbd\r\nqr\r\ntw\r\ne\r\n",
+                "2\r\n1\r\n1\r\n13\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,80 @@
+[
+    {
+        "name": "Low Budget Inception",
+        "description": "So we got bored and decided to take our own guess at how would \"Inception\"\nproduction go if the budget for the film had been terribly low. The first\nscene we remembered was the one that features the whole city bending onto\nitself: It feels like it will require high CGI expenses, doesn't it? Luckily,\nwe came up with a similar-looking scene which was a tiny bit cheaper to make.\nFirstly, forget about 3D, that's hard and expensive! The city is now\nrepresented as a number line (infinite to make it easier, of course).\nSecondly, the city doesn't have to look natural at all. There are \n    n\n\nbuildings on the line. Each building is a square \n    1 \n    \u00d7 1\n. Buildings\nare numbered from \n    1\n to \n    n\n in ascending order of their positions.\nLower corners of building \n    i\n are at integer points \n    a_i\n and \n    a_i +\n    1\n of the number line. Also the distance between any two neighbouring\nbuildings \n    i\n and \n    i + 1\n doesn't exceed \n    d\n (really, this\ncondition is here just to make the city look not that sparse). Distance\nbetween some neighbouring buildings \n    i\n and \n    i + 1\n is calculated from\nthe lower right corner of building \n    i\n to the lower left corner of\nbuilding \n    i + 1\n. Finally, curvature of the bend is also really hard to\nsimulate! Let the bend at some integer coordinate \n    x\n be performed with\nthe following algorithm. Take the ray from \n    x\n to \n    +\n    \u221e\n and all\nthe buildings which are on this ray and start turning the ray and the\nbuildings counter-clockwise around point \n    x\n. At some angle some building\nwill touch either another building or a part of the line. You have to stop\nbending there (implementing buildings crushing is also not worth its money).\nLet's call the angle between two rays in the final state the terminal angle\n\n    \u03b1_x\n. The only thing left is to decide what integer point \n    x\n\nis the best to start bending around. Fortunately, we've already chosen \n    m\n\ncandidates to perform the bending. So, can you please help us to calculate\nterminal angle \n    \u03b1_x\n for each bend \n    x\n from our list of\ncandidates? Input The first line contains two integer numbers \n    n\n and\n\n    d\n (\n    1 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5\n, \n    0 \n    \u2264 d \n    \u2264 7000\n) \u2014\nthe number of buildings and the maximum distance between any pair of\nneighbouring buildings, respectively. The second line contains \n    n\n\nintegers \n    a_1, a_2, \n    \u2026, a_n\n (\n    a_1 = 0\n, \n    0 < a_i + 1 - a_i\n    \n    \u2264 d + 1\n) \u2014 coordinates of left corners of corresponding buildings in\nascending order. The third line contains single integer \n    m\n (\n    1 \n    \u2264 m\n    \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the number of candidates. The fourth line contains\n\n    m\n integers \n    x_1, x_2, \n    \u2026, x_m\n (\n    0 \n    \u2264 x_i \n    \u2264 a_n +\n    1\n, \n    x_i < x_i + 1\n) \u2014 the coordinates of bends you need to calculate\nterminal angles for in ascending order. Output Print \n    m\n numbers. For each\nbend \n    x_i\n print terminal angle \n    \u03b1_x_i\n (in radians). Your\nanswer is considered correct if its absolute error does not exceed\n\n    10^-9\n. Formally, let your answer be \n    a\n, and the jury's answer be\n\n    b\n. Your answer is accepted if and only if \n    |a - b| \n    \u2264 10^-9\n.\nExamples Input 3 5 0 5 7 9 0 1 2 3 4 5 6 7 8 Output 1.570796326794897\n1.570796326794897 0.785398163397448 0.927295218001612 0.785398163397448\n1.570796326794897 1.570796326794897 1.570796326794897 1.570796326794897 Input\n2 7 0 4 3 1 3 4 Output 1.570796326794897 0.927295218001612 1.570796326794897\nInput 5 0 0 1 2 3 4 6 0 1 2 3 4 5 Output 1.570796326794897 3.141592653589793\n3.141592653589793 3.141592653589793 3.141592653589793 1.570796326794897 Note\nHere you can see the picture of the city for the first example and the bend at\nposition \n    2\n for it. The angle you need to measure is marked blue. You can\nsee that it's equal to \n    /\u03c04\n. You can see that no pair of\nneighbouring buildings have distance more than \n    4\n between them. \n    d =\n    4\n would also suffice for that test.\n\n",
+        "cf_contest_id": 1167,
+        "cf_index": "G",
+        "cf_rating": 3100,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "geometry"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 5\r\n0 5 7\r\n9\r\n0 1 2 3 4 5 6 7 8\r\n",
+                "1.5707963268\r\n1.5707963268\r\n0.7853981634\r\n0.9272952180\r\n0.7853981634\r\n1.5707963268\r\n1.5707963268\r\n1.5707963268\r\n1.5707963268\r\n"
+            ],
+            [
+                "2 7\r\n0 4\r\n3\r\n1 3 4\r\n",
+                "1.5707963268\r\n0.9272952180\r\n1.5707963268\r\n"
+            ],
+            [
+                "5 0\r\n0 1 2 3 4\r\n6\r\n0 1 2 3 4 5\r\n",
+                "1.5707963268\r\n3.1415926536\r\n3.1415926536\r\n3.1415926536\r\n3.1415926536\r\n1.5707963268\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 2\r\n0 3 4 5 7 8 11 14 17 18\r\n10\r\n0 1 2 4 7 8 12 16 17 18\r\n",
+                "1.5707963268\r\n1.5707963268\r\n1.5707963268\r\n3.1415926536\r\n1.5707963268\r\n3.1415926536\r\n1.5707963268\r\n1.5707963268\r\n1.5707963268\r\n3.1415926536\r\n"
+            ],
+            [
+                "10 3\r\n0 3 7 9 10 11 15 19 22 25\r\n10\r\n0 1 3 6 7 8 12 15 16 24\r\n",
+                "1.5707963268\r\n1.5707963268\r\n1.5707963268\r\n0.9272952180\r\n1.5707963268\r\n1.5707963268\r\n1.5707963268\r\n1.5707963268\r\n1.5707963268\r\n1.5707963268\r\n"
+            ],
+            [
+                "10 4\r\n0 4 8 9 12 15 19 23 28 30\r\n10\r\n2 3 5 14 18 21 22 23 24 27\r\n",
+                "0.9272952180\r\n0.9272952180\r\n1.5707963268\r\n1.5707963268\r\n0.9272952180\r\n0.9272952180\r\n0.9272952180\r\n1.5707963268\r\n1.5707963268\r\n0.7853981634\r\n"
+            ],
+            [
+                "10 10\r\n0 3 13 21 31 42 52 57 59 67\r\n10\r\n12 25 29 30 37 39 40 52 56 67\r\n",
+                "0.7853981634\r\n0.3217505544\r\n0.4636476090\r\n0.7853981634\r\n0.3947911197\r\n0.3217505544\r\n0.4636476090\r\n1.5707963268\r\n0.7853981634\r\n1.5707963268\r\n"
+            ],
+            [
+                "5 3\r\n0 1 5 9 10\r\n4\r\n1 3 7 8\r\n",
+                "3.1415926536\r\n0.9272952180\r\n0.9272952180\r\n0.9272952180\r\n"
+            ],
+            [
+                "5 3\r\n0 1 5 8 9\r\n4\r\n0 3 8 9\r\n",
+                "1.5707963268\r\n0.9272952180\r\n1.5707963268\r\n3.1415926536\r\n"
+            ],
+            [
+                "5 18\r\n0 6 11 20 23\r\n25\r\n0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24\r\n",
+                "1.5707963268\r\n1.5707963268\r\n0.7853981634\r\n0.6435011088\r\n0.6435011088\r\n0.7853981634\r\n1.5707963268\r\n1.5707963268\r\n0.7853981634\r\n0.9272952180\r\n0.7853981634\r\n1.5707963268\r\n1.5707963268\r\n0.7853981634\r\n0.4636476090\r\n0.3217505544\r\n0.4899573263\r\n0.3302973548\r\n0.4636476090\r\n0.7853981634\r\n1.5707963268\r\n1.5707963268\r\n1.5707963268\r\n1.5707963268\r\n1.5707963268\r\n"
+            ],
+            [
+                "1 0\r\n0\r\n2\r\n0 1\r\n",
+                "1.5707963268\r\n1.5707963268\r\n"
+            ],
+            [
+                "1 7000\r\n0\r\n2\r\n0 1\r\n",
+                "1.5707963268\r\n1.5707963268\r\n"
+            ],
+            [
+                "1 0\r\n0\r\n1\r\n0\r\n",
+                "1.5707963268\r\n"
+            ],
+            [
+                "3 7000\r\n0 7000 14001\r\n5\r\n10498 10499 10500 10501 10502\r\n",
+                "0.0002859594\r\n0.0002858776\r\n0.0002857959\r\n0.0005714286\r\n0.0002857959\r\n"
+            ],
+            [
+                "3 7000\r\n0 7000 14000\r\n5\r\n10498 10499 10500 10501 10502\r\n",
+                "0.0002859594\r\n0.0002858776\r\n0.0005714286\r\n0.0005714286\r\n0.0002858776\r\n"
+            ]
+        ]
+    }
+]

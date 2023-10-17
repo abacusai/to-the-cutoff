@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Omkar and Pies",
+        "description": "Omkar has a pie tray with \n    k\n (\n    2 \n    \u2264 k \n    \u2264 20\n) spots. Each\nspot in the tray contains either a chocolate pie or a pumpkin pie. However,\nOmkar does not like the way that the pies are currently arranged, and has\nanother ideal arrangement that he would prefer instead. To assist Omkar,\n\n    n\n elves have gathered in a line to swap the pies in Omkar's tray. The\n\n    j\n-th elf from the left is able to swap the pies at positions \n    a_j\n\nand \n    b_j\n in the tray. In order to get as close to his ideal arrangement\nas possible, Omkar may choose a contiguous subsegment of the elves and then\npass his pie tray through the subsegment starting from the left. However,\nsince the elves have gone to so much effort to gather in a line, they request\nthat Omkar's chosen segment contain at least \n    m\n (\n    1 \n    \u2264 m \n    \u2264\n    n\n) elves. Formally, Omkar may choose two integers \n    l\n and \n    r\n\nsatisfying \n    1 \n    \u2264 l \n    \u2264 r \n    \u2264 n\n and \n    r - l + 1 \n    \u2265 m\n so\nthat first the pies in positions \n    a_l\n and \n    b_l\n will be swapped, then\nthe pies in positions \n    a_l + 1\n and \n    b_l + 1\n will be swapped,\netc. until finally the pies in positions \n    a_r\n and \n    b_r\n are swapped.\nHelp Omkar choose a segment of elves such that the amount of positions in\nOmkar's final arrangement that contain the same type of pie as in his ideal\narrangement is the maximum possible. Note that since Omkar has a big\nimagination, it might be that the amounts of each type of pie in his original\narrangement and in his ideal arrangement do not match. Input The first line\ncontains three integers \n    n\n, \n    m\n, and \n    k\n (\n    1 \n    \u2264 m \n    \u2264 n\n    \n    \u2264 10^6\n and \n    2 \n    \u2264 k \n    \u2264 20\n) \u2014 the number of elves, the\nminimum subsegment length, and the number of spots in Omkar's tray\nrespectively. The second and third lines each contain a string of length\n\n    k\n consisting of \n    0\ns and \n    1\ns that represent initial arrangement\nof pies and ideal arrangement of pies; the \n    j\n-th character in each string\nis equal to \n    0\n if the \n    j\n-th spot in the arrangement contains a\nchocolate pie and is equal to \n    1\n if the \n    j\n-th spot in the\narrangement contains a pumpkin pie. It is not guaranteed that the two strings\nhave the same amount of \n    0\ns or the same amount of \n    1\ns. \n    n\n lines\nfollow. The \n    j\n-th of these lines contains two integers \n    a_j\n and\n\n    b_j\n (\n    1 \n    \u2264 a_j, b_j \n    \u2264 k\n, \n    a_j \n    \u2260 b_j\n) which\nindicate that the \n    j\n-th elf from the left can swap the pies at positions\n\n    a_j\n and \n    b_j\n in the tray. Output Output two lines. The first line\nshould contain a single integer \n    s\n (\n    0 \n    \u2264 s \n    \u2264 k\n) equal to\nthe amount of positions that contain the same type of pie in Omkar's final\narrangement and in Omkar's ideal arrangement; \n    s\n should be the maximum\npossible. The second line should contain two integers \n    l\n and \n    r\n\nsatisfying \n    1 \n    \u2264 l \n    \u2264 r \n    \u2264 n\n and \n    r - l + 1 \n    \u2265 m\n,\nindicating that Omkar should pass his tray through the subsegment \n    l, l + 1,\n    \n    \u2026, r\n to achieve a final arrangement with \n    s\n positions having the\nsame type of pie as his ideal arrangement. If there are multiple answers you\nmay output any of them. Examples Input 4 2 5 11000 00011 1 3 3 5 4 2 3 4\nOutput 5 1 3 Input 4 3 5 11000 00011 1 3 1 5 2 4 1 5 Output 3 1 4 Note In the\nfirst test case, the swaps will go like this: Swap \n    1\n and \n    3\n: 11000\nbecomes 01100 Swap \n    3\n and \n    5\n: 01100 becomes 01001 Swap \n    4\n and\n\n    2\n: 01001 becomes 00011 The final arrangement is the same as the ideal\narrangement 00011, so there are \n    5\n positions with the same type of pie,\nwhich is optimal.In the second test case, the swaps will go like this: Swap\n\n    1\n and \n    3\n: 11000 becomes 01100 Swap \n    1\n and \n    5\n: 01100\nbecomes 01100 Swap \n    4\n and \n    2\n: 01100 becomes 00110 Swap \n    1\n and\n\n    5\n: 00110 becomes 00110 The final arrangement has \n    3\n positions with\nthe same type of pie as the ideal arrangement 00011, those being positions\n\n    1\n, \n    2\n, and \n    4\n. In this case the subsegment of elves \n    (l, r)\n    = (2, 3)\n is more optimal, but that subsegment is only length \n    2\n and\ntherefore does not satisfy the constraint that the subsegment be of length at\nleast \n    m = 3\n.\n\n",
+        "cf_contest_id": 1392,
+        "cf_index": "G",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dfs and similar",
+            "dp",
+            "math",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 2 5\r\n11000\r\n00011\r\n1 3\r\n3 5\r\n4 2\r\n3 4\r\n",
+                "5\r\n1 3\r\n"
+            ],
+            [
+                "4 3 5\r\n11000\r\n00011\r\n1 3\r\n1 5\r\n2 4\r\n1 5\r\n",
+                "3\r\n1 4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 2 4\r\n0011\r\n1100\r\n1 2\r\n2 4\r\n1 3\r\n",
+                "4\r\n1 3\r\n"
+            ],
+            [
+                "5 3 2\r\n01\r\n11\r\n1 2\r\n1 2\r\n1 2\r\n2 1\r\n2 1\r\n",
+                "1\r\n2 5\r\n"
+            ],
+            [
+                "1 1 4\r\n1110\r\n1101\r\n2 1\r\n",
+                "2\r\n1 1\r\n"
+            ],
+            [
+                "10 5 12\r\n100101000111\r\n011011001011\r\n10 8\r\n8 1\r\n3 8\r\n12 10\r\n9 7\r\n8 4\r\n10 11\r\n10 5\r\n10 11\r\n5 10\r\n",
+                "9\r\n2 8\r\n"
+            ],
+            [
+                "1 1 2\r\n00\r\n11\r\n1 2\r\n",
+                "0\r\n1 1\r\n"
+            ]
+        ]
+    }
+]

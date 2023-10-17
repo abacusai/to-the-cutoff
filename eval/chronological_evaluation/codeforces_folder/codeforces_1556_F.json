@@ -1,0 +1,132 @@
+[
+    {
+        "name": "Sports Betting",
+        "description": "William is not only interested in trading but also in betting on sports\nmatches. \n    n\n teams participate in each match. Each team is characterized\nby strength \n    a_i\n. Each two teams \n    i < j\n play with each other exactly\nonce. Team \n    i\n wins with probability \n    a_i/a_i + a_j\n and\nteam \n    j\n wins with probability \n    a_j/a_i + a_j\n. The team is\ncalled a winner if it directly or indirectly defeated all other teams. Team\n\n    a\n defeated (directly or indirectly) team \n    b\n if there is a sequence\nof teams \n    c_1\n, \n    c_2\n, ... \n    c_k\n such that \n    c_1 = a\n, \n    c_k =\n    b\n and team \n    c_i\n defeated team \n    c_i + 1\n for all \n    i\n from\n\n    1\n to \n    k - 1\n. Note that it is possible that team \n    a\n defeated\nteam \n    b\n and in the same time team \n    b\n defeated team \n    a\n. William\nwants you to find the expected value of the number of winners. Input The first\nline contains a single integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264 14\n), which is\nthe total number of teams participating in a match. The second line contains\n\n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    1 \n    \u2264 a_i \n    \u2264 10^6\n)\n\u2014 the strengths of teams participating in a match. Output Output a single\ninteger \u2014 the expected value of the number of winners of the tournament modulo\n\n    10^9 + 7\n. Formally, let \n    M = 10^9+7\n. It can be demonstrated that\nthe answer can be presented as a irreducible fraction \n    p/q\n,\nwhere \n    p\n and \n    q\n are integers and \n    q \n    \u2261 0\n    \n    M\n. Output a single integer equal to \n    p \n    \u00b7 q^-1\n    \n    M\n. In other words, output an integer \n    x\n such that \n    0 \n    \u2264 x < M\n\nand \n    x \n    \u00b7 q \n    \u2261 p \n    M\n. Examples Input 2 1 2 Output 1\nInput 5 1 5 2 11 14 Output 642377629 Note To better understand in which\nsituation several winners are possible let's examine the second test: One\npossible result of the tournament is as follows (\n    a \n    \u2192 b\n means\nthat \n    a\n defeated \n    b\n): \n    1 \n    \u2192 2\n \n    2 \n    \u2192\n    3\n \n    3 \n    \u2192 1\n \n    1 \n    \u2192 4\n \n    1 \n    \u2192 5\n\n\n    2 \n    \u2192 4\n \n    2 \n    \u2192 5\n \n    3 \n    \u2192 4\n \n    3\n    \n    \u2192 5\n \n    4 \n    \u2192 5\n Or more clearly in the picture: In\nthis case every team from the set \n    1, 2, 3\n directly or\nindirectly defeated everyone. I.e.: \n    1\nst defeated everyone because they\ncan get to everyone else in the following way \n    1 \n    \u2192 2\n, \n    1\n    \n    \u2192 2 \n    \u2192 3\n, \n    1 \n    \u2192 4\n, \n    1\n    \n    \u2192 5\n. \n    2\nnd defeated everyone because they can get to\neveryone else in the following way \n    2 \n    \u2192 3\n, \n    2 \n    \u2192\n    3 \n    \u2192 1\n, \n    2 \n    \u2192 4\n, \n    2 \n    \u2192 5\n.\n\n    3\nrd defeated everyone because they can get to everyone else in the\nfollowing way \n    3 \n    \u2192 1\n, \n    3 \n    \u2192 1 \n    \u2192\n    2\n, \n    3 \n    \u2192 4\n, \n    3 \n    \u2192 5\n. Therefore the total\nnumber of winners is \n    3\n.\n\n",
+        "cf_contest_id": 1556,
+        "cf_index": "F",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "combinatorics",
+            "dp",
+            "graphs",
+            "math",
+            "probabilities"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n1 2\r\n",
+                "1"
+            ],
+            [
+                "5\r\n1 5 2 11 14\r\n",
+                "642377629"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n9 6\r\n",
+                "1"
+            ],
+            [
+                "3\r\n4 10 5\r\n",
+                "89947092"
+            ],
+            [
+                "10\r\n1 9 7 6 2 4 7 8 1 3\r\n",
+                "995291820"
+            ],
+            [
+                "11\r\n913 380 423 296 411 508 201 365 269 274 579\r\n",
+                "647164977"
+            ],
+            [
+                "12\r\n568 458 137 58 355 983 701 835 7 849 264 878\r\n",
+                "179581657"
+            ],
+            [
+                "13\r\n586 21 307 710 326 244 494 644 828 728 584 813 617\r\n",
+                "500165153"
+            ],
+            [
+                "14\r\n488 833 588 491 85 447 322 106 650 126 223 693 984 685\r\n",
+                "194957594"
+            ],
+            [
+                "12\r\n392850 5106 875938 182161 428704 549289 288659 412650 535721 134149 452414 453967\r\n",
+                "515132587"
+            ],
+            [
+                "13\r\n452567 580573 27296 812248 218626 328837 868975 176517 736201 270296 225172 23028 47340\r\n",
+                "864106260"
+            ],
+            [
+                "14\r\n545080 13831 180978 556240 852094 739947 99235 740412 138318 518124 325478 570980 412253 641847\r\n",
+                "471339154"
+            ],
+            [
+                "14\r\n932599 462003 719720 321067 362271 31732 836115 73835 868535 685045 358243 804739 871923 714520\r\n",
+                "142568555"
+            ],
+            [
+                "14\r\n773020 626606 229767 819440 835662 421025 648566 788973 534084 503561 199518 199286 513201 970054\r\n",
+                "887474390"
+            ],
+            [
+                "14\r\n350 467 253 745 994 395 401 838 451 705 246 824 852 817\r\n",
+                "770394949"
+            ],
+            [
+                "14\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "153058397"
+            ],
+            [
+                "14\r\n793 488 221 685 239 826 67 424 417 624 754 55 657 491\r\n",
+                "484216773"
+            ],
+            [
+                "14\r\n416725 556698 892954 32653 877279 908314 122217 824152 622779 650928 501392 124547 421156 129675\r\n",
+                "860752029"
+            ],
+            [
+                "14\r\n33 233 600 904 444 816 416 58 696 357 30 734 787 357\r\n",
+                "725206395"
+            ],
+            [
+                "14\r\n268857 695694 557001 884820 122196 329957 684833 731432 188679 872995 675483 848385 884753 56789\r\n",
+                "583771632"
+            ],
+            [
+                "14\r\n388476 69205 999786 126134 237055 852019 941823 97342 475248 387871 671185 761607 556363 679652\r\n",
+                "391722729"
+            ],
+            [
+                "14\r\n401044 758089 82255 790102 212728 785191 832823 104194 750777 881834 560179 267079 907111 3525\r\n",
+                "455974765"
+            ],
+            [
+                "14\r\n149608 597680 874076 824734 801049 4348 361955 604531 460105 148924 159353 57293 219920 194128\r\n",
+                "609160221"
+            ],
+            [
+                "14\r\n377009 239791 28924 685533 443967 492739 535930 550705 271748 320845 381411 199375 522141 920370\r\n",
+                "901476181"
+            ],
+            [
+                "14\r\n539620 742257 944291 357720 558230 451924 994492 190387 595054 564765 280369 86921 178571 433458\r\n",
+                "941582496"
+            ],
+            [
+                "14\r\n714695 867413 737183 223488 218469 947100 187044 793834 291670 596042 478542 407034 630424 472220\r\n",
+                "283370078"
+            ],
+            [
+                "14\r\n174246 385386 668550 277191 580170 931839 932043 93741 426006 279111 856194 938122 613828 658358\r\n",
+                "26772761"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,186 @@
+[
+    {
+        "name": "Dwarves, Hats and Extrasensory Abilities",
+        "description": "This is an interactive problem. In good old times dwarves tried to develop\nextrasensory abilities: Exactly n dwarves entered completely dark cave. Each\ndwarf received a hat \u2014 white or black. While in cave, none of the dwarves was\nable to see either his own hat or hats of other Dwarves. Dwarves went out of\nthe cave to the meadow and sat at an arbitrary place one after the other. When\na dwarf leaves the cave, he sees the colors of all hats of all dwarves that\nare seating on the meadow (i.e. left the cave before him). However, he is not\nable to see the color of his own hat and none of the dwarves can give him this\ninformation. The task for dwarves was to got diverged into two parts \u2014 one\nwith dwarves with white hats and one with black hats. After many centuries,\ndwarves finally managed to select the right place on the meadow without error.\nWill you be able to repeat their success? You are asked to successively name n\ndifferent integer points on the plane. After naming each new point you will be\ngiven its color \u2014 black or white. Your task is to ensure that the named points\ncan be split by a line in such a way that all points of one color lie on the\nsame side from the line and points of different colors lie on different sides.\nMoreover, no points can belong to the line. Also, you need to report any such\nline at the end of the process. In this problem, the interactor is adaptive \u2014\nthe colors of the points in the tests are not fixed beforehand and the jury\nprogram can select them arbitrarily, in particular, depending on your program\noutput. Interaction The first line of the standard input stream contains an\ninteger n (1 \u2264 n \u2264 30) \u2014 the number of points your program should name. Then n\ntimes your program must print two integer coordinates x and y (0 \u2264 x \u2264 10^9, 0\n\u2264 y \u2264 10^9). All points you print must be distinct. In response to each\ncoordinate pair your program will receive the string \"black\", if the point is\nblack, or \"white\", if the point is white. When all n points are processed, you\nneed to print four integers x1, y1, x2 and y2 (0 \u2264 x1, y1 \u2264 10^9, 0 \u2264 x2, y2 \u2264\n10^9) \u2014 coordinates of points (x1, y1) and (x2, y2), which form a line, which\nseparates n points into black and white. Points (x1, y1) and (x2, y2) should\nnot coincide. Hacks To hack solution use the following format. The first line\nmust contain word \"hack\", the second line should contain the number n and the\nlast line should contain the sequence of 0 and 1 \u2014 colors of points, which\nwill be reported to the solution. Unlike the jury tests, colors of points in\nhacks are always fixed in advance. Of course, the hacked solution wouldn't be\nable to get the information about the colors in advance. For example, the hack\ncorresponding to sample test will look like this: hack 5 0 0 1 1 0 Example\nInput 5 black black white white black Output 0 0 3 1 2 3 4 4 0 2 1 3 4 1 Note\nIn the sample input and output values are aligned only for simplicity of\ninterpreting them chronologically. In real interaction no \"extra\" line breaks\nshould appear. The following picture illustrates the first test.\n\n",
+        "cf_contest_id": 1063,
+        "cf_index": "C",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "constructive algorithms",
+            "geometry",
+            "interactive"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "hack\r\n5\r\n0 0 1 1 0\r\n",
+                "< 5\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< black\r\n> 1 750000000\r\n< white\r\n> 1 625000000\r\n< white\r\n> 1 562500000\r\n< black\r\n> 0 625000000 2 624999999\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "predefined\r\n5\r\n0 1 0 1 1\r\n",
+                "< 5\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< white\r\n> 1 250000000\r\n< black\r\n> 1 375000000\r\n< white\r\n> 1 312500000\r\n< white\r\n> 0 312500000 2 312499999\r\n"
+            ],
+            [
+                "predefined\r\n1\r\n0\r\n",
+                "< 1\r\n> 1 0\r\n< black\r\n> 0 999999999 2 999999998\r\n"
+            ],
+            [
+                "predefined\r\n1\r\n1\r\n",
+                "< 1\r\n> 1 0\r\n< white\r\n> 0 999999999 2 999999998\r\n"
+            ],
+            [
+                "predefined\r\n2\r\n0 0\r\n",
+                "< 2\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< black\r\n> 0 999999999 2 999999998\r\n"
+            ],
+            [
+                "predefined\r\n2\r\n0 1\r\n",
+                "< 2\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< white\r\n> 0 500000000 2 499999999\r\n"
+            ],
+            [
+                "random\r\n20\r\n11\r\n",
+                "< 20\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< black\r\n> 1 750000000\r\n< black\r\n> 1 875000000\r\n< black\r\n> 1 937500000\r\n< black\r\n> 1 968750000\r\n< black\r\n> 1 984375000\r\n< black\r\n> 1 992187500\r\n< black\r\n> 1 996093750\r\n< white\r\n> 1 994140625\r\n< black\r\n> 1 995117188\r\n< white\r\n> 1 994628907\r\n< black\r\n> 1 994873048\r\n< white\r\n> 1 994750978\r\n< black\r\n> 1 994812013\r\n< white\r\n> 1 994781496\r\n< white\r\n> 1 994766237\r\n< black\r\n> 1 994773867\r\n< black\r\n> 1 994777682\r\n< black\r\n> 1 994779589\r\n< white\r\n> 0 994779589 2 994779588\r\n"
+            ],
+            [
+                "random\r\n20\r\n12\r\n",
+                "< 20\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< white\r\n> 1 250000000\r\n< black\r\n> 1 375000000\r\n< white\r\n> 1 312500000\r\n< black\r\n> 1 343750000\r\n< black\r\n> 1 359375000\r\n< white\r\n> 1 351562500\r\n< white\r\n> 1 347656250\r\n< white\r\n> 1 345703125\r\n< black\r\n> 1 346679688\r\n< black\r\n> 1 347167969\r\n< black\r\n> 1 347412110\r\n< black\r\n> 1 347534180\r\n< white\r\n> 1 347473145\r\n< black\r\n> 1 347503663\r\n< white\r\n> 1 347488404\r\n< black\r\n> 1 347496034\r\n< white\r\n> 1 347492219\r\n< white\r\n> 1 347490312\r\n< black\r\n> 0 347492219 2 347492218\r\n"
+            ],
+            [
+                "chess\r\n11\r\n",
+                "< 11\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< white\r\n> 1 875000000\r\n< white\r\n> 1 937500000\r\n< white\r\n> 1 968750000\r\n< white\r\n> 1 984375000\r\n< white\r\n> 1 992187500\r\n< white\r\n> 1 996093750\r\n< white\r\n> 1 998046875\r\n< black\r\n> 1 997070313\r\n< black\r\n> 0 997070313 2 997070312\r\n"
+            ],
+            [
+                "chess\r\n19\r\n",
+                "< 19\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< white\r\n> 1 875000000\r\n< white\r\n> 1 937500000\r\n< white\r\n> 1 968750000\r\n< white\r\n> 1 984375000\r\n< white\r\n> 1 992187500\r\n< white\r\n> 1 996093750\r\n< white\r\n> 1 998046875\r\n< black\r\n> 1 997070313\r\n< black\r\n> 1 996582032\r\n< white\r\n> 1 996826173\r\n< black\r\n> 1 996704103\r\n< black\r\n> 1 996643068\r\n< white\r\n> 1 996673586\r\n< white\r\n> 1 996688845\r\n< black\r\n> 1 996681216\r\n< white\r\n> 1 996685031\r\n< black\r\n> 0 996685031 2 996685030\r\n"
+            ],
+            [
+                "predefined\r\n16\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0\r\n",
+                "< 16\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< white\r\n> 1 875000000\r\n< white\r\n> 1 937500000\r\n< white\r\n> 1 968750000\r\n< white\r\n> 1 984375000\r\n< white\r\n> 1 992187500\r\n< white\r\n> 1 996093750\r\n< white\r\n> 1 998046875\r\n< white\r\n> 1 999023437\r\n< white\r\n> 1 999511718\r\n< white\r\n> 1 999755859\r\n< white\r\n> 1 999877929\r\n< white\r\n> 1 999938964\r\n< white\r\n> 1 999969482\r\n< black\r\n> 0 999969482 2 999969481\r\n"
+            ],
+            [
+                "random\r\n1\r\n1\r\n",
+                "< 1\r\n> 1 0\r\n< white\r\n> 0 999999999 2 999999998\r\n"
+            ],
+            [
+                "random\r\n2\r\n1\r\n",
+                "< 2\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< black\r\n> 0 500000000 2 499999999\r\n"
+            ],
+            [
+                "random\r\n3\r\n1\r\n",
+                "< 3\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< black\r\n> 0 750000000 2 749999999\r\n"
+            ],
+            [
+                "random\r\n4\r\n1\r\n",
+                "< 4\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< black\r\n> 1 750000000\r\n< white\r\n> 1 625000000\r\n< white\r\n> 0 625000000 2 624999999\r\n"
+            ],
+            [
+                "random\r\n5\r\n1\r\n",
+                "< 5\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< white\r\n> 1 250000000\r\n< black\r\n> 1 375000000\r\n< black\r\n> 1 437500000\r\n< black\r\n> 0 500000000 2 499999999\r\n"
+            ],
+            [
+                "random\r\n6\r\n1\r\n",
+                "< 6\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< black\r\n> 1 750000000\r\n< white\r\n> 1 625000000\r\n< white\r\n> 1 562500000\r\n< white\r\n> 1 531250000\r\n< black\r\n> 0 562500000 2 562499999\r\n"
+            ],
+            [
+                "random\r\n7\r\n1\r\n",
+                "< 7\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< black\r\n> 1 750000000\r\n< white\r\n> 1 625000000\r\n< white\r\n> 1 562500000\r\n< white\r\n> 1 531250000\r\n< white\r\n> 1 515625000\r\n< white\r\n> 0 515625000 2 515624999\r\n"
+            ],
+            [
+                "random\r\n8\r\n1\r\n",
+                "< 8\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< black\r\n> 1 750000000\r\n< white\r\n> 1 625000000\r\n< white\r\n> 1 562500000\r\n< black\r\n> 1 593750000\r\n< white\r\n> 1 578125000\r\n< white\r\n> 1 570312500\r\n< black\r\n> 0 578125000 2 578124999\r\n"
+            ],
+            [
+                "random\r\n9\r\n1\r\n",
+                "< 9\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< black\r\n> 1 750000000\r\n< white\r\n> 1 625000000\r\n< white\r\n> 1 562500000\r\n< black\r\n> 1 593750000\r\n< black\r\n> 1 609375000\r\n< black\r\n> 1 617187500\r\n< black\r\n> 1 621093750\r\n< white\r\n> 0 621093750 2 621093749\r\n"
+            ],
+            [
+                "random\r\n10\r\n1\r\n",
+                "< 10\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< white\r\n> 1 250000000\r\n< black\r\n> 1 375000000\r\n< black\r\n> 1 437500000\r\n< white\r\n> 1 406250000\r\n< black\r\n> 1 421875000\r\n< black\r\n> 1 429687500\r\n< black\r\n> 1 433593750\r\n< white\r\n> 1 431640625\r\n< white\r\n> 0 431640625 2 431640624\r\n"
+            ],
+            [
+                "random\r\n11\r\n1\r\n",
+                "< 11\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< white\r\n> 1 250000000\r\n< black\r\n> 1 375000000\r\n< white\r\n> 1 312500000\r\n< white\r\n> 1 281250000\r\n< white\r\n> 1 265625000\r\n< black\r\n> 1 273437500\r\n< black\r\n> 1 277343750\r\n< black\r\n> 1 279296875\r\n< white\r\n> 1 278320313\r\n< white\r\n> 0 278320313 2 278320312\r\n"
+            ],
+            [
+                "random\r\n12\r\n1\r\n",
+                "< 12\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< white\r\n> 1 250000000\r\n< black\r\n> 1 375000000\r\n< black\r\n> 1 437500000\r\n< white\r\n> 1 406250000\r\n< white\r\n> 1 390625000\r\n< black\r\n> 1 398437500\r\n< black\r\n> 1 402343750\r\n< black\r\n> 1 404296875\r\n< white\r\n> 1 403320313\r\n< white\r\n> 1 402832032\r\n< black\r\n> 0 403320313 2 403320312\r\n"
+            ],
+            [
+                "random\r\n13\r\n1\r\n",
+                "< 13\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< black\r\n> 1 750000000\r\n< black\r\n> 1 875000000\r\n< white\r\n> 1 812500000\r\n< black\r\n> 1 843750000\r\n< white\r\n> 1 828125000\r\n< black\r\n> 1 835937500\r\n< black\r\n> 1 839843750\r\n< white\r\n> 1 837890625\r\n< white\r\n> 1 836914063\r\n< black\r\n> 1 837402344\r\n< black\r\n> 1 837646485\r\n< white\r\n> 0 837646485 2 837646484\r\n"
+            ],
+            [
+                "random\r\n14\r\n1\r\n",
+                "< 14\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< white\r\n> 1 250000000\r\n< white\r\n> 1 125000000\r\n< black\r\n> 1 187500000\r\n< black\r\n> 1 218750000\r\n< white\r\n> 1 203125000\r\n< black\r\n> 1 210937500\r\n< black\r\n> 1 214843750\r\n< white\r\n> 1 212890625\r\n< black\r\n> 1 213867188\r\n< black\r\n> 1 214355469\r\n< white\r\n> 1 214111329\r\n< black\r\n> 1 214233399\r\n< black\r\n> 0 214355469 2 214355468\r\n"
+            ],
+            [
+                "random\r\n15\r\n1\r\n",
+                "< 15\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< white\r\n> 1 250000000\r\n< black\r\n> 1 375000000\r\n< black\r\n> 1 437500000\r\n< white\r\n> 1 406250000\r\n< black\r\n> 1 421875000\r\n< white\r\n> 1 414062500\r\n< black\r\n> 1 417968750\r\n< black\r\n> 1 419921875\r\n< black\r\n> 1 420898438\r\n< white\r\n> 1 420410157\r\n< white\r\n> 1 420166016\r\n< black\r\n> 1 420288087\r\n< white\r\n> 1 420227052\r\n< black\r\n> 0 420288087 2 420288086\r\n"
+            ],
+            [
+                "random\r\n16\r\n1\r\n",
+                "< 16\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< black\r\n> 1 625000000\r\n< black\r\n> 1 562500000\r\n< white\r\n> 1 593750000\r\n< black\r\n> 1 578125000\r\n< black\r\n> 1 570312500\r\n< white\r\n> 1 574218750\r\n< white\r\n> 1 576171875\r\n< white\r\n> 1 577148438\r\n< black\r\n> 1 576660157\r\n< black\r\n> 1 576416016\r\n< white\r\n> 1 576538087\r\n< white\r\n> 1 576599122\r\n< white\r\n> 1 576629640\r\n< black\r\n> 0 576629640 2 576629639\r\n"
+            ],
+            [
+                "random\r\n17\r\n1\r\n",
+                "< 17\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< white\r\n> 1 875000000\r\n< black\r\n> 1 812500000\r\n< white\r\n> 1 843750000\r\n< white\r\n> 1 859375000\r\n< white\r\n> 1 867187500\r\n< white\r\n> 1 871093750\r\n< black\r\n> 1 869140625\r\n< white\r\n> 1 870117188\r\n< black\r\n> 1 869628907\r\n< black\r\n> 1 869384766\r\n< white\r\n> 1 869506837\r\n< white\r\n> 1 869567872\r\n< black\r\n> 1 869537355\r\n< white\r\n> 1 869552614\r\n< black\r\n> 0 869552614 2 869552613\r\n"
+            ],
+            [
+                "random\r\n18\r\n1\r\n",
+                "< 18\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< black\r\n> 1 250000000\r\n< black\r\n> 1 125000000\r\n< white\r\n> 1 187500000\r\n< black\r\n> 1 156250000\r\n< black\r\n> 1 140625000\r\n< white\r\n> 1 148437500\r\n< white\r\n> 1 152343750\r\n< black\r\n> 1 150390625\r\n< white\r\n> 1 151367188\r\n< white\r\n> 1 151855469\r\n< white\r\n> 1 152099610\r\n< black\r\n> 1 151977540\r\n< white\r\n> 1 152038575\r\n< black\r\n> 1 152008058\r\n< black\r\n> 1 151992799\r\n< black\r\n> 1 151985170\r\n< black\r\n> 0 151985170 2 151985169\r\n"
+            ],
+            [
+                "random\r\n19\r\n1\r\n",
+                "< 19\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< black\r\n> 1 625000000\r\n< white\r\n> 1 687500000\r\n< black\r\n> 1 656250000\r\n< white\r\n> 1 671875000\r\n< black\r\n> 1 664062500\r\n< white\r\n> 1 667968750\r\n< white\r\n> 1 669921875\r\n< white\r\n> 1 670898438\r\n< white\r\n> 1 671386719\r\n< black\r\n> 1 671142579\r\n< white\r\n> 1 671264649\r\n< black\r\n> 1 671203614\r\n< black\r\n> 1 671173097\r\n< white\r\n> 1 671188356\r\n< white\r\n> 1 671195985\r\n< white\r\n> 1 671199800\r\n< black\r\n> 0 671199800 2 671199799\r\n"
+            ],
+            [
+                "random\r\n20\r\n1\r\n",
+                "< 20\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< black\r\n> 1 250000000\r\n< black\r\n> 1 125000000\r\n< white\r\n> 1 187500000\r\n< white\r\n> 1 218750000\r\n< white\r\n> 1 234375000\r\n< white\r\n> 1 242187500\r\n< white\r\n> 1 246093750\r\n< white\r\n> 1 248046875\r\n< black\r\n> 1 247070313\r\n< white\r\n> 1 247558594\r\n< white\r\n> 1 247802735\r\n< black\r\n> 1 247680665\r\n< black\r\n> 1 247619630\r\n< white\r\n> 1 247650148\r\n< black\r\n> 1 247634889\r\n< white\r\n> 1 247642519\r\n< black\r\n> 1 247638704\r\n< black\r\n> 1 247636797\r\n< white\r\n> 0 247638704 2 247638703\r\n"
+            ],
+            [
+                "chess\r\n10\r\n",
+                "< 10\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< white\r\n> 1 875000000\r\n< white\r\n> 1 937500000\r\n< white\r\n> 1 968750000\r\n< white\r\n> 1 984375000\r\n< white\r\n> 1 992187500\r\n< white\r\n> 1 996093750\r\n< white\r\n> 1 998046875\r\n< black\r\n> 0 998046875 2 998046874\r\n"
+            ],
+            [
+                "chess\r\n20\r\n",
+                "< 20\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< white\r\n> 1 875000000\r\n< white\r\n> 1 937500000\r\n< white\r\n> 1 968750000\r\n< white\r\n> 1 984375000\r\n< white\r\n> 1 992187500\r\n< white\r\n> 1 996093750\r\n< white\r\n> 1 998046875\r\n< black\r\n> 1 997070313\r\n< black\r\n> 1 996582032\r\n< white\r\n> 1 996826173\r\n< black\r\n> 1 996704103\r\n< black\r\n> 1 996643068\r\n< white\r\n> 1 996673586\r\n< white\r\n> 1 996688845\r\n< black\r\n> 1 996681216\r\n< white\r\n> 1 996685031\r\n< black\r\n> 1 996683124\r\n< white\r\n> 0 996685031 2 996685030\r\n"
+            ],
+            [
+                "predefined\r\n8\r\n0 0 0 0 0 0 0 0\r\n",
+                "< 8\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< black\r\n> 1 750000000\r\n< black\r\n> 1 875000000\r\n< black\r\n> 1 937500000\r\n< black\r\n> 1 968750000\r\n< black\r\n> 1 984375000\r\n< black\r\n> 1 992187500\r\n< black\r\n> 0 999999999 2 999999998\r\n"
+            ],
+            [
+                "predefined\r\n8\r\n1 1 1 1 1 1 1 1\r\n",
+                "< 8\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< white\r\n> 1 875000000\r\n< white\r\n> 1 937500000\r\n< white\r\n> 1 968750000\r\n< white\r\n> 1 984375000\r\n< white\r\n> 1 992187500\r\n< white\r\n> 0 999999999 2 999999998\r\n"
+            ],
+            [
+                "predefined\r\n8\r\n0 1 0 1 0 1 0 1\r\n",
+                "< 8\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< white\r\n> 1 250000000\r\n< black\r\n> 1 375000000\r\n< white\r\n> 1 312500000\r\n< black\r\n> 1 343750000\r\n< white\r\n> 1 328125000\r\n< black\r\n> 1 335937500\r\n< white\r\n> 0 335937500 2 335937499\r\n"
+            ],
+            [
+                "predefined\r\n8\r\n1 1 1 1 1 1 1 0\r\n",
+                "< 8\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< white\r\n> 1 875000000\r\n< white\r\n> 1 937500000\r\n< white\r\n> 1 968750000\r\n< white\r\n> 1 984375000\r\n< white\r\n> 1 992187500\r\n< black\r\n> 0 992187500 2 992187499\r\n"
+            ],
+            [
+                "predefined\r\n15\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "< 15\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< black\r\n> 1 750000000\r\n< black\r\n> 1 875000000\r\n< black\r\n> 1 937500000\r\n< black\r\n> 1 968750000\r\n< black\r\n> 1 984375000\r\n< black\r\n> 1 992187500\r\n< black\r\n> 1 996093750\r\n< black\r\n> 1 998046875\r\n< black\r\n> 1 999023437\r\n< black\r\n> 1 999511718\r\n< black\r\n> 1 999755859\r\n< black\r\n> 1 999877929\r\n< black\r\n> 1 999938964\r\n< black\r\n> 0 999999999 2 999999998\r\n"
+            ],
+            [
+                "predefined\r\n15\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "< 15\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< white\r\n> 1 875000000\r\n< white\r\n> 1 937500000\r\n< white\r\n> 1 968750000\r\n< white\r\n> 1 984375000\r\n< white\r\n> 1 992187500\r\n< white\r\n> 1 996093750\r\n< white\r\n> 1 998046875\r\n< white\r\n> 1 999023437\r\n< white\r\n> 1 999511718\r\n< white\r\n> 1 999755859\r\n< white\r\n> 1 999877929\r\n< white\r\n> 1 999938964\r\n< white\r\n> 0 999999999 2 999999998\r\n"
+            ],
+            [
+                "predefined\r\n15\r\n0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\r\n",
+                "< 15\r\n> 1 0\r\n< black\r\n> 1 500000000\r\n< white\r\n> 1 250000000\r\n< black\r\n> 1 375000000\r\n< white\r\n> 1 312500000\r\n< black\r\n> 1 343750000\r\n< white\r\n> 1 328125000\r\n< black\r\n> 1 335937500\r\n< white\r\n> 1 332031250\r\n< black\r\n> 1 333984375\r\n< white\r\n> 1 333007813\r\n< black\r\n> 1 333496094\r\n< white\r\n> 1 333251954\r\n< black\r\n> 1 333374024\r\n< white\r\n> 1 333312989\r\n< black\r\n> 0 333374024 2 333374023\r\n"
+            ],
+            [
+                "predefined\r\n15\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 0\r\n",
+                "< 15\r\n> 1 0\r\n< white\r\n> 1 500000000\r\n< white\r\n> 1 750000000\r\n< white\r\n> 1 875000000\r\n< white\r\n> 1 937500000\r\n< white\r\n> 1 968750000\r\n< white\r\n> 1 984375000\r\n< white\r\n> 1 992187500\r\n< white\r\n> 1 996093750\r\n< white\r\n> 1 998046875\r\n< white\r\n> 1 999023437\r\n< white\r\n> 1 999511718\r\n< white\r\n> 1 999755859\r\n< white\r\n> 1 999877929\r\n< white\r\n> 1 999938964\r\n< black\r\n> 0 999938964 2 999938963\r\n"
+            ]
+        ]
+    }
+]

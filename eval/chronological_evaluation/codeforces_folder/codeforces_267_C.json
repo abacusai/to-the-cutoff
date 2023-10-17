@@ -1,0 +1,88 @@
+[
+    {
+        "name": "Berland Traffic",
+        "description": "Berland traffic is very different from traffic in other countries. The capital\nof Berland consists of n junctions and m roads. Each road connects a pair of\njunctions. There can be multiple roads between a pair of junctions. For each\nroad we know its capacity: value ci is the maximum number of cars that can\ndrive along a road in any direction per a unit of time. For each road, the\ncars can drive along it in one of two direction. That it, the cars can't\nsimultaneously move in both directions. A road's traffic is the number of cars\nthat goes along it per a unit of time. For road (ai, bi) this value is\nnegative, if the traffic moves from bi to ai. A road's traffic can be a non-\ninteger number. The capital has two special junctions \u2014 the entrance to the\ncity (junction 1) and the exit from the city (junction n). For all other\njunctions it is true that the traffic is not lost there. That is, for all\njunctions except for 1 and n the incoming traffic sum equals the outgoing\ntraffic sum. Traffic has an unusual peculiarity in the capital of Berland \u2014\nfor any pair of junctions (x, y) the sum of traffics along any path from x to\ny doesn't change depending on the choice of the path. Such sum includes\ntraffic along all roads on the path (possible with the \"minus\" sign, if the\ntraffic along the road is directed against the direction of the road on the\npath from x to y). Your task is to find the largest traffic that can pass\ntrough the city per one unit of time as well as the corresponding traffic for\neach road. Input The first line contains a positive integer n \u2014 the number of\njunctions (2 \u2264 n \u2264 100). The second line contains integer m (1 \u2264 m \u2264 5000) \u2014\nthe number of roads. Next m lines contain the roads' descriptions. Each road\ncontains a group of three numbers ai, bi, ci, where ai, bi are the numbers of\njunctions, connected by the given road, and ci (1 \u2264 ai, bi \u2264 n; ai \u2260 bi; 0 \u2264\nci \u2264 10000) is the largest permissible traffic along this road. Output In the\nfirst line print the required largest traffic across the city. Then print m\nlines, on each line print the speed, at which the traffic moves along the\ncorresponding road. If the direction doesn't match the order of the junctions,\ngiven in the input, then print the traffic with the minus sign. Print the\nnumbers with accuracy of at least five digits after the decimal point. If\nthere are many optimal solutions, print any of them. Examples Input 2 3 1 2 2\n1 2 4 2 1 1000 Output 6.00000 2.00000 2.00000 -2.00000 Input 7 11 1 2 7 1 2 7\n1 3 7 1 4 7 2 3 7 2 5 7 3 6 7 4 7 7 5 4 7 5 6 7 6 7 7 Output 13.00000 2.00000\n2.00000 3.00000 6.00000 1.00000 3.00000 4.00000 7.00000 1.00000 2.00000\n6.00000\n\n",
+        "cf_contest_id": 267,
+        "cf_index": "C",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "math",
+            "matrices"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n3\r\n1 2 2\r\n1 2 4\r\n2 1 1000\r\n",
+                "6.0000000000\r\n2.0000000000\r\n2.0000000000\r\n-2.0000000000\r\n"
+            ],
+            [
+                "7\r\n11\r\n1 2 7\r\n1 2 7\r\n1 3 7\r\n1 4 7\r\n2 3 7\r\n2 5 7\r\n3 6 7\r\n4 7 7\r\n5 4 7\r\n5 6 7\r\n6 7 7\r\n",
+                "13.0000000000\r\n2.0000000000\r\n2.0000000000\r\n3.0000000000\r\n6.0000000000\r\n1.0000000000\r\n3.0000000000\r\n4.0000000000\r\n7.0000000000\r\n1.0000000000\r\n2.0000000000\r\n6.0000000000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n1\r\n1 2 1\r\n",
+                "1.0000000000\r\n1.0000000000\r\n"
+            ],
+            [
+                "3\r\n2\r\n1 2 1\r\n2 3 2\r\n",
+                "1.0000000000\r\n1.0000000000\r\n1.0000000000\r\n"
+            ],
+            [
+                "3\r\n3\r\n1 2 1\r\n2 3 2\r\n1 3 1\r\n",
+                "1.5000000000\r\n0.5000000000\r\n0.5000000000\r\n1.0000000000\r\n"
+            ],
+            [
+                "2\r\n3\r\n1 2 4\r\n1 2 3\r\n1 2 2\r\n",
+                "6.0000000000\r\n2.0000000000\r\n2.0000000000\r\n2.0000000000\r\n"
+            ],
+            [
+                "3\r\n4\r\n1 2 34\r\n1 2 34\r\n2 3 34\r\n2 3 34\r\n",
+                "68.0000000000\r\n34.0000000000\r\n34.0000000000\r\n34.0000000000\r\n34.0000000000\r\n"
+            ],
+            [
+                "4\r\n5\r\n1 2 1\r\n2 4 1\r\n1 3 1\r\n3 4 1\r\n2 3 0\r\n",
+                "2.0000000000\r\n1.0000000000\r\n1.0000000000\r\n1.0000000000\r\n1.0000000000\r\n0.0000000000\r\n"
+            ],
+            [
+                "4\r\n6\r\n1 3 34\r\n1 2 34\r\n2 3 34\r\n3 4 34\r\n3 4 34\r\n3 4 34\r\n",
+                "51.0000000000\r\n34.0000000000\r\n17.0000000000\r\n17.0000000000\r\n17.0000000000\r\n17.0000000000\r\n17.0000000000\r\n"
+            ],
+            [
+                "8\r\n12\r\n1 3 153\r\n1 2 153\r\n2 4 153\r\n2 6 153\r\n2 5 153\r\n3 8 153\r\n3 4 153\r\n4 7 153\r\n5 6 153\r\n6 7 153\r\n6 8 153\r\n7 8 153\r\n",
+                "289.0000000000\r\n153.0000000000\r\n136.0000000000\r\n34.0000000000\r\n68.0000000000\r\n34.0000000000\r\n136.0000000000\r\n17.0000000000\r\n51.0000000000\r\n34.0000000000\r\n17.0000000000\r\n85.0000000000\r\n68.0000000000\r\n"
+            ],
+            [
+                "8\r\n13\r\n1 3 0\r\n1 2 3\r\n2 5 86\r\n2 6 20\r\n3 8 27\r\n3 4 67\r\n4 5 31\r\n5 7 16\r\n6 7 37\r\n6 7 42\r\n6 8 8\r\n7 8 47\r\n7 8 7\r\n",
+                "0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n"
+            ],
+            [
+                "8\r\n13\r\n1 3 10\r\n1 2 3\r\n2 5 86\r\n2 6 20\r\n3 8 27\r\n3 4 67\r\n4 5 31\r\n5 7 16\r\n6 7 37\r\n6 7 42\r\n6 8 8\r\n7 8 47\r\n7 8 7\r\n",
+                "6.3333333333\r\n3.3333333333\r\n3.0000000000\r\n1.0000000000\r\n2.0000000000\r\n3.0000000000\r\n0.3333333333\r\n0.3333333333\r\n1.3333333333\r\n0.3333333333\r\n0.3333333333\r\n1.3333333333\r\n1.0000000000\r\n1.0000000000\r\n"
+            ],
+            [
+                "11\r\n19\r\n1 3 10\r\n1 2 3\r\n2 4 86\r\n2 5 20\r\n2 8 27\r\n2 7 67\r\n3 11 31\r\n3 4 16\r\n4 5 37\r\n5 6 42\r\n6 8 8\r\n7 8 47\r\n7 9 7\r\n7 10 84\r\n7 10 5\r\n8 11 29\r\n8 9 91\r\n9 10 36\r\n10 11 77\r\n",
+                "6.0625000000\r\n3.0625000000\r\n3.0000000000\r\n0.1250000000\r\n0.3125000000\r\n1.3125000000\r\n1.2500000000\r\n3.0000000000\r\n0.0625000000\r\n0.1875000000\r\n0.5000000000\r\n0.5000000000\r\n0.0625000000\r\n0.1875000000\r\n0.5000000000\r\n0.5000000000\r\n1.7500000000\r\n0.1250000000\r\n0.3125000000\r\n1.3125000000\r\n"
+            ],
+            [
+                "10\r\n19\r\n2 3 202\r\n10 9 597\r\n7 6 528\r\n9 10 958\r\n9 2 636\r\n4 7 720\r\n5 2 475\r\n7 1 249\r\n2 10 882\r\n4 7 133\r\n2 8 407\r\n1 7 970\r\n6 3 715\r\n10 5 297\r\n5 10 963\r\n10 9 957\r\n2 7 970\r\n2 8 777\r\n9 8 841\r\n",
+                "498.0000000000\r\n-124.5000000000\r\n-64.9565217391\r\n124.5000000000\r\n64.9565217391\r\n-116.9217391304\r\n-0.0000000000\r\n-121.2521739130\r\n-249.0000000000\r\n181.8782608696\r\n-0.0000000000\r\n38.9739130435\r\n249.0000000000\r\n124.5000000000\r\n-60.6260869565\r\n60.6260869565\r\n-64.9565217391\r\n-373.5000000000\r\n38.9739130435\r\n-77.9478260870\r\n"
+            ],
+            [
+                "10\r\n8\r\n1 4 8297\r\n7 5 7356\r\n3 9 7159\r\n9 7 5646\r\n4 7 6283\r\n10 6 9899\r\n10 9 5214\r\n4 9 9181\r\n",
+                "5214.0000000000\r\n5214.0000000000\r\n0.0000000000\r\n0.0000000000\r\n-1738.0000000000\r\n1738.0000000000\r\n0.0000000000\r\n-5214.0000000000\r\n3476.0000000000\r\n"
+            ],
+            [
+                "100\r\n1\r\n55 5 6861\r\n",
+                "0.0000000000\r\n0.0000000000\r\n"
+            ],
+            [
+                "6\r\n7\r\n1 2 23\r\n2 3 45\r\n3 6 34\r\n1 4 64\r\n4 5 11\r\n5 6 74\r\n3 4 0\r\n",
+                "0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n0.0000000000\r\n-0.0000000000\r\n"
+            ]
+        ]
+    }
+]

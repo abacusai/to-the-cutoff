@@ -1,0 +1,59 @@
+[
+    {
+        "name": "Birds",
+        "description": "Apart from plush toys, Imp is a huge fan of little yellow birds! To summon\nbirds, Imp needs strong magic. There are n trees in a row on an alley in a\npark, there is a nest on each of the trees. In the i-th nest there are ci\nbirds; to summon one bird from this nest Imp needs to stay under this tree and\nit costs him costi points of mana. However, for each bird summoned, Imp\nincreases his mana capacity by B points. Imp summons birds one by one, he can\nsummon any number from 0 to ci birds from the i-th nest. Initially Imp stands\nunder the first tree and has W points of mana, and his mana capacity equals W\nas well. He can only go forward, and each time he moves from a tree to the\nnext one, he restores X points of mana (but it can't exceed his current mana\ncapacity). Moving only forward, what is the maximum number of birds Imp can\nsummon? Input The first line contains four integers n, W, B, X (1 \u2264 n \u2264 10^3,\n0 \u2264 W, B, X \u2264 10^9) \u2014 the number of trees, the initial points of mana, the\nnumber of points the mana capacity increases after a bird is summoned, and the\nnumber of points restored when Imp moves from a tree to the next one. The\nsecond line contains n integers c1, c2, ..., cn (0 \u2264 ci \u2264 10^4) \u2014 where ci is\nthe number of birds living in the i-th nest. It is guaranteed that . The third\nline contains n integers cost1, cost2, ..., costn (0 \u2264 costi \u2264 10^9), where\ncosti is the mana cost to summon a bird from the i-th nest. Output Print a\nsingle integer \u2014 the maximum number of birds Imp can summon. Examples Input 2\n12 0 4 3 4 4 2 Output 6 Input 4 1000 10 35 1 2 4 5 1000 500 250 200 Output 5\nInput 2 10 7 11 2 10 6 1 Output 11 Note In the first sample base amount of\nImp's mana is equal to 12 (with maximum capacity also equal to 12). After he\nsummons two birds from the first nest, he loses 8 mana points, although his\nmaximum capacity will not increase (since B = 0). After this step his mana\nwill be 4 of 12; during the move you will replenish 4 mana points, and hence\nown 8 mana out of 12 possible. Now it's optimal to take 4 birds from the\nsecond nest and spend 8 mana. The final answer will be \u2014 6. In the second\nsample the base amount of mana is equal to 1000. The right choice will be to\nsimply pick all birds from the last nest. Note that Imp's mana doesn't restore\nwhile moving because it's initially full.\n\n",
+        "cf_contest_id": 922,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 12 0 4\r\n3 4\r\n4 2\r\n",
+                "6"
+            ],
+            [
+                "4 1000 10 35\r\n1 2 4 5\r\n1000 500 250 200\r\n",
+                "5"
+            ],
+            [
+                "2 10 7 11\r\n2 10\r\n6 1\r\n",
+                "11"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 1 4 6\r\n3 4 6 5 1\r\n3 0 10 2 9\r\n",
+                "10"
+            ],
+            [
+                "75 262 870 596\r\n22 13 37 6 15 25 5 1 2 13 6 3 14 7 8 15 6 15 10 3 1 21 33 2 7 14 17 7 4 9 16 29 31 4 31 16 3 11 13 38 3 14 8 18 9 3 1 10 1 5 10 16 7 5 33 9 24 9 8 13 3 31 8 18 33 17 22 15 34 22 14 23 9 11 1\r\n15 988 494 954 185 43 341 392 828 364 464 33 443 279 410 559 648 522 221 630 446 910 720 680 299 949 898 528 344 530 33 705 562 718 378 603 752 729 874 835 271 809 687 485 383 203 211 967 937 641 222 519 30 437 573 94 818 740 711 628 631 699 803 289 804 722 986 917 286 358 564 740 280 625 104\r\n",
+                "221"
+            ],
+            [
+                "1 1000000000 1000000000 1000000000\r\n10000\r\n1000000000\r\n",
+                "1"
+            ],
+            [
+                "11 182265379 943880823 541186655\r\n118 395 182 912 3055 1198 972 499 1295 423 951\r\n919515674 183547374 713185799 495395101 460570056 865323757 856004539 172194086 29017055 573281401 94884106\r\n",
+                "30"
+            ],
+            [
+                "30 813763087 667301398 788083179\r\n358 1 942 255 371 86 22 313 62 220 227 301 164 238 30 18 26 517 1904 293 110 1171 709 412 221 27 355 386 180 81\r\n364514724 369447241 943009487 777239405 675813054 769495455 824525249 132802164 98954464 131625205 59567398 4498864 777027802 875631890 510915516 4505995 568141671 175640086 253104977 173981164 846365879 8456432 819645904 478042655 137080723 401949614 630869423 140199951 566654245 49531216\r\n",
+                "1648"
+            ],
+            [
+                "29 248541711 775857221 991640811\r\n456 358 735 868 213 24 583 174 381 1357 63 180 903 180 106 56 166 479 434 171 111 200 499 110 16 23 371 525 258\r\n510246598 566510289 914900360 823548934 762398202 571897078 102256870 717967541 568392967 330484503 755710752 232910352 371570614 781299711 733550623 337438470 36696592 158396947 254877244 719491526 148294199 754511298 655210216 895287270 535726298 235308442 905006463 142116705 96440782\r\n",
+                "313"
+            ],
+            [
+                "17 839860324 388827729 364896640\r\n417 2 8 930 648 3105 434 435 1 1450 58 50 277 646 221 274 1044\r\n416664151 309840428 823560106 653486427 281743349 81844030 406321182 683147664 445891025 323452426 204464623 21209374 112902821 403197845 977337836 263883864 161229864\r\n",
+                "95"
+            ]
+        ]
+    }
+]

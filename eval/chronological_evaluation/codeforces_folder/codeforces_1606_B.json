@@ -1,0 +1,185 @@
+[
+    {
+        "name": "Update Files",
+        "description": "Berland State University has received a new update for the operating system.\nInitially it is installed only on the \n    1\n-st computer. Update files should\nbe copied to all \n    n\n computers. The computers are not connected to the\ninternet, so the only way to transfer update files from one computer to\nanother is to copy them using a patch cable (a cable connecting two computers\ndirectly). Only one patch cable can be connected to a computer at a time.\nThus, from any computer where the update files are installed, they can be\ncopied to some other computer in exactly one hour. Your task is to find the\nminimum number of hours required to copy the update files to all \n    n\n\ncomputers if there are only \n    k\n patch cables in Berland State University.\nInput The first line contains a single integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264\n    10^5\n) \u2014 the number of test cases. Each test case consists of a single line\nthat contains two integers \n    n\n and \n    k\n (\n    1 \n    \u2264 k \n    \u2264 n \n    \u2264\n    10^18\n) \u2014 the number of computers and the number of patch cables. Output\nFor each test case print one integer \u2014 the minimum number of hours required to\ncopy the update files to all \n    n\n computers. Example Input 4 8 3 6 6 7 1 1\n1 Output 4 3 6 0 Note Let's consider the test cases of the example: \n    n=8\n,\n\n    k=3\n: during the first hour, we copy the update files from the computer\n\n    1\n to the computer \n    2\n; during the second hour, we copy the update\nfiles from the computer \n    1\n to the computer \n    3\n, and from the computer\n\n    2\n to the computer \n    4\n; during the third hour, we copy the update\nfiles from the computer \n    1\n to the computer \n    5\n, from the computer\n\n    2\n to the computer \n    6\n, and from the computer \n    3\n to the computer\n\n    7\n; during the fourth hour, we copy the update files from the computer\n\n    2\n to the computer \n    8\n. \n    n=6\n, \n    k=6\n: during the first hour,\nwe copy the update files from the computer \n    1\n to the computer \n    2\n;\nduring the second hour, we copy the update files from the computer \n    1\n to\nthe computer \n    3\n, and from the computer \n    2\n to the computer \n    4\n;\nduring the third hour, we copy the update files from the computer \n    1\n to\nthe computer \n    5\n, and from the computer \n    2\n to the computer \n    6\n.\n\n    n=7\n, \n    k=1\n: during the first hour, we copy the update files from the\ncomputer \n    1\n to the computer \n    2\n; during the second hour, we copy the\nupdate files from the computer \n    1\n to the computer \n    3\n; during the\nthird hour, we copy the update files from the computer \n    1\n to the computer\n\n    4\n; during the fourth hour, we copy the update files from the computer\n\n    4\n to the computer \n    5\n; during the fifth hour, we copy the update\nfiles from the computer \n    4\n to the computer \n    6\n; during the sixth\nhour, we copy the update files from the computer \n    3\n to the computer\n\n    7\n.\n\n",
+        "cf_contest_id": 1606,
+        "cf_index": "B",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n8 3\r\n6 6\r\n7 1\r\n1 1\r\n",
+                "4\r\n3\r\n6\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n576460752303423487 576460752303423487\r\n576460752303423488 576460752303423488\r\n576460752303423489 576460752303423489\r\n",
+                "59\r\n59\r\n60\r\n"
+            ],
+            [
+                "5\r\n576460752303423486 576460752303423486\r\n576460752303423487 576460752303423487\r\n576460752303423488 576460752303423488\r\n576460752303423489 576460752303423489\r\n576460752303423490 576460752303423490\r\n",
+                "59\r\n59\r\n59\r\n60\r\n60\r\n"
+            ],
+            [
+                "1\r\n100000000000000007 1\r\n",
+                "100000000000000006\r\n"
+            ],
+            [
+                "1\r\n12342 122\r\n",
+                "108\r\n"
+            ],
+            [
+                "1\r\n2147483654 2147483653\r\n",
+                "32\r\n"
+            ],
+            [
+                "2\r\n100000000000000007 1\r\n1000000000000000000 1\r\n",
+                "100000000000000006\r\n999999999999999999\r\n"
+            ],
+            [
+                "10\r\n576460752303423486 576460752303423486\r\n576460752303423487 576460752303423487\r\n576460752303423488 576460752303423488\r\n576460752303423489 576460752303423489\r\n576460752303423490 576460752303423490\r\n576460752303423486 576460752303423485\r\n576460752303423487 576460752303423486\r\n576460752303423488 576460752303423487\r\n576460752303423489 576460752303423488\r\n576460752303423490 576460752303423489\r\n",
+                "59\r\n59\r\n59\r\n60\r\n60\r\n59\r\n59\r\n59\r\n60\r\n60\r\n"
+            ],
+            [
+                "3\r\n100000000000000007 1\r\n1000000000000000000 1\r\n999999999999999997 1\r\n",
+                "100000000000000006\r\n999999999999999999\r\n999999999999999996\r\n"
+            ],
+            [
+                "1\r\n576460752303423487 576460752303423487\r\n",
+                "59\r\n"
+            ],
+            [
+                "1\r\n576460752303423489 576460752303423488\r\n",
+                "60\r\n"
+            ],
+            [
+                "2\r\n576460752303423487 576460752303423487\r\n765228007342234864 765228007342234864\r\n",
+                "59\r\n60\r\n"
+            ],
+            [
+                "13\r\n576460752303423486 576460752303423486\r\n576460752303423487 576460752303423487\r\n576460752303423488 576460752303423488\r\n576460752303423489 576460752303423489\r\n576460752303423490 576460752303423490\r\n576460752303423488 288230376151711743\r\n576460752303423488 288230376151711744\r\n576460752303423488 288230376151711745\r\n576460752303423486 576460752303423485\r\n576460752303423487 576460752303423486\r\n576460752303423488 576460752303423487\r\n576460752303423489 576460752303423488\r\n576460752303423490 576460752303423489\r\n",
+                "59\r\n59\r\n59\r\n60\r\n60\r\n60\r\n59\r\n59\r\n59\r\n59\r\n59\r\n60\r\n60\r\n"
+            ],
+            [
+                "5\r\n576460752303423487 576460752303423487\r\n765228007342234864 765228007342234864\r\n576460752303423489 576460752303423489\r\n576460752303423486 576460752303423486\r\n576460752303423488 576460752303423488\r\n",
+                "59\r\n60\r\n60\r\n59\r\n59\r\n"
+            ],
+            [
+                "1\r\n576460752303423489 576460752303423489\r\n",
+                "60\r\n"
+            ],
+            [
+                "1\r\n72057594037927935 1\r\n",
+                "72057594037927934\r\n"
+            ],
+            [
+                "1\r\n576460752303423488 288230376151711743\r\n",
+                "60\r\n"
+            ],
+            [
+                "4\r\n576460752303423488 288230376151711743\r\n576460752303423488 288230376151711742\r\n576460752303423487 288230376151711743\r\n576460752303423487 288230376151711744\r\n",
+                "60\r\n60\r\n59\r\n59\r\n"
+            ],
+            [
+                "1\r\n576460752303423487 576460752303423457\r\n",
+                "59\r\n"
+            ],
+            [
+                "2\r\n576460752303423488 288230376151711743\r\n576460752303423488 288230376151711744\r\n",
+                "60\r\n59\r\n"
+            ],
+            [
+                "4\r\n576460752303423488 288230376151711743\r\n576460752303423488 288230376151711744\r\n576460752303423488 576460752303423488\r\n576460752303423489 576460752303423489\r\n",
+                "60\r\n59\r\n59\r\n60\r\n"
+            ],
+            [
+                "1\r\n9999999999999999 1\r\n",
+                "9999999999999998\r\n"
+            ],
+            [
+                "2\r\n576460752303423487 576460752303423487\r\n576460752303423488 288230376151711743\r\n",
+                "59\r\n60\r\n"
+            ],
+            [
+                "1\r\n288230376151711745 288230376151711744\r\n",
+                "59\r\n"
+            ],
+            [
+                "5\r\n576460752303423488 288230376151711743\r\n576460752303423488 288230376151711744\r\n576460752303423489 288230376151711745\r\n576460752303423488 576460752303423488\r\n576460752303423489 576460752303423489\r\n",
+                "60\r\n59\r\n60\r\n59\r\n60\r\n"
+            ],
+            [
+                "3\r\n576460752303423487 576460752303423487\r\n796131459065721 796131459065721\r\n777 777\r\n",
+                "59\r\n50\r\n10\r\n"
+            ],
+            [
+                "4\r\n576460752303423487 576460752303423487\r\n796131459065721 796131459065721\r\n777 777\r\n64 64\r\n",
+                "59\r\n50\r\n10\r\n6\r\n"
+            ],
+            [
+                "1\r\n99999999999999999 1\r\n",
+                "99999999999999998\r\n"
+            ],
+            [
+                "6\r\n576460752303423487 576460752303423486\r\n576460752303423488 576460752303423486\r\n576460752303423489 576460752303423486\r\n576460752303423487 576460752303423487\r\n576460752303423488 576460752303423487\r\n576460752303423489 576460752303423487\r\n",
+                "59\r\n59\r\n60\r\n59\r\n59\r\n60\r\n"
+            ],
+            [
+                "5\r\n576460752303423487 576460752303423487\r\n796131459065721 796131459065721\r\n777 777\r\n64 64\r\n3333333 3333333\r\n",
+                "59\r\n50\r\n10\r\n6\r\n22\r\n"
+            ],
+            [
+                "5\r\n576460752303423487 576460752303423487\r\n796131459065721 796131459065721\r\n777 777\r\n33333333333 33333333333\r\n33333 33333\r\n",
+                "59\r\n50\r\n10\r\n35\r\n16\r\n"
+            ],
+            [
+                "15\r\n576460752303423488 576460752303423488\r\n576460752303423487 576460752303423487\r\n576460752303423487 33333333333\r\n576460752303423487 777\r\n576460752303423487 7777\r\n576460752303423487 7777\r\n1024 1024\r\n1024 2\r\n796131459065721 796131459065721\r\n777 777\r\n33333333333 33333333333\r\n33333 33333\r\n123141 123\r\n33333 33\r\n1231456 45\r\n",
+                "59\r\n59\r\n17293857\r\n741905730120245\r\n74123794818506\r\n74123794818506\r\n10\r\n512\r\n50\r\n10\r\n35\r\n16\r\n1008\r\n1015\r\n27371\r\n"
+            ],
+            [
+                "15\r\n576460752303423488 576460752303423488\r\n576460752303423487 576460752303423487\r\n576460752303423487 33333333333\r\n576460752303423489 576460752303423489\r\n576460752303423487 7777\r\n576460752303423487 7777\r\n1024 1024\r\n1024 2\r\n796131459065721 796131459065721\r\n777 777\r\n33333333333 33333333333\r\n33333 33333\r\n123141 123\r\n33333 33\r\n1231456 45\r\n",
+                "59\r\n59\r\n17293857\r\n60\r\n74123794818506\r\n74123794818506\r\n10\r\n512\r\n50\r\n10\r\n35\r\n16\r\n1008\r\n1015\r\n27371\r\n"
+            ],
+            [
+                "11\r\n576460752303423487 576460752303423486\r\n576460752303423488 576460752303423486\r\n576460752303423489 576460752303423486\r\n1 1\r\n576460752303423487 576460752303423487\r\n576460752303423488 576460752303423487\r\n576460752303423489 576460752303423487\r\n1 1\r\n576460752303423487 144115188075855872\r\n576460752303423488 144115188075855872\r\n576460752303423489 144115188075855872\r\n",
+                "59\r\n59\r\n60\r\n0\r\n59\r\n59\r\n60\r\n0\r\n60\r\n60\r\n61\r\n"
+            ],
+            [
+                "1\r\n36028797018963968 18014398509481983\r\n",
+                "56\r\n"
+            ],
+            [
+                "7\r\n576460752303423487 576460752303423486\r\n576460752303423488 576460752303423486\r\n576460752303423489 576460752303423486\r\n1 1\r\n576460752303423487 576460752303423487\r\n576460752303423488 576460752303423487\r\n576460752303423489 576460752303423487\r\n",
+                "59\r\n59\r\n60\r\n0\r\n59\r\n59\r\n60\r\n"
+            ],
+            [
+                "1\r\n18014398509481984 9007199254740990\r\n",
+                "55\r\n"
+            ],
+            [
+                "1\r\n576460752303423497 576460752303423487\r\n",
+                "60\r\n"
+            ],
+            [
+                "2\r\n576460752303423488 288230376151711743\r\n1 1\r\n",
+                "60\r\n0\r\n"
+            ],
+            [
+                "8\r\n576460752303423488 288230376151711743\r\n576460752303423489 288230376151711743\r\n576460752303423489 288230376151711742\r\n576460752303423489 288230376151711744\r\n576460752303423489 288230376151711745\r\n576460752303423488 288230376151711742\r\n576460752303423487 288230376151711743\r\n576460752303423487 288230376151711744\r\n",
+                "60\r\n60\r\n60\r\n60\r\n60\r\n60\r\n59\r\n59\r\n"
+            ],
+            [
+                "1\r\n18014398509481984 9007199254740992\r\n",
+                "54\r\n"
+            ]
+        ]
+    }
+]

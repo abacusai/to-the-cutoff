@@ -1,0 +1,110 @@
+[
+    {
+        "name": "Planets",
+        "description": "Goa'uld Apophis captured Jack O'Neill's team again! Jack himself was able to\nescape, but by that time Apophis's ship had already jumped to hyperspace. But\nJack knows on what planet will Apophis land. In order to save his friends,\nJack must repeatedly go through stargates to get to this planet. Overall the\ngalaxy has n planets, indexed with numbers from 1 to n. Jack is on the planet\nwith index 1, and Apophis will land on the planet with index n. Jack can move\nbetween some pairs of planets through stargates (he can move in both\ndirections); the transfer takes a positive, and, perhaps, for different pairs\nof planets unequal number of seconds. Jack begins his journey at time 0. It\ncan be that other travellers are arriving to the planet where Jack is\ncurrently located. In this case, Jack has to wait for exactly 1 second before\nhe can use the stargate. That is, if at time t another traveller arrives to\nthe planet, Jack can only pass through the stargate at time t + 1, unless\nthere are more travellers arriving at time t + 1 to the same planet. Knowing\nthe information about travel times between the planets, and the times when\nJack would not be able to use the stargate on particular planets, determine\nthe minimum time in which he can get to the planet with index n. Input The\nfirst line contains two space-separated integers: n (2 \u2264 n \u2264 10^5), the number\nof planets in the galaxy, and m (0 \u2264 m \u2264 10^5) \u2014 the number of pairs of\nplanets between which Jack can travel using stargates. Then m lines follow,\ncontaining three integers each: the i-th line contains numbers of planets ai\nand bi (1 \u2264 ai, bi \u2264 n, ai \u2260 bi), which are connected through stargates, and\nthe integer transfer time (in seconds) ci (1 \u2264 ci \u2264 10^4) between these\nplanets. It is guaranteed that between any pair of planets there is at most\none stargate connection. Then n lines follow: the i-th line contains an\ninteger ki (0 \u2264 ki \u2264 10^5) that denotes the number of moments of time when\nother travellers arrive to the planet with index i. Then ki distinct space-\nseparated integers tij (0 \u2264 tij < 10^9) follow, sorted in ascending order. An\ninteger tij means that at time tij (in seconds) another traveller arrives to\nthe planet i. It is guaranteed that the sum of all ki does not exceed 10^5.\nOutput Print a single number \u2014 the least amount of time Jack needs to get from\nplanet 1 to planet n. If Jack can't get to planet n in any amount of time,\nprint number -1. Examples Input 4 6 1 2 2 1 3 3 1 4 8 2 3 4 2 4 5 3 4 3 0 1 3\n2 3 4 0 Output 7 Input 3 1 1 2 3 0 1 3 0 Output -1 Note In the first sample\nJack has three ways to go from planet 1. If he moves to planet 4 at once, he\nspends 8 seconds. If he transfers to planet 3, he spends 3 seconds, but as\nother travellers arrive to planet 3 at time 3 and 4, he can travel to planet 4\nonly at time 5, thus spending 8 seconds in total. But if Jack moves to planet\n2, and then \u2014 to planet 4, then he spends a total of only 2 + 5 = 7 seconds.\nIn the second sample one can't get from planet 1 to planet 3 by moving through\nstargates.\n\n",
+        "cf_contest_id": 229,
+        "cf_index": "B",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "graphs",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 6\r\n1 2 2\r\n1 3 3\r\n1 4 8\r\n2 3 4\r\n2 4 5\r\n3 4 3\r\n0\r\n1 3\r\n2 3 4\r\n0\r\n",
+                "7\r\n"
+            ],
+            [
+                "3 1\r\n1 2 3\r\n0\r\n1 3\r\n0\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n1 2 3\r\n0\r\n1 3\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 1\r\n1 2 3\r\n1 0\r\n0\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 3\r\n1 2 5\r\n2 3 6\r\n1 3 7\r\n0\r\n0\r\n0\r\n",
+                "7\r\n"
+            ],
+            [
+                "3 3\r\n1 2 3\r\n2 3 2\r\n1 3 7\r\n0\r\n0\r\n0\r\n",
+                "5\r\n"
+            ],
+            [
+                "2 0\r\n0\r\n0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 1\r\n1 2 3\r\n1 1\r\n1 5\r\n0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 1\r\n1 2 3\r\n0\r\n2 2 4\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 1\r\n1 2 1\r\n0\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\n2 1 10000\r\n0\r\n0\r\n",
+                "10000\r\n"
+            ],
+            [
+                "2 1\r\n1 2 3\r\n0\r\n3 3 4 5\r\n",
+                "3\r\n"
+            ],
+            [
+                "3 0\r\n0\r\n0\r\n0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 2\r\n1 2 5\r\n2 3 7\r\n2 0 1\r\n3 4 5 6\r\n3 11 12 13\r\n",
+                "14\r\n"
+            ],
+            [
+                "2 1\r\n1 2 3\r\n3 0 1 2\r\n3 5 6 7\r\n",
+                "6\r\n"
+            ],
+            [
+                "3 3\r\n1 2 3\r\n2 3 2\r\n1 3 7\r\n0\r\n4 3 4 5 6\r\n0\r\n",
+                "7\r\n"
+            ],
+            [
+                "6 7\r\n1 2 1\r\n1 3 8\r\n2 4 2\r\n4 3 3\r\n3 5 4\r\n4 6 100\r\n5 6 5\r\n0\r\n0\r\n1 7\r\n2 3 4\r\n0\r\n0\r\n",
+                "17\r\n"
+            ],
+            [
+                "3 3\r\n1 2 3\r\n2 3 2\r\n1 3 6\r\n0\r\n1 3\r\n0\r\n",
+                "6\r\n"
+            ],
+            [
+                "7 7\r\n1 2 1\r\n2 4 2\r\n2 3 2\r\n3 6 2\r\n6 5 2\r\n4 5 3\r\n5 7 7\r\n0\r\n0\r\n0\r\n3 3 4 5\r\n0\r\n0\r\n0\r\n",
+                "14\r\n"
+            ],
+            [
+                "7 6\r\n1 2 1\r\n1 3 1\r\n1 4 1\r\n1 5 1\r\n1 6 1\r\n1 7 1\r\n1 0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n",
+                "2\r\n"
+            ],
+            [
+                "8 10\r\n1 2 3\r\n2 8 3\r\n1 4 1\r\n4 3 6\r\n3 7 7\r\n4 5 5\r\n5 7 2\r\n7 8 1\r\n1 6 8\r\n6 8 7\r\n0\r\n4 1 2 3 4\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n",
+                "8\r\n"
+            ],
+            [
+                "7 6\r\n1 2 1\r\n1 3 2\r\n2 4 3\r\n2 5 4\r\n3 5 6\r\n3 6 7\r\n0\r\n3 1 2 3\r\n2 2 3\r\n0\r\n2 7 8\r\n0\r\n0\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

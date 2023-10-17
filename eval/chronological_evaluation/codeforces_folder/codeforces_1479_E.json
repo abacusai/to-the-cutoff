@@ -1,0 +1,127 @@
+[
+    {
+        "name": "School Clubs",
+        "description": "In Homer's school, there are \n    n\n students who love clubs. Initially, there\nare \n    m\n clubs, and each of the \n    n\n students is in exactly one club. In\nother words, there are \n    a_i\n students in the \n    i\n-th club for \n    1\n    \n    \u2264 i \n    \u2264 m\n and \n    a_1+a_2+\n    \u2026+a_m = n\n. The \n    n\n students\nare so unfriendly that every day one of them (chosen uniformly at random from\nall of the \n    n\n students) gets angry. The student who gets angry will do\none of the following things. With probability \n    1/2\n, he leaves his\ncurrent club, then creates a new club himself and joins it. There is only one\nstudent (himself) in the new club he creates. With probability \n    1/2\n, he does not create new clubs. In this case, he changes his club to a new\none (possibly the same club he is in currently) with probability proportional\nto the number of students in it. Formally, suppose there are \n    k\n clubs and\nthere are \n    b_i\n students in the \n    i\n-th club for \n    1 \n    \u2264 i \n    \u2264\n    k\n (before the student gets angry). He leaves his current club, and then\njoins the \n    i\n-th club with probability \n    b_i/n\n. We note\nthat when a club becomes empty, students will never join it because any\nstudent who gets angry will join an empty club with probability \n    0\n\naccording to the above statement.Homer wonders the expected number of days\nuntil every student is in the same club for the first time. We can prove that\nthe answer can be represented as a rational number \n    p/q\n with\n\n    (p, q) = 1\n. Therefore, you are asked to find the value of\n\n    pq^-1\n     998\n     244\n     353\n. It can be shown that \n    q \n    \n    998\n     244\n     353 \n    \u2260 0\n under the given constraints of the problem.\nInput The first line contains an integer \n    m\n (\n    1 \n    \u2264 m \n    \u2264\n    1000\n) \u2014 the number of clubs initially. The second line contains \n    m\n\nintegers \n    a_1, a_2, \n    \u2026, a_m\n (\n    1 \n    \u2264 a_i \n    \u2264 4 \n    \u00b7\n    10^8\n) with \n    1 \n    \u2264 a_1+a_2+\n    \u2026+a_m \n    \u2264 4 \n    \u00b7 10^8\n, where\n\n    a_i\n denotes the number of students in the \n    i\n-th club initially.\nOutput Print one integer \u2014 the expected number of days until every student is\nin the same club for the first time, modulo \n    998\n     244\n     353\n. Examples\nInput 2 1 1 Output 4 Input 2 1 2 Output 18 Input 3 1 1 1 Output 21 Input 1\n400000000 Output 0 Input 10 1 2 3 4 5 6 7 8 9 10 Output 737609878 Note In the\nfirst example, no matter which student gets angry, the two students will\nbecome in the same club with probability \n    1/4\n. So the expected\nnumber of days until every student is in the same club should be \n    4\n. In\nthe second example, we note that in the first day: The only student in the\nfirst club will get angry with probability \n    1/3\n. If he gets\nangry, then he will create a new club and join it with probability \n    1/2\n (In this case, there will be three clubs which have \n    0, 1, 2\n\nstudents in it, respectively), leave his current club and join the second club\nwith probability \n    1/2\n    \u00b7\n    2/3 = \n    1/3\n, or stay\nstill with probability \n    1/2\n    \u00b7\n    1/3 = \n    1/6\n;\nEach of the two students in the second club will get angry with probability\n\n    1/3\n. If one of them gets angry, then he will create a new club\nand join it with probability \n    1/2\n, leave his current club and\njoin the second club with probability \n    1/2\n    \u00b7\n    1/3 =\n    \n    1/6\n, or stay still with probability \n    1/2\n    \u00b7\n    2/3 = \n    1/3\n. In the fourth example, there is only one club initially.\nThat is, every student has already been in the same club. So the answer is\n\n    0\n.\n\n",
+        "cf_contest_id": 1479,
+        "cf_index": "E",
+        "cf_rating": 3500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "fft",
+            "math",
+            "number theory",
+            "probabilities"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "2\r\n1 1\r\n",
+                "4"
+            ],
+            [
+                "2\r\n1 2\r\n",
+                "18"
+            ],
+            [
+                "3\r\n1 1 1\r\n",
+                "21"
+            ],
+            [
+                "1\r\n400000000\r\n",
+                "0"
+            ],
+            [
+                "10\r\n1 2 3 4 5 6 7 8 9 10\r\n",
+                "737609878"
+            ]
+        ],
+        "private_cases": [
+            [
+                "59\r\n70 48 54 26 67 84 39 40 18 77 69 70 88 93 8 43 26 70 11 47 74 62 26 95 55 55 63 23 88 60 97 15 90 50 56 58 73 51 23 14 92 71 9 43 18 6 89 67 21 27 26 8 46 56 11 86 79 28 91\r\n",
+                "628512292"
+            ],
+            [
+                "87\r\n22 98 32 88 36 72 31 100 97 17 16 60 22 20 25 73 77 88 68 96 52 75 13 52 64 76 24 35 67 86 68 14 22 51 57 92 48 89 26 11 10 60 63 31 1 17 33 85 84 45 81 94 63 52 45 77 100 75 95 60 61 15 40 15 32 83 66 84 90 13 26 58 29 18 24 90 18 54 74 85 40 100 48 79 95 24 26\r\n",
+                "499599727"
+            ],
+            [
+                "15\r\n63 51 13 37 9 43 19 55 79 57 60 50 59 31 42\r\n",
+                "417527421"
+            ],
+            [
+                "46\r\n30 34 62 23 17 89 3 54 94 90 38 23 92 8 33 33 25 59 27 21 31 3 43 81 38 66 55 10 92 86 57 79 68 21 10 16 48 55 54 20 10 43 17 23 47 70\r\n",
+                "613496240"
+            ],
+            [
+                "40\r\n4 81 40 10 54 34 50 84 60 16 1 90 78 38 93 99 60 81 99 100 72 19 57 79 34 65 36 26 86 80 13 62 34 47 19 76 17 47 13 56\r\n",
+                "968532237"
+            ],
+            [
+                "93\r\n74 99 93 47 91 14 82 25 58 66 63 47 93 53 91 22 6 94 79 79 59 79 33 33 7 75 86 20 8 13 56 13 36 92 40 63 62 84 81 40 60 76 55 32 63 90 37 53 16 80 68 10 2 23 62 77 90 3 100 21 70 24 96 36 6 12 60 69 11 59 61 91 23 49 33 97 78 3 5 72 83 98 63 56 19 7 1 83 38 78 68 85 81\r\n",
+                "325670357"
+            ],
+            [
+                "17\r\n19 44 75 1 64 1 70 84 36 10 7 37 23 76 8 44 56\r\n",
+                "713948998"
+            ],
+            [
+                "45\r\n63 98 53 58 41 72 54 39 22 49 59 36 64 91 25 67 18 34 65 72 10 9 95 47 36 14 12 45 45 61 8 91 4 13 48 26 4 56 6 38 92 50 60 18 34\r\n",
+                "353981819"
+            ],
+            [
+                "3\r\n60 9 62\r\n",
+                "490200875"
+            ],
+            [
+                "32\r\n4 67 43 90 61 60 5 25 54 21 71 40 28 73 18 96 8 17 10 19 97 4 48 18 21 77 68 79 1 25 52 7\r\n",
+                "8526591"
+            ],
+            [
+                "60\r\n49 20 13 51 37 43 89 81 36 60 11 31 61 92 35 15 62 39 55 68 82 21 19 75 42 98 17 99 71 51 22 2 69 7 3 54 39 6 61 49 89 37 54 5 5 72 42 52 82 27 7 57 5 73 57 78 90 100 18 92\r\n",
+                "150477141"
+            ],
+            [
+                "33\r\n22889712 22287882 702525 725265 4660338 4782935 15386753 1705221 24297136 22148195 20908224 4936904 2056302 23101182 8143783 16285247 4238704 9425131 29071238 18530936 702027 3247542 662957 1448835 11389156 376841 6716261 15332342 9470881 22383787 16158760 5970882 15105126\r\n",
+                "458169726"
+            ],
+            [
+                "61\r\n2522507 7407326 2366901 5080640 1771069 27464290 2008573 318401 8665851 250101 22920475 2041224 88004 648802 3885206 2868576 2857897 16551898 9421763 4787834 18110473 894287 12525702 1047100 9505041 5759478 106241 3114430 180713 14463528 51164 414873 17251609 3698043 4463029 5936850 5975430 3885866 5426502 12594287 4389045 4016219 9237345 953836 791055 5939372 7425307 18486106 5011839 5611927 4940291 13870778 2907932 301708 7245032 4912359 7354300 1910109 2971705 4498590 14401304\r\n",
+                "547690874"
+            ],
+            [
+                "9\r\n44199806 54578660 81709962 9166852 667879 119756969 6451235 18337212 59125086\r\n",
+                "273596741"
+            ],
+            [
+                "4\r\n15968389 71717489 199310463 16223488\r\n",
+                "520667691"
+            ],
+            [
+                "32\r\n2505823 1256153 7572938 44713920 8322822 3367943 4698531 140910 12467576 4198858 11937982 1487530 10365007 27314072 2680256 8931678 25712120 4434234 5348476 40201360 5855924 5919156 934261 11313078 12243181 387091 7993782 2837818 42440808 9633784 2156633 6161618\r\n",
+                "82779469"
+            ],
+            [
+                "56\r\n760817 11296919 2276868 1113984 4308735 7291347 9871261 4417283 13468585 4024448 246074 7492118 4127915 2971723 17171225 15884762 6957022 1350228 6021979 809708 12417987 11795992 745965 876364 1838697 596634 6936235 5487068 1283282 859258 11320361 2591858 13362339 5605071 1206517 2492412 9990467 2191493 18272574 3458640 4135005 1495813 2556531 2422594 9217831 29691229 2236254 1517650 1003022 7643484 10810139 5152304 1415021 11692186 13285079 2295352\r\n",
+                "598751935"
+            ],
+            [
+                "4\r\n209930312 96510537 33127378 29744493\r\n",
+                "548872187"
+            ],
+            [
+                "32\r\n22441022 6222848 7409841 48880496 1180731 29660266 8357359 3473025 8802990 962261 5818751 16546031 4552862 888420 9597518 1461313 26488361 11246621 78063 12885970 1984789 10986521 12872501 6817654 11815607 10273252 12734549 272792 18079597 26989295 35355728 402072\r\n",
+                "982611845"
+            ],
+            [
+                "22\r\n81 80 88 66 48 13 15 98 12 46 94 33 59 93 16 18 67 37 79 80 50 89\r\n",
+                "570936264"
+            ],
+            [
+                "75\r\n31023 60911 8466 2414 16199 36496 2466 23260 4245 29880 12475 12237 89832 15211 5343 49897 11600 28052 4791 8129 5172 27728 33063 16760 19124 14013 61327 29040 88361 15182 6432 73578 21178 23425 26795 60867 22015 7032 30370 30990 20763 7916 11812 2021 56649 2503 13357 8776 7065 16628 36781 12829 10909 45873 28759 5887 25556 328 18115 16447 15530 23274 3130 85313 27423 151366664 80967206 46700415 26307719 12732219 10773639 3706109 2798780 1915513 828850\r\n",
+                "366687916"
+            ]
+        ]
+    }
+]

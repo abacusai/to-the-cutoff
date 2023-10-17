@@ -1,0 +1,76 @@
+[
+    {
+        "name": "Cipher",
+        "description": "Sherlock Holmes found a mysterious correspondence of two VIPs and made up his\nmind to read it. But there is a problem! The correspondence turned out to be\nencrypted. The detective tried really hard to decipher the correspondence, but\nhe couldn't understand anything. At last, after some thought, he thought of\nsomething. Let's say there is a word s, consisting of |s| lowercase Latin\nletters. Then for one operation you can choose a certain position p (1 \u2264 p <\n|s|) and perform one of the following actions: either replace letter sp with\nthe one that alphabetically follows it and replace letter sp + 1 with the one\nthat alphabetically precedes it; or replace letter sp with the one that\nalphabetically precedes it and replace letter sp + 1 with the one that\nalphabetically follows it. Let us note that letter \"z\" doesn't have a defined\nfollowing letter and letter \"a\" doesn't have a defined preceding letter.\nThat's why the corresponding changes are not acceptable. If the operation\nrequires performing at least one unacceptable change, then such operation\ncannot be performed. Two words coincide in their meaning iff one of them can\nbe transformed into the other one as a result of zero or more operations.\nSherlock Holmes needs to learn to quickly determine the following for each\nword: how many words can exist that coincide in their meaning with the given\nword, but differs from the given word in at least one character? Count this\nnumber for him modulo 1000000007 (10^9 + 7). Input The input data contains\nseveral tests. The first line contains the only integer t (1 \u2264 t \u2264 10^4) \u2014 the\nnumber of tests. Next t lines contain the words, one per line. Each word\nconsists of lowercase Latin letters and has length from 1 to 100, inclusive.\nLengths of words can differ. Output For each word you should print the number\nof different other words that coincide with it in their meaning \u2014 not from the\nwords listed in the input data, but from all possible words. As the sought\nnumber can be very large, print its value modulo 1000000007 (10^9 + 7).\nExamples Input 1 ab Output 1 Input 1 aaaaaaaaaaa Output 0 Input 2 ya klmbfxzb\nOutput 24 320092793 Note Some explanations about the operation: Note that for\neach letter, we can clearly define the letter that follows it. Letter \"b\"\nalphabetically follows letter \"a\", letter \"c\" follows letter \"b\", ..., \"z\"\nfollows letter \"y\". Preceding letters are defined in the similar manner:\nletter \"y\" precedes letter \"z\", ..., \"a\" precedes letter \"b\". Note that the\noperation never changes a word's length. In the first sample you can obtain\nthe only other word \"ba\". In the second sample you cannot obtain any other\nword, so the correct answer is 0. Consider the third sample. One operation can\ntransform word \"klmbfxzb\" into word \"klmcexzb\": we should choose p = 4, and\nreplace the fourth letter with the following one (\"b\" \u2192 \"c\"), and the fifth\none \u2014 with the preceding one (\"f\" \u2192 \"e\"). Also, we can obtain many other words\nfrom this one. An operation can transform word \"ya\" only into one other word\n\"xb\". Word \"ya\" coincides in its meaning with words \"xb\", \"wc\", \"vd\", ...,\n\"ay\" (overall there are 24 other words). The word \"klmbfxzb has many more\nvariants \u2014 there are 3320092814 other words that coincide with in the meaning.\nSo the answer for the first word equals 24 and for the second one equals\n320092793 \u2014 the number 3320092814 modulo 10^9 + 7\n\n",
+        "cf_contest_id": 156,
+        "cf_index": "C",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1\r\nab\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\naaaaaaaaaaa\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\nya\r\nklmbfxzb\r\n",
+                "24\r\n320092793\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\na\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\nz\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\nmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmnmn\r\n",
+                "39086755\r\n"
+            ],
+            [
+                "15\r\nejkf\r\nkc\r\nu\r\nznmjnznzn\r\nbjkcg\r\nwou\r\nywy\r\nqoojqlr\r\nnbkip\r\nsgmgjg\r\ndjjdd\r\nh\r\nkgbkri\r\nt\r\npvzbvkij\r\n",
+                "4454\r\n12\r\n0\r\n667098198\r\n35884\r\n209\r\n20\r\n142184034\r\n186649\r\n4212829\r\n31439\r\n0\r\n3167654\r\n0\r\n474922754\r\n"
+            ],
+            [
+                "15\r\nieqqe\r\nwwbnobrb\r\ngyftfg\r\nclrn\r\nzwtviipwww\r\nmsmsiih\r\nofqsusmsmm\r\nyjomiiq\r\naedoeun\r\nz\r\nmwwmimiwiu\r\ngtdsifgg\r\nvmmmren\r\nzlgzousxzp\r\ngcpodkxebk\r\n",
+                "195974\r\n543885418\r\n5715485\r\n10619\r\n87838649\r\n154292634\r\n869212338\r\n155736014\r\n55669004\r\n0\r\n792902040\r\n590044032\r\n155736014\r\n991368939\r\n271743066\r\n"
+            ],
+            [
+                "17\r\nwfvfmnmr\r\nkyururk\r\nnei\r\nmeb\r\nwldtalawww\r\njeobzb\r\nuuww\r\nwfkgzxmr\r\nrvvpxrihha\r\nqz\r\ngpodf\r\niatnevlia\r\njjnaunradf\r\nwoi\r\ny\r\nmewdykdldp\r\nnckg\r\n",
+                "662991818\r\n51681734\r\n350\r\n170\r\n598684361\r\n3582684\r\n968\r\n541474246\r\n55368153\r\n9\r\n148439\r\n157054204\r\n91519085\r\n464\r\n0\r\n838428119\r\n5759\r\n"
+            ],
+            [
+                "17\r\nku\r\njf\r\nygbkcbf\r\ngmp\r\nnuaxjssqv\r\nawxxcxw\r\nyccccvc\r\na\r\nu\r\nnod\r\nmfgtj\r\nekkjbkzr\r\njtisatba\r\nxtkxlk\r\nt\r\nxkxzuizs\r\nnvvvqarn\r\n",
+                "20\r\n14\r\n25664534\r\n486\r\n516112667\r\n64053170\r\n44165015\r\n0\r\n0\r\n450\r\n222299\r\n145570718\r\n897496632\r\n3582684\r\n0\r\n190441484\r\n326269025\r\n"
+            ],
+            [
+                "19\r\nqhovyphr\r\nttymgy\r\nqbed\r\nidxitl\r\nusbrx\r\nqevvydqdb\r\nltyjljj\r\ncgv\r\nsruvudcu\r\naqjbqjybyq\r\nrhtwwtthhh\r\nh\r\nksktyyst\r\npmwmnzswlw\r\nm\r\nuwaup\r\nxhvk\r\nj\r\nvii\r\n",
+                "434174305\r\n2030279\r\n2924\r\n6460404\r\n177169\r\n583243193\r\n154292634\r\n434\r\n434174305\r\n191795714\r\n792902040\r\n0\r\n573191111\r\n676498805\r\n0\r\n195974\r\n9239\r\n0\r\n506\r\n"
+            ],
+            [
+                "10\r\njrojjyqqjtrfjf\r\nvuwzvmwjyfvifdfddymwfuzmvvummwdfzjzdvzuvfvjiuvyzymviyyumvziyimfzfiji\r\nwxzwojjzqzyqlojjbrjlbqrrwqw\r\nqfwppnuvbgegbqgbmeqpbguwmmqhunnquepepeewubbmnenvmwhnvhunnmsqmmgfepevupewvenmwpmgspnebv\r\nrxqzorkizznsiirciokscrrjqqqzkfijrrkkfrqjjifczcjcnqoisorszkjxcxvqzcfczqfcrvfrsckvvfjxnxzqjivqv\r\nnvimavvhfskwkhgvaowsficdmv\r\nqvrdgohdmgawrqo\r\npulanukntfhrthkxkprprhrhcouxxnkhoroptcxkfktotkokonoxptcocnfartlucnlncalnknhlpachofclannctpklackcc\r\ntqezktgzhipiaootfpqpzjgtqitagthef\r\nqaeigcacoqoc\r\n",
+                "520219051\r\n945235283\r\n691128313\r\n324077859\r\n417775814\r\n827035318\r\n275780270\r\n145635612\r\n155578699\r\n486064325\r\n"
+            ],
+            [
+                "10\r\nnnclytzybytthncihlnnbclzcbhinhyzbhnbiyccltnnchylynhznycniiztzcthiyyhccybc\r\ngbcccdnjbgntyzayntwdf\r\ndzkxapreirktspflaudtlexeffifxxzxrjaxqfkcncxf\r\nnilfxfsyliingzbgsxbzxxmqqxnngsfqqqbqinglmbxgysbi\r\nsjquzchhssjrrzbuc\r\nhdhvdnjvhreiiekeinvdddneejkrdkjvikj\r\nanyamaosolahmhnmsmmmmhhofsaalfmomoshy\r\nnqvzznlicebqsviwivvhhiiciblbelvlelhisclecb\r\nlbtihlhulugddgtfwjiftfltijwitcgmgvjfcfcdwbliijqhidghdwibpgjqdumdijmhlbdfvcpcqqptcc\r\nkfjcmfzxhhkhfikihymhmhxuzeykfkmezcmieyxxshjckfxsx\r\n",
+                "860385290\r\n566220124\r\n563237657\r\n25482967\r\n365565922\r\n211740598\r\n627945017\r\n550126162\r\n997587067\r\n505019519\r\n"
+            ]
+        ]
+    }
+]

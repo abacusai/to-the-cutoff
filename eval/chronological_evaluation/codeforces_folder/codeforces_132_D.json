@@ -1,0 +1,149 @@
+[
+    {
+        "name": "Constants in the language of Shakespeare",
+        "description": "Shakespeare is a widely known esoteric programming language in which programs\nlook like plays by Shakespeare, and numbers are given by combinations of\nornate epithets. In this problem we will have a closer look at the way the\nnumbers are described in Shakespeare. Each constant in Shakespeare is created\nfrom non-negative powers of 2 using arithmetic operations. For simplicity\nwe'll allow only addition and subtraction and will look for a representation\nof the given number which requires a minimal number of operations. You are\ngiven an integer n. You have to represent it as n = a1 + a2 + ... + am, where\neach of ai is a non-negative power of 2, possibly multiplied by -1. Find a\nrepresentation which minimizes the value of m. Input The only line of input\ncontains a positive integer n, written as its binary notation. The length of\nthe notation is at most 10^6. The first digit of the notation is guaranteed to\nbe 1. Output Output the required minimal m. After it output m lines. Each line\nhas to be formatted as \"+2^x\" or \"-2^x\", where x is the power coefficient of\nthe corresponding term. The order of the lines doesn't matter. Examples Input\n1111 Output 2 +2^4 -2^0 Input 1010011 Output 4 +2^0 +2^1 +2^4 +2^6\n\n",
+        "cf_contest_id": 132,
+        "cf_index": "D",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "dp",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1111\r\n",
+                "2\r\n-2^0\r\n+2^4\r\n"
+            ],
+            [
+                "1010011\r\n",
+                "4\r\n-2^0\r\n+2^2\r\n+2^4\r\n+2^6\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n",
+                "1\r\n+2^0\r\n"
+            ],
+            [
+                "10110111\r\n",
+                "4\r\n-2^0\r\n-2^3\r\n-2^6\r\n+2^8\r\n"
+            ],
+            [
+                "10101110\r\n",
+                "4\r\n-2^1\r\n-2^4\r\n-2^6\r\n+2^8\r\n"
+            ],
+            [
+                "1011001\r\n",
+                "4\r\n+2^0\r\n-2^3\r\n-2^5\r\n+2^7\r\n"
+            ],
+            [
+                "10001\r\n",
+                "2\r\n+2^0\r\n+2^4\r\n"
+            ],
+            [
+                "10\r\n",
+                "1\r\n+2^1\r\n"
+            ],
+            [
+                "11\r\n",
+                "2\r\n-2^0\r\n+2^2\r\n"
+            ],
+            [
+                "100\r\n",
+                "1\r\n+2^2\r\n"
+            ],
+            [
+                "100\r\n",
+                "1\r\n+2^2\r\n"
+            ],
+            [
+                "111\r\n",
+                "2\r\n-2^0\r\n+2^3\r\n"
+            ],
+            [
+                "1000000000\r\n",
+                "1\r\n+2^9\r\n"
+            ],
+            [
+                "1011000000\r\n",
+                "3\r\n-2^6\r\n-2^8\r\n+2^10\r\n"
+            ],
+            [
+                "1100010000\r\n",
+                "3\r\n+2^4\r\n-2^8\r\n+2^10\r\n"
+            ],
+            [
+                "1000111001\r\n",
+                "4\r\n+2^0\r\n-2^3\r\n+2^6\r\n+2^9\r\n"
+            ],
+            [
+                "1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\r\n",
+                "1\r\n+2^99\r\n"
+            ],
+            [
+                "1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\r\n",
+                "1\r\n+2^99\r\n"
+            ],
+            [
+                "1000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000\r\n",
+                "2\r\n+2^18\r\n+2^99\r\n"
+            ],
+            [
+                "1000000000000000000000000000010000000000000000100000000000100000000000000000000000000000000000000000\r\n",
+                "4\r\n+2^41\r\n+2^53\r\n+2^70\r\n+2^99\r\n"
+            ],
+            [
+                "1000000000000000000100000001000000000000000000100000101000000000000000000000100000000000000100000000\r\n",
+                "8\r\n+2^8\r\n+2^23\r\n+2^45\r\n+2^47\r\n+2^53\r\n+2^72\r\n+2^80\r\n+2^99\r\n"
+            ],
+            [
+                "1000100000101000000100100000000000000000100000000000000010000010000001010010100000000000000001001000\r\n",
+                "15\r\n+2^3\r\n+2^6\r\n+2^23\r\n+2^25\r\n+2^28\r\n+2^30\r\n+2^37\r\n+2^43\r\n+2^59\r\n+2^77\r\n+2^80\r\n+2^87\r\n+2^89\r\n+2^95\r\n+2^99\r\n"
+            ],
+            [
+                "1000001001000011000010001000100110010110100000000101010101000100100010000100000100000100001000000000\r\n",
+                "26\r\n+2^9\r\n+2^14\r\n+2^20\r\n+2^26\r\n+2^31\r\n+2^35\r\n+2^38\r\n+2^42\r\n+2^44\r\n+2^46\r\n+2^48\r\n+2^50\r\n+2^59\r\n-2^61\r\n-2^63\r\n+2^65\r\n-2^67\r\n+2^69\r\n+2^71\r\n+2^75\r\n+2^79\r\n-2^84\r\n+2^86\r\n+2^90\r\n+2^93\r\n+2^99\r\n"
+            ],
+            [
+                "1110000000001011100111001010000010101100010101001101001010101100011101100110000010000101110101000011\r\n",
+                "37\r\n-2^0\r\n+2^2\r\n+2^6\r\n+2^8\r\n-2^10\r\n-2^13\r\n+2^15\r\n+2^19\r\n-2^25\r\n+2^27\r\n-2^29\r\n-2^31\r\n+2^35\r\n-2^38\r\n-2^40\r\n-2^42\r\n-2^44\r\n+2^46\r\n+2^48\r\n-2^50\r\n+2^52\r\n+2^54\r\n+2^56\r\n+2^58\r\n-2^62\r\n-2^64\r\n-2^66\r\n+2^68\r\n+2^73\r\n+2^75\r\n-2^78\r\n+2^81\r\n-2^83\r\n-2^86\r\n+2^88\r\n-2^97\r\n+2^100\r\n"
+            ],
+            [
+                "1001110101111100101111011111111111101010111111010111011111111111011111111111111100011011111111111101\r\n",
+                "20\r\n+2^0\r\n-2^2\r\n-2^14\r\n+2^17\r\n-2^20\r\n-2^35\r\n-2^47\r\n-2^51\r\n-2^53\r\n-2^60\r\n-2^62\r\n-2^64\r\n-2^77\r\n-2^82\r\n+2^84\r\n-2^86\r\n-2^91\r\n-2^93\r\n+2^97\r\n+2^99\r\n"
+            ],
+            [
+                "1111111101111111101111111111101111111111111111111111101111111011111110011111101111111110111111111111\r\n",
+                "11\r\n-2^0\r\n-2^12\r\n-2^22\r\n+2^29\r\n-2^31\r\n-2^38\r\n-2^46\r\n-2^70\r\n-2^82\r\n-2^91\r\n+2^100\r\n"
+            ],
+            [
+                "100000000000000000000000000000000\r\n",
+                "1\r\n+2^32\r\n"
+            ],
+            [
+                "111111000111111000111111000111111\r\n",
+                "8\r\n-2^0\r\n+2^6\r\n-2^9\r\n+2^15\r\n-2^18\r\n+2^24\r\n-2^27\r\n+2^33\r\n"
+            ],
+            [
+                "10001100000000000011011011\r\n",
+                "7\r\n-2^0\r\n-2^2\r\n-2^5\r\n+2^8\r\n-2^20\r\n+2^22\r\n+2^25\r\n"
+            ],
+            [
+                "1101011\r\n",
+                "4\r\n-2^0\r\n-2^2\r\n-2^4\r\n+2^7\r\n"
+            ],
+            [
+                "11000101010000101101101101111000100100001101001111000011011100\r\n",
+                "21\r\n-2^2\r\n-2^5\r\n+2^8\r\n-2^12\r\n+2^16\r\n+2^18\r\n-2^20\r\n+2^22\r\n+2^26\r\n+2^29\r\n-2^33\r\n-2^37\r\n-2^40\r\n-2^43\r\n-2^46\r\n+2^48\r\n+2^52\r\n+2^54\r\n+2^56\r\n-2^60\r\n+2^62\r\n"
+            ],
+            [
+                "11101011\r\n",
+                "4\r\n-2^0\r\n-2^2\r\n-2^4\r\n+2^8\r\n"
+            ]
+        ]
+    }
+]

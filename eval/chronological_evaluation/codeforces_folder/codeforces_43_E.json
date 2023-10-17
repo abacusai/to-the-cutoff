@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Race",
+        "description": "Today s kilometer long auto race takes place in Berland. The track is\nrepresented by a straight line as long as s kilometers. There are n cars\ntaking part in the race, all of them start simultaneously at the very\nbeginning of the track. For every car is known its behavior \u2014 the system of\nsegments on each of which the speed of the car is constant. The j-th segment\nof the i-th car is pair (vi, j, ti, j), where vi, j is the car's speed on the\nwhole segment in kilometers per hour and ti, j is for how many hours the car\nhad been driving at that speed. The segments are given in the order in which\nthey are \"being driven on\" by the cars. Your task is to find out how many\ntimes during the race some car managed to have a lead over another car. A lead\nis considered a situation when one car appears in front of another car. It is\nknown, that all the leads happen instantly, i. e. there are no such time\nsegment of positive length, during which some two cars drive \"together\". At\none moment of time on one and the same point several leads may appear. In this\ncase all of them should be taken individually. Meetings of cars at the start\nand finish are not considered to be counted as leads. Input The first line\ncontains two integers n and s (2 \u2264 n \u2264 100, 1 \u2264 s \u2264 10^6) \u2014 the number of cars\nand the length of the track in kilometers. Then follow n lines \u2014 the\ndescription of the system of segments for each car. Every description starts\nwith integer k (1 \u2264 k \u2264 100) \u2014 the number of segments in the system. Then k\nspace-separated pairs of integers are written. Each pair is the speed and time\nof the segment. These integers are positive and don't exceed 1000. It is\nguaranteed, that the sum of lengths of all segments (in kilometers) for each\ncar equals to s; and all the leads happen instantly. Output Print the single\nnumber \u2014 the number of times some car managed to take the lead over another\ncar during the race. Examples Input 2 33 2 5 1 2 14 1 3 11 Output 1 Input 2 33\n2 1 3 10 3 1 11 3 Output 0 Input 5 33 2 1 3 3 10 1 11 3 2 5 3 3 6 2 3 1 10 3 2\n6 3 3 5 Output 2\n\n",
+        "cf_contest_id": 43,
+        "cf_index": "E",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 33\r\n2 5 1 2 14\r\n1 3 11\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 33\r\n2 1 3 10 3\r\n1 11 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 33\r\n2 1 3 3 10\r\n1 11 3\r\n2 5 3 3 6\r\n2 3 1 10 3\r\n2 6 3 3 5\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 166755\r\n2 733 187 362 82\r\n3 813 147 565 57 557 27\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 228385\r\n2 307 733 43 78\r\n2 252 801 157 169\r\n3 86 346 133 886 467 173\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 773663\r\n9 277 398 57 73 62 736 625 393 186 761 129 716 329 179 54 223 554 114\r\n4 463 333 547 696 33 89 505 467\r\n2 527 792 661 539\r\n2 643 976 479 305\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 835293\r\n2 421 965 758 566\r\n3 357 337 956 745 4 691\r\n2 433 925 464 937\r\n5 67 581 109 375 463 71 499 819 589 533\r\n2 918 828 353 213\r\n",
+                "4\r\n"
+            ],
+            [
+                "6 896922\r\n8 295 313 551 122 299 965 189 619 139 566 311 427 47 541 411 231\r\n5 743 210 82 451 921 124 792 397 742 371\r\n7 173 247 608 603 615 383 307 10 112 670 991 103 361 199\r\n2 190 209 961 892\r\n2 821 870 186 982\r\n5 563 456 293 568 247 955 134 787 151 877\r\n",
+                "13\r\n"
+            ],
+            [
+                "7 958552\r\n4 773 315 702 379 382 277 411 835\r\n3 365 416 554 861 921 358\r\n9 137 278 394 557 233 404 653 77 114 527 117 790 338 507 107 353 557 350\r\n3 776 928 43 258 895 254\r\n2 613 684 590 914\r\n4 568 326 917 201 379 173 698 750\r\n2 536 687 785 752\r\n",
+                "10\r\n"
+            ],
+            [
+                "8 394115\r\n8 350 64 117 509 217 451 393 118 99 454 136 37 240 183 937 79\r\n5 222 43 727 39 724 318 281 281 797 59\r\n4 440 139 367 155 415 250 359 480\r\n6 191 480 653 202 367 291 241 167 13 123 706 31\r\n2 410 369 883 275\r\n2 205 307 571 580\r\n2 469 211 452 653\r\n2 822 431 61 653\r\n",
+                "15\r\n"
+            ],
+            [
+                "9 81812\r\n8 31 410 547 18 22 77 449 5 491 8 10 382 746 21 61 523\r\n1 452 181\r\n1 724 113\r\n1 113 724\r\n1 226 362\r\n46 5 257 2 126 373 6 6 491 9 7 137 23 93 73 163 13 17 106 3 100 5 415 270 2 7 723 597 4 176 3 274 18 1 852 334 14 7 25 163 1 3 199 29 140 32 32 191 2 583 3 23 11 22 23 250 1 79 3 33 83 8 433 59 11 2 466 7 761 1 386 6 2 12 68 79 13 4 346 455 1 21 194 58 1 154 12 49 23 7 79 64 87\r\n12 449 11 21 192 328 9 35 381 5 492 361 9 604 11 47 239 543 22 40 265 9 105 27 351\r\n1 181 452\r\n1 362 226\r\n",
+                "5\r\n"
+            ],
+            [
+                "10 746595\r\n4 361 446 717 421 143 532 404 514\r\n2 327 337 724 879\r\n6 733 80 2 994 396 774 841 35 159 15 361 963\r\n5 283 973 43 731 633 521 335 269 173 115\r\n2 727 587 886 361\r\n6 223 683 98 367 80 293 612 584 128 991 224 226\r\n2 911 468 783 409\r\n2 308 983 529 839\r\n2 698 639 367 819\r\n2 275 397 785 812\r\n",
+                "21\r\n"
+            ],
+            [
+                "2 5\r\n3 2 1 1 1 2 1\r\n3 1 1 2 1 1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 6\r\n3 1 2 2 1 1 2\r\n3 2 1 1 2 2 1\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

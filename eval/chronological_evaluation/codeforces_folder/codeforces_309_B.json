@@ -1,0 +1,220 @@
+[
+    {
+        "name": "Context Advertising",
+        "description": "Advertising has become part of our routine. And now, in the era of progressive\ntechnologies, we need your ideas to make advertising better! In this problem\nwe'll look at a simplified version of context advertising. You've got a text,\nconsisting of exactly n words. A standard advertising banner has exactly r\nlines, each line can contain at most c characters. The potential customer\nalways likes it when they can see lots of advertising, so you should determine\nwhich maximum number of consecutive words from the text can be written on the\nbanner. Single words in one line of the banner should be separated by spaces.\nYou are allowed to insert more than one space at once. Note that you are not\nallowed to break the words, that is, each word in the text must occupy exactly\none line in the banner. Besides, you cannot change the word order, that is, if\nyou read the banner text consecutively, from top to bottom and from left to\nright, you should get some consecutive part of the advertisement text. More\nformally, the statement can be written like that. Let's say that all words are\nindexed from 1 to n in the order in which they occur in the advertisement\ntext. Then you have to choose all words, starting from some i-th one and\nending with some j-th one (1 \u2264 i \u2264 j \u2264 n), so that all of them could be\nwritten on the banner. There must be as many words as possible. See the\nsamples for clarifications. Input The first input line contains three integers\nn, r, c (1 \u2264 n, r, c \u2264 10^6; r \u00d7 c \u2264 10^6). The next line contains a text,\nconsisting of n words. The words consist only of lowercase English letters and\nare not empty. The words in the lines are separated by single spaces. The\ntotal number of characters in all words doesn't exceed 5\u00b710^6. Output Print at\nmost r lines, in each line print at most c characters \u2014 the optimal\nadvertisement banner. If there are multiple advertisement banners, print any\nof them. Note that some lines of the banner can be empty. You are allowed not\nto print such lines. Examples Input 9 4 12 this is a sample text for croc\nfinal round Output this is a sample text for croc final round Input 9 1 9 this\nis a sample text for croc final round Output this is a Input 6 2 3 croc a a a\ncroc a Output a a a Input 2 2 5 first second Output first\n\n",
+        "cf_contest_id": 309,
+        "cf_index": "B",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "9 4 12\r\nthis is a sample text for croc final round\r\n",
+                "this is a\r\nsample text\r\nfor croc\r\nfinal round\r\n"
+            ],
+            [
+                "9 1 9\r\nthis is a sample text for croc final round\r\n",
+                "this is a\r\n"
+            ],
+            [
+                "6 2 3\r\ncroc a a a croc a\r\n",
+                "a a\r\na\r\n"
+            ],
+            [
+                "2 2 5\r\nfirst second\r\n",
+                "first\r\n\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 2 6\r\naa aaa aa a a\r\n",
+                "aa aaa\r\naa a a\r\n"
+            ],
+            [
+                "10 12 7\r\nl ry ksgx bxeb t w szsw m bf eyfc\r\n",
+                "l ry\r\nksgx\r\nbxeb t\r\nw szsw\r\nm bf\r\neyfc\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 2 11\r\nbs ypyq futw y edwq rrsz x kj sx i\r\n",
+                "y edwq rrsz\r\nx kj sx i\r\n"
+            ],
+            [
+                "10 4 3\r\nuzu bl fl ou uist j lp e gkp fmo\r\n",
+                "uzu\r\nbl\r\nfl\r\nou\r\n"
+            ],
+            [
+                "10 10 19\r\nlguv zi riht pf jtbo qmk qp nvh qur z\r\n",
+                "lguv zi riht pf\r\njtbo qmk qp nvh qur\r\nz\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 20 15\r\ne u xn fxrz kk o run oir auza byc\r\n",
+                "e u xn fxrz kk\r\no run oir auza\r\nbyc\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 15 15\r\nv vshb rdy o fxbs nlnn v ize yvrq c\r\n",
+                "v vshb rdy o\r\nfxbs nlnn v ize\r\nyvrq c\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 5 11\r\nna qt xck lob v jpg h ac s j\r\n",
+                "na qt xck\r\nlob v jpg h\r\nac s j\r\n\r\n\r\n"
+            ],
+            [
+                "10 7 3\r\nejw d u qpd ky zzo lb wit jos jaqr\r\n",
+                "ejw\r\nd u\r\nqpd\r\nky\r\nzzo\r\nlb\r\nwit\r\n"
+            ],
+            [
+                "10 12 20\r\nh y u vb qai xbm lp ip w uedc\r\n",
+                "h y u vb qai xbm lp\r\nip w uedc\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 2 17\r\nyr gens ax icuz rj ran c eji cmdv fut\r\n",
+                "yr gens ax icuz\r\nrj ran c eji cmdv\r\n"
+            ],
+            [
+                "10 14 13\r\nw atdg vkjo s mpr efv bu f oy wflo\r\n",
+                "w atdg vkjo s\r\nmpr efv bu f\r\noy wflo\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 19 13\r\nifa aonn ng tk vygu lm nb ut fb v\r\n",
+                "ifa aonn ng\r\ntk vygu lm nb\r\nut fb v\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 5 5\r\nalab cib vz cgm q nne tuxf yjst hbk jdn\r\n",
+                "alab\r\ncib\r\nvz\r\ncgm q\r\nnne\r\n"
+            ],
+            [
+                "10 15 1\r\nr aaw fmz r k jtge mwj yw ef i\r\n",
+                "r\r\nk\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 5 5\r\nib yi c f ka yg xdz qk fs jk\r\n",
+                "ib yi\r\nc f\r\nka yg\r\nxdz\r\nqk fs\r\n"
+            ],
+            [
+                "10 4 17\r\nbi ys xm sd btbp bplj h r mp lbi\r\n",
+                "bi ys xm sd btbp\r\nbplj h r mp lbi\r\n\r\n\r\n"
+            ],
+            [
+                "10 14 13\r\nsoc cf y bv kp ceb k hd nss p\r\n",
+                "soc cf y bv\r\nkp ceb k hd\r\nnss p\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 8 5\r\nkvet t myiq skt ua ju zx ax dm s\r\n",
+                "kvet\r\nt\r\nmyiq\r\nskt\r\nua ju\r\nzx ax\r\ndm s\r\n\r\n"
+            ],
+            [
+                "10 9 14\r\nlz lgos cmnt lfa vu cljk tsm cydm vy gqed\r\n",
+                "lz lgos cmnt\r\nlfa vu cljk\r\ntsm cydm vy\r\ngqed\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 15 10\r\neff qe jit rj c o mp jfqy xtcp wayp\r\n",
+                "eff qe jit\r\nrj c o mp\r\njfqy xtcp\r\nwayp\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 5 10\r\nvmg cr xo yqr xz tfo ibxv c p nomd\r\n",
+                "vmg cr xo\r\nyqr xz tfo\r\nibxv c p\r\nnomd\r\n\r\n"
+            ],
+            [
+                "10 16 6\r\notgi f i j oazv vsy fizc wh es faka\r\n",
+                "otgi f\r\ni j\r\noazv\r\nvsy\r\nfizc\r\nwh es\r\nfaka\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 10 18\r\nf g y fu qjlj s lqrl hwi e itg\r\n",
+                "f g y fu qjlj s\r\nlqrl hwi e itg\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 12 2\r\nxg gi cih cl pnib ims spmo nh v bvli\r\n",
+                "xg\r\ngi\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 18 14\r\nonj uuzu gwia kvs bl eo lwws jpi cevh zvot\r\n",
+                "onj uuzu gwia\r\nkvs bl eo lwws\r\njpi cevh zvot\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 8 10\r\nhukd i i npii fgin j ek hhc lzi b\r\n",
+                "hukd i i\r\nnpii fgin\r\nj ek hhc\r\nlzi b\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 19 6\r\nybkb wrt vifr ct lm v gg rhd m r\r\n",
+                "ybkb\r\nwrt\r\nvifr\r\nct lm\r\nv gg\r\nrhd m\r\nr\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 5 6\r\np kaa pf eafz xep fgob lcz kna j tifx\r\n",
+                "p kaa\r\npf\r\neafz\r\nxep\r\nfgob\r\n"
+            ],
+            [
+                "10 14 7\r\nrll seqs fxc xjrs yp e att xx hwsf plyi\r\n",
+                "rll\r\nseqs\r\nfxc\r\nxjrs yp\r\ne att\r\nxx hwsf\r\nplyi\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 20 11\r\nisnr u eq qas gcj rnnf fpb c dz g\r\n",
+                "isnr u eq\r\nqas gcj\r\nrnnf fpb c\r\ndz g\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 4 1\r\nbi ys xm sd btbp bplj h r mp lbi\r\n",
+                "h\r\nr\r\n\r\n\r\n"
+            ],
+            [
+                "10 2 1\r\nsoc cf y bv kp ceb k hd nss p\r\n",
+                "y\r\n\r\n"
+            ],
+            [
+                "10 4 1\r\nkvet t myiq skt ua ju zx ax dm s\r\n",
+                "t\r\n\r\n\r\n\r\n"
+            ],
+            [
+                "10 1 6\r\nlz lgos cmnt lfa vu cljk tsm cydm vy gqed\r\n",
+                "lfa vu\r\n"
+            ],
+            [
+                "10 3 6\r\neff qe jit rj c o mp jfqy xtcp wayp\r\n",
+                "eff qe\r\njit rj\r\nc o mp\r\n"
+            ],
+            [
+                "10 1 6\r\nvmg cr xo yqr xz tfo ibxv c p nomd\r\n",
+                "vmg cr\r\n"
+            ],
+            [
+                "10 4 6\r\notgi f i j oazv vsy fizc wh es faka\r\n",
+                "otgi f\r\ni j\r\noazv\r\nvsy\r\n"
+            ],
+            [
+                "10 2 6\r\nf g y fu qjlj s lqrl hwi e itg\r\n",
+                "g y fu\r\nqjlj s\r\n"
+            ],
+            [
+                "10 4 6\r\nxg gi cih cl pnib ims spmo nh v bvli\r\n",
+                "xg gi\r\ncih cl\r\npnib\r\nims\r\n"
+            ],
+            [
+                "10 2 6\r\nonj uuzu gwia kvs bl eo lwws jpi cevh zvot\r\n",
+                "gwia\r\nkvs bl\r\n"
+            ],
+            [
+                "10 4 6\r\nhukd i i npii fgin j ek hhc lzi b\r\n",
+                "hukd i\r\ni npii\r\nfgin j\r\nek hhc\r\n"
+            ],
+            [
+                "10 3 6\r\nybkb wrt vifr ct lm v gg rhd m r\r\n",
+                "ct lm\r\nv gg\r\nrhd m\r\n"
+            ],
+            [
+                "10 1 6\r\np kaa pf eafz xep fgob lcz kna j tifx\r\n",
+                "p kaa\r\n"
+            ],
+            [
+                "10 2 3\r\nrll seqs fxc xjrs yp e att xx hwsf plyi\r\n",
+                "yp\r\ne\r\n"
+            ],
+            [
+                "10 4 3\r\nisnr u eq qas gcj rnnf fpb c dz g\r\n",
+                "u\r\neq\r\nqas\r\ngcj\r\n"
+            ]
+        ]
+    }
+]

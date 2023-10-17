@@ -1,0 +1,109 @@
+[
+    {
+        "name": "Morse Code",
+        "description": "In Morse code, an letter of English alphabet is represented as a string of\nsome length from \n    1\n to \n    4\n. Moreover, each Morse code representation\nof an English letter contains only dots and dashes. In this task, we will\nrepresent a dot with a \"0\" and a dash with a \"1\". Because there are\n\n    2^1+2^2+2^3+2^4 = 30\n strings with length \n    1\n to \n    4\n containing\nonly \"0\" and/or \"1\", not all of them correspond to one of the \n    26\n English\nletters. In particular, each string of \"0\" and/or \"1\" of length at most\n\n    4\n translates into a distinct English letter, except the following four\nstrings that do not correspond to any English alphabet: \"0011\", \"0101\",\n\"1110\", and \"1111\". You will work with a string \n    S\n, which is initially\nempty. For \n    m\n times, either a dot or a dash will be appended to \n    S\n,\none at a time. Your task is to find and report, after each of these\nmodifications to string \n    S\n, the number of non-empty sequences of English\nletters that are represented with some substring of \n    S\n in Morse code.\nSince the answers can be incredibly tremendous, print them modulo \n    10^9 +\n    7\n. Input The first line contains an integer \n    m\n (\n    1 \n    \u2264 m \n    \u2264\n    3\n     000\n) \u2014 the number of modifications to \n    S\n. Each of the next\n\n    m\n lines contains either a \"0\" (representing a dot) or a \"1\"\n(representing a dash), specifying which character should be appended to\n\n    S\n. Output Print \n    m\n lines, the \n    i\n-th of which being the answer\nafter the \n    i\n-th modification to \n    S\n. Examples Input 3 1 1 1 Output 1\n3 7 Input 5 1 0 1 0 1 Output 1 4 10 22 43 Input 9 1 1 0 0 0 1 1 0 1 Output 1 3\n10 24 51 109 213 421 833 Note Let us consider the first sample after all\ncharacters have been appended to \n    S\n, so S is \"111\". As you can see, \"1\",\n\"11\", and \"111\" all correspond to some distinct English letter. In fact, they\nare translated into a 'T', an 'M', and an 'O', respectively. All non-empty\nsequences of English letters that are represented with some substring of\n\n    S\n in Morse code, therefore, are as follows. \"T\" (translates into \"1\")\n\"M\" (translates into \"11\") \"O\" (translates into \"111\") \"TT\" (translates into\n\"11\") \"TM\" (translates into \"111\") \"MT\" (translates into \"111\") \"TTT\"\n(translates into \"111\") Although unnecessary for this task, a conversion table\nfrom English alphabets into Morse code can be found here.\n\n",
+        "cf_contest_id": 1129,
+        "cf_index": "C",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "hashing",
+            "sortings",
+            "string suffix structures",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n1\r\n1\r\n1\r\n",
+                "1\r\n3\r\n7\r\n"
+            ],
+            [
+                "5\r\n1\r\n0\r\n1\r\n0\r\n1\r\n",
+                "1\r\n4\r\n10\r\n22\r\n43\r\n"
+            ],
+            [
+                "9\r\n1\r\n1\r\n0\r\n0\r\n0\r\n1\r\n1\r\n0\r\n1\r\n",
+                "1\r\n3\r\n10\r\n24\r\n51\r\n109\r\n213\r\n421\r\n833\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n0\r\n0\r\n0\r\n",
+                "1\r\n3\r\n7\r\n"
+            ],
+            [
+                "15\r\n1\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n0\r\n0\r\n",
+                "1\r\n4\r\n10\r\n24\r\n51\r\n103\r\n215\r\n431\r\n855\r\n1626\r\n3168\r\n5912\r\n10969\r\n20336\r\n39070\r\n"
+            ],
+            [
+                "20\r\n1\r\n1\r\n0\r\n0\r\n1\r\n1\r\n0\r\n0\r\n1\r\n1\r\n0\r\n0\r\n1\r\n1\r\n0\r\n0\r\n1\r\n1\r\n0\r\n0\r\n",
+                "1\r\n3\r\n10\r\n24\r\n53\r\n105\r\n209\r\n409\r\n794\r\n1483\r\n2861\r\n5513\r\n10617\r\n19751\r\n38019\r\n73177\r\n140841\r\n261931\r\n504111\r\n970203\r\n"
+            ],
+            [
+                "30\r\n1\r\n0\r\n1\r\n0\r\n1\r\n1\r\n0\r\n1\r\n1\r\n0\r\n1\r\n0\r\n1\r\n1\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n0\r\n1\r\n0\r\n0\r\n1\r\n",
+                "1\r\n4\r\n10\r\n22\r\n43\r\n99\r\n207\r\n415\r\n815\r\n1587\r\n3075\r\n6043\r\n11350\r\n21964\r\n42393\r\n81925\r\n158005\r\n304829\r\n587813\r\n1133252\r\n2184596\r\n4064376\r\n7823948\r\n14514657\r\n26844724\r\n49625092\r\n95185828\r\n182547725\r\n350580848\r\n674317028\r\n"
+            ],
+            [
+                "50\r\n1\r\n1\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n0\r\n1\r\n1\r\n1\r\n0\r\n0\r\n1\r\n1\r\n0\r\n1\r\n1\r\n1\r\n1\r\n0\r\n1\r\n0\r\n0\r\n1\r\n1\r\n1\r\n0\r\n1\r\n0\r\n1\r\n1\r\n1\r\n1\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n1\r\n0\r\n0\r\n1\r\n",
+                "1\r\n3\r\n10\r\n24\r\n51\r\n109\r\n221\r\n437\r\n853\r\n1682\r\n3168\r\n6140\r\n11860\r\n22892\r\n44135\r\n82151\r\n158191\r\n304543\r\n564961\r\n1085797\r\n2089447\r\n4020703\r\n7736863\r\n14388308\r\n26687491\r\n51285871\r\n98551264\r\n189365676\r\n364343151\r\n677400510\r\n303515263\r\n417664883\r\n645964151\r\n927585198\r\n551655236\r\n799795319\r\n181925830\r\n436266469\r\n320877702\r\n90100168\r\n380405024\r\n578884218\r\n721503333\r\n122130227\r\n154161765\r\n927919646\r\n134336201\r\n547169339\r\n972208491\r\n790255221\r\n"
+            ],
+            [
+                "2\r\n1\r\n0\r\n",
+                "1\r\n4\r\n"
+            ],
+            [
+                "3\r\n1\r\n1\r\n1\r\n",
+                "1\r\n3\r\n7\r\n"
+            ],
+            [
+                "4\r\n1\r\n1\r\n1\r\n1\r\n",
+                "1\r\n3\r\n7\r\n14\r\n"
+            ],
+            [
+                "5\r\n1\r\n1\r\n1\r\n1\r\n1\r\n",
+                "1\r\n3\r\n7\r\n14\r\n27\r\n"
+            ],
+            [
+                "2\r\n0\r\n0\r\n",
+                "1\r\n3\r\n"
+            ],
+            [
+                "4\r\n0\r\n0\r\n0\r\n0\r\n",
+                "1\r\n3\r\n7\r\n15\r\n"
+            ],
+            [
+                "5\r\n0\r\n0\r\n0\r\n0\r\n0\r\n",
+                "1\r\n3\r\n7\r\n15\r\n30\r\n"
+            ],
+            [
+                "2\r\n1\r\n1\r\n",
+                "1\r\n3\r\n"
+            ],
+            [
+                "3\r\n1\r\n1\r\n1\r\n",
+                "1\r\n3\r\n7\r\n"
+            ],
+            [
+                "4\r\n1\r\n1\r\n1\r\n1\r\n",
+                "1\r\n3\r\n7\r\n14\r\n"
+            ],
+            [
+                "5\r\n1\r\n1\r\n1\r\n1\r\n1\r\n",
+                "1\r\n3\r\n7\r\n14\r\n27\r\n"
+            ]
+        ]
+    }
+]

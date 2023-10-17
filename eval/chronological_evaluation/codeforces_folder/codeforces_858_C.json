@@ -1,0 +1,361 @@
+[
+    {
+        "name": "Did you mean...",
+        "description": "Beroffice text editor has a wide range of features that help working with\ntext. One of the features is an automatic search for typos and suggestions of\nhow to fix them. Beroffice works only with small English letters (i.e. with 26\nletters from a to z). Beroffice thinks that a word is typed with a typo if\nthere are three or more consonants in a row in the word. The only exception is\nthat if the block of consonants has all letters the same, then this block\n(even if its length is greater than three) is not considered a typo. Formally,\na word is typed with a typo if there is a block of not less that three\nconsonants in a row, and there are at least two different letters in this\nblock. For example: the following words have typos: \"hellno\", \"hackcerrs\" and\n\"backtothefutttture\"; the following words don't have typos: \"helllllooooo\",\n\"tobeornottobe\" and \"oooooo\". When Beroffice editor finds a word with a typo,\nit inserts as little as possible number of spaces in this word (dividing it\ninto several words) in such a way that each of the resulting words is typed\nwithout any typos. Implement this feature of Beroffice editor. Consider the\nfollowing letters as the only vowels: 'a', 'e', 'i', 'o' and 'u'. All the\nother letters are consonants in this problem. Input The only line contains a\nnon-empty word consisting of small English letters. The length of the word is\nbetween 1 and 3000 letters. Output Print the given word without any changes if\nthere are no typos. If there is at least one typo in the word, insert the\nminimum number of spaces into the word so that each of the resulting words\ndoesn't have any typos. If there are multiple solutions, print any of them.\nExamples Input hellno Output hell no Input abacaba Output abacaba Input\nasdfasdf Output asd fasd f\n\n",
+        "cf_contest_id": 858,
+        "cf_index": "C",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "hellno\r\n",
+                "hell no\r\n"
+            ],
+            [
+                "abacaba\r\n",
+                "abacaba\r\n"
+            ],
+            [
+                "asdfasdf\r\n",
+                "asd fasd f\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "ooo\r\n",
+                "ooo\r\n"
+            ],
+            [
+                "moyaoborona\r\n",
+                "moyaoborona\r\n"
+            ],
+            [
+                "jxegxxx\r\n",
+                "jxegx xx \r\n"
+            ],
+            [
+                "orfyaenanabckumulsboloyhljhacdgcmnooxvxrtuhcslxgslfpnfnyejbxqisxjyoyvcvuddboxkqgbogkfz\r\n",
+                "orf yaenanabc kumuls boloyh lj hacd gc mnooxv xr tuhc sl xg sl fp nf nyejb xqisx jyoyv cvudd boxk qg bogk fz \r\n"
+            ],
+            [
+                "zxdgmhsjotvajkwshjpvzcuwehpeyfhakhtlvuoftkgdmvpafmxcliqvrztloocziqdkexhzcbdgxaoyvte\r\n",
+                "zx dg mh sjotvajk ws hj pv zcuwehpeyf hakh tl vuoft kg dm vpafm xc liqv rz tloocziqd kexh zc bd gxaoyv te\r\n"
+            ],
+            [
+                "niblehmwtycadhbfuginpyafszjbucaszihijndzjtuyuaxkrovotshtsajmdcflnfdmahzbvpymiczqqleedpofcnvhieknlz\r\n",
+                "niblehm wt ycadh bfuginp yafs zj bucaszihijn dz jtuyuaxk rovots ht sajm dc fl nf dmahz bv py micz qq leedpofc nv hiekn lz \r\n"
+            ],
+            [
+                "pqvtgtctpkgjgxnposjqedofficoyznxlerxyqypyzpoehejtjvyafjxjppywwgeakf\r\n",
+                "pq vt gt ct pk gj gx nposj qedofficoyz nx lerx yq yp yz poehejt jv yafj xj pp yw wgeakf \r\n"
+            ],
+            [
+                "mvjajoyeg\r\n",
+                "mv jajoyeg\r\n"
+            ],
+            [
+                "dipxocwjosvdaillxolmthjhzhsxskzqslebpixpuhpgeesrkedhohisdsjsrkiktbjzlhectrfcathvewzficirqbdvzq\r\n",
+                "dipxocw josv daill xolm th jh zh sx sk zq slebpixpuhp geesr kedhohisd sj sr kikt bj zl hect rf cath vewz ficirq bd vz q\r\n"
+            ],
+            [
+                "ibbtvelwjirxqermucqrgmoauonisgmarjxxybllktccdykvef\r\n",
+                "ibb tvelw jirx qermucq rg moauonisg marj xx yb ll kt cc dy kvef\r\n"
+            ],
+            [
+                "jxevkmrwlomaaahaubvjzqtyfqhqbhpqhomxqpiuersltohinvfyeykmlooujymldjqhgqjkvqknlyj\r\n",
+                "jxevk mr wlomaaahaubv jz qt yf qh qb hp qhomx qpiuers ltohinv fyeyk mlooujy ml dj qh gq jk vq kn ly j\r\n"
+            ],
+            [
+                "hzxkuwqxonsulnndlhygvmallghjerwp\r\n",
+                "hz xkuwq xonsuln nd lh yg vmall gh jerw p\r\n"
+            ],
+            [
+                "jbvcsjdyzlzmxwcvmixunfzxidzvwzaqqdhguvelwbdosbd\r\n",
+                "jb vc sj dy zl zm xw cv mixunf zxidz vw zaqq dh guvelw bdosb d\r\n"
+            ],
+            [
+                "uyrsxaqmtibbxpfabprvnvbinjoxubupvfyjlqnfrfdeptipketwghr\r\n",
+                "uyr sxaqm tibb xp fabp rv nv binjoxubupv fy jl qn fr fdeptipketw gh r\r\n"
+            ],
+            [
+                "xfcftysljytybkkzkpqdzralahgvbkxdtheqrhfxpecdjqofnyiahggnkiuusalu\r\n",
+                "xf cf ty sl jy ty bk kz kp qd zralahg vb kx dt heqr hf xpecd jqofn yiahg gn kiuusalu\r\n"
+            ],
+            [
+                "a\r\n",
+                "a\r\n"
+            ],
+            [
+                "b\r\n",
+                "b\r\n"
+            ],
+            [
+                "aa\r\n",
+                "aa\r\n"
+            ],
+            [
+                "ab\r\n",
+                "ab\r\n"
+            ],
+            [
+                "ba\r\n",
+                "ba\r\n"
+            ],
+            [
+                "bb\r\n",
+                "bb \r\n"
+            ],
+            [
+                "aaa\r\n",
+                "aaa\r\n"
+            ],
+            [
+                "aab\r\n",
+                "aab\r\n"
+            ],
+            [
+                "aba\r\n",
+                "aba\r\n"
+            ],
+            [
+                "abb\r\n",
+                "abb \r\n"
+            ],
+            [
+                "baa\r\n",
+                "baa\r\n"
+            ],
+            [
+                "bab\r\n",
+                "bab\r\n"
+            ],
+            [
+                "bba\r\n",
+                "bba\r\n"
+            ],
+            [
+                "bbb\r\n",
+                "bbb \r\n"
+            ],
+            [
+                "bbc\r\n",
+                "bb c\r\n"
+            ],
+            [
+                "bcb\r\n",
+                "bc b\r\n"
+            ],
+            [
+                "cbb\r\n",
+                "cb b\r\n"
+            ],
+            [
+                "bababcdfabbcabcdfacbbabcdfacacabcdfacbcabcdfaccbabcdfacaaabcdfabacabcdfabcbabcdfacbaabcdfabaaabcdfabbaabcdfacababcdfabbbabcdfabcaabcdfaaababcdfabccabcdfacccabcdfaacbabcdfaabaabcdfaabcabcdfaaacabcdfaccaabcdfaabbabcdfaaaaabcdfaacaabcdfaacc\r\n",
+                "bababc dfabb cabc dfacb babc dfacacabc dfacb cabc dfacc babc dfacaaabc dfabacabc dfabc babc dfacbaabc dfabaaabc dfabbaabc dfacababc dfabbbabc dfabcaabc dfaaababc dfabc cabc dfacccabc dfaacbabc dfaabaabc dfaabcabc dfaaacabc dfaccaabc dfaabbabc dfaaaaabc dfaacaabc dfaacc \r\n"
+            ],
+            [
+                "bddabcdfaccdabcdfadddabcdfabbdabcdfacddabcdfacdbabcdfacbbabcdfacbcabcdfacbdabcdfadbbabcdfabdbabcdfabdcabcdfabbcabcdfabccabcdfabbbabcdfaddcabcdfaccbabcdfadbdabcdfacccabcdfadcdabcdfadcbabcdfabcbabcdfadbcabcdfacdcabcdfabcdabcdfadccabcdfaddb\r\n",
+                "bd dabc dfacc dabc dfadddabc dfabb dabc dfacd dabc dfacd babc dfacb babc dfacb cabc dfacb dabc dfadb babc dfabd babc dfabd cabc dfabb cabc dfabc cabc dfabbbabc dfadd cabc dfacc babc dfadb dabc dfacccabc dfadc dabc dfadc babc dfabc babc dfadb cabc dfacd cabc dfabc dabc dfadc cabc dfadd b\r\n"
+            ],
+            [
+                "helllllooooo\r\n",
+                "helllllooooo\r\n"
+            ],
+            [
+                "bbbzxxx\r\n",
+                "bbb zx xx \r\n"
+            ],
+            [
+                "ffff\r\n",
+                "ffff \r\n"
+            ],
+            [
+                "cdddddddddddddddddd\r\n",
+                "cd ddddddddddddddddd \r\n"
+            ],
+            [
+                "bbbc\r\n",
+                "bbb c\r\n"
+            ],
+            [
+                "lll\r\n",
+                "lll \r\n"
+            ],
+            [
+                "bbbbb\r\n",
+                "bbbbb \r\n"
+            ],
+            [
+                "llll\r\n",
+                "llll \r\n"
+            ],
+            [
+                "bbbbbbccc\r\n",
+                "bbbbbb ccc \r\n"
+            ],
+            [
+                "lllllb\r\n",
+                "lllll b\r\n"
+            ],
+            [
+                "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\r\n",
+                "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz \r\n"
+            ],
+            [
+                "lllll\r\n",
+                "lllll \r\n"
+            ],
+            [
+                "bbbbbbbbbc\r\n",
+                "bbbbbbbbb c\r\n"
+            ],
+            [
+                "helllllno\r\n",
+                "helllll no\r\n"
+            ],
+            [
+                "nnnnnnnnnnnn\r\n",
+                "nnnnnnnnnnnn \r\n"
+            ],
+            [
+                "bbbbbccc\r\n",
+                "bbbbb ccc \r\n"
+            ],
+            [
+                "zzzzzzzzzzzzzzzzzzzzzzzzzzzzz\r\n",
+                "zzzzzzzzzzzzzzzzzzzzzzzzzzzzz \r\n"
+            ],
+            [
+                "nnnnnnnnnnnnnnnnnn\r\n",
+                "nnnnnnnnnnnnnnnnnn \r\n"
+            ],
+            [
+                "zzzzzzzzzzzzzzzzzzzzzzz\r\n",
+                "zzzzzzzzzzzzzzzzzzzzzzz \r\n"
+            ],
+            [
+                "hhhh\r\n",
+                "hhhh \r\n"
+            ],
+            [
+                "nnnnnnnnnnnnnnnnnnnnnnnnn\r\n",
+                "nnnnnnnnnnnnnnnnnnnnnnnnn \r\n"
+            ],
+            [
+                "zzzzzzzzzz\r\n",
+                "zzzzzzzzzz \r\n"
+            ],
+            [
+                "dddd\r\n",
+                "dddd \r\n"
+            ],
+            [
+                "heffffffgggggghhhhhh\r\n",
+                "heffffff gggggg hhhhhh \r\n"
+            ],
+            [
+                "bcddd\r\n",
+                "bc ddd \r\n"
+            ],
+            [
+                "x\r\n",
+                "x\r\n"
+            ],
+            [
+                "nnn\r\n",
+                "nnn \r\n"
+            ],
+            [
+                "xxxxxxxx\r\n",
+                "xxxxxxxx \r\n"
+            ],
+            [
+                "cclcc\r\n",
+                "cc lc c\r\n"
+            ],
+            [
+                "tttttttttttttt\r\n",
+                "tttttttttttttt \r\n"
+            ],
+            [
+                "xxxxxxx\r\n",
+                "xxxxxxx \r\n"
+            ],
+            [
+                "ccccb\r\n",
+                "cccc b\r\n"
+            ],
+            [
+                "bcecccc\r\n",
+                "bcecccc \r\n"
+            ],
+            [
+                "jjja\r\n",
+                "jjja\r\n"
+            ],
+            [
+                "zzz\r\n",
+                "zzz \r\n"
+            ],
+            [
+                "xxxxxxxxxzzzzzzzzzzzz\r\n",
+                "xxxxxxxxx zzzzzzzzzzzz \r\n"
+            ],
+            [
+                "alllewww\r\n",
+                "alllewww \r\n"
+            ],
+            [
+                "bbbbbbbbb\r\n",
+                "bbbbbbbbb \r\n"
+            ],
+            [
+                "jjj\r\n",
+                "jjj \r\n"
+            ],
+            [
+                "bbbbbbbbbbbbbbbbbbbbbbbbb\r\n",
+                "bbbbbbbbbbbbbbbbbbbbbbbbb \r\n"
+            ],
+            [
+                "kkkkkkkkkklllllllllllllll\r\n",
+                "kkkkkkkkkk lllllllllllllll \r\n"
+            ],
+            [
+                "helllllllllllo\r\n",
+                "helllllllllllo\r\n"
+            ],
+            [
+                "ttttsttttt\r\n",
+                "tttt st tttt \r\n"
+            ],
+            [
+                "tttttttsssssss\r\n",
+                "ttttttt sssssss \r\n"
+            ],
+            [
+                "assstttttatsfatsfdjfdhtsjdsaatttssssststsss\r\n",
+                "asss tttttats fats fd jf dh ts jd saattt sssss ts ts ss \r\n"
+            ],
+            [
+                "xxxxx\r\n",
+                "xxxxx \r\n"
+            ],
+            [
+                "bbbhbbb\r\n",
+                "bbb hb bb \r\n"
+            ],
+            [
+                "bbbbbbbb\r\n",
+                "bbbbbbbb \r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,90 @@
+[
+    {
+        "name": "Nastya and Time Machine",
+        "description": "Denis came to Nastya and discovered that she was not happy to see him... There\nis only one chance that she can become happy. Denis wants to buy all things\nthat Nastya likes so she will certainly agree to talk to him. The map of the\ncity where they live has a lot of squares, some of which are connected by\nroads. There is exactly one way between each pair of squares which does not\nvisit any vertex twice. It turns out that the graph of the city is a tree.\nDenis is located at vertex \n    1\n at the time \n    0\n. He wants to visit\nevery vertex at least once and get back as soon as possible. Denis can walk\none road in \n    1\n time. Unfortunately, the city is so large that it will\ntake a very long time to visit all squares. Therefore, Denis took a desperate\nstep. He pulled out his pocket time machine, which he constructed in his\nbasement. With its help, Denis can change the time to any non-negative time,\nwhich is less than the current time. But the time machine has one feature. If\nthe hero finds himself in the same place and at the same time twice, there\nwill be an explosion of universal proportions and Nastya will stay unhappy.\nTherefore, Denis asks you to find him a route using a time machine that he\nwill get around all squares and will return to the first and at the same time\nthe maximum time in which he visited any square will be minimal. Formally,\nDenis's route can be represented as a sequence of pairs: \n    v_1,\n    t_1\n    \n    , \n    \n    v_2, t_2\n    \n    , \n    \n    v_3, t_3\n    \n    , \n    \u2026, \n    \n    v_k,\n    t_k\n, where \n    v_i\n is number of square, and \n    t_i\n is time in\nwhich the boy is now. The following conditions must be met: The route starts\non square \n    1\n at time \n    0\n, i.e. \n    v_1 = 1, t_1 = 0\n and ends on the\nsquare \n    1\n, i.e. \n    v_k = 1\n. All transitions are divided into two\ntypes: Being in the square change the time: \n    v_i, t_i \n    \n    \n    \u2192\n    \n     v_i+1, t_i+1\n    \n     : v_i+1 = v_i, 0 \n    \u2264 t_i+1 < t_i\n. Walk\nalong one of the roads: \n    v_i, t_i \n    \n    \n    \u2192\n    \n     v_i+1, t_i+1\n. Herewith, \n    v_i\n and \n    v_i+1\n are connected by road, and\n\n    t_i+1 = t_i + 1\n All pairs \n    v_i, t_i\n must be\ndifferent. All squares are among \n    v_1, v_2, \n    \u2026, v_k\n. You need to\nfind a route such that the maximum time in any square will be minimal, that\nis, the route for which \n    max(t_1, t_2, \n    \u2026, t_k)\n will be the\nminimum possible. Input The first line contains a single integer \n    n\n \n    (1\n    \n    \u2264 n \n    \u2264 10^5)\n \u2014 the number of squares in the city. The next \n    n -\n    1\n lines contain two integers \n    u\n and \n    v\n \n    (1 \n    \u2264 v, u \n    \u2264\n    n, u \n    \u2260 v)\n - the numbers of the squares connected by the road. It is\nguaranteed that the given graph is a tree. Output In the first line output the\ninteger \n    k\n \n    (1 \n    \u2264 k \n    \u2264 10^6)\n \u2014 the length of the path of\nDenis. In the next \n    k\n lines output pairs \n    v_i, t_i\n \u2014 pairs that\ndescribe Denis's route (as in the statement). All route requirements described\nin the statements must be met. It is guaranteed that under given restrictions\nthere is at least one route and an answer whose length does not exceed\n\n    10^6\n. If there are several possible answers, print any. Example Input 5\n1 2 2 3 2 4 4 5 Output 13 1 0 2 1 3 2 3 1 2 2 4 3 4 1 5 2 5 1 4 2 2 3 2 0 1 1\n\n",
+        "cf_contest_id": 1340,
+        "cf_index": "D",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n1 2\r\n2 3\r\n2 4\r\n4 5\r\n",
+                "13\r\n1 0\r\n2 1\r\n3 2\r\n3 1\r\n2 2\r\n4 3\r\n4 1\r\n5 2\r\n5 1\r\n4 2\r\n2 3\r\n2 0\r\n1 1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n",
+                "1\r\n1 0\r\n"
+            ],
+            [
+                "7\r\n2 7\r\n4 6\r\n3 5\r\n1 5\r\n4 3\r\n6 2\r\n",
+                "19\r\n1 0\r\n5 1\r\n3 2\r\n3 0\r\n4 1\r\n6 2\r\n6 0\r\n2 1\r\n7 2\r\n7 1\r\n2 2\r\n2 0\r\n6 1\r\n4 2\r\n4 0\r\n3 1\r\n5 2\r\n5 0\r\n1 1\r\n"
+            ],
+            [
+                "5\r\n4 5\r\n2 3\r\n2 5\r\n1 4\r\n",
+                "13\r\n1 0\r\n4 1\r\n5 2\r\n5 0\r\n2 1\r\n3 2\r\n3 1\r\n2 2\r\n2 0\r\n5 1\r\n4 2\r\n4 0\r\n1 1\r\n"
+            ],
+            [
+                "3\r\n1 3\r\n1 2\r\n",
+                "7\r\n1 0\r\n3 1\r\n3 0\r\n1 1\r\n2 2\r\n2 1\r\n1 2\r\n"
+            ],
+            [
+                "9\r\n5 4\r\n9 2\r\n3 4\r\n8 2\r\n6 5\r\n9 6\r\n3 7\r\n1 8\r\n",
+                "25\r\n1 0\r\n8 1\r\n2 2\r\n2 0\r\n9 1\r\n6 2\r\n6 0\r\n5 1\r\n4 2\r\n4 0\r\n3 1\r\n7 2\r\n7 1\r\n3 2\r\n3 0\r\n4 1\r\n5 2\r\n5 0\r\n6 1\r\n9 2\r\n9 0\r\n2 1\r\n8 2\r\n8 0\r\n1 1\r\n"
+            ],
+            [
+                "3\r\n2 3\r\n1 2\r\n",
+                "7\r\n1 0\r\n2 1\r\n3 2\r\n3 1\r\n2 2\r\n2 0\r\n1 1\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n",
+                "4\r\n1 0\r\n2 1\r\n2 0\r\n1 1\r\n"
+            ],
+            [
+                "6\r\n5 1\r\n3 1\r\n2 1\r\n1 6\r\n1 4\r\n",
+                "16\r\n1 0\r\n5 1\r\n5 0\r\n1 1\r\n3 2\r\n3 1\r\n1 2\r\n2 3\r\n2 2\r\n1 3\r\n6 4\r\n6 3\r\n1 4\r\n4 5\r\n4 4\r\n1 5\r\n"
+            ],
+            [
+                "4\r\n3 1\r\n2 1\r\n1 4\r\n",
+                "10\r\n1 0\r\n3 1\r\n3 0\r\n1 1\r\n2 2\r\n2 1\r\n1 2\r\n4 3\r\n4 2\r\n1 3\r\n"
+            ],
+            [
+                "7\r\n5 3\r\n6 4\r\n7 3\r\n6 1\r\n2 4\r\n2 5\r\n",
+                "19\r\n1 0\r\n6 1\r\n4 2\r\n4 0\r\n2 1\r\n5 2\r\n5 0\r\n3 1\r\n7 2\r\n7 1\r\n3 2\r\n3 0\r\n5 1\r\n2 2\r\n2 0\r\n4 1\r\n6 2\r\n6 0\r\n1 1\r\n"
+            ],
+            [
+                "7\r\n4 1\r\n2 1\r\n1 3\r\n5 1\r\n1 7\r\n1 6\r\n",
+                "19\r\n1 0\r\n4 1\r\n4 0\r\n1 1\r\n2 2\r\n2 1\r\n1 2\r\n3 3\r\n3 2\r\n1 3\r\n5 4\r\n5 3\r\n1 4\r\n7 5\r\n7 4\r\n1 5\r\n6 6\r\n6 5\r\n1 6\r\n"
+            ],
+            [
+                "4\r\n2 3\r\n4 3\r\n4 1\r\n",
+                "10\r\n1 0\r\n4 1\r\n3 2\r\n3 0\r\n2 1\r\n2 0\r\n3 1\r\n4 2\r\n4 0\r\n1 1\r\n"
+            ],
+            [
+                "13\r\n1 7\r\n1 12\r\n3 1\r\n6 1\r\n1 4\r\n5 1\r\n1 11\r\n9 1\r\n1 13\r\n10 12\r\n1 8\r\n1 2\r\n",
+                "37\r\n1 0\r\n7 1\r\n7 0\r\n1 1\r\n12 2\r\n10 3\r\n10 2\r\n12 3\r\n12 1\r\n1 2\r\n3 3\r\n3 2\r\n1 3\r\n6 4\r\n6 3\r\n1 4\r\n4 5\r\n4 4\r\n1 5\r\n5 6\r\n5 5\r\n1 6\r\n11 7\r\n11 6\r\n1 7\r\n9 8\r\n9 7\r\n1 8\r\n13 9\r\n13 8\r\n1 9\r\n8 10\r\n8 9\r\n1 10\r\n2 11\r\n2 10\r\n1 11\r\n"
+            ],
+            [
+                "13\r\n11 3\r\n10 2\r\n11 2\r\n5 12\r\n8 6\r\n1 3\r\n7 12\r\n10 9\r\n13 9\r\n7 4\r\n8 13\r\n4 6\r\n",
+                "37\r\n1 0\r\n3 1\r\n11 2\r\n11 0\r\n2 1\r\n10 2\r\n10 0\r\n9 1\r\n13 2\r\n13 0\r\n8 1\r\n6 2\r\n6 0\r\n4 1\r\n7 2\r\n7 0\r\n12 1\r\n5 2\r\n5 1\r\n12 2\r\n12 0\r\n7 1\r\n4 2\r\n4 0\r\n6 1\r\n8 2\r\n8 0\r\n13 1\r\n9 2\r\n9 0\r\n10 1\r\n2 2\r\n2 0\r\n11 1\r\n3 2\r\n3 0\r\n1 1\r\n"
+            ],
+            [
+                "12\r\n4 8\r\n1 5\r\n8 5\r\n3 2\r\n6 12\r\n12 11\r\n10 9\r\n2 11\r\n3 10\r\n7 6\r\n7 4\r\n",
+                "34\r\n1 0\r\n5 1\r\n8 2\r\n8 0\r\n4 1\r\n7 2\r\n7 0\r\n6 1\r\n12 2\r\n12 0\r\n11 1\r\n2 2\r\n2 0\r\n3 1\r\n10 2\r\n10 0\r\n9 1\r\n9 0\r\n10 1\r\n3 2\r\n3 0\r\n2 1\r\n11 2\r\n11 0\r\n12 1\r\n6 2\r\n6 0\r\n7 1\r\n4 2\r\n4 0\r\n8 1\r\n5 2\r\n5 0\r\n1 1\r\n"
+            ],
+            [
+                "1\r\n",
+                "1\r\n1 0\r\n"
+            ]
+        ]
+    }
+]

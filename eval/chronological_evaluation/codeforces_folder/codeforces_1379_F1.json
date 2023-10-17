@@ -1,0 +1,152 @@
+[
+    {
+        "name": "Chess Strikes Back (easy version)",
+        "description": "Note that the difference between easy and hard versions is that in hard\nversion unavailable cells can become available again and in easy version\ncan't. You can make hacks only if all versions are solved. Ildar and Ivan are\ntired of chess, but they really like the chessboard, so they invented a new\ngame. The field is a chessboard \n    2n \n    \u00d7 2m\n: it has \n    2n\n rows,\n\n    2m\n columns, and the cell in row \n    i\n and column \n    j\n is colored\nwhite if \n    i+j\n is even, and is colored black otherwise. The game proceeds\nas follows: Ildar marks some of the white cells of the chessboard as\nunavailable, and asks Ivan to place \n    n \n    \u00d7 m\n kings on the remaining\nwhite cells in such way, so that there are no kings attacking each other. A\nking can attack another king if they are located in the adjacent cells,\nsharing an edge or a corner. Ildar would like to explore different\ncombinations of cells. Initially all cells are marked as available, and then\nhe has \n    q\n queries. In each query he marks a cell as unavailable. After\neach query he would like to know whether it is possible to place the kings on\nthe available cells in a desired way. Please help him! Input The first line of\ninput contains three integers \n    n\n, \n    m\n, \n    q\n (\n    1 \n    \u2264 n, m, q\n    \n    \u2264 200\n     000\n) \u2014 the size of the board and the number of queries.\n\n    q\n lines follow, each of them contains a description of a query: two\nintegers \n    i\n and \n    j\n, denoting a white cell \n    (i, j)\n on the board\n(\n    1 \n    \u2264 i \n    \u2264 2n\n, \n    1 \n    \u2264 j \n    \u2264 2m\n, \n    i + j\n is even)\nthat becomes unavailable. It's guaranteed, that each cell \n    (i, j)\n appears\nin input at most once. Output Output \n    q\n lines, \n    i\n-th line should\ncontain answer for a board after \n    i\n queries of Ildar. This line should\ncontain \"YES\" if it is possible to place the kings on the available cells in\nthe desired way, or \"NO\" otherwise. Examples Input 1 3 3 1 1 1 5 2 4 Output\nYES YES NO Input 3 2 7 4 2 6 4 1 3 2 2 2 4 4 4 3 1 Output YES YES NO NO NO NO\nNO Note In the first example case after the second query only cells \n    (1,\n    1)\n and \n    (1, 5)\n are unavailable. Then Ivan can place three kings on\ncells \n    (2, 2)\n, \n    (2, 4)\n and \n    (2, 6)\n. After the third query three\ncells \n    (1, 1)\n, \n    (1, 5)\n and \n    (2, 4)\n are unavailable, so there\nremain only 3 available cells: \n    (2, 2)\n, \n    (1, 3)\n and \n    (2, 6)\n.\nIvan can not put 3 kings on those cells, because kings on cells \n    (2, 2)\n\nand \n    (1, 3)\n attack each other, since these cells share a corner.\n\n",
+        "cf_contest_id": 1379,
+        "cf_index": "F1",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "1 3 3\r\n1 1\r\n1 5\r\n2 4\r\n",
+                "YES\r\nYES\r\nNO\r\n"
+            ],
+            [
+                "3 2 7\r\n4 2\r\n6 4\r\n1 3\r\n2 2\r\n2 4\r\n4 4\r\n3 1\r\n",
+                "YES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 1\r\n2 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 2 1\r\n2 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 1 2\r\n2 2\r\n1 1\r\n",
+                "YES\r\nNO\r\n"
+            ],
+            [
+                "2 2 2\r\n1 3\r\n1 1\r\n",
+                "YES\r\nYES\r\n"
+            ],
+            [
+                "1 10 10\r\n1 19\r\n1 17\r\n2 2\r\n2 10\r\n1 15\r\n2 8\r\n2 6\r\n2 16\r\n2 14\r\n2 4\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "1 10 10\r\n1 17\r\n2 4\r\n2 2\r\n1 11\r\n1 15\r\n1 19\r\n2 6\r\n2 8\r\n2 12\r\n1 13\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "1 10 10\r\n1 13\r\n2 4\r\n1 5\r\n2 2\r\n1 19\r\n1 11\r\n1 15\r\n1 17\r\n1 7\r\n2 14\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n10 2\r\n19 9\r\n19 17\r\n8 8\r\n5 3\r\n20 4\r\n12 12\r\n2 16\r\n5 19\r\n2 4\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n18 2\r\n15 13\r\n9 19\r\n6 10\r\n20 18\r\n15 19\r\n2 2\r\n11 13\r\n17 13\r\n3 15\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n9 17\r\n9 13\r\n8 10\r\n12 2\r\n18 14\r\n18 6\r\n10 6\r\n13 19\r\n2 12\r\n10 8\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n4 4\r\n18 20\r\n11 9\r\n1 15\r\n2 2\r\n14 6\r\n2 12\r\n17 9\r\n11 13\r\n8 2\r\n",
+                "YES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n10 6\r\n7 5\r\n9 13\r\n13 15\r\n19 7\r\n11 13\r\n5 17\r\n16 6\r\n2 14\r\n7 15\r\n",
+                "YES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n2 6\r\n5 9\r\n5 15\r\n1 19\r\n6 6\r\n8 4\r\n11 9\r\n13 11\r\n4 6\r\n10 2\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "10 10 10\r\n10 12\r\n19 7\r\n14 12\r\n10 10\r\n8 6\r\n19 19\r\n18 2\r\n12 2\r\n16 4\r\n16 2\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "10 10 10\r\n1 19\r\n3 17\r\n12 4\r\n16 20\r\n5 19\r\n5 17\r\n20 2\r\n15 9\r\n16 4\r\n4 16\r\n",
+                "YES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n12 10\r\n8 4\r\n10 8\r\n15 13\r\n11 11\r\n8 6\r\n9 19\r\n13 19\r\n6 4\r\n19 19\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "10 10 10\r\n2 10\r\n4 6\r\n1 19\r\n7 15\r\n20 18\r\n3 19\r\n11 17\r\n9 17\r\n16 2\r\n19 15\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n17 11\r\n11 15\r\n8 8\r\n2 4\r\n7 7\r\n9 13\r\n12 8\r\n18 2\r\n15 13\r\n13 17\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n15 19\r\n12 8\r\n7 13\r\n12 2\r\n8 10\r\n3 5\r\n13 13\r\n9 9\r\n18 2\r\n5 13\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n7 19\r\n14 8\r\n15 13\r\n6 6\r\n10 8\r\n18 6\r\n3 1\r\n16 4\r\n8 10\r\n12 12\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n16 2\r\n12 6\r\n8 2\r\n12 2\r\n3 15\r\n6 6\r\n7 17\r\n4 16\r\n11 9\r\n2 6\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n8 4\r\n2 4\r\n9 19\r\n16 2\r\n13 7\r\n11 7\r\n7 17\r\n6 6\r\n1 1\r\n15 15\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10 10 10\r\n2 6\r\n17 7\r\n5 19\r\n14 14\r\n10 10\r\n16 2\r\n6 10\r\n7 17\r\n18 2\r\n17 1\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\n"
+            ],
+            [
+                "1 10 10\r\n2 16\r\n1 1\r\n1 19\r\n2 10\r\n2 4\r\n2 18\r\n2 12\r\n2 6\r\n2 14\r\n2 2\r\n",
+                "YES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "1 10 10\r\n1 11\r\n2 8\r\n1 13\r\n2 2\r\n1 5\r\n1 9\r\n1 3\r\n1 7\r\n1 15\r\n1 17\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "1 10 10\r\n2 10\r\n1 9\r\n2 12\r\n2 18\r\n2 4\r\n2 8\r\n2 20\r\n2 2\r\n2 6\r\n2 14\r\n",
+                "YES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "1 10 10\r\n1 15\r\n1 19\r\n2 16\r\n1 17\r\n2 4\r\n2 2\r\n2 8\r\n1 11\r\n2 10\r\n2 6\r\n",
+                "YES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "1 10 10\r\n2 4\r\n1 13\r\n1 7\r\n2 14\r\n1 19\r\n1 17\r\n2 2\r\n1 15\r\n1 11\r\n2 6\r\n",
+                "YES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "1 10 10\r\n2 4\r\n2 8\r\n2 6\r\n1 17\r\n1 9\r\n1 15\r\n2 10\r\n1 11\r\n2 2\r\n1 13\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "1 10 10\r\n2 4\r\n2 8\r\n1 19\r\n2 2\r\n2 10\r\n1 5\r\n2 6\r\n1 17\r\n2 14\r\n1 15\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "1 10 10\r\n1 19\r\n2 12\r\n2 8\r\n2 16\r\n2 2\r\n2 4\r\n1 9\r\n2 18\r\n2 14\r\n2 10\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ]
+        ]
+    }
+]

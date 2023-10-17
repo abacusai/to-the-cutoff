@@ -1,0 +1,52 @@
+[
+    {
+        "name": "BerOS File Suggestion",
+        "description": "Polycarp is working on a new operating system called BerOS. He asks you to\nhelp with implementation of a file suggestion feature. There are \n    n\n files\non hard drive and their names are \n    f_1, f_2, \n    \u2026, f_n\n. Any file name\ncontains between \n    1\n and \n    8\n characters, inclusive. All file names are\nunique. The file suggestion feature handles queries, each represented by a\nstring \n    s\n. For each query \n    s\n it should count number of files\ncontaining \n    s\n as a substring (i.e. some continuous segment of characters\nin a file name equals \n    s\n) and suggest any such file name. For example, if\nfile names are \"read.me\", \"hosts\", \"ops\", and \"beros.18\", and the query is\n\"os\", the number of matched files is \n    2\n (two file names contain \"os\" as a\nsubstring) and suggested file name can be either \"hosts\" or \"beros.18\". Input\nThe first line of the input contains integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264\n    10000\n) \u2014 the total number of files. The following \n    n\n lines contain\nfile names, one per line. The \n    i\n-th line contains \n    f_i\n \u2014 the name of\nthe \n    i\n-th file. Each file name contains between \n    1\n and \n    8\n\ncharacters, inclusive. File names contain only lowercase Latin letters, digits\nand dot characters ('.'). Any sequence of valid characters can be a file name\n(for example, in BerOS \".\", \"..\" and \"...\" are valid file names). All file\nnames are unique. The following line contains integer \n    q\n (\n    1 \n    \u2264 q\n    \n    \u2264 50000\n) \u2014 the total number of queries. The following \n    q\n lines\ncontain queries \n    s_1, s_2, \n    \u2026, s_q\n, one per line. Each \n    s_j\n has\nlength between \n    1\n and \n    8\n characters, inclusive. It contains only\nlowercase Latin letters, digits and dot characters ('.'). Output Print \n    q\n\nlines, one per query. The \n    j\n-th line should contain the response on the\n\n    j\n-th query \u2014 two values \n    c_j\n and \n    t_j\n, where \n    c_j\n is the\nnumber of matched files for the \n    j\n-th query, \n    t_j\n is the name of any\nfile matched by the \n    j\n-th query. If there is no such file, print a single\ncharacter '-' instead. If there are multiple matched files, print any. Example\nInput 4 test contests test. .test 6 ts . st. .test contes. st Output 1\ncontests 2 .test 1 test. 1 .test 0 - 4 test.\n\n",
+        "cf_contest_id": 1070,
+        "cf_index": "H",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\ntest\r\ncontests\r\ntest.\r\n.test\r\n6\r\nts\r\n.\r\nst.\r\n.test\r\ncontes.\r\nst\r\n",
+                "1 contests\r\n2 .test\r\n1 test.\r\n1 .test\r\n0 -\r\n4 .test\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5\r\n.a\r\na.\r\naa\r\na\r\naaa\r\n10\r\n.\r\na\r\naa\r\n.a\r\na.\r\n..\r\naaa\r\n.aa\r\n..a\r\na..\r\n",
+                "2 a.\r\n5 aaa\r\n2 aaa\r\n1 .a\r\n1 a.\r\n0 -\r\n1 aaa\r\n0 -\r\n0 -\r\n0 -\r\n"
+            ],
+            [
+                "8\r\na\r\naa\r\naaa\r\naaaa\r\naaaaa\r\naaaaaa\r\naaaaaaa\r\naaaaaaaa\r\n16\r\na\r\naa\r\naaa\r\naaaa\r\naaaaa\r\naaaaaa\r\naaaaaaa\r\naaaaaaaa\r\na\r\naa\r\naaa\r\naaaa\r\naaaaa\r\naaaaaa\r\naaaaaaa\r\naaaaaaaa\r\n",
+                "8 aaaaaaaa\r\n7 aaaaaaaa\r\n6 aaaaaaaa\r\n5 aaaaaaaa\r\n4 aaaaaaaa\r\n3 aaaaaaaa\r\n2 aaaaaaaa\r\n1 aaaaaaaa\r\n8 aaaaaaaa\r\n7 aaaaaaaa\r\n6 aaaaaaaa\r\n5 aaaaaaaa\r\n4 aaaaaaaa\r\n3 aaaaaaaa\r\n2 aaaaaaaa\r\n1 aaaaaaaa\r\n"
+            ],
+            [
+                "7\r\nabacaba\r\nbaca\r\nacacaca\r\naaaa\r\ncabcab\r\naca\r\nacaba\r\n34\r\nacaba\r\nba\r\nacaca\r\naaa\r\nbcab\r\naa\r\nacab\r\na\r\nb\r\nc\r\nd\r\ne\r\naa\r\nab\r\nba\r\nbb\r\naaa\r\naac\r\naab\r\naba\r\nca\r\nac\r\ncc\r\nacca\r\ncab\r\nbca\r\nabc\r\nabacaba\r\nbaca\r\nacacaca\r\naaaa\r\ncabcab\r\naca\r\nacaba\r\n",
+                "2 acaba\r\n3 acaba\r\n1 acacaca\r\n1 aaaa\r\n1 cabcab\r\n1 aaaa\r\n2 acaba\r\n7 acaba\r\n4 acaba\r\n6 acaba\r\n0 -\r\n0 -\r\n1 aaaa\r\n3 acaba\r\n3 acaba\r\n0 -\r\n1 aaaa\r\n0 -\r\n0 -\r\n2 acaba\r\n6 acaba\r\n5 acaba\r\n0 -\r\n0 -\r\n3 acaba\r\n1 cabcab\r\n1 cabcab\r\n1 abacaba\r\n2 baca\r\n1 acacaca\r\n1 aaaa\r\n1 cabcab\r\n5 acaba\r\n2 acaba\r\n"
+            ],
+            [
+                "8\r\na\r\nab\r\naba\r\nabacaba\r\nabacabad\r\nabac\r\nabaca\r\nabacab\r\n13\r\na\r\nb\r\nc\r\naa\r\nab\r\nba\r\nac\r\nca\r\nbc\r\ncb\r\naba\r\nbac\r\ncab\r\n",
+                "8 abacab\r\n7 abacab\r\n5 abacab\r\n0 -\r\n7 abacab\r\n6 abacab\r\n5 abacab\r\n4 abacab\r\n0 -\r\n0 -\r\n6 abacab\r\n5 abacab\r\n3 abacab\r\n"
+            ],
+            [
+                "20\r\naacdcbcd\r\naaddbacc\r\nacaccbdc\r\nadaaddac\r\nadcbbdda\r\nadcdbcad\r\nadcddcca\r\nbbcababc\r\nbbcabbdb\r\nbbdbcada\r\nbcaddcbd\r\nbccdddaa\r\nbdccccad\r\nccccbbdb\r\ncddcdacc\r\ndaadbdaa\r\ndacacccd\r\ndbcdaccb\r\ndbdabdac\r\nddccdcdb\r\n20\r\nabc\r\nadda\r\ndbda\r\nddcb\r\nbcad\r\ncdcba\r\ncbdbb\r\nddcadca\r\nccbdcca\r\ncadc\r\ncabdaaac\r\ncadbbcc\r\ndcdcdc\r\ndccbdc\r\ncdcdc\r\ncbaad\r\ndabda\r\nccadd\r\nbbdc\r\ndcdc\r\n",
+                "1 bbcababc\r\n1 adaaddac\r\n2 dbdabdac\r\n1 bcaddcbd\r\n3 bcaddcbd\r\n0 -\r\n0 -\r\n0 -\r\n0 -\r\n0 -\r\n0 -\r\n0 -\r\n0 -\r\n0 -\r\n0 -\r\n0 -\r\n1 dbdabdac\r\n0 -\r\n0 -\r\n0 -\r\n"
+            ],
+            [
+                "8\r\na\r\nb\r\nc\r\nd\r\ne\r\nf\r\ng\r\nh\r\n3\r\nh\r\nhh\r\nwf\r\n",
+                "1 h\r\n0 -\r\n0 -\r\n"
+            ],
+            [
+                "4\r\nd\r\nc\r\nb\r\na\r\n1\r\nwf\r\n",
+                "0 -\r\n"
+            ]
+        ]
+    }
+]

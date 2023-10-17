@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Labeling the Tree with Distances",
+        "description": "You are given an unweighted tree of \n    n\n vertices numbered from \n    1\n to\n\n    n\n and a list of \n    n-1\n integers \n    a_1, a_2, \n    \u2026, a_n-1\n. A\ntree is a connected undirected graph without cycles. You will use each element\nof the list to label one vertex. No vertex should be labeled twice. You can\nlabel the only remaining unlabeled vertex with any integer. A vertex \n    x\n\nis called good if it is possible to do this labeling so that for each vertex\n\n    i\n, its label is the distance between \n    x\n and \n    i\n. The distance\nbetween two vertices \n    s\n and \n    t\n on a tree is the minimum number of\nedges on a path that starts at vertex \n    s\n and ends at vertex \n    t\n. Find\nall good vertices. Input The first line contains one integer \n    n\n\n(\n    2\n    \u2264 n\n    \u2264 2\n    \u00b7 10^5\n) \u2014 the number of vertices in the tree. The\nsecond line contains \n    n - 1\n integers \n    a_1,a_2,\n    \u2026,a_n-1\n\n(\n    0\n    \u2264 a_i < n\n) \u2014 the given list. Then, \n    n\u22121\n lines follow. Each of\nthem contains two integers \n    u\n and \n    v\n (\n    1\n    \u2264 u,v\n    \u2264 n\n)\ndenoting an edge between vertices \n    u\n and \n    v\n. It is guaranteed that\nthe edges form a tree. Output In the first line print the number of good\nvertices. In the second line, print the indices of all good vertices in\nascending order. Examples Input 6 2 1 0 1 2 1 2 2 3 2 4 4 5 4 6 Output 2 2 4\nInput 5 1 2 1 2 1 2 3 2 3 4 5 4 Output 1 3 Input 3 2 2 1 2 2 3 Output 0 Note\nThis is the tree for the first example: And these are two possible labelings\nwith the elements on the list so that \n    2\n is a good vertex (left) and\n\n    4\n is a good vertex (right). The square below each vertex represents its\nlabel. The black squares contain the numbers which were on the given list and\nthe only white square contains the only number which was not on the given\nlist. In the second example, the only good vertex is vertex \n    3\n. In the\nthird example, there are no good vertices.\n\n",
+        "cf_contest_id": 1794,
+        "cf_index": "E",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "hashing",
+            "implementation",
+            "trees"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n2 1 0 1 2\r\n1 2\r\n2 3\r\n2 4\r\n4 5\r\n4 6\r\n",
+                "2\r\n2 4 "
+            ],
+            [
+                "5\r\n1 2 1 2\r\n1 2\r\n3 2\r\n3 4\r\n5 4\r\n",
+                "1\r\n3 "
+            ],
+            [
+                "3\r\n2 2\r\n1 2\r\n2 3\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n0\r\n1 2\r\n",
+                "2\r\n1 2 "
+            ],
+            [
+                "2\r\n1\r\n2 1\r\n",
+                "2\r\n1 2 "
+            ],
+            [
+                "10\r\n2 2 2 0 2 1 2 1 3\r\n9 10\r\n9 3\r\n9 6\r\n6 5\r\n7 9\r\n2 7\r\n8 9\r\n1 2\r\n3 4\r\n",
+                "1\r\n7 "
+            ],
+            [
+                "3\r\n0 0\r\n1 3\r\n2 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n0 1\r\n3 2\r\n1 3\r\n",
+                "3\r\n1 2 3 "
+            ],
+            [
+                "3\r\n0 2\r\n2 3\r\n1 2\r\n",
+                "2\r\n1 3 "
+            ],
+            [
+                "3\r\n1 1\r\n1 2\r\n1 3\r\n",
+                "1\r\n1 "
+            ],
+            [
+                "3\r\n1 2\r\n3 1\r\n2 1\r\n",
+                "2\r\n2 3 "
+            ],
+            [
+                "50\r\n0 1 2 2 2 2 2 2 2 2 2 2 2 3 4 5 6 7 7 7 7 7 7 7 7 7 8 9 9 9 9 9 9 9 9 9 9 10 11 11 11 11 11 12 13 13 13 13 13\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n8 9\r\n9 10\r\n9 11\r\n9 12\r\n9 13\r\n13 14\r\n13 15\r\n13 16\r\n16 17\r\n17 18\r\n17 19\r\n17 20\r\n17 21\r\n21 22\r\n22 23\r\n22 24\r\n22 25\r\n22 26\r\n22 27\r\n22 28\r\n22 29\r\n22 30\r\n22 31\r\n22 32\r\n22 33\r\n33 34\r\n34 35\r\n34 36\r\n34 37\r\n34 38\r\n34 39\r\n34 40\r\n34 41\r\n41 42\r\n42 43\r\n42 44\r\n42 45\r\n42 46\r\n42 47\r\n42 48\r\n42 49\r\n49 50\r\n",
+                "0\r\n"
+            ],
+            [
+                "40\r\n0 0 0 1 2 2 2 2 2 2 2 2 2 3 3 4 5 6 7 7 7 7 7 7 7 7 8 9 9 9 9 9 10 11 11 12 12 12 13\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n1 11\r\n1 12\r\n12 13\r\n13 14\r\n14 15\r\n14 16\r\n16 17\r\n16 18\r\n16 19\r\n19 20\r\n19 21\r\n19 22\r\n22 23\r\n23 24\r\n23 25\r\n23 26\r\n23 27\r\n23 28\r\n23 29\r\n29 30\r\n30 31\r\n30 32\r\n30 33\r\n30 34\r\n30 35\r\n30 36\r\n36 37\r\n37 38\r\n38 39\r\n38 40\r\n",
+                "0\r\n"
+            ],
+            [
+                "59\r\n0 0 0 0 1 2 3 3 3 3 4 4 4 4 4 4 4 4 4 4 4 4 4 5 6 6 6 6 6 6 6 6 6 6 6 6 6 7 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 10 11 11\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n6 7\r\n6 8\r\n6 9\r\n6 10\r\n6 11\r\n6 12\r\n12 13\r\n13 14\r\n14 15\r\n14 16\r\n14 17\r\n14 18\r\n14 19\r\n14 20\r\n14 21\r\n14 22\r\n14 23\r\n14 24\r\n14 25\r\n14 26\r\n14 27\r\n14 28\r\n14 29\r\n14 30\r\n14 31\r\n14 32\r\n14 33\r\n33 34\r\n34 35\r\n34 36\r\n34 37\r\n34 38\r\n34 39\r\n34 40\r\n34 41\r\n34 42\r\n34 43\r\n34 44\r\n34 45\r\n34 46\r\n34 47\r\n34 48\r\n48 49\r\n49 50\r\n49 51\r\n49 52\r\n49 53\r\n49 54\r\n49 55\r\n55 56\r\n55 57\r\n55 58\r\n58 59\r\n",
+                "0\r\n"
+            ],
+            [
+                "31\r\n0 0 0 0 1 2 2 2 2 2 3 3 3 3 3 3 4 5 6 6 6 7 8 9 9 9 9 9 10 11\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n1 11\r\n11 12\r\n12 13\r\n13 14\r\n13 15\r\n13 16\r\n13 17\r\n17 18\r\n17 19\r\n17 20\r\n20 21\r\n21 22\r\n21 23\r\n21 24\r\n21 25\r\n25 26\r\n25 27\r\n27 28\r\n28 29\r\n29 30\r\n29 31\r\n",
+                "0\r\n"
+            ],
+            [
+                "58\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n8 9\r\n9 10\r\n10 11\r\n11 12\r\n12 13\r\n13 14\r\n14 15\r\n15 16\r\n16 17\r\n17 18\r\n18 19\r\n19 20\r\n20 21\r\n21 22\r\n22 23\r\n23 24\r\n24 25\r\n25 26\r\n26 27\r\n27 28\r\n28 29\r\n29 30\r\n30 31\r\n31 32\r\n32 33\r\n33 34\r\n34 35\r\n35 36\r\n36 37\r\n37 38\r\n38 39\r\n39 40\r\n40 41\r\n41 42\r\n42 43\r\n43 44\r\n44 45\r\n45 46\r\n46 47\r\n47 48\r\n48 49\r\n49 50\r\n50 51\r\n51 52\r\n52 53\r\n53 54\r\n54 55\r\n55 56\r\n56 57\r\n57 58\r\n",
+                "0\r\n"
+            ],
+            [
+                "57\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n8 9\r\n9 10\r\n10 11\r\n11 12\r\n12 13\r\n13 14\r\n14 15\r\n15 16\r\n16 17\r\n17 18\r\n18 19\r\n19 20\r\n20 21\r\n21 22\r\n22 23\r\n23 24\r\n24 25\r\n25 26\r\n26 27\r\n27 28\r\n28 29\r\n29 30\r\n30 31\r\n31 32\r\n32 33\r\n33 34\r\n34 35\r\n35 36\r\n36 37\r\n37 38\r\n38 39\r\n39 40\r\n40 41\r\n41 42\r\n42 43\r\n43 44\r\n44 45\r\n45 46\r\n46 47\r\n47 48\r\n48 49\r\n49 50\r\n50 51\r\n51 52\r\n52 53\r\n53 54\r\n54 55\r\n55 56\r\n56 57\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

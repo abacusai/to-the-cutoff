@@ -1,0 +1,107 @@
+[
+    {
+        "name": "Memory Manager",
+        "description": "There is little time left before the release of the first national operating\nsystem BerlOS. Some of its components are not finished yet \u2014 the memory\nmanager is among them. According to the developers' plan, in the first release\nthe memory manager will be very simple and rectilinear. It will support three\noperations: alloc n \u2014 to allocate n bytes of the memory and return the\nallocated block's identifier x; erase x \u2014 to erase the block with the\nidentifier x; defragment \u2014 to defragment the free memory, bringing all the\nblocks as close to the beginning of the memory as possible and preserving\ntheir respective order; The memory model in this case is very simple. It is a\nsequence of m bytes, numbered for convenience from the first to the m-th. The\nfirst operation alloc n takes as the only parameter the size of the memory\nblock that is to be allocated. While processing this operation, a free block\nof n successive bytes is being allocated in the memory. If the amount of such\nblocks is more than one, the block closest to the beginning of the memory\n(i.e. to the first byte) is prefered. All these bytes are marked as not free,\nand the memory manager returns a 32-bit integer numerical token that is the\nidentifier of this block. If it is impossible to allocate a free block of this\nsize, the function returns NULL. The second operation erase x takes as its\nparameter the identifier of some block. This operation frees the system\nmemory, marking the bytes of this block as free for further use. In the case\nwhen this identifier does not point to the previously allocated block, which\nhas not been erased yet, the function returns ILLEGAL_ERASE_ARGUMENT. The last\noperation defragment does not have any arguments and simply brings the\noccupied memory sections closer to the beginning of the memory without\nchanging their respective order. In the current implementation you are to use\nsuccessive integers, starting with 1, as identifiers. Each successful alloc\noperation procession should return following number. Unsuccessful alloc\noperations do not affect numeration. You are to write the implementation of\nthe memory manager. You should output the returned value for each alloc\ncommand. You should also output ILLEGAL_ERASE_ARGUMENT for all the failed\nerase commands. Input The first line of the input data contains two positive\nintegers t and m (1 \u2264 t \u2264 100;1 \u2264 m \u2264 100), where t \u2014 the amount of operations\ngiven to the memory manager for processing, and m \u2014 the available memory size\nin bytes. Then there follow t lines where the operations themselves are given.\nThe first operation is alloc n (1 \u2264 n \u2264 100), where n is an integer. The\nsecond one is erase x, where x is an arbitrary 32-bit integer numerical token.\nThe third operation is defragment. Output Output the sequence of lines. Each\nline should contain either the result of alloc operation procession , or\nILLEGAL_ERASE_ARGUMENT as a result of failed erase operation procession.\nOutput lines should go in the same order in which the operations are\nprocessed. Successful procession of alloc operation should return integers,\nstarting with 1, as the identifiers of the allocated blocks. Examples Input 6\n10 alloc 5 alloc 3 erase 1 alloc 6 defragment alloc 6 Output 1 2 NULL 3\n\n",
+        "cf_contest_id": 7,
+        "cf_index": "B",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 64.0,
+        "public_cases": [
+            [
+                "6 10\r\nalloc 5\r\nalloc 3\r\nerase 1\r\nalloc 6\r\ndefragment\r\nalloc 6\r\n",
+                "1\r\n2\r\nNULL\r\n3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6 1\r\ndefragment\r\nalloc 10\r\nalloc 1\r\nerase -1\r\nerase 1\r\nerase 1\r\n",
+                "NULL\r\n1\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\n"
+            ],
+            [
+                "14 100\r\nalloc 99\r\nalloc 1\r\nalloc 1\r\nerase 2\r\nalloc 1\r\nerase 4\r\nerase 1\r\nalloc 100\r\nalloc 1\r\nalloc 99\r\ndefragment\r\nerase 4\r\nalloc 100\r\nalloc 99\r\n",
+                "1\r\n2\r\nNULL\r\n3\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\n4\r\nNULL\r\nNULL\r\nNULL\r\n"
+            ],
+            [
+                "26 25\r\ndefragment\r\nerase 1\r\nerase -1560200883\r\nalloc 44\r\ndefragment\r\nalloc 75\r\nalloc 22\r\ndefragment\r\nerase 4\r\ndefragment\r\nalloc 57\r\nalloc 53\r\nerase 4\r\nerase -1639632026\r\nerase -2121605039\r\nerase 3\r\nalloc 51\r\nalloc 65\r\ndefragment\r\nerase 2\r\nerase 4\r\nalloc 52\r\nerase 3\r\ndefragment\r\nerase -1842529282\r\nerase 3\r\n",
+                "ILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\n1\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\n"
+            ],
+            [
+                "22 9\r\nerase 1\r\nalloc 6\r\nalloc 65\r\nerase 1\r\nalloc 87\r\nerase -1638927047\r\nalloc 5\r\nerase 2\r\nalloc 70\r\ndefragment\r\nalloc 20\r\nalloc 48\r\nerase -69401977\r\nalloc 20\r\ndefragment\r\nerase 7\r\ndefragment\r\nerase 9\r\nerase 7\r\nerase 4\r\ndefragment\r\nalloc 66\r\n",
+                "ILLEGAL_ERASE_ARGUMENT\r\n1\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\n2\r\nNULL\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\n"
+            ],
+            [
+                "12 40\r\nerase 1\r\nalloc 21\r\nalloc 5\r\nalloc 7\r\ndefragment\r\ndefragment\r\nerase 2\r\nalloc 83\r\nerase 4\r\ndefragment\r\nalloc 59\r\ndefragment\r\n",
+                "ILLEGAL_ERASE_ARGUMENT\r\n1\r\n2\r\n3\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\n"
+            ],
+            [
+                "38 18\r\nalloc 72\r\nerase 2\r\nalloc 50\r\ndefragment\r\nerase 3\r\ndefragment\r\nalloc 43\r\nalloc 41\r\ndefragment\r\ndefragment\r\nalloc 26\r\nalloc 46\r\nalloc 16\r\nalloc 15\r\ndefragment\r\ndefragment\r\nalloc 95\r\nerase 7\r\nerase 7\r\nerase 5\r\nerase 2\r\nerase 9\r\nerase 7\r\nalloc 43\r\ndefragment\r\nerase 7\r\ndefragment\r\nalloc 48\r\nalloc 77\r\nerase 10\r\nerase 11\r\nalloc 16\r\nalloc 84\r\nerase 1\r\ndefragment\r\nalloc 86\r\ndefragment\r\nerase 13\r\n",
+                "NULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\nNULL\r\nNULL\r\n1\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\n"
+            ],
+            [
+                "37 74\r\nalloc 11\r\ndefragment\r\nerase 1\r\ndefragment\r\nerase 2\r\ndefragment\r\nalloc 90\r\nerase 3\r\nerase 2\r\nerase 3\r\nerase 1\r\nerase 1\r\nalloc 38\r\nalloc 19\r\nerase 1\r\nerase 3\r\ndefragment\r\nalloc 93\r\nerase 5\r\nerase 4\r\nalloc 66\r\nalloc 71\r\nerase 5\r\ndefragment\r\ndefragment\r\ndefragment\r\ndefragment\r\nerase 7\r\nalloc 47\r\nerase -95616683\r\nerase 2\r\nalloc 28\r\nalloc 32\r\nerase 11\r\nalloc 50\r\ndefragment\r\ndefragment\r\n",
+                "1\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\n2\r\n3\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\n4\r\n5\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\n"
+            ],
+            [
+                "16 49\r\nerase -751005193\r\ndefragment\r\nalloc 37\r\nalloc 82\r\nerase 3\r\nerase 1\r\nalloc 80\r\nalloc 51\r\ndefragment\r\nalloc 74\r\nerase 1\r\nalloc 91\r\ndefragment\r\ndefragment\r\nalloc 98\r\ndefragment\r\n",
+                "ILLEGAL_ERASE_ARGUMENT\r\n1\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\n"
+            ],
+            [
+                "42 98\r\ndefragment\r\ndefragment\r\ndefragment\r\ndefragment\r\ndefragment\r\nalloc 5\r\nalloc 66\r\ndefragment\r\nerase 3\r\nalloc 53\r\ndefragment\r\nerase 4\r\nerase 2\r\nalloc 70\r\nerase 3\r\ndefragment\r\ndefragment\r\nerase 2\r\nerase 3\r\nerase -1327931832\r\nalloc 93\r\nalloc 64\r\nerase 7\r\nerase 6\r\nerase 3\r\nalloc 61\r\nalloc 12\r\nalloc 65\r\nerase 2\r\nalloc 46\r\nerase 11\r\nerase 9\r\nerase 9\r\nerase 6\r\nalloc 2\r\nalloc 78\r\ndefragment\r\nerase 13\r\nerase 6\r\nerase 10\r\nalloc 53\r\nalloc 46\r\n",
+                "1\r\n2\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\n3\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\n4\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\n"
+            ],
+            [
+                "19 46\r\nalloc 21\r\nerase 2\r\nerase 1\r\ndefragment\r\nalloc 4\r\ndefragment\r\ndefragment\r\nalloc 40\r\nerase 1\r\ndefragment\r\ndefragment\r\nalloc 68\r\nerase -388966015\r\nalloc 85\r\nalloc 53\r\nerase 4\r\ndefragment\r\nalloc 49\r\nalloc 88\r\n",
+                "1\r\nILLEGAL_ERASE_ARGUMENT\r\n2\r\n3\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\n"
+            ],
+            [
+                "44 46\r\nalloc 28\r\nalloc 36\r\ndefragment\r\nerase -937404236\r\nalloc 71\r\ndefragment\r\nalloc 81\r\nalloc 51\r\nerase 3\r\ndefragment\r\nalloc 48\r\nerase 1\r\ndefragment\r\nalloc 36\r\ndefragment\r\ndefragment\r\nerase 1\r\ndefragment\r\ndefragment\r\nerase -1173350787\r\nalloc 94\r\nerase 5\r\ndefragment\r\nerase 9\r\nalloc 98\r\nerase 7\r\ndefragment\r\nerase 5\r\nerase 1\r\ndefragment\r\nerase 2\r\ndefragment\r\nerase 4\r\ndefragment\r\nerase 9\r\nalloc 8\r\ndefragment\r\nerase 9\r\ndefragment\r\ndefragment\r\ndefragment\r\nerase 1\r\nalloc 70\r\nerase 9\r\n",
+                "1\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nNULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\n2\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\n3\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\n"
+            ],
+            [
+                "26 25\r\nalloc 25\r\nerase 1\r\nalloc 24\r\nerase 2\r\nalloc 23\r\nerase 3\r\nalloc 24\r\nerase 4\r\nalloc 24\r\nerase 5\r\nalloc 21\r\nerase 6\r\nalloc 24\r\nerase 7\r\nalloc 25\r\nerase 8\r\nalloc 25\r\nerase 9\r\nalloc 24\r\nerase 10\r\nalloc 25\r\nerase 11\r\nalloc 25\r\nerase 12\r\nalloc 25\r\nerase 13\r\n",
+                "1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n"
+            ],
+            [
+                "22 9\r\nalloc 9\r\nerase 1\r\nalloc 9\r\nerase 2\r\nalloc 9\r\nerase 3\r\nalloc 9\r\nerase 4\r\nalloc 9\r\nerase 5\r\nalloc 9\r\nerase 6\r\nalloc 9\r\nerase 7\r\nalloc 9\r\nerase 8\r\nalloc 9\r\nerase 9\r\nalloc 9\r\nerase 10\r\nalloc 9\r\nerase 11\r\n",
+                "1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n"
+            ],
+            [
+                "7 6\r\nalloc 1\r\nalloc 2\r\nalloc 3\r\nerase 1\r\ndefragment\r\nerase 3\r\nalloc 4\r\n",
+                "1\r\n2\r\n3\r\n4\r\n"
+            ],
+            [
+                "3 1\r\nerase -1\r\nerase 0\r\nerase -2147483648\r\n",
+                "ILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\nILLEGAL_ERASE_ARGUMENT\r\n"
+            ],
+            [
+                "7 100\r\nalloc 100\r\nerase 2147483647\r\nerase 1\r\nalloc 50\r\nalloc 50\r\nerase 3\r\nerase -2147483648\r\n",
+                "1\r\nILLEGAL_ERASE_ARGUMENT\r\n2\r\n3\r\nILLEGAL_ERASE_ARGUMENT\r\n"
+            ],
+            [
+                "12 10\r\nalloc 6\r\nalloc 2\r\nerase 1\r\nalloc 4\r\nalloc 2\r\nerase 3\r\nalloc 2\r\nalloc 3\r\nalloc 1\r\nalloc 1\r\nalloc 1\r\nalloc 1\r\n",
+                "1\r\n2\r\n3\r\n4\r\n5\r\nNULL\r\n6\r\n7\r\n8\r\n9\r\n"
+            ],
+            [
+                "8 50\r\nalloc 51\r\ndefragment\r\nalloc 100\r\ndefragment\r\nerase 1\r\nalloc 50\r\ndefragment\r\nalloc 50\r\n",
+                "NULL\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\n1\r\nNULL\r\n"
+            ],
+            [
+                "10 10\r\nalloc 10\r\nerase -1\r\nerase 1\r\nalloc 5\r\nerase -1\r\nalloc 5\r\nerase 0\r\nalloc 5\r\nerase 0\r\nalloc 5\r\n",
+                "1\r\nILLEGAL_ERASE_ARGUMENT\r\n2\r\nILLEGAL_ERASE_ARGUMENT\r\n3\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\nNULL\r\n"
+            ],
+            [
+                "16 10\r\nalloc 10\r\ndefragment\r\ndefragment\r\ndefragment\r\nalloc 10\r\nerase 1\r\nerase 2\r\nalloc 6\r\ndefragment\r\ndefragment\r\nalloc 4\r\ndefragment\r\ndefragment\r\nerase 3\r\ndefragment\r\nalloc 6\r\n",
+                "1\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\n2\r\n3\r\nNULL\r\n"
+            ],
+            [
+                "16 10\r\nalloc 10\r\ndefragment\r\ndefragment\r\ndefragment\r\nalloc 10\r\nerase 1\r\nerase 2\r\nalloc 6\r\ndefragment\r\ndefragment\r\nalloc 4\r\ndefragment\r\ndefragment\r\nerase 2\r\ndefragment\r\nalloc 6\r\n",
+                "1\r\nNULL\r\nILLEGAL_ERASE_ARGUMENT\r\n2\r\n3\r\n4\r\n"
+            ]
+        ]
+    }
+]

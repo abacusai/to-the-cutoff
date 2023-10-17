@@ -1,0 +1,149 @@
+[
+    {
+        "name": "Grocer's Problem",
+        "description": "Yesterday was a fair in a supermarket's grocery section. There were n jars\nwith spices on the fair. Before the event the jars were numbered from 1 to n\nfrom the left to the right. After the event the jars were moved and the grocer\nhad to sort them by the increasing of the numbers. The grocer has a special\nmachine at his disposal. The machine can take any 5 or less jars and rearrange\nthem in the way the grocer wants. Note that the jars do not have to stand\nconsecutively. For example, from the permutation 2, 6, 5, 4, 3, 1 one can get\npermutation 1, 2, 3, 4, 5, 6, if pick the jars on the positions 1, 2, 3, 5 and\n6. Which minimum number of such operations is needed to arrange all the jars\nin the order of their numbers' increasing? Input The first line contains an\ninteger n (1 \u2264 n \u2264 10^5). The second line contains n space-separated integers\nai (1 \u2264 ai \u2264 n) \u2014 the i-th number represents the number of a jar that occupies\nthe i-th position. It is guaranteed that all the numbers are distinct. Output\nPrint on the first line the least number of operations needed to rearrange all\nthe jars in the order of the numbers' increasing. Then print the description\nof all actions in the following format. On the first line of the description\nof one action indicate the number of jars that need to be taken (k), on the\nsecond line indicate from which positions the jars need to be taken (b1, b2,\n..., bk), on the third line indicate the jar's new order (c1, c2, ..., ck).\nAfter the operation is fulfilled the jar from position bi will occupy the\nposition ci. The set (c1, c2, ..., ck) should be the rearrangement of the set\n(b1, b2, ..., bk). If there are multiple solutions, output any. Examples Input\n6 3 5 6 1 2 4 Output 2 4 1 3 6 4 3 6 4 1 2 2 5 5 2 Input 14 9 13 11 3 10 7 12\n14 1 5 4 6 8 2 Output 3 4 2 13 8 14 13 8 14 2 5 6 7 12 5 10 7 12 6 10 5 5 3 11\n4 1 9 11 4 3 9 1 Note Let's consider the first sample. The jars can be sorted\nwithin two actions. During the first action we take the jars from positions 1,\n3, 6 and 4 and put them so that the jar that used to occupy the position 1\nwill occupy the position 3 after the operation is completed. The jar from\nposition 3 will end up in position 6, the jar from position 6 will end up in\nposition 4 and the jar from position 4 will end up in position 1. After the\nfirst action the order will look like that: 1, 5, 3, 4, 2, 6. During the\nsecond operation the jars in positions 2 and 5 will change places.\n\n",
+        "cf_contest_id": 91,
+        "cf_index": "D",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n3 5 6 1 2 4\r\n",
+                "2\r\n4\r\n1 3 6 4\r\n3 6 4 1\r\n2\r\n2 5\r\n5 2\r\n"
+            ],
+            [
+                "14\r\n9 13 11 3 10 7 12 14 1 5 4 6 8 2\r\n",
+                "3\r\n4\r\n2 13 8 14\r\n13 8 14 2\r\n5\r\n3 11 4 1 9\r\n11 4 3 9 1\r\n5\r\n6 7 12 5 10\r\n7 12 6 10 5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "14\r\n11 4 14 10 7 3 9 2 5 8 1 13 12 6\r\n",
+                "3\r\n4\r\n2 4 10 8\r\n4 10 8 2\r\n5\r\n3 14 6 1 11\r\n14 6 3 11 1\r\n5\r\n5 7 9 12 13\r\n7 9 5 13 12\r\n"
+            ],
+            [
+                "14\r\n6 1 11 13 7 8 5 2 10 3 9 14 4 12\r\n",
+                "4\r\n4\r\n1 6 8 2\r\n6 8 2 1\r\n4\r\n3 11 9 10\r\n11 9 10 3\r\n4\r\n4 13 5 7\r\n13 4 7 5\r\n2\r\n12 14\r\n14 12\r\n"
+            ],
+            [
+                "14\r\n4 9 14 12 10 8 13 6 11 5 2 1 7 3\r\n",
+                "3\r\n5\r\n1 4 12 3 14\r\n4 12 1 14 3\r\n5\r\n2 9 11 5 10\r\n9 11 2 10 5\r\n4\r\n6 8 7 13\r\n8 6 13 7\r\n"
+            ],
+            [
+                "15\r\n11 4 1 10 13 14 9 15 7 2 3 6 5 12 8\r\n",
+                "3\r\n5\r\n1 11 3 5 13\r\n11 3 1 13 5\r\n5\r\n2 4 10 7 9\r\n4 10 2 9 7\r\n5\r\n6 14 12 8 15\r\n14 12 6 15 8\r\n"
+            ],
+            [
+                "44\r\n20 33 40 3 11 14 13 15 24 6 32 7 30 44 19 4 28 10 12 34 25 29 37 38 8 35 16 23 41 31 21 2 5 9 17 22 42 27 1 39 26 36 18 43\r\n",
+                "11\r\n5\r\n1 20 34 9 24\r\n20 34 9 24 1\r\n5\r\n1 38 27 16 4\r\n38 27 16 4 1\r\n5\r\n2 33 5 11 32\r\n33 5 11 32 2\r\n5\r\n6 14 44 43 18\r\n14 44 43 18 6\r\n5\r\n7 13 30 31 21\r\n13 30 31 21 7\r\n5\r\n7 25 8 15 19\r\n25 8 15 19 7\r\n5\r\n17 28 23 37 42\r\n28 23 37 42 17\r\n5\r\n17 36 22 29 41\r\n36 22 29 41 17\r\n4\r\n1 3 40 39\r\n3 40 39 1\r\n5\r\n17 26 35 6 10\r\n26 35 17 10 6\r\n2\r\n7 12\r\n12 7\r\n"
+            ],
+            [
+                "12\r\n11 7 4 3 10 6 2 8 9 5 1 12\r\n",
+                "2\r\n4\r\n1 11 2 7\r\n11 1 7 2\r\n4\r\n3 4 5 10\r\n4 3 10 5\r\n"
+            ],
+            [
+                "9\r\n2 3 1 5 6 4 8 9 7\r\n",
+                "2\r\n5\r\n1 2 3 8 9\r\n2 3 1 9 8\r\n5\r\n4 5 6 7 8\r\n5 6 4 8 7\r\n"
+            ],
+            [
+                "10\r\n3 6 1 10 2 9 4 7 5 8\r\n",
+                "3\r\n4\r\n2 6 9 5\r\n6 9 5 2\r\n4\r\n4 10 8 7\r\n10 8 7 4\r\n2\r\n1 3\r\n3 1\r\n"
+            ],
+            [
+                "10\r\n5 6 2 9 1 3 4 10 7 8\r\n",
+                "2\r\n5\r\n2 6 3 1 5\r\n6 3 2 5 1\r\n5\r\n4 9 7 8 10\r\n9 7 4 10 8\r\n"
+            ],
+            [
+                "20\r\n10 12 6 19 11 3 15 17 13 8 5 2 18 7 20 4 1 9 16 14\r\n",
+                "5\r\n4\r\n1 10 8 17\r\n10 8 17 1\r\n4\r\n7 15 20 14\r\n15 20 14 7\r\n5\r\n4 19 16 2 12\r\n19 16 4 12 2\r\n5\r\n9 13 18 3 6\r\n13 18 9 6 3\r\n2\r\n5 11\r\n11 5\r\n"
+            ],
+            [
+                "19\r\n14 11 13 19 8 7 16 2 10 18 5 3 12 17 4 6 1 9 15\r\n",
+                "5\r\n4\r\n2 11 5 8\r\n11 5 8 2\r\n5\r\n1 14 17 10 18\r\n14 17 1 18 10\r\n5\r\n3 13 12 9 10\r\n13 12 3 10 9\r\n3\r\n4 19 15\r\n19 15 4\r\n3\r\n6 7 16\r\n7 16 6\r\n"
+            ],
+            [
+                "40\r\n36 6 13 5 18 2 23 10 20 35 3 17 11 29 40 9 12 37 34 16 15 1 28 8 19 21 22 7 33 38 39 30 14 25 24 27 4 32 31 26\r\n",
+                "9\r\n4\r\n1 36 27 22\r\n36 27 22 1\r\n4\r\n4 5 18 37\r\n5 18 37 4\r\n4\r\n8 10 35 24\r\n10 35 24 8\r\n4\r\n15 40 26 21\r\n40 26 21 15\r\n5\r\n3 13 11 2 6\r\n13 11 3 6 2\r\n5\r\n7 23 28 12 17\r\n23 28 7 17 12\r\n5\r\n9 20 16 31 39\r\n20 16 9 39 31\r\n5\r\n14 29 33 38 32\r\n29 33 14 32 38\r\n5\r\n19 34 25 30 38\r\n34 25 19 38 30\r\n"
+            ],
+            [
+                "40\r\n29 26 16 34 7 40 9 36 5 12 4 10 24 18 21 13 15 14 39 25 30 6 8 3 28 2 32 20 35 17 38 31 19 11 1 37 23 27 33 22\r\n",
+                "9\r\n4\r\n3 16 13 24\r\n16 13 24 3\r\n4\r\n8 36 37 23\r\n36 37 23 8\r\n4\r\n15 21 30 17\r\n21 30 17 15\r\n4\r\n27 32 31 38\r\n32 31 38 27\r\n5\r\n1 29 35 2 26\r\n29 35 1 26 2\r\n5\r\n4 34 11 10 12\r\n34 11 4 12 10\r\n5\r\n5 7 9 14 18\r\n7 9 5 18 14\r\n5\r\n6 40 22 25 28\r\n40 22 6 28 25\r\n5\r\n19 39 33 20 25\r\n39 33 19 25 20\r\n"
+            ],
+            [
+                "35\r\n28 16 24 10 4 32 9 5 23 8 12 31 30 20 25 33 27 17 1 22 13 29 7 15 3 19 18 26 14 21 11 34 35 6 2\r\n",
+                "9\r\n4\r\n1 28 26 19\r\n28 26 19 1\r\n4\r\n2 16 33 35\r\n16 33 35 2\r\n4\r\n3 24 15 25\r\n24 15 25 3\r\n4\r\n4 10 8 5\r\n10 8 5 4\r\n4\r\n14 20 22 29\r\n20 22 29 14\r\n5\r\n6 32 34 27 18\r\n32 34 6 18 27\r\n5\r\n7 9 23 17 27\r\n9 23 7 27 17\r\n3\r\n11 12 31\r\n12 31 11\r\n3\r\n13 30 21\r\n30 21 13\r\n"
+            ],
+            [
+                "20\r\n8 14 1 20 12 18 11 13 4 19 16 17 3 10 6 7 5 15 2 9\r\n",
+                "5\r\n4\r\n1 8 13 3\r\n8 13 3 1\r\n4\r\n2 14 10 19\r\n14 10 19 2\r\n5\r\n4 20 9 11 16\r\n20 9 4 16 11\r\n5\r\n5 12 17 7 11\r\n12 17 5 11 7\r\n3\r\n6 18 15\r\n18 15 6\r\n"
+            ],
+            [
+                "50\r\n28 3 5 47 2 32 12 48 35 44 29 42 15 9 13 30 50 20 33 21 18 4 17 43 31 14 22 1 49 38 39 6 10 16 26 37 45 34 25 46 24 7 41 19 36 8 27 40 11 23\r\n",
+                "12\r\n4\r\n4 47 27 22\r\n47 27 22 4\r\n4\r\n8 48 40 46\r\n48 40 46 8\r\n4\r\n9 35 26 14\r\n35 26 14 9\r\n4\r\n10 44 19 33\r\n44 19 33 10\r\n4\r\n16 30 38 34\r\n30 38 34 16\r\n5\r\n2 3 5 1 28\r\n3 5 2 28 1\r\n5\r\n7 12 42 6 32\r\n12 42 7 32 6\r\n5\r\n11 29 49 13 15\r\n29 49 11 15 13\r\n5\r\n17 50 23 37 45\r\n50 23 17 45 37\r\n5\r\n18 20 21 36 37\r\n20 21 18 37 36\r\n3\r\n24 43 41\r\n43 41 24\r\n3\r\n25 31 39\r\n31 39 25\r\n"
+            ],
+            [
+                "10\r\n1 2 3 4 5 6 7 8 9 10\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "9\r\n2 8 7 5 9 3 6 1 4\r\n",
+                "2\r\n5\r\n1 2 8 5 9\r\n2 8 1 9 5\r\n5\r\n3 7 6 4 5\r\n7 6 3 5 4\r\n"
+            ],
+            [
+                "9\r\n2 3 4 5 6 7 8 9 1\r\n",
+                "2\r\n5\r\n1 2 3 4 5\r\n2 3 4 5 1\r\n5\r\n1 6 7 8 9\r\n6 7 8 9 1\r\n"
+            ],
+            [
+                "10\r\n2 3 4 5 6 7 8 9 10 1\r\n",
+                "3\r\n5\r\n1 2 3 4 5\r\n2 3 4 5 1\r\n5\r\n1 6 7 8 9\r\n6 7 8 9 1\r\n2\r\n1 10\r\n10 1\r\n"
+            ],
+            [
+                "6\r\n2 3 1 5 6 4\r\n",
+                "2\r\n3\r\n1 2 3\r\n2 3 1\r\n3\r\n4 5 6\r\n5 6 4\r\n"
+            ],
+            [
+                "6\r\n2 1 4 3 6 5\r\n",
+                "2\r\n4\r\n1 2 3 4\r\n2 1 4 3\r\n2\r\n5 6\r\n6 5\r\n"
+            ],
+            [
+                "12\r\n2 3 1 5 6 4 8 9 7 11 12 10\r\n",
+                "3\r\n5\r\n1 2 3 11 12\r\n2 3 1 12 11\r\n5\r\n4 5 6 10 11\r\n5 6 4 11 10\r\n3\r\n7 8 9\r\n8 9 7\r\n"
+            ],
+            [
+                "4\r\n2 1 4 3\r\n",
+                "1\r\n4\r\n1 2 3 4\r\n2 1 4 3\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n",
+                "1\r\n2\r\n1 2\r\n2 1\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n",
+                "1\r\n3\r\n1 2 3\r\n2 3 1\r\n"
+            ],
+            [
+                "8\r\n2 1 4 5 3 7 8 6\r\n",
+                "2\r\n5\r\n3 4 5 1 2\r\n4 5 3 2 1\r\n3\r\n6 7 8\r\n7 8 6\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

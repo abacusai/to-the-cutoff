@@ -1,0 +1,165 @@
+[
+    {
+        "name": "Cycle",
+        "description": "Little Petya very much likes rectangular tables that consist of characters \"0\"\nand \"1\". Recently he has received one such table as a gift from his mother.\nThe table contained n rows and m columns. The rows are numbered from top to\nbottom from 1 to n, the columns are numbered from the left to the right from 1\nto m. Petya immediately decided to find the longest cool cycle whatever it\ntakes. A cycle is a sequence of pairwise distinct cells where each two\nconsecutive cells have a common side; besides, the first cell has a common\nside with the last cell. A cycle is called cool if it fulfills all the\nfollowing conditions simultaneously: The cycle entirely consists of the cells\nthat contain \"1\". Each cell that belongs to the cycle, has a common side with\nexactly two other cells that belong to the cycle. Each cell of the table that\ncontains \"1\" either belongs to the cycle or is positioned outside of it (see\ndefinition below). To define the notion of \"outside\" formally, let's draw a\ncycle on a plane. Let each cell of the cycle (i, j) (i is the row number, j is\nthe column number) correspond to the point (i, j) on the coordinate plane. Let\na straight line segment join each pair of points that correspond to the cells\nbelonging to the cycle and sharing a side. Thus, we will get a closed polyline\nthat has no self-intersections and self-touches. The polyline divides the\nplane into two connected parts: the part of an infinite area and the part of a\nfinite area. It is considered that cell (r, c) lies outside of the cycle if it\ndoes not belong to the cycle and the corresponding point on the plane with\ncoordinates (r, c) lies in the part with the infinite area. Help Petya to find\nthe length of the longest cool cycle in the table. The cycle length is defined\nas the number of cells that belong to the cycle. Input The first line contains\ntwo integers n and m (1 \u2264 n, m \u2264 1000) \u2014 the number of rows and columns in the\ntable, respectively. Each of the following n lines contains m characters. Each\ncharacter can be either \"0\" or \"1\". Output Print a single number \u2014 the length\nof the longest cool cycle in the table. If such cycles do not exist, print 0.\nExamples Input 3 3 111 101 111 Output 8 Input 5 5 01010 10101 01010 10101\n01010 Output 0 Input 7 7 1111111 1000101 1000101 1000101 1000111 1000001\n1111111 Output 24 Input 5 5 11111 10001 10101 10001 11111 Output 0 Note In the\nfirst example there's only one cycle and it is cool. In the second sample\nthere's no cycle at all. In the third sample there are two cool cycles: their\nlengths are 12 and 24. In the fourth sample there also is only one cycle but\nit isn't cool as there's a cell containing \"1\" inside this cycle.\n\n",
+        "cf_contest_id": 135,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dfs and similar",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3\r\n111\r\n101\r\n111\r\n",
+                "8\r\n"
+            ],
+            [
+                "5 5\r\n01010\r\n10101\r\n01010\r\n10101\r\n01010\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7\r\n1111111\r\n1000101\r\n1000101\r\n1000101\r\n1000111\r\n1000001\r\n1111111\r\n",
+                "24\r\n"
+            ],
+            [
+                "5 5\r\n11111\r\n10001\r\n10101\r\n10001\r\n11111\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\n11\r\n11\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 3\r\n000\r\n010\r\n000\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 5\r\n11111\r\n10101\r\n10001\r\n11111\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7\r\n1111111\r\n1000001\r\n1011101\r\n1010101\r\n1011101\r\n1000001\r\n1111111\r\n",
+                "8\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 6\r\n010001\r\n111111\r\n110101\r\n111111\r\n101010\r\n111111\r\n",
+                "8\r\n"
+            ],
+            [
+                "1 1\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 10\r\n1111111111\r\n1111111111\r\n1111111111\r\n1110100111\r\n1111101111\r\n1111101111\r\n1111110111\r\n1111111111\r\n1111111111\r\n1111111111\r\n",
+                "8\r\n"
+            ],
+            [
+                "10 10\r\n1111111111\r\n1111111111\r\n1111111111\r\n1110100111\r\n1111101111\r\n1111110111\r\n1111111111\r\n1111111111\r\n1111111111\r\n1111111111\r\n",
+                "8\r\n"
+            ],
+            [
+                "10 10\r\n1111111111\r\n1111111111\r\n1111111111\r\n1110100111\r\n1111101111\r\n1111101111\r\n1111101111\r\n1111101111\r\n1111110111\r\n1111111111\r\n",
+                "22\r\n"
+            ],
+            [
+                "1 15\r\n010101110101010\r\n",
+                "0\r\n"
+            ],
+            [
+                "15 1\r\n1\r\n1\r\n1\r\n0\r\n0\r\n0\r\n1\r\n1\r\n0\r\n1\r\n1\r\n1\r\n1\r\n0\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 11\r\n11111111111\r\n10000000011\r\n10011111011\r\n10011111011\r\n10011111011\r\n10011111011\r\n11111111011\r\n11111111011\r\n11111000011\r\n11111111111\r\n",
+                "50\r\n"
+            ],
+            [
+                "9 11\r\n11111111111\r\n10000000011\r\n10011111011\r\n10011111011\r\n10011111011\r\n10011111011\r\n11111111011\r\n11110000011\r\n11111111111\r\n",
+                "4\r\n"
+            ],
+            [
+                "7 7\r\n1111111\r\n1110111\r\n1110111\r\n1001001\r\n1110111\r\n1110111\r\n1111111\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 5\r\n00000\r\n01110\r\n01110\r\n01110\r\n00000\r\n",
+                "4\r\n"
+            ],
+            [
+                "4 3\r\n111\r\n111\r\n111\r\n000\r\n",
+                "4\r\n"
+            ],
+            [
+                "2 4\r\n1111\r\n1111\r\n",
+                "4\r\n"
+            ],
+            [
+                "4 2\r\n11\r\n11\r\n11\r\n11\r\n",
+                "4\r\n"
+            ],
+            [
+                "7 8\r\n00000000\r\n01111000\r\n01101100\r\n01000100\r\n01111100\r\n00000000\r\n00000000\r\n",
+                "14\r\n"
+            ],
+            [
+                "8 9\r\n000000000\r\n000000000\r\n001111000\r\n001101100\r\n001000100\r\n001111100\r\n000000000\r\n000000000\r\n",
+                "14\r\n"
+            ],
+            [
+                "8 9\r\n000000000\r\n000000000\r\n001111000\r\n001111100\r\n001111100\r\n001111100\r\n000000000\r\n000000000\r\n",
+                "4\r\n"
+            ],
+            [
+                "7 10\r\n1111111111\r\n1111100000\r\n1111101110\r\n1111101110\r\n1111101110\r\n1111100000\r\n1111111111\r\n",
+                "4\r\n"
+            ],
+            [
+                "2 5\r\n11111\r\n11111\r\n",
+                "4\r\n"
+            ],
+            [
+                "4 5\r\n11111\r\n10111\r\n11011\r\n01110\r\n",
+                "12\r\n"
+            ],
+            [
+                "7 7\r\n1111111\r\n1000001\r\n1000001\r\n1000001\r\n1011101\r\n1010101\r\n1110111\r\n",
+                "28\r\n"
+            ],
+            [
+                "4 4\r\n1111\r\n1101\r\n1011\r\n1111\r\n",
+                "12\r\n"
+            ],
+            [
+                "2 3\r\n011\r\n111\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 5\r\n11100\r\n10110\r\n11010\r\n01110\r\n00000\r\n",
+                "12\r\n"
+            ],
+            [
+                "6 6\r\n111111\r\n100001\r\n101101\r\n101101\r\n100001\r\n111111\r\n",
+                "4\r\n"
+            ],
+            [
+                "4 6\r\n111111\r\n101101\r\n100001\r\n111111\r\n",
+                "4\r\n"
+            ],
+            [
+                "4 4\r\n1110\r\n1011\r\n1101\r\n0111\r\n",
+                "12\r\n"
+            ]
+        ]
+    }
+]

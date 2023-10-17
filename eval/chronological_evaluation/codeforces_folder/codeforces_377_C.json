@@ -1,0 +1,201 @@
+[
+    {
+        "name": "Captains Mode",
+        "description": "Kostya is a progamer specializing in the discipline of Dota 2. Valve\nCorporation, the developer of this game, has recently released a new patch\nwhich turned the balance of the game upside down. Kostya, as the captain of\nthe team, realizes that the greatest responsibility lies on him, so he wants\nto resort to the analysis of innovations patch from the mathematical point of\nview to choose the best heroes for his team in every game. A Dota 2 match\ninvolves two teams, each of them must choose some heroes that the players of\nthe team are going to play for, and it is forbidden to choose the same hero\nseveral times, even in different teams. In large electronic sports\ncompetitions where Kostya's team is going to participate, the matches are held\nin the Captains Mode. In this mode the captains select the heroes by making\none of two possible actions in a certain, predetermined order: pick or ban. To\npick a hero for the team. After the captain picks, the picked hero goes to his\nteam (later one of a team members will play it) and can no longer be selected\nby any of the teams. To ban a hero. After the ban the hero is not sent to any\nof the teams, but it still can no longer be selected by any of the teams. The\nteam captain may miss a pick or a ban. If he misses a pick, a random hero is\nadded to his team from those that were available at that moment, and if he\nmisses a ban, no hero is banned, as if there was no ban. Kostya has already\nidentified the strength of all the heroes based on the new patch fixes. Of\ncourse, Kostya knows the order of picks and bans. The strength of a team is\nthe sum of the strengths of the team's heroes and both teams that participate\nin the match seek to maximize the difference in strengths in their favor. Help\nKostya determine what team, the first one or the second one, has advantage in\nthe match, and how large the advantage is. Input The first line contains a\nsingle integer n (2 \u2264 n \u2264 100) \u2014 the number of heroes in Dota 2. The second\nline contains n integers s1, s2, ..., sn (1 \u2264 si \u2264 10^6) \u2014 the strengths of\nall the heroes. The third line contains a single integer m (2 \u2264 m \u2264 min(n,\n20)) \u2014 the number of actions the captains of the team must perform. Next m\nlines look like \"action team\", where action is the needed action: a pick\n(represented as a \"p\") or a ban (represented as a \"b\"), and team is the number\nof the team that needs to perform the action (number 1 or 2). It is guaranteed\nthat each team makes at least one pick. Besides, each team has the same number\nof picks and the same number of bans. Output Print a single integer \u2014 the\ndifference between the strength of the first team and the strength of the\nsecond team if the captains of both teams will act optimally well. Examples\nInput 2 2 1 2 p 1 p 2 Output 1 Input 6 6 4 5 4 5 5 4 b 2 p 1 b 1 p 2 Output 0\nInput 4 1 2 3 4 4 p 2 b 2 p 1 b 1 Output -2\n\n",
+        "cf_contest_id": 377,
+        "cf_index": "C",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dp",
+            "games"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n2 1\r\n2\r\np 1\r\np 2\r\n",
+                "1"
+            ],
+            [
+                "6\r\n6 4 5 4 5 5\r\n4\r\nb 2\r\np 1\r\nb 1\r\np 2\r\n",
+                "0"
+            ],
+            [
+                "4\r\n1 2 3 4\r\n4\r\np 2\r\nb 2\r\np 1\r\nb 1\r\n",
+                "-2"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n1 2 3 5\r\n4\r\nb 2\r\np 1\r\np 2\r\nb 1\r\n",
+                "1"
+            ],
+            [
+                "6\r\n6 7 8 1 2 3\r\n6\r\nb 1\r\np 1\r\np 2\r\nb 2\r\np 2\r\np 1\r\n",
+                "0"
+            ],
+            [
+                "8\r\n1 2 3 4 5 6 7 8\r\n6\r\np 1\r\np 2\r\np 2\r\np 1\r\np 1\r\np 2\r\n",
+                "1"
+            ],
+            [
+                "8\r\n1 2 4 8 16 32 64 128\r\n8\r\nb 1\r\np 2\r\nb 2\r\np 1\r\nb 2\r\np 1\r\nb 1\r\np 2\r\n",
+                "-45"
+            ],
+            [
+                "100\r\n94 46 36 81 100 20 36 55 53 97 25 93 99 50 47 61 42 21 66 74 38 71 30 5 10 33 5 33 21 65 98 13 84 96 73 31 36 10 33 48 55 18 52 65 16 29 31 69 28 52 37 25 49 96 18 98 68 99 2 47 92 6 77 65 43 71 5 40 25 66 5 77 41 73 90 44 45 53 22 89 16 32 90 88 5 15 33 23 30 55 89 92 67 77 42 89 26 48 56 29\r\n20\r\np 1\r\np 2\r\np 2\r\np 1\r\np 1\r\np 1\r\np 2\r\np 1\r\np 1\r\np 2\r\nb 2\r\np 2\r\nb 1\r\nb 2\r\nb 2\r\nb 2\r\np 2\r\nb 1\r\nb 1\r\nb 1\r\n",
+                "14"
+            ],
+            [
+                "100\r\n88 33 90 2 35 49 78 76 46 43 46 89 41 15 19 57 39 2 37 18 71 91 5 38 88 60 57 21 86 68 92 25 11 92 61 12 78 44 66 81 4 97 10 100 24 6 5 57 85 72 36 57 52 56 100 82 41 2 41 49 82 61 65 60 1 67 92 63 32 39 14 100 33 38 10 53 21 53 51 26 19 75 84 1 71 9 46 88 13 83 10 19 37 89 30 44 2 65 75 60\r\n20\r\np 1\r\np 1\r\nb 2\r\np 1\r\nb 1\r\np 1\r\nb 1\r\nb 1\r\nb 1\r\np 2\r\np 2\r\np 2\r\np 2\r\nb 1\r\nb 2\r\nb 1\r\nb 2\r\nb 2\r\nb 2\r\nb 2\r\n",
+                "35"
+            ],
+            [
+                "4\r\n4 4 4 1\r\n4\r\nb 1\r\nb 2\r\np 1\r\np 2\r\n",
+                "0"
+            ],
+            [
+                "4\r\n4 3 2 1\r\n4\r\nb 1\r\nb 2\r\np 2\r\np 1\r\n",
+                "-2"
+            ],
+            [
+                "4\r\n1 2 4 5\r\n4\r\nb 2\r\np 1\r\np 2\r\nb 1\r\n",
+                "1"
+            ],
+            [
+                "4\r\n1 2 4 5\r\n4\r\nb 2\r\nb 1\r\np 1\r\np 2\r\n",
+                "3"
+            ],
+            [
+                "4\r\n5 4 2 1\r\n4\r\nb 2\r\nb 1\r\np 2\r\np 1\r\n",
+                "-1"
+            ],
+            [
+                "6\r\n7 6 6 6 3 2\r\n6\r\nb 1\r\nb 2\r\np 1\r\np 2\r\np 2\r\np 1\r\n",
+                "-3"
+            ],
+            [
+                "6\r\n1 2 3 6 7 8\r\n6\r\nb 1\r\np 2\r\np 1\r\np 1\r\nb 2\r\np 2\r\n",
+                "3"
+            ],
+            [
+                "6\r\n6 7 8 1 2 3\r\n6\r\nb 1\r\np 1\r\np 2\r\np 2\r\np 1\r\nb 2\r\n",
+                "1"
+            ],
+            [
+                "8\r\n1 2 3 4 5 6 7 8\r\n8\r\nb 1\r\nb 2\r\np 1\r\np 2\r\np 2\r\np 1\r\np 1\r\np 2\r\n",
+                "1"
+            ],
+            [
+                "100\r\n14 25 3 3 14 45 7 74 4 81 7 10 62 90 25 82 92 39 1 55 55 51 94 25 20 77 38 69 8 14 6 77 96 43 32 61 84 77 98 94 29 50 71 27 40 66 63 41 54 89 64 16 39 14 77 81 17 51 87 87 24 13 63 68 2 38 41 55 50 78 41 2 34 64 37 39 30 73 7 72 76 25 54 52 20 58 94 8 23 38 18 33 97 74 11 35 33 3 68 49\r\n20\r\np 2\r\np 1\r\nb 1\r\nb 2\r\nb 2\r\np 2\r\np 1\r\nb 1\r\np 2\r\np 1\r\np 2\r\np 2\r\np 2\r\np 1\r\np 2\r\np 2\r\np 1\r\np 1\r\np 1\r\np 1\r\n",
+                "-36"
+            ],
+            [
+                "100\r\n6 43 9 46 3 100 58 24 2 77 98 55 44 32 16 38 100 95 56 81 17 64 83 53 98 68 9 6 63 97 24 54 22 54 81 33 88 47 92 56 4 52 86 96 85 88 34 86 17 36 22 82 21 63 44 54 76 76 32 93 46 97 86 30 88 20 86 49 84 42 37 58 71 86 90 70 66 12 36 91 28 75 28 20 56 17 53 44 32 55 86 1 94 28 40 91 68 89 62 57\r\n20\r\np 1\r\nb 2\r\nb 2\r\nb 2\r\nb 1\r\np 2\r\nb 1\r\nb 2\r\np 1\r\nb 2\r\nb 1\r\nb 2\r\np 2\r\nb 2\r\nb 1\r\nb 1\r\nb 1\r\nb 1\r\nb 1\r\nb 2\r\n",
+                "4"
+            ],
+            [
+                "14\r\n32 22 37 76 66 96 70 16 87 57 56 78 32 94\r\n14\r\np 1\r\np 1\r\nb 1\r\np 1\r\nb 1\r\np 2\r\np 1\r\np 2\r\np 2\r\np 2\r\nb 1\r\nb 2\r\nb 2\r\nb 2\r\n",
+                "125"
+            ],
+            [
+                "14\r\n40 26 97 41 91 40 91 34 52 38 92 66 76 56\r\n14\r\np 1\r\nb 2\r\nb 1\r\nb 2\r\nb 2\r\nb 1\r\np 1\r\nb 1\r\np 2\r\np 2\r\np 2\r\np 1\r\np 1\r\np 2\r\n",
+                "56"
+            ],
+            [
+                "14\r\n85 41 58 94 50 56 76 83 37 16 26 72 28 61\r\n14\r\np 2\r\nb 2\r\np 1\r\np 2\r\nb 1\r\nb 1\r\np 2\r\nb 2\r\nb 1\r\np 1\r\np 1\r\np 2\r\np 1\r\nb 2\r\n",
+                "-56"
+            ],
+            [
+                "14\r\n35 86 25 96 18 24 10 49 7 76 92 2 75 74\r\n14\r\np 1\r\nb 1\r\np 1\r\nb 1\r\np 1\r\np 1\r\nb 2\r\np 2\r\nb 1\r\np 2\r\np 2\r\np 2\r\nb 2\r\nb 2\r\n",
+                "234"
+            ],
+            [
+                "14\r\n97 84 46 77 67 40 75 1 15 84 48 3 20 68\r\n14\r\nb 2\r\np 1\r\np 1\r\nb 1\r\np 2\r\np 2\r\np 1\r\np 2\r\nb 1\r\np 2\r\nb 1\r\nb 2\r\np 1\r\nb 2\r\n",
+                "5"
+            ],
+            [
+                "16\r\n11 24 75 46 8 57 91 2 75 36 42 11 28 44 17 17\r\n16\r\nb 1\r\nb 2\r\np 1\r\np 1\r\np 1\r\np 2\r\np 2\r\nb 2\r\nb 2\r\nb 1\r\nb 2\r\nb 1\r\np 2\r\np 1\r\np 2\r\nb 1\r\n",
+                "100"
+            ],
+            [
+                "16\r\n76 62 98 40 52 72 84 100 74 66 56 61 5 43 100 82\r\n16\r\np 2\r\nb 1\r\np 2\r\nb 2\r\np 1\r\nb 2\r\np 1\r\nb 2\r\nb 1\r\nb 1\r\nb 2\r\nb 1\r\np 2\r\np 2\r\np 1\r\np 1\r\n",
+                "-66"
+            ],
+            [
+                "16\r\n12 28 50 20 6 11 49 7 5 49 36 23 76 8 27 77\r\n16\r\nb 1\r\np 2\r\nb 2\r\nb 1\r\nb 2\r\np 1\r\np 2\r\np 1\r\np 2\r\nb 1\r\np 2\r\np 1\r\nb 2\r\nb 2\r\np 1\r\nb 1\r\n",
+                "-59"
+            ],
+            [
+                "16\r\n68 61 10 72 14 53 81 24 4 72 85 42 59 62 39 55\r\n16\r\nb 1\r\nb 2\r\nb 2\r\np 1\r\nb 1\r\np 2\r\np 2\r\np 2\r\np 1\r\nb 1\r\nb 2\r\np 2\r\nb 1\r\nb 2\r\np 1\r\np 1\r\n",
+                "-56"
+            ],
+            [
+                "16\r\n72 64 24 27 71 84 45 47 36 33 94 15 1 40 2 3\r\n16\r\nb 1\r\np 1\r\nb 1\r\np 2\r\np 2\r\np 1\r\nb 2\r\np 1\r\np 1\r\nb 2\r\np 2\r\np 2\r\nb 2\r\nb 1\r\nb 2\r\nb 1\r\n",
+                "41"
+            ],
+            [
+                "18\r\n69 3 91 93 4 29 30 33 41 97 45 90 48 9 1 90 77 16\r\n18\r\nb 2\r\nb 1\r\np 1\r\np 2\r\np 1\r\nb 1\r\np 2\r\np 2\r\nb 2\r\np 1\r\np 1\r\nb 1\r\nb 1\r\np 1\r\np 2\r\nb 2\r\np 2\r\nb 2\r\n",
+                "52"
+            ],
+            [
+                "18\r\n42 36 10 39 92 70 33 33 75 38 4 32 86 29 13 25 53 47\r\n18\r\np 2\r\np 1\r\np 2\r\nb 2\r\np 1\r\np 2\r\nb 1\r\np 2\r\nb 2\r\np 1\r\np 1\r\nb 1\r\np 1\r\nb 1\r\np 2\r\nb 2\r\nb 1\r\nb 2\r\n",
+                "-35"
+            ],
+            [
+                "18\r\n33 12 22 8 33 98 66 87 65 8 21 88 54 82 89 38 57 23\r\n18\r\np 1\r\nb 2\r\nb 1\r\nb 2\r\nb 2\r\nb 1\r\nb 2\r\np 2\r\np 1\r\np 2\r\nb 1\r\nb 1\r\np 1\r\np 1\r\np 2\r\np 1\r\np 2\r\np 2\r\n",
+                "86"
+            ],
+            [
+                "18\r\n5 43 41 3 60 34 67 71 97 11 56 21 75 23 2 46 46 76\r\n18\r\nb 2\r\nb 2\r\np 1\r\nb 1\r\nb 2\r\nb 2\r\nb 1\r\np 2\r\nb 1\r\np 2\r\np 2\r\nb 1\r\np 2\r\np 2\r\np 1\r\np 1\r\np 1\r\np 1\r\n",
+                "-123"
+            ],
+            [
+                "18\r\n69 97 12 87 3 44 36 83 23 33 7 31 89 67 13 76 51 33\r\n18\r\np 2\r\nb 1\r\nb 1\r\nb 1\r\nb 1\r\np 1\r\nb 2\r\np 2\r\nb 2\r\np 1\r\nb 2\r\nb 2\r\np 1\r\np 1\r\np 1\r\np 2\r\np 2\r\np 2\r\n",
+                "55"
+            ],
+            [
+                "20\r\n68 9 33 68 7 18 43 51 26 12 61 95 82 16 43 83 51 97 15 55\r\n20\r\nb 2\r\nb 1\r\np 2\r\nb 1\r\np 2\r\nb 1\r\np 2\r\np 1\r\nb 1\r\nb 1\r\np 1\r\np 2\r\np 2\r\np 1\r\nb 2\r\nb 2\r\nb 2\r\np 1\r\np 1\r\nb 2\r\n",
+                "-137"
+            ],
+            [
+                "20\r\n88 91 6 31 26 14 87 57 82 76 12 38 8 80 59 97 68 40 72 61\r\n20\r\nb 1\r\np 2\r\np 2\r\nb 1\r\np 2\r\nb 2\r\nb 2\r\np 2\r\np 1\r\nb 2\r\np 1\r\np 1\r\np 2\r\np 1\r\nb 1\r\nb 1\r\np 1\r\nb 1\r\nb 2\r\nb 2\r\n",
+                "-120"
+            ],
+            [
+                "20\r\n14 14 59 42 11 15 33 76 15 48 90 6 49 15 75 76 33 25 34 48\r\n20\r\np 2\r\np 2\r\np 1\r\np 2\r\np 1\r\np 1\r\np 1\r\nb 1\r\nb 1\r\nb 2\r\nb 1\r\nb 1\r\nb 2\r\nb 1\r\np 2\r\np 1\r\nb 2\r\nb 2\r\nb 2\r\np 2\r\n",
+                "-24"
+            ],
+            [
+                "20\r\n83 48 5 20 15 18 92 78 17 60 71 19 42 64 18 42 70 27 25 92\r\n20\r\nb 2\r\np 1\r\np 2\r\np 2\r\np 1\r\nb 2\r\nb 1\r\np 2\r\nb 1\r\np 1\r\np 1\r\np 2\r\np 2\r\nb 2\r\nb 2\r\np 1\r\nb 2\r\nb 1\r\nb 1\r\nb 1\r\n",
+                "-9"
+            ],
+            [
+                "20\r\n19 16 77 41 51 96 2 6 17 78 4 15 56 61 37 42 75 81 78 97\r\n20\r\np 1\r\nb 1\r\nb 1\r\np 1\r\np 2\r\np 1\r\nb 2\r\nb 1\r\nb 1\r\np 1\r\nb 2\r\nb 1\r\nb 2\r\np 2\r\nb 2\r\np 1\r\nb 2\r\np 2\r\np 2\r\np 2\r\n",
+                "196"
+            ],
+            [
+                "8\r\n100 100 100 60 1 1 1 1\r\n6\r\nb 1\r\np 2\r\np 1\r\np 1\r\np 2\r\nb 2\r\n",
+                "99"
+            ],
+            [
+                "20\r\n10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10\r\n20\r\nb 1\r\nb 2\r\nb 1\r\nb 2\r\nb 1\r\nb 2\r\nb 1\r\nb 2\r\nb 1\r\nb 2\r\nb 1\r\nb 2\r\nb 1\r\nb 2\r\nb 1\r\nb 2\r\nb 1\r\nb 2\r\np 1\r\np 2\r\n",
+                "0"
+            ],
+            [
+                "4\r\n1 1 50 100\r\n4\r\nb 1\r\np 1\r\nb 2\r\np 2\r\n",
+                "99"
+            ],
+            [
+                "6\r\n100 99 50 10 9 1\r\n6\r\nb 1\r\np 2\r\np 1\r\np 2\r\np 1\r\nb 2\r\n",
+                "-2"
+            ],
+            [
+                "6\r\n1 2 3 4 5 6\r\n4\r\nb 1\r\np 1\r\np 2\r\nb 2\r\n",
+                "2"
+            ]
+        ]
+    }
+]

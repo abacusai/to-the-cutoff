@@ -1,0 +1,137 @@
+[
+    {
+        "name": "Array and Segments (Easy version)",
+        "description": "The only difference between easy and hard versions is a number of elements in\nthe array. You are given an array \n    a\n consisting of \n    n\n integers. The\nvalue of the \n    i\n-th element of the array is \n    a_i\n. You are also given\na set of \n    m\n segments. The \n    j\n-th segment is \n    [l_j; r_j]\n, where\n\n    1 \n    \u2264 l_j \n    \u2264 r_j \n    \u2264 n\n. You can choose some subset of the given\nset of segments and decrease values on each of the chosen segments by one\n(independently). For example, if the initial array \n    a = [0, 0, 0, 0, 0]\n\nand the given segments are \n    [1; 3]\n and \n    [2; 4]\n then you can choose\nboth of them and the array will become \n    b = [-1, -2, -2, -1, 0]\n. You have\nto choose some subset of the given segments (each segment can be chosen at\nmost once) in such a way that if you apply this subset of segments to the\narray \n    a\n and obtain the array \n    b\n then the value\n\n    max\n    _i=1^nb_i - \n    min\n    _i=1^nb_i\n will be\nmaximum possible. Note that you can choose the empty set. If there are\nmultiple answers, you can print any. If you are Python programmer, consider\nusing PyPy instead of Python when you submit your code. Input The first line\nof the input contains two integers \n    n\n and \n    m\n (\n    1 \n    \u2264 n \n    \u2264\n    300, 0 \n    \u2264 m \n    \u2264 300\n) \u2014 the length of the array \n    a\n and the number\nof segments, respectively. The second line of the input contains \n    n\n\nintegers \n    a_1, a_2, \n    \u2026, a_n\n (\n    -10^6 \n    \u2264 a_i \n    \u2264 10^6\n),\nwhere \n    a_i\n is the value of the \n    i\n-th element of the array \n    a\n.\nThe next \n    m\n lines are contain two integers each. The \n    j\n-th of them\ncontains two integers \n    l_j\n and \n    r_j\n (\n    1 \n    \u2264 l_j \n    \u2264 r_j \n    \u2264\n    n\n), where \n    l_j\n and \n    r_j\n are the ends of the \n    j\n-th segment.\nOutput In the first line of the output print one integer \n    d\n \u2014 the maximum\npossible value \n    max\n    _i=1^nb_i -\n    \n    min\n    _i=1^nb_i\n if \n    b\n is the array obtained by applying\nsome subset of the given segments to the array \n    a\n. In the second line of\nthe output print one integer \n    q\n (\n    0 \n    \u2264 q \n    \u2264 m\n) \u2014 the number of\nsegments you apply. In the third line print \n    q\n distinct integers \n    c_1,\n    c_2, \n    \u2026, c_q\n in any order (\n    1 \n    \u2264 c_k \n    \u2264 m\n) \u2014 indices of\nsegments you apply to the array \n    a\n in such a way that the value\n\n    max\n    _i=1^nb_i - \n    min\n    _i=1^nb_i\n of the\nobtained array \n    b\n is maximum possible. If there are multiple answers, you\ncan print any. Examples Input 5 4 2 -2 3 1 2 1 3 4 5 2 5 1 3 Output 6 2 1 4\nInput 5 4 2 -2 3 1 4 3 5 3 4 2 4 2 5 Output 7 2 3 2 Input 1 0 1000000 Output 0\n0 Note In the first example the obtained array \n    b\n will be \n    [0, -4, 1,\n    1, 2]\n so the answer is \n    6\n. In the second example the obtained array\n\n    b\n will be \n    [2, -3, 1, -1, 4]\n so the answer is \n    7\n. In the third\nexample you cannot do anything so the answer is \n    0\n.\n\n",
+        "cf_contest_id": 1108,
+        "cf_index": "E1",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 4\r\n2 -2 3 1 2\r\n1 3\r\n4 5\r\n2 5\r\n1 3\r\n",
+                "6\n2\n1 4\n"
+            ],
+            [
+                "5 4\r\n2 -2 3 1 4\r\n3 5\r\n3 4\r\n2 4\r\n2 5\r\n",
+                "7\n2\n2 3\n"
+            ],
+            [
+                "1 0\r\n1000000\r\n",
+                "0\n0\n\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 0\r\n-1\r\n",
+                "0\n0\n\n"
+            ],
+            [
+                "1 1\r\n-10\r\n1 1\r\n",
+                "0\n0\n\n"
+            ],
+            [
+                "1 2\r\n-7\r\n1 1\r\n1 1\r\n",
+                "0\n0\n\n"
+            ],
+            [
+                "1 5\r\n9\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n",
+                "0\n0\n\n"
+            ],
+            [
+                "1 50\r\n5\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n",
+                "0\n0\n\n"
+            ],
+            [
+                "1 100\r\n-4\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n",
+                "0\n0\n\n"
+            ],
+            [
+                "2 0\r\n9 0\r\n",
+                "9\n0\n\n"
+            ],
+            [
+                "2 1\r\n5 8\r\n1 1\r\n",
+                "4\n1\n1\n"
+            ],
+            [
+                "2 2\r\n-4 7\r\n2 2\r\n2 2\r\n",
+                "11\n0\n\n"
+            ],
+            [
+                "2 5\r\n-1 -7\r\n1 2\r\n2 2\r\n2 2\r\n2 2\r\n1 1\r\n",
+                "9\n3\n2 3 4\n"
+            ],
+            [
+                "2 50\r\n-8 -6\r\n2 2\r\n2 2\r\n1 2\r\n1 1\r\n2 2\r\n1 2\r\n2 2\r\n2 2\r\n1 1\r\n1 1\r\n1 1\r\n2 2\r\n2 2\r\n2 2\r\n1 1\r\n1 1\r\n1 1\r\n2 2\r\n2 2\r\n1 1\r\n2 2\r\n2 2\r\n2 2\r\n1 1\r\n1 2\r\n2 2\r\n1 1\r\n2 2\r\n1 1\r\n2 2\r\n1 2\r\n1 1\r\n2 2\r\n1 2\r\n2 2\r\n1 1\r\n1 2\r\n1 1\r\n2 2\r\n2 2\r\n2 2\r\n1 2\r\n2 2\r\n2 2\r\n2 2\r\n1 1\r\n1 1\r\n1 2\r\n2 2\r\n1 2\r\n",
+                "23\n25\n1 2 5 7 8 12 13 14 18 19 21 22 23 26 28 30 33 35 39 40 41 43 44 45 49\n"
+            ],
+            [
+                "5 0\r\n0 -8 -5 -6 10\r\n",
+                "18\n0\n\n"
+            ],
+            [
+                "5 1\r\n8 -5 -4 4 -8\r\n1 3\r\n",
+                "16\n0\n\n"
+            ],
+            [
+                "5 2\r\n-1 -5 0 5 -1\r\n3 4\r\n2 5\r\n",
+                "10\n0\n\n"
+            ],
+            [
+                "5 5\r\n2 6 -2 1 -6\r\n3 5\r\n4 5\r\n4 4\r\n2 3\r\n5 5\r\n",
+                "15\n4\n1 2 3 5\n"
+            ],
+            [
+                "5 50\r\n-5 4 -4 -1 5\r\n4 5\r\n4 5\r\n1 1\r\n1 5\r\n1 1\r\n1 1\r\n3 5\r\n4 5\r\n5 5\r\n1 1\r\n3 3\r\n1 4\r\n1 3\r\n4 5\r\n4 5\r\n5 5\r\n1 3\r\n2 3\r\n3 4\r\n5 5\r\n1 2\r\n4 4\r\n2 2\r\n1 3\r\n5 5\r\n2 5\r\n2 2\r\n3 3\r\n1 1\r\n4 4\r\n2 3\r\n3 4\r\n5 5\r\n5 5\r\n5 5\r\n4 4\r\n5 5\r\n1 4\r\n3 3\r\n3 3\r\n4 4\r\n1 1\r\n4 5\r\n2 5\r\n3 3\r\n1 1\r\n5 5\r\n3 4\r\n2 4\r\n5 5\r\n",
+                "25\n30\n3 5 6 10 11 12 13 17 18 19 21 22 23 24 27 28 29 30 31 32 36 38 39 40 41 42 45 46 48 49\n"
+            ],
+            [
+                "50 0\r\n-7 8 -10 -6 10 -2 -2 -4 0 0 1 9 -8 -7 -6 3 2 -3 10 -5 -9 7 -4 -9 1 -3 3 -3 -1 7 -4 3 -8 6 -3 -9 9 -10 -6 -10 5 3 -3 -3 3 -5 -3 -9 -7 2\r\n",
+                "20\n0\n\n"
+            ],
+            [
+                "50 1\r\n-8 8 -6 -4 -1 8 6 7 -7 3 -2 -3 6 10 2 8 -2 -4 2 9 0 7 0 9 5 6 -2 -1 -7 -9 -6 1 9 -1 -6 -5 -4 2 -2 4 8 7 -9 7 6 3 -8 -3 4 0\r\n27 41\r\n",
+                "20\n1\n1\n"
+            ],
+            [
+                "50 2\r\n5 -5 8 5 6 6 10 -4 8 -10 9 -10 -5 -7 -7 -3 5 -9 7 9 0 -2 8 10 1 -9 -7 -4 8 9 -7 -5 2 -9 -1 -1 8 -6 -5 10 -5 -2 10 5 0 10 -9 -9 3 -2\r\n2 21\r\n28 38\r\n",
+                "21\n2\n1 2\n"
+            ],
+            [
+                "50 5\r\n0 2 1 1 -2 7 -3 3 8 -1 6 8 -8 -3 0 1 6 1 -5 -1 -4 -3 -4 -4 -6 6 -9 5 0 -7 -8 3 8 -4 3 6 -10 -3 6 1 4 1 2 -7 5 -5 5 -2 4 -5\r\n30 34\r\n8 25\r\n48 50\r\n19 48\r\n48 49\r\n",
+                "19\n4\n1 3 4 5\n"
+            ],
+            [
+                "50 50\r\n1 -9 8 -9 5 -4 -4 3 -2 -1 3 -8 -6 -6 2 -5 -1 -2 -5 10 2 0 10 10 5 -3 7 -1 -9 9 -10 4 7 0 -6 0 -1 4 8 0 -3 -8 10 10 6 6 -3 -5 -3 -8\r\n28 41\r\n28 49\r\n49 49\r\n6 38\r\n22 30\r\n50 50\r\n41 45\r\n30 32\r\n17 44\r\n24 25\r\n27 39\r\n17 39\r\n50 50\r\n10 14\r\n11 12\r\n18 28\r\n11 20\r\n36 42\r\n45 49\r\n29 36\r\n32 44\r\n19 41\r\n6 36\r\n39 40\r\n32 44\r\n41 47\r\n6 47\r\n44 48\r\n31 48\r\n45 48\r\n43 48\r\n1 14\r\n46 50\r\n50 50\r\n38 40\r\n18 29\r\n19 29\r\n20 50\r\n3 21\r\n47 50\r\n6 24\r\n38 49\r\n14 48\r\n28 39\r\n36 50\r\n10 32\r\n5 12\r\n14 18\r\n13 23\r\n13 24\r\n",
+                "34\n48\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 33 34 35 36 37 38 40 41 42 43 44 45 46 47 48 49 50\n"
+            ],
+            [
+                "100 0\r\n6 0 3 6 1 -7 9 -2 -8 -4 -6 -2 7 -3 0 4 -8 10 -2 5 -2 3 9 -7 -2 0 -4 -7 3 7 7 -2 -5 2 9 7 -9 1 2 -8 9 0 8 2 -4 3 -10 0 3 8 3 -6 -8 2 0 10 0 -3 1 2 7 -6 -9 -4 7 7 -2 -4 2 -4 -4 -6 2 0 10 -6 -1 -6 -10 -2 3 8 -10 -10 10 0 1 8 -8 5 9 -6 -2 0 5 -6 -6 6 -10 -6\r\n",
+                "20\n0\n\n"
+            ],
+            [
+                "100 1\r\n-3 4 8 -1 0 7 9 8 10 3 8 7 -8 -7 -9 -7 -8 5 7 5 -10 -5 9 -2 3 5 -10 -10 -2 7 10 9 8 8 2 3 -1 -8 -6 2 -5 4 6 -1 -5 7 10 -2 -3 2 -5 1 2 8 -7 -3 6 -6 -2 -3 -4 -1 -8 4 -10 6 -4 8 4 -9 -2 7 -4 -6 7 -1 1 -7 -4 2 -4 6 -6 -8 -9 -8 -1 -10 -1 -4 -4 -5 -9 -1 7 2 -7 -7 -2 -1\r\n83 92\r\n",
+                "21\n1\n1\n"
+            ],
+            [
+                "100 2\r\n-7 3 0 -4 -10 1 -4 -2 3 7 2 -1 2 -3 -1 -6 -5 4 -2 2 -10 7 -8 -1 -5 10 2 9 9 3 8 -1 5 -3 -10 7 -10 5 -9 -9 -1 -5 1 -3 10 5 5 -8 -8 4 -5 0 -5 10 -9 1 0 8 -4 0 6 0 -10 8 7 -8 8 7 6 3 -9 -10 1 -5 9 -4 -4 0 -10 -8 -6 -4 3 -3 1 0 0 5 5 4 -8 1 5 2 1 1 10 -3 -7 0\r\n69 88\r\n96 96\r\n",
+                "21\n2\n1 2\n"
+            ],
+            [
+                "100 5\r\n-4 10 -7 9 7 2 8 0 4 -4 -5 1 -5 1 6 6 0 -3 8 -4 -10 10 9 6 9 9 0 1 9 5 7 7 7 5 -10 -7 -7 0 6 -9 -9 -2 -8 6 -2 7 -2 -10 -3 -3 -9 2 -9 -1 8 -9 -3 3 -9 -8 3 -9 -4 0 0 1 -8 -5 8 -4 -5 -4 6 8 3 9 6 5 5 -10 7 -1 0 3 6 6 10 -8 -9 2 3 -8 -3 -1 5 7 3 1 -8 -6\r\n27 59\r\n64 94\r\n79 87\r\n9 57\r\n37 91\r\n",
+                "23\n5\n1 2 3 4 5\n"
+            ],
+            [
+                "69 1\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n1 2\r\n",
+                "1\n1\n1\n"
+            ]
+        ]
+    }
+]

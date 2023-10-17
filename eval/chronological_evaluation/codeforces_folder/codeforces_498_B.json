@@ -1,0 +1,117 @@
+[
+    {
+        "name": "Name That Tune",
+        "description": "It turns out that you are a great fan of rock band AC/PE. Peter learned that\nand started the following game: he plays the first song of the list of n songs\nof the group, and you have to find out the name of the song. After you tell\nthe song name, Peter immediately plays the following song in order, and so on.\nThe i-th song of AC/PE has its recognizability pi. This means that if the song\nhas not yet been recognized by you, you listen to it for exactly one more\nsecond and with probability of pi percent you recognize it and tell it's name.\nOtherwise you continue listening it. Note that you can only try to guess it\nonly when it is integer number of seconds after the moment the song starts\nplaying. In all AC/PE songs the first words of chorus are the same as the\ntitle, so when you've heard the first ti seconds of i-th song and its chorus\nstarts, you immediately guess its name for sure. For example, in the song\nHighway To Red the chorus sounds pretty late, but the song has high\nrecognizability. In the song Back In Blue, on the other hand, the words from\nthe title sound close to the beginning of the song, but it's hard to name it\nbefore hearing those words. You can name both of these songs during a few more\nfirst seconds. Determine the expected number songs of you will recognize if\nthe game lasts for exactly T seconds (i. e. you can make the last guess on the\nsecond T, after that the game stops). If all songs are recognized faster than\nin T seconds, the game stops after the last song is recognized. Input The\nfirst line of the input contains numbers n and T (1 \u2264 n \u2264 5000, 1 \u2264 T \u2264 5000),\nseparated by a space. Next n lines contain pairs of numbers pi and ti (0 \u2264 pi\n\u2264 100, 1 \u2264 ti \u2264 T). The songs are given in the same order as in Petya's list.\nOutput Output a single number \u2014 the expected number of the number of songs you\nwill recognize in T seconds. Your answer will be considered correct if its\nabsolute or relative error does not exceed 10^-6. Examples Input 2 2 50 2 10 1\nOutput 1.500000000 Input 2 2 0 2 100 2 Output 1.000000000 Input 3 3 50 3 50 2\n25 2 Output 1.687500000 Input 2 2 0 2 0 2 Output 1.000000000\n\n",
+        "cf_contest_id": 498,
+        "cf_index": "B",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "probabilities",
+            "two pointers"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2\r\n50 2\r\n10 1\r\n",
+                "1.500000000\r\n"
+            ],
+            [
+                "2 2\r\n0 2\r\n100 2\r\n",
+                "1.000000000\r\n"
+            ],
+            [
+                "3 3\r\n50 3\r\n50 2\r\n25 2\r\n",
+                "1.687500000\r\n"
+            ],
+            [
+                "2 2\r\n0 2\r\n0 2\r\n",
+                "1.000000000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\n100 2\r\n0 2\r\n",
+                "1.000000000\r\n"
+            ],
+            [
+                "3 4\r\n17 4\r\n27 3\r\n37 1\r\n",
+                "1.385032320\r\n"
+            ],
+            [
+                "4 5\r\n40 1\r\n80 5\r\n99 2\r\n55 3\r\n",
+                "3.713220000\r\n"
+            ],
+            [
+                "4 35\r\n5 29\r\n91 24\r\n99 27\r\n17 17\r\n",
+                "3.852400055\r\n"
+            ],
+            [
+                "3 31\r\n6 29\r\n43 18\r\n49 22\r\n",
+                "2.777747751\r\n"
+            ],
+            [
+                "4 413\r\n56 381\r\n68 277\r\n4 368\r\n68 374\r\n",
+                "4.000000000\r\n"
+            ],
+            [
+                "5 374\r\n79 312\r\n42 163\r\n22 349\r\n26 262\r\n62 137\r\n",
+                "5.000000000\r\n"
+            ],
+            [
+                "3 3632\r\n61 2258\r\n45 1723\r\n71 3615\r\n",
+                "3.000000000\r\n"
+            ],
+            [
+                "5 4289\r\n50 2321\r\n19 3427\r\n54 2515\r\n82 4010\r\n22 3428\r\n",
+                "5.000000000\r\n"
+            ],
+            [
+                "42 3\r\n11 1\r\n22 2\r\n16 1\r\n73 3\r\n35 3\r\n21 1\r\n55 2\r\n84 2\r\n36 3\r\n14 2\r\n74 3\r\n20 1\r\n24 1\r\n23 3\r\n97 2\r\n11 3\r\n68 3\r\n15 3\r\n20 1\r\n33 3\r\n95 1\r\n95 2\r\n63 3\r\n97 1\r\n94 2\r\n56 3\r\n39 1\r\n84 1\r\n60 3\r\n99 3\r\n47 1\r\n99 2\r\n60 1\r\n65 1\r\n43 3\r\n81 1\r\n31 1\r\n14 1\r\n86 1\r\n19 3\r\n78 3\r\n17 1\r\n",
+                "2.220000000\r\n"
+            ],
+            [
+                "42 4\r\n34 2\r\n29 3\r\n34 3\r\n64 4\r\n46 1\r\n79 1\r\n54 4\r\n26 2\r\n81 3\r\n47 2\r\n56 1\r\n55 4\r\n32 4\r\n53 2\r\n26 2\r\n62 2\r\n16 3\r\n7 4\r\n72 4\r\n57 1\r\n81 3\r\n4 4\r\n0 4\r\n29 4\r\n73 1\r\n24 3\r\n47 4\r\n64 2\r\n22 4\r\n20 2\r\n42 3\r\n39 4\r\n81 3\r\n3 2\r\n10 4\r\n32 4\r\n5 4\r\n10 4\r\n24 4\r\n21 2\r\n60 4\r\n11 1\r\n",
+                "1.833277240\r\n"
+            ],
+            [
+                "43 41\r\n65 17\r\n95 18\r\n19 17\r\n95 28\r\n65 40\r\n68 30\r\n58 41\r\n13 14\r\n55 26\r\n82 13\r\n19 17\r\n59 31\r\n54 41\r\n6 29\r\n48 25\r\n75 37\r\n59 38\r\n50 25\r\n22 32\r\n57 19\r\n51 32\r\n40 21\r\n41 27\r\n73 41\r\n11 16\r\n47 18\r\n93 13\r\n45 13\r\n4 25\r\n91 29\r\n82 40\r\n20 19\r\n95 28\r\n9 22\r\n14 25\r\n80 34\r\n96 24\r\n11 36\r\n38 40\r\n53 20\r\n63 37\r\n70 35\r\n8 24\r\n",
+                "14.624248033\r\n"
+            ],
+            [
+                "39 50\r\n66 38\r\n36 27\r\n2 38\r\n86 25\r\n33 36\r\n59 26\r\n68 49\r\n23 18\r\n100 29\r\n15 28\r\n35 44\r\n59 28\r\n51 44\r\n93 17\r\n89 23\r\n58 28\r\n64 50\r\n42 39\r\n52 35\r\n12 43\r\n38 29\r\n95 36\r\n11 29\r\n52 33\r\n22 31\r\n70 21\r\n32 38\r\n93 41\r\n56 32\r\n1 22\r\n44 29\r\n71 40\r\n14 22\r\n4 37\r\n81 18\r\n30 47\r\n69 50\r\n7 32\r\n55 33\r\n",
+                "11.147259953\r\n"
+            ],
+            [
+                "35 348\r\n73 316\r\n47 193\r\n2 120\r\n66 291\r\n22 147\r\n5 259\r\n24 242\r\n88 149\r\n14 298\r\n15 256\r\n89 215\r\n66 267\r\n71 160\r\n43 273\r\n71 159\r\n97 251\r\n59 257\r\n31 161\r\n25 173\r\n44 344\r\n63 264\r\n61 127\r\n17 212\r\n63 151\r\n45 311\r\n93 178\r\n68 230\r\n45 191\r\n97 206\r\n24 192\r\n67 272\r\n81 308\r\n6 217\r\n50 215\r\n78 150\r\n",
+                "34.998119784\r\n"
+            ],
+            [
+                "31 384\r\n74 200\r\n89 230\r\n53 146\r\n57 131\r\n1 270\r\n97 164\r\n56 201\r\n98 330\r\n91 340\r\n16 326\r\n61 138\r\n44 276\r\n68 226\r\n73 362\r\n79 357\r\n48 144\r\n64 229\r\n23 326\r\n77 219\r\n67 216\r\n50 286\r\n4 142\r\n55 257\r\n96 294\r\n24 218\r\n50 248\r\n75 339\r\n93 172\r\n59 155\r\n46 287\r\n18 336\r\n",
+                "30.936661894\r\n"
+            ],
+            [
+                "37 4648\r\n53 3169\r\n66 4152\r\n81 4540\r\n98 4302\r\n51 4427\r\n42 2556\r\n35 2288\r\n56 2401\r\n12 3864\r\n45 4223\r\n93 1809\r\n4 2372\r\n17 4357\r\n67 1700\r\n19 4508\r\n5 2586\r\n99 2754\r\n4 3163\r\n97 4171\r\n27 4345\r\n82 4509\r\n29 2008\r\n85 4266\r\n25 2093\r\n40 3668\r\n17 1754\r\n71 2231\r\n58 2444\r\n82 3397\r\n55 4101\r\n54 4561\r\n13 4518\r\n99 3256\r\n90 3318\r\n66 4304\r\n73 3989\r\n50 3825\r\n",
+                "37.000000000\r\n"
+            ],
+            [
+                "50 4191\r\n43 1771\r\n51 2057\r\n31 1931\r\n89 1605\r\n63 3899\r\n0 2604\r\n34 2554\r\n78 1967\r\n57 3239\r\n35 1440\r\n97 1836\r\n50 2422\r\n82 3406\r\n97 2371\r\n94 2827\r\n90 3286\r\n69 1945\r\n97 2389\r\n26 2022\r\n84 3437\r\n1 4088\r\n40 3725\r\n22 4102\r\n26 2735\r\n19 3923\r\n19 1732\r\n79 1844\r\n38 2393\r\n44 2491\r\n77 1451\r\n16 2985\r\n54 4041\r\n86 4028\r\n17 3397\r\n99 3985\r\n57 1981\r\n57 3367\r\n0 3636\r\n30 2334\r\n67 2665\r\n22 2941\r\n100 1773\r\n57 2925\r\n63 1524\r\n18 2149\r\n77 3817\r\n99 1822\r\n19 3313\r\n36 2199\r\n37 1506\r\n",
+                "36.999996221\r\n"
+            ],
+            [
+                "8 972\r\n3 808\r\n62 532\r\n67 306\r\n5 957\r\n14 802\r\n0 692\r\n10 237\r\n55 40\r\n",
+                "7.997281520\r\n"
+            ],
+            [
+                "2 5000\r\n100 10\r\n100 10\r\n",
+                "2.000000000\r\n"
+            ],
+            [
+                "3 50\r\n10 10\r\n2 5\r\n0 7\r\n",
+                "3.000000000\r\n"
+            ]
+        ]
+    }
+]

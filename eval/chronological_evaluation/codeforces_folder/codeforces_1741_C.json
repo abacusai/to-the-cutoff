@@ -1,0 +1,78 @@
+[
+    {
+        "name": "Minimize the Thickness",
+        "description": "You are given a sequence \n    a=[a_1,a_2,\n    \u2026,a_n]\n consisting of \n    n\n\npositive integers. Let's call a group of consecutive elements a segment. Each\nsegment is characterized by two indices: the index of its left end and the\nindex of its right end. Denote by \n    a[l,r]\n a segment of the sequence\n\n    a\n with the left end in \n    l\n and the right end in \n    r\n, i.e.\n\n    a[l,r]=[a_l, a_l+1, \n    \u2026, a_r]\n. For example, if\n\n    a=[31,4,15,92,6,5]\n, then \n    a[2,5]=[4,15,92,6]\n, \n    a[5,5]=[6]\n,\n\n    a[1,6]=[31,4,15,92,6,5]\n are segments. We split the given sequence\n\n    a\n into segments so that: each element is in exactly one segment; the\nsums of elements for all segments are equal. For example, if \n    a\n =\n[\n    55,45,30,30,40,100\n], then such a sequence can be split into three\nsegments: \n    a[1,2]=[55,45]\n, \n    a[3,5]=[30, 30, 40]\n, \n    a[6,6]=[100]\n.\nEach element belongs to exactly segment, the sum of the elements of each\nsegment is \n    100\n. Let's define thickness of split as the length of the\nlongest segment. For example, the thickness of the split from the example\nabove is \n    3\n. Find the minimum thickness among all possible splits of the\ngiven sequence of \n    a\n into segments in the required way. Input The first\nline contains a single integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264 100\n) \u2014 the\nnumber of test cases. Each test case is described by two lines. The first line\nof each test case contains a single integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264\n    2000\n) \u2014 the length of the sequence \n    a\n. The second line of each test\ncase contains exactly \n    n\n integers: \n    a_1, a_2, \n    \u2026, a_n\n (\n    1\n    \n    \u2264 a_i \n    \u2264 10^6\n) \u2014 elements of the sequence \n    a\n. It is guaranteed\nthat the sum of \n    n\n for all test cases does not exceed \n    2000\n. Output\nFor each test case, output one integer \u2014 the minimum possible thickness of a\nsplit of the sequence \n    a\n into segments. Note that there always exist a\nsplit, you can always consider whole sequence as one segment. Example Input 4\n6 55 45 30 30 40 100 4 10 23 7 13 5 10 55 35 30 65 6 4 1 1 1 1 4 Output 3 4 2\n3 Note The split in the first test case is explained in the statement, it can\nbe shown that it is optimal. In the second test case, it is possible to split\ninto segments only by leaving a single segment. Then the thickness of this\nsplit is equal to the length of the entire sequence, that is, \n    4\n. In the\nthird test case, the optimal split will be \n    [10, 55], [35, 30], [65]\n. The\nthickness of the split equals to \n    2\n. In the fourth test case possible\nsplits are: \n    [4] + [1, 1, 1, 1] + [4]\n; \n    [4, 1, 1] + [1, 1, 4]\n.\n\n",
+        "cf_contest_id": 1741,
+        "cf_index": "C",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy",
+            "math",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n6\r\n55 45 30 30 40 100\r\n4\r\n10 23 7 13\r\n5\r\n10 55 35 30 65\r\n6\r\n4 1 1 1 1 4\r\n",
+                "3\r\n4\r\n2\r\n3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n3\r\n6 6 12\r\n4\r\n18 6 6 6\r\n5\r\n1 1 1 1 1\r\n3\r\n12 6 6\r\n",
+                "2\r\n3\r\n1\r\n2\r\n"
+            ],
+            [
+                "3\r\n4\r\n18 6 6 6\r\n5\r\n1 1 1 1 1\r\n3\r\n12 6 6\r\n",
+                "3\r\n1\r\n2\r\n"
+            ],
+            [
+                "1\r\n2\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n3\r\n1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n7\r\n1 1 1 1 1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n2\r\n1 1\r\n2\r\n1 3\r\n1\r\n3\r\n",
+                "1\r\n2\r\n1\r\n"
+            ],
+            [
+                "1\r\n5\r\n1 1 1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n3\r\n1 1 1\r\n2\r\n1 1\r\n4\r\n1 1 1 1\r\n",
+                "1\r\n1\r\n1\r\n"
+            ],
+            [
+                "4\r\n4\r\n18 6 6 6\r\n5\r\n5 5 5 5 5\r\n3\r\n12 6 6\r\n2\r\n1 1\r\n",
+                "3\r\n1\r\n2\r\n1\r\n"
+            ],
+            [
+                "2\r\n2\r\n1 1\r\n3\r\n1 1 1\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "2\r\n3\r\n1 1 1\r\n2\r\n1 1\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "5\r\n4\r\n18 6 6 6\r\n5\r\n5 5 5 5 5\r\n3\r\n12 6 6\r\n2\r\n1 1\r\n1\r\n1\r\n",
+                "3\r\n1\r\n2\r\n1\r\n1\r\n"
+            ],
+            [
+                "3\r\n2\r\n1 1\r\n2\r\n1 2\r\n1\r\n3\r\n",
+                "1\r\n2\r\n1\r\n"
+            ]
+        ]
+    }
+]

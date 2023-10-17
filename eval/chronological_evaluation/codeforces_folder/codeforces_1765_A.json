@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Access Levels",
+        "description": "BerSoft is the biggest IT corporation in Berland, and Monocarp is the head of\nits security department. This time, he faced the most difficult task ever.\nBasically, there are \n    n\n developers working at BerSoft, numbered from\n\n    1\n to \n    n\n. There are \n    m\n documents shared on the internal\nnetwork, numbered from \n    1\n to \n    m\n. There is a table of access\nrequirements \n    a\n such that \n    a_i,j\n (the \n    j\n-th element of the\n\n    i\n-th row) is \n    1\n if the \n    i\n-th developer should have access to\nthe \n    j\n-th document, and \n    0\n if they should have no access to it. In\norder to restrict the access, Monocarp is going to perform the following\nactions: choose the number of access groups \n    k \n    \u2265 1\n; assign each\ndocument an access group (an integer from \n    1\n to \n    k\n) and the required\naccess level (an integer from \n    1\n to \n    10^9\n); assign each developer\n\n    k\n integer values (from \n    1\n to \n    10^9\n) \u2014 their access levels for\neach of the access groups. The developer \n    i\n has access to the document\n\n    j\n if their access level for the access group of the document is greater\nthan or equal to the required access level of the document. What's the\nsmallest number of access groups Monocarp can choose so that it's possible to\nassign access groups and access levels in order to satisfy the table of access\nrequirements? Input The first line contains two integers \n    n\n and \n    m\n\n(\n    1 \n    \u2264 n, m \n    \u2264 500\n) \u2014 the number of developers and the number of\ndocuments. Each of the next \n    n\n lines contains a binary string of length\n\n    m\n \u2014 the table of access requirements. The \n    j\n-th element of the\n\n    i\n-th row is \n    1\n if the \n    i\n-th developer should have access to\nthe \n    j\n-th document, and \n    0\n if they should have no access to it.\nOutput The first line should contain a single integer \n    k\n \u2014 the smallest\nnumber of access groups Monocarp can choose so that it's possible to assign\naccess groups and access levels in order to satisfy the table of access\nrequirements. The second line should contain \n    m\n integers from \n    1\n to\n\n    k\n \u2014 the access groups of the documents. The third line should contain\n\n    m\n integers from \n    1\n to \n    10^9\n \u2014 the required access levels of\nthe documents. The \n    i\n-th of the next \n    n\n lines should contain \n    k\n\nintegers from \n    1\n to \n    10^9\n \u2014 the access level of the \n    i\n-th\ndeveloper on each of the access groups. If there are multiple solutions, print\nany of them. Examples Input 3 2 01 11 10 Output 2 1 2 2 2 1 2 2 2 2 1 Input 2\n3 101 100 Output 1 1 1 1 1 10 5 8 3 Note In the first example, we assign the\ndocuments to different access groups. Both documents have level \n    2\n in\ntheir access group. This way, we can assign the developers, who need the\naccess, level \n    2\n, and the developers, who have to have no access, level\n\n    1\n. If they had the same access group, it would be impossible to assign\naccess levels to developers \n    1\n and \n    3\n. Developer \n    1\n should've\nhad a lower level than developer \n    3\n in this group to not be able to\naccess document \n    1\n. At the same time, developer \n    3\n should've had a\nlower level than developer \n    1\n in this group to not be able to access\ndocument \n    2\n. Since they can't both have lower level than each other, it's\nimpossible to have only one access group. In the second example, it's possible\nto assign all documents to the same access group.\n\n",
+        "cf_contest_id": 1765,
+        "cf_index": "A",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dsu",
+            "flows",
+            "graph matchings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3 2\r\n01\r\n11\r\n10\r\n",
+                "2\r\n1 2 \r\n2 2 \r\n1 2 \r\n2 2 \r\n2 1 \r\n"
+            ],
+            [
+                "2 3\r\n101\r\n100\r\n",
+                "1\r\n1 1 1 \r\n2 4 3 \r\n3 \r\n2 \r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 5\r\n11110\r\n00111\r\n00110\r\n01000\r\n",
+                "2\r\n1 1 2 2 2 \r\n3 2 2 3 4 \r\n3 3 \r\n1 4 \r\n1 3 \r\n2 1 \r\n"
+            ],
+            [
+                "2 4\r\n1101\r\n1010\r\n",
+                "2\r\n1 1 2 1 \r\n2 3 2 4 \r\n4 1 \r\n2 2 \r\n"
+            ],
+            [
+                "1 2\r\n00\r\n",
+                "1\r\n1 1 \r\n2 3 \r\n1 \r\n"
+            ],
+            [
+                "2 5\r\n11111\r\n00111\r\n",
+                "1\r\n1 1 1 1 1 \r\n5 6 2 3 4 \r\n6 \r\n4 \r\n"
+            ],
+            [
+                "5 2\r\n11\r\n01\r\n11\r\n01\r\n11\r\n",
+                "1\r\n1 1 \r\n3 2 \r\n3 \r\n2 \r\n3 \r\n2 \r\n3 \r\n"
+            ],
+            [
+                "5 5\r\n00000\r\n01100\r\n01000\r\n10100\r\n11010\r\n",
+                "3\r\n1 2 3 2 1 \r\n2 2 2 3 3 \r\n1 1 1 \r\n1 2 2 \r\n1 2 1 \r\n2 1 2 \r\n2 3 1 \r\n"
+            ],
+            [
+                "10 20\r\n10011001111000100000\r\n11101110100001011111\r\n00010110001111010011\r\n10111000100001001011\r\n01010111001001110100\r\n11011011100111001101\r\n11001011110110010001\r\n11011010001011011010\r\n01111110101010101101\r\n10000111011110000000\r\n",
+                "12\r\n1 5 3 2 3 4 5 6 3 1 7 8 8 9 2 10 11 5 9 12 \r\n2 3 4 2 2 2 2 2 3 3 2 3 2 2 3 2 2 4 3 2 \r\n3 3 3 1 1 2 2 1 1 1 1 1 \r\n2 1 4 2 4 1 1 1 3 2 2 2 \r\n1 2 1 2 2 1 2 3 3 2 1 2 \r\n2 2 4 1 1 1 1 1 3 1 2 2 \r\n1 3 1 2 4 2 2 1 2 2 1 1 \r\n2 2 3 1 4 2 1 3 2 1 2 2 \r\n3 1 3 1 3 2 1 3 1 2 1 2 \r\n2 2 2 1 3 1 2 2 3 2 2 1 \r\n1 3 4 2 4 1 2 2 1 1 2 2 \r\n3 1 1 2 2 2 2 3 1 1 1 1 \r\n"
+            ]
+        ]
+    }
+]

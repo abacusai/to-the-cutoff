@@ -1,0 +1,75 @@
+[
+    {
+        "name": "Graph Game",
+        "description": "In computer science, there is a method called \"Divide And Conquer By Node\" to\nsolve some hard problems about paths on a tree. Let's desribe how this method\nworks by function: solve(t) (t is a tree): Chose a node x (it's common to\nchose weight-center) in tree t. Let's call this step \"Line A\". Deal with all\npaths that pass x. Then delete x from tree t. After that t becomes some\nsubtrees. Apply solve on each subtree. This ends when t has only one node\nbecause after deleting it, there's nothing. Now, WJMZBMR has mistakenly\nbelieved that it's ok to chose any node in \"Line A\". So he'll chose a node at\nrandom. To make the situation worse, he thinks a \"tree\" should have the same\nnumber of edges and nodes! So this procedure becomes like that. Let's define\nthe variable totalCost. Initially the value of totalCost equal to 0. So,\nsolve(t) (now t is a graph): totalCost = totalCost + (size of t). The\noperation \"=\" means assignment. (Size of t) means the number of nodes in t.\nChoose a node x in graph t at random (uniformly among all nodes of t). Then\ndelete x from graph t. After that t becomes some connected components. Apply\nsolve on each component. He'll apply solve on a connected graph with n nodes\nand n edges. He thinks it will work quickly, but it's very slow. So he wants\nto know the expectation of totalCost of this procedure. Can you help him?\nInput The first line contains an integer n (3 \u2264 n \u2264 3000) \u2014 the number of\nnodes and edges in the graph. Each of the next n lines contains two space-\nseparated integers ai, bi (0 \u2264 ai, bi \u2264 n - 1) indicating an edge between\nnodes ai and bi. Consider that the graph nodes are numbered from 0 to (n - 1).\nIt's guaranteed that there are no self-loops, no multiple edges in that graph.\nIt's guaranteed that the graph is connected. Output Print a single real number\n\u2014 the expectation of totalCost. Your answer will be considered correct if its\nabsolute or relative error does not exceed 10^-6. Examples Input 5 3 4 2 3 2 4\n0 4 1 2 Output 13.166666666666666 Input 3 0 1 1 2 0 2 Output 6.000000000000000\nInput 5 0 1 1 2 2 0 3 0 4 1 Output 13.166666666666666 Note Consider the second\nexample. No matter what we choose first, the totalCost will always be 3 + 2 +\n1 = 6.\n\n",
+        "cf_contest_id": 235,
+        "cf_index": "D",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n3 4\r\n2 3\r\n2 4\r\n0 4\r\n1 2\r\n",
+                "13.1666666667\r\n"
+            ],
+            [
+                "3\r\n0 1\r\n1 2\r\n0 2\r\n",
+                "6.0000000000\r\n"
+            ],
+            [
+                "5\r\n0 1\r\n1 2\r\n2 0\r\n3 0\r\n4 1\r\n",
+                "13.1666666667\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7\r\n0 1\r\n1 2\r\n2 0\r\n2 3\r\n2 4\r\n0 5\r\n1 6\r\n",
+                "22.5000000000\r\n"
+            ],
+            [
+                "7\r\n0 1\r\n1 2\r\n2 0\r\n2 3\r\n3 4\r\n3 5\r\n4 6\r\n",
+                "21.8000000000\r\n"
+            ],
+            [
+                "7\r\n0 1\r\n1 2\r\n2 3\r\n3 0\r\n2 4\r\n2 5\r\n2 6\r\n",
+                "23.4666666667\r\n"
+            ],
+            [
+                "7\r\n0 1\r\n1 2\r\n2 3\r\n3 0\r\n2 4\r\n1 5\r\n2 6\r\n",
+                "23.1333333333\r\n"
+            ],
+            [
+                "7\r\n0 1\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 0\r\n",
+                "23.3000000000\r\n"
+            ],
+            [
+                "15\r\n0 1\r\n1 2\r\n2 3\r\n3 4\r\n4 0\r\n4 5\r\n4 6\r\n4 7\r\n0 8\r\n6 9\r\n8 10\r\n5 11\r\n11 12\r\n11 13\r\n0 14\r\n",
+                "76.1333333333\r\n"
+            ],
+            [
+                "15\r\n0 1\r\n1 2\r\n2 3\r\n3 4\r\n4 0\r\n4 5\r\n4 6\r\n1 7\r\n6 8\r\n8 9\r\n7 10\r\n8 11\r\n0 12\r\n5 13\r\n3 14\r\n",
+                "74.7293650794\r\n"
+            ],
+            [
+                "15\r\n0 1\r\n1 2\r\n2 3\r\n3 4\r\n4 0\r\n3 5\r\n0 6\r\n2 7\r\n3 8\r\n4 9\r\n6 10\r\n6 11\r\n4 12\r\n8 13\r\n8 14\r\n",
+                "76.9920634921\r\n"
+            ],
+            [
+                "15\r\n0 1\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 0\r\n0 6\r\n5 7\r\n3 8\r\n3 9\r\n3 10\r\n7 11\r\n4 12\r\n6 13\r\n5 14\r\n",
+                "78.3015873016\r\n"
+            ],
+            [
+                "15\r\n0 1\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 0\r\n0 6\r\n0 7\r\n2 8\r\n7 9\r\n4 10\r\n10 11\r\n10 12\r\n9 13\r\n4 14\r\n",
+                "75.7284271284\r\n"
+            ],
+            [
+                "15\r\n0 1\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n8 9\r\n9 10\r\n10 11\r\n11 12\r\n12 13\r\n13 14\r\n14 0\r\n",
+                "70.5468697969\r\n"
+            ]
+        ]
+    }
+]

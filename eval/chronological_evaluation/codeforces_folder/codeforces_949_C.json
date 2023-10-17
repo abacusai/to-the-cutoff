@@ -1,0 +1,132 @@
+[
+    {
+        "name": "Data Center Maintenance",
+        "description": "BigData Inc. is a corporation that has n data centers indexed from 1 to n that\nare located all over the world. These data centers provide storage for client\ndata (you can figure out that client data is really big!). Main feature of\nservices offered by BigData Inc. is the access availability guarantee even\nunder the circumstances of any data center having an outage. Such a guarantee\nis ensured by using the two-way replication. Two-way replication is such an\napproach for data storage that any piece of data is represented by two\nidentical copies that are stored in two different data centers. For each of m\ncompany clients, let us denote indices of two different data centers storing\nthis client data as ci, 1 and ci, 2. In order to keep data centers operational\nand safe, the software running on data center computers is being updated\nregularly. Release cycle of BigData Inc. is one day meaning that the new\nversion of software is being deployed to the data center computers each day.\nData center software update is a non-trivial long process, that is why there\nis a special hour-long time frame that is dedicated for data center\nmaintenance. During the maintenance period, data center computers are\ninstalling software updates, and thus they may be unavailable. Consider the\nday to be exactly h hours long. For each data center there is an integer uj (0\n\u2264 uj \u2264 h - 1) defining the index of an hour of day, such that during this hour\ndata center j is unavailable due to maintenance. Summing up everything above,\nthe condition uci, 1 \u2260 uci, 2 should hold for each client, or otherwise his\ndata may be unaccessible while data centers that store it are under\nmaintenance. Due to occasional timezone change in different cities all over\nthe world, the maintenance time in some of the data centers may change by one\nhour sometimes. Company should be prepared for such situation, that is why\nthey decided to conduct an experiment, choosing some non-empty subset of data\ncenters, and shifting the maintenance time for them by an hour later (i.e. if\nuj = h - 1, then the new maintenance hour would become 0, otherwise it would\nbecome uj + 1). Nonetheless, such an experiment should not break the\naccessibility guarantees, meaning that data of any client should be still\navailable during any hour of a day after the data center maintenance times are\nchanged. Such an experiment would provide useful insights, but changing update\ntime is quite an expensive procedure, that is why the company asked you to\nfind out the minimum number of data centers that have to be included in an\nexperiment in order to keep the data accessibility guarantees. Input The first\nline of input contains three integers n, m and h (2 \u2264 n \u2264 100 000, 1 \u2264 m \u2264 100\n000, 2 \u2264 h \u2264 100 000), the number of company data centers, number of clients\nand the day length of day measured in hours. The second line of input contains\nn integers u1, u2, ..., un (0 \u2264 uj < h), j-th of these numbers is an index of\na maintenance hour for data center j. Each of the next m lines contains two\nintegers ci, 1 and ci, 2 (1 \u2264 ci, 1, ci, 2 \u2264 n, ci, 1 \u2260 ci, 2), defining the\ndata center indices containing the data of client i. It is guaranteed that the\ngiven maintenance schedule allows each client to access at least one copy of\nhis data at any moment of day. Output In the first line print the minimum\npossible number of data centers k (1 \u2264 k \u2264 n) that have to be included in an\nexperiment in order to keep the data available for any client. In the second\nline print k distinct integers x1, x2, ..., xk (1 \u2264 xi \u2264 n), the indices of\ndata centers whose maintenance time will be shifted by one hour later. Data\ncenter indices may be printed in any order. If there are several possible\nanswers, it is allowed to print any of them. It is guaranteed that at there is\nat least one valid choice of data centers. Examples Input 3 3 5 4 4 0 1 3 3 2\n3 1 Output 1 3 Input 4 5 4 2 1 0 3 4 3 3 2 1 2 1 4 1 3 Output 4 1 2 3 4 Note\nConsider the first sample test. The given answer is the only way to conduct an\nexperiment involving the only data center. In such a scenario the third data\ncenter has a maintenance during the hour 1, and no two data centers storing\nthe information of the same client have maintenance at the same hour. On the\nother hand, for example, if we shift the maintenance time on hour later for\nthe first data center, then the data of clients 1 and 3 will be unavailable\nduring the hour 0.\n\n",
+        "cf_contest_id": 949,
+        "cf_index": "C",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3 3 5\r\n4 4 0\r\n1 3\r\n3 2\r\n3 1\r\n",
+                "1\r\n3 \r\n"
+            ],
+            [
+                "4 5 4\r\n2 1 0 3\r\n4 3\r\n3 2\r\n1 2\r\n1 4\r\n1 3\r\n",
+                "4\r\n1 2 3 4 \r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 5 4\r\n0 1 2 3 3\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n3 5\r\n",
+                "1\r\n5 \r\n"
+            ],
+            [
+                "2 1 2\r\n1 0\r\n1 2\r\n",
+                "2\r\n1 2 \r\n"
+            ],
+            [
+                "5 5 3\r\n2 2 0 1 0\r\n5 4\r\n5 2\r\n1 4\r\n5 1\r\n4 3\r\n",
+                "3\r\n1 4 5 \r\n"
+            ],
+            [
+                "10 10 5\r\n3 3 3 4 4 1 3 0 2 4\r\n7 5\r\n10 8\r\n10 8\r\n5 8\r\n2 10\r\n9 2\r\n7 4\r\n3 4\r\n7 5\r\n4 8\r\n",
+                "1\r\n1 \r\n"
+            ],
+            [
+                "10 9 2\r\n0 0 0 0 1 1 0 1 1 1\r\n4 10\r\n8 2\r\n10 3\r\n3 9\r\n1 5\r\n6 2\r\n6 1\r\n7 9\r\n8 7\r\n",
+                "10\r\n1 2 3 4 5 6 7 8 9 10 \r\n"
+            ],
+            [
+                "10 20 5\r\n2 2 1 4 0 3 0 4 1 3\r\n6 1\r\n8 5\r\n2 10\r\n3 5\r\n1 9\r\n4 6\r\n9 7\r\n2 3\r\n7 4\r\n10 8\r\n4 9\r\n2 5\r\n4 10\r\n2 8\r\n10 3\r\n1 8\r\n8 10\r\n6 7\r\n5 1\r\n10 3\r\n",
+                "5\r\n1 4 6 7 9 \r\n"
+            ],
+            [
+                "10 9 8\r\n3 2 1 1 5 6 7 0 4 0\r\n10 7\r\n5 9\r\n10 4\r\n7 6\r\n6 5\r\n3 2\r\n2 1\r\n9 1\r\n3 8\r\n",
+                "1\r\n4 \r\n"
+            ],
+            [
+                "10 9 2\r\n1 1 0 1 1 1 1 1 1 1\r\n3 10\r\n3 8\r\n3 6\r\n3 7\r\n3 5\r\n3 4\r\n3 1\r\n3 9\r\n3 2\r\n",
+                "10\r\n1 2 3 4 5 6 7 8 9 10 \r\n"
+            ],
+            [
+                "10 10 5\r\n3 4 2 0 3 0 1 1 2 4\r\n8 9\r\n7 3\r\n5 2\r\n4 8\r\n3 5\r\n6 8\r\n3 5\r\n1 10\r\n10 6\r\n9 1\r\n",
+                "1\r\n2 \r\n"
+            ],
+            [
+                "10 30 7\r\n5 4 2 3 3 2 5 0 1 6\r\n7 2\r\n2 4\r\n9 3\r\n3 5\r\n5 2\r\n7 10\r\n6 5\r\n10 1\r\n9 8\r\n10 8\r\n3 4\r\n10 4\r\n4 2\r\n7 6\r\n2 8\r\n1 10\r\n5 10\r\n5 6\r\n5 6\r\n6 2\r\n6 5\r\n9 10\r\n8 6\r\n2 4\r\n9 7\r\n1 9\r\n10 4\r\n6 10\r\n9 3\r\n2 7\r\n",
+                "8\r\n2 3 4 5 7 8 9 10 \r\n"
+            ],
+            [
+                "10 10 10\r\n2 3 5 7 0 8 6 9 4 1\r\n1 2\r\n10 1\r\n5 10\r\n5 10\r\n4 6\r\n8 5\r\n1 2\r\n1 2\r\n7 4\r\n1 2\r\n",
+                "1\r\n2 \r\n"
+            ],
+            [
+                "10 20 3\r\n2 2 1 1 2 0 0 1 2 2\r\n7 5\r\n7 10\r\n2 7\r\n10 4\r\n10 8\r\n1 7\r\n3 7\r\n9 7\r\n3 10\r\n6 3\r\n4 1\r\n4 1\r\n8 6\r\n3 7\r\n10 3\r\n2 7\r\n8 5\r\n2 7\r\n1 4\r\n2 6\r\n",
+                "3\r\n3 7 10 \r\n"
+            ],
+            [
+                "10 30 10\r\n7 9 1 5 4 6 0 3 8 2\r\n10 8\r\n8 5\r\n6 1\r\n8 5\r\n3 10\r\n10 8\r\n9 2\r\n8 5\r\n7 3\r\n3 10\r\n1 9\r\n10 8\r\n6 1\r\n1 9\r\n8 5\r\n7 3\r\n1 9\r\n7 3\r\n7 3\r\n4 6\r\n10 8\r\n7 3\r\n3 10\r\n10 8\r\n1 9\r\n8 5\r\n6 1\r\n4 6\r\n3 10\r\n6 1\r\n",
+                "1\r\n2 \r\n"
+            ],
+            [
+                "10 10 2\r\n1 1 1 0 1 0 0 0 0 1\r\n4 10\r\n10 7\r\n7 1\r\n5 6\r\n6 3\r\n1 8\r\n2 9\r\n5 4\r\n3 8\r\n2 9\r\n",
+                "2\r\n2 9 \r\n"
+            ],
+            [
+                "10 15 2\r\n1 0 1 1 0 0 1 0 0 1\r\n5 1\r\n7 8\r\n2 10\r\n3 5\r\n1 9\r\n6 4\r\n7 9\r\n2 3\r\n6 4\r\n8 10\r\n9 4\r\n8 4\r\n8 1\r\n10 8\r\n6 7\r\n",
+                "10\r\n1 2 3 4 5 6 7 8 9 10 \r\n"
+            ],
+            [
+                "9 10 3\r\n0 2 2 1 0 0 1 2 1\r\n4 6\r\n2 6\r\n5 7\r\n4 8\r\n9 2\r\n9 1\r\n3 5\r\n8 1\r\n3 7\r\n6 2\r\n",
+                "3\r\n3 5 7 \r\n"
+            ],
+            [
+                "10 9 5\r\n1 1 1 1 1 2 1 1 1 1\r\n6 7\r\n6 3\r\n6 5\r\n6 4\r\n6 9\r\n6 8\r\n6 1\r\n6 10\r\n6 2\r\n",
+                "1\r\n6 \r\n"
+            ],
+            [
+                "10 9 5\r\n0 0 0 0 0 0 0 0 0 4\r\n10 3\r\n10 7\r\n10 5\r\n10 8\r\n10 9\r\n10 1\r\n10 4\r\n10 6\r\n10 2\r\n",
+                "1\r\n1 \r\n"
+            ],
+            [
+                "10 9 2\r\n0 1 0 0 1 0 1 1 1 1\r\n3 7\r\n3 2\r\n8 6\r\n1 7\r\n3 9\r\n5 4\r\n10 1\r\n4 9\r\n6 2\r\n",
+                "10\r\n1 2 3 4 5 6 7 8 9 10 \r\n"
+            ],
+            [
+                "10 9 5\r\n0 4 1 0 1 2 1 0 4 4\r\n8 7\r\n4 3\r\n1 5\r\n2 4\r\n6 5\r\n10 8\r\n9 1\r\n6 7\r\n6 3\r\n",
+                "1\r\n6 \r\n"
+            ],
+            [
+                "10 9 5\r\n2 1 2 0 1 0 1 2 0 4\r\n10 9\r\n3 7\r\n1 5\r\n10 6\r\n7 9\r\n10 4\r\n5 4\r\n2 6\r\n8 2\r\n",
+                "1\r\n1 \r\n"
+            ],
+            [
+                "7 8 3\r\n0 0 1 2 2 0 1\r\n1 5\r\n4 3\r\n7 5\r\n1 7\r\n3 2\r\n2 4\r\n6 7\r\n6 5\r\n",
+                "3\r\n2 3 4 \r\n"
+            ],
+            [
+                "9 13 3\r\n0 2 1 2 2 0 1 0 1\r\n4 7\r\n9 5\r\n7 5\r\n7 6\r\n9 6\r\n8 2\r\n3 2\r\n8 3\r\n4 3\r\n4 9\r\n1 2\r\n1 3\r\n5 6\r\n",
+                "1\r\n4 \r\n"
+            ],
+            [
+                "6 7 3\r\n0 1 2 0 1 2\r\n1 2\r\n2 3\r\n3 1\r\n3 4\r\n4 5\r\n5 6\r\n6 4\r\n",
+                "3\r\n4 5 6 \r\n"
+            ],
+            [
+                "5 5 3\r\n1 1 2 0 0\r\n1 3\r\n1 5\r\n2 3\r\n3 4\r\n2 4\r\n",
+                "3\r\n2 3 4 \r\n"
+            ],
+            [
+                "6 3 3\r\n0 1 2 0 1 2\r\n4 5\r\n5 6\r\n4 6\r\n",
+                "1\r\n1 \r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,130 @@
+[
+    {
+        "name": "Running Track",
+        "description": "A boy named Ayrat lives on planet AMI-1511. Each inhabitant of this planet has\na talent. Specifically, Ayrat loves running, moreover, just running is not\nenough for him. He is dreaming of making running a real art. First, he wants\nto construct the running track with coating t. On planet AMI-1511 the coating\nof the track is the sequence of colored blocks, where each block is denoted as\nthe small English letter. Therefore, every coating can be treated as a string.\nUnfortunately, blocks aren't freely sold to non-business customers, but Ayrat\nfound an infinite number of coatings s. Also, he has scissors and glue. Ayrat\nis going to buy some coatings s, then cut out from each of them exactly one\ncontinuous piece (substring) and glue it to the end of his track coating.\nMoreover, he may choose to flip this block before glueing it. Ayrat want's to\nknow the minimum number of coating s he needs to buy in order to get the\ncoating t for his running track. Of course, he also want's to know some way to\nachieve the answer. Input First line of the input contains the string s \u2014 the\ncoating that is present in the shop. Second line contains the string t \u2014 the\ncoating Ayrat wants to obtain. Both strings are non-empty, consist of only\nsmall English letters and their length doesn't exceed 2100. Output The first\nline should contain the minimum needed number of coatings n or -1 if it's\nimpossible to create the desired coating. If the answer is not -1, then the\nfollowing n lines should contain two integers xi and yi \u2014 numbers of ending\nblocks in the corresponding piece. If xi \u2264 yi then this piece is used in the\nregular order, and if xi > yi piece is used in the reversed order. Print the\npieces in the order they should be glued to get the string t. Examples Input\nabc cbaabc Output 2 3 1 1 3 Input aaabrytaaa ayrat Output 3 1 1 6 5 8 7 Input\nami no Output -1 Note In the first sample string \"cbaabc\" = \"cba\" + \"abc\". In\nthe second sample: \"ayrat\" = \"a\" + \"yr\" + \"at\".\n\n",
+        "cf_contest_id": 615,
+        "cf_index": "C",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "strings",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "abc\r\ncbaabc\r\n",
+                "2\r\n3 1\r\n1 3\r\n"
+            ],
+            [
+                "aaabrytaaa\r\nayrat\r\n",
+                "3\r\n1 1\r\n6 5\r\n8 7\r\n"
+            ],
+            [
+                "ami\r\nno\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "r\r\nr\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "r\r\nb\r\n",
+                "-1\r\n"
+            ],
+            [
+                "randb\r\nbandr\r\n",
+                "3\r\n5 5\r\n2 4\r\n1 1\r\n"
+            ],
+            [
+                "aaaaaa\r\naaaaa\r\n",
+                "1\r\n1 5\r\n"
+            ],
+            [
+                "aaaaaa\r\naaaaaaa\r\n",
+                "2\r\n1 6\r\n1 1\r\n"
+            ],
+            [
+                "qwerty\r\nywertyrewqqq\r\n",
+                "5\r\n6 6\r\n2 6\r\n4 1\r\n1 1\r\n1 1\r\n"
+            ],
+            [
+                "qwerty\r\nytrewq\r\n",
+                "1\r\n6 1\r\n"
+            ],
+            [
+                "azaza\r\nzazaz\r\n",
+                "2\r\n2 5\r\n2 2\r\n"
+            ],
+            [
+                "mnbvcxzlkjhgfdsapoiuytrewq\r\nqwertyuiopasdfghjklzxcvbnm\r\n",
+                "1\r\n26 1\r\n"
+            ],
+            [
+                "imnothalfthemaniusedtobetheresashadowhangingovermeohyesterdaycamesuddenlywgk\r\nallmytroublesseemedsofarawaynowitlooksasthoughtheyreheretostayohibelieveinyesterday\r\n",
+                "52\r\n7 8\r\n8 8\r\n2 2\r\n53 53\r\n5 5\r\n28 28\r\n4 4\r\n17 17\r\n23 23\r\n8 8\r\n29 30\r\n18 19\r\n12 13\r\n19 20\r\n18 18\r\n4 4\r\n9 9\r\n7 7\r\n28 28\r\n7 7\r\n37 37\r\n60 61\r\n3 4\r\n37 37\r\n1 1\r\n5 5\r\n8 8\r\n4 4\r\n4 4\r\n76 76\r\n30 32\r\n5 6\r\n4 4\r\n17 17\r\n41 41\r\n26 25\r\n11 12\r\n53 53\r\n28 26\r\n27 29\r\n21 22\r\n55 56\r\n60 61\r\n51 52\r\n1 1\r\n23 24\r\n8 8\r\n1 1\r\n47 46\r\n12 12\r\n42 43\r\n53 61\r\n"
+            ],
+            [
+                "woohoowellilieandimeasyallthetimebutimneversurewhyineedyoupleasedtomeetyouf\r\nwoohoowhenifeelheavymetalwoohooandimpinsandimneedles\r\n",
+                "22\r\n1 7\r\n28 29\r\n52 51\r\n75 75\r\n53 54\r\n9 9\r\n28 29\r\n15 15\r\n41 41\r\n23 23\r\n19 20\r\n27 27\r\n24 25\r\n1 6\r\n15 19\r\n59 59\r\n51 52\r\n63 62\r\n16 19\r\n52 55\r\n60 61\r\n22 22\r\n"
+            ],
+            [
+                "woohoowhenifeelheavymetalwoohooandimpinsandimneedles\r\nwoohoowellilieandimeasyallthetimebutimneversurewhyineedyoupleasedtomeetyou\r\n",
+                "-1\r\n"
+            ],
+            [
+                "hhhhhhh\r\nhhhhhhh\r\n",
+                "1\r\n1 7\r\n"
+            ],
+            [
+                "mmjmmmjjmjmmmm\r\njmjmjmmjmmjjmj\r\n",
+                "4\r\n8 11\r\n3 5\r\n3 5\r\n7 10\r\n"
+            ],
+            [
+                "mmlmllmllmlmlllmmmlmmmllmmlm\r\nzllmlllmlmmmllmmlllmllmlmlll\r\n",
+                "-1\r\n"
+            ],
+            [
+                "klllklkllllkllllllkklkkkklklklklllkkkllklkklkklkllkllkkk\r\npkkkkklklklkkllllkllkkkllkkklkkllllkkkklllklllkllkklklll\r\n",
+                "-1\r\n"
+            ],
+            [
+                "bcbbbccccbbbcbcccccbcbbbccbbcccccbcbcbbcbcbccbbbccccbcccbcbccccccccbcbcccccccccbcbbbccccbbccbcbbcbbccccbbccccbcb\r\nycccbcbccbcbbcbcbcbcbbccccbccccccbbcbcbbbccccccccccbcccbccbcbcbcbbbcccbcbbbcbccccbcbcbbcbccbbccbcbbcbccccccccccb\r\n",
+                "-1\r\n"
+            ],
+            [
+                "jjjbjjbjbbbbbbjbjbbjbjbbbjbjbbjbbjbbjjbjbjjjbbbbjbjjjjbbbjbjjjjjbjbjbjjjbjjjjjjjjbbjbjbbjbbjbbbbbjjjbbjjbjjbbbbjbbjbbbbbjbbjjbjjbbjjjbjjbbbbjbjjbjbbjbbjbjbjbbbjjjjbjbjbbjbjjjjbbjbjbbbjjjjjbjjbjbjjjbjjjbbbjbjjbbbbbbbjjjjbbbbj\r\njjbbjbbjjjbjbbjjjjjbjbjjjbjbbbbjbbjbjjbjbbjbbbjjbjjbjbbbjbbjjbbjjjbbbjbbjbjjbbjjjjjjjbbbjjbbjjjjjbbbjjbbbjbbjjjbjbbbjjjjbbbjjjbbjjjjjbjbbbjjjjjjjjjbbbbbbbbbjjbjjbbbjbjjbjbjbjjjjjbjjbjbbjjjbjjjbjbbbbjbjjbbbjbjbjbbjbjbbbjjjbjb\r\n",
+                "26\r\n38 31\r\n143 149\r\n61 68\r\n144 136\r\n139 151\r\n102 108\r\n22 27\r\n105 95\r\n149 142\r\n73 80\r\n211 206\r\n189 180\r\n22 27\r\n198 192\r\n214 222\r\n98 104\r\n62 51\r\n188 181\r\n214 205\r\n201 209\r\n68 58\r\n180 173\r\n198 192\r\n202 211\r\n163 172\r\n47 39\r\n"
+            ],
+            [
+                "aaaaaabaa\r\na\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "bbbbbb\r\na\r\n",
+                "-1\r\n"
+            ],
+            [
+                "bbaabaaaabaaaaaabbaaaa\r\naaabaaaaaaababbbaaaaaa\r\n",
+                "4\r\n7 16\r\n4 6\r\n1 2\r\n10 16\r\n"
+            ],
+            [
+                "ltfqmwlfkswpmxi\r\nfkswpmi\r\n",
+                "2\r\n8 13\r\n15 15\r\n"
+            ],
+            [
+                "abaaaabaababbaaaaaabaa\r\nbaaaabaababaabababaaaa\r\n",
+                "3\r\n2 12\r\n8 12\r\n1 6\r\n"
+            ],
+            [
+                "ababaaaabaaaaaaaaaaaba\r\nbabaaabbaaaabbaaaabaaa\r\n",
+                "4\r\n2 7\r\n2 2\r\n4 9\r\n4 12\r\n"
+            ]
+        ]
+    }
+]

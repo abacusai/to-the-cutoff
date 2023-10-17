@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Mahmoud and a Message",
+        "description": "Mahmoud wrote a message s of length n. He wants to send it as a birthday\npresent to his friend Moaz who likes strings. He wrote it on a magical paper\nbut he was surprised because some characters disappeared while writing the\nstring. That's because this magical paper doesn't allow character number i in\nthe English alphabet to be written on it in a string of length more than ai.\nFor example, if a1 = 2 he can't write character 'a' on this paper in a string\nof length 3 or more. String \"aa\" is allowed while string \"aaa\" is not. Mahmoud\ndecided to split the message into some non-empty substrings so that he can\nwrite every substring on an independent magical paper and fulfill the\ncondition. The sum of their lengths should be n and they shouldn't overlap.\nFor example, if a1 = 2 and he wants to send string \"aaa\", he can split it into\n\"a\" and \"aa\" and use 2 magical papers, or into \"a\", \"a\" and \"a\" and use 3\nmagical papers. He can't split it into \"aa\" and \"aa\" because the sum of their\nlengths is greater than n. He can split the message into single string if it\nfulfills the conditions. A substring of string s is a string that consists of\nsome consecutive characters from string s, strings \"ab\", \"abc\" and \"b\" are\nsubstrings of string \"abc\", while strings \"acb\" and \"ac\" are not. Any string\nis a substring of itself. While Mahmoud was thinking of how to split the\nmessage, Ehab told him that there are many ways to split it. After that\nMahmoud asked you three questions: How many ways are there to split the string\ninto substrings such that every substring fulfills the condition of the\nmagical paper, the sum of their lengths is n and they don't overlap? Compute\nthe answer modulo 10^9 + 7. What is the maximum length of a substring that can\nappear in some valid splitting? What is the minimum number of substrings the\nmessage can be spit in? Two ways are considered different, if the sets of\nsplit positions differ. For example, splitting \"aa|a\" and \"a|aa\" are\nconsidered different splittings of message \"aaa\". Input The first line\ncontains an integer n (1 \u2264 n \u2264 10^3) denoting the length of the message. The\nsecond line contains the message s of length n that consists of lowercase\nEnglish letters. The third line contains 26 integers a1, a2, ..., a26 (1 \u2264 ax\n\u2264 10^3) \u2014 the maximum lengths of substring each letter can appear in. Output\nPrint three lines. In the first line print the number of ways to split the\nmessage into substrings and fulfill the conditions mentioned in the problem\nmodulo 10^9 + 7. In the second line print the length of the longest substring\nover all the ways. In the third line print the minimum number of substrings\nover all the ways. Examples Input 3 aab 2 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\n1 1 1 1 1 1 1 Output 3 2 2 Input 10 abcdeabcde 5 5 5 5 4 1 1 1 1 1 1 1 1 1 1 1\n1 1 1 1 1 1 1 1 1 1 Output 401 4 3 Note In the first example the three ways to\nsplit the message are: a|a|b aa|b a|ab The longest substrings are \"aa\" and\n\"ab\" of length 2. The minimum number of substrings is 2 in \"a|ab\" or \"aa|b\".\nNotice that \"aab\" is not a possible splitting because the letter 'a' appears\nin a substring of length 3, while a1 = 2.\n\n",
+        "cf_contest_id": 766,
+        "cf_index": "C",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\naab\r\n2 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "3 \r\n2 \r\n2\r\n"
+            ],
+            [
+                "10\r\nabcdeabcde\r\n5 5 5 5 4 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "401 \r\n4 \r\n3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\naaaaaaaaaa\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "1 \r\n1 \r\n10\r\n"
+            ],
+            [
+                "55\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000\r\n",
+                "383381198 \r\n55 \r\n1\r\n"
+            ],
+            [
+                "99\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n96 12 22 33 50 96 95 25 34 40 61 37 54 12 46 84 62 17 35 38 76 47 85 85 9 61\r\n",
+                "494092815 \r\n96 \r\n2\r\n"
+            ],
+            [
+                "100\r\nabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv\r\n4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 3 3 3 3\r\n",
+                "750728890 \r\n4 \r\n27\r\n"
+            ],
+            [
+                "8\r\naaaaaaab\r\n8 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "64 \r\n7 \r\n2\r\n"
+            ],
+            [
+                "10\r\naabaaaaaba\r\n10 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "32 \r\n5 \r\n5\r\n"
+            ],
+            [
+                "10\r\naabaabaaba\r\n3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "8 \r\n2 \r\n7\r\n"
+            ],
+            [
+                "10\r\naabaabaaba\r\n10 9 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "511 \r\n9 \r\n2\r\n"
+            ],
+            [
+                "100\r\nygdbmqpyofbcoqomztbjkutjwkkxkkmoyjrqteikqxrkcgqcfrbujupiegumelsmqkdadtcfvyoywuhqthqlioxcveskifuormfo\r\n94 20 86 40 16 38 63 32 36 95 7 32 68 21 68 67 70 23 24 78 45 80 30 35 9 4\r\n",
+                "962845356 \r\n16 \r\n13\r\n"
+            ],
+            [
+                "99\r\nnupctndqkhgouriwrrbhxwynnkclwtfrraontjuvjdumzigxyandxrsrmosvtbtropggtlkqjmrffgnacsafbulvbuxthjqhtxj\r\n61 1 47 67 64 66 44 39 55 23 68 94 47 2 50 26 92 31 93 6 92 67 41 12 15 91\r\n",
+                "61873945 \r\n12 \r\n25\r\n"
+            ],
+            [
+                "1\r\na\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "1 \r\n1 \r\n1\r\n"
+            ],
+            [
+                "7\r\nzzzxxyy\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2\r\n",
+                "21 \r\n2 \r\n4\r\n"
+            ],
+            [
+                "7\r\nbaaaccc\r\n6 4 6 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "60 \r\n6 \r\n2\r\n"
+            ]
+        ]
+    }
+]

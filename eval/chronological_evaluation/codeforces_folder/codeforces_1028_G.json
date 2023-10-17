@@ -1,0 +1,460 @@
+[
+    {
+        "name": "Guess the number",
+        "description": "This problem is interactive. You should guess hidden number \n    x\n which is\nbetween \n    1\n and \n    M = 10004205361450474\n, inclusive. You could use up\nto \n    5\n queries. In each query, you can output an increasing sequence of\n\n    k \n    \u2264 x\n integers, each between \n    1\n and \n    M\n, inclusive, and\nyou will obtain one of the following as an answer: either the hidden number\nbelongs to your query sequence, in this case you immediately win; or you will\nbe given where the hidden number is located with respect to your query\nsequence, that is, either it is less than all numbers from the sequence,\ngreater than all numbers from the sequence, or you will be given such an\n\n    i\n that the hidden number \n    x\n is between the \n    i\n-th and the\n\n    (i+1)\n-st numbers of your sequence. See the interaction section for\nclarity. Be aware that the interactor is adaptive, i.e. the hidden number can\ndepend on queries the solution makes. However, it is guaranteed that for any\nsolution the interactor works non-distinguishable from the situation when the\nhidden number is fixed beforehand. Hacks are allowed only with fixed hidden\nnumber. A hack is represented by a single integer between \n    1\n and \n    M\n.\nIn all pretests the hidden number is fixed as well. Interaction You can make\nup to \n    5\n queries. To make a query print a number \n    k\n (\n    1 \n    \u2264 k\n    \n    \u2264 10^4\n) and then an increasing sequence \n    t_0 < t_1 < \n    \u2026 <\n    t_k-1\n of \n    k\n numbers, each between \n    1\n and \n    M\n, inclusive. If\n\n    k > x\n, you lose. You get one integer as a response. If it is \n    -2\n,\nit means you made an invalid query or you lost. Exit immediately after\nreceiving \n    -2\n and you will see Wrong answer verdict. Otherwise you can\nget an arbitrary verdict because your solution will continue to read from a\nclosed stream. If it is \n    -1\n, you guessed the number and should terminate\ntoo. Otherwise you get a number \n    i\n between \n    0\n and \n    k\n,\ninclusive, denoting where the hidden number is, with respect to the printed\nnumbers. If \n    i = 0\n, then \n    x < t_0\n. If \n    i = k\n, then \n    t_k-1 <\n    x\n. Otherwise \n    t_i-1 < x < t_i\n. After printing a query do not forget\nto output end of line and flush the output. Otherwise you will get Idleness\nlimit exceeded. To do this, use: fflush(stdout) or cout.flush() in C++;\nSystem.out.flush() in Java; flush(output) in Pascal; stdout.flush() in Python;\nsee documentation for other languages. Example Input 2 0 -1 Output 2 2 3 2 20\n30 3 5 7 9 Note In the first example the number \n    5\n is hidden.\n\n",
+        "cf_contest_id": 1028,
+        "cf_index": "G",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "interactive"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n",
+                "type: 0 L: 5 R: 5 possible_n: 5\r\nused 5 queries\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n",
+                "type: 0 L: 1 R: 1 possible_n: 1\r\nused 5 queries\r\n"
+            ],
+            [
+                "2\r\n",
+                "type: 0 L: 2 R: 2 possible_n: 2\r\nused 4 queries\r\n"
+            ],
+            [
+                "3\r\n",
+                "type: 0 L: 3 R: 3 possible_n: 3\r\nused 5 queries\r\n"
+            ],
+            [
+                "4\r\n",
+                "type: 0 L: 4 R: 4 possible_n: 4\r\nused 5 queries\r\n"
+            ],
+            [
+                "6\r\n",
+                "type: 0 L: 6 R: 6 possible_n: 6\r\nused 3 queries\r\n"
+            ],
+            [
+                "123\r\n",
+                "type: 0 L: 123 R: 123 possible_n: 123\r\nused 5 queries\r\n"
+            ],
+            [
+                "1234546\r\n",
+                "type: 0 L: 1234546 R: 1234546 possible_n: 1234546\r\nused 5 queries\r\n"
+            ],
+            [
+                "1000000000\r\n",
+                "type: 0 L: 1000000000 R: 1000000000 possible_n: 1000000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "10000000000\r\n",
+                "type: 0 L: 10000000000 R: 10000000000 possible_n: 10000000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "100000000000\r\n",
+                "type: 0 L: 100000000000 R: 100000000000 possible_n: 100000000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "1000000000000\r\n",
+                "type: 0 L: 1000000000000 R: 1000000000000 possible_n: 1000000000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "10000000000000\r\n",
+                "type: 0 L: 10000000000000 R: 10000000000000 possible_n: 10000000000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "100000000000000\r\n",
+                "type: 0 L: 100000000000000 R: 100000000000000 possible_n: 100000000000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "1000000000000000\r\n",
+                "type: 0 L: 1000000000000000 R: 1000000000000000 possible_n: 1000000000000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "10000000000000000\r\n",
+                "type: 0 L: 10000000000000000 R: 10000000000000000 possible_n: 10000000000000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "10004205361450474\r\n",
+                "type: 0 L: 10004205361450474 R: 10004205361450474 possible_n: 10004205361450474\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n1\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n100\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 100\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n1000\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 1000\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n1000000\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 1000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n1000000000\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 1000000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n1000000000000\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 1000000000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n100000000000000\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 100000000000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n10000000000000000\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 10000000000000000\r\nused 5 queries\r\n"
+            ],
+            [
+                "-2\r\n1\r\n",
+                "type: -2 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-3\r\n1\r\n",
+                "type: -3 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-4\r\n1\r\n",
+                "type: -4 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-5\r\n1\r\n",
+                "type: -5 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-6\r\n1\r\n",
+                "type: -6 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-7\r\n1\r\n",
+                "type: -7 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-8\r\n1\r\n",
+                "type: -8 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-9\r\n1\r\n",
+                "type: -9 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-10\r\n1\r\n",
+                "type: -10 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n10004205361450474\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 10004205361450474\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n10004205361450473\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 10004205361450473\r\nused 5 queries\r\n"
+            ],
+            [
+                "10004205361450473\r\n",
+                "type: 0 L: 10004205361450473 R: 10004205361450473 possible_n: 10004205361450473\r\nused 5 queries\r\n"
+            ],
+            [
+                "10004205361450472\r\n",
+                "type: 0 L: 10004205361450472 R: 10004205361450472 possible_n: 10004205361450472\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n10004205361450472\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 10004205361450472\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n10004205361450471\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 10004205361450471\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n10004205361450470\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 10004205361450470\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n10004205361450469\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 10004205361450469\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n10004205361450468\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 10004205361450468\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n10004205361450467\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 10004205361450467\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n10004205361450466\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 10004205361450466\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n2\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 2\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n3\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 3\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n4\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 4\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n5\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 5\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n6\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 6\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n7\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 7\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n8\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 8\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n9\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 9\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n1795348229226854\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 1795348229226854\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n7046231719871427\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 7046231719871427\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n8802767625702528\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 8802767625702528\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n4619545261923227\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 4619545261923227\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n3167460208546130\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 3167460208546130\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n3989452803441963\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 3989452803441963\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n9464372743790271\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 9464372743790271\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n7874397497120679\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 7874397497120679\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n9462738370710363\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 9462738370710363\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n2148059231587910\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 2148059231587910\r\nused 5 queries\r\n"
+            ],
+            [
+                "-2\r\n260522\r\n",
+                "type: -2 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-2\r\n914575\r\n",
+                "type: -2 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-2\r\n436426\r\n",
+                "type: -2 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-3\r\n979445\r\n",
+                "type: -3 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-3\r\n648772\r\n",
+                "type: -3 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-3\r\n690081\r\n",
+                "type: -3 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-4\r\n933447\r\n",
+                "type: -4 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-4\r\n190629\r\n",
+                "type: -4 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-4\r\n703497\r\n",
+                "type: -4 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-5\r\n47202\r\n",
+                "type: -5 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-5\r\n407775\r\n",
+                "type: -5 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-5\r\n894325\r\n",
+                "type: -5 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-6\r\n963982\r\n",
+                "type: -6 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-6\r\n804784\r\n",
+                "type: -6 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-6\r\n968417\r\n",
+                "type: -6 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-7\r\n302156\r\n",
+                "type: -7 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-7\r\n631932\r\n",
+                "type: -7 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-7\r\n735902\r\n",
+                "type: -7 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-8\r\n895728\r\n",
+                "type: -8 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-8\r\n78537\r\n",
+                "type: -8 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-8\r\n723857\r\n",
+                "type: -8 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-9\r\n330739\r\n",
+                "type: -9 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-9\r\n286918\r\n",
+                "type: -9 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-9\r\n329211\r\n",
+                "type: -9 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-10\r\n539679\r\n",
+                "type: -10 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-10\r\n238506\r\n",
+                "type: -10 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-10\r\n63340\r\n",
+                "type: -10 L: 1 R: 10004205361450474 possible_n: -1\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n520825450746127\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 520825450746127\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n6308042988398089\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 6308042988398089\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n1347432825028390\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 1347432825028390\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n3990913881943394\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 3990913881943394\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n50542015826217\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 50542015826217\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n7375429307352832\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 7375429307352832\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n3390435124564596\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 3390435124564596\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n3032485242972588\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 3032485242972588\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n7852363023217734\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 7852363023217734\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n7747341908525421\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 7747341908525421\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n8878530174845145\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 8878530174845145\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n1407086367914595\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 1407086367914595\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n7395239315933544\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 7395239315933544\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n3928569076313527\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 3928569076313527\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n3373402665917589\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 3373402665917589\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n8958061239817134\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 8958061239817134\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n347220509032286\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 347220509032286\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n544868732745086\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 544868732745086\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n3605173314953566\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 3605173314953566\r\nused 5 queries\r\n"
+            ],
+            [
+                "-1\r\n2985836606555736\r\n",
+                "type: -1 L: 1 R: 10004205361450474 possible_n: 2985836606555736\r\nused 5 queries\r\n"
+            ]
+        ]
+    }
+]

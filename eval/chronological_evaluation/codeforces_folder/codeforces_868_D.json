@@ -1,0 +1,75 @@
+[
+    {
+        "name": "Huge Strings",
+        "description": "You are given n strings s1, s2, ..., sn consisting of characters 0 and 1. m\noperations are performed, on each of them you concatenate two existing strings\ninto a new one. On the i-th operation the concatenation saisbi is saved into a\nnew string sn + i (the operations are numbered starting from 1). After each\noperation you need to find the maximum positive integer k such that all\npossible strings consisting of 0 and 1 of length k (there are 2^k such\nstrings) are substrings of the new string. If there is no such k, print 0.\nInput The first line contains single integer n (1 \u2264 n \u2264 100) \u2014 the number of\nstrings. The next n lines contain strings s1, s2, ..., sn (1 \u2264 |si| \u2264 100),\none per line. The total length of strings is not greater than 100. The next\nline contains single integer m (1 \u2264 m \u2264 100) \u2014 the number of operations. m\nlines follow, each of them contains two integers ai abd bi (1 \u2264 ai, bi \u2264 n + i\n- 1) \u2014 the number of strings that are concatenated to form sn + i. Output\nPrint m lines, each should contain one integer \u2014 the answer to the question\nafter the corresponding operation. Example Input 5 01 10 101 11111 0 3 1 2 6 5\n4 4 Output 1 2 0 Note On the first operation, a new string \"0110\" is created.\nFor k = 1 the two possible binary strings of length k are \"0\" and \"1\", they\nare substrings of the new string. For k = 2 and greater there exist strings of\nlength k that do not appear in this string (for k = 2 such string is \"00\"). So\nthe answer is 1. On the second operation the string \"01100\" is created. Now\nall strings of length k = 2 are present. On the third operation the string\n\"1111111111\" is created. There is no zero, so the answer is 0.\n\n",
+        "cf_contest_id": 868,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n01\r\n10\r\n101\r\n11111\r\n0\r\n3\r\n1 2\r\n6 5\r\n4 4\r\n",
+                "1\r\n2\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5\r\n01\r\n1\r\n0011\r\n0\r\n01\r\n6\r\n5 5\r\n3 2\r\n4 2\r\n6 7\r\n5 1\r\n9 7\r\n",
+                "1\r\n1\r\n1\r\n2\r\n1\r\n2\r\n"
+            ],
+            [
+                "5\r\n111101000111100011100110000100\r\n000111001\r\n01101000\r\n0000110100100010011001000000010100100111110110\r\n0110001\r\n10\r\n5 5\r\n2 2\r\n5 6\r\n1 1\r\n1 7\r\n10 6\r\n6 2\r\n11 1\r\n3 6\r\n8 2\r\n",
+                "2\r\n2\r\n2\r\n3\r\n3\r\n4\r\n3\r\n4\r\n2\r\n3\r\n"
+            ],
+            [
+                "1\r\n1\r\n1\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "5\r\n110101010101010110000011011\r\n111111\r\n1000100011100111100101101010011111100000001001\r\n00\r\n1111101100001110000\r\n10\r\n4 3\r\n6 6\r\n7 5\r\n8 8\r\n8 7\r\n10 8\r\n11 9\r\n10 12\r\n13 13\r\n12 13\r\n",
+                "4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n"
+            ],
+            [
+                "5\r\n100010010\r\n0\r\n1001100110010111\r\n0001000011000111000011011000110000010010010001110001000011011\r\n0100000100100\r\n10\r\n5 5\r\n6 6\r\n6 7\r\n7 8\r\n8 9\r\n10 8\r\n11 9\r\n10 9\r\n12 13\r\n12 13\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "5\r\n0\r\n1\r\n11\r\n110000010001100101001\r\n1101011011111\r\n10\r\n5 3\r\n6 4\r\n7 6\r\n8 7\r\n9 8\r\n10 9\r\n11 10\r\n12 11\r\n13 12\r\n14 13\r\n",
+                "1\r\n4\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n"
+            ],
+            [
+                "10\r\n0\r\n1\r\n1111100000\r\n0\r\n1\r\n0000\r\n11000\r\n1010001110010010110\r\n01101001111\r\n010101110110111111\r\n20\r\n10 3\r\n11 4\r\n12 5\r\n13 6\r\n14 7\r\n15 8\r\n16 9\r\n17 16\r\n18 17\r\n19 18\r\n20 19\r\n21 20\r\n22 21\r\n23 22\r\n24 23\r\n25 24\r\n26 25\r\n27 26\r\n28 27\r\n29 28\r\n",
+                "2\r\n2\r\n3\r\n3\r\n3\r\n4\r\n5\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n"
+            ],
+            [
+                "10\r\n0\r\n1\r\n1111\r\n110000000\r\n100000\r\n1\r\n1\r\n000010100001110001\r\n00100010110001101000111100100110010101001011\r\n100110110011101\r\n50\r\n10 3\r\n11 4\r\n12 5\r\n13 6\r\n14 7\r\n15 8\r\n16 9\r\n17 1\r\n18 1\r\n19 2\r\n20 2\r\n21 2\r\n22 2\r\n23 2\r\n24 1\r\n25 2\r\n26 1\r\n27 2\r\n28 1\r\n29 2\r\n30 2\r\n31 1\r\n32 2\r\n33 1\r\n34 2\r\n35 2\r\n36 2\r\n37 2\r\n38 1\r\n39 2\r\n40 2\r\n41 1\r\n42 2\r\n43 2\r\n44 2\r\n45 1\r\n46 2\r\n47 2\r\n48 2\r\n49 2\r\n50 2\r\n51 2\r\n52 2\r\n53 52\r\n54 53\r\n55 54\r\n56 55\r\n57 56\r\n58 57\r\n59 58\r\n",
+                "2\r\n2\r\n3\r\n3\r\n3\r\n4\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n"
+            ],
+            [
+                "2\r\n001010011100101110111\r\n001100110011001100110011001100110011001100110011001100111001\r\n14\r\n1 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 13\r\n14 14\r\n15 15\r\n",
+                "2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n"
+            ],
+            [
+                "2\r\n1\r\n0\r\n40\r\n1 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 13\r\n14 14\r\n15 15\r\n16 16\r\n17 17\r\n18 18\r\n19 19\r\n20 20\r\n21 21\r\n22 22\r\n23 23\r\n24 24\r\n25 25\r\n26 26\r\n27 27\r\n28 28\r\n29 29\r\n30 30\r\n31 31\r\n32 32\r\n33 33\r\n34 34\r\n35 35\r\n36 36\r\n37 37\r\n38 38\r\n39 39\r\n40 40\r\n41 41\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "2\r\n011\r\n100\r\n63\r\n1 1\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 13\r\n14 14\r\n15 15\r\n16 16\r\n17 17\r\n18 18\r\n19 19\r\n20 20\r\n21 21\r\n22 22\r\n23 23\r\n24 24\r\n25 25\r\n26 26\r\n27 27\r\n28 28\r\n29 29\r\n30 30\r\n31 31\r\n32 32\r\n2 2\r\n34 34\r\n35 35\r\n36 36\r\n37 37\r\n38 38\r\n39 39\r\n40 40\r\n41 41\r\n42 42\r\n43 43\r\n44 44\r\n45 45\r\n46 46\r\n47 47\r\n48 48\r\n49 49\r\n50 50\r\n51 51\r\n52 52\r\n53 53\r\n54 54\r\n55 55\r\n56 56\r\n57 57\r\n58 58\r\n59 59\r\n60 60\r\n61 61\r\n62 62\r\n63 63\r\n33 64\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n2\r\n"
+            ],
+            [
+                "1\r\n0000000000000000000000000000000000000000000000000000000000000000\r\n25\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 13\r\n14 14\r\n15 15\r\n16 16\r\n17 17\r\n18 18\r\n19 19\r\n20 20\r\n21 21\r\n22 22\r\n23 23\r\n24 24\r\n25 25\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ]
+        ]
+    }
+]

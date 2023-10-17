@@ -1,0 +1,476 @@
+[
+    {
+        "name": "Generous Kefa",
+        "description": "One day Kefa found n baloons. For convenience, we denote color of i-th baloon\nas si \u2014 lowercase letter of the Latin alphabet. Also Kefa has k friends.\nFriend will be upset, If he get two baloons of the same color. Kefa want to\ngive out all baloons to his friends. Help Kefa to find out, can he give out\nall his baloons, such that no one of his friens will be upset \u2014 print \u00abYES\u00bb,\nif he can, and \u00abNO\u00bb, otherwise. Note, that Kefa's friend will not upset, if he\ndoesn't get baloons at all. Input The first line contains two integers n and k\n(1 \u2264 n, k \u2264 100) \u2014 the number of baloons and friends. Next line contains\nstring s \u2014 colors of baloons. Output Answer to the task \u2014 \u00abYES\u00bb or \u00abNO\u00bb in a\nsingle line. You can choose the case (lower or upper) for each letter\narbitrary. Examples Input 4 2 aabb Output YES Input 6 3 aacaab Output NO Note\nIn the first sample Kefa can give 1-st and 3-rd baloon to the first friend,\nand 2-nd and 4-th to the second. In the second sample Kefa needs to give to\nall his friends baloons of color a, but one baloon will stay, thats why answer\nis \u00abNO\u00bb.\n\n",
+        "cf_contest_id": 841,
+        "cf_index": "A",
+        "cf_rating": 900,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 2\r\naabb\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 3\r\naacaab\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\nlu\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 3\r\novvoo\r\n",
+                "YES\r\n"
+            ],
+            [
+                "36 13\r\nbzbzcffczzcbcbzzfzbbfzfzzbfbbcbfccbf\r\n",
+                "YES\r\n"
+            ],
+            [
+                "81 3\r\nooycgmvvrophvcvpoupepqllqttwcocuilvyxbyumdmmfapvpnxhjhxfuagpnntonibicaqjvwfhwxhbv\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 100\r\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 1\r\nnubcvvjvbjgnjsdkajimdcxvewbcytvfkihunycdrlconddlwgzjasjlsrttlrzsumzpyumpveglfqzmaofbshbojmwuwoxxvrod\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 13\r\nvyldolgryldqrvoldvzvrdrgorlorszddtgqvrlisxxrxdxlqtvtgsrqlzixoyrozxzogqxlsgzdddzqrgitxxritoolzolgrtvl\r\n",
+                "YES\r\n"
+            ],
+            [
+                "18 6\r\njzwtnkvmscqhmdlsxy\r\n",
+                "YES\r\n"
+            ],
+            [
+                "21 2\r\nfscegcqgzesefghhwcexs\r\n",
+                "NO\r\n"
+            ],
+            [
+                "32 22\r\ncduamsptaklqtxlyoutlzepxgyfkvngc\r\n",
+                "YES\r\n"
+            ],
+            [
+                "49 27\r\noxyorfnkzwsfllnyvdhdanppuzrnbxehugvmlkgeymqjlmfxd\r\n",
+                "YES\r\n"
+            ],
+            [
+                "50 24\r\nxxutzjwbggcwvxztttkmzovtmuwttzcbwoztttohzzxghuuthv\r\n",
+                "YES\r\n"
+            ],
+            [
+                "57 35\r\nglxshztrqqfyxthqamagvtmrdparhelnzrqvcwqxjytkbuitovkdxueul\r\n",
+                "YES\r\n"
+            ],
+            [
+                "75 23\r\nittttiiuitutuiiuuututiuttiuiuutuuuiuiuuuuttuuttuutuiiuiuiiuiitttuututuiuuii\r\n",
+                "NO\r\n"
+            ],
+            [
+                "81 66\r\nfeqevfqfebhvubhuuvfuqheuqhbeeuebehuvhffvbqvqvfbqqvvhevqffbqqhvvqhfeehuhqeqhueuqqq\r\n",
+                "YES\r\n"
+            ],
+            [
+                "93 42\r\npqeiafraiavfcteumflpcbpozcomlvpovlzdbldvoopnhdoeqaopzthiuzbzmeieiatthdeqovaqfipqlddllmfcrrnhb\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 53\r\nizszyqyndzwzyzgsdagdwdazadiawizinagqqgczaqqnawgijziziawzszdjdcqjdjqiwgadydcnqisaayjiqqsscwwzjzaycwwc\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 14\r\nvkrdcqbvkwuckpmnbydmczdxoagdsgtqxvhaxntdcxhjcrjyvukhugoglbmyoaqexgtcfdgemmizoniwtmisqqwcwfusmygollab\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 42\r\naaaaaiiiiaiiiaaiaiiaaiiiiiaaaaaiaiiiaiiiiaiiiaaaaaiiiaaaiiaaiiiaiiiaiaaaiaiiiiaaiiiaiiaiaiiaiiiaaaia\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 89\r\ntjbkmydejporbqhcbztkcumxjjgsrvxpuulbhzeeckkbchpbxwhedrlhjsabcexcohgdzouvsgphjdthpuqrlkgzxvqbuhqxdsmf\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 100\r\njhpyiuuzizhubhhpxbbhpyxzhbpjphzppuhiahihiappbhuypyauhizpbibzixjbzxzpbphuiaypyujappuxiyuyaajaxjupbahb\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 3\r\nsszoovvzysavsvzsozzvoozvysozsaszayaszasaysszzzysosyayyvzozovavzoyavsooaoyvoozvvozsaosvayyovazzszzssa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 44\r\ndluthkxwnorabqsukgnxnvhmsmzilyulpursnxkdsavgemiuizbyzebhyjejgqrvuckhaqtuvdmpziesmpmewpvozdanjyvwcdgo\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 90\r\ntljonbnwnqounictqqctgonktiqoqlocgoblngijqokuquoolciqwnctgoggcbojtwjlculoikbggquqncittwnjbkgkgubnioib\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 79\r\nykxptzgvbqxlregvkvucewtydvnhqhuggdsyqlvcfiuaiddnrrnstityyehiamrggftsqyduwxpuldztyzgmfkehprrneyvtknmf\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 79\r\naagwekyovbviiqeuakbqbqifwavkfkutoriovgfmittulhwojaptacekdirgqoovlleeoqkkdukpadygfwavppohgdrmymmulgci\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 93\r\nearrehrehenaddhdnrdddhdahnadndheeennrearrhraharddreaeraddhehhhrdnredanndneheddrraaneerreedhnadnerhdn\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 48\r\nbmmaebaebmmmbbmxvmammbvvebvaemvbbaxvbvmaxvvmveaxmbbxaaemxmxvxxxvxbmmxaaaevvaxmvamvvmaxaxavexbmmbmmev\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 55\r\nhsavbkehaaesffaeeffakhkhfehbbvbeasahbbbvkesbfvkefeesesevbsvfkbffakvshsbkahfkfakebsvafkbvsskfhfvaasss\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 2\r\ncscffcffsccffsfsfffccssfsscfsfsssffcffsscfccssfffcfscfsscsccccfsssffffcfcfsfffcsfsccffscffcfccccfffs\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 3\r\nzrgznxgdpgfoiifrrrsjfuhvtqxjlgochhyemismjnanfvvpzzvsgajcbsulxyeoepjfwvhkqogiiwqxjkrpsyaqdlwffoockxnc\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 5\r\njbltyyfjakrjeodqepxpkjideulofbhqzxjwlarufwzwsoxhaexpydpqjvhybmvjvntuvhvflokhshpicbnfgsqsmrkrfzcrswwi\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 1\r\nfnslnqktlbmxqpvcvnemxcutebdwepoxikifkzaaixzzydffpdxodmsxjribmxuqhueifdlwzytxkklwhljswqvlejedyrgguvah\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 21\r\nddjenetwgwmdtjbpzssyoqrtirvoygkjlqhhdcjgeurqpunxpupwaepcqkbjjfhnvgpyqnozhhrmhfwararmlcvpgtnopvjqsrka\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 100\r\nnjrhiauqlgkkpkuvciwzivjbbplipvhslqgdkfnmqrxuxnycmpheenmnrglotzuyxycosfediqcuadklsnzjqzfxnbjwvfljnlvq\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 100\r\nbbbbbbbtbbttbtbbbttbttbtbbttttbbbtbttbbbtbttbtbbttttbbbbbtbbttbtbbtbttbbbtbtbtbtbtbtbbbttbbtbtbtbbtb\r\n",
+                "YES\r\n"
+            ],
+            [
+                "14 5\r\nfssmmsfffmfmmm\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 1\r\nff\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 1\r\nhw\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 2\r\nss\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 1\r\nl\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 50\r\nfffffttttttjjjuuuvvvvvdddxxxxwwwwgggbsssncccczzyyyyyhhhhhkrreeeeeeaaaaaiiillllllllooooqqqqqqmmpppppp\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 50\r\nbbbbbbbbgggggggggggaaaaaaaahhhhhhhhhhpppppppppsssssssrrrrrrrrllzzzzzzzeeeeeeekkkkkkkwwwwwwwwjjjjjjjj\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 50\r\nwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxxzzzzzzzzzzzzzzzzzzbbbbbbbbbbbbbbbbbbbbjjjjjjjjjjjjjjjjjjjjjjjj\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 80\r\nbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 10\r\nbbttthhhhiiiiiiijjjjjvvvvpppssssseeeeeeewwwwgggkkkkkkkkmmmddddduuuzzzzllllnnnnnxxyyyffffccraaaaooooq\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 20\r\nssssssssssbbbbbbbhhhhhhhyyyyyyyzzzzzzzzzzzzcccccxxxxxxxxxxddddmmmmmmmeeeeeeejjjjjjjjjwwwwwwwtttttttt\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 2\r\na\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 1\r\nabb\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 1\r\naa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 1\r\nab\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 2\r\naaaaaa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 4\r\naaaaaaaa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 2\r\naaaa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 3\r\naaaa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 3\r\na\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 3\r\nzzzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 1\r\naaaa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 4\r\nabc\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 5\r\nab\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 4\r\nab\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 10\r\na\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 2\r\nzzzzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "53 26\r\naaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbb\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 1\r\nabab\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 1\r\nabcb\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 2\r\nabbb\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 2\r\nabccc\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 3\r\nab\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 3\r\nbbbs\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 2\r\nazzzzzzzzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 2\r\nb\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 3\r\nb\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 5\r\nabcd\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 6\r\naabb\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 2\r\naaaab\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 5\r\naaa\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 3\r\nazzzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 100\r\naabb\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 10\r\naaa\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 4\r\naaa\r\n",
+                "YES\r\n"
+            ],
+            [
+                "12 5\r\naaaaabbbbbbb\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 2\r\naabbb\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 5\r\nzzzzzzzzzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 4\r\naa\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 5\r\na\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 5\r\naaaaaaaaaa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 3\r\naaaaaa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 1\r\nabcdeee\r\n",
+                "NO\r\n"
+            ],
+            [
+                "18 3\r\naaaaaabbbbbbcccccc\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 2\r\naabbccdd\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 2\r\nzzzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 2\r\nabaa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 2\r\naaa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 1\r\nzzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 4\r\nzzzzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 2\r\naabbbc\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 6\r\naaa\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 1\r\nzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 3\r\naaaeeeeeee\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 5\r\naabb\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 1\r\naaa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 2\r\naazzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 2\r\nabbbbc\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 2\r\nxxxx\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 3\r\nzzzzzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 2\r\nabb\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 2\r\nzzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 5\r\nzzzzzz\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 3\r\nbcaaaa\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 100\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 6\r\nabc\r\n",
+                "YES\r\n"
+            ]
+        ]
+    }
+]

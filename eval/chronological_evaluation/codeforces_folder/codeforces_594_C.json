@@ -1,0 +1,78 @@
+[
+    {
+        "name": "Edo and Magnets",
+        "description": "Edo has got a collection of n refrigerator magnets! He decided to buy a\nrefrigerator and hang the magnets on the door. The shop can make the\nrefrigerator with any size of the door that meets the following restrictions:\nthe refrigerator door must be rectangle, and both the length and the width of\nthe door must be positive integers. Edo figured out how he wants to place the\nmagnets on the refrigerator. He introduced a system of coordinates on the\nplane, where each magnet is represented as a rectangle with sides parallel to\nthe coordinate axes. Now he wants to remove no more than k magnets (he may\nchoose to keep all of them) and attach all remaining magnets to the\nrefrigerator door, and the area of \u200b\u200bthe door should be as small as possible.\nA magnet is considered to be attached to the refrigerator door if its center\nlies on the door or on its boundary. The relative positions of all the\nremaining magnets must correspond to the plan. Let us explain the last two\nsentences. Let's suppose we want to hang two magnets on the refrigerator. If\nthe magnet in the plan has coordinates of the lower left corner (x1, y1) and\nthe upper right corner (x2, y2), then its center is located at (, ) (may not\nbe integers). By saying the relative position should correspond to the plan we\nmean that the only available operation is translation, i.e. the vector\nconnecting the centers of two magnets in the original plan, must be equal to\nthe vector connecting the centers of these two magnets on the refrigerator.\nThe sides of the refrigerator door must also be parallel to coordinate axes.\nInput The first line contains two integers n and k (1 \u2264 n \u2264 100 000, 0 \u2264 k \u2264\nmin(10, n - 1)) \u2014 the number of magnets that Edo has and the maximum number of\nmagnets Edo may not place on the refrigerator. Next n lines describe the\ninitial plan of placing magnets. Each line contains four integers x1, y1, x2,\ny2 (1 \u2264 x1 < x2 \u2264 10^9, 1 \u2264 y1 < y2 \u2264 10^9) \u2014 the coordinates of the lower\nleft and upper right corners of the current magnet. The magnets can partially\noverlap or even fully coincide. Output Print a single integer \u2014 the minimum\narea of the door of refrigerator, which can be used to place at least n - k\nmagnets, preserving the relative positions. Examples Input 3 1 1 1 2 2 2 2 3 3\n3 3 4 4 Output 1 Input 4 1 1 1 2 2 1 9 2 10 9 9 10 10 9 1 10 2 Output 64 Input\n3 0 1 1 2 2 1 1 1000000000 1000000000 1 3 8 12 Output 249999999000000001 Note\nIn the first test sample it is optimal to remove either the first or the third\nmagnet. If we remove the first magnet, the centers of two others will lie at\npoints (2.5, 2.5) and (3.5, 3.5). Thus, it is enough to buy a fridge with door\nwidth 1 and door height 1, the area of the door also equals one,\ncorrespondingly. In the second test sample it doesn't matter which magnet to\nremove, the answer will not change \u2014 we need a fridge with door width 8 and\ndoor height 8. In the third sample you cannot remove anything as k = 0.\n\n",
+        "cf_contest_id": 594,
+        "cf_index": "C",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "two pointers"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 1\r\n1 1 2 2\r\n2 2 3 3\r\n3 3 4 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "4 1\r\n1 1 2 2\r\n1 9 2 10\r\n9 9 10 10\r\n9 1 10 2\r\n",
+                "64\r\n"
+            ],
+            [
+                "3 0\r\n1 1 2 2\r\n1 1 1000000000 1000000000\r\n1 3 8 12\r\n",
+                "249999999000000001\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "11 8\r\n9 1 11 5\r\n2 2 8 12\r\n3 8 23 10\r\n2 1 10 5\r\n7 1 19 5\r\n1 8 3 10\r\n1 5 3 9\r\n1 2 3 4\r\n1 2 3 4\r\n4 2 12 16\r\n8 5 12 9\r\n",
+                "4\r\n"
+            ],
+            [
+                "20 5\r\n1 12 21 22\r\n9 10 15 20\r\n10 12 12 20\r\n1 1 25 29\r\n5 10 21 22\r\n4 9 16 25\r\n12 10 14 24\r\n3 3 19 27\r\n3 4 23 28\r\n9 1 11 31\r\n9 14 17 18\r\n8 12 14 20\r\n8 11 18 19\r\n12 3 14 29\r\n7 8 13 22\r\n6 4 16 30\r\n11 3 13 27\r\n9 16 15 18\r\n6 13 14 21\r\n9 12 15 22\r\n",
+                "4\r\n"
+            ],
+            [
+                "1 0\r\n1 1 100 100\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 0\r\n1 1 2 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 0\r\n1 1 4 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\n1 1 1000000000 1000000000\r\n100 200 200 300\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\n1 1 1000000000 2\r\n1 1 2 1000000000\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\n1 1 999999999 1000000000\r\n1 1 1000000000 999999999\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 0\r\n1 1 1000000000 1000000000\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 0\r\n100 300 400 1000\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 0\r\n2 2 3 3\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

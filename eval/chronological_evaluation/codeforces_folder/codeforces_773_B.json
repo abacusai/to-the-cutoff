@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Dynamic Problem Scoring",
+        "description": "Vasya and Petya take part in a Codeforces round. The round lasts for two hours\nand contains five problems. For this round the dynamic problem scoring is\nused. If you were lucky not to participate in any Codeforces round with\ndynamic problem scoring, here is what it means. The maximum point value of the\nproblem depends on the ratio of the number of participants who solved the\nproblem to the total number of round participants. Everyone who made at least\none submission is considered to be participating in the round. Pay attention\nto the range bounds. For example, if 40 people are taking part in the round,\nand 10 of them solve a particular problem, then the solvers fraction is equal\nto 1 / 4, and the problem's maximum point value is equal to 1500. If the\nproblem's maximum point value is equal to x, then for each whole minute passed\nfrom the beginning of the contest to the moment of the participant's correct\nsubmission, the participant loses x / 250 points. For example, if the\nproblem's maximum point value is 2000, and the participant submits a correct\nsolution to it 40 minutes into the round, this participant will be awarded\nwith 2000\u00b7(1 - 40 / 250) = 1680 points for this problem. There are n\nparticipants in the round, including Vasya and Petya. For each participant and\neach problem, the number of minutes which passed between the beginning of the\ncontest and the submission of this participant to this problem is known. It's\nalso possible that this participant made no submissions to this problem. With\ntwo seconds until the end of the round, all participants' submissions have\npassed pretests, and not a single hack attempt has been made. Vasya believes\nthat no more submissions or hack attempts will be made in the remaining two\nseconds, and every submission will pass the system testing. Unfortunately,\nVasya is a cheater. He has registered 10^9 + 7 new accounts for the round. Now\nVasya can submit any of his solutions from these new accounts in order to\nchange the maximum point values of the problems. Vasya can also submit any\nwrong solutions to any problems. Note that Vasya can not submit correct\nsolutions to the problems he hasn't solved. Vasya seeks to score strictly more\npoints than Petya in the current round. Vasya has already prepared the scripts\nwhich allow to obfuscate his solutions and submit them into the system from\nany of the new accounts in just fractions of seconds. However, Vasya doesn't\nwant to make his cheating too obvious, so he wants to achieve his goal while\nmaking submissions from the smallest possible number of new accounts. Find the\nsmallest number of new accounts Vasya needs in order to beat Petya (provided\nthat Vasya's assumptions are correct), or report that Vasya can't achieve his\ngoal. Input The first line contains a single integer n (2 \u2264 n \u2264 120) \u2014 the\nnumber of round participants, including Vasya and Petya. Each of the next n\nlines contains five integers ai, 1, ai, 2..., ai, 5 ( - 1 \u2264 ai, j \u2264 119) \u2014 the\nnumber of minutes passed between the beginning of the round and the submission\nof problem j by participant i, or -1 if participant i hasn't solved problem j.\nIt is guaranteed that each participant has made at least one successful\nsubmission. Vasya is listed as participant number 1, Petya is listed as\nparticipant number 2, all the other participants are listed in no particular\norder. Output Output a single integer \u2014 the number of new accounts Vasya needs\nto beat Petya, or -1 if Vasya can't achieve his goal. Examples Input 2 5 15 40\n70 115 50 45 40 30 15 Output 2 Input 3 55 80 10 -1 -1 15 -1 79 60 -1 42 -1 13\n-1 -1 Output 3 Input 5 119 119 119 119 119 0 0 0 0 -1 20 65 12 73 77 78 112 22\n23 11 1 78 60 111 62 Output 27 Input 4 -1 20 40 77 119 30 10 73 50 107 21 29\n-1 64 98 117 65 -1 -1 -1 Output -1 Note In the first example, Vasya's optimal\nstrategy is to submit the solutions to the last three problems from two new\naccounts. In this case the first two problems will have the maximum point\nvalue of 1000, while the last three problems will have the maximum point value\nof 500. Vasya's score will be equal to 980 + 940 + 420 + 360 + 270 = 2970\npoints, while Petya will score just 800 + 820 + 420 + 440 + 470 = 2950 points.\nIn the second example, Vasya has to make a single unsuccessful submission to\nany problem from two new accounts, and a single successful submission to the\nfirst problem from the third new account. In this case, the maximum point\nvalues of the problems will be equal to 500, 1500, 1000, 1500, 3000. Vasya\nwill score 2370 points, while Petya will score just 2294 points. In the third\nexample, Vasya can achieve his goal by submitting the solutions to the first\nfour problems from 27 new accounts. The maximum point values of the problems\nwill be equal to 500, 500, 500, 500, 2000. Thanks to the high cost of the\nfifth problem, Vasya will manage to beat Petya who solved the first four\nproblems very quickly, but couldn't solve the fifth one.\n\n",
+        "cf_contest_id": 773,
+        "cf_index": "B",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n5 15 40 70 115\r\n50 45 40 30 15\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n55 80 10 -1 -1\r\n15 -1 79 60 -1\r\n42 -1 13 -1 -1\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\n119 119 119 119 119\r\n0 0 0 0 -1\r\n20 65 12 73 77\r\n78 112 22 23 11\r\n1 78 60 111 62\r\n",
+                "27\r\n"
+            ],
+            [
+                "4\r\n-1 20 40 77 119\r\n30 10 73 50 107\r\n21 29 -1 64 98\r\n117 65 -1 -1 -1\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n33 15 51 7 101\r\n41 80 40 13 46\r\n",
+                "0\r\n"
+            ],
+            [
+                "9\r\n57 52 60 56 91\r\n32 40 107 89 36\r\n80 0 45 92 119\r\n62 9 107 24 61\r\n43 28 4 26 113\r\n31 91 86 13 95\r\n4 2 88 38 68\r\n83 35 57 101 28\r\n12 40 37 56 73\r\n",
+                "9\r\n"
+            ],
+            [
+                "19\r\n78 100 74 31 2\r\n27 45 72 63 0\r\n42 114 31 106 79\r\n88 119 118 69 90\r\n68 14 90 104 70\r\n106 21 96 15 73\r\n75 66 54 46 107\r\n108 49 17 34 90\r\n76 112 49 56 76\r\n34 43 5 57 67\r\n47 43 114 73 109\r\n79 118 69 22 19\r\n31 74 21 84 79\r\n1 64 88 97 79\r\n115 14 119 101 28\r\n55 9 43 67 10\r\n33 40 26 10 11\r\n92 0 60 14 48\r\n58 57 8 12 118\r\n",
+                "133\r\n"
+            ],
+            [
+                "17\r\n66 15 -1 42 90\r\n67 108 104 16 110\r\n76 -1 -1 -1 96\r\n108 32 100 91 17\r\n87 -1 85 10 -1\r\n70 55 102 15 23\r\n-1 33 111 105 63\r\n-1 56 104 68 116\r\n56 111 102 89 63\r\n63 -1 68 80 -1\r\n80 61 -1 81 19\r\n101 -1 87 -1 89\r\n92 82 4 105 83\r\n19 30 114 77 104\r\n100 99 29 68 82\r\n98 -1 62 52 -1\r\n108 -1 -1 50 -1\r\n",
+                "5\r\n"
+            ],
+            [
+                "3\r\n20 65 12 73 77\r\n78 112 22 23 11\r\n1 78 60 111 62\r\n",
+                "3\r\n"
+            ],
+            [
+                "4\r\n66 55 95 78 114\r\n70 98 8 95 95\r\n17 47 88 71 18\r\n23 22 9 104 38\r\n",
+                "4\r\n"
+            ],
+            [
+                "10\r\n-1 18 44 61 115\r\n-1 34 12 40 114\r\n-1 86 100 119 58\r\n-1 4 36 8 91\r\n1 58 85 13 82\r\n-1 9 85 109 -1\r\n13 75 0 71 42\r\n116 75 42 79 88\r\n62 -1 98 114 -1\r\n68 96 44 61 35\r\n",
+                "62\r\n"
+            ],
+            [
+                "26\r\n3 -1 71 -1 42\r\n85 72 48 38 -1\r\n-1 -1 66 24 -1\r\n46 -1 60 99 107\r\n53 106 51 -1 104\r\n-1 17 98 54 -1\r\n44 107 66 65 102\r\n47 40 62 34 5\r\n-1 10 -1 98 -1\r\n-1 69 47 85 75\r\n12 62 -1 15 -1\r\n48 63 72 32 99\r\n91 104 111 -1 -1\r\n92 -1 52 -1 11\r\n118 25 97 1 108\r\n-1 61 97 37 -1\r\n87 47 -1 -1 21\r\n79 87 73 82 70\r\n90 108 19 25 57\r\n37 -1 51 8 119\r\n64 -1 -1 38 82\r\n42 61 63 25 27\r\n82 -1 15 82 15\r\n-1 89 73 95 -1\r\n4 8 -1 70 116\r\n89 21 65 -1 88\r\n",
+                "10\r\n"
+            ],
+            [
+                "2\r\n0 0 0 0 1\r\n0 0 0 1 0\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

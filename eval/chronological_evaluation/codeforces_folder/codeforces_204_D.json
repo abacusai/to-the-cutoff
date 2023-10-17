@@ -1,0 +1,203 @@
+[
+    {
+        "name": "Little Elephant and Retro Strings",
+        "description": "The Little Elephant has found a ragged old black-and-white string s on the\nattic. The characters of string s are numbered from the left to the right from\n1 to |s|, where |s| is the length of the string. Let's denote the i-th\ncharacter of string s as si. As the string is black-and-white, each character\nof the string is either letter \"B\", or letter \"W\". Unfortunately, the string\nis very old and some characters are damaged. The damaged positions are denoted\nas \"X\". The Little Elephant in determined to restore the string and hang it on\nthe wall. For that he needs to replace each character \"X\" by a \"B\" or a \"W\".\nThe string must look good on the wall, so it must be beautiful. The Little\nElephant considers a string beautiful if it has two non-intersecting\nsubstrings of a given length k, such that the left one fully consists of\ncharacters \"B\", and the right one fully consists of characters \"W\". More\nformally, there are four integers a, b, c, d (1 \u2264 a \u2264 b < c \u2264 d \u2264 |s|; b - a +\n1 = d - c + 1 = k) such that si = \"B\" (a \u2264 i \u2264 b) and sj = \"W\" (c \u2264 j \u2264 d).\nHelp the Little Elephant find the number of different beautiful strings he can\nobtain from string s. Two strings are considered different if there is such\nposition, where the character in the first string differs from the\ncorresponding character in the second string. If this string doesn't contain\ncharacters \u00abX\u00bb and it is already beautiful \u2014 the answer is 1. As the answer\ncan be rather large, print it modulo 1000000007 (10^9 + 7). Input The first\nline contains two space-separated integers n and k (1 \u2264 k \u2264 n \u2264 10^6). The\nsecond line contains string s. String s has length n and only consists of\ncharacters \"W\", \"B\" and \"X\". Output On a single line print an integer \u2014 the\nanswer to the problem modulo 1000000007 (10^9 + 7). Examples Input 3 2 XXX\nOutput 0 Input 4 2 XXXX Output 1 Input 10 2 XXBXXWXXXX Output 166\n\n",
+        "cf_contest_id": 204,
+        "cf_index": "D",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2\r\nXXX\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 2\r\nXXXX\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 2\r\nXXBXXWXXXX\r\n",
+                "166\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 1\r\nXBX\r\n",
+                "2\r\n"
+            ],
+            [
+                "1 1\r\nX\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1\r\nXW\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\nWX\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 3\r\nXBXBXWXBXW\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 1\r\nXXXWXBXBXX\r\n",
+                "126\r\n"
+            ],
+            [
+                "20 2\r\nXXXBXWBBBBWXWWWXWWXB\r\n",
+                "128\r\n"
+            ],
+            [
+                "20 1\r\nXBBBWBXXBWXWWWBWWXXW\r\n",
+                "64\r\n"
+            ],
+            [
+                "10 3\r\nBXBWBWWWWX\r\n",
+                "2\r\n"
+            ],
+            [
+                "10 3\r\nWWXBWXXWWW\r\n",
+                "0\r\n"
+            ],
+            [
+                "20 3\r\nBWWWWWXBWXXXXBBWBBWX\r\n",
+                "0\r\n"
+            ],
+            [
+                "20 4\r\nWWWWXWBXBBXWWXWXBWWW\r\n",
+                "8\r\n"
+            ],
+            [
+                "20 5\r\nXBBXXXXXXXBWWXBWBWWX\r\n",
+                "4\r\n"
+            ],
+            [
+                "20 6\r\nXXBXBXXBWWWWXWWXBBBW\r\n",
+                "10\r\n"
+            ],
+            [
+                "20 7\r\nBWXBXBWWXXBBXBBWXWBW\r\n",
+                "0\r\n"
+            ],
+            [
+                "25 7\r\nXWBXWBXWXWBWXBWWXBWXXXXBB\r\n",
+                "0\r\n"
+            ],
+            [
+                "300 7\r\nXXWXWWXXWWWBBXXXWWBWBWXWWWXXWBXXBXWWXXXWXWXBXWBWWWXBBWBXBXWXWBBBBXWBXWBBBXBXXXXBWXXXWBBXWXXBBWBBXBBXWXBXWBWXBWXXXXWXBWBBWXWXWXWWBWWWXXWWBBBXBXBWXBXXWWWBWWWBXWWXXWXWBWWWBWWWXXBBWXWXWXXWXXXXBWBXXBXBBBXBBWWXWBBXXWBBXBBXXBWXXWBWWBXWXXWWXXBXBWBWXWBBBWXXWXXWBWBBXWWBBWXXXBBWWXXXXBBBBBBWWBBWBWBXXWWXXBWXWWBB\r\n",
+                "469056403\r\n"
+            ],
+            [
+                "17 3\r\nBBBWXXWBXBXWXBXBW\r\n",
+                "28\r\n"
+            ],
+            [
+                "100 20\r\nWXWXWWBWBBXXXWWBBXXWBWWWWXXBWXXBXXBXXBXXWXXXXWBBWWWBXWWBXWXWWBXXWXWXWWXXWWWXXXBXBWXWXBXXXWXXWWXWWBWW\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 3\r\nXXXXXWXXXXBXXWXXBXXBXXXXXXXXXXXXXXXXWWXXWXXWXXXXWWXXXXXWXXXXBWXXXXWXBXXXWXXXBWXXWXXXWXXXXWWWXXXXXWXX\r\n",
+                "951778854\r\n"
+            ],
+            [
+                "100 25\r\nBXWWXWBWWWWWBXBBWXWWXBBWBWWWWWWWXWXWXXXWWWXXXXBXBBXWXWWXBBXWBXWXWXXXXXWBBXWXXWXWWWBXXWBXWWXBWWBXBXXB\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 20\r\nWBBXWBBWWWXBXWWWWWBBBWWBWWBWWWWXWXXBWWBWXWBBXWBWBXWXWXWWBWWWBBXWWBXBBBWBXXWWBXXWWXWXWXBBBWXXWWBWBWXW\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 1\r\nXWXWXWWXXWWXWXXWWXXBXBXWWXXXXWBWWXWXWWXBXWXBWXWWWBWXXWXBBXWXWXWWBXXWBBBWWWXXXWBWXWXWBWBWBWXXWXBXXWWX\r\n",
+                "23240159\r\n"
+            ],
+            [
+                "100 1\r\nWBWWWXWWWXWBWXWXWXXWWBWBXWWBBWWWXXWBWWBWWXWWXBBBWBWWWWXBWWWWWXXWWWWBBBWBBBWWWXWWXWBWWBWWWBWWWBWXXWXX\r\n",
+                "1048576\r\n"
+            ],
+            [
+                "100 20\r\nWWXWWXXXXBBXWBXXXXWXXWXXXXXXXBBXXXXXXXWWXXWXXXXBWBXXXXXXXXXXWXWXXXXWXXXWXXWXXXXBXBXXBXXXXXWBXWBXXXXB\r\n",
+                "0\r\n"
+            ],
+            [
+                "101 18\r\nWXXBXXWXXXXXXXXXXXXBBXXBBXXWXBXXBXXXXXXXXBXXXXWBBBXWXXWXWXWXWXWXBXBXXXXXWBXXWXBXXXXXXWXBBXXXXWWXXBWBW\r\n",
+                "0\r\n"
+            ],
+            [
+                "128 100\r\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 21\r\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\r\n",
+                "135234318\r\n"
+            ],
+            [
+                "256 100\r\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\r\n",
+                "817953325\r\n"
+            ],
+            [
+                "300 200\r\nWXWWWWXWWBXXXBWWXXXWBWWXXWXXXXWWXXXWXXXXWWWXWBWXWWXWXBWXWWWWBWBBWWWWXWXXXXWWXBXWXWWWWWXXXXXWBXWBXWWWWXXXWXBWXBWXWXXXWXWXXWWXXWXWWWWWXWXWWXWWXXWXWXWWXWXXXXWWWXWWWXXWWWBXXWXWWWXWBWXWWXWWXXXWWXXXWXWXXBWXXXBBWWWXXXXWWXWWXWXWWWWWWWXXWXXWWWWBWWWBWWWWXBXWWWWXXXXWXXXXWBXBXWWWXBWXWXXXWXXXXWWXXWXWWXWBXWXBXWWW\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 1\r\nXXXW\r\n",
+                "7\r\n"
+            ],
+            [
+                "4 2\r\nXBXW\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\nBW\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2\r\nXX\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1\r\nXBX\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 2\r\nXWW\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1\r\nWWW\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1\r\nXBW\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 1\r\nWBX\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\nWB\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 1\r\nXXWW\r\n",
+                "3\r\n"
+            ],
+            [
+                "4 2\r\nXXBW\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 1\r\nXXXX\r\n",
+                "11\r\n"
+            ]
+        ]
+    }
+]

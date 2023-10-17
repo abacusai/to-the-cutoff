@@ -1,0 +1,139 @@
+[
+    {
+        "name": "Mind the Gap",
+        "description": "These days Arkady works as an air traffic controller at a large airport. He\ncontrols a runway which is usually used for landings only. Thus, he has a\nschedule of planes that are landing in the nearest future, each landing lasts\n\n    1\n minute. He was asked to insert one takeoff in the schedule. The\ntakeoff takes \n    1\n minute itself, but for safety reasons there should be a\ntime space between the takeoff and any landing of at least \n    s\n minutes\nfrom both sides. Find the earliest time when Arkady can insert the takeoff.\nInput The first line of input contains two integers \n    n\n and \n    s\n (\n    1\n    \n    \u2264 n \n    \u2264 100\n, \n    1 \n    \u2264 s \n    \u2264 60\n) \u2014 the number of landings on\nthe schedule and the minimum allowed time (in minutes) between a landing and a\ntakeoff. Each of next \n    n\n lines contains two integers \n    h\n and \n    m\n\n(\n    0 \n    \u2264 h \n    \u2264 23\n, \n    0 \n    \u2264 m \n    \u2264 59\n) \u2014 the time, in hours and\nminutes, when a plane will land, starting from current moment (i. e. the\ncurrent time is \n    0\n \n    0\n). These times are given in increasing order.\nOutput Print two integers \n    h\n and \n    m\n \u2014 the hour and the minute from\nthe current moment of the earliest time Arkady can insert the takeoff.\nExamples Input 6 60 0 0 1 20 3 21 5 0 19 30 23 40 Output 6 1 Input 16 50 0 30\n1 20 3 0 4 30 6 10 7 50 9 30 11 10 12 50 14 30 16 10 17 50 19 30 21 10 22 50\n23 59 Output 24 50 Input 3 17 0 30 1 0 12 0 Output 0 0 Note In the first\nexample note that there is not enough time between 1:20 and 3:21, because each\nlanding and the takeoff take one minute. In the second example there is no\ngaps in the schedule, so Arkady can only add takeoff after all landings. Note\nthat it is possible that one should wait more than \n    24\n hours to insert\nthe takeoff. In the third example Arkady can insert the takeoff even between\nthe first landing.\n\n",
+        "cf_contest_id": 967,
+        "cf_index": "A",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 60\r\n0 0\r\n1 20\r\n3 21\r\n5 0\r\n19 30\r\n23 40\r\n",
+                "6 1\r\n"
+            ],
+            [
+                "16 50\r\n0 30\r\n1 20\r\n3 0\r\n4 30\r\n6 10\r\n7 50\r\n9 30\r\n11 10\r\n12 50\r\n14 30\r\n16 10\r\n17 50\r\n19 30\r\n21 10\r\n22 50\r\n23 59\r\n",
+                "24 50\r\n"
+            ],
+            [
+                "3 17\r\n0 30\r\n1 0\r\n12 0\r\n",
+                "0 0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "24 60\r\n0 21\r\n2 21\r\n2 46\r\n3 17\r\n4 15\r\n5 43\r\n6 41\r\n7 50\r\n8 21\r\n9 8\r\n10 31\r\n10 45\r\n12 30\r\n14 8\r\n14 29\r\n14 32\r\n14 52\r\n15 16\r\n16 7\r\n16 52\r\n18 44\r\n20 25\r\n21 13\r\n22 7\r\n",
+                "23 8\r\n"
+            ],
+            [
+                "20 60\r\n0 9\r\n0 19\r\n0 57\r\n2 42\r\n3 46\r\n3 47\r\n5 46\r\n8 1\r\n9 28\r\n9 41\r\n10 54\r\n12 52\r\n13 0\r\n14 49\r\n17 28\r\n17 39\r\n19 34\r\n20 52\r\n21 35\r\n23 22\r\n",
+                "6 47\r\n"
+            ],
+            [
+                "57 20\r\n0 2\r\n0 31\r\n1 9\r\n1 42\r\n1 58\r\n2 4\r\n2 35\r\n2 49\r\n3 20\r\n3 46\r\n4 23\r\n4 52\r\n5 5\r\n5 39\r\n6 7\r\n6 48\r\n6 59\r\n7 8\r\n7 35\r\n8 10\r\n8 46\r\n8 53\r\n9 19\r\n9 33\r\n9 43\r\n10 18\r\n10 42\r\n11 0\r\n11 26\r\n12 3\r\n12 5\r\n12 30\r\n13 1\r\n13 38\r\n14 13\r\n14 54\r\n15 31\r\n16 5\r\n16 44\r\n17 18\r\n17 30\r\n17 58\r\n18 10\r\n18 34\r\n19 13\r\n19 49\r\n19 50\r\n19 59\r\n20 17\r\n20 23\r\n20 40\r\n21 18\r\n21 57\r\n22 31\r\n22 42\r\n22 56\r\n23 37\r\n",
+                "23 58\r\n"
+            ],
+            [
+                "66 20\r\n0 16\r\n0 45\r\n0 58\r\n1 6\r\n1 19\r\n2 7\r\n2 9\r\n3 9\r\n3 25\r\n3 57\r\n4 38\r\n4 58\r\n5 21\r\n5 40\r\n6 16\r\n6 19\r\n6 58\r\n7 6\r\n7 26\r\n7 51\r\n8 13\r\n8 36\r\n8 55\r\n9 1\r\n9 15\r\n9 33\r\n10 12\r\n10 37\r\n11 15\r\n11 34\r\n12 8\r\n12 37\r\n12 55\r\n13 26\r\n14 0\r\n14 34\r\n14 36\r\n14 48\r\n15 23\r\n15 29\r\n15 43\r\n16 8\r\n16 41\r\n16 45\r\n17 5\r\n17 7\r\n17 15\r\n17 29\r\n17 46\r\n18 12\r\n18 19\r\n18 38\r\n18 57\r\n19 32\r\n19 58\r\n20 5\r\n20 40\r\n20 44\r\n20 50\r\n21 18\r\n21 49\r\n22 18\r\n22 47\r\n23 1\r\n23 38\r\n23 50\r\n",
+                "1 40\r\n"
+            ],
+            [
+                "1 1\r\n0 0\r\n",
+                "0 2\r\n"
+            ],
+            [
+                "10 1\r\n0 2\r\n0 4\r\n0 5\r\n0 8\r\n0 9\r\n0 11\r\n0 13\r\n0 16\r\n0 19\r\n0 21\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "10 1\r\n0 2\r\n0 5\r\n0 8\r\n0 11\r\n0 15\r\n0 17\r\n0 25\r\n0 28\r\n0 29\r\n0 32\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "15 20\r\n0 47\r\n2 24\r\n4 19\r\n4 34\r\n5 46\r\n8 15\r\n9 8\r\n10 28\r\n17 47\r\n17 52\r\n18 32\r\n19 50\r\n20 46\r\n20 50\r\n23 21\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1 5\r\n1 0\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "24 60\r\n1 0\r\n2 0\r\n3 0\r\n4 0\r\n5 0\r\n6 0\r\n7 0\r\n8 0\r\n9 0\r\n10 0\r\n11 0\r\n12 0\r\n13 0\r\n14 0\r\n15 0\r\n16 0\r\n17 0\r\n18 0\r\n19 0\r\n20 0\r\n21 0\r\n22 0\r\n23 0\r\n23 59\r\n",
+                "25 0\r\n"
+            ],
+            [
+                "1 30\r\n0 29\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "1 2\r\n3 0\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "16 60\r\n0 30\r\n1 20\r\n3 0\r\n4 30\r\n6 10\r\n7 50\r\n9 30\r\n11 10\r\n12 50\r\n14 30\r\n16 10\r\n17 50\r\n19 30\r\n21 10\r\n22 50\r\n23 59\r\n",
+                "25 0\r\n"
+            ],
+            [
+                "1 5\r\n0 6\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2 60\r\n0 59\r\n23 59\r\n",
+                "2 0\r\n"
+            ],
+            [
+                "1 58\r\n0 1\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "25 60\r\n0 0\r\n1 0\r\n2 0\r\n3 0\r\n4 0\r\n5 0\r\n6 0\r\n7 0\r\n8 0\r\n9 0\r\n10 0\r\n11 0\r\n12 0\r\n13 0\r\n14 0\r\n15 0\r\n16 0\r\n17 0\r\n18 0\r\n19 0\r\n20 0\r\n21 0\r\n22 0\r\n23 0\r\n23 59\r\n",
+                "25 0\r\n"
+            ],
+            [
+                "2 3\r\n0 3\r\n0 30\r\n",
+                "0 7\r\n"
+            ],
+            [
+                "16 50\r\n0 30\r\n1 20\r\n3 0\r\n4 30\r\n6 10\r\n7 50\r\n9 30\r\n11 10\r\n12 50\r\n14 30\r\n16 10\r\n17 50\r\n19 30\r\n21 10\r\n22 50\r\n23 9\r\n",
+                "24 0\r\n"
+            ],
+            [
+                "1 60\r\n2 0\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2 60\r\n0 0\r\n5 0\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "1 30\r\n0 31\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2 60\r\n0 59\r\n3 1\r\n",
+                "2 0\r\n"
+            ],
+            [
+                "2 60\r\n0 59\r\n5 0\r\n",
+                "2 0\r\n"
+            ],
+            [
+                "1 59\r\n0 0\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "3 25\r\n0 0\r\n1 0\r\n2 0\r\n",
+                "0 26\r\n"
+            ],
+            [
+                "1 2\r\n2 3\r\n",
+                "0 0\r\n"
+            ]
+        ]
+    }
+]

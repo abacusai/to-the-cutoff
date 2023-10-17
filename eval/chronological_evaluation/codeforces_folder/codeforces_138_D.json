@@ -1,0 +1,160 @@
+[
+    {
+        "name": "World of Darkraft",
+        "description": "Recently Roma has become the happy owner of a new game World of Darkraft. This\ngame combines elements of virtually all known genres, and on one of the later\nstages of the game Roma faced difficulties solving a puzzle. In this part Roma\nfights with a cunning enemy magician. The battle takes place on a rectangular\nfield plaid n \u00d7 m. Each cell contains one magical character: L, R or X.\nInitially all the squares of the field are \"active\". The players, Roma and\nenemy magician, take turns. Roma makes the first move. During a move a player\nselects one of the active cells. Then depending on the image in the character\nin the cell one of the following actions takes place: L \u2014 magical waves\nradiate from the cell to the left downwards and to the right upwards along\ndiagonal paths. All cells on the path of the waves (including the selected\ncell too) become inactive. The waves continue until the next inactive cell or\nto the edge of the field if there are no inactive cells on the way. R \u2014 the\nmagical waves radiate to the left upwards and to the right downwards. X \u2014 the\nmagical waves radiate in all four diagonal directions. If the next player\ncannot make a move (i.e., all cells are inactive), he loses. Roma has been\ntrying to defeat the computer opponent for three days but he just keeps\nlosing. He asks you to help him and determine whether it is guaranteed that he\ncan beat the opponent, or he will have to hack the game. Input The first line\ncontains two space-separated integers n and m (1 \u2264 n, m \u2264 20). Next n lines\ncontain m characters describing the playing field: the j-th character of the\ni-th line equals to the magical character of the corresponding field square.\nOutput On the first line print \"WIN\" if Roma can win or \"LOSE\" if it is\nimpossible to win considering that the opponent pays optimally. Examples Input\n2 2 RL LR Output LOSE Input 2 2 RR RR Output WIN Note In the first test each\nmove makes one diagonal line of the square inactive, thus it is guaranteed\nthat Roma loses after two moves. There are three variants of making a move in\nthe second test: to \"finish off\" the main diagonal line or any of the squares\nthat are left. That means that after three moves the game stops and Roma wins.\n\n",
+        "cf_contest_id": 138,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "games"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2\r\nRL\r\nLR\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "2 2\r\nRR\r\nRR\r\n",
+                "WIN\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 4\r\nLXXL\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "2 2\r\nLL\r\nXX\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "2 2\r\nXL\r\nXX\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "2 4\r\nRRXR\r\nRRRX\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "3 3\r\nXLX\r\nRRL\r\nLRL\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "4 3\r\nRLR\r\nRLR\r\nXLL\r\nLXX\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "4 4\r\nXLRL\r\nXLLX\r\nXXLX\r\nLRXL\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "2 6\r\nXRLLXL\r\nRXXRLR\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "3 6\r\nLXLRLL\r\nLLLXRL\r\nXRLXRX\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "7 5\r\nLXXLL\r\nXXXRX\r\nXRLLL\r\nLRLRL\r\nLXRLR\r\nXLXXR\r\nXXXXX\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "7 7\r\nLLLLXXL\r\nLXRRXXL\r\nXLXLRRL\r\nXRXRLXL\r\nXRXLXRL\r\nLXXXXRL\r\nRLLXLXR\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "8 1\r\nX\r\nL\r\nR\r\nX\r\nL\r\nL\r\nR\r\nR\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "2 9\r\nRXRLXXLRR\r\nXLRXLLLXX\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "10 3\r\nXLX\r\nXRX\r\nXRX\r\nRLL\r\nRRL\r\nRLL\r\nXRR\r\nLRL\r\nRRR\r\nXRL\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "9 9\r\nLLXLXRRRX\r\nLLRXXRXLR\r\nXLRXXXLXL\r\nRXXRLLRRR\r\nLRLLRXXRX\r\nLLLLRLRLX\r\nXXXLLXXLX\r\nRLXLLRXLL\r\nRLRRRRLXX\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "10 11\r\nXRLXRXLXLRR\r\nLXLRRLRXRXR\r\nLRXXLRXXXLX\r\nXXXXRRLLLLR\r\nXRXRRRXXRXX\r\nLRLRRRXLXLR\r\nRLRXXXLXXRL\r\nLRXXRRXXLXR\r\nLXXRLLLRLRR\r\nRLRXLLXRLXR\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "12 7\r\nLRLRLXR\r\nRRRXXRR\r\nRXRXXRX\r\nLXLLLRR\r\nLXRXLLL\r\nRRRLLXR\r\nRRLXRXR\r\nRXRLLLL\r\nXXRXRXX\r\nLXLRLRX\r\nLXLXRLR\r\nXXXXRRR\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "13 13\r\nXLLXRXLXRRLLL\r\nXRLLXXRRXLLLX\r\nXXLRXRLLRRRRL\r\nXLRRLRLLRRLLL\r\nXLLLXXXXRRXRR\r\nRLXXLRRLXRRXL\r\nRLRXRRXLLRLLR\r\nRRRXLRRRLRLXR\r\nXRLLXLXRRXLRR\r\nLLLLRLXRRLRXL\r\nRLRRXLRLLXXXX\r\nLRXRXLRLRXRLX\r\nLLLRLRLXXXLXR\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "18 1\r\nX\r\nL\r\nR\r\nX\r\nL\r\nX\r\nX\r\nR\r\nX\r\nR\r\nR\r\nX\r\nX\r\nR\r\nL\r\nL\r\nR\r\nX\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "2 20\r\nLLLRRLRLRLLXLXLRRLXL\r\nXRXLLLXRRXRXRXXLRLLX\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "17 3\r\nXRR\r\nLXX\r\nLRL\r\nRLX\r\nXXX\r\nXXR\r\nLRX\r\nXLX\r\nRXR\r\nXXR\r\nRRR\r\nRRX\r\nLRL\r\nLRL\r\nRLR\r\nXLR\r\nXXL\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "20 3\r\nXLR\r\nRRL\r\nRRL\r\nLRL\r\nRRR\r\nLLX\r\nLLL\r\nXLX\r\nRXL\r\nRRX\r\nXLX\r\nRRR\r\nRRR\r\nRLL\r\nXXL\r\nLLX\r\nLRR\r\nRXL\r\nXLX\r\nLXL\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "19 7\r\nXLXRLRX\r\nLXRLXLX\r\nLRRLLRX\r\nLLRXLXL\r\nXXRRLXR\r\nLRLXXLL\r\nRLXLLLL\r\nLRXLRLX\r\nLLXXRLL\r\nRRLLXRR\r\nLLRXRXL\r\nRLXXRLX\r\nRXXXLXR\r\nRXLLRXX\r\nXLXXRRX\r\nLLRRLRR\r\nRLLRXRL\r\nRXRRLRR\r\nLXLRLLL\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "7 19\r\nLLXXRXRRRLRLRLXLLXL\r\nLLLLXRRLRLRRXRXXXXL\r\nLLLXLRXLXLLLLRXXXLX\r\nLRRXXRLLRXXXXXRLXXX\r\nXRRRLXLXLLRLXLLRLRX\r\nRXRRRRXLRLXXRRRXXRL\r\nXRXXXLXLLRXLRLLXRRL\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "1 1\r\nL\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "20 1\r\nL\r\nR\r\nR\r\nX\r\nR\r\nX\r\nX\r\nL\r\nX\r\nX\r\nL\r\nX\r\nR\r\nL\r\nL\r\nL\r\nL\r\nR\r\nL\r\nR\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "1 20\r\nRLXLXRXLXXXLXXXLXXRR\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "2 20\r\nLLLRRLRLRLLXLXLRRLXL\r\nXRXLLLXRRXRXRXXLRLLX\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "20 2\r\nRR\r\nXL\r\nRR\r\nRX\r\nXR\r\nXL\r\nXR\r\nXL\r\nXR\r\nRL\r\nXR\r\nLR\r\nRX\r\nLX\r\nRR\r\nLX\r\nRL\r\nRL\r\nXR\r\nXR\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "3 19\r\nXXXLLRLRRLLLRRRRRLX\r\nLRRXLRXRXLLRRXLXLXR\r\nXRXRXXXRRXXLRRLXLRR\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "3 19\r\nXXLXRXXXLRRXXLXXRLR\r\nLXXLXRXXRRRRLXRLXLX\r\nLXRXLRLRLXXRLXXLXXR\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "1 1\r\nX\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "1 1\r\nR\r\n",
+                "WIN\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,195 @@
+[
+    {
+        "name": "Compress Words",
+        "description": "Amugae has a sentence consisting of \n    n\n words. He want to compress this\nsentence into one word. Amugae doesn't like repetitions, so when he merges two\nwords into one word, he removes the longest prefix of the second word that\ncoincides with a suffix of the first word. For example, he merges \"sample\" and\n\"please\" into \"samplease\". Amugae will merge his sentence left to right (i.e.\nfirst merge the first two words, then merge the result with the third word and\nso on). Write a program that prints the compressed word after the merging\nprocess ends. Input The first line contains an integer \n    n\n (\n    1 \n    \u2264 n\n    \n    \u2264 10^5\n), the number of the words in Amugae's sentence. The second line\ncontains \n    n\n words separated by single space. Each words is non-empty and\nconsists of uppercase and lowercase English letters and digits ('A', 'B', ...,\n'Z', 'a', 'b', ..., 'z', '0', '1', ..., '9'). The total length of the words\ndoes not exceed \n    10^6\n. Output In the only line output the compressed word\nafter the merging process ends as described in the problem. Examples Input 5 I\nwant to order pizza Output Iwantorderpizza Input 5 sample please ease in out\nOutput sampleaseinout\n\n",
+        "cf_contest_id": 1200,
+        "cf_index": "E",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "hashing",
+            "implementation",
+            "string suffix structures",
+            "strings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\nI want to order pizza\r\n",
+                "Iwantorderpizza"
+            ],
+            [
+                "5\r\nsample please ease in out\r\n",
+                "sampleaseinout"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5\r\n1101 1001 001001 101 010\r\n",
+                "1101001001010"
+            ],
+            [
+                "4\r\nX XtS XtS XtSo4P0Mhj\r\n",
+                "XtSo4P0Mhj"
+            ],
+            [
+                "3\r\nU Ur Ur0d0\r\n",
+                "Ur0d0"
+            ],
+            [
+                "1\r\n6\r\n",
+                "6"
+            ],
+            [
+                "9\r\nM M5 M5D M5DAYBl0r6gmttCTR M5DAYBl0r6gmttCTRoKdM9EFrX22qBZpAc M5DAYBl0r6gmttCTRoKdM9EFrX22qBZpAczv7fKrVhg0xe M5DAYBl0r6gmttCTRoKdM9EFrX22qBZpAczv7fKrVhg0xe09re M5DAYBl0r6gmttCTRoKdM9EFrX22qBZpAczv7fKrVhg0xe09re M5DAYBl0r6gmttCTRoKdM9EFrX22qBZpAczv7fKrVhg0xe09re\r\n",
+                "M5DAYBl0r6gmttCTRoKdM9EFrX22qBZpAczv7fKrVhg0xe09re"
+            ],
+            [
+                "2\r\nGZOVAULTKS YRLKUYAEKR\r\n",
+                "GZOVAULTKSYRLKUYAEKR"
+            ],
+            [
+                "2\r\naazazazazzazzaaaaaazzzzzzazaazzzaaazazzazazazazzzaaaazzaazaaaazzzazaaz aavolbtepufsujlphroqnqstoeyhbxupaograoywxcktpbqqslnacrrdbhrrjhusphwgdk\r\n",
+                "aazazazazzazzaaaaaazzzzzzazaazzzaaazazzazazazazzzaaaazzaazaaaazzzazaazaavolbtepufsujlphroqnqstoeyhbxupaograoywxcktpbqqslnacrrdbhrrjhusphwgdk"
+            ],
+            [
+                "2\r\nbq5rwXgEwj 9J5SlbNxMd\r\n",
+                "bq5rwXgEwj9J5SlbNxMd"
+            ],
+            [
+                "2\r\nHGUYPQSZXU ZJAOWCFRFS\r\n",
+                "HGUYPQSZXUZJAOWCFRFS"
+            ],
+            [
+                "2\r\nAODHOVOPTS CACLMMYTRZ\r\n",
+                "AODHOVOPTSCACLMMYTRZ"
+            ],
+            [
+                "2\r\nLGOCVRNUJM NIBURADGYI\r\n",
+                "LGOCVRNUJMNIBURADGYI"
+            ],
+            [
+                "2\r\nORKJRPHXPV GKQFDIKTTC\r\n",
+                "ORKJRPHXPVGKQFDIKTTC"
+            ],
+            [
+                "2\r\nYVEJJFPBLF EBYJOLHLYG\r\n",
+                "YVEJJFPBLFEBYJOLHLYG"
+            ],
+            [
+                "2\r\nRADPLVBQJI GOQXTSHOVI\r\n",
+                "RADPLVBQJIGOQXTSHOVI"
+            ],
+            [
+                "2\r\nKSVNVFMJFN JSTWMEKJSE\r\n",
+                "KSVNVFMJFNJSTWMEKJSE"
+            ],
+            [
+                "2\r\nYMHSAJVNHS OLBLSZJPKA\r\n",
+                "YMHSAJVNHSOLBLSZJPKA"
+            ],
+            [
+                "2\r\nPCXFTTTQEZ EHZMCWSWUW\r\n",
+                "PCXFTTTQEZEHZMCWSWUW"
+            ],
+            [
+                "2\r\nHGLFPQAWRX UFBJCSHAMX\r\n",
+                "HGLFPQAWRXUFBJCSHAMX"
+            ],
+            [
+                "2\r\nIWWQBEDHIB EPFFEZMGUT\r\n",
+                "IWWQBEDHIBEPFFEZMGUT"
+            ],
+            [
+                "2\r\nBPHNQFVKHX NFXBLVAWZL\r\n",
+                "BPHNQFVKHXNFXBLVAWZL"
+            ],
+            [
+                "2\r\nOBSCVDCLBF FHTKYXTJAM\r\n",
+                "OBSCVDCLBFHTKYXTJAM"
+            ],
+            [
+                "2\r\nCIEROUUTSF YNNJOJXOUE\r\n",
+                "CIEROUUTSFYNNJOJXOUE"
+            ],
+            [
+                "2\r\nNMKQXSGSTZ SNKZIWTZBU\r\n",
+                "NMKQXSGSTZSNKZIWTZBU"
+            ],
+            [
+                "2\r\nNVWCPPHZRE YCAISQPUNG\r\n",
+                "NVWCPPHZREYCAISQPUNG"
+            ],
+            [
+                "2\r\nUOUCZFCFTJ NOZEZVYKRI\r\n",
+                "UOUCZFCFTJNOZEZVYKRI"
+            ],
+            [
+                "2\r\nPHIQTNTZJB OKECPIOWTG\r\n",
+                "PHIQTNTZJBOKECPIOWTG"
+            ],
+            [
+                "2\r\nSPOXHGFONL MVCILDMZKE\r\n",
+                "SPOXHGFONLMVCILDMZKE"
+            ],
+            [
+                "2\r\nZSWIGNWUXL CJODATHMNP\r\n",
+                "ZSWIGNWUXLCJODATHMNP"
+            ],
+            [
+                "2\r\nAMRAAAXMBK TOZMMTPDOW\r\n",
+                "AMRAAAXMBKTOZMMTPDOW"
+            ],
+            [
+                "2\r\nVUGPJSZQZS INWEJMGCKP\r\n",
+                "VUGPJSZQZSINWEJMGCKP"
+            ],
+            [
+                "2\r\nLYNLCBWSWT ISHPCGZYIB\r\n",
+                "LYNLCBWSWTISHPCGZYIB"
+            ],
+            [
+                "2\r\nYUZEVQOKKA VCNLMSKKPU\r\n",
+                "YUZEVQOKKAVCNLMSKKPU"
+            ],
+            [
+                "2\r\nAHFEQLNYUW CXRCYPRCZE\r\n",
+                "AHFEQLNYUWCXRCYPRCZE"
+            ],
+            [
+                "2\r\nbabaaabbbbaaaaaaaaaaaa aaaaabaaaabaababaaaaaa\r\n",
+                "babaaabbbbaaaaaaaaaaaabaaaabaababaaaaaa"
+            ],
+            [
+                "2\r\naaaaaaaaaaaaaaabbbaaaa bababbaabaaaabaaaaaaba\r\n",
+                "aaaaaaaaaaaaaaabbbaaaabababbaabaaaabaaaaaaba"
+            ],
+            [
+                "2\r\nbbbbaaabaaaaaaabaabbaa aaaabbaaaabbabaabbaaba\r\n",
+                "bbbbaaabaaaaaaabaabbaaaabbaaaabbabaabbaaba"
+            ],
+            [
+                "2\r\nBFXVGBRFWO NADCRPEPBG\r\n",
+                "BFXVGBRFWONADCRPEPBG"
+            ],
+            [
+                "2\r\nSMSIJUGPJC SUIMAVEHVU\r\n",
+                "SMSIJUGPJCSUIMAVEHVU"
+            ],
+            [
+                "2\r\nNIAUHLNUME JKWZUTHCRN\r\n",
+                "NIAUHLNUMEJKWZUTHCRN"
+            ],
+            [
+                "2\r\nVIDNUOKVJR NMRSKKMPRY\r\n",
+                "VIDNUOKVJRNMRSKKMPRY"
+            ],
+            [
+                "2\r\nATRNWOFYRT TPYBJXWJDI\r\n",
+                "ATRNWOFYRTPYBJXWJDI"
+            ]
+        ]
+    }
+]

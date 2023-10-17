@@ -1,0 +1,90 @@
+[
+    {
+        "name": "Johnny and Contribution",
+        "description": "Today Johnny wants to increase his contribution. His plan assumes writing\n\n    n\n blogs. One blog covers one topic, but one topic can be covered by many\nblogs. Moreover, some blogs have references to each other. Each pair of blogs\nthat are connected by a reference has to cover different topics because\notherwise, the readers can notice that they are split just for more\ncontribution. Set of blogs and bidirectional references between some pairs of\nthem is called blogs network. There are \n    n\n different topics, numbered\nfrom \n    1\n to \n    n\n sorted by Johnny's knowledge. The structure of the\nblogs network is already prepared. Now Johnny has to write the blogs in some\norder. He is lazy, so each time before writing a blog, he looks at it's\nalready written neighbors (the blogs referenced to current one) and chooses\nthe topic with the smallest number which is not covered by neighbors. It's\neasy to see that this strategy will always allow him to choose a topic because\nthere are at most \n    n - 1\n neighbors. For example, if already written\nneighbors of the current blog have topics number \n    1\n, \n    3\n, \n    1\n,\n\n    5\n, and \n    2\n, Johnny will choose the topic number \n    4\n for the\ncurrent blog, because topics number \n    1\n, \n    2\n and \n    3\n are already\ncovered by neighbors and topic number \n    4\n isn't covered. As a good friend,\nyou have done some research and predicted the best topic for each blog. Can\nyou tell Johnny, in which order he has to write the blogs, so that his\nstrategy produces the topic assignment chosen by you? Input The first line\ncontains two integers \n    n\n \n    (1 \n    \u2264 n \n    \u2264 5 \n    \u00b7 10^5)\n and\n\n    m\n \n    (0 \n    \u2264 m \n    \u2264 5 \n    \u00b7 10^5)\n \u2014 the number of blogs and\nreferences, respectively. Each of the following \n    m\n lines contains two\nintegers \n    a\n and \n    b\n (\n    a \n    \u2260 b\n; \n    1 \n    \u2264 a, b \n    \u2264 n\n),\nwhich mean that there is a reference between blogs \n    a\n and \n    b\n. It's\nguaranteed that the graph doesn't contain multiple edges. The last line\ncontains \n    n\n integers \n    t_1, t_2, \n    \u2026, t_n\n, \n    i\n-th of them\ndenotes desired topic number of the \n    i\n-th blog (\n    1 \n    \u2264 t_i \n    \u2264\n    n\n). Output If the solution does not exist, then write \n    -1\n. Otherwise,\noutput \n    n\n distinct integers \n    p_1, p_2, \n    \u2026, p_n\n \n    (1 \n    \u2264\n    p_i \n    \u2264 n)\n, which describe the numbers of blogs in order which Johnny\nshould write them. If there are multiple answers, print any. Examples Input 3\n3 1 2 2 3 3 1 2 1 3 Output 2 1 3 Input 3 3 1 2 2 3 3 1 1 1 1 Output -1 Input 5\n3 1 2 2 3 4 5 2 1 2 2 1 Output 2 5 1 3 4 Note In the first example, Johnny\nstarts with writing blog number \n    2\n, there are no already written\nneighbors yet, so it receives the first topic. Later he writes blog number\n\n    1\n, it has reference to the already written second blog, so it receives\nthe second topic. In the end, he writes blog number \n    3\n, it has references\nto blogs number \n    1\n and \n    2\n so it receives the third topic. Second\nexample: There does not exist any permutation fulfilling given conditions.\nThird example: First Johnny writes blog \n    2\n, it receives the topic\n\n    1\n. Then he writes blog \n    5\n, it receives the topic \n    1\n too\nbecause it doesn't have reference to single already written blog \n    2\n. Then\nhe writes blog number \n    1\n, it has reference to blog number \n    2\n with\ntopic \n    1\n, so it receives the topic \n    2\n. Then he writes blog number\n\n    3\n which has reference to blog \n    2\n, so it receives the topic \n    2\n.\nThen he ends with writing blog number \n    4\n which has reference to blog\n\n    5\n and receives the topic \n    2\n.\n\n",
+        "cf_contest_id": 1361,
+        "cf_index": "A",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3\r\n1 2\r\n2 3\r\n3 1\r\n2 1 3\r\n",
+                "2 1 3 "
+            ],
+            [
+                "3 3\r\n1 2\r\n2 3\r\n3 1\r\n1 1 1\r\n",
+                "-1"
+            ],
+            [
+                "5 3\r\n1 2\r\n2 3\r\n4 5\r\n2 1 2 2 1\r\n",
+                "2 5 1 3 4 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 0\r\n1\r\n",
+                "1 "
+            ],
+            [
+                "10 20\r\n8 9\r\n2 1\r\n8 4\r\n3 4\r\n4 6\r\n10 3\r\n7 8\r\n2 3\r\n10 7\r\n10 9\r\n3 6\r\n3 5\r\n9 1\r\n10 2\r\n5 8\r\n8 3\r\n8 1\r\n7 5\r\n9 2\r\n6 8\r\n2 4 3 2 2 4 3 1 3 1\r\n",
+                "8 10 1 4 5 3 7 9 2 6 "
+            ],
+            [
+                "2 1\r\n1 2\r\n1 2\r\n",
+                "1 2 "
+            ],
+            [
+                "2 1\r\n1 2\r\n1 1\r\n",
+                "-1"
+            ],
+            [
+                "5 4\r\n1 2\r\n5 2\r\n5 3\r\n1 5\r\n1 3 1 1 2\r\n",
+                "1 3 4 5 2 "
+            ],
+            [
+                "8 4\r\n1 6\r\n1 3\r\n2 6\r\n4 7\r\n2 2 1 1 1 1 2 1\r\n",
+                "3 4 5 6 8 1 2 7 "
+            ],
+            [
+                "5 10\r\n1 3\r\n4 1\r\n1 2\r\n1 5\r\n3 4\r\n3 2\r\n5 2\r\n4 2\r\n3 5\r\n4 5\r\n3 5 2 1 4\r\n",
+                "4 3 1 5 2 "
+            ],
+            [
+                "25 50\r\n25 2\r\n6 17\r\n11 4\r\n3 18\r\n11 20\r\n6 7\r\n24 15\r\n1 8\r\n13 5\r\n12 25\r\n15 18\r\n14 21\r\n13 6\r\n5 10\r\n3 14\r\n1 2\r\n23 13\r\n12 20\r\n6 4\r\n8 9\r\n3 5\r\n10 7\r\n20 2\r\n20 18\r\n7 4\r\n8 25\r\n15 6\r\n24 14\r\n2 23\r\n2 13\r\n11 3\r\n16 21\r\n18 10\r\n22 1\r\n5 24\r\n6 18\r\n22 23\r\n4 13\r\n8 18\r\n5 20\r\n22 17\r\n20 7\r\n19 15\r\n10 12\r\n2 3\r\n1 20\r\n2 24\r\n7 14\r\n16 17\r\n5 4\r\n4 3 1 1 3 4 3 2 1 1 2 2 2 2 2 2 1 3 1 1 1 2 1 1 1\r\n",
+                "3 4 9 10 17 19 20 21 23 24 25 8 11 12 13 14 15 16 22 2 5 7 18 1 6 "
+            ],
+            [
+                "4 4\r\n1 2\r\n1 3\r\n2 4\r\n3 4\r\n1 2 2 3\r\n",
+                "-1"
+            ],
+            [
+                "6 5\r\n1 3\r\n3 2\r\n2 4\r\n2 5\r\n5 6\r\n1 3 3 1 2 1\r\n",
+                "-1"
+            ],
+            [
+                "4 3\r\n1 2\r\n2 3\r\n3 4\r\n1 3 3 1\r\n",
+                "-1"
+            ],
+            [
+                "2 1\r\n1 2\r\n2 2\r\n",
+                "-1"
+            ],
+            [
+                "5 3\r\n1 3\r\n2 3\r\n4 2\r\n1 2 3 1 4\r\n",
+                "-1"
+            ],
+            [
+                "3 1\r\n1 2\r\n1 2 2\r\n",
+                "-1"
+            ]
+        ]
+    }
+]

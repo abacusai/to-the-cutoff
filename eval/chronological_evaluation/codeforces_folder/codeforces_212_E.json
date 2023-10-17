@@ -1,0 +1,101 @@
+[
+    {
+        "name": "IT Restaurants",
+        "description": "\u0421ity N. has a huge problem with roads, food and IT-infrastructure. In total\nthe city has n junctions, some pairs of them are connected by bidirectional\nroads. The road network consists of n - 1 roads, you can get from any junction\nto any other one by these roads. Yes, you're right \u2014 the road network forms an\nundirected tree. Recently, the Mayor came up with a way that eliminates the\nproblems with the food and the IT-infrastructure at the same time! He decided\nto put at the city junctions restaurants of two well-known cafe networks for\nIT professionals: \"iMac D0naldz\" and \"Burger Bing\". Since the network owners\nare not friends, it is strictly prohibited to place two restaurants of\ndifferent networks on neighboring junctions. There are other requirements.\nHere's the full list: each junction must have at most one restaurant; each\nrestaurant belongs either to \"iMac D0naldz\", or to \"Burger Bing\"; each network\nshould build at least one restaurant; there is no pair of junctions that are\nconnected by a road and contains restaurants of different networks. The Mayor\nis going to take a large tax from each restaurant, so he is interested in\nmaking the total number of the restaurants as large as possible. Help the\nMayor to analyze the situation. Find all such pairs of (a, b) that a\nrestaurants can belong to \"iMac D0naldz\", b restaurants can belong to \"Burger\nBing\", and the sum of a + b is as large as possible. Input The first input\nline contains integer n (3 \u2264 n \u2264 5000) \u2014 the number of junctions in the city.\nNext n - 1 lines list all roads one per line. Each road is given as a pair of\nintegers xi, yi (1 \u2264 xi, yi \u2264 n) \u2014 the indexes of connected junctions.\nConsider the junctions indexed from 1 to n. It is guaranteed that the given\nroad network is represented by an undirected tree with n vertexes. Output\nPrint on the first line integer z \u2014 the number of sought pairs. Then print all\nsought pairs (a, b) in the order of increasing of the first component a.\nExamples Input 5 1 2 2 3 3 4 4 5 Output 3 1 3 2 2 3 1 Input 10 1 2 2 3 3 4 5 6\n6 7 7 4 8 9 9 10 10 4 Output 6 1 8 2 7 3 6 6 3 7 2 8 1 Note The figure below\nshows the answers to the first test case. The junctions with \"iMac D0naldz\"\nrestaurants are marked red and \"Burger Bing\" restaurants are marked blue.\n\n",
+        "cf_contest_id": 212,
+        "cf_index": "E",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "trees"
+        ],
+        "time_limit_seconds": 1.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n",
+                "3\r\n1 3\r\n2 2\r\n3 1\r\n"
+            ],
+            [
+                "10\r\n1 2\r\n2 3\r\n3 4\r\n5 6\r\n6 7\r\n7 4\r\n8 9\r\n9 10\r\n10 4\r\n",
+                "6\r\n1 8\r\n2 7\r\n3 6\r\n6 3\r\n7 2\r\n8 1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n3 1\r\n2 1\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "4\r\n4 3\r\n4 1\r\n4 2\r\n",
+                "2\r\n1 2\r\n2 1\r\n"
+            ],
+            [
+                "5\r\n5 4\r\n4 1\r\n5 2\r\n3 2\r\n",
+                "3\r\n1 3\r\n2 2\r\n3 1\r\n"
+            ],
+            [
+                "5\r\n1 4\r\n2 1\r\n5 1\r\n1 3\r\n",
+                "3\r\n1 3\r\n2 2\r\n3 1\r\n"
+            ],
+            [
+                "6\r\n1 5\r\n3 4\r\n6 1\r\n3 2\r\n3 1\r\n",
+                "4\r\n1 4\r\n2 3\r\n3 2\r\n4 1\r\n"
+            ],
+            [
+                "6\r\n5 1\r\n1 2\r\n1 3\r\n6 1\r\n4 1\r\n",
+                "4\r\n1 4\r\n2 3\r\n3 2\r\n4 1\r\n"
+            ],
+            [
+                "6\r\n5 4\r\n2 1\r\n2 5\r\n3 4\r\n3 6\r\n",
+                "4\r\n1 4\r\n2 3\r\n3 2\r\n4 1\r\n"
+            ],
+            [
+                "18\r\n7 12\r\n14 8\r\n11 4\r\n6 3\r\n2 3\r\n15 10\r\n8 16\r\n6 16\r\n15 18\r\n18 16\r\n5 9\r\n11 17\r\n13 9\r\n10 7\r\n8 9\r\n7 1\r\n4 3\r\n",
+                "12\r\n1 16\r\n2 15\r\n3 14\r\n4 13\r\n5 12\r\n6 11\r\n11 6\r\n12 5\r\n13 4\r\n14 3\r\n15 2\r\n16 1\r\n"
+            ],
+            [
+                "7\r\n6 1\r\n7 4\r\n2 5\r\n3 7\r\n6 4\r\n5 4\r\n",
+                "4\r\n1 5\r\n2 4\r\n4 2\r\n5 1\r\n"
+            ],
+            [
+                "8\r\n7 3\r\n7 8\r\n5 6\r\n7 4\r\n2 5\r\n5 4\r\n1 8\r\n",
+                "6\r\n1 6\r\n2 5\r\n3 4\r\n4 3\r\n5 2\r\n6 1\r\n"
+            ],
+            [
+                "9\r\n7 3\r\n3 8\r\n2 1\r\n7 2\r\n8 4\r\n1 9\r\n6 5\r\n7 6\r\n",
+                "6\r\n1 7\r\n2 6\r\n3 5\r\n5 3\r\n6 2\r\n7 1\r\n"
+            ],
+            [
+                "9\r\n7 3\r\n3 8\r\n2 1\r\n7 2\r\n8 4\r\n1 9\r\n6 5\r\n7 6\r\n",
+                "6\r\n1 7\r\n2 6\r\n3 5\r\n5 3\r\n6 2\r\n7 1\r\n"
+            ],
+            [
+                "10\r\n4 5\r\n9 7\r\n1 6\r\n2 5\r\n7 4\r\n6 10\r\n8 3\r\n4 3\r\n6 7\r\n",
+                "8\r\n1 8\r\n2 7\r\n3 6\r\n4 5\r\n5 4\r\n6 3\r\n7 2\r\n8 1\r\n"
+            ],
+            [
+                "11\r\n6 11\r\n2 9\r\n11 3\r\n7 10\r\n4 6\r\n8 3\r\n2 5\r\n7 9\r\n11 2\r\n3 1\r\n",
+                "9\r\n1 9\r\n2 8\r\n3 7\r\n4 6\r\n5 5\r\n6 4\r\n7 3\r\n8 2\r\n9 1\r\n"
+            ],
+            [
+                "15\r\n7 11\r\n9 15\r\n6 12\r\n15 8\r\n4 2\r\n6 15\r\n6 5\r\n1 10\r\n14 9\r\n12 3\r\n10 3\r\n5 11\r\n13 2\r\n11 2\r\n",
+                "12\r\n1 13\r\n2 12\r\n3 11\r\n4 10\r\n5 9\r\n6 8\r\n8 6\r\n9 5\r\n10 4\r\n11 3\r\n12 2\r\n13 1\r\n"
+            ],
+            [
+                "16\r\n4 10\r\n2 12\r\n6 15\r\n12 5\r\n6 16\r\n7 16\r\n14 16\r\n10 15\r\n5 3\r\n11 15\r\n8 16\r\n13 8\r\n1 3\r\n5 9\r\n6 5\r\n",
+                "12\r\n1 14\r\n2 13\r\n3 12\r\n4 11\r\n5 10\r\n6 9\r\n9 6\r\n10 5\r\n11 4\r\n12 3\r\n13 2\r\n14 1\r\n"
+            ],
+            [
+                "20\r\n16 10\r\n8 6\r\n9 17\r\n9 5\r\n4 5\r\n3 7\r\n13 6\r\n19 5\r\n13 9\r\n10 8\r\n12 2\r\n2 14\r\n17 11\r\n18 20\r\n3 14\r\n18 19\r\n12 15\r\n9 14\r\n1 15\r\n",
+                "16\r\n1 18\r\n2 17\r\n3 16\r\n4 15\r\n5 14\r\n6 13\r\n7 12\r\n9 10\r\n10 9\r\n12 7\r\n13 6\r\n14 5\r\n15 4\r\n16 3\r\n17 2\r\n18 1\r\n"
+            ],
+            [
+                "20\r\n3 4\r\n17 11\r\n8 15\r\n7 20\r\n1 11\r\n5 4\r\n6 10\r\n19 6\r\n12 5\r\n7 19\r\n14 12\r\n14 16\r\n19 2\r\n18 7\r\n9 13\r\n17 13\r\n12 18\r\n9 18\r\n6 15\r\n",
+                "16\r\n1 18\r\n2 17\r\n3 16\r\n4 15\r\n5 14\r\n6 13\r\n7 12\r\n8 11\r\n11 8\r\n12 7\r\n13 6\r\n14 5\r\n15 4\r\n16 3\r\n17 2\r\n18 1\r\n"
+            ]
+        ]
+    }
+]

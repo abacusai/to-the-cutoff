@@ -1,0 +1,136 @@
+[
+    {
+        "name": "Hard problem",
+        "description": "Vasiliy is fond of solving different tasks. Today he found one he wasn't able\nto solve himself, so he asks you to help. Vasiliy is given n strings\nconsisting of lowercase English letters. He wants them to be sorted in\nlexicographical order (as in the dictionary), but he is not allowed to swap\nany of them. The only operation he is allowed to do is to reverse any of them\n(first character becomes last, second becomes one before last and so on). To\nreverse the i-th string Vasiliy has to spent ci units of energy. He is\ninterested in the minimum amount of energy he has to spent in order to have\nstrings sorted in lexicographical order. String A is lexicographically smaller\nthan string B if it is shorter than B (|A| < |B|) and is its prefix, or if\nnone of them is a prefix of the other and at the first position where they\ndiffer character in A is smaller than the character in B. For the purpose of\nthis problem, two equal strings nearby do not break the condition of sequence\nbeing sorted lexicographically. Input The first line of the input contains a\nsingle integer n (2 \u2264 n \u2264 100 000) \u2014 the number of strings. The second line\ncontains n integers ci (0 \u2264 ci \u2264 10^9), the i-th of them is equal to the\namount of energy Vasiliy has to spent in order to reverse the i-th string.\nThen follow n lines, each containing a string consisting of lowercase English\nletters. The total length of these strings doesn't exceed 100 000. Output If\nit is impossible to reverse some of the strings such that they will be located\nin lexicographical order, print - 1. Otherwise, print the minimum total amount\nof energy Vasiliy has to spent. Examples Input 2 1 2 ba ac Output 1 Input 3 1\n3 1 aa ba ac Output 1 Input 2 5 5 bbb aaa Output -1 Input 2 3 3 aaa aa Output\n-1 Note In the second sample one has to reverse string 2 or string 3. To\namount of energy required to reverse the string 3 is smaller. In the third\nsample, both strings do not change after reverse and they go in the wrong\norder, so the answer is - 1. In the fourth sample, both strings consists of\ncharacters 'a' only, but in the sorted order string \"aa\" should go before\nstring \"aaa\", thus the answer is - 1.\n\n",
+        "cf_contest_id": 706,
+        "cf_index": "C",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "strings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n1 2\r\nba\r\nac\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n1 3 1\r\naa\r\nba\r\nac\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n5 5\r\nbbb\r\naaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2\r\n3 3\r\naaa\r\naa\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n0 0 8 6\r\nbi\r\nqp\r\nbt\r\nya\r\n",
+                "8\r\n"
+            ],
+            [
+                "5\r\n8 0 4 8 2\r\nac\r\ncl\r\ngg\r\ngm\r\nfs\r\n",
+                "2\r\n"
+            ],
+            [
+                "10\r\n7 7 0 0 0 1 6 6 7 3\r\ndv\r\ngb\r\nvg\r\nxg\r\nkt\r\nml\r\nqm\r\nnq\r\nrt\r\nxn\r\n",
+                "6\r\n"
+            ],
+            [
+                "3\r\n999999999 999999999 999999999\r\nxosbqqnmxq\r\nsdbvjhvytx\r\naydpuidgvy\r\n",
+                "1999999998\r\n"
+            ],
+            [
+                "3\r\n228 1488 228\r\nkek\r\nlol\r\nmda\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n1 1\r\naa\r\naa\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n1000000000 1000000000\r\nba\r\nac\r\n",
+                "1000000000\r\n"
+            ],
+            [
+                "5\r\n1000000000 1000000000 1000000000 1000000000 1000000000\r\nea\r\ndb\r\ncc\r\nbd\r\nae\r\n",
+                "4000000000\r\n"
+            ],
+            [
+                "3\r\n1000000000 1000000000 1000000000\r\nca\r\nda\r\nab\r\n",
+                "3000000000\r\n"
+            ],
+            [
+                "2\r\n1000000000 1000000000\r\naba\r\naab\r\n",
+                "1000000000\r\n"
+            ],
+            [
+                "3\r\n1000000000 1000000000 1000000000\r\nza\r\nyb\r\nxc\r\n",
+                "2000000000\r\n"
+            ],
+            [
+                "11\r\n1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000\r\naz\r\nzb\r\nzc\r\nzd\r\nez\r\nfz\r\ngz\r\nzh\r\niz\r\nzj\r\nkz\r\n",
+                "5000000000\r\n"
+            ],
+            [
+                "10\r\n1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000\r\nzaaaaaaaaaa\r\nyaaaaaaaaa\r\nxaaaaaaaa\r\nwaaaaaaa\r\nvaaaaaa\r\nuaaaaa\r\ntaaaa\r\nsaaa\r\nraa\r\nqa\r\n",
+                "9000000000\r\n"
+            ],
+            [
+                "6\r\n1000000000 1000000000 1000000000 1000000000 1000000000 1000000000\r\nza\r\nyb\r\nxc\r\nwd\r\nve\r\nuf\r\n",
+                "5000000000\r\n"
+            ],
+            [
+                "5\r\n0 1000000000 1000000000 1000000000 1000000000\r\nb\r\nab\r\nab\r\nab\r\nab\r\n",
+                "4000000000\r\n"
+            ],
+            [
+                "4\r\n1000000000 1000000000 1000000000 1000000000\r\nzaaaaaaaaaaaaaaa\r\nybbbbbbbbbbbbbbb\r\nxccccccccccccccc\r\nwddddddddddddddd\r\n",
+                "3000000000\r\n"
+            ],
+            [
+                "6\r\n1000000000 1000000000 1000000000 1000000000 1000000000 1000000000\r\nba\r\nab\r\ndc\r\ncd\r\nfe\r\nef\r\n",
+                "3000000000\r\n"
+            ],
+            [
+                "10\r\n1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000\r\naaaaaaaaaaab\r\nab\r\naab\r\naaab\r\naaaab\r\naaaaab\r\naaaaaab\r\naaaaaaab\r\naaaaaaaab\r\naaaaaaaaab\r\n",
+                "8000000000\r\n"
+            ],
+            [
+                "13\r\n1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000\r\naz\r\nab\r\nac\r\nad\r\nae\r\naf\r\nag\r\nah\r\nai\r\naj\r\nak\r\nal\r\nam\r\n",
+                "12000000000\r\n"
+            ],
+            [
+                "3\r\n1000000000 1000000000 1000000000\r\ndaa\r\ncab\r\nbac\r\n",
+                "2000000000\r\n"
+            ],
+            [
+                "4\r\n1000000000 1000000000 1000000000 1000000000\r\nza\r\nbt\r\ncm\r\ndn\r\n",
+                "1000000000\r\n"
+            ],
+            [
+                "4\r\n1000000000 1000000000 1000000000 1000000000\r\nza\r\nyb\r\nxc\r\nwd\r\n",
+                "3000000000\r\n"
+            ],
+            [
+                "9\r\n1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000\r\na\r\nba\r\nab\r\nc\r\ndc\r\ncd\r\nx\r\nyx\r\nxy\r\n",
+                "3000000000\r\n"
+            ],
+            [
+                "10\r\n1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000\r\nbaaa\r\ncaaa\r\nbbbb\r\naaac\r\naaad\r\neeee\r\nadff\r\ngggg\r\nadah\r\naaai\r\n",
+                "7000000000\r\n"
+            ],
+            [
+                "3\r\n900000000 3 87654321\r\nda\r\nbb\r\nad\r\n",
+                "987654321\r\n"
+            ]
+        ]
+    }
+]

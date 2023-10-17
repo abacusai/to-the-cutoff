@@ -1,0 +1,206 @@
+[
+    {
+        "name": "Broken Monitor",
+        "description": "Innocentius has a problem \u2014 his computer monitor has broken. Now some of the\npixels are \"dead\", that is, they are always black. As consequence, Innocentius\ncan't play the usual computer games. He is recently playing the following game\nwith his younger brother Polycarpus. Innocentius is touch-typing a program\nthat paints a white square one-pixel wide frame on the black screen. As the\nmonitor is broken, some pixels that should be white remain black. Polycarpus\nshould look at what the program displayed on the screen and guess the position\nand size of the frame Innocentius has painted. Polycarpus doesn't like the\ngame but Innocentius persuaded brother to play as \"the game is good for the\nimagination and attention\". Help Polycarpus, automatize his part in the gaming\nprocess. Write the code that finds such possible square frame that: the\nframe's width is 1 pixel, the frame doesn't go beyond the borders of the\nscreen, all white pixels of the monitor are located on the frame, of all\nframes that satisfy the previous three conditions, the required frame must\nhave the smallest size. Formally, a square frame is represented by such pixels\nof the solid square, that are on the square's border, that is, are not fully\nsurrounded by the other pixels of the square. For example, if the frame's size\nis d = 3, then it consists of 8 pixels, if its size is d = 2, then it contains\n4 pixels and if d = 1, then the frame is reduced to a single pixel. Input The\nfirst line contains the resolution of the monitor as a pair of integers n, m\n(1 \u2264 n, m \u2264 2000). The next n lines contain exactly m characters each \u2014 the\nstate of the monitor pixels at the moment of the game. Character \".\" (period,\nASCII code 46) corresponds to the black pixel, and character \"w\" (lowercase\nEnglish letter w) corresponds to the white pixel. It is guaranteed that at\nleast one pixel of the monitor is white. Output Print the monitor screen.\nRepresent the sought frame by characters \"+\" (the \"plus\" character). The\npixels that has become white during the game mustn't be changed. Print them as\n\"w\". If there are multiple possible ways to position the frame of the minimum\nsize, print any of them. If the required frame doesn't exist, then print a\nsingle line containing number -1. Examples Input 4 8 ..w..w.. ........\n........ ..w..w.. Output ..w++w.. ..+..+.. ..+..+.. ..w++w.. Input 5 6 ......\n.w.... ...... ..w... ...... Output ...... +w+... +.+... ++w... ...... Input 2\n4 .... .w.. Output .... .w.. Input 2 6 w..w.w ...w.. Output -1 Note In the\nfirst sample the required size of the optimal frame equals 4. In the second\nsample the size of the optimal frame equals 3. In the third sample, the size\nof the optimal frame is 1. In the fourth sample, the required frame doesn't\nexist.\n\n",
+        "cf_contest_id": 370,
+        "cf_index": "D",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 8\r\n..w..w..\r\n........\r\n........\r\n..w..w..\r\n",
+                "..w++w..\r\n..+..+..\r\n..+..+..\r\n..w++w..\r\n"
+            ],
+            [
+                "5 6\r\n......\r\n.w....\r\n......\r\n..w...\r\n......\r\n",
+                "......\r\n+w+...\r\n+.+...\r\n++w...\r\n......\r\n"
+            ],
+            [
+                "2 4\r\n....\r\n.w..\r\n",
+                "....\r\n.w..\r\n"
+            ],
+            [
+                "2 6\r\nw..w.w\r\n...w..\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\nw\r\n",
+                "w\r\n"
+            ],
+            [
+                "2 1\r\nw\r\n.\r\n",
+                "w\r\n.\r\n"
+            ],
+            [
+                "2 1\r\nw\r\nw\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 2\r\nww\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2\r\nww\r\n..\r\n",
+                "ww\r\n++\r\n"
+            ],
+            [
+                "2 2\r\n.w\r\n.w\r\n",
+                "+w\r\n+w\r\n"
+            ],
+            [
+                "2 2\r\n..\r\nww\r\n",
+                "++\r\nww\r\n"
+            ],
+            [
+                "2 2\r\nw.\r\nw.\r\n",
+                "w+\r\nw+\r\n"
+            ],
+            [
+                "2 2\r\nw.\r\n.w\r\n",
+                "w+\r\n+w\r\n"
+            ],
+            [
+                "2 2\r\n..\r\nw.\r\n",
+                "..\r\nw.\r\n"
+            ],
+            [
+                "5 4\r\nwwww\r\nwwww\r\nwwww\r\nwwww\r\nwwww\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 4\r\n..w.\r\n..ww\r\n.www\r\n.w..\r\nwwww\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 4\r\nwwww\r\nw..w\r\nwwww\r\n.www\r\n..ww\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 2\r\n.w\r\n",
+                ".w\r\n"
+            ],
+            [
+                "2 2\r\n.w\r\n..\r\n",
+                ".w\r\n..\r\n"
+            ],
+            [
+                "5 2\r\n..\r\n.w\r\nww\r\n..\r\n..\r\n",
+                "..\r\n+w\r\nww\r\n..\r\n..\r\n"
+            ],
+            [
+                "6 2\r\nw.\r\n..\r\n..\r\n..\r\n..\r\n..\r\n",
+                "w.\r\n..\r\n..\r\n..\r\n..\r\n..\r\n"
+            ],
+            [
+                "3 2\r\n..\r\n.w\r\n..\r\n",
+                "..\r\n.w\r\n..\r\n"
+            ],
+            [
+                "4 2\r\nw.\r\n..\r\n..\r\n..\r\n",
+                "w.\r\n..\r\n..\r\n..\r\n"
+            ],
+            [
+                "2 1\r\n.\r\nw\r\n",
+                ".\r\nw\r\n"
+            ],
+            [
+                "6 1\r\n.\r\n.\r\nw\r\n.\r\n.\r\n.\r\n",
+                ".\r\n.\r\nw\r\n.\r\n.\r\n.\r\n"
+            ],
+            [
+                "1 3\r\n..w\r\n",
+                "..w\r\n"
+            ],
+            [
+                "4 1\r\n.\r\nw\r\n.\r\n.\r\n",
+                ".\r\nw\r\n.\r\n.\r\n"
+            ],
+            [
+                "6 2\r\n..\r\n.w\r\n..\r\n..\r\n..\r\n..\r\n",
+                "..\r\n.w\r\n..\r\n..\r\n..\r\n..\r\n"
+            ],
+            [
+                "2 1\r\nw\r\n.\r\n",
+                "w\r\n.\r\n"
+            ],
+            [
+                "5 1\r\n.\r\n.\r\n.\r\nw\r\n.\r\n",
+                ".\r\n.\r\n.\r\nw\r\n.\r\n"
+            ],
+            [
+                "6 1\r\nw\r\n.\r\n.\r\n.\r\n.\r\n.\r\n",
+                "w\r\n.\r\n.\r\n.\r\n.\r\n.\r\n"
+            ],
+            [
+                "2 1\r\nw\r\n.\r\n",
+                "w\r\n.\r\n"
+            ],
+            [
+                "1 3\r\n.w.\r\n",
+                ".w.\r\n"
+            ],
+            [
+                "4 1\r\n.\r\n.\r\n.\r\nw\r\n",
+                ".\r\n.\r\n.\r\nw\r\n"
+            ],
+            [
+                "4 2\r\n..\r\nw.\r\n.w\r\n..\r\n",
+                "..\r\nw+\r\n+w\r\n..\r\n"
+            ],
+            [
+                "2 2\r\n..\r\nw.\r\n",
+                "..\r\nw.\r\n"
+            ],
+            [
+                "4 2\r\n..\r\n..\r\nw.\r\n..\r\n",
+                "..\r\n..\r\nw.\r\n..\r\n"
+            ],
+            [
+                "5 2\r\n..\r\n..\r\n..\r\n..\r\nw.\r\n",
+                "..\r\n..\r\n..\r\n..\r\nw.\r\n"
+            ],
+            [
+                "2 2\r\n..\r\nw.\r\n",
+                "..\r\nw.\r\n"
+            ],
+            [
+                "2 1\r\nw\r\n.\r\n",
+                "w\r\n.\r\n"
+            ],
+            [
+                "4 1\r\n.\r\n.\r\nw\r\n.\r\n",
+                ".\r\n.\r\nw\r\n.\r\n"
+            ],
+            [
+                "6 1\r\n.\r\nw\r\n.\r\n.\r\n.\r\n.\r\n",
+                ".\r\nw\r\n.\r\n.\r\n.\r\n.\r\n"
+            ],
+            [
+                "2 1\r\n.\r\nw\r\n",
+                ".\r\nw\r\n"
+            ],
+            [
+                "1 3\r\n..w\r\n",
+                "..w\r\n"
+            ],
+            [
+                "3 1\r\n.\r\n.\r\nw\r\n",
+                ".\r\n.\r\nw\r\n"
+            ],
+            [
+                "6 1\r\n.\r\n.\r\n.\r\n.\r\n.\r\nw\r\n",
+                ".\r\n.\r\n.\r\n.\r\n.\r\nw\r\n"
+            ]
+        ]
+    }
+]

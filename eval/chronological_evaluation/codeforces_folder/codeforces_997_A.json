@@ -1,0 +1,438 @@
+[
+    {
+        "name": "Convert to Ones",
+        "description": "You've got a string \n    a_1, a_2, \n    \u2026, a_n\n, consisting of zeros and\nones. Let's call a sequence of consecutive elements \n    a_i, a_i + 1,\n    \n    \u2026, a_j\n (\n    1\n    \u2264 i\n    \u2264 j\n    \u2264 n\n) a substring of string\n\n    a\n. You can apply the following operations any number of times: Choose\nsome substring of string \n    a\n (for example, you can choose entire string)\nand reverse it, paying \n    x\n coins for it (for example, \u00ab0101101\u00bb\n\n    \u2192\n \u00ab0111001\u00bb); Choose some substring of string \n    a\n (for example,\nyou can choose entire string or just one symbol) and replace each symbol to\nthe opposite one (zeros are replaced by ones, and ones \u2014 by zeros), paying\n\n    y\n coins for it (for example, \u00ab0101101\u00bb \n    \u2192\n \u00ab0110001\u00bb). You can\napply these operations in any order. It is allowed to apply the operations\nmultiple times to the same substring. What is the minimum number of coins you\nneed to spend to get a string consisting only of ones? Input The first line of\ninput contains integers \n    n\n, \n    x\n and \n    y\n (\n    1 \n    \u2264 n \n    \u2264\n    300\n     000, 0 \n    \u2264 x, y \n    \u2264 10^9\n) \u2014 length of the string, cost of the\nfirst operation (substring reverse) and cost of the second operation\n(inverting all elements of substring). The second line contains the string\n\n    a\n of length \n    n\n, consisting of zeros and ones. Output Print a single\ninteger \u2014 the minimum total cost of operations you need to spend to get a\nstring consisting only of ones. Print \n    0\n, if you do not need to perform\nany operations. Examples Input 5 1 10 01000 Output 11 Input 5 10 1 01000\nOutput 2 Input 7 2 3 1111111 Output 0 Note In the first sample, at first you\nneed to reverse substring \n    [1 \n    \u2026 2]\n, and then you need to invert\nsubstring \n    [2 \n    \u2026 5]\n. Then the string was changed as follows: \u00ab01000\u00bb\n\n    \u2192\n \u00ab10000\u00bb \n    \u2192\n \u00ab11111\u00bb. The total cost of operations is \n    1\n    + 10 = 11\n. In the second sample, at first you need to invert substring\n\n    [1 \n    \u2026 1]\n, and then you need to invert substring \n    [3 \n    \u2026\n    5]\n. Then the string was changed as follows: \u00ab01000\u00bb \n    \u2192\n \u00ab11000\u00bb\n\n    \u2192\n \u00ab11111\u00bb. The overall cost is \n    1 + 1 = 2\n. In the third\nexample, string already consists only of ones, so the answer is \n    0\n.\n\n",
+        "cf_contest_id": 997,
+        "cf_index": "A",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 1 10\r\n01000\r\n",
+                "11\r\n"
+            ],
+            [
+                "5 10 1\r\n01000\r\n",
+                "2\r\n"
+            ],
+            [
+                "7 2 3\r\n1111111\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 60754033 959739508\r\n0\r\n",
+                "959739508\r\n"
+            ],
+            [
+                "1 431963980 493041212\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 314253869 261764879\r\n0\r\n",
+                "261764879\r\n"
+            ],
+            [
+                "1 491511050 399084767\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 163093925 214567542\r\n00\r\n",
+                "214567542\r\n"
+            ],
+            [
+                "2 340351106 646854722\r\n10\r\n",
+                "646854722\r\n"
+            ],
+            [
+                "2 222640995 489207317\r\n01\r\n",
+                "489207317\r\n"
+            ],
+            [
+                "2 399898176 552898277\r\n11\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 690218164 577155357\r\n00\r\n",
+                "577155357\r\n"
+            ],
+            [
+                "2 827538051 754412538\r\n10\r\n",
+                "754412538\r\n"
+            ],
+            [
+                "2 636702427 259825230\r\n01\r\n",
+                "259825230\r\n"
+            ],
+            [
+                "2 108926899 102177825\r\n11\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 368381052 440077270\r\n000\r\n",
+                "440077270\r\n"
+            ],
+            [
+                "3 505700940 617334451\r\n100\r\n",
+                "617334451\r\n"
+            ],
+            [
+                "3 499624340 643020827\r\n010\r\n",
+                "1142645167\r\n"
+            ],
+            [
+                "3 75308005 971848814\r\n110\r\n",
+                "971848814\r\n"
+            ],
+            [
+                "3 212627893 854138703\r\n001\r\n",
+                "854138703\r\n"
+            ],
+            [
+                "3 31395883 981351561\r\n101\r\n",
+                "981351561\r\n"
+            ],
+            [
+                "3 118671447 913685773\r\n011\r\n",
+                "913685773\r\n"
+            ],
+            [
+                "3 255991335 385910245\r\n111\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 688278514 268200134\r\n000\r\n",
+                "268200134\r\n"
+            ],
+            [
+                "3 825598402 445457315\r\n100\r\n",
+                "445457315\r\n"
+            ],
+            [
+                "3 300751942 45676507\r\n010\r\n",
+                "91353014\r\n"
+            ],
+            [
+                "3 517900980 438071829\r\n110\r\n",
+                "438071829\r\n"
+            ],
+            [
+                "3 400190869 280424424\r\n001\r\n",
+                "280424424\r\n"
+            ],
+            [
+                "3 577448050 344115384\r\n101\r\n",
+                "344115384\r\n"
+            ],
+            [
+                "3 481435271 459737939\r\n011\r\n",
+                "459737939\r\n"
+            ],
+            [
+                "3 931962412 913722450\r\n111\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 522194562 717060616\r\n0000\r\n",
+                "717060616\r\n"
+            ],
+            [
+                "4 659514449 894317797\r\n1000\r\n",
+                "894317797\r\n"
+            ],
+            [
+                "4 71574977 796834337\r\n0100\r\n",
+                "868409314\r\n"
+            ],
+            [
+                "4 248832158 934154224\r\n1100\r\n",
+                "934154224\r\n"
+            ],
+            [
+                "4 71474110 131122047\r\n0010\r\n",
+                "202596157\r\n"
+            ],
+            [
+                "4 308379228 503761290\r\n1010\r\n",
+                "812140518\r\n"
+            ],
+            [
+                "4 272484957 485636409\r\n0110\r\n",
+                "758121366\r\n"
+            ],
+            [
+                "4 662893590 704772137\r\n1110\r\n",
+                "704772137\r\n"
+            ],
+            [
+                "4 545183479 547124732\r\n0001\r\n",
+                "547124732\r\n"
+            ],
+            [
+                "4 684444619 722440661\r\n1001\r\n",
+                "722440661\r\n"
+            ],
+            [
+                "4 477963686 636258459\r\n0101\r\n",
+                "1114222145\r\n"
+            ],
+            [
+                "4 360253575 773578347\r\n1101\r\n",
+                "773578347\r\n"
+            ],
+            [
+                "4 832478048 910898234\r\n0011\r\n",
+                "910898234\r\n"
+            ],
+            [
+                "4 343185412 714767937\r\n1011\r\n",
+                "714767937\r\n"
+            ],
+            [
+                "4 480505300 892025118\r\n0111\r\n",
+                "892025118\r\n"
+            ],
+            [
+                "4 322857895 774315007\r\n1111\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 386548854 246539479\r\n0000\r\n",
+                "246539479\r\n"
+            ],
+            [
+                "4 523868742 128829368\r\n1000\r\n",
+                "128829368\r\n"
+            ],
+            [
+                "4 956155921 11119257\r\n0100\r\n",
+                "22238514\r\n"
+            ],
+            [
+                "4 188376438 93475808\r\n1100\r\n",
+                "93475808\r\n"
+            ],
+            [
+                "4 754947032 158668188\r\n0010\r\n",
+                "317336376\r\n"
+            ],
+            [
+                "4 927391856 637236921\r\n1010\r\n",
+                "1274473842\r\n"
+            ],
+            [
+                "4 359679035 109461393\r\n0110\r\n",
+                "218922786\r\n"
+            ],
+            [
+                "4 991751283 202031630\r\n1110\r\n",
+                "202031630\r\n"
+            ],
+            [
+                "4 339351517 169008463\r\n0001\r\n",
+                "169008463\r\n"
+            ],
+            [
+                "4 771638697 346265644\r\n1001\r\n",
+                "346265644\r\n"
+            ],
+            [
+                "4 908958584 523522825\r\n0101\r\n",
+                "1047045650\r\n"
+            ],
+            [
+                "4 677682252 405812714\r\n1101\r\n",
+                "405812714\r\n"
+            ],
+            [
+                "4 815002139 288102603\r\n0011\r\n",
+                "288102603\r\n"
+            ],
+            [
+                "4 952322026 760327076\r\n1011\r\n",
+                "760327076\r\n"
+            ],
+            [
+                "4 663334158 312481698\r\n0111\r\n",
+                "312481698\r\n"
+            ],
+            [
+                "4 840591339 154834293\r\n1111\r\n",
+                "0\r\n"
+            ],
+            [
+                "14 3 11\r\n10110100011001\r\n",
+                "20\r\n"
+            ],
+            [
+                "19 1 1\r\n1010101010101010101\r\n",
+                "9\r\n"
+            ],
+            [
+                "1 10 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 100 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 1000 1\r\n11111\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 10 1\r\n11111\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 3 2\r\n1111111\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 1 10\r\n10101\r\n",
+                "11\r\n"
+            ],
+            [
+                "1 3 2\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 10 1\r\n11\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 148823922 302792601\r\n1010\r\n",
+                "451616523\r\n"
+            ],
+            [
+                "1 2 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 2 3\r\n00011\r\n",
+                "3\r\n"
+            ],
+            [
+                "1 5 0\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 2 3\r\n1001001\r\n",
+                "5\r\n"
+            ],
+            [
+                "10 1 1000000000\r\n1111010111\r\n",
+                "1000000001\r\n"
+            ],
+            [
+                "25 999999998 999999999\r\n1011001110101010100111001\r\n",
+                "7999999985\r\n"
+            ],
+            [
+                "2 0 1\r\n00\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1 100\r\n10\r\n",
+                "100\r\n"
+            ],
+            [
+                "7 20 3\r\n1111111\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1 0\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1 10\r\n010\r\n",
+                "11\r\n"
+            ],
+            [
+                "2 1 0\r\n11\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 100 3\r\n1111111\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 1 1000\r\n10101\r\n",
+                "1001\r\n"
+            ],
+            [
+                "5 2 1\r\n11111\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1000 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 799543940 488239239\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 1 1000\r\n010101\r\n",
+                "1002\r\n"
+            ],
+            [
+                "5 11 1\r\n11111\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 2 3\r\n10101\r\n",
+                "5\r\n"
+            ],
+            [
+                "3 10 1\r\n111\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 9 10\r\n1001011\r\n",
+                "19\r\n"
+            ],
+            [
+                "5 5 6\r\n10101\r\n",
+                "11\r\n"
+            ],
+            [
+                "1 1000000000 0\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 0 1\r\n0101\r\n",
+                "1\r\n"
+            ],
+            [
+                "8 2 3\r\n10101010\r\n",
+                "9\r\n"
+            ],
+            [
+                "6 3 100\r\n010101\r\n",
+                "106\r\n"
+            ],
+            [
+                "3 3 2\r\n111\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 20 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1 2\r\n01\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

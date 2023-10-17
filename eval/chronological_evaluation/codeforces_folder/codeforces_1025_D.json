@@ -1,0 +1,219 @@
+[
+    {
+        "name": "Recovering BST",
+        "description": "Dima the hamster enjoys nibbling different things: cages, sticks, bad\nproblemsetters and even trees! Recently he found a binary search tree and\ninstinctively nibbled all of its edges, hence messing up the vertices. Dima\nknows that if Andrew, who has been thoroughly assembling the tree for a long\ntime, comes home and sees his creation demolished, he'll get extremely upset.\nTo not let that happen, Dima has to recover the binary search tree. Luckily,\nhe noticed that any two vertices connected by a direct edge had their greatest\ncommon divisor value exceed \n    1\n. Help Dima construct such a binary search\ntree or determine that it's impossible. The definition and properties of a\nbinary search tree can be found here. Input The first line contains the number\nof vertices \n    n\n (\n    2 \n    \u2264 n \n    \u2264 700\n). The second line features\n\n    n\n distinct integers \n    a_i\n (\n    2 \n    \u2264 a_i \n    \u2264 10^9\n) \u2014 the\nvalues of vertices in ascending order. Output If it is possible to reassemble\nthe binary search tree, such that the greatest common divisor of any two\nvertices connected by the edge is greater than \n    1\n, print \"Yes\" (quotes\nfor clarity). Otherwise, print \"No\" (quotes for clarity). Examples Input 6 3 6\n9 18 36 108 Output Yes Input 2 7 17 Output No Input 9 4 8 10 12 15 18 33 44 81\nOutput Yes Note The picture below illustrates one of the possible trees for\nthe first example. The picture below illustrates one of the possible trees for\nthe third example.\n\n",
+        "cf_contest_id": 1025,
+        "cf_index": "D",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dp",
+            "math",
+            "number theory",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n3 6 9 18 36 108\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "2\r\n7 17\r\n",
+                "No\r\n"
+            ],
+            [
+                "9\r\n4 8 10 12 15 18 33 44 81\r\n",
+                "Yes\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "22\r\n2 4 8 16 32 96 288 576 1728 3456 10368 20736 62208 186624 559872 1119744 3359232 10077696 30233088 90699264 181398528 544195584\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "14\r\n122501 245002 367503 735006 1225010 4287535 8575070 21437675 42875350 85750700 171501400 343002800 531654340 823206720\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "21\r\n2 1637 8185 16370 32740 49110 98220 106405 532025 671170 1225010 5267543 10535086 21070172 42140344 63210516 94815774 189631548 379263096 568894644 632105160\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "23\r\n5 10 149 298 397 794 1588 3176 6352 12704 20644 30966 61932 103220 118306 208600 312900 625800 1225010 13107607 249044533 498089066 917532490\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "29\r\n2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384 32768 65536 131072 262144 524288 1048576 2097152 4194304 8388608 16777216 33554432 67108864 134217728 268435456 536870912\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "21\r\n2 6 18 54 216 432 1296 5184 10368 31104 124416 248832 746496 1492992 2985984 5971968 17915904 53747712 107495424 214990848 644972544\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "13\r\n2 12 60 300 900 6300 44100 176400 352800 705600 3528000 21168000 148176000\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "27\r\n17 34 68 85 170 340 510 1020 1105 22621 45242 90484 113105 226210 452420 565525 2284721 11423605 15993047 47979141 79965235 114236050 124981025 199969640 299954460 599908920 999848200\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "27\r\n13 26 52 104 208 221 442 884 1105 4211 12633 25266 63165 126330 130541 261082 522164 1044328 1305410 1697033 12426661 37279983 111839949 223679898 298239864 385226491 721239025\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "24\r\n13 26 52 104 130 260 520 728 1105 238529 477058 954116 1908232 3816464 4293522 6440283 12880566 20274965 40549930 60824895 121649790 243299580 263574545 527149090\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "27\r\n5 10 29 58 116 174 2297 4594 9188 18376 36752 43643 415757 831514 1663028 2494542 6236355 12472710 22450878 44901756 47396298 68344938 114906990 229813980 306418640 612837280 919255920\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "30\r\n5 10 14 28 42 3709 7418 11127 14836 29672 44508 55635 74180 148360 222540 445080 778890 1557780 2039646 5778997 11557994 23115988 46231976 92463952 138695928 208043892 312065838 624131676 832175568 928038930\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "25\r\n2 4 8 10 25 50 100 107903 215806 431612 863224 1726448 3452896 4316120 8632240 17264480 21580600 32370900 64741800 86322400 172644800 193362176 302128400 604256800 841824100\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "30\r\n3 5 15 30 55 77 154 231 462 770 1540 2310 4569 13707 41121 123363 246726 424917 662505 1987515 5962545 7950060 15900120 23850180 35775270 71550540 132501000 265002000 397503000 795006000\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "36\r\n3 41 82 123 174 216 432 864 1080 1228 2149 4298 8596 11052 22104 33156 35919 71838 179595 359190 431028 862056 994680 1315440 1753920 3507840 7015680 10523520 21047040 26500200 53000400 106000800 132501000 176668000 353336000 530004000\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "29\r\n2 4 8 16 24 449 898 1796 3592 5388 16613 33226 66452 132904 199356 398712 689664 1375736 2751472 3439340 6878680 13757360 27514720 52277968 86671368 132501000 265002000 530004000 795006000\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "4\r\n2 3 5 30\r\n",
+                "No\r\n"
+            ],
+            [
+                "9\r\n2 3 5 7 9 11 13 17 9699690\r\n",
+                "No\r\n"
+            ],
+            [
+                "2\r\n2 4\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "4\r\n23 247 299 703\r\n",
+                "No\r\n"
+            ],
+            [
+                "4\r\n3 4 9 12\r\n",
+                "No\r\n"
+            ],
+            [
+                "5\r\n2 6 9 10 81\r\n",
+                "No\r\n"
+            ],
+            [
+                "5\r\n2 3 5 7 210\r\n",
+                "No\r\n"
+            ],
+            [
+                "4\r\n7 12 24 77\r\n",
+                "No\r\n"
+            ],
+            [
+                "11\r\n2 6 15 35 77 143 221 323 437 667 899\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "4\r\n3 5 7 105\r\n",
+                "No\r\n"
+            ],
+            [
+                "5\r\n3 5 7 11 1155\r\n",
+                "No\r\n"
+            ],
+            [
+                "4\r\n3 7 13 273\r\n",
+                "No\r\n"
+            ],
+            [
+                "4\r\n3 7 14 99\r\n",
+                "No\r\n"
+            ],
+            [
+                "4\r\n14 15 35 39\r\n",
+                "No\r\n"
+            ],
+            [
+                "4\r\n2 3 4 9\r\n",
+                "No\r\n"
+            ],
+            [
+                "6\r\n2 3 5 7 11 2310\r\n",
+                "No\r\n"
+            ],
+            [
+                "4\r\n3 5 6 105\r\n",
+                "No\r\n"
+            ],
+            [
+                "2\r\n4 6\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "7\r\n2 6 15 35 77 85 143\r\n",
+                "No\r\n"
+            ],
+            [
+                "8\r\n3 7 16 18 36 57 84 90\r\n",
+                "No\r\n"
+            ],
+            [
+                "4\r\n2 3 4 6\r\n",
+                "No\r\n"
+            ],
+            [
+                "5\r\n3 4 5 7 420\r\n",
+                "No\r\n"
+            ],
+            [
+                "9\r\n2 3 4 5 7 9 25 49 210\r\n",
+                "No\r\n"
+            ],
+            [
+                "4\r\n30 34 57 115\r\n",
+                "No\r\n"
+            ],
+            [
+                "8\r\n2 3 5 14 33 65 119 187\r\n",
+                "No\r\n"
+            ],
+            [
+                "5\r\n2 3 210 485 707\r\n",
+                "No\r\n"
+            ],
+            [
+                "7\r\n7 38 690 717 11165 75361 104117\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "6\r\n5 11 18 33 44 81\r\n",
+                "No\r\n"
+            ],
+            [
+                "5\r\n11 18 33 44 81\r\n",
+                "No\r\n"
+            ],
+            [
+                "4\r\n2 4 8 16\r\n",
+                "Yes\r\n"
+            ]
+        ]
+    }
+]

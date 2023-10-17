@@ -1,0 +1,337 @@
+[
+    {
+        "name": "Bash's Big Day",
+        "description": "Bash has set out on a journey to become the greatest Pokemon master. To get\nhis first Pokemon, he went to Professor Zulu's Lab. Since Bash is Professor\nZulu's favourite student, Zulu allows him to take as many Pokemon from his lab\nas he pleases. But Zulu warns him that a group of k > 1 Pokemon with strengths\ns1, s2, s3, ..., sk tend to fight among each other if gcd(s1, s2, s3, ...,\nsk) = 1 (see notes for gcd definition). Bash, being smart, does not want his\nPokemon to fight among each other. However, he also wants to maximize the\nnumber of Pokemon he takes from the lab. Can you help Bash find out the\nmaximum number of Pokemon he can take? Note: A Pokemon cannot fight with\nitself. Input The input consists of two lines. The first line contains an\ninteger n (1 \u2264 n \u2264 10^5), the number of Pokemon in the lab. The next line\ncontains n space separated integers, where the i-th of them denotes si (1 \u2264 si\n\u2264 10^5), the strength of the i-th Pokemon. Output Print single integer \u2014 the\nmaximum number of Pokemons Bash can take. Examples Input 3 2 3 4 Output 2\nInput 5 2 3 4 6 7 Output 3 Note gcd (greatest common divisor) of positive\nintegers set a1, a2, ..., an is the maximum positive integer that divides\nall the integers a1, a2, ..., an. In the first sample, we can take Pokemons\nwith strengths 2, 4 since gcd(2, 4) = 2. In the second sample, we can take\nPokemons with strengths 2, 4, 6, and there is no larger group with gcd \u2260 1.\n\n",
+        "cf_contest_id": 757,
+        "cf_index": "B",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "math",
+            "number theory"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3\r\n2 3 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\n2 3 4 6 7\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n5 6 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "8\r\n41 74 4 27 85 39 100 36\r\n",
+                "4\r\n"
+            ],
+            [
+                "6\r\n89 20 86 81 62 23\r\n",
+                "3\r\n"
+            ],
+            [
+                "71\r\n23 84 98 8 14 4 42 56 83 87 28 22 32 50 5 96 90 1 59 74 77 88 71 38 62 36 85 97 99 6 81 20 49 57 66 9 45 41 29 68 35 19 27 76 78 72 55 25 46 48 26 53 39 31 94 34 63 37 64 16 79 24 82 17 12 3 89 61 80 30 10\r\n",
+                "38\r\n"
+            ],
+            [
+                "95\r\n72 38 75 62 87 30 11 65 35 16 73 23 18 48 19 4 22 42 14 60 49 83 59 15 51 27 80 97 37 100 64 81 54 71 52 20 5 98 78 86 26 55 25 57 36 3 8 74 82 21 29 1 76 2 79 61 39 9 89 77 70 63 56 28 92 53 31 45 93 47 67 99 58 12 84 44 32 34 69 40 13 7 66 68 17 85 6 90 33 91 94 24 46 10 50\r\n",
+                "48\r\n"
+            ],
+            [
+                "44\r\n39706 21317 26213 55086 10799 31825 29024 6565 96535 11412 14642 91901 41932 24538 81351 53861 63403 34199 82286 32594 29684 42753 16857 73821 71085 36306 70080 11233 21023 8551 85406 95390 92375 52675 77938 46265 74855 5229 5856 66713 65730 24525 84078 20684\r\n",
+                "19\r\n"
+            ],
+            [
+                "35\r\n45633 86983 46174 48399 33926 51395 76300 6387 48852 82808 28694 79864 4482 35982 21956 76522 19656 74518 28480 71481 25700 46815 14170 95705 8535 96993 29029 8898 97637 62710 14615 22864 69849 27068 68557\r\n",
+                "20\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "10\r\n10 7 9 8 3 3 10 7 3 3\r\n",
+                "5\r\n"
+            ],
+            [
+                "9\r\n10 10 6 10 9 1 8 3 5\r\n",
+                "5\r\n"
+            ],
+            [
+                "7\r\n9 4 2 3 3 9 8\r\n",
+                "4\r\n"
+            ],
+            [
+                "1\r\n4\r\n",
+                "1\r\n"
+            ],
+            [
+                "6\r\n1623 45906 37856 34727 27156 12598\r\n",
+                "4\r\n"
+            ],
+            [
+                "30\r\n83172 59163 67334 83980 5932 8773 77649 41428 62789 28159 17183 10199 41496 59500 14614 10468 54886 64679 42382 57021 50499 95643 77239 61434 16181 30505 59152 55972 18265 70566\r\n",
+                "15\r\n"
+            ],
+            [
+                "23\r\n100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 22 16 2 13 16\r\n",
+                "22\r\n"
+            ],
+            [
+                "46\r\n12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 12553 15 1 18 28 20 6 31 16 5 23 21 38 3 11 18 11 3 25 33\r\n",
+                "27\r\n"
+            ],
+            [
+                "43\r\n8831 8831 8831 8831 8831 8831 8831 8831 8831 8831 8831 8831 8831 8831 8831 8831 8831 8831 8831 8831 8831 8 23 40 33 11 5 21 16 19 15 41 30 28 31 5 32 16 5 38 11 21 34\r\n",
+                "21\r\n"
+            ],
+            [
+                "25\r\n58427 26687 48857 46477 7039 25423 58757 48119 38113 40637 22391 48337 4157 10597 8167 19031 64613 70913 69313 18047 17159 77491 13499 70949 24107\r\n",
+                "1\r\n"
+            ],
+            [
+                "10\r\n1 1 1 1 1 1 1 1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n3 6\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\n1 1 1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\n3 3 3 3 3\r\n",
+                "5\r\n"
+            ],
+            [
+                "3\r\n1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n541 541\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n99989 99989\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n3 9 27\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n1009 1009\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n1 1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "6\r\n2 10 20 5 15 25\r\n",
+                "5\r\n"
+            ],
+            [
+                "3\r\n3 3 6\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n457 457 457\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n34 17\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n12 24 3\r\n",
+                "3\r\n"
+            ],
+            [
+                "10\r\n99991 99991 99991 99991 99991 99991 99991 99991 99991 99991\r\n",
+                "10\r\n"
+            ],
+            [
+                "2\r\n1009 2018\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n3 3 3\r\n",
+                "3\r\n"
+            ],
+            [
+                "7\r\n6 9 12 15 21 27 33\r\n",
+                "7\r\n"
+            ],
+            [
+                "3\r\n2 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n557 557\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n1 1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\n2 2 101 101 101\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n122 3721\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n49201 98402\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n88258 44129\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n7919 47514\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\n1 2 1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n2 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\n1 1 1 1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n10007 20014 30021\r\n",
+                "3\r\n"
+            ],
+            [
+                "4\r\n10 10 5 5\r\n",
+                "4\r\n"
+            ],
+            [
+                "2\r\n6 9\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n6 12 9\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n14 7\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n199 199\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n49999 49999 99998\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\n1009 1009 1009 1009 1009\r\n",
+                "5\r\n"
+            ],
+            [
+                "3\r\n17 17 17\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n503 1509\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n49999 99998 99998\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n28657 28657\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n121 22 33\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n10079 20158\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n6 15\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n6 6 6 3\r\n",
+                "4\r\n"
+            ],
+            [
+                "2\r\n991 1982\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n20362 30543 50905\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n443 886\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n3 7 7 21\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n3 6 9\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n217 31\r\n",
+                "2\r\n"
+            ],
+            [
+                "6\r\n10 10 10 5 5 5\r\n",
+                "6\r\n"
+            ],
+            [
+                "4\r\n49441 25225 9081 4036\r\n",
+                "4\r\n"
+            ],
+            [
+                "2\r\n4 9\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n18 27\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n13 26\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n6 6 6 15\r\n",
+                "4\r\n"
+            ]
+        ]
+    }
+]

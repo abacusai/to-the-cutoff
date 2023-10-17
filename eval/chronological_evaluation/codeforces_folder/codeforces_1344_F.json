@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Piet's Palette",
+        "description": "Piet Mondrian is an artist most famous for his minimalist works, consisting\nonly of the four colors red, yellow, blue, and white. Most people attribute\nthis to his style, but the truth is that his paint behaves in a very strange\nway where mixing two primary colors only produces another primary color! A\nlesser known piece, entitled \"Pretentious rectangles\" A sequence of primary\ncolors (red, yellow, blue) is mixed as follows. While there are at least two\ncolors, look at the first two. If they are distinct, replace them with the\nmissing color. If they are the same, remove them from the sequence. In the\nend, if there is one color, that is the resulting color. Otherwise, if the\nsequence is empty, we say the resulting color is white. Here are two example\nmixings: Piet has a color palette with cells numbered from \n    1\n to \n    n\n.\nEach cell contains a primary color or is empty. Piet is very secretive, and\nwill not share his palette with you, so you do not know what colors belong to\neach cell. However, he did perform \n    k\n operations. There are four kinds of\noperations: In a mix operation, Piet chooses a subset of cells and mixes their\ncolors together in some order. The order is not necessarily by increasing\nindexes. He records the resulting color. Empty cells are skipped over, having\nno effect on the mixing process. The mixing does not change the color values\nstored in the cells. In a RY operation, Piet chooses a subset of cells. Any\nred cells in this subset become yellow, and any yellow cells in this subset\nbecome red. Blue and empty cells remain unchanged. In a RB operation, Piet\nchooses a subset of cells. Any red cells in this subset become blue, and any\nblue cells in this subset become red. Yellow and empty cells remain unchanged.\nIn a YB operation, Piet chooses a subset of cells. Any yellow cells in this\nsubset become blue, and any blue cells in this subset become yellow. Red and\nempty cells remain unchanged. Piet only tells you the list of operations he\nperforms in chronological order, the indexes involved, and the resulting color\nof each mix operation. For each mix operation, you also know the order in\nwhich the cells are mixed. Given this information, determine the color of each\ncell in the initial palette. That is, you should find one possible state of\nthe palette (before any operations were performed), or say that the described\nsituation is impossible. Input The first line contains two integers \n    n\n\nand \n    k\n (\n    1\n    \u2264 n,k\n    \u2264 1000\n) \u2014 the number of cells in the palette\nand the number of operations, respectively. The next \n    k\n lines describe\nthe operations. The \n    i\n-th line begins with the name of the \n    i\n-th\noperation and an integer \n    m\n (\n    1\n    \u2264 m\n    \u2264 n\n) \u2014 the number of\nindexes involved. Then follow \n    m\n integers \n    j_1,\n    \u2026,j_m\n\n(\n    1\n    \u2264 j_i\n    \u2264 n\n) \u2014 the indexes of the operation. It is guaranteed\nthat all \n    j_i\n are distinct within an operation. If it is a mix operation,\nthe indexes are listed in the order the colors are mixed, and the line also\nends with a character representing the resulting color: \"R\" for red, \"Y\" for\nyellow, \"B\" for blue, and \"W\" for white. Output Output \"YES\" if a solution\nexists, or \"NO\" otherwise. You can print each character in any case (upper or\nlower). If the answer is \"YES\", on the next line output a string of length\n\n    n\n, consisting of characters \"R\", \"Y\", \"B\", and \".\", representing the\npaint colors in the \n    n\n cells of the initial palette (red, yellow, blue,\nand empty, respectively). If there are multiple solutions, print any. You can\nprint each character in any case (upper or lower). Examples Input 3 2 mix 2 2\n1 R mix 2 1 3 Y Output YES YB. Input 2 3 mix 1 2 Y RB 1 2 mix 1 2 W Output NO\nInput 1 3 RY 1 1 YB 1 1 mix 1 1 B Output YES R Input 3 8 mix 2 1 2 R mix 2 1 3\nY RY 2 2 3 RB 3 1 2 3 YB 3 1 2 3 mix 1 1 W mix 1 2 B mix 1 3 Y Output YES .RY\nNote For the first test case, the answer \"YB.\" is consistent with both\nmixings. The first mixing \"BY\" results in red, while the second mixing \"Y\"\nresults in yellow (the empty cell is ignored). Other valid solutions include\n\"BYR\" and \".RY\". For the second test case, we can show that no solution\nexists. For the third test case, the answer \"R\" is consistent with all\noperations. In the first two operations it changes to \"Y\", then \"B\". In the\nfinal operation, the mixing \"B\" results in blue. For the fourth test case, the\nanswer \".RY\" is consistent with all operations. The first two mixings are \"R\"\nand \"Y\", resulting in red and yellow, respectively. During the next three\noperations, the palette changes to \".YR\", then \".YB\", then \".BY\". The final\nthree mixings agree with this palette.\n\n",
+        "cf_contest_id": 1344,
+        "cf_index": "F",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "matrices"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2\r\nmix 2 2 1 R\r\nmix 2 1 3 Y\r\n",
+                "YES\r\nYB."
+            ],
+            [
+                "2 3\r\nmix 1 2 Y\r\nRB 1 2\r\nmix 1 2 W\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 3\r\nRY 1 1\r\nYB 1 1\r\nmix 1 1 B\r\n",
+                "YES\r\nR"
+            ],
+            [
+                "3 8\r\nmix 2 1 2 R\r\nmix 2 1 3 Y\r\nRY 2 2 3\r\nRB 3 1 2 3\r\nYB 3 1 2 3\r\nmix 1 1 W\r\nmix 1 2 B\r\nmix 1 3 Y\r\n",
+                "YES\r\n.RY"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 10\r\nmix 4 5 4 9 7 Y\r\nmix 5 9 2 10 5 8 R\r\nmix 5 2 1 3 7 8 B\r\nmix 5 5 6 3 9 1 R\r\nmix 5 8 10 2 5 1 R\r\nmix 1 2 W\r\nmix 6 9 7 10 5 2 4 B\r\nmix 4 4 2 5 7 Y\r\nmix 4 5 7 2 8 B\r\nmix 5 6 3 1 7 9 R\r\n",
+                "YES\r\n..BYBRBB.R"
+            ],
+            [
+                "1 1\r\nmix 1 1 Y\r\n",
+                "YES\r\nY"
+            ],
+            [
+                "10 10\r\nmix 3 1 5 3 R\r\nmix 7 2 9 6 1 10 3 8 R\r\nmix 5 6 9 1 5 7 B\r\nmix 5 5 9 10 2 8 R\r\nmix 7 10 1 2 9 3 8 5 B\r\nmix 5 1 6 7 3 9 B\r\nmix 5 7 3 9 5 1 R\r\nmix 4 1 5 10 7 W\r\nmix 2 2 5 W\r\nmix 4 8 2 3 6 R\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,1046 @@
+[
+    {
+        "name": "The Riddle of the Sphinx",
+        "description": "What walks on four feet in the morning, two in the afternoon, and three at\nnight? This is an interactive problem. This problem doesn't support hacks.\nSphinx's duty is to guard the city of Thebes by making sure that no unworthy\ntraveler crosses its gates. Only the ones who answer her riddle timely and\ncorrectly (or get an acc for short) are allowed to pass. As of those who fail,\nno one heard of them ever again... So you don't have a choice but to solve the\nriddle. Sphinx has an array \n    a_1, a_2, \n    \u2026, a_n\n of nonnegative\nintegers strictly smaller than \n    2^b\n and asked you to find the maximum\nvalue among its elements. Of course, she will not show you the array, but she\nwill give you \n    n\n and \n    b\n. As it is impossible to answer this riddle\nblindly, you can ask her some questions. For given \n    i, y\n, she'll answer\nyou whether \n    a_i\n is bigger than \n    y\n. As sphinxes are not very\npatient, you can ask at most \n    3 \n    \u00b7 (n + b)\n such questions. Although\ncunning, sphinxes are honest. Even though the array can change between your\nqueries, answers to the previously asked questions will remain valid. Input\nThe first line contains two integers \n    n\n and \n    b\n (\n    1 \n    \u2264 n, b\n    \n    \u2264 200\n). The remaining parts of the input will be given throughout the\ninteraction process. Interaction In each round your program must output a\nsingle line with an integer \n    i\n (\n    0 \n    \u2264 i \n    \u2264 n\n) and a binary\nstring of length exactly \n    b\n denoting the binary representation of \n    y\n\n(most significant bit first). If \n    i > 0\n, this line encodes the question:\nIs \n    a_i\n bigger than \n    y\n?. There should be at most \n    3 \n    \u00b7\n    (n+b)\n such lines; after each of them, the interactor will print yes or no\nin a single line. If \n    i = 0\n, this is the last round of interaction, after\nwhich your program should terminate, and \n    y\n should be the maximal value\namong the elements of Sphinx's array. Note that this round does not count to\nthe query limit. Note that the interactor is adaptive. After printing a query,\ndo not forget to output the end of the line and flush the output. Otherwise,\nyou will get Idleness limit exceeded. To do this, use: fflush(stdout) or\ncout.flush() in C++; System.out.flush() in Java; flush(output) in Pascal;\nstdout.flush() in Python; see the documentation for other languages.If your\nsolution does not correctly follow the interaction guideline above, it may\nreceive an arbitrary verdict. Otherwise, your program will receive the Wrong\nAnswer judgment if it reports the wrong maximum. Examples Input 5 3 yes no no\nno no yes Output 5 101 5 110 4 100 3 101 2 001 1 000 0 110 Input 4 3 no no no\nno Output 1 000 2 000 3 000 4 000 0 000 Input 1 1 Output 0 0 Note In all\nexamples, the sequence is fixed beforehand. In the first example, the sequence\nis \n    2, 1, 4, 0, 6\n. In the second example, the sequence is \n    0, 0, 0,\n    0\n. In the third example, the sequence is \n    0\n. Note that if the\ninteractor was adaptive, then the interaction in the first and the third\nexample would not be sufficient to return the correct value of maximum.\n\n",
+        "cf_contest_id": 1466,
+        "cf_index": "I",
+        "cf_rating": 3400,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "data structures",
+            "interactive"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1\r\n5 3\r\n010\r\n001\r\n100\r\n000\r\n110\r\n",
+                "ok 12\r\n"
+            ],
+            [
+                "1\r\n4 3\r\n000\r\n000\r\n000\r\n000\r\n",
+                "ok 15\r\n"
+            ],
+            [
+                "1\r\n1 1\r\n0\r\n",
+                "ok 5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n4 2\r\n00\r\n01\r\n10\r\n11\r\n",
+                "ok 9\r\n"
+            ],
+            [
+                "1\r\n1 1\r\n1\r\n",
+                "ok 4\r\n"
+            ],
+            [
+                "1\r\n5 5\r\n10110\r\n00111\r\n01111\r\n00000\r\n11111\r\n",
+                "ok 12\r\n"
+            ],
+            [
+                "2\r\n10 10\r\n0000010100\r\n0001011101\r\n0010111011\r\n0011000100\r\n0100100111\r\n0101010001\r\n0110110000\r\n0111010010\r\n1000111100\r\n1001101110\r\n",
+                "ok 26\r\n"
+            ],
+            [
+                "3\r\n1 1\r\n",
+                "ok 5\r\n"
+            ],
+            [
+                "3\r\n8 3\r\n",
+                "ok 14\r\n"
+            ],
+            [
+                "3\r\n8 200\r\n",
+                "ok 268\r\n"
+            ],
+            [
+                "3\r\n10 200\r\n",
+                "ok 265\r\n"
+            ],
+            [
+                "3\r\n16 2\r\n",
+                "ok 21\r\n"
+            ],
+            [
+                "3\r\n16 4\r\n",
+                "ok 23\r\n"
+            ],
+            [
+                "3\r\n32 200\r\n",
+                "ok 264\r\n"
+            ],
+            [
+                "3\r\n64 7\r\n",
+                "ok 76\r\n"
+            ],
+            [
+                "3\r\n101 10\r\n",
+                "ok 121\r\n"
+            ],
+            [
+                "3\r\n101 200\r\n",
+                "ok 336\r\n"
+            ],
+            [
+                "3\r\n127 7\r\n",
+                "ok 137\r\n"
+            ],
+            [
+                "3\r\n128 8\r\n",
+                "ok 140\r\n"
+            ],
+            [
+                "3\r\n128 128\r\n",
+                "ok 324\r\n"
+            ],
+            [
+                "3\r\n128 200\r\n",
+                "ok 340\r\n"
+            ],
+            [
+                "3\r\n199 17\r\n",
+                "ok 222\r\n"
+            ],
+            [
+                "3\r\n199 199\r\n",
+                "ok 494\r\n"
+            ],
+            [
+                "3\r\n199 200\r\n",
+                "ok 503\r\n"
+            ],
+            [
+                "3\r\n200 8\r\n",
+                "ok 211\r\n"
+            ],
+            [
+                "3\r\n200 199\r\n",
+                "ok 483\r\n"
+            ],
+            [
+                "3\r\n200 200\r\n",
+                "ok 497\r\n"
+            ],
+            [
+                "4\r\n1 1 1\r\n",
+                "ok 5\r\n"
+            ],
+            [
+                "4\r\n5 5 3\r\n",
+                "ok 16\r\n"
+            ],
+            [
+                "4\r\n10 20 20\r\n",
+                "ok 42\r\n"
+            ],
+            [
+                "4\r\n50 40 8\r\n",
+                "ok 129\r\n"
+            ],
+            [
+                "4\r\n199 25 10\r\n",
+                "ok 250\r\n"
+            ],
+            [
+                "4\r\n200 30 29\r\n",
+                "ok 248\r\n"
+            ],
+            [
+                "4\r\n200 200 10\r\n",
+                "ok 601\r\n"
+            ],
+            [
+                "4\r\n200 200 60\r\n",
+                "ok 581\r\n"
+            ],
+            [
+                "5\r\n5 4\r\n",
+                "ok 13\r\n"
+            ],
+            [
+                "5\r\n5 200\r\n",
+                "ok 302\r\n"
+            ],
+            [
+                "5\r\n8 64\r\n",
+                "ok 95\r\n"
+            ],
+            [
+                "5\r\n50 200\r\n",
+                "ok 276\r\n"
+            ],
+            [
+                "5\r\n64 6\r\n",
+                "ok 75\r\n"
+            ],
+            [
+                "5\r\n128 8\r\n",
+                "ok 145\r\n"
+            ],
+            [
+                "5\r\n128 200\r\n",
+                "ok 339\r\n"
+            ],
+            [
+                "5\r\n199 15\r\n",
+                "ok 230\r\n"
+            ],
+            [
+                "5\r\n199 200\r\n",
+                "ok 424\r\n"
+            ],
+            [
+                "5\r\n200 10\r\n",
+                "ok 221\r\n"
+            ],
+            [
+                "5\r\n200 200\r\n",
+                "ok 425\r\n"
+            ],
+            [
+                "6\r\n5 180\r\n",
+                "ok 366\r\n"
+            ],
+            [
+                "6\r\n19 190\r\n",
+                "ok 400\r\n"
+            ],
+            [
+                "6\r\n25 200\r\n",
+                "ok 426\r\n"
+            ],
+            [
+                "6\r\n100 199\r\n",
+                "ok 474\r\n"
+            ],
+            [
+                "6\r\n128 7\r\n",
+                "ok 143\r\n"
+            ],
+            [
+                "6\r\n200 8\r\n",
+                "ok 214\r\n"
+            ],
+            [
+                "6\r\n200 200\r\n",
+                "ok 551\r\n"
+            ],
+            [
+                "7\r\n4 10\r\n",
+                "ok 23\r\n"
+            ],
+            [
+                "7\r\n5 7\r\n",
+                "ok 17\r\n"
+            ],
+            [
+                "7\r\n5 10\r\n",
+                "ok 23\r\n"
+            ],
+            [
+                "7\r\n8 64\r\n",
+                "ok 130\r\n"
+            ],
+            [
+                "7\r\n17 5\r\n",
+                "ok 25\r\n"
+            ],
+            [
+                "7\r\n23 184\r\n",
+                "ok 272\r\n"
+            ],
+            [
+                "7\r\n49 99\r\n",
+                "ok 161\r\n"
+            ],
+            [
+                "7\r\n64 8\r\n",
+                "ok 75\r\n"
+            ],
+            [
+                "7\r\n99 9\r\n",
+                "ok 111\r\n"
+            ],
+            [
+                "7\r\n128 128\r\n",
+                "ok 292\r\n"
+            ],
+            [
+                "7\r\n199 199\r\n",
+                "ok 441\r\n"
+            ],
+            [
+                "7\r\n200 10\r\n",
+                "ok 213\r\n"
+            ],
+            [
+                "7\r\n200 99\r\n",
+                "ok 361\r\n"
+            ],
+            [
+                "7\r\n200 199\r\n",
+                "ok 442\r\n"
+            ],
+            [
+                "7\r\n200 200\r\n",
+                "ok 455\r\n"
+            ],
+            [
+                "1\r\n5 20\r\n01010110011100001111\r\n00100000001001011011\r\n00010011000101010111\r\n00100000010111110010\r\n01111111000100100001\r\n",
+                "ok 37\r\n"
+            ],
+            [
+                "2\r\n10 10\r\n1000100100\r\n0011101000\r\n1010011100\r\n0001110110\r\n0000010010\r\n1010101001\r\n1001010101\r\n1000110110\r\n1000000010\r\n0001000001\r\n",
+                "ok 27\r\n"
+            ],
+            [
+                "3\r\n1 30\r\n",
+                "ok 63\r\n"
+            ],
+            [
+                "3\r\n1 200\r\n",
+                "ok 403\r\n"
+            ],
+            [
+                "3\r\n3 20\r\n",
+                "ok 32\r\n"
+            ],
+            [
+                "3\r\n3 200\r\n",
+                "ok 298\r\n"
+            ],
+            [
+                "3\r\n8 10\r\n",
+                "ok 23\r\n"
+            ],
+            [
+                "3\r\n16 16\r\n",
+                "ok 41\r\n"
+            ],
+            [
+                "3\r\n20 40\r\n",
+                "ok 73\r\n"
+            ],
+            [
+                "3\r\n32 5\r\n",
+                "ok 40\r\n"
+            ],
+            [
+                "3\r\n50 1\r\n",
+                "ok 103\r\n"
+            ],
+            [
+                "3\r\n50 9\r\n",
+                "ok 69\r\n"
+            ],
+            [
+                "3\r\n50 100\r\n",
+                "ok 177\r\n"
+            ],
+            [
+                "3\r\n64 6\r\n",
+                "ok 73\r\n"
+            ],
+            [
+                "3\r\n64 10\r\n",
+                "ok 79\r\n"
+            ],
+            [
+                "3\r\n64 50\r\n",
+                "ok 127\r\n"
+            ],
+            [
+                "3\r\n64 200\r\n",
+                "ok 341\r\n"
+            ],
+            [
+                "3\r\n100 4\r\n",
+                "ok 107\r\n"
+            ],
+            [
+                "3\r\n100 10\r\n",
+                "ok 115\r\n"
+            ],
+            [
+                "3\r\n101 90\r\n",
+                "ok 223\r\n"
+            ],
+            [
+                "3\r\n127 127\r\n",
+                "ok 321\r\n"
+            ],
+            [
+                "3\r\n127 200\r\n",
+                "ok 340\r\n"
+            ],
+            [
+                "3\r\n128 6\r\n",
+                "ok 137\r\n"
+            ],
+            [
+                "3\r\n128 7\r\n",
+                "ok 138\r\n"
+            ],
+            [
+                "3\r\n128 10\r\n",
+                "ok 145\r\n"
+            ],
+            [
+                "3\r\n128 13\r\n",
+                "ok 147\r\n"
+            ],
+            [
+                "3\r\n128 42\r\n",
+                "ok 182\r\n"
+            ],
+            [
+                "3\r\n199 1\r\n",
+                "ok 401\r\n"
+            ],
+            [
+                "3\r\n199 3\r\n",
+                "ok 205\r\n"
+            ],
+            [
+                "3\r\n200 1\r\n",
+                "ok 403\r\n"
+            ],
+            [
+                "3\r\n200 2\r\n",
+                "ok 205\r\n"
+            ],
+            [
+                "3\r\n200 5\r\n",
+                "ok 208\r\n"
+            ],
+            [
+                "3\r\n200 11\r\n",
+                "ok 216\r\n"
+            ],
+            [
+                "3\r\n200 20\r\n",
+                "ok 232\r\n"
+            ],
+            [
+                "3\r\n200 50\r\n",
+                "ok 263\r\n"
+            ],
+            [
+                "3\r\n200 198\r\n",
+                "ok 470\r\n"
+            ],
+            [
+                "4\r\n5 4 4\r\n",
+                "ok 14\r\n"
+            ],
+            [
+                "4\r\n5 10 3\r\n",
+                "ok 26\r\n"
+            ],
+            [
+                "4\r\n7 60 15\r\n",
+                "ok 121\r\n"
+            ],
+            [
+                "4\r\n7 60 60\r\n",
+                "ok 101\r\n"
+            ],
+            [
+                "4\r\n10 6 4\r\n",
+                "ok 23\r\n"
+            ],
+            [
+                "4\r\n10 6 5\r\n",
+                "ok 22\r\n"
+            ],
+            [
+                "4\r\n10 20 8\r\n",
+                "ok 49\r\n"
+            ],
+            [
+                "4\r\n10 25 10\r\n",
+                "ok 60\r\n"
+            ],
+            [
+                "4\r\n10 50 6\r\n",
+                "ok 111\r\n"
+            ],
+            [
+                "4\r\n10 200 10\r\n",
+                "ok 410\r\n"
+            ],
+            [
+                "4\r\n50 10 8\r\n",
+                "ok 69\r\n"
+            ],
+            [
+                "4\r\n50 60 60\r\n",
+                "ok 149\r\n"
+            ],
+            [
+                "4\r\n50 40 30\r\n",
+                "ok 120\r\n"
+            ],
+            [
+                "4\r\n100 10 10\r\n",
+                "ok 121\r\n"
+            ],
+            [
+                "4\r\n100 15 10\r\n",
+                "ok 131\r\n"
+            ],
+            [
+                "4\r\n100 30 30\r\n",
+                "ok 157\r\n"
+            ],
+            [
+                "4\r\n100 200 60\r\n",
+                "ok 482\r\n"
+            ],
+            [
+                "4\r\n199 10 10\r\n",
+                "ok 220\r\n"
+            ],
+            [
+                "4\r\n199 60 59\r\n",
+                "ok 303\r\n"
+            ],
+            [
+                "4\r\n199 200 10\r\n",
+                "ok 600\r\n"
+            ],
+            [
+                "4\r\n199 200 60\r\n",
+                "ok 579\r\n"
+            ],
+            [
+                "4\r\n200 1 1\r\n",
+                "ok 403\r\n"
+            ],
+            [
+                "4\r\n200 5 1\r\n",
+                "ok 411\r\n"
+            ],
+            [
+                "4\r\n200 5 4\r\n",
+                "ok 211\r\n"
+            ],
+            [
+                "4\r\n200 9 8\r\n",
+                "ok 217\r\n"
+            ],
+            [
+                "4\r\n200 9 9\r\n",
+                "ok 219\r\n"
+            ],
+            [
+                "4\r\n200 10 8\r\n",
+                "ok 219\r\n"
+            ],
+            [
+                "4\r\n200 20 10\r\n",
+                "ok 241\r\n"
+            ],
+            [
+                "4\r\n200 20 20\r\n",
+                "ok 240\r\n"
+            ],
+            [
+                "4\r\n200 30 10\r\n",
+                "ok 261\r\n"
+            ],
+            [
+                "4\r\n200 30 28\r\n",
+                "ok 260\r\n"
+            ],
+            [
+                "4\r\n200 60 10\r\n",
+                "ok 321\r\n"
+            ],
+            [
+                "4\r\n200 60 59\r\n",
+                "ok 290\r\n"
+            ],
+            [
+                "4\r\n200 60 60\r\n",
+                "ok 301\r\n"
+            ],
+            [
+                "4\r\n200 199 60\r\n",
+                "ok 579\r\n"
+            ],
+            [
+                "5\r\n1 1\r\n",
+                "ok 5\r\n"
+            ],
+            [
+                "5\r\n3 8\r\n",
+                "ok 17\r\n"
+            ],
+            [
+                "5\r\n3 200\r\n",
+                "ok 305\r\n"
+            ],
+            [
+                "5\r\n4 2\r\n",
+                "ok 9\r\n"
+            ],
+            [
+                "5\r\n4 4\r\n",
+                "ok 12\r\n"
+            ],
+            [
+                "5\r\n4 10\r\n",
+                "ok 21\r\n"
+            ],
+            [
+                "5\r\n5 3\r\n",
+                "ok 12\r\n"
+            ],
+            [
+                "5\r\n8 3\r\n",
+                "ok 15\r\n"
+            ],
+            [
+                "5\r\n8 12\r\n",
+                "ok 26\r\n"
+            ],
+            [
+                "5\r\n15 4\r\n",
+                "ok 23\r\n"
+            ],
+            [
+                "5\r\n15 10\r\n",
+                "ok 36\r\n"
+            ],
+            [
+                "5\r\n16 4\r\n",
+                "ok 24\r\n"
+            ],
+            [
+                "5\r\n16 5\r\n",
+                "ok 26\r\n"
+            ],
+            [
+                "5\r\n17 5\r\n",
+                "ok 27\r\n"
+            ],
+            [
+                "5\r\n17 200\r\n",
+                "ok 261\r\n"
+            ],
+            [
+                "5\r\n20 2\r\n",
+                "ok 25\r\n"
+            ],
+            [
+                "5\r\n20 3\r\n",
+                "ok 27\r\n"
+            ],
+            [
+                "5\r\n20 50\r\n",
+                "ok 88\r\n"
+            ],
+            [
+                "5\r\n30 30\r\n",
+                "ok 76\r\n"
+            ],
+            [
+                "5\r\n32 5\r\n",
+                "ok 42\r\n"
+            ],
+            [
+                "5\r\n50 8\r\n",
+                "ok 67\r\n"
+            ],
+            [
+                "5\r\n64 199\r\n",
+                "ok 303\r\n"
+            ],
+            [
+                "5\r\n65 7\r\n",
+                "ok 80\r\n"
+            ],
+            [
+                "5\r\n65 200\r\n",
+                "ok 304\r\n"
+            ],
+            [
+                "5\r\n100 200\r\n",
+                "ok 329\r\n"
+            ],
+            [
+                "5\r\n127 7\r\n",
+                "ok 142\r\n"
+            ],
+            [
+                "5\r\n127 19\r\n",
+                "ok 166\r\n"
+            ],
+            [
+                "5\r\n128 9\r\n",
+                "ok 147\r\n"
+            ],
+            [
+                "5\r\n128 199\r\n",
+                "ok 338\r\n"
+            ],
+            [
+                "5\r\n199 4\r\n",
+                "ok 207\r\n"
+            ],
+            [
+                "5\r\n199 8\r\n",
+                "ok 216\r\n"
+            ],
+            [
+                "5\r\n199 101\r\n",
+                "ok 365\r\n"
+            ],
+            [
+                "5\r\n199 199\r\n",
+                "ok 423\r\n"
+            ],
+            [
+                "5\r\n200 1\r\n",
+                "ok 403\r\n"
+            ],
+            [
+                "5\r\n200 2\r\n",
+                "ok 205\r\n"
+            ],
+            [
+                "5\r\n200 7\r\n",
+                "ok 215\r\n"
+            ],
+            [
+                "5\r\n200 8\r\n",
+                "ok 217\r\n"
+            ],
+            [
+                "5\r\n200 30\r\n",
+                "ok 245\r\n"
+            ],
+            [
+                "5\r\n200 97\r\n",
+                "ok 359\r\n"
+            ],
+            [
+                "5\r\n200 198\r\n",
+                "ok 423\r\n"
+            ],
+            [
+                "5\r\n200 199\r\n",
+                "ok 424\r\n"
+            ],
+            [
+                "6\r\n1 1\r\n",
+                "ok 5\r\n"
+            ],
+            [
+                "6\r\n5 5\r\n",
+                "ok 16\r\n"
+            ],
+            [
+                "6\r\n10 10\r\n",
+                "ok 27\r\n"
+            ],
+            [
+                "6\r\n10 200\r\n",
+                "ok 407\r\n"
+            ],
+            [
+                "6\r\n16 10\r\n",
+                "ok 33\r\n"
+            ],
+            [
+                "6\r\n16 200\r\n",
+                "ok 410\r\n"
+            ],
+            [
+                "6\r\n32 5\r\n",
+                "ok 43\r\n"
+            ],
+            [
+                "6\r\n32 25\r\n",
+                "ok 83\r\n"
+            ],
+            [
+                "6\r\n32 200\r\n",
+                "ok 418\r\n"
+            ],
+            [
+                "6\r\n50 190\r\n",
+                "ok 407\r\n"
+            ],
+            [
+                "6\r\n64 6\r\n",
+                "ok 75\r\n"
+            ],
+            [
+                "6\r\n64 12\r\n",
+                "ok 84\r\n"
+            ],
+            [
+                "6\r\n64 200\r\n",
+                "ok 434\r\n"
+            ],
+            [
+                "6\r\n100 90\r\n",
+                "ok 259\r\n"
+            ],
+            [
+                "6\r\n128 200\r\n",
+                "ok 497\r\n"
+            ],
+            [
+                "6\r\n180 180\r\n",
+                "ok 496\r\n"
+            ],
+            [
+                "6\r\n199 10\r\n",
+                "ok 216\r\n"
+            ],
+            [
+                "6\r\n199 199\r\n",
+                "ok 598\r\n"
+            ],
+            [
+                "6\r\n199 200\r\n",
+                "ok 600\r\n"
+            ],
+            [
+                "6\r\n200 1\r\n",
+                "ok 403\r\n"
+            ],
+            [
+                "6\r\n200 5\r\n",
+                "ok 211\r\n"
+            ],
+            [
+                "6\r\n200 50\r\n",
+                "ok 277\r\n"
+            ],
+            [
+                "6\r\n200 100\r\n",
+                "ok 376\r\n"
+            ],
+            [
+                "6\r\n200 128\r\n",
+                "ok 425\r\n"
+            ],
+            [
+                "6\r\n200 170\r\n",
+                "ok 499\r\n"
+            ],
+            [
+                "6\r\n200 199\r\n",
+                "ok 599\r\n"
+            ],
+            [
+                "7\r\n1 1\r\n",
+                "ok 5\r\n"
+            ],
+            [
+                "7\r\n3 3\r\n",
+                "ok 9\r\n"
+            ],
+            [
+                "7\r\n4 2\r\n",
+                "ok 9\r\n"
+            ],
+            [
+                "7\r\n5 100\r\n",
+                "ok 163\r\n"
+            ],
+            [
+                "7\r\n7 3\r\n",
+                "ok 13\r\n"
+            ],
+            [
+                "7\r\n8 3\r\n",
+                "ok 14\r\n"
+            ],
+            [
+                "7\r\n8 4\r\n",
+                "ok 15\r\n"
+            ],
+            [
+                "7\r\n10 5\r\n",
+                "ok 18\r\n"
+            ],
+            [
+                "7\r\n10 200\r\n",
+                "ok 268\r\n"
+            ],
+            [
+                "7\r\n16 4\r\n",
+                "ok 23\r\n"
+            ],
+            [
+                "7\r\n16 16\r\n",
+                "ok 35\r\n"
+            ],
+            [
+                "7\r\n16 128\r\n",
+                "ok 213\r\n"
+            ],
+            [
+                "7\r\n17 17\r\n",
+                "ok 37\r\n"
+            ],
+            [
+                "7\r\n25 5\r\n",
+                "ok 33\r\n"
+            ],
+            [
+                "7\r\n25 25\r\n",
+                "ok 53\r\n"
+            ],
+            [
+                "7\r\n29 11\r\n",
+                "ok 43\r\n"
+            ],
+            [
+                "7\r\n32 5\r\n",
+                "ok 40\r\n"
+            ],
+            [
+                "7\r\n32 16\r\n",
+                "ok 51\r\n"
+            ],
+            [
+                "7\r\n32 32\r\n",
+                "ok 67\r\n"
+            ],
+            [
+                "7\r\n33 7\r\n",
+                "ok 43\r\n"
+            ],
+            [
+                "7\r\n33 200\r\n",
+                "ok 291\r\n"
+            ],
+            [
+                "7\r\n51 127\r\n",
+                "ok 218\r\n"
+            ],
+            [
+                "7\r\n64 6\r\n",
+                "ok 73\r\n"
+            ],
+            [
+                "7\r\n64 36\r\n",
+                "ok 103\r\n"
+            ],
+            [
+                "7\r\n64 64\r\n",
+                "ok 184\r\n"
+            ],
+            [
+                "7\r\n64 200\r\n",
+                "ok 320\r\n"
+            ],
+            [
+                "7\r\n99 199\r\n",
+                "ok 343\r\n"
+            ],
+            [
+                "7\r\n100 10\r\n",
+                "ok 113\r\n"
+            ],
+            [
+                "7\r\n100 13\r\n",
+                "ok 116\r\n"
+            ],
+            [
+                "7\r\n100 99\r\n",
+                "ok 252\r\n"
+            ],
+            [
+                "7\r\n100 100\r\n",
+                "ok 254\r\n"
+            ],
+            [
+                "7\r\n100 200\r\n",
+                "ok 354\r\n"
+            ],
+            [
+                "7\r\n128 7\r\n",
+                "ok 138\r\n"
+            ],
+            [
+                "7\r\n129 128\r\n",
+                "ok 288\r\n"
+            ],
+            [
+                "7\r\n150 8\r\n",
+                "ok 161\r\n"
+            ],
+            [
+                "7\r\n199 8\r\n",
+                "ok 210\r\n"
+            ],
+            [
+                "7\r\n199 11\r\n",
+                "ok 213\r\n"
+            ],
+            [
+                "7\r\n199 198\r\n",
+                "ok 428\r\n"
+            ],
+            [
+                "7\r\n199 200\r\n",
+                "ok 454\r\n"
+            ],
+            [
+                "7\r\n200 1\r\n",
+                "ok 403\r\n"
+            ],
+            [
+                "7\r\n200 3\r\n",
+                "ok 206\r\n"
+            ],
+            [
+                "7\r\n200 4\r\n",
+                "ok 207\r\n"
+            ],
+            [
+                "7\r\n200 8\r\n",
+                "ok 211\r\n"
+            ],
+            [
+                "7\r\n200 16\r\n",
+                "ok 219\r\n"
+            ],
+            [
+                "7\r\n200 32\r\n",
+                "ok 235\r\n"
+            ],
+            [
+                "7\r\n200 50\r\n",
+                "ok 253\r\n"
+            ],
+            [
+                "7\r\n200 64\r\n",
+                "ok 267\r\n"
+            ],
+            [
+                "7\r\n200 100\r\n",
+                "ok 329\r\n"
+            ],
+            [
+                "7\r\n200 128\r\n",
+                "ok 385\r\n"
+            ],
+            [
+                "7\r\n200 198\r\n",
+                "ok 429\r\n"
+            ]
+        ]
+    }
+]

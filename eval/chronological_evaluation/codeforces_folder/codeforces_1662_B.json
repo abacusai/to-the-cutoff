@@ -1,0 +1,88 @@
+[
+    {
+        "name": "Toys",
+        "description": "Vittorio has three favorite toys: a teddy bear, an owl, and a raccoon. Each of\nthem has a name. Vittorio takes several sheets of paper and writes a letter on\neach side of every sheet so that it is possible to spell any of the three\nnames by arranging some of the sheets in a row (sheets can be reordered and\nflipped as needed). The three names do not have to be spelled at the same\ntime, it is sufficient that it is possible to spell each of them using all the\navailable sheets (and the same sheet can be used to spell different names).\nFind the minimum number of sheets required. In addition, produce a list of\nsheets with minimum cardinality which can be used to spell the three names (if\nthere are multiple answers, print any). Input The first line contains a string\n\n    t\n consisting of uppercase letters of the English alphabet (\n    1\n    \u2264 |t|\n    \n    \u2264 1000\n) \u2014 the name of the teddy bear. The second line contains a string\n\n    o\n consisting of uppercase letters of the English alphabet (\n    1\n    \u2264 |o|\n    \n    \u2264 1000\n) \u2014 the name of the owl. The third line contains a string \n    r\n\nconsisting of uppercase letters of the English alphabet (\n    1\n    \u2264 |r| \n    \u2264\n    1000\n) \u2014 the name of the raccoon. The values \n    |t|\n, \n    |o|\n, \n    |r|\n\ndenote the length of the three names \n    t\n, \n    o\n, \n    r\n. Output The\nfirst line of the output contains a single integer \n    m\n \u2014 the minimum\nnumber of sheets required. Then \n    m\n lines follow: the \n    j\n-th of these\nlines contains a string of two uppercase letters of the English alphabet \u2014 the\nletters appearing on the two sides of the \n    j\n-th sheet. Note that you can\nprint the sheets and the two letters of each sheet in any order. Examples\nInput AA GA MA Output 2 AG AM Input TEDDY HEDWIG RACCOON Output 8 AT CH CY DG\nDO ER IN OW Input BDC CAA CE Output 4 AD AE BB CC Note In the first sample,\nthe solution uses two sheets: the first sheet has A on one side and G on the\nother side; the second sheet has A on one side and M on the other side. The\nname AA can be spelled using the A side of both sheets. The name GA can be\nspelled using the G side of the first sheet and the A side of the second\nsheet. Finally, the name MA can be spelled using the M side of the second\nsheet and the A side of the first sheet.\n\n",
+        "cf_contest_id": 1662,
+        "cf_index": "B",
+        "cf_rating": 0,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "AA\r\nGA\r\nMA\r\n",
+                "2\r\nAG\r\nAM\r\n"
+            ],
+            [
+                "TEDDY\r\nHEDWIG\r\nRACCOON\r\n",
+                "8\r\nDA\r\nEC\r\nWR\r\nIO\r\nOY\r\nHN\r\nCT\r\nDG\r\n"
+            ],
+            [
+                "BDC\r\nCAA\r\nCE\r\n",
+                "4\r\nCB\r\nDA\r\nAE\r\nCC\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "AB\r\nAC\r\nAD\r\n",
+                "3\r\nAA\r\nCD\r\nBB\r\n"
+            ],
+            [
+                "AAB\r\nAAC\r\nAAD\r\n",
+                "3\r\nAB\r\nAC\r\nAD\r\n"
+            ],
+            [
+                "AABBBCCDE\r\nABBBC\r\nADE\r\n",
+                "9\r\nAB\r\nAD\r\nBE\r\nEC\r\nDB\r\nCC\r\nCC\r\nBB\r\nBB\r\n"
+            ],
+            [
+                "ABBBBBBBEEF\r\nABCCDGGGG\r\nA\r\n",
+                "11\r\nAA\r\nFG\r\nEG\r\nEG\r\nBG\r\nBD\r\nBC\r\nBC\r\nBB\r\nBB\r\nBB\r\n"
+            ],
+            [
+                "A\r\nB\r\nC\r\n",
+                "2\r\nBC\r\nAA\r\n"
+            ],
+            [
+                "A\r\nB\r\nB\r\n",
+                "1\r\nBA\r\n"
+            ],
+            [
+                "A\r\nA\r\nA\r\n",
+                "1\r\nAA\r\n"
+            ],
+            [
+                "CJHFFEJFDDI\r\nEJCBALBFJJLG\r\nKAKAAEABAGCE\r\n",
+                "13\r\nAC\r\nBD\r\nCD\r\nEF\r\nEB\r\nFA\r\nGF\r\nJA\r\nJA\r\nLK\r\nLK\r\nAI\r\nHJ\r\n"
+            ],
+            [
+                "RJNFBFWMCNJMHHROSCPQOMSEYCDLMCEMEQJJOGKTWDULEALPNUXOOCVVLIXSBOHMYTVRRYTJGIDLMEKUTNXBDEXHJFPWWKOSSMQCQPLGWHPDFL\r\nKAVNZKSEIMHMKZXAMXINNAKXPNBHLWHUEKOGXIQOONRCVKNSEJAJLTZYEYUWFXHAFDSPHOXFDIWIYTXMFWNNPUIBQVONIZTIMCLTSAUXYAM\r\nGGMFNBNKWPOFPFWZNAOKUEJFZUCPLTXCBUFUZPUYTWRVWORUNWQENGKGLIZQDNNVJTVEMFSWPTGINIVWEKMDUGDVHZCVAJCMSGBV\r\n",
+                "110\r\nAH\r\nAJ\r\nAG\r\nBA\r\nBK\r\nBA\r\nBG\r\nCA\r\nCA\r\nCI\r\nCG\r\nCI\r\nCS\r\nDI\r\nDR\r\nDS\r\nDS\r\nDT\r\nES\r\nET\r\nES\r\nET\r\nEL\r\nES\r\nET\r\nFL\r\nFT\r\nFN\r\nFT\r\nFO\r\nFT\r\nFU\r\nGT\r\nGU\r\nGP\r\nGU\r\nHU\r\nHU\r\nHU\r\nHU\r\nHR\r\nIR\r\nIS\r\nIU\r\nIS\r\nIU\r\nJU\r\nJU\r\nJV\r\nJV\r\nJV\r\nKS\r\nKS\r\nKV\r\nKS\r\nKV\r\nKT\r\nLV\r\nLV\r\nLV\r\nLV\r\nLV\r\nMW\r\nMW\r\nMW\r\nMW\r\nMW\r\nMW\r\nMT\r\nMW\r\nMW\r\nNT\r\nNT\r\nNU\r\nNU\r\nNU\r\nNW\r\nNV\r\nNW\r\nNW\r\nNV\r\nOX\r\nOY\r\nOX\r\nOZ\r\nOX\r\nOZ\r\nOV\r\nPX\r\nPX\r\nPW\r\nPX\r\nPZ\r\nPW\r\nQX\r\nQZ\r\nQX\r\nQZ\r\nRX\r\nRY\r\nYZ\r\nYZ\r\nYZ\r\nXZ\r\nXY\r\nXY\r\nXY\r\nWW\r\nWW\r\nWW\r\n"
+            ],
+            [
+                "COCQVVDVVVCV\r\nWEZQZQQSWWZM\r\nPBMQMQDPPQZM\r\n",
+                "15\r\nDE\r\nMC\r\nQC\r\nQC\r\nQO\r\nZQ\r\nZP\r\nPV\r\nVZ\r\nWP\r\nMV\r\nVW\r\nWM\r\nBV\r\nVS\r\n"
+            ],
+            [
+                "GEQGHHGHEE\r\nRGRRVUQDVVDD\r\nBHBMXBPMDWOXXUYM\r\n",
+                "17\r\nDE\r\nGB\r\nHD\r\nQB\r\nUE\r\nVY\r\nVX\r\nVX\r\nXH\r\nRW\r\nPH\r\nRO\r\nMG\r\nRM\r\nMG\r\nDB\r\nEE\r\n"
+            ],
+            [
+                "Y\r\nYVS\r\nPXLJNHV\r\n",
+                "7\r\nVY\r\nYX\r\nSP\r\nNN\r\nLL\r\nJJ\r\nHH\r\n"
+            ],
+            [
+                "IFBWOMCPO\r\nBRBZBGJUBSNBBBNBBBB\r\nSROTWQUQQSEQQQSMTSSSSTSQQYJQVQCFCWJSSMCC\r\n",
+                "40\r\nBC\r\nCB\r\nFB\r\nJI\r\nMB\r\nOB\r\nRO\r\nSP\r\nUW\r\nZY\r\nNW\r\nNW\r\nGV\r\nBT\r\nBT\r\nBT\r\nBS\r\nBS\r\nBS\r\nSS\r\nSS\r\nSS\r\nSS\r\nSS\r\nSS\r\nQQ\r\nQQ\r\nQQ\r\nQQ\r\nQQ\r\nQQ\r\nQQ\r\nQQ\r\nQQ\r\nQQ\r\nMM\r\nJJ\r\nEE\r\nCC\r\nCC\r\n"
+            ],
+            [
+                "D\r\nWWSW\r\nFGFAA\r\n",
+                "5\r\nWG\r\nWF\r\nWF\r\nSA\r\nAD\r\n"
+            ]
+        ]
+    }
+]

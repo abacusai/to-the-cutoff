@@ -1,0 +1,70 @@
+[
+    {
+        "name": "An impassioned circulation of affection",
+        "description": "Nadeko's birthday is approaching! As she decorated the room for the party, a\nlong garland of Dianthus-shaped paper pieces was placed on a prominent part of\nthe wall. Brother Koyomi will like it! Still unsatisfied with the garland,\nNadeko decided to polish it again. The garland has n pieces numbered from 1 to\nn from left to right, and the i-th piece has a colour si, denoted by a\nlowercase English letter. Nadeko will repaint at most m of the pieces to give\neach of them an arbitrary new colour (still denoted by a lowercase English\nletter). After this work, she finds out all subsegments of the garland\ncontaining pieces of only colour c \u2014 Brother Koyomi's favourite one, and takes\nthe length of the longest among them to be the Koyomity of the garland. For\ninstance, let's say the garland is represented by \"kooomo\", and Brother\nKoyomi's favourite colour is \"o\". Among all subsegments containing pieces of\n\"o\" only, \"ooo\" is the longest, with a length of 3. Thus the Koyomity of this\ngarland equals 3. But problem arises as Nadeko is unsure about Brother\nKoyomi's favourite colour, and has swaying ideas on the amount of work to do.\nShe has q plans on this, each of which can be expressed as a pair of an\ninteger mi and a lowercase letter ci, meanings of which are explained above.\nYou are to find out the maximum Koyomity achievable after repainting the\ngarland according to each plan. Input The first line of input contains a\npositive integer n (1 \u2264 n \u2264 1 500) \u2014 the length of the garland. The second\nline contains n lowercase English letters s1s2... sn as a string \u2014 the initial\ncolours of paper pieces on the garland. The third line contains a positive\ninteger q (1 \u2264 q \u2264 200 000) \u2014 the number of plans Nadeko has. The next q lines\ndescribe one plan each: the i-th among them contains an integer mi (1 \u2264 mi \u2264\nn) \u2014 the maximum amount of pieces to repaint, followed by a space, then by a\nlowercase English letter ci \u2014 Koyomi's possible favourite colour. Output\nOutput q lines: for each work plan, output one line containing an integer \u2014\nthe largest Koyomity achievable after repainting the garland according to it.\nExamples Input 6 koyomi 3 1 o 4 o 4 m Output 3 6 5 Input 15 yamatonadeshiko 10\n1 a 2 a 3 a 4 a 5 a 1 b 2 b 3 b 4 b 5 b Output 3 4 5 7 8 1 2 3 4 5 Input 10\naaaaaaaaaa 2 10 b 10 z Output 10 10 Note In the first sample, there are three\nplans: In the first plan, at most 1 piece can be repainted. Repainting the \"y\"\npiece to become \"o\" results in \"kooomi\", whose Koyomity of 3 is the best\nachievable; In the second plan, at most 4 pieces can be repainted, and\n\"oooooo\" results in a Koyomity of 6; In the third plan, at most 4 pieces can\nbe repainted, and \"mmmmmi\" and \"kmmmmm\" both result in a Koyomity of 5.\n\n",
+        "cf_contest_id": 814,
+        "cf_index": "C",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dp",
+            "strings",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\nkoyomi\r\n3\r\n1 o\r\n4 o\r\n4 m\r\n",
+                "3\r\n6\r\n5\r\n"
+            ],
+            [
+                "15\r\nyamatonadeshiko\r\n10\r\n1 a\r\n2 a\r\n3 a\r\n4 a\r\n5 a\r\n1 b\r\n2 b\r\n3 b\r\n4 b\r\n5 b\r\n",
+                "3\r\n4\r\n5\r\n7\r\n8\r\n1\r\n2\r\n3\r\n4\r\n5\r\n"
+            ],
+            [
+                "10\r\naaaaaaaaaa\r\n2\r\n10 b\r\n10 z\r\n",
+                "10\r\n10\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\nc\r\n4\r\n1 x\r\n1 a\r\n1 e\r\n1 t\r\n",
+                "1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "20\r\naaaaaaaaaaaaaaaaaaaa\r\n1\r\n11 a\r\n",
+                "20\r\n"
+            ],
+            [
+                "4\r\ncbcc\r\n12\r\n4 b\r\n4 c\r\n1 b\r\n2 a\r\n3 b\r\n2 c\r\n4 a\r\n1 a\r\n2 b\r\n3 a\r\n1 c\r\n3 c\r\n",
+                "4\r\n4\r\n2\r\n2\r\n4\r\n4\r\n4\r\n1\r\n3\r\n3\r\n4\r\n4\r\n"
+            ],
+            [
+                "4\r\nddbb\r\n16\r\n3 c\r\n3 b\r\n1 a\r\n1 b\r\n4 d\r\n4 a\r\n3 d\r\n2 a\r\n2 d\r\n4 c\r\n3 a\r\n2 c\r\n4 b\r\n1 c\r\n2 b\r\n1 d\r\n",
+                "3\r\n4\r\n1\r\n3\r\n4\r\n4\r\n4\r\n2\r\n4\r\n4\r\n3\r\n2\r\n4\r\n1\r\n4\r\n3\r\n"
+            ],
+            [
+                "4\r\nabcc\r\n24\r\n1 c\r\n4 d\r\n3 c\r\n1 d\r\n1 c\r\n1 b\r\n3 b\r\n2 c\r\n3 d\r\n3 d\r\n4 c\r\n2 a\r\n4 d\r\n1 a\r\n1 b\r\n4 a\r\n4 d\r\n3 b\r\n4 b\r\n3 c\r\n3 a\r\n2 d\r\n1 a\r\n2 b\r\n",
+                "3\r\n4\r\n4\r\n1\r\n3\r\n2\r\n4\r\n4\r\n3\r\n3\r\n4\r\n3\r\n4\r\n2\r\n2\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n2\r\n2\r\n3\r\n"
+            ],
+            [
+                "40\r\ncbbcbcccccacccccbbacbaabccbbabbaaaaacccc\r\n10\r\n40 a\r\n28 c\r\n25 c\r\n21 a\r\n18 c\r\n27 a\r\n9 c\r\n37 c\r\n15 a\r\n18 b\r\n",
+                "40\r\n40\r\n40\r\n31\r\n35\r\n37\r\n23\r\n40\r\n24\r\n27\r\n"
+            ],
+            [
+                "100\r\ndddddccccdddddaaaaabbbbbbbbbbbbbaaacdcabbacccacccccbdbbadddbbddddbdaaccacdddbbbaddddbbbbdcbbbdddddda\r\n50\r\n54 b\r\n48 d\r\n45 b\r\n52 c\r\n52 a\r\n48 a\r\n54 b\r\n45 a\r\n47 d\r\n50 d\r\n53 a\r\n34 a\r\n51 b\r\n48 d\r\n47 d\r\n47 a\r\n48 d\r\n53 b\r\n52 d\r\n54 d\r\n46 a\r\n38 a\r\n52 b\r\n49 a\r\n49 b\r\n46 c\r\n54 a\r\n45 b\r\n35 c\r\n55 c\r\n51 c\r\n46 d\r\n54 d\r\n50 a\r\n33 c\r\n46 a\r\n50 b\r\n50 a\r\n54 a\r\n32 b\r\n55 b\r\n49 c\r\n53 d\r\n49 a\r\n46 b\r\n48 c\r\n47 b\r\n47 b\r\n47 a\r\n46 b\r\n",
+                "85\r\n72\r\n76\r\n69\r\n68\r\n63\r\n85\r\n60\r\n71\r\n74\r\n69\r\n46\r\n82\r\n72\r\n71\r\n62\r\n72\r\n84\r\n76\r\n78\r\n61\r\n50\r\n83\r\n64\r\n80\r\n60\r\n70\r\n76\r\n49\r\n72\r\n68\r\n70\r\n78\r\n66\r\n47\r\n61\r\n81\r\n66\r\n70\r\n53\r\n86\r\n63\r\n77\r\n64\r\n77\r\n62\r\n78\r\n78\r\n62\r\n77\r\n"
+            ],
+            [
+                "200\r\nddeecdbbbeeeeebbbbbaaaaaaaaaaaaaaaaaaaaaaabbcaacccbeeeeddddddddddddccccccdffeeeeecccccbbbbaaaaedfffffaadeeeeeeeedddddaaaaaaaaaaaaaabbbbbcaadddeefffbbbbcccccccccccbbbbbbeeeeeeeffffffdffffffffffffaaaaab\r\n10\r\n43 f\r\n118 d\r\n165 f\r\n72 f\r\n48 f\r\n2 a\r\n61 e\r\n94 d\r\n109 f\r\n16 a\r\n",
+                "64\r\n144\r\n193\r\n98\r\n69\r\n25\r\n79\r\n117\r\n137\r\n41\r\n"
+            ],
+            [
+                "5\r\naaaaa\r\n1\r\n1 b\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

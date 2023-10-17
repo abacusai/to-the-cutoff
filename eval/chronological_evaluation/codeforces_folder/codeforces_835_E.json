@@ -1,0 +1,225 @@
+[
+    {
+        "name": "The penguin's game",
+        "description": "Pay attention: this problem is interactive. Penguin Xoriy came up with a new\ngame recently. He has n icicles numbered from 1 to n. Each icicle has a\ntemperature \u2014 an integer from 1 to 10^9. Exactly two of these icicles are\nspecial: their temperature is y, while a temperature of all the others is x \u2260\ny. You have to find those special icicles. You can choose a non-empty subset\nof icicles and ask the penguin what is the bitwise exclusive OR (XOR) of the\ntemperatures of the icicles in this subset. Note that you can't ask more than\n19 questions. You are to find the special icicles. Input The first line\ncontains three integers n, x, y (2 \u2264 n \u2264 1000, 1 \u2264 x, y \u2264 10^9, x \u2260 y) \u2014 the\nnumber of icicles, the temperature of non-special icicles and the temperature\nof the special icicles. Output To give your answer to the penguin you have to\nprint character \"!\" (without quotes), then print two integers p1, p2 (p1 < p2)\n\u2014 the indexes of the special icicles in ascending order. Note that \"!\" and p1\nshould be separated by a space; the indexes should be separated by a space\ntoo. After you gave the answer your program should terminate immediately.\nInteraction To ask a question print character \"?\" (without quotes), an integer\nc (1 \u2264 c \u2264 n), and c distinct integers p1, p2, ..., pc (1 \u2264 pi \u2264 n) \u2014 the\nindexes of icicles that you want to know about. Note that \"?\" and c should be\nseparated by a space; the indexes should be separated by a space too. After\nyou asked the question, read a single integer \u2014 the answer. Note that you\ncan't ask more than 19 questions. If you ask more than 19 questions or at\nleast one incorrect question, your solution will get \"Wrong answer\". If at\nsome moment your program reads - 1 as an answer, it should immediately exit\n(for example, by calling exit(0)). You will get \"Wrong answer\" in this case,\nit means that you asked more than 19 questions, or asked an invalid question.\nIf you ignore this, you can get other verdicts since your program will\ncontinue to read from a closed stream. Your solution will get \"Idleness Limit\nExceeded\", if you don't print anything or forget to flush the output,\nincluding for the final answer . To flush you can use (just after printing):\nfflush(stdout) in C++; System.out.flush() in Java; stdout.flush() in Python;\nflush(output) in Pascal; For other languages see the documentation. Hacking\nFor hacking use the following format: n x y p1 p2 Here 1 \u2264 p1 < p2 \u2264 n are the\nindexes of the special icicles. Contestant programs will not be able to see\nthis input. Example Input 4 2 1 2 1 1 Output ? 3 1 2 3 ? 1 1 ? 1 3 ! 1 3 Note\nThe answer for the first question is . The answer for the second and the third\nquestions is 1, therefore, special icicles are indexes 1 and 3. You can read\nmore about bitwise XOR operation here:\nhttps://en.wikipedia.org/wiki/Bitwise_operation#XOR.\n\n",
+        "cf_contest_id": 835,
+        "cf_index": "E",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "constructive algorithms",
+            "interactive"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 2 1 1 3\r\n",
+                "Correct answer 1 3, queries: 4.\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6 1 2 5 6\r\n",
+                "Correct answer 5 6, queries: 5.\r\n"
+            ],
+            [
+                "2 4523 4235 1 2\r\n",
+                "Correct answer 1 2, queries: 2.\r\n"
+            ],
+            [
+                "511 42 1000000000 255 511\r\n",
+                "Correct answer 255 511, queries: 17.\r\n"
+            ],
+            [
+                "666 536870911 268435455 13 133\r\n",
+                "Correct answer 13 133, queries: 19.\r\n"
+            ],
+            [
+                "999 536870912 536870911 1 999\r\n",
+                "Correct answer 1 999, queries: 19.\r\n"
+            ],
+            [
+                "1000 123 321 1 513\r\n",
+                "Correct answer 1 513, queries: 19.\r\n"
+            ],
+            [
+                "1000 1000000000 1 36 1000\r\n",
+                "Correct answer 36 1000, queries: 19.\r\n"
+            ],
+            [
+                "1000 15 16 511 512\r\n",
+                "Correct answer 511 512, queries: 19.\r\n"
+            ],
+            [
+                "1000 16 15 511 512\r\n",
+                "Correct answer 511 512, queries: 19.\r\n"
+            ],
+            [
+                "50 276891238 128284616 2 28\r\n",
+                "Correct answer 2 28, queries: 11.\r\n"
+            ],
+            [
+                "100 745880634 179094068 84 99\r\n",
+                "Correct answer 84 99, queries: 13.\r\n"
+            ],
+            [
+                "150 481201317 787652038 49 147\r\n",
+                "Correct answer 49 147, queries: 13.\r\n"
+            ],
+            [
+                "200 831819465 669375745 137 165\r\n",
+                "Correct answer 137 165, queries: 15.\r\n"
+            ],
+            [
+                "250 417397044 277933714 112 160\r\n",
+                "Correct answer 112 160, queries: 15.\r\n"
+            ],
+            [
+                "300 62982488 159657421 124 230\r\n",
+                "Correct answer 124 230, queries: 16.\r\n"
+            ],
+            [
+                "350 208368580 768215391 71 135\r\n",
+                "Correct answer 71 135, queries: 16.\r\n"
+            ],
+            [
+                "400 853954024 504714906 168 187\r\n",
+                "Correct answer 168 187, queries: 17.\r\n"
+            ],
+            [
+                "450 999340115 553464364 29 66\r\n",
+                "Correct answer 29 66, queries: 17.\r\n"
+            ],
+            [
+                "500 770616857 910894182 28 34\r\n",
+                "Correct answer 28 34, queries: 17.\r\n"
+            ],
+            [
+                "550 593041285 200362966 227 454\r\n",
+                "Correct answer 227 454, queries: 18.\r\n"
+            ],
+            [
+                "600 803748180 240123414 428 479\r\n",
+                "Correct answer 428 479, queries: 19.\r\n"
+            ],
+            [
+                "650 626172608 824559494 22 607\r\n",
+                "Correct answer 22 607, queries: 18.\r\n"
+            ],
+            [
+                "700 572038286 864319942 52 523\r\n",
+                "Correct answer 52 523, queries: 18.\r\n"
+            ],
+            [
+                "750 394462715 858821430 416 471\r\n",
+                "Correct answer 416 471, queries: 19.\r\n"
+            ],
+            [
+                "800 605169609 193549174 221 768\r\n",
+                "Correct answer 221 768, queries: 19.\r\n"
+            ],
+            [
+                "850 427594038 483017958 161 779\r\n",
+                "Correct answer 161 779, queries: 19.\r\n"
+            ],
+            [
+                "900 228235524 817745702 313 601\r\n",
+                "Correct answer 313 601, queries: 19.\r\n"
+            ],
+            [
+                "950 195884145 107214487 556 781\r\n",
+                "Correct answer 556 781, queries: 19.\r\n"
+            ],
+            [
+                "1000 748509283 888470689 243 289\r\n",
+                "Correct answer 243 289, queries: 19.\r\n"
+            ],
+            [
+                "848 713949655 778798832 114 537\r\n",
+                "Correct answer 114 537, queries: 19.\r\n"
+            ],
+            [
+                "604 992531203 77612090 299 432\r\n",
+                "Correct answer 299 432, queries: 18.\r\n"
+            ],
+            [
+                "797 715823152 671392644 52 722\r\n",
+                "Correct answer 52 722, queries: 19.\r\n"
+            ],
+            [
+                "553 289371996 115430093 378 501\r\n",
+                "Correct answer 378 501, queries: 18.\r\n"
+            ],
+            [
+                "309 862920841 709210647 157 278\r\n",
+                "Correct answer 157 278, queries: 15.\r\n"
+            ],
+            [
+                "65 731436981 448215393 6 36\r\n",
+                "Correct answer 6 36, queries: 12.\r\n"
+            ],
+            [
+                "258 10018529 41995946 160 248\r\n",
+                "Correct answer 160 248, queries: 16.\r\n"
+            ],
+            [
+                "14 878534670 486033396 9 10\r\n",
+                "Correct answer 9 10, queries: 7.\r\n"
+            ],
+            [
+                "769 306859322 79813950 207 574\r\n",
+                "Correct answer 207 574, queries: 19.\r\n"
+            ],
+            [
+                "386 429342362 484650952 98 278\r\n",
+                "Correct answer 98 278, queries: 17.\r\n"
+            ],
+            [
+                "1000 305773675 363466523 207 616\r\n",
+                "Correct answer 207 616, queries: 19.\r\n"
+            ],
+            [
+                "1000 483857099 231982664 254 465\r\n",
+                "Correct answer 254 465, queries: 19.\r\n"
+            ],
+            [
+                "1000 661940523 365340020 211 899\r\n",
+                "Correct answer 211 899, queries: 19.\r\n"
+            ],
+            [
+                "1000 545056651 233856160 468 617\r\n",
+                "Correct answer 468 617, queries: 19.\r\n"
+            ],
+            [
+                "1000 723140075 807405005 214 824\r\n",
+                "Correct answer 214 824, queries: 19.\r\n"
+            ],
+            [
+                "1000 901223500 380953849 759 768\r\n",
+                "Correct answer 759 768, queries: 19.\r\n"
+            ],
+            [
+                "1000 79306924 249469990 25 477\r\n",
+                "Correct answer 25 477, queries: 19.\r\n"
+            ],
+            [
+                "1000 962423052 528051538 122 771\r\n",
+                "Correct answer 122 771, queries: 19.\r\n"
+            ],
+            [
+                "1000 140506476 251343486 136 325\r\n",
+                "Correct answer 136 325, queries: 19.\r\n"
+            ],
+            [
+                "1000 309007679 492561550 536 647\r\n",
+                "Correct answer 536 647, queries: 19.\r\n"
+            ],
+            [
+                "1000 1 2 341 682\r\n",
+                "Correct answer 341 682, queries: 19.\r\n"
+            ]
+        ]
+    }
+]

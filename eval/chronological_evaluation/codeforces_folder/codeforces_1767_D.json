@@ -1,0 +1,107 @@
+[
+    {
+        "name": "Playoff",
+        "description": "\n    2^n\n teams participate in a playoff tournament. The tournament consists\nof \n    2^n - 1\n games. They are held as follows: in the first phase of the\ntournament, the teams are split into pairs: team \n    1\n plays against team\n\n    2\n, team \n    3\n plays against team \n    4\n, and so on (so, \n    2^n-1\n\ngames are played in that phase). When a team loses a game, it is eliminated,\nand each game results in elimination of one team (there are no ties). After\nthat, only \n    2^n-1\n teams remain. If only one team remains, it is\ndeclared the champion; otherwise, the second phase begins, where \n    2^n-2\n\ngames are played: in the first one of them, the winner of the game \"\n    1\n vs\n\n    2\n\" plays against the winner of the game \"\n    3\n vs \n    4\n\", then the\nwinner of the game \"\n    5\n vs \n    6\n\" plays against the winner of the game\n\"\n    7\n vs \n    8\n\", and so on. This process repeats until only one team\nremains. The skill level of the \n    i\n-th team is \n    p_i\n, where \n    p\n is\na permutation of integers \n    1\n, \n    2\n, ..., \n    2^n\n (a permutation is\nan array where each element from \n    1\n to \n    2^n\n occurs exactly once).\nYou are given a string \n    s\n which consists of \n    n\n characters. These\ncharacters denote the results of games in each phase of the tournament as\nfollows: if \n    s_i\n is equal to 0, then during the \n    i\n-th phase (the\nphase with \n    2^n-i\n games), in each match, the team with the lower skill\nlevel wins; if \n    s_i\n is equal to 1, then during the \n    i\n-th phase (the\nphase with \n    2^n-i\n games), in each match, the team with the higher skill\nlevel wins. Let's say that an integer \n    x\n is winning if it is possible to\nfind a permutation \n    p\n such that the team with skill \n    x\n wins the\ntournament. Find all winning integers. Input The first line contains one\ninteger \n    n\n (\n    1 \n    \u2264 n \n    \u2264 18\n). The second line contains the\nstring \n    s\n of length \n    n\n consisting of the characters 0 and/or 1.\nOutput Print all the winning integers \n    x\n in ascending order. Examples\nInput 3 101 Output 4 5 6 7 Input 1 1 Output 2 Input 2 01 Output 2 3\n\n",
+        "cf_contest_id": 1767,
+        "cf_index": "D",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n101\r\n",
+                "4 5 6 7\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n01\r\n",
+                "2 3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n00\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n11\r\n",
+                "4\r\n"
+            ],
+            [
+                "3\r\n000\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n010\r\n",
+                "2 3 4 5\r\n"
+            ],
+            [
+                "3\r\n111\r\n",
+                "8\r\n"
+            ],
+            [
+                "4\r\n0000\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\n0100\r\n",
+                "2 3 4 5 6 7 8 9\r\n"
+            ],
+            [
+                "4\r\n0110\r\n",
+                "4 5 6 7 8 9 10 11 12 13\r\n"
+            ],
+            [
+                "4\r\n1011\r\n",
+                "8 9 10 11 12 13 14 15\r\n"
+            ],
+            [
+                "4\r\n1111\r\n",
+                "16\r\n"
+            ],
+            [
+                "5\r\n10110\r\n",
+                "8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29\r\n"
+            ],
+            [
+                "5\r\n01100\r\n",
+                "4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25\r\n"
+            ],
+            [
+                "6\r\n111000\r\n",
+                "8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57\r\n"
+            ],
+            [
+                "6\r\n101111\r\n",
+                "32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63\r\n"
+            ],
+            [
+                "7\r\n1011011\r\n",
+                "32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125\r\n"
+            ],
+            [
+                "18\r\n000000000000000000\r\n",
+                "1\r\n"
+            ],
+            [
+                "18\r\n111111111111111111\r\n",
+                "262144\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,130 @@
+[
+    {
+        "name": "Curfew",
+        "description": "Instructors of Some Informatics School make students go to bed. The house\ncontains n rooms, in each room exactly b students were supposed to sleep.\nHowever, at the time of curfew it happened that many students are not located\nin their assigned rooms. The rooms are arranged in a row and numbered from 1\nto n. Initially, in i-th room there are ai students. All students are\ncurrently somewhere in the house, therefore a1 + a2 + ... + an = nb. Also 2\ninstructors live in this house. The process of curfew enforcement is the\nfollowing. One instructor starts near room 1 and moves toward room n, while\nthe second instructor starts near room n and moves toward room 1. After\nprocessing current room, each instructor moves on to the next one. Both\ninstructors enter rooms and move simultaneously, if n is odd, then only the\nfirst instructor processes the middle room. When all rooms are processed, the\nprocess ends. When an instructor processes a room, she counts the number of\nstudents in the room, then turns off the light, and locks the room. Also, if\nthe number of students inside the processed room is not equal to b, the\ninstructor writes down the number of this room into her notebook (and turns\noff the light, and locks the room). Instructors are in a hurry (to prepare the\nstudy plan for the next day), so they don't care about who is in the room, but\nonly about the number of students. While instructors are inside the rooms,\nstudents can run between rooms that are not locked and not being processed. A\nstudent can run by at most d rooms, that is she can move to a room with number\nthat differs my at most d. Also, after (or instead of) running each student\ncan hide under a bed in a room she is in. In this case the instructor will not\ncount her during the processing. In each room any number of students can hide\nsimultaneously. Formally, here is what's happening: A curfew is announced, at\nthis point in room i there are ai students. Each student can run to another\nroom but not further than d rooms away from her initial room, or stay in\nplace. After that each student can optionally hide under a bed. Instructors\nenter room 1 and room n, they count students there and lock the room (after it\nno one can enter or leave this room). Each student from rooms with numbers\nfrom 2 to n - 1 can run to another room but not further than d rooms away from\nher current room, or stay in place. Each student can optionally hide under a\nbed. Instructors move from room 1 to room 2 and from room n to room n - 1.\nThis process continues until all rooms are processed. Let x1 denote the number\nof rooms in which the first instructor counted the number of non-hidden\nstudents different from b, and x2 be the same number for the second\ninstructor. Students know that the principal will only listen to one\ncomplaint, therefore they want to minimize the maximum of numbers xi. Help\nthem find this value if they use the optimal strategy. Input The first line\ncontains three integers n, d and b (2 \u2264 n \u2264 100 000, 1 \u2264 d \u2264 n - 1, 1 \u2264 b \u2264 10\n000), number of rooms in the house, running distance of a student, official\nnumber of students in a room. The second line contains n integers a1, a2, ...,\nan (0 \u2264 ai \u2264 10^9), i-th of which stands for the number of students in the\ni-th room before curfew announcement. It is guaranteed that a1 + a2 + ... + an\n= nb. Output Output one integer, the minimal possible value of the maximum of\nxi. Examples Input 5 1 1 1 0 0 0 4 Output 1 Input 6 1 2 3 8 0 1 0 0 Output 2\nNote In the first sample the first three rooms are processed by the first\ninstructor, and the last two are processed by the second instructor. One of\nthe optimal strategies is the following: firstly three students run from room\n5 to room 4, on the next stage two of them run to room 3, and one of those two\nhides under a bed. This way, the first instructor writes down room 2, and the\nsecond writes down nothing. In the second sample one of the optimal strategies\nis the following: firstly all students in room 1 hide, all students from room\n2 run to room 3. On the next stage one student runs from room 3 to room 4, and\n5 students hide. This way, the first instructor writes down rooms 1 and 2, the\nsecond instructor writes down rooms 5 and 6.\n\n",
+        "cf_contest_id": 949,
+        "cf_index": "D",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5 1 1\r\n1 0 0 0 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "6 1 2\r\n3 8 0 1 0 0\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 1 1\r\n1 1 0 3 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 1 1\r\n4 0 0 1 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1 1\r\n0 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 66 30\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 25 27 15 53 29 56 30 24 50 39 39 46 4 14 44 16 55 48 15 54 25 4 44 15 29 55 22 49 52 9 2 22 15 14 33 24 38 11 48 27 34 29 8 37 47 36 54 45 24 31 1434\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 2 1\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 3 1 2 8 5 1 9 1 2 12 7 5 0 7 2 11 3 17\r\n",
+                "27\r\n"
+            ],
+            [
+                "100 3 1\r\n5 8 5 7 1 2 6 4 3 2 3 2 5 4 0 5 6 0 2 0 2 3 2 3 3 2 4 2 1 1 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "16\r\n"
+            ],
+            [
+                "39 1 1\r\n0 1 2 0 0 1 1 1 0 1 2 2 2 0 0 2 2 0 0 1 1 2 0 1 0 2 1 0 2 2 1 0 0 3 2 0 1 2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "39 3 1\r\n0 1 1 0 0 2 0 1 3 1 1 1 0 0 1 1 0 0 2 0 1 1 0 1 0 1 2 3 1 0 0 0 0 5 2 0 4 3 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "50 1 1\r\n2 0 0 0 2 4 1 0 1 2 2 1 0 0 1 2 0 0 1 2 0 0 0 1 1 0 0 2 1 1 2 0 4 2 0 0 2 2 1 1 1 4 0 0 0 2 0 0 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "50 2 1\r\n0 1 1 1 1 1 1 0 2 2 0 0 1 1 2 0 1 0 1 2 0 1 1 0 1 2 3 0 0 1 0 3 1 1 1 1 1 1 3 0 0 0 2 0 2 2 0 3 2 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 10 1\r\n0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 97 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "4\r\n"
+            ],
+            [
+                "100 4 1\r\n0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 90 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "7\r\n"
+            ],
+            [
+                "100 66 1\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1 1 0 0 0 0 0 1 0 1 1 0 0 0 1 0 0 1 0 1 1 0 0 1 0 0 0 1 0 0 0 1 1 1 1 1 1 1 0 1 1 1 1 1 0 0 1 74\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 1 1\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 4 8 1 5 4 4 3 1 2 3 8 18 15 4 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "32\r\n"
+            ],
+            [
+                "100 1 1\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 6 3 4 2 6 3 4 5 2 5 0 0 0 0 0 0 0 0 0 1 3 5 6 3 1 2 5 1 1 2 0 0 0 0 0 0 0 0 0 3 5 0 0 1 2 2 1 5 7\r\n",
+                "25\r\n"
+            ],
+            [
+                "30 1 30\r\n61 4 40 32 23 35 2 87 20 0 57 21 30 7 16 34 38 18 0 51 61 9 41 22 15 43 47 15 23 48\r\n",
+                "0\r\n"
+            ],
+            [
+                "30 2 25\r\n21 17 30 1 11 13 5 33 21 36 16 54 4 18 28 41 9 42 14 19 39 55 20 4 15 53 13 78 23 17\r\n",
+                "0\r\n"
+            ],
+            [
+                "30 3 30\r\n19 0 64 36 55 24 8 2 6 20 28 58 53 53 56 72 37 7 1 4 96 13 20 51 15 4 13 33 40 12\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 2 25\r\n23 47 16 0 81 70 6 4 31 26 56 58 33 34 23 141 24 18 7 7 2 13 15 8 34 115 7 30 6 7 14 62 3 0 7 73 4 7 5 35 17 26 34 33 12 3 23 27 3 40 2 5 10 10 4 56 50 36 4 14 22 17 7 13 22 85 30 7 10 28 60 35 3 27 0 3 7 52 12 10 74 14 56 54 17 1 50 11 23 2 71 31 11 5 9 10 13 7 16 14\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 3 30\r\n20 10 8 3 97 20 40 4 58 24 105 56 26 21 66 1 126 4 21 46 8 2 9 21 0 13 24 53 58 23 3 107 1 22 189 3 31 4 31 0 3 0 9 43 19 74 92 7 71 22 46 26 31 49 18 3 10 9 9 110 30 2 40 21 33 4 11 14 47 4 1 37 3 19 18 63 10 53 19 35 11 57 8 3 11 27 23 5 45 15 127 27 23 48 3 8 20 33 5 28\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 99 15\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 1 17\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 56 47 53 49 41 42 52 56 61 42 97 52 55 55 39 54 57 53 67 43 44 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 30 22 25 23 27 42 24 28 15 19 19 0 0 0 0 0 0 0 0 0 29 28 33 27 22 25 25 30 31 61\r\n",
+                "15\r\n"
+            ],
+            [
+                "100 1 24\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 151 150 159 159 147 121 143 143 138 138 127 127 128 123 159 159 128 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "33\r\n"
+            ],
+            [
+                "100 5 30\r\n2 5 2 4 5 2 5 6 6 4 3 6 7 1 3 4 1 6 1 3 4 3 5 3 1 5 1 2 0 5 1 0 4 3 2 7 3 3 1 2 3 1 4 1 1 2 1 3 2 4 0 4 2706 4 1 4 3 7 4 4 4 2 1 7 3 1 4 4 2 5 2 2 2 0 1 2 2 6 3 5 2 5 3 0 3 0 6 2 4 1 4 4 4 3 1 2 4 1 1 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "100 5 30\r\n1 1 1 1 1 0 1 1 1 2 0 2 1 0 0 1 0 0 0 0 1 0 2 0 0 1 0 0 2 1 0 1 2 1 2 3 1 1 1 1 0 0 2 1 0 1 1 1 1 0 0 1 0 0 1 0 2 0 2911 2 2 1 3 3 1 2 2 1 1 0 0 2 0 3 1 1 2 0 1 0 0 0 0 1 0 1 1 1 3 1 3 1 0 1 0 0 0 1 2 0\r\n",
+                "8\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Log Stream Analysis",
+        "description": "You've got a list of program warning logs. Each record of a log stream is a\nstring in this format: \"2012-MM-DD HH:MM:SS:MESSAGE\" (without the quotes).\nString \"MESSAGE\" consists of spaces, uppercase and lowercase English letters\nand characters \"!\", \".\", \",\", \"?\". String \"2012-MM-DD\" determines a correct\ndate in the year of 2012. String \"HH:MM:SS\" determines a correct time in the\n24 hour format. The described record of a log stream means that at a certain\ntime the record has got some program warning (string \"MESSAGE\" contains the\nwarning's description). Your task is to print the first moment of time, when\nthe number of warnings for the last n seconds was not less than m. Input The\nfirst line of the input contains two space-separated integers n and m (1 \u2264 n,\nm \u2264 10000). The second and the remaining lines of the input represent the log\nstream. The second line of the input contains the first record of the log\nstream, the third line contains the second record and so on. Each record of\nthe log stream has the above described format. All records are given in the\nchronological order, that is, the warning records are given in the order, in\nwhich the warnings appeared in the program. It is guaranteed that the log has\nat least one record. It is guaranteed that the total length of all lines of\nthe log stream doesn't exceed 5\u00b710^6 (in particular, this means that the\nlength of some line does not exceed 5\u00b710^6 characters). It is guaranteed that\nall given dates and times are correct, and the string 'MESSAGE\" in all records\nis non-empty. Output If there is no sought moment of time, print -1. Otherwise\nprint a string in the format \"2012-MM-DD HH:MM:SS\" (without the quotes) \u2014 the\nfirst moment of time when the number of warnings for the last n seconds got no\nless than m. Examples Input 60 3 2012-03-16 16:15:25: Disk size is 2012-03-16\n16:15:25: Network failute 2012-03-16 16:16:29: Cant write varlog 2012-03-16\n16:16:42: Unable to start process 2012-03-16 16:16:43: Disk size is too small\n2012-03-16 16:16:53: Timeout detected Output 2012-03-16 16:16:43 Input 1 2\n2012-03-16 23:59:59:Disk size 2012-03-17 00:00:00: Network 2012-03-17\n00:00:01:Cant write varlog Output -1 Input 2 2 2012-03-16 23:59:59:Disk size\nis too sm 2012-03-17 00:00:00:Network failute dete 2012-03-17 00:00:01:Cant\nwrite varlogmysq Output 2012-03-17 00:00:00\n\n",
+        "cf_contest_id": 245,
+        "cf_index": "F",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "brute force",
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "60 3\r\n2012-03-16 16:15:25: Disk size is\r\n2012-03-16 16:15:25: Network failute\r\n2012-03-16 16:16:29: Cant write varlog\r\n2012-03-16 16:16:42: Unable to start process\r\n2012-03-16 16:16:43: Disk size is too small\r\n2012-03-16 16:16:53: Timeout detected\r\n",
+                "2012-03-16 16:16:43\r\n"
+            ],
+            [
+                "1 2\r\n2012-03-16 23:59:59:Disk size\r\n2012-03-17 00:00:00: Network\r\n2012-03-17 00:00:01:Cant write varlog\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2\r\n2012-03-16 23:59:59:Disk size is too sm\r\n2012-03-17 00:00:00:Network failute dete\r\n2012-03-17 00:00:01:Cant write varlogmysq\r\n",
+                "2012-03-17 00:00:00\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 30\r\n2012-02-03 10:01:10: qQsNeHR.BLmZVMsESEKKDvqcQHHzBeddbKiIb,aDQnBKNtdcvitwtpUDGVFSh.Lx,FPBZXdSrsSDZtIJDgx!mSovndGiqHlCwCFAHy\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 3\r\n2012-02-20 16:15:00: Dis\r\n2012-03-16 16:15:01: Net\r\n2012-03-16 16:15:02: Cant write varlog\r\n2012-03-16 16:15:02: Unable to start process\r\n2012-03-16 16:16:43: Dis\r\n2012-03-16 16:16:53: Timeout detected\r\n",
+                "2012-03-16 16:15:02\r\n"
+            ],
+            [
+                "2 4\r\n2012-02-20 16:15:00: Dis\r\n2012-03-16 16:15:01: Net\r\n2012-03-16 16:15:02: Cant write varlog\r\n2012-03-16 16:15:02: Unable to start process\r\n2012-03-16 16:16:43: Dis\r\n2012-03-16 16:16:53: Timeout detected\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

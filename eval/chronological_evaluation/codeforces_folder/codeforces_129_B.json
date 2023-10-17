@@ -1,0 +1,114 @@
+[
+    {
+        "name": "Students and Shoelaces",
+        "description": "Anna and Maria are in charge of the math club for junior students. When the\nclub gathers together, the students behave badly. They've brought lots of shoe\nlaces to the club and got tied with each other. Specifically, each string ties\ntogether two students. Besides, if two students are tied, then the lace\nconnects the first student with the second one as well as the second student\nwith the first one. To restore order, Anna and Maria do the following. First,\nfor each student Anna finds out what other students he is tied to. If a\nstudent is tied to exactly one other student, Anna reprimands him. Then Maria\ngathers in a single group all the students who have been just reprimanded. She\nkicks them out from the club. This group of students immediately leaves the\nclub. These students takes with them the laces that used to tie them. Then\nagain for every student Anna finds out how many other students he is tied to\nand so on. And they do so until Anna can reprimand at least one student.\nDetermine how many groups of students will be kicked out of the club. Input\nThe first line contains two integers n and m \u2014 the initial number of students\nand laces (). The students are numbered from 1 to n, and the laces are\nnumbered from 1 to m. Next m lines each contain two integers a and b \u2014 the\nnumbers of students tied by the i-th lace (1 \u2264 a, b \u2264 n, a \u2260 b). It is\nguaranteed that no two students are tied with more than one lace. No lace ties\na student to himself. Output Print the single number \u2014 the number of groups of\nstudents that will be kicked out from the club. Examples Input 3 3 1 2 2 3 3 1\nOutput 0 Input 6 3 1 2 2 3 3 4 Output 2 Input 6 5 1 4 2 4 3 4 5 4 6 4 Output 1\nNote In the first sample Anna and Maria won't kick out any group of students \u2014\nin the initial position every student is tied to two other students and Anna\nwon't be able to reprimand anyone. In the second sample four students are tied\nin a chain and two more are running by themselves. First Anna and Maria kick\nout the two students from both ends of the chain (1 and 4), then \u2014 two other\nstudents from the chain (2 and 3). At that the students who are running by\nthemselves will stay in the club. In the third sample Anna and Maria will\nmomentarily kick out all students except for the fourth one and the process\nstops at that point. The correct answer is one.\n\n",
+        "cf_contest_id": 129,
+        "cf_index": "B",
+        "cf_rating": 1200,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dfs and similar",
+            "graphs",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3\r\n1 2\r\n2 3\r\n3 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 3\r\n1 2\r\n2 3\r\n3 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "6 5\r\n1 4\r\n2 4\r\n3 4\r\n5 4\r\n6 4\r\n",
+                "1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "100 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 5\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 4\r\n1 4\r\n4 3\r\n4 5\r\n5 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "11 10\r\n1 2\r\n1 3\r\n3 4\r\n1 5\r\n5 6\r\n6 7\r\n1 8\r\n8 9\r\n9 10\r\n10 11\r\n",
+                "4\r\n"
+            ],
+            [
+                "7 7\r\n1 2\r\n2 3\r\n3 1\r\n1 4\r\n4 5\r\n4 6\r\n4 7\r\n",
+                "2\r\n"
+            ],
+            [
+                "10 29\r\n4 5\r\n1 7\r\n4 2\r\n3 8\r\n7 6\r\n8 10\r\n10 6\r\n4 1\r\n10 1\r\n6 2\r\n7 4\r\n7 10\r\n2 7\r\n9 8\r\n5 10\r\n2 5\r\n8 5\r\n4 9\r\n2 8\r\n5 7\r\n4 8\r\n7 3\r\n6 5\r\n1 3\r\n1 9\r\n10 4\r\n10 9\r\n10 2\r\n2 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "9 33\r\n5 7\r\n5 9\r\n9 6\r\n9 1\r\n7 4\r\n3 5\r\n7 8\r\n8 6\r\n3 6\r\n8 2\r\n3 8\r\n1 6\r\n1 8\r\n1 4\r\n4 2\r\n1 2\r\n2 5\r\n3 4\r\n8 5\r\n2 6\r\n3 1\r\n1 5\r\n1 7\r\n3 2\r\n5 4\r\n9 4\r\n3 9\r\n7 3\r\n6 4\r\n9 8\r\n7 9\r\n8 4\r\n6 5\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 8\r\n5 7\r\n2 7\r\n1 6\r\n1 3\r\n3 7\r\n6 3\r\n6 4\r\n2 6\r\n",
+                "1\r\n"
+            ],
+            [
+                "6 15\r\n3 1\r\n4 5\r\n1 4\r\n6 2\r\n3 5\r\n6 3\r\n1 6\r\n1 5\r\n2 3\r\n2 5\r\n6 4\r\n5 6\r\n4 2\r\n1 2\r\n3 4\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 11\r\n5 3\r\n6 5\r\n6 4\r\n1 6\r\n7 1\r\n2 6\r\n7 5\r\n2 5\r\n3 1\r\n3 4\r\n2 4\r\n",
+                "0\r\n"
+            ],
+            [
+                "95 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "62 30\r\n29 51\r\n29 55\r\n4 12\r\n53 25\r\n36 28\r\n32 11\r\n29 11\r\n47 9\r\n21 8\r\n25 4\r\n51 19\r\n26 56\r\n22 21\r\n37 9\r\n9 33\r\n7 25\r\n16 7\r\n40 49\r\n15 21\r\n49 58\r\n34 30\r\n20 46\r\n62 48\r\n53 57\r\n33 6\r\n60 37\r\n41 34\r\n62 36\r\n36 43\r\n11 39\r\n",
+                "2\r\n"
+            ],
+            [
+                "56 25\r\n12 40\r\n31 27\r\n18 40\r\n1 43\r\n9 10\r\n25 47\r\n27 29\r\n26 28\r\n19 38\r\n19 40\r\n22 14\r\n21 51\r\n29 31\r\n55 29\r\n51 33\r\n20 17\r\n24 15\r\n3 48\r\n31 56\r\n15 29\r\n49 42\r\n50 4\r\n22 42\r\n25 17\r\n18 51\r\n",
+                "3\r\n"
+            ],
+            [
+                "51 29\r\n36 30\r\n37 45\r\n4 24\r\n40 18\r\n47 35\r\n15 1\r\n30 38\r\n15 18\r\n32 40\r\n34 42\r\n2 47\r\n35 21\r\n25 28\r\n13 1\r\n13 28\r\n36 1\r\n46 47\r\n22 17\r\n41 45\r\n43 45\r\n40 15\r\n29 35\r\n47 15\r\n30 21\r\n9 14\r\n18 38\r\n18 50\r\n42 10\r\n31 41\r\n",
+                "3\r\n"
+            ],
+            [
+                "56 22\r\n17 27\r\n48 49\r\n29 8\r\n47 20\r\n32 7\r\n44 5\r\n14 39\r\n5 13\r\n40 2\r\n50 42\r\n38 9\r\n18 37\r\n16 44\r\n21 32\r\n21 39\r\n37 54\r\n19 46\r\n30 47\r\n17 13\r\n30 31\r\n49 16\r\n56 7\r\n",
+                "4\r\n"
+            ],
+            [
+                "75 31\r\n32 50\r\n52 8\r\n21 9\r\n68 35\r\n12 72\r\n47 26\r\n38 58\r\n40 55\r\n31 70\r\n53 75\r\n44 1\r\n65 22\r\n33 22\r\n33 29\r\n14 39\r\n1 63\r\n16 52\r\n70 15\r\n12 27\r\n63 31\r\n47 9\r\n71 31\r\n43 17\r\n43 49\r\n8 26\r\n11 39\r\n9 22\r\n30 45\r\n65 47\r\n32 9\r\n60 70\r\n",
+                "4\r\n"
+            ],
+            [
+                "52 26\r\n29 41\r\n16 26\r\n18 48\r\n31 17\r\n37 42\r\n26 1\r\n11 7\r\n29 6\r\n23 17\r\n12 47\r\n34 23\r\n41 16\r\n15 35\r\n25 21\r\n45 7\r\n52 2\r\n37 10\r\n28 19\r\n1 27\r\n30 47\r\n42 35\r\n50 30\r\n30 34\r\n19 30\r\n42 25\r\n47 31\r\n",
+                "3\r\n"
+            ],
+            [
+                "58 29\r\n27 24\r\n40 52\r\n51 28\r\n44 50\r\n7 28\r\n14 53\r\n10 16\r\n16 45\r\n8 56\r\n35 26\r\n39 6\r\n6 14\r\n45 22\r\n35 13\r\n20 17\r\n42 6\r\n37 21\r\n4 11\r\n26 56\r\n54 55\r\n3 57\r\n40 3\r\n55 27\r\n4 51\r\n35 29\r\n50 16\r\n47 7\r\n48 20\r\n1 37\r\n",
+                "3\r\n"
+            ],
+            [
+                "51 23\r\n46 47\r\n31 27\r\n1 20\r\n49 16\r\n2 10\r\n29 47\r\n13 27\r\n34 26\r\n31 2\r\n28 20\r\n17 40\r\n39 4\r\n29 26\r\n28 44\r\n3 39\r\n50 12\r\n19 1\r\n30 21\r\n41 23\r\n2 29\r\n16 3\r\n49 28\r\n49 41\r\n",
+                "4\r\n"
+            ]
+        ]
+    }
+]

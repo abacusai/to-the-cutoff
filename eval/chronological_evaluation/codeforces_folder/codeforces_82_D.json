@@ -1,0 +1,107 @@
+[
+    {
+        "name": "Two out of Three",
+        "description": "Vasya has recently developed a new algorithm to optimize the reception of\ncustomer flow and he considered the following problem. Let the queue to the\ncashier contain n people, at that each of them is characterized by a positive\ninteger ai \u2014 that is the time needed to work with this customer. What is\nspecial about this very cashier is that it can serve two customers\nsimultaneously. However, if two customers need ai and aj of time to be served,\nthe time needed to work with both of them customers is equal to max(ai, aj).\nPlease note that working with customers is an uninterruptable process, and\ntherefore, if two people simultaneously come to the cashier, it means that\nthey begin to be served simultaneously, and will both finish simultaneously\n(it is possible that one of them will have to wait). Vasya used in his\nalgorithm an ingenious heuristic \u2014 as long as the queue has more than one\nperson waiting, then some two people of the first three standing in front of\nthe queue are sent simultaneously. If the queue has only one customer number\ni, then he goes to the cashier, and is served within ai of time. Note that the\ntotal number of phases of serving a customer will always be equal to \u2308n / 2\u2309.\nVasya thinks that this method will help to cope with the queues we all hate.\nThat's why he asked you to work out a program that will determine the minimum\ntime during which the whole queue will be served using this algorithm. Input\nThe first line of the input file contains a single number n (1 \u2264 n \u2264 1000),\nwhich is the number of people in the sequence. The second line contains space-\nseparated integers a1, a2, ..., an (1 \u2264 ai \u2264 10^6). The people are numbered\nstarting from the cashier to the end of the queue. Output Print on the first\nline a single number \u2014 the minimum time needed to process all n people. Then\non \u2308n / 2\u2309 lines print the order in which customers will be served. Each line\n(probably, except for the last one) must contain two numbers separated by a\nspace \u2014 the numbers of customers who will be served at the current stage of\nprocessing. If n is odd, then the last line must contain a single number \u2014 the\nnumber of the last served customer in the queue. The customers are numbered\nstarting from 1. Examples Input 4 1 2 3 4 Output 6 1 2 3 4 Input 5 2 4 3 1 4\nOutput 8 1 3 2 5 4\n\n",
+        "cf_contest_id": 82,
+        "cf_index": "D",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n1 2 3 4\r\n",
+                "6\r\n1 2 \r\n3 4 \r\n"
+            ],
+            [
+                "5\r\n2 4 3 1 4\r\n",
+                "8\r\n1 3 \r\n2 5 \r\n4 \r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n10\r\n",
+                "10\r\n1 \r\n"
+            ],
+            [
+                "2\r\n3 5\r\n",
+                "5\r\n1 2 \r\n"
+            ],
+            [
+                "3\r\n1 10 1\r\n",
+                "11\r\n2 3 \r\n1 \r\n"
+            ],
+            [
+                "5\r\n4 5 4 5 5\r\n",
+                "14\r\n2 3 \r\n4 5 \r\n1 \r\n"
+            ],
+            [
+                "7\r\n100 1 2 3 4 3 2\r\n",
+                "107\r\n2 3 \r\n1 5 \r\n4 6 \r\n7 \r\n"
+            ],
+            [
+                "8\r\n100 1 2 3 1000 3 2 1\r\n",
+                "1007\r\n2 3 \r\n1 5 \r\n4 6 \r\n7 8 \r\n"
+            ],
+            [
+                "10\r\n9 4 4 6 10 4 4 10 7 8\r\n",
+                "35\r\n2 3 \r\n1 5 \r\n6 7 \r\n4 9 \r\n8 10 \r\n"
+            ],
+            [
+                "15\r\n6 6 6 6 6 6 6 5 5 6 6 6 6 5 6\r\n",
+                "46\r\n2 3 \r\n4 5 \r\n6 7 \r\n8 9 \r\n10 11 \r\n12 13 \r\n1 15 \r\n14 \r\n"
+            ],
+            [
+                "15\r\n9 9 4 2 4 6 5 7 1 7 4 3 8 4 1\r\n",
+                "41\r\n1 2 \r\n3 5 \r\n6 7 \r\n4 9 \r\n8 10 \r\n12 13 \r\n11 14 \r\n15 \r\n"
+            ],
+            [
+                "15\r\n8257 5015 8429 1425 8674 7051 7808 5562 9581 5867 5033 6170 5217 5283 3452\r\n",
+                "51300\r\n1 3 \r\n2 4 \r\n6 7 \r\n5 9 \r\n8 11 \r\n10 12 \r\n13 14 \r\n15 \r\n"
+            ],
+            [
+                "25\r\n45 59 47 19 54 29 31 36 55 58 47 37 18 7 23 47 59 20 53 6 37 55 10 54 24\r\n",
+                "518\r\n1 3 \r\n2 5 \r\n4 6 \r\n7 8 \r\n9 10 \r\n11 12 \r\n13 14 \r\n16 17 \r\n15 18 \r\n19 21 \r\n20 23 \r\n22 24 \r\n25 \r\n"
+            ],
+            [
+                "25\r\n88 71 33 8 68 76 2 65 22 32 45 71 14 85 65 30 78 47 70 18 32 90 84 15 90\r\n",
+                "731\r\n1 2 \r\n3 5 \r\n4 7 \r\n6 8 \r\n10 11 \r\n9 13 \r\n12 15 \r\n14 17 \r\n16 18 \r\n20 21 \r\n19 23 \r\n22 25 \r\n24 \r\n"
+            ],
+            [
+                "25\r\n8432 7540 8635 101 3810 1892 8633 1640 8440 2096 7974 5359 9912 6850 2898 5542 4535 344 1000 7041 7018 7573 6952 8521 6266\r\n",
+                "77477\r\n1 3 \r\n2 5 \r\n4 6 \r\n7 9 \r\n8 10 \r\n11 13 \r\n12 14 \r\n16 17 \r\n15 19 \r\n20 21 \r\n22 23 \r\n24 25 \r\n18 \r\n"
+            ],
+            [
+                "25\r\n58 59 59 59 52 54 58 55 59 58 54 58 58 59 56 52 50 59 51 57 60 51 58 58 57\r\n",
+                "737\r\n2 3 \r\n1 4 \r\n5 6 \r\n7 9 \r\n8 11 \r\n12 13 \r\n10 14 \r\n15 16 \r\n17 19 \r\n18 21 \r\n20 23 \r\n24 25 \r\n22 \r\n"
+            ],
+            [
+                "55\r\n28 35 54 56 32 31 26 36 46 27 42 48 59 24 58 25 56 41 36 57 51 43 59 44 43 23 51 30 37 57 41 40 27 51 56 23 28 41 51 24 25 29 24 47 32 49 21 22 36 28 34 29 39 56 23\r\n",
+                "1135\r\n1 2 \r\n3 4 \r\n5 6 \r\n8 9 \r\n7 10 \r\n11 12 \r\n13 15 \r\n14 16 \r\n18 19 \r\n17 21 \r\n20 23 \r\n22 25 \r\n24 27 \r\n26 28 \r\n29 31 \r\n32 33 \r\n30 35 \r\n36 37 \r\n34 39 \r\n40 41 \r\n42 43 \r\n38 45 \r\n44 46 \r\n47 48 \r\n49 51 \r\n50 52 \r\n53 54 \r\n55 \r\n"
+            ],
+            [
+                "55\r\n33 64 51 38 37 44 63 89 60 90 33 67 82 81 40 41 58 86 47 78 60 86 81 43 57 89 39 72 59 88 47 41 59 79 35 41 67 57 70 55 90 46 37 64 78 55 82 88 81 60 46 75 34 79 51\r\n",
+                "1814\r\n2 3 \r\n1 5 \r\n4 6 \r\n7 9 \r\n8 10 \r\n11 12 \r\n13 14 \r\n15 16 \r\n17 19 \r\n18 20 \r\n22 23 \r\n21 25 \r\n24 27 \r\n28 29 \r\n26 30 \r\n31 32 \r\n33 34 \r\n35 36 \r\n37 39 \r\n38 40 \r\n42 43 \r\n44 45 \r\n41 47 \r\n48 49 \r\n46 50 \r\n51 53 \r\n52 54 \r\n55 \r\n"
+            ],
+            [
+                "55\r\n9756 9901 6482 8013 6684 3583 1777 4593 7432 3389 3887 1139 7086 6908 3715 1810 8360 2029 7149 3548 5049 5650 6870 1247 6993 1527 7986 9839 3271 9201 8331 5640 7205 1179 7274 1136 8358 9420 5380 2415 1599 5295 5541 8297 3277 3817 6220 9655 3180 9467 1613 4500 5821 4902 2138\r\n",
+                "162951\r\n1 2 \r\n3 5 \r\n6 7 \r\n4 9 \r\n8 11 \r\n10 12 \r\n13 14 \r\n15 16 \r\n17 19 \r\n18 20 \r\n21 22 \r\n23 25 \r\n24 26 \r\n27 28 \r\n30 31 \r\n29 32 \r\n33 35 \r\n34 36 \r\n37 38 \r\n40 41 \r\n39 43 \r\n42 45 \r\n44 47 \r\n46 49 \r\n48 50 \r\n52 53 \r\n54 55 \r\n51 \r\n"
+            ],
+            [
+                "55\r\n56 5023 3523 1042 1540 1549 3830 4597 3736 181 4642 260 1695 1766 1567 1984 973 1035 687 1556 1569 1703 3869 3004 1766 2624 3145 4414 1876 4203 1491 899 3172 3843 2988 3858 2768 2967 998 2219 5364 4699 2869 2978 1297 5652 3992 5147 1995 1992 350 3597 2328 5679 371\r\n",
+                "78896\r\n2 3 \r\n1 4 \r\n5 6 \r\n7 9 \r\n8 11 \r\n10 12 \r\n13 15 \r\n14 16 \r\n17 19 \r\n18 20 \r\n21 22 \r\n23 24 \r\n26 27 \r\n25 29 \r\n28 30 \r\n31 32 \r\n33 35 \r\n34 36 \r\n37 38 \r\n39 40 \r\n41 42 \r\n43 44 \r\n46 47 \r\n45 49 \r\n50 51 \r\n52 53 \r\n48 54 \r\n55 \r\n"
+            ],
+            [
+                "100\r\n1525 7246 2782 4070 7539 5459 8162 8074 5197 4808 4599 8161 2110 2216 7434 9937 2350 9406 9497 8027 2100 1600 7508 3441 4356 3928 8448 3788 7189 9186 7923 5170 6940 6986 9909 8418 2963 9146 8411 6136 6753 3006 2726 4290 7310 8044 3558 6136 4781 1765 4242 5433 9937 8768 5103 4470 1000 5480 4834 3372 8877 2388 3601 8731 4873 3455 1121 2727 5053 8367 8677 2326 6646 8178 8722 7911 6188 8800 5693 1546 1690 5921 7368 3688 6250 7749 3073 2254 4794 4291 7590 2647 6187 5988 1729 6855 3936 5016 4874 5675\r\n",
+                "299505\r\n1 3 \r\n2 5 \r\n4 6 \r\n7 8 \r\n9 10 \r\n11 13 \r\n12 15 \r\n14 17 \r\n16 19 \r\n18 20 \r\n21 22 \r\n24 25 \r\n23 27 \r\n26 28 \r\n29 31 \r\n32 33 \r\n30 35 \r\n34 36 \r\n38 39 \r\n40 41 \r\n37 43 \r\n42 44 \r\n45 46 \r\n48 49 \r\n47 50 \r\n51 52 \r\n53 54 \r\n55 56 \r\n58 59 \r\n57 60 \r\n62 63 \r\n61 64 \r\n66 67 \r\n65 69 \r\n70 71 \r\n68 72 \r\n74 75 \r\n73 77 \r\n76 78 \r\n80 81 \r\n79 82 \r\n84 85 \r\n83 86 \r\n87 88 \r\n89 90 \r\n91 93 \r\n92 95 \r\n94 96 \r\n97 99 \r\n98 100 \r\n"
+            ],
+            [
+                "7\r\n10 1 1 10 1 1 10\r\n",
+                "22\r\n2 3 \r\n1 4 \r\n6 7 \r\n5 \r\n"
+            ]
+        ]
+    }
+]

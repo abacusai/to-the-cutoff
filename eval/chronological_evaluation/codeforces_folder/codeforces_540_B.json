@@ -1,0 +1,248 @@
+[
+    {
+        "name": "School Marks",
+        "description": "Little Vova studies programming in an elite school. Vova and his classmates\nare supposed to write n progress tests, for each test they will get a mark\nfrom 1 to p. Vova is very smart and he can write every test for any mark, but\nhe doesn't want to stand out from the crowd too much. If the sum of his marks\nfor all tests exceeds value x, then his classmates notice how smart he is and\nstart distracting him asking to let them copy his homework. And if the median\nof his marks will be lower than y points (the definition of a median is given\nin the notes), then his mom will decide that he gets too many bad marks and\nforbid him to play computer games. Vova has already wrote k tests and got\nmarks a1, ..., ak. He doesn't want to get into the first or the second\nsituation described above and now he needs to determine which marks he needs\nto get for the remaining tests. Help him do that. Input The first line\ncontains 5 space-separated integers: n, k, p, x and y (1 \u2264 n \u2264 999, n is odd,\n0 \u2264 k < n, 1 \u2264 p \u2264 1000, n \u2264 x \u2264 n\u00b7p, 1 \u2264 y \u2264 p). Here n is the number of\ntests that Vova is planned to write, k is the number of tests he has already\nwritten, p is the maximum possible mark for a test, x is the maximum total\nnumber of points so that the classmates don't yet disturb Vova, y is the\nminimum median point so that mom still lets him play computer games. The\nsecond line contains k space-separated integers: a1, ..., ak (1 \u2264 ai \u2264 p) \u2014\nthe marks that Vova got for the tests he has already written. Output If Vova\ncannot achieve the desired result, print \"-1\". Otherwise, print n - k space-\nseparated integers \u2014 the marks that Vova should get for the remaining tests.\nIf there are multiple possible solutions, print any of them. Examples Input 5\n3 5 18 4 3 5 4 Output 4 1 Input 5 3 5 16 4 5 5 5 Output -1 Note The median of\nsequence a1, ..., an where n is odd (in this problem n is always odd) is the\nelement staying on (n + 1) / 2 position in the sorted list of ai. In the first\nsample the sum of marks equals 3 + 5 + 4 + 4 + 1 = 17, what doesn't exceed 18,\nthat means that Vova won't be disturbed by his classmates. And the median\npoint of the sequence 1, 3, 4, 4, 5 equals to 4, that isn't less than 4, so\nhis mom lets him play computer games. Please note that you do not have to\nmaximize the sum of marks or the median mark. Any of the answers: \"4 2\", \"2\n4\", \"5 1\", \"1 5\", \"4 1\", \"1 4\" for the first test is correct. In the second\nsample Vova got three '5' marks, so even if he gets two '1' marks, the sum of\nmarks will be 17, that is more than the required value of 16. So, the answer\nto this test is \"-1\".\n\n",
+        "cf_contest_id": 540,
+        "cf_index": "B",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 3 5 18 4\r\n3 5 4\r\n",
+                "1 4 \r\n"
+            ],
+            [
+                "5 3 5 16 4\r\n5 5 5\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 3 5 17 4\r\n5 5 5\r\n",
+                "1 1 \r\n"
+            ],
+            [
+                "5 3 5 12 1\r\n5 5 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 3 5 13 1\r\n5 5 1\r\n",
+                "1 1 \r\n"
+            ],
+            [
+                "7 4 5 26 5\r\n5 2 4 5\r\n",
+                "-1\r\n"
+            ],
+            [
+                "7 4 5 27 5\r\n5 2 4 5\r\n",
+                "1 5 5 \r\n"
+            ],
+            [
+                "1 0 1000 999 1000\r\n\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 0 1000 1000 1000\r\n\r\n",
+                "1000 \r\n"
+            ],
+            [
+                "1 0 1000 1000 999\r\n\r\n",
+                "999 \r\n"
+            ],
+            [
+                "5 3 5 25 4\r\n3 3 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "7 4 5 25 5\r\n5 5 4 5\r\n",
+                "-1\r\n"
+            ],
+            [
+                "7 4 5 26 5\r\n5 5 4 5\r\n",
+                "1 1 5 \r\n"
+            ],
+            [
+                "7 4 5 26 5\r\n5 5 4 5\r\n",
+                "1 1 5 \r\n"
+            ],
+            [
+                "5 3 5 17 4\r\n3 3 4\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 3 5 18 4\r\n3 3 4\r\n",
+                "4 4 \r\n"
+            ],
+            [
+                "5 3 5 5 1\r\n1 1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 3 5 6 1\r\n1 1 2\r\n",
+                "1 1 \r\n"
+            ],
+            [
+                "3 0 2 3 1\r\n\r\n",
+                "1 1 1 \r\n"
+            ],
+            [
+                "3 0 2 4 2\r\n\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 0 2 5 2\r\n\r\n",
+                "1 2 2 \r\n"
+            ],
+            [
+                "9 7 3 16 2\r\n1 3 1 3 1 3 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9 7 3 17 2\r\n1 3 1 3 1 3 1\r\n",
+                "2 2 \r\n"
+            ],
+            [
+                "9 7 3 18 2\r\n1 3 1 3 1 3 1\r\n",
+                "2 2 \r\n"
+            ],
+            [
+                "9 7 3 18 3\r\n1 3 1 3 1 3 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9 7 3 19 3\r\n1 3 1 3 1 3 1\r\n",
+                "3 3 \r\n"
+            ],
+            [
+                "9 7 3 20 3\r\n1 3 1 3 1 3 1\r\n",
+                "3 3 \r\n"
+            ],
+            [
+                "9 6 3 27 2\r\n1 1 1 2 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9 6 3 13 2\r\n1 1 1 2 1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9 6 3 14 2\r\n1 1 1 2 1 2\r\n",
+                "2 2 2 \r\n"
+            ],
+            [
+                "5 0 5 13 4\r\n\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 0 5 14 4\r\n\r\n",
+                "1 1 4 4 4 \r\n"
+            ],
+            [
+                "5 0 5 5 1\r\n\r\n",
+                "1 1 1 1 1 \r\n"
+            ],
+            [
+                "5 0 5 7 2\r\n\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 0 5 8 2\r\n\r\n",
+                "1 1 2 2 2 \r\n"
+            ],
+            [
+                "9 7 2 18 2\r\n1 1 1 2 2 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9 7 2 13 1\r\n2 2 2 1 1 2 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9 7 2 14 1\r\n2 2 2 1 1 2 2\r\n",
+                "1 1 \r\n"
+            ],
+            [
+                "993 0 3 993 2\r\n\r\n",
+                "-1\r\n"
+            ],
+            [
+                "997 100 3 1102 2\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 2 1 1 1 1 1 1 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "11 8 10 110 5\r\n9 9 9 9 9 9 9 9\r\n",
+                "1 1 1 \r\n"
+            ],
+            [
+                "9 8 10 90 2\r\n1 1 1 1 1 1 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 2 10 30 2\r\n1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 2 10 30 1\r\n1 1\r\n",
+                "1 \r\n"
+            ],
+            [
+                "5 4 100 14 4\r\n4 4 4 4\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 4 2 8 2\r\n2 2 2 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 4 2 7 2\r\n1 1 1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "11 10 1000 101 5\r\n10 10 10 10 10 10 10 10 10 10\r\n",
+                "1 \r\n"
+            ],
+            [
+                "7 5 100 100 5\r\n7 1 1 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 4 5 25 2\r\n1 1 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9 8 10 89 5\r\n8 8 8 8 8 8 8 8\r\n",
+                "1 \r\n"
+            ],
+            [
+                "5 3 5 18 4\r\n1 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "11 10 1000 100 5\r\n10 10 10 10 10 10 10 10 10 10\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9 7 10 30 2\r\n3 3 3 3 3 3 3\r\n",
+                "1 1 \r\n"
+            ],
+            [
+                "5 4 2 10 2\r\n2 2 2 2\r\n",
+                "1 \r\n"
+            ],
+            [
+                "7 6 1000 31 5\r\n5 5 5 5 5 5\r\n",
+                "1 \r\n"
+            ],
+            [
+                "9 8 100 100 2\r\n1 1 1 1 1 1 1 1\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

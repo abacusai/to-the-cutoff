@@ -1,0 +1,49 @@
+[
+    {
+        "name": "Messages on a Tree",
+        "description": "Alice and Bob are well-known for sending messages to each other. This time you\nhave a rooted tree with Bob standing in the root node and copies of Alice\nstanding in each of the other vertices. The root node has number 0, the rest\nare numbered 1 through n. At some moments of time some copies of Alice want to\nsend a message to Bob and receive an answer. We will call this copy the\ninitiator. The process of sending a message contains several steps: The\ninitiator sends the message to the person standing in the parent node and\nbegins waiting for the answer. When some copy of Alice receives a message from\nsome of her children nodes, she sends the message to the person standing in\nthe parent node and begins waiting for the answer. When Bob receives a message\nfrom some of his child nodes, he immediately sends the answer to the child\nnode where the message came from. When some copy of Alice (except for\ninitiator) receives an answer she is waiting for, she immediately sends it to\nthe child vertex where the message came from. When the initiator receives the\nanswer she is waiting for, she doesn't send it to anybody. There is a special\ncase: a copy of Alice can't wait for two answers at the same time, so if some\ncopy of Alice receives a message from her child node while she already waits\nfor some answer, she rejects the message and sends a message saying this back\nto the child node where the message came from. Then the copy of Alice in the\nchild vertex processes this answer as if it was from Bob. The process of\nsending a message to a parent node or to a child node is instant but a\nreceiver (a parent or a child) gets a message after 1 second. If some copy of\nAlice receives several messages from child nodes at the same moment while she\nisn't waiting for an answer, she processes the message from the initiator with\nthe smallest number and rejects all the rest. If some copy of Alice receives\nmessages from children nodes and also receives the answer she is waiting for\nat the same instant, then Alice first processes the answer, then immediately\ncontinue as normal with the incoming messages. You are given the moments of\ntime when some copy of Alice becomes the initiator and sends a message to Bob.\nFor each message, find the moment of time when the answer (either from Bob or\nsome copy of Alice) will be received by the initiator. You can assume that if\nAlice wants to send a message (i.e. become the initiator) while waiting for\nsome answer, she immediately rejects the message and receives an answer from\nherself in no time. Input The first line of input contains two integers n and\nm (1 \u2264 n, m \u2264 200 000) \u2014 the number of nodes with Alices and the number of\nmessages. Second line contains n integers p1, p2, ..., pn (0 \u2264 pi < i). The\ninteger pi is the number of the parent node of node i. The next m lines\ndescribe the messages. The i-th of them contains two integers xi and ti (1 \u2264\nxi \u2264 n, 1 \u2264 ti \u2264 10^9) \u2014 the number of the vertex of the initiator of the i-th\nmessage and the time of the initiation (in seconds). The messages are given in\norder of increasing initiation time (i.e. ti + 1 \u2265 ti holds for 1 \u2264 i < m).\nThe pairs (xi, ti) are distinct. Output Print m integers \u2014 the i-th of them is\nthe moment of time when the answer for the i-th message will be received by\nthe initiator. Examples Input 6 3 0 1 2 3 2 5 4 6 6 9 5 11 Output 14 13 11\nInput 3 2 0 1 1 2 1 3 1 Output 5 3 Input 8 3 0 1 1 2 3 3 4 5 6 1 8 2 4 5\nOutput 7 6 11 Note In the first example the first message is initiated at the\nmoment 6, reaches Bob at the moment 10, and the answer reaches the initiator\nat the moment 14. The second message reaches vertex 2 at the moment 11. At\nthis moment the copy of Alice in this vertex is still waiting for the answer\nfor the first message, so she rejects the second message. The answer reaches\nthe initiator at the moment 13. The third message is not sent at all, because\nat the moment 11 Alice in vertex 5 is waiting for the answer for the second\nmessage. In the second example the first message reaches Bob, the second is\nrejected by Alice in vertex 1. This is because the message with smaller\ninitiator number has the priority. In the third example the first and the\nthird messages reach Bob, while the second message is rejected by Alice in\nvertex 3.\n\n",
+        "cf_contest_id": 725,
+        "cf_index": "G",
+        "cf_rating": 3300,
+        "difficulty": 0,
+        "cf_tags": [],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 3\r\n0 1 2 3 2 5\r\n4 6\r\n6 9\r\n5 11\r\n",
+                "14 13 11 "
+            ],
+            [
+                "3 2\r\n0 1 1\r\n2 1\r\n3 1\r\n",
+                "5 3 "
+            ],
+            [
+                "8 3\r\n0 1 1 2 3 3 4 5\r\n6 1\r\n8 2\r\n4 5\r\n",
+                "7 6 11 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 10\r\n0 0 0 0 0 4 6 7 8 4\r\n2 3\r\n4 4\r\n4 7\r\n7 10\r\n6 12\r\n7 14\r\n4 14\r\n10 17\r\n6 20\r\n8 20\r\n",
+                "5 6 9 16 12 14 16 21 24 24 "
+            ],
+            [
+                "10 10\r\n0 0 1 1 3 5 4 7 6 7\r\n2 3\r\n4 4\r\n4 7\r\n7 10\r\n6 12\r\n7 14\r\n4 14\r\n10 17\r\n6 20\r\n8 20\r\n",
+                "5 8 7 16 20 14 14 25 28 22 "
+            ],
+            [
+                "10 10\r\n0 0 0 0 0 4 6 7 8 4\r\n6 43036623\r\n3 57391810\r\n2 397716021\r\n2 431357331\r\n5 451005541\r\n6 474757101\r\n10 740845921\r\n10 872247211\r\n7 892211110\r\n5 935482854\r\n",
+                "43036627 57391812 397716023 431357333 451005543 474757105 740845925 872247215 892211116 935482856 "
+            ],
+            [
+                "1 1\r\n0\r\n1 5\r\n",
+                "7 "
+            ],
+            [
+                "1 3\r\n0\r\n1 5\r\n1 6\r\n1 1000000000\r\n",
+                "7 6 1000000002 "
+            ]
+        ]
+    }
+]

@@ -1,0 +1,40 @@
+[
+    {
+        "name": "Security",
+        "description": "Some programming website is establishing a secure communication protocol. For\nsecurity reasons, they want to choose several more or less random strings.\nInitially, they have a string \n    s\n consisting of lowercase English letters.\nNow they want to choose \n    q\n strings using the following steps, and you are\nto help them. A string \n    x\n consisting of lowercase English letters and\nintegers \n    l\n and \n    r\n (\n    1 \n    \u2264 l \n    \u2264 r \n    \u2264 |s|\n) are\nchosen. Consider all non-empty distinct substrings of the \n    s_l s_l + 1\n    \u2026 s_r\n, that is all distinct strings \n    s_i s_i+1\n    \u2026 s_j\n\nwhere \n    l \n    \u2264 i \n    \u2264 j \n    \u2264 r\n. Among all of them choose all strings\nthat are lexicographically greater than \n    x\n. If there are no such strings,\nyou should print \n    -1\n. Otherwise print the lexicographically smallest\namong them. String \n    a\n is lexicographically less than string \n    b\n, if\neither \n    a\n is a prefix of \n    b\n and \n    a \n     b\n, or there exists\nsuch a position \n    i\n (\n    1 \n    \u2264 i \n    \u2264 min(|a|, |b|)\n), such that\n\n    a_i < b_i\n and for all \n    j\n (\n    1 \n    \u2264 j < i\n) \n    a_j = b_j\n.\nHere \n    |a|\n denotes the length of the string \n    a\n. Input The first line\nof input contains a non-empty string \n    s\n (\n    1 \n    \u2264 |s| \n    \u2264\n    10^5\n) consisting of lowercase English letters. The second line contains\nan integer \n    q\n (\n    1 \n    \u2264 q \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the number of\nstrings to select. Each of the next \n    q\n lines contains two integers\n\n    l\n, \n    r\n (\n    1 \n    \u2264 l \n    \u2264 r \n    \u2264 |s|\n) and a non-empty string\n\n    x\n consisting of lowercase English letters. The total length of strings\n\n    x\n for all queries does not exceed \n    2 \n    \u00b7 10^5\n. Output Output\n\n    q\n lines, each of them should contain the desired string or \n    -1\n, if\nthere is no such string. Examples Input baa 5 1 2 ba 2 3 a 1 2 b 2 3 aa 1 3 b\nOutput -1 aa ba -1 ba Input bacb 4 1 2 ba 2 3 ac 1 3 ac 3 4 c Output -1 c b cb\nInput bba 1 1 1 b Output -1 Note Consider the first example. The string\n\n    s\n is \"baa\". The queries are as follows. We consider the substring \n    s_1\n    s_2\n that is \"ba\". It has substrings \"b\", \"a\" and \"ba\", since none of them\nis greater than the query string \"ba\", the answer is \n    -1\n. We consider\nsubstring \"aa\". Among its substrings only \"aa\" is greater than the query\nstring \"a\". So the answer is \"aa\". We consider substring \"ba\". Out of \"b\", \"a\"\nand \"ba\" only \"ba\" is greater than the query string \"b\", so the answer is\n\"ba\". We consider substring \"aa\". No substring of \"aa\" is greater than the\nquery string \"aa\" so the answer is \n    -1\n. We consider substring \"baa\" and\nit has (among others) substrings \"ba\", \"baa\" which are greater than the query\nstring \"b\". Since \"ba\" is lexicographically smaller than \"baa\", the answer is\n\"ba\".\n\n",
+        "cf_contest_id": 1037,
+        "cf_index": "H",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "string suffix structures"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "baa\r\n5\r\n1 2 ba\r\n2 3 a\r\n1 2 b\r\n2 3 aa\r\n1 3 b\r\n",
+                "-1\r\naa\r\nba\r\n-1\r\nba\r\n"
+            ],
+            [
+                "bacb\r\n4\r\n1 2 ba\r\n2 3 ac\r\n1 3 ac\r\n3 4 c\r\n",
+                "-1\r\nc\r\nb\r\ncb\r\n"
+            ],
+            [
+                "bba\r\n1\r\n1 1 b\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "eab\r\n5\r\n1 2 cebac\r\n1 1 eca\r\n1 3 acdee\r\n1 3 aae\r\n1 3 caddd\r\n",
+                "e\r\n-1\r\nb\r\nab\r\ne\r\n"
+            ],
+            [
+                "cace\r\n4\r\n2 4 fbfda\r\n1 1 eccc\r\n2 4 bfbba\r\n2 4 bfe\r\n",
+                "-1\r\n-1\r\nc\r\nc\r\n"
+            ]
+        ]
+    }
+]

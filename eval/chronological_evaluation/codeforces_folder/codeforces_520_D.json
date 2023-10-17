@@ -1,0 +1,73 @@
+[
+    {
+        "name": "Cubes",
+        "description": "Once Vasya and Petya assembled a figure of m cubes, each of them is associated\nwith a number between 0 and m - 1 (inclusive, each number appeared exactly\nonce). Let's consider a coordinate system such that the OX is the ground, and\nthe OY is directed upwards. Each cube is associated with the coordinates of\nits lower left corner, these coordinates are integers for each cube. The\nfigure turned out to be stable. This means that for any cube that is not on\nthe ground, there is at least one cube under it such that those two cubes\ntouch by a side or a corner. More formally, this means that for the cube with\ncoordinates (x, y) either y = 0, or there is a cube with coordinates (x - 1, y\n- 1), (x, y - 1) or (x + 1, y - 1). Now the boys want to disassemble the\nfigure and put all the cubes in a row. In one step the cube is removed from\nthe figure and being put to the right of the blocks that have already been\nlaid. The guys remove the cubes in such order that the figure remains stable.\nTo make the process more interesting, the guys decided to play the following\ngame. The guys take out the cubes from the figure in turns. It is easy to see\nthat after the figure is disassembled, the integers written on the cubes form\na number, written in the m-ary positional numerical system (possibly, with a\nleading zero). Vasya wants the resulting number to be maximum possible, and\nPetya, on the contrary, tries to make it as small as possible. Vasya starts\nthe game. Your task is to determine what number is formed after the figure is\ndisassembled, if the boys play optimally. Determine the remainder of the\nanswer modulo 10^9 + 9. Input The first line contains number m (2 \u2264 m \u2264 10^5).\nThe following m lines contain the coordinates of the cubes xi, yi ( - 10^9 \u2264\nxi \u2264 10^9, 0 \u2264 yi \u2264 10^9) in ascending order of numbers written on them. It is\nguaranteed that the original figure is stable. No two cubes occupy the same\nplace. Output In the only line print the answer to the problem. Examples Input\n3 2 1 1 0 0 1 Output 19 Input 5 0 0 0 1 0 2 0 3 0 4 Output 2930\n\n",
+        "cf_contest_id": 520,
+        "cf_index": "D",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "games",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n2 1\r\n1 0\r\n0 1\r\n",
+                "19\r\n"
+            ],
+            [
+                "5\r\n0 0\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n",
+                "2930\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n-1 2\r\n-3 0\r\n5 5\r\n4 4\r\n-2 1\r\n1 1\r\n3 3\r\n2 2\r\n0 0\r\n-1000000000 0\r\n",
+                "41236677\r\n"
+            ],
+            [
+                "10\r\n-678318184 2\r\n-678318182 3\r\n580731357 2\r\n-678318182 1\r\n-678318184 1\r\n-678318183 0\r\n-678318181 2\r\n580731357 1\r\n580731358 0\r\n-678318183 2\r\n",
+                "41627304\r\n"
+            ],
+            [
+                "15\r\n-491189818 2\r\n-491189821 6\r\n-491189823 4\r\n-491189821 4\r\n-491189822 5\r\n-491189819 1\r\n-491189822 4\r\n-491189822 7\r\n-491189821 1\r\n-491189820 2\r\n-491189823 3\r\n-491189817 3\r\n-491189821 3\r\n-491189820 0\r\n-491189822 2\r\n",
+                "936629642\r\n"
+            ],
+            [
+                "20\r\n900035308 3\r\n900035314 0\r\n900035309 2\r\n900035307 0\r\n900035311 0\r\n900035313 2\r\n900035312 0\r\n900035313 0\r\n900035311 3\r\n900035310 0\r\n900035311 2\r\n900035311 1\r\n900035308 2\r\n900035308 1\r\n900035308 0\r\n900035309 3\r\n900035310 2\r\n900035313 1\r\n900035312 3\r\n900035309 0\r\n",
+                "362446399\r\n"
+            ],
+            [
+                "25\r\n-611859852 0\r\n-611859842 0\r\n-611859837 0\r\n-611859843 0\r\n-611859863 0\r\n-611859851 0\r\n-611859857 0\r\n-611859858 0\r\n-611859845 0\r\n-611859865 0\r\n-611859836 0\r\n-611859839 0\r\n-611859850 0\r\n-611859854 0\r\n-611859838 0\r\n-611859840 0\r\n-611859860 0\r\n-611859853 0\r\n-611859848 0\r\n-611859844 0\r\n-611859861 0\r\n-611859856 0\r\n-611859862 0\r\n-611859859 0\r\n-611859849 0\r\n",
+                "93673276\r\n"
+            ],
+            [
+                "20\r\n1000000000 3\r\n-1000000000 3\r\n-1000000000 6\r\n1000000000 7\r\n-1000000000 5\r\n-1000000000 8\r\n-1000000000 0\r\n1000000000 0\r\n-1000000000 9\r\n1000000000 5\r\n-1000000000 4\r\n1000000000 4\r\n1000000000 2\r\n-1000000000 7\r\n-1000000000 2\r\n1000000000 1\r\n1000000000 9\r\n1000000000 6\r\n-1000000000 1\r\n1000000000 8\r\n",
+                "205917730\r\n"
+            ],
+            [
+                "2\r\n72098079 0\r\n72098078 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n-67471165 1\r\n-67471166 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n-939306957 0\r\n361808970 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n-32566075 1\r\n-32566075 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n73639551 1\r\n73639551 0\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

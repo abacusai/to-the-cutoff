@@ -1,0 +1,148 @@
+[
+    {
+        "name": "Dead Ends",
+        "description": "Life in Bertown has become hard. The city has too many roads and the\ngovernment spends too much to maintain them. There are n junctions and m two\nway roads, at which one can get from each junction to any other one. The mayor\nwants to close some roads so that the number of roads left totaled to n - 1\nroads and it were still possible to get from each junction to any other one.\nBesides, the mayor is concerned with the number of dead ends which are the\njunctions from which only one road goes. There shouldn't be too many or too\nfew junctions. Having discussed the problem, the mayor and his assistants\ndecided that after the roads are closed, the road map should contain exactly k\ndead ends. Your task is to count the number of different ways of closing the\nroads at which the following conditions are met: There are exactly n - 1 roads\nleft. It is possible to get from each junction to any other one. There are\nexactly k dead ends on the resulting map. Two ways are considered different if\nthere is a road that is closed in the first way, and is open in the second\none. Input The first line contains three integers n, m and k (3 \u2264 n \u2264 10, n -\n1 \u2264 m \u2264 n\u00b7(n - 1) / 2, 2 \u2264 k \u2264 n - 1) which represent the number of junctions,\nroads and dead ends correspondingly. Then follow m lines each containing two\ndifferent integers v1 and v2 (1 \u2264 v1, v2 \u2264 n, v1 \u2260 v2) which represent the\nnumber of junctions connected by another road. There can be no more than one\nroad between every pair of junctions. The junctions are numbered with integers\nfrom 1 to n. It is guaranteed that it is possible to get from each junction to\nany other one along the original roads. Output Print a single number \u2014 the\nrequired number of ways. Examples Input 3 3 2 1 2 2 3 1 3 Output 3 Input 4 6 2\n1 2 2 3 3 4 4 1 1 3 2 4 Output 12 Input 4 6 3 1 2 2 3 3 4 4 1 1 3 2 4 Output 4\n\n",
+        "cf_contest_id": 53,
+        "cf_index": "E",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dp"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3 2\r\n1 2\r\n2 3\r\n1 3\r\n",
+                "3\r\n"
+            ],
+            [
+                "4 6 2\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n1 3\r\n2 4\r\n",
+                "12\r\n"
+            ],
+            [
+                "4 6 3\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n1 3\r\n2 4\r\n",
+                "4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 4 3\r\n2 1\r\n5 3\r\n3 2\r\n1 4\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 10 2\r\n2 4\r\n1 5\r\n2 5\r\n3 5\r\n4 3\r\n1 4\r\n3 1\r\n5 4\r\n3 2\r\n2 1\r\n",
+                "60\r\n"
+            ],
+            [
+                "6 6 2\r\n6 3\r\n5 2\r\n5 1\r\n3 5\r\n6 2\r\n4 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "7 7 5\r\n2 1\r\n4 2\r\n7 1\r\n4 5\r\n7 6\r\n2 6\r\n2 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 5 2\r\n1 2\r\n2 3\r\n3 4\r\n4 2\r\n4 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "9 19 8\r\n1 9\r\n3 9\r\n3 6\r\n7 1\r\n3 1\r\n6 9\r\n2 9\r\n5 2\r\n5 6\r\n4 1\r\n8 6\r\n8 2\r\n1 6\r\n3 2\r\n8 7\r\n7 5\r\n6 2\r\n7 6\r\n4 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 10 9\r\n6 4\r\n2 4\r\n4 1\r\n8 1\r\n1 9\r\n7 6\r\n6 8\r\n5 1\r\n10 8\r\n2 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 44 3\r\n3 10\r\n1 5\r\n10 5\r\n7 10\r\n4 9\r\n2 9\r\n2 10\r\n8 4\r\n10 9\r\n10 8\r\n5 2\r\n9 7\r\n5 3\r\n10 4\r\n5 4\r\n2 6\r\n1 2\r\n1 6\r\n1 8\r\n4 2\r\n5 9\r\n10 1\r\n7 4\r\n3 2\r\n6 9\r\n3 1\r\n6 4\r\n8 9\r\n3 6\r\n3 4\r\n1 7\r\n2 7\r\n6 8\r\n3 8\r\n1 4\r\n6 10\r\n5 7\r\n7 3\r\n6 7\r\n5 6\r\n2 8\r\n8 7\r\n3 9\r\n1 9\r\n",
+                "13547520\r\n"
+            ],
+            [
+                "10 21 6\r\n3 8\r\n1 10\r\n3 4\r\n2 9\r\n9 8\r\n7 9\r\n7 10\r\n6 5\r\n7 6\r\n7 3\r\n5 7\r\n10 4\r\n8 6\r\n9 5\r\n6 10\r\n8 7\r\n10 8\r\n2 8\r\n4 7\r\n1 9\r\n2 5\r\n",
+                "3358\r\n"
+            ],
+            [
+                "10 35 9\r\n2 3\r\n6 8\r\n1 5\r\n10 9\r\n5 3\r\n9 3\r\n6 9\r\n5 6\r\n1 7\r\n9 7\r\n8 3\r\n8 10\r\n7 5\r\n8 2\r\n1 9\r\n6 7\r\n6 2\r\n9 5\r\n4 2\r\n7 3\r\n4 10\r\n8 5\r\n6 4\r\n3 10\r\n6 3\r\n10 5\r\n1 10\r\n8 1\r\n9 8\r\n8 7\r\n1 3\r\n7 2\r\n10 7\r\n1 6\r\n9 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 34 3\r\n3 6\r\n1 9\r\n2 1\r\n2 4\r\n1 10\r\n7 3\r\n1 7\r\n3 5\r\n6 1\r\n10 6\r\n10 7\r\n9 2\r\n5 7\r\n5 2\r\n5 4\r\n10 4\r\n3 9\r\n10 2\r\n6 7\r\n5 9\r\n2 6\r\n1 4\r\n10 9\r\n3 10\r\n7 8\r\n9 7\r\n8 9\r\n6 9\r\n10 8\r\n7 4\r\n8 5\r\n7 2\r\n5 6\r\n4 8\r\n",
+                "948807\r\n"
+            ],
+            [
+                "10 11 6\r\n9 8\r\n8 5\r\n3 2\r\n6 9\r\n1 8\r\n2 6\r\n10 4\r\n6 4\r\n7 2\r\n6 7\r\n9 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 25 9\r\n10 8\r\n9 10\r\n6 9\r\n8 5\r\n1 7\r\n4 7\r\n5 3\r\n8 6\r\n9 2\r\n10 1\r\n7 2\r\n7 10\r\n3 1\r\n9 5\r\n4 10\r\n7 3\r\n5 7\r\n2 5\r\n6 1\r\n4 8\r\n2 4\r\n8 7\r\n8 2\r\n2 6\r\n5 10\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 39 4\r\n5 7\r\n5 9\r\n10 1\r\n4 8\r\n5 8\r\n8 1\r\n6 8\r\n3 7\r\n9 7\r\n8 3\r\n10 2\r\n1 9\r\n1 3\r\n4 9\r\n6 9\r\n2 7\r\n1 7\r\n7 4\r\n6 5\r\n6 7\r\n4 5\r\n5 2\r\n2 1\r\n10 5\r\n3 10\r\n3 5\r\n1 4\r\n2 3\r\n9 3\r\n4 2\r\n9 2\r\n10 6\r\n9 10\r\n10 4\r\n6 4\r\n9 8\r\n2 6\r\n1 5\r\n4 3\r\n",
+                "9552530\r\n"
+            ],
+            [
+                "10 39 7\r\n3 1\r\n4 6\r\n1 7\r\n3 4\r\n6 1\r\n3 9\r\n7 5\r\n1 9\r\n2 8\r\n4 2\r\n5 3\r\n3 10\r\n2 1\r\n9 2\r\n1 8\r\n7 8\r\n4 10\r\n7 6\r\n8 10\r\n5 6\r\n5 4\r\n6 9\r\n3 6\r\n7 3\r\n4 1\r\n6 10\r\n10 9\r\n6 2\r\n9 4\r\n9 7\r\n5 9\r\n5 2\r\n2 7\r\n8 3\r\n8 5\r\n8 6\r\n7 4\r\n3 2\r\n8 4\r\n",
+                "177142\r\n"
+            ],
+            [
+                "10 16 9\r\n1 5\r\n10 5\r\n3 1\r\n2 9\r\n8 1\r\n4 2\r\n7 9\r\n4 8\r\n7 4\r\n1 7\r\n2 6\r\n6 10\r\n7 2\r\n8 3\r\n1 6\r\n2 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 34 8\r\n10 3\r\n9 3\r\n8 1\r\n3 7\r\n2 5\r\n9 1\r\n5 10\r\n2 3\r\n8 4\r\n2 10\r\n5 4\r\n5 8\r\n4 9\r\n5 3\r\n9 10\r\n2 4\r\n4 10\r\n2 9\r\n9 5\r\n3 8\r\n1 4\r\n7 6\r\n7 2\r\n6 5\r\n6 9\r\n7 8\r\n1 3\r\n4 6\r\n3 6\r\n10 8\r\n1 6\r\n1 7\r\n5 7\r\n2 1\r\n",
+                "448\r\n"
+            ],
+            [
+                "8 9 4\r\n7 3\r\n8 6\r\n7 2\r\n2 8\r\n5 2\r\n4 1\r\n6 7\r\n1 8\r\n3 5\r\n",
+                "3\r\n"
+            ],
+            [
+                "10 45 9\r\n10 3\r\n1 7\r\n9 1\r\n1 10\r\n4 1\r\n3 7\r\n4 2\r\n10 8\r\n10 6\r\n8 7\r\n8 4\r\n8 2\r\n6 7\r\n10 2\r\n1 8\r\n5 8\r\n3 6\r\n6 4\r\n9 5\r\n9 8\r\n2 5\r\n2 1\r\n5 4\r\n6 9\r\n4 9\r\n3 1\r\n3 9\r\n5 1\r\n4 7\r\n7 10\r\n2 3\r\n9 2\r\n4 3\r\n4 10\r\n8 3\r\n5 10\r\n9 7\r\n6 5\r\n3 5\r\n8 6\r\n6 1\r\n2 6\r\n10 9\r\n5 7\r\n2 7\r\n",
+                "10\r\n"
+            ],
+            [
+                "10 45 8\r\n7 2\r\n3 7\r\n4 8\r\n1 8\r\n9 6\r\n7 6\r\n10 7\r\n6 3\r\n2 8\r\n6 2\r\n4 10\r\n9 2\r\n10 3\r\n6 1\r\n8 9\r\n5 2\r\n4 5\r\n5 1\r\n4 1\r\n6 10\r\n10 9\r\n3 5\r\n7 5\r\n6 5\r\n10 8\r\n4 2\r\n9 5\r\n2 3\r\n4 6\r\n4 9\r\n7 9\r\n1 10\r\n2 10\r\n1 2\r\n8 6\r\n3 8\r\n4 3\r\n9 1\r\n5 10\r\n9 3\r\n7 4\r\n7 1\r\n8 7\r\n3 1\r\n5 8\r\n",
+                "11430\r\n"
+            ],
+            [
+                "10 45 7\r\n1 10\r\n8 6\r\n7 6\r\n10 9\r\n2 6\r\n6 4\r\n7 1\r\n8 7\r\n3 8\r\n2 3\r\n4 10\r\n4 9\r\n10 7\r\n10 5\r\n5 2\r\n2 4\r\n3 1\r\n4 3\r\n6 9\r\n3 7\r\n7 4\r\n2 8\r\n6 1\r\n10 3\r\n8 10\r\n7 5\r\n4 8\r\n4 5\r\n3 5\r\n9 2\r\n7 2\r\n10 2\r\n5 8\r\n6 10\r\n8 1\r\n6 5\r\n1 4\r\n5 9\r\n9 7\r\n1 2\r\n9 3\r\n1 5\r\n6 3\r\n9 1\r\n8 9\r\n",
+                "695520\r\n"
+            ],
+            [
+                "10 45 6\r\n6 2\r\n2 10\r\n4 8\r\n3 5\r\n7 10\r\n2 9\r\n8 3\r\n5 9\r\n7 9\r\n7 6\r\n5 10\r\n1 3\r\n1 6\r\n5 4\r\n3 4\r\n7 8\r\n8 6\r\n2 4\r\n1 4\r\n1 8\r\n10 3\r\n5 6\r\n1 9\r\n3 2\r\n10 9\r\n3 7\r\n10 1\r\n1 5\r\n2 7\r\n2 5\r\n9 4\r\n3 6\r\n7 4\r\n8 5\r\n10 6\r\n9 6\r\n3 9\r\n5 7\r\n10 4\r\n8 10\r\n6 4\r\n7 1\r\n2 8\r\n9 8\r\n2 1\r\n",
+                "8573040\r\n"
+            ],
+            [
+                "10 45 5\r\n2 5\r\n6 8\r\n7 5\r\n6 9\r\n5 9\r\n5 3\r\n10 6\r\n1 9\r\n10 7\r\n3 10\r\n1 2\r\n4 8\r\n9 10\r\n2 8\r\n2 6\r\n4 2\r\n7 6\r\n1 8\r\n7 2\r\n2 10\r\n8 5\r\n8 3\r\n4 1\r\n1 10\r\n4 10\r\n4 6\r\n3 1\r\n4 7\r\n5 4\r\n7 8\r\n7 3\r\n10 5\r\n6 1\r\n9 7\r\n3 6\r\n1 5\r\n2 9\r\n9 3\r\n3 4\r\n9 8\r\n7 1\r\n4 9\r\n10 8\r\n6 5\r\n3 2\r\n",
+                "31752000\r\n"
+            ],
+            [
+                "10 45 4\r\n8 6\r\n10 2\r\n9 5\r\n1 7\r\n8 7\r\n7 10\r\n2 5\r\n5 10\r\n10 1\r\n1 8\r\n4 1\r\n10 9\r\n6 9\r\n3 7\r\n10 4\r\n5 6\r\n1 5\r\n4 7\r\n7 9\r\n10 3\r\n4 3\r\n6 4\r\n2 1\r\n5 3\r\n10 6\r\n1 9\r\n8 2\r\n3 8\r\n6 3\r\n8 5\r\n3 9\r\n4 2\r\n7 5\r\n2 9\r\n4 5\r\n2 7\r\n2 6\r\n6 7\r\n8 4\r\n8 10\r\n3 2\r\n4 9\r\n9 8\r\n6 1\r\n3 1\r\n",
+                "40219200\r\n"
+            ],
+            [
+                "10 45 3\r\n8 5\r\n10 7\r\n6 8\r\n10 8\r\n5 4\r\n9 2\r\n8 3\r\n1 8\r\n8 7\r\n1 6\r\n4 7\r\n9 1\r\n10 6\r\n4 8\r\n7 1\r\n1 2\r\n3 6\r\n2 6\r\n9 10\r\n2 8\r\n10 5\r\n6 9\r\n2 7\r\n7 5\r\n4 6\r\n1 3\r\n5 2\r\n4 3\r\n9 7\r\n4 9\r\n6 5\r\n1 10\r\n5 1\r\n2 3\r\n10 3\r\n4 10\r\n1 4\r\n9 5\r\n9 8\r\n7 6\r\n2 4\r\n2 10\r\n3 5\r\n9 3\r\n7 3\r\n",
+                "16934400\r\n"
+            ],
+            [
+                "10 45 2\r\n7 3\r\n3 2\r\n8 6\r\n6 10\r\n7 6\r\n2 7\r\n4 3\r\n6 5\r\n2 9\r\n10 2\r\n6 1\r\n5 1\r\n8 1\r\n3 1\r\n4 7\r\n3 6\r\n1 10\r\n9 10\r\n5 7\r\n1 2\r\n9 4\r\n4 1\r\n5 3\r\n1 9\r\n10 3\r\n8 3\r\n7 9\r\n9 8\r\n4 2\r\n5 9\r\n10 7\r\n6 9\r\n2 8\r\n2 6\r\n8 4\r\n5 2\r\n7 8\r\n8 10\r\n8 5\r\n5 4\r\n4 10\r\n3 9\r\n1 7\r\n5 10\r\n4 6\r\n",
+                "1814400\r\n"
+            ],
+            [
+                "10 44 5\r\n8 4\r\n3 8\r\n1 3\r\n2 6\r\n7 4\r\n7 1\r\n4 6\r\n7 2\r\n3 7\r\n4 10\r\n3 10\r\n10 1\r\n2 3\r\n5 7\r\n5 8\r\n8 2\r\n9 5\r\n3 9\r\n5 3\r\n8 1\r\n4 5\r\n2 4\r\n1 6\r\n10 7\r\n9 1\r\n6 8\r\n8 10\r\n10 5\r\n9 10\r\n9 8\r\n1 4\r\n6 10\r\n8 7\r\n3 6\r\n4 3\r\n9 6\r\n7 6\r\n9 7\r\n1 2\r\n2 10\r\n1 5\r\n2 5\r\n4 9\r\n2 9\r\n",
+                "25401600\r\n"
+            ],
+            [
+                "10 43 9\r\n7 1\r\n4 5\r\n8 3\r\n5 1\r\n2 5\r\n9 2\r\n8 4\r\n8 2\r\n5 8\r\n4 2\r\n9 8\r\n7 10\r\n10 2\r\n4 7\r\n9 5\r\n2 3\r\n8 6\r\n10 5\r\n6 4\r\n3 5\r\n8 1\r\n3 1\r\n3 7\r\n6 9\r\n4 10\r\n9 7\r\n6 3\r\n7 5\r\n3 4\r\n9 10\r\n7 2\r\n4 1\r\n7 8\r\n1 10\r\n3 9\r\n10 6\r\n10 3\r\n6 7\r\n6 1\r\n1 2\r\n1 9\r\n5 6\r\n6 2\r\n",
+                "6\r\n"
+            ],
+            [
+                "10 42 5\r\n1 3\r\n10 2\r\n1 7\r\n5 8\r\n6 7\r\n3 5\r\n3 2\r\n10 5\r\n8 1\r\n3 9\r\n6 3\r\n8 4\r\n6 9\r\n1 4\r\n9 2\r\n8 3\r\n6 5\r\n2 4\r\n7 9\r\n4 6\r\n8 10\r\n1 2\r\n3 10\r\n7 2\r\n5 4\r\n1 10\r\n6 2\r\n2 8\r\n4 3\r\n6 1\r\n4 9\r\n2 5\r\n10 4\r\n10 6\r\n8 7\r\n9 5\r\n9 10\r\n5 1\r\n10 7\r\n8 6\r\n7 5\r\n8 9\r\n",
+                "15986880\r\n"
+            ]
+        ]
+    }
+]

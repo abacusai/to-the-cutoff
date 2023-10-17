@@ -1,0 +1,136 @@
+[
+    {
+        "name": "New Year Permutation",
+        "description": "User ainta has a permutation p1, p2, ..., pn. As the New Year is coming, he\nwants to make his permutation as pretty as possible. Permutation a1, a2, ...,\nan is prettier than permutation b1, b2, ..., bn, if and only if there exists\nan integer k (1 \u2264 k \u2264 n) where a1 = b1, a2 = b2, ..., ak - 1 = bk - 1 and ak <\nbk all holds. As known, permutation p is so sensitive that it could be only\nmodified by swapping two distinct elements. But swapping two elements is\nharder than you think. Given an n \u00d7 n binary matrix A, user ainta can swap the\nvalues of pi and pj (1 \u2264 i, j \u2264 n, i \u2260 j) if and only if Ai, j = 1. Given the\npermutation p and the matrix A, user ainta wants to know the prettiest\npermutation that he can obtain. Input The first line contains an integer n (1\n\u2264 n \u2264 300) \u2014 the size of the permutation p. The second line contains n space-\nseparated integers p1, p2, ..., pn \u2014 the permutation p that user ainta has.\nEach integer between 1 and n occurs exactly once in the given permutation.\nNext n lines describe the matrix A. The i-th line contains n characters '0' or\n'1' and describes the i-th row of A. The j-th character of the i-th line Ai, j\nis the element on the intersection of the i-th row and the j-th column of A.\nIt is guaranteed that, for all integers i, j where 1 \u2264 i < j \u2264 n, Ai, j = Aj,\ni holds. Also, for all integers i where 1 \u2264 i \u2264 n, Ai, i = 0 holds. Output In\nthe first and only line, print n space-separated integers, describing the\nprettiest permutation that can be obtained. Examples Input 7 5 2 4 3 6 7 1\n0001001 0000000 0000010 1000001 0000000 0010000 1001000 Output 1 2 4 3 6 7 5\nInput 5 4 2 1 5 3 00100 00011 10010 01101 01010 Output 1 2 3 4 5 Note In the\nfirst sample, the swap needed to obtain the prettiest permutation is: (p1,\np7). In the second sample, the swaps needed to obtain the prettiest\npermutation is (p1, p3), (p4, p5), (p3, p4). A permutation p is a sequence of\nintegers p1, p2, ..., pn, consisting of n distinct positive integers, each of\nthem doesn't exceed n. The i-th element of the permutation p is denoted as pi.\nThe size of the permutation p is denoted as n.\n\n",
+        "cf_contest_id": 500,
+        "cf_index": "B",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy",
+            "math",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7\r\n5 2 4 3 6 7 1\r\n0001001\r\n0000000\r\n0000010\r\n1000001\r\n0000000\r\n0010000\r\n1001000\r\n",
+                "1 2 4 3 6 7 5\r\n"
+            ],
+            [
+                "5\r\n4 2 1 5 3\r\n00100\r\n00011\r\n10010\r\n01101\r\n01010\r\n",
+                "1 2 3 4 5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7\r\n1 7 6 4 2 3 5\r\n0000100\r\n0000010\r\n0000001\r\n0000000\r\n1000000\r\n0100000\r\n0010000\r\n",
+                "1 3 5 4 2 7 6\r\n"
+            ],
+            [
+                "15\r\n6 1 2 7 9 13 14 8 4 5 3 12 10 15 11\r\n000100100100100\r\n000010010010010\r\n000001001001001\r\n100000100100100\r\n010000010010010\r\n001000001001001\r\n100100000100100\r\n010010000010010\r\n001001000001001\r\n100100100000100\r\n010010010000010\r\n001001001000001\r\n100100100100000\r\n010010010010000\r\n001001001001000\r\n",
+                "5 1 2 6 3 4 7 8 11 10 9 12 14 15 13\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n01\r\n10\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n00\r\n00\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n001\r\n000\r\n100\r\n",
+                "2 1 3\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n001\r\n000\r\n100\r\n",
+                "1 2 3\r\n"
+            ],
+            [
+                "4\r\n1 3 2 4\r\n0000\r\n0010\r\n0100\r\n0000\r\n",
+                "1 2 3 4\r\n"
+            ],
+            [
+                "10\r\n5 1 6 2 8 3 4 10 9 7\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n0000000000\r\n",
+                "5 1 6 2 8 3 4 10 9 7\r\n"
+            ],
+            [
+                "10\r\n5 1 6 2 8 3 4 10 9 7\r\n0001000000\r\n0000000000\r\n0000000001\r\n1000000010\r\n0000010000\r\n0000100000\r\n0000000000\r\n0000000000\r\n0001000000\r\n0010000000\r\n",
+                "2 1 6 5 3 8 4 10 9 7\r\n"
+            ],
+            [
+                "10\r\n5 1 6 2 8 3 4 10 9 7\r\n0000000000\r\n0000010000\r\n0000010000\r\n0000010000\r\n0000010000\r\n0111101011\r\n0000010000\r\n0000000000\r\n0000010000\r\n0000010000\r\n",
+                "5 1 2 3 4 6 7 10 8 9\r\n"
+            ],
+            [
+                "1\r\n1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n2 1 3\r\n001\r\n001\r\n110\r\n",
+                "1 2 3\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n011\r\n100\r\n100\r\n",
+                "1 2 3\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n011\r\n100\r\n100\r\n",
+                "1 2 3\r\n"
+            ],
+            [
+                "3\r\n1 3 2\r\n011\r\n100\r\n100\r\n",
+                "1 2 3\r\n"
+            ],
+            [
+                "4\r\n3 2 1 4\r\n0001\r\n0010\r\n0101\r\n1010\r\n",
+                "1 2 3 4\r\n"
+            ],
+            [
+                "4\r\n3 4 2 1\r\n0100\r\n1010\r\n0101\r\n0010\r\n",
+                "1 2 3 4\r\n"
+            ],
+            [
+                "7\r\n7 6 5 4 3 2 1\r\n0100000\r\n1010000\r\n0101000\r\n0010100\r\n0001010\r\n0000101\r\n0000010\r\n",
+                "1 2 3 4 5 6 7\r\n"
+            ],
+            [
+                "6\r\n6 5 4 3 2 1\r\n010000\r\n101000\r\n010100\r\n001010\r\n000101\r\n000010\r\n",
+                "1 2 3 4 5 6\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n011\r\n100\r\n100\r\n",
+                "1 2 3\r\n"
+            ],
+            [
+                "5\r\n5 4 3 2 1\r\n00001\r\n00001\r\n00001\r\n00001\r\n11110\r\n",
+                "1 2 3 4 5\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n001\r\n001\r\n110\r\n",
+                "1 2 3\r\n"
+            ],
+            [
+                "4\r\n4 3 2 1\r\n0100\r\n1001\r\n0000\r\n0100\r\n",
+                "1 3 2 4\r\n"
+            ],
+            [
+                "5\r\n5 4 3 2 1\r\n01000\r\n10100\r\n01010\r\n00101\r\n00010\r\n",
+                "1 2 3 4 5\r\n"
+            ],
+            [
+                "4\r\n2 1 3 4\r\n0010\r\n0010\r\n1100\r\n0000\r\n",
+                "1 2 3 4\r\n"
+            ],
+            [
+                "4\r\n3 4 1 2\r\n0110\r\n1000\r\n1001\r\n0010\r\n",
+                "1 2 3 4\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,81 @@
+[
+    {
+        "name": "Bus",
+        "description": "There is a bus stop near the university. The lessons are over, and n students\ncome to the stop. The i-th student will appear at the bus stop at time ti (all\nti's are distinct). We shall assume that the stop is located on the coordinate\naxis Ox, at point x = 0, and the bus goes along the ray Ox, that is, towards\nthe positive direction of the coordinate axis, and back. The i-th student\nneeds to get to the point with coordinate xi (xi > 0). The bus moves by the\nfollowing algorithm. Initially it is at point 0. The students consistently\ncome to the stop and get on it. The bus has a seating capacity which is equal\nto m passengers. At the moment when m students get on the bus, it starts\nmoving in the positive direction of the coordinate axis. Also it starts moving\nwhen the last (n-th) student gets on the bus. The bus is moving at a speed of\n1 unit of distance per 1 unit of time, i.e. it covers distance y in time y.\nEvery time the bus passes the point at which at least one student needs to get\noff, it stops and these students get off the bus. The students need 1 + [k /\n2] units of time to get off the bus, where k is the number of students who\nleave at this point. Expression [k / 2] denotes rounded down k / 2. As soon as\nthe last student leaves the bus, the bus turns around and goes back to the\npoint x = 0. It doesn't make any stops until it reaches the point. At the\ngiven point the bus fills with students once more, and everything is repeated.\nIf students come to the stop when there's no bus, they form a line (queue) and\nget on the bus in the order in which they came. Any number of students get on\nthe bus in negligible time, you should assume that it doesn't take any time.\nAny other actions also take no time. The bus has no other passengers apart\nfrom the students. Write a program that will determine for each student the\ntime when he got off the bus. The moment a student got off the bus is the\nmoment the bus stopped at the student's destination stop (despite the fact\nthat the group of students need some time to get off). Input The first line\ncontains two space-separated integers n, m (1 \u2264 n, m \u2264 10^5) \u2014 the number of\nstudents and the number of passengers the bus can transport, correspondingly.\nNext n lines contain descriptions of the students, one per line. Each line\ncontains a pair of integers ti, xi (1 \u2264 ti \u2264 10^5, 1 \u2264 xi \u2264 10^4). The lines\nare given in the order of strict increasing of ti. Values of xi can coincide.\nOutput Print n numbers w1, w2, ..., wn, wi \u2014 the moment of time when the i-th\nstudent got off the bus. Print the numbers on one line and separate them with\nsingle spaces. Examples Input 1 10 3 5 Output 8 Input 2 1 3 5 4 5 Output 8 19\nInput 5 4 3 5 4 5 5 5 6 5 7 1 Output 11 11 11 11 20 Input 20 4 28 13 31 13 35\n6 36 4 52 6 53 4 83 2 84 4 87 1 93 6 108 4 113 6 116 1 125 2 130 2 136 13 162\n2 166 4 184 1 192 2 Output 51 51 43 40 93 89 86 89 114 121 118 121 137 139 139\n152 195 199 193 195 Note In the first sample the bus waits for the first\nstudent for 3 units of time and drives him to his destination in additional 5\nunits of time. So the student leaves the bus at the moment of time 3 + 5 = 8.\nIn the second sample the capacity of the bus equals 1, that's why it will\ndrive the first student alone. This student is the same as the student from\nthe first sample. So the bus arrives to his destination at the moment of time\n8, spends 1 + [1 / 2] = 1 units of time on getting him off, and returns back\nto 0 in additional 5 units of time. That is, the bus returns to the bus stop\nat the moment of time 14. By this moment the second student has already came\nto the bus stop. So he immediately gets in the bus, and is driven to his\ndestination in additional 5 units of time. He gets there at the moment 14 + 5\n= 19. In the third sample the bus waits for the fourth student for 6 units of\ntime, then drives for 5 units of time, then gets the passengers off for 1 + [4\n/ 2] = 3 units of time, then returns for 5 units of time, and then drives the\nfifth student for 1 unit of time.\n\n",
+        "cf_contest_id": 172,
+        "cf_index": "C",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1 10\r\n3 5\r\n",
+                "8\r\n"
+            ],
+            [
+                "2 1\r\n3 5\r\n4 5\r\n",
+                "8 19\r\n"
+            ],
+            [
+                "5 4\r\n3 5\r\n4 5\r\n5 5\r\n6 5\r\n7 1\r\n",
+                "11 11 11 11 20\r\n"
+            ],
+            [
+                "20 4\r\n28 13\r\n31 13\r\n35 6\r\n36 4\r\n52 6\r\n53 4\r\n83 2\r\n84 4\r\n87 1\r\n93 6\r\n108 4\r\n113 6\r\n116 1\r\n125 2\r\n130 2\r\n136 13\r\n162 2\r\n166 4\r\n184 1\r\n192 2\r\n",
+                "51 51 43 40 93 89 86 89 114 121 118 121 137 139 139 152 195 199 193 195\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n109 15\r\n",
+                "124\r\n"
+            ],
+            [
+                "2 1\r\n43 5\r\n102 1\r\n",
+                "48 103\r\n"
+            ],
+            [
+                "4 2\r\n7 1\r\n12 14\r\n90 15\r\n176 1\r\n",
+                "13 27 192 177\r\n"
+            ],
+            [
+                "8 8\r\n48 14\r\n74 12\r\n94 4\r\n127 14\r\n151 11\r\n173 4\r\n190 14\r\n191 9\r\n",
+                "210 207 195 210 205 195 210 202\r\n"
+            ],
+            [
+                "16 1\r\n29 10\r\n48 13\r\n53 10\r\n54 5\r\n59 6\r\n67 9\r\n68 10\r\n95 13\r\n132 5\r\n148 6\r\n150 6\r\n154 6\r\n169 10\r\n171 10\r\n185 6\r\n198 6\r\n",
+                "39 63 87 103 115 131 151 175 194 206 219 232 249 270 287 300\r\n"
+            ],
+            [
+                "32 3\r\n9 2\r\n12 4\r\n13 7\r\n14 7\r\n15 4\r\n19 10\r\n20 10\r\n29 2\r\n38 7\r\n58 4\r\n59 1\r\n61 4\r\n73 4\r\n90 1\r\n92 4\r\n95 7\r\n103 4\r\n107 7\r\n119 4\r\n121 4\r\n122 10\r\n123 10\r\n127 2\r\n134 10\r\n142 7\r\n144 7\r\n151 10\r\n160 7\r\n165 10\r\n191 1\r\n197 1\r\n199 7\r\n",
+                "15 18 22 38 34 42 65 55 61 81 77 81 97 93 97 115 111 115 128 128 136 158 149 158 177 177 182 201 205 194 217 224\r\n"
+            ],
+            [
+                "32 4\r\n4 6\r\n7 5\r\n13 6\r\n27 6\r\n39 5\r\n48 5\r\n57 11\r\n62 13\r\n64 11\r\n68 11\r\n84 9\r\n86 5\r\n89 6\r\n91 6\r\n107 13\r\n108 13\r\n113 11\r\n120 13\r\n126 5\r\n130 6\r\n134 9\r\n136 6\r\n137 5\r\n139 9\r\n143 5\r\n154 9\r\n155 5\r\n157 13\r\n171 11\r\n179 11\r\n185 13\r\n190 5\r\n",
+                "34 32 34 34 67 67 75 78 105 105 102 97 124 124 133 133 161 164 153 155 189 185 183 189 205 211 205 216 242 242 246 235\r\n"
+            ],
+            [
+                "32 5\r\n12 11\r\n17 14\r\n21 2\r\n24 2\r\n35 7\r\n41 15\r\n51 11\r\n52 2\r\n53 2\r\n61 14\r\n62 14\r\n75 2\r\n89 15\r\n90 14\r\n95 7\r\n102 7\r\n104 2\r\n105 14\r\n106 14\r\n109 2\r\n133 2\r\n135 2\r\n143 14\r\n151 11\r\n155 14\r\n168 15\r\n169 15\r\n179 14\r\n180 7\r\n181 15\r\n186 7\r\n198 14\r\n",
+                "49 53 37 37 44 87 81 70 70 85 119 105 122 119 111 147 140 155 155 140 173 173 188 184 188 221 221 219 211 221 245 253\r\n"
+            ],
+            [
+                "32 6\r\n15 12\r\n24 6\r\n30 13\r\n35 6\r\n38 6\r\n46 6\r\n47 12\r\n60 6\r\n66 9\r\n71 15\r\n74 6\r\n76 15\r\n104 6\r\n105 6\r\n110 15\r\n124 12\r\n126 12\r\n129 9\r\n131 12\r\n134 15\r\n135 15\r\n141 12\r\n154 13\r\n167 9\r\n171 9\r\n179 15\r\n181 15\r\n185 12\r\n189 12\r\n191 6\r\n192 6\r\n196 12\r\n",
+                "61 52 63 52 52 52 92 83 88 96 83 96 135 135 149 144 144 140 180 186 186 180 183 176 213 222 222 217 217 209 245 252\r\n"
+            ],
+            [
+                "32 7\r\n4 14\r\n6 14\r\n17 4\r\n22 3\r\n29 4\r\n32 4\r\n39 10\r\n40 11\r\n44 11\r\n51 11\r\n57 10\r\n76 4\r\n82 4\r\n87 14\r\n88 10\r\n118 10\r\n121 10\r\n136 14\r\n141 3\r\n143 4\r\n159 10\r\n162 10\r\n163 11\r\n165 10\r\n171 4\r\n172 10\r\n175 4\r\n176 3\r\n179 10\r\n196 10\r\n197 3\r\n198 10\r\n",
+                "57 57 44 42 44 44 52 101 101 101 99 91 91 106 171 171 171 178 162 164 171 206 209 206 198 206 198 196 232 232 224 232\r\n"
+            ],
+            [
+                "32 8\r\n12 9\r\n26 8\r\n27 8\r\n29 9\r\n43 11\r\n44 9\r\n45 5\r\n48 5\r\n50 8\r\n53 8\r\n57 9\r\n69 8\r\n76 11\r\n86 1\r\n88 9\r\n103 5\r\n116 9\r\n131 8\r\n139 8\r\n142 5\r\n148 1\r\n152 8\r\n154 8\r\n167 1\r\n170 5\r\n172 5\r\n173 5\r\n181 8\r\n183 1\r\n185 1\r\n190 1\r\n200 5\r\n",
+                "61 58 58 61 65 61 53 53 113 113 116 113 120 104 116 109 182 178 178 174 168 178 178 168 207 207 207 213 201 201 201 207\r\n"
+            ]
+        ]
+    }
+]

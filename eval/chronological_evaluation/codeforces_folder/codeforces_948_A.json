@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Protect Sheep",
+        "description": "Bob is a farmer. He has a large pasture with many sheep. Recently, he has lost\nsome of them due to wolf attacks. He thus decided to place some shepherd dogs\nin such a way that all his sheep are protected. The pasture is a rectangle\nconsisting of R \u00d7 C cells. Each cell is either empty, contains a sheep, a wolf\nor a dog. Sheep and dogs always stay in place, but wolves can roam freely\naround the pasture, by repeatedly moving to the left, right, up or down to a\nneighboring cell. When a wolf enters a cell with a sheep, it consumes it.\nHowever, no wolf can enter a cell with a dog. Initially there are no dogs.\nPlace dogs onto the pasture in such a way that no wolf can reach any sheep, or\ndetermine that it is impossible. Note that since you have many dogs, you do\nnot need to minimize their number. Input First line contains two integers R (1\n\u2264 R \u2264 500) and C (1 \u2264 C \u2264 500), denoting the number of rows and the numbers of\ncolumns respectively. Each of the following R lines is a string consisting of\nexactly C characters, representing one row of the pasture. Here, 'S' means a\nsheep, 'W' a wolf and '.' an empty cell. Output If it is impossible to protect\nall sheep, output a single line with the word \"No\". Otherwise, output a line\nwith the word \"Yes\". Then print R lines, representing the pasture after\nplacing dogs. Again, 'S' means a sheep, 'W' a wolf, 'D' is a dog and '.' an\nempty space. You are not allowed to move, remove or add a sheep or a wolf. If\nthere are multiple solutions, you may print any of them. You don't have to\nminimize the number of dogs. Examples Input 6 6 ..S... ..S.W. .S.... ..W...\n...W.. ...... Output Yes ..SD.. ..SDW. .SD... .DW... DD.W.. ...... Input 1 2\nSW Output No Input 5 5 .S... ...S. S.... ...S. .S... Output Yes .S... ...S.\nS.D.. ...S. .S... Note In the first example, we can split the pasture into two\nhalves, one containing wolves and one containing sheep. Note that the sheep at\n(2,1) is safe, as wolves cannot move diagonally. In the second example, there\nare no empty spots to put dogs that would guard the lone sheep. In the third\nexample, there are no wolves, so the task is very easy. We put a dog in the\ncenter to observe the peacefulness of the meadow, but the solution would be\ncorrect even without him.\n\n",
+        "cf_contest_id": 948,
+        "cf_index": "A",
+        "cf_rating": 900,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dfs and similar",
+            "graphs",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 6\r\n..S...\r\n..S.W.\r\n.S....\r\n..W...\r\n...W..\r\n......\r\n",
+                "YES\r\nDDSDDD\r\nDDSDWD\r\nDSDDDD\r\nDDWDDD\r\nDDDWDD\r\nDDDDDD\r\n\r\n"
+            ],
+            [
+                "1 2\r\nSW\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 5\r\n.S...\r\n...S.\r\nS....\r\n...S.\r\n.S...\r\n",
+                "YES\r\nDSDDD\r\nDDDSD\r\nSDDDD\r\nDDDSD\r\nDSDDD\r\n\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 2\r\n..\r\n..\r\n..\r\nSW\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 2\r\n..\r\n..\r\n..\r\nWS\r\n",
+                "NO\r\n"
+            ],
+            [
+                "50 1\r\nS\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\nS\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\nS\r\n.\r\nW\r\n.\r\nS\r\n.\r\n.\r\n.\r\n.\r\nS\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\nW\r\n.\r\n.\r\n.\r\nW\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n.\r\n",
+                "YES\r\nS\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\nS\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\nS\r\nD\r\nW\r\nD\r\nS\r\nD\r\nD\r\nD\r\nD\r\nS\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\nW\r\nD\r\nD\r\nD\r\nW\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\nD\r\n\r\n"
+            ],
+            [
+                "4 4\r\nW..S\r\nW..S\r\nW..S\r\nW..S\r\n",
+                "YES\r\nWDDS\r\nWDDS\r\nWDDS\r\nWDDS\r\n\r\n"
+            ],
+            [
+                "4 4\r\nS..W\r\nS..W\r\nS..W\r\nS..W\r\n",
+                "YES\r\nSDDW\r\nSDDW\r\nSDDW\r\nSDDW\r\n\r\n"
+            ],
+            [
+                "1 1\r\n.\r\n",
+                "YES\r\nD\r\n\r\n"
+            ],
+            [
+                "1 1\r\nW\r\n",
+                "YES\r\nW\r\n\r\n"
+            ],
+            [
+                "1 1\r\nS\r\n",
+                "YES\r\nS\r\n\r\n"
+            ],
+            [
+                "4 2\r\n..\r\n..\r\n.W\r\n.S\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 2\r\n..\r\n..\r\n.S\r\n.W\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 2\r\n..\r\n..\r\nW.\r\nS.\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 2\r\n..\r\n..\r\nS.\r\nW.\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 2\r\nS.\r\n",
+                "YES\r\nSD\r\n\r\n"
+            ]
+        ]
+    }
+]

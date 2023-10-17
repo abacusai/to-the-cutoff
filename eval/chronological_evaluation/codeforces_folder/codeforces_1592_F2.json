@@ -1,0 +1,114 @@
+[
+    {
+        "name": "Alice and Recoloring 2",
+        "description": "The difference between the versions is in the costs of operations. Solution\nfor one version won't work for another! Alice has a grid of size \n    n \n    \u00d7\n    m\n, initially all its cells are colored white. The cell on the intersection\nof \n    i\n-th row and \n    j\n-th column is denoted as \n    (i, j)\n. Alice can\ndo the following operations with this grid: Choose any subrectangle containing\ncell \n    (1, 1)\n, and flip the colors of all its cells. (Flipping means\nchanging its color from white to black or from black to white). This operation\ncosts \n    1\n coin. Choose any subrectangle containing cell \n    (n, 1)\n, and\nflip the colors of all its cells. This operation costs \n    3\n coins. Choose\nany subrectangle containing cell \n    (1, m)\n, and flip the colors of all its\ncells. This operation costs \n    4\n coins. Choose any subrectangle containing\ncell \n    (n, m)\n, and flip the colors of all its cells. This operation costs\n\n    2\n coins. As a reminder, subrectangle is a set of all cells \n    (x, y)\n\nwith \n    x_1 \n    \u2264 x \n    \u2264 x_2\n, \n    y_1 \n    \u2264 y \n    \u2264 y_2\n for some \n    1\n    \n    \u2264 x_1 \n    \u2264 x_2 \n    \u2264 n\n, \n    1 \n    \u2264 y_1 \n    \u2264 y_2 \n    \u2264 m\n. Alice\nwants to obtain her favorite coloring with these operations. What's the\nsmallest number of coins that she would have to spend? It can be shown that\nit's always possible to transform the initial grid into any other. Input The\nfirst line of the input contains \n    2\n integers \n    n, m\n (\n    1 \n    \u2264 n, m\n    \n    \u2264 500\n) \u2014 the dimensions of the grid. The \n    i\n-th of the next \n    n\n\nlines contains a string \n    s_i\n of length \n    m\n, consisting of letters W\nand B. The \n    j\n-th character of string \n    s_i\n is W if the cell \n    (i,\n    j)\n is colored white in the favorite coloring of Alice, and B if it's\ncolored black. Output Output the smallest number of coins Alice would have to\nspend to achieve her favorite coloring. Examples Input 3 3 WWW WBB WBB Output\n2 Input 10 15 WWWBBBWBBBBBWWW BBBBWWWBBWWWBBB BBBWWBWBBBWWWBB BBWBWBBWWWBBWBW\nBBBBWWWBBBWWWBB BWBBWWBBBBBBWWW WBWWBBBBWWBBBWW WWBWWWWBBWWBWWW\nBWBWWBWWWWWWBWB BBBWBWBWBBBWWBW Output 68 Note In the first sample, it's\noptimal to just apply the fourth operation once to the rectangle containing\ncells \n    (2, 2), (2, 3), (3, 2), (3, 3)\n. This would cost \n    2\n coins.\n\n",
+        "cf_contest_id": 1592,
+        "cf_index": "F2",
+        "cf_rating": 2800,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "flows",
+            "graph matchings",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3\r\nWWW\r\nWBB\r\nWBB\r\n",
+                "2\r\n"
+            ],
+            [
+                "10 15\r\nWWWBBBWBBBBBWWW\r\nBBBBWWWBBWWWBBB\r\nBBBWWBWBBBWWWBB\r\nBBWBWBBWWWBBWBW\r\nBBBBWWWBBBWWWBB\r\nBWBBWWBBBBBBWWW\r\nWBWWBBBBWWBBBWW\r\nWWBWWWWBBWWBWWW\r\nBWBWWBWWWWWWBWB\r\nBBBWBWBWBBBWWBW\r\n",
+                "68\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "11 15\r\nBBWBWWWBBWBWBBB\r\nBBBWBWWWWWBBWWB\r\nBWBBWBBWBWWBWWB\r\nWBWWWBBWWWBWBBB\r\nWWBBBBBWBWWBWWB\r\nBBWBBWWBWBBBWBW\r\nWWBWBBWBWBBWWBW\r\nWBBBWBBWBWWBBWB\r\nBWBWWBBWWWWBWWB\r\nWWWWBBBBWBWBBBW\r\nWWWBBBWBWBWWBWW\r\n",
+                "73\r\n"
+            ],
+            [
+                "12 15\r\nBBBWWBWWBWWWWWW\r\nBBBBWWBBBBWWWWB\r\nWBWWWBWWWBBWBWW\r\nWBWBBBWWWBWBWBB\r\nBBBWWWBBBBWWWBB\r\nBWBBBBWBBBWWBBW\r\nBBWBWBBBWWBBBBB\r\nBWWBBBBBBBBWBWB\r\nWWBWWBBBBWWBBBW\r\nBBBBBBWWWBWWBBB\r\nWBBWBBBBWWWWWWB\r\nWBBBWBWWWWWWWBW\r\n",
+                "87\r\n"
+            ],
+            [
+                "13 15\r\nBBBWBBWBWWWWWBB\r\nWBBWWWWBWBBBWWW\r\nWWWWWWBBBWBWBBW\r\nBBWBBWBBWBBWBBW\r\nWWWBWBBWBBBBWBB\r\nBBWBWBWBBBWBBWW\r\nBWBWWBBBWBBWWWB\r\nWBWWBWBBBWBWWBW\r\nWWBWWBWBBWWBWBB\r\nBBWWBWBBBBBBWBB\r\nWBWBBWBBWWWBWBB\r\nBWBBWWBBWWBWWBW\r\nBBBBWBBWWBWWBBB\r\n",
+                "91\r\n"
+            ],
+            [
+                "14 15\r\nWWWWWWWBWBWWBWW\r\nWBBWBBWWBBBBBBW\r\nBBWBWWWBBWWBBWB\r\nBBWWBWWBWBWBWWB\r\nBBWWBWWBBWBWBWW\r\nBWBBBBBBWBWBBBB\r\nWWWBWWWBBWBWBWB\r\nBWBBWBBWBBBBBBW\r\nBBWBBBWBBWBWWBB\r\nWWWBBBWBWBWWBBB\r\nBBBBBWBWWBBWWBW\r\nBWBWBWBWBWBBWBW\r\nWWWBWWWBBWBBWWB\r\nBBBWBBWBWWBWWBB\r\n",
+                "106\r\n"
+            ],
+            [
+                "15 15\r\nWWWBBBWWWBBBWBB\r\nBWBBBBBBWWWWBBW\r\nBWBWWWWBWBWWWWB\r\nWBWBWWWBWWBWBWW\r\nWWWBWBWWBBBBBBW\r\nBBWBBBBWBBWWWWB\r\nWBBWWWBBBBBBWWB\r\nBBBBWWBBBWWBBBB\r\nWBWBBBWBBBBWBWW\r\nBBBWBBBWBWWBWBW\r\nBBBWBWBWBWBBBWB\r\nWBBWBBWBBBBWBBW\r\nBWBBWWWWBBBBWBB\r\nBBBBWWBWBWWWBBW\r\nWBBBWBBWBWBWWWW\r\n",
+                "108\r\n"
+            ],
+            [
+                "16 15\r\nBWWBWBWWBWBBBWW\r\nBWBWWBWWBWBBWBW\r\nBBBBBWBWBWBBWBB\r\nWBWWWWBWWWWBWWW\r\nWWWBWWWBBWWWBBW\r\nBWBBWBBWWBWWWWB\r\nBWWBBWBBBBWWBBB\r\nWWWWBBBBBBWWWWB\r\nWBWBBWBWWBBWWWW\r\nWWWWBWWBBWBWWWW\r\nBWWBBWWWBWBBBWB\r\nWWBBWBWWWBBWBBW\r\nBBWBWBBBWBWWBBB\r\nBWBWWWWWBBBWWBB\r\nWWBBBWWBBBBBWBB\r\nBBBBWWWWWBBBWWW\r\n",
+                "117\r\n"
+            ],
+            [
+                "17 15\r\nBBBWWWWBBWBBBBB\r\nWWBBWWWBWWWWWBW\r\nWWBBBBWWBBBWBWW\r\nBBWWWWWWWWWWBWB\r\nBBWWBBBWBBWBWWW\r\nWBBBWBWWBBWBWBB\r\nBBBBBWWBBWWBWBB\r\nBBBBBBWWBWBBWWW\r\nBBWBBWBWWBBBBWB\r\nWBBBBWBBWWBWBWW\r\nBWBBBWWWBBBWBBW\r\nBWBWWWWBWBWBBBW\r\nWWBBWBWWWWBBWWB\r\nWWBBWBBBBBWBBBW\r\nWWWWWBWBBWWBWBW\r\nWWBBWWBBBBBWBBB\r\nBWBBBWBBBBWWWBB\r\n",
+                "121\r\n"
+            ],
+            [
+                "18 15\r\nBBBWBBWBBWWWWWW\r\nWWBBBWBBBWBBWWW\r\nWBWWBBBBWBWBBWW\r\nBBWBWBBWWBBBWWW\r\nWWBBWWBBBBWWWBB\r\nWWWBBWWWWBBBBWB\r\nWBWWBWBBWBWWBWB\r\nWWBWBWWBBWBBBWW\r\nBWWBBWBWWBWBWBW\r\nBWWWBBWWBWWBWWB\r\nBWWWWWWWBBWBBBB\r\nBBBWBWBWBWWBBWW\r\nBBWBWWWBBBBBBWB\r\nWWBWBBWWBBBBBBB\r\nWWWBBWBWWBWWBWB\r\nWWBWWWBBBBWBBBB\r\nBBWWWWBBBWBWWBW\r\nWBBWWBWBBWWWWWB\r\n",
+                "133\r\n"
+            ],
+            [
+                "19 15\r\nWBWBWBWWBBWWBBB\r\nBBBWBWWWWBWWBWW\r\nBBWBBBWBBWWWWBB\r\nWBWWBBWBWBWWBBW\r\nBBBWWBBWBWBWWBB\r\nWBBBBWBWBWBWBWB\r\nWWBBBBWBWWWBWWB\r\nWBWWWBWBBBBWBWB\r\nWWBBBWWBBBWBWBW\r\nWBBBBWBBBWBWWWB\r\nBWBBWWBWBWWBWWB\r\nWWBBBWBBBWWWWWW\r\nWWBBBWBWBWWWWBW\r\nWBWBBWBWBWWWWBW\r\nWBWWBBBBWWWBBWW\r\nBBBWWBBWBBWBBWW\r\nWBBWBBBWWWWWBBB\r\nBBWWBBBBBWBWWWW\r\nWWBWWWWWBWWBBWW\r\n",
+                "122\r\n"
+            ],
+            [
+                "20 15\r\nWWWWBWBWBWBWBWB\r\nBWWBWBWBBWWBWWB\r\nBWWBWBBBWWWBWWW\r\nBWBWBWWBWWWWBWB\r\nBWWWBWWBWWWBWBB\r\nBWWBBWBWWBWBBWB\r\nWBWWBBBBWWBWBBW\r\nBWBWWWWBWBBWWWW\r\nWWWBBBBWWWWBWBW\r\nBWBWWBBBWBWBBWB\r\nBBWWBWWWBWBWBWB\r\nWBBWBWBBBBWWWBW\r\nBBWWWWBWBWBBWWB\r\nBBWWBBBWBWBWWWB\r\nWBWWBBWBWWBBBBW\r\nBBWWBBWWBWWBWBW\r\nWWWBWBWWBBWWWWW\r\nBWWWBBBWBWBBWBW\r\nWWBBWWBBWWBWWWW\r\nWBBWWWWWBBWWWWW\r\n",
+                "136\r\n"
+            ],
+            [
+                "10 15\r\nBBBWWBBBBBWWBWB\r\nWWWWBBWBWWBWBBB\r\nWBBBWBBBBBBWWBB\r\nBWWBBWBBWBWWWBB\r\nWWBBBWBWWWBWBWW\r\nBWWBWWWBBBWWBWB\r\nBBWWBBWWBBWWBBW\r\nWWBBBWBBBBWWWWW\r\nWWBWWBWWWWWWBWB\r\nWBWWWWBWBWWWWBW\r\n",
+                "73\r\n"
+            ],
+            [
+                "11 15\r\nWBWWBWWBBWWBWBW\r\nBWBBWBBWWBBWBWB\r\nWBWWBWWBBWWBWBW\r\nWWBBBBBBWBWWBBW\r\nBBWWWWWWBWBBWWB\r\nWWWWWBBWBWBWWWB\r\nBBWWBBWBWWWWBWB\r\nWBWWWWBBBWWBBWB\r\nBWBBBBWWWBBWWBW\r\nWBWWWWBBBWWBBWB\r\nWWBWBWBWWBBBBBB\r\n",
+                "50\r\n"
+            ],
+            [
+                "12 15\r\nWBBBWWBBWWWBBWB\r\nWBBWBWBBWBBWWWW\r\nBWBWBWWWWWBWWWB\r\nBWWBBBWBWWBWBWW\r\nWWWBBWWWBWWWWBW\r\nBWBWWWBBBBBWWWW\r\nWWBWBWWBWBBWBWB\r\nWBBBBBBBWWWBBWB\r\nBBWBWWWBBWWWBBB\r\nWBBWBBWBBBWBWBW\r\nWBWWWBWBBBWBBWW\r\nWWWWBWBWWWBWBWW\r\n",
+                "94\r\n"
+            ],
+            [
+                "13 15\r\nWWBBWWBBBBWBBBW\r\nBBWWBBWWWBBBBWB\r\nWBBBBWBWBWBWWWW\r\nWBWBBWBWWBBBBWB\r\nWWWBWWWWWWWBBBB\r\nBWWWWWWBBWWBWBW\r\nWBWBBBBBBBBWWBB\r\nWWWBWWWBBBBBBWB\r\nBBWWBBWBWBWBBWW\r\nBBBWWBBBWWWBWBW\r\nBWWWBWWWWWBBBWW\r\nWWWWWWWWBBWBBBW\r\nWBWWBWWWWWBBWBW\r\n",
+                "100\r\n"
+            ],
+            [
+                "14 15\r\nWWBBBBBBWBBBBBW\r\nBBBWWBBBWWBBBWW\r\nWWBBWBBWBBBBWBW\r\nBBWBBBBWWWWBBWW\r\nWWWBBWWWBWBBWBW\r\nBBWWBBBBWWBBWWW\r\nBBBBBBWBWBBBBWW\r\nWBWBWBBWWWWBWWW\r\nBWBWBWWBBBBWBBB\r\nBBBWWBBBWWWBBWB\r\nWWWBBWWWBBBWWBW\r\nWWBWBWWBBWBBWWW\r\nWWWBWWBWWWBWBWW\r\nWWWBWWBWWWBWBWB\r\n",
+                "92\r\n"
+            ],
+            [
+                "15 15\r\nWWBWBWBBWWBBWBB\r\nWBWWBWBBBBBBWBB\r\nWWBWBBWWWBBBBWB\r\nWWBWBBBBWBBWBBB\r\nBWWBBWWBBBWBBWW\r\nBWWBWBWWWWBBWWB\r\nWWBWBBBWBWBBBWW\r\nBBWWWBWBBWWBWBW\r\nBWWBBBWBWWBWWWW\r\nWBWBBWBBWBBBBWW\r\nWWBBBBBWBBBWBWB\r\nBWBWBWBWWBBBWWW\r\nBWBWBBBBWBWBBWB\r\nBBWBBBWWBWWWWBB\r\nBWWBWBWBWWWWWBW\r\n",
+                "120\r\n"
+            ],
+            [
+                "16 15\r\nWBWWBBBWWWWBWWW\r\nBWBBWWWBBBBWBBB\r\nBBBWWWBWBBWWBWB\r\nWWBWWWBBWWBBBWB\r\nBBWBBBWWBBWWWBW\r\nBBWBBWBBWBBBBWW\r\nWWBWWBWWBWWWWBB\r\nBWBBBBBBBBBBWBB\r\nBWBWBBBWBBWBBBB\r\nWBWBWWWBWWBWWWW\r\nBWWWWWWBWBBBWBW\r\nWBBBBBBWBWWWBWB\r\nBWWWWWWBWBBBWBW\r\nWBBBBBBWBWWWBWB\r\nBWWWWBBBWWBBBWB\r\nBBWWWBBBWWBWWBB\r\n",
+                "64\r\n"
+            ],
+            [
+                "17 15\r\nBBWBBWWBWWWBWBW\r\nBWWWBWWWWBBBWBB\r\nBBBBWBBBBWWWWBW\r\nWBWWBBWBBBWWBWB\r\nBWBWWBWWWWWBWWB\r\nBBBBWWWBBBWWBBB\r\nBBWBBWBBWBWWWWB\r\nWBWBBBBBBBWBBBB\r\nBBBBBWWBWBBWBWW\r\nWWBBWBBBWWBBWBB\r\nBWWBWWBBBBBBWBB\r\nWWWWBWWBBBBWWBW\r\nWWWWBBWBBWWBWWB\r\nBWBWWBWWBBBWBBW\r\nWBBWBBWWWWBWBBB\r\nBBBWWBBWBBBBBWW\r\nWBWWWWBBBBBBWWW\r\n",
+                "133\r\n"
+            ],
+            [
+                "18 15\r\nBBBBBBBWWWWWWWB\r\nBBWBWBBBBWBBBWW\r\nWWWBBBBBWWWWWBB\r\nBBWWWWBWWBBBBBW\r\nBBWWBWBWWBWBWBW\r\nBWBWBWWBWWBBWBB\r\nBWWBWWWWBBBWBBW\r\nBBBWWWWBBBWBWBW\r\nWBBBBWWBBWWBWWB\r\nBWBBBBWBBWWBWWW\r\nBBWBWBBBWWWWBWW\r\nBWBWWWWWWBBWBWW\r\nBBBBWBWWBWWWBBW\r\nWWWBBBBWWWWWBWW\r\nBBWBBWWBWWBBWWW\r\nBBWWBBWBBWWBBWW\r\nBBWWWBBWBWWWWBW\r\nWBWWBWBBWBBBBBW\r\n",
+                "129\r\n"
+            ],
+            [
+                "19 15\r\nWBBBBWWWWBWWWWW\r\nBBWWBBBBBWWBBWW\r\nWWBBWWWWWBBWWBB\r\nWWWBWBBWWBWWWWB\r\nBBBWBWWBBWBBBBW\r\nWBBWWWWWWWBBWBW\r\nBWWBBBBBBBWWBWB\r\nWWBBWWBBWWWWWBB\r\nWWBWWBBBBBBBWBB\r\nBBWBBWWWWWWWBWW\r\nWWBWWBBBBBBBWBB\r\nWBWWWBBWWBWBBWB\r\nWBBBBBWWWBBBWBB\r\nBWWWWWBBBWWWBWW\r\nWBBBBBWWWBBBWBB\r\nBWWWWWBBBWWWBWW\r\nWBBBBBWWWBBBWBB\r\nBWWWWWBBBWWWBWW\r\nWBBBBBWWWBBBWBB\r\n",
+                "70\r\n"
+            ],
+            [
+                "20 15\r\nBWWWBBWBBBWBWWW\r\nBBWBWWBBBBWWBWW\r\nWBWBBBWWWBWBBWW\r\nWBBWWBWWWWBBWWW\r\nBWBBBBWWBBBWBWW\r\nWWBBWBBWBBWBBBB\r\nBWBWBWWBBBBBBBB\r\nBWBWBBWWBBBBBWW\r\nBBWWBWBBBWBBWBW\r\nBWBWWWBBWBWWWBB\r\nWBBWBBBWBBWBWWB\r\nWBBWWWBBWWBWWWW\r\nWBWWWWWBBBWWBWW\r\nBBWBBBBBBWBBBBB\r\nWBWBWBWBBBBBBWB\r\nBWBBWBBWBBBBBBW\r\nWWBBBBBWBBBWWWB\r\nWBBWWBBBBBWBBBB\r\nBBBWBBBBWWBWWWB\r\nBWWBWWWBBBWBBBW\r\n",
+                "127\r\n"
+            ]
+        ]
+    }
+]

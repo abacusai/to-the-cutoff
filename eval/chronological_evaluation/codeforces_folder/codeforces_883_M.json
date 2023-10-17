@@ -1,0 +1,420 @@
+[
+    {
+        "name": "Quadcopter Competition",
+        "description": "Polycarp takes part in a quadcopter competition. According to the rules a\nflying robot should: start the race from some point of a field, go around the\nflag, close cycle returning back to the starting point. Polycarp knows the\ncoordinates of the starting point (x1, y1) and the coordinates of the point\nwhere the flag is situated (x2, y2). Polycarp\u2019s quadcopter can fly only\nparallel to the sides of the field each tick changing exactly one coordinate\nby 1. It means that in one tick the quadcopter can fly from the point (x, y)\nto any of four points: (x - 1, y), (x + 1, y), (x, y - 1) or (x, y + 1). Thus\nthe quadcopter path is a closed cycle starting and finishing in (x1, y1) and\ncontaining the point (x2, y2) strictly inside. The picture corresponds to the\nfirst example: the starting (and finishing) point is in (1, 5) and the flag is\nin (5, 2). What is the minimal length of the quadcopter path? Input The first\nline contains two integer numbers x1 and y1 ( - 100 \u2264 x1, y1 \u2264 100) \u2014\ncoordinates of the quadcopter starting (and finishing) point. The second line\ncontains two integer numbers x2 and y2 ( - 100 \u2264 x2, y2 \u2264 100) \u2014 coordinates\nof the flag. It is guaranteed that the quadcopter starting point and the flag\ndo not coincide. Output Print the length of minimal path of the quadcopter to\nsurround the flag and return back. Examples Input 1 5 5 2 Output 18 Input 0 1\n0 0 Output 8\n\n",
+        "cf_contest_id": 883,
+        "cf_index": "M",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "math"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1 5\r\n5 2\r\n",
+                "18\r\n"
+            ],
+            [
+                "0 1\r\n0 0\r\n",
+                "8\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "-100 -100\r\n100 100\r\n",
+                "804\r\n"
+            ],
+            [
+                "-100 -100\r\n-100 100\r\n",
+                "406\r\n"
+            ],
+            [
+                "-100 -100\r\n100 -100\r\n",
+                "406\r\n"
+            ],
+            [
+                "100 -100\r\n-100 -100\r\n",
+                "406\r\n"
+            ],
+            [
+                "100 -100\r\n-100 100\r\n",
+                "804\r\n"
+            ],
+            [
+                "100 -100\r\n100 100\r\n",
+                "406\r\n"
+            ],
+            [
+                "-100 100\r\n-100 -100\r\n",
+                "406\r\n"
+            ],
+            [
+                "-100 100\r\n100 -100\r\n",
+                "804\r\n"
+            ],
+            [
+                "-100 100\r\n100 100\r\n",
+                "406\r\n"
+            ],
+            [
+                "100 100\r\n-100 -100\r\n",
+                "804\r\n"
+            ],
+            [
+                "100 100\r\n-100 100\r\n",
+                "406\r\n"
+            ],
+            [
+                "100 100\r\n100 -100\r\n",
+                "406\r\n"
+            ],
+            [
+                "45 -43\r\n45 -44\r\n",
+                "8\r\n"
+            ],
+            [
+                "76 76\r\n75 75\r\n",
+                "8\r\n"
+            ],
+            [
+                "-34 -56\r\n-35 -56\r\n",
+                "8\r\n"
+            ],
+            [
+                "56 -7\r\n55 -6\r\n",
+                "8\r\n"
+            ],
+            [
+                "43 -11\r\n43 -10\r\n",
+                "8\r\n"
+            ],
+            [
+                "1 -3\r\n2 -2\r\n",
+                "8\r\n"
+            ],
+            [
+                "55 71\r\n56 71\r\n",
+                "8\r\n"
+            ],
+            [
+                "54 -87\r\n55 -88\r\n",
+                "8\r\n"
+            ],
+            [
+                "22 98\r\n100 33\r\n",
+                "290\r\n"
+            ],
+            [
+                "37 84\r\n-83 5\r\n",
+                "402\r\n"
+            ],
+            [
+                "52 74\r\n-73 -39\r\n",
+                "480\r\n"
+            ],
+            [
+                "66 51\r\n51 -71\r\n",
+                "278\r\n"
+            ],
+            [
+                "-31 44\r\n73 86\r\n",
+                "296\r\n"
+            ],
+            [
+                "-20 34\r\n-9 55\r\n",
+                "68\r\n"
+            ],
+            [
+                "-5 19\r\n-91 -86\r\n",
+                "386\r\n"
+            ],
+            [
+                "-82 5\r\n28 -17\r\n",
+                "268\r\n"
+            ],
+            [
+                "-90 -100\r\n55 48\r\n",
+                "590\r\n"
+            ],
+            [
+                "-75 -14\r\n-32 8\r\n",
+                "134\r\n"
+            ],
+            [
+                "-53 -28\r\n-13 -28\r\n",
+                "86\r\n"
+            ],
+            [
+                "-42 -46\r\n10 -64\r\n",
+                "144\r\n"
+            ],
+            [
+                "55 -42\r\n25 2\r\n",
+                "152\r\n"
+            ],
+            [
+                "70 -64\r\n-54 70\r\n",
+                "520\r\n"
+            ],
+            [
+                "93 -78\r\n-32 -75\r\n",
+                "260\r\n"
+            ],
+            [
+                "8 -93\r\n79 -6\r\n",
+                "320\r\n"
+            ],
+            [
+                "50 43\r\n54 10\r\n",
+                "78\r\n"
+            ],
+            [
+                "65 32\r\n-37 71\r\n",
+                "286\r\n"
+            ],
+            [
+                "80 18\r\n-15 -58\r\n",
+                "346\r\n"
+            ],
+            [
+                "94 92\r\n4 -1\r\n",
+                "370\r\n"
+            ],
+            [
+                "-10 96\r\n27 64\r\n",
+                "142\r\n"
+            ],
+            [
+                "-96 78\r\n-56 32\r\n",
+                "176\r\n"
+            ],
+            [
+                "-81 64\r\n-37 -8\r\n",
+                "236\r\n"
+            ],
+            [
+                "-58 49\r\n74 -40\r\n",
+                "446\r\n"
+            ],
+            [
+                "-62 -55\r\n1 18\r\n",
+                "276\r\n"
+            ],
+            [
+                "-51 -69\r\n-78 86\r\n",
+                "368\r\n"
+            ],
+            [
+                "-29 -80\r\n-56 -47\r\n",
+                "124\r\n"
+            ],
+            [
+                "-14 -94\r\n55 -90\r\n",
+                "150\r\n"
+            ],
+            [
+                "83 -2\r\n82 83\r\n",
+                "176\r\n"
+            ],
+            [
+                "98 -16\r\n-96 40\r\n",
+                "504\r\n"
+            ],
+            [
+                "17 -34\r\n-86 -93\r\n",
+                "328\r\n"
+            ],
+            [
+                "32 -48\r\n33 -37\r\n",
+                "28\r\n"
+            ],
+            [
+                "74 87\r\n3 92\r\n",
+                "156\r\n"
+            ],
+            [
+                "89 73\r\n-80 49\r\n",
+                "390\r\n"
+            ],
+            [
+                "4 58\r\n-61 -80\r\n",
+                "410\r\n"
+            ],
+            [
+                "15 48\r\n50 -20\r\n",
+                "210\r\n"
+            ],
+            [
+                "-82 45\r\n81 46\r\n",
+                "332\r\n"
+            ],
+            [
+                "-68 26\r\n-2 6\r\n",
+                "176\r\n"
+            ],
+            [
+                "-53 4\r\n-92 -31\r\n",
+                "152\r\n"
+            ],
+            [
+                "-30 94\r\n31 -58\r\n",
+                "430\r\n"
+            ],
+            [
+                "-38 -11\r\n58 99\r\n",
+                "416\r\n"
+            ],
+            [
+                "-27 -25\r\n-28 68\r\n",
+                "192\r\n"
+            ],
+            [
+                "-5 -39\r\n-10 -77\r\n",
+                "90\r\n"
+            ],
+            [
+                "-90 -54\r\n9 -9\r\n",
+                "292\r\n"
+            ],
+            [
+                "7 -57\r\n28 61\r\n",
+                "282\r\n"
+            ],
+            [
+                "18 -67\r\n-51 21\r\n",
+                "318\r\n"
+            ],
+            [
+                "41 -82\r\n-33 -15\r\n",
+                "286\r\n"
+            ],
+            [
+                "56 -8\r\n91 -55\r\n",
+                "168\r\n"
+            ],
+            [
+                "-23 -13\r\n-24 -12\r\n",
+                "8\r\n"
+            ],
+            [
+                "1 32\r\n1 33\r\n",
+                "8\r\n"
+            ],
+            [
+                "25 76\r\n24 76\r\n",
+                "8\r\n"
+            ],
+            [
+                "-29 -78\r\n-28 -79\r\n",
+                "8\r\n"
+            ],
+            [
+                "-77 19\r\n-76 19\r\n",
+                "8\r\n"
+            ],
+            [
+                "-53 63\r\n-53 62\r\n",
+                "8\r\n"
+            ],
+            [
+                "86 12\r\n86 11\r\n",
+                "8\r\n"
+            ],
+            [
+                "14 56\r\n13 56\r\n",
+                "8\r\n"
+            ],
+            [
+                "63 41\r\n62 40\r\n",
+                "8\r\n"
+            ],
+            [
+                "0 -4\r\n1 -4\r\n",
+                "8\r\n"
+            ],
+            [
+                "24 41\r\n24 42\r\n",
+                "8\r\n"
+            ],
+            [
+                "48 85\r\n49 86\r\n",
+                "8\r\n"
+            ],
+            [
+                "0 0\r\n0 1\r\n",
+                "8\r\n"
+            ],
+            [
+                "0 0\r\n1 0\r\n",
+                "8\r\n"
+            ],
+            [
+                "0 0\r\n1 1\r\n",
+                "8\r\n"
+            ],
+            [
+                "0 1\r\n0 0\r\n",
+                "8\r\n"
+            ],
+            [
+                "0 1\r\n1 0\r\n",
+                "8\r\n"
+            ],
+            [
+                "0 1\r\n1 1\r\n",
+                "8\r\n"
+            ],
+            [
+                "1 0\r\n0 0\r\n",
+                "8\r\n"
+            ],
+            [
+                "1 0\r\n0 1\r\n",
+                "8\r\n"
+            ],
+            [
+                "1 0\r\n1 1\r\n",
+                "8\r\n"
+            ],
+            [
+                "1 1\r\n0 0\r\n",
+                "8\r\n"
+            ],
+            [
+                "1 1\r\n0 1\r\n",
+                "8\r\n"
+            ],
+            [
+                "1 1\r\n1 0\r\n",
+                "8\r\n"
+            ],
+            [
+                "100 100\r\n99 -100\r\n",
+                "406\r\n"
+            ],
+            [
+                "100 100\r\n-100 99\r\n",
+                "406\r\n"
+            ],
+            [
+                "-100 -100\r\n-99 100\r\n",
+                "406\r\n"
+            ],
+            [
+                "-100 -100\r\n100 -99\r\n",
+                "406\r\n"
+            ],
+            [
+                "0 0\r\n1 2\r\n",
+                "10\r\n"
+            ],
+            [
+                "0 0\r\n2 1\r\n",
+                "10\r\n"
+            ]
+        ]
+    }
+]

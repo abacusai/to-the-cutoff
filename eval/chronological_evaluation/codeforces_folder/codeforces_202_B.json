@@ -1,0 +1,155 @@
+[
+    {
+        "name": "Brand New Easy Problem",
+        "description": "A widely known among some people Belarusian sport programmer Lesha decided to\nmake some money to buy a one square meter larger flat. To do this, he wants to\nmake and carry out a Super Rated Match (SRM) on the site Torcoder.com. But\nthere's a problem \u2014 a severe torcoder coordinator Ivan does not accept any\nLesha's problem, calling each of them an offensive word \"duped\" (that is,\nduplicated). And one day they nearely quarrelled over yet another problem Ivan\nwouldn't accept. You are invited to act as a fair judge and determine whether\nthe problem is indeed brand new, or Ivan is right and the problem bears some\nresemblance to those used in the previous SRMs. You are given the descriptions\nof Lesha's problem and each of Torcoder.com archive problems. The description\nof each problem is a sequence of words. Besides, it is guaranteed that Lesha's\nproblem has no repeated words, while the description of an archive problem may\ncontain any number of repeated words. The \"similarity\" between Lesha's problem\nand some archive problem can be found as follows. Among all permutations of\nwords in Lesha's problem we choose the one that occurs in the archive problem\nas a subsequence. If there are multiple such permutations, we choose the one\nwith the smallest number of inversions. Then the \"similarity\" of a problem can\nbe written as , where n is the number of words in Lesha's problem and x is the\nnumber of inversions in the chosen permutation. Note that the \"similarity\" p\nis always a positive integer. The problem is called brand new if there is not\na single problem in Ivan's archive which contains a permutation of words from\nLesha's problem as a subsequence. Help the boys and determine whether the\nproposed problem is new, or specify the problem from the archive which\nresembles Lesha's problem the most, otherwise. Input The first line contains a\nsingle integer n (1 \u2264 n \u2264 4) \u2014 the number of words in Lesha's problem. The\nsecond line contains n space-separated words \u2014 the short description of the\nproblem. The third line contains a single integer m (1 \u2264 m \u2264 10) \u2014 the number\nof problems in the Torcoder.com archive. Next m lines contain the descriptions\nof the problems as \"k s1 s2 ... sk\", where k (1 \u2264 k \u2264 20) is the number of\nwords in the problem and si is a word of the problem description. All words\nfrom all problem descriptions contain no more than 10 lowercase English\nletters. Output If Lesha's problem is brand new, print string \"Brand new\nproblem!\" (without quotes). Otherwise, on the first line print the index of\nthe archive problem which resembles Lesha's problem most. If there are\nmultiple such problems, print the one with the smallest index. On the second\nline print a string consisting of characters [:, character | repeated p times,\nand characters :], where p is the \"similarity\" between this problem and\nLesha's one. The archive problems are numbered starting from one in the order\nin which they are given in the input. Examples Input 4 find the next\npalindrome 1 10 find the previous palindrome or print better luck next time\nOutput 1 [:||||||:] Input 3 add two numbers 3 1 add 2 two two 3 numbers\nnumbers numbers Output Brand new problem! Input 4 these papers are formulas 3\n6 what are these formulas and papers 5 papers are driving me crazy 4 crazy\ninto the night Output 1 [:||||:] Input 3 add two decimals 5 4 please two\ndecimals add 5 decimals want to be added 4 two add decimals add 4 add one two\nthree 7 one plus two plus three equals six Output 3 [:|||:] Note Let us remind\nyou that the number of inversions is the number of pairs of words that follow\nin the permutation not in their original order. Thus, for example, if the\noriginal problem is \"add two numbers\", then permutation \"numbers add two\"\ncontains two inversions \u2014 pairs of words \"numbers\" and \"add\", \"numbers\" and\n\"two\". Sequence b1, b2, ..., bk is a subsequence of sequence a1, a2, ..., an\nif there exists such a set of indices 1 \u2264 i1 < i2 < ... < ik \u2264 n that aij = bj\n(in other words, if sequence b can be obtained from a by deleting some of its\nelements). In the first test case the first problem contains the \"find the\npalindrome next\" permutation as a subsequence, in which the number of\ninversions equals 1 (words \"palindrome\" and \"next\"). In the second test case\nthere is no problem that contains a permutation of words from Lesha's problem\nas a subsequence.\n\n",
+        "cf_contest_id": 202,
+        "cf_index": "B",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\nfind the next palindrome\r\n1\r\n10 find the previous palindrome or print better luck next time\r\n",
+                "1\r\n[:||||||:]\r\n"
+            ],
+            [
+                "3\r\nadd two numbers\r\n3\r\n1 add\r\n2 two two\r\n3 numbers numbers numbers\r\n",
+                "Brand new problem!\r\n"
+            ],
+            [
+                "4\r\nthese papers are formulas\r\n3\r\n6 what are these formulas and papers\r\n5 papers are driving me crazy\r\n4 crazy into the night\r\n",
+                "1\r\n[:||||:]\r\n"
+            ],
+            [
+                "3\r\nadd two decimals\r\n5\r\n4 please two decimals add\r\n5 decimals want to be added\r\n4 two add decimals add\r\n4 add one two three\r\n7 one plus two plus three equals six\r\n",
+                "3\r\n[:|||:]\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\naaaa aa\r\n2\r\n3 a aa aaa\r\n4 aaaa aaa aa a\r\n",
+                "2\r\n[:||:]\r\n"
+            ],
+            [
+                "4\r\nsave the planet please\r\n4\r\n5 the save please planet please\r\n3 save please plants\r\n4 planet the save safe\r\n6 please save the save please planet\r\n",
+                "1\r\n[:||||||:]\r\n"
+            ],
+            [
+                "2\r\na b\r\n3\r\n5 f q a y w\r\n5 p h w w u\r\n5 c n l m l\r\n",
+                "Brand new problem!\r\n"
+            ],
+            [
+                "1\r\na\r\n4\r\n2 c t\r\n2 n v\r\n2 n v\r\n2 g o\r\n",
+                "Brand new problem!\r\n"
+            ],
+            [
+                "3\r\na b c\r\n7\r\n7 n g q l j r k\r\n7 b j o n n y p\r\n7 a u d h m n a\r\n7 r x d q g s l\r\n7 p b d d x r h\r\n7 v z w t d r r\r\n7 u k p e j o u\r\n",
+                "Brand new problem!\r\n"
+            ],
+            [
+                "3\r\na b c\r\n3\r\n3 f c v\r\n3 v i m\r\n3 u o s\r\n",
+                "Brand new problem!\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n10\r\n20 d c c c c c b b b b b a a a a a a a a a\r\n20 d c c c c c b b b b b a a a a a a a a a\r\n20 d c c c c c b b b b b a a a a a a a a a\r\n20 d c c c c c b b b b b a a a a a a a a a\r\n20 d c c c c c b b b b b a a a a a a a a a\r\n20 d c c c c c b b b b b a a a a a a a a a\r\n20 d c c c c c b b b b b a a a a a a a a a\r\n20 d c c c c c b b b b b a a a a a a a a a\r\n20 d c c c c c b b b b b a a a a a a a a a\r\n20 d c c c c c b b b b b a a a a a a a a a\r\n",
+                "1\r\n[:|:]\r\n"
+            ],
+            [
+                "3\r\na b c\r\n10\r\n20 c b b b b b b a a a a a a a a a a a a a\r\n20 c b b b b b b a a a a a a a a a a a a a\r\n20 c b b b b b b a a a a a a a a a a a a a\r\n20 c b b b b b b a a a a a a a a a a a a a\r\n20 c b b b b b b a a a a a a a a a a a a a\r\n20 c b b b b b b a a a a a a a a a a a a a\r\n20 c b b b b b b a a a a a a a a a a a a a\r\n20 c b b b b b b a a a a a a a a a a a a a\r\n20 c b b b b b b a a a a a a a a a a a a a\r\n20 c b b b b b b a a a a a a a a a a a a a\r\n",
+                "1\r\n[:|:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n1\r\n8 d c c b b a a a\r\n",
+                "1\r\n[:|:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n1\r\n4 d c b a\r\n",
+                "1\r\n[:|:]\r\n"
+            ],
+            [
+                "3\r\na b c\r\n1\r\n4 c b a a\r\n",
+                "1\r\n[:|:]\r\n"
+            ],
+            [
+                "1\r\nromka\r\n2\r\n1 tourist\r\n1 romka\r\n",
+                "2\r\n[:|:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n1\r\n8 c a a a d b d b\r\n",
+                "1\r\n[:|||||:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n1\r\n10 b c a b a d d d a a\r\n",
+                "1\r\n[:|||||:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n1\r\n8 a d d d b c c b\r\n",
+                "1\r\n[:|||||:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n1\r\n11 b c d a c a b d b c d\r\n",
+                "1\r\n[:|||||||:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n1\r\n11 b c b a d d d a a c b\r\n",
+                "1\r\n[:|||||:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n1\r\n10 c a b b b d d c c a\r\n",
+                "1\r\n[:||||||:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n1\r\n10 a d a a c d b b c d\r\n",
+                "1\r\n[:|||||||:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n1\r\n13 b c d a c a b d b c a d b\r\n",
+                "1\r\n[:|||||||:]\r\n"
+            ],
+            [
+                "2\r\na b\r\n10\r\n2 a b\r\n2 a b\r\n2 a b\r\n2 b a\r\n2 a b\r\n2 a b\r\n2 b a\r\n2 b a\r\n2 b a\r\n2 a b\r\n",
+                "1\r\n[:||:]\r\n"
+            ],
+            [
+                "3\r\na b c\r\n10\r\n3 a b c\r\n3 a b c\r\n3 c a b\r\n3 b c a\r\n3 c b a\r\n3 c b a\r\n3 a b c\r\n3 b a c\r\n3 b a c\r\n3 b c a\r\n",
+                "1\r\n[:||||:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n10\r\n4 b c d a\r\n4 d c b a\r\n4 d a b c\r\n4 a c d b\r\n4 a b c d\r\n4 a b d c\r\n4 c b a d\r\n4 d c a b\r\n4 a d c b\r\n4 c a b d\r\n",
+                "5\r\n[:|||||||:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n10\r\n4 b d c a\r\n4 a d b c\r\n4 c a d b\r\n4 a c b d\r\n4 b d c a\r\n4 d c a b\r\n4 d c a b\r\n4 a b d c\r\n4 d c b a\r\n4 a d c b\r\n",
+                "4\r\n[:||||||:]\r\n"
+            ],
+            [
+                "4\r\na b c d\r\n10\r\n8 c yy d vm a dh b bt\r\n8 b bx d yi a qp c qd\r\n8 c uk d ys b dv a cg\r\n8 b of a wh d gj c cr\r\n8 a qn b na d hh c ak\r\n8 a zq d rs c zj b lc\r\n8 a et b oj c zf d xt\r\n8 d mq a di b gw c vh\r\n8 a lb d ft b uc c zj\r\n8 c gf d oj b wo a lf\r\n",
+                "7\r\n[:|||||||:]\r\n"
+            ],
+            [
+                "3\r\na b c\r\n10\r\n6 a mj b by c qi\r\n6 b qn a bq c os\r\n6 b vy a dg c ui\r\n6 a ay b xm c yt\r\n6 c vj a db b gs\r\n6 a kf b gg c vh\r\n6 a lr c fe b xm\r\n6 a ur c mf b ka\r\n6 a ar b bu c xn\r\n6 c ak a dn b de\r\n",
+                "1\r\n[:||||:]\r\n"
+            ],
+            [
+                "2\r\na b\r\n10\r\n4 a tr b xz\r\n4 a xv b fq\r\n4 a kp b md\r\n4 b xl a yi\r\n4 a or b ho\r\n4 a hf b ab\r\n4 a mp b vm\r\n4 b qx a pc\r\n4 a wi b ct\r\n4 b cj a ba\r\n",
+                "1\r\n[:||:]\r\n"
+            ],
+            [
+                "4\r\nwgrwqh mztgbac choxdd pjuzku\r\n10\r\n7 eozce zfu zfu mztgbac wgrwqh mztgbac skxf\r\n7 glu skxf pjuzku choxdd glu wgrwqh eozce\r\n7 wgrwqh wgrwqh wgrwqh wgrwqh pjuzku choxdd eozce\r\n7 wgrwqh glu eozce zfu wgrwqh choxdd pjuzku\r\n7 skxf skxf skxf mztgbac mztgbac skxf choxdd\r\n7 zfu eozce glu pjuzku mztgbac wgrwqh glu\r\n7 eozce eozce pjuzku wgrwqh wgrwqh pjuzku zfu\r\n7 eozce skxf glu eozce choxdd skxf mztgbac\r\n7 choxdd pjuzku skxf zfu pjuzku mztgbac mztgbac\r\n7 mztgbac wgrwqh mztgbac skxf choxdd pjuzku mztgbac\r\n",
+                "10\r\n[:|||||||:]\r\n"
+            ],
+            [
+                "4\r\ntfggs qnehos igekv rnmr\r\n10\r\n8 ccj ccj qnehos igekv rnmr ccj igekv qnehos\r\n8 rnmr igekv gydhj tfggs ccj tfggs rnmr rnmr\r\n8 gydhj qnehos igekv ccj tfggs gydhj qnehos ccj\r\n8 tfggs igekv rnmr rnmr rnmr tfggs rnmr ccj\r\n8 jjwek gydhj gydhj tfggs igekv igekv rnmr ccj\r\n8 rnmr tfggs rnmr tfggs rnmr gydhj ccj qnehos\r\n8 igekv ccj ccj gydhj ccj igekv gydhj igekv\r\n8 jjwek qnehos tfggs ccj tfggs qnehos qnehos qnehos\r\n8 rnmr igekv ccj jjwek ccj ccj jjwek tfggs\r\n8 ccj ccj gydhj qnehos gydhj ccj gydhj gydhj\r\n",
+                "Brand new problem!\r\n"
+            ],
+            [
+                "1\r\nhello\r\n8\r\n3 a whathello a\r\n3 b hellowhat b\r\n4 hell hella hellier hell\r\n1 hellz\r\n1 ahello\r\n1 helloa\r\n1 zhello\r\n1 helloz\r\n",
+                "Brand new problem!\r\n"
+            ]
+        ]
+    }
+]

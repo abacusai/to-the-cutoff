@@ -1,0 +1,139 @@
+[
+    {
+        "name": "Boom",
+        "description": "Let's consider the famous game called Boom (aka Hat) with simplified rules.\nThere are n teams playing the game. Each team has two players. The purpose of\nthe game is to explain the words to the teammate without using any words that\ncontain the same root or that sound similarly. Player j from team i (1 \u2264 i \u2264\nn, 1 \u2264 j \u2264 2) is characterized by two numbers: aij and bij. The numbers\ncorrespondingly represent the skill of explaining and the skill of\nunderstanding this particular player has. Besides, m cards are used for the\ngame. Each card has a word written on it. The card number k (1 \u2264 k \u2264 m) is\ncharacterized by number ck \u2014 the complexity of the word it contains. Before\nthe game starts the cards are put in a deck and shuffled. Then the teams play\nin turns like that: the 1-st player of the 1-st team, the 1-st player of the\n2-nd team, ... , the 1-st player of the n-th team, the 2-nd player of the 1-st\nteam, ... , the 2-nd player of the n-th team, the 1-st player of the 1-st team\nand so on. Each turn continues for t seconds. It goes like that: Initially the\ntime for each turn is t. While the time left to a player is more than 0, a\nplayer takes a card from the top of the deck and starts explaining the word it\nhas to his teammate. The time needed for the j-th player of the i-th team to\nexplain the word from the card k to his teammate (the q-th player of the i-th\nteam) equals max(1, ck - (aij + biq) - dik) (if j = 1, then q = 2, else q =\n1). The value dik is the number of seconds the i-th team has already spent\nexplaining the word k during the previous turns. Initially, all dik equal 0.\nIf a team manages to guess the word before the end of the turn, then the time\ngiven above is substracted from the duration of the turn, the card containing\nthe guessed word leaves the game, the team wins one point and the game\ncontinues. If the team doesn't manage to guess the word, then the card is put\nat the bottom of the deck, dik increases on the amount of time of the turn,\nspent on explaining the word. Thus, when this team gets the very same word,\nthey start explaining it not from the beginning, but from the point where they\nstopped. The game ends when words from all m cards are guessed correctly. You\nare given n teams and a deck of m cards. You should determine for each team,\nhow many points it will have by the end of the game and which words the team\nwill have guessed. Input The first line contains two integers n, t (1 \u2264 n, t \u2264\n100), which correspondingly denote the number of teams and a turn's duration.\nNext n lines of the input file contain four integers each: ai1, bi1, ai2, bi2\n(1 \u2264 aij, bij \u2264 100) \u2014 the skills of the first and the second player of the\ni-th team. The teams are given in the order in which they play. The next line\nof the input file contains integer m (1 \u2264 m \u2264 100) the number of cards. Next\n2m lines contain the cards' descriptions. Two lines describe each card. The\nfirst line of the description contains the word that consists of no more than\n20 characters. The words only contain small Latin letters. The second line of\nthe description contains an integer ck (1 \u2264 ck \u2264 100) \u2014 the complexity of the\nword written on the k-th card. The cards are listed in the order in which the\nlie in the deck from top to bottom. The words on all cards are different.\nOutput Print n lines. On the i-th line first print number si the number of\npoints the i-th team wins. Then print si space-separated words \u2014 the words\nfrom the cards guessed by team i in the order in which they were guessed.\nExamples Input 2 2 1 1 1 1 1 1 1 1 3 home 1 car 1 brother 1 Output 2 home car\n1 brother Input 2 4 1 2 2 1 2 3 2 2 4 armchair 3 quetzalcoatl 10 pilotage 5\ndefibrillator 7 Output 2 armchair quetzalcoatl 2 pilotage defibrillator\n\n",
+        "cf_contest_id": 120,
+        "cf_index": "G",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2\r\n1 1 1 1\r\n1 1 1 1\r\n3\r\nhome\r\n1\r\ncar\r\n1\r\nbrother\r\n1\r\n",
+                "2 home car\r\n1 brother\r\n"
+            ],
+            [
+                "2 4\r\n1 2 2 1\r\n2 3 2 2\r\n4\r\narmchair\r\n3\r\nquetzalcoatl\r\n10\r\npilotage\r\n5\r\ndefibrillator\r\n7\r\n",
+                "2 armchair quetzalcoatl\r\n2 pilotage defibrillator\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 10\r\n7 4 2 1\r\n3 8 4 3\r\n10 1 8 2\r\n1 10 8 1\r\n7 2 8 5\r\n20\r\nawhiwqom\r\n97\r\nbupsrkw\r\n67\r\ncdcle\r\n46\r\ndbw\r\n20\r\nhypayjdabm\r\n96\r\nigclyxfkshgbhrf\r\n78\r\nldcyjtkldc\r\n73\r\nmgrdcybqbvor\r\n49\r\nnjzddrjxafjrrw\r\n63\r\nozucivhhggjtfkbojuqw\r\n11\r\nqgzsrwl\r\n95\r\nrz\r\n28\r\ntperpgd\r\n66\r\nvilawpd\r\n16\r\nvnujx\r\n8\r\nwadgiywkj\r\n23\r\nydisqmwtprbiexkxy\r\n16\r\nyejvg\r\n29\r\nyusivpcoucy\r\n43\r\nzdnpcaybyupwnrqjln\r\n69\r\n",
+                "2 ydisqmwtprbiexkxy ldcyjtkldc\r\n4 dbw tperpgd qgzsrwl awhiwqom\r\n7 vilawpd vnujx rz mgrdcybqbvor bupsrkw zdnpcaybyupwnrqjln hypayjdabm\r\n2 cdcle njzddrjxafjrrw\r\n5 ozucivhhggjtfkbojuqw yejvg wadgiywkj yusivpcoucy igclyxfkshgbhrf\r\n"
+            ],
+            [
+                "5 10\r\n10 10 5 1\r\n7 2 1 3\r\n1 9 6 10\r\n9 9 8 2\r\n9 7 3 3\r\n20\r\nau\r\n9\r\nazyqnadfkgan\r\n40\r\nbljzegoaovxjpmgu\r\n42\r\ncoetohydzgsgcobutdis\r\n60\r\nd\r\n29\r\ndbly\r\n72\r\nejfg\r\n65\r\ng\r\n61\r\ngegfsmb\r\n77\r\ngfchnfbrmgzhka\r\n92\r\nhigitegymghcm\r\n59\r\nipnaqundvzjnth\r\n32\r\nlxwjjupqyeovetkxp\r\n5\r\nmdzdmjffnijjaxumayvf\r\n44\r\notxrsihubv\r\n4\r\np\r\n38\r\nubelpi\r\n80\r\nvrvsyanbzf\r\n56\r\nwultlskyakufgynixzu\r\n98\r\nyyionxuvc\r\n10\r\n",
+                "6 au azyqnadfkgan mdzdmjffnijjaxumayvf ejfg vrvsyanbzf ubelpi\r\n4 lxwjjupqyeovetkxp yyionxuvc p wultlskyakufgynixzu\r\n4 otxrsihubv ipnaqundvzjnth gegfsmb gfchnfbrmgzhka\r\n3 d coetohydzgsgcobutdis g\r\n3 bljzegoaovxjpmgu higitegymghcm dbly\r\n"
+            ],
+            [
+                "5 10\r\n6 8 9 1\r\n1 7 6 4\r\n10 8 3 7\r\n6 9 8 10\r\n1 9 9 9\r\n20\r\nabbugflflinrioxgvl\r\n14\r\nafpwenhqgfwser\r\n75\r\nakpiohdcrquscdxil\r\n82\r\ncpppzkllbjjwqaao\r\n40\r\neah\r\n36\r\nem\r\n5\r\neotdkpityyxejgxuqk\r\n6\r\nevowzppqdmiyjds\r\n40\r\nfifdbjdtoespushpex\r\n54\r\njibx\r\n54\r\nmhcldvkm\r\n51\r\nmyozdrlz\r\n87\r\nsfxdpyunksqixgvrgpye\r\n49\r\ntymtutmayttwhbdt\r\n65\r\nu\r\n37\r\nujncufz\r\n46\r\nuohkmteallop\r\n12\r\nwug\r\n29\r\nykgzkwsrfls\r\n54\r\nzm\r\n58\r\n",
+                "4 abbugflflinrioxgvl u ujncufz jibx\r\n1 akpiohdcrquscdxil\r\n3 cpppzkllbjjwqaao mhcldvkm myozdrlz\r\n7 uohkmteallop eah wug sfxdpyunksqixgvrgpye fifdbjdtoespushpex zm afpwenhqgfwser\r\n5 em eotdkpityyxejgxuqk evowzppqdmiyjds tymtutmayttwhbdt ykgzkwsrfls\r\n"
+            ],
+            [
+                "5 10\r\n20 6 16 6\r\n2 10 13 19\r\n15 11 1 4\r\n15 3 12 6\r\n6 7 19 5\r\n20\r\nandzzevyyejsla\r\n20\r\nbkaljsdgrbqbpoqapknb\r\n74\r\nbkuvgjx\r\n79\r\nce\r\n34\r\neasgyfwgxfegtqx\r\n73\r\necjhpqjvuqtltcyd\r\n59\r\nganmza\r\n85\r\ngh\r\n100\r\ngmoimkqhbaprgvksati\r\n95\r\nimgugcpeqgtnjbw\r\n55\r\ninrehyoipugj\r\n90\r\njbhvbvgcmfyv\r\n96\r\nlrzxlgznwhrtkjlg\r\n75\r\npgxbtjjstynucdxwodwx\r\n36\r\npyvjrrc\r\n35\r\nqhrjljx\r\n32\r\nthdzwf\r\n59\r\nvacd\r\n6\r\nwgzmzmmyo\r\n25\r\nydayfmhgesnwmysmslnm\r\n34\r\n",
+                "6 andzzevyyejsla thdzwf ecjhpqjvuqtltcyd ganmza bkaljsdgrbqbpoqapknb jbhvbvgcmfyv\r\n5 vacd wgzmzmmyo ydayfmhgesnwmysmslnm lrzxlgznwhrtkjlg gh\r\n3 pgxbtjjstynucdxwodwx bkuvgjx gmoimkqhbaprgvksati\r\n2 imgugcpeqgtnjbw easgyfwgxfegtqx\r\n4 ce pyvjrrc qhrjljx inrehyoipugj\r\n"
+            ],
+            [
+                "5 10\r\n8 1 5 14\r\n17 5 16 14\r\n9 4 2 8\r\n1 12 10 10\r\n7 20 8 12\r\n20\r\narkeegnvzxwkmhttig\r\n95\r\nbxvjixvhrwtddesip\r\n60\r\nddoyeyftpsfdburf\r\n64\r\ne\r\n62\r\ni\r\n11\r\nkcmkkzacal\r\n100\r\nlwzeutqojfoakzr\r\n7\r\nmgylauhh\r\n60\r\notsee\r\n54\r\noymxmaqf\r\n2\r\npw\r\n84\r\nqbrguhfgswdiqdd\r\n84\r\nrlujthwavumoio\r\n57\r\nsejtaiujdmpykwmsblhw\r\n29\r\ntgiwytlml\r\n75\r\ntkcqescgluggpn\r\n47\r\nuchk\r\n79\r\nuvmwnjpj\r\n78\r\nxugnf\r\n1\r\nyvuyle\r\n55\r\n",
+                "4 lwzeutqojfoakzr sejtaiujdmpykwmsblhw tkcqescgluggpn mgylauhh\r\n4 bxvjixvhrwtddesip otsee uchk qbrguhfgswdiqdd\r\n3 oymxmaqf ddoyeyftpsfdburf tgiwytlml\r\n2 e arkeegnvzxwkmhttig\r\n7 i xugnf rlujthwavumoio yvuyle kcmkkzacal pw uvmwnjpj\r\n"
+            ],
+            [
+                "5 10\r\n15 4 15 14\r\n13 8 6 17\r\n11 17 2 1\r\n7 13 8 15\r\n7 6 17 20\r\n20\r\naaqiqonqh\r\n38\r\nakonztimlx\r\n99\r\ndplqs\r\n20\r\neadliyjzqrmpusux\r\n49\r\nfferd\r\n44\r\ngpvogqvfg\r\n31\r\nh\r\n69\r\niagxaacjqrdfyqhalqip\r\n25\r\niuylompdxxro\r\n82\r\njaoesfe\r\n72\r\nkqqgigyuncqoxh\r\n27\r\nkrcmediuiholmtefnhjj\r\n32\r\nlrwjbttlzdxvvzcmhjg\r\n98\r\npijippred\r\n45\r\npyvamvpwllojbnqowxi\r\n2\r\nqahpgw\r\n63\r\nrbyvangmxes\r\n17\r\nsezugolsnnuxibunzt\r\n13\r\nvbcvglvndzdskks\r\n63\r\nym\r\n7\r\n",
+                "4 aaqiqonqh pyvamvpwllojbnqowxi pijippred akonztimlx\r\n6 dplqs rbyvangmxes sezugolsnnuxibunzt eadliyjzqrmpusux h iuylompdxxro\r\n2 ym jaoesfe\r\n3 gpvogqvfg kqqgigyuncqoxh lrwjbttlzdxvvzcmhjg\r\n5 iagxaacjqrdfyqhalqip krcmediuiholmtefnhjj fferd vbcvglvndzdskks qahpgw\r\n"
+            ],
+            [
+                "5 10\r\n2 8 13 14\r\n9 3 9 11\r\n14 3 11 6\r\n13 2 7 8\r\n19 12 6 7\r\n20\r\nbociyuihqsycazxbui\r\n4\r\ncpmele\r\n66\r\nengvnnjisqaavzfxfd\r\n27\r\nexh\r\n29\r\nfdfsvmiit\r\n53\r\nikzcj\r\n8\r\nkhsiqelk\r\n78\r\nkztgoyoyvhsmvgel\r\n35\r\nmebxvlhzjcszgsjpibw\r\n56\r\novxakwrtpyybp\r\n49\r\nozsoefwgaztswtwb\r\n3\r\npaojwscogjvogeyzwe\r\n15\r\nphdbcnfuqeskauygu\r\n55\r\nrds\r\n51\r\nshastxtximm\r\n62\r\nssenuaqqxvhdqgeayrir\r\n57\r\nvcelxizohyfjrzxalhcv\r\n59\r\nyisnkcedfkk\r\n45\r\nzcknnzdruemywcbndzp\r\n64\r\nzpw\r\n90\r\n",
+                "7 bociyuihqsycazxbui exh ovxakwrtpyybp yisnkcedfkk mebxvlhzjcszgsjpibw cpmele zpw\r\n5 engvnnjisqaavzfxfd ozsoefwgaztswtwb paojwscogjvogeyzwe rds phdbcnfuqeskauygu\r\n2 ssenuaqqxvhdqgeayrir shastxtximm\r\n2 ikzcj khsiqelk\r\n4 kztgoyoyvhsmvgel fdfsvmiit vcelxizohyfjrzxalhcv zcknnzdruemywcbndzp\r\n"
+            ],
+            [
+                "5 10\r\n8 19 18 11\r\n2 16 9 12\r\n9 1 20 5\r\n1 7 15 9\r\n8 3 13 10\r\n20\r\na\r\n89\r\nadzyvfy\r\n87\r\naoybveo\r\n3\r\nbgydqvpv\r\n64\r\nbsfap\r\n35\r\nezdrupaqno\r\n32\r\nip\r\n39\r\nipcgzrz\r\n21\r\njvejeogiwk\r\n12\r\nlas\r\n19\r\nlsasbtvbmw\r\n20\r\nltnqvtsrsxplcrvbou\r\n4\r\nmcokeatvdjvv\r\n26\r\nmcycqkq\r\n83\r\npdesmpuapplpxbpjoo\r\n49\r\nslokvekutpxfvadwfl\r\n61\r\nwwocjxemijrdmbje\r\n97\r\nymbijnafcxp\r\n97\r\nzjffmxjuolyoqnob\r\n18\r\nzuylsraoahtcncl\r\n43\r\n",
+                "15 ip ipcgzrz jvejeogiwk las lsasbtvbmw ltnqvtsrsxplcrvbou mcokeatvdjvv zjffmxjuolyoqnob ezdrupaqno zuylsraoahtcncl pdesmpuapplpxbpjoo slokvekutpxfvadwfl bgydqvpv mcycqkq a\r\n1 wwocjxemijrdmbje\r\n2 aoybveo ymbijnafcxp\r\n0 \r\n2 bsfap adzyvfy\r\n"
+            ],
+            [
+                "5 10\r\n94 46 74 76\r\n98 78 62 64\r\n7 94 44 18\r\n95 18 40 52\r\n76 94 74 83\r\n20\r\nai\r\n61\r\nakwvpfyuovffgzmiwij\r\n34\r\ndkqpsirmrlrwlgmez\r\n78\r\ndtmpwtuiumzvgt\r\n18\r\neryegapeqgtsxrbg\r\n98\r\ngoaoldmikasvae\r\n6\r\njvmbaidtwcubkxbj\r\n100\r\nnupdjdwii\r\n89\r\nougt\r\n59\r\npqqwvnmexqiahhmhxzv\r\n65\r\npzogwycbtnns\r\n100\r\nqglmnq\r\n100\r\nrikefhitquizqzcisw\r\n21\r\nrpivyqjbycahluq\r\n18\r\nt\r\n3\r\ntpzvlmu\r\n66\r\nvcjlejgt\r\n48\r\nwkish\r\n56\r\nyjeistoxf\r\n28\r\nzwiyyokxcfnsaeqb\r\n30\r\n",
+                "10 ai akwvpfyuovffgzmiwij dkqpsirmrlrwlgmez dtmpwtuiumzvgt eryegapeqgtsxrbg goaoldmikasvae jvmbaidtwcubkxbj nupdjdwii ougt pqqwvnmexqiahhmhxzv\r\n10 pzogwycbtnns qglmnq rikefhitquizqzcisw rpivyqjbycahluq t tpzvlmu vcjlejgt wkish yjeistoxf zwiyyokxcfnsaeqb\r\n0 \r\n0 \r\n0 \r\n"
+            ],
+            [
+                "5 10\r\n49 18 18 52\r\n26 77 12 43\r\n21 82 70 77\r\n49 1 50 90\r\n73 31 68 46\r\n20\r\nagwxdzcn\r\n56\r\namhreihencdrvgp\r\n93\r\nbdfofyqlgi\r\n59\r\ncpbaknolumygqniuwbe\r\n7\r\ndzdtqmtdnipwdamwln\r\n61\r\netmigbmyujysw\r\n6\r\ngrxhwyd\r\n67\r\njfsfuuppzomdsfmnyzll\r\n65\r\nldgvplfitficghxluyl\r\n53\r\nowgatyzyqndkdetwz\r\n87\r\nqbbrtprovvitokrpitfr\r\n76\r\nqdeknxkanbwrbqcixolg\r\n86\r\nrqbrba\r\n86\r\nsdwyovjg\r\n97\r\nskncaygbfwsolymu\r\n89\r\nukufa\r\n42\r\nuydvdsyaqevwwg\r\n25\r\nwjkhjtevg\r\n32\r\nyyfnmzhqi\r\n69\r\nzek\r\n20\r\n",
+                "10 agwxdzcn amhreihencdrvgp bdfofyqlgi cpbaknolumygqniuwbe dzdtqmtdnipwdamwln etmigbmyujysw grxhwyd jfsfuuppzomdsfmnyzll ldgvplfitficghxluyl owgatyzyqndkdetwz\r\n1 qbbrtprovvitokrpitfr\r\n9 rqbrba sdwyovjg skncaygbfwsolymu ukufa uydvdsyaqevwwg wjkhjtevg yyfnmzhqi zek qdeknxkanbwrbqcixolg\r\n0 \r\n0 \r\n"
+            ],
+            [
+                "5 10\r\n57 90 62 27\r\n5 75 62 69\r\n87 23 48 36\r\n2 32 60 80\r\n69 16 13 56\r\n20\r\nbhmbverlrtgvx\r\n52\r\ndnhosobck\r\n99\r\nhlznhilcvdnr\r\n92\r\nizbjynytcgrbpqnqhp\r\n75\r\njaifakkvnlr\r\n37\r\njrbtxkbobtosuaud\r\n15\r\nkv\r\n98\r\nli\r\n75\r\nmilllkprtl\r\n94\r\nnhdrfrl\r\n90\r\nnlphcovhnfnfumapkbm\r\n49\r\nnuhnsdlhumwvs\r\n21\r\nnuwhuubonagwpmmm\r\n28\r\npirifeguyqen\r\n25\r\nsspdbzm\r\n68\r\nstzuhm\r\n71\r\ntdfltomloxwlphacktyg\r\n47\r\ntixhw\r\n15\r\nvhuerqvvrjhnc\r\n50\r\nvjrrozumn\r\n31\r\n",
+                "1 bhmbverlrtgvx\r\n0 \r\n10 izbjynytcgrbpqnqhp jaifakkvnlr jrbtxkbobtosuaud kv li milllkprtl nhdrfrl nlphcovhnfnfumapkbm nuhnsdlhumwvs nuwhuubonagwpmmm\r\n7 pirifeguyqen sspdbzm stzuhm tdfltomloxwlphacktyg tixhw vhuerqvvrjhnc vjrrozumn\r\n2 hlznhilcvdnr dnhosobck\r\n"
+            ],
+            [
+                "5 10\r\n12 9 6 3\r\n33 73 12 95\r\n1 11 74 96\r\n55 15 71 18\r\n66 1 6 67\r\n20\r\najswnebgqqqbjxmkdheo\r\n58\r\narc\r\n99\r\nartszhohkioftbczj\r\n100\r\nczrmrqxj\r\n45\r\nduheezasxssdlf\r\n99\r\neayvzrnfzxsdvbkhak\r\n20\r\nebegtvr\r\n66\r\ngwklmtrccwkll\r\n73\r\nirt\r\n81\r\njodtdtvupsqg\r\n93\r\nn\r\n53\r\nouptrwdjlh\r\n79\r\npckhvvk\r\n48\r\nrkosjzej\r\n94\r\ntbqaulkrgudsmnwuohsy\r\n53\r\nvlhygzjqiosd\r\n47\r\nvsizzuritvag\r\n80\r\nxyigmazkcb\r\n45\r\nyg\r\n6\r\nz\r\n43\r\n",
+                "0 \r\n10 arc artszhohkioftbczj czrmrqxj duheezasxssdlf eayvzrnfzxsdvbkhak ebegtvr gwklmtrccwkll irt jodtdtvupsqg n\r\n10 ouptrwdjlh pckhvvk rkosjzej tbqaulkrgudsmnwuohsy vlhygzjqiosd vsizzuritvag xyigmazkcb yg z ajswnebgqqqbjxmkdheo\r\n0 \r\n0 \r\n"
+            ],
+            [
+                "5 10\r\n20 81 50 31\r\n13 72 62 21\r\n16 100 52 55\r\n61 98 81 57\r\n63 86 99 30\r\n20\r\nacujkdmfpuaplztwjvf\r\n52\r\naukaptogrrs\r\n89\r\nbvigwerojcsnwkyc\r\n50\r\nbwkcfuxdvlbqoi\r\n90\r\nbxajnylvt\r\n28\r\ndgzcyqcydlusjuxggz\r\n79\r\ndwoknsorfijnwvqfurx\r\n45\r\ndxczy\r\n45\r\nezydesaaojxxgpx\r\n98\r\njuyl\r\n61\r\nk\r\n35\r\nmwzvcim\r\n9\r\nqutttclwzcpyooq\r\n65\r\nqvntkgapdfms\r\n58\r\nqxcsubefyvn\r\n55\r\nsjycfizpxtzpfzo\r\n44\r\ntjzaazdgmtveqsh\r\n77\r\nucywuorbapn\r\n78\r\nuyibtcpkmscfyxoidx\r\n43\r\nwfc\r\n2\r\n",
+                "1 acujkdmfpuaplztwjvf\r\n0 \r\n0 \r\n10 bxajnylvt dgzcyqcydlusjuxggz dwoknsorfijnwvqfurx dxczy ezydesaaojxxgpx juyl k mwzvcim qutttclwzcpyooq qvntkgapdfms\r\n9 qxcsubefyvn sjycfizpxtzpfzo tjzaazdgmtveqsh ucywuorbapn uyibtcpkmscfyxoidx wfc aukaptogrrs bvigwerojcsnwkyc bwkcfuxdvlbqoi\r\n"
+            ],
+            [
+                "5 50\r\n10 8 3 3\r\n2 4 6 2\r\n2 8 7 5\r\n3 10 9 10\r\n10 8 9 6\r\n20\r\namfenzyhouqyb\r\n28\r\nau\r\n83\r\nf\r\n20\r\nk\r\n31\r\nkcqpzf\r\n70\r\nlpnwt\r\n60\r\nmciyhhqhzcux\r\n6\r\nnkxlqseszxqsecitby\r\n17\r\nnvgdtvgptbdkae\r\n65\r\npzhsbcfvtzsb\r\n63\r\nrauqfn\r\n93\r\nsdhbzvpprmkngh\r\n95\r\nsoz\r\n41\r\nswn\r\n20\r\ntjjtrbhvctmcuwipc\r\n97\r\ntmntkzwqguzpurixss\r\n24\r\nurgi\r\n71\r\nvyzu\r\n45\r\nxwxvnbkgovrvdaz\r\n34\r\nyqsuqsw\r\n95\r\n",
+                "4 amfenzyhouqyb lpnwt urgi yqsuqsw\r\n4 f k soz swn\r\n1 tmntkzwqguzpurixss\r\n9 mciyhhqhzcux nkxlqseszxqsecitby vyzu xwxvnbkgovrvdaz nvgdtvgptbdkae rauqfn au kcqpzf tjjtrbhvctmcuwipc\r\n2 pzhsbcfvtzsb sdhbzvpprmkngh\r\n"
+            ],
+            [
+                "5 50\r\n2 5 1 10\r\n8 1 2 9\r\n6 1 10 7\r\n5 5 5 6\r\n8 7 6 3\r\n20\r\na\r\n61\r\nanwfhdzbroapky\r\n43\r\naqs\r\n6\r\nasyrerlvmedr\r\n27\r\nbydnewaighdz\r\n35\r\ndfcolvmynxggqotjebus\r\n40\r\neoihqup\r\n82\r\nepjb\r\n55\r\nhndfoylj\r\n10\r\nlcd\r\n39\r\nlthdbhinxmjodeycotbw\r\n36\r\npktluolmnfpxtha\r\n65\r\nqubalanyjrs\r\n9\r\nrkybaxglies\r\n49\r\nsqhwsohkckgwlvzose\r\n48\r\ntxzt\r\n64\r\nxqxebvboqef\r\n96\r\nxtgrawwn\r\n91\r\nykjadz\r\n74\r\nzo\r\n61\r\n",
+                "5 a qubalanyjrs rkybaxglies zo xtgrawwn\r\n5 aqs asyrerlvmedr bydnewaighdz dfcolvmynxggqotjebus eoihqup\r\n4 lcd anwfhdzbroapky ykjadz xqxebvboqef\r\n3 epjb hndfoylj sqhwsohkckgwlvzose\r\n3 lthdbhinxmjodeycotbw pktluolmnfpxtha txzt\r\n"
+            ],
+            [
+                "5 50\r\n5 4 8 5\r\n3 8 5 6\r\n9 5 2 10\r\n9 9 9 1\r\n3 4 1 10\r\n20\r\nancdcwlv\r\n31\r\nbcwvki\r\n51\r\nbmwmpfdzdbvltxqda\r\n39\r\nccwojdhjqzw\r\n23\r\ndpkeuxvzne\r\n37\r\ndrtehqk\r\n47\r\nfili\r\n80\r\ngirpbsdjwftwlylnaw\r\n84\r\ngnjs\r\n69\r\nj\r\n77\r\njuawwnr\r\n42\r\nmsorjozptebsnc\r\n14\r\nplmociostnusoyjcb\r\n68\r\nrvajwvzggnyqeptnpru\r\n90\r\ntmakmmcatbortnzohgz\r\n18\r\nwiyvtgmrjb\r\n84\r\nxchosuozgyolons\r\n46\r\nyigrbslff\r\n49\r\nysm\r\n77\r\nzzuzjydmlkjhjggk\r\n30\r\n",
+                "3 ancdcwlv gnjs j\r\n6 bmwmpfdzdbvltxqda ccwojdhjqzw juawwnr msorjozptebsnc zzuzjydmlkjhjggk rvajwvzggnyqeptnpru\r\n4 drtehqk dpkeuxvzne plmociostnusoyjcb fili\r\n5 tmakmmcatbortnzohgz girpbsdjwftwlylnaw yigrbslff wiyvtgmrjb ysm\r\n2 xchosuozgyolons bcwvki\r\n"
+            ],
+            [
+                "5 50\r\n8 3 7 10\r\n1 5 1 3\r\n3 8 3 2\r\n3 6 3 5\r\n1 1 6 7\r\n20\r\napppvvfctrygtlak\r\n89\r\nawrdgntimvwgrsogwyh\r\n84\r\nbagkyaojjvyrozaitziq\r\n44\r\nbalolgsdsiqh\r\n77\r\neuhcsj\r\n25\r\ngioscscimj\r\n32\r\njnzbl\r\n77\r\nlmlomhusnkxaqgng\r\n81\r\nofusonyqpwlpcfbaha\r\n57\r\np\r\n20\r\nqgvhqdhrnzgfkmaisr\r\n98\r\nrkljm\r\n86\r\ntljevehfr\r\n91\r\ntlynkqdk\r\n95\r\ntznddgxugv\r\n26\r\nvtsiqbjowume\r\n62\r\nwd\r\n81\r\nwobwxcqjgmsjp\r\n80\r\nytxmdaoztkgtci\r\n4\r\nzv\r\n98\r\n",
+                "5 ofusonyqpwlpcfbaha tznddgxugv apppvvfctrygtlak awrdgntimvwgrsogwyh zv\r\n3 balolgsdsiqh jnzbl wobwxcqjgmsjp\r\n3 bagkyaojjvyrozaitziq qgvhqdhrnzgfkmaisr tlynkqdk\r\n6 euhcsj gioscscimj ytxmdaoztkgtci tljevehfr lmlomhusnkxaqgng rkljm\r\n3 p vtsiqbjowume wd\r\n"
+            ],
+            [
+                "5 50\r\n6 10 1 10\r\n8 1 2 5\r\n3 7 5 4\r\n9 6 7 2\r\n8 2 5 5\r\n20\r\nbdxhtiyvnidncbxm\r\n62\r\ncew\r\n9\r\ndkuzi\r\n58\r\ndyklulpdxpyk\r\n27\r\ng\r\n62\r\nh\r\n31\r\nhw\r\n1\r\nizhcoyxnau\r\n42\r\njpmnpruqwrntnimlatc\r\n17\r\njrdirm\r\n41\r\nkfyfybhrjjvbhqy\r\n3\r\nmlrfzcmjtmumtsrtr\r\n75\r\nnonzf\r\n7\r\npekcqqqueqvdcgdkfvq\r\n10\r\nq\r\n99\r\nujfyhulrvbwpmtjfdix\r\n77\r\numfyhgfhbqsbhi\r\n59\r\nvyztrqkbjxksx\r\n93\r\nwhiecyszn\r\n15\r\nxlryjtewrmadscw\r\n34\r\n",
+                "4 bdxhtiyvnidncbxm cew izhcoyxnau mlrfzcmjtmumtsrtr\r\n3 dyklulpdxpyk ujfyhulrvbwpmtjfdix q\r\n3 h hw vyztrqkbjxksx\r\n6 jpmnpruqwrntnimlatc jrdirm kfyfybhrjjvbhqy whiecyszn xlryjtewrmadscw umfyhgfhbqsbhi\r\n4 nonzf pekcqqqueqvdcgdkfvq dkuzi g\r\n"
+            ],
+            [
+                "5 50\r\n20 9 4 15\r\n11 7 20 19\r\n10 12 16 20\r\n12 16 8 8\r\n8 8 17 20\r\n20\r\naiddcowxna\r\n3\r\nalxnogcbowinrdkjwzce\r\n83\r\naytwtj\r\n21\r\nekfan\r\n49\r\neleyngyfyegsndt\r\n64\r\nfv\r\n38\r\ng\r\n14\r\nhmpezcyerp\r\n10\r\nilfwwnksg\r\n88\r\nkvheokhedoxehezog\r\n83\r\nmirkhoxpdfjbmadom\r\n71\r\nmng\r\n23\r\nnjwxhcilaipojnjxgop\r\n48\r\nspieiz\r\n2\r\nszu\r\n34\r\nvicqplxewimms\r\n33\r\nwfxaniwrzfgcqoynp\r\n10\r\nx\r\n38\r\nysbxs\r\n77\r\nyxajhu\r\n60\r\n",
+                "10 aiddcowxna alxnogcbowinrdkjwzce aytwtj spieiz szu vicqplxewimms wfxaniwrzfgcqoynp njwxhcilaipojnjxgop x eleyngyfyegsndt\r\n2 ekfan ysbxs\r\n5 fv g hmpezcyerp yxajhu ilfwwnksg\r\n1 kvheokhedoxehezog\r\n2 mirkhoxpdfjbmadom mng\r\n"
+            ],
+            [
+                "5 50\r\n5 3 16 3\r\n11 20 16 13\r\n17 11 20 8\r\n15 15 5 13\r\n12 12 17 3\r\n20\r\nbavp\r\n62\r\nca\r\n23\r\nezfsjtk\r\n83\r\nhwhjlqkttxphrwcgeigl\r\n40\r\njmoubzudsvgjaspum\r\n8\r\njpdlz\r\n18\r\nkgkcfspxyktf\r\n13\r\nkgpasabhelruzxv\r\n12\r\nkvoxay\r\n60\r\nkwijsxgrvgg\r\n56\r\nmrtxzpwcamqotjdk\r\n18\r\noiehvcwvrvrjuxogml\r\n51\r\nsrqdbqvcaditbahljz\r\n27\r\ntjxqhmsynadmy\r\n60\r\nuhrvobtjdlmrqrsb\r\n90\r\nvf\r\n19\r\nvlnysf\r\n81\r\nwtnhlty\r\n61\r\nxbgunpa\r\n76\r\nzichtmwnxnlgo\r\n61\r\n",
+                "2 zichtmwnxnlgo tjxqhmsynadmy\r\n4 ca vf vlnysf uhrvobtjdlmrqrsb\r\n7 hwhjlqkttxphrwcgeigl jmoubzudsvgjaspum jpdlz kgkcfspxyktf kgpasabhelruzxv xbgunpa wtnhlty\r\n5 kwijsxgrvgg mrtxzpwcamqotjdk bavp ezfsjtk oiehvcwvrvrjuxogml\r\n2 srqdbqvcaditbahljz kvoxay\r\n"
+            ],
+            [
+                "5 50\r\n19 8 7 10\r\n12 13 19 15\r\n12 17 11 5\r\n19 1 10 18\r\n16 16 5 5\r\n20\r\nbztasxrdqjohdni\r\n64\r\ndwovblrsrpwchcouuckh\r\n30\r\nfadnywcwok\r\n26\r\nghaebyrzwaevmvzhnb\r\n17\r\ngvfuraokmbpbnpfldleh\r\n71\r\nhozprpseuoikckbim\r\n72\r\nihkgm\r\n64\r\njnfppsvdrdzfrjdzzgl\r\n58\r\nknqiqkmwp\r\n21\r\nmdvirneqphzt\r\n36\r\nnpirgxvvfqfomkzv\r\n93\r\nqqgxywhwlhswcf\r\n80\r\ntzpiiekollt\r\n3\r\nudlesioaorijvvkrwo\r\n29\r\nugccemcppztewzfzdo\r\n90\r\nutfqciwvumhjebkceigu\r\n15\r\nv\r\n64\r\nwdjmzytgzcfi\r\n96\r\nwnilntitqcedelw\r\n20\r\nz\r\n71\r\n",
+                "6 bztasxrdqjohdni dwovblrsrpwchcouuckh fadnywcwok ghaebyrzwaevmvzhnb tzpiiekollt udlesioaorijvvkrwo\r\n4 hozprpseuoikckbim utfqciwvumhjebkceigu v qqgxywhwlhswcf\r\n5 jnfppsvdrdzfrjdzzgl knqiqkmwp wnilntitqcedelw z wdjmzytgzcfi\r\n3 gvfuraokmbpbnpfldleh ihkgm npirgxvvfqfomkzv\r\n2 mdvirneqphzt ugccemcppztewzfzdo\r\n"
+            ],
+            [
+                "5 50\r\n4 1 19 18\r\n13 6 3 8\r\n20 16 15 13\r\n2 20 7 3\r\n1 19 6 7\r\n20\r\nai\r\n61\r\nbvqwbmqdaubogayvw\r\n51\r\ncauhidgjapnqg\r\n69\r\ncsjtakwufxljc\r\n79\r\nghxfrjjtcatau\r\n13\r\nhhtwyffedlxugfa\r\n9\r\nhyhuiaytkywdwbvaegca\r\n84\r\nisbaua\r\n54\r\nmbzixjlhinlaqmicsc\r\n12\r\nmekhaolgybapknwaqvlb\r\n71\r\nmzyhickr\r\n61\r\nomhezs\r\n12\r\npkbizfxxoyflsnnz\r\n14\r\nrldwhrl\r\n64\r\nryfuclrvcxmunzsof\r\n73\r\nsycuncfzjgxedqisikbs\r\n36\r\nv\r\n20\r\nxbdqi\r\n45\r\nxpwcg\r\n8\r\nzdbztlgroj\r\n40\r\n",
+                "6 ai mzyhickr omhezs pkbizfxxoyflsnnz mbzixjlhinlaqmicsc mekhaolgybapknwaqvlb\r\n3 cauhidgjapnqg rldwhrl ryfuclrvcxmunzsof\r\n10 ghxfrjjtcatau hhtwyffedlxugfa sycuncfzjgxedqisikbs v xbdqi xpwcg zdbztlgroj bvqwbmqdaubogayvw hyhuiaytkywdwbvaegca csjtakwufxljc\r\n1 isbaua\r\n0 \r\n"
+            ],
+            [
+                "5 50\r\n10 7 19 5\r\n14 19 6 2\r\n15 14 7 1\r\n18 19 4 7\r\n5 3 6 17\r\n20\r\nanjanquhtpmvxjlls\r\n15\r\napbqgw\r\n89\r\nbbdb\r\n56\r\negwbywecktqi\r\n15\r\nfmdt\r\n18\r\nhoeaqpuhnpdoay\r\n72\r\njfotd\r\n70\r\nlfnjpaml\r\n77\r\nmbnrhgptxwrzuc\r\n6\r\npdxylbogsx\r\n50\r\nrvnucqxntanzthxftf\r\n1\r\nshzurowgelywkvgo\r\n86\r\nsja\r\n53\r\nslxiuocwj\r\n35\r\ntoeumedszamrwgi\r\n77\r\ntyqulaygk\r\n15\r\nwjrzov\r\n10\r\nwpgouiakamdet\r\n76\r\nzhn\r\n63\r\nzipa\r\n40\r\n",
+                "6 anjanquhtpmvxjlls sja slxiuocwj zipa apbqgw toeumedszamrwgi\r\n7 bbdb egwbywecktqi fmdt tyqulaygk wjrzov jfotd lfnjpaml\r\n1 zhn\r\n0 \r\n6 mbnrhgptxwrzuc pdxylbogsx rvnucqxntanzthxftf hoeaqpuhnpdoay wpgouiakamdet shzurowgelywkvgo\r\n"
+            ],
+            [
+                "5 50\r\n59 19 4 25\r\n43 84 20 78\r\n100 34 83 95\r\n70 68 54 69\r\n79 3 64 13\r\n20\r\nageyekyeotphxor\r\n66\r\nahivvgoxeinupvjjmna\r\n25\r\ncdhrvlw\r\n93\r\nepihzzwa\r\n37\r\ngqv\r\n48\r\ngwqdctxjqqaa\r\n51\r\nktelqfyr\r\n35\r\nnicuhosl\r\n7\r\npggqv\r\n49\r\nqssfunopqcpapwtlszo\r\n4\r\nrndbqbrbbvjsxyn\r\n51\r\nslbmbuaj\r\n62\r\nt\r\n58\r\ntkozezypszfeha\r\n68\r\nuodsxhlpilvxjb\r\n52\r\nwmlpngngl\r\n50\r\nxduistxka\r\n35\r\nyjhcjqm\r\n84\r\nypefmbnrzdkhwi\r\n90\r\nztuyqfldahhb\r\n12\r\n",
+                "20 ageyekyeotphxor ahivvgoxeinupvjjmna cdhrvlw epihzzwa gqv gwqdctxjqqaa ktelqfyr nicuhosl pggqv qssfunopqcpapwtlszo rndbqbrbbvjsxyn slbmbuaj t tkozezypszfeha uodsxhlpilvxjb wmlpngngl xduistxka yjhcjqm ypefmbnrzdkhwi ztuyqfldahhb\r\n0 \r\n0 \r\n0 \r\n0 \r\n"
+            ],
+            [
+                "5 50\r\n46 66 37 1\r\n21 48 55 59\r\n54 91 44 25\r\n70 30 62 58\r\n38 72 71 78\r\n20\r\naewcafbvegypxtohswql\r\n49\r\nbpgmyiv\r\n78\r\nchbfvhlvwjvgtaxp\r\n3\r\neozeghdjcvhofzmefe\r\n20\r\ngv\r\n66\r\niaixcggahrxeu\r\n29\r\niruluvirbwthphzhvit\r\n40\r\niuyjteocfyqgoxds\r\n64\r\nkimnqo\r\n72\r\nlsclcjc\r\n56\r\nlxqjghfdakxekxub\r\n93\r\nm\r\n78\r\nobg\r\n4\r\noeizzjxfxz\r\n90\r\nplamvbets\r\n33\r\nrfdrljdolmytuc\r\n11\r\ntsetdq\r\n35\r\nwqcpsi\r\n60\r\nz\r\n83\r\nznxinpggugojxmsxqcwz\r\n25\r\n",
+                "4 aewcafbvegypxtohswql bpgmyiv chbfvhlvwjvgtaxp eozeghdjcvhofzmefe\r\n16 iaixcggahrxeu iruluvirbwthphzhvit iuyjteocfyqgoxds kimnqo lsclcjc lxqjghfdakxekxub m obg oeizzjxfxz plamvbets rfdrljdolmytuc tsetdq wqcpsi z znxinpggugojxmsxqcwz gv\r\n0 \r\n0 \r\n0 \r\n"
+            ],
+            [
+                "5 50\r\n82 62 70 78\r\n98 13 90 40\r\n59 97 6 54\r\n71 92 17 95\r\n97 41 78 90\r\n20\r\ncgautxwtmlabznreq\r\n70\r\ncvkauepojwpjefa\r\n12\r\ndiprexliwld\r\n65\r\nficct\r\n98\r\ngrdtqyribdzbdiff\r\n25\r\ngsdsiibnae\r\n24\r\nhjgfnglgipzhqga\r\n8\r\njqvgsd\r\n97\r\nkyhisgyaemjfmrfsgrgv\r\n4\r\nlfh\r\n35\r\nmmsudyzdczaq\r\n90\r\nn\r\n4\r\nodlomhgwzsscl\r\n27\r\nojuvlqpnvuorcm\r\n65\r\npldvzhx\r\n46\r\nqukyrrnohsovufck\r\n33\r\nswcchorziuixlppbvv\r\n84\r\ntyxjoljgg\r\n10\r\nylngxglaknqsmkmjibms\r\n88\r\nzujjnypzonnznuaqr\r\n37\r\n",
+                "20 cgautxwtmlabznreq cvkauepojwpjefa diprexliwld ficct grdtqyribdzbdiff gsdsiibnae hjgfnglgipzhqga jqvgsd kyhisgyaemjfmrfsgrgv lfh mmsudyzdczaq n odlomhgwzsscl ojuvlqpnvuorcm pldvzhx qukyrrnohsovufck swcchorziuixlppbvv tyxjoljgg ylngxglaknqsmkmjibms zujjnypzonnznuaqr\r\n0 \r\n0 \r\n0 \r\n0 \r\n"
+            ],
+            [
+                "5 50\r\n69 9 2 54\r\n76 77 26 21\r\n12 54 16 83\r\n23 53 73 84\r\n4 10 33 3\r\n20\r\nbmnxihdetiqy\r\n75\r\ndhmdlcbnkpokanszze\r\n26\r\nemc\r\n87\r\nfdctpnpzcf\r\n3\r\nfqngmlfbk\r\n53\r\ngdm\r\n87\r\nhbvgtopviqequtuzewm\r\n17\r\nhlvtavljzxsgxjyt\r\n57\r\njkpdwxthqedkyog\r\n79\r\njpoytysgjmwp\r\n27\r\nlcgekveeecbeeybsh\r\n72\r\nnuokijkionqdm\r\n33\r\nqezequdandvc\r\n38\r\nqykpwytljsspdjy\r\n40\r\nrkvykuxpyeagjshj\r\n75\r\nslysoumltgtrcqgy\r\n30\r\nthfdjdps\r\n37\r\nurkekqnwdg\r\n38\r\nvgmecwqzarqdnfr\r\n8\r\nwxbhydmyb\r\n54\r\n",
+                "20 bmnxihdetiqy dhmdlcbnkpokanszze emc fdctpnpzcf fqngmlfbk gdm hbvgtopviqequtuzewm hlvtavljzxsgxjyt jkpdwxthqedkyog jpoytysgjmwp lcgekveeecbeeybsh nuokijkionqdm qezequdandvc qykpwytljsspdjy rkvykuxpyeagjshj slysoumltgtrcqgy thfdjdps urkekqnwdg vgmecwqzarqdnfr wxbhydmyb\r\n0 \r\n0 \r\n0 \r\n0 \r\n"
+            ],
+            [
+                "5 50\r\n59 9 99 28\r\n98 25 1 73\r\n100 26 15 42\r\n94 6 74 70\r\n80 16 98 34\r\n20\r\nayhoayordvvtkc\r\n40\r\nch\r\n74\r\neryetue\r\n59\r\ngahetf\r\n21\r\nhjvhzybokveeaxflj\r\n78\r\njtldpiukiqdfmnwm\r\n76\r\nk\r\n64\r\nkpxfebgk\r\n40\r\nom\r\n51\r\notmqusdzhuoyeavdsvk\r\n59\r\novbphkivfjvpgxhj\r\n77\r\npgiyswfmsu\r\n27\r\npiaqhupfusebwv\r\n4\r\nqfcbmlksbfcpynnvzxne\r\n92\r\nqldrufcidocofac\r\n24\r\nrinavovgihwtb\r\n55\r\nsghpkh\r\n74\r\nsjdsknqytq\r\n65\r\nwpubtyezskqswm\r\n33\r\nzwmgzpdmgzktgdmgqj\r\n37\r\n",
+                "20 ayhoayordvvtkc ch eryetue gahetf hjvhzybokveeaxflj jtldpiukiqdfmnwm k kpxfebgk om otmqusdzhuoyeavdsvk ovbphkivfjvpgxhj pgiyswfmsu piaqhupfusebwv qfcbmlksbfcpynnvzxne qldrufcidocofac rinavovgihwtb sghpkh sjdsknqytq wpubtyezskqswm zwmgzpdmgzktgdmgqj\r\n0 \r\n0 \r\n0 \r\n0 \r\n"
+            ]
+        ]
+    }
+]

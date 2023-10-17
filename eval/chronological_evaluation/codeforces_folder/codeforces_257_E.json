@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Greedy Elevator",
+        "description": "The m-floor (m > 1) office of international corporation CodeForces has the\nadvanced elevator control system established. It works as follows. All office\nfloors are sequentially numbered with integers from 1 to m. At time t = 0, the\nelevator is on the first floor, the elevator is empty and nobody is waiting\nfor the elevator on other floors. Next, at times ti (ti > 0) people come to\nthe elevator. For simplicity, we assume that one person uses the elevator only\nonce during the reported interval. For every person we know three parameters:\nthe time at which the person comes to the elevator, the floor on which the\nperson is initially, and the floor to which he wants to go. The movement of\nthe elevator between the floors is as follows. At time t (t \u2265 0, t is an\ninteger) the elevator is always at some floor. First the elevator releases all\npeople who are in the elevator and want to get to the current floor. Then it\nlets in all the people waiting for the elevator on this floor. If a person\ncomes to the elevator exactly at time t, then he has enough time to get into\nit. We can assume that all of these actions (going in or out from the\nelevator) are made instantly. After that the elevator decides, which way to\nmove and at time (t + 1) the elevator gets to the selected floor. The elevator\nselects the direction of moving by the following algorithm. If the elevator is\nempty and at the current time no one is waiting for the elevator on any floor,\nthen the elevator remains at the current floor. Otherwise, let's assume that\nthe elevator is on the floor number x (1 \u2264 x \u2264 m). Then elevator calculates\nthe directions' \"priorities\" pup and pdown: pup is the sum of the number of\npeople waiting for the elevator on the floors with numbers greater than x, and\nthe number of people in the elevator, who want to get to the floors with the\nnumbers greater than x; pdown is the sum of the number of people waiting for\nthe elevator on the floors with numbers less than x, and the number of people\nin the elevator, who want to get to the floors with the numbers less than x.\nIf pup \u2265 pdown, then the elevator goes one floor above the current one (that\nis, from floor x to floor x + 1), otherwise the elevator goes one floor below\nthe current one (that is, from floor x to floor x - 1). Your task is to\nsimulate the work of the elevator and for each person to tell the time when\nthe elevator will get to the floor this person needs. Please note that the\nelevator is large enough to accommodate all the people at once. Input The\nfirst line contains two space-separated integers: n, m (1 \u2264 n \u2264 10^5, 2 \u2264 m \u2264\n10^5) \u2014 the number of people and floors in the building, correspondingly. Next\nn lines each contain three space-separated integers: ti, si, fi (1 \u2264 ti \u2264\n10^9, 1 \u2264 si, fi \u2264 m, si \u2260 fi) \u2014 the time when the i-th person begins waiting\nfor the elevator, the floor number, where the i-th person was initially\nlocated, and the number of the floor, where he wants to go. Output Print n\nlines. In the i-th line print a single number \u2014 the moment of time, when the\ni-th person gets to the floor he needs. The people are numbered in the order,\nin which they are given in the input. Please don't use the \nread or write 64-bit integers in \u0421++. It is preferred to use the cin, cout\nstreams or the \n11 8 Input 2 10 1 2 5 7 4 5 Output 5 9 Note In the first sample the elevator\nworked as follows: t = 1. The elevator is on the floor number 1. The elevator\nis empty. The floor number 2 has one person waiting. pup = 1 + 0 = 1, pdown =\n0 + 0 = 0, pup \u2265 pdown. So the elevator goes to the floor number 2. t = 2. The\nelevator is on the floor number 2. One person enters the elevator, he wants to\ngo to the floor number 7. pup = 0 + 1 = 1, pdown = 0 + 0 = 0, pup \u2265 pdown. So\nthe elevator goes to the floor number 3. t = 3. The elevator is on the floor\nnumber 3. There is one person in the elevator, he wants to go to floor 7. The\nfloors number 4 and 6 have two people waiting for the elevator. pup = 2 + 1 =\n3, pdown = 0 + 0 = 0, pup \u2265 pdown. So the elevator goes to the floor number 4.\nt = 4. The elevator is on the floor number 4. There is one person in the\nelevator who wants to go to the floor number 7. One person goes into the\nelevator, he wants to get to the floor number 8. The floor number 6 has one\nman waiting. pup = 1 + 2 = 3, pdown = 0 + 0 = 0, pup \u2265 pdown. So the elevator\ngoes to the floor number 5. t = 5. The elevator is on the floor number 5.\nThere are two people in the elevator, they want to get to the floors number 7\nand 8, correspondingly. There is one person waiting for the elevator on the\nfloor number 6. pup = 1 + 2 = 3, pdown = 0 + 0 = 0, pup \u2265 pdown. So the\nelevator goes to the floor number 6. t = 6. The elevator is on the floor\nnumber 6. There are two people in the elevator, they want to get to the floors\nnumber 7 and 8, correspondingly. One man enters the elevator, he wants to get\nto the floor number 5. pup = 0 + 2 = 2, pdown = 0 + 1 = 1, pup \u2265 pdown. So the\nelevator goes to the floor number 7. t = 7. The elevator is on the floor\nnumber 7. One person leaves the elevator, this person wanted to get to the\nfloor number 7. There are two people in the elevator, they want to get to the\nfloors with numbers 8 and 5, correspondingly. pup = 0 + 1 = 1, pdown = 0 + 1 =\n1, pup \u2265 pdown. So the elevator goes to the floor number 8. t = 8. The\nelevator is on the floor number 8. One person leaves the elevator, this person\nwanted to go to the floor number 8. There is one person in the elevator, he\nwants to go to the floor number 5. pup = 0 + 0 = 0, pdown = 0 + 1 = 1, pup <\npdown. So the elevator goes to the floor number 7. t = 9. The elevator is on\nthe floor number 7. There is one person in the elevator, this person wants to\nget to the floor number 5. pup = 0 + 0 = 0, pdown = 0 + 1 = 1, pup < pdown. So\nthe elevator goes to the floor number 6. t = 10. The elevator is on the floor\nnumber 6. There is one person in the elevator, he wants to get to the floor\nnumber 5. pup = 0 + 0 = 0, pdown = 0 + 1 = 1, pup < pdown. So the elevator\ngoes to the floor number 5. t = 11. The elevator is on the floor number 5. One\nperson leaves the elevator, this person initially wanted to get to the floor\nnumber 5. The elevator is empty and nobody needs it, so the elevator remains\nat the floor number 5.\n\n",
+        "cf_contest_id": 257,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 10\r\n1 2 7\r\n3 6 5\r\n3 4 8\r\n",
+                "7\r\n11\r\n8\r\n"
+            ],
+            [
+                "2 10\r\n1 2 5\r\n7 4 5\r\n",
+                "5\r\n9\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 10\r\n7 5 9\r\n10 9 8\r\n7 5 10\r\n4 2 8\r\n2 9 1\r\n2 8 10\r\n7 10 9\r\n7 7 2\r\n5 1 5\r\n4 7 9\r\n",
+                "14\r\n15\r\n29\r\n27\r\n38\r\n29\r\n30\r\n21\r\n42\r\n14\r\n"
+            ],
+            [
+                "10 10\r\n2 10 1\r\n1 2 7\r\n10 9 10\r\n9 3 1\r\n2 8 10\r\n5 1 6\r\n8 8 5\r\n4 2 9\r\n9 1 8\r\n2 3 5\r\n",
+                "31\r\n7\r\n22\r\n31\r\n22\r\n36\r\n11\r\n21\r\n38\r\n5\r\n"
+            ],
+            [
+                "10 10\r\n8 6 10\r\n8 1 6\r\n9 1 10\r\n10 4 5\r\n9 4 3\r\n2 10 1\r\n7 7 4\r\n10 10 6\r\n3 10 1\r\n8 10 3\r\n",
+                "15\r\n29\r\n33\r\n28\r\n22\r\n24\r\n21\r\n19\r\n24\r\n22\r\n"
+            ],
+            [
+                "10 5\r\n34 4 5\r\n37 2 4\r\n21 5 1\r\n32 2 3\r\n3 3 5\r\n35 2 5\r\n43 1 4\r\n44 4 2\r\n11 4 5\r\n22 3 4\r\n",
+                "36\r\n41\r\n27\r\n34\r\n7\r\n42\r\n50\r\n46\r\n13\r\n24\r\n"
+            ],
+            [
+                "10 5\r\n44 5 4\r\n10 2 5\r\n10 5 2\r\n30 2 4\r\n9 5 4\r\n38 5 4\r\n28 4 2\r\n20 4 1\r\n37 1 4\r\n29 2 3\r\n",
+                "49\r\n13\r\n16\r\n35\r\n14\r\n41\r\n33\r\n25\r\n47\r\n30\r\n"
+            ],
+            [
+                "1 2\r\n1 2 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "1 2\r\n1 1 2\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

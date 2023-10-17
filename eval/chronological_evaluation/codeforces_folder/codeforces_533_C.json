@@ -1,0 +1,442 @@
+[
+    {
+        "name": "Board Game",
+        "description": "Polycarp and Vasiliy love simple logical games. Today they play a game with\ninfinite chessboard and one pawn for each player. Polycarp and Vasiliy move in\nturns, Polycarp starts. In each turn Polycarp can move his pawn from cell (x,\ny) to (x - 1, y) or (x, y - 1). Vasiliy can move his pawn from (x, y) to one\nof cells: (x - 1, y), (x - 1, y - 1) and (x, y - 1). Both players are also\nallowed to skip move. There are some additional restrictions \u2014 a player is\nforbidden to move his pawn to a cell with negative x-coordinate or\ny-coordinate or to the cell containing opponent's pawn The winner is the first\nperson to reach cell (0, 0). You are given the starting coordinates of both\npawns. Determine who will win if both of them play optimally well. Input The\nfirst line contains four integers: xp, yp, xv, yv (0 \u2264 xp, yp, xv, yv \u2264 10^5)\n\u2014 Polycarp's and Vasiliy's starting coordinates. It is guaranteed that in the\nbeginning the pawns are in different cells and none of them is in the cell (0,\n0). Output Output the name of the winner: \"Polycarp\" or \"Vasiliy\". Examples\nInput 2 1 2 2 Output Polycarp Input 4 7 7 4 Output Vasiliy Note In the first\nsample test Polycarp starts in (2, 1) and will move to (1, 1) in the first\nturn. No matter what his opponent is doing, in the second turn Polycarp can\nmove to (1, 0) and finally to (0, 0) in the third turn.\n\n",
+        "cf_contest_id": 533,
+        "cf_index": "C",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "games",
+            "greedy",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 1 2 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "4 7 7 4\r\n",
+                "Vasiliy\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "20 0 7 22\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "80 100 83 97\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "80 100 77 103\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "55000 60000 55003 60100\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "100000 100000 100000 99999\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "100000 99999 100000 100000\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 100000 100000 99999\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 100000 99999 100000\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 90000 89999 89999\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "0 1 0 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 1 1 0\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 1 1 1\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 1 1 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 1 2 0\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 1 2 1\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 1 2 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 2 0 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "0 2 1 0\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "0 2 1 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "0 2 1 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 2 2 0\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 2 2 1\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 2 2 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 0 0 1\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 0 0 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 0 1 1\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 0 1 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 0 2 0\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 0 2 1\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 0 2 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 1 0 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "1 1 0 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 1 1 0\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "1 1 1 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 1 2 0\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 1 2 1\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 1 2 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "1 2 0 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "1 2 0 2\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "1 2 1 0\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "1 2 1 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "1 2 2 0\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "1 2 2 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "1 2 2 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "2 0 0 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 0 0 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "2 0 1 0\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 0 1 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 0 1 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "2 0 2 1\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "2 0 2 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "2 1 0 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 1 0 2\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 1 1 0\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 1 1 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 1 1 2\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 1 2 0\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 1 2 2\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "2 2 0 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 2 0 2\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 2 1 0\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 2 1 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 2 1 2\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 2 2 0\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 2 2 1\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "13118 79593 32785 22736\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "23039 21508 54113 76824\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "32959 49970 75441 55257\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "91573 91885 61527 58038\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "70620 15283 74892 15283\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "43308 1372 53325 1370\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "74005 7316 74004 7412\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "53208 42123 95332 85846\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "14969 66451 81419 29039\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "50042 34493 84536 17892\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "67949 70623 71979 70623\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "67603 35151 67603 39519\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "27149 26539 53690 17953\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "36711 38307 75018 72040\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "4650 67347 71998 50474\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "4075 33738 4561 33738\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "35868 55066 47754 55066\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "41150 1761 41152 1841\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "63557 16718 38133 80275\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "8956 24932 30356 33887\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "27338 8401 27337 12321\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "56613 48665 66408 48665\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "34750 34886 34751 44842\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "7591 24141 31732 23276\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "2333 91141 93473 66469\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "9 0 8 0\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "0 1000 100 99\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "4 4 2 2\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "0 4 4 3\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "100 1 1 100\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "9 17 14 16\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "0 3 3 1\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "10 0 0 10\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "5 0 0 4\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "2 1 1 3\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "4 5 5 5\r\n",
+                "Polycarp\r\n"
+            ],
+            [
+                "0 3 2 2\r\n",
+                "Vasiliy\r\n"
+            ],
+            [
+                "3 0 0 10\r\n",
+                "Polycarp\r\n"
+            ]
+        ]
+    }
+]

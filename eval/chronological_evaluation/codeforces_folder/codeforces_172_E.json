@@ -1,0 +1,45 @@
+[
+    {
+        "name": "BHTML+BCSS",
+        "description": "This problem is about imaginary languages BHTML and BCSS, which slightly\nresemble HTML and CSS. Read the problem statement carefully as the resemblance\nis rather slight and the problem uses very simplified analogs. You are given a\nBHTML document that resembles HTML but is much simpler. It is recorded as a\nsequence of opening and closing tags. A tag that looks like \"\" is called an\nopening tag and a tag that looks like \"\" is called a closing tag. Besides,\nthere are self-closing tags that are written as \"\" and in this problem they\nare fully equivalent to \"\". All tagnames in this problem are strings\nconsisting of lowercase Latin letters with length from 1 to 10 characters.\nTagnames of different tags may coincide. The document tags form a correct\nbracket sequence, that is, we can obtain an empty sequence from the given one\nusing the following operations: remove any self-closing tag \"\", remove a pair\nof an opening and a closing tag that go consecutively (in this order) and have\nthe same names. In other words, remove substring \"\". For example, you may be\ngiven such document: \"\n\n ****\n\n\" but you may not be given documents \"\", \"**\", \"\" or \" ****\". Obviously, for\nany opening tag there is the only matching closing one \u2014 each such pair is\ncalled an element. A self-closing tag also is an element. Let's consider that\none element is nested inside another one, if tags of the first element are\nbetween tags of the second one. An element is not nested to itself. For\ninstance, in the example above element \"b\" is nested in \"header\" and in \"p\",\nbut it isn't nested in \"a\" and \"footer\", also it isn't nested to itself (\"b\").\nElement \"header\" has three elements nested in it, and \"footer\" has zero. We\nneed the BCSS rules to apply styles when displaying elements of the BHTML\ndocuments. Each rule is recorded as a subsequence of words \"x1 x2 ... xn\".\nThis rule has effect over all such elements t, which satisfy both conditions\nfrom the list: there is a sequence of nested elements with tagnames \"x1\",\n\"x2\", ..., \"xn\" (that is, the second element is nested in the first one, the\nthird element is nested in the second one and so on), this sequence ends with\nelement t (i.e. tagname of element t equals \"xn\"). For example, element \"b\"\nmeets the conditions of the rule \"a b\" if for element \"b\" exists element \"a\"\nin which it is nested. Element \"c\" meets the conditions of the rule \"a b b c\",\nif three elements exist: \"a\", \"b\", \"b\", and in the chain \"a\"-\"b\"-\"b\"-\"c\" each\nfollowing element is nested in the previous one. Given a BHTML document and a\nset of BCSS rules, write a program that determines the number of elements that\nmeet the conditions of each rule. Input The first line of the input contains a\nBHTML-document. The document has length from 4 to 10^6 characters. The\ndocument has a correct structure, doesn't contain spaces or any other\nunnecessary characters. Tagnames consist of lowercase Latin letters, their\nlengths are from 1 to 10 characters. The second line contains an integer m (1\n\u2264 m \u2264 200) \u2014 the number of queries. Then m lines contain the queries, one per\nline. Each query is a sequence x1, x2, ..., xn, where xi is the i-th element\nof the query, and n (1 \u2264 n \u2264 200) is the number of elements in the query. The\nelements are separated by single spaces. Each query doesn't begin with and\ndoesn't end with a space. Each query element is a sequence of lowercase Latin\nletters with length from 1 to 10. Output Print m lines, the j-th line should\ncontain the number of elements of the document that correspond to the j-th\nBCSS-rule. If there are no such elements at all, print on the line 0. Examples\nInput ** ****** **** **** ****4 a a b b a b b a Output 2 1 4 0 Input **** ****\n****5 aa b b aa b aa a Output 2 3 2 1 0\n\n",
+        "cf_contest_id": 172,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "dfs and similar",
+            "expression parsing"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "<a><b><b></b></b></a><a><b></b><b><v/></b></a><b></b>\r\n4\r\na\r\na b b\r\na b\r\nb a\r\n",
+                "2\r\n1\r\n4\r\n0\r\n"
+            ],
+            [
+                "<b><aa/></b><aa><b/><b/></aa>\r\n5\r\naa b\r\nb\r\naa\r\nb aa\r\na\r\n",
+                "2\r\n3\r\n2\r\n1\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "<a/>\r\n6\r\na\r\na a\r\nb\r\na a a\r\nb a\r\na b\r\n",
+                "1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "<a><a/></a>\r\n5\r\na\r\na a\r\na a a\r\nb a\r\na b\r\n",
+                "2\r\n1\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "<hnhi><ihjhi><ihjhi></ihjhi></ihjhi><hnhi/></hnhi><h><hnhi><hnhi><ihjhi></ihjhi></hnhi></hnhi><ihjhi></ihjhi></h>\r\n10\r\nhnhi ihjhi\r\nihjhi ihjhi\r\nh h h\r\nihjhi h ihjhi\r\nhnhi\r\nh\r\nihjhi hnhi\r\nh ihjhi h ihjhi h\r\nh ihjhi h\r\nhnhi\r\n",
+                "3\r\n1\r\n0\r\n0\r\n4\r\n1\r\n0\r\n0\r\n0\r\n4\r\n"
+            ],
+            [
+                "<u><u><u><u/><u/><u><u/></u></u><u/></u></u><u/>\r\n10\r\nu u u\r\nu\r\nu\r\nu u u u u u\r\nu\r\nu u u\r\nu\r\nu\r\nu u u\r\nu u u u u\r\n",
+                "6\r\n9\r\n9\r\n0\r\n9\r\n6\r\n9\r\n9\r\n6\r\n1\r\n"
+            ]
+        ]
+    }
+]

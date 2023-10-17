@@ -1,0 +1,146 @@
+[
+    {
+        "name": "Capitalism",
+        "description": "A society can be represented by a connected, undirected graph of \n    n\n\nvertices and \n    m\n edges. The vertices represent people, and an edge\n\n    (i,j)\n represents a friendship between people \n    i\n and \n    j\n. In\nsociety, the \n    i\n-th person has an income \n    a_i\n. A person \n    i\n is\nenvious of person \n    j\n if \n    a_j=a_i+1\n. That is if person \n    j\n has\nexactly \n    1\n more unit of income than person \n    i\n. The society is called\ncapitalist if for every pair of friends one is envious of the other. For some\nfriendships, you know which friend is envious of the other. For the remaining\nfriendships, you do not know the direction of envy. The income inequality of\nsociety is defined as \n    max\n    _1 \n    \u2264 i \n    \u2264 n a_i -\n    \n    min\n    _1 \n    \u2264 i \n    \u2264 n a_i\n. You only know the friendships\nand not the incomes. If it is impossible for this society to be capitalist\nwith the given knowledge, you should report about it. Otherwise, you should\nfind an assignment of incomes in which the society is capitalist, and the\nincome inequality is maximized. Input The first line contains two integers\n\n    n\n, \n    m\n (\n    1\n    \u2264 n\n    \u2264 200\n, \n    n-1\n    \u2264 m\n    \u2264 2000\n) \u2014 the\nnumber of people and friendships, respectively. The following \n    m\n lines\ndescribe the friendships. Each friendship is described by three integers\n\n    i\n, \n    j\n, \n    b\n (\n    1\n    \u2264 i, j\n    \u2264 n, i\n     j, 0\n    \u2264 b\n    \u2264\n    1\n). This denotes that people \n    i\n and \n    j\n are friends. If \n    b=1\n,\nwe require that person \n    i\n is envious of person \n    j\n. If \n    b=0\n, one\nfriend should be envious of the other in either direction. There is at most\none friendship between each pair of people. It is guaranteed that if we\nconsider the friendships as undirected edges, the graph is connected. Output\nPrint \"YES\" if it is possible that the society is capitalist, or \"NO\"\notherwise. You can print characters in any case (upper or lower). If the\nanswer is \"YES\", you should print two additional lines. In the first line,\nprint the maximum possible income inequality. On the next line you should\nprint \n    n\n integers \n    a_1,\n    \u2026, a_n\n (\n    0\n    \u2264 a_i\n    \u2264 10^6\n),\nwhere \n    a_i\n denotes the income of the \n    i\n-th person. We can prove that\nif there exists a solution, there exists one where \n    0\n    \u2264 a_i\n    \u2264 10^6\n\nfor all \n    i\n. If there exist multiple solutions, print any. Examples Input\n6 6 1 2 0 3 2 0 2 5 0 6 5 1 6 3 0 2 4 1 Output YES 3 3 2 1 3 1 0 Input 4 4 1 2\n1 2 3 0 3 4 1 4 1 1 Output NO Input 1 0 Output YES 0 0 Note In the first test,\nwe can show that an income inequality greater than \n    3\n is impossible for\nthe given society. In the given answer with income inequality equal to\n\n    3\n: Person \n    2\n is envious of person \n    1\n. Person \n    3\n is\nenvious of person \n    2\n. Person \n    5\n is envious of person \n    2\n. Person\n\n    6\n is envious of person \n    5\n (the required direction is satisfied).\nPerson \n    6\n is envious of person \n    3\n. Person \n    2\n is envious of\nperson \n    4\n (the required direction is satisfied). In the second test, we\ncan show that there is no way to assign incomes to satisfy all requirements.\n\n",
+        "cf_contest_id": 1450,
+        "cf_index": "E",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 6\r\n1 2 0\r\n3 2 0\r\n2 5 0\r\n6 5 1\r\n6 3 0\r\n2 4 1\r\n",
+                "YES\r\n3\r\n3 2 1 3 1 0 "
+            ],
+            [
+                "4 4\r\n1 2 1\r\n2 3 0\r\n3 4 1\r\n4 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 0\r\n",
+                "YES\r\n0\r\n0 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 10\r\n1 2 0\r\n1 3 0\r\n2 4 0\r\n3 5 0\r\n4 6 0\r\n5 7 0\r\n6 8 0\r\n7 8 0\r\n4 9 0\r\n5 10 0\r\n",
+                "YES\r\n6\r\n3 2 4 1 5 2 4 3 0 6 "
+            ],
+            [
+                "20 38\r\n13 14 0\r\n12 15 0\r\n12 1 0\r\n14 18 1\r\n12 20 1\r\n6 4 1\r\n5 8 0\r\n10 8 1\r\n7 14 1\r\n10 13 1\r\n19 10 1\r\n7 11 1\r\n10 3 1\r\n11 16 0\r\n11 4 1\r\n11 13 1\r\n12 7 1\r\n2 13 1\r\n14 3 1\r\n15 5 0\r\n5 3 1\r\n19 6 1\r\n3 2 0\r\n7 5 0\r\n16 2 0\r\n2 18 1\r\n7 2 1\r\n11 18 1\r\n9 16 1\r\n19 12 0\r\n13 6 0\r\n6 18 1\r\n17 18 0\r\n5 13 1\r\n19 9 1\r\n9 8 1\r\n7 17 1\r\n6 16 0\r\n",
+                "YES\r\n4\r\n0 3 4 4 3 3 2 4 3 3 3 1 4 3 2 4 3 4 2 2 "
+            ],
+            [
+                "8 8\r\n1 2 1\r\n2 3 1\r\n4 5 1\r\n5 6 1\r\n3 4 0\r\n1 7 0\r\n7 8 0\r\n8 6 0\r\n",
+                "YES\r\n3\r\n0 1 2 1 2 3 1 2 "
+            ],
+            [
+                "20 20\r\n6 2 1\r\n8 6 1\r\n16 12 0\r\n19 4 1\r\n10 4 1\r\n9 1 1\r\n13 12 0\r\n1 11 0\r\n10 3 1\r\n9 10 1\r\n14 15 1\r\n15 18 1\r\n13 5 0\r\n2 16 0\r\n5 4 1\r\n14 17 0\r\n1 20 0\r\n19 7 0\r\n18 8 0\r\n4 17 1\r\n",
+                "YES\r\n5\r\n1 5 2 2 1 4 0 3 0 1 2 3 2 2 3 4 3 4 1 2 "
+            ],
+            [
+                "50 49\r\n46 6 1\r\n35 27 1\r\n9 40 1\r\n43 36 1\r\n7 45 1\r\n47 46 1\r\n49 43 1\r\n4 48 1\r\n16 34 1\r\n13 22 1\r\n41 47 1\r\n6 20 1\r\n29 7 1\r\n48 14 1\r\n8 23 1\r\n21 30 1\r\n14 19 1\r\n23 31 1\r\n45 37 1\r\n19 11 1\r\n28 38 1\r\n17 21 1\r\n5 25 1\r\n26 12 1\r\n36 24 1\r\n24 17 1\r\n22 5 1\r\n33 35 1\r\n25 16 1\r\n32 26 1\r\n40 10 1\r\n18 1 1\r\n2 4 1\r\n31 33 1\r\n50 29 1\r\n42 15 1\r\n30 39 1\r\n37 49 1\r\n12 3 1\r\n10 8 1\r\n15 28 1\r\n3 42 1\r\n20 18 1\r\n39 41 1\r\n44 50 1\r\n11 44 1\r\n38 13 1\r\n1 9 1\r\n34 2 1\r\n",
+                "YES\r\n49\r\n40 14 3 15 10 37 23 44 41 43 19 2 8 17 5 12 30 39 18 38 31 9 45 29 11 1 49 6 22 32 46 0 47 13 48 28 25 7 33 42 34 4 27 20 24 36 35 16 26 21 "
+            ],
+            [
+                "50 49\r\n42 16 0\r\n43 17 0\r\n17 30 0\r\n46 11 0\r\n6 17 0\r\n44 17 0\r\n33 45 0\r\n27 34 0\r\n11 39 0\r\n8 17 0\r\n34 17 0\r\n41 17 0\r\n20 18 0\r\n3 17 0\r\n37 19 0\r\n36 45 0\r\n1 45 1\r\n45 48 0\r\n18 17 0\r\n19 24 0\r\n35 19 0\r\n11 15 0\r\n34 13 0\r\n35 5 0\r\n17 45 0\r\n8 2 1\r\n45 10 0\r\n11 25 0\r\n11 47 0\r\n22 17 0\r\n19 9 0\r\n17 42 0\r\n38 30 0\r\n31 8 0\r\n18 49 0\r\n23 17 0\r\n50 17 0\r\n19 21 0\r\n17 26 1\r\n45 14 0\r\n4 11 0\r\n32 11 0\r\n42 29 0\r\n17 7 0\r\n17 19 0\r\n11 12 0\r\n28 11 0\r\n19 40 0\r\n17 11 0\r\n",
+                "YES\r\n5\r\n0 4 3 4 5 3 3 3 4 2 3 4 4 2 4 4 2 3 3 4 4 3 3 4 4 3 4 4 4 3 4 4 2 3 4 2 4 4 4 4 3 3 3 3 1 4 4 2 4 3 "
+            ],
+            [
+                "50 51\r\n39 15 1\r\n48 3 1\r\n33 20 1\r\n50 1 1\r\n5 22 1\r\n50 41 1\r\n24 49 1\r\n25 19 1\r\n45 14 1\r\n33 32 1\r\n37 29 1\r\n28 37 1\r\n24 44 1\r\n17 37 1\r\n11 8 1\r\n46 35 1\r\n31 48 1\r\n38 22 1\r\n30 48 1\r\n16 31 1\r\n18 34 1\r\n27 15 1\r\n32 7 1\r\n22 40 1\r\n39 37 1\r\n17 24 1\r\n8 7 1\r\n42 21 1\r\n36 10 1\r\n32 40 1\r\n7 21 1\r\n25 17 1\r\n43 37 1\r\n50 17 1\r\n48 17 1\r\n23 50 1\r\n30 6 1\r\n2 31 1\r\n47 50 1\r\n44 9 1\r\n4 6 1\r\n11 47 1\r\n10 32 1\r\n35 7 1\r\n13 25 1\r\n36 26 1\r\n7 17 1\r\n12 37 1\r\n7 45 1\r\n48 34 1\r\n20 48 1\r\n",
+                "YES\r\n7\r\n4 1 4 2 1 3 3 2 7 1 1 4 2 5 5 1 4 3 4 2 4 2 2 5 3 1 4 4 6 2 2 2 1 4 2 0 5 1 4 3 4 3 4 6 4 1 2 3 6 3 "
+            ],
+            [
+                "50 54\r\n42 43 1\r\n13 10 1\r\n37 43 0\r\n49 34 1\r\n38 23 1\r\n21 42 0\r\n44 13 1\r\n12 14 0\r\n47 9 0\r\n18 6 0\r\n31 49 0\r\n46 31 1\r\n29 30 0\r\n4 36 0\r\n12 11 1\r\n2 34 0\r\n30 8 0\r\n48 27 1\r\n45 22 0\r\n24 38 1\r\n11 1 1\r\n3 7 0\r\n7 26 0\r\n10 16 0\r\n18 38 1\r\n32 28 1\r\n39 33 0\r\n29 21 1\r\n40 44 1\r\n33 25 0\r\n6 23 0\r\n41 5 1\r\n18 16 1\r\n47 4 1\r\n7 9 1\r\n40 42 1\r\n17 40 1\r\n5 8 1\r\n45 3 1\r\n32 47 0\r\n48 10 0\r\n20 41 0\r\n15 9 1\r\n2 35 1\r\n37 20 1\r\n11 10 1\r\n9 16 1\r\n25 17 0\r\n26 19 0\r\n35 14 0\r\n50 16 0\r\n39 27 0\r\n46 1 0\r\n28 22 1\r\n",
+                "YES\r\n6\r\n4 3 4 4 3 5 3 4 4 4 3 2 3 3 3 5 0 4 5 3 3 4 6 4 1 4 4 3 2 3 4 2 2 4 4 5 2 5 3 1 2 2 3 2 3 3 3 3 3 6 "
+            ],
+            [
+                "10 11\r\n9 1 1\r\n7 5 1\r\n5 10 0\r\n3 7 1\r\n3 4 0\r\n1 2 0\r\n9 8 0\r\n2 8 1\r\n4 2 1\r\n6 4 1\r\n10 6 0\r\n",
+                "YES\r\n3\r\n3 2 0 1 2 0 1 3 2 1 "
+            ],
+            [
+                "10 24\r\n5 9 0\r\n6 5 0\r\n9 7 0\r\n7 10 0\r\n1 2 0\r\n10 4 0\r\n9 4 0\r\n4 2 0\r\n9 1 0\r\n3 2 0\r\n2 8 0\r\n9 8 0\r\n8 10 0\r\n8 6 0\r\n3 6 1\r\n1 10 0\r\n1 6 0\r\n6 7 0\r\n4 6 1\r\n10 3 0\r\n5 10 0\r\n3 9 0\r\n2 7 1\r\n2 5 0\r\n",
+                "YES\r\n2\r\n0 1 0 0 2 1 2 2 1 1 "
+            ],
+            [
+                "10 16\r\n7 10 1\r\n8 6 0\r\n8 4 1\r\n5 7 1\r\n4 1 1\r\n6 7 0\r\n8 10 0\r\n7 4 1\r\n8 5 0\r\n3 7 0\r\n9 8 1\r\n10 2 0\r\n10 1 1\r\n2 4 0\r\n8 3 0\r\n7 9 0\r\n",
+                "YES\r\n3\r\n3 3 0 2 0 2 1 1 0 2 "
+            ],
+            [
+                "50 49\r\n5 34 1\r\n5 2 1\r\n5 38 1\r\n5 9 1\r\n5 28 1\r\n5 23 1\r\n5 33 1\r\n5 22 1\r\n5 12 1\r\n5 24 1\r\n5 14 1\r\n5 19 1\r\n5 3 1\r\n5 41 1\r\n5 26 1\r\n5 49 1\r\n5 4 1\r\n5 17 1\r\n5 40 1\r\n5 16 1\r\n5 8 1\r\n5 29 1\r\n5 47 1\r\n5 45 1\r\n5 25 1\r\n1 5 1\r\n5 35 1\r\n5 7 1\r\n5 36 1\r\n5 32 1\r\n5 30 1\r\n5 27 1\r\n5 20 1\r\n5 50 1\r\n5 11 1\r\n5 37 1\r\n5 31 1\r\n5 42 1\r\n5 15 1\r\n5 10 1\r\n5 44 1\r\n5 21 1\r\n5 18 1\r\n5 46 1\r\n5 6 1\r\n5 48 1\r\n5 43 1\r\n5 39 1\r\n5 13 1\r\n",
+                "YES\r\n2\r\n0 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 "
+            ],
+            [
+                "50 51\r\n23 41 0\r\n47 40 0\r\n9 43 0\r\n38 12 0\r\n35 25 0\r\n1 43 0\r\n13 50 0\r\n40 10 0\r\n20 43 0\r\n33 34 0\r\n47 19 0\r\n21 5 0\r\n37 50 0\r\n37 33 0\r\n25 37 0\r\n47 33 0\r\n31 34 0\r\n18 19 0\r\n50 7 0\r\n16 19 0\r\n4 3 0\r\n49 50 0\r\n46 36 0\r\n33 35 1\r\n1 28 1\r\n40 48 0\r\n34 24 0\r\n3 6 0\r\n17 10 0\r\n20 15 0\r\n45 4 0\r\n36 4 0\r\n38 22 0\r\n32 41 0\r\n1 40 1\r\n12 2 0\r\n11 48 0\r\n4 14 0\r\n10 12 0\r\n36 42 0\r\n6 11 0\r\n26 48 0\r\n27 42 0\r\n4 33 0\r\n5 8 0\r\n29 47 0\r\n32 4 0\r\n39 37 0\r\n17 5 1\r\n7 44 0\r\n30 42 0\r\n",
+                "YES\r\n10\r\n3 7 8 7 7 7 9 8 3 5 6 6 9 8 0 7 6 7 6 1 8 8 10 8 8 6 10 4 6 10 8 8 6 7 7 8 7 7 8 4 9 9 2 10 8 9 5 5 9 8 "
+            ],
+            [
+                "50 51\r\n12 11 0\r\n14 37 0\r\n9 16 0\r\n36 34 0\r\n16 22 0\r\n44 29 0\r\n37 3 0\r\n31 35 0\r\n39 43 0\r\n6 22 1\r\n8 2 0\r\n21 28 0\r\n20 38 0\r\n12 33 0\r\n49 40 0\r\n7 35 0\r\n15 10 1\r\n42 13 0\r\n4 33 1\r\n6 39 0\r\n7 11 0\r\n25 14 0\r\n21 47 0\r\n50 23 0\r\n30 24 0\r\n50 37 0\r\n30 27 0\r\n17 46 1\r\n39 44 0\r\n38 40 0\r\n21 19 1\r\n6 27 0\r\n36 46 0\r\n42 23 0\r\n15 13 0\r\n35 17 0\r\n23 18 0\r\n2 5 0\r\n36 26 0\r\n47 17 0\r\n14 34 0\r\n34 45 0\r\n1 4 0\r\n10 41 0\r\n2 32 0\r\n27 33 0\r\n27 48 0\r\n4 49 0\r\n8 40 0\r\n33 40 0\r\n28 14 0\r\n",
+                "YES\r\n22\r\n5 8 16 4 9 3 8 7 6 21 7 6 19 14 20 5 10 18 13 8 12 4 17 6 15 13 4 13 0 5 10 9 5 13 9 12 15 7 2 6 22 18 3 1 14 11 11 5 5 16 "
+            ],
+            [
+                "50 51\r\n25 36 0\r\n48 25 0\r\n33 42 0\r\n4 25 0\r\n50 23 0\r\n23 1 0\r\n23 28 0\r\n35 23 0\r\n12 23 0\r\n23 2 0\r\n46 27 0\r\n15 25 0\r\n43 23 0\r\n30 25 0\r\n19 23 0\r\n25 6 0\r\n18 23 0\r\n23 10 0\r\n31 44 0\r\n34 46 0\r\n14 23 0\r\n49 25 0\r\n25 41 0\r\n21 25 0\r\n39 25 0\r\n32 27 0\r\n13 18 0\r\n34 29 0\r\n7 25 0\r\n18 26 0\r\n11 23 0\r\n42 25 0\r\n25 45 0\r\n27 23 0\r\n18 5 0\r\n17 25 0\r\n28 24 0\r\n33 5 0\r\n25 20 0\r\n40 25 0\r\n9 25 0\r\n3 23 0\r\n25 47 0\r\n42 38 0\r\n47 8 0\r\n47 37 1\r\n27 16 0\r\n22 25 0\r\n23 25 1\r\n31 23 0\r\n23 34 0\r\n",
+                "YES\r\n5\r\n3 3 3 4 0 4 4 5 4 3 3 3 2 3 4 4 4 1 3 4 4 4 2 4 3 2 3 3 4 4 3 4 1 3 3 4 5 3 4 4 4 2 3 4 4 4 4 4 4 3 "
+            ],
+            [
+                "50 51\r\n9 32 0\r\n26 18 0\r\n34 49 0\r\n3 17 0\r\n35 10 0\r\n29 36 0\r\n2 37 0\r\n9 11 0\r\n40 6 0\r\n12 19 0\r\n34 46 0\r\n8 31 0\r\n41 30 0\r\n23 37 0\r\n25 45 0\r\n28 1 0\r\n5 28 0\r\n40 10 0\r\n14 2 0\r\n20 33 0\r\n23 4 0\r\n1 44 0\r\n41 48 0\r\n8 49 0\r\n15 50 0\r\n44 15 0\r\n33 39 0\r\n8 38 0\r\n44 45 0\r\n12 47 0\r\n19 21 0\r\n40 46 0\r\n31 42 0\r\n1 30 0\r\n11 24 0\r\n6 30 0\r\n46 9 0\r\n41 32 0\r\n17 25 0\r\n7 4 0\r\n15 16 0\r\n34 27 0\r\n20 11 0\r\n14 47 0\r\n5 3 0\r\n26 11 0\r\n29 9 0\r\n7 17 0\r\n43 4 0\r\n50 22 0\r\n13 26 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "50 51\r\n17 28 0\r\n2 18 0\r\n2 3 0\r\n2 31 0\r\n30 14 0\r\n38 26 0\r\n2 17 1\r\n26 25 0\r\n2 39 0\r\n26 48 0\r\n24 2 0\r\n16 33 0\r\n33 36 0\r\n32 26 0\r\n2 13 0\r\n33 4 0\r\n2 26 0\r\n36 38 0\r\n26 22 0\r\n19 2 1\r\n2 47 0\r\n2 6 0\r\n33 42 0\r\n12 2 0\r\n21 6 0\r\n7 26 0\r\n1 13 0\r\n12 31 0\r\n9 17 0\r\n13 10 0\r\n48 15 1\r\n12 35 0\r\n30 29 0\r\n43 2 0\r\n26 11 0\r\n2 8 0\r\n23 33 0\r\n26 45 0\r\n27 2 0\r\n12 34 0\r\n41 26 0\r\n30 2 0\r\n5 2 0\r\n49 2 0\r\n12 50 0\r\n44 2 0\r\n26 46 0\r\n2 37 0\r\n6 40 0\r\n33 2 1\r\n20 12 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "9 20\r\n7 6 0\r\n8 6 0\r\n1 4 0\r\n7 2 0\r\n3 9 0\r\n1 9 0\r\n1 6 0\r\n8 9 0\r\n5 4 0\r\n5 9 0\r\n8 2 0\r\n3 6 0\r\n1 2 0\r\n2 3 0\r\n3 4 0\r\n2 5 0\r\n5 6 0\r\n4 7 0\r\n4 8 0\r\n7 9 0\r\n",
+                "YES\r\n2\r\n0 1 2 1 2 1 2 2 1 "
+            ],
+            [
+                "15 19\r\n14 13 0\r\n5 9 0\r\n14 12 0\r\n8 3 0\r\n1 15 0\r\n1 2 0\r\n1 3 0\r\n2 4 0\r\n3 5 0\r\n4 6 0\r\n2 7 0\r\n6 8 0\r\n1 9 0\r\n1 10 0\r\n10 11 0\r\n5 12 0\r\n1 13 0\r\n10 14 0\r\n7 15 0\r\n",
+                "YES\r\n5\r\n2 1 3 0 4 1 2 2 3 3 4 5 3 4 3 "
+            ],
+            [
+                "17 47\r\n11 6 0\r\n10 5 0\r\n11 15 0\r\n1 8 0\r\n1 5 0\r\n13 9 0\r\n17 14 0\r\n11 12 0\r\n10 9 0\r\n10 7 0\r\n3 16 0\r\n10 6 0\r\n3 8 0\r\n3 7 0\r\n11 16 0\r\n1 9 0\r\n10 2 0\r\n3 14 0\r\n3 5 0\r\n17 15 0\r\n17 5 0\r\n10 15 0\r\n13 15 0\r\n17 8 0\r\n13 2 0\r\n17 6 0\r\n13 14 0\r\n11 9 0\r\n13 8 0\r\n17 16 0\r\n11 14 0\r\n1 2 0\r\n2 3 0\r\n2 4 0\r\n4 5 0\r\n1 6 0\r\n4 7 0\r\n4 8 0\r\n4 9 0\r\n8 10 0\r\n7 11 0\r\n3 12 0\r\n12 13 0\r\n4 14 0\r\n4 15 0\r\n10 16 0\r\n9 17 0\r\n",
+                "YES\r\n3\r\n0 1 2 2 1 1 3 1 1 2 2 3 2 3 3 3 2 "
+            ],
+            [
+                "10 14\r\n4 2 0\r\n6 3 0\r\n6 5 0\r\n8 3 0\r\n10 5 0\r\n1 2 0\r\n1 3 0\r\n3 4 0\r\n1 5 0\r\n2 6 0\r\n5 7 0\r\n5 8 0\r\n2 9 0\r\n2 10 0\r\n",
+                "YES\r\n4\r\n2 1 1 0 3 2 4 2 2 2 "
+            ],
+            [
+                "10 11\r\n7 6 1\r\n9 7 0\r\n3 9 1\r\n5 4 0\r\n4 1 0\r\n1 2 0\r\n1 9 1\r\n8 5 0\r\n4 10 1\r\n10 2 1\r\n3 6 0\r\n",
+                "YES\r\n4\r\n3 4 3 2 1 4 3 0 4 3 "
+            ],
+            [
+                "10 11\r\n6 3 1\r\n9 5 1\r\n7 10 1\r\n2 1 0\r\n8 4 1\r\n5 8 0\r\n6 1 0\r\n10 4 1\r\n4 9 0\r\n10 2 0\r\n3 7 1\r\n",
+                "YES\r\n4\r\n1 2 1 4 4 0 2 3 3 3 "
+            ],
+            [
+                "2 1\r\n2 1 1\r\n",
+                "YES\r\n1\r\n1 0 "
+            ],
+            [
+                "4 4\r\n4 2 1\r\n4 3 1\r\n1 2 1\r\n1 3 1\r\n",
+                "YES\r\n1\r\n0 1 1 0 "
+            ],
+            [
+                "10 25\r\n10 3 1\r\n8 10 1\r\n6 10 1\r\n1 10 1\r\n10 7 1\r\n3 4 1\r\n4 8 1\r\n4 6 1\r\n1 4 1\r\n7 4 1\r\n3 9 1\r\n8 9 1\r\n9 6 1\r\n1 9 1\r\n9 7 1\r\n3 5 1\r\n8 5 1\r\n5 6 1\r\n5 1 1\r\n7 5 1\r\n2 3 1\r\n2 8 1\r\n2 6 1\r\n2 1 1\r\n2 7 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "50 49\r\n18 49 0\r\n14 26 0\r\n28 27 0\r\n19 7 0\r\n27 16 0\r\n33 24 0\r\n14 24 0\r\n34 43 0\r\n34 20 0\r\n14 27 0\r\n39 26 0\r\n11 2 0\r\n10 19 0\r\n38 6 0\r\n32 36 0\r\n45 32 0\r\n43 14 0\r\n37 23 0\r\n17 42 0\r\n25 48 0\r\n36 23 0\r\n21 41 0\r\n42 14 0\r\n12 36 0\r\n27 32 0\r\n23 9 0\r\n2 14 0\r\n47 15 0\r\n50 24 0\r\n15 40 0\r\n22 31 0\r\n19 29 0\r\n4 27 0\r\n35 12 0\r\n1 12 0\r\n8 36 0\r\n46 48 0\r\n15 27 0\r\n4 19 0\r\n3 48 1\r\n21 22 0\r\n14 5 0\r\n2 44 0\r\n14 3 0\r\n18 34 0\r\n6 12 0\r\n30 40 0\r\n13 3 0\r\n41 27 0\r\n",
+                "YES\r\n10\r\n3 7 7 6 7 1 8 4 5 8 8 2 8 6 6 6 8 9 7 9 7 8 4 7 9 7 5 6 8 8 9 4 8 8 3 3 5 0 8 7 6 7 7 8 5 9 7 8 10 8 "
+            ],
+            [
+                "50 49\r\n35 3 0\r\n26 38 0\r\n21 3 0\r\n14 28 0\r\n10 28 0\r\n17 24 0\r\n20 17 0\r\n13 15 0\r\n1 3 0\r\n22 18 0\r\n36 10 0\r\n28 5 0\r\n22 45 0\r\n24 2 0\r\n39 12 0\r\n28 32 0\r\n29 8 0\r\n16 37 0\r\n50 44 0\r\n26 31 0\r\n19 1 0\r\n30 9 0\r\n2 1 0\r\n2 49 0\r\n29 13 0\r\n18 23 0\r\n13 20 0\r\n48 4 0\r\n11 19 0\r\n33 12 0\r\n9 47 0\r\n42 23 0\r\n36 35 0\r\n7 41 0\r\n27 44 0\r\n44 2 0\r\n41 26 0\r\n12 6 0\r\n36 4 0\r\n4 34 0\r\n32 46 0\r\n20 6 0\r\n47 50 0\r\n12 16 0\r\n22 38 0\r\n40 11 0\r\n46 43 0\r\n7 8 0\r\n47 25 0\r\n",
+                "YES\r\n23\r\n15 14 16 19 21 12 7 8 18 19 17 13 10 21 11 14 12 2 16 11 17 3 1 13 18 5 16 20 9 19 6 21 14 20 17 18 15 4 14 18 6 0 23 15 4 22 17 20 15 16 "
+            ]
+        ]
+    }
+]

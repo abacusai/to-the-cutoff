@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Segment Intersections",
+        "description": "You are given two lists of segments \n    [al_1, ar_1], [al_2, ar_2], \n    \u2026,\n    [al_n, ar_n]\n and \n    [bl_1, br_1], [bl_2, br_2], \n    \u2026, [bl_n, br_n]\n.\nInitially, all segments \n    [al_i, ar_i]\n are equal to \n    [l_1, r_1]\n and\nall segments \n    [bl_i, br_i]\n are equal to \n    [l_2, r_2]\n. In one step,\nyou can choose one segment (either from the first or from the second list) and\nextend it by \n    1\n. In other words, suppose you've chosen segment \n    [x,\n    y]\n then you can transform it either into \n    [x - 1, y]\n or into \n    [x, y\n    + 1]\n. Let's define a total intersection \n    I\n as the sum of lengths of\nintersections of the corresponding pairs of segments, i.e.\n\n    \u2211\n    _i=1^n\n    intersection_length([al_i, ar_i], [bl_i,\n    br_i])\n. Empty intersection has length \n    0\n and length of a segment\n\n    [x, y]\n is equal to \n    y - x\n. What is the minimum number of steps you\nneed to make \n    I\n greater or equal to \n    k\n? Input The first line\ncontains the single integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264 1000\n) \u2014 the number\nof test cases. The first line of each test case contains two integers \n    n\n\nand \n    k\n (\n    1 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5\n; \n    1 \n    \u2264 k \n    \u2264 10^9\n)\n\u2014 the length of lists and the minimum required total intersection. The second\nline of each test case contains two integers \n    l_1\n and \n    r_1\n (\n    1\n    \n    \u2264 l_1 \n    \u2264 r_1 \n    \u2264 10^9\n) \u2014 the segment all \n    [al_i, ar_i]\n are\nequal to initially. The third line of each test case contains two integers\n\n    l_2\n and \n    r_2\n (\n    1 \n    \u2264 l_2 \n    \u2264 r_2 \n    \u2264 10^9\n) \u2014 the segment\nall \n    [bl_i, br_i]\n are equal to initially. It's guaranteed that the sum of\n\n    n\n doesn't exceed \n    2 \n    \u00b7 10^5\n. Output Print \n    t\n integers \u2014\none per test case. For each test case, print the minimum number of step you\nneed to make \n    I\n greater or equal to \n    k\n. Example Input 3 3 5 1 2 3 4\n2 1000000000 1 1 999999999 999999999 10 3 5 10 7 8 Output 7 2000000000 0 Note\nIn the first test case, we can achieve total intersection \n    5\n, for\nexample, using next strategy: make \n    [al_1, ar_1]\n from \n    [1, 2]\n to\n\n    [1, 4]\n in \n    2\n steps; make \n    [al_2, ar_2]\n from \n    [1, 2]\n to\n\n    [1, 3]\n in \n    1\n step; make \n    [bl_1, br_1]\n from \n    [3, 4]\n to\n\n    [1, 4]\n in \n    2\n steps; make \n    [bl_2, br_2]\n from \n    [3, 4]\n to\n\n    [1, 4]\n in \n    2\n steps. In result, \n    I =\n    \n    intersection_length([al_1, ar_1], [bl_1, br_1]) +\n    \n    intersection_length([al_2, ar_2], [bl_2, br_2]) + \n    \n    \n     +\n    \n    intersection_length([al_3, ar_3], [bl_3, br_3]) = 3 + 2 + 0 = 5\nIn\nthe second test case, we can make \n    [al_1, ar_1] = [0, 1000000000]\n in\n\n    1000000000\n steps and \n    [bl_1, br_1] = [0, 1000000000]\n in\n\n    1000000000\n steps. In the third test case, the total intersection \n    I\n\nis already equal to \n    10 > 3\n, so we don't need to do any steps.\n\n",
+        "cf_contest_id": 1389,
+        "cf_index": "D",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n3 5\r\n1 2\r\n3 4\r\n2 1000000000\r\n1 1\r\n999999999 999999999\r\n10 3\r\n5 10\r\n7 8\r\n",
+                "7\r\n2000000000\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n200000 88635750\r\n4971058 40181766\r\n6012372 78925196\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\n200000 598920770\r\n24529366 24846325\r\n35694819 90253337\r\n",
+                "703962247\r\n"
+            ],
+            [
+                "1\r\n1 1\r\n1 1\r\n1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "1\r\n4 9\r\n4 10\r\n5 5\r\n",
+                "9\r\n"
+            ],
+            [
+                "1\r\n1 1\r\n3 3\r\n1 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "1\r\n3 100\r\n1 1\r\n1 1\r\n",
+                "200\r\n"
+            ],
+            [
+                "1\r\n1 100\r\n1 1\r\n1 1\r\n",
+                "200\r\n"
+            ],
+            [
+                "1\r\n1 6\r\n5 9\r\n5 9\r\n",
+                "4\r\n"
+            ],
+            [
+                "1\r\n2 10\r\n1 1\r\n1 1\r\n",
+                "20\r\n"
+            ],
+            [
+                "1\r\n1 2\r\n1 2\r\n1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "1\r\n2 10\r\n1 5\r\n3 3\r\n",
+                "12\r\n"
+            ],
+            [
+                "1\r\n11 111\r\n4 4\r\n4 4\r\n",
+                "222\r\n"
+            ],
+            [
+                "1\r\n4 52\r\n3 5\r\n3 5\r\n",
+                "88\r\n"
+            ],
+            [
+                "1\r\n10 10\r\n1 1\r\n1 1\r\n",
+                "20\r\n"
+            ],
+            [
+                "2\r\n3 5\r\n1 2\r\n1 2\r\n3 5\r\n1 1\r\n1 1\r\n",
+                "4\r\n10\r\n"
+            ]
+        ]
+    }
+]

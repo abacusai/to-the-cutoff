@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Addition on Segments",
+        "description": "Grisha come to a contest and faced the following problem. You are given an\narray of size \n    n\n, initially consisting of zeros. The elements of the\narray are enumerated from \n    1\n to \n    n\n. You perform \n    q\n operations\non the array. The \n    i\n-th operation is described with three integers\n\n    l_i\n, \n    r_i\n and \n    x_i\n (\n    1 \n    \u2264 l_i \n    \u2264 r_i \n    \u2264 n\n,\n\n    1 \n    \u2264 x_i \n    \u2264 n\n) and means that you should add \n    x_i\n to each\nof the elements with indices \n    l_i, l_i + 1, \n    \u2026, r_i\n. After all\noperations you should find the maximum in the array. Grisha is clever, so he\nsolved the problem quickly. However something went wrong inside his head and\nnow he thinks of the following question: \"consider we applied some subset of\nthe operations to the array. What are the possible values of the maximum in\nthe array?\" Help Grisha, find all integers \n    y\n between \n    1\n and \n    n\n\nsuch that if you apply some subset (possibly empty) of the operations, then\nthe maximum in the array becomes equal to \n    y\n. Input The first line\ncontains two integers \n    n\n and \n    q\n (\n    1 \n    \u2264 n, q \n    \u2264 10^4\n)\n\u2014 the length of the array and the number of queries in the initial problem.\nThe following \n    q\n lines contain queries, one per line. The \n    i\n-th of\nthese lines contains three integers \n    l_i\n, \n    r_i\n and \n    x_i\n (\n    1\n    \n    \u2264 l_i \n    \u2264 r_i \n    \u2264 n\n, \n    1 \n    \u2264 x_i \n    \u2264 n\n), denoting a\nquery of adding \n    x_i\n to the segment from \n    l_i\n-th to \n    r_i\n-th\nelements of the array, inclusive. Output In the first line print the only\ninteger \n    k\n, denoting the number of integers from \n    1\n to \n    n\n,\ninclusive, that can be equal to the maximum in the array after applying some\nsubset (possibly empty) of the given operations. In the next line print these\n\n    k\n integers from \n    1\n to \n    n\n \u2014 the possible values of the maximum.\nPrint these integers in increasing order. Examples Input 4 3 1 3 1 2 4 2 3 4 4\nOutput 4 1 2 3 4 Input 7 2 1 5 1 3 7 2 Output 3 1 2 3 Input 10 3 1 1 2 1 1 3 1\n1 6 Output 6 2 3 5 6 8 9 Note Consider the first example. If you consider the\nsubset only of the first query, the maximum is equal to \n    1\n. If you take\nonly the second query, the maximum equals to \n    2\n. If you take the first\ntwo queries, the maximum becomes \n    3\n. If you take only the fourth query,\nthe maximum becomes \n    4\n. If you take the fourth query and something more,\nthe maximum becomes greater that \n    n\n, so you shouldn't print it. In the\nsecond example you can take the first query to obtain \n    1\n. You can take\nonly the second query to obtain \n    2\n. You can take all queries to obtain\n\n    3\n. In the third example you can obtain the following maximums: You can\nachieve the maximim of \n    2\n by using queries: \n    (1)\n. You can achieve\nthe maximim of \n    3\n by using queries: \n    (2)\n. You can achieve the\nmaximim of \n    5\n by using queries: \n    (1, 2)\n. You can achieve the maximim\nof \n    6\n by using queries: \n    (3)\n. You can achieve the maximim of \n    8\n\nby using queries: \n    (1, 3)\n. You can achieve the maximim of \n    9\n by\nusing queries: \n    (2, 3)\n.\n\n",
+        "cf_contest_id": 981,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "data structures",
+            "divide and conquer",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 3\r\n1 3 1\r\n2 4 2\r\n3 4 4\r\n",
+                "4\r\n1 2 3 4 "
+            ],
+            [
+                "7 2\r\n1 5 1\r\n3 7 2\r\n",
+                "3\r\n1 2 3 "
+            ],
+            [
+                "10 3\r\n1 1 2\r\n1 1 3\r\n1 1 6\r\n",
+                "6\r\n2 3 5 6 8 9 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "45 5\r\n37 38 16\r\n5 7 34\r\n1 42 31\r\n8 27 19\r\n15 28 39\r\n",
+                "5\r\n16 19 31 34 39 "
+            ],
+            [
+                "7010 10\r\n1467 2828 4742\r\n560 3268 3751\r\n1180 5370 6723\r\n907 3766 1380\r\n4610 5672 5430\r\n4867 5179 4868\r\n1890 3860 1037\r\n253 4853 5056\r\n480 5139 5329\r\n3764 4677 4777\r\n",
+                "22\r\n1037 1380 2417 3751 4742 4777 4788 4868 5056 5131 5329 5430 5779 5814 6093 6122 6157 6168 6366 6436 6709 6723 "
+            ],
+            [
+                "1 1\r\n1 1 1\r\n",
+                "1\r\n1 "
+            ],
+            [
+                "1010 10\r\n5 615 290\r\n146 940 131\r\n8 306 381\r\n387 478 417\r\n236 290 182\r\n258 288 117\r\n343 431 831\r\n766 775 199\r\n102 857 520\r\n216 913 687\r\n",
+                "63\r\n117 131 182 199 248 290 299 313 330 381 407 417 421 430 472 498 512 520 538 548 563 589 603 629 637 651 671 680 687 694 702 707 719 720 768 788 802 804 810 811 818 819 831 833 838 850 853 869 886 901 919 927 935 937 941 950 962 970 977 984 986 992 1000 "
+            ],
+            [
+                "4010 10\r\n909 1610 2428\r\n744 1380 2029\r\n658 781 1696\r\n2427 3132 2364\r\n2631 3975 3741\r\n1033 3693 1038\r\n117 3110 3815\r\n1962 2104 699\r\n454 2041 624\r\n2738 3231 3490\r\n",
+                "22\r\n624 699 1038 1323 1662 1696 1737 2029 2320 2361 2364 2428 2653 3052 3067 3402 3466 3490 3691 3725 3741 3815 "
+            ],
+            [
+                "10000 10\r\n2001 3111 6776\r\n2635 6081 3143\r\n5925 9279 4959\r\n6326 7610 2701\r\n5210 5461 8141\r\n2922 9252 7377\r\n6705 8478 597\r\n5556 7112 911\r\n652 9817 4874\r\n1832 8653 4209\r\n",
+                "49\r\n597 911 1508 2701 3143 3298 3612 4054 4209 4806 4874 4959 5120 5471 5556 5717 5785 5870 6382 6467 6776 6910 7352 7377 7507 7575 7660 7821 7974 8017 8102 8141 8172 8257 8263 8288 8418 8486 8571 8885 8928 9013 9083 9168 9680 9765 9833 9919 9994 "
+            ],
+            [
+                "6010 10\r\n38 2837 4404\r\n515 5033 887\r\n2419 3000 3320\r\n4422 5834 551\r\n220 1474 2206\r\n638 5884 224\r\n1549 1949 5525\r\n52 4891 420\r\n4503 4718 1495\r\n1300 4400 3233\r\n",
+                "69\r\n224 420 551 644 775 887 971 1111 1195 1307 1438 1495 1531 1662 1719 1858 1915 2046 2082 2139 2206 2270 2382 2430 2466 2606 2626 2690 2802 2850 2933 3026 3093 3157 3233 3317 3320 3353 3457 3513 3544 3577 3653 3737 3740 3877 3964 4120 4207 4344 4404 4431 4540 4627 4628 4764 4824 4851 5048 5291 5439 5515 5525 5663 5711 5749 5859 5935 5945 "
+            ],
+            [
+                "10 10\r\n1 9 7\r\n2 6 4\r\n7 8 1\r\n3 10 10\r\n3 5 7\r\n1 6 10\r\n6 6 3\r\n3 7 6\r\n2 2 9\r\n4 9 1\r\n",
+                "10\r\n1 2 3 4 5 6 7 8 9 10 "
+            ],
+            [
+                "9010 10\r\n2861 7587 7658\r\n1740 4549 8685\r\n7214 7667 6405\r\n1895 8261 2184\r\n2015 3497 5088\r\n1279 3095 1684\r\n32 7651 189\r\n7203 7950 2556\r\n2566 7868 1754\r\n2228 8147 5246\r\n",
+                "57\r\n189 1684 1754 1873 1943 2184 2373 2556 2745 3438 3627 3868 3938 4057 4127 4310 4499 4740 4929 5088 5246 5277 5435 5622 5811 6405 6494 6594 6683 6772 6842 6930 6961 7000 7031 7119 7189 7272 7430 7461 7619 7658 7802 7847 7991 8159 8348 8526 8589 8684 8685 8715 8778 8873 8874 8956 8961 "
+            ],
+            [
+                "5010 10\r\n1948 4159 3465\r\n2513 4745 4772\r\n1237 3781 1549\r\n497 1777 4549\r\n955 3065 3813\r\n184 4048 538\r\n439 2305 3771\r\n414 1654 484\r\n2543 4334 4528\r\n215 1500 1916\r\n",
+                "26\r\n484 538 1022 1549 1916 2033 2087 2400 2454 2571 2938 3465 3771 3813 3949 4003 4255 4297 4309 4351 4487 4528 4549 4772 4793 4835 "
+            ],
+            [
+                "3010 10\r\n1404 1948 2739\r\n227 505 2345\r\n1587 2035 765\r\n585 1673 2969\r\n89 379 2479\r\n989 1330 924\r\n1858 2968 29\r\n233 2335 1613\r\n1948 2351 2927\r\n2131 2292 360\r\n",
+                "20\r\n29 360 389 765 794 924 1613 1642 1973 2002 2345 2378 2407 2479 2537 2739 2768 2927 2956 2969 "
+            ],
+            [
+                "2010 10\r\n876 1434 1469\r\n1239 1389 600\r\n636 853 504\r\n242 1533 4\r\n1068 1256 823\r\n127 995 1468\r\n26 348 1967\r\n1016 1951 257\r\n13 924 45\r\n8 849 1463\r\n",
+                "39\r\n4 45 49 257 261 504 508 549 553 600 604 823 827 857 861 1080 1084 1423 1427 1463 1467 1468 1469 1472 1473 1508 1512 1513 1514 1517 1518 1680 1684 1726 1730 1967 1971 1972 1976 "
+            ],
+            [
+                "8010 10\r\n509 3546 5695\r\n383 511 2786\r\n4540 6912 6764\r\n1362 3766 4791\r\n571 2160 5836\r\n742 4553 1424\r\n836 7944 5373\r\n376 3547 4762\r\n4313 7876 3868\r\n539 1383 7182\r\n",
+                "17\r\n1424 2786 3868 4762 4791 5292 5373 5695 5836 6186 6215 6764 6797 7119 7182 7260 7548 "
+            ]
+        ]
+    }
+]

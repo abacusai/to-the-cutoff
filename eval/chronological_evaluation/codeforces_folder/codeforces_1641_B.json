@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Repetitions Decoding",
+        "description": "Olya has an array of integers \n    a_1, a_2, \n    \u2026, a_n\n. She wants to\nsplit it into tandem repeats. Since it's rarely possible, before that she\nwants to perform the following operation several (possibly, zero) number of\ntimes: insert a pair of equal numbers into an arbitrary position. Help her!\nMore formally: A tandem repeat is a sequence \n    x\n of even length \n    2k\n\nsuch that for each \n    1 \n    \u2264 i \n    \u2264 k\n the condition \n    x_i = x_i + k\n\nis satisfied. An array \n    a\n could be split into tandem repeats if you can\nsplit it into several parts, each being a subsegment of the array, such that\neach part is a tandem repeat. In one operation you can choose an arbitrary\nletter \n    c\n and insert \n    [c, c]\n to any position in the array (at the\nbeginning, between any two integers, or at the end). You are to perform\nseveral operations and split the array into tandem repeats or determine that\nit is impossible. Please note that you do not have to minimize the number of\noperations. Input Each test contains multiple test cases. The first line\ncontains a single integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264 30\n     000\n) \u2014 the\nnumber of test cases. Description of the test cases follows. The first line of\neach test case contains a single integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264 500\n).\nThe second line contains \n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    1\n    \n    \u2264 a_i \n    \u2264 10^9\n) \u2014 the initial array. It is guaranteed that the sum of\n\n    n^2\n over all test cases does not exceed \n    250\n     000\n. Output For\neach test case print answer in the following format. If you cannot turn the\narray into a concatenation of tandem repeats, print a single integer \n    -1\n.\nOtherwise print the number of operations \n    q\n (\n    0 \n    \u2264 q \n    \u2264 2 \n    \u00b7\n    n^2\n) that you want to do. Then print the descriptions of operations. In\neach of the following \n    q\n lines print two integers \n    p\n and \n    c\n\n(\n    1 \n    \u2264 c \n    \u2264 10^9\n), which mean that you insert the integer \n    c\n\ntwice after \n    p\n elements of the array. If the length of the array is\n\n    m\n before the operation, then the condition \n    0 \n    \u2264 p \n    \u2264 m\n\nshould be satisfied. Then you should print any way to split the resulting\narray into tandem repeats. First, print a single integer \n    d\n, and then\nprint a sequence \n    t_1, t_2, \n    \u2026, t_d\n of even integers of size\n\n    d\n (\n    d, t_i \n    \u2265 1\n). These numbers are the lengths of the\nsubsegments from left to right. Note that the size of the resulting array\n\n    a\n is \n    m = n + 2 \n    \u00b7 q\n. The following statements must hold: \n    m\n    = \n    \u2211\n    _i = 1^dt_i\n. For all integer \n    i\n such that \n    1\n    \n    \u2264 i \n    \u2264 d\n, the sequence \n    a_l, a_l+1, \n    \u2026, a_r\n is a tandem\nrepeat, where \n    l = \n    \u2211\n    _j = 1^i - 1t_j + 1\n, \n    r = l +\n    t_i - 1\n. It can be shown that if the array can be turned into a\nconcatenation of tandem repeats, then there exists a solution satisfying all\nconstraints. If there are multiple answers, you can print any. Example Input 4\n2 5 7 2 5 5 6 1 3 1 2 2 3 6 3 2 1 1 2 3 Output -1 0 1 2 4 1 3 5 3 5 3 10 3 2 8\n6 5 0 3 8 3 5 3 6 2 7 1 4 2 6 6 2 Note In the first test case, you cannot\napply operations to the array to make it possible to split it into tandem\nrepeats. In the second test case the array is already a tandem repeat \n    [5,\n    5] = \n    ([5] + [5])_t_1 = 2\n, thus we can do no operations at\nall. In the third test case, initially, we have the following array: \n    \n\n    [1,\n    3, 1, 2, 2, 3].\n\n    \n After the first insertion with \n    p = 1, c = 3\n:\n\n    \n\n    [1, \n    3, 3, 3, 1, 2, 2, 3].\n\n    \n After the second insertion\nwith \n    p = 5, c = 3\n: \n    \n\n    [1, 3, 3, 3, 1, \n    3, 3, 2, 2,\n    3].\n\n    \n After the third insertion with \n    p = 5, c = 3\n: \n    \n\n    [1, 3, 3,\n    3, 1, \n    3, 3, 3, 3, 2, 2, 3].\n\n    \n After the fourth insertion with\n\n    p = 10, c = 3\n: \n    \n\n    [1, 3, 3, 3, 1, 3, 3, 3, 3, 2, \n    3, 3, 2,\n    3].\n\n    \n The resulting array can be represented as a concatenation of tandem\nrepeats: \n    \n\n    ([1, 3, 3, 3] + [1, 3, 3, 3])_t_1 = 8 +\n    \n    ([3, 2, 3] + [3, 2, 3])_t_2 = 6.\n\n    \n In the fourth test\ncase, initially, we have the following array: \n    \n\n    [3, 2, 1, 1, 2, 3].\n\n    \n\nAfter the first insertion with \n    p = 0, c = 3\n: \n    \n\n    [\n    3, 3, 3,\n    2, 1, 1, 2, 3].\n\n    \n After the second insertion with \n    p = 8, c = 3\n:\n\n    \n\n    [3, 3, 3, 2, 1, 1, 2, 3, \n    3, 3].\n\n    \n After the third\ninsertion with \n    p = 5, c = 3\n \n    \n\n    [3, 3, 3, 2, 1, \n    3, 3, 1, 2,\n    3, 3, 3].\n\n    \n After the fourth insertion with \n    p = 6, c = 2\n: \n    \n\n    [3,\n    3, 3, 2, 1, 3, \n    2, 2, 3, 1, 2, 3, 3, 3].\n\n    \n After the fifth\ninsertion with \n    p = 7, c = 1\n: \n    \n\n    [3, 3, 3, 2, 1, 3, 2, \n    1,\n    1, 2, 3, 1, 2, 3, 3, 3].\n\n    \n The resulting array can be represented as a\nconcatenation of tandem repeats: \n    \n\n    ([3] + [3])_t_1 = 2 +\n    \n    ([3, 2, 1] + [3, 2, 1])_t_2 = 6 + \n    ([1, 2, 3] +\n    [1, 2, 3])_t_3 = 6 + \n    ([3] + [3])_t_4 = 2.\n\n    \n\n\n",
+        "cf_contest_id": 1641,
+        "cf_index": "B",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n2\r\n5 7\r\n2\r\n5 5\r\n6\r\n1 3 1 2 2 3\r\n6\r\n3 2 1 1 2 3\r\n",
+                "-1\r\n0\r\n1\r\n2\r\n3\r\n3 3\r\n8 2\r\n9 2\r\n3\r\n4 6 2\r\n6\r\n6 2\r\n7 1\r\n8 1\r\n9 2\r\n14 1\r\n15 1\r\n3\r\n10 6 2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "9\r\n6\r\n165092818 431002094 165092818 165092818 165092818 431002094\r\n6\r\n605551498 605551498 467118101 467118101 605551498 605551498\r\n2\r\n729645364 729645364\r\n2\r\n348324490 348324490\r\n2\r\n8250912 8250912\r\n2\r\n143928546 143928546\r\n2\r\n698865439 698865439\r\n2\r\n632990477 632990477\r\n2\r\n427741506 427741506\r\n",
+                "3\r\n3 431002094\r\n8 165092818\r\n9 165092818\r\n3\r\n4 6 2\r\n0\r\n3\r\n2 2 2\r\n0\r\n1\r\n2\r\n0\r\n1\r\n2\r\n0\r\n1\r\n2\r\n0\r\n1\r\n2\r\n0\r\n1\r\n2\r\n0\r\n1\r\n2\r\n0\r\n1\r\n2\r\n"
+            ],
+            [
+                "1\r\n3\r\n1 2 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n8\r\n8 9 10 11 12 13 14 15\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

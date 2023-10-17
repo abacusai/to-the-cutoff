@@ -1,0 +1,146 @@
+[
+    {
+        "name": "Backspace",
+        "description": "You are given two strings \n    s\n and \n    t\n, both consisting of lowercase\nEnglish letters. You are going to type the string \n    s\n character by\ncharacter, from the first character to the last one. When typing a character,\ninstead of pressing the button corresponding to it, you can press the\n\"Backspace\" button. It deletes the last character you have typed among those\nthat aren't deleted yet (or does nothing if there are no characters in the\ncurrent string). For example, if \n    s\n is \"abcbd\" and you press Backspace\ninstead of typing the first and the fourth characters, you will get the string\n\"bd\" (the first press of Backspace deletes no character, and the second press\ndeletes the character 'c'). Another example, if \n    s\n is \"abcaa\" and you\npress Backspace instead of the last two letters, then the resulting text is\n\"a\". Your task is to determine whether you can obtain the string \n    t\n, if\nyou type the string \n    s\n and press \"Backspace\" instead of typing several\n(maybe zero) characters of \n    s\n. Input The first line contains a single\ninteger \n    q\n (\n    1 \n    \u2264 q \n    \u2264 10^5\n) \u2014 the number of test cases. The\nfirst line of each test case contains the string \n    s\n (\n    1 \n    \u2264 |s| \n    \u2264\n    10^5\n). Each character of \n    s\n is a lowercase English letter. The second\nline of each test case contains the string \n    t\n (\n    1 \n    \u2264 |t| \n    \u2264\n    10^5\n). Each character of \n    t\n is a lowercase English letter. It is\nguaranteed that the total number of characters in the strings over all test\ncases does not exceed \n    2 \n    \u00b7 10^5\n. Output For each test case, print\n\"YES\" if you can obtain the string \n    t\n by typing the string \n    s\n and\nreplacing some characters with presses of \"Backspace\" button, or \"NO\" if you\ncannot. You may print each letter in any case (YES, yes, Yes will all be\nrecognized as positive answer, NO, no and nO will all be recognized as\nnegative answer). Example Input 4 ababa ba ababa bb aaa aaaa aababa ababa\nOutput YES NO NO YES Note Consider the example test from the statement. In\norder to obtain \"ba\" from \"ababa\", you may press Backspace instead of typing\nthe first and the fourth characters. There's no way to obtain \"bb\" while\ntyping \"ababa\". There's no way to obtain \"aaaa\" while typing \"aaa\". In order\nto obtain \"ababa\" while typing \"aababa\", you have to press Backspace instead\nof typing the first character, then type all the remaining characters.\n\n",
+        "cf_contest_id": 1553,
+        "cf_index": "D",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "strings",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\nababa\r\nba\r\nababa\r\nbb\r\naaa\r\naaaa\r\naababa\r\nababa\r\n",
+                "YES\r\nNO\r\nNO\r\nYES\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\naababa\r\nababa\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10\r\npaxghjnihn\r\nhn\r\nhdmevxvn\r\nn\r\nazdfhfxem\r\nxem\r\neowhldode\r\ndode\r\nwlclsnht\r\nct\r\nbpflheocamv\r\nv\r\nflejfh\r\nhixqqbnikthccagc\r\ndugt\r\neebmbpykcsmi\r\noivgrzwppny\r\nzhfyiuu\r\nebkqjcbcwviqkojnzyruwygtbvwws\r\nbofzr\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "1\r\nabccc\r\nab\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\naabc\r\nab\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nabc\r\nb\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nababc\r\nab\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nddmvvu\r\ndmv\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1\r\nabcde\r\nabcd\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\naacab\r\nca\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nbcdacdb\r\na\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nababa\r\nab\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nabba\r\nbb\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\ncbab\r\nba\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nabcdef\r\nabc\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nabcd\r\nabc\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\nabba\r\nbb\r\nabcda\r\nbcd\r\naaaaa\r\naaa\r\n",
+                "NO\r\nNO\r\nYES\r\n"
+            ],
+            [
+                "1\r\nabcabcgg\r\nabcab\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nab\r\na\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\nab\r\na\r\nabcde\r\nad\r\na\r\na\r\na\r\nb\r\nb\r\na\r\nb\r\nb\r\nababa\r\nba\r\nababa\r\nbb\r\naaa\r\naaaa\r\naababa\r\nababa\r\n",
+                "NO\r\nNO\r\nYES\r\nNO\r\nNO\r\nYES\r\nYES\r\nNO\r\nNO\r\nYES\r\n"
+            ],
+            [
+                "1\r\nabc\r\nab\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\nababa\r\nba\r\nababa\r\nbb\r\naaa\r\naaaa\r\naababa\r\nababa\r\nabcdx\r\nabcd\r\n",
+                "YES\r\nNO\r\nNO\r\nYES\r\nNO\r\n"
+            ],
+            [
+                "1\r\nabx\r\nab\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nba\r\nb\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nabab\r\naba\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nabcdefghii\r\ncfi\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nabbb\r\na\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nabb\r\nab\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nbaa\r\nba\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\na\r\nb\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nedcca\r\nec\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

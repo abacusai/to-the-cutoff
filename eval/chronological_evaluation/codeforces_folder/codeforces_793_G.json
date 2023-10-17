@@ -1,0 +1,382 @@
+[
+    {
+        "name": "Oleg and chess",
+        "description": "Oleg the bank client solves an interesting chess problem: place on n \u00d7 n\nchessboard the maximum number of rooks so that they don't beat each other. Of\ncourse, no two rooks can share the same cell. Remind that a rook standing in\nthe cell (a, b) beats a rook standing in the cell (x, y) if and only if a = x\nor b = y. Unfortunately (of fortunately?) for Oleg the answer in this problem\nwas always n, so the task bored Oleg soon. He decided to make it more\ndifficult by removing some cells from the board. If a cell is deleted, Oleg\ncan't put a rook there, but rooks do beat each other \"through\" deleted cells.\nOleg deletes the cells in groups, namely, he repeatedly choose a rectangle\nwith sides parallel to the board sides and deletes all the cells inside the\nrectangle. Formally, if he chooses a rectangle, lower left cell of which has\ncoordinates (x1, y1), and upper right cell of which has coordinates (x2, y2),\nthen he deletes all such cells with coordinates (x, y) that x1 \u2264 x \u2264 x2 and y1\n\u2264 y \u2264 y2. It is guaranteed that no cell is deleted twice, i.e. the chosen\nrectangles do not intersect. This version of the problem Oleg can't solve, and\nhis friend Igor is busy at a conference, so he can't help Oleg. You are the\nlast hope for Oleg! Help him: given the size of the board and the deleted\nrectangles find the maximum possible number of rooks that could be placed on\nthe board so that no two rooks beat each other. Input The first line contains\nsingle integer n (1 \u2264 n \u2264 10000) \u2014 the size of the board. The second line\ncontains single integer q (0 \u2264 q \u2264 10000) \u2014 the number of deleted rectangles.\nThe next q lines contain the information about the deleted rectangles. Each of\nthese lines contains four integers x1, y1, x2 and y2 (1 \u2264 x1 \u2264 x2 \u2264 n, 1 \u2264 y1\n\u2264 y2 \u2264 n) \u2014 the coordinates of the lower left and the upper right cells of a\ndeleted rectangle. If is guaranteed that the rectangles do not intersect.\nOutput In the only line print the maximum number of rooks Oleg can place on\nthe board so that no two rooks beat each other. Examples Input 5 5 1 1 2 1 1 3\n1 5 4 1 5 5 2 5 2 5 3 2 3 5 Output 3 Input 8 4 2 2 4 6 1 8 1 8 7 1 8 2 5 4 6 8\nOutput 8 Note Here is the board and the example of rooks placement in the\nfirst example:\n\n",
+        "cf_contest_id": 793,
+        "cf_index": "G",
+        "cf_rating": 3400,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "divide and conquer",
+            "flows",
+            "graph matchings"
+        ],
+        "time_limit_seconds": 6.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n5\r\n1 1 2 1\r\n1 3 1 5\r\n4 1 5 5\r\n2 5 2 5\r\n3 2 3 5\r\n",
+                "3"
+            ],
+            [
+                "8\r\n4\r\n2 2 4 6\r\n1 8 1 8\r\n7 1 8 2\r\n5 4 6 8\r\n",
+                "8"
+            ]
+        ],
+        "private_cases": [
+            [
+                "64\r\n1\r\n1 38 64 38\r\n",
+                "63"
+            ],
+            [
+                "256\r\n1\r\n1 213 256 246\r\n",
+                "222"
+            ],
+            [
+                "2048\r\n1\r\n1376 1 1381 2048\r\n",
+                "2042"
+            ],
+            [
+                "2048\r\n11\r\n265 1 266 2048\r\n457 1 461 2048\r\n594 1 599 2048\r\n668 1 668 2048\r\n899 1 899 2048\r\n1167 1 1168 2048\r\n1440 1 1441 2048\r\n1567 1 1567 2048\r\n1851 1 1852 2048\r\n1932 1 1955 2048\r\n1993 1 1993 2048\r\n",
+                "2001"
+            ],
+            [
+                "4096\r\n1\r\n3107 1 3107 4096\r\n",
+                "4095"
+            ],
+            [
+                "4096\r\n7\r\n378 1 378 4096\r\n1364 1 1378 4096\r\n2044 1 2044 4096\r\n2396 1 2431 4096\r\n3205 1 3209 4096\r\n3295 1 3295 4096\r\n3311 1 3346 4096\r\n",
+                "4001"
+            ],
+            [
+                "4096\r\n22\r\n11 1 19 4096\r\n24 1 26 4096\r\n612 1 637 4096\r\n660 1 697 4096\r\n840 1 842 4096\r\n963 1 963 4096\r\n993 1 995 4096\r\n1012 1 1017 4096\r\n1348 1 1371 4096\r\n1459 1 1459 4096\r\n1587 1 1588 4096\r\n1592 1 1599 4096\r\n1715 1 1715 4096\r\n1805 1 1805 4096\r\n2006 1 2008 4096\r\n2307 1 2307 4096\r\n2336 1 2340 4096\r\n2348 1 2350 4096\r\n2627 1 2627 4096\r\n2658 1 2658 4096\r\n2697 1 3675 4096\r\n3856 1 3858 4096\r\n",
+                "2974"
+            ],
+            [
+                "8192\r\n0\r\n",
+                "8192"
+            ],
+            [
+                "8192\r\n28\r\n1 51 8192 51\r\n1 65 8192 67\r\n1 91 8192 100\r\n1 137 8192 138\r\n1 307 8192 314\r\n1 648 8192 648\r\n1 1105 8192 1118\r\n1 1335 8192 1345\r\n1 1765 8192 1804\r\n1 1880 8192 1882\r\n1 1935 8192 1935\r\n1 2264 8192 2264\r\n1 2683 8192 2684\r\n1 2897 8192 2920\r\n1 2936 8192 2941\r\n1 4057 8192 4057\r\n1 4261 8192 4261\r\n1 4452 8192 4453\r\n1 4584 8192 4584\r\n1 5535 8192 5535\r\n1 5906 8192 5906\r\n1 6691 8192 6716\r\n1 6888 8192 7000\r\n1 7422 8192 7422\r\n1 7473 8192 7479\r\n1 7554 8192 7555\r\n1 7622 8192 8028\r\n1 8077 8192 8077\r\n",
+                "7501"
+            ],
+            [
+                "10000\r\n0\r\n",
+                "10000"
+            ],
+            [
+                "32\r\n0\r\n",
+                "32"
+            ],
+            [
+                "32\r\n0\r\n",
+                "32"
+            ],
+            [
+                "64\r\n0\r\n",
+                "64"
+            ],
+            [
+                "64\r\n4\r\n1 1 3 9\r\n35 11 43 16\r\n28 51 33 52\r\n35 51 35 52\r\n",
+                "64"
+            ],
+            [
+                "128\r\n0\r\n",
+                "128"
+            ],
+            [
+                "128\r\n0\r\n",
+                "128"
+            ],
+            [
+                "128\r\n13\r\n32 3 43 4\r\n28 13 32 13\r\n32 78 35 103\r\n46 34 48 118\r\n52 88 52 99\r\n114 7 116 8\r\n119 13 121 36\r\n105 61 105 66\r\n83 80 88 83\r\n116 84 116 84\r\n122 89 128 90\r\n83 124 85 124\r\n97 121 101 122\r\n",
+                "128"
+            ],
+            [
+                "256\r\n1\r\n80 74 86 80\r\n",
+                "256"
+            ],
+            [
+                "256\r\n3\r\n1 54 3 61\r\n141 79 141 83\r\n106 158 107 158\r\n",
+                "256"
+            ],
+            [
+                "512\r\n1\r\n127 200 127 208\r\n",
+                "512"
+            ],
+            [
+                "512\r\n14\r\n1 56 113 67\r\n422 151 450 163\r\n178 195 179 195\r\n111 245 120 245\r\n59 357 65 358\r\n224 279 224 279\r\n401 358 414 362\r\n421 342 422 342\r\n63 410 63 414\r\n182 384 183 404\r\n194 402 195 402\r\n433 486 434 489\r\n465 497 468 497\r\n184 511 224 511\r\n",
+                "512"
+            ],
+            [
+                "1024\r\n13\r\n1 200 38 202\r\n42 201 42 204\r\n341 422 346 432\r\n294 824 306 824\r\n9 999 10 1002\r\n602 295 602 296\r\n552 448 553 449\r\n534 524 535 543\r\n525 588 544 589\r\n736 702 736 703\r\n964 119 966 135\r\n957 822 958 829\r\n980 783 997 783\r\n",
+                "1024"
+            ],
+            [
+                "16\r\n0\r\n",
+                "16"
+            ],
+            [
+                "16\r\n0\r\n",
+                "16"
+            ],
+            [
+                "16\r\n1\r\n1 1 16 16\r\n",
+                "0"
+            ],
+            [
+                "32\r\n0\r\n",
+                "32"
+            ],
+            [
+                "32\r\n0\r\n",
+                "32"
+            ],
+            [
+                "32\r\n0\r\n",
+                "32"
+            ],
+            [
+                "64\r\n0\r\n",
+                "64"
+            ],
+            [
+                "64\r\n0\r\n",
+                "64"
+            ],
+            [
+                "128\r\n0\r\n",
+                "128"
+            ],
+            [
+                "128\r\n0\r\n",
+                "128"
+            ],
+            [
+                "128\r\n1\r\n1 113 128 113\r\n",
+                "127"
+            ],
+            [
+                "256\r\n0\r\n",
+                "256"
+            ],
+            [
+                "256\r\n0\r\n",
+                "256"
+            ],
+            [
+                "512\r\n0\r\n",
+                "512"
+            ],
+            [
+                "512\r\n0\r\n",
+                "512"
+            ],
+            [
+                "512\r\n5\r\n1 207 512 207\r\n1 301 512 303\r\n1 380 512 386\r\n1 410 512 412\r\n1 485 512 485\r\n",
+                "497"
+            ],
+            [
+                "1024\r\n0\r\n",
+                "1024"
+            ],
+            [
+                "1024\r\n0\r\n",
+                "1024"
+            ],
+            [
+                "1024\r\n6\r\n1 274 1024 277\r\n1 630 1024 630\r\n1 656 1024 661\r\n1 738 1024 740\r\n1 804 1024 804\r\n1 876 1024 879\r\n",
+                "1005"
+            ],
+            [
+                "2048\r\n0\r\n",
+                "2048"
+            ],
+            [
+                "2048\r\n1\r\n1 185 2048 186\r\n",
+                "2046"
+            ],
+            [
+                "2048\r\n10\r\n1 447 2048 449\r\n1 658 2048 666\r\n1 670 2048 670\r\n1 799 2048 800\r\n1 894 2048 894\r\n1 998 2048 1011\r\n1 1081 2048 1083\r\n1 1596 2048 1605\r\n1 1700 2048 1700\r\n1 1899 2048 1900\r\n",
+                "2002"
+            ],
+            [
+                "4096\r\n0\r\n",
+                "4096"
+            ],
+            [
+                "4096\r\n1\r\n1 3307 4096 3313\r\n",
+                "4089"
+            ],
+            [
+                "4096\r\n19\r\n1 618 4096 619\r\n1 674 4096 674\r\n1 781 4096 788\r\n1 1267 4096 1270\r\n1 1838 4096 1838\r\n1 2497 4096 2497\r\n1 2568 4096 2568\r\n1 2580 4096 2580\r\n1 2651 4096 2652\r\n1 2667 4096 2667\r\n1 3185 4096 3215\r\n1 3326 4096 3326\r\n1 3338 4096 3338\r\n1 3392 4096 3393\r\n1 3497 4096 3497\r\n1 3798 4096 3808\r\n1 3834 4096 3838\r\n1 4015 4096 4015\r\n1 4054 4096 4056\r\n",
+                "4018"
+            ],
+            [
+                "8192\r\n3\r\n1 3644 8192 3661\r\n1 5048 8192 5048\r\n1 5676 8192 5678\r\n",
+                "8170"
+            ],
+            [
+                "8192\r\n6\r\n1 1116 8192 1116\r\n1 3915 8192 3984\r\n1 4168 8192 4175\r\n1 4616 8192 4618\r\n1 5161 8192 5267\r\n1 7782 8192 7782\r\n",
+                "8002"
+            ],
+            [
+                "16\r\n0\r\n",
+                "16"
+            ],
+            [
+                "16\r\n0\r\n",
+                "16"
+            ],
+            [
+                "16\r\n1\r\n1 1 8 16\r\n",
+                "8"
+            ],
+            [
+                "32\r\n0\r\n",
+                "32"
+            ],
+            [
+                "32\r\n0\r\n",
+                "32"
+            ],
+            [
+                "32\r\n0\r\n",
+                "32"
+            ],
+            [
+                "64\r\n0\r\n",
+                "64"
+            ],
+            [
+                "64\r\n0\r\n",
+                "64"
+            ],
+            [
+                "64\r\n0\r\n",
+                "64"
+            ],
+            [
+                "128\r\n0\r\n",
+                "128"
+            ],
+            [
+                "128\r\n0\r\n",
+                "128"
+            ],
+            [
+                "128\r\n0\r\n",
+                "128"
+            ],
+            [
+                "256\r\n0\r\n",
+                "256"
+            ],
+            [
+                "256\r\n0\r\n",
+                "256"
+            ],
+            [
+                "256\r\n1\r\n202 1 218 256\r\n",
+                "239"
+            ],
+            [
+                "512\r\n0\r\n",
+                "512"
+            ],
+            [
+                "512\r\n0\r\n",
+                "512"
+            ],
+            [
+                "512\r\n1\r\n24 1 32 512\r\n",
+                "503"
+            ],
+            [
+                "1024\r\n0\r\n",
+                "1024"
+            ],
+            [
+                "1024\r\n0\r\n",
+                "1024"
+            ],
+            [
+                "1024\r\n2\r\n779 1 802 1024\r\n974 1 991 1024\r\n",
+                "982"
+            ],
+            [
+                "2048\r\n0\r\n",
+                "2048"
+            ],
+            [
+                "2048\r\n1\r\n1060 1 1060 2048\r\n",
+                "2047"
+            ],
+            [
+                "2048\r\n11\r\n184 1 184 2048\r\n610 1 610 2048\r\n686 1 686 2048\r\n752 1 752 2048\r\n781 1 792 2048\r\n943 1 946 2048\r\n1220 1 1220 2048\r\n1608 1 1617 2048\r\n1701 1 1704 2048\r\n1918 1 1918 2048\r\n1969 1 1971 2048\r\n",
+                "2009"
+            ],
+            [
+                "4096\r\n0\r\n",
+                "4096"
+            ],
+            [
+                "4096\r\n2\r\n2332 1 2334 4096\r\n2624 1 2624 4096\r\n",
+                "4092"
+            ],
+            [
+                "4096\r\n22\r\n31 1 31 4096\r\n77 1 88 4096\r\n175 1 181 4096\r\n231 1 244 4096\r\n338 1 363 4096\r\n758 1 758 4096\r\n1069 1 1071 4096\r\n1176 1 1176 4096\r\n1608 1 1613 4096\r\n1889 1 1894 4096\r\n1956 1 1957 4096\r\n2051 1 2056 4096\r\n2167 1 2167 4096\r\n2409 1 2411 4096\r\n2773 1 2777 4096\r\n2941 1 2942 4096\r\n3150 1 3162 4096\r\n3178 1 3179 4096\r\n3371 1 3391 4096\r\n3574 1 3574 4096\r\n3783 1 3785 4096\r\n3877 1 3886 4096\r\n",
+                "3950"
+            ],
+            [
+                "8192\r\n1\r\n2210 1 2210 8192\r\n",
+                "8191"
+            ],
+            [
+                "8192\r\n7\r\n1184 1 1186 8192\r\n1694 1 1696 8192\r\n2564 1 2570 8192\r\n3652 1 3652 8192\r\n4801 1 4802 8192\r\n5317 1 5332 8192\r\n6602 1 6602 8192\r\n",
+                "8159"
+            ],
+            [
+                "10000\r\n3\r\n955 1 957 10000\r\n4960 1 4961 10000\r\n5752 1 5753 10000\r\n",
+                "9993"
+            ],
+            [
+                "10000\r\n2\r\n1 1750 10000 1750\r\n1 4454 10000 4457\r\n",
+                "9995"
+            ],
+            [
+                "10000\r\n3\r\n1 3100 10000 4039\r\n1 4260 10000 4268\r\n1 7277 10000 7284\r\n",
+                "9043"
+            ],
+            [
+                "10000\r\n1\r\n1 1 10000 1\r\n",
+                "9999"
+            ],
+            [
+                "10000\r\n19\r\n1 1 513 513\r\n514 514 1026 1026\r\n1027 1027 1539 1539\r\n1540 1540 2052 2052\r\n2053 2053 2565 2565\r\n2566 2566 3078 3078\r\n3079 3079 3591 3591\r\n3592 3592 4104 4104\r\n4105 4105 4617 4617\r\n4618 4618 5130 5130\r\n5131 5131 5643 5643\r\n5644 5644 6156 6156\r\n6157 6157 6669 6669\r\n6670 6670 7182 7182\r\n7183 7183 7695 7695\r\n7696 7696 8208 8208\r\n8209 8209 8721 8721\r\n8722 8722 9234 9234\r\n9235 9235 9747 9747\r\n",
+                "10000"
+            ],
+            [
+                "10000\r\n9\r\n1 1 1025 1025\r\n1026 1026 2050 2050\r\n2051 2051 3075 3075\r\n3076 3076 4100 4100\r\n4101 4101 5125 5125\r\n5126 5126 6150 6150\r\n6151 6151 7175 7175\r\n7176 7176 8200 8200\r\n8201 8201 9225 9225\r\n",
+                "10000"
+            ],
+            [
+                "10000\r\n4\r\n1 1 2049 2049\r\n2050 2050 4098 4098\r\n4099 4099 6147 6147\r\n6148 6148 8196 8196\r\n",
+                "10000"
+            ],
+            [
+                "10000\r\n2\r\n1 1 4097 4097\r\n4098 4098 8194 8194\r\n",
+                "10000"
+            ],
+            [
+                "10000\r\n1\r\n1 1 8193 8193\r\n",
+                "3614"
+            ],
+            [
+                "1\r\n0\r\n",
+                "1"
+            ]
+        ]
+    }
+]

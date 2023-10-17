@@ -1,0 +1,87 @@
+[
+    {
+        "name": "SMSC",
+        "description": "Some large corporation where Polycarpus works has its own short message\nservice center (SMSC). The center's task is to send all sorts of crucial\ninformation. Polycarpus decided to check the efficiency of the SMSC. For that,\nhe asked to give him the statistics of the performance of the SMSC for some\nperiod of time. In the end, Polycarpus got a list of n tasks that went to the\nSMSC of the corporation. Each task was described by the time it was received\nby the SMSC and the number of text messages to send. More formally, the i-th\ntask was described by two integers ti and ci \u2014 the receiving time (the second)\nand the number of the text messages, correspondingly. Polycarpus knows that\nthe SMSC cannot send more than one text message per second. The SMSC uses a\nqueue to organize its work. Consider a time moment x, the SMSC work at that\nmoment as follows: If at the time moment x the queue is not empty, then SMSC\nsends one message from the queue (SMSC gets the message from the head of the\nqueue). Otherwise it doesn't send messages at the time moment x. If at the\ntime moment x SMSC receives a task, then it adds to the queue all the messages\nfrom this task (SMSC adds messages to the tail of the queue). Note, that the\nmessages from the task cannot be send at time moment x. That's because the\ndecision about sending message or not is made at point 1 before adding these\nmessages to the queue. Given the information about all n tasks, Polycarpus\nwants to count two values: the time when the last text message was sent and\nthe maximum size of the queue at some time. Help him count these two\ncharacteristics he needs to evaluate the efficiency of the SMSC. Input The\nfirst line contains a single integer n (1 \u2264 n \u2264 10^3) \u2014 the number of tasks of\nthe SMSC. Next n lines contain the tasks' descriptions: the i-th line contains\ntwo space-separated integers ti and ci (1 \u2264 ti, ci \u2264 10^6) \u2014 the time (the\nsecond) when the i-th task was received and the number of messages to send,\ncorrespondingly. It is guaranteed that all tasks were received at different\nmoments of time. It is guaranteed that the tasks are sorted in the\nchronological order, that is, ti < ti + 1 for all integer i (1 \u2264 i < n).\nOutput In a single line print two space-separated integers \u2014 the time when the\nlast text message was sent and the maximum queue size at a certain moment of\ntime. Examples Input 2 1 1 2 1 Output 3 1 Input 1 1000000 10 Output 1000010 10\nInput 3 3 3 4 3 5 3 Output 12 7 Note In the first test sample: second 1: the\nfirst message has appeared in the queue, the queue's size is 1; second 2: the\nfirst message is sent, the second message has been received, the queue's size\nis 1; second 3: the second message is sent, the queue's size is 0, Thus, the\nmaximum size of the queue is 1, the last message was sent at the second 3.\n\n",
+        "cf_contest_id": 292,
+        "cf_index": "A",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n1 1\r\n2 1\r\n",
+                "3 1\r\n"
+            ],
+            [
+                "1\r\n1000000 10\r\n",
+                "1000010 10\r\n"
+            ],
+            [
+                "3\r\n3 3\r\n4 3\r\n5 3\r\n",
+                "12 7\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1 1\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "2\r\n1 11\r\n100 10\r\n",
+                "110 11\r\n"
+            ],
+            [
+                "4\r\n1 10\r\n2 9\r\n3 8\r\n40 3\r\n",
+                "43 25\r\n"
+            ],
+            [
+                "5\r\n2 1\r\n5 2\r\n6 1\r\n7 1\r\n8 1\r\n",
+                "10 2\r\n"
+            ],
+            [
+                "4\r\n10 1000\r\n99998 20\r\n99999 10\r\n1000000 100\r\n",
+                "1000100 1000\r\n"
+            ],
+            [
+                "6\r\n10 10\r\n100 500\r\n200 500\r\n500 1\r\n999995 4\r\n999996 15\r\n",
+                "1000014 900\r\n"
+            ],
+            [
+                "10\r\n1 5\r\n2 5\r\n3 10\r\n4 8\r\n5 5\r\n6 4\r\n7 8\r\n8 9\r\n9 2\r\n10 10\r\n",
+                "67 57\r\n"
+            ],
+            [
+                "10\r\n26 4\r\n85 97\r\n86 62\r\n87 74\r\n92 8\r\n93 81\r\n97 12\r\n98 25\r\n99 31\r\n100 3\r\n",
+                "478 378\r\n"
+            ],
+            [
+                "10\r\n964416 3980\r\n987048 334\r\n999576 6922\r\n999684 2385\r\n999896 6558\r\n999948 3515\r\n999966 1517\r\n999984 2233\r\n999988 7242\r\n999994 91\r\n",
+                "1030039 30045\r\n"
+            ],
+            [
+                "50\r\n3 16\r\n25 5\r\n35 6\r\n39 9\r\n48 9\r\n50 12\r\n57 9\r\n58 2\r\n59 9\r\n60 16\r\n61 8\r\n62 7\r\n63 15\r\n64 3\r\n65 16\r\n66 12\r\n67 12\r\n68 8\r\n69 5\r\n70 11\r\n71 4\r\n72 6\r\n73 12\r\n74 20\r\n75 12\r\n76 11\r\n77 5\r\n78 15\r\n79 12\r\n80 5\r\n81 4\r\n82 17\r\n83 14\r\n84 11\r\n85 6\r\n86 10\r\n87 12\r\n88 8\r\n89 9\r\n90 2\r\n91 17\r\n92 14\r\n93 7\r\n94 15\r\n95 8\r\n96 3\r\n97 14\r\n98 13\r\n99 18\r\n100 7\r\n",
+                "515 415\r\n"
+            ],
+            [
+                "40\r\n313 97063\r\n372 23668\r\n377 56079\r\n428 88458\r\n435 57330\r\n454 88869\r\n456 75553\r\n466 87607\r\n468 4542\r\n469 30243\r\n471 8958\r\n472 59745\r\n473 90985\r\n474 32247\r\n475 71576\r\n476 14016\r\n477 91574\r\n478 38345\r\n479 93280\r\n480 89902\r\n481 41828\r\n482 3233\r\n483 66725\r\n484 23523\r\n485 46772\r\n486 95688\r\n487 19864\r\n488 10295\r\n489 83431\r\n490 51687\r\n491 4362\r\n492 85411\r\n493 30044\r\n494 97895\r\n495 6379\r\n496 79232\r\n497 341\r\n498 82766\r\n499 77612\r\n500 76069\r\n",
+                "2183510 2183010\r\n"
+            ],
+            [
+                "5\r\n987640 52\r\n994481 69\r\n995526 50\r\n996631 75\r\n999763 22\r\n",
+                "999785 75\r\n"
+            ],
+            [
+                "30\r\n1227 3920\r\n2007 7796\r\n3074 5424\r\n5172 6174\r\n5314 8761\r\n5329 5644\r\n5352 5880\r\n5395 2721\r\n5403 4406\r\n5420 3835\r\n5421 2692\r\n5423 8241\r\n5425 6433\r\n5426 2900\r\n5427 2209\r\n5428 8672\r\n5429 3317\r\n5430 4857\r\n5431 5735\r\n5432 2784\r\n5433 1564\r\n5434 2094\r\n5435 6258\r\n5436 101\r\n5437 3745\r\n5438 7124\r\n5439 1484\r\n5440 8593\r\n5441 7198\r\n5442 8318\r\n",
+                "150107 144665\r\n"
+            ],
+            [
+                "23\r\n5 1045\r\n12 703\r\n16 26\r\n23 3384\r\n28 4563\r\n30 4501\r\n34 1033\r\n35 1393\r\n36 4095\r\n37 1279\r\n38 1787\r\n39 770\r\n40 5362\r\n41 4569\r\n42 3148\r\n43 2619\r\n44 5409\r\n45 3919\r\n46 732\r\n47 1297\r\n48 4512\r\n49 3231\r\n50 5169\r\n",
+                "64551 64501\r\n"
+            ]
+        ]
+    }
+]

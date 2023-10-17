@@ -1,0 +1,96 @@
+[
+    {
+        "name": "Marbles",
+        "description": "Monocarp has arranged \n    n\n colored marbles in a row. The color of the\n\n    i\n-th marble is \n    a_i\n. Monocarp likes ordered things, so he wants to\nrearrange marbles in such a way that all marbles of the same color form a\ncontiguos segment (and there is only one such segment for each color). In\nother words, Monocarp wants to rearrange marbles so that, for every color\n\n    j\n, if the leftmost marble of color \n    j\n is \n    l\n-th in the row, and\nthe rightmost marble of this color has position \n    r\n in the row, then every\nmarble from \n    l\n to \n    r\n has color \n    j\n. To achieve his goal,\nMonocarp can do the following operation any number of times: choose two\nneighbouring marbles, and swap them. You have to calculate the minimum number\nof operations Monocarp has to perform to rearrange the marbles. Note that the\norder of segments of marbles having equal color does not matter, it is only\nrequired that, for every color, all the marbles of this color form exactly one\ncontiguous segment. Input The first line contains one integer \n    n\n \n    (2\n    \n    \u2264 n \n    \u2264 4 \n    \u00b7 10^5)\n \u2014 the number of marbles. The second line\ncontains an integer sequence \n    a_1, a_2, \n    \u2026, a_n\n \n    (1 \n    \u2264 a_i\n    \n    \u2264 20)\n, where \n    a_i\n is the color of the \n    i\n-th marble. Output\nPrint the minimum number of operations Monocarp has to perform to achieve his\ngoal. Examples Input 7 3 4 2 3 4 2 2 Output 3 Input 5 20 1 14 10 2 Output 0\nInput 13 5 5 4 4 3 5 7 6 5 4 4 6 5 Output 21 Note In the first example three\noperations are enough. Firstly, Monocarp should swap the third and the fourth\nmarbles, so the sequence of colors is \n    [3, 4, 3, 2, 4, 2, 2]\n. Then\nMonocarp should swap the second and the third marbles, so the sequence is\n\n    [3, 3, 4, 2, 4, 2, 2]\n. And finally, Monocarp should swap the fourth and\nthe fifth marbles, so the sequence is \n    [3, 3, 4, 4, 2, 2, 2]\n. In the\nsecond example there's no need to perform any operations.\n\n",
+        "cf_contest_id": 1215,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dp"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7\r\n3 4 2 3 4 2 2\r\n",
+                "3\n"
+            ],
+            [
+                "5\r\n20 1 14 10 2\r\n",
+                "0\n"
+            ],
+            [
+                "13\r\n5 5 4 4 3 5 7 6 5 4 4 6 5\r\n",
+                "21\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n13 13 13 13 13 13 13 9 9 13\r\n",
+                "2\n"
+            ],
+            [
+                "100\r\n11 16 16 11 16 11 16 16 11 16 16 16 16 16 16 16 16 16 11 16 16 16 16 16 16 11 16 11 16 11 16 16 16 11 5 16 16 11 16 16 16 16 16 11 16 11 5 16 16 16 16 5 16 16 11 11 16 16 5 16 11 11 16 16 16 11 11 16 11 16 16 16 16 16 16 11 11 16 16 5 16 5 20 5 16 16 16 11 16 16 16 16 16 16 11 16 20 11 16 5\r\n",
+                "1030\n"
+            ],
+            [
+                "10\r\n14 14 14 14 14 14 14 14 14 14\r\n",
+                "0\n"
+            ],
+            [
+                "100\r\n1 9 15 1 1 12 1 9 1 15 9 1 9 1 1 1 1 1 15 15 12 1 1 1 1 15 1 15 1 1 1 1 1 12 15 1 15 9 1 1 9 15 1 1 12 15 9 1 15 15 1 1 1 1 15 1 1 1 1 1 1 15 1 15 1 1 9 9 12 1 1 15 1 15 15 15 1 15 9 9 1 15 12 1 12 1 15 1 15 9 15 15 15 15 1 9 1 12 1 1\r\n",
+                "1342\n"
+            ],
+            [
+                "10\r\n6 6 7 7 6 7 6 6 7 17\r\n",
+                "8\n"
+            ],
+            [
+                "100\r\n1 1 3 3 5 14 3 1 1 3 3 3 3 3 14 3 14 3 4 3 3 14 14 14 3 5 14 5 14 3 4 1 14 4 3 3 14 14 1 3 3 14 3 14 3 3 5 5 3 1 3 1 3 3 1 3 1 3 5 14 14 14 5 3 5 3 3 3 3 3 4 14 3 5 3 3 3 3 1 1 4 3 3 5 3 5 3 14 3 14 1 3 3 5 3 5 3 3 14 1\r\n",
+                "1482\n"
+            ],
+            [
+                "10\r\n6 6 4 6 6 6 6 9 4 9\r\n",
+                "5\n"
+            ],
+            [
+                "100\r\n4 7 19 19 16 16 1 1 7 1 19 1 16 19 19 7 1 19 1 19 4 16 7 1 1 16 16 1 1 19 7 7 19 7 1 16 1 4 19 19 16 16 4 4 1 19 4 4 16 4 19 4 4 7 19 4 1 7 1 1 19 7 16 4 1 7 4 7 4 7 19 16 7 4 1 4 1 4 19 7 16 7 19 1 16 1 16 4 1 19 19 7 1 4 19 4 19 4 16 4\r\n",
+                "1691\n"
+            ],
+            [
+                "10\r\n14 12 12 14 14 12 14 12 12 14\r\n",
+                "12\n"
+            ],
+            [
+                "100\r\n5 16 6 5 16 5 5 8 6 8 8 5 16 8 16 8 5 6 16 5 6 5 16 16 5 6 16 5 8 5 5 5 8 5 5 5 6 16 5 5 5 5 8 6 5 16 5 5 16 5 5 5 8 16 5 5 5 8 16 6 16 5 6 16 16 5 5 16 8 5 16 16 5 16 8 5 6 5 5 16 5 16 6 5 8 20 16 8 16 16 20 5 5 16 5 8 16 16 20 16\r\n",
+                "1350\n"
+            ],
+            [
+                "10\r\n18 8 18 18 18 18 18 18 17 8\r\n",
+                "7\n"
+            ],
+            [
+                "100\r\n16 16 8 2 16 8 2 16 1 16 16 16 16 16 16 16 16 8 2 1 16 8 8 16 16 16 8 16 2 16 16 16 16 16 1 1 2 16 2 16 1 8 16 8 16 16 16 8 2 16 8 8 16 16 2 8 1 8 16 1 16 1 16 8 8 16 8 8 16 8 16 8 8 16 16 8 8 16 16 8 8 8 16 8 16 2 16 16 8 8 2 2 16 8 1 2 16 16 16 16\r\n",
+                "1373\n"
+            ],
+            [
+                "10\r\n11 11 11 11 11 3 11 11 3 11\r\n",
+                "4\n"
+            ],
+            [
+                "100\r\n15 2 15 15 15 15 15 15 2 15 2 2 15 15 3 15 2 2 2 15 15 15 15 2 15 15 15 3 2 15 15 2 5 2 15 15 15 15 2 5 3 15 5 2 3 15 15 15 15 15 15 2 15 2 5 15 15 15 15 5 15 2 15 15 15 15 2 2 2 5 2 15 2 15 2 15 15 15 15 2 15 15 2 15 15 2 15 15 15 2 15 2 2 15 15 2 15 15 15 15\r\n",
+                "1253\n"
+            ],
+            [
+                "2\r\n2 1\r\n",
+                "0\n"
+            ],
+            [
+                "2\r\n13 13\r\n",
+                "0\n"
+            ]
+        ]
+    }
+]

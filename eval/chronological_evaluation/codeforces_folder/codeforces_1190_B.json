@@ -1,0 +1,511 @@
+[
+    {
+        "name": "Tokitsukaze, CSL and Stone Game",
+        "description": "Tokitsukaze and CSL are playing a little game of stones. In the beginning,\nthere are \n    n\n piles of stones, the \n    i\n-th pile of which has \n    a_i\n\nstones. The two players take turns making moves. Tokitsukaze moves first. On\neach turn the player chooses a nonempty pile and removes exactly one stone\nfrom the pile. A player loses if all of the piles are empty before his turn,\nor if after removing the stone, two piles (possibly empty) contain the same\nnumber of stones. Supposing that both players play optimally, who will win the\ngame? Consider an example: \n    n=3\n and sizes of piles are \n    a_1=2\n,\n\n    a_2=3\n, \n    a_3=0\n. It is impossible to choose the empty pile, so\nTokitsukaze has two choices: the first and the second piles. If she chooses\nthe first pile then the state will be \n    [1, 3, 0]\n and it is a good move.\nBut if she chooses the second pile then the state will be \n    [2, 2, 0]\n and\nshe immediately loses. So the only good move for her is to choose the first\npile. Supposing that both players always take their best moves and never make\nmistakes, who will win the game? Note that even if there are two piles with\nthe same number of stones at the beginning, Tokitsukaze may still be able to\nmake a valid first move. It is only necessary that there are no two piles with\nthe same number of stones after she moves. Input The first line contains a\nsingle integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264 10^5\n) \u2014 the number of piles. The\nsecond line contains \n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    0\n    \n    \u2264 a_1, a_2, \n    \u2026, a_n \n    \u2264 10^9\n), which mean the \n    i\n-th pile\nhas \n    a_i\n stones. Output Print \"sjfnb\" (without quotes) if Tokitsukaze\nwill win, or \"cslnb\" (without quotes) if CSL will win. Note the output\ncharacters are case-sensitive. Examples Input 1 0 Output cslnb Input 2 1 0\nOutput cslnb Input 2 2 2 Output sjfnb Input 3 2 3 1 Output sjfnb Note In the\nfirst example, Tokitsukaze cannot take any stone, so CSL will win. In the\nsecond example, Tokitsukaze can only take a stone from the first pile, and\nthen, even though they have no stone, these two piles will have the same\nnumber of stones, which implies CSL will win. In the third example,\nTokitsukaze will win. Here is one of the optimal ways: Firstly, Tokitsukaze\ncan choose the first pile and take a stone from that pile. Then, CSL can only\nchoose the first pile, because if he chooses the second pile, he will lose\nimmediately. Finally, Tokitsukaze can choose the second pile, and then CSL\nwill have no choice but to lose. In the fourth example, they only have one\ngood choice at any time, so Tokitsukaze can make the game lasting as long as\npossible and finally win.\n\n",
+        "cf_contest_id": 1190,
+        "cf_index": "B",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "games"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1\r\n0\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "2\r\n1 0\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "2\r\n2 2\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n",
+                "sjfnb\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n3 3 3\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n4 4 4\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n2 2 4 4\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n2 2 4 4 7\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "7\r\n7 7 7 1 0 2 3\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "7\r\n7 7 7 1 0 2 4\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "14\r\n9 9 1000 2000 39999 48888 16 32 123456 959658 111 987584 125632 125468\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "14\r\n9 9 1000 2000 39999 48888 16 32 123456 959658 111 987584 125632 125477\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "14\r\n6 66 89 84 89 66 123456 98745 3685 21457 15987 36528 14578 98658\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "14\r\n6 66 89 84 89 66 123456 98745 3685 21457 15987 36528 14578 98633\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "9\r\n8004 5687 1235 8004 5687 1235 999 789555 1222230\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "9\r\n8004 5687 1235 8004 5687 1235 999 789555 1222235\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n0 0 5\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n0 0 6\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n3 4 4\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n4 5 5\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n0 5 6 7 8\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n0 5 6 7 9\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "5\r\n0 0 1 5 8\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n0 0 1 5 9\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n0 0 0 999 555\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n0 0 0 999 1000\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "10\r\n0 0 0 0 0 0 0 0 0 0\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "11\r\n0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "1\r\n2\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "1\r\n3\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "1\r\n4\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "7\r\n1000000000 1000000000 5 8 7 3 999999999\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "7\r\n1000000000 1000000000 5 8 6 3 999999999\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n0 5 5 6 6\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n1 5 5 6 6\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "2\r\n0 0\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "2\r\n0 1\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "2\r\n0 2\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "2\r\n0 3\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "2\r\n1 3\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "2\r\n2 0\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "2\r\n2 3\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "2\r\n3 0\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "2\r\n3 1\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "2\r\n3 2\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "2\r\n3 3\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n44450762 44450762 44450762\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n22534187 22534186 22534186\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n5650316 5650314 5650314\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n78701038 78701035 78701035\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n61817163 61817164 61817163\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n39900588 39900588 39900587\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n23016717 23016716 23016715\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n96067438 96067436 96067435\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n79183563 79183565 79183563\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n57266988 57266989 57266987\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n52412886 52412886 52412884\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n25463607 25463606 25463604\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n8579732 8579735 8579732\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n86663157 86663159 86663156\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n69779286 69779287 69779284\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n42830007 42830007 42830004\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n25946132 25946132 25946133\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n4029557 4029556 4029557\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n87145686 87145684 87145685\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n60196407 60196404 60196405\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n48011998 48011999 48011999\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n21062719 21062719 21062719\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n4178849 4178848 4178848\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n82262274 82262272 82262272\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n65378399 65378401 65378400\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n38429120 38429121 38429120\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n21545249 21545249 21545248\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n99628674 99628673 99628672\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n77712095 77712098 77712096\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n55795520 55795522 55795520\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n88321515 88321516 88321514\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n71437644 71437644 71437642\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n54553769 54553769 54553771\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n32637194 32637193 32637195\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "5\r\n1 2 3 3 6\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n2 3 3\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n0 1 2 2 6\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n1 2 2 4\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n11 12 12 14\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n0 5 6 6\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n1 1 2 2 5\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n5 6 6 8\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n0 1 1 5\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n3 3 2\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n0 0 2 4\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n2 0 0\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n5 5 4\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n0 2 3 3 5\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n1 2 3 3\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n101 102 103 103\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n0 1 1\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n0 1 2 4\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "5\r\n270 461 710 731 767\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n0 1 3\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "4\r\n2 2 1 0\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n1 2 2\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n1 1 2\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n1 1 6\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "3\r\n0 2 2\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "4\r\n1 2 2 10000\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "1\r\n5\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "5\r\n0 1 3 3 4\r\n",
+                "sjfnb\r\n"
+            ],
+            [
+                "4\r\n2 3 3 5\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n0 1 8 9 9\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n0 1 1 2\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n11 11 10 101\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n0 3 4 4\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "6\r\n0 1 1 2 4 6\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "4\r\n4 2 2 1\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "10\r\n1 5 8 13 50 150 151 151 200 255\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "5\r\n5 5 5 5 5\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n1 0 0\r\n",
+                "cslnb\r\n"
+            ],
+            [
+                "3\r\n1 1 3\r\n",
+                "cslnb\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,193 @@
+[
+    {
+        "name": "Ivan the Fool VS Gorynych the Dragon",
+        "description": "Once upon a time in a kingdom far, far away\u2026 Okay, let\u2019s start at the point\nwhere Ivan the Fool met Gorynych the Dragon. Ivan took out his magic sword and\nthe battle began. First Gorynych had h heads and t tails. With each strike of\nthe sword Ivan can either cut off several heads (from 1 to n, but not more\nthan Gorynych has at the moment), or several tails (from 1 to m, but not more\nthan Gorynych has at the moment). At the same time, horrible though it seems,\nGorynych the Dragon can also grow new heads and tails. And the number of\ngrowing heads and tails is determined uniquely by the number of heads or tails\ncut by the current strike. When the total number of heads and tails exceeds R,\nGorynych the Dragon strikes its final blow and destroys Ivan the Fool. That\u2019s\nwhy Ivan aims to cut off all the dragon\u2019s heads and tails as quickly as\npossible and win. The events can also develop in a third way: neither of the\nopponents can win over the other one and they will continue fighting forever.\nThe tale goes like this; easy to say, hard to do. Your task is to write a\nprogram that will determine the battle\u2019s outcome. Consider that Ivan strikes\nconsecutively. After each blow Gorynych grows a number of new heads and tails\ndepending on the number of cut ones. Gorynych the Dragon is defeated if after\nthe blow he loses all his heads and tails and can\u2019t grow new ones. Ivan fights\nin the optimal way (fools are lucky), i.e. if Ivan can win, he wins having\nstruck the least number of blows; if it is impossible to defeat Gorynych, but\nis possible to resist him for an infinitely long period of time, then that\u2019s\nthe strategy Ivan chooses; if Gorynych wins in any case, Ivan aims to resist\nhim for as long as possible. Input The first line contains three integers h, t\nand R (0 \u2264 h, t, R \u2264 200, 0 < h + t \u2264 R) which represent the initial numbers\nof Gorynych\u2019s heads and tails and the largest total number of heads and tails\nwith which Gorynych the Dragon does not yet attack. The next line contains\ninteger n (1 \u2264 n \u2264 200). The next n contain pairs of non-negative numbers \"hi\nti\" which represent the number of heads and the number of tails\ncorrespondingly, that will grow if Gorynych has i heads (1 \u2264 i \u2264 n) cut. The\nnext line contains an integer m (1 \u2264 m \u2264 200) and then \u2014 the description of\nGorynych\u2019s behavior when his tails are cut off in the format identical to the\none described above. All the numbers in the input file do not exceed 200.\nOutput Print \"Ivan\" (without quotes) in the first line if Ivan wins, or \"Zmey\"\n(that means a dragon in Russian) if Gorynych the Dragon wins. In the second\nline print a single integer which represents the number of blows Ivan makes.\nIf the battle will continue forever, print in the first line \"Draw\". Examples\nInput 2 2 4 2 1 0 0 1 3 0 1 0 1 0 0 Output Ivan 2 Input 2 2 4 1 0 1 1 1 0\nOutput Draw Input 2 2 5 1 1 1 1 3 0 Output Zmey 2\n\n",
+        "cf_contest_id": 48,
+        "cf_index": "E",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "games",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2 4\r\n2\r\n1 0\r\n0 1\r\n3\r\n0 1\r\n0 1\r\n0 0\r\n",
+                "Ivan\r\n2\r\n"
+            ],
+            [
+                "2 2 4\r\n1\r\n0 1\r\n1\r\n1 0\r\n",
+                "Draw\r\n"
+            ],
+            [
+                "2 2 5\r\n1\r\n1 1\r\n1\r\n3 0\r\n",
+                "Zmey\r\n2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 0 1\r\n1\r\n0 1\r\n1\r\n0 0\r\n",
+                "Ivan\r\n2\r\n"
+            ],
+            [
+                "1 1 2\r\n1\r\n2 0\r\n1\r\n0 0\r\n",
+                "Zmey\r\n3\r\n"
+            ],
+            [
+                "3 1 10\r\n10\r\n2 0\r\n3 0\r\n4 0\r\n5 0\r\n6 0\r\n7 0\r\n8 0\r\n9 0\r\n10 0\r\n0 0\r\n1\r\n0 1\r\n",
+                "Draw\r\n"
+            ],
+            [
+                "3 1 10\r\n10\r\n2 0\r\n3 0\r\n4 0\r\n5 0\r\n6 0\r\n7 0\r\n8 0\r\n9 0\r\n10 0\r\n0 0\r\n1\r\n1 1\r\n",
+                "Zmey\r\n7\r\n"
+            ],
+            [
+                "3 1 10\r\n10\r\n2 0\r\n3 0\r\n4 0\r\n5 0\r\n6 0\r\n7 0\r\n8 0\r\n9 0\r\n10 0\r\n0 0\r\n1\r\n0 0\r\n",
+                "Ivan\r\n9\r\n"
+            ],
+            [
+                "1 1 5\r\n3\r\n1 1\r\n0 2\r\n0 0\r\n3\r\n2 1\r\n1 0\r\n0 0\r\n",
+                "Ivan\r\n5\r\n"
+            ],
+            [
+                "1 1 5\r\n2\r\n5 0\r\n0 0\r\n2\r\n4 0\r\n0 0\r\n",
+                "Draw\r\n"
+            ],
+            [
+                "1 1 10\r\n3\r\n2 0\r\n4 0\r\n8 0\r\n3\r\n0 2\r\n0 4\r\n0 8\r\n",
+                "Zmey\r\n9\r\n"
+            ],
+            [
+                "5 5 10\r\n3\r\n0 10\r\n1 1\r\n2 1\r\n2\r\n1 1\r\n0 0\r\n",
+                "Ivan\r\n17\r\n"
+            ],
+            [
+                "2 2 10\r\n3\r\n1 1\r\n2 5\r\n5 2\r\n3\r\n0 7\r\n2 2\r\n3 2\r\n",
+                "Zmey\r\n7\r\n"
+            ],
+            [
+                "8 1 10\r\n3\r\n2 1\r\n0 2\r\n2 2\r\n3\r\n2 2\r\n2 2\r\n2 1\r\n",
+                "Draw\r\n"
+            ],
+            [
+                "4 4 10\r\n5\r\n1 1\r\n0 1\r\n1 0\r\n0 0\r\n0 1\r\n2\r\n0 0\r\n0 1\r\n",
+                "Ivan\r\n5\r\n"
+            ],
+            [
+                "1 3 10\r\n1\r\n0 1\r\n7\r\n0 2\r\n1 2\r\n0 0\r\n2 2\r\n0 0\r\n0 0\r\n2 1\r\n",
+                "Ivan\r\n3\r\n"
+            ],
+            [
+                "3 2 10\r\n4\r\n0 0\r\n1 1\r\n2 3\r\n3 2\r\n6\r\n1 3\r\n3 0\r\n1 2\r\n2 3\r\n1 0\r\n0 2\r\n",
+                "Ivan\r\n5\r\n"
+            ],
+            [
+                "2 2 10\r\n7\r\n0 5\r\n0 1\r\n3 4\r\n1 4\r\n5 2\r\n5 3\r\n1 5\r\n8\r\n4 2\r\n4 5\r\n3 5\r\n5 0\r\n4 5\r\n3 1\r\n1 4\r\n0 5\r\n",
+                "Draw\r\n"
+            ],
+            [
+                "1 9 10\r\n8\r\n6 3\r\n6 1\r\n0 3\r\n4 1\r\n0 0\r\n6 6\r\n1 2\r\n7 0\r\n7\r\n6 4\r\n0 2\r\n5 3\r\n6 5\r\n5 4\r\n7 1\r\n3 0\r\n",
+                "Ivan\r\n8\r\n"
+            ],
+            [
+                "8 8 20\r\n5\r\n0 20\r\n2 1\r\n0 0\r\n8 2\r\n9 2\r\n2\r\n0 5\r\n0 6\r\n",
+                "Zmey\r\n13\r\n"
+            ],
+            [
+                "14 9 30\r\n10\r\n2 2\r\n4 4\r\n2 2\r\n5 0\r\n5 1\r\n4 0\r\n0 0\r\n0 5\r\n1 3\r\n4 3\r\n10\r\n3 5\r\n3 2\r\n3 5\r\n1 0\r\n0 5\r\n2 4\r\n2 0\r\n5 3\r\n5 1\r\n4 3\r\n",
+                "Ivan\r\n5\r\n"
+            ],
+            [
+                "1 1 30\r\n5\r\n3 3\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n5\r\n3 3\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n",
+                "Zmey\r\n13\r\n"
+            ],
+            [
+                "10 10 30\r\n7\r\n3 2\r\n4 1\r\n3 3\r\n4 2\r\n2 5\r\n4 5\r\n5 7\r\n7\r\n0 2\r\n3 1\r\n4 3\r\n3 4\r\n2 5\r\n6 2\r\n5 6\r\n",
+                "Zmey\r\n11\r\n"
+            ],
+            [
+                "21 5 30\r\n30\r\n9 2\r\n5 7\r\n4 9\r\n5 10\r\n2 12\r\n12 1\r\n12 2\r\n9 7\r\n8 11\r\n3 9\r\n11 4\r\n5 3\r\n8 2\r\n12 10\r\n9 2\r\n6 13\r\n10 12\r\n6 6\r\n1 7\r\n9 1\r\n3 12\r\n8 11\r\n11 13\r\n5 0\r\n9 11\r\n10 5\r\n8 8\r\n1 0\r\n11 3\r\n13 2\r\n30\r\n2 10\r\n2 12\r\n3 2\r\n3 4\r\n13 1\r\n7 1\r\n12 10\r\n3 8\r\n9 7\r\n3 6\r\n7 5\r\n4 3\r\n6 11\r\n7 6\r\n0 3\r\n7 0\r\n7 6\r\n10 6\r\n9 5\r\n10 13\r\n1 4\r\n8 13\r\n5 9\r\n10 1\r\n9 8\r\n10 2\r\n13 13\r\n13 12\r\n6 5\r\n11 3\r\n",
+                "Draw\r\n"
+            ],
+            [
+                "37 6 50\r\n10\r\n2 3\r\n4 1\r\n1 0\r\n2 5\r\n5 1\r\n4 4\r\n0 4\r\n5 4\r\n0 3\r\n4 0\r\n40\r\n3 3\r\n2 2\r\n1 2\r\n1 3\r\n0 1\r\n3 2\r\n1 1\r\n1 5\r\n5 0\r\n5 3\r\n1 1\r\n5 0\r\n5 1\r\n5 1\r\n5 2\r\n1 3\r\n2 4\r\n4 2\r\n3 3\r\n3 3\r\n5 0\r\n2 2\r\n0 1\r\n5 5\r\n1 1\r\n1 2\r\n0 3\r\n4 5\r\n1 4\r\n3 0\r\n5 2\r\n2 0\r\n3 4\r\n0 2\r\n0 0\r\n3 1\r\n1 2\r\n5 0\r\n0 4\r\n3 0\r\n",
+                "Ivan\r\n8\r\n"
+            ],
+            [
+                "30 17 50\r\n30\r\n25 35\r\n6 44\r\n30 58\r\n47 52\r\n47 38\r\n3 4\r\n42 49\r\n47 6\r\n29 60\r\n58 35\r\n34 11\r\n35 41\r\n53 30\r\n11 42\r\n13 52\r\n35 18\r\n52 50\r\n4 56\r\n8 52\r\n18 29\r\n38 17\r\n29 17\r\n13 19\r\n59 3\r\n54 0\r\n55 26\r\n58 24\r\n57 6\r\n7 41\r\n36 7\r\n30\r\n54 23\r\n20 46\r\n22 41\r\n42 32\r\n25 41\r\n10 22\r\n44 24\r\n15 37\r\n40 13\r\n45 50\r\n50 12\r\n36 40\r\n4 48\r\n39 54\r\n60 10\r\n56 39\r\n40 41\r\n58 3\r\n56 54\r\n2 53\r\n25 42\r\n19 45\r\n49 40\r\n29 22\r\n9 25\r\n20 47\r\n42 6\r\n53 2\r\n54 54\r\n26 23\r\n",
+                "Zmey\r\n4\r\n"
+            ],
+            [
+                "13 23 50\r\n25\r\n12 0\r\n13 4\r\n4 2\r\n5 7\r\n0 0\r\n2 8\r\n12 8\r\n2 11\r\n4 6\r\n1 10\r\n9 9\r\n5 7\r\n3 11\r\n12 8\r\n12 2\r\n9 1\r\n12 4\r\n2 5\r\n13 13\r\n8 3\r\n3 0\r\n6 12\r\n12 1\r\n13 2\r\n9 10\r\n25\r\n9 2\r\n13 13\r\n4 3\r\n7 1\r\n7 13\r\n8 8\r\n11 3\r\n1 10\r\n12 7\r\n4 1\r\n4 6\r\n10 3\r\n11 4\r\n5 13\r\n3 5\r\n13 13\r\n0 9\r\n12 12\r\n4 2\r\n3 4\r\n6 0\r\n5 0\r\n7 2\r\n9 4\r\n1 1\r\n",
+                "Ivan\r\n4\r\n"
+            ],
+            [
+                "12 37 100\r\n10\r\n0 0\r\n3 3\r\n1 3\r\n3 0\r\n2 2\r\n3 1\r\n3 3\r\n2 2\r\n1 3\r\n1 0\r\n10\r\n0 0\r\n0 1\r\n1 0\r\n2 0\r\n1 0\r\n0 2\r\n1 1\r\n3 3\r\n0 3\r\n1 3\r\n",
+                "Ivan\r\n9\r\n"
+            ],
+            [
+                "53 41 100\r\n5\r\n0 1\r\n0 0\r\n1 0\r\n0 0\r\n0 0\r\n5\r\n1 0\r\n1 0\r\n1 1\r\n1 1\r\n0 0\r\n",
+                "Ivan\r\n20\r\n"
+            ],
+            [
+                "69 29 100\r\n5\r\n8 10\r\n4 14\r\n2 11\r\n12 14\r\n0 5\r\n5\r\n4 13\r\n3 3\r\n1 14\r\n11 3\r\n11 5\r\n",
+                "Zmey\r\n14\r\n"
+            ],
+            [
+                "152 6 200\r\n10\r\n2 2\r\n0 1\r\n2 2\r\n2 2\r\n2 1\r\n1 2\r\n2 1\r\n1 0\r\n2 3\r\n0 0\r\n10\r\n2 1\r\n3 0\r\n1 3\r\n2 2\r\n3 0\r\n1 0\r\n2 2\r\n3 1\r\n2 1\r\n2 3\r\n",
+                "Ivan\r\n18\r\n"
+            ],
+            [
+                "152 27 200\r\n10\r\n12 20\r\n3 15\r\n0 22\r\n14 17\r\n23 18\r\n4 18\r\n23 1\r\n17 3\r\n0 18\r\n3 16\r\n10\r\n5 20\r\n10 8\r\n15 7\r\n16 19\r\n13 23\r\n10 16\r\n0 14\r\n4 10\r\n19 20\r\n12 23\r\n",
+                "Zmey\r\n4\r\n"
+            ],
+            [
+                "179 9 200\r\n9\r\n2 1\r\n4 0\r\n0 1\r\n0 0\r\n1 1\r\n4 2\r\n2 4\r\n2 3\r\n3 2\r\n11\r\n1 0\r\n4 3\r\n0 1\r\n0 2\r\n3 4\r\n1 0\r\n3 3\r\n3 4\r\n3 0\r\n0 2\r\n4 1\r\n",
+                "Ivan\r\n40\r\n"
+            ],
+            [
+                "174 17 200\r\n8\r\n19 26\r\n13 16\r\n15 20\r\n20 18\r\n21 29\r\n11 19\r\n18 8\r\n16 6\r\n12\r\n7 16\r\n30 3\r\n12 17\r\n2 20\r\n5 7\r\n4 23\r\n27 29\r\n21 7\r\n3 5\r\n15 22\r\n27 14\r\n27 9\r\n",
+                "Zmey\r\n5\r\n"
+            ],
+            [
+                "0 1 200\r\n1\r\n0 2\r\n1\r\n1 0\r\n",
+                "Zmey\r\n599\r\n"
+            ],
+            [
+                "1 0 200\r\n5\r\n2 0\r\n3 0\r\n4 0\r\n5 0\r\n0 1\r\n1\r\n1 1\r\n",
+                "Zmey\r\n1180\r\n"
+            ],
+            [
+                "100 100 200\r\n1\r\n0 1\r\n2\r\n0 2\r\n0 0\r\n",
+                "Ivan\r\n200\r\n"
+            ],
+            [
+                "0 100 200\r\n1\r\n0 0\r\n1\r\n100 0\r\n",
+                "Ivan\r\n10100\r\n"
+            ],
+            [
+                "1 100 200\r\n2\r\n200 200\r\n0 0\r\n1\r\n100 0\r\n",
+                "Zmey\r\n5101\r\n"
+            ],
+            [
+                "0 1 200\r\n1\r\n0 0\r\n1\r\n1 2\r\n",
+                "Zmey\r\n397\r\n"
+            ],
+            [
+                "0 1 200\r\n2\r\n0 0\r\n0 0\r\n3\r\n1 2\r\n5 3\r\n0 7\r\n",
+                "Zmey\r\n1169\r\n"
+            ],
+            [
+                "0 1 200\r\n1\r\n0 0\r\n1\r\n100 2\r\n",
+                "Zmey\r\n10000\r\n"
+            ],
+            [
+                "0 1 200\r\n2\r\n0 0\r\n0 1\r\n1\r\n77 2\r\n",
+                "Zmey\r\n9517\r\n"
+            ]
+        ]
+    }
+]

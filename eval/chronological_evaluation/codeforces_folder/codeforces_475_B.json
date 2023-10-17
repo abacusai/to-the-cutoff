@@ -1,0 +1,346 @@
+[
+    {
+        "name": "Strongly Connected City",
+        "description": "Imagine a city with n horizontal streets crossing m vertical streets, forming\nan (n - 1) \u00d7 (m - 1) grid. In order to increase the traffic flow, mayor of the\ncity has decided to make each street one way. This means in each horizontal\nstreet, the traffic moves only from west to east or only from east to west.\nAlso, traffic moves only from north to south or only from south to north in\neach vertical street. It is possible to enter a horizontal street from a\nvertical street, or vice versa, at their intersection. The mayor has received\nsome street direction patterns. Your task is to check whether it is possible\nto reach any junction from any other junction in the proposed street direction\npattern. Input The first line of input contains two integers n and m, (2 \u2264 n,\nm \u2264 20), denoting the number of horizontal streets and the number of vertical\nstreets. The second line contains a string of length n, made of characters '<'\nand '>', denoting direction of each horizontal street. If the i-th character\nis equal to '<', the street is directed from east to west otherwise, the\nstreet is directed from west to east. Streets are listed in order from north\nto south. The third line contains a string of length m, made of characters '^'\nand 'v', denoting direction of each vertical street. If the i-th character is\nequal to '^', the street is directed from south to north, otherwise the street\nis directed from north to south. Streets are listed in order from west to\neast. Output If the given pattern meets the mayor's criteria, print a single\nline containing \"YES\", otherwise print a single line containing \"NO\". Examples\nInput 3 3 ><> v^v Output NO Input 4 6 <><> v^v^v^ Output YES Note The figure\nabove shows street directions in the second sample test case.\n\n",
+        "cf_contest_id": 475,
+        "cf_index": "B",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dfs and similar",
+            "graphs",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3\r\n><>\r\nv^v\r\n",
+                "NO"
+            ],
+            [
+                "4 6\r\n<><>\r\nv^v^v^\r\n",
+                "YES"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\n<>\r\nv^\r\n",
+                "YES"
+            ],
+            [
+                "2 2\r\n>>\r\n^v\r\n",
+                "NO"
+            ],
+            [
+                "3 3\r\n>><\r\n^^v\r\n",
+                "YES"
+            ],
+            [
+                "3 4\r\n>><\r\n^v^v\r\n",
+                "YES"
+            ],
+            [
+                "3 8\r\n>><\r\nv^^^^^^^\r\n",
+                "NO"
+            ],
+            [
+                "7 2\r\n<><<<<>\r\n^^\r\n",
+                "NO"
+            ],
+            [
+                "4 5\r\n><<<\r\n^^^^v\r\n",
+                "YES"
+            ],
+            [
+                "2 20\r\n><\r\n^v^^v^^v^^^v^vv^vv^^\r\n",
+                "NO"
+            ],
+            [
+                "2 20\r\n<>\r\nv^vv^v^^vvv^^^v^vvv^\r\n",
+                "YES"
+            ],
+            [
+                "20 2\r\n<><<><<>><<<>><><<<<\r\n^^\r\n",
+                "NO"
+            ],
+            [
+                "20 2\r\n><>><>><>><<<><<><><\r\n^v\r\n",
+                "YES"
+            ],
+            [
+                "11 12\r\n><<<><><<>>\r\nvv^^^^vvvvv^\r\n",
+                "NO"
+            ],
+            [
+                "4 18\r\n<<>>\r\nv^v^v^^vvvv^v^^vv^\r\n",
+                "YES"
+            ],
+            [
+                "16 11\r\n<<<<>><><<<<<><<\r\nvv^v^vvvv^v\r\n",
+                "NO"
+            ],
+            [
+                "14 7\r\n><<<<>>>>>>><<\r\nvv^^^vv\r\n",
+                "NO"
+            ],
+            [
+                "5 14\r\n<<><>\r\nv^vv^^vv^v^^^v\r\n",
+                "NO"
+            ],
+            [
+                "8 18\r\n>>>><>>>\r\nv^vv^v^^^^^vvv^^vv\r\n",
+                "NO"
+            ],
+            [
+                "18 18\r\n<<><>><<>><>><><<<\r\n^^v^v^vvvv^v^vv^vv\r\n",
+                "NO"
+            ],
+            [
+                "4 18\r\n<<<>\r\n^^^^^vv^vv^^vv^v^v\r\n",
+                "NO"
+            ],
+            [
+                "19 18\r\n><><>>><<<<<>>><<<>\r\n^^v^^v^^v^vv^v^vvv\r\n",
+                "NO"
+            ],
+            [
+                "14 20\r\n<<<><><<>><><<\r\nvvvvvvv^v^vvvv^^^vv^\r\n",
+                "NO"
+            ],
+            [
+                "18 18\r\n><>>><<<>><><>>>><\r\nvv^^^^v^v^^^^v^v^^\r\n",
+                "NO"
+            ],
+            [
+                "8 18\r\n<><<<>>>\r\n^^^^^^v^^^vv^^vvvv\r\n",
+                "NO"
+            ],
+            [
+                "11 12\r\n><><><<><><\r\n^^v^^^^^^^^v\r\n",
+                "YES"
+            ],
+            [
+                "4 18\r\n<<>>\r\nv^v^v^^vvvv^v^^vv^\r\n",
+                "YES"
+            ],
+            [
+                "16 11\r\n>><<><<<<>>><><<\r\n^^^^vvvv^vv\r\n",
+                "YES"
+            ],
+            [
+                "14 7\r\n<><><<<>>>><>>\r\nvv^^v^^\r\n",
+                "YES"
+            ],
+            [
+                "5 14\r\n>>>><\r\n^v^v^^^vv^vv^v\r\n",
+                "YES"
+            ],
+            [
+                "8 18\r\n<<<><>>>\r\nv^^vvv^^v^v^vvvv^^\r\n",
+                "YES"
+            ],
+            [
+                "18 18\r\n><><<><><>>><>>>><\r\n^^vvv^v^^^v^vv^^^v\r\n",
+                "YES"
+            ],
+            [
+                "4 18\r\n<<>>\r\nv^v^v^^vvvv^v^^vv^\r\n",
+                "YES"
+            ],
+            [
+                "19 18\r\n>>>><><<>>><<<><<<<\r\n^v^^^^vv^^v^^^^v^v\r\n",
+                "YES"
+            ],
+            [
+                "14 20\r\n<>><<<><<>>>>>\r\nvv^^v^^^^v^^vv^^vvv^\r\n",
+                "YES"
+            ],
+            [
+                "18 18\r\n><><<><><>>><>>>><\r\n^^vvv^v^^^v^vv^^^v\r\n",
+                "YES"
+            ],
+            [
+                "8 18\r\n<<<><>>>\r\nv^^vvv^^v^v^vvvv^^\r\n",
+                "YES"
+            ],
+            [
+                "20 19\r\n<><>>>>><<<<<><<>>>>\r\nv^vv^^vvvvvv^vvvv^v\r\n",
+                "NO"
+            ],
+            [
+                "20 19\r\n<<<><<<>><<<>><><><>\r\nv^v^vvv^vvv^^^vvv^^\r\n",
+                "YES"
+            ],
+            [
+                "19 20\r\n<><<<><><><<<<<<<<>\r\n^v^^^^v^^vvvv^^^^vvv\r\n",
+                "NO"
+            ],
+            [
+                "19 20\r\n>>>>>>>><>>><><<<><\r\n^v^v^^^vvv^^^v^^vvvv\r\n",
+                "YES"
+            ],
+            [
+                "20 20\r\n<<<>>>><>><<>><<>>>>\r\n^vvv^^^^vv^^^^^v^^vv\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n>>><><<><<<<<<<><<><\r\nvv^vv^vv^^^^^vv^^^^^\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n><<><<<<<<<>>><>>><<\r\n^^^^^^^^vvvv^vv^vvvv\r\n",
+                "YES"
+            ],
+            [
+                "20 20\r\n<>>>>>>>><>>><>><<<>\r\nvv^^vv^^^^v^vv^v^^^^\r\n",
+                "YES"
+            ],
+            [
+                "20 20\r\n><>><<>><>>>>>>>><<>\r\n^^v^vv^^^vvv^v^^^vv^\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n<<<<><<>><><<<>><<><\r\nv^^^^vvv^^^vvvv^v^vv\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n><<<><<><>>><><<<<<<\r\nvv^^vvv^^v^^v^vv^vvv\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n<<>>><>>>><<<<>>><<>\r\nv^vv^^^^^vvv^^v^^v^v\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n><<><<><<<<<<>><><>>\r\nv^^^v^vv^^v^^vvvv^vv\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n<<<<<<<<><>><><>><<<\r\n^vvv^^^v^^^vvv^^^^^v\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n>>><<<<<>>><><><<><<\r\n^^^vvv^^^v^^v^^v^vvv\r\n",
+                "YES"
+            ],
+            [
+                "20 20\r\n<><<<><><>><><><<<<>\r\n^^^vvvv^vv^v^^^^v^vv\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n>>>>>>>>>><>>><>><>>\r\n^vvv^^^vv^^^^^^vvv^v\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n<><>><><<<<<>><<>>><\r\nv^^^v^v^v^vvvv^^^vv^\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n><<<><<<><<<><>>>><<\r\nvvvv^^^^^vv^v^^vv^v^\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n<<><<<<<<>>>>><<<>>>\r\nvvvvvv^v^vvv^^^^^^^^\r\n",
+                "YES"
+            ],
+            [
+                "20 20\r\n><<><<>>>>><><>><>>>\r\nv^^^^vvv^^^^^v^v^vv^\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n<<>>><>><<>>>><<<><<\r\n^^vvv^^vvvv^vv^^v^v^\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n><<>><>>>><<><>><><<\r\n^v^^^^^^vvvv^v^v^v^^\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n<<><<<<><><<>>><>>>>\r\n^^vvvvv^v^^^^^^^vvv^\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n>><<<<<<><>>>><>>><>\r\n^^^v^v^vv^^vv^vvv^^^\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n>>>>>>>>>>>>>>>>>>>>\r\nvvvvvvvvvvvvvvvvvvvv\r\n",
+                "NO"
+            ],
+            [
+                "2 2\r\n><\r\nv^\r\n",
+                "NO"
+            ],
+            [
+                "2 2\r\n<>\r\n^v\r\n",
+                "NO"
+            ],
+            [
+                "3 3\r\n>><\r\nvvv\r\n",
+                "NO"
+            ],
+            [
+                "2 3\r\n<>\r\nv^^\r\n",
+                "YES"
+            ],
+            [
+                "4 4\r\n>>><\r\nvvv^\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n<><><><><><><><><><>\r\nvvvvvvvvvvvvvvvvvvvv\r\n",
+                "NO"
+            ],
+            [
+                "4 4\r\n<>>>\r\nv^^^\r\n",
+                "YES"
+            ],
+            [
+                "20 20\r\n<><><><><><><><><><>\r\nv^v^v^v^v^v^v^v^v^v^\r\n",
+                "YES"
+            ],
+            [
+                "2 3\r\n<>\r\n^v^\r\n",
+                "NO"
+            ],
+            [
+                "4 3\r\n<><>\r\n^vv\r\n",
+                "NO"
+            ],
+            [
+                "3 3\r\n<<>\r\nvv^\r\n",
+                "YES"
+            ],
+            [
+                "2 3\r\n><\r\nvv^\r\n",
+                "NO"
+            ],
+            [
+                "7 6\r\n>>><>><\r\n^vv^vv\r\n",
+                "YES"
+            ],
+            [
+                "2 2\r\n<<\r\nv^\r\n",
+                "NO"
+            ],
+            [
+                "3 3\r\n>><\r\n^^^\r\n",
+                "NO"
+            ],
+            [
+                "3 3\r\n<><\r\nv^v\r\n",
+                "NO"
+            ],
+            [
+                "20 20\r\n><><><><><><><><><><\r\n^v^v^v^v^v^v^v^v^v^v\r\n",
+                "YES"
+            ],
+            [
+                "4 4\r\n<>>>\r\nvvv^\r\n",
+                "YES"
+            ]
+        ]
+    }
+]

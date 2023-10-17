@@ -1,0 +1,135 @@
+[
+    {
+        "name": "Xor",
+        "description": "John Doe has four arrays: a, b, k, and p. Each array consists of n integers.\nElements of all arrays are indexed starting from 1. Array p is a permutation\nof integers 1 to n. John invented a game for his friends and himself.\nInitially a player is given array a. The player must consecutively execute\nexactly u operations on a. You are permitted to execute the following\noperations: Operation 1: For each change ai into . Expression means applying\nthe operation of a bitwise xor to numbers x and y. The given operation exists\nin all modern programming languages, for example, in language C++ and Java it\nis marked as \"^\", in Pascal \u2014 as \"xor\". Operation 2: For each change ai into\napi + r. When this operation is executed, all changes are made at the same\ntime. After all u operations are applied, the number of points the player gets\nis determined by the formula . John wants to find out what maximum number of\npoints a player can win in his game. Help him. Input The first line contains\nspace-separated integers n, u and r (1 \u2264 n, u \u2264 30, 0 \u2264 r \u2264 100) \u2014 the number\nof elements in each array, the number of operations and the number that\ndescribes one of the operations. Each of the next four lines contains n space-\nseparated integers \u2014 arrays a, b, k, p. The first line has array a, the second\nline has array b, the third line has array k and the fourth one has array p.\nIt is guaranteed that elements of arrays a and b are positive and do not\nexceed 10^4 (1 \u2264 ai, bi \u2264 10^4), elements of array k do not exceed 10^4 in the\nabsolute value (|k| \u2264 10^4) and p is a permutation of numbers from 1 to n.\nOutput On a single line print number s \u2014 the maximum number of points that a\nplayer can win in John's game. Please, do not use the \nor write 64-bit integers in \u0421++. It is preferred to use the cin, cout streams\nor the \nInput 2 1 0 1 1 1 1 1 -1 1 2 Output 0 Note In the first sample you should\nfirst apply the operation of the first type, then the operation of the second\ntype.\n\n",
+        "cf_contest_id": 193,
+        "cf_index": "B",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2 1\r\n7 7 7\r\n8 8 8\r\n1 2 3\r\n1 3 2\r\n",
+                "96\r\n"
+            ],
+            [
+                "2 1 0\r\n1 1\r\n1 1\r\n1 -1\r\n1 2\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 30 1\r\n1 2 3 4 5\r\n3 3 3 3 3\r\n-1 1 -1 1 -1\r\n1 2 4 3 5\r\n",
+                "67\r\n"
+            ],
+            [
+                "30 30 1\r\n1000 2000 3000 4000 5000 1000 2000 3000 4000 5000 1000 2000 3000 4000 5000 1000 2 3000 4000 5000 1000 2000 3000 4000 5000 1000 2000 3000 4000 5000\r\n3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3\r\n-1 10000 -1 10000 -1 -1 10000 -1 10000 -1 -1 10000 -1 10000 -1 -1 10000 -1 10000 -1 -1 10000 -1 10000 -1 -1 10000 -1 1 -10000\r\n1 3 2 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 25 24 26 27 28 29 30\r\n",
+                "275376040\r\n"
+            ],
+            [
+                "1 1 0\r\n1\r\n1\r\n1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 0\r\n1\r\n1\r\n0\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "30 30 64\r\n1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 1 2\r\n1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 1 2\r\n10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000\r\n2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 1\r\n",
+                "4758530000\r\n"
+            ],
+            [
+                "1 1 0\r\n1\r\n1\r\n-1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1 1\r\n615\r\n615\r\n-1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 5 1\r\n8978 597 6735 204 4797 6051 3244 9967 3838 6739\r\n1648 6069 1204 8235 7564 2034 9925 3963 7838 9378\r\n-2614 -7559 1760 -6711 5940 -3216 -8407 -8006 1611 -1289\r\n1 6 3 4 2 8 10 7 5 9\r\n",
+                "-62136228\r\n"
+            ],
+            [
+                "10 10 1\r\n6532 1665 1689 8319 1789 9355 4663 7431 8887 3480\r\n2292 1704 2910 5030 4354 7964 5323 4800 6613 2900\r\n-5797 -9441 -1366 -2419 -7019 -7138 -5449 2618 -4299 -3388\r\n7 5 8 4 3 1 2 6 9 10\r\n",
+                "-75390739\r\n"
+            ],
+            [
+                "5 7 1\r\n8002 4612 2156 9807 6620\r\n3010 2833 9094 4231 6247\r\n2140 -3903 2190 2072 732\r\n2 5 1 4 3\r\n",
+                "90606652\r\n"
+            ],
+            [
+                "5 12 1\r\n5288 9142 4638 8653 8546\r\n8717 6141 7018 1211 7049\r\n6299 1081 884 -5793 8937\r\n2 5 3 4 1\r\n",
+                "184303399\r\n"
+            ],
+            [
+                "5 7 1\r\n5744 6922 9111 1507 6961\r\n3723 2306 1212 4212 5604\r\n-6315 1622 4680 7644 -5361\r\n1 4 5 2 3\r\n",
+                "36461834\r\n"
+            ],
+            [
+                "30 30 100\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n-5648 -6564 -1892 359 9206 7165 5439 -1167 -67 1658 -6358 9834 -6658 -3980 -8885 -4501 9844 3623 3709 -7876 378 1425 5519 7105 -2710 4646 -4118 6251 -4363 -7283\r\n27 28 3 26 5 6 7 29 30 21 12 15 22 13 17 4 8 18 14 10 20 2 9 16 25 23 19 11 24 1\r\n",
+                "12277091\r\n"
+            ],
+            [
+                "30 30 100\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n-3555 2981 -7548 -731 -1579 -898 -1127 2270 -2570 -1890 9194 8866 -3351 6651 -2773 -3480 1240 -6728 5362 2890 6397 7933 7781 3900 -4867 -8462 9336 9029 2508 5564\r\n1 30 11 22 4 20 12 24 17 21 25 9 26 3 2 16 15 5 7 18 19 28 23 8 14 13 27 29 10 6\r\n",
+                "127071343\r\n"
+            ],
+            [
+                "3 2 1\r\n100 1 1\r\n1 1 1\r\n100 1 1\r\n2 3 1\r\n",
+                "10002\r\n"
+            ],
+            [
+                "1 2 100\r\n5\r\n1\r\n-100\r\n1\r\n",
+                "-500\r\n"
+            ],
+            [
+                "1 2 1\r\n10\r\n20\r\n-100\r\n1\r\n",
+                "-1000\r\n"
+            ],
+            [
+                "1 1 0\r\n1\r\n2\r\n-1\r\n1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 10\r\n1 1\r\n2 2\r\n-100 -100\r\n1 2\r\n",
+                "-200\r\n"
+            ],
+            [
+                "1 1 1\r\n1000\r\n100\r\n-1000\r\n1\r\n",
+                "-908000\r\n"
+            ],
+            [
+                "2 2 10\r\n1 1\r\n100 100\r\n-1 -1\r\n1 2\r\n",
+                "-2\r\n"
+            ],
+            [
+                "4 2 0\r\n10000 1 1 1\r\n1 1 1 1\r\n10000 -10000 -10000 -10000\r\n2 3 4 1\r\n",
+                "99970000\r\n"
+            ],
+            [
+                "5 5 0\r\n100 1 1 1 1\r\n1 1 1 1 1\r\n1 1 1 1 100\r\n2 3 4 5 1\r\n",
+                "10004\r\n"
+            ],
+            [
+                "1 1 1\r\n10\r\n20\r\n-100\r\n1\r\n",
+                "-1100\r\n"
+            ],
+            [
+                "3 2 0\r\n100 1 1\r\n1 1 1\r\n1 0 0\r\n2 3 1\r\n",
+                "100\r\n"
+            ],
+            [
+                "1 1 0\r\n1\r\n2\r\n-1000\r\n1\r\n",
+                "-1000\r\n"
+            ],
+            [
+                "2 1 0\r\n1 1\r\n1 2\r\n-1 -2\r\n1 2\r\n",
+                "-3\r\n"
+            ]
+        ]
+    }
+]

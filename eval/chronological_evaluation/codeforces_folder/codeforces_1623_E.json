@@ -1,0 +1,91 @@
+[
+    {
+        "name": "Middle Duplication",
+        "description": "A binary tree of \n    n\n nodes is given. Nodes of the tree are numbered from\n\n    1\n to \n    n\n and the root is the node \n    1\n. Each node can have no\nchild, only one left child, only one right child, or both children. For\nconvenience, let's denote \n    l_u\n and \n    r_u\n as the left and the right\nchild of the node \n    u\n respectively, \n    l_u = 0\n if \n    u\n does not have\nthe left child, and \n    r_u = 0\n if the node \n    u\n does not have the right\nchild. Each node has a string label, initially is a single character\n\n    c_u\n. Let's define the string representation of the binary tree as the\nconcatenation of the labels of the nodes in the in-order. Formally, let\n\n    f(u)\n be the string representation of the tree rooted at the node\n\n    u\n. \n    f(u)\n is defined as follows: \n    \n\n    f(u) = \n    \n    ,    \n    if u = 0; \n    \n    \n     f(l_u) + c_u + f(r_u)    \n    otherwise,\n\n    \n where \n    +\n denotes the string\nconcatenation operation. This way, the string representation of the tree is\n\n    f(1)\n. For each node, we can duplicate its label at most once, that is,\nassign \n    c_u\n with \n    c_u + c_u\n, but only if \n    u\n is the root of the\ntree, or if its parent also has its label duplicated. You are given the tree\nand an integer \n    k\n. What is the lexicographically smallest string\nrepresentation of the tree, if we can duplicate labels of at most \n    k\n\nnodes? A string \n    a\n is lexicographically smaller than a string \n    b\n if\nand only if one of the following holds: \n    a\n is a prefix of \n    b\n, but\n\n    a \n     b\n; in the first position where \n    a\n and \n    b\n differ, the\nstring \n    a\n has a letter that appears earlier in the alphabet than the\ncorresponding letter in \n    b\n. Input The first line contains two integers\n\n    n\n and \n    k\n (\n    1 \n    \u2264 k \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5\n). The second\nline contains a string \n    c\n of \n    n\n lower-case English letters, where\n\n    c_i\n is the initial label of the node \n    i\n for \n    1 \n    \u2264 i \n    \u2264\n    n\n. Note that the given string \n    c\n is not the initial string\nrepresentation of the tree. The \n    i\n-th of the next \n    n\n lines contains\ntwo integers \n    l_i\n and \n    r_i\n (\n    0 \n    \u2264 l_i, r_i \n    \u2264 n\n). If the\nnode \n    i\n does not have the left child, \n    l_i = 0\n, and if the node\n\n    i\n does not have the right child, \n    r_i = 0\n. It is guaranteed that\nthe given input forms a binary tree, rooted at \n    1\n. Output Print a single\nline, containing the lexicographically smallest string representation of the\ntree if at most \n    k\n nodes have their labels duplicated. Examples Input 4 3\nabab 2 3 0 0 0 4 0 0 Output baaaab Input 8 2 kadracyn 2 5 3 4 0 0 0 0 6 8 0 7\n0 0 0 0 Output daarkkcyan Input 8 3 kdaracyn 2 5 0 3 0 4 0 0 6 8 0 7 0 0 0 0\nOutput darkcyan Note The images below present the tree for the examples. The\nnumber in each node is the node number, while the subscripted letter is its\nlabel. To the right is the string representation of the tree, with each letter\nhaving the same color as the corresponding node. Here is the tree for the\nfirst example. Here we duplicated the labels of nodes \n    1\n and \n    3\n. We\nshould not duplicate the label of node \n    2\n because it would give us the\nstring \"bbaaab\", which is lexicographically greater than \"baaaab\". In the\nsecond example, we can duplicate the labels of nodes \n    1\n and \n    2\n. Note\nthat only duplicating the label of the root will produce a worse result than\nthe initial string. In the third example, we should not duplicate any\ncharacter at all. Even though we would want to duplicate the label of the node\n\n    3\n, by duplicating it we must also duplicate the label of the node\n\n    2\n, which produces a worse result. There is no way to produce string\n\"darkkcyan\" from a tree with the initial string representation \"darkcyan\" :(.\n\n",
+        "cf_contest_id": 1623,
+        "cf_index": "E",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar",
+            "greedy",
+            "strings",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 3\r\nabab\r\n2 3\r\n0 0\r\n0 4\r\n0 0\r\n",
+                "baaaab"
+            ],
+            [
+                "8 2\r\nkadracyn\r\n2 5\r\n3 4\r\n0 0\r\n0 0\r\n6 8\r\n0 7\r\n0 0\r\n0 0\r\n",
+                "daarkkcyan"
+            ],
+            [
+                "8 3\r\nkdaracyn\r\n2 5\r\n0 3\r\n0 4\r\n0 0\r\n6 8\r\n0 7\r\n0 0\r\n0 0\r\n",
+                "darkcyan"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\nz\r\n0 0\r\n",
+                "z"
+            ],
+            [
+                "2 1\r\njb\r\n2 0\r\n0 0\r\n",
+                "bj"
+            ],
+            [
+                "2 2\r\nyd\r\n2 0\r\n0 0\r\n",
+                "ddyy"
+            ],
+            [
+                "3 1\r\nteq\r\n3 0\r\n0 0\r\n2 0\r\n",
+                "eqt"
+            ],
+            [
+                "3 2\r\nuru\r\n0 3\r\n0 0\r\n0 2\r\n",
+                "uur"
+            ],
+            [
+                "3 3\r\nxea\r\n0 3\r\n0 0\r\n0 2\r\n",
+                "xae"
+            ],
+            [
+                "10 5\r\nzlsssrxujq\r\n4 5\r\n0 0\r\n0 0\r\n10 9\r\n0 0\r\n0 3\r\n0 6\r\n0 0\r\n8 7\r\n0 2\r\n",
+                "qlssujjxrszzs"
+            ],
+            [
+                "10 10\r\napjukgzrdb\r\n9 4\r\n0 7\r\n0 0\r\n5 10\r\n0 0\r\n2 8\r\n0 0\r\n0 0\r\n0 6\r\n0 3\r\n",
+                "ddppzggraakkuubbj"
+            ],
+            [
+                "50 20\r\nuyrewzloonruruuvdvvmjmshnonheynpbzkvkdvdihiwbmtjnv\r\n21 3\r\n27 0\r\n41 43\r\n19 2\r\n0 0\r\n46 0\r\n26 39\r\n0 0\r\n0 8\r\n0 0\r\n47 0\r\n38 0\r\n0 25\r\n36 24\r\n30 40\r\n28 14\r\n48 0\r\n0 0\r\n9 0\r\n33 23\r\n31 4\r\n0 17\r\n0 0\r\n0 0\r\n0 0\r\n6 50\r\n0 0\r\n0 0\r\n22 49\r\n0 0\r\n20 44\r\n0 0\r\n5 0\r\n7 16\r\n0 0\r\n0 11\r\n0 34\r\n32 0\r\n0 0\r\n0 35\r\n37 45\r\n0 15\r\n18 29\r\n12 13\r\n10 42\r\n0 0\r\n0 0\r\n0 0\r\n0 0\r\n0 0\r\n",
+                "wbbmmsnnpdduuwwrnjjoooovveennyyuukkmzoovllvzzhvvtruhiinbhyudkrrvimjden"
+            ],
+            [
+                "50 50\r\navzqjbotzkdbrhpknuxxcndqnnkfpthvjriridgnocygczqeyy\r\n3 50\r\n0 0\r\n24 47\r\n0 0\r\n0 0\r\n0 36\r\n0 0\r\n42 0\r\n0 0\r\n0 0\r\n0 0\r\n2 9\r\n40 0\r\n0 0\r\n0 0\r\n0 0\r\n20 0\r\n5 0\r\n11 32\r\n0 0\r\n8 30\r\n0 34\r\n0 0\r\n17 21\r\n0 0\r\n0 0\r\n23 38\r\n15 39\r\n0 13\r\n19 0\r\n0 7\r\n10 14\r\n0 0\r\n4 41\r\n48 44\r\n33 27\r\n29 0\r\n0 0\r\n0 37\r\n0 0\r\n45 0\r\n31 25\r\n0 0\r\n12 22\r\n0 0\r\n28 26\r\n6 18\r\n49 16\r\n43 0\r\n46 35\r\n",
+                "xnnqqhhoccnnttccddxxkkvvhhttzzbbjjrrddkkddqqjjuuaapffggpnriizznnyyyyeekiivbbzggnnqqrrccoo"
+            ],
+            [
+                "10 10\r\ndabbsawwmx\r\n2 9\r\n0 3\r\n6 4\r\n0 0\r\n0 0\r\n0 0\r\n0 0\r\n5 10\r\n0 8\r\n7 0\r\n",
+                "aaaabbbbddmmsswwwwxx"
+            ],
+            [
+                "10 5\r\nfpggomfyni\r\n7 3\r\n8 0\r\n0 4\r\n10 6\r\n0 0\r\n0 5\r\n0 0\r\n0 0\r\n0 2\r\n9 0\r\n",
+                "ffffggnypiggmmo"
+            ],
+            [
+                "10 10\r\ngweyrwyrwc\r\n10 5\r\n6 7\r\n0 0\r\n0 0\r\n0 9\r\n0 0\r\n4 0\r\n0 0\r\n8 2\r\n0 3\r\n",
+                "cceeggrrrrwwwwwwyy"
+            ],
+            [
+                "10 10\r\nafrkrabttp\r\n6 7\r\n3 0\r\n8 0\r\n5 0\r\n9 0\r\n2 0\r\n4 10\r\n0 0\r\n0 0\r\n0 0\r\n",
+                "trfaaaatrkbbp"
+            ]
+        ]
+    }
+]

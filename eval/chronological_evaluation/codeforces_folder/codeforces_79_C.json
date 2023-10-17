@@ -1,0 +1,220 @@
+[
+    {
+        "name": "Beaver",
+        "description": "After Fox Ciel got off a bus, she found that the bus she was on was a wrong\nbus and she lost her way in a strange town. However, she fortunately met her\nfriend Beaver Taro and asked which way to go to her castle. Taro's response to\nher was a string s, and she tried to remember the string s correctly. However,\nCiel feels n strings b1, b2, ... , bn are really boring, and unfortunately she\ndislikes to remember a string that contains a boring substring. To make the\nthing worse, what she can remember is only the contiguous substring of s.\nDetermine the longest contiguous substring of s that does not contain any\nboring string, so that she can remember the longest part of Taro's response.\nInput In the first line there is a string s. The length of s will be between 1\nand 10^5, inclusive. In the second line there is a single integer n (1 \u2264 n \u2264\n10). Next n lines, there is a string bi (1 \u2264 i \u2264 n). Each length of bi will be\nbetween 1 and 10, inclusive. Each character of the given strings will be\neither a English alphabet (both lowercase and uppercase) or a underscore ('_')\nor a digit. Assume that these strings are case-sensitive. Output Output in the\nfirst line two space-separated integers len and pos: the length of the longest\ncontiguous substring of s that does not contain any bi, and the first position\nof the substring (0-indexed). The position pos must be between 0 and |s| - len\ninclusive, where |s| is the length of string s. If there are several\nsolutions, output any. Examples Input Go_straight_along_this_street 5 str long\ntree biginteger ellipse Output 12 4 Input IhaveNoIdea 9 I h a v e N o I d\nOutput 0 0 Input unagioisii 2 ioi unagi Output 5 5 Note In the first sample,\nthe solution is traight_alon. In the second sample, the solution is an empty\nstring, so the output can be \u00ab0 0\u00bb, \u00ab0 1\u00bb, \u00ab0 2\u00bb, and so on. In the third\nsample, the solution is either nagio or oisii.\n\n",
+        "cf_contest_id": 79,
+        "cf_index": "C",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "hashing",
+            "strings",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "Go_straight_along_this_street\r\n5\r\nstr\r\nlong\r\ntree\r\nbiginteger\r\nellipse\r\n",
+                "12 4\r\n"
+            ],
+            [
+                "IhaveNoIdea\r\n9\r\nI\r\nh\r\na\r\nv\r\ne\r\nN\r\no\r\nI\r\nd\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "unagioisii\r\n2\r\nioi\r\nunagi\r\n",
+                "5 1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "abcabcabcabc\r\n3\r\nabcabca\r\nbcab\r\ncabc\r\n",
+                "4 0\r\n"
+            ],
+            [
+                "ThankYouForParticipatingRound71\r\n6\r\nForP\r\noun\r\nnkYouForP\r\nTha\r\nouForP\r\nound7\r\n",
+                "18 9\r\n"
+            ],
+            [
+                "WishYourSolutionPassesFinalTests\r\n10\r\nrSoluti\r\ninal\r\nolutionPas\r\nassesFin\r\nourSo\r\nonP\r\nWishYourSo\r\nsFinalTes\r\nhYourSolut\r\nonPas\r\n",
+                "9 0\r\n"
+            ],
+            [
+                "9\r\n1\r\n9\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "Z\r\n1\r\na\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "12abcdefghijklmnop\r\n10\r\nabcd\r\nabc\r\nab\r\na\r\nklmn\r\nlmn\r\nmn\r\nn\r\nop\r\n12\r\n",
+                "12 3\r\n"
+            ],
+            [
+                "12abcdefghijklmnop\r\n10\r\na\r\nop\r\nab\r\nabc\r\nabcd\r\nn\r\nmn\r\n12\r\nlmn\r\nklmn\r\n",
+                "12 3\r\n"
+            ],
+            [
+                "12abcdefghijklmnop\r\n10\r\nlmn\r\nabc\r\na\r\nklmn\r\nn\r\nabcd\r\nop\r\nmn\r\nab\r\n12\r\n",
+                "12 3\r\n"
+            ],
+            [
+                "x5x5\r\n10\r\nx5\r\nx5x\r\nx5x5\r\nx5\r\nx5\r\nQyBa0yZO_c\r\n_troGKxtGQ\r\nRItOLVC3ok\r\niD_57rFYR1\r\nvZhgXwTnE4\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "aaaay\r\n10\r\naa\r\naa\r\naaa\r\nay\r\naaay\r\ndltfBoU4nF\r\nYhImrXw62Y\r\nwswb4v7CRb\r\npjxxEE3S26\r\nwxDxW1MRaI\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "iiiiii\r\n10\r\nii\r\niiii\r\niiiii\r\niii\r\niiii\r\n5avjcwIsDh\r\nGgiVQ9ylRz\r\newWmNAJAL9\r\nk83baq5H2U\r\nXRX3fJ4dH8\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "ffBBfBB\r\n10\r\nBBfB\r\nffBBfB\r\nffBBf\r\nffBBf\r\nBfB\r\n1ehoxM6CU8\r\ntvB4q05iuU\r\nEYGkY6VxQO\r\nbKbE2ajjBW\r\nhqTKbQUZds\r\n",
+                "4 0\r\n"
+            ],
+            [
+                "aaUUUUaa\r\n10\r\naUUU\r\naaU\r\naUU\r\nUUUU\r\nUU\r\neV1R6e2tCQ\r\nmwseAsylFZ\r\njkfXnCVagR\r\nRGPm9O09J8\r\nVBRpGUFrDB\r\n",
+                "3 5\r\n"
+            ],
+            [
+                "1111e1e1e\r\n10\r\n11\r\n1111e\r\n1111\r\ne1e1e\r\n1e1\r\npuCrQxcVPh\r\nfnbEroh3w4\r\nyie11ihNIi\r\n2_23hx3yX9\r\noPKXwByQLT\r\n",
+                "3 4\r\n"
+            ],
+            [
+                "aMaMaMMaaM\r\n10\r\nMMaaM\r\nMMaaM\r\naa\r\naMaMMaa\r\nMaMa\r\nWoEVf7UuGQ\r\n2q8cm0_WfI\r\nZR63WSVBlC\r\ndtO9nmkXsc\r\ntHL2amBqOS\r\n",
+                "6 2\r\n"
+            ],
+            [
+                "NNNIIIIIINN\r\n10\r\nNNIIIIIIN\r\nIIIINN\r\nIIIINN\r\nNNIIIII\r\nNNII\r\nlHJxS_HfkO\r\nPsss2tjeao\r\nY4Adt_8FXb\r\nkc9mq2vWmZ\r\nVJYusUjoTq\r\n",
+                "8 2\r\n"
+            ],
+            [
+                "cCCcCCCcCccc\r\n10\r\ncC\r\nCCcCCCcCc\r\nCCcC\r\ncCc\r\ncCCC\r\npUKBhDtW8W\r\n0ap4vlgGej\r\nk059r28XMJ\r\nySQTZIOz3r\r\nFHn5rVpM8G\r\n",
+                "4 4\r\n"
+            ],
+            [
+                "7hh77hhhhhh7h\r\n10\r\nhhhh7\r\nhh77hhhhh\r\n7hhhhh\r\nhh7\r\nh77hhhhhh7\r\nC_t1uIxLWp\r\nHwH5EkVGCt\r\nyUgWASGwfR\r\nRfah5Fa12E\r\nS9CmGvTVKM\r\n",
+                "7 2\r\n"
+            ],
+            [
+                "3cc3\r\n10\r\ncc\r\nc3\r\n3c\r\ncc\r\ncc\r\n3cc3\r\n3cc3\r\n3cc\r\nc3\r\njLnOy3kI3M\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "70aa70a\r\n10\r\n70\r\n0aa70\r\n0aa70\r\naa70\r\n70aa\r\n70aa\r\n70aa70a\r\naa7\r\n70aa7\r\nicHuodu1Ux\r\n",
+                "3 1\r\n"
+            ],
+            [
+                "YUYEYEUUEU\r\n10\r\nYEYEUUEU\r\nEUUE\r\nUU\r\nYEYEUUE\r\nYEYE\r\nUU\r\nEY\r\nEYEUU\r\nYEYEUU\r\niBXoTbQ7X3\r\n",
+                "4 0\r\n"
+            ],
+            [
+                "wwwwDwwwwD\r\n10\r\nwD\r\nDwww\r\nwD\r\nDwwww\r\nwwwwD\r\nDww\r\nwD\r\nwwDww\r\nwwww\r\nwwww\r\n",
+                "3 0\r\n"
+            ],
+            [
+                "4tg4ttgg47t44tg4ttgg47t4\r\n10\r\n47t44tg4tt\r\nttgg4\r\ng4ttgg47t4\r\ng47t44t\r\ntg4ttg\r\n44tg4ttg\r\nttgg47\r\nt44tg\r\ng47t44tg\r\n4ttgg47t4\r\n",
+                "8 5\r\n"
+            ],
+            [
+                "g0sg00AAA0Asggss0sAg0sg00AAA0Asggss0sA\r\n10\r\nAg0sg00AAA\r\nAsggss\r\nsAg\r\nAsggss0s\r\nggss0sAg\r\nsAg0sg\r\nggss0sA\r\n0sg00AA\r\nAAA0A\r\nAA0\r\n",
+                "8 18\r\n"
+            ],
+            [
+                "000gooo0g0vgovvv0oggv0v0go000gooo0g0vgovvv0oggv0v0go\r\n10\r\ngv0v0go\r\n0gooo0g\r\ngooo0g0v\r\no000\r\ngooo0g0v\r\nv0go000go\r\ngo000gooo0\r\nv0v0go00\r\nvv\r\nggv0v0\r\n",
+                "10 4\r\n"
+            ],
+            [
+                "B2KR\r\n10\r\nB2\r\n2KR\r\nB2KR\r\n2K\r\n2KR\r\nKR\r\n2KR\r\nB2KR\r\n2K\r\n2KR\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "dxY_8\r\n10\r\nxY_8\r\ndxY\r\ndx\r\nY_\r\nxY_\r\ndx\r\nxY\r\ndx\r\nxY_8\r\ndxY\r\n",
+                "2 3\r\n"
+            ],
+            [
+                "umi4qX\r\n10\r\nqX\r\num\r\n4qX\r\nqX\r\numi4qX\r\numi4\r\numi4\r\numi4q\r\nmi4q\r\numi4q\r\n",
+                "3 1\r\n"
+            ],
+            [
+                "4stuNRe\r\n10\r\n4stu\r\nstuN\r\nstuNRe\r\n4stu\r\ntuNRe\r\nst\r\ntuNR\r\n4stuN\r\ntuN\r\n4stu\r\n",
+                "4 3\r\n"
+            ],
+            [
+                "bTnstTqbTnstTq\r\n10\r\nbTnstTq\r\nnstTqbT\r\nTqbT\r\nbTns\r\nTqbT\r\nTns\r\nTnstT\r\nTnstTqb\r\nnstT\r\nstT\r\n",
+                "4 4\r\n"
+            ],
+            [
+                "Oq02utSVOq02utSV\r\n10\r\n2utSVOq\r\n2utSVO\r\n02utS\r\nSVOq0\r\nut\r\nOq\r\nOq\r\nq02utSVO\r\nOq02utSV\r\nVOq0\r\n",
+                "4 1\r\n"
+            ],
+            [
+                "DpGGt6_wGLPDpGGt6_wGLP\r\n10\r\n6_wGL\r\nGLPDpGG\r\nt6_wG\r\nPDpGGt6_\r\nwGLPDpGGt6\r\n6_\r\n_wGL\r\npGGt6_\r\n6_wGLPD\r\n6_wGLPDpG\r\n",
+                "8 9\r\n"
+            ],
+            [
+                "7QTfE4ALvzkzzD4j7QTfE4ALvzkzzD4j\r\n10\r\nvzkzzD4j7\r\nE4AL\r\nTfE4ALv\r\nzzD4j7QT\r\nzkzzD4j7\r\n4AL\r\nj7Q\r\nE4ALvzkzzD\r\nvzkzzD4j\r\n4ALvzk\r\n",
+                "9 6\r\n"
+            ],
+            [
+                "6CLznedj88834gqTIhMTPjm_3DbkQpuYkBvU3o55h79ntRqjHTOu3WWNNGLyQSZ_o45mK5mMtRJmWUq2twqWP10OlnDAB1EP2rG\r\n10\r\n834gqTI\r\n_o4\r\nvU3o55h79n\r\nvLwlk3PY7Z\r\nk8PnkBpRYB\r\nqdkB9b_SS2\r\nkY4mBeAdgK\r\nb577cjQiSx\r\nyOFiEkP1sD\r\noYOqd8uuTt\r\n",
+                "35 64\r\n"
+            ],
+            [
+                "JroK3tfp941zeUovVIqCV7Sv2elf6TN8QRl8mhxQWgoQRXOLkcUjK29Ed2gBDR1TLdZeLUi9zJyBayrNlWgW0iPSG26DuJ9QK95\r\n10\r\nroK\r\novVI\r\nLUi9\r\nLUi\r\nTLd\r\nelf6\r\n9zJyBa\r\nDR1\r\ndZe\r\n8mhxQWgo\r\n",
+                "27 72\r\n"
+            ],
+            [
+                "p7B41t9y83IghcJG8zgWzCSATkkvQQhvqm7j_4ffUPbriGW57mbGPzqiuMEmJevfIhX2FNLFBxAGm3vLXRPOdphoWkCquDjAsW9\r\n10\r\n1t9y83\r\nBxAGm3v\r\nG8z\r\nCSATk\r\ncJG\r\nIhX2FNLF\r\nzqiuME\r\np7B4\r\nkkvQ\r\nPbriGW57m\r\n",
+                "26 73\r\n"
+            ],
+            [
+                "r5oW1NW2kr193KwV_eASuj9Jq0q0Kmt2EUD1R72p2nPuxNpIqi7o_KuxldYjLJmiXj93JUxRTniFzKkXxHwXDZCzC76klFnfjAQ\r\n10\r\np2nPuxN\r\n93J\r\nNpIqi7o_K\r\niXj93JUxRT\r\n1NW2kr19\r\n0Kmt2EUD1\r\nTniFzKkXxH\r\niXj93JU\r\nNW2kr19\r\n3KwV_\r\n",
+                "26 73\r\n"
+            ],
+            [
+                "hb\r\n1\r\nAa\r\n",
+                "2 0\r\n"
+            ],
+            [
+                "unagioisiiqqqqqqqqqqqq\r\n2\r\nioi\r\nunagi\r\n",
+                "17 5\r\n"
+            ],
+            [
+                "abababab\r\n3\r\nab\r\nba\r\na\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "abcdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n2\r\nabcd\r\nabcd\r\n",
+                "50 1\r\n"
+            ],
+            [
+                "abababababababababababababababababababababababababababababab\r\n1\r\na\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "abc\r\n2\r\na\r\nb\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "abcde\r\n1\r\nf\r\n",
+                "5 0\r\n"
+            ],
+            [
+                "ahmed\r\n5\r\nahmed\r\nhmed\r\nmed\r\ned\r\nd\r\n",
+                "4 0\r\n"
+            ],
+            [
+                "abc\r\n1\r\nb\r\n",
+                "1 0\r\n"
+            ]
+        ]
+    }
+]

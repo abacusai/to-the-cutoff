@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Hidden Bipartite Graph",
+        "description": "Bob has a simple undirected connected graph (without self-loops and multiple\nedges). He wants to learn whether his graph is bipartite (that is, you can\npaint all vertices of the graph into two colors so that there is no edge\nconnecting two vertices of the same color) or not. As he is not very good at\nprogramming, he asked Alice for help. He does not want to disclose his graph\nto Alice, but he agreed that Alice can ask him some questions about the graph.\nThe only question that Alice can ask is the following: she sends \n    s\n \u2014 a\nsubset of vertices of the original graph. Bob answers with the number of edges\nthat have both endpoints in \n    s\n. Since he doesn't want Alice to learn too\nmuch about the graph, he allows her to ask no more than \n    20000\n questions.\nFurthermore, he suspects that Alice might introduce false messages to their\ncommunication channel, so when Alice finally tells him whether the graph is\nbipartite or not, she also needs to provide a proof \u2014 either the partitions\nthemselves or a cycle of odd length. Your task is to help Alice to construct\nthe queries, find whether the graph is bipartite. Input The first line\ncontains a single integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264 600\n) \u2014 the number\nof vertices in Bob's graph. Interaction First, read an integer \n    n\n\n(\n    1\n    \u2264 n\n    \u2264 600\n) \u2014 the number of vertices in Bob's graph. To make a\nquery, print two lines. First of which should be in the format \"? k\" (\n    1\n    \n    \u2264 k \n    \u2264 n\n), where \n    k\n is the size of the set to be queried. The\nsecond line should contain \n    k\n space separated distinct integers \n    s_1,\n    s_2, \n    \u2026, s_k\n (\n    1 \n    \u2264 s_i \n    \u2264 n\n) \u2014 the vertices of the\nqueried set. After each query read a single integer \n    m\n (\n    0 \n    \u2264 m\n    \n    \u2264\n    n(n-1)/2\n) \u2014 the number of edges between the vertices of\nthe set \n    s_i\n. You are not allowed to ask more than \n    20000\n\nqueries. If \n    m = -1\n, it means that you asked more queries than allowed,\nor asked an invalid query. Your program should immediately terminate (for\nexample, by calling exit(0)). You will receive Wrong Answer; it means that you\nasked more queries than allowed, or asked an invalid query. If you ignore\nthis, you can get other verdicts since your program will continue to read from\na closed stream. After printing a query do not forget to print end of line and\nflush the output. Otherwise, you will get Idleness limit exceeded. To do this,\nuse: fflush(stdout) or cout.flush() in C++; System.out.flush() in Java;\nflush(output) in Pascal; stdout.flush() in Python; see documentation for other\nlanguages.When you know the answer, you need to print it. The format of the\nanswer depends on whether the graph is bipartite or not. If the graph is\nbipartite, print two lines. The first should contain the letter \"Y\" (short for\n\"YES\") followed by a space, and then a single integer \n    s\n (\n    0 \n    \u2264 s\n    \n    \u2264 n\n) \u2014 the number of vertices in one of the partitions. Second line\nshould contain \n    s\n integers \n    a_1, a_2, \n    \u2026, a_s\n \u2014 vertices\nbelonging to the first partition. All \n    a_i\n must be distinct, and all\nedges in the main graph must have exactly one endpoint in the set\n\n    a_i\n. If the graph is not bipartite, print two lines. The first\nshould contain the letter \"N\" (short for \"NO\") followed by a space, and then a\nsingle integer \n    l\n (\n    3 \n    \u2264 l \n    \u2264 n\n) \u2014 the length of one simple\ncycle of odd length. Second line should contain \n    l\n integers \n    c_1, c_2,\n    \n    \u2026, c_l\n \u2014 the vertices along the cycle. It must hold that for all \n    1\n    \n    \u2264 i \n    \u2264 l\n, there is an edge \n    c_i, c_(i \n     l)+1\n\nin the main graph, and all \n    c_i\n are distinct. If there are multiple\npossible answers, you may print any of them. Hacks format For hacks, use the\nfollowing format: The first line contains two integers \n    n\n and \n    m\u00a0(1\n    \n    \u2264 n \n    \u2264 600, 0 \n    \u2264 m \n    \u2264\n    n(n-1)/2)\n \u2014 the number of\nvertices and edges of the graph, respectively. Each of the next \n    m\n lines\ncontains two integers \n    u_i\n and \n    v_i\u00a0(1 \n    \u2264 u_i, v_i \n    \u2264 n)\n\nmean that there is an edge between \n    u_i\n and \n    v_i\n. There must not be\nany multiple edges, no loops, and the graph must be connected. For example,\nyou need to use this test to get the first sample: 4 4 4 1 1 3 3 2 2 4\nExamples Input 4 4 0 1 1 1 0 Output ? 4 1 2 3 4 ? 2 1 2 ? 2 1 3 ? 2 1 4 ? 2 2\n4 ? 2 3 4 Y 2 1 2 Input 4 4 3 Output ? 4 1 4 2 3 ? 3 1 2 4 N 3 2 1 4 Note In\nthe first case, Alice learns that there are \n    4\n edges in the whole graph.\nOver the course of the next three queries, she learns that vertex \n    1\n has\ntwo neighbors: \n    3\n and \n    4\n. She then learns that while vertex \n    2\n\nis adjacent to \n    4\n, the vertex \n    3\n isn't adjacent to \n    4\n. There is\nonly one option for the remaining edge, and that is \n    (2, 3)\n. This means\nthat the graph is a cycle on four vertices, with \n    (1, 2)\n being one\npartition and \n    (3, 4)\n being the second. Here, it would be also valid to\noutput \"3 4\" on the second line. In the second case, we also have a graph on\nfour vertices and four edges. In the second query, Alice learns that there are\nthree edges among vertices \n    (1, 2, 4)\n. The only way this could possibly\nhappen is that those form a triangle. As the triangle is not bipartite, Alice\ncan report it as a proof. Notice that she does not learn where the fourth edge\nis, but she is able to answer Bob correctly anyway.\n\n",
+        "cf_contest_id": 1033,
+        "cf_index": "E",
+        "cf_rating": 2800,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "interactive"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 4\r\n4 1\r\n1 3\r\n3 2\r\n2 4\r\n",
+                "Y 2\r\n1 2\r\n16\r\n"
+            ],
+            [
+                "4 4\r\n2 4\r\n4 1\r\n1 2\r\n3 2\r\n",
+                "N 3\r\n4 2 1\r\n19\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 0\r\n",
+                "Y 1\r\n1\r\n0\r\n"
+            ],
+            [
+                "2 1\r\n1 2\r\n",
+                "Y 1\r\n1\r\n2\r\n"
+            ],
+            [
+                "20 60\r\n18 12\r\n20 13\r\n11 14\r\n18 2\r\n18 13\r\n9 1\r\n9 8\r\n20 12\r\n7 13\r\n19 14\r\n15 14\r\n7 8\r\n9 2\r\n7 5\r\n6 5\r\n6 4\r\n19 13\r\n18 1\r\n10 2\r\n7 4\r\n7 12\r\n7 14\r\n20 16\r\n20 2\r\n15 13\r\n18 8\r\n20 3\r\n10 3\r\n6 3\r\n15 4\r\n20 8\r\n20 4\r\n19 3\r\n6 1\r\n7 3\r\n11 16\r\n18 4\r\n10 13\r\n17 3\r\n18 5\r\n6 13\r\n10 8\r\n6 8\r\n15 5\r\n17 4\r\n11 1\r\n20 1\r\n19 2\r\n9 13\r\n7 2\r\n9 12\r\n10 4\r\n17 13\r\n11 5\r\n10 14\r\n10 1\r\n11 13\r\n9 14\r\n7 1\r\n11 3\r\n",
+                "Y 10\r\n1 2 3 4 5 8 12 13 14 16\r\n206\r\n"
+            ],
+            [
+                "20 61\r\n17 19\r\n18 1\r\n17 11\r\n8 1\r\n18 3\r\n18 5\r\n2 3\r\n2 14\r\n6 10\r\n7 19\r\n8 10\r\n12 11\r\n20 19\r\n12 19\r\n20 15\r\n13 11\r\n13 14\r\n12 1\r\n7 1\r\n6 3\r\n7 5\r\n17 1\r\n8 19\r\n18 19\r\n7 11\r\n6 9\r\n7 10\r\n4 1\r\n2 10\r\n8 11\r\n18 11\r\n6 1\r\n20 10\r\n17 14\r\n8 5\r\n20 11\r\n8 9\r\n12 5\r\n20 16\r\n13 1\r\n17 16\r\n6 15\r\n7 14\r\n8 3\r\n4 3\r\n13 5\r\n17 5\r\n18 10\r\n12 15\r\n4 16\r\n20 3\r\n4 19\r\n17 9\r\n4 9\r\n20 1\r\n2 15\r\n8 14\r\n4 14\r\n2 11\r\n7 15\r\n7 8\r\n",
+                "N 3\r\n7 5 8\r\n173\r\n"
+            ],
+            [
+                "20 61\r\n18 15\r\n20 14\r\n1 8\r\n18 8\r\n1 14\r\n10 16\r\n5 14\r\n5 19\r\n18 16\r\n13 11\r\n17 16\r\n13 14\r\n20 19\r\n6 12\r\n20 15\r\n1 4\r\n20 2\r\n9 14\r\n9 2\r\n6 7\r\n20 8\r\n20 11\r\n3 4\r\n5 4\r\n9 8\r\n1 7\r\n3 8\r\n13 8\r\n10 15\r\n18 12\r\n18 11\r\n6 11\r\n1 16\r\n18 7\r\n13 4\r\n3 14\r\n1 2\r\n20 12\r\n9 11\r\n5 15\r\n9 19\r\n6 16\r\n17 12\r\n17 2\r\n1 19\r\n17 4\r\n6 15\r\n18 4\r\n13 7\r\n5 2\r\n5 16\r\n13 15\r\n10 12\r\n10 7\r\n17 14\r\n18 2\r\n9 15\r\n5 8\r\n1 11\r\n10 8\r\n2 4\r\n",
+                "N 3\r\n4 2 1\r\n169\r\n"
+            ],
+            [
+                "3 3\r\n1 2\r\n2 3\r\n3 1\r\n",
+                "N 3\r\n3 2 1\r\n9\r\n"
+            ],
+            [
+                "3 2\r\n1 2\r\n1 3\r\n",
+                "Y 1\r\n1\r\n8\r\n"
+            ],
+            [
+                "3 2\r\n1 2\r\n2 3\r\n",
+                "Y 2\r\n1 3\r\n8\r\n"
+            ],
+            [
+                "3 2\r\n1 3\r\n2 3\r\n",
+                "Y 2\r\n1 2\r\n8\r\n"
+            ]
+        ]
+    }
+]

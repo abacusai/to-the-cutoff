@@ -1,0 +1,381 @@
+[
+    {
+        "name": "Restoring Map",
+        "description": "Archaeologists found some information about an ancient land of Treeland. We\nknow for sure that the Treeland consisted of n cities connected by the n - 1\nroad, such that you can get from each city to any other one along the roads.\nHowever, the information about the specific design of roads in Treeland has\nbeen lost. The only thing that the archaeologists can use is the preserved\ninformation about near cities. Two cities of Treeland were called near, if it\nwere possible to move from one city to the other one by moving through at most\ntwo roads. Also, a city is considered near to itself. During the recent\nexcavations archaeologists found a set of n notes, each of them represents a\nlist of cities, near to some of the n cities of the country. However,\nunfortunately, none of the found records lets you understand in what order the\ncities go in the list and for which city in the list the near to it cities\nwere listed. Help the archaeologists and restore any variant of the map of\nTreeland that meets the found information. Input The first line contains\ninteger n (2 \u2264 n \u2264 1000) \u2014 the number of cities in the country. Next n lines\ndescribe the found lists of near cities. Each list starts from number k (1 \u2264 k\n\u2264 n), representing the number of cities in the list followed by k city\nnumbers. All numbers in each list are distinct. It is guaranteed that the\ngiven information determines at least one possible road map. Output Print n -\n1 pairs of numbers representing the roads of the country. The i-th line must\ncontain two integers ai, bi (1 \u2264 ai, bi \u2264 n, ai \u2260 bi), showing that there is a\nroad between cities ai and bi. The answer you print must satisfy the\ndescription of close cities from the input. You may print the roads of the\ncountries in any order. The cities that are connected by a road may also be\nprinted in any order. If there are multiple good answers, you may print any of\nthem. Examples Input 5 4 3 2 4 1 5 5 3 2 4 1 5 4 2 1 5 3 4 2 1 4 3 3 1 4 5\nOutput 1 4 1 2 1 3 4 5 Input 6 5 6 1 3 4 2 5 2 1 3 4 6 6 3 6 2 5 4 1 6 6 1 2 5\n3 4 3 5 2 4 5 3 1 2 4 6 Output 2 4 1 2 2 3 2 6 4 5\n\n",
+        "cf_contest_id": 566,
+        "cf_index": "E",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "constructive algorithms",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n4 3 2 4 1\r\n5 5 3 2 4 1\r\n5 4 2 1 5 3\r\n4 2 1 4 3\r\n3 1 4 5\r\n",
+                "1 4\r\n2 1\r\n3 1\r\n5 4\r\n"
+            ],
+            [
+                "6\r\n5 6 1 3 4 2\r\n5 2 1 3 4 6\r\n6 3 6 2 5 4 1\r\n6 6 1 2 5 3 4\r\n3 5 2 4\r\n5 3 1 2 4 6\r\n",
+                "2 4\r\n1 2\r\n3 2\r\n5 4\r\n6 2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n2 1 2\r\n2 2 1\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "3\r\n3 3 2 1\r\n3 1 3 2\r\n3 1 2 3\r\n",
+                "1 2\r\n1 3\r\n"
+            ],
+            [
+                "4\r\n4 2 1 4 3\r\n4 1 4 2 3\r\n3 4 1 2\r\n3 1 3 4\r\n",
+                "1 4\r\n2 1\r\n3 4\r\n"
+            ],
+            [
+                "4\r\n4 4 1 3 2\r\n4 2 3 1 4\r\n4 1 4 3 2\r\n4 4 1 2 3\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n"
+            ],
+            [
+                "4\r\n4 1 4 3 2\r\n4 1 3 4 2\r\n4 1 3 2 4\r\n4 4 3 2 1\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n"
+            ],
+            [
+                "4\r\n3 3 2 1\r\n4 2 1 3 4\r\n4 2 1 3 4\r\n3 1 2 4\r\n",
+                "1 2\r\n3 1\r\n4 2\r\n"
+            ],
+            [
+                "4\r\n3 1 3 4\r\n3 4 1 2\r\n4 1 2 4 3\r\n4 4 3 2 1\r\n",
+                "1 4\r\n2 4\r\n3 1\r\n"
+            ],
+            [
+                "4\r\n4 1 2 3 4\r\n4 1 2 3 4\r\n4 3 4 2 1\r\n4 4 1 3 2\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n"
+            ],
+            [
+                "4\r\n4 3 1 4 2\r\n3 4 1 3\r\n3 4 1 2\r\n4 2 3 1 4\r\n",
+                "1 4\r\n2 4\r\n3 1\r\n"
+            ],
+            [
+                "4\r\n4 4 3 1 2\r\n3 2 1 3\r\n4 3 4 1 2\r\n3 2 3 4\r\n",
+                "2 3\r\n1 2\r\n4 3\r\n"
+            ],
+            [
+                "4\r\n4 3 2 4 1\r\n3 1 2 4\r\n4 4 2 1 3\r\n3 3 2 4\r\n",
+                "2 4\r\n1 2\r\n3 4\r\n"
+            ],
+            [
+                "4\r\n4 3 4 1 2\r\n4 4 1 3 2\r\n4 3 4 2 1\r\n4 3 2 4 1\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n"
+            ],
+            [
+                "4\r\n4 2 4 3 1\r\n4 3 1 2 4\r\n4 4 1 2 3\r\n4 1 3 2 4\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n"
+            ],
+            [
+                "4\r\n4 4 2 3 1\r\n4 3 1 2 4\r\n3 2 1 4\r\n3 3 4 2\r\n",
+                "2 4\r\n1 2\r\n3 4\r\n"
+            ],
+            [
+                "4\r\n3 4 1 3\r\n4 4 1 2 3\r\n3 4 2 3\r\n4 3 2 1 4\r\n",
+                "3 4\r\n1 3\r\n2 4\r\n"
+            ],
+            [
+                "5\r\n5 5 2 1 3 4\r\n5 2 3 1 4 5\r\n5 5 4 1 2 3\r\n5 2 3 5 4 1\r\n5 4 3 2 1 5\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n"
+            ],
+            [
+                "5\r\n5 4 5 2 3 1\r\n5 4 5 3 2 1\r\n5 4 1 2 3 5\r\n5 2 3 4 5 1\r\n5 4 1 5 2 3\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n"
+            ],
+            [
+                "5\r\n5 2 3 4 1 5\r\n4 1 5 4 3\r\n5 5 2 3 4 1\r\n3 1 2 3\r\n4 3 5 1 4\r\n",
+                "1 3\r\n2 3\r\n4 1\r\n5 1\r\n"
+            ],
+            [
+                "5\r\n4 4 5 3 1\r\n4 4 1 5 3\r\n3 2 1 4\r\n5 5 4 3 1 2\r\n5 3 4 5 1 2\r\n",
+                "1 4\r\n2 4\r\n3 1\r\n5 1\r\n"
+            ],
+            [
+                "5\r\n4 4 5 1 3\r\n5 3 5 4 2 1\r\n3 2 1 4\r\n4 4 5 3 1\r\n5 3 5 1 2 4\r\n",
+                "1 4\r\n2 4\r\n3 1\r\n5 1\r\n"
+            ],
+            [
+                "5\r\n5 1 4 5 2 3\r\n3 1 3 5\r\n5 3 5 4 1 2\r\n4 3 2 1 4\r\n4 3 2 1 4\r\n",
+                "1 3\r\n2 3\r\n4 3\r\n5 1\r\n"
+            ],
+            [
+                "5\r\n5 3 2 5 4 1\r\n5 1 3 5 4 2\r\n3 2 5 1\r\n4 4 1 3 2\r\n4 4 3 1 2\r\n",
+                "1 2\r\n3 2\r\n4 2\r\n5 1\r\n"
+            ],
+            [
+                "5\r\n3 3 2 5\r\n4 1 3 5 4\r\n4 1 4 5 3\r\n5 3 4 5 1 2\r\n5 2 1 5 3 4\r\n",
+                "3 5\r\n1 5\r\n2 3\r\n4 5\r\n"
+            ],
+            [
+                "5\r\n3 2 4 5\r\n3 1 2 3\r\n4 4 2 5 3\r\n5 2 5 1 4 3\r\n4 1 2 3 5\r\n",
+                "2 3\r\n2 5\r\n1 3\r\n4 5\r\n"
+            ],
+            [
+                "5\r\n4 2 4 5 1\r\n3 2 1 4\r\n3 5 2 3\r\n5 4 1 3 2 5\r\n4 4 3 5 2\r\n",
+                "2 5\r\n2 4\r\n1 4\r\n3 5\r\n"
+            ],
+            [
+                "5\r\n5 2 3 5 4 1\r\n4 2 5 4 3\r\n4 1 4 3 2\r\n3 1 3 4\r\n3 2 3 5\r\n",
+                "3 4\r\n2 3\r\n1 4\r\n5 2\r\n"
+            ],
+            [
+                "5\r\n5 3 4 5 1 2\r\n5 1 2 4 5 3\r\n5 1 2 4 3 5\r\n5 4 1 2 3 5\r\n5 3 4 1 2 5\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n"
+            ],
+            [
+                "5\r\n5 5 2 1 4 3\r\n5 2 4 5 3 1\r\n5 5 4 2 1 3\r\n5 4 5 2 1 3\r\n5 4 1 2 3 5\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n"
+            ],
+            [
+                "5\r\n3 5 4 3\r\n3 3 2 1\r\n5 2 1 3 5 4\r\n4 3 2 5 4\r\n4 3 1 4 2\r\n",
+                "2 3\r\n3 4\r\n1 2\r\n5 4\r\n"
+            ],
+            [
+                "5\r\n3 5 3 1\r\n4 4 5 2 3\r\n4 3 4 5 1\r\n5 2 5 3 1 4\r\n3 4 3 2\r\n",
+                "3 5\r\n3 4\r\n1 5\r\n2 4\r\n"
+            ],
+            [
+                "6\r\n6 5 6 1 4 3 2\r\n6 1 5 4 3 6 2\r\n6 1 5 4 6 2 3\r\n6 4 1 6 2 3 5\r\n6 3 4 2 1 6 5\r\n6 1 2 6 5 3 4\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n"
+            ],
+            [
+                "6\r\n6 2 3 4 5 1 6\r\n5 6 2 1 5 3\r\n5 2 6 1 5 3\r\n3 5 1 4\r\n6 4 2 5 1 6 3\r\n5 5 1 2 6 3\r\n",
+                "1 5\r\n2 1\r\n3 1\r\n4 5\r\n6 1\r\n"
+            ],
+            [
+                "6\r\n3 1 6 3\r\n6 5 1 2 6 4 3\r\n5 3 2 1 5 4\r\n5 2 3 1 4 5\r\n6 6 1 2 3 5 4\r\n5 4 5 3 2 1\r\n",
+                "1 3\r\n2 3\r\n4 3\r\n5 3\r\n6 1\r\n"
+            ],
+            [
+                "6\r\n5 3 6 2 5 1\r\n5 6 1 3 2 5\r\n3 4 2 1\r\n6 5 2 6 1 3 4\r\n5 5 2 3 1 6\r\n6 5 4 2 6 3 1\r\n",
+                "1 2\r\n3 1\r\n4 2\r\n5 1\r\n6 1\r\n"
+            ],
+            [
+                "6\r\n5 5 3 1 2 4\r\n3 4 6 1\r\n6 4 1 6 2 3 5\r\n5 2 1 3 4 5\r\n6 4 1 3 6 2 5\r\n5 4 3 5 1 2\r\n",
+                "1 4\r\n2 1\r\n3 1\r\n5 1\r\n6 4\r\n"
+            ],
+            [
+                "6\r\n4 1 5 4 2\r\n4 2 1 4 5\r\n6 5 4 6 1 2 3\r\n6 2 6 1 4 5 3\r\n4 3 1 5 6\r\n4 5 1 3 6\r\n",
+                "1 5\r\n2 1\r\n3 5\r\n4 1\r\n6 5\r\n"
+            ],
+            [
+                "6\r\n3 4 1 6\r\n3 2 5 1\r\n5 4 6 5 3 1\r\n6 2 6 4 1 5 3\r\n4 5 1 6 3\r\n5 6 2 3 5 1\r\n",
+                "1 5\r\n1 6\r\n2 5\r\n3 1\r\n4 6\r\n"
+            ],
+            [
+                "6\r\n5 5 6 4 2 3\r\n5 4 5 2 1 6\r\n3 5 3 4\r\n4 2 4 5 6\r\n3 2 4 1\r\n6 1 4 2 5 3 6\r\n",
+                "4 5\r\n2 4\r\n1 2\r\n3 5\r\n6 4\r\n"
+            ],
+            [
+                "6\r\n6 2 3 5 1 4 6\r\n4 1 4 2 5\r\n3 4 1 2\r\n4 5 4 6 3\r\n5 5 3 2 6 4\r\n4 5 4 6 3\r\n",
+                "4 5\r\n2 4\r\n1 2\r\n3 5\r\n6 5\r\n"
+            ],
+            [
+                "6\r\n4 3 5 1 4\r\n3 4 6 2\r\n6 5 4 1 3 6 2\r\n4 4 3 1 5\r\n5 5 1 6 3 4\r\n4 2 6 5 4\r\n",
+                "4 6\r\n4 5\r\n1 5\r\n2 6\r\n3 5\r\n"
+            ],
+            [
+                "6\r\n4 6 2 1 4\r\n4 4 3 5 6\r\n3 3 5 4\r\n5 6 2 3 4 5\r\n5 1 6 5 2 4\r\n3 1 6 2\r\n",
+                "4 6\r\n4 5\r\n2 6\r\n1 2\r\n3 5\r\n"
+            ],
+            [
+                "6\r\n5 4 2 1 5 6\r\n4 6 5 2 3\r\n4 5 1 4 2\r\n3 1 2 4\r\n3 6 3 5\r\n5 4 6 5 2 3\r\n",
+                "2 5\r\n5 6\r\n2 4\r\n1 4\r\n3 6\r\n"
+            ],
+            [
+                "6\r\n4 5 3 4 6\r\n6 6 2 1 4 3 5\r\n3 4 2 6\r\n3 5 6 1\r\n5 5 6 1 4 3\r\n5 6 3 2 5 4\r\n",
+                "4 6\r\n5 6\r\n1 5\r\n2 4\r\n3 6\r\n"
+            ],
+            [
+                "6\r\n6 3 4 2 1 5 6\r\n6 2 5 6 3 4 1\r\n6 3 4 5 1 2 6\r\n6 4 2 6 3 1 5\r\n6 1 3 5 4 2 6\r\n6 3 1 2 5 4 6\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n"
+            ],
+            [
+                "6\r\n6 5 6 2 4 1 3\r\n6 6 4 2 1 5 3\r\n6 2 6 1 4 3 5\r\n6 3 1 4 6 5 2\r\n6 3 2 6 4 5 1\r\n6 3 5 4 2 6 1\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n"
+            ],
+            [
+                "6\r\n4 6 5 4 2\r\n5 2 6 4 5 3\r\n3 3 1 2\r\n5 3 6 2 1 5\r\n4 2 5 3 1\r\n3 6 4 5\r\n",
+                "2 3\r\n2 5\r\n5 6\r\n1 3\r\n4 6\r\n"
+            ],
+            [
+                "6\r\n5 1 5 4 6 2\r\n4 5 2 4 1\r\n3 6 4 3\r\n4 3 4 5 6\r\n5 4 3 5 6 2\r\n3 5 1 2\r\n",
+                "4 6\r\n4 5\r\n2 5\r\n1 2\r\n3 6\r\n"
+            ],
+            [
+                "7\r\n5 7 4 5 2 1\r\n5 2 7 5 1 4\r\n7 4 6 5 3 2 1 7\r\n4 4 3 1 6\r\n4 3 4 6 1\r\n5 2 7 5 1 4\r\n7 2 1 5 7 6 3 4\r\n",
+                "1 4\r\n2 1\r\n3 4\r\n5 1\r\n6 4\r\n7 1\r\n"
+            ],
+            [
+                "7\r\n6 1 6 2 7 4 3\r\n6 6 3 4 2 7 1\r\n6 7 4 2 1 6 3\r\n3 5 1 6\r\n6 4 1 7 6 3 2\r\n7 5 1 3 6 7 2 4\r\n7 1 6 5 4 2 7 3\r\n",
+                "1 6\r\n2 1\r\n3 1\r\n4 1\r\n5 6\r\n7 1\r\n"
+            ],
+            [
+                "7\r\n7 1 5 7 2 4 6 3\r\n7 2 1 4 7 6 5 3\r\n7 4 7 6 3 2 5 1\r\n7 3 4 1 5 2 7 6\r\n7 3 2 1 7 5 6 4\r\n7 1 2 6 3 5 4 7\r\n7 7 6 3 5 2 1 4\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n"
+            ],
+            [
+                "7\r\n6 7 1 6 4 2 3\r\n3 1 2 5\r\n6 1 3 4 7 2 6\r\n7 1 4 3 6 5 2 7\r\n7 1 3 2 7 5 6 4\r\n6 7 6 3 2 1 4\r\n6 7 1 4 6 3 2\r\n",
+                "1 2\r\n3 1\r\n4 1\r\n5 2\r\n6 1\r\n7 1\r\n"
+            ],
+            [
+                "7\r\n7 5 6 1 4 3 7 2\r\n7 4 2 3 7 6 5 1\r\n5 2 1 7 5 6\r\n5 7 2 1 6 5\r\n4 4 3 1 2\r\n4 4 3 2 1\r\n5 6 2 5 7 1\r\n",
+                "1 2\r\n3 2\r\n4 2\r\n5 1\r\n6 1\r\n7 1\r\n"
+            ],
+            [
+                "7\r\n4 1 4 3 5\r\n4 4 7 1 6\r\n6 5 6 3 7 1 4\r\n5 5 1 2 4 3\r\n4 7 1 4 6\r\n7 1 5 2 7 4 3 6\r\n3 1 3 2\r\n",
+                "1 4\r\n1 3\r\n2 3\r\n5 1\r\n6 4\r\n7 4\r\n"
+            ],
+            [
+                "7\r\n6 2 6 1 4 5 7\r\n3 7 2 3\r\n5 1 6 5 4 2\r\n4 7 1 3 2\r\n3 1 4 6\r\n4 5 2 6 1\r\n6 7 2 6 5 1 3\r\n",
+                "2 7\r\n1 2\r\n1 6\r\n3 7\r\n4 6\r\n5 1\r\n"
+            ],
+            [
+                "7\r\n6 2 1 6 4 3 7\r\n7 3 1 6 5 2 7 4\r\n7 3 5 7 2 6 1 4\r\n6 4 6 3 2 7 1\r\n6 6 2 7 4 1 3\r\n3 5 6 1\r\n6 2 1 6 7 4 3\r\n",
+                "1 6\r\n2 1\r\n3 1\r\n4 1\r\n5 6\r\n7 1\r\n"
+            ],
+            [
+                "7\r\n4 5 2 4 6\r\n6 2 4 6 5 3 7\r\n4 5 2 4 6\r\n5 5 4 1 3 7\r\n7 2 6 3 5 4 1 7\r\n3 1 4 7\r\n4 3 5 7 4\r\n",
+                "4 5\r\n4 7\r\n1 7\r\n2 5\r\n3 4\r\n6 5\r\n"
+            ],
+            [
+                "7\r\n4 1 4 5 3\r\n3 4 5 7\r\n4 6 5 2 3\r\n7 4 3 1 6 7 5 2\r\n4 5 3 6 2\r\n5 5 3 1 7 4\r\n6 5 1 4 6 3 2\r\n",
+                "4 5\r\n3 5\r\n1 5\r\n2 3\r\n6 3\r\n7 4\r\n"
+            ],
+            [
+                "7\r\n5 3 7 1 4 6\r\n6 3 6 5 4 7 2\r\n4 3 2 6 5\r\n3 5 2 6\r\n4 7 4 3 6\r\n3 3 7 1\r\n6 4 6 2 1 7 3\r\n",
+                "3 6\r\n3 7\r\n2 6\r\n1 7\r\n4 3\r\n5 2\r\n"
+            ],
+            [
+                "7\r\n5 2 7 4 3 5\r\n6 2 5 4 3 7 6\r\n4 3 4 1 6\r\n4 5 7 4 3\r\n3 6 4 1\r\n3 3 7 2\r\n6 4 6 1 3 7 5\r\n",
+                "3 4\r\n4 6\r\n3 7\r\n1 6\r\n2 7\r\n5 3\r\n"
+            ],
+            [
+                "7\r\n4 6 4 2 5\r\n5 5 4 6 2 3\r\n5 5 4 3 6 7\r\n4 6 7 1 3\r\n3 3 1 7\r\n5 3 1 4 7 6\r\n3 4 2 5\r\n",
+                "3 6\r\n3 7\r\n4 6\r\n4 5\r\n1 7\r\n2 5\r\n"
+            ],
+            [
+                "7\r\n5 6 5 3 7 4\r\n4 6 7 5 3\r\n3 2 7 1\r\n3 3 4 5\r\n4 7 5 1 2\r\n6 5 6 2 3 7 1\r\n6 4 2 7 3 6 5\r\n",
+                "3 5\r\n5 7\r\n2 7\r\n1 2\r\n4 3\r\n6 5\r\n"
+            ],
+            [
+                "7\r\n5 6 3 7 2 4\r\n4 6 4 7 3\r\n5 5 2 6 4 3\r\n4 1 2 5 6\r\n5 2 5 6 3 1\r\n3 4 7 3\r\n3 2 5 1\r\n",
+                "2 6\r\n3 6\r\n3 4\r\n2 5\r\n1 5\r\n7 4\r\n"
+            ],
+            [
+                "7\r\n7 3 2 5 7 4 1 6\r\n7 2 1 3 7 4 5 6\r\n7 7 6 4 5 2 1 3\r\n7 7 2 1 4 3 5 6\r\n7 2 3 5 6 4 7 1\r\n7 7 4 1 5 6 3 2\r\n7 3 6 5 7 4 2 1\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n"
+            ],
+            [
+                "7\r\n7 1 4 7 6 3 5 2\r\n7 2 3 5 7 6 4 1\r\n7 6 3 4 5 1 7 2\r\n7 4 3 7 1 2 5 6\r\n7 6 7 1 3 2 4 5\r\n7 5 2 7 6 1 4 3\r\n7 3 6 2 4 5 1 7\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n"
+            ],
+            [
+                "7\r\n5 5 6 1 7 3\r\n3 1 7 5\r\n3 2 4 6\r\n4 4 2 3 6\r\n5 4 5 7 6 3\r\n4 7 1 3 5\r\n5 2 4 5 3 6\r\n",
+                "3 6\r\n5 7\r\n4 6\r\n3 5\r\n1 7\r\n2 4\r\n"
+            ],
+            [
+                "7\r\n4 2 5 4 7\r\n3 1 6 3\r\n3 2 7 4\r\n4 3 6 1 5\r\n5 7 6 3 4 5\r\n5 3 7 2 5 4\r\n5 5 1 3 4 6\r\n",
+                "3 6\r\n4 7\r\n3 5\r\n4 5\r\n1 6\r\n2 7\r\n"
+            ],
+            [
+                "8\r\n8 1 5 7 2 8 4 6 3\r\n8 1 8 2 7 6 5 4 3\r\n8 4 1 3 6 7 8 2 5\r\n8 8 6 7 2 4 5 1 3\r\n8 3 4 1 6 7 2 8 5\r\n8 3 2 5 1 7 6 4 8\r\n8 8 7 3 2 6 5 4 1\r\n8 3 7 4 8 2 5 6 1\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n"
+            ],
+            [
+                "8\r\n6 4 1 2 3 5 8\r\n8 7 1 2 8 4 6 3 5\r\n8 4 7 3 1 5 2 6 8\r\n6 2 3 5 4 8 1\r\n6 2 1 8 3 4 5\r\n6 8 1 2 5 4 3\r\n4 8 1 6 7\r\n4 1 7 8 6\r\n",
+                "1 8\r\n2 1\r\n3 1\r\n4 1\r\n5 1\r\n6 8\r\n7 8\r\n"
+            ],
+            [
+                "8\r\n8 2 3 4 5 7 1 8 6\r\n8 5 1 7 8 2 3 4 6\r\n8 8 2 4 1 3 6 5 7\r\n8 5 2 4 8 1 3 7 6\r\n8 5 7 4 2 8 3 6 1\r\n8 3 7 2 6 4 8 1 5\r\n8 1 4 8 6 3 2 5 7\r\n8 6 8 5 3 1 2 7 4\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n"
+            ],
+            [
+                "8\r\n6 3 5 1 8 6 4\r\n3 2 1 8\r\n6 3 8 6 1 5 4\r\n3 3 1 7\r\n8 7 5 4 1 6 8 3 2\r\n6 4 8 6 5 3 1\r\n7 6 5 3 4 2 8 1\r\n7 5 3 6 8 7 4 1\r\n",
+                "1 8\r\n1 3\r\n2 8\r\n4 1\r\n5 1\r\n6 1\r\n7 3\r\n"
+            ],
+            [
+                "8\r\n4 4 5 1 2\r\n6 1 7 3 5 8 6\r\n6 5 7 1 8 6 3\r\n8 6 8 1 2 4 5 7 3\r\n4 4 1 2 5\r\n8 5 6 7 8 4 2 1 3\r\n6 3 8 6 7 5 1\r\n6 8 3 1 7 5 6\r\n",
+                "1 5\r\n2 1\r\n3 5\r\n4 1\r\n6 5\r\n7 5\r\n8 5\r\n"
+            ],
+            [
+                "8\r\n8 8 7 3 4 5 2 1 6\r\n7 7 5 6 8 2 3 1\r\n3 1 2 4\r\n7 1 5 2 6 7 8 3\r\n7 5 6 3 7 1 2 8\r\n7 3 5 6 1 7 8 2\r\n8 5 7 3 8 1 6 2 4\r\n7 6 7 3 5 2 1 8\r\n",
+                "1 2\r\n3 1\r\n4 2\r\n5 1\r\n6 1\r\n7 1\r\n8 1\r\n"
+            ],
+            [
+                "8\r\n3 2 7 8\r\n5 6 2 8 4 1\r\n8 1 2 5 7 6 3 8 4\r\n4 1 5 3 2\r\n6 1 2 8 6 3 5\r\n3 6 2 4\r\n5 2 7 1 8 6\r\n4 5 2 1 3\r\n",
+                "2 8\r\n1 2\r\n2 6\r\n3 1\r\n4 6\r\n5 1\r\n7 8\r\n"
+            ],
+            [
+                "8\r\n5 6 1 2 4 7\r\n8 7 2 8 6 4 3 1 5\r\n5 2 6 7 1 4\r\n3 8 6 5\r\n7 1 3 2 4 6 7 5\r\n5 1 8 5 3 6\r\n4 6 5 1 3\r\n5 7 4 6 2 1\r\n",
+                "5 6\r\n1 6\r\n2 1\r\n3 6\r\n4 1\r\n7 1\r\n8 5\r\n"
+            ],
+            [
+                "8\r\n3 4 7 3\r\n7 7 1 6 4 3 5 2\r\n5 2 1 4 6 5\r\n5 2 5 1 6 4\r\n7 4 5 2 7 1 8 6\r\n4 4 3 6 7\r\n6 4 1 8 6 2 5\r\n3 6 2 8\r\n",
+                "4 7\r\n4 6\r\n2 6\r\n1 6\r\n3 7\r\n5 6\r\n8 2\r\n"
+            ],
+            [
+                "8\r\n4 8 4 2 5\r\n8 5 4 3 8 2 6 1 7\r\n7 8 7 6 4 2 3 5\r\n6 6 7 2 3 1 4\r\n5 4 2 3 6 7\r\n5 2 7 6 4 3\r\n4 4 2 8 5\r\n3 2 1 3\r\n",
+                "2 4\r\n2 3\r\n1 3\r\n5 4\r\n6 2\r\n7 2\r\n8 4\r\n"
+            ],
+            [
+                "8\r\n3 1 4 7\r\n6 3 7 4 6 2 8\r\n3 5 2 6\r\n6 8 1 3 2 4 7\r\n4 8 3 2 7\r\n4 3 1 7 4\r\n6 7 2 6 5 3 8\r\n4 6 5 3 2\r\n",
+                "4 7\r\n2 6\r\n3 7\r\n2 3\r\n1 4\r\n5 6\r\n8 3\r\n"
+            ],
+            [
+                "8\r\n5 2 8 5 1 7\r\n4 3 5 4 6\r\n3 8 2 7\r\n3 3 4 6\r\n5 5 6 1 4 3\r\n4 8 1 2 7\r\n5 1 3 4 5 7\r\n5 4 1 7 5 8\r\n",
+                "1 5\r\n3 4\r\n1 7\r\n4 5\r\n7 8\r\n2 8\r\n6 3\r\n"
+            ],
+            [
+                "8\r\n5 5 4 8 2 7\r\n7 2 6 4 7 3 5 8\r\n3 3 6 1\r\n6 7 3 4 5 8 2\r\n5 8 7 4 5 2\r\n4 7 1 6 3\r\n5 2 7 4 5 8\r\n5 6 7 1 3 8\r\n",
+                "3 6\r\n3 7\r\n7 8\r\n1 6\r\n2 8\r\n4 8\r\n5 8\r\n"
+            ],
+            [
+                "8\r\n3 2 4 1\r\n3 8 7 3\r\n7 8 4 6 2 5 7 3\r\n4 2 4 8 6\r\n7 2 8 4 6 5 1 7\r\n5 8 1 2 6 4\r\n5 8 7 3 4 5\r\n4 5 4 7 8\r\n",
+                "2 4\r\n7 8\r\n4 8\r\n1 2\r\n3 7\r\n5 8\r\n6 4\r\n"
+            ],
+            [
+                "8\r\n3 8 1 2\r\n4 4 8 6 2\r\n5 2 8 4 6 1\r\n3 5 7 3\r\n6 8 3 4 6 5 2\r\n4 3 5 7 4\r\n6 2 3 1 4 8 6\r\n5 4 3 2 5 7\r\n",
+                "2 8\r\n3 5\r\n3 4\r\n2 4\r\n1 8\r\n6 2\r\n7 5\r\n"
+            ],
+            [
+                "8\r\n4 4 3 8 1\r\n4 6 2 7 5\r\n5 3 6 4 2 8\r\n5 6 2 7 5 4\r\n5 3 4 6 1 8\r\n3 2 5 7\r\n5 5 2 4 8 6\r\n3 8 1 3\r\n",
+                "2 6\r\n4 6\r\n4 8\r\n2 5\r\n3 8\r\n1 3\r\n7 5\r\n"
+            ],
+            [
+                "8\r\n5 3 5 7 2 1\r\n3 1 7 3\r\n4 1 2 7 3\r\n6 5 8 2 4 3 6\r\n5 4 8 5 2 6\r\n6 6 8 3 2 5 7\r\n3 6 4 5\r\n4 2 8 5 6\r\n",
+                "2 3\r\n2 5\r\n3 7\r\n5 6\r\n1 7\r\n4 6\r\n8 5\r\n"
+            ],
+            [
+                "8\r\n8 2 7 6 8 5 1 3 4\r\n8 6 3 8 5 1 4 7 2\r\n8 7 6 1 5 3 8 4 2\r\n8 2 3 4 6 7 1 5 8\r\n8 5 3 2 6 7 1 8 4\r\n8 2 8 4 1 3 6 7 5\r\n8 1 8 7 4 3 5 6 2\r\n8 7 8 5 1 2 3 6 4\r\n",
+                "1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n"
+            ],
+            [
+                "8\r\n7 6 4 8 1 7 2 3\r\n3 1 6 5\r\n7 3 8 4 6 2 1 7\r\n7 8 2 4 1 7 6 3\r\n8 5 6 4 7 1 8 2 3\r\n8 5 4 1 6 2 3 7 8\r\n7 3 8 6 1 4 2 7\r\n7 3 7 2 1 6 8 4\r\n",
+                "1 6\r\n2 1\r\n3 1\r\n4 1\r\n5 6\r\n7 1\r\n8 1\r\n"
+            ],
+            [
+                "8\r\n3 8 4 1\r\n5 8 3 4 7 6\r\n5 1 4 8 6 7\r\n4 1 7 8 4\r\n3 5 2 3\r\n5 3 5 4 6 7\r\n4 2 5 6 3\r\n5 3 7 6 2 5\r\n",
+                "4 8\r\n4 7\r\n3 5\r\n3 6\r\n6 7\r\n1 8\r\n2 5\r\n"
+            ],
+            [
+                "8\r\n5 4 2 8 6 1\r\n5 4 7 5 3 2\r\n3 3 7 5\r\n5 8 2 5 4 6\r\n5 2 8 4 7 5\r\n4 3 4 5 7\r\n3 1 6 8\r\n4 6 8 1 2\r\n",
+                "2 4\r\n5 7\r\n4 5\r\n6 8\r\n2 8\r\n1 6\r\n3 7\r\n"
+            ],
+            [
+                "8\r\n5 5 1 6 3 7\r\n6 6 5 4 2 7 3\r\n4 3 7 6 1\r\n3 1 7 3\r\n6 8 6 5 4 3 2\r\n5 8 2 4 6 5\r\n4 6 5 2 4\r\n3 5 8 4\r\n",
+                "3 7\r\n3 6\r\n5 6\r\n4 5\r\n1 7\r\n2 5\r\n8 4\r\n"
+            ]
+        ]
+    }
+]

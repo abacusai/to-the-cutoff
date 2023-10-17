@@ -1,0 +1,74 @@
+[
+    {
+        "name": "Hospital Queue",
+        "description": "There are \n    n\n people (numbered from \n    1\n to \n    n\n) signed up for a\ndoctor's appointment. The doctor has to choose in which order he will appoint\nthese people. The \n    i\n-th patient should be appointed among the first\n\n    p_i\n people. There are also \n    m\n restrictions of the following format:\nthe \n    i\n-th restriction is denoted by two integers \n    (a_i, b_i)\n and\nmeans that the patient with the index \n    a_i\n should be appointed earlier\nthan the patient with the index \n    b_i\n. For example, if \n    n = 4\n, \n    p =\n    [2, 3, 2, 4]\n, \n    m = 1\n, \n    a = [3]\n and \n    b = [1]\n, then the only\norder of appointment of patients that does not violate the restrictions is\n\n    [3, 1, 2, 4]\n. For \n    n =3\n, \n    p = [3, 3, 3]\n, \n    m = 0\n, \n    a =\n    []\n and \n    b = []\n, any order of appointment is valid. For each patient,\ncalculate the minimum position in the order that they can have among all\npossible orderings that don't violate the restrictions. Input The first line\ncontains two integers \n    n\n and \n    m\n (\n    1 \n    \u2264 n \n    \u2264 2000\n; \n    0\n    \n    \u2264 m \n    \u2264 2000\n). The second line contains \n    n\n integers \n    p_1, p_2,\n    \n    \u2026, p_n\n (\n    1 \n    \u2264 p_i \n    \u2264 n\n). Then \n    m\n lines follow. The\n\n    i\n-th of them contains two integers \n    a_i\n and \n    b_i\n (\n    1 \n    \u2264\n    a_i, b_i \n    \u2264 n\n; \n    a_i \n     b_i\n). All pairs of \n    (a_i, b_i)\n are\ndistinct (i. e. if \n    i \n     j\n, then either \n    a_i \n     a_j\n, \n    b_i\n    \n     b_j\n, or both). Additional constraint on the input: there is at least\none valid order of patients. Output Print \n    n\n integers, where \n    i\n-th\ninteger is equal to the minimum position of \n    i\n-th patient in the order,\namong all valid orders. Positions in the order are numbered from \n    1\n to\n\n    n\n. Examples Input 4 1 2 3 2 4 3 1 Output 2 3 1 4 Input 3 0 3 3 3 Output\n1 1 1 Input 5 3 4 3 3 2 5 3 1 1 5 4 2 Output 4 2 1 1 5 Note In the first\nexample, \n    [3, 1, 2, 4]\n the only one valid order, so the minimum position\nof each patient is equal to their position in this order. In the second\nexample, any order is valid, so any patient can be appointed first. In the\nthird example, there are three valid orders: \n    [4, 2, 3, 1, 5]\n, \n    [3, 4,\n    2, 1, 5]\n and \n    [4, 3, 2, 1, 5]\n.\n\n",
+        "cf_contest_id": 1765,
+        "cf_index": "H",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "graphs",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "4 1\r\n2 3 2 4\r\n3 1\r\n",
+                "2 3 1 4\r\n"
+            ],
+            [
+                "3 0\r\n3 3 3\r\n",
+                "1 1 1\r\n"
+            ],
+            [
+                "5 3\r\n4 3 3 2 5\r\n3 1\r\n1 5\r\n4 2\r\n",
+                "4 2 1 1 5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 1\r\n5 5 3 4 1\r\n5 2\r\n",
+                "2 2 2 2 1\r\n"
+            ],
+            [
+                "7 2\r\n3 6 6 5 7 7 3\r\n1 5\r\n1 2\r\n",
+                "1 2 1 1 2 1 1\r\n"
+            ],
+            [
+                "10 0\r\n7 9 4 8 10 7 10 4 10 4\r\n",
+                "1 1 1 1 1 1 1 1 1 1\r\n"
+            ],
+            [
+                "10 5\r\n10 7 9 8 8 10 4 4 5 7\r\n8 1\r\n7 1\r\n8 5\r\n8 2\r\n9 1\r\n",
+                "4 2 1 1 2 1 1 1 1 1\r\n"
+            ],
+            [
+                "25 10\r\n22 16 19 25 23 16 24 20 21 24 24 13 13 18 22 15 20 21 17 11 22 25 12 23 14\r\n19 5\r\n20 5\r\n12 17\r\n20 17\r\n6 5\r\n20 4\r\n23 4\r\n23 17\r\n23 5\r\n2 5\r\n",
+                "1 1 1 3 6 1 1 1 1 1 1 1 1 1 1 1 4 1 1 1 1 1 1 1 1\r\n"
+            ],
+            [
+                "42 42\r\n41 25 41 27 40 29 25 42 32 39 37 42 20 42 29 42 32 34 29 36 31 42 40 26 36 28 24 8 42 30 21 23 37 41 41 14 21 40 41 20 12 40\r\n7 11\r\n25 5\r\n20 8\r\n20 18\r\n19 1\r\n2 6\r\n30 10\r\n33 12\r\n13 8\r\n31 29\r\n26 8\r\n29 10\r\n4 26\r\n27 16\r\n2 16\r\n10 23\r\n17 8\r\n7 1\r\n33 30\r\n36 26\r\n40 9\r\n36 32\r\n38 8\r\n29 11\r\n15 23\r\n37 8\r\n28 25\r\n28 41\r\n40 32\r\n38 23\r\n30 38\r\n21 3\r\n20 39\r\n42 25\r\n32 4\r\n27 19\r\n17 29\r\n17 26\r\n22 39\r\n41 18\r\n15 25\r\n29 3\r\n",
+                "4 1 5 4 5 2 1 15 2 6 5 2 1 1 1 3 1 4 2 1 1 1 10 1 4 6 1 1 3 2 1 3 1 1 1 1 1 3 3 1 2 1\r\n"
+            ],
+            [
+                "50 52\r\n32 42 21 40 48 32 48 26 30 33 50 35 15 41 44 27 46 48 34 47 47 46 38 49 23 40 41 47 49 50 39 42 50 31 44 20 45 45 39 43 43 37 39 36 49 40 38 33 34 45\r\n13 37\r\n3 48\r\n25 11\r\n13 23\r\n13 24\r\n25 7\r\n13 47\r\n13 31\r\n3 37\r\n16 11\r\n3 4\r\n13 11\r\n25 48\r\n36 22\r\n13 44\r\n13 12\r\n13 20\r\n13 40\r\n8 31\r\n13 48\r\n36 11\r\n3 11\r\n8 22\r\n3 22\r\n16 7\r\n9 22\r\n3 44\r\n36 7\r\n25 44\r\n13 21\r\n36 37\r\n13 33\r\n13 39\r\n13 38\r\n36 48\r\n36 21\r\n36 4\r\n13 22\r\n3 24\r\n8 7\r\n25 31\r\n3 31\r\n8 11\r\n36 31\r\n13 4\r\n16 22\r\n36 44\r\n3 7\r\n13 7\r\n25 24\r\n36 24\r\n25 22\r\n",
+                "1 1 1 4 1 1 7 1 1 1 7 2 1 1 1 1 1 1 1 2 3 8 2 5 1 1 1 1 1 1 6 1 2 1 1 1 4 2 2 2 1 1 1 5 1 1 2 5 1 1\r\n"
+            ],
+            [
+                "100 0\r\n92 92 97 95 85 93 99 94 81 86 88 88 99 94 100 73 97 99 96 80 98 69 93 99 85 86 91 84 96 95 75 100 97 70 81 91 89 76 96 77 100 78 97 99 99 63 100 99 95 89 90 89 84 58 100 86 96 93 97 98 85 96 98 100 100 92 94 94 90 99 99 100 85 93 100 83 89 84 93 96 96 86 96 82 87 94 83 92 74 89 94 98 90 97 98 85 98 98 87 95\r\n",
+                "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n"
+            ],
+            [
+                "1 0\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "25 69\r\n22 11 19 10 20 19 25 18 8 22 24 21 18 7 25 12 16 23 10 21 23 14 24 20 13\r\n25 24\r\n19 2\r\n4 21\r\n19 5\r\n19 24\r\n16 24\r\n9 20\r\n9 2\r\n16 3\r\n17 24\r\n2 24\r\n9 5\r\n22 10\r\n16 1\r\n22 5\r\n2 10\r\n9 10\r\n19 21\r\n2 5\r\n9 1\r\n16 22\r\n22 1\r\n14 12\r\n4 7\r\n25 22\r\n16 5\r\n9 24\r\n4 24\r\n16 10\r\n14 1\r\n14 5\r\n22 7\r\n14 10\r\n14 21\r\n4 1\r\n14 25\r\n17 5\r\n4 22\r\n14 24\r\n4 10\r\n2 7\r\n25 10\r\n14 3\r\n2 21\r\n4 3\r\n19 3\r\n2 22\r\n2 3\r\n22 24\r\n19 7\r\n14 7\r\n9 21\r\n19 1\r\n9 12\r\n25 7\r\n2 1\r\n14 22\r\n25 1\r\n4 5\r\n19 10\r\n9 3\r\n14 2\r\n16 7\r\n19 22\r\n9 7\r\n4 2\r\n9 22\r\n25 5\r\n14 20\r\n",
+                "9 5 7 1 10 1 9 1 1 9 1 3 1 1 1 1 1 1 1 3 6 8 1 10 2\r\n"
+            ]
+        ]
+    }
+]

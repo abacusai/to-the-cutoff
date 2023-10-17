@@ -1,0 +1,83 @@
+[
+    {
+        "name": "Bingo",
+        "description": "Getting ready for VK Fest 2021, you prepared a table with \n    n\n rows and\n\n    n\n columns, and filled each cell of this table with some event related\nwith the festival that could either happen or not: for example, whether you\nwill win a prize on the festival, or whether it will rain. Forecasting\nalgorithms used in VK have already estimated the probability for each event to\nhappen. Event in row \n    i\n and column \n    j\n will happen with probability\n\n    a_i, j\n    \u00b7 10^-4\n. All of the events are mutually independent.\nLet's call the table winning if there exists a line such that all \n    n\n\nevents on it happen. The line could be any horizontal line (cells \n    (i, 1),\n    (i, 2), \n    \u2026, (i, n)\n for some \n    i\n), any vertical line (cells \n    (1,\n    j), (2, j), \n    \u2026, (n, j)\n for some \n    j\n), the main diagonal (cells\n\n    (1, 1), (2, 2), \n    \u2026, (n, n)\n), or the antidiagonal (cells \n    (1, n),\n    (2, n - 1), \n    \u2026, (n, 1)\n). Find the probability of your table to be\nwinning, and output it modulo \n    31\n     607\n (see Output section). Input The\nfirst line contains a single integer \n    n\n (\n    2 \n    \u2264 n \n    \u2264 21\n) \u2014 the\ndimensions of the table. The \n    i\n-th of the next \n    n\n lines contains\n\n    n\n integers \n    a_i, 1, a_i, 2, \n    \u2026, a_i, n\n (\n    0 < a_i, j\n    < 10^4\n). The probability of event in cell \n    (i, j)\n to happen is\n\n    a_i, j\n    \u00b7 10^-4\n. Output Print the probability that your table\nwill be winning, modulo \n    31\n     607\n. Formally, let \n    M = 31\n     607\n. It\ncan be shown that the answer can be expressed as an irreducible fraction\n\n    p/q\n, where \n    p\n and \n    q\n are integers and \n    q \n    \u2261 0 \n    M\n. Output the integer equal to \n    p \n    \u00b7 q^-1\n     M\n. In other words, output such an integer \n    x\n that \n    0 \n    \u2264 x\n    < M\n and \n    x \n    \u00b7 q \n    \u2261 p \n    M\n. Examples Input 2 5000 5000\n5000 5000 Output 5927 Input 2 2500 6000 3000 4000 Output 24812 Input 3 1000\n2000 3000 4000 5000 6000 7000 8000 9000 Output 25267 Note In the first\nexample, any two events form a line, and the table will be winning if any two\nevents happen. The probability of this is \n    11/16\n, and \n    5927\n    \n    \u00b7 16 \n    \u2261 11 \n    31\n     607\n.\n\n",
+        "cf_contest_id": 1530,
+        "cf_index": "F",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "combinatorics",
+            "dp",
+            "math",
+            "probabilities"
+        ],
+        "time_limit_seconds": 7.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "2\r\n5000 5000\r\n5000 5000\r\n",
+                "5927"
+            ],
+            [
+                "2\r\n2500 6000\r\n3000 4000\r\n",
+                "24812"
+            ],
+            [
+                "3\r\n1000 2000 3000\r\n4000 5000 6000\r\n7000 8000 9000\r\n",
+                "25267"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n4187 6775\r\n8831 483\r\n",
+                "4364"
+            ],
+            [
+                "5\r\n6218 4197 7254 9065 4114\r\n5019 2789 1374 8550 6556\r\n7831 8625 5819 277 6289\r\n1899 6840 7594 2229 1963\r\n3688 358 9322 5463 1824\r\n",
+                "11959"
+            ],
+            [
+                "10\r\n3727 9468 2334 1759 7665 8802 2566 8608 7738 8468\r\n699 7787 5831 6740 7768 6130 1307 3024 5005 5372\r\n9292 5317 7483 4485 7094 4619 5568 3490 8905 8055\r\n2787 1081 9804 3797 7475 6684 1794 7608 4109 5655\r\n8149 2435 7185 1716 1036 8615 8342 8323 6879 1067\r\n4237 2790 8091 7774 4709 9760 4236 5114 1185 6711\r\n5216 4007 9554 9996 2459 9623 4336 7828 5822 2149\r\n8936 3401 4548 8770 5980 1971 7876 8854 2219 5309\r\n2527 9708 8683 7180 1970 2371 1726 1563 2297 7946\r\n8771 7940 3717 69 2702 4489 7530 3180 7697 963\r\n",
+                "31254"
+            ],
+            [
+                "2\r\n1142 5283\r\n8130 1644\r\n",
+                "23100"
+            ],
+            [
+                "3\r\n2046 3712 6757\r\n2413 7538 8724\r\n4314 4932 4344\r\n",
+                "22158"
+            ],
+            [
+                "4\r\n3225 154 3865 2703\r\n2138 2522 2427 4626\r\n2741 9110 8188 1479\r\n9392 415 1368 6185\r\n",
+                "26125"
+            ],
+            [
+                "5\r\n6075 4100 7874 8847 3958\r\n3857 431 4672 5019 7385\r\n1884 1764 2032 3230 5417\r\n3978 5743 154 8456 6072\r\n2782 8788 163 4706 7272\r\n",
+                "12236"
+            ],
+            [
+                "6\r\n204 7972 2135 2047 4058 9188\r\n8665 6113 6066 3160 1789 4538\r\n5437 4323 233 9069 805 5009\r\n7737 8873 4485 5890 4495 4192\r\n8592 2343 6592 4406 3714 4108\r\n8828 4665 3269 8711 238 4816\r\n",
+                "28843"
+            ],
+            [
+                "7\r\n7419 6847 4782 4177 7152 8345 2143\r\n3988 2550 6637 6295 1746 4395 3849\r\n6228 9809 1799 1018 1501 514 548\r\n3918 742 9247 2754 524 217 9969\r\n8212 9112 3961 2209 6427 569 2602\r\n8794 2335 4960 404 3673 8793 1484\r\n8547 4880 4132 1304 3612 7635 2015\r\n",
+                "5653"
+            ],
+            [
+                "8\r\n2883 5942 444 2161 740 8201 3494 4958\r\n1024 9409 8458 3162 5661 1085 4641 8812\r\n6723 6127 8153 3356 3484 1882 7342 1184\r\n7451 7807 9994 6252 9180 2670 6257 8156\r\n1277 3662 1580 2059 7479 1668 8602 4152\r\n4895 3696 6873 4252 9064 2619 8619 8831\r\n2656 6138 2503 7776 7159 1723 7156 6547\r\n1864 879 3781 8971 6817 5748 8389 3688\r\n",
+                "19701"
+            ],
+            [
+                "9\r\n3533 4881 5194 4865 2929 904 6082 2072 2628\r\n9535 65 3714 639 2066 8259 686 1747 7945\r\n8275 4034 8640 9763 9143 6855 543 5664 3359\r\n6804 2064 4924 5575 9255 8240 5148 7091 3385\r\n4654 2804 9439 3973 9129 8578 5787 1181 7365\r\n2707 6482 3886 6386 339 3661 6568 4439 1006\r\n3271 5612 2824 7470 1498 7982 8390 2891 5496\r\n9089 8996 6342 4604 2870 4359 4437 2134 1010\r\n3074 6410 7790 5195 9922 8139 7035 5903 5696\r\n",
+                "13889"
+            ],
+            [
+                "10\r\n299 6523 9995 176 5772 6628 9763 9928 9681 5804\r\n4090 1302 8439 8076 4704 274 7115 9986 6496 2666\r\n3745 8252 3059 3787 97 6820 8946 8366 4249 5060\r\n322 1293 168 6678 4872 978 5759 203 782 9597\r\n3105 5713 3559 6471 3288 3802 6754 1178 4145 1589\r\n7987 2574 7514 6924 8568 9453 4262 8010 9624 5615\r\n6315 6328 8985 5131 7683 8880 4898 6984 4572 8138\r\n7578 9148 9940 5854 2820 7537 7694 7543 1511 9028\r\n9412 7240 755 6526 4359 5525 3450 847 8891 9100\r\n8967 7055 8594 2239 9641 75 8595 3196 3066 9439\r\n",
+                "14076"
+            ]
+        ]
+    }
+]

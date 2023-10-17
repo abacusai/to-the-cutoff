@@ -1,0 +1,159 @@
+[
+    {
+        "name": "Euclid Guess",
+        "description": "Let's consider Euclid's algorithm for finding the greatest common divisor,\nwhere \n    t\n is a list: function Euclid(a, b): if a < b: swap(a, b) if b ==\n0: return a r = reminder from dividing a by b if r > 0: append r to the back\nof t return Euclid(b, r) There is an array \n    p\n of pairs of positive\nintegers that are not greater than \n    m\n. Initially, the list \n    t\n is\nempty. Then the function is run on each pair in \n    p\n. After that the list\n\n    t\n is shuffled and given to you. You have to find an array \n    p\n of any\nsize not greater than \n    2 \n    \u00b7 10^4\n that produces the given list\n\n    t\n, or tell that no such array exists. Input The first line contains two\nintegers \n    n\n and \n    m\n (\n    1 \n    \u2264 n \n    \u2264 10^3\n, \n    1 \n    \u2264 m \n    \u2264\n    10^9\n) \u2014 the length of the array \n    t\n and the constraint for integers in\npairs. The second line contains \n    n\n integers \n    t_1, t_2, \n    \u2026, t_n\n\n(\n    1 \n    \u2264 t_i \n    \u2264 m\n) \u2014 the elements of the array \n    t\n. Output If the\nanswer does not exist, output \n    -1\n. If the answer exists, in the first\nline output \n    k\n (\n    1 \n    \u2264 k \n    \u2264 2 \n    \u00b7 10^4\n) \u2014 the size of your\narray \n    p\n, i. e. the number of pairs in the answer. The \n    i\n-th of the\nnext \n    k\n lines should contain two integers \n    a_i\n and \n    b_i\n (\n    1\n    \n    \u2264 a_i, b_i \n    \u2264 m\n) \u2014 the \n    i\n-th pair in \n    p\n. If there are\nmultiple valid answers you can output any of them. Examples Input 7 20 1 8 1 6\n3 2 3 Output 3 19 11 15 9 3 7 Input 2 10 7 1 Output -1 Input 2 15 1 7 Output 1\n15 8 Input 1 1000000000 845063470 Output -1 Note In the first sample let's\nconsider the array \n    t\n for each pair: \n    (19,\n      11)\n: \n    t = [8, 3, 2,\n    1]\n; \n    (15,\n      9)\n: \n    t = [6, 3]\n; \n    (3,\n      7)\n: \n    t = [1]\n.\nSo in total \n    t = [8, 3, 2, 1, 6, 3, 1]\n, which is the same as the input\n\n    t\n (up to a permutation). In the second test case it is impossible to\nfind such array \n    p\n of pairs that all integers are not greater than\n\n    10\n and \n    t = [7, 1]\n In the third test case for the pair \n    (15,\n     \n    8)\n array \n    t\n will be \n    [7, 1]\n.\n\n",
+        "cf_contest_id": 1684,
+        "cf_index": "G",
+        "cf_rating": 2800,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "flows",
+            "graph matchings",
+            "math",
+            "number theory"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7 20\r\n1 8 1 6 3 2 3\r\n",
+                "6\r\n17 9\r\n3 2\r\n18 12\r\n9 6\r\n6 4\r\n9 6\r\n"
+            ],
+            [
+                "2 10\r\n7 1\r\n",
+                "-1"
+            ],
+            [
+                "2 15\r\n1 7\r\n",
+                "1\r\n15 8\r\n"
+            ],
+            [
+                "1 1000000000\r\n845063470\r\n",
+                "-1"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 10\r\n3\r\n",
+                "1\r\n9 6\r\n"
+            ],
+            [
+                "1 10\r\n9\r\n",
+                "-1"
+            ],
+            [
+                "10 10\r\n1 2 1 2 1 1 1 1 2 1\r\n",
+                "10\r\n3 2\r\n6 4\r\n3 2\r\n6 4\r\n3 2\r\n3 2\r\n3 2\r\n3 2\r\n6 4\r\n3 2\r\n"
+            ],
+            [
+                "10 10\r\n1 2 1 2 1 1 6 1 2 1\r\n",
+                "-1"
+            ],
+            [
+                "100 10\r\n1 2 1 3 1 1 1 1 1 1 2 4 2 1 3 1 2 1 2 2 1 1 1 1 2 1 1 3 1 1 2 1 1 1 2 3 2 1 2 1 1 2 1 1 2 1 1 2 1 3 4 1 1 1 1 1 4 1 4 2 3 2 4 1 4 1 3 1 2 2 1 2 2 1 2 1 2 1 3 1 1 3 1 2 1 1 1 1 1 1 4 2 1 2 1 4 1 1 1 2\r\n",
+                "92\r\n9 5\r\n10 6\r\n9 5\r\n9 6\r\n9 5\r\n9 5\r\n9 5\r\n9 5\r\n9 5\r\n3 2\r\n6 4\r\n6 4\r\n3 2\r\n9 6\r\n3 2\r\n6 4\r\n3 2\r\n6 4\r\n6 4\r\n3 2\r\n3 2\r\n3 2\r\n3 2\r\n6 4\r\n3 2\r\n3 2\r\n9 6\r\n3 2\r\n3 2\r\n6 4\r\n3 2\r\n3 2\r\n3 2\r\n6 4\r\n9 6\r\n6 4\r\n3 2\r\n6 4\r\n3 2\r\n3 2\r\n6 4\r\n3 2\r\n3 2\r\n6 4\r\n3 2\r\n3 2\r\n6 4\r\n3 2\r\n9 6\r\n3 2\r\n3 2\r\n3 2\r\n3 2\r\n3 2\r\n3 2\r\n6 4\r\n9 6\r\n6 4\r\n3 2\r\n3 2\r\n9 6\r\n3 2\r\n6 4\r\n6 4\r\n3 2\r\n6 4\r\n6 4\r\n3 2\r\n6 4\r\n3 2\r\n6 4\r\n3 2\r\n9 6\r\n3 2\r\n3 2\r\n9 6\r\n3 2\r\n6 4\r\n3 2\r\n3 2\r\n3 2\r\n3 2\r\n3 2\r\n3 2\r\n6 4\r\n3 2\r\n6 4\r\n3 2\r\n3 2\r\n3 2\r\n3 2\r\n6 4\r\n"
+            ],
+            [
+                "100 10\r\n1 2 1 3 1 1 1 1 1 1 2 4 2 1 3 1 2 1 2 2 1 1 1 1 2 1 8 3 1 1 2 1 1 1 2 3 2 1 2 1 1 2 1 1 2 1 1 2 1 3 4 1 1 1 1 1 4 1 4 2 3 2 4 1 4 1 3 1 2 2 1 2 2 1 2 1 2 1 3 1 1 3 1 2 1 1 1 1 1 1 4 2 1 2 1 4 1 1 1 2\r\n",
+                "-1"
+            ],
+            [
+                "1 1000\r\n296\r\n",
+                "1\r\n888 592\r\n"
+            ],
+            [
+                "1 1000\r\n921\r\n",
+                "-1"
+            ],
+            [
+                "10 1000\r\n1 9 1 6 60 5 1 1 5 11\r\n",
+                "10\r\n3 2\r\n27 18\r\n3 2\r\n18 12\r\n180 120\r\n15 10\r\n3 2\r\n3 2\r\n15 10\r\n33 22\r\n"
+            ],
+            [
+                "10 1000\r\n1 1 6 9 1 5 60 11 5 755\r\n",
+                "-1"
+            ],
+            [
+                "1 100000\r\n26748\r\n",
+                "1\r\n80244 53496\r\n"
+            ],
+            [
+                "1 100000\r\n27662\r\n",
+                "1\r\n82986 55324\r\n"
+            ],
+            [
+                "10 100000\r\n23610 310 26 1072 2 3526 142 2454 12 71\r\n",
+                "10\r\n70830 47220\r\n930 620\r\n78 52\r\n3216 2144\r\n6 4\r\n10578 7052\r\n426 284\r\n7362 4908\r\n36 24\r\n213 142\r\n"
+            ],
+            [
+                "10 100000\r\n2454 142 23610 3526 12 2 310 26 1072 85175\r\n",
+                "-1"
+            ],
+            [
+                "100 100000\r\n51 6 82 6 21797 3496 1 40 163 1 2 539 16094 12 1 781 37 42 2 4 5308 176 57 5 9340 7932 5 1604 22407 6871 122 9 5 7 9 8780 1 2082 1 121 537 1909 693 26 447 5 620 194 83 31 1 295 8 39 1 2 18 6299 587 3711 1 526 379 510 15 2 765 2803 1237 282 20 54 11 295 19130 4 871 228 335 2 471 392 14901 31 13 11 1144 1065 10 5 4437 9675 610 119 15053 1708 28690 80704 36326 19846\r\n",
+                "-1"
+            ],
+            [
+                "1 10000000\r\n2221026\r\n",
+                "1\r\n6663078 4442052\r\n"
+            ],
+            [
+                "1 10000000\r\n2900546\r\n",
+                "1\r\n8701638 5801092\r\n"
+            ],
+            [
+                "9 10000000\r\n8 14066 70312 689072 154690 534382 14048 18 2\r\n",
+                "9\r\n24 16\r\n42198 28132\r\n210936 140624\r\n2067216 1378144\r\n464070 309380\r\n1603146 1068764\r\n42144 28096\r\n54 36\r\n6 4\r\n"
+            ],
+            [
+                "10 10000000\r\n8 534382 14048 18 70312 154690 14066 2 689072 288366\r\n",
+                "10\r\n24 16\r\n1603146 1068764\r\n42144 28096\r\n54 36\r\n210936 140624\r\n464070 309380\r\n42198 28132\r\n6 4\r\n2067216 1378144\r\n865098 576732\r\n"
+            ],
+            [
+                "100 10000000\r\n473 3 1655 103 534 915195 1 104 47 229944 62978 73548 7527 1 440973 9 70 70192 1869 16053 935139 7827 3 24 3 1585 9 615 144 31757 12 2075 999 1602 4164473 3684 105305 4 465 18 177 3861 69 32 5 846958 429567 51 4654 10001 6 32 6 107 264699 9 15 15 31 1254 319 243293 3 7545 2 1163 14 10034 76 1 1302089 2 5752 10 21406 2289439 9922 3 2 820299 219943 1 15 382 95 33 79 917064 23580 183 422 39633 11406 1130440 294147 6177003 5861885 651669 1523450 2123366\r\n",
+                "-1"
+            ],
+            [
+                "1 1000000000\r\n324003137\r\n",
+                "1\r\n972009411 648006274\r\n"
+            ],
+            [
+                "9 1000000000\r\n6638571 118 13657325 380183 175460 1 117 29145 29263\r\n",
+                "9\r\n19915713 13277142\r\n354 236\r\n40971975 27314650\r\n1140549 760366\r\n526380 350920\r\n3 2\r\n351 234\r\n87435 58290\r\n87789 58526\r\n"
+            ],
+            [
+                "10 1000000000\r\n117 118 6638571 29263 380183 13657325 175460 1 29145 637741338\r\n",
+                "-1"
+            ],
+            [
+                "4 120\r\n50 55 5 11\r\n",
+                "-1"
+            ],
+            [
+                "4 80\r\n2 3 27 30\r\n",
+                "2\r\n62 32\r\n57 30\r\n"
+            ],
+            [
+                "4 80\r\n2 3 30 27\r\n",
+                "2\r\n62 32\r\n57 30\r\n"
+            ],
+            [
+                "4 80\r\n2 3 30 33\r\n",
+                "2\r\n62 32\r\n69 36\r\n"
+            ],
+            [
+                "4 80\r\n2 3 33 30\r\n",
+                "2\r\n62 32\r\n69 36\r\n"
+            ],
+            [
+                "2 1000000000\r\n1000000000 200000000\r\n",
+                "-1"
+            ],
+            [
+                "6 100\r\n2 3 5 38 36 45\r\n",
+                "3\r\n78 40\r\n75 39\r\n95 50\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,221 @@
+[
+    {
+        "name": "Restaurant",
+        "description": "A restaurant received n orders for the rental. Each rental order reserve the\nrestaurant for a continuous period of time, the i-th order is characterized by\ntwo time values \u2014 the start time li and the finish time ri (li \u2264 ri).\nRestaurant management can accept and reject orders. What is the maximal number\nof orders the restaurant can accept? No two accepted orders can intersect,\ni.e. they can't share even a moment of time. If one order ends in the moment\nother starts, they can't be accepted both. Input The first line contains\ninteger number n (1 \u2264 n \u2264 5\u00b710^5) \u2014 number of orders. The following n lines\ncontain integer values li and ri each (1 \u2264 li \u2264 ri \u2264 10^9). Output Print the\nmaximal number of orders that can be accepted. Examples Input 2 7 11 4 7\nOutput 1 Input 5 1 2 2 3 3 4 4 5 5 6 Output 3 Input 6 4 8 1 5 4 7 2 5 1 3 6 8\nOutput 2\n\n",
+        "cf_contest_id": 597,
+        "cf_index": "B",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "sortings"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n7 11\r\n4 7\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n",
+                "3\r\n"
+            ],
+            [
+                "6\r\n4 8\r\n1 5\r\n4 7\r\n2 5\r\n1 3\r\n6 8\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n4 6\r\n4 8\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n22 22\r\n14 21\r\n9 25\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n20 59\r\n30 62\r\n29 45\r\n29 32\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\n40 124\r\n40 117\r\n67 106\r\n36 121\r\n38 102\r\n",
+                "1\r\n"
+            ],
+            [
+                "6\r\n124 155\r\n50 93\r\n45 120\r\n54 171\r\n46 190\r\n76 179\r\n",
+                "2\r\n"
+            ],
+            [
+                "7\r\n94 113\r\n54 248\r\n64 325\r\n280 306\r\n62 328\r\n49 341\r\n90 324\r\n",
+                "2\r\n"
+            ],
+            [
+                "8\r\n116 416\r\n104 472\r\n84 476\r\n100 486\r\n199 329\r\n169 444\r\n171 487\r\n134 441\r\n",
+                "1\r\n"
+            ],
+            [
+                "9\r\n90 667\r\n366 539\r\n155 462\r\n266 458\r\n323 574\r\n101 298\r\n90 135\r\n641 661\r\n122 472\r\n",
+                "3\r\n"
+            ],
+            [
+                "10\r\n195 443\r\n229 602\r\n200 948\r\n229 876\r\n228 904\r\n296 656\r\n189 818\r\n611 626\r\n215 714\r\n403 937\r\n",
+                "2\r\n"
+            ],
+            [
+                "1\r\n28 74\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n28 92\r\n2 59\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n5 92\r\n1 100\r\n39 91\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\n4 92\r\n29 43\r\n13 73\r\n10 79\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\n64 86\r\n61 61\r\n46 54\r\n83 94\r\n19 46\r\n",
+                "3\r\n"
+            ],
+            [
+                "6\r\n80 84\r\n21 24\r\n44 80\r\n14 53\r\n5 10\r\n61 74\r\n",
+                "4\r\n"
+            ],
+            [
+                "7\r\n32 92\r\n32 86\r\n13 25\r\n45 75\r\n16 65\r\n1 99\r\n17 98\r\n",
+                "2\r\n"
+            ],
+            [
+                "8\r\n3 59\r\n22 94\r\n26 97\r\n18 85\r\n7 84\r\n1 100\r\n4 100\r\n26 93\r\n",
+                "1\r\n"
+            ],
+            [
+                "9\r\n11 90\r\n8 95\r\n62 95\r\n43 96\r\n16 84\r\n3 70\r\n23 93\r\n4 96\r\n11 86\r\n",
+                "1\r\n"
+            ],
+            [
+                "10\r\n30 45\r\n5 8\r\n51 83\r\n37 52\r\n49 75\r\n28 92\r\n94 99\r\n4 13\r\n61 83\r\n36 96\r\n",
+                "4\r\n"
+            ],
+            [
+                "11\r\n38 92\r\n16 85\r\n32 43\r\n65 84\r\n63 100\r\n21 45\r\n13 92\r\n29 58\r\n56 94\r\n18 83\r\n50 81\r\n",
+                "2\r\n"
+            ],
+            [
+                "12\r\n66 78\r\n41 97\r\n55 69\r\n55 61\r\n36 64\r\n14 97\r\n96 99\r\n28 58\r\n44 93\r\n2 100\r\n42 88\r\n1 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "13\r\n50 85\r\n38 65\r\n5 51\r\n50 96\r\n4 92\r\n23 94\r\n2 99\r\n2 84\r\n1 98\r\n2 100\r\n12 100\r\n21 97\r\n7 84\r\n",
+                "1\r\n"
+            ],
+            [
+                "14\r\n17 92\r\n7 96\r\n49 96\r\n10 99\r\n7 98\r\n12 85\r\n10 52\r\n2 99\r\n23 75\r\n4 98\r\n7 100\r\n2 69\r\n6 99\r\n20 87\r\n",
+                "1\r\n"
+            ],
+            [
+                "15\r\n1 58\r\n15 21\r\n53 55\r\n59 90\r\n68 71\r\n29 51\r\n52 81\r\n32 52\r\n38 44\r\n57 59\r\n47 60\r\n27 32\r\n49 86\r\n26 94\r\n44 45\r\n",
+                "6\r\n"
+            ],
+            [
+                "16\r\n4 80\r\n16 46\r\n15 16\r\n60 63\r\n8 54\r\n18 49\r\n67 99\r\n72 80\r\n1 8\r\n19 64\r\n1 54\r\n46 94\r\n2 89\r\n67 78\r\n21 47\r\n5 29\r\n",
+                "5\r\n"
+            ],
+            [
+                "17\r\n34 42\r\n31 84\r\n8 96\r\n63 88\r\n11 99\r\n80 99\r\n1 96\r\n11 12\r\n27 28\r\n4 30\r\n1 79\r\n16 86\r\n15 86\r\n13 80\r\n3 98\r\n37 89\r\n59 88\r\n",
+                "4\r\n"
+            ],
+            [
+                "18\r\n11 94\r\n12 85\r\n25 90\r\n7 61\r\n63 88\r\n6 87\r\n49 88\r\n16 76\r\n12 78\r\n61 84\r\n3 84\r\n20 91\r\n1 84\r\n17 100\r\n43 80\r\n8 86\r\n9 98\r\n35 97\r\n",
+                "2\r\n"
+            ],
+            [
+                "19\r\n24 63\r\n23 86\r\n5 89\r\n10 83\r\n31 92\r\n8 96\r\n21 63\r\n1 83\r\n2 100\r\n5 96\r\n18 98\r\n9 77\r\n11 91\r\n44 95\r\n1 98\r\n22 60\r\n5 98\r\n22 91\r\n1 96\r\n",
+                "1\r\n"
+            ],
+            [
+                "20\r\n22 77\r\n13 50\r\n55 64\r\n16 52\r\n67 96\r\n49 51\r\n59 95\r\n2 25\r\n69 91\r\n2 24\r\n4 46\r\n50 74\r\n45 63\r\n39 55\r\n31 33\r\n9 33\r\n6 72\r\n14 67\r\n56 98\r\n69 94\r\n",
+                "5\r\n"
+            ],
+            [
+                "1\r\n1 1000000000\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\n1 1000000000\r\n1 1000000000\r\n1 1000000000\r\n1 1000000000\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n1000000000 1000000000\r\n1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n1 10000\r\n2 3\r\n4 5\r\n6 7\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n1 10\r\n2 4\r\n6 8\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n1 4\r\n2 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n1 100\r\n2 3\r\n4 5\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n1 10\r\n2 3\r\n4 5\r\n6 7\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n1 5\r\n2 3\r\n4 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n1 1000\r\n1 5\r\n6 1000\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n1 10000\r\n3 5\r\n7 8\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n1 5\r\n6 15\r\n8 10\r\n11 17\r\n",
+                "3\r\n"
+            ],
+            [
+                "4\r\n1 3\r\n6 800\r\n7 9\r\n10 11\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\n1 10\r\n2 3\r\n4 5\r\n6 7\r\n8 9\r\n",
+                "4\r\n"
+            ],
+            [
+                "3\r\n1 5\r\n1 3\r\n4 6\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n1 10\r\n2 3\r\n4 5\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n1 3\r\n2 4\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

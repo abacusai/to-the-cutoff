@@ -1,0 +1,138 @@
+[
+    {
+        "name": "Library game",
+        "description": "Alessia and Bernardo are discovering the world of competitive programming\nthrough the books of their university library. The library consists of \n    m\n\nsections numbered from \n    1\n to \n    m\n. Each section contains only books\ndedicated to a particular subject and different sections correspond to\ndifferent subjects. In order to prevent the students from wandering in the\nlibrary, the university has established a system of passes. Each pass has a\nlength \n    y\n associated to it and allows access to an interval of \n    y\n\nconsecutive sections in the library. During a visit, the student must choose\nexactly one book from one of these sections and leave the library. Each pass\ncan be used only once. At the moment Alessia and Bernardo have \n    n\n passes\nof lengths \n    x_1, \n      x_2, \n     \n    \u2026, \n      x_n\n. They have different\nopinions on the best way to improve: Alessia thinks that it is important to\nstudy many different topics, while Bernardo believes that it is important to\nstudy deeply at least one topic. So, Alessia wants to use the \n    n\n passes\nto get \n    n\n books on distinct topics, while Bernardo would like to get at\nleast two books on the same topic. They have reached the following agreement:\nfor each of the following \n    n\n days, Alessia will choose a pass of length\n\n    y\n among those which are still available and an interval of \n    y\n\nsections in the library, and Bernardo will go into the library and will take\nexactly one book from one of those sections. Can Bernardo manage to get at\nleast two books on the same subject, or will Alessia be able to avoid it? You\nshould decide whether you want to be Alessia or Bernardo, and you have to\nfulfill the goal of your chosen character. The judge will impersonate the\nother character. Note that, even if at some moment Bernardo has already taken\ntwo books on the same subject, the interaction should go on until the end of\nthe \n    n\n days. Input The first line contains two integers \n    n\n and\n\n    m\n (\n    1 \n    \u2264 n \n    \u2264 100\n, \n    n \n    \u2264 m \n    \u2264 5000\n) \u2014 the number\nof passes and the number of sections. The second line contains \n    n\n\nintegers \n    x_1, \n      x_2, \n     \n    \u2026, \n      x_n\n (\n    1 \n    \u2264 x_i \n    \u2264\n    m\n) \u2014 the lengths of the passes available. Interaction First, you should\nprint a line containing either the string \n    \n or the\nstring \n    \n \u2014 the character that you want to impersonate.\nThen, for each of the \n    n\n turns: If you are taking the role of Alessia,\nprint a single line consisting of two integers \n    y\n and \n    a\n (\n    1 \n    \u2264\n    a \n    \u2264 m - y + 1\n) \u2014 you are choosing a pass of length \n    y\n and the\ninterval of sections \n    [a, a + y - 1]\n. Note that at least one pass of\nlength \n    y\n must still be available. After this, read a single integer\n\n    b\n (\n    a \n    \u2264 b \n    \u2264 a + y - 1\n) \u2014 the subject of the book selected\nby Bernardo. If you are taking the role of Bernardo, read two integers \n    y\n\nand \n    a\n (\n    1 \n    \u2264 a \n    \u2264 m - y + 1\n) \u2014 the length of the pass chosen\nby Alessia and the index of the first section of the interval. It is\nguaranteed that there is at least one pass of length \n    y\n available. Then,\nprint a line consisting of a single integer \n    b\n (\n    a \n    \u2264 b \n    \u2264 a + y\n    - 1\n) \u2014 the subject from which you choose to take a book. If one of your\ninteractions is malformed, the interactor terminates immediately and your\nprogram receives the verdict \n    \n. Otherwise, you\nwill receive the verdict according to the game's criteria described above.\nAfter printing a line do not forget to end the line and flush the output.\nOtherwise, you will get the verdict \n    \n. To flush the\noutput, use: \n    \n in C;\n\n    \n, \n    \n or\n\n    \n in C++; \n    \n in\nJava and Kotlin; \n    \n in Python. Examples Input\n5 14 3 7 2 3 10 Output \u00ad Input 4 10 4 1 6 4 Output \u00ad Note In the first\nsample, it can be shown that Alessia can accomplish her goal. An example of\ninteraction (after reading the input) follows: \n    \n\n    [                                ;                                ;                      Contestant                                ;                           Judge                                ;                     Explanation; ; ;                                ;                                ;                                                                                                ; The program will act as\n    Alessia; ; ;                                ;                               3;                              11                                                                ;         Choose y = 3 and a =\n    11; ; ;                                ;                                                              13                                ;            Judge selects b = 13; ; ;                                ;                              10;                               2                                                                ;         Choose y = 10 and a = 2; ; ;                                ;                                                               9                                ;             Judge selects b = 9; ; ;                                ;                               7;                               1                                                                ;          Choose\n    y = 7 and a = 1; ; ;                                ;                                                               4                                ;             Judge selects b = 4; ; ;                                ;                               2;                              10                                                                ;         Choose y = 2 and a = 10; ; ;                                ;                                                              10                                ;            Judge selects b = 10; ; ;                                ;                               3;                               6                                                                ;          Choose y = 3 and a = 6; ; ;                                ;                                                               7                                ;             Judge\n    selects b = 7; ; ;                                ;                                ;  ]\n\n    \n The program of the\ncontestant wins because all the books chosen by Bernardo pertain to different\ntopics. The actions performed by the contestant and the judge in this example\nof interaction may be non-optimal. In the second sample, it can be shown that\nBernardo can manage to fulfil his goal. An example of interaction (after\nreading the input) follows: \n    \n\n    [                                 ;                                 ;                       Contestant                                 ;                            Judge                                 ;                      Explanation; ; ;                                 ;                                 ;                                                                                                   ; The program will act as Bernardo; ; ;                                 ;                                                                 4;                                1                                 ;    Judge chooses y = 4 and a = 1; ; ;                                 ;                                4                                                                  ;                     Select b = 4; ; ;                                 ;                                                                 1;                               10                                 ;   Judge chooses y = 1 and a = 10; ; ;                                 ;                               10                                                                  ;                    Select b = 10; ; ;                                 ;                                                                 6;                                3                                 ;    Judge\n    chooses y = 6 and a = 3; ; ;                                 ;                                4                                                                  ;                     Select b = 4; ; ;                                 ;                                                                 4;                                5                                 ;    Judge chooses y = 4 and a = 5; ; ;                                 ;                                8                                                                  ;                     Select b = 8; ; ;                                 ;                                 ;  ]\n\n    \n The program of the contestant wins because Bernardo has selected two\nbooks on topic number \n    4\n. The actions performed by the contestant and the\njudge in this example of interaction may be non-optimal.\n\n",
+        "cf_contest_id": 1776,
+        "cf_index": "C",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "games",
+            "greedy",
+            "interactive",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 14\r\n3 7 2 3 10\r\n",
+                ""
+            ],
+            [
+                "4 10\r\n4 1 6 4\r\n",
+                ""
+            ]
+        ],
+        "private_cases": [
+            [
+                "100 5000\r\n66 177 388 60 108 152 64 76 74 1093 448 137 90 94 1438 87 313 948 210 83 68 64 4976 106 52 58 58 171 67 79 58 146 812 78 73 360 75 111 61 120 135 85 64 53 50 54 235 60 556 55 69 83 67 261 55 51 107 206 194 465 117 63 156 100 241 78 141 87 56 53 335 294 185 189 26 279 71 51 124 51 96 266 131 681 1821 80 162 98 103 217 53 70 151 128 91 56 116 94 59 524\r\n",
+                ""
+            ],
+            [
+                "100 5000\r\n158 193 112 311 75 54 102 89 69 70 156 513 252 240 104 136 82 109 96 1165 70 63 53 80 92 52 279 194 204 72 65 89 142 3 224 106 163 62 118 50 60 51 79 169 161 64 72 92 726 100 382 57 146 331 401 78 119 116 192 126 1397 54 63 327 136 51 51 76 333 209 68 123 83 547 274 53 118 64 56 129 98 568 53 56 58 87 66 108 3608 177 61 56 79 309 79 875 60 59 1875 75\r\n",
+                ""
+            ],
+            [
+                "100 4999\r\n80 164 98 108 75 134 112 381 3572 51 192 61 352 53 56 65 237 87 63 198 570 102 64 81 50 60 53 62 79 90 526 71 58 316 646 148 211 413 440 104 116 142 102 130 83 1158 124 217 245 72 152 89 92 2368 73 124 51 75 59 145 1499 56 119 58 455 77 95 87 54 56 784 98 69 72 276 172 135 79 258 67 55 166 52 68 156 206 182 278 47 106 85 850 58 65 53 52 69 62 118 305\r\n",
+                ""
+            ],
+            [
+                "100 4999\r\n238 227 56 66 64 92 67 2903 290 99 70 120 64 234 52 103 89 153 53 93 112 131 352 60 72 54 928 104 2468 57 61 260 602 51 131 119 138 376 213 68 49 414 146 188 95 1223 102 539 75 75 85 146 60 128 154 59 180 55 68 81 277 198 1454 53 72 110 509 98 155 400 142 238 51 63 80 54 59 11 76 71 53 80 99 58 64 73 90 112 84 310 51 178 83 84 381 161 803 165 123 57\r\n",
+                ""
+            ],
+            [
+                "89 5000\r\n123 1163 159 79 75 128 59 62 87 149 116 559 98 80 96 60 138 108 259 1821 111 74 95 57 58 56 121 69 358 180 63 164 103 89 912 70 225 316 238 355 142 106 68 137 75 63 293 2614 59 153 206 104 87 84 67 1577 174 191 102 79 115 64 233 453 194 68 131 635 83 506 126 215 94 396 275 15 474 58 64 77 72 306 811 72 61 92 166 65 84\r\n",
+                ""
+            ],
+            [
+                "89 5000\r\n141 100 110 153 267 81 240 338 79 85 74 73 174 932 312 1612 146 93 60 64 89 108 83 114 128 72 176 121 680 764 58 817 237 174 62 128 198 167 70 79 98 67 550 56 71 117 111 86 65 494 227 68 63 56 76 68 241 147 555 61 156 84 121 104 376 57 342 25 204 146 60 215 131 1420 59 91 70 90 95 1439 76 141 63 401 103 273 98 65 294\r\n",
+                ""
+            ],
+            [
+                "100 4000\r\n184 71 58 221 43 45 152 114 54 86 256 89 22 100 48 54 45 102 2535 108 75 732 388 42 245 78 42 1766 51 74 625 79 41 60 96 191 48 270 112 63 97 50 74 59 40 65 93 43 1049 51 63 61 85 48 119 58 147 421 56 169 135 82 55 41 66 130 351 53 40 124 959 43 228 327 44 40 209 125 66 71 137 111 175 472 47 57 81 289 86 51 68 46 153 49 69 94 44 165 569 56\r\n",
+                ""
+            ],
+            [
+                "100 4000\r\n584 96 57 44 47 123 325 102 145 58 46 324 62 80 66 84 45 44 84 159 451 55 95 76 41 63 54 302 67 40 407 48 51 443 2719 267 202 179 116 43 41 116 56 483 59 104 250 41 124 43 98 373 218 62 60 50 50 125 226 127 429 18 79 82 1884 48 70 46 165 75 43 261 68 42 59 40 50 49 76 70 43 104 69 1215 53 104 82 163 150 53 84 111 124 182 72 183 57 62 82 54\r\n",
+                ""
+            ],
+            [
+                "100 3000\r\n187 125 150 31 61 30 32 44 79 468 97 51 145 130 38 50 39 75 54 91 844 37 35 595 334 36 34 121 72 66 77 41 93 118 31 88 115 42 2301 40 31 66 30 47 172 32 44 226 319 44 32 62 60 52 244 85 30 165 39 42 49 406 90 179 202 103 41 68 35 51 55 34 54 69 46 251 38 733 100 1095 58 110 41 32 83 64 73 137 46 37 47 37 57 34 48 63 34 272 33 18\r\n",
+                ""
+            ],
+            [
+                "100 3000\r\n98 31 35 56 269 41 34 39 114 122 36 56 50 60 52 114 78 46 37 178 75 30 63 148 60 168 34 141 44 87 73 49 32 31 41 37 101 145 71 840 30 32 42 42 30 192 55 69 38 102 257 38 250 69 38 30 203 346 47 44 834 79 36 42 66 72 148 44 33 460 106 50 934 76 82 131 303 27 64 40 32 122 49 33 141 93 633 32 54 51 34 62 57 37 312 47 570 46 94 80\r\n",
+                ""
+            ],
+            [
+                "100 4500\r\n68 62 66 246 54 160 52 160 79 131 88 91 95 172 50 369 70 54 60 66 220 51 62 52 76 1743 64 81 125 67 848 265 53 59 84 232 1096 1210 83 190 56 601 136 459 57 48 115 95 115 300 89 425 64 102 60 109 60 104 3057 56 311 47 47 174 49 50 153 77 546 185 46 45 29 46 121 134 72 71 204 395 143 112 107 45 258 75 210 97 128 56 45 145 679 73 346 91 53 84 74 49\r\n",
+                ""
+            ],
+            [
+                "100 4500\r\n112 77 315 147 57 46 208 82 73 58 91 88 65 185 60 58 447 134 78 258 139 53 62 102 281 123 91 60 517 85 704 107 154 48 96 131 50 56 1367 63 406 56 222 265 69 1075 78 610 71 48 45 165 142 66 47 95 70 248 73 45 60 75 165 439 89 68 174 50 51 165 71 83 80 52 478 116 47 373 67 232 203 52 55 181 107 54 102 63 54 109 126 46 50 99 319 876 47 8 636 119\r\n",
+                ""
+            ],
+            [
+                "10 10\r\n2 4 1 1 2 1 2 1 1 6\r\n",
+                ""
+            ],
+            [
+                "10 10\r\n1 1 5 1 1 2 9 5 1 2\r\n",
+                ""
+            ],
+            [
+                "10 20\r\n3 6 2 5 6 2 3 2 18 1\r\n",
+                ""
+            ],
+            [
+                "10 20\r\n7 5 12 3 2 5 2 2 2 5\r\n",
+                ""
+            ],
+            [
+                "1 5000\r\n3298\r\n",
+                ""
+            ],
+            [
+                "10 5000\r\n1010 571 809 4102 1944 538 1322 836 212 692\r\n",
+                ""
+            ],
+            [
+                "10 5000\r\n1731 161 970 1062 3707 663 529 951 562 1505\r\n",
+                ""
+            ],
+            [
+                "100 100\r\n2 5 1 10 1 2 6 3 23 1 1 1 1 2 1 3 1 12 2 2 1 1 1 5 2 2 1 15 2 2 1 1 4 1 52 31 1 2 2 2 43 1 2 1 1 1 4 1 1 5 1 3 1 12 1 1 1 2 1 17 1 5 1 1 6 2 1 3 4 2 2 8 1 1 1 7 1 10 1 1 1 3 1 3 1 1 2 1 1 4 5 9 1 1 1 3 1 4 1 1\r\n",
+                ""
+            ],
+            [
+                "100 100\r\n6 2 3 5 3 1 4 1 1 7 2 5 1 1 1 2 1 1 1 1 1 1 2 1 1 24 1 1 1 49 4 1 1 5 1 2 1 1 12 1 1 5 6 3 1 3 5 1 7 2 1 1 1 1 1 2 2 1 4 1 1 1 24 1 1 1 6 2 3 1 1 2 4 1 1 20 1 91 2 1 2 3 2 1 9 2 1 10 7 2 12 11 2 1 1 1 3 1 1 2\r\n",
+                ""
+            ],
+            [
+                "100 500\r\n8 13 373 12 154 7 5 12 19 30 10 8 10 3 53 22 18 5 50 36 5 11 5 223 9 68 82 23 14 6 7 24 9 7 5 28 9 14 16 6 20 15 11 5 33 6 8 6 5 5 108 7 62 25 8 11 5 6 27 7 5 13 17 88 13 41 6 10 5 8 5 6 5 5 18 6 6 15 42 16 5 7 9 7 9 6 20 10 6 12 5 8 8 9 10 33 6 13 7 5\r\n",
+                ""
+            ],
+            [
+                "100 1000\r\n12 10 24 22 10 11 14 10 498 21 57 12 32 20 1 11 141 61 12 23 14 13 49 10 11 20 12 25 20 14 28 32 248 17 16 39 37 105 26 27 15 10 11 11 14 25 17 69 35 16 12 13 21 13 238 41 37 12 10 10 15 10 12 172 39 514 32 17 93 20 23 30 39 14 56 18 16 34 12 10 78 27 11 23 15 15 18 18 75 51 19 39 13 151 55 17 13 78 10 117\r\n",
+                ""
+            ],
+            [
+                "100 2500\r\n83 90 110 58 73 78 35 31 99 53 209 1250 31 85 182 79 34 93 44 27 40 60 26 416 29 27 1457 128 51 33 43 722 58 34 53 30 43 32 307 136 37 49 142 25 28 567 39 55 25 45 35 26 26 29 27 47 29 73 25 47 175 271 86 30 100 31 68 40 56 27 104 34 162 42 60 36 69 453 36 197 124 48 28 51 32 39 25 65 151 66 119 341 40 28 37 42 62 238 18 32\r\n",
+                ""
+            ],
+            [
+                "29 1000\r\n41 83 101 45 59 151 39 76 136 48 43 92 147 65 62 57 53 35 90 55 360 123 321 204 36 42 37 289 10\r\n",
+                ""
+            ],
+            [
+                "99 5000\r\n807 318 178 223 65 54 52 245 100 86 62 58 52 90 113 161 117 90 580 54 202 132 115 50 69 81 74 251 79 66 56 83 149 138 71 60 80 87 76 104 454 68 996 77 92 697 119 309 457 99 64 356 386 98 80 108 54 67 56 69 214 56 363 233 4510 74 129 146 87 104 138 58 106 53 61 171 199 278 1215 271 59 1438 94 72 16 546 174 154 163 62 59 63 52 71 125 123 191 51 2328\r\n",
+                ""
+            ],
+            [
+                "42 5000\r\n160 499 4568 191 265 148 130 2438 123 378 142 171 527 177 217 1098 210 135 310 120 738 288 885 208 319 156 237 570 103 241 1373 251 194 339 666 163 131 391 144 425 128 182\r\n",
+                ""
+            ]
+        ]
+    }
+]

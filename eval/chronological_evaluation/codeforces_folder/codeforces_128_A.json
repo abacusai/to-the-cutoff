@@ -1,0 +1,79 @@
+[
+    {
+        "name": "Statues",
+        "description": "In this task Anna and Maria play a game with a very unpleasant rival. Anna and\nMaria are in the opposite squares of a chessboard (8 \u00d7 8): Anna is in the\nupper right corner, and Maria is in the lower left one. Apart from them, the\nboard has several statues. Each statue occupies exactly one square. A square\nthat contains a statue cannot have anything or anyone \u2014 neither any other\nstatues, nor Anna, nor Maria. Anna is present on the board as a figurant (she\nstands still and never moves), and Maria has been actively involved in the\ngame. Her goal is \u2014 to come to Anna's square. Maria and statues move in turn,\nMaria moves first. During one move Maria can go to any adjacent on the side or\ndiagonal cell in which there is no statue, or she can stay in the cell where\nshe is. The statues during their move must go one square down simultaneously,\nand those statues that were in the bottom row fall from the board and are no\nlonger appeared. At that moment, when one of the statues is in the cell in\nwhich the Maria is, the statues are declared winners. At the moment when Maria\ncomes into the cell where Anna has been waiting, Maria is declared the winner.\nObviously, nothing depends on the statues, so it all depends on Maria.\nDetermine who will win, if Maria does not make a strategic error. Input You\nare given the 8 strings whose length equals 8, describing the initial position\non the board. The first line represents the top row of the board, the next one\n\u2014 for the second from the top, and so on, the last line represents the bottom\nrow. Each character string matches a single cell board in the appropriate row,\nand the characters are in the same manner as that of the corresponding cell.\nIf the cell is empty, the corresponding character is \".\". If a cell has Maria,\nthen it is represented by character \"M\". If a cell has Anna, it is represented\nby the character \"A\". If a cell has a statue, then the cell is represented by\ncharacter \"S\". It is guaranteed that the last character of the first row is\nalways \"A\", the first character of the last line is always \"M\". The remaining\ncharacters are \".\" or \"S\". Output If Maria wins, print string \"WIN\". If the\nstatues win, print string \"LOSE\". Examples Input .......A ........ ........\n........ ........ ........ ........ M....... Output WIN Input .......A\n........ ........ ........ ........ ........ SS...... M....... Output LOSE\nInput .......A ........ ........ ........ ........ .S...... S....... MS......\nOutput LOSE\n\n",
+        "cf_contest_id": 128,
+        "cf_index": "A",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                ".......A\r\n........\r\n........\r\n........\r\n........\r\n........\r\n........\r\nM.......\r\n",
+                "WIN\r\n"
+            ],
+            [
+                ".......A\r\n........\r\n........\r\n........\r\n........\r\n........\r\nSS......\r\nM.......\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                ".......A\r\n........\r\n........\r\n........\r\n........\r\n.S......\r\nS.......\r\nMS......\r\n",
+                "LOSE\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                ".SSSSSSA\r\n.SSSSSSS\r\n.SSSSSSS\r\n.SSSSSSS\r\n.SSSSSSS\r\n.SSSSSSS\r\n.SSSSSSS\r\nMSSSSSSS\r\n",
+                "WIN\r\n"
+            ],
+            [
+                "SSSSSSSA\r\nSSSSSSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nMSSSSSSS\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "SSSSSSSA\r\nSS.SSSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nS..SS.SS\r\nSSSS.SSS\r\nSSSS.SSS\r\nM.SSS.SS\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "S..SS.SA\r\n.SSS.S.S\r\nSS.SSS.S\r\nSSS.S.S.\r\nSS.SSSSS\r\nSSSSSSSS\r\nSSSS.SS.\r\nM.SSS.S.\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "SSSS.SSA\r\nSSS.SSSS\r\nSSSSSS.S\r\nSS.SSS.S\r\nSS.S.SS.\r\nSSSS.SS.\r\nSSSS.SSS\r\nMSS.SSS.\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "SSSS.SSA\r\nSSSSS.SS\r\nSSSS.SSS\r\nSSSSSSSS\r\nSS.SSSSS\r\nSSS.SSSS\r\nSSSSSSSS\r\nMSSS..SS\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "SSSSSSSA\r\nSS.SSS.S\r\nSSSSSS.S\r\nSSSSSSSS\r\nSSSSSSSS\r\nSSSSSSS.\r\nSSSSSSSS\r\nM.SSSSSS\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "SSSSSSSA\r\nSSSSSSSS\r\n.SSSSSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nSSSSS.SS\r\nSSSSSSSS\r\nMSSSSSSS\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "SSSSSSSA\r\nSSS.SSSS\r\nSSSSSSSS\r\nSSS.SSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nMSSSS.SS\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "SSSSSSSA\r\nSSSSSSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nMSSSSSSS\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "S.SS.SSA\r\n.S..SSS.\r\nSSS.SSS.\r\nSSSS.SSS\r\nS.SSSSSS\r\nSSSSSSSS\r\nSSSSS.SS\r\nMS.SSSSS\r\n",
+                "LOSE\r\n"
+            ],
+            [
+                "SSS.SSSA\r\nSSSSSSSS\r\nSSSSSSSS\r\nSS.SSS.S\r\nSSSSSSSS\r\nSSSSSSSS\r\nSSSSSSSS\r\nMSSSSSSS\r\n",
+                "LOSE\r\n"
+            ]
+        ]
+    }
+]

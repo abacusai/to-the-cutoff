@@ -1,0 +1,41 @@
+[
+    {
+        "name": "Cats on the Upgrade (easy version)",
+        "description": "This is the easy version of the problem. The only difference between the easy\nand the hard versions are removal queries, they are present only in the hard\nversion. \"Interplanetary Software, Inc.\" together with \"Robots of Cydonia,\nLtd.\" has developed and released robot cats. These electronic pets can meow,\ncatch mice and entertain the owner in various ways. The developers from\n\"Interplanetary Software, Inc.\" have recently decided to release a software\nupdate for these robots. After the update, the cats must solve the problems\nabout bracket sequences. One of the problems is described below. First, we\nneed to learn a bit of bracket sequence theory. Consider the strings that\ncontain characters \"(\", \")\" and \".\". Call a string regular bracket sequence\n(RBS), if it can be transformed to an empty string by one or more operations\nof removing either single \".\" characters, or a continuous substring \"()\". For\ninstance, the string \"(()(.))\" is an RBS, as it can be transformed to an empty\nstring with the following sequence of removals: \"(()(.))\" \n    \u2192\n\n\"(()())\" \n    \u2192\n \"(())\" \n    \u2192\n \"()\"\n\n    \u2192\n \"\". We got an empty string, so the initial string was an\nRBS. At the same time, the string \")(\" is not an RBS, as it is not possible to\napply such removal operations to it. An RBS is simple if this RBS is not\nempty, doesn't start with \".\", and doesn't end with \".\". Denote the substring\nof the string \n    s\n as its sequential subsegment. In particular,\n\n    s[l\n    \u2026 r] = s_ls_l+1\n    \u2026 s_r\n, where \n    s_i\n is the \n    i\n-th\ncharacter of the string \n    s\n. Now, move on to the problem statement itself.\nYou are given a string \n    s\n, initially consisting of characters \"(\" and\n\")\". You need to answer the queries of the following kind. Given two indices,\n\n    l\n and \n    r\n (\n    1 \n    \u2264 l < r \n    \u2264 n\n), and it's guaranteed that\nthe substring \n    s[l\n    \u2026 r]\n is a simple RBS. You need to find the number\nof substrings in \n    s[l\n    \u2026 r]\n such that they are simple RBS. In other\nwords, find the number of index pairs \n    i\n, \n    j\n such that \n    l \n    \u2264 i\n    < j \n    \u2264 r\n and \n    s[i\n    \u2026 j]\n is a simple RBS. You are an employee in\n\"Interplanetary Software, Inc.\" and you were given the task to teach the cats\nto solve the problem above, after the update. Note that the \".\" character\ncannot appear in the string in this version of the problem. It is only needed\nfor the hard version. Input The first line contains two integers \n    n\n and\n\n    q\n (\n    2 \n    \u2264 n \n    \u2264 3\n    \u00b710^5\n, \n    1 \n    \u2264 q \n    \u2264\n    3\n    \u00b710^5\n), the length of the string, and the number of queries. The\nsecond line contains the string \n    s\n, consisting of \n    n\n characters \"(\"\nand \")\". Each of the following \n    q\n lines contains three integers \n    t\n,\n\n    l\n and \n    r\n (\n    t = 2\n, \n    1 \n    \u2264 l < r \n    \u2264 n\n), the queries\nyou need to answer. It is guaranteed that all the queries are valid and\ncorrespond to the problem statements. Note that \n    t\n is unused and always\nequal to two in this problem. It is required for the hard version of the\nproblem. Output For each query, print a single integer in a separate line, the\nnumber of substrings that are simple RBS. The answers must be printed in the\nsame order as the queries are specified in the input. Example Input 9 4\n)(()())() 2 3 6 2 2 7 2 8 9 2 2 9 Output 3 4 1 6 Note Consider the example\ntest case. The answer to the first query is \n    3\n, as there are three\nsuitable substrings: \n    s[3\n    \u20266]\n, \n    s[3\n    \u20264]\n and\n\n    s[5\n    \u20266]\n. The answer to the second query is \n    4\n. The substrings\nare \n    s[3\n    \u20266]\n, \n    s[3\n    \u20264]\n, \n    s[5\n    \u20266]\n and\n\n    s[2\n    \u20267]\n. The answer to the third query is \n    1\n. The substring is\n\n    s[8\n    \u20269]\n. The answer to the fourth query is \n    6\n. The substrings\nare \n    s[3\n    \u20266]\n, \n    s[3\n    \u20264]\n, \n    s[5\n    \u20266]\n,\n\n    s[2\n    \u20267]\n, \n    s[8\n    \u20269]\n and \n    s[2\n    \u20269]\n.\n\n",
+        "cf_contest_id": 1625,
+        "cf_index": "E1",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "dp",
+            "graphs",
+            "trees"
+        ],
+        "time_limit_seconds": 6.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "9 4\r\n)(()())()\r\n2 3 6\r\n2 2 7\r\n2 8 9\r\n2 2 9\r\n",
+                "3\r\n4\r\n1\r\n6\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n()\r\n2 1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "9 10\r\n)(()())()\r\n2 3 6\r\n2 2 7\r\n2 8 9\r\n2 2 9\r\n2 3 6\r\n2 2 7\r\n2 8 9\r\n2 2 9\r\n2 8 9\r\n2 2 9\r\n",
+                "3\r\n4\r\n1\r\n6\r\n3\r\n4\r\n1\r\n6\r\n1\r\n6\r\n"
+            ],
+            [
+                "7 1\r\n()(()()\r\n2 4 7\r\n",
+                "3\r\n"
+            ]
+        ]
+    }
+]

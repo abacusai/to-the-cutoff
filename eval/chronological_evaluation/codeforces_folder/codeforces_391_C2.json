@@ -1,0 +1,111 @@
+[
+    {
+        "name": "The Tournament",
+        "description": "This problem consists of three subproblems: for solving subproblem C1 you will\nreceive 4 points, for solving subproblem C2 you will receive 4 points, and for\nsolving subproblem C3 you will receive 8 points. Manao decided to pursue a\nfighter's career. He decided to begin with an ongoing tournament. Before Manao\njoined, there were n contestants in the tournament, numbered from 1 to n. Each\nof them had already obtained some amount of tournament points, namely the i-th\nfighter had pi points. Manao is going to engage in a single fight against each\ncontestant. Each of Manao's fights ends in either a win or a loss. A win\ngrants Manao one point, and a loss grants Manao's opponent one point. For each\ni, Manao estimated the amount of effort ei he needs to invest to win against\nthe i-th contestant. Losing a fight costs no effort. After Manao finishes all\nof his fights, the ranklist will be determined, with 1 being the best rank and\nn + 1 being the worst. The contestants will be ranked in descending order of\ntheir tournament points. The contestants with the same number of points as\nManao will be ranked better than him if they won the match against him and\nworse otherwise. The exact mechanism of breaking ties for other fighters is\nnot relevant here. Manao's objective is to have rank k or better. Determine\nthe minimum total amount of effort he needs to invest in order to fulfill this\ngoal, if it is possible. Input The first line contains a pair of integers n\nand k (1 \u2264 k \u2264 n + 1). The i-th of the following n lines contains two integers\nseparated by a single space \u2014 pi and ei (0 \u2264 pi, ei \u2264 200000). The problem\nconsists of three subproblems. The subproblems have different constraints on\nthe input. You will get some score for the correct submission of the\nsubproblem. The description of the subproblems follows. In subproblem C1 (4\npoints), the constraint 1 \u2264 n \u2264 15 will hold. In subproblem C2 (4 points), the\nconstraint 1 \u2264 n \u2264 100 will hold. In subproblem C3 (8 points), the constraint\n1 \u2264 n \u2264 200000 will hold. Output Print a single number in a single line \u2014 the\nminimum amount of effort Manao needs to use to rank in the top k. If no amount\nof effort can earn Manao such a rank, output number -1. Examples Input 3 2 1 1\n1 4 2 2 Output 3 Input 2 1 3 2 4 0 Output -1 Input 5 2 2 10 2 10 1 1 3 1 3 1\nOutput 12 Note Consider the first test case. At the time when Manao joins the\ntournament, there are three fighters. The first of them has 1 tournament point\nand the victory against him requires 1 unit of effort. The second contestant\nalso has 1 tournament point, but Manao needs 4 units of effort to defeat him.\nThe third contestant has 2 points and victory against him costs Manao 2 units\nof effort. Manao's goal is top be in top 2. The optimal decision is to win\nagainst fighters 1 and 3, after which Manao, fighter 2, and fighter 3 will all\nhave 2 points. Manao will rank better than fighter 3 and worse than fighter 2,\nthus finishing in second place. Consider the second test case. Even if Manao\nwins against both opponents, he will still rank third.\n\n",
+        "cf_contest_id": 391,
+        "cf_index": "C2",
+        "cf_rating": 0,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2\r\n1 1\r\n1 4\r\n2 2\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 1\r\n3 2\r\n4 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 2\r\n2 10\r\n2 10\r\n1 1\r\n3 1\r\n3 1\r\n",
+                "12\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n1 200000\r\n",
+                "200000\r\n"
+            ],
+            [
+                "1 2\r\n1 100000\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1\r\n200000 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9 4\r\n3 10\r\n4 11\r\n4 2\r\n1 3\r\n1 7\r\n2 5\r\n2 6\r\n3 4\r\n1 7\r\n",
+                "14\r\n"
+            ],
+            [
+                "3 3\r\n4 154461\r\n7 14431\r\n3 186162\r\n",
+                "355054\r\n"
+            ],
+            [
+                "40 3\r\n1 62395\r\n5 40319\r\n4 165445\r\n10 137479\r\n10 47829\r\n8 9741\r\n5 148106\r\n10 25494\r\n10 162856\r\n2 106581\r\n0 194523\r\n9 148086\r\n1 100862\r\n6 147600\r\n6 107486\r\n6 166873\r\n7 16721\r\n4 22192\r\n0 8827\r\n1 197146\r\n10 8949\r\n0 150443\r\n9 148348\r\n3 143935\r\n1 139371\r\n7 128821\r\n10 107760\r\n4 141821\r\n1 35852\r\n9 107522\r\n10 54717\r\n8 10474\r\n0 97706\r\n1 96515\r\n1 131802\r\n5 130542\r\n10 63998\r\n4 197179\r\n7 78359\r\n6 180750\r\n",
+                "343510\r\n"
+            ],
+            [
+                "6 4\r\n1 159371\r\n1 73897\r\n1 181693\r\n4 187816\r\n3 154227\r\n1 188146\r\n",
+                "387495\r\n"
+            ],
+            [
+                "10 2\r\n0 52\r\n4 37\r\n7 73\r\n1 79\r\n1 39\r\n0 24\r\n4 74\r\n9 34\r\n4 18\r\n7 41\r\n",
+                "266\r\n"
+            ],
+            [
+                "15 1\r\n0 4\r\n0 7\r\n0 9\r\n0 0\r\n1 0\r\n1 2\r\n1 9\r\n2 2\r\n0 0\r\n1 6\r\n0 4\r\n2 1\r\n0 4\r\n1 3\r\n2 8\r\n",
+                "1\r\n"
+            ],
+            [
+                "15 1\r\n3 1\r\n1 7\r\n1 2\r\n0 8\r\n1 3\r\n3 2\r\n0 10\r\n2 2\r\n2 6\r\n0 3\r\n2 3\r\n2 0\r\n3 10\r\n0 4\r\n3 6\r\n",
+                "7\r\n"
+            ],
+            [
+                "15 2\r\n7 42\r\n6 25\r\n7 63\r\n0 37\r\n0 27\r\n8 47\r\n4 65\r\n3 48\r\n10 22\r\n1 9\r\n5 1\r\n5 96\r\n0 42\r\n3 5\r\n9 4\r\n",
+                "177\r\n"
+            ],
+            [
+                "15 5\r\n10 92\r\n0 42\r\n0 21\r\n2 84\r\n8 83\r\n4 87\r\n4 63\r\n4 96\r\n5 14\r\n1 38\r\n2 68\r\n2 17\r\n10 13\r\n8 56\r\n8 92\r\n",
+                "264\r\n"
+            ],
+            [
+                "15 15\r\n4 69\r\n1 17\r\n8 28\r\n0 81\r\n7 16\r\n4 50\r\n1 36\r\n6 7\r\n5 60\r\n2 28\r\n1 83\r\n7 49\r\n8 30\r\n6 4\r\n6 35\r\n",
+                "11\r\n"
+            ],
+            [
+                "15 12\r\n2 77\r\n8 79\r\n5 70\r\n0 1\r\n0 4\r\n6 10\r\n4 38\r\n3 36\r\n9 1\r\n2 9\r\n0 72\r\n10 17\r\n5 93\r\n7 10\r\n3 49\r\n",
+                "10\r\n"
+            ],
+            [
+                "15 1\r\n5 12184\r\n4 79635\r\n5 18692\r\n5 125022\r\n5 157267\r\n2 15621\r\n0 126533\r\n0 9106\r\n1 116818\r\n3 65819\r\n4 89314\r\n5 102884\r\n1 174638\r\n2 191411\r\n4 103238\r\n",
+                "290371\r\n"
+            ],
+            [
+                "15 1\r\n8 79548\r\n2 109344\r\n1 40450\r\n5 65400\r\n10 93553\r\n10 83467\r\n4 122907\r\n6 55664\r\n5 111819\r\n2 56263\r\n10 188767\r\n6 15848\r\n10 110978\r\n3 137786\r\n10 199546\r\n",
+                "909936\r\n"
+            ],
+            [
+                "15 8\r\n5 167779\r\n4 185771\r\n13 68521\r\n14 9404\r\n6 58046\r\n0 173221\r\n13 171983\r\n1 54178\r\n13 179027\r\n0 80028\r\n13 77065\r\n8 181620\r\n7 138547\r\n11 174685\r\n6 74881\r\n",
+                "480642\r\n"
+            ],
+            [
+                "15 7\r\n5 189560\r\n2 161786\r\n6 30931\r\n9 66796\r\n3 101468\r\n3 140646\r\n3 30237\r\n6 90950\r\n10 67214\r\n0 32922\r\n4 98246\r\n11 161468\r\n9 6144\r\n13 275\r\n9 7847\r\n",
+                "199306\r\n"
+            ],
+            [
+                "15 3\r\n2 39237\r\n6 42209\r\n8 99074\r\n2 140949\r\n3 33788\r\n15 7090\r\n13 29599\r\n1 183967\r\n6 20161\r\n7 157097\r\n10 173220\r\n9 167385\r\n15 123904\r\n12 30799\r\n5 47324\r\n",
+                "938616\r\n"
+            ],
+            [
+                "15 1\r\n15 200000\r\n15 200000\r\n15 200000\r\n15 200000\r\n15 200000\r\n15 200000\r\n15 200000\r\n15 200000\r\n15 200000\r\n15 200000\r\n15 200000\r\n15 200000\r\n15 200000\r\n15 200000\r\n15 200000\r\n",
+                "3000000\r\n"
+            ]
+        ]
+    }
+]

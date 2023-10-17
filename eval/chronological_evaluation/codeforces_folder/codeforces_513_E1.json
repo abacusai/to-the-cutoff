@@ -1,0 +1,107 @@
+[
+    {
+        "name": "Subarray Cuts",
+        "description": "You are given an array of length n and a number k. Let's pick k non-\noverlapping non-empty subarrays of the initial array. Let si be the sum of the\ni-th subarray in order from left to right. Compute the maximum value of the\nfollowing expression: |s1 - s2| + |s2 - s3| + ... + |sk - 1 - sk| Here\nsubarray is a contiguous part of an array. Input The first line of input\ncontains two integers n and k. The second line contains n integers \u2014 the\nelements of the array. The absolute values of elements do not exceed 10^4. The\nproblem consists of two subproblems. The subproblems have different\nconstraints on the input. You will get some score for the correct submission\nof the subproblem. The description of the subproblems follows. In subproblem\nE1 (9 points), constraints 2 \u2264 n \u2264 400, 2 \u2264 k \u2264 min(n, 50) will hold. In\nsubproblem E2 (12 points), constraints 2 \u2264 n \u2264 30000, 2 \u2264 k \u2264 min(n, 200) will\nhold. Output Output a single integer \u2014 the maximum possible value. Examples\nInput 5 3 5 2 4 3 1 Output 12 Input 4 2 7 4 3 7 Output 8 Note Consider the\nfirst sample test. The optimal solution is obtained if the first subarray\ncontains the first element only, the second subarray spans the next three\nelements and the last subarray contains the last element only. The sums of\nthese subarrays are 5, 9 and 1, correspondingly. Consider the second sample\ntest. In the optimal solution, the first subarray consists of the first two\nelements and the second subarray consists of the third element only. Note that\nthe last element does not belong to any subarray in this solution.\n\n",
+        "cf_contest_id": 513,
+        "cf_index": "E1",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5 3\r\n5 2 4 3 1\r\n",
+                "12"
+            ],
+            [
+                "4 2\r\n7 4 3 7\r\n",
+                "8"
+            ]
+        ],
+        "private_cases": [
+            [
+                "9 6\r\n9 4 10 1 6 3 3 8 4\r\n",
+                "55"
+            ],
+            [
+                "8 6\r\n2 5 3 4 2 10 9 3\r\n",
+                "45"
+            ],
+            [
+                "9 2\r\n7 10 7 2 5 7 10 1 3\r\n",
+                "47"
+            ],
+            [
+                "9 3\r\n3 9 4 10 6 7 7 2 10\r\n",
+                "81"
+            ],
+            [
+                "8 4\r\n8 2 6 9 5 4 1 4\r\n",
+                "51"
+            ],
+            [
+                "5 3\r\n3 3 1 9 8\r\n",
+                "21"
+            ],
+            [
+                "6 4\r\n5 10 2 4 8 9\r\n",
+                "32"
+            ],
+            [
+                "5 2\r\n9 7 6 5 7\r\n",
+                "20"
+            ],
+            [
+                "5 4\r\n8 7 5 9 1\r\n",
+                "22"
+            ],
+            [
+                "4 2\r\n7 3 4 7\r\n",
+                "8"
+            ],
+            [
+                "8 5\r\n-630 2558 1163 2710 -1900 2192 7403 3484\r\n",
+                "32998"
+            ],
+            [
+                "44 43\r\n-1130 -7388 9958 6381 2702 -1060 -8039 5345 -9269 -3034 -4405 -9862 -6168 -3043 1895 2321 -5991 5603 930 7299 7927 -9735 5116 7386 -3388 -1773 8806 2225 5171 1101 -1037 -7467 3593 343 2626 5769 -9959 2782 -2412 4431 -7497 -6156 4320 8096\r\n",
+                "308698"
+            ],
+            [
+                "27 11\r\n-4254 3424 2945 727 -2975 -9294 7288 402 -847 8762 -9663 5097 7798 -7861 -9663 -1468 5360 9715 -2662 -5058 8183 -455 7857 -3442 -9308 -7636 -5262\r\n",
+                "259702"
+            ],
+            [
+                "24 10\r\n-7932 4510 1624 -8602 -7916 5217 -2544 -9341 2858 -3382 5325 2210 -1688 -6225 6498 -1981 6403 -4954 -5050 -8673 -8054 -9216 4550 1339\r\n",
+                "219007"
+            ],
+            [
+                "33 15\r\n-609 -2560 -311 -7812 -8492 -447 2865 1143 2253 -2710 -5293 -6690 -4853 3591 -9509 678 -8507 -6298 7374 7368 9663 -1634 -2175 4555 -4306 -7987 -2299 -68 -2694 3113 -1280 -6118 -4893\r\n",
+                "265284"
+            ],
+            [
+                "50 7\r\n4761 -2433 5679 490 -4090 -7654 -4710 6229 -9337 2407 -7057 3837 -5209 -6533 665 -3366 -6460 1319 -5908 1076 -5051 -424 5063 -8802 -875 5383 8169 -805 9674 -3004 1408 4651 8634 7999 -4456 -8092 -219 8552 9064 -747 -4972 -3593 -9896 3975 1969 7854 -3891 -633 -9416 3531\r\n",
+                "315455"
+            ],
+            [
+                "50 27\r\n-9505 -8834 -4682 7425 9904 -2710 -8847 4798 5110 -3014 2038 -2588 -8146 5629 9326 -9079 9649 -4676 1588 -5627 3011 -9726 -9101 -6474 -9674 297 -3465 -8222 -9857 -1118 1598 9727 -5554 2340 -9442 245 -4039 3793 4782 -5823 -1080 1975 6642 1862 -9044 -5623 -3292 8121 3302 7224\r\n",
+                "514448"
+            ],
+            [
+                "50 21\r\n-6832 -6270 -195 8855 8678 8763 -8149 -710 -582 -8830 -417 3582 -3126 -2845 9839 5659 908 3309 -7641 -4408 -9574 9557 4609 8976 -4898 -9348 -6060 -2164 -5666 -1239 -7695 342 5832 -3636 7452 -5803 9774 2224 112 -8287 -7978 1082 -1361 7833 -5095 -1433 6322 8901 -4716 -547\r\n",
+                "497668"
+            ],
+            [
+                "50 50\r\n-5947 -6208 -6087 -1360 5740 -3689 -5147 -2317 -6245 -789 -2619 -1479 9010 -6066 -5877 -7718 2441 -9103 8254 -7071 -2342 -9214 4236 8788 2180 1857 -3207 -9804 -9474 -6035 -8743 4033 3406 -8887 7610 5115 507 -8109 -5649 6485 1386 8188 -6163 6024 -6906 669 8510 -5656 6841 -5454\r\n",
+                "353181"
+            ],
+            [
+                "50 50\r\n-287 -6668 9808 -6919 877 -5629 -4030 -2797 9318 2880 9458 -3706 8832 1885 -5297 5707 -5205 -7436 -8572 -9044 -2693 5524 -8862 9745 -1521 -6167 643 765 -5271 -1174 4533 -7350 -2937 -4770 1412 1343 7320 -9195 3850 7880 -3093 -1517 -2640 5560 5120 6680 -9421 -8883 1265 -8434\r\n",
+                "357985"
+            ]
+        ]
+    }
+]

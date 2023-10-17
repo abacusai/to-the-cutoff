@@ -1,0 +1,365 @@
+[
+    {
+        "name": "Stuck Conveyor",
+        "description": "This is an interactive problem. There is an \n    n\n by \n    n\n grid of\nconveyor belts, in positions \n    (1, 1)\n through \n    (n, n)\n of a coordinate\nplane. Every other square in the plane is empty. Each conveyor belt can be\nconfigured to move boxes up ('^'), down ('v'), left ('<'), or right ('>'). If\na box moves onto an empty square, it stops moving. However, one of the\n\n    n^2\n belts is stuck, and will always move boxes in the same direction, no\nmatter how it is configured. Your goal is to perform a series of tests to\ndetermine which conveyor belt is stuck, and the direction in which it sends\nitems. To achieve this, you can perform up to \n    25\n tests. In each test,\nyou assign a direction to all \n    n^2\n belts, place a box on top of one of\nthem, and then turn all of the conveyors on. One possible result of a query\nwith \n    n=4\n. In this case, the box starts at \n    (2, 2)\n. If there were no\nstuck conveyor, it would end up at \n    (5, 4)\n, but because of the stuck '>'\nconveyor at \n    (3, 3)\n, it enters an infinite loop. The conveyors move the\nbox around too quickly for you to see, so the only information you receive\nfrom a test is whether the box eventually stopped moving, and if so, the\ncoordinates of its final position. Interaction You begin the interaction by\nreading a single integer \n    n\n (\n    2 \n    \u2264 n\n    \u2264 100\n) \u2014 the number of\nrows and columns in the grid. Then, you can make at most \n    25\n queries.\nEach query should begin with a line of the form ? r c, where r and c are the\ninitial row and column of the box, respectively. The next \n    n\n lines of the\nquery should contain \n    n\n characters each. The \n    j\nth character of the\n\n    i\nth row should be one of '^', 'v', '<', or '>', indicating the direction\nof conveyor \n    (i, j)\n for this query. After each query, you will receive\ntwo integers \n    x\n and \n    y\n. If \n    x = y = -1\n, then the box entered an\ninfinite loop. Otherwise, its final position was \n    (x, y)\n. If you make too\nmany queries or make an invalid query, you will receive the Wrong Answer\nverdict. After you have found the stuck conveyor and its direction, print a\nsingle line ! r c dir, where r and c are the row and column of the stuck\nconveyor, respectively, and dir is one of '^', 'v', '<', or '>', indicating\nthe direction of the stuck conveyor. Note that printing this answer does not\ncount towards your total of \n    25\n queries. After printing this line, your\nprogram should terminate. The interactor is non-adaptive. This means that the\nlocation and direction of the stuck belt is fixed at the start of the\ninteraction, and does not change after the queries. After printing a query do\nnot forget to output the end of line and flush the output. Otherwise, you will\nget Idleness limit exceeded. To do this, use: fflush(stdout) or cout.flush()\nin C++; System.out.flush() in Java; flush(output) in Pascal; stdout.flush() in\nPython; see the documentation for other languages. Hacks To make a hack, use\nthe following format. The first line should contain a single integer \n    n\n\n(\n    1 \n    \u2264 n \n    \u2264 100\n) \u2014 the number of rows and columns in the grid. The\nnext line should contain two integers \n    r\n and \n    c\n (\n    1 \n    \u2264 r, c\n    \n    \u2264 n\n), as well as a character \n    dir\n (\n    dir\n\nis one of '^', 'v', '<', '>') \u2014 the position of the stuck conveyor and its\nfixed direction. These values should be separated by spaces. Examples Input 3\n-1 -1 0 2 Output ? 2 2 >>< >>v ^<< ? 1 1 >>< >>v ^<< ! 1 2 ^ Input 4 -1 -1\nOutput ? 2 2 v>v< ^vv^ >v>v ! 3 3 > Note For the first query of the first\nsample input, the box starts on \n    (2, 2)\n and enters an infinite loop\ncontaining rows \n    2\n and \n    3\n. Because the stuck conveyor is in row\n\n    1\n, it does not affect the outcome of the query. For the second query of\nthe first sample input, the conveyors are configured in the same way, but the\nbox starts on \n    (1, 1)\n. If there were no stuck conveyor, it would enter an\ninfinite loop between \n    (1, 2)\n and \n    (1, 3)\n. However, the stuck\nconveyor redirects it to \n    (0, 2)\n. After these two queries, the program is\nable to determine that the stuck conveyor is at \n    (1, 2)\n and directs items\nupward. The query for the second sample input corresponds to the picture\nabove. After asking the query, there are many possibilities for the stuck\nconveyor, but the program correctly guesses that it is at \n    (3, 3)\n and\ndirects items to the right.\n\n",
+        "cf_contest_id": 1838,
+        "cf_index": "F",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "constructive algorithms",
+            "interactive"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n1 2 ^\r\n",
+                "3 queries, 1 2 ^\r\n"
+            ],
+            [
+                "4\r\n3 3 >\r\n",
+                "7 queries, 3 3 >\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n2 2 <\r\n",
+                "7 queries, 2 2 <\r\n"
+            ],
+            [
+                "4\r\n1 3 ^\r\n",
+                "3 queries, 1 3 ^\r\n"
+            ],
+            [
+                "5\r\n4 2 <\r\n",
+                "6 queries, 4 2 <\r\n"
+            ],
+            [
+                "10\r\n3 7 >\r\n",
+                "11 queries, 3 7 >\r\n"
+            ],
+            [
+                "20\r\n8 6 v\r\n",
+                "8 queries, 8 6 v\r\n"
+            ],
+            [
+                "50\r\n30 36 >\r\n",
+                "19 queries, 30 36 >\r\n"
+            ],
+            [
+                "75\r\n9 62 ^\r\n",
+                "9 queries, 9 62 ^\r\n"
+            ],
+            [
+                "97\r\n33 44 ^\r\n",
+                "11 queries, 33 44 ^\r\n"
+            ],
+            [
+                "99\r\n25 31 >\r\n",
+                "20 queries, 25 31 >\r\n"
+            ],
+            [
+                "100\r\n77 34 ^\r\n",
+                "11 queries, 77 34 ^\r\n"
+            ],
+            [
+                "2\r\n1 1 ^\r\n",
+                "2 queries, 1 1 ^\r\n"
+            ],
+            [
+                "2\r\n2 1 ^\r\n",
+                "3 queries, 2 1 ^\r\n"
+            ],
+            [
+                "2\r\n1 2 ^\r\n",
+                "2 queries, 1 2 ^\r\n"
+            ],
+            [
+                "2\r\n2 2 ^\r\n",
+                "3 queries, 2 2 ^\r\n"
+            ],
+            [
+                "100\r\n1 1 ^\r\n",
+                "8 queries, 1 1 ^\r\n"
+            ],
+            [
+                "100\r\n100 1 ^\r\n",
+                "13 queries, 100 1 ^\r\n"
+            ],
+            [
+                "100\r\n1 100 ^\r\n",
+                "8 queries, 1 100 ^\r\n"
+            ],
+            [
+                "100\r\n100 100 ^\r\n",
+                "13 queries, 100 100 ^\r\n"
+            ],
+            [
+                "2\r\n1 1 v\r\n",
+                "2 queries, 1 1 v\r\n"
+            ],
+            [
+                "2\r\n2 1 v\r\n",
+                "3 queries, 2 1 v\r\n"
+            ],
+            [
+                "2\r\n1 2 v\r\n",
+                "2 queries, 1 2 v\r\n"
+            ],
+            [
+                "2\r\n2 2 v\r\n",
+                "3 queries, 2 2 v\r\n"
+            ],
+            [
+                "100\r\n1 1 v\r\n",
+                "14 queries, 1 1 v\r\n"
+            ],
+            [
+                "100\r\n100 1 v\r\n",
+                "13 queries, 100 1 v\r\n"
+            ],
+            [
+                "100\r\n1 100 v\r\n",
+                "14 queries, 1 100 v\r\n"
+            ],
+            [
+                "100\r\n100 100 v\r\n",
+                "13 queries, 100 100 v\r\n"
+            ],
+            [
+                "2\r\n1 1 <\r\n",
+                "3 queries, 1 1 <\r\n"
+            ],
+            [
+                "2\r\n2 1 <\r\n",
+                "4 queries, 2 1 <\r\n"
+            ],
+            [
+                "2\r\n1 2 <\r\n",
+                "3 queries, 1 2 <\r\n"
+            ],
+            [
+                "2\r\n2 2 <\r\n",
+                "4 queries, 2 2 <\r\n"
+            ],
+            [
+                "100\r\n1 1 <\r\n",
+                "14 queries, 1 1 <\r\n"
+            ],
+            [
+                "100\r\n100 1 <\r\n",
+                "19 queries, 100 1 <\r\n"
+            ],
+            [
+                "100\r\n1 100 <\r\n",
+                "15 queries, 1 100 <\r\n"
+            ],
+            [
+                "100\r\n100 100 <\r\n",
+                "20 queries, 100 100 <\r\n"
+            ],
+            [
+                "2\r\n1 1 >\r\n",
+                "4 queries, 1 1 >\r\n"
+            ],
+            [
+                "2\r\n2 1 >\r\n",
+                "4 queries, 2 1 >\r\n"
+            ],
+            [
+                "2\r\n1 2 >\r\n",
+                "4 queries, 1 2 >\r\n"
+            ],
+            [
+                "2\r\n2 2 >\r\n",
+                "4 queries, 2 2 >\r\n"
+            ],
+            [
+                "100\r\n1 1 >\r\n",
+                "22 queries, 1 1 >\r\n"
+            ],
+            [
+                "100\r\n100 1 >\r\n",
+                "20 queries, 100 1 >\r\n"
+            ],
+            [
+                "100\r\n1 100 >\r\n",
+                "15 queries, 1 100 >\r\n"
+            ],
+            [
+                "100\r\n100 100 >\r\n",
+                "19 queries, 100 100 >\r\n"
+            ],
+            [
+                "100\r\n1 49 ^\r\n",
+                "8 queries, 1 49 ^\r\n"
+            ],
+            [
+                "100\r\n100 68 v\r\n",
+                "13 queries, 100 68 v\r\n"
+            ],
+            [
+                "100\r\n41 1 <\r\n",
+                "16 queries, 41 1 <\r\n"
+            ],
+            [
+                "100\r\n80 100 >\r\n",
+                "18 queries, 80 100 >\r\n"
+            ],
+            [
+                "10\r\n9 10 ^\r\n",
+                "6 queries, 9 10 ^\r\n"
+            ],
+            [
+                "100\r\n29 88 ^\r\n",
+                "11 queries, 29 88 ^\r\n"
+            ],
+            [
+                "99\r\n50 50 <\r\n",
+                "19 queries, 50 50 <\r\n"
+            ],
+            [
+                "100\r\n50 50 <\r\n",
+                "20 queries, 50 50 <\r\n"
+            ],
+            [
+                "85\r\n1 74 ^\r\n",
+                "8 queries, 1 74 ^\r\n"
+            ],
+            [
+                "85\r\n1 77 v\r\n",
+                "14 queries, 1 77 v\r\n"
+            ],
+            [
+                "85\r\n85 41 ^\r\n",
+                "13 queries, 85 41 ^\r\n"
+            ],
+            [
+                "85\r\n85 44 v\r\n",
+                "13 queries, 85 44 v\r\n"
+            ],
+            [
+                "85\r\n77 1 <\r\n",
+                "19 queries, 77 1 <\r\n"
+            ],
+            [
+                "85\r\n80 1 >\r\n",
+                "20 queries, 80 1 >\r\n"
+            ],
+            [
+                "85\r\n65 85 <\r\n",
+                "17 queries, 65 85 <\r\n"
+            ],
+            [
+                "85\r\n69 85 >\r\n",
+                "18 queries, 69 85 >\r\n"
+            ],
+            [
+                "98\r\n1 20 ^\r\n",
+                "8 queries, 1 20 ^\r\n"
+            ],
+            [
+                "98\r\n1 16 v\r\n",
+                "14 queries, 1 16 v\r\n"
+            ],
+            [
+                "98\r\n98 11 ^\r\n",
+                "13 queries, 98 11 ^\r\n"
+            ],
+            [
+                "98\r\n98 17 v\r\n",
+                "13 queries, 98 17 v\r\n"
+            ],
+            [
+                "98\r\n87 1 <\r\n",
+                "17 queries, 87 1 <\r\n"
+            ],
+            [
+                "98\r\n83 1 >\r\n",
+                "20 queries, 83 1 >\r\n"
+            ],
+            [
+                "98\r\n71 98 <\r\n",
+                "19 queries, 71 98 <\r\n"
+            ],
+            [
+                "98\r\n77 98 >\r\n",
+                "17 queries, 77 98 >\r\n"
+            ],
+            [
+                "95\r\n2 50 <\r\n",
+                "22 queries, 2 50 <\r\n"
+            ],
+            [
+                "88\r\n51 87 ^\r\n",
+                "10 queries, 51 87 ^\r\n"
+            ],
+            [
+                "96\r\n95 14 >\r\n",
+                "21 queries, 95 14 >\r\n"
+            ],
+            [
+                "93\r\n40 92 v\r\n",
+                "14 queries, 40 92 v\r\n"
+            ],
+            [
+                "6\r\n1 6 >\r\n",
+                "7 queries, 1 6 >\r\n"
+            ],
+            [
+                "7\r\n3 3 v\r\n",
+                "6 queries, 3 3 v\r\n"
+            ],
+            [
+                "8\r\n5 8 >\r\n",
+                "9 queries, 5 8 >\r\n"
+            ],
+            [
+                "9\r\n4 1 ^\r\n",
+                "5 queries, 4 1 ^\r\n"
+            ],
+            [
+                "25\r\n6 12 v\r\n",
+                "10 queries, 6 12 v\r\n"
+            ],
+            [
+                "30\r\n23 2 >\r\n",
+                "15 queries, 23 2 >\r\n"
+            ],
+            [
+                "60\r\n31 25 <\r\n",
+                "14 queries, 31 25 <\r\n"
+            ],
+            [
+                "70\r\n26 51 ^\r\n",
+                "10 queries, 26 51 ^\r\n"
+            ],
+            [
+                "80\r\n48 37 <\r\n",
+                "18 queries, 48 37 <\r\n"
+            ],
+            [
+                "83\r\n5 32 >\r\n",
+                "20 queries, 5 32 >\r\n"
+            ],
+            [
+                "91\r\n59 22 <\r\n",
+                "17 queries, 59 22 <\r\n"
+            ],
+            [
+                "92\r\n23 39 ^\r\n",
+                "11 queries, 23 39 ^\r\n"
+            ],
+            [
+                "94\r\n29 16 >\r\n",
+                "21 queries, 29 16 >\r\n"
+            ],
+            [
+                "98\r\n38 58 <\r\n",
+                "18 queries, 38 58 <\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,91 @@
+[
+    {
+        "name": "Dividing Kingdom II",
+        "description": "Long time ago, there was a great kingdom and it was being ruled by The Great\nArya and Pari The Great. These two had some problems about the numbers they\nlike, so they decided to divide the great kingdom between themselves. The\ngreat kingdom consisted of n cities numbered from 1 to n and m bidirectional\nroads between these cities, numbered from 1 to m. The i-th road had length\nequal to wi. The Great Arya and Pari The Great were discussing about\ndestructing some prefix (all road with numbers less than some x) and suffix\n(all roads with numbers greater than some x) of the roads so there will remain\nonly the roads with numbers l, l + 1, ..., r - 1 and r. After that they will\ndivide the great kingdom into two pieces (with each city belonging to exactly\none piece) such that the hardness of the division is minimized. The hardness\nof a division is the maximum length of a road such that its both endpoints are\nin the same piece of the kingdom. In case there is no such road, the hardness\nof the division is considered to be equal to - 1. Historians found the map of\nthe great kingdom, and they have q guesses about the l and r chosen by those\ngreat rulers. Given these data, for each guess li and ri print the minimum\npossible hardness of the division of the kingdom. Input The first line of the\ninput contains three integers n, m and q (1 \u2264 n, q \u2264 1000, ) \u2014 the number of\ncities and roads in the great kingdom, and the number of guesses,\nrespectively. The i-th line of the following m lines contains three integers\nui, vi and wi (1 \u2264 ui, vi \u2264 n, 0 \u2264 wi \u2264 10^9), denoting the road number i\nconnects cities ui and vi and its length is equal wi. It's guaranteed that no\nroad connects the city to itself and no pair of cities is connected by more\nthan one road. Each of the next q lines contains a pair of integers li and ri\n(1 \u2264 li \u2264 ri \u2264 m) \u2014 a guess from the historians about the remaining roads in\nthe kingdom. Output For each guess print the minimum possible hardness of the\ndivision in described scenario. Example Input 5 6 5 5 4 86 5 1 0 1 3 38 2 1 33\n2 4 28 2 3 40 3 5 2 6 1 3 2 3 1 6 Output -1 33 -1 -1 33\n\n",
+        "cf_contest_id": 687,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "data structures",
+            "dsu",
+            "graphs",
+            "sortings"
+        ],
+        "time_limit_seconds": 6.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 6 5\r\n5 4 86\r\n5 1 0\r\n1 3 38\r\n2 1 33\r\n2 4 28\r\n2 3 40\r\n3 5\r\n2 6\r\n1 3\r\n2 3\r\n1 6\r\n",
+                "-1\r\n33\r\n-1\r\n-1\r\n33\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 6 5\r\n5 4 86\r\n5 1 0\r\n1 3 38\r\n2 1 33\r\n2 4 28\r\n2 3 40\r\n3 5\r\n2 6\r\n1 3\r\n2 3\r\n1 4\r\n",
+                "-1\r\n33\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "2 1 1\r\n2 1 63\r\n1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 3 2\r\n1 2 82\r\n1 3 84\r\n3 2 22\r\n1 3\r\n1 3\r\n",
+                "22\r\n22\r\n"
+            ],
+            [
+                "5 9 4\r\n4 1 46\r\n1 3 29\r\n3 2 58\r\n1 5 61\r\n2 4 88\r\n1 2 87\r\n4 5 58\r\n3 5 69\r\n3 4 28\r\n2 7\r\n5 7\r\n3 6\r\n1 7\r\n",
+                "29\r\n-1\r\n-1\r\n46\r\n"
+            ],
+            [
+                "10 15 10\r\n10 7 368\r\n6 3 754\r\n9 5 468\r\n8 2 532\r\n9 3 754\r\n7 4 733\r\n2 5 567\r\n5 8 558\r\n1 2 354\r\n10 5 653\r\n8 9 924\r\n2 10 127\r\n7 3 99\r\n10 4 218\r\n7 5 903\r\n8 9\r\n5 15\r\n1 8\r\n10 13\r\n3 13\r\n5 6\r\n2 14\r\n3 11\r\n8 9\r\n2 3\r\n",
+                "-1\r\n127\r\n532\r\n-1\r\n532\r\n-1\r\n532\r\n532\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "10 20 10\r\n5 4 858\r\n4 10 955\r\n2 8 845\r\n7 2 589\r\n4 8 480\r\n7 10 566\r\n5 8 438\r\n3 4 974\r\n10 8 123\r\n10 1 234\r\n4 2 290\r\n1 3 944\r\n8 1 113\r\n6 10 228\r\n7 1 117\r\n9 3 378\r\n1 6 6\r\n10 3 489\r\n4 1 296\r\n8 9 817\r\n6 8\r\n1 3\r\n15 19\r\n14 19\r\n2 6\r\n16 18\r\n4 14\r\n7 15\r\n4 12\r\n16 17\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n480\r\n-1\r\n123\r\n113\r\n123\r\n-1\r\n"
+            ],
+            [
+                "10 18 10\r\n9 8 616\r\n10 9 302\r\n2 4 285\r\n8 1 35\r\n8 5 521\r\n6 8 195\r\n9 4 697\r\n6 5 137\r\n10 3 358\r\n5 1 946\r\n9 1 810\r\n5 3 932\r\n8 10 230\r\n1 7 635\r\n6 9 423\r\n5 2 102\r\n7 3 991\r\n6 3 795\r\n10 11\r\n1 2\r\n6 9\r\n2 13\r\n11 18\r\n8 11\r\n13 14\r\n2 17\r\n13 18\r\n6 13\r\n",
+                "-1\r\n-1\r\n-1\r\n302\r\n423\r\n-1\r\n-1\r\n302\r\n-1\r\n137\r\n"
+            ],
+            [
+                "10 29 10\r\n4 9 887\r\n9 1 171\r\n5 8 725\r\n8 7 444\r\n5 1 603\r\n5 4 24\r\n10 6 993\r\n8 1 977\r\n8 3 340\r\n2 1 973\r\n6 4 300\r\n1 10 899\r\n9 2 930\r\n5 3 938\r\n9 6 468\r\n9 5 520\r\n2 10 661\r\n6 2 77\r\n4 8 800\r\n7 2 416\r\n6 5 801\r\n1 4 838\r\n3 4 504\r\n7 5 976\r\n4 10 609\r\n2 3 288\r\n6 7 695\r\n6 8 297\r\n10 9 949\r\n2 7\r\n2 12\r\n13 14\r\n1 27\r\n17 18\r\n8 20\r\n6 22\r\n4 21\r\n1 21\r\n1 27\r\n",
+                "-1\r\n603\r\n-1\r\n800\r\n-1\r\n661\r\n800\r\n661\r\n800\r\n800\r\n"
+            ],
+            [
+                "10 28 10\r\n10 9 80\r\n2 4 200\r\n4 6 938\r\n4 8 838\r\n4 5 263\r\n5 7 401\r\n2 6 595\r\n9 1 744\r\n3 5 759\r\n2 9 428\r\n3 6 17\r\n10 8 851\r\n8 7 862\r\n1 3 963\r\n4 7 94\r\n4 10 833\r\n3 8 948\r\n10 6 274\r\n3 2 129\r\n7 2 985\r\n1 2 289\r\n8 5 711\r\n6 1 317\r\n2 10 111\r\n7 6 333\r\n3 7 739\r\n9 4 576\r\n5 2 997\r\n1 5\r\n18 19\r\n4 26\r\n9 12\r\n8 18\r\n7 13\r\n12 28\r\n2 4\r\n12 14\r\n1 1\r\n",
+                "-1\r\n-1\r\n833\r\n-1\r\n-1\r\n-1\r\n739\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "10 16 10\r\n4 6 234\r\n7 8 973\r\n2 8 727\r\n10 1 905\r\n9 2 327\r\n1 7 508\r\n1 9 675\r\n6 2 787\r\n7 10 337\r\n3 4 548\r\n1 4 374\r\n7 4 242\r\n2 10 713\r\n7 6 859\r\n9 10 854\r\n2 3 615\r\n3 16\r\n13 13\r\n4 11\r\n4 7\r\n2 11\r\n1 2\r\n10 14\r\n8 12\r\n1 8\r\n1 7\r\n",
+                "675\r\n-1\r\n337\r\n-1\r\n337\r\n-1\r\n-1\r\n-1\r\n327\r\n327\r\n"
+            ],
+            [
+                "10 29 10\r\n9 5 374\r\n4 3 522\r\n10 9 17\r\n2 6 586\r\n9 6 256\r\n3 1 511\r\n10 3 631\r\n7 10 829\r\n5 2 977\r\n4 8 97\r\n6 7 589\r\n8 6 433\r\n1 7 834\r\n5 1 969\r\n5 6 398\r\n6 10 651\r\n8 2 255\r\n6 1 295\r\n2 4 435\r\n7 8 999\r\n4 6 339\r\n1 10 198\r\n8 9 648\r\n1 8 668\r\n2 7 0\r\n5 4 306\r\n3 6 879\r\n10 8 844\r\n7 3 916\r\n3 19\r\n3 11\r\n18 26\r\n15 24\r\n8 9\r\n10 25\r\n4 27\r\n6 10\r\n17 21\r\n2 18\r\n",
+                "589\r\n-1\r\n-1\r\n255\r\n-1\r\n668\r\n668\r\n-1\r\n-1\r\n589\r\n"
+            ],
+            [
+                "5 7 10\r\n2 3 6\r\n5 2 65\r\n5 1 38\r\n4 2 79\r\n5 4 70\r\n2 1 13\r\n5 3 92\r\n3 3\r\n1 6\r\n1 2\r\n5 7\r\n1 1\r\n3 4\r\n2 7\r\n1 2\r\n6 7\r\n1 2\r\n",
+                "-1\r\n65\r\n-1\r\n-1\r\n-1\r\n-1\r\n65\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "5 5 10\r\n4 1 59\r\n2 3 23\r\n5 3 95\r\n4 5 10\r\n1 3 83\r\n3 5\r\n2 3\r\n1 2\r\n4 5\r\n2 5\r\n4 5\r\n3 4\r\n3 3\r\n4 5\r\n4 4\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "5 1 10\r\n4 3 68\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "5 8 10\r\n2 3 8\r\n5 3 22\r\n5 1 8\r\n3 4 7\r\n4 1 83\r\n5 2 59\r\n2 1 4\r\n4 2 53\r\n4 4\r\n3 3\r\n5 6\r\n3 5\r\n3 8\r\n3 5\r\n1 4\r\n3 4\r\n1 4\r\n3 8\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n4\r\n-1\r\n-1\r\n-1\r\n-1\r\n4\r\n"
+            ],
+            [
+                "5 6 10\r\n1 2 18\r\n3 1 56\r\n5 1 36\r\n2 4 77\r\n5 2 79\r\n4 3 35\r\n1 4\r\n5 6\r\n2 3\r\n3 5\r\n1 4\r\n1 2\r\n4 5\r\n1 2\r\n1 6\r\n4 4\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n35\r\n-1\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,183 @@
+[
+    {
+        "name": "Least Cost Bracket Sequence",
+        "description": "This is yet another problem on regular bracket sequences. A bracket sequence\nis called regular, if by inserting \"+\" and \"1\" into it we get a correct\nmathematical expression. For example, sequences \"(())()\", \"()\" and \"(()(()))\"\nare regular, while \")(\", \"(()\" and \"(()))(\" are not. You have a pattern of a\nbracket sequence that consists of characters \"(\", \")\" and \"?\". You have to\nreplace each character \"?\" with a bracket so, that you get a regular bracket\nsequence. For each character \"?\" the cost of its replacement with \"(\" and \")\"\nis given. Among all the possible variants your should choose the cheapest.\nInput The first line contains a non-empty pattern of even length, consisting\nof characters \"(\", \")\" and \"?\". Its length doesn't exceed 5\u00b710^4. Then there\nfollow m lines, where m is the number of characters \"?\" in the pattern. Each\nline contains two integer numbers ai and bi (1 \u2264 ai, bi \u2264 10^6), where ai is\nthe cost of replacing the i-th character \"?\" with an opening bracket, and bi \u2014\nwith a closing one. Output Print the cost of the optimal regular bracket\nsequence in the first line, and the required sequence in the second. Print -1,\nif there is no answer. If the answer is not unique, print any of them.\nExamples Input (??) 1 2 2 8 Output 4 ()()\n\n",
+        "cf_contest_id": 3,
+        "cf_index": "D",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 64.0,
+        "public_cases": [
+            [
+                "(??)\r\n1 2\r\n2 8\r\n",
+                "4\r\n()()\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "??\r\n1 1\r\n1 1\r\n",
+                "2\r\n()\r\n"
+            ],
+            [
+                "(???\r\n1 1\r\n1 1\r\n1 1\r\n",
+                "3\r\n(())\r\n"
+            ],
+            [
+                "(??)\r\n2 1\r\n1 1\r\n",
+                "2\r\n()()\r\n"
+            ],
+            [
+                "(???)?\r\n3 3\r\n3 1\r\n3 3\r\n2 3\r\n",
+                "10\r\n(()())\r\n"
+            ],
+            [
+                "((????\r\n3 2\r\n3 2\r\n1 1\r\n2 3\r\n",
+                "8\r\n(())()\r\n"
+            ],
+            [
+                "???())\r\n2 4\r\n3 3\r\n4 1\r\n",
+                "6\r\n(()())\r\n"
+            ],
+            [
+                "((????\r\n3 5\r\n4 1\r\n2 2\r\n1 5\r\n",
+                "11\r\n((()))\r\n"
+            ],
+            [
+                "?(?)(???\r\n2 3\r\n2 2\r\n3 2\r\n3 1\r\n3 1\r\n",
+                "8\r\n((()()))\r\n"
+            ],
+            [
+                "(??????)\r\n1 1\r\n3 3\r\n3 3\r\n3 2\r\n1 3\r\n3 3\r\n",
+                "13\r\n((())())\r\n"
+            ],
+            [
+                "?????)??\r\n2 3\r\n2 1\r\n1 3\r\n5 1\r\n3 3\r\n1 3\r\n3 2\r\n",
+                "11\r\n()()()()\r\n"
+            ],
+            [
+                "?)???(??\r\n1 4\r\n3 4\r\n2 4\r\n2 5\r\n3 3\r\n3 1\r\n",
+                "14\r\n()()(())\r\n"
+            ],
+            [
+                "???(??))\r\n2 1\r\n2 1\r\n2 1\r\n1 2\r\n2 1\r\n",
+                "7\r\n(()(()))\r\n"
+            ],
+            [
+                "??(()??)\r\n3 2\r\n3 3\r\n1 3\r\n2 2\r\n",
+                "9\r\n()(()())\r\n"
+            ],
+            [
+                "????(???\r\n2 2\r\n1 3\r\n1 3\r\n3 3\r\n4 1\r\n4 4\r\n2 4\r\n",
+                "16\r\n((()()))\r\n"
+            ],
+            [
+                "?(??????\r\n1 5\r\n2 4\r\n4 4\r\n4 3\r\n4 5\r\n5 4\r\n2 3\r\n",
+                "21\r\n((())())\r\n"
+            ],
+            [
+                "???????)\r\n6 3\r\n5 3\r\n4 1\r\n1 4\r\n4 1\r\n2 6\r\n4 3\r\n",
+                "19\r\n(()()())\r\n"
+            ],
+            [
+                "??????)?\r\n2 2\r\n4 2\r\n3 5\r\n3 2\r\n7 4\r\n6 2\r\n1 6\r\n",
+                "24\r\n(((())))\r\n"
+            ],
+            [
+                "?((?)?)?\r\n1 2\r\n4 2\r\n1 3\r\n1 2\r\n",
+                "6\r\n((())())\r\n"
+            ],
+            [
+                "??(????)\r\n3 2\r\n1 4\r\n4 4\r\n2 3\r\n2 3\r\n2 4\r\n",
+                "16\r\n((()))()\r\n"
+            ],
+            [
+                "???(?)??(??)?)(?(?????????(?()????)(????(?)????)???)??))(?(?????????))???(??)?????))???????(????????\r\n9 10\r\n6 3\r\n8 2\r\n9 10\r\n9 3\r\n6 2\r\n8 5\r\n6 7\r\n2 6\r\n7 8\r\n6 10\r\n1 7\r\n1 7\r\n10 7\r\n10 7\r\n8 4\r\n5 9\r\n9 3\r\n3 10\r\n1 10\r\n8 2\r\n8 8\r\n4 8\r\n6 6\r\n4 10\r\n4 5\r\n5 2\r\n5 6\r\n7 7\r\n7 3\r\n10 1\r\n1 4\r\n5 10\r\n3 2\r\n2 8\r\n8 9\r\n6 5\r\n8 6\r\n3 4\r\n8 6\r\n8 5\r\n7 7\r\n10 9\r\n5 5\r\n2 1\r\n2 7\r\n2 3\r\n5 10\r\n9 7\r\n1 9\r\n10 9\r\n4 5\r\n8 2\r\n2 5\r\n6 7\r\n3 6\r\n4 2\r\n2 5\r\n3 9\r\n4 4\r\n6 3\r\n4 9\r\n3 1\r\n5 7\r\n8 7\r\n6 9\r\n5 3\r\n6 4\r\n8 3\r\n5 8\r\n8 4\r\n7 6\r\n1 4\r\n",
+                "309\r\n(()(()))()()()(((((()))()(((())((()((()((()))(())(()))))((())))))((()))()(())((()())())()()(()))()))\r\n"
+            ],
+            [
+                "(?(((???))(??)?)?))))(?)????(()()???(?)????(??(??????)()(????(?)))))??(???(??)?(??)????????(????(?()\r\n39 78\r\n1 83\r\n2 35\r\n28 89\r\n53 53\r\n96 67\r\n16 46\r\n43 28\r\n25 73\r\n8 97\r\n57 41\r\n15 25\r\n47 49\r\n23 18\r\n97 77\r\n38 33\r\n68 80\r\n38 98\r\n62 8\r\n61 79\r\n84 50\r\n71 48\r\n12 16\r\n97 95\r\n16 70\r\n72 58\r\n55 85\r\n88 42\r\n49 56\r\n39 63\r\n51 100\r\n41 15\r\n97 17\r\n71 63\r\n21 44\r\n1 41\r\n22 14\r\n42 65\r\n88 33\r\n57 95\r\n57 28\r\n59 8\r\n56 42\r\n18 99\r\n43 6\r\n75 93\r\n34 23\r\n62 57\r\n62 71\r\n67 92\r\n91 60\r\n49 58\r\n97 14\r\n75 68\r\n20 9\r\n55 98\r\n12 3\r\n",
+                "2140\r\n(((((((())(())())))))(()()(((()())))(()()()()(((()()()()((())())))))((()()(()))()())())(()(())))()()\r\n"
+            ],
+            [
+                "(())()\r\n",
+                "0\r\n(())()\r\n"
+            ],
+            [
+                "?(?(??\r\n1 1\r\n2 2\r\n1 1\r\n1 1\r\n",
+                "5\r\n(()())\r\n"
+            ],
+            [
+                "(????(\r\n1 1\r\n2 1\r\n2 1\r\n3 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "(?(???\r\n2 3\r\n1 1\r\n3 3\r\n1 4\r\n",
+                "10\r\n((()))\r\n"
+            ],
+            [
+                "))))))\r\n",
+                "-1\r\n"
+            ],
+            [
+                ")?)??)\r\n4 4\r\n3 5\r\n3 6\r\n",
+                "-1\r\n"
+            ],
+            [
+                "((((((\r\n",
+                "-1\r\n"
+            ],
+            [
+                "((((((\r\n",
+                "-1\r\n"
+            ],
+            [
+                "()()()\r\n",
+                "0\r\n()()()\r\n"
+            ],
+            [
+                "????((\r\n7 6\r\n1 10\r\n9 8\r\n4 4\r\n",
+                "-1\r\n"
+            ],
+            [
+                "))))))\r\n",
+                "-1\r\n"
+            ],
+            [
+                "))))))\r\n",
+                "-1\r\n"
+            ],
+            [
+                "((((((\r\n",
+                "-1\r\n"
+            ],
+            [
+                "((()))\r\n",
+                "0\r\n((()))\r\n"
+            ],
+            [
+                "?))?))\r\n9 13\r\n8 11\r\n",
+                "-1\r\n"
+            ],
+            [
+                "))))))\r\n",
+                "-1\r\n"
+            ],
+            [
+                "?(?)?)\r\n6 14\r\n8 6\r\n4 3\r\n",
+                "16\r\n(())()\r\n"
+            ],
+            [
+                "?(?(((\r\n8 7\r\n17 15\r\n",
+                "-1\r\n"
+            ],
+            [
+                "))))))\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

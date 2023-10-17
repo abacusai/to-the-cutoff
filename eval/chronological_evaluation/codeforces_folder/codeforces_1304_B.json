@@ -1,0 +1,203 @@
+[
+    {
+        "name": "Longest Palindrome",
+        "description": "Returning back to problem solving, Gildong is now studying about palindromes.\nHe learned that a palindrome is a string that is the same as its reverse. For\nexample, strings \"pop\", \"noon\", \"x\", and \"kkkkkk\" are palindromes, while\nstrings \"moon\", \"tv\", and \"abab\" are not. An empty string is also a\npalindrome. Gildong loves this concept so much, so he wants to play with it.\nHe has \n    n\n distinct strings of equal length \n    m\n. He wants to discard\nsome of the strings (possibly none or all) and reorder the remaining strings\nso that the concatenation becomes a palindrome. He also wants the palindrome\nto be as long as possible. Please help him find one. Input The first line\ncontains two integers \n    n\n and \n    m\n (\n    1 \n    \u2264 n \n    \u2264 100\n, \n    1\n    \n    \u2264 m \n    \u2264 50\n) \u2014 the number of strings and the length of each string.\nNext \n    n\n lines contain a string of length \n    m\n each, consisting of\nlowercase Latin letters only. All strings are distinct. Output In the first\nline, print the length of the longest palindrome string you made. In the\nsecond line, print that palindrome. If there are multiple answers, print any\none of them. If the palindrome is empty, print an empty line or don't print\nthis line at all. Examples Input 3 3 tab one bat Output 6 tabbat Input 4 2 oo\nox xo xx Output 6 oxxxxo Input 3 5 hello codef orces Output 0 Input 9 4 abab\nbaba abcd bcde cdef defg wxyz zyxw ijji Output 20 ababwxyzijjizyxwbaba Note In\nthe first example, \"battab\" is also a valid answer. In the second example,\nthere can be 4 different valid answers including the sample output. We are not\ngoing to provide any hints for what the others are. In the third example, the\nempty string is the only valid palindrome string.\n\n",
+        "cf_contest_id": 1304,
+        "cf_index": "B",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3\r\ntab\r\none\r\nbat\r\n",
+                "6 battab\r\n"
+            ],
+            [
+                "4 2\r\noo\r\nox\r\nxo\r\nxx\r\n",
+                "6 xoxxox\r\n"
+            ],
+            [
+                "3 5\r\nhello\r\ncodef\r\norces\r\n",
+                "0 \r\n"
+            ],
+            [
+                "9 4\r\nabab\r\nbaba\r\nabcd\r\nbcde\r\ncdef\r\ndefg\r\nwxyz\r\nzyxw\r\nijji\r\n",
+                "20 babazyxwijjiwxyzabab\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 6\r\najwwja\r\nfibwwz\r\nbjwker\r\ndfjsep\r\nzwwbif\r\n",
+                "18 zwwbifajwwjafibwwz\r\n"
+            ],
+            [
+                "7 3\r\nbob\r\nmqf\r\nsik\r\nkld\r\nfwe\r\nfnz\r\ndlk\r\n",
+                "9 dlkbobkld\r\n"
+            ],
+            [
+                "6 3\r\nwji\r\niwn\r\nfdp\r\nnwi\r\nsdz\r\nwow\r\n",
+                "9 nwiwowiwn\r\n"
+            ],
+            [
+                "1 48\r\nyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\r\n",
+                "48 yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\r\n"
+            ],
+            [
+                "26 1\r\nz\r\ny\r\nx\r\nw\r\nv\r\nu\r\nt\r\ns\r\nr\r\nq\r\np\r\no\r\nn\r\nm\r\nl\r\nk\r\nj\r\ni\r\nh\r\ng\r\nf\r\ne\r\nd\r\nc\r\nb\r\na\r\n",
+                "1 a\r\n"
+            ],
+            [
+                "4 2\r\nzz\r\nvv\r\nzv\r\nvz\r\n",
+                "6 vzvvzv\r\n"
+            ],
+            [
+                "8 3\r\nttt\r\nttq\r\ntqt\r\nqtq\r\nqqq\r\ntqq\r\nqqt\r\nqtt\r\n",
+                "15 qqtqttqqqttqtqq\r\n"
+            ],
+            [
+                "13 4\r\nhhhm\r\nmhmh\r\nmmhh\r\nhmhm\r\nmhhm\r\nhmmm\r\nhhhh\r\nmmmm\r\nhmmh\r\nhhmm\r\nmmhm\r\nhhmh\r\nmhmm\r\n",
+                "28 hmhmhhmmmhmmhmmhmmhmmmhhmhmh\r\n"
+            ],
+            [
+                "15 4\r\njjhj\r\nhjhh\r\njjjh\r\njjjj\r\nhjhj\r\nhjjj\r\nhhhh\r\nhhjh\r\njhjh\r\nhhhj\r\njhhh\r\njhjj\r\nhjjh\r\njjhh\r\nhhjj\r\n",
+                "52 hjjjhhjhjhjhjhhhjhjjhhjjhjjhjjhhjjhjhhhjhjhjhjhhjjjh\r\n"
+            ],
+            [
+                "19 6\r\nbbsssb\r\nbbsbsb\r\nbbssbb\r\nbssbbs\r\nsbbbsb\r\nsbbssb\r\nsbsbss\r\nssbsbb\r\nbssssb\r\nsssbsb\r\nbbbbbs\r\nsssbss\r\nbsssbb\r\nbssbbb\r\nsssssb\r\nbbbsbs\r\nsbbbbb\r\nbbbsss\r\nssbbbs\r\n",
+                "42 sbbssbbsssbbsbbbbbbssssbbbbbbsbbsssbbssbbs\r\n"
+            ],
+            [
+                "19 5\r\nassaa\r\nsaaas\r\naaass\r\nassss\r\nsssas\r\nasasa\r\nsasss\r\naasaa\r\nsasaa\r\nsasas\r\nassas\r\nsssss\r\nasass\r\naaasa\r\nasaaa\r\nssaaa\r\naaaas\r\naasas\r\naassa\r\n",
+                "55 sasssasaaassaaaaasasaassasssssassaasasaaaaassaaasasssas\r\n"
+            ],
+            [
+                "20 8\r\ngggxgggg\r\nxxxggxxg\r\nxxgggxgx\r\nxxggxgxg\r\ngxxxxxxg\r\ngxggxxxg\r\nxxgxxxgx\r\ngggxgggx\r\nxgxxggxx\r\ngxgggxgg\r\nggxxggxg\r\nxxggxxxg\r\nxgggxgxg\r\nxgggxxxx\r\nxxggxggg\r\ngxgxxxgx\r\nggxgxxxx\r\nggggxxgg\r\nggggxxgx\r\nxxgxxgxx\r\n",
+                "8 xxgxxgxx\r\n"
+            ],
+            [
+                "16 9\r\nviiviiviv\r\nivviivivv\r\nivvivviiv\r\nivvvvvivv\r\nviviiivvv\r\nivivivvii\r\niiiiiivvi\r\niiviviivv\r\niiiiviviv\r\niviviiiii\r\nvivviviiv\r\nviivivivi\r\niivvvvivv\r\niivviivvv\r\niiviiviiv\r\nivviiiiiv\r\n",
+                "0 \r\n"
+            ],
+            [
+                "15 10\r\nhhhlhhllhh\r\nlllhlhllhl\r\nllhhllllhh\r\nlhhhhllllh\r\nlhhhllhlll\r\nllhhlhhhlh\r\nllhhhhhlhh\r\nhlllhhhhll\r\nhhlhhhhlll\r\nlhhllhhlll\r\nlhlhhllhhh\r\nhhlllhhhhl\r\nllllllhllh\r\nlhhhlhllll\r\nhlhllhlhll\r\n",
+                "0 \r\n"
+            ],
+            [
+                "19 11\r\niijijiiiiii\r\njjjjjjjjiji\r\njjijjiiijij\r\nijjjjiiijij\r\njijijiijijj\r\niijiijiijij\r\niiijjijijjj\r\njjjjjjiiiij\r\niiiiijjiiii\r\njiijiijjjjj\r\niiiiijiijji\r\niijijjjijji\r\njijjjiijijj\r\nijjijiiijjj\r\nijijjjijjij\r\nijjjiiijjjj\r\nijjijiiijji\r\niijjjijiiii\r\niijijjijjjj\r\n",
+                "0 \r\n"
+            ],
+            [
+                "9 2\r\nss\r\nat\r\nst\r\ntt\r\nta\r\nsa\r\nas\r\nts\r\naa\r\n",
+                "14 taastsaastsaat\r\n"
+            ],
+            [
+                "9 2\r\naa\r\nii\r\nkk\r\nia\r\nak\r\nik\r\nai\r\nka\r\nki\r\n",
+                "14 aikakikkikakia\r\n"
+            ],
+            [
+                "8 2\r\nya\r\nyp\r\naa\r\nap\r\npa\r\npp\r\nyy\r\npy\r\n",
+                "10 papyyyypap\r\n"
+            ],
+            [
+                "16 13\r\nejlvcbnfwcufg\r\nbmvnpbzrtcvts\r\nuxkanaezbvqgq\r\nsqaqpfuzqdfpg\r\noxwudrawjxssu\r\nsicswzfzknptx\r\nrmutvsxzrdene\r\nfmeqzuufksowc\r\nerterswsretre\r\napwvlfulvfahg\r\ngybyiwjwhvqdt\r\nouvkqcjjdnena\r\ncwoskfuuzqemf\r\nqkyfapjycrapc\r\ncmjurbzlfuihj\r\nrnjtncwjzonce\r\n",
+                "39 cwoskfuuzqemferterswsretrefmeqzuufksowc\r\n"
+            ],
+            [
+                "17 14\r\nufkgjuympyvbdt\r\ninohechmqqntac\r\npnrthedikyelhu\r\nkibretxzbokkul\r\nagmpxldeaicfip\r\najxhqqbgqiaujf\r\ncvaoithqvhqzmp\r\ngltyuliiluytlg\r\nfjlyvpggpvyljf\r\negoyzxewwwwkdc\r\nukasrncwnxmwzh\r\nilwjzvnerjygvm\r\nhrhttsttcgrbaw\r\npmzqhvqhtioavc\r\nazzvicbnvvujrg\r\ntczhcacvevibkt\r\ngvhhusgdjifmmu\r\n",
+                "42 pmzqhvqhtioavcfjlyvpggpvyljfcvaoithqvhqzmp\r\n"
+            ],
+            [
+                "18 15\r\nhprpaepyybpldwa\r\npoveplrjqgbrirc\r\ninsvahznhlugdrc\r\nawdlpbyypeaprph\r\ngurilzdjrfrfdnt\r\nkqxtzzdddrzzwva\r\ndvrjupbgvfysjis\r\nvcehqrjsjrqhecv\r\nefcudkqpcsoxeek\r\nghnyixevvhaniyw\r\nwaylplvlkfwyvfy\r\nhvcxvkdmdkvxcvh\r\nswvvohscareynep\r\ncljjjrxwvmbhmdx\r\nmmnrmrhxhrmrnmm\r\nrkvlobbtpsyobtq\r\ntjguaaeewdhuzel\r\nodewcgawocrczjc\r\n",
+                "45 awdlpbyypeaprphmmnrmrhxhrmrnmmhprpaepyybpldwa\r\n"
+            ],
+            [
+                "17 14\r\niqjzbmkkmbzjqi\r\nflaajsyoyjqbta\r\nzvkqmwyvyvqrto\r\nohqsfzzjqzirgh\r\neqlkoxraesjfyn\r\nsxsnqmgknyrtzh\r\nhctwrsetmqnspz\r\npzrdlfzqfgyggt\r\nfpppuskqkafddl\r\nvqzozehbutyudm\r\ncprzqnxhyhpucu\r\nekbauejlymnlun\r\natbqjyoysjaalf\r\nzpsnqmtesrwtch\r\ntssovnhzbvhmrd\r\ngzgybjgrrypgyw\r\nawpkcwyswerzar\r\n",
+                "70 atbqjyoysjaalfzpsnqmtesrwtchiqjzbmkkmbzjqihctwrsetmqnspzflaajsyoyjqbta\r\n"
+            ],
+            [
+                "19 15\r\nkzxrduectwevzya\r\nrvbbobbwbbobbvr\r\nfnrsfapipafsrnf\r\najrgjayyijtakwo\r\nszcbqnxerrckvmq\r\nqwqcjnklyhqzwlv\r\nqtljkxivuuquagh\r\nzmoatzyyuvxvvhn\r\nqevycxrkxxztjqu\r\nffcoecqrultafej\r\nayzvewtceudrxzk\r\nsdvfbzlbqpneilp\r\njefatlurqceocff\r\nwtkfzdlenlrupbn\r\ncxlehlbfqxuxehh\r\npdnorfgpiftfidf\r\nhvpcirhwigzmwee\r\njkyqsfzgttackpr\r\npfcoduejjsmgekv\r\n",
+                "75 ayzvewtceudrxzkjefatlurqceocfffnrsfapipafsrnfffcoecqrultafejkzxrduectwevzya\r\n"
+            ],
+            [
+                "21 16\r\nbouivksewcfbggsi\r\nucisrymoomyrsicu\r\nlbfnxsbmumdwnvdz\r\nkqhxcvtpdxdwcxzx\r\nutukvguzuickqgbc\r\nqwagyohxthiilhmk\r\ntrgvhvvttvvhvgrt\r\nnxvwzbdimdzkjqgb\r\njfqmhvbflacvocaq\r\naboijsvharstfygt\r\niirhlhuggqewuyiy\r\nqacovcalfbvhmqfj\r\nwmmdwejepfxojarg\r\neyyfdcqpbsfkxqed\r\nvlcezvrrmnxkvyfy\r\nsgdgrvtimaacwmnp\r\nomlspljvkpytqoay\r\nhezwngleelgnwzeh\r\nasthcgrdjscygqlz\r\nhatzcsjktartsctc\r\nyfyvkxnmrrvzeclv\r\n",
+                "80 qacovcalfbvhmqfjyfyvkxnmrrvzeclvhezwngleelgnwzehvlcezvrrmnxkvyfyjfqmhvbflacvocaq\r\n"
+            ],
+            [
+                "18 15\r\ntouncxctlwjlnix\r\ncrdhfensgnoxsqs\r\nauckexocydmizxi\r\nqtggbkrcwsdabnn\r\nskqkditatcinnij\r\neoyixhclebzgvab\r\nugwazjibyjxkgio\r\npfqwckybokoboml\r\naagasbbbrsnlgfm\r\nqvjeqybuigwoclt\r\ntzxognenxqkbcuu\r\nxjluzkcigarbjzi\r\nbavgzbelchxiyoe\r\nnprzcwsbswczrpn\r\nizjbragickzuljx\r\nbnmukiouinxhrfw\r\nkoytmudzyrmiktj\r\nnnbadswcrkbggtq\r\n",
+                "105 bavgzbelchxiyoeizjbragickzuljxnnbadswcrkbggtqnprzcwsbswczrpnqtggbkrcwsdabnnxjluzkcigarbjzieoyixhclebzgvab\r\n"
+            ],
+            [
+                "21 16\r\nivmdykxgzpmpsojj\r\nlsacbvwkzrihbxae\r\nwcwvukyhtrgmimaq\r\nebzvsaushchiqugo\r\njnpxszhkapzlexcg\r\nishppvuydabnmcor\r\ndublllwaawlllbud\r\nnznmhodswuhvcybg\r\nvfucufwyywfucufv\r\nllxpiainiamylrwm\r\nbgfembyqiswnxheb\r\nxarywsepptlzqywj\r\nicpjbiovfkhxbnkk\r\nbwndaszybdwlllbn\r\nwgzhopfdluolqcbs\r\nzevijfwyyvzwimod\r\neaxbhirzkwvbcasl\r\ndomiwzvyywfjivez\r\nukoehxfhrinomhxf\r\nmwrlymainiaipxll\r\nfxkafzyelkilisjc\r\n",
+                "112 eaxbhirzkwvbcasldomiwzvyywfjivezmwrlymainiaipxllvfucufwyywfucufvllxpiainiamylrwmzevijfwyyvzwimodlsacbvwkzrihbxae\r\n"
+            ],
+            [
+                "24 17\r\ngdnaevfczjayllndr\r\nwmuarvqwpbhuznpxz\r\nlurusjuzrkxmdvfhw\r\nyckftntrvdatssgbb\r\nzxpnzuhbpwqvraumw\r\nwaxuutbtbtbtuuxaw\r\ndgwjcwilgyrgpohnr\r\ntrcttthipihtttcrt\r\ncmbovzvfgdqlfkfqp\r\nqbgqnzkhixnnvzvqi\r\nqiursxnedmveeuxdq\r\nrdnllyajzcfveandg\r\nbzwxilleapxzcxmde\r\ncxcfjzlfdtytldtqf\r\nyhukzlipwduzwevmg\r\nrorwbyuksboagybcn\r\nambwnlhroyhjfrviw\r\nuhkfyflnnnlfyfkhu\r\noqujycxjdwilbxfuw\r\nkjvmprbgqlgptzdcg\r\nntvbvmwtoljxorljp\r\nwivrfjhyorhlnwbma\r\nukeawbyxrsrsgdhjg\r\nlkstfcrcpwzcybdfp\r\n",
+                "119 zxpnzuhbpwqvraumwrdnllyajzcfveandgwivrfjhyorhlnwbmauhkfyflnnnlfyfkhuambwnlhroyhjfrviwgdnaevfczjayllndrwmuarvqwpbhuznpxz\r\n"
+            ],
+            [
+                "17 14\r\ntzmqqlttfuopox\r\ndlgvbiydlxmths\r\ndxnyijdxjuvvej\r\nnfxqnqtffqnojm\r\nrkfvitydhceoum\r\ndycxhtklifleqe\r\nldjflcylhmjxub\r\nurgabqqfljxnps\r\nshtmxldyibvgld\r\nosjuvluhehilmn\r\nwtdlavffvaldtw\r\nabjixlbuwfyafp\r\naojogsmvdzyorp\r\nsicdoeogurcwor\r\nocxbhsfmhmumef\r\ndqxmxaadjwhqus\r\nclwotgqvdwcbar\r\n",
+                "42 shtmxldyibvgldwtdlavffvaldtwdlgvbiydlxmths\r\n"
+            ],
+            [
+                "19 15\r\nvckwliplqlghsrj\r\nijodcwwahmyhlcw\r\nvmxtpfqfucsrlkj\r\nurfpsqvvghujktj\r\ndqzjhsahqclpdnk\r\ngxkkfjpgksgvosn\r\ntdzghaxmubitpho\r\nauspvsdadsvpsua\r\njrshglqlpilwkcv\r\nmczlxjpwkjkafdq\r\nogoiebrhicgygyw\r\nmqvfljsycyjgmry\r\nrypgirpkaijxjis\r\nfdqqybfabhektcz\r\nqjlgcyyvgybkfob\r\nfgdacgwkwtzmxaw\r\nbeodeawdxtjkmul\r\nuvofthzdouykfbm\r\nfohvezsyszevhof\r\n",
+                "45 jrshglqlpilwkcvfohvezsyszevhofvckwliplqlghsrj\r\n"
+            ],
+            [
+                "21 16\r\nnmonvcjsrzaaptwq\r\ngwfqpwpzpomihwrk\r\nwpddhveysfqnahtp\r\napudlvvoovvldupa\r\nrmmdkvxhbaatqbix\r\nnuylrmomksyzfvqj\r\ntehasluuazwsubot\r\nkvmtoacwfvgaswjc\r\nkzeqgpbbvbkopdep\r\nuuqfkyksskykfquu\r\ncdvgblxukhlauyrt\r\nqufnzzgoyrinljba\r\nwawqpunycdjrtugt\r\njainpkxzzxkpniaj\r\nbqxflkftillbhziu\r\nypdoaowbvafxcavr\r\nffsnmnwxarihoetb\r\nvkjeolamwejtoeyb\r\nuizhbllitfklfxqb\r\nenmimfyotwwxlubl\r\njdapubmqhivhvtpk\r\n",
+                "48 uizhbllitfklfxqbjainpkxzzxkpniajbqxflkftillbhziu\r\n"
+            ],
+            [
+                "19 15\r\njbrkxvujnnbqtxl\r\nnccimzpijbvkgsw\r\nthkzoeuqubgqmyg\r\ngawdqgcmsyyqjqi\r\ntpmtyqywcibpmsx\r\ncdizsrcxbyxgjhy\r\nhbdtwfbigjgjvvx\r\nzsgqmcnzpyjtptx\r\nsdunabpxjgmjini\r\npegfxzgxgzxfgep\r\ndadoreolxiexykr\r\nwlammhynkmvknbf\r\ncwnddcwxvttsrkf\r\nllqpdraducfzraa\r\nxjobmfjbqnvzgen\r\ntanxwnfblurruuz\r\nxvvjgjgibfwtdbh\r\nzuurrulbfnwxnat\r\ndbyznxuogfpdooq\r\n",
+                "75 xvvjgjgibfwtdbhzuurrulbfnwxnatpegfxzgxgzxfgeptanxwnfblurruuzhbdtwfbigjgjvvx\r\n"
+            ],
+            [
+                "23 16\r\nhguaqgtvkgjujqsw\r\nourwjkcqcyhwopbx\r\nmbzsqzrdrexcyteq\r\nikymlzfsglgnrrsk\r\nhrkgfbszibphqxug\r\nwtahnxkohpjtgqxw\r\njqukumpdalhatcuw\r\nyeykmsvzalxjkpet\r\ncytqzyfmbrdfzksn\r\nmxnlbjvghjzukfqq\r\nrekvgjgifopxchgw\r\nnqezefubkbwkquxn\r\ntwytadlousxwkyrw\r\nunovmzyhjyydnzyu\r\nubpegcvfelmnkxfx\r\nhpgbwhlmmlhwbgph\r\npusmzqjvwcrxckxi\r\nooetmunvipomrexv\r\npcetnonmmnontecp\r\ntewdbezylmzkjrvo\r\nksrrnglgsfzlmyki\r\ntliczkoxzeypchxm\r\nwuctahladpmukuqj\r\n",
+                "80 ksrrnglgsfzlmykiwuctahladpmukuqjpcetnonmmnontecpjqukumpdalhatcuwikymlzfsglgnrrsk\r\n"
+            ],
+            [
+                "21 16\r\nogkkdydrhzgavqkc\r\niqaxpnpsjdvgkrrz\r\ntewguczyqcisoqzh\r\npeqnniumbtkxbyks\r\nwsqyouoxwktyrcjo\r\nrvoezvxklbyaeuzn\r\niolswzrxjomtadts\r\neycdlpicgozjcigd\r\nwrsbhqcffrsphnmh\r\nncjsrocnbxuuerot\r\npxalvbzhtirkcbqk\r\ndgicjzogcipldcye\r\nlymeaolddloaemyl\r\ntfcknbkxzfcuiycj\r\njnirwmlmvxtmgnma\r\nojcrytkwxouoyqsw\r\nsivatxubbohsutgi\r\nuxzptbnuymgogsqs\r\nvxhpocemmsltfnas\r\nizbrffhfzwroasyl\r\nnzueayblkxvzeovr\r\n",
+                "112 dgicjzogcipldcyeojcrytkwxouoyqswnzueayblkxvzeovrlymeaolddloaemylrvoezvxklbyaeuznwsqyouoxwktyrcjoeycdlpicgozjcigd\r\n"
+            ],
+            [
+                "18 15\r\nragnnivnpxztdrs\r\nvkyxdmkucqqbpug\r\nitkvrrlnlmtjqcr\r\nxyxdblwlwlbdxyx\r\nwkyzxwlbrdbqkem\r\nihaamxlwxksuzog\r\nutzglkmjsnvajkt\r\nxpscnineyfjbtiz\r\ndansieshwouxwed\r\ngpesrpjnjjfhvpn\r\nlytyezeofixktph\r\nqcmqoukytsxdkvj\r\ntkjavnsjmklgztu\r\naekyzxlyqanqfzp\r\nduqoshteikxqgzl\r\nptqylxvlzxlgdhj\r\nktresxutnpspgix\r\nnzyzrihyzbelvac\r\n",
+                "45 tkjavnsjmklgztuxyxdblwlwlbdxyxutzglkmjsnvajkt\r\n"
+            ],
+            [
+                "21 16\r\nfumufbuqukamthau\r\nwrvomjqjmzmujnhx\r\nqgsmvvkmvkosktvp\r\nzifwbktvdtceafla\r\niwhwzjoxpmfengim\r\njzvtjjshhsjjtvzj\r\nektvzejyypqdglgp\r\nhazzzvyqzcfrhlew\r\nrrmnojzxdisryhlf\r\nydhwyvjbbjvywhdy\r\ndcbwaeidaibouinw\r\nkzamfhfzywfulczz\r\nqqnxvlaaqtwnujzx\r\ntvziydcmzomoumhz\r\njalitflajnnojsho\r\npxnvfqubwwrbtflh\r\nwelhrfczqyvzzzah\r\ncmzuycjmflasndrt\r\niquvnxxqyyhhabdw\r\nkdemxeezdudoolsl\r\nmsmvkvpwyshrtmfc\r\n",
+                "48 welhrfczqyvzzzahydhwyvjbbjvywhdyhazzzvyqzcfrhlew\r\n"
+            ],
+            [
+                "24 17\r\nmhcuaxurtqranxfzs\r\nuvkvuufjvabbhphfr\r\npvecnayhshocfcteo\r\nnxpzsisqaqsiszpxn\r\nectznpabcztyqidmg\r\nuonnubzlvqovzarun\r\ntdfoxciotaewhxaky\r\npfdiagdzhacyttkdq\r\nbvafrpvllatsdohrx\r\nymjramutquyxaldxi\r\nigzbnrrayqklxvrct\r\nmpfaoooffuptrvpob\r\nwhyeubpfcbfnaqmgt\r\nkkvrolvfrrgyjtxvs\r\nsxvytjtdpmoiqmrco\r\nqpybyiznrnziybypq\r\nosqtsegisigestqso\r\npwdbqdwvwrwsntzgn\r\ninnhvyozrobihcxms\r\nvhyehewofkpywdsyp\r\nocrmqiompdtjtyvxs\r\naojkeenmaxymwsuto\r\nkkddoxvljvlfrywwf\r\nntvhgwbtqbivbppzo\r\n",
+                "51 ocrmqiompdtjtyvxsosqtsegisigestqsosxvytjtdpmoiqmrco\r\n"
+            ],
+            [
+                "21 16\r\nqrunmhntskbkettu\r\niljrukpcgdyzfbyk\r\nrivdpsimmucsovvt\r\npomwlbeecucszzmn\r\nsadqtntuieyxyrlf\r\nkybfzydgcpkurjli\r\nmhnslegyceewirxd\r\nmqekpftantmdjcyf\r\nocziqcwnsxdnzyee\r\nwjprnaxrhwwjsgtk\r\nvmwednvvvvndewmv\r\nbaulcpgwypwkhocn\r\nlvlcoumjcgtmetqq\r\nqvcbnuesqlqspayl\r\nzywarsfzdulycrsk\r\nyevkxvgfkxaarshu\r\nphpytewxkgarmpjk\r\nqoiuwdzjxuyjyzvn\r\nnvzyjyuxjzdwuioq\r\nwitjhtpepmunlvzl\r\nvxzuvllrhbrhvuek\r\n",
+                "80 kybfzydgcpkurjlinvzyjyuxjzdwuioqvmwednvvvvndewmvqoiuwdzjxuyjyzvniljrukpcgdyzfbyk\r\n"
+            ],
+            [
+                "24 17\r\nzndmakqspbruuzsta\r\nnvacnkaubelqshjle\r\ngzvbehvxuxvhebvzg\r\nohnqptaomnrqltjpb\r\nbrxlqhayktxoovmfw\r\nyxodyrfutnofhoydu\r\nznnnrxnueijnbgkyh\r\njuzlmpnwtoxbhesft\r\nugiakrtzkpavxrntw\r\nrzbjnfyrsnrybsgdl\r\nhivnuuhrwfwlhhdbf\r\nprjbnmwxftlmtbfjr\r\nmsuznhixqorujbwas\r\nufuoquqdalffvvkuf\r\nudyohfontufrydoxy\r\njsrawuqtapdqhsniy\r\nvphlnhoiirfsadsof\r\nldgsbyrnsryfnjbzr\r\ntlsngxmxzhmwrqtfp\r\nafmeaepzxqcbxphly\r\npexlxzqtydcturlis\r\nsawbjuroqxihnzusm\r\nrkczcixiyhmnwgcsu\r\nchswoyhmadcdpsobh\r\n",
+                "119 udyohfontufrydoxyldgsbyrnsryfnjbzrsawbjuroqxihnzusmgzvbehvxuxvhebvzgmsuznhixqorujbwasrzbjnfyrsnrybsgdlyxodyrfutnofhoydu\r\n"
+            ],
+            [
+                "1 1\r\na\r\n",
+                "1 a\r\n"
+            ],
+            [
+                "1 50\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "50 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n"
+            ],
+            [
+                "1 50\r\naaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "0 \r\n"
+            ]
+        ]
+    }
+]

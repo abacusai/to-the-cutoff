@@ -1,0 +1,303 @@
+[
+    {
+        "name": "Inverse Genealogy",
+        "description": "Ivan is fond of genealogy. Currently he is studying a particular genealogical\nstructure, which consists of some people. In this structure every person has\neither both parents specified, or none. Additionally, each person has exactly\none child, except for one special person, who does not have any children. The\npeople in this structure are conveniently numbered from \n    1\n to \n    n\n,\nand \n    s_i\n denotes the child of the person \n    i\n (and \n    s_i = 0\n for\nexactly one person who does not have any children). We say that \n    a\n is an\nancestor of \n    b\n if either \n    a = b\n, or \n    a\n has a child, who is an\nancestor of \n    b\n. That is \n    a\n is an ancestor for \n    a\n, \n    s_a\n,\n\n    s_s_a\n, etc. We say that person \n    i\n is imbalanced in case this\nperson has both parents specified, and the total number of ancestors of one of\nthe parents is at least double the other. Ivan counted the number of\nimbalanced people in the structure, and got \n    k\n people in total. However,\nhe is not sure whether he computed it correctly, and would like to check if\nthere is at least one construction with \n    n\n people that have \n    k\n\nimbalanced people in total. Please help him to find one such construction, or\ndetermine if it does not exist. Input The input contains two integers \n    n\n\nand \n    k\n (\n    1 \n    \u2264 n \n    \u2264 100\n     000\n, \n    0 \n    \u2264 k \n    \u2264 n\n),\nthe total number of people and the number of imbalanced people. Output If\nthere are no constructions with \n    n\n people and \n    k\n imbalanced people,\noutput NO. Otherwise output YES on the first line, and then \n    n\n integers\n\n    s_1, s_2, \n    \u2026, s_n\n (\n    0 \n    \u2264 s_i \n    \u2264 n\n), which describes\nthe construction and specify the child of each node (or 0, if the person does\nnot have any children). Examples Input 3 0 Output YES 0 1 1 Input 5 1 Output\nYES 0 1 1 3 3 Input 3 2 Output NO Note In the first example case one can have\na construction with 3 people, where 1 person has 2 parents. In the second\nexample case one can use the following construction: Only person 1 is\nimbalanced, because one of their parents has 1 ancestor in total, and the\nother parent has 3 ancestors.\n\n",
+        "cf_contest_id": 1379,
+        "cf_index": "E",
+        "cf_rating": 2800,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "divide and conquer",
+            "dp",
+            "math",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3 0\r\n",
+                "YES\r\n0 1 1 "
+            ],
+            [
+                "5 1\r\n",
+                "YES\r\n0 1 1 2 2 "
+            ],
+            [
+                "3 2\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 0\r\n",
+                "YES\r\n0 "
+            ],
+            [
+                "9 3\r\n",
+                "YES\r\n0 1 1 3 3 5 5 6 6 "
+            ],
+            [
+                "9 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 2\r\n",
+                "YES\r\n0 1 1 3 3 4 4 "
+            ],
+            [
+                "7 0\r\n",
+                "YES\r\n0 1 1 2 2 3 3 "
+            ],
+            [
+                "99999 49999\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2047 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "65536 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "65536 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "63 0\r\n",
+                "YES\r\n0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 "
+            ],
+            [
+                "100 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 100\r\n",
+                "NO\r\n"
+            ],
+            [
+                "31 0\r\n",
+                "YES\r\n0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 "
+            ],
+            [
+                "31 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "99 99\r\n",
+                "NO\r\n"
+            ],
+            [
+                "99 47\r\n",
+                "YES\r\n0 1 1 3 3 5 5 7 7 9 9 11 11 13 13 15 15 17 17 19 19 21 21 23 23 25 25 27 27 29 29 31 31 33 33 35 35 37 37 39 39 41 41 43 43 45 45 47 47 49 49 51 51 53 53 55 55 57 57 59 59 61 61 63 63 65 65 67 67 69 69 71 71 73 73 75 75 77 77 79 79 81 81 83 83 85 85 87 87 89 89 91 91 93 93 94 94 2 2 "
+            ],
+            [
+                "99 45\r\n",
+                "YES\r\n0 1 1 3 3 5 5 7 7 9 9 11 11 13 13 15 15 17 17 19 19 21 21 23 23 25 25 27 27 29 29 31 31 33 33 35 35 37 37 39 39 41 41 43 43 45 45 47 47 49 49 51 51 53 53 55 55 57 57 59 59 61 61 63 63 65 65 67 67 69 69 71 71 73 73 75 75 77 77 79 79 81 81 83 83 85 85 87 87 89 89 90 90 91 91 92 92 93 93 "
+            ],
+            [
+                "99 33\r\n",
+                "YES\r\n0 1 1 3 3 5 5 7 7 9 9 11 11 13 13 15 15 17 17 19 19 21 21 23 23 25 25 27 27 29 29 31 31 33 33 35 35 37 37 39 39 41 41 43 43 45 45 47 47 49 49 51 51 53 53 55 55 57 57 59 59 61 61 63 63 65 65 66 66 67 67 68 68 69 69 70 70 71 71 72 72 73 73 74 74 75 75 76 76 77 77 78 78 79 79 80 80 81 81 "
+            ],
+            [
+                "99 11\r\n",
+                "YES\r\n0 1 1 3 3 5 5 7 7 9 9 11 11 13 13 15 15 17 17 19 19 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41 42 42 43 43 44 44 45 45 46 46 47 47 48 48 49 49 50 50 51 51 52 52 53 53 54 54 55 55 56 56 57 57 58 58 59 59 "
+            ],
+            [
+                "99 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "99 1\r\n",
+                "YES\r\n0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41 42 42 43 43 44 44 45 45 46 46 47 47 48 48 49 49 "
+            ],
+            [
+                "89 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "89 1\r\n",
+                "YES\r\n0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41 42 42 43 43 44 44 "
+            ],
+            [
+                "99 2\r\n",
+                "YES\r\n0 1 1 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41 42 42 43 43 44 44 45 45 46 46 47 47 48 48 49 49 50 50 "
+            ],
+            [
+                "89 2\r\n",
+                "YES\r\n0 1 1 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41 42 42 43 43 44 44 45 45 "
+            ],
+            [
+                "99 3\r\n",
+                "YES\r\n0 1 1 3 3 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41 42 42 43 43 44 44 45 45 46 46 47 47 48 48 49 49 50 50 51 51 "
+            ],
+            [
+                "99 4\r\n",
+                "YES\r\n0 1 1 3 3 5 5 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41 42 42 43 43 44 44 45 45 46 46 47 47 48 48 49 49 50 50 51 51 52 52 "
+            ],
+            [
+                "31 3\r\n",
+                "YES\r\n0 1 1 3 3 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 "
+            ],
+            [
+                "97 41\r\n",
+                "YES\r\n0 1 1 3 3 5 5 7 7 9 9 11 11 13 13 15 15 17 17 19 19 21 21 23 23 25 25 27 27 29 29 31 31 33 33 35 35 37 37 39 39 41 41 43 43 45 45 47 47 49 49 51 51 53 53 55 55 57 57 59 59 61 61 63 63 65 65 67 67 69 69 71 71 73 73 75 75 77 77 79 79 81 81 82 82 83 83 84 84 85 85 86 86 87 87 88 88 "
+            ],
+            [
+                "97 42\r\n",
+                "YES\r\n0 1 1 3 3 5 5 7 7 9 9 11 11 13 13 15 15 17 17 19 19 21 21 23 23 25 25 27 27 29 29 31 31 33 33 35 35 37 37 39 39 41 41 43 43 45 45 47 47 49 49 51 51 53 53 55 55 57 57 59 59 61 61 63 63 65 65 67 67 69 69 71 71 73 73 75 75 77 77 79 79 81 81 83 83 84 84 85 85 86 86 87 87 88 88 2 2 "
+            ],
+            [
+                "95 33\r\n",
+                "YES\r\n0 1 1 3 3 5 5 7 7 9 9 11 11 13 13 15 15 17 17 19 19 21 21 23 23 25 25 27 27 29 29 31 31 33 33 35 35 37 37 39 39 41 41 43 43 45 45 47 47 49 49 51 51 53 53 55 55 57 57 59 59 61 61 63 63 65 65 66 66 67 67 68 68 69 69 70 70 71 71 72 72 73 73 74 74 75 75 76 76 77 77 78 78 2 2 "
+            ],
+            [
+                "99 49\r\n",
+                "NO\r\n"
+            ],
+            [
+                "282 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "127 0\r\n",
+                "YES\r\n0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 41 42 42 43 43 44 44 45 45 46 46 47 47 48 48 49 49 50 50 51 51 52 52 53 53 54 54 55 55 56 56 57 57 58 58 59 59 60 60 61 61 62 62 63 63 "
+            ],
+            [
+                "127 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "300 127\r\n",
+                "NO\r\n"
+            ],
+            [
+                "299 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "251 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "255 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "300 117\r\n",
+                "NO\r\n"
+            ],
+            [
+                "287 143\r\n",
+                "NO\r\n"
+            ],
+            [
+                "299 149\r\n",
+                "NO\r\n"
+            ],
+            [
+                "982 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "982 42\r\n",
+                "NO\r\n"
+            ],
+            [
+                "983 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1000 21\r\n",
+                "NO\r\n"
+            ],
+            [
+                "963 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "511 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "999 499\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100000 421\r\n",
+                "NO\r\n"
+            ],
+            [
+                "99982 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "99982 42\r\n",
+                "NO\r\n"
+            ],
+            [
+                "99983 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "98191 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "99999 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4095 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "99963 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "63 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "9 2\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

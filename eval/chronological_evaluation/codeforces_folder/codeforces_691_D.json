@@ -1,0 +1,129 @@
+[
+    {
+        "name": "Swaps in Permutation",
+        "description": "You are given a permutation of the numbers 1, 2, ..., n and m pairs of\npositions (aj, bj). At each step you can choose a pair from the given\npositions and swap the numbers in that positions. What is the\nlexicographically maximal permutation one can get? Let p and q be two\npermutations of the numbers 1, 2, ..., n. p is lexicographically smaller than\nthe q if a number 1 \u2264 i \u2264 n exists, so pk = qk for 1 \u2264 k < i and pi < qi.\nInput The first line contains two integers n and m (1 \u2264 n, m \u2264 10^6) \u2014 the\nlength of the permutation p and the number of pairs of positions. The second\nline contains n distinct integers pi (1 \u2264 pi \u2264 n) \u2014 the elements of the\npermutation p. Each of the last m lines contains two integers (aj, bj) (1 \u2264\naj, bj \u2264 n) \u2014 the pairs of positions to swap. Note that you are given a\npositions, not the values to swap. Output Print the only line with n distinct\nintegers p'i (1 \u2264 p'i \u2264 n) \u2014 the lexicographically maximal permutation one can\nget. Example Input 9 6 1 2 3 4 5 6 7 8 9 1 4 4 7 2 5 5 8 3 6 6 9 Output 7 8 9\n4 5 6 1 2 3\n\n",
+        "cf_contest_id": 691,
+        "cf_index": "D",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dsu",
+            "math"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "9 6\r\n1 2 3 4 5 6 7 8 9\r\n1 4\r\n4 7\r\n2 5\r\n5 8\r\n3 6\r\n6 9\r\n",
+                "7 8 9 4 5 6 1 2 3 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n1\r\n1 1\r\n",
+                "1 "
+            ],
+            [
+                "2 10\r\n2 1\r\n2 1\r\n1 2\r\n1 1\r\n2 1\r\n1 1\r\n2 1\r\n1 1\r\n1 1\r\n2 1\r\n2 1\r\n",
+                "2 1 "
+            ],
+            [
+                "3 10\r\n1 2 3\r\n2 2\r\n1 1\r\n2 2\r\n3 3\r\n1 1\r\n3 3\r\n3 3\r\n3 3\r\n2 2\r\n1 1\r\n",
+                "1 2 3 "
+            ],
+            [
+                "4 20\r\n4 2 3 1\r\n2 2\r\n1 4\r\n2 2\r\n1 1\r\n3 3\r\n3 3\r\n1 4\r\n3 3\r\n2 2\r\n3 3\r\n4 1\r\n2 2\r\n1 4\r\n3 3\r\n4 1\r\n1 1\r\n3 3\r\n2 2\r\n2 2\r\n4 4\r\n",
+                "4 2 3 1 "
+            ],
+            [
+                "5 20\r\n2 4 1 5 3\r\n1 4\r\n3 1\r\n4 5\r\n1 1\r\n4 2\r\n3 2\r\n4 4\r\n1 2\r\n4 5\r\n5 5\r\n5 5\r\n2 2\r\n2 5\r\n5 3\r\n5 5\r\n3 3\r\n5 1\r\n2 2\r\n4 5\r\n1 5\r\n",
+                "5 4 3 2 1 "
+            ],
+            [
+                "6 20\r\n4 6 1 3 2 5\r\n2 2\r\n6 5\r\n3 4\r\n3 4\r\n5 6\r\n3 3\r\n5 5\r\n6 6\r\n4 3\r\n2 2\r\n2 2\r\n5 2\r\n3 4\r\n1 4\r\n5 2\r\n4 3\r\n2 5\r\n1 4\r\n3 1\r\n4 3\r\n",
+                "4 6 3 1 5 2 "
+            ],
+            [
+                "7 20\r\n5 6 2 1 7 4 3\r\n1 4\r\n5 4\r\n7 5\r\n7 4\r\n2 4\r\n6 5\r\n1 5\r\n3 3\r\n1 5\r\n6 2\r\n7 3\r\n4 1\r\n6 4\r\n7 5\r\n7 3\r\n1 5\r\n1 3\r\n6 6\r\n5 2\r\n5 7\r\n",
+                "7 6 5 4 3 2 1 "
+            ],
+            [
+                "2 10\r\n1 2\r\n1 1\r\n2 2\r\n2 2\r\n1 1\r\n1 1\r\n2 2\r\n2 2\r\n1 1\r\n2 2\r\n1 1\r\n",
+                "1 2 "
+            ],
+            [
+                "3 10\r\n2 3 1\r\n1 1\r\n3 3\r\n3 3\r\n3 2\r\n1 1\r\n2 2\r\n3 1\r\n1 3\r\n2 1\r\n3 3\r\n",
+                "3 2 1 "
+            ],
+            [
+                "4 20\r\n3 4 1 2\r\n2 4\r\n4 4\r\n3 1\r\n3 1\r\n4 4\r\n3 3\r\n4 4\r\n1 1\r\n4 4\r\n4 2\r\n3 3\r\n1 3\r\n1 3\r\n2 2\r\n1 3\r\n1 1\r\n3 1\r\n2 4\r\n4 4\r\n2 4\r\n",
+                "3 4 1 2 "
+            ],
+            [
+                "5 20\r\n3 4 1 5 2\r\n2 4\r\n3 1\r\n2 2\r\n4 5\r\n4 5\r\n5 2\r\n1 1\r\n2 4\r\n3 3\r\n4 2\r\n3 1\r\n1 1\r\n5 2\r\n1 3\r\n3 1\r\n4 2\r\n1 3\r\n3 3\r\n4 2\r\n4 2\r\n",
+                "3 5 1 4 2 "
+            ],
+            [
+                "6 20\r\n5 3 2 4 1 6\r\n3 2\r\n5 5\r\n3 2\r\n4 4\r\n4 4\r\n4 4\r\n5 1\r\n3 2\r\n3 2\r\n1 1\r\n6 6\r\n6 6\r\n6 6\r\n4 4\r\n6 6\r\n1 5\r\n1 1\r\n5 1\r\n2 2\r\n2 3\r\n",
+                "5 3 2 4 1 6 "
+            ],
+            [
+                "7 20\r\n6 2 5 7 3 1 4\r\n7 7\r\n1 1\r\n2 2\r\n6 1\r\n4 4\r\n2 2\r\n2 2\r\n6 6\r\n3 5\r\n7 4\r\n1 6\r\n4 4\r\n6 1\r\n1 1\r\n3 3\r\n5 3\r\n3 5\r\n5 3\r\n2 2\r\n4 4\r\n",
+                "6 2 5 7 3 1 4 "
+            ],
+            [
+                "8 20\r\n8 4 7 2 6 5 3 1\r\n6 6\r\n2 4\r\n7 3\r\n4 2\r\n3 3\r\n6 5\r\n6 5\r\n8 8\r\n3 7\r\n6 6\r\n7 3\r\n4 4\r\n1 8\r\n1 8\r\n3 7\r\n8 8\r\n6 6\r\n2 4\r\n8 8\r\n4 2\r\n",
+                "8 4 7 2 6 5 3 1 "
+            ],
+            [
+                "9 20\r\n6 7 9 1 3 4 8 2 5\r\n8 2\r\n2 7\r\n1 6\r\n6 1\r\n6 1\r\n3 3\r\n9 5\r\n8 2\r\n8 2\r\n9 5\r\n4 1\r\n5 5\r\n9 3\r\n9 3\r\n6 6\r\n7 8\r\n4 6\r\n7 8\r\n1 1\r\n8 2\r\n",
+                "6 8 9 4 5 1 7 2 3 "
+            ],
+            [
+                "20 20\r\n4 12 7 1 16 19 3 10 14 8 13 2 11 9 20 5 18 17 6 15\r\n9 14\r\n3 3\r\n8 10\r\n7 3\r\n20 20\r\n5 16\r\n13 11\r\n6 19\r\n6 6\r\n12 2\r\n12 2\r\n13 11\r\n18 18\r\n18 17\r\n9 14\r\n8 8\r\n20 15\r\n4 4\r\n16 16\r\n4 1\r\n",
+                "4 12 7 1 16 19 3 10 14 8 13 2 11 9 20 5 18 17 6 15 "
+            ],
+            [
+                "8 1\r\n3 4 1 2 7 8 5 6\r\n3 4\r\n",
+                "3 4 2 1 7 8 5 6 "
+            ],
+            [
+                "3 2\r\n1 3 2\r\n1 3\r\n3 1\r\n",
+                "2 3 1 "
+            ],
+            [
+                "4 1\r\n4 3 1 2\r\n3 4\r\n",
+                "4 3 2 1 "
+            ],
+            [
+                "3 1\r\n1 3 2\r\n1 2\r\n",
+                "3 1 2 "
+            ],
+            [
+                "9 6\r\n9 2 3 4 5 6 7 8 1\r\n1 4\r\n4 7\r\n2 5\r\n5 8\r\n3 6\r\n6 9\r\n",
+                "9 8 6 7 5 3 4 2 1 "
+            ],
+            [
+                "3 1\r\n3 2 1\r\n1 2\r\n",
+                "3 2 1 "
+            ],
+            [
+                "83 8\r\n54 3 52 12 61 36 65 62 69 49 47 77 31 15 21 14 73 29 6 26 37 17 81 75 43 30 58 76 16 8 11 5 27 35 7 66 50 67 2 39 45 28 60 71 38 82 53 1 42 13 44 72 22 4 9 25 19 57 10 70 18 68 32 34 20 80 23 79 24 63 64 51 59 41 74 48 40 33 46 83 55 56 78\r\n48 80\r\n1 8\r\n71 54\r\n15 59\r\n72 46\r\n36 9\r\n64 29\r\n55 58\r\n",
+                "62 3 52 12 61 36 65 54 69 49 47 77 31 15 21 14 73 29 6 26 37 17 81 75 43 30 58 76 34 8 11 5 27 35 7 66 50 67 2 39 45 28 60 71 38 82 53 83 42 13 44 72 22 64 57 25 19 9 10 70 18 68 32 16 20 80 23 79 24 63 4 51 59 41 74 48 40 33 46 1 55 56 78 "
+            ],
+            [
+                "5 3\r\n5 2 3 4 1\r\n2 4\r\n1 4\r\n3 4\r\n",
+                "5 4 3 2 1 "
+            ],
+            [
+                "3 1\r\n2 3 1\r\n1 1\r\n",
+                "2 3 1 "
+            ],
+            [
+                "2 10\r\n2 1\r\n2 1\r\n1 2\r\n1 1\r\n2 1\r\n1 1\r\n2 1\r\n1 1\r\n1 1\r\n2 1\r\n2 1\r\n",
+                "2 1 "
+            ]
+        ]
+    }
+]

@@ -1,0 +1,150 @@
+[
+    {
+        "name": "Bear and Compressing",
+        "description": "Limak is a little polar bear. Polar bears hate long strings and thus they like\nto compress them. You should also know that Limak is so young that he knows\nonly first six letters of the English alphabet: 'a', 'b', 'c', 'd', 'e' and\n'f'. You are given a set of q possible operations. Limak can perform them in\nany order, any operation may be applied any number of times. The i-th\noperation is described by a string ai of length two and a string bi of length\none. No two of q possible operations have the same string ai. When Limak has a\nstring s he can perform the i-th operation on s if the first two letters of s\nmatch a two-letter string ai. Performing the i-th operation removes first two\nletters of s and inserts there a string bi. See the notes section for further\nclarification. You may note that performing an operation decreases the length\nof a string s exactly by 1. Also, for some sets of operations there may be a\nstring that cannot be compressed any further, because the first two letters\ndon't match any ai. Limak wants to start with a string of length n and perform\nn - 1 operations to finally get a one-letter string \"a\". In how many ways can\nhe choose the starting string to be able to get \"a\"? Remember that Limak can\nuse only letters he knows. Input The first line contains two integers n and q\n(2 \u2264 n \u2264 6, 1 \u2264 q \u2264 36) \u2014 the length of the initial string and the number of\navailable operations. The next q lines describe the possible operations. The\ni-th of them contains two strings ai and bi (|ai| = 2, |bi| = 1). It's\nguaranteed that ai \u2260 aj for i \u2260 j and that all ai and bi consist of only first\nsix lowercase English letters. Output Print the number of strings of length n\nthat Limak will be able to transform to string \"a\" by applying only operations\ngiven in the input. Examples Input 3 5 ab a cc c ca a ee c ff d Output 4 Input\n2 8 af e dc d cc f bc b da b eb a bb b ff c Output 1 Input 6 2 bb a ba a\nOutput 0 Note In the first sample, we count initial strings of length 3 from\nwhich Limak can get a required string \"a\". There are 4 such strings: \"abb\",\n\"cab\", \"cca\", \"eea\". The first one Limak can compress using operation 1 two\ntimes (changing \"ab\" to a single \"a\"). The first operation would change \"abb\"\nto \"ab\" and the second operation would change \"ab\" to \"a\". Other three strings\nmay be compressed as follows: \"cab\" \"ab\" \"a\" \"cca\" \"ca\" \"a\" \"eea\" \"ca\" \"a\" In\nthe second sample, the only correct initial string is \"eb\" because it can be\nimmediately compressed to \"a\".\n\n",
+        "cf_contest_id": 653,
+        "cf_index": "B",
+        "cf_rating": 1300,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 5\r\nab a\r\ncc c\r\nca a\r\nee c\r\nff d\r\n",
+                "4\r\n"
+            ],
+            [
+                "2 8\r\naf e\r\ndc d\r\ncc f\r\nbc b\r\nda b\r\neb a\r\nbb b\r\nff c\r\n",
+                "1\r\n"
+            ],
+            [
+                "6 2\r\nbb a\r\nba a\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 5\r\nfe b\r\nbb a\r\naf b\r\nfd b\r\nbf c\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 4\r\neb b\r\nbd a\r\ncd d\r\nbb b\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 36\r\nab b\r\nbb a\r\naf c\r\nbd b\r\ncd a\r\nff c\r\nce a\r\nae a\r\ncb a\r\nba a\r\nad d\r\ndb a\r\nbf a\r\nbe a\r\ncc b\r\ndc a\r\nbc a\r\nca e\r\naa e\r\nec b\r\nac e\r\ned b\r\ndf d\r\nfa b\r\nea a\r\nef b\r\nee a\r\nda c\r\ncf a\r\nfe d\r\ndd f\r\nde a\r\neb f\r\nfd a\r\nfc a\r\nfb a\r\n",
+                "86\r\n"
+            ],
+            [
+                "4 20\r\naf a\r\nad a\r\nac a\r\nbe a\r\nbc a\r\naa a\r\nab a\r\nbb a\r\neb a\r\nbd a\r\nbf a\r\ndc a\r\nea a\r\ncf a\r\ncd a\r\ncb a\r\nee a\r\nca a\r\nba a\r\nce a\r\n",
+                "500\r\n"
+            ],
+            [
+                "6 4\r\nca a\r\nbe f\r\nad a\r\ncf a\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 15\r\nbc c\r\nbd a\r\nab b\r\nca a\r\ndf b\r\naa c\r\nae b\r\nac c\r\ncd a\r\nba e\r\nad d\r\nbb d\r\ned a\r\nfa a\r\nbf b\r\n",
+                "5\r\n"
+            ],
+            [
+                "2 36\r\nad a\r\nae f\r\nac a\r\naa a\r\ncb b\r\nde e\r\nbe a\r\nea d\r\ncd b\r\nab a\r\nbf a\r\nba d\r\ncc c\r\ndc a\r\naf a\r\nca e\r\nda c\r\nbb c\r\nee b\r\nbd a\r\ned b\r\ndf b\r\nfd c\r\ndb d\r\nbc a\r\ncf d\r\nff d\r\ndd a\r\neb c\r\nce a\r\nfa c\r\nfe b\r\nec c\r\nef b\r\nfb a\r\nfc a\r\n",
+                "14\r\n"
+            ],
+            [
+                "3 20\r\nca a\r\nbf d\r\nac a\r\nad b\r\neb a\r\naf a\r\nbe c\r\nbd a\r\ncb a\r\ncd c\r\nce b\r\nbc c\r\nbb a\r\ndd f\r\ndc e\r\ncf e\r\nfc e\r\naa d\r\nba c\r\nae d\r\n",
+                "29\r\n"
+            ],
+            [
+                "4 35\r\nae f\r\nad d\r\naa a\r\neb d\r\nfb a\r\nce b\r\naf c\r\nfe c\r\nca a\r\nab a\r\nbd d\r\nbc a\r\nbe a\r\nbb f\r\nba c\r\ncb a\r\ncd a\r\nac c\r\ncc b\r\nbf b\r\ndb a\r\nfa a\r\ned b\r\nea a\r\nee d\r\nec a\r\ncf d\r\ndd a\r\nfc a\r\ndf a\r\nff a\r\ndc b\r\nef d\r\nde e\r\nda b\r\n",
+                "529\r\n"
+            ],
+            [
+                "5 10\r\nba a\r\nbb c\r\nad a\r\nac c\r\nbc b\r\nfa b\r\nab b\r\nbe a\r\nbf a\r\naa b\r\n",
+                "184\r\n"
+            ],
+            [
+                "5 20\r\nbd a\r\nac a\r\nad a\r\ncc a\r\naf a\r\nbe a\r\nbb a\r\ncb a\r\nca a\r\nab a\r\nbc a\r\nae a\r\ndb a\r\naa a\r\nbf a\r\nde a\r\nba a\r\ncf a\r\nda a\r\ned a\r\n",
+                "4320\r\n"
+            ],
+            [
+                "5 20\r\naf f\r\nae f\r\naa f\r\nbd f\r\nfc f\r\ndd f\r\nba f\r\nac f\r\nbe f\r\neb f\r\nad f\r\ncb f\r\nce f\r\ncf f\r\nbc f\r\nca f\r\nde f\r\nab f\r\nbf f\r\ncc f\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 36\r\nac a\r\ncc c\r\nae f\r\nca a\r\nba a\r\nbe c\r\ndc e\r\nbc a\r\naa a\r\nad d\r\naf b\r\ncd c\r\ndf c\r\nbf b\r\nfb e\r\nef a\r\nbb b\r\nbd a\r\nce b\r\nab b\r\ndb c\r\nda b\r\ncf d\r\nfd c\r\nfa a\r\ncb c\r\nfe a\r\nea a\r\nfc e\r\ndd d\r\nde a\r\neb a\r\nec a\r\ned d\r\nee c\r\nff a\r\n",
+                "2694\r\n"
+            ],
+            [
+                "6 1\r\nbf a\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 5\r\naa b\r\nad d\r\nba b\r\ndc d\r\nac a\r\n",
+                "1\r\n"
+            ],
+            [
+                "6 15\r\nad b\r\ncb b\r\naf b\r\nae c\r\nbc e\r\nbd a\r\nac a\r\nda b\r\nab c\r\ncc d\r\nce f\r\ndc b\r\nca a\r\nba c\r\nbb a\r\n",
+                "744\r\n"
+            ],
+            [
+                "6 15\r\naf a\r\nae a\r\nbc a\r\ncc a\r\nbe a\r\nff a\r\nab a\r\nbd a\r\nce a\r\nad a\r\ndb a\r\nee a\r\nba a\r\nda a\r\naa a\r\n",
+                "9375\r\n"
+            ],
+            [
+                "6 15\r\nab b\r\nbd b\r\nae b\r\ncd b\r\nac b\r\nba b\r\ndc b\r\nbc b\r\nbb b\r\nbf b\r\nef b\r\naa b\r\ndd b\r\ncf b\r\nfc b\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 24\r\nab b\r\ncb b\r\naf a\r\nde c\r\ndb c\r\nad b\r\nca c\r\nbe c\r\nda e\r\nbb a\r\nbf a\r\nae a\r\nbc c\r\nba a\r\naa a\r\ncc f\r\ndc a\r\nac b\r\ncf c\r\ndd b\r\ndf a\r\ncd d\r\nbd d\r\neb b\r\n",
+                "7993\r\n"
+            ],
+            [
+                "6 35\r\ndc c\r\nba b\r\nae e\r\nab a\r\naa b\r\nbb a\r\nbe b\r\ndb b\r\naf b\r\ncd b\r\nde b\r\ncf d\r\nac b\r\neb a\r\ndd a\r\nce b\r\nad c\r\ncc a\r\ncb c\r\nbc a\r\nbd b\r\ndf d\r\nea e\r\nfe c\r\nbf a\r\nfc a\r\nef d\r\nec b\r\nda c\r\ned b\r\nca a\r\nff a\r\nee b\r\nfb b\r\nfa e\r\n",
+                "15434\r\n"
+            ],
+            [
+                "6 36\r\nbf f\r\nbb d\r\nff f\r\nac a\r\nad c\r\nbd e\r\ndd a\r\naa c\r\nab a\r\nba b\r\naf a\r\nda c\r\nce f\r\nea c\r\nde a\r\nca f\r\ndc f\r\nec b\r\ncc a\r\nae b\r\nbe b\r\nbc c\r\nee e\r\ncb b\r\nfb a\r\ncd d\r\ndb a\r\nef a\r\ncf d\r\neb c\r\ndf b\r\nfd a\r\ned a\r\nfe c\r\nfa b\r\nfc a\r\n",
+                "15314\r\n"
+            ],
+            [
+                "6 1\r\naa a\r\n",
+                "1\r\n"
+            ],
+            [
+                "6 1\r\nbb a\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 1\r\nba a\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 1\r\nab a\r\n",
+                "1\r\n"
+            ],
+            [
+                "6 36\r\nac a\r\naf a\r\ndb a\r\nab a\r\ncb a\r\nef a\r\nad a\r\nbd a\r\nfe a\r\nde a\r\nbe a\r\nbb a\r\naa a\r\nae a\r\ndf a\r\nbc a\r\nbf a\r\nce a\r\nba a\r\nfd a\r\ndc a\r\neb a\r\ncd a\r\nca a\r\nee a\r\ncc a\r\ncf a\r\ndd a\r\nda a\r\nec a\r\nfc a\r\nfa a\r\nea a\r\ned a\r\nff a\r\nfb a\r\n",
+                "46656\r\n"
+            ],
+            [
+                "6 36\r\naf f\r\nbd f\r\nba f\r\nbf f\r\nac f\r\nbe f\r\nbc f\r\nef f\r\naa f\r\neb f\r\nab f\r\nae f\r\nda f\r\ndc f\r\ncd f\r\nea f\r\ncb f\r\nad f\r\nbb f\r\ncc f\r\nce f\r\ndf f\r\nfa f\r\ncf f\r\ned f\r\nfe f\r\nfd f\r\nee f\r\ndb f\r\nde f\r\ndd f\r\nca f\r\nfb f\r\nec f\r\nff f\r\nfc f\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 36\r\naa a\r\nab f\r\nac a\r\nad b\r\nae c\r\naf d\r\nba f\r\nbb a\r\nbc b\r\nbd c\r\nbe d\r\nbf e\r\nca f\r\ncb a\r\ncc b\r\ncd c\r\nce d\r\ncf e\r\nda f\r\ndb a\r\ndc b\r\ndd c\r\nde d\r\ndf e\r\nea f\r\neb a\r\nec b\r\ned c\r\nee d\r\nef e\r\nfa f\r\nfb a\r\nfc b\r\nfd c\r\nfe d\r\nff e\r\n",
+                "9331\r\n"
+            ],
+            [
+                "5 5\r\nab a\r\ncc c\r\nca a\r\nee c\r\nff d\r\n",
+                "8\r\n"
+            ]
+        ]
+    }
+]

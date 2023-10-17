@@ -1,0 +1,160 @@
+[
+    {
+        "name": "Little Pigs and Wolves",
+        "description": "Once upon a time there were several little pigs and several wolves on a two-\ndimensional grid of size n \u00d7 m. Each cell in this grid was either empty,\ncontaining one little pig, or containing one wolf. A little pig and a wolf are\nadjacent if the cells that they are located at share a side. The little pigs\nare afraid of wolves, so there will be at most one wolf adjacent to each\nlittle pig. But each wolf may be adjacent to any number of little pigs. They\nhave been living peacefully for several years. But today the wolves got\nhungry. One by one, each wolf will choose one of the little pigs adjacent to\nit (if any), and eats the poor little pig. This process is not repeated. That\nis, each wolf will get to eat at most one little pig. Once a little pig gets\neaten, it disappears and cannot be eaten by any other wolf. What is the\nmaximum number of little pigs that may be eaten by the wolves? Input The first\nline contains integers n and m (1 \u2264 n, m \u2264 10) which denotes the number of\nrows and columns in our two-dimensional grid, respectively. Then follow n\nlines containing m characters each \u2014 that is the grid description. \".\" means\nthat this cell is empty. \"P\" means that this cell contains a little pig. \"W\"\nmeans that this cell contains a wolf. It is guaranteed that there will be at\nmost one wolf adjacent to any little pig. Output Print a single number \u2014 the\nmaximal number of little pigs that may be eaten by the wolves. Examples Input\n2 3 PPW W.P Output 2 Input 3 3 P.W .P. W.P Output 0 Note In the first example,\none possible scenario in which two little pigs get eaten by the wolves is as\nfollows.\n\n",
+        "cf_contest_id": 116,
+        "cf_index": "B",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 3\r\nPPW\r\nW.P\r\n",
+                "2"
+            ],
+            [
+                "3 3\r\nP.W\r\n.P.\r\nW.P\r\n",
+                "0"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\nP\r\n",
+                "0"
+            ],
+            [
+                "2 6\r\nWW..WW\r\n.PPPP.\r\n",
+                "2"
+            ],
+            [
+                "6 2\r\n.W\r\n.W\r\n.P\r\nWP\r\n.P\r\nPW\r\n",
+                "3"
+            ],
+            [
+                "2 10\r\nW..WWP.P.P\r\nW..PP.WWP.\r\n",
+                "3"
+            ],
+            [
+                "10 2\r\nP.\r\n.W\r\nPW\r\n..\r\nW.\r\nW.\r\n..\r\nP.\r\nWP\r\nPP\r\n",
+                "2"
+            ],
+            [
+                "3 4\r\nWPPW\r\n.P..\r\nPWW.\r\n",
+                "3"
+            ],
+            [
+                "4 3\r\n.WW\r\n..P\r\nP.P\r\nPWW\r\n",
+                "3"
+            ],
+            [
+                "8 4\r\nP.WW\r\nW..P\r\nP..P\r\nP.WW\r\n..P.\r\nW.P.\r\nWP.W\r\nP..P\r\n",
+                "6"
+            ],
+            [
+                "1 1\r\nW\r\n",
+                "0"
+            ],
+            [
+                "4 10\r\n..P.PW.P.P\r\nP.WP.W..WP\r\nW..P.P..WP\r\nW.PWW.P.P.\r\n",
+                "7"
+            ],
+            [
+                "5 1\r\n.\r\nP\r\n.\r\n.\r\nW\r\n",
+                "0"
+            ],
+            [
+                "6 5\r\n..WP.\r\nWP..W\r\nW.PP.\r\n.PWW.\r\nP.PPP\r\nWP..W\r\n",
+                "6"
+            ],
+            [
+                "10 10\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\n",
+                "0"
+            ],
+            [
+                "10 1\r\n.\r\nW\r\nW\r\nP\r\nP\r\n.\r\n.\r\n.\r\nW\r\nP\r\n",
+                "2"
+            ],
+            [
+                "1 10\r\nP.PW.PW..W\r\n",
+                "2"
+            ],
+            [
+                "10 10\r\nPP..PPWPPW\r\nPPPPPPPP..\r\n.PPPPPPP.P\r\nPPPPPPPPPP\r\nPWP.PPP.PP\r\nPW.PP.PPPP\r\nPPPPPP.PPW\r\n..PPWPPP.P\r\nWPPPPPPPPP\r\nWP.WPPPWPP\r\n",
+                "10"
+            ],
+            [
+                "10 10\r\nPPPPPPPPPP\r\nPPPPPPPWPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\n",
+                "1"
+            ],
+            [
+                "10 10\r\nPPPPPPPPWP\r\nPPPWPPPPPP\r\nPPPPPPPPPP\r\nPWWPPWPPPP\r\nPPPPPPPPPP\r\nPPPPWPPPPP\r\nPPPPPPPPPP\r\nPPPPPPWPPW\r\nPPPPPPPPPP\r\nPPWPPPPPWP\r\n",
+                "10"
+            ],
+            [
+                "10 10\r\nWWWWWWWWWW\r\nWWWWWWWWWW\r\nWWWWWWWWWW\r\nWWWWWWWWWW\r\nWWWWWWWWWW\r\nWWWWWWWWWW\r\nWWWWWWWWWW\r\nWWWWWWWWWW\r\nWWWWWWWWWW\r\nWWWWWWWWWW\r\n",
+                "0"
+            ],
+            [
+                "1 4\r\nW..P\r\n",
+                "0"
+            ],
+            [
+                "10 10\r\nP.W.P.W.P.\r\n.W.P.W.P.W\r\nP.W.P.W.P.\r\n.W.P.W.P.W\r\nP.W.P.W.P.\r\n.W.P.W.P.W\r\nP.W.P.W.P.\r\n.W.P.W.P.W\r\nP.W.P.W.P.\r\n.W.P.W.P.W\r\n",
+                "0"
+            ],
+            [
+                "10 10\r\nWPPPWPPPWP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nWPPPWPPPWP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nWPPPWPPPWP\r\nPPPPPPPPPP\r\n",
+                "9"
+            ],
+            [
+                "10 10\r\nPPPPPPPPPP\r\nWWWWWWWWWW\r\nWWWWWWWWWW\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nWWWWWWWWWW\r\nWWWWWWWWWW\r\nPPPPPPPPPP\r\nPPPPPPPPPP\r\nWWWWWWWWWW\r\n",
+                "50"
+            ],
+            [
+                "4 1\r\n.\r\nW\r\nP\r\n.\r\n",
+                "1"
+            ],
+            [
+                "1 10\r\nP..W.PPWW.\r\n",
+                "1"
+            ],
+            [
+                "10 1\r\nP\r\nP\r\nW\r\nW\r\n.\r\nP\r\n.\r\n.\r\n.\r\nW\r\n",
+                "1"
+            ],
+            [
+                "1 1\r\n.\r\n",
+                "0"
+            ],
+            [
+                "10 10\r\nPPPWPPPWPP\r\nPWPPPWPPPP\r\nPPPPPPPPPP\r\nWPPWPPWPPW\r\nPPPPPPPPPP\r\nPWPPWPPWPP\r\nPPPPPPPPPP\r\nPPWPPWPPWP\r\nPPPPPPPPPP\r\nWPPWPPWPPW\r\n",
+                "18"
+            ],
+            [
+                "10 10\r\nWPPPPWPPWP\r\nPPPWPPPPPP\r\nPWPPPPWPPP\r\nPPPPWPPPWP\r\nWPPPPPPPPP\r\nPPPWPPWPPP\r\nPWPPPPPPWP\r\nPPPPWPPPPP\r\nWPPPPPWPPP\r\nPPPWPPPPWP\r\n",
+                "18"
+            ],
+            [
+                "4 4\r\n.P..\r\n.W..\r\n.P..\r\n..W.\r\n",
+                "1"
+            ],
+            [
+                "4 1\r\n.\r\n.\r\nW\r\nP\r\n",
+                "1"
+            ],
+            [
+                "10 10\r\nWPPPPWPPWP\r\nPPPWPPPPPP\r\nPWPPPPWPPP\r\nPPPPWPPPWP\r\nWPPPPPPPPP\r\nPPPWPPWPPP\r\nPWPPPPPPWP\r\nPPPPWPPPPP\r\nWPPPPPWPPP\r\nPPPWPPPPWP\r\n",
+                "18"
+            ],
+            [
+                "2 3\r\nWWP\r\nPPP\r\n",
+                "2"
+            ]
+        ]
+    }
+]

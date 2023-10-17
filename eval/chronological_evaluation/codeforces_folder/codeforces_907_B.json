@@ -1,0 +1,79 @@
+[
+    {
+        "name": "Tic-Tac-Toe",
+        "description": "Two bears are playing tic-tac-toe via mail. It's boring for them to play usual\ntic-tac-toe game, so they are a playing modified version of this game. Here\nare its rules. The game is played on the following field. Players are making\nmoves by turns. At first move a player can put his chip in any cell of any\nsmall field. For following moves, there are some restrictions: if during last\nmove the opposite player put his chip to cell with coordinates (xl, yl) in\nsome small field, the next move should be done in one of the cells of the\nsmall field with coordinates (xl, yl). For example, if in the first move a\nplayer puts his chip to lower left cell of central field, then the second\nplayer on his next move should put his chip into some cell of lower left field\n(pay attention to the first test case). If there are no free cells in the\nrequired field, the player can put his chip to any empty cell on any field.\nYou are given current state of the game and coordinates of cell in which the\nlast move was done. You should find all cells in which the current player can\nput his chip. A hare works as a postman in the forest, he likes to foul bears.\nSometimes he changes the game field a bit, so the current state of the game\ncould be unreachable. However, after his changes the cell where the last move\nwas done is not empty. You don't need to find if the state is unreachable or\nnot, just output possible next moves according to the rules. Input First 11\nlines contains descriptions of table with 9 rows and 9 columns which are\ndivided into 9 small fields by spaces and empty lines. Each small field is\ndescribed by 9 characters without spaces and empty lines. character \"x\"\n(ASCII-code 120) means that the cell is occupied with chip of the first\nplayer, character \"o\" (ASCII-code 111) denotes a field occupied with chip of\nthe second player, character \".\" (ASCII-code 46) describes empty cell. The\nline after the table contains two integers x and y (1 \u2264 x, y \u2264 9). They\ndescribe coordinates of the cell in table where the last move was done. Rows\nin the table are numbered from up to down and columns are numbered from left\nto right. It's guaranteed that cell where the last move was done is filled\nwith \"x\" or \"o\". Also, it's guaranteed that there is at least one empty cell.\nIt's not guaranteed that current state of game is reachable. Output Output the\nfield in same format with characters \"!\" (ASCII-code 33) on positions where\nthe current player can put his chip. All other cells should not be modified.\nExamples Input ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...\nx.. ... ... ... ... ... ... ... ... ... ... 6 4 Output ... ... ... ... ... ...\n... ... ... ... ... ... ... ... ... ... x.. ... !!! ... ... !!! ... ... !!!\n... ... Input xoo x.. x.. ooo ... ... ooo ... ... x.. x.. x.. ... ... ... ...\n... ... x.. x.. x.. ... ... ... ... ... ... 7 4 Output xoo x!! x!! ooo !!! !!!\nooo !!! !!! x!! x!! x!! !!! !!! !!! !!! !!! !!! x!! x!! x!! !!! !!! !!! !!!\n!!! !!! Input o.. ... ... ... ... ... ... ... ... ... xxx ... ... xox ... ...\nooo ... ... ... ... ... ... ... ... ... ... 5 5 Output o!! !!! !!! !!! !!! !!!\n!!! !!! !!! !!! xxx !!! !!! xox !!! !!! ooo !!! !!! !!! !!! !!! !!! !!! !!!\n!!! !!! Note In the first test case the first player made a move to lower left\ncell of central field, so the second player can put a chip only to cells of\nlower left field. In the second test case the last move was done to upper left\ncell of lower central field, however all cells in upper left field are\noccupied, so the second player can put his chip to any empty cell. In the\nthird test case the last move was done to central cell of central field, so\ncurrent player can put his chip to any cell of central field, which is already\noccupied, so he can move anywhere. Pay attention that this state of the game\nis unreachable.\n\n",
+        "cf_contest_id": 907,
+        "cf_index": "B",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "... ... ...\r\n... ... ...\r\n... ... ...\r\n\r\n... ... ...\r\n... ... ...\r\n... x.. ...\r\n\r\n... ... ...\r\n... ... ...\r\n... ... ...\r\n6 4\r\n",
+                "... ... ...\r\n... ... ...\r\n... ... ...\r\n\r\n... ... ...\r\n... ... ...\r\n... x.. ...\r\n\r\n!!! ... ...\r\n!!! ... ...\r\n!!! ... ...\r\n"
+            ],
+            [
+                "xoo x.. x..\r\nooo ... ...\r\nooo ... ...\r\n\r\nx.. x.. x..\r\n... ... ...\r\n... ... ...\r\n\r\nx.. x.. x..\r\n... ... ...\r\n... ... ...\r\n7 4\r\n",
+                "xoo x!! x!!\r\nooo !!! !!!\r\nooo !!! !!!\r\n\r\nx!! x!! x!!\r\n!!! !!! !!!\r\n!!! !!! !!!\r\n\r\nx!! x!! x!!\r\n!!! !!! !!!\r\n!!! !!! !!!\r\n"
+            ],
+            [
+                "o.. ... ...\r\n... ... ...\r\n... ... ...\r\n\r\n... xxx ...\r\n... xox ...\r\n... ooo ...\r\n\r\n... ... ...\r\n... ... ...\r\n... ... ...\r\n5 5\r\n",
+                "o!! !!! !!!\r\n!!! !!! !!!\r\n!!! !!! !!!\r\n\r\n!!! xxx !!!\r\n!!! xox !!!\r\n!!! ooo !!!\r\n\r\n!!! !!! !!!\r\n!!! !!! !!!\r\n!!! !!! !!!\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "ooo oxx xxo\r\nx.x oox xox\r\noox xo. xxx\r\n\r\nxxo xxx o.o\r\nxoo xo. oxo\r\nooo xox ox.\r\n\r\nxoo xoo .oo\r\nxox xox ox.\r\noxx xox oxo\r\n1 3\r\n",
+                "ooo oxx xxo\r\nx!x oox xox\r\noox xo! xxx\r\n\r\nxxo xxx o!o\r\nxoo xo! oxo\r\nooo xox ox!\r\n\r\nxoo xoo !oo\r\nxox xox ox!\r\noxx xox oxo\r\n"
+            ],
+            [
+                "xox o.x xxo\r\nxox xox oxo\r\nxxx .xx xoo\r\n\r\nooo oox o.x\r\n.xx xx. oo.\r\nooo xox ooo\r\n\r\nooo oxo xox\r\nx.x xox xox\r\noxo x.o xxo\r\n1 7\r\n",
+                "xox o!x xxo\r\nxox xox oxo\r\nxxx !xx xoo\r\n\r\nooo oox o!x\r\n!xx xx! oo!\r\nooo xox ooo\r\n\r\nooo oxo xox\r\nx!x xox xox\r\noxo x!o xxo\r\n"
+            ],
+            [
+                "xx. oxx .xo\r\nxxx o.o xox\r\nxoo xoo xoo\r\n\r\nooo o.x xox\r\no.. xoo .xo\r\noxx .x. xoo\r\n\r\nooo oxo oxx\r\nxxx xox ..o\r\noo. oxx xx.\r\n3 8\r\n",
+                "xx! oxx !xo\r\nxxx o!o xox\r\nxoo xoo xoo\r\n\r\nooo o!x xox\r\no!! xoo !xo\r\noxx !x! xoo\r\n\r\nooo oxo oxx\r\nxxx xox !!o\r\noo! oxx xx!\r\n"
+            ],
+            [
+                "oox xoo xxx\r\nooo xxo oxo\r\nxxx xoo xxo\r\n\r\noxo oxx xoo\r\nxoo oox xox\r\nxox oox oox\r\n\r\nxxo xoo oxo\r\noxx xxx xxx\r\noxo oxo oo.\r\n1 5\r\n",
+                "oox xoo xxx\r\nooo xxo oxo\r\nxxx xoo xxo\r\n\r\noxo oxx xoo\r\nxoo oox xox\r\nxox oox oox\r\n\r\nxxo xoo oxo\r\noxx xxx xxx\r\noxo oxo oo!\r\n"
+            ],
+            [
+                ".oo x.o xoo\r\n.o. xxx .x.\r\n..o x.o xxx\r\n\r\n..o .oo .xx\r\n.x. xox o.o\r\n.xo o.o .x.\r\n\r\n.o. xo. xxx\r\n.xo o.. .xo\r\n..o ..o xox\r\n1 8\r\n",
+                ".oo x!o xoo\r\n.o. xxx .x.\r\n..o x!o xxx\r\n\r\n..o .oo .xx\r\n.x. xox o.o\r\n.xo o.o .x.\r\n\r\n.o. xo. xxx\r\n.xo o.. .xo\r\n..o ..o xox\r\n"
+            ],
+            [
+                "xxo xoo xxo\r\nooo ooo xxx\r\noox oxo oxx\r\n\r\noxo oxo xxx\r\nxoo oxx oxo\r\nxxx oxx ooo\r\n\r\noxx xoo xxo\r\nxxx oox xox\r\nxxo o.o oxo\r\n9 6\r\n",
+                "xxo xoo xxo\r\nooo ooo xxx\r\noox oxo oxx\r\n\r\noxo oxo xxx\r\nxoo oxx oxo\r\nxxx oxx ooo\r\n\r\noxx xoo xxo\r\nxxx oox xox\r\nxxo o!o oxo\r\n"
+            ],
+            [
+                "ox. o.x .o.\r\nxxo xoo .oo\r\n.xx oox o..\r\n\r\nxx. oox oxx\r\noox oxx xxo\r\nxo. oxo x.x\r\n\r\no.x .x. xx.\r\n.xo ox. ooo\r\n.ox xo. ..o\r\n6 2\r\n",
+                "ox. o.x .o.\r\nxxo xoo .oo\r\n.xx oox o..\r\n\r\nxx. oox oxx\r\noox oxx xxo\r\nxo. oxo x.x\r\n\r\no.x !x! xx.\r\n.xo ox! ooo\r\n.ox xo! ..o\r\n"
+            ],
+            [
+                "oxo xoo ox.\r\nxxx xoo xxo\r\nxoo xxx xox\r\n\r\nxxx xxx xoo\r\nooo o.o oxx\r\nxxo ooo xxx\r\n\r\nooo oox ooo\r\nooo oxo xxx\r\nxxo xox xxo\r\n6 1\r\n",
+                "oxo xoo ox!\r\nxxx xoo xxo\r\nxoo xxx xox\r\n\r\nxxx xxx xoo\r\nooo o!o oxx\r\nxxo ooo xxx\r\n\r\nooo oox ooo\r\nooo oxo xxx\r\nxxo xox xxo\r\n"
+            ],
+            [
+                ".xo oxx xoo\r\nooo .xo xxx\r\noxo oox xoo\r\n\r\nx.o xoo xxx\r\nxo. oxo oxx\r\nx.x xoo o.o\r\n\r\nxoo xox oxx\r\nooo .x. .xx\r\nxox x.. xoo\r\n6 5\r\n",
+                ".xo oxx xoo\r\nooo .xo xxx\r\noxo oox xoo\r\n\r\nx.o xoo xxx\r\nxo. oxo oxx\r\nx.x xoo o.o\r\n\r\nxoo xox oxx\r\nooo !x! .xx\r\nxox x!! xoo\r\n"
+            ],
+            [
+                "oxo xox ooo\r\n.xo xxo oxx\r\nxxx oxo xxx\r\n\r\nxxo oxx .xx\r\nxo. xoo oxx\r\noxo oxx xox\r\n\r\nxoo ooo oox\r\nooo ooo xxo\r\nxxx x.o oxo\r\n2 2\r\n",
+                "oxo xox ooo\r\n!xo xxo oxx\r\nxxx oxo xxx\r\n\r\nxxo oxx !xx\r\nxo! xoo oxx\r\noxo oxx xox\r\n\r\nxoo ooo oox\r\nooo ooo xxo\r\nxxx x!o oxo\r\n"
+            ],
+            [
+                "xox xxx xoo\r\nxoo xxx oxo\r\nxoo oox xoo\r\n\r\noxo oox xox\r\noxo xox xox\r\noox xoo oox\r\n\r\no.o xox oox\r\noox xxo xxo\r\nxox xxx oxo\r\n3 4\r\n",
+                "xox xxx xoo\r\nxoo xxx oxo\r\nxoo oox xoo\r\n\r\noxo oox xox\r\noxo xox xox\r\noox xoo oox\r\n\r\no!o xox oox\r\noox xxo xxo\r\nxox xxx oxo\r\n"
+            ],
+            [
+                "ooo xxx .x.\r\nxxo oox ooo\r\n.o. oox xxx\r\n\r\nxox oxx xxo\r\nxxx oxx oxx\r\noxx ooo ooo\r\n\r\n.oo xoo xo.\r\nxxo oox ooo\r\nxox xxx xxo\r\n5 1\r\n",
+                "ooo xxx !x!\r\nxxo oox ooo\r\n!o! oox xxx\r\n\r\nxox oxx xxo\r\nxxx oxx oxx\r\noxx ooo ooo\r\n\r\n!oo xoo xo!\r\nxxo oox ooo\r\nxox xxx xxo\r\n"
+            ]
+        ]
+    }
+]

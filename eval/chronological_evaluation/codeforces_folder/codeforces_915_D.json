@@ -1,0 +1,376 @@
+[
+    {
+        "name": "Almost Acyclic Graph",
+        "description": "You are given a directed graph consisting of n vertices and m edges (each edge\nis directed, so it can be traversed in only one direction). You are allowed to\nremove at most one edge from it. Can you make this graph acyclic by removing\nat most one edge from it? A directed graph is called acyclic iff it doesn't\ncontain any cycle (a non-empty path that starts and ends in the same vertex).\nInput The first line contains two integers n and m (2 \u2264 n \u2264 500, 1 \u2264 m \u2264\nmin(n(n - 1), 100000)) \u2014 the number of vertices and the number of edges,\nrespectively. Then m lines follow. Each line contains two integers u and v\ndenoting a directed edge going from vertex u to vertex v (1 \u2264 u, v \u2264 n, u \u2260\nv). Each ordered pair (u, v) is listed at most once (there is at most one\ndirected edge from u to v). Output If it is possible to make this graph\nacyclic by removing at most one edge, print YES. Otherwise, print NO. Examples\nInput 3 4 1 2 2 3 3 2 3 1 Output YES Input 5 6 1 2 2 3 3 2 3 1 2 1 4 5 Output\nNO Note In the first example you can remove edge , and the graph becomes\nacyclic. In the second example you have to remove at least two edges (for\nexample, and ) in order to make the graph acyclic.\n\n",
+        "cf_contest_id": 915,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 4\r\n1 2\r\n2 3\r\n3 2\r\n3 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 6\r\n1 2\r\n2 3\r\n3 2\r\n3 1\r\n2 1\r\n4 5\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\n1 2\r\n2 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "7 7\r\n1 3\r\n3 6\r\n3 7\r\n5 3\r\n6 2\r\n6 7\r\n7 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "500 50\r\n396 340\r\n47 341\r\n422 140\r\n492 209\r\n263 248\r\n461 300\r\n124 495\r\n33 6\r\n93 384\r\n389 182\r\n130 297\r\n217 329\r\n131 136\r\n355 94\r\n388 275\r\n115 368\r\n279 462\r\n126 285\r\n185 287\r\n223 221\r\n207 167\r\n203 127\r\n39 245\r\n394 444\r\n166 99\r\n399 328\r\n3 276\r\n142 325\r\n284 153\r\n65 3\r\n102 5\r\n459 168\r\n156 17\r\n99 162\r\n293 194\r\n493 198\r\n171 356\r\n269 155\r\n479 37\r\n269 336\r\n28 183\r\n363 43\r\n398 45\r\n142 68\r\n437 301\r\n150 353\r\n1 211\r\n326 340\r\n459 14\r\n90 441\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 5\r\n1 3\r\n3 2\r\n2 1\r\n3 4\r\n4 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 6\r\n1 3\r\n2 1\r\n3 5\r\n4 3\r\n5 4\r\n3 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 4\r\n1 2\r\n2 1\r\n1 3\r\n3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 7\r\n1 2\r\n2 3\r\n3 1\r\n3 4\r\n4 1\r\n4 5\r\n5 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 6\r\n1 2\r\n2 3\r\n3 1\r\n3 2\r\n3 4\r\n4 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 5\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n3 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 6\r\n1 2\r\n2 3\r\n3 1\r\n4 5\r\n5 6\r\n6 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 6\r\n2 3\r\n3 2\r\n3 4\r\n4 3\r\n4 2\r\n2 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 5\r\n1 2\r\n2 3\r\n2 4\r\n3 1\r\n4 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 5\r\n1 2\r\n2 1\r\n3 4\r\n4 3\r\n1 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 6\r\n2 3\r\n3 4\r\n4 2\r\n5 6\r\n6 7\r\n7 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 6\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 1\r\n4 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 4\r\n1 2\r\n2 1\r\n3 4\r\n4 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 9\r\n1 2\r\n2 3\r\n1 3\r\n3 4\r\n3 5\r\n5 6\r\n6 1\r\n6 7\r\n7 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "8 7\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n4 5\r\n5 6\r\n6 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 6\r\n1 2\r\n2 4\r\n2 3\r\n3 1\r\n4 3\r\n3 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 6\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n4 1\r\n5 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 5\r\n2 4\r\n1 2\r\n2 1\r\n3 4\r\n4 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 8\r\n1 2\r\n2 3\r\n3 1\r\n2 4\r\n4 5\r\n5 1\r\n2 6\r\n6 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 8\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n3 5\r\n5 6\r\n6 2\r\n1 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 7\r\n1 2\r\n2 5\r\n5 6\r\n6 1\r\n5 4\r\n4 3\r\n3 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 22\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n2 3\r\n2 4\r\n2 5\r\n3 4\r\n3 5\r\n4 5\r\n6 7\r\n6 8\r\n6 9\r\n6 10\r\n7 8\r\n7 9\r\n7 10\r\n8 9\r\n8 10\r\n9 10\r\n5 6\r\n10 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 6\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n2 4\r\n3 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 7\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 1\r\n1 3\r\n3 5\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 6\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n4 2\r\n5 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 5\r\n2 3\r\n3 4\r\n4 2\r\n2 4\r\n3 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 8\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 2\r\n3 6\r\n6 7\r\n7 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 5\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n1 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 6\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n2 4\r\n4 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 9\r\n2 6\r\n5 6\r\n5 2\r\n3 5\r\n4 5\r\n6 4\r\n1 2\r\n2 8\r\n2 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 10\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 1\r\n5 4\r\n4 8\r\n8 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 6\r\n1 2\r\n2 3\r\n3 1\r\n4 5\r\n5 6\r\n6 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 8\r\n1 4\r\n1 5\r\n4 2\r\n4 3\r\n5 2\r\n5 3\r\n2 1\r\n3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 6\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 1\r\n1 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 5\r\n1 2\r\n2 4\r\n2 3\r\n3 1\r\n4 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 8\r\n4 3\r\n3 1\r\n4 1\r\n5 1\r\n5 2\r\n1 4\r\n1 3\r\n5 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 12\r\n2 1\r\n2 3\r\n2 4\r\n3 4\r\n4 1\r\n1 3\r\n1 5\r\n5 4\r\n6 5\r\n6 4\r\n6 1\r\n1 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 8\r\n1 2\r\n2 3\r\n3 4\r\n1 5\r\n5 6\r\n6 4\r\n4 1\r\n4 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 11\r\n5 1\r\n1 2\r\n1 6\r\n6 2\r\n2 3\r\n2 7\r\n7 3\r\n3 4\r\n3 8\r\n8 4\r\n4 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 6\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n1 3\r\n3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 8\r\n1 2\r\n1 3\r\n1 4\r\n2 3\r\n3 4\r\n3 5\r\n5 2\r\n5 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 5\r\n2 1\r\n1 3\r\n3 2\r\n3 4\r\n4 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 4\r\n3 2\r\n1 2\r\n2 3\r\n1 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "11 13\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n1 5\r\n5 6\r\n6 7\r\n7 4\r\n3 8\r\n8 9\r\n9 10\r\n10 11\r\n11 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 8\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 1\r\n4 1\r\n3 5\r\n1 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 10\r\n3 2\r\n1 5\r\n8 1\r\n1 2\r\n6 8\r\n3 8\r\n5 3\r\n2 4\r\n4 1\r\n4 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 14\r\n3 10\r\n10 9\r\n9 2\r\n8 3\r\n4 3\r\n4 2\r\n1 8\r\n7 1\r\n6 5\r\n2 7\r\n6 4\r\n5 8\r\n10 1\r\n8 10\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 6\r\n4 2\r\n3 5\r\n2 3\r\n5 4\r\n4 5\r\n3 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 3\r\n2 3\r\n2 1\r\n3 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "9 9\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 1\r\n6 7\r\n7 8\r\n8 9\r\n9 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 15\r\n3 9\r\n2 3\r\n4 10\r\n6 4\r\n3 10\r\n6 10\r\n8 6\r\n6 2\r\n6 7\r\n9 4\r\n6 3\r\n10 7\r\n1 3\r\n8 1\r\n7 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 18\r\n10 3\r\n2 7\r\n2 5\r\n1 10\r\n4 3\r\n1 4\r\n6 10\r\n9 2\r\n5 10\r\n5 9\r\n1 9\r\n1 5\r\n2 3\r\n2 4\r\n10 4\r\n6 5\r\n8 5\r\n9 6\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 13\r\n3 5\r\n1 6\r\n9 6\r\n5 4\r\n4 7\r\n10 9\r\n8 7\r\n5 6\r\n2 10\r\n9 3\r\n2 4\r\n6 3\r\n3 10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 16\r\n3 6\r\n5 6\r\n5 4\r\n3 2\r\n2 10\r\n1 7\r\n7 4\r\n6 2\r\n7 3\r\n4 6\r\n9 2\r\n9 7\r\n5 2\r\n10 9\r\n9 4\r\n7 8\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 10\r\n10 1\r\n6 9\r\n5 3\r\n9 4\r\n3 8\r\n2 1\r\n5 9\r\n8 10\r\n6 5\r\n10 5\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 9\r\n1 3\r\n1 4\r\n1 5\r\n2 1\r\n2 3\r\n2 4\r\n3 2\r\n5 2\r\n5 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 18\r\n4 10\r\n7 2\r\n2 1\r\n7 5\r\n5 6\r\n6 8\r\n3 9\r\n3 10\r\n6 9\r\n8 7\r\n4 3\r\n2 10\r\n9 5\r\n7 3\r\n6 4\r\n7 10\r\n10 5\r\n3 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 19\r\n5 9\r\n2 10\r\n3 7\r\n4 8\r\n4 2\r\n9 10\r\n3 6\r\n8 5\r\n6 10\r\n3 5\r\n4 1\r\n7 10\r\n8 9\r\n8 2\r\n7 9\r\n8 7\r\n9 1\r\n4 9\r\n8 10\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 5\r\n1 2\r\n2 1\r\n3 4\r\n3 5\r\n4 5\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 17\r\n5 6\r\n4 9\r\n7 1\r\n6 10\r\n3 10\r\n4 10\r\n9 3\r\n8 1\r\n2 4\r\n1 9\r\n3 7\r\n4 7\r\n6 2\r\n5 4\r\n3 8\r\n10 9\r\n7 10\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 13\r\n7 2\r\n7 10\r\n10 5\r\n2 9\r\n10 4\r\n8 3\r\n4 5\r\n1 8\r\n7 8\r\n5 7\r\n2 10\r\n9 6\r\n5 9\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 7\r\n1 2\r\n3 4\r\n4 5\r\n4 6\r\n5 6\r\n6 4\r\n6 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 8\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 1\r\n1 3\r\n4 6\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 9\r\n7 2\r\n10 5\r\n9 1\r\n1 5\r\n4 6\r\n1 10\r\n6 2\r\n10 9\r\n5 9\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 14\r\n8 2\r\n10 6\r\n6 1\r\n8 10\r\n6 2\r\n1 10\r\n4 7\r\n1 7\r\n9 1\r\n3 6\r\n1 4\r\n7 6\r\n10 4\r\n8 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 19\r\n10 3\r\n9 2\r\n7 4\r\n6 3\r\n1 6\r\n6 5\r\n2 8\r\n6 9\r\n1 5\r\n9 8\r\n10 9\r\n1 8\r\n3 2\r\n5 2\r\n7 10\r\n8 7\r\n3 4\r\n2 4\r\n4 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 14\r\n10 1\r\n8 9\r\n7 2\r\n8 2\r\n7 3\r\n7 10\r\n2 10\r\n6 3\r\n4 1\r\n6 5\r\n7 8\r\n10 6\r\n1 2\r\n8 10\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 19\r\n10 9\r\n1 2\r\n3 6\r\n9 6\r\n2 6\r\n3 7\r\n2 10\r\n3 8\r\n2 9\r\n2 8\r\n4 7\r\n2 7\r\n6 7\r\n10 5\r\n8 1\r\n6 10\r\n8 5\r\n8 6\r\n3 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 18\r\n8 2\r\n9 2\r\n7 4\r\n2 6\r\n7 1\r\n5 3\r\n9 4\r\n3 9\r\n3 8\r\n10 2\r\n10 1\r\n9 1\r\n6 7\r\n10 6\r\n5 6\r\n9 6\r\n7 5\r\n7 9\r\n",
+                "YES\r\n"
+            ],
+            [
+                "8 13\r\n3 5\r\n6 2\r\n5 3\r\n8 3\r\n5 7\r\n6 4\r\n5 1\r\n7 6\r\n3 1\r\n7 2\r\n4 8\r\n4 1\r\n3 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 7\r\n5 1\r\n3 7\r\n4 3\r\n1 5\r\n7 5\r\n3 6\r\n1 6\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 4\r\n3 1\r\n3 2\r\n1 3\r\n1 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 10\r\n1 3\r\n3 1\r\n2 3\r\n1 4\r\n2 4\r\n2 1\r\n5 3\r\n5 1\r\n4 1\r\n3 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 6\r\n2 1\r\n3 2\r\n1 2\r\n2 3\r\n1 5\r\n3 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 7\r\n6 2\r\n5 4\r\n2 1\r\n5 2\r\n6 5\r\n1 5\r\n5 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "9 12\r\n1 2\r\n2 3\r\n2 4\r\n4 5\r\n3 5\r\n5 6\r\n6 7\r\n6 8\r\n7 9\r\n8 9\r\n9 1\r\n3 6\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 6\r\n1 2\r\n1 3\r\n3 4\r\n4 2\r\n4 1\r\n2 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 7\r\n1 2\r\n2 3\r\n3 1\r\n2 4\r\n4 1\r\n3 5\r\n5 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 10\r\n1 5\r\n6 2\r\n2 7\r\n6 3\r\n5 7\r\n1 2\r\n3 5\r\n4 3\r\n5 2\r\n7 5\r\n",
+                "YES\r\n"
+            ],
+            [
+                "8 11\r\n8 4\r\n3 6\r\n1 2\r\n8 1\r\n7 2\r\n4 3\r\n7 4\r\n3 1\r\n2 6\r\n4 5\r\n2 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "7 16\r\n6 4\r\n5 1\r\n6 1\r\n3 7\r\n3 1\r\n5 4\r\n6 3\r\n2 7\r\n6 2\r\n1 4\r\n5 2\r\n4 7\r\n1 7\r\n6 5\r\n7 5\r\n2 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "7 16\r\n1 7\r\n4 7\r\n2 3\r\n5 1\r\n6 1\r\n5 4\r\n3 1\r\n4 6\r\n2 1\r\n6 7\r\n4 1\r\n2 7\r\n3 4\r\n3 7\r\n7 2\r\n6 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 7\r\n1 2\r\n3 4\r\n3 2\r\n1 4\r\n4 1\r\n4 2\r\n1 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "500 13\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n1 5\r\n5 6\r\n6 7\r\n7 4\r\n3 8\r\n8 9\r\n9 10\r\n10 11\r\n11 2\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

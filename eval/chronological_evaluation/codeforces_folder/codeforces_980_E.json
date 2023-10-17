@@ -1,0 +1,77 @@
+[
+    {
+        "name": "The Number Games",
+        "description": "The nation of Panel holds an annual show called The Number Games, where each\ndistrict in the nation will be represented by one contestant. The nation has\n\n    n\n districts numbered from \n    1\n to \n    n\n, each district has exactly\none path connecting it to every other district. The number of fans of a\ncontestant from district \n    i\n is equal to \n    2^i\n. This year, the\npresident decided to reduce the costs. He wants to remove \n    k\n contestants\nfrom the games. However, the districts of the removed contestants will be\nfurious and will not allow anyone to cross through their districts. The\npresident wants to ensure that all remaining contestants are from districts\nthat can be reached from one another. He also wishes to maximize the total\nnumber of fans of the participating contestants. Which contestants should the\npresident remove? Input The first line of input contains two integers \n    n\n\nand \n    k\n (\n    1 \n    \u2264 k < n \n    \u2264 10^6\n) \u2014 the number of districts in\nPanel, and the number of contestants the president wishes to remove,\nrespectively. The next \n    n-1\n lines each contains two integers \n    a\n and\n\n    b\n (\n    1 \n    \u2264 a, b \n    \u2264 n\n, \n    a \n     b\n), that describe a road\nthat connects two different districts \n    a\n and \n    b\n in the nation. It is\nguaranteed that there is exactly one path between every two districts. Output\nPrint \n    k\n space-separated integers: the numbers of the districts of which\nthe contestants should be removed, in increasing order of district number.\nExamples Input 6 3 2 1 2 6 4 2 5 6 2 3 Output 1 3 4 Input 8 4 2 6 2 7 7 8 1 2\n3 1 2 4 7 5 Output 1 3 4 5 Note In the first sample, the maximum possible\ntotal number of fans is \n    2^2 + 2^5 + 2^6 = 100\n. We can achieve it by\nremoving the contestants of the districts 1, 3, and 4.\n\n",
+        "cf_contest_id": 980,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "greedy",
+            "trees"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 3\r\n2 1\r\n2 6\r\n4 2\r\n5 6\r\n2 3\r\n",
+                "1 3 4 "
+            ],
+            [
+                "8 4\r\n2 6\r\n2 7\r\n7 8\r\n1 2\r\n3 1\r\n2 4\r\n7 5\r\n",
+                "1 3 4 5 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n1 2\r\n",
+                "1 "
+            ],
+            [
+                "3 1\r\n2 1\r\n2 3\r\n",
+                "1 "
+            ],
+            [
+                "3 2\r\n1 3\r\n1 2\r\n",
+                "1 2 "
+            ],
+            [
+                "4 2\r\n4 2\r\n1 4\r\n3 2\r\n",
+                "1 3 "
+            ],
+            [
+                "15 3\r\n9 11\r\n11 8\r\n7 9\r\n9 14\r\n12 8\r\n10 7\r\n1 14\r\n1 5\r\n12 15\r\n10 3\r\n5 2\r\n13 15\r\n4 13\r\n6 4\r\n",
+                "1 2 5 "
+            ],
+            [
+                "15 12\r\n2 3\r\n2 14\r\n4 3\r\n4 10\r\n3 5\r\n1 4\r\n1 12\r\n4 15\r\n3 9\r\n10 7\r\n11 2\r\n12 8\r\n15 13\r\n1 6\r\n",
+                "1 2 3 5 6 7 8 9 10 11 12 14 "
+            ],
+            [
+                "32 16\r\n32 8\r\n11 32\r\n22 8\r\n22 17\r\n22 3\r\n16 22\r\n8 12\r\n22 7\r\n8 27\r\n11 6\r\n32 4\r\n9 8\r\n10 22\r\n22 31\r\n1 22\r\n21 11\r\n22 15\r\n14 32\r\n32 30\r\n22 29\r\n24 11\r\n18 11\r\n25 32\r\n13 8\r\n2 32\r\n28 8\r\n32 5\r\n11 20\r\n11 19\r\n22 23\r\n26 32\r\n",
+                "1 2 3 4 5 6 7 9 10 12 13 14 15 16 17 18 "
+            ],
+            [
+                "32 1\r\n30 25\r\n30 8\r\n8 22\r\n22 20\r\n21 20\r\n6 21\r\n29 6\r\n4 29\r\n2 4\r\n13 2\r\n1 13\r\n1 11\r\n11 24\r\n31 24\r\n31 15\r\n15 14\r\n27 14\r\n16 27\r\n5 16\r\n12 5\r\n9 12\r\n9 18\r\n3 18\r\n3 17\r\n17 19\r\n19 32\r\n32 10\r\n10 26\r\n7 26\r\n7 23\r\n23 28\r\n",
+                "25 "
+            ],
+            [
+                "32 2\r\n7 20\r\n15 20\r\n7 18\r\n31 20\r\n28 15\r\n20 25\r\n27 31\r\n27 6\r\n27 12\r\n6 16\r\n22 6\r\n21 22\r\n13 6\r\n16 5\r\n23 5\r\n23 26\r\n23 24\r\n23 17\r\n24 14\r\n17 4\r\n29 4\r\n2 24\r\n30 29\r\n1 29\r\n8 4\r\n30 32\r\n11 2\r\n32 3\r\n1 9\r\n11 10\r\n19 32\r\n",
+                "3 8 "
+            ],
+            [
+                "64 46\r\n52 22\r\n38 52\r\n28 38\r\n46 38\r\n30 38\r\n30 37\r\n7 37\r\n37 48\r\n48 27\r\n2 7\r\n27 11\r\n32 2\r\n32 35\r\n8 11\r\n59 32\r\n58 59\r\n59 24\r\n58 40\r\n40 4\r\n40 49\r\n40 41\r\n49 16\r\n9 16\r\n5 9\r\n12 9\r\n9 62\r\n3 62\r\n12 63\r\n63 25\r\n64 63\r\n63 42\r\n36 42\r\n45 36\r\n14 45\r\n53 45\r\n39 53\r\n60 39\r\n50 39\r\n50 23\r\n23 10\r\n19 50\r\n20 10\r\n19 56\r\n21 56\r\n31 56\r\n44 31\r\n26 31\r\n1 31\r\n43 44\r\n15 26\r\n15 6\r\n6 29\r\n47 6\r\n18 6\r\n29 55\r\n18 54\r\n33 54\r\n61 55\r\n54 17\r\n61 34\r\n13 17\r\n17 51\r\n57 34\r\n",
+                "1 2 3 4 5 6 7 8 10 11 13 14 15 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 37 38 43 44 46 47 48 51 52 54 55 56 57 61 "
+            ],
+            [
+                "64 63\r\n11 51\r\n64 11\r\n64 39\r\n11 6\r\n24 64\r\n51 63\r\n43 51\r\n64 29\r\n6 22\r\n47 6\r\n1 47\r\n41 22\r\n41 38\r\n4 47\r\n35 47\r\n41 23\r\n45 1\r\n52 35\r\n26 45\r\n15 35\r\n21 35\r\n23 32\r\n12 21\r\n21 62\r\n25 21\r\n28 25\r\n15 54\r\n57 12\r\n20 28\r\n48 57\r\n8 57\r\n20 44\r\n46 28\r\n18 57\r\n8 9\r\n27 9\r\n48 34\r\n50 46\r\n9 56\r\n9 61\r\n7 56\r\n19 61\r\n61 17\r\n42 17\r\n19 58\r\n58 30\r\n7 14\r\n7 59\r\n31 19\r\n17 5\r\n55 14\r\n13 31\r\n2 31\r\n59 40\r\n55 49\r\n2 60\r\n2 53\r\n36 2\r\n37 13\r\n2 16\r\n53 33\r\n37 10\r\n60 3\r\n",
+                "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 "
+            ],
+            [
+                "64 21\r\n33 48\r\n33 64\r\n55 48\r\n11 55\r\n18 11\r\n62 55\r\n48 57\r\n17 62\r\n64 52\r\n30 48\r\n49 48\r\n23 18\r\n13 11\r\n9 64\r\n11 5\r\n11 45\r\n2 55\r\n62 56\r\n64 36\r\n33 10\r\n34 18\r\n55 43\r\n3 48\r\n60 62\r\n48 32\r\n33 8\r\n62 41\r\n44 11\r\n33 46\r\n15 33\r\n14 62\r\n11 6\r\n64 31\r\n62 20\r\n64 25\r\n62 51\r\n53 33\r\n62 40\r\n18 4\r\n16 62\r\n21 11\r\n33 22\r\n37 33\r\n59 62\r\n55 7\r\n27 64\r\n24 64\r\n39 64\r\n19 62\r\n54 55\r\n33 61\r\n47 48\r\n58 55\r\n42 55\r\n38 11\r\n50 18\r\n28 48\r\n11 26\r\n11 1\r\n62 35\r\n64 29\r\n12 33\r\n18 63\r\n",
+                "1 2 3 4 5 6 7 8 9 10 12 13 14 15 16 17 19 20 21 22 23 "
+            ]
+        ]
+    }
+]

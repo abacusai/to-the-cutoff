@@ -1,0 +1,415 @@
+[
+    {
+        "name": "Divide The Students",
+        "description": "Recently a lot of students were enrolled in Berland State University. All\nstudents were divided into groups according to their education program. Some\ngroups turned out to be too large to attend lessons in the same auditorium, so\nthese groups should be divided into two subgroups. Your task is to help divide\nthe first-year students of the computer science faculty. There are \n    t\n new\ngroups belonging to this faculty. Students have to attend classes on three\ndifferent subjects \u2014 maths, programming and P. E. All classes are held in\ndifferent places according to the subject \u2014 maths classes are held in\nauditoriums, programming classes are held in computer labs, and P. E. classes\nare held in gyms. Each group should be divided into two subgroups so that\nthere is enough space in every auditorium, lab or gym for all students of the\nsubgroup. For the first subgroup of the \n    i\n-th group, maths classes are\nheld in an auditorium with capacity of \n    a_i, 1\n students; programming\nclasses are held in a lab that accomodates up to \n    b_i, 1\n students; and\nP. E. classes are held in a gym having enough place for \n    c_i, 1\n\nstudents. Analogically, the auditorium, lab and gym for the second subgroup\ncan accept no more than \n    a_i, 2\n, \n    b_i, 2\n and \n    c_i, 2\n\nstudents, respectively. As usual, some students skip some classes. Each\nstudent considers some number of subjects (from \n    0\n to \n    3\n) to be\nuseless \u2014 that means, he skips all classes on these subjects (and attends all\nother classes). This data is given to you as follows \u2014 the \n    i\n-th group\nconsists of: \n    d_i, 1\n students which attend all classes; \n    d_i, 2\n\nstudents which attend all classes, except for P. E.; \n    d_i, 3\n students\nwhich attend all classes, except for programming; \n    d_i, 4\n students\nwhich attend only maths classes; \n    d_i, 5\n students which attend all\nclasses, except for maths; \n    d_i, 6\n students which attend only\nprogramming classes; \n    d_i, 7\n students which attend only P. E. There is\none more type of students \u2014 those who don't attend any classes at all (but\nthey, obviously, don't need any place in auditoriums, labs or gyms, so the\nnumber of those students is insignificant in this problem). Your task is to\ndivide each group into two subgroups so that every auditorium (or lab, or gym)\nassigned to each subgroup has enough place for all students from this subgroup\nattending the corresponding classes (if it is possible). Each student of the\n\n    i\n-th group should belong to exactly one subgroup of the \n    i\n-th\ngroup; it is forbidden to move students between groups. Input The first line\ncontains one integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264 300\n) \u2014 the number of\ngroups. Then the descriptions of groups follow. The description of the\n\n    i\n-th group consists of three lines: the first line contains three\nintegers \n    a_i, 1\n, \n    b_i, 1\n and \n    c_i, 1\n (\n    1 \n    \u2264 a_i,\n    1, b_i, 1, c_i, 1\n    \u2264 3000\n) \u2014 the capacity of the auditorium, lab\nand gym assigned to the first subgroup of the \n    i\n-th group, respectively;\nthe second line contains three integers \n    a_i, 2\n, \n    b_i, 2\n and\n\n    c_i, 2\n (\n    1 \n    \u2264 a_i, 2, b_i, 2, c_i, 2\n    \u2264 3000\n) \u2014 the\ncapacity of the auditorium, lab and gym assigned to the second subgroup of the\n\n    i\n-th group, respectively; the third line contains integers \n    d_i,\n    1\n, \n    d_i, 2\n, ..., \n    d_i, 7\n (\n    0 \n    \u2264 d_i, j\n    \u2264 3000\n)\n\u2014 the number of students belonging to each of the seven aforementioned types\nin the \n    i\n-th group. It is not guaranteed that the sum of these values is\npositive \u2014 a group can consist entirely of students that don't attend classes\nat all. It is guaranteed that the total number of students in all groups is\nnot greater than \n    3000\n. Output For each group, print the result of its\ndivision as follows: if it is impossible to divide the group, print one\ninteger \n    -1\n; otherwise print seven integers \n    f_i, 1\n, \n    f_i,\n    2\n, ..., \n    f_i, 7\n (\n    0 \n    \u2264 f_i, j\n    \u2264 d_i, j\n) \u2014 the\nnumber of students the first, second, ..., seventh type in the first subgroup\nof the \n    i\n-th group (all other students will be assigned to the second\nsubgroup). If there are multiple answers, print any of them. Example Input 3 9\n4 13 1 10 3 1 2 3 4 5 6 7 9 4 13 1 10 3 2 1 3 4 5 6 7 1 2 3 4 5 6 0 0 0 0 0 0\n0 Output 1 1 3 4 2 0 7 -1 0 0 0 0 0 0 0\n\n",
+        "cf_contest_id": 1271,
+        "cf_index": "F",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force"
+        ],
+        "time_limit_seconds": 8.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3\r\n9 4 13\r\n1 10 3\r\n1 2 3 4 5 6 7\r\n9 4 13\r\n1 10 3\r\n2 1 3 4 5 6 7\r\n1 2 3\r\n4 5 6\r\n0 0 0 0 0 0 0\r\n",
+                "1 1 3 4 2 0 7\r\n-1\r\n0 0 0 0 0 0 0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1343 1233 1356\r\n657 767 644\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 610 733 0 623 0 0\r\n"
+            ],
+            [
+                "1\r\n1429 1561 1535\r\n575 443 472\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 724 701 0 833 0 0\r\n"
+            ],
+            [
+                "1\r\n1742 929 894\r\n253 1067 1100\r\n0 1000 1000 0 1000 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n149 65 1885\r\n203 297 764\r\n90 90 86 86 89 93 2466\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n378 417 1557\r\n207 156 944\r\n156 142 130 157 144 131 2140\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n93 186 1868\r\n226 131 870\r\n69 87 90 73 74 87 2520\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n114 152 2012\r\n456 400 568\r\n151 138 146 135 125 138 2167\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1454 1709 1263\r\n557 299 741\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 941 502 0 760 0 0\r\n"
+            ],
+            [
+                "1\r\n652 668 110\r\n1327 1312 1872\r\n0 1000 1000 0 1000 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1387 1806 1367\r\n613 194 633\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 913 474 0 893 0 0\r\n"
+            ],
+            [
+                "1\r\n1148 1681 1407\r\n852 319 593\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 711 437 0 970 0 0\r\n"
+            ],
+            [
+                "1\r\n1609 1174 1242\r\n401 839 778\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 759 840 0 402 0 0\r\n"
+            ],
+            [
+                "1\r\n1203 1379 1709\r\n792 609 280\r\n0 1000 1000 0 1000 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1573 1748 1697\r\n427 252 303\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 812 761 0 936 0 0\r\n"
+            ],
+            [
+                "1\r\n420 2687 2943\r\n2457 306 167\r\n455 454 416 434 388 409 444\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n464 2621 1417\r\n1265 2286 1180\r\n427 413 415 437 441 418 449\r\n",
+                "427 0 0 37 0 418 449\r\n"
+            ],
+            [
+                "1\r\n996 2554 1299\r\n1970 866 2897\r\n436 414 421 420 425 458 426\r\n",
+                "436 0 0 420 0 458 426\r\n"
+            ],
+            [
+                "1\r\n1743 978 1240\r\n273 1045 776\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 727 1000 0 228 0 0\r\n"
+            ],
+            [
+                "1\r\n1319 543 1075\r\n653 1436 893\r\n0 1000 1000 0 1000 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1192 633 1037\r\n808 1367 963\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 394 798 0 239 0 0\r\n"
+            ],
+            [
+                "1\r\n1183 1131 1263\r\n834 902 762\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 501 665 0 597 0 0\r\n"
+            ],
+            [
+                "1\r\n395 1066 1119\r\n1584 905 869\r\n0 1000 1000 0 1000 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1760 1073 1081\r\n240 927 919\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 876 884 0 197 0 0\r\n"
+            ],
+            [
+                "1\r\n474 386 240\r\n1552 1638 1783\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 285 163 0 77 0 0\r\n"
+            ],
+            [
+                "1\r\n1044 1961 1062\r\n916 26 885\r\n0 1000 1000 0 1000 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1184 758 750\r\n816 1242 1250\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 596 588 0 162 0 0\r\n"
+            ],
+            [
+                "1\r\n924 1310 1287\r\n1117 735 750\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 431 452 0 834 0 0\r\n"
+            ],
+            [
+                "1\r\n1121 1461 1107\r\n864 490 882\r\n0 1000 1000 0 1000 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n989 578 1413\r\n1011 1422 587\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 77 912 0 501 0 0\r\n"
+            ],
+            [
+                "1\r\n583 1177 1225\r\n1440 877 806\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 229 331 0 894 0 0\r\n"
+            ],
+            [
+                "1\r\n1390 1359 1691\r\n548 626 269\r\n0 1000 1000 0 1000 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n795 1026 1465\r\n1205 974 535\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 178 617 0 848 0 0\r\n"
+            ],
+            [
+                "1\r\n680 721 1270\r\n1365 1338 798\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 14 621 0 648 0 0\r\n"
+            ],
+            [
+                "1\r\n1224 1649 1465\r\n742 333 489\r\n0 1000 1000 0 1000 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1039 770 1235\r\n961 1230 765\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 287 752 0 483 0 0\r\n"
+            ],
+            [
+                "1\r\n1335 986 636\r\n701 1105 1446\r\n0 1000 1000 0 1000 0 0\r\n",
+                "0 779 520 0 116 0 0\r\n"
+            ],
+            [
+                "1\r\n529 1143 680\r\n1441 827 1278\r\n0 1000 1000 0 1000 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1225 1315 1164\r\n1514 1433 1561\r\n2471 106 81 81 83 88 90\r\n",
+                "1162 63 0 0 2 88 0\r\n"
+            ],
+            [
+                "1\r\n1224 1313 1163\r\n1509 1428 1558\r\n2471 106 81 81 83 88 90\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n169 173 293\r\n2397 2416 2293\r\n2169 133 135 131 143 149 140\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1489 1535 1555\r\n1251 1187 1176\r\n2461 91 92 96 88 82 90\r\n",
+                "1489 0 0 0 0 46 66\r\n"
+            ],
+            [
+                "1\r\n1488 1531 1546\r\n1251 1182 1172\r\n2461 91 92 96 88 82 90\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n797 762 780\r\n1752 1790 1779\r\n2125 141 137 160 158 132 147\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1270 1347 1278\r\n1472 1383 1450\r\n2473 84 91 94 79 94 85\r\n",
+                "1270 0 0 0 0 77 8\r\n"
+            ],
+            [
+                "1\r\n1260 1326 1247\r\n1422 1370 1442\r\n2473 84 91 94 79 94 85\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n2339 2363 2330\r\n204 169 224\r\n2136 148 142 156 153 130 135\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1515 1549 180\r\n1222 1197 169\r\n90 2486 76 85 83 87 93\r\n",
+                "90 1311 29 85 61 87 0\r\n"
+            ],
+            [
+                "1\r\n1513 1544 178\r\n1217 1197 164\r\n90 2486 76 85 83 87 93\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1393 1446 456\r\n1171 1111 137\r\n150 2119 155 142 147 146 141\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1321 1272 160\r\n1408 1452 194\r\n68 2475 86 100 101 80 90\r\n",
+                "68 1093 60 100 31 80 1\r\n"
+            ],
+            [
+                "1\r\n1315 1270 154\r\n1405 1451 191\r\n68 2475 86 100 101 80 90\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n2074 2021 301\r\n485 562 249\r\n134 2177 136 127 134 146 146\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n783 740 237\r\n1960 1981 170\r\n74 2483 84 102 89 75 93\r\n",
+                "74 523 84 102 68 75 11\r\n"
+            ],
+            [
+                "1\r\n765 703 219\r\n1911 1963 121\r\n74 2483 84 102 89 75 93\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1587 1533 249\r\n957 988 307\r\n127 2161 145 145 142 138 142\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1579 236 1499\r\n1166 146 1213\r\n93 105 2455 92 88 91 76\r\n",
+                "93 18 1376 92 29 91 1\r\n"
+            ],
+            [
+                "1\r\n1576 233 1498\r\n1164 144 1210\r\n93 105 2455 92 88 91 76\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1823 382 1646\r\n764 232 929\r\n168 159 2142 124 150 137 120\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1366 110 1430\r\n1396 227 1311\r\n96 87 2495 84 63 88 87\r\n",
+                "96 0 1233 37 14 0 87\r\n"
+            ],
+            [
+                "1\r\n1363 107 1430\r\n1396 227 1303\r\n96 87 2495 84 63 88 87\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n2251 351 2145\r\n302 192 417\r\n117 139 2179 127 130 157 151\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n569 161 596\r\n2160 190 2178\r\n88 66 2490 85 90 75 106\r\n",
+                "88 0 396 85 6 67 106\r\n"
+            ],
+            [
+                "1\r\n537 129 558\r\n2160 190 2150\r\n88 66 2490 85 90 75 106\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n2129 422 2058\r\n416 119 524\r\n131 138 2161 136 152 120 162\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n117 110 176\r\n2611 245 181\r\n94 72 79 2483 91 93 88\r\n",
+                "94 0 0 23 0 16 82\r\n"
+            ],
+            [
+                "1\r\n116 109 175\r\n2607 241 177\r\n94 72 79 2483 91 93 88\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n2164 223 288\r\n423 330 279\r\n144 127 153 2164 140 142 130\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n282 278 162\r\n2460 86 183\r\n84 94 74 2490 90 79 89\r\n",
+                "84 20 0 178 78 79 0\r\n"
+            ],
+            [
+                "1\r\n273 269 154\r\n2452 78 183\r\n84 94 74 2490 90 79 89\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n931 251 176\r\n1657 306 370\r\n140 155 132 2168 131 131 143\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n699 194 231\r\n2015 215 188\r\n75 91 91 2457 91 101 94\r\n",
+                "75 0 0 624 0 101 94\r\n"
+            ],
+            [
+                "1\r\n691 186 200\r\n1972 172 151\r\n75 91 91 2457 91 101 94\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n614 362 239\r\n1916 221 326\r\n137 153 139 2139 150 143 139\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n260 1095 1062\r\n102 1640 1685\r\n87 90 93 91 2486 72 81\r\n",
+                "87 21 60 91 915 72 0\r\n"
+            ],
+            [
+                "1\r\n259 1094 1057\r\n102 1640 1680\r\n87 90 93 91 2486 72 81\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n301 715 770\r\n270 1854 1801\r\n138 138 162 133 2145 153 131\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n239 734 782\r\n132 2030 1956\r\n104 90 95 75 2473 97 66\r\n",
+                "104 0 53 75 559 71 66\r\n"
+            ],
+            [
+                "1\r\n237 732 774\r\n127 2025 1947\r\n104 90 95 75 2473 97 66\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n231 905 1019\r\n333 1676 1546\r\n137 153 136 138 2166 128 142\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n230 1410 1423\r\n120 1351 1325\r\n84 80 77 81 2506 91 81\r\n",
+                "84 0 37 81 1235 91 67\r\n"
+            ],
+            [
+                "1\r\n206 1386 1390\r\n116 1347 1320\r\n84 80 77 81 2506 91 81\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n307 2219 2198\r\n291 287 275\r\n151 152 139 156 2124 145 133\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n171 494 227\r\n168 2254 114\r\n95 85 77 82 69 2499 93\r\n",
+                "95 0 0 76 32 367 93\r\n"
+            ],
+            [
+                "1\r\n171 494 222\r\n168 2254 112\r\n95 85 77 82 69 2499 93\r\n",
+                "95 0 0 76 34 365 93\r\n"
+            ],
+            [
+                "1\r\n296 1090 215\r\n303 1459 349\r\n145 144 155 155 127 2137 137\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n131 1000 127\r\n238 1730 217\r\n90 88 87 95 76 2476 88\r\n",
+                "90 0 0 41 0 910 37\r\n"
+            ],
+            [
+                "1\r\n127 996 125\r\n233 1725 216\r\n90 88 87 95 76 2476 88\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n227 1837 298\r\n338 729 298\r\n144 146 144 131 163 2127 145\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n192 441 223\r\n238 2279 164\r\n87 85 90 100 91 2457 90\r\n",
+                "87 0 0 100 17 337 90\r\n"
+            ],
+            [
+                "1\r\n163 412 210\r\n199 2240 148\r\n87 85 90 100 91 2457 90\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n310 882 346\r\n319 1626 240\r\n139 158 161 171 157 2085 129\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n142 243 269\r\n185 96 2472\r\n79 83 82 78 76 98 2504\r\n",
+                "79 0 0 63 63 98 127\r\n"
+            ],
+            [
+                "1\r\n139 243 266\r\n183 93 2470\r\n79 83 82 78 76 98 2504\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n267 230 1632\r\n354 363 897\r\n155 158 142 166 138 142 2099\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n103 189 1878\r\n231 139 875\r\n69 87 90 73 74 87 2520\r\n",
+                "69 0 0 34 22 87 1787\r\n"
+            ],
+            [
+                "1\r\n183 111 1919\r\n251 331 812\r\n90 90 86 86 89 93 2466\r\n",
+                "90 0 0 86 0 21 1829\r\n"
+            ],
+            [
+                "1\r\n336 2488 1581\r\n1970 2846 2103\r\n440 413 435 460 412 416 424\r\n",
+                "336 0 0 0 0 416 424\r\n"
+            ],
+            [
+                "1\r\n2676 2421 55\r\n1482 2530 116\r\n405 441 435 442 393 465 419\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

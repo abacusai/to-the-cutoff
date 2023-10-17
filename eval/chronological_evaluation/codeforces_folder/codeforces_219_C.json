@@ -1,0 +1,185 @@
+[
+    {
+        "name": "Color Stripe",
+        "description": "A colored stripe is represented by a horizontal row of n square cells, each\ncell is pained one of k colors. Your task is to repaint the minimum number of\ncells so that no two neighbouring cells are of the same color. You can use any\ncolor from 1 to k to repaint the cells. Input The first input line contains\ntwo integers n and k (1 \u2264 n \u2264 5\u00b710^5; 2 \u2264 k \u2264 26). The second line contains n\nuppercase English letters. Letter \"A\" stands for the first color, letter \"B\"\nstands for the second color and so on. The first k English letters may be\nused. Each letter represents the color of the corresponding cell of the\nstripe. Output Print a single integer \u2014 the required minimum number of\nrepaintings. In the second line print any possible variant of the repainted\nstripe. Examples Input 6 3 ABBACC Output 2 ABCACA Input 3 2 BBB Output 1 BAB\n\n",
+        "cf_contest_id": 219,
+        "cf_index": "C",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dp",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 3\r\nABBACC\r\n",
+                "2\r\nABCACA"
+            ],
+            [
+                "3 2\r\nBBB\r\n",
+                "1\r\nBAB"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 2\r\nA\r\n",
+                "0\r\nA"
+            ],
+            [
+                "1 26\r\nZ\r\n",
+                "0\r\nZ"
+            ],
+            [
+                "2 2\r\nAA\r\n",
+                "1\r\nBA"
+            ],
+            [
+                "2 2\r\nBA\r\n",
+                "0\r\nBA"
+            ],
+            [
+                "6 2\r\nAAABBB\r\n",
+                "2\r\nABABAB"
+            ],
+            [
+                "8 3\r\nAABBABBB\r\n",
+                "3\r\nACBCABAB"
+            ],
+            [
+                "10 26\r\nAAAAAAAAAA\r\n",
+                "5\r\nABABABABAB"
+            ],
+            [
+                "12 3\r\nAAABBBAAABBB\r\n",
+                "4\r\nABABABABABAB"
+            ],
+            [
+                "3 2\r\nAAB\r\n",
+                "1\r\nBAB"
+            ],
+            [
+                "3 3\r\nBBA\r\n",
+                "1\r\nBCA"
+            ],
+            [
+                "3 3\r\nCCC\r\n",
+                "1\r\nCAC"
+            ],
+            [
+                "8 3\r\nAABBCCBB\r\n",
+                "4\r\nACBACABA"
+            ],
+            [
+                "200 2\r\nBABAABBABBABBABABBBABAAABABBABABBBAABBBBABBAABBABABAAAAABAABBBAAAAAAABBBABAAAABABBBAABABAABAABBBAABBABAAAABABAAAABABABBBABBBAAABAAABAAABABAAABABABBABABABBABBBABBBBBABABBBABAAABAAABAABBAABBABBBBBABBBAB\r\n",
+                "87\r\nABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB"
+            ],
+            [
+                "20 2\r\nBBBBAAAAAABBBAAAAAAB\r\n",
+                "10\r\nBABABABABABABABABABA"
+            ],
+            [
+                "20 3\r\nCCCCAAAAAAAAAAAAAAAA\r\n",
+                "10\r\nCACBABABABABABABABAB"
+            ],
+            [
+                "100 2\r\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\r\n",
+                "49\r\nABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB"
+            ],
+            [
+                "100 2\r\nBBBBBBBAAABBAAAABAABBBAABABAAABBBABBAAAABBABAAAAAAAAAAAAABAAABBBAAABAABBBBBBBABBBBAABAAABBBAABBAAAAB\r\n",
+                "48\r\nBABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABA"
+            ],
+            [
+                "100 2\r\nABAAABABABAAABAAABAAABABABAAABABABAAABABABAAABAAABAAABABABAAABAAABAAABABABAAABAAABAAABABABAAABABABAA\r\n",
+                "17\r\nABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB"
+            ],
+            [
+                "100 2\r\nABABABABABABABABABABABABABABABABABABABABABBBABABABABABABABABABABABABABABABABABABABABABABABABABABABAB\r\n",
+                "1\r\nABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABAB"
+            ],
+            [
+                "2 3\r\nAA\r\n",
+                "1\r\nAB"
+            ],
+            [
+                "12 2\r\nBBBBABABABAB\r\n",
+                "2\r\nABABABABABAB"
+            ],
+            [
+                "4 2\r\nAABA\r\n",
+                "1\r\nBABA"
+            ],
+            [
+                "6 2\r\nBAABAB\r\n",
+                "2\r\nABABAB"
+            ],
+            [
+                "10 2\r\nAABABABABA\r\n",
+                "1\r\nBABABABABA"
+            ],
+            [
+                "6 2\r\nBBABAB\r\n",
+                "1\r\nABABAB"
+            ],
+            [
+                "5 2\r\nBBABA\r\n",
+                "1\r\nABABA"
+            ],
+            [
+                "45 26\r\nABCDEFGHIJKLMNOOOOOPPPPPQQQQQQPPQZZZZASDASDGF\r\n",
+                "10\r\nABCDEFGHIJKLMNOAOAOPAPAPQAQAQAPAQZAZBASDASDGF"
+            ],
+            [
+                "3 2\r\nBBA\r\n",
+                "1\r\nABA"
+            ],
+            [
+                "4 2\r\nABBA\r\n",
+                "2\r\nBABA"
+            ],
+            [
+                "6 2\r\nAABABA\r\n",
+                "1\r\nBABABA"
+            ],
+            [
+                "6 2\r\nBAAAAB\r\n",
+                "3\r\nBABABA"
+            ],
+            [
+                "4 2\r\nAABB\r\n",
+                "2\r\nBABA"
+            ],
+            [
+                "7 2\r\nAAAABBB\r\n",
+                "3\r\nBABABAB"
+            ],
+            [
+                "41 2\r\nAABAAABBBBBBAAAABBBAAAAAABBBBBBBBAAAAAAAA\r\n",
+                "19\r\nBABABABABABABABABABABABABABABABABABABABAB"
+            ],
+            [
+                "8 2\r\nAABABABA\r\n",
+                "1\r\nBABABABA"
+            ],
+            [
+                "20 2\r\nABBABABBBABBABAAAABA\r\n",
+                "8\r\nBABABABABABABABABABA"
+            ],
+            [
+                "5 2\r\nABBAB\r\n",
+                "2\r\nBABAB"
+            ],
+            [
+                "10 2\r\nBBABABABAB\r\n",
+                "1\r\nABABABABAB"
+            ],
+            [
+                "6 2\r\nABBABB\r\n",
+                "3\r\nBABABA"
+            ]
+        ]
+    }
+]

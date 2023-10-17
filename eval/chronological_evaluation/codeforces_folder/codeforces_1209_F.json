@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Koala and Notebook",
+        "description": "Koala Land consists of \n    m\n bidirectional roads connecting \n    n\n cities.\nThe roads are numbered from \n    1\n to \n    m\n by order in input. It is\nguaranteed, that one can reach any city from every other city. Koala starts\ntraveling from city \n    1\n. Whenever he travels on a road, he writes its\nnumber down in his notebook. He doesn't put spaces between the numbers, so\nthey all get concatenated into a single number. Before embarking on his trip,\nKoala is curious about the resulting number for all possible destinations. For\neach possible destination, what is the smallest number he could have written\nfor it? Since these numbers may be quite large, print their remainders modulo\n\n    10^9+7\n. Please note, that you need to compute the remainder of the\nminimum possible number, not the minimum possible remainder. Input The first\nline contains two integers \n    n\n and \n    m\n (\n    2 \n    \u2264 n \n    \u2264 10^5, n - 1\n    \n    \u2264 m \n    \u2264 10^5\n), the number of cities and the number of roads,\nrespectively. The \n    i\n-th of the following \n    m\n lines contains integers\n\n    x_i\n and \n    y_i\n (\n    1 \n    \u2264 x_i, y_i \n    \u2264 n\n, \n    x_i \n     y_i\n),\nrepresenting a bidirectional road between cities \n    x_i\n and \n    y_i\n. It\nis guaranteed, that for any pair of cities there is at most one road\nconnecting them, and that one can reach any city from every other city. Output\nPrint \n    n - 1\n integers, the answer for every city except for the first\ncity. The \n    i\n-th integer should be equal to the smallest number he could\nhave written for destination \n    i+1\n. Since this number may be large, output\nits remainder modulo \n    10^9+7\n. Examples Input 11 10 1 2 2 3 3 4 4 5 5 6 6\n7 7 8 8 9 9 10 10 11 Output 1 12 123 1234 12345 123456 1234567 12345678\n123456789 345678826 Input 12 19 1 2 2 3 2 4 2 5 2 6 2 7 2 8 2 9 2 10 3 11 11\n12 1 3 1 4 1 5 1 6 1 7 1 8 1 9 1 10 Output 1 12 13 14 15 16 17 18 19 1210\n121011 Input 12 14 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 1 3 1 4 1\n10 Output 1 12 13 134 1345 13456 1498 149 14 1410 141011\n\n",
+        "cf_contest_id": 1209,
+        "cf_index": "F",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "shortest paths",
+            "strings",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "11 10\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n8 9\r\n9 10\r\n10 11\r\n",
+                "1\r\n12\r\n123\r\n1234\r\n12345\r\n123456\r\n1234567\r\n12345678\r\n123456789\r\n345678826\r\n"
+            ],
+            [
+                "12 19\r\n1 2\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n2 9\r\n2 10\r\n3 11\r\n11 12\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n",
+                "1\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n18\r\n19\r\n1210\r\n121011\r\n"
+            ],
+            [
+                "12 14\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n8 9\r\n9 10\r\n10 11\r\n11 12\r\n1 3\r\n1 4\r\n1 10\r\n",
+                "1\r\n12\r\n13\r\n134\r\n1345\r\n13456\r\n1498\r\n149\r\n14\r\n1410\r\n141011\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 4\r\n2 3\r\n4 2\r\n5 3\r\n4 1\r\n",
+                "42\r\n421\r\n4\r\n4213\r\n"
+            ],
+            [
+                "10 9\r\n6 1\r\n9 7\r\n1 5\r\n8 2\r\n8 3\r\n4 3\r\n10 9\r\n4 10\r\n6 2\r\n",
+                "19\r\n1945\r\n19456\r\n3\r\n1\r\n19456872\r\n194\r\n1945687\r\n194568\r\n"
+            ],
+            [
+                "5 4\r\n2 1\r\n1 4\r\n3 1\r\n5 1\r\n",
+                "1\r\n3\r\n2\r\n4\r\n"
+            ],
+            [
+                "5 4\r\n3 5\r\n1 5\r\n4 5\r\n2 5\r\n",
+                "24\r\n21\r\n23\r\n2\r\n"
+            ],
+            [
+                "19 18\r\n1 14\r\n4 1\r\n13 1\r\n12 1\r\n2 1\r\n8 1\r\n3 1\r\n1 11\r\n1 10\r\n1 5\r\n18 1\r\n1 6\r\n19 1\r\n1 15\r\n1 17\r\n7 1\r\n1 16\r\n9 1\r\n",
+                "5\r\n7\r\n2\r\n10\r\n12\r\n16\r\n6\r\n18\r\n9\r\n8\r\n4\r\n3\r\n1\r\n14\r\n17\r\n15\r\n11\r\n13\r\n"
+            ],
+            [
+                "5 10\r\n5 4\r\n2 5\r\n4 1\r\n3 2\r\n1 5\r\n4 3\r\n3 1\r\n1 2\r\n3 5\r\n2 4\r\n",
+                "8\r\n7\r\n3\r\n5\r\n"
+            ],
+            [
+                "12 13\r\n1 2\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n2 9\r\n2 10\r\n2 11\r\n2 12\r\n1 4\r\n1 3\r\n",
+                "1\r\n12\r\n12\r\n14\r\n15\r\n16\r\n17\r\n18\r\n19\r\n110\r\n111\r\n"
+            ]
+        ]
+    }
+]

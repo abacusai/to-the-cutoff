@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Third Month Insanity",
+        "description": "The annual college sports-ball tournament is approaching, which for trademark\nreasons we'll refer to as Third Month Insanity. There are a total of 2^N teams\nparticipating in the tournament, numbered from 1 to 2^N. The tournament lasts\nN rounds, with each round eliminating half the teams. The first round consists\nof 2^N-1 games, numbered starting from 1. In game i, team 2\u00b7i - 1 will play\nagainst team 2\u00b7i. The loser is eliminated and the winner advances to the next\nround (there are no ties). Each subsequent round has half as many games as the\nprevious round, and in game i the winner of the previous round's game 2\u00b7i - 1\nwill play against the winner of the previous round's game 2\u00b7i. Every year the\noffice has a pool to see who can create the best bracket. A bracket is a set\nof winner predictions for every game. For games in the first round you may\npredict either team to win, but for games in later rounds the winner you\npredict must also be predicted as a winner in the previous round. Note that\nthe bracket is fully constructed before any games are actually played. Correct\npredictions in the first round are worth 1 point, and correct predictions in\neach subsequent round are worth twice as many points as the previous, so\ncorrect predictions in the final game are worth 2^N-1 points. For every pair\nof teams in the league, you have estimated the probability of each team\nwinning if they play against each other. Now you want to construct a bracket\nwith the maximum possible expected score. Input Input will begin with a line\ncontaining N (2 \u2264 N \u2264 6). 2^N lines follow, each with 2^N integers. The j-th\ncolumn of the i-th row indicates the percentage chance that team i will defeat\nteam j, unless i = j, in which case the value will be 0. It is guaranteed that\nthe i-th column of the j-th row plus the j-th column of the i-th row will add\nto exactly 100. Output Print the maximum possible expected score over all\npossible brackets. Your answer must be correct to within an absolute or\nrelative error of 10^-9. Formally, let your answer be a, and the jury's answer\nbe b. Your answer will be considered correct, if . Examples Input 2 0 40 100\n100 60 0 40 40 0 60 0 45 0 60 55 0 Output 1.75 Input 3 0 0 100 0 100 0 0 0 100\n0 100 0 0 0 100 100 0 0 0 100 100 0 0 0 100 100 0 0 0 0 100 100 0 100 0 100 0\n0 100 0 100 100 100 100 100 0 0 0 100 0 100 0 0 100 0 0 100 0 100 0 100 100\n100 0 Output 12 Input 2 0 21 41 26 79 0 97 33 59 3 0 91 74 67 9 0 Output\n3.141592 Note In the first example, you should predict teams 1 and 4 to win in\nround 1, and team 1 to win in round 2. Recall that the winner you predict in\nround 2 must also be predicted as a winner in round 1.\n\n",
+        "cf_contest_id": 859,
+        "cf_index": "D",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "probabilities",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n0 40 100 100\r\n60 0 40 40\r\n0 60 0 45\r\n0 60 55 0\r\n",
+                "1.75\r\n"
+            ],
+            [
+                "3\r\n0 0 100 0 100 0 0 0\r\n100 0 100 0 0 0 100 100\r\n0 0 0 100 100 0 0 0\r\n100 100 0 0 0 0 100 100\r\n0 100 0 100 0 0 100 0\r\n100 100 100 100 100 0 0 0\r\n100 0 100 0 0 100 0 0\r\n100 0 100 0 100 100 100 0\r\n",
+                "12.0\r\n"
+            ],
+            [
+                "2\r\n0 21 41 26\r\n79 0 97 33\r\n59 3 0 91\r\n74 67 9 0\r\n",
+                "3.141592\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n0 7 38 22 3 66 32 77\r\n93 0 93 61 45 40 6 92\r\n62 7 0 32 8 46 56 29\r\n78 39 68 0 37 24 84 42\r\n97 55 92 63 0 46 62 100\r\n34 60 54 76 54 0 39 67\r\n68 94 44 16 38 61 0 98\r\n23 8 71 58 0 33 2 0\r\n",
+                "6.81964275710336\r\n"
+            ],
+            [
+                "2\r\n0 50 50 50\r\n50 0 50 50\r\n50 50 0 50\r\n50 50 50 0\r\n",
+                "1.5\r\n"
+            ],
+            [
+                "2\r\n0 70 12 95\r\n30 0 98 85\r\n88 2 0 81\r\n5 15 19 0\r\n",
+                "2.51764\r\n"
+            ],
+            [
+                "2\r\n0 0 100 100\r\n100 0 100 100\r\n0 0 0 0\r\n0 0 100 0\r\n",
+                "4.0\r\n"
+            ],
+            [
+                "2\r\n0 31 4 83\r\n69 0 1 74\r\n96 99 0 71\r\n17 26 29 0\r\n",
+                "2.7925939999999994\r\n"
+            ],
+            [
+                "3\r\n0 53 31 33 2 34 22 21\r\n47 0 72 36 11 16 3 86\r\n69 28 0 49 25 6 92 54\r\n67 64 51 0 54 65 15 24\r\n98 89 75 46 0 48 65 31\r\n66 84 94 35 52 0 64 46\r\n78 97 8 85 35 36 0 62\r\n79 14 46 76 69 54 38 0\r\n",
+                "4.23995819508288\r\n"
+            ]
+        ]
+    }
+]

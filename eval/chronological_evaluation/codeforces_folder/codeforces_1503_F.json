@@ -1,0 +1,60 @@
+[
+    {
+        "name": "Balance the Cards",
+        "description": "A balanced bracket sequence is defined as an integer sequence that can be\nbuilt with the following rules: The empty sequence is balanced. If\n\n    [a_1,\n    \u2026,a_n]\n and \n    [b_1,\n    \u2026, b_m]\n are balanced, then\ntheir concatenation \n    [a_1,\n    \u2026,a_n,b_1,\n    \u2026,b_m]\n is balanced. If\n\n    x\n is a positive integer and \n    [a_1,\n    \u2026,a_n]\n is balanced, then\n\n    [x,a_1,\n    \u2026,a_n,-x]\n is balanced. The positive numbers can be\nimagined as opening brackets and the negative numbers as closing brackets,\nwhere matching brackets must have the same type (absolute value). For example,\n\n    [1, 2, -2, -1]\n and \n    [1, 3, -3, 2, -2, -1]\n are balanced, but \n    [1,\n    2, -1, -2]\n and \n    [-1, 1]\n are not balanced. There are \n    2n\n cards.\nEach card has a number on the front and a number on the back. Each integer\n\n    1,-1,2,-2,\n    \u2026,n,-n\n appears exactly once on the front of some card\nand exactly once on the back of some (not necessarily the same) card. You can\nreorder the cards however you like. You are not allowed to flip cards, so\nnumbers cannot move between the front and back. Your task is to order the\ncards so that the sequences given by the front numbers and the back numbers\nare both balanced, or report that it is impossible. Input The first line\ncontains a single integer \n    n\n (\n    1\n    \u2264 n\n    \u2264 2\n    \u00b7 10^5\n) \u2014 the\nnumber of bracket types, and half the number of cards. The next \n    2n\n lines\ndescribe the cards. The \n    i\n-th of these lines contains two integers\n\n    a_i\n, \n    b_i\n (\n    -n\n    \u2264 a_i,b_i\n    \u2264 n\n, \n    a_i\n     0\n,\n\n    b_i\n     0\n) \u2014 the numbers on the front and back of the \n    i\n-th card,\nrespectively. Every integer \n    1,-1,2,-2,\n    \u2026,n,-n\n appears exactly once\nas \n    a_i\n and exactly once as \n    b_i\n. Output On the first line, output\n\"YES\" if it's possible to reorder these cards to satisfy the condition.\nOtherwise, output \"NO\". You can print each letter in any case (upper or\nlower). If it is possible, on the next \n    2n\n lines output the cards in an\norder so that the front and back are both balanced. If there are multiple\nsolutions, you may output any. Examples Input 5 1 3 -3 -5 4 -3 2 2 -1 -4 -2 5\n3 -1 5 1 -4 4 -5 -2 Output YES 1 3 4 -3 -4 4 -1 -4 5 1 3 -1 2 2 -2 5 -3 -5 -5\n-2 Input 2 1 1 -1 2 2 -1 -2 -2 Output NO Note In the first test case, the\nfront numbers create the balanced sequence \n    [1,4,-4,-1,5,3,2,-2,-3,-5]\n\nand the back numbers create the balanced sequence\n\n    [3,-3,4,-4,1,-1,2,5,-5,-2]\n. In the second test case, the cards are given\nin an order so that the front numbers are balanced, but the back numbers\ncreate the unbalanced sequence \n    [1,2,-1,-2]\n. If we swapped the second and\nthird cards, we would balance the back numbers and unbalance the front\nnumbers. But there is no order that balances both.\n\n",
+        "cf_contest_id": 1503,
+        "cf_index": "F",
+        "cf_rating": 3500,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "data structures",
+            "divide and conquer",
+            "geometry",
+            "graphs",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n1 3\r\n-3 -5\r\n4 -3\r\n2 2\r\n-1 -4\r\n-2 5\r\n3 -1\r\n5 1\r\n-4 4\r\n-5 -2\r\n",
+                "YES\r\n1 3\r\n4 -3\r\n-4 4\r\n-1 -4\r\n5 1\r\n3 -1\r\n2 2\r\n-2 5\r\n-3 -5\r\n-5 -2\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n-1 2\r\n2 -1\r\n-2 -2\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n1 1\r\n-1 2\r\n2 3\r\n-2 -1\r\n3 -2\r\n-3 -3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n-4 4\r\n-2 -3\r\n-3 3\r\n-1 -4\r\n1 2\r\n2 -2\r\n4 -1\r\n3 1\r\n",
+                "YES\r\n1 2\r\n2 -2\r\n3 1\r\n-3 3\r\n-2 -3\r\n4 -1\r\n-4 4\r\n-1 -4\r\n"
+            ],
+            [
+                "1\r\n-1 -1\r\n1 1\r\n",
+                "YES\r\n1 1\r\n-1 -1\r\n"
+            ],
+            [
+                "1\r\n1 -1\r\n-1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2\r\n2 -1\r\n-1 1\r\n1 2\r\n-2 -2\r\n",
+                "YES\r\n1 2\r\n-1 1\r\n2 -1\r\n-2 -2\r\n"
+            ],
+            [
+                "10\r\n10 8\r\n-6 -4\r\n-2 -2\r\n9 9\r\n5 3\r\n3 4\r\n6 -6\r\n4 -3\r\n2 2\r\n7 1\r\n-1 7\r\n-10 -8\r\n-7 6\r\n-4 10\r\n-8 -5\r\n8 -1\r\n-9 -9\r\n1 5\r\n-3 -7\r\n-5 -10\r\n",
+                "YES\r\n10 8\r\n-10 -8\r\n9 9\r\n-9 -9\r\n2 2\r\n-2 -2\r\n5 3\r\n4 -3\r\n-4 10\r\n-5 -10\r\n3 4\r\n1 5\r\n-1 7\r\n-3 -7\r\n7 1\r\n8 -1\r\n-8 -5\r\n-7 6\r\n6 -6\r\n-6 -4\r\n"
+            ],
+            [
+                "10\r\n6 -3\r\n-8 -8\r\n8 -9\r\n-7 9\r\n4 6\r\n3 -10\r\n7 8\r\n5 3\r\n2 7\r\n10 2\r\n-3 -5\r\n1 4\r\n-9 1\r\n9 -1\r\n-5 -7\r\n-10 -6\r\n-4 -4\r\n-6 -2\r\n-1 5\r\n-2 10\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

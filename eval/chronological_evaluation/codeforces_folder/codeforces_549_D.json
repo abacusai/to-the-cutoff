@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Haar Features",
+        "description": "The first algorithm for detecting a face on the image working in realtime was\ndeveloped by Paul Viola and Michael Jones in 2001. A part of the algorithm is\na procedure that computes Haar features. As part of this task, we consider a\nsimplified model of this concept. Let's consider a rectangular image that is\nrepresented with a table of size n \u00d7 m. The table elements are integers that\nspecify the brightness of each pixel in the image. A feature also is a\nrectangular table of size n \u00d7 m. Each cell of a feature is painted black or\nwhite. To calculate the value of the given feature at the given image, you\nmust perform the following steps. First the table of the feature is put over\nthe table of the image (without rotations or reflections), thus each pixel is\nentirely covered with either black or white cell. The value of a feature in\nthe image is the value of W - B, where W is the total brightness of the pixels\nin the image, covered with white feature cells, and B is the total brightness\nof the pixels covered with black feature cells. Some examples of the most\npopular Haar features are given below. Your task is to determine the number of\noperations that are required to calculate the feature by using the so-called\nprefix rectangles. A prefix rectangle is any rectangle on the image, the upper\nleft corner of which coincides with the upper left corner of the image. You\nhave a variable value, whose value is initially zero. In one operation you can\ncount the sum of pixel values \u200b\u200bat any prefix rectangle, multiply it by any\ninteger and add to variable value. You are given a feature. It is necessary to\ncalculate the minimum number of operations required to calculate the values of\nthis attribute at an arbitrary image. For a better understanding of the\nstatement, read the explanation of the first sample. Input The first line\ncontains two space-separated integers n and m (1 \u2264 n, m \u2264 100) \u2014 the number of\nrows and columns in the feature. Next n lines contain the description of the\nfeature. Each line consists of m characters, the j-th character of the i-th\nline equals to \"W\", if this element of the feature is white and \"B\" if it is\nblack. Output Print a single number \u2014 the minimum number of operations that\nyou need to make to calculate the value of the feature. Examples Input 6 8\nBBBBBBBB BBBBBBBB BBBBBBBB WWWWWWWW WWWWWWWW WWWWWWWW Output 2 Input 3 3 WBW\nBWW WWW Output 4 Input 3 6 WWBBWW WWBBWW WWBBWW Output 3 Input 4 4 BBBB BBBB\nBBBB BBBW Output 4 Note The first sample corresponds to feature B, the one\nshown in the picture. The value of this feature in an image of size 6 \u00d7 8\nequals to the difference of the total brightness of the pixels in the lower\nand upper half of the image. To calculate its value, perform the following two\noperations: add the sum of pixels in the prefix rectangle with the lower right\ncorner in the 6-th row and 8-th column with coefficient 1 to the variable\nvalue (the rectangle is indicated by a red frame); add the number of pixels in\nthe prefix rectangle with the lower right corner in the 3-rd row and 8-th\ncolumn with coefficient - 2 and variable value. Thus, all the pixels in the\nlower three rows of the image will be included with factor 1, and all pixels\nin the upper three rows of the image will be included with factor 1 - 2 = - 1,\nas required.\n\n",
+        "cf_contest_id": 549,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 8\r\nBBBBBBBB\r\nBBBBBBBB\r\nBBBBBBBB\r\nWWWWWWWW\r\nWWWWWWWW\r\nWWWWWWWW\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 3\r\nWBW\r\nBWW\r\nWWW\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 6\r\nWWBBWW\r\nWWBBWW\r\nWWBBWW\r\n",
+                "3\r\n"
+            ],
+            [
+                "4 4\r\nBBBB\r\nBBBB\r\nBBBB\r\nBBBW\r\n",
+                "4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 9\r\nBWWWBWWBB\r\nBBWWBWBBW\r\nBBWBWBWBB\r\nBWBWBBBBB\r\nBBWBWBWBW\r\nBWWBWWBBW\r\nWBWWWBWWW\r\nWBBWBWBWW\r\nBBWWBWWBB\r\nBBWWBWWBW\r\n",
+                "61\r\n"
+            ],
+            [
+                "4 1\r\nW\r\nW\r\nB\r\nB\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 10\r\nBBWBWWBWBB\r\nBBBBBBBBBW\r\n",
+                "10\r\n"
+            ],
+            [
+                "100 1\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nW\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\nB\r\n",
+                "2\r\n"
+            ],
+            [
+                "1 100\r\nWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 5\r\nBWWBB\r\nBWBBW\r\nWBWWW\r\nWBWWB\r\n",
+                "13\r\n"
+            ],
+            [
+                "2 9\r\nWBBBWBBBW\r\nBWWBBBBBB\r\n",
+                "9\r\n"
+            ],
+            [
+                "6 6\r\nBBWWWB\r\nWBBBWB\r\nBBBBBW\r\nWWWWWW\r\nBBBBBW\r\nBWWBBB\r\n",
+                "16\r\n"
+            ],
+            [
+                "1 1\r\nW\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1\r\nB\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 8\r\nWWBWWWWW\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 8\r\nBBBBBBBB\r\nBBBBBBBB\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 52\r\nBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\r\n",
+                "1\r\n"
+            ],
+            [
+                "11 8\r\nWWWWWWWW\r\nWWWWWWWW\r\nWWWWWWWW\r\nWWWWWWWW\r\nWWWWWWWW\r\nWWWBWWWW\r\nWWWWWWWW\r\nWBWWWWWW\r\nWWWWWWWW\r\nWWWWWWWW\r\nWWWWWWWW\r\n",
+                "9\r\n"
+            ]
+        ]
+    }
+]

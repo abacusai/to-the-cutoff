@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Kyoya and Train",
+        "description": "Kyoya Ootori wants to take the train to get to school. There are n train\nstations and m one-way train lines going between various stations. Kyoya is\ncurrently at train station 1, and the school is at station n. To take a train,\nhe must pay for a ticket, and the train also takes a certain amount of time.\nHowever, the trains are not perfect and take random amounts of time to arrive\nat their destination. If Kyoya arrives at school strictly after t time units,\nhe will have to pay a fine of x. Each train line is described by a ticket\nprice, and a probability distribution on the time the train takes. More\nformally, train line i has ticket cost ci, and a probability distribution pi,\nk which denotes the probability that this train will take k time units for all\n1 \u2264 k \u2264 t. Amounts of time that each of the trains used by Kyouya takes are\nmutually independent random values (moreover, if Kyoya travels along the same\ntrain more than once, it is possible for the train to take different amounts\nof time and those amounts are also independent one from another). Kyoya wants\nto get to school by spending the least amount of money in expectation (for the\nticket price plus possible fine for being late). Of course, Kyoya has an\noptimal plan for how to get to school, and every time he arrives at a train\nstation, he may recalculate his plan based on how much time he has remaining.\nWhat is the expected cost that Kyoya will pay to get to school if he moves\noptimally? Input The first line of input contains four integers n, m, t, x (2\n\u2264 n \u2264 50, 1 \u2264 m \u2264 100, 1 \u2264 t \u2264 20 000, 0 \u2264 x \u2264 10^6). The next 2m lines\ncontain the description of the trains. The 2i-th line will have 3 integers ai,\nbi, ci, representing a one way train from station ai to bi with ticket cost ci\n(1 \u2264 ai, bi \u2264 n, ai \u2260 bi, 0 \u2264 ci \u2264 10^6). There will always be at least one\npath from any station to the school. The (2i + 1)-th line will contain t\nintegers, pi, 1, pi, 2, ..., pi, t where pi, k / 100000 is the probability\nthat this train will take k units of time to traverse (0 \u2264 pi, k \u2264 100 000 for\n1 \u2264 k \u2264 t, ). It is guaranteed that there is no more than one train between\neach pair of platforms in each of the directions. Output Print a single real\nnumber that is equal to an optimal expected cost of getting to school. The\nanswer will be considered correct if its relative or absolute error doesn't\nexceed 10^-6. Examples Input 4 4 5 1 1 2 0 50000 0 50000 0 0 2 3 0 10000 0 0 0\n90000 3 4 0 100000 0 0 0 0 2 4 0 0 0 0 50000 50000 Output 0.7000000000 Input 4\n4 5 1 1 2 100 50000 0 50000 0 0 2 3 100 10000 0 0 0 90000 3 4 100 100000 0 0 0\n0 2 4 100 0 0 0 50000 50000 Output 200.7500000000 Note The optimal strategy in\nthe first case is as follows: First, travel along first train line. With\nprobability 1 / 2 Kyoya will take 1 time unit. Otherwise, Kyoya will take 3\ntime units. If the train takes 1 time unit, travel along the 4th train line.\nKyoya will make it to school in time with probability 1 / 2. Otherwise, if the\ntrain takes 3 time units, travel along the 2nd train line. Kyoya will make it\nto school in time with probability 1 / 10. Since the cost of all train lines\nare zero, we can just look at the probability that Kyoya will incur the\npenalty. The probability that Kyoya will have to pay the penalty is 1 / 2 \u00d7 1\n/ 2 + 1 / 2 \u00d7 9 / 10 = 7 / 10. We can show that no other strategy is strictly\nbetter. The optimal strategy in the second case is to travel along 1 \u2192 2 \u2192 4\nno matter what. Kyoya will incur the penalty with probability 3 / 4, and the\ncost of the trains is 200, thus the expected cost is 200.75.\n\n",
+        "cf_contest_id": 553,
+        "cf_index": "E",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "fft",
+            "graphs",
+            "math",
+            "probabilities"
+        ],
+        "time_limit_seconds": 8.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "4 4 5 1\r\n1 2 0\r\n50000 0 50000 0 0\r\n2 3 0\r\n10000 0 0 0 90000\r\n3 4 0\r\n100000 0 0 0 0\r\n2 4 0\r\n0 0 0 50000 50000\r\n",
+                "0.7000000000\r\n"
+            ],
+            [
+                "4 4 5 1\r\n1 2 100\r\n50000 0 50000 0 0\r\n2 3 100\r\n10000 0 0 0 90000\r\n3 4 100\r\n100000 0 0 0 0\r\n2 4 100\r\n0 0 0 50000 50000\r\n",
+                "200.7500000000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1 3 350561\r\n1 2 50183\r\n16547 21080 62373\r\n",
+                "50183.0000000000\r\n"
+            ],
+            [
+                "3 4 2 125553\r\n2 1 120740\r\n87144 12856\r\n1 3 607039\r\n25087 74913\r\n3 1 678274\r\n98425 1575\r\n2 3 819684\r\n62454 37546\r\n",
+                "607039.0000000000\r\n"
+            ],
+            [
+                "11 10 6 439216\r\n2 11 927428\r\n34 560 2745 8486 23676 64499\r\n5 6 509381\r\n48310 16974 9540 8372 8472 8332\r\n7 11 873857\r\n8433 8432 8316 8901 14274 51644\r\n3 11 113497\r\n75085 19629 4474 736 75 1\r\n1 11 974010\r\n51650 28553 13536 5017 1163 81\r\n4 11 952476\r\n22491 18342 15664 14236 13838 15429\r\n10 4 533407\r\n41855 7260 867 586 6276 43156\r\n6 11 43204\r\n43140 11351 7737 9640 12635 15497\r\n8 11 600095\r\n1 65 745 4151 18517 76521\r\n9 6 940422\r\n1346 4275 7188 11328 22297 53566\r\n",
+                "974010.0000000000\r\n"
+            ],
+            [
+                "2 1 1 946391\r\n1 2 994875\r\n100000\r\n",
+                "994875.0000000000\r\n"
+            ]
+        ]
+    }
+]

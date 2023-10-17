@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Rain and Umbrellas",
+        "description": "Polycarp lives on a coordinate line at the point \n    x = 0\n. He goes to his\nfriend that lives at the point \n    x = a\n. Polycarp can move only from left\nto right, he can pass one unit of length each second. Now it's raining, so\nsome segments of his way are in the rain. Formally, it's raining on \n    n\n\nnon-intersecting segments, the \n    i\n-th segment which is in the rain is\nrepresented as \n    [l_i, r_i]\n (\n    0 \n    \u2264 l_i < r_i \n    \u2264 a\n). There are\n\n    m\n umbrellas lying on the line, the \n    i\n-th umbrella is located at\npoint \n    x_i\n (\n    0 \n    \u2264 x_i \n    \u2264 a\n) and has weight \n    p_i\n. When\nPolycarp begins his journey, he doesn't have any umbrellas. During his journey\nfrom \n    x = 0\n to \n    x = a\n Polycarp can pick up and throw away umbrellas.\nPolycarp picks up and throws down any umbrella instantly. He can carry any\nnumber of umbrellas at any moment of time. Because Polycarp doesn't want to\nget wet, he must carry at least one umbrella while he moves from \n    x\n to\n\n    x + 1\n if a segment \n    [x, x + 1]\n is in the rain (i.e. if there exists\nsome \n    i\n such that \n    l_i \n    \u2264 x\n and \n    x + 1 \n    \u2264 r_i\n). The\ncondition above is the only requirement. For example, it is possible to go\nwithout any umbrellas to a point where some rain segment starts, pick up an\numbrella at this point and move along with an umbrella. Polycarp can swap\numbrellas while he is in the rain. Each unit of length passed increases\nPolycarp's fatigue by the sum of the weights of umbrellas he carries while\nmoving. Can Polycarp make his way from point \n    x = 0\n to point \n    x = a\n?\nIf yes, find the minimum total fatigue after reaching \n    x = a\n, if Polycarp\npicks up and throws away umbrellas optimally. Input The first line contains\nthree integers \n    a\n, \n    n\n and \n    m\n (\n    1 \n    \u2264 a, m \n    \u2264 2000, 1\n    \n    \u2264 n \n    \u2264\n    \u2308\n    a/2\n    \u2309\n) \u2014 the point at which\nPolycarp's friend lives, the number of the segments in the rain and the number\nof umbrellas. Each of the next \n    n\n lines contains two integers \n    l_i\n\nand \n    r_i\n (\n    0 \n    \u2264 l_i < r_i \n    \u2264 a\n) \u2014 the borders of the\n\n    i\n-th segment under rain. It is guaranteed that there is no pair of\nintersecting segments. In other words, for each pair of segments \n    i\n and\n\n    j\n either \n    r_i < l_j\n or \n    r_j < l_i\n. Each of the next \n    m\n\nlines contains two integers \n    x_i\n and \n    p_i\n (\n    0 \n    \u2264 x_i \n    \u2264\n    a\n, \n    1 \n    \u2264 p_i \n    \u2264 10^5\n) \u2014 the location and the weight of the\n\n    i\n-th umbrella. Output Print \"-1\" (without quotes) if Polycarp can't make\nhis way from point \n    x = 0\n to point \n    x = a\n. Otherwise print one\ninteger \u2014 the minimum total fatigue after reaching \n    x = a\n, if Polycarp\npicks up and throws away umbrellas optimally. Examples Input 10 2 4 3 7 8 10 0\n10 3 4 8 1 1 2 Output 14 Input 10 1 1 0 9 0 5 Output 45 Input 10 1 1 0 9 1 5\nOutput -1 Note In the first example the only possible strategy is to take the\nfourth umbrella at the point \n    x = 1\n, keep it till the point \n    x = 7\n\n(the total fatigue at \n    x = 7\n will be equal to \n    12\n), throw it away,\nmove on from \n    x = 7\n to \n    x = 8\n without an umbrella, take the third\numbrella at \n    x = 8\n and keep it till the end (the total fatigue at \n    x =\n    10\n will be equal to \n    14\n). In the second example the only possible\nstrategy is to take the first umbrella, move with it till the point \n    x =\n    9\n, throw it away and proceed without an umbrella till the end.\n\n",
+        "cf_contest_id": 988,
+        "cf_index": "F",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 2 4\r\n3 7\r\n8 10\r\n0 10\r\n3 4\r\n8 1\r\n1 2\r\n",
+                "14\r\n"
+            ],
+            [
+                "10 1 1\r\n0 9\r\n0 5\r\n",
+                "45\r\n"
+            ],
+            [
+                "10 1 1\r\n0 9\r\n1 5\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 1\r\n0 1\r\n1 100000\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 1 1\r\n0 1\r\n0 100000\r\n",
+                "100000\r\n"
+            ],
+            [
+                "2000 1 1\r\n0 1\r\n2000 33303\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2000 1 1\r\n1999 2000\r\n0 18898\r\n",
+                "37796000\r\n"
+            ],
+            [
+                "100 50 1\r\n1 2\r\n3 4\r\n5 6\r\n7 8\r\n9 10\r\n11 12\r\n13 14\r\n15 16\r\n17 18\r\n19 20\r\n21 22\r\n23 24\r\n25 26\r\n27 28\r\n29 30\r\n31 32\r\n33 34\r\n35 36\r\n37 38\r\n39 40\r\n41 42\r\n43 44\r\n45 46\r\n47 48\r\n49 50\r\n51 52\r\n53 54\r\n55 56\r\n57 58\r\n59 60\r\n61 62\r\n63 64\r\n65 66\r\n67 68\r\n69 70\r\n71 72\r\n73 74\r\n75 76\r\n77 78\r\n79 80\r\n81 82\r\n83 84\r\n85 86\r\n87 88\r\n89 90\r\n91 92\r\n93 94\r\n95 96\r\n97 98\r\n99 100\r\n0 91855\r\n",
+                "9185500\r\n"
+            ],
+            [
+                "2000 10 10\r\n46 161\r\n197 348\r\n412 538\r\n694 1183\r\n1210 1321\r\n1360 1440\r\n1615 1705\r\n1707 1819\r\n1832 1846\r\n1868 1917\r\n428 95081\r\n975 8616\r\n1159 27215\r\n532 32890\r\n1165 53788\r\n1969 11184\r\n1443 32142\r\n553 7583\r\n1743 33810\r\n315 62896\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2000 10 1\r\n63 103\r\n165 171\r\n412 438\r\n696 702\r\n764 782\r\n946 1040\r\n1106 1132\r\n1513 1532\r\n1589 1696\r\n1785 1919\r\n63 51662\r\n",
+                "95884672\r\n"
+            ],
+            [
+                "2000 1 1\r\n0 2000\r\n0 100000\r\n",
+                "200000000\r\n"
+            ],
+            [
+                "10 3 3\r\n0 3\r\n4 8\r\n9 10\r\n0 89516\r\n9 30457\r\n2 31337\r\n",
+                "397511\r\n"
+            ]
+        ]
+    }
+]

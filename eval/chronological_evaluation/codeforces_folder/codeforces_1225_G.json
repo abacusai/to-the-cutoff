@@ -1,0 +1,135 @@
+[
+    {
+        "name": "To Make 1",
+        "description": "There are \n    n\n positive integers written on the blackboard. Also, a\npositive number \n    k \n    \u2265 2\n is chosen, and none of the numbers on the\nblackboard are divisible by \n    k\n. In one operation, you can choose any two\nintegers \n    x\n and \n    y\n, erase them and write one extra number \n    f(x +\n    y)\n, where \n    f(x)\n is equal to \n    x\n if \n    x\n is not divisible by\n\n    k\n, otherwise \n    f(x) = f(x / k)\n. In the end, there will be a single\nnumber of the blackboard. Is it possible to make the final number equal to\n\n    1\n? If so, restore any sequence of operations to do so. Input The first\nline contains two integers \n    n\n and \n    k\n \u2014 the initial number of\nintegers on the blackboard, and the chosen number (\n    2 \n    \u2264 n \n    \u2264 16\n,\n\n    2 \n    \u2264 k \n    \u2264 2000\n). The second line contains \n    n\n positive\nintegers \n    a_1, \n    \u2026, a_n\n initially written on the blackboard. It is\nguaranteed that none of the numbers \n    a_i\n is divisible by \n    k\n, and the\nsum of all \n    a_i\n does not exceed \n    2000\n. Output If it is impossible to\nobtain \n    1\n as the final number, print \"NO\" in the only line. Otherwise,\nprint \"YES\" on the first line, followed by \n    n - 1\n lines describing\noperations. The \n    i\n-th of these lines has to contain two integers\n\n    x_i\n and \n    y_i\n to be erased and replaced with \n    f(x_i + y_i)\n on\nthe \n    i\n-th operation. If there are several suitable ways, output any of\nthem. Examples Input 2 2 1 1 Output YES 1 1 Input 4 3 7 8 13 23 Output YES 23\n13 8 7 5 4 Input 3 4 1 2 3 Output NO Note In the second sample case: \n    f(8 +\n    7) = f(15) = f(5) = 5\n; \n    f(23 + 13) = f(36) = f(12) = f(4) = 4\n; \n    f(5\n    + 4) = f(9) = f(3) = f(1) = 1\n.\n\n",
+        "cf_contest_id": 1225,
+        "cf_index": "G",
+        "cf_rating": 3100,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "number theory"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "2 2\r\n1 1\r\n",
+                "YES\r\n1 1\r\n"
+            ],
+            [
+                "4 3\r\n7 8 13 23\r\n",
+                "YES\r\n13 23\r\n7 8\r\n5 4\r\n"
+            ],
+            [
+                "3 4\r\n1 2 3\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 2\r\n7 13 7 11\r\n",
+                "YES\r\n7 7\r\n13 7\r\n11 5\r\n"
+            ],
+            [
+                "6 3\r\n7 7 11 14 16 4\r\n",
+                "YES\r\n14 4\r\n16 2\r\n7 2\r\n7 11\r\n1 2\r\n"
+            ],
+            [
+                "10 10\r\n155 3 48 81 22 132 33 144 56 38\r\n",
+                "YES\r\n144 56\r\n155 2\r\n157 33\r\n81 19\r\n132 38\r\n3 17\r\n48 22\r\n2 1\r\n3 7\r\n"
+            ],
+            [
+                "13 79\r\n35 97 541 41 77 56 19 213 10 8 70 139 10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "16 2\r\n69 11 11 83 73 231 217 63 43 235 25 5 43 65 15 9\r\n",
+                "YES\r\n5 15\r\n43 9\r\n235 5\r\n69 13\r\n11 65\r\n11 25\r\n83 43\r\n73 63\r\n231 217\r\n41 63\r\n19 9\r\n17 15\r\n13 7\r\n5 7\r\n3 1\r\n"
+            ],
+            [
+                "2 2000\r\n75 1925\r\n",
+                "YES\r\n75 1925\r\n"
+            ],
+            [
+                "2 1000\r\n427 509\r\n",
+                "NO\r\n"
+            ],
+            [
+                "16 13\r\n71 7 67 29 8 8 6 68 10 3 2 16 5 6 19 24\r\n",
+                "YES\r\n2 24\r\n5 2\r\n7 6\r\n3 1\r\n4 19\r\n23 16\r\n10 3\r\n29 1\r\n30 68\r\n98 6\r\n71 8\r\n79 8\r\n87 8\r\n95 67\r\n162 7\r\n"
+            ],
+            [
+                "16 45\r\n148 47 262 39 42 277 227 83 18 17 366 283 9 64 40 15\r\n",
+                "YES\r\n83 15\r\n98 64\r\n162 18\r\n262 4\r\n266 40\r\n306 9\r\n277 283\r\n560 366\r\n926 17\r\n943 227\r\n148 26\r\n174 7\r\n181 42\r\n223 47\r\n39 6\r\n"
+            ],
+            [
+                "16 49\r\n59 18 513 9 52 16 61 1 112 43 20 105 62 102 86 374\r\n",
+                "YES\r\n16 62\r\n78 20\r\n59 2\r\n61 374\r\n435 86\r\n521 102\r\n623 105\r\n728 43\r\n771 112\r\n883 1\r\n884 61\r\n945 52\r\n997 9\r\n1006 513\r\n18 31\r\n"
+            ],
+            [
+                "16 314\r\n1 10 31 41 55 6 17 6 18 10 1 34 829 21 147 26\r\n",
+                "YES\r\n6 21\r\n27 829\r\n856 34\r\n890 1\r\n891 10\r\n901 18\r\n919 6\r\n925 17\r\n1 3\r\n4 26\r\n30 147\r\n177 55\r\n232 41\r\n273 31\r\n304 10\r\n"
+            ],
+            [
+                "16 497\r\n2 6 67 21 24 146 20 182 8 27 1345 10 26 37 44 20\r\n",
+                "YES\r\n8 20\r\n28 44\r\n72 37\r\n109 10\r\n119 1345\r\n1464 27\r\n2 3\r\n5 26\r\n31 182\r\n213 20\r\n233 146\r\n379 24\r\n403 21\r\n424 67\r\n491 6\r\n"
+            ],
+            [
+                "16 320\r\n47 10 15 3 12 1577 26 18 19 18 20 35 17 21 38 39\r\n",
+                "YES\r\n3 20\r\n23 1577\r\n47 5\r\n52 39\r\n91 38\r\n129 21\r\n150 17\r\n167 35\r\n202 18\r\n220 19\r\n239 18\r\n257 26\r\n283 12\r\n295 15\r\n310 10\r\n"
+            ],
+            [
+                "16 49\r\n30 74 92 21 319 44 3 15 92 30 208 704 17 150 42 128\r\n",
+                "YES\r\n30 128\r\n158 150\r\n308 17\r\n325 704\r\n74 21\r\n95 42\r\n137 208\r\n345 92\r\n437 15\r\n452 3\r\n455 44\r\n499 319\r\n818 21\r\n839 92\r\n30 19\r\n"
+            ],
+            [
+                "16 667\r\n118 93 41 3 48 578 218 8 14 99 3 13 213 1 386 163\r\n",
+                "YES\r\n48 163\r\n211 1\r\n212 213\r\n425 99\r\n524 14\r\n538 218\r\n756 578\r\n118 2\r\n120 386\r\n506 13\r\n519 3\r\n522 8\r\n530 3\r\n533 41\r\n574 93\r\n"
+            ],
+            [
+                "16 430\r\n38 53 38 8 37 132 26 26 20 6 37 19 377 22 6 14\r\n",
+                "YES\r\n6 6\r\n12 22\r\n34 377\r\n411 19\r\n38 1\r\n39 14\r\n53 37\r\n90 20\r\n110 26\r\n136 26\r\n162 132\r\n294 37\r\n331 8\r\n339 38\r\n377 53\r\n"
+            ],
+            [
+                "16 282\r\n63 12 9 15 3 18 27 2 4 537 17 96 1 1 33 6\r\n",
+                "YES\r\n4 6\r\n10 17\r\n27 537\r\n63 2\r\n65 33\r\n98 1\r\n99 1\r\n100 96\r\n196 2\r\n198 27\r\n225 18\r\n243 3\r\n246 15\r\n261 9\r\n270 12\r\n"
+            ],
+            [
+                "16 110\r\n149 87 168 75 7 54 61 30 33 33 21 38 217 102 9 7\r\n",
+                "YES\r\n75 21\r\n96 33\r\n129 30\r\n159 61\r\n149 2\r\n151 7\r\n158 102\r\n260 217\r\n477 38\r\n515 33\r\n548 54\r\n602 168\r\n87 7\r\n94 9\r\n103 7\r\n"
+            ],
+            [
+                "16 694\r\n231 42 7 25 2 4 6 4 512 121 26 19 4 370 6 8\r\n",
+                "YES\r\n4 8\r\n12 4\r\n16 19\r\n35 26\r\n61 121\r\n182 512\r\n231 1\r\n232 6\r\n238 370\r\n608 6\r\n614 4\r\n618 2\r\n620 25\r\n645 7\r\n652 42\r\n"
+            ],
+            [
+                "16 163\r\n23 22 13 18 24 17 36 19 156 7 446 309 6 1 27 11\r\n",
+                "YES\r\n36 11\r\n47 1\r\n48 309\r\n357 446\r\n803 156\r\n959 19\r\n23 6\r\n29 27\r\n56 6\r\n62 7\r\n69 17\r\n86 24\r\n110 18\r\n128 13\r\n141 22\r\n"
+            ],
+            [
+                "16 425\r\n18 159 102 143 137 74 24 14 3 8 13 14 52 47 20 21\r\n",
+                "YES\r\n143 21\r\n164 20\r\n184 47\r\n231 52\r\n283 14\r\n297 13\r\n310 3\r\n313 14\r\n327 24\r\n351 74\r\n18 1\r\n19 8\r\n27 137\r\n164 102\r\n266 159\r\n"
+            ],
+            [
+                "16 539\r\n2 24 36 1025 15 254 25 3 7 4 33 84 45 17 30 11\r\n",
+                "YES\r\n1025 17\r\n1042 33\r\n1075 3\r\n2 2\r\n4 11\r\n15 30\r\n45 45\r\n90 84\r\n174 4\r\n178 7\r\n185 25\r\n210 254\r\n464 15\r\n479 36\r\n515 24\r\n"
+            ],
+            [
+                "16 310\r\n176 11 41 343 147 12 177 252 2 152 33 22 44 105 29 309\r\n",
+                "YES\r\n177 309\r\n486 29\r\n515 105\r\n343 2\r\n345 22\r\n367 152\r\n519 252\r\n771 12\r\n783 147\r\n176 3\r\n179 44\r\n223 33\r\n256 2\r\n258 41\r\n299 11\r\n"
+            ],
+            [
+                "16 11\r\n85 173 73 5 7 89 278 216 157 318 90 129 102 41 189 19\r\n",
+                "YES\r\n216 41\r\n257 129\r\n386 318\r\n85 64\r\n149 19\r\n168 189\r\n357 102\r\n459 90\r\n549 157\r\n706 278\r\n984 89\r\n1073 7\r\n1080 5\r\n1085 73\r\n1158 173\r\n"
+            ],
+            [
+                "16 20\r\n77 137 304 57 83 112 117 23 203 32 52 23 30 96 65 433\r\n",
+                "YES\r\n117 30\r\n147 23\r\n170 52\r\n222 32\r\n254 203\r\n457 23\r\n96 24\r\n304 6\r\n310 433\r\n743 65\r\n808 112\r\n77 46\r\n123 83\r\n206 57\r\n263 137\r\n"
+            ]
+        ]
+    }
+]

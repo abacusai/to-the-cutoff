@@ -1,0 +1,200 @@
+[
+    {
+        "name": "Chainword",
+        "description": "A chainword is a special type of crossword. As most of the crosswords do, it\nhas cells that you put the letters in and some sort of hints to what these\nletters should be. The letter cells in a chainword are put in a single row. We\nwill consider chainwords of length \n    m\n in this task. A hint to a chainword\nis a sequence of segments such that the segments don't intersect with each\nother and cover all \n    m\n letter cells. Each segment contains a description\nof the word in the corresponding cells. The twist is that there are actually\ntwo hints: one sequence is the row above the letter cells and the other\nsequence is the row below the letter cells. When the sequences are different,\nthey provide a way to resolve the ambiguity in the answers. You are provided\nwith a dictionary of \n    n\n words, each word consists of lowercase Latin\nletters. All words are pairwise distinct. An instance of a chainword is the\nfollowing triple: a string of \n    m\n lowercase Latin letters; the first hint:\na sequence of segments such that the letters that correspond to each segment\nspell a word from the dictionary; the second hint: another sequence of\nsegments such that the letters that correspond to each segment spell a word\nfrom the dictionary. Note that the sequences of segments don't necessarily\nhave to be distinct. Two instances of chainwords are considered different if\nthey have different strings, different first hints or different second hints.\nCount the number of different instances of chainwords. Since the number might\nbe pretty large, output it modulo \n    998\n     244\n     353\n. Input The first\nline contains two integers \n    n\n and \n    m\n (\n    1 \n    \u2264 n \n    \u2264 8\n, \n    1\n    \n    \u2264 m \n    \u2264 10^9\n) \u2014 the number of words in the dictionary and the number\nof letter cells. Each of the next \n    n\n lines contains a word \u2014 a non-empty\nstring of no more than \n    5\n lowercase Latin letters. All words are pairwise\ndistinct. Output Print a single integer \u2014 the number of different instances of\nchainwords of length \n    m\n for the given dictionary modulo\n\n    998\n     244\n     353\n. Examples Input 3 5 ababa ab a Output 11 Input 2 4 ab\ncd Output 4 Input 5 100 a aa aaa aaaa aaaaa Output 142528942 Note Here are all\nthe instances of the valid chainwords for the first example: The red lines\nabove the letters denote the segments of the first hint, the blue lines below\nthe letters denote the segments of the second hint. In the second example the\npossible strings are: \"abab\", \"abcd\", \"cdab\" and \"cdcd\". All the hints are\nsegments that cover the first two letters and the last two letters.\n\n",
+        "cf_contest_id": 1511,
+        "cf_index": "F",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "matrices",
+            "string suffix structures",
+            "strings"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 5\r\nababa\r\nab\r\na\r\n",
+                "11"
+            ],
+            [
+                "2 4\r\nab\r\ncd\r\n",
+                "4"
+            ],
+            [
+                "5 100\r\na\r\naa\r\naaa\r\naaaa\r\naaaaa\r\n",
+                "142528942"
+            ]
+        ],
+        "private_cases": [
+            [
+                "8 3\r\nba\r\nbbb\r\nbb\r\naba\r\naab\r\nbaa\r\nb\r\na\r\n",
+                "56"
+            ],
+            [
+                "8 5\r\nabb\r\nbaa\r\na\r\naba\r\naa\r\nb\r\nba\r\nbb\r\n",
+                "1824"
+            ],
+            [
+                "8 10\r\naa\r\nba\r\na\r\naaa\r\nbb\r\naab\r\naba\r\nb\r\n",
+                "7610511"
+            ],
+            [
+                "8 10\r\nbac\r\naa\r\nbbac\r\nbcc\r\nbbca\r\naac\r\nabba\r\nbbba\r\n",
+                "227"
+            ],
+            [
+                "8 100\r\naabab\r\naaa\r\naba\r\nbbaba\r\na\r\naa\r\nbabba\r\nbba\r\n",
+                "452563662"
+            ],
+            [
+                "8 100\r\ncbb\r\nbaaba\r\ncc\r\nacb\r\nabbba\r\nbb\r\nbcc\r\ncbccc\r\n",
+                "85330586"
+            ],
+            [
+                "8 10000\r\nbb\r\nbbb\r\nbaa\r\nbbaaa\r\nbbabb\r\nbaabb\r\nab\r\nb\r\n",
+                "921272334"
+            ],
+            [
+                "8 10000\r\ncc\r\nbcbac\r\nc\r\nbbbca\r\nbab\r\nbcb\r\naab\r\nacbc\r\n",
+                "62834015"
+            ],
+            [
+                "8 1000000\r\nba\r\nbaab\r\nab\r\nbabaa\r\na\r\nb\r\naaa\r\nabb\r\n",
+                "109599579"
+            ],
+            [
+                "8 1000000\r\nabbca\r\nabcbc\r\nbc\r\ncb\r\nbcbc\r\nc\r\nb\r\nabc\r\n",
+                "431249243"
+            ],
+            [
+                "8 1000000\r\na\r\nccdc\r\ndac\r\nb\r\nbdad\r\nc\r\nadbdd\r\nbadbd\r\n",
+                "467270984"
+            ],
+            [
+                "8 1000000\r\nks\r\nmbha\r\nbyn\r\ncz\r\ng\r\nmv\r\nnct\r\nbty\r\n",
+                "206210322"
+            ],
+            [
+                "8 1000000000\r\nbbba\r\nb\r\naab\r\naabb\r\naba\r\nbaabb\r\nab\r\na\r\n",
+                "108439359"
+            ],
+            [
+                "8 1000000000\r\na\r\nacbca\r\nabcab\r\naabcb\r\nb\r\ncbb\r\nba\r\nbaaca\r\n",
+                "678704568"
+            ],
+            [
+                "8 1000000000\r\ndcaab\r\ndacdd\r\nddbdd\r\nbcca\r\ndcacd\r\nb\r\nccbba\r\nabdd\r\n",
+                "458353495"
+            ],
+            [
+                "8 1000000000\r\num\r\nmruk\r\nif\r\nsnyg\r\njts\r\np\r\nr\r\niwq\r\n",
+                "108201875"
+            ],
+            [
+                "8 100\r\nag\r\ncsryq\r\nx\r\nkj\r\nfsw\r\ni\r\nrxel\r\nvix\r\n",
+                "512164740"
+            ],
+            [
+                "8 10000\r\ndegs\r\nj\r\nhlzua\r\niug\r\noaow\r\nzvyuf\r\nwkxv\r\nknwln\r\n",
+                "612606463"
+            ],
+            [
+                "8 1000000\r\no\r\nnct\r\nau\r\ncz\r\nbty\r\ng\r\nmv\r\nks\r\n",
+                "944380708"
+            ],
+            [
+                "2 1000000000\r\nb\r\nab\r\n",
+                "857532742"
+            ],
+            [
+                "3 1000000000\r\ncbb\r\na\r\nb\r\n",
+                "801305101"
+            ],
+            [
+                "4 1000000000\r\ndcaab\r\nabdd\r\nccbba\r\nbcca\r\n",
+                "946198550"
+            ],
+            [
+                "8 1000000000\r\np\r\nr\r\nyywvs\r\num\r\nmruk\r\nsnyg\r\njts\r\nif\r\n",
+                "91058640"
+            ],
+            [
+                "8 1000000000\r\naaaaa\r\naaaa\r\nbbbbb\r\nbbbb\r\nccccc\r\ncccc\r\nddddd\r\ndddd\r\n",
+                "906861955"
+            ],
+            [
+                "8 1000000000\r\nbb\r\naaba\r\naabab\r\nab\r\nbbbb\r\nbba\r\nbab\r\naabba\r\n",
+                "863094010"
+            ],
+            [
+                "8 1000000000\r\nb\r\nbabab\r\nbaba\r\nab\r\nbb\r\naabaa\r\nbbbab\r\naa\r\n",
+                "862350285"
+            ],
+            [
+                "8 1000000000\r\nbaab\r\nbbbba\r\nb\r\nabab\r\na\r\nbabab\r\nabbb\r\naabb\r\n",
+                "174056525"
+            ],
+            [
+                "8 1000000000\r\nbbaba\r\nbab\r\nbaabb\r\nabbba\r\na\r\nb\r\nbbbab\r\naaab\r\n",
+                "134173168"
+            ],
+            [
+                "8 1000000000\r\naaaa\r\nbabbb\r\nbbaab\r\nabbbb\r\nabb\r\na\r\nbaaab\r\nbabab\r\n",
+                "431759116"
+            ],
+            [
+                "8 1000000000\r\nbaaaa\r\nbba\r\naaabb\r\nabbaa\r\nababb\r\naab\r\naaaba\r\naabaa\r\n",
+                "749577944"
+            ],
+            [
+                "8 1000000000\r\nbabba\r\nb\r\nbb\r\nbbaaa\r\naaaba\r\nabaab\r\naabaa\r\nbaaba\r\n",
+                "3182713"
+            ],
+            [
+                "8 1000000000\r\nbaabb\r\nbabbb\r\nb\r\naabbb\r\nbbbba\r\nbbaa\r\nabbbb\r\nabab\r\n",
+                "834686688"
+            ],
+            [
+                "8 671088639\r\naaaaa\r\naaaa\r\nbbbbb\r\nbbbb\r\nccccc\r\ncccc\r\nddddd\r\ndddd\r\n",
+                "840688293"
+            ],
+            [
+                "8 671088639\r\naaaaa\r\naaaa\r\nbbbbb\r\nbbbb\r\naaabb\r\nbbbaa\r\naabbb\r\nbbaaa\r\n",
+                "376573480"
+            ],
+            [
+                "8 671088639\r\naaaaa\r\naaaa\r\nbbbbb\r\nbbbb\r\naaaab\r\nbbbba\r\naaabb\r\nbbbaa\r\n",
+                "775296008"
+            ],
+            [
+                "8 805306367\r\naaaaa\r\naaaab\r\naaabb\r\naabbb\r\nabbbb\r\nbbbbb\r\naaaa\r\nbbbb\r\n",
+                "233390545"
+            ],
+            [
+                "8 805306367\r\nbbbb\r\nabbaa\r\nababa\r\naabba\r\nbbaab\r\nbabab\r\nbaabb\r\nbbbbb\r\n",
+                "40171194"
+            ],
+            [
+                "8 805306367\r\naaaaa\r\nbbbbb\r\nccccc\r\nddddd\r\neeeee\r\nfffff\r\nggggg\r\nhhhhh\r\n",
+                "0"
+            ],
+            [
+                "8 805306367\r\naeifj\r\ncaeif\r\neifjg\r\nfjgc\r\nfjgca\r\ngcaei\r\nifjgc\r\njgcae\r\n",
+                "223759404"
+            ],
+            [
+                "8 805306367\r\nbidek\r\ndekhj\r\nekhjb\r\nhjbid\r\nidekh\r\njbide\r\nkhjbi\r\nbide\r\n",
+                "223759404"
+            ],
+            [
+                "8 805306365\r\ncefdj\r\ndjhic\r\nefdjh\r\nfdjhi\r\nhicef\r\nicefd\r\njhice\r\ndjhi\r\n",
+                "275348811"
+            ]
+        ]
+    }
+]

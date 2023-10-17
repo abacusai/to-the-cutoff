@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Standard Free2play",
+        "description": "You are playing a game where your character should overcome different\nobstacles. The current problem is to come down from a cliff. The cliff has\nheight \n    h\n, and there is a moving platform on each height \n    x\n from\n\n    1\n to \n    h\n. Each platform is either hidden inside the cliff or moved\nout. At first, there are \n    n\n moved out platforms on heights \n    p_1, p_2,\n    \n    \u2026, p_n\n. The platform on height \n    h\n is moved out (and the\ncharacter is initially standing there). If you character is standing on some\nmoved out platform on height \n    x\n, then he can pull a special lever, which\nswitches the state of two platforms: on height \n    x\n and \n    x - 1\n. In\nother words, the platform you are currently standing on will hide in the cliff\nand the platform one unit below will change it state: it will hide if it was\nmoved out or move out if it was hidden. In the second case, you will safely\nland on it. Note that this is the only way to move from one platform to\nanother. Your character is quite fragile, so it can safely fall from the\nheight no more than \n    2\n. In other words falling from the platform \n    x\n\nto platform \n    x - 2\n is okay, but falling from \n    x\n to \n    x - 3\n (or\nlower) is certain death. Sometimes it's not possible to come down from the\ncliff, but you can always buy (for donate currency) several magic crystals.\nEach magic crystal can be used to change the state of any single platform\n(except platform on height \n    h\n, which is unaffected by the crystals).\nAfter being used, the crystal disappears. What is the minimum number of magic\ncrystal you need to buy to safely land on the \n    0\n ground level? Input The\nfirst line contains one integer \n    q\n (\n    1 \n    \u2264 q \n    \u2264 100\n) \u2014 the\nnumber of queries. Each query contains two lines and is independent of all\nother queries. The first line of each query contains two integers \n    h\n and\n\n    n\n (\n    1 \n    \u2264 h \n    \u2264 10^9\n, \n    1 \n    \u2264 n \n    \u2264\n    min(h, 2 \n    \u00b7\n    10^5)\n) \u2014 the height of the cliff and the number of moved out platforms. The\nsecond line contains \n    n\n integers \n    p_1, p_2, \n    \u2026, p_n\n (\n    h = p_1\n    > p_2 > \n    \u2026 > p_n \n    \u2265 1\n) \u2014 the corresponding moved out platforms in\nthe descending order of their heights. The sum of \n    n\n over all queries\ndoes not exceed \n    2 \n    \u00b7 10^5\n. Output For each query print one integer\n\u2014 the minimum number of magic crystals you have to spend to safely come down\non the ground level (with height \n    0\n). Example Input 4 3 2 3 1 8 6 8 7 6 5\n3 2 9 6 9 8 5 4 3 1 1 1 1 Output 0 1 2 0\n\n",
+        "cf_contest_id": 1238,
+        "cf_index": "C",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n3 2\r\n3 1\r\n8 6\r\n8 7 6 5 3 2\r\n9 6\r\n9 8 5 4 3 1\r\n1 1\r\n1\r\n",
+                "0\r\n1\r\n2\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "28\r\n8 4\r\n8 7 6 3\r\n8 5\r\n8 7 6 3 1\r\n8 5\r\n8 7 6 3 2\r\n8 6\r\n8 7 6 3 2 1\r\n8 4\r\n8 7 6 4\r\n8 5\r\n8 7 6 4 1\r\n8 5\r\n8 7 6 4 2\r\n8 6\r\n8 7 6 4 2 1\r\n8 5\r\n8 7 6 4 3\r\n8 6\r\n8 7 6 4 3 1\r\n8 6\r\n8 7 6 4 3 2\r\n8 7\r\n8 7 6 4 3 2 1\r\n8 4\r\n8 7 6 5\r\n8 5\r\n8 7 6 5 1\r\n8 5\r\n8 7 6 5 2\r\n8 6\r\n8 7 6 5 2 1\r\n8 5\r\n8 7 6 5 3\r\n8 6\r\n8 7 6 5 3 1\r\n8 6\r\n8 7 6 5 3 2\r\n8 7\r\n8 7 6 5 3 2 1\r\n8 5\r\n8 7 6 5 4\r\n8 6\r\n8 7 6 5 4 1\r\n8 6\r\n8 7 6 5 4 2\r\n8 7\r\n8 7 6 5 4 2 1\r\n8 6\r\n8 7 6 5 4 3\r\n8 7\r\n8 7 6 5 4 3 1\r\n8 7\r\n8 7 6 5 4 3 2\r\n8 8\r\n8 7 6 5 4 3 2 1\r\n",
+                "1\r\n1\r\n0\r\n0\r\n1\r\n1\r\n2\r\n1\r\n0\r\n0\r\n1\r\n0\r\n1\r\n1\r\n2\r\n1\r\n2\r\n2\r\n1\r\n1\r\n0\r\n0\r\n1\r\n0\r\n1\r\n1\r\n0\r\n0\r\n"
+            ],
+            [
+                "4\r\n1 1\r\n1\r\n3 2\r\n3 1\r\n8 6\r\n8 7 6 5 3 2\r\n9 6\r\n9 8 5 4 3 1\r\n",
+                "0\r\n0\r\n1\r\n2\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n3 2\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

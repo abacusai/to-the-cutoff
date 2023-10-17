@@ -1,0 +1,505 @@
+[
+    {
+        "name": "Dog Show",
+        "description": "A new dog show on TV is starting next week. On the show dogs are required to\ndemonstrate bottomless stomach, strategic thinking and self-preservation\ninstinct. You and your dog are invited to compete with other participants and\nnaturally you want to win! On the show a dog needs to eat as many bowls of dog\nfood as possible (bottomless stomach helps here). Dogs compete separately of\neach other and the rules are as follows: At the start of the show the dog and\nthe bowls are located on a line. The dog starts at position x = 0 and n bowls\nare located at positions x = 1, x = 2, ..., x = n. The bowls are numbered from\n1 to n from left to right. After the show starts the dog immediately begins to\nrun to the right to the first bowl. The food inside bowls is not ready for\neating at the start because it is too hot (dog's self-preservation instinct\nprevents eating). More formally, the dog can eat from the i-th bowl after ti\nseconds from the start of the show or later. It takes dog 1 second to move\nfrom the position x to the position x + 1. The dog is not allowed to move to\nthe left, the dog runs only to the right with the constant speed 1 distance\nunit per second. When the dog reaches a bowl (say, the bowl i), the following\ncases are possible: the food had cooled down (i.e. it passed at least ti\nseconds from the show start): the dog immediately eats the food and runs to\nthe right without any stop, the food is hot (i.e. it passed less than ti\nseconds from the show start): the dog has two options: to wait for the i-th\nbowl, eat the food and continue to run at the moment ti or to skip the i-th\nbowl and continue to run to the right without any stop. After T seconds from\nthe start the show ends. If the dog reaches a bowl of food at moment T the dog\ncan not eat it. The show stops before T seconds if the dog had run to the\nright of the last bowl. You need to help your dog create a strategy with which\nthe maximum possible number of bowls of food will be eaten in T seconds. Input\nTwo integer numbers are given in the first line - n and T (1 \u2264 n \u2264 200 000, 1\n\u2264 T \u2264 2\u00b710^9) \u2014 the number of bowls of food and the time when the dog is\nstopped. On the next line numbers t1, t2, ..., tn (1 \u2264 ti \u2264 10^9) are given,\nwhere ti is the moment of time when the i-th bowl of food is ready for eating.\nOutput Output a single integer \u2014 the maximum number of bowls of food the dog\nwill be able to eat in T seconds. Examples Input 3 5 1 5 3 Output 2 Input 1 2\n1 Output 1 Input 1 1 1 Output 0 Note In the first example the dog should skip\nthe second bowl to eat from the two bowls (the first and the third).\n\n",
+        "cf_contest_id": 847,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 5\r\n1 5 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "1 2\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n2\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2\r\n2 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 3\r\n2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 3\r\n2 3 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 2\r\n2 3 4\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 4\r\n2 1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 4\r\n2 1 2 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 3\r\n2 1 2 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "4 6\r\n2 3 4 5\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 5\r\n2 1 2 3 4\r\n",
+                "3\r\n"
+            ],
+            [
+                "5 3\r\n2 3 2 1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 7\r\n2 1 2 3 4\r\n",
+                "5\r\n"
+            ],
+            [
+                "6 6\r\n2 3 2 3 4 3\r\n",
+                "4\r\n"
+            ],
+            [
+                "6 4\r\n2 3 2 3 4 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "6 9\r\n2 1 2 1 2 3\r\n",
+                "6\r\n"
+            ],
+            [
+                "7 7\r\n2 3 4 5 6 5 6\r\n",
+                "5\r\n"
+            ],
+            [
+                "7 4\r\n2 1 2 3 2 3 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "7 10\r\n2 3 4 3 2 3 2\r\n",
+                "7\r\n"
+            ],
+            [
+                "8 8\r\n2 3 2 3 4 5 4 5\r\n",
+                "6\r\n"
+            ],
+            [
+                "8 5\r\n2 3 2 3 4 3 4 3\r\n",
+                "3\r\n"
+            ],
+            [
+                "8 12\r\n2 3 2 3 4 3 4 3\r\n",
+                "8\r\n"
+            ],
+            [
+                "9 9\r\n2 3 4 5 4 5 6 7 6\r\n",
+                "7\r\n"
+            ],
+            [
+                "9 5\r\n2 3 4 3 2 3 4 5 6\r\n",
+                "3\r\n"
+            ],
+            [
+                "9 13\r\n2 1 2 3 4 5 4 5 6\r\n",
+                "9\r\n"
+            ],
+            [
+                "10 10\r\n2 1 2 3 4 3 4 3 4 3\r\n",
+                "8\r\n"
+            ],
+            [
+                "10 6\r\n2 3 4 3 4 5 6 7 6 7\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 15\r\n2 1 2 1 2 3 4 5 6 7\r\n",
+                "10\r\n"
+            ],
+            [
+                "11 11\r\n2 3 4 5 6 5 4 5 4 3 4\r\n",
+                "9\r\n"
+            ],
+            [
+                "11 6\r\n2 3 4 3 4 3 4 5 4 3 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "11 16\r\n2 3 2 1 2 3 4 5 4 3 4\r\n",
+                "11\r\n"
+            ],
+            [
+                "12 12\r\n2 3 4 5 6 7 6 7 8 9 10 11\r\n",
+                "10\r\n"
+            ],
+            [
+                "12 7\r\n2 3 4 3 4 3 2 3 4 3 4 5\r\n",
+                "5\r\n"
+            ],
+            [
+                "12 18\r\n2 1 2 3 4 5 6 5 6 5 6 5\r\n",
+                "12\r\n"
+            ],
+            [
+                "13 13\r\n2 1 2 3 4 3 2 3 4 5 6 5 4\r\n",
+                "11\r\n"
+            ],
+            [
+                "13 7\r\n2 1 2 3 2 3 2 3 4 3 4 5 6\r\n",
+                "5\r\n"
+            ],
+            [
+                "13 19\r\n2 3 4 5 6 5 4 5 6 7 8 9 8\r\n",
+                "13\r\n"
+            ],
+            [
+                "14 14\r\n2 3 4 5 6 7 8 9 10 11 12 13 14 15\r\n",
+                "12\r\n"
+            ],
+            [
+                "14 8\r\n2 3 4 5 6 7 8 7 6 7 8 9 10 9\r\n",
+                "6\r\n"
+            ],
+            [
+                "14 21\r\n2 1 2 3 4 5 6 5 6 7 8 9 8 9\r\n",
+                "14\r\n"
+            ],
+            [
+                "15 15\r\n2 3 4 3 2 3 4 3 4 3 4 5 6 5 6\r\n",
+                "13\r\n"
+            ],
+            [
+                "15 8\r\n2 3 2 1 2 1 2 3 2 3 4 3 4 5 4\r\n",
+                "6\r\n"
+            ],
+            [
+                "15 22\r\n2 3 2 3 2 3 4 5 6 7 6 7 8 9 10\r\n",
+                "15\r\n"
+            ],
+            [
+                "16 16\r\n2 1 2 3 2 3 4 5 6 5 4 5 6 5 6 7\r\n",
+                "14\r\n"
+            ],
+            [
+                "16 9\r\n2 3 4 5 4 3 4 5 6 7 8 7 8 9 10 11\r\n",
+                "7\r\n"
+            ],
+            [
+                "16 24\r\n2 3 4 5 6 5 6 7 6 7 8 9 10 11 12 13\r\n",
+                "16\r\n"
+            ],
+            [
+                "17 17\r\n2 3 2 1 2 3 4 5 6 7 8 9 10 11 12 11 12\r\n",
+                "15\r\n"
+            ],
+            [
+                "17 9\r\n2 3 4 5 6 7 8 9 10 11 10 11 10 11 12 13 12\r\n",
+                "7\r\n"
+            ],
+            [
+                "17 25\r\n2 1 2 1 2 3 2 3 2 1 2 1 2 1 2 1 2\r\n",
+                "17\r\n"
+            ],
+            [
+                "18 18\r\n2 3 4 5 4 5 6 5 6 7 6 7 6 5 6 7 8 7\r\n",
+                "16\r\n"
+            ],
+            [
+                "18 10\r\n2 3 4 3 4 3 4 5 6 5 6 7 8 9 10 9 8 9\r\n",
+                "8\r\n"
+            ],
+            [
+                "18 27\r\n2 3 4 3 4 5 6 7 8 9 10 9 8 9 8 9 10 9\r\n",
+                "18\r\n"
+            ],
+            [
+                "19 19\r\n2 1 2 3 4 5 4 5 6 7 6 7 8 9 10 11 12 11 12\r\n",
+                "17\r\n"
+            ],
+            [
+                "19 10\r\n2 1 2 3 4 3 4 3 2 3 4 3 4 3 4 5 6 5 4\r\n",
+                "8\r\n"
+            ],
+            [
+                "19 28\r\n2 3 4 3 4 5 6 5 6 5 6 7 8 7 8 9 10 11 12\r\n",
+                "19\r\n"
+            ],
+            [
+                "20 20\r\n2 1 2 3 2 1 2 3 4 3 2 3 4 5 6 7 8 9 8 9\r\n",
+                "18\r\n"
+            ],
+            [
+                "20 11\r\n2 3 4 5 6 7 6 5 6 7 8 9 10 11 12 11 12 13 12 11\r\n",
+                "9\r\n"
+            ],
+            [
+                "20 30\r\n2 3 2 3 4 5 6 5 6 7 6 7 8 9 8 7 8 9 10 11\r\n",
+                "20\r\n"
+            ],
+            [
+                "1 1\r\n2\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2\r\n2 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 3\r\n2 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 3\r\n2 1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 2\r\n2 1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 4\r\n2 1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 4\r\n2 3 2 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 3\r\n2 1 2 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "4 6\r\n2 3 4 5\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 5\r\n2 1 2 3 4\r\n",
+                "3\r\n"
+            ],
+            [
+                "5 3\r\n2 3 4 5 6\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 7\r\n2 3 4 5 6\r\n",
+                "5\r\n"
+            ],
+            [
+                "6 6\r\n2 1 2 3 4 5\r\n",
+                "4\r\n"
+            ],
+            [
+                "6 4\r\n2 3 4 5 6 7\r\n",
+                "2\r\n"
+            ],
+            [
+                "6 9\r\n2 3 4 5 6 7\r\n",
+                "6\r\n"
+            ],
+            [
+                "7 7\r\n2 1 2 1 2 3 4\r\n",
+                "5\r\n"
+            ],
+            [
+                "7 4\r\n2 3 4 5 4 5 6\r\n",
+                "2\r\n"
+            ],
+            [
+                "7 10\r\n2 1 2 3 2 3 4\r\n",
+                "7\r\n"
+            ],
+            [
+                "8 8\r\n2 3 2 3 2 3 4 5\r\n",
+                "6\r\n"
+            ],
+            [
+                "8 5\r\n2 3 4 3 2 3 4 3\r\n",
+                "3\r\n"
+            ],
+            [
+                "8 12\r\n2 3 4 3 2 3 4 3\r\n",
+                "8\r\n"
+            ],
+            [
+                "9 9\r\n2 1 2 3 4 5 6 5 6\r\n",
+                "7\r\n"
+            ],
+            [
+                "9 5\r\n2 1 2 3 4 3 2 3 4\r\n",
+                "3\r\n"
+            ],
+            [
+                "9 13\r\n2 3 4 5 6 5 6 7 8\r\n",
+                "9\r\n"
+            ],
+            [
+                "10 10\r\n2 3 4 3 4 5 6 7 6 7\r\n",
+                "8\r\n"
+            ],
+            [
+                "10 6\r\n2 3 4 5 6 7 8 9 10 11\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 15\r\n2 3 4 5 6 7 8 9 10 11\r\n",
+                "10\r\n"
+            ],
+            [
+                "11 11\r\n2 3 4 5 6 7 8 9 10 11 12\r\n",
+                "9\r\n"
+            ],
+            [
+                "11 6\r\n2 3 4 5 6 7 8 7 8 9 8\r\n",
+                "4\r\n"
+            ],
+            [
+                "11 16\r\n2 3 4 5 6 5 6 5 6 5 6\r\n",
+                "11\r\n"
+            ],
+            [
+                "12 12\r\n2 1 2 3 4 5 6 7 8 7 6 5\r\n",
+                "10\r\n"
+            ],
+            [
+                "12 7\r\n2 3 4 5 6 7 8 9 10 11 10 11\r\n",
+                "5\r\n"
+            ],
+            [
+                "12 18\r\n2 1 2 3 2 3 2 1 2 3 2 3\r\n",
+                "12\r\n"
+            ],
+            [
+                "13 13\r\n2 3 4 5 6 7 8 7 6 7 8 9 10\r\n",
+                "11\r\n"
+            ],
+            [
+                "13 7\r\n2 3 4 5 6 7 8 9 10 11 12 13 14\r\n",
+                "5\r\n"
+            ],
+            [
+                "13 19\r\n2 3 4 5 6 5 6 7 6 7 8 9 8\r\n",
+                "13\r\n"
+            ],
+            [
+                "14 14\r\n2 3 4 5 6 5 4 5 6 7 8 7 8 9\r\n",
+                "12\r\n"
+            ],
+            [
+                "14 8\r\n2 3 4 5 6 7 6 7 8 7 8 9 10 11\r\n",
+                "6\r\n"
+            ],
+            [
+                "14 21\r\n2 1 2 3 4 5 4 5 4 5 4 3 4 5\r\n",
+                "14\r\n"
+            ],
+            [
+                "15 15\r\n2 1 2 3 2 3 4 5 6 5 6 5 6 5 6\r\n",
+                "13\r\n"
+            ],
+            [
+                "15 8\r\n2 3 4 3 4 5 6 7 8 7 6 5 6 7 8\r\n",
+                "6\r\n"
+            ],
+            [
+                "15 22\r\n2 3 2 1 2 3 4 5 6 7 8 9 10 9 10\r\n",
+                "15\r\n"
+            ],
+            [
+                "16 16\r\n2 3 4 5 6 5 6 7 8 7 6 7 8 9 10 11\r\n",
+                "14\r\n"
+            ],
+            [
+                "16 9\r\n2 1 2 3 4 5 6 5 4 5 6 7 8 9 10 11\r\n",
+                "7\r\n"
+            ],
+            [
+                "16 24\r\n2 3 4 5 6 7 8 9 10 9 10 9 10 11 12 13\r\n",
+                "16\r\n"
+            ],
+            [
+                "17 17\r\n2 3 2 3 4 3 4 5 6 7 8 9 8 7 6 7 8\r\n",
+                "15\r\n"
+            ],
+            [
+                "17 9\r\n2 1 2 3 4 3 4 5 6 7 8 9 10 11 10 11 12\r\n",
+                "7\r\n"
+            ],
+            [
+                "17 25\r\n2 3 4 3 2 3 2 1 2 3 4 5 4 5 4 5 6\r\n",
+                "17\r\n"
+            ],
+            [
+                "18 18\r\n2 3 2 3 4 5 6 5 6 7 8 9 10 11 12 13 14 15\r\n",
+                "16\r\n"
+            ],
+            [
+                "18 10\r\n2 3 4 5 6 7 8 9 10 11 12 13 12 11 10 9 10 11\r\n",
+                "8\r\n"
+            ],
+            [
+                "18 27\r\n2 3 4 5 6 7 8 9 10 9 10 9 10 11 10 9 10 11\r\n",
+                "18\r\n"
+            ],
+            [
+                "19 19\r\n2 3 4 5 6 5 4 5 6 7 8 9 10 11 12 13 14 15 16\r\n",
+                "17\r\n"
+            ],
+            [
+                "19 10\r\n2 1 2 3 4 3 4 5 4 5 6 7 8 9 10 11 12 13 14\r\n",
+                "8\r\n"
+            ],
+            [
+                "19 28\r\n2 1 2 3 4 5 4 5 6 7 8 9 8 9 10 9 8 9 8\r\n",
+                "19\r\n"
+            ],
+            [
+                "20 20\r\n2 3 4 5 6 7 8 9 10 11 12 11 12 13 14 15 16 17 18 19\r\n",
+                "18\r\n"
+            ],
+            [
+                "20 11\r\n2 3 2 3 4 5 6 5 6 7 8 7 6 7 8 7 8 9 8 9\r\n",
+                "9\r\n"
+            ],
+            [
+                "20 30\r\n2 3 4 5 4 5 4 5 6 7 8 9 10 11 12 13 14 15 16 17\r\n",
+                "20\r\n"
+            ],
+            [
+                "100 180\r\n150 52 127 175 146 138 25 71 192 108 142 79 196 129 23 44 92 11 63 198 197 65 47 144 141 158 142 41 1 102 113 50 171 97 75 31 199 24 17 59 138 53 37 123 64 103 156 141 33 186 150 10 103 29 2 182 38 85 155 73 136 175 83 93 20 59 11 87 178 92 132 11 6 99 109 193 135 132 57 36 123 152 36 80 9 137 122 131 122 108 44 84 180 65 192 192 29 150 147 20\r\n",
+                "68\r\n"
+            ],
+            [
+                "100 154\r\n132 88 72 98 184 47 176 56 68 168 137 88 188 140 198 18 162 139 94 133 90 91 37 156 196 28 186 1 51 47 4 92 18 51 37 121 86 195 153 195 183 191 15 24 104 174 94 83 102 61 131 40 149 46 22 112 13 136 133 177 3 175 160 152 172 48 44 174 77 100 155 157 167 174 64 109 118 194 120 7 8 179 36 149 58 145 163 163 45 14 164 111 176 196 42 161 71 148 192 38\r\n",
+                "44\r\n"
+            ],
+            [
+                "7 11\r\n3 7 10 13 9 12 4\r\n",
+                "3\r\n"
+            ],
+            [
+                "10 20\r\n5 12 21 14 23 17 24 11 25 22\r\n",
+                "5\r\n"
+            ]
+        ]
+    }
+]

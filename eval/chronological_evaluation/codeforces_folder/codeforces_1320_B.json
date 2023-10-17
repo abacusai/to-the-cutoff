@@ -1,0 +1,53 @@
+[
+    {
+        "name": "Navigation System",
+        "description": "The map of Bertown can be represented as a set of \n    n\n intersections,\nnumbered from \n    1\n to \n    n\n and connected by \n    m\n one-way roads. It is\npossible to move along the roads from any intersection to any other\nintersection. The length of some path from one intersection to another is the\nnumber of roads that one has to traverse along the path. The shortest path\nfrom one intersection \n    v\n to another intersection \n    u\n is the path that\nstarts in \n    v\n, ends in \n    u\n and has the minimum length among all such\npaths. Polycarp lives near the intersection \n    s\n and works in a building\nnear the intersection \n    t\n. Every day he gets from \n    s\n to \n    t\n by\ncar. Today he has chosen the following path to his workplace: \n    p_1\n,\n\n    p_2\n, ..., \n    p_k\n, where \n    p_1 = s\n, \n    p_k = t\n, and all other\nelements of this sequence are the intermediate intersections, listed in the\norder Polycarp arrived at them. Polycarp never arrived at the same\nintersection twice, so all elements of this sequence are pairwise distinct.\nNote that you know Polycarp's path beforehand (it is fixed), and it is not\nnecessarily one of the shortest paths from \n    s\n to \n    t\n. Polycarp's car\nhas a complex navigation system installed in it. Let's describe how it works.\nWhen Polycarp starts his journey at the intersection \n    s\n, the system\nchooses some shortest path from \n    s\n to \n    t\n and shows it to Polycarp.\nLet's denote the next intersection in the chosen path as \n    v\n. If Polycarp\nchooses to drive along the road from \n    s\n to \n    v\n, then the navigator\nshows him the same shortest path (obviously, starting from \n    v\n as soon as\nhe arrives at this intersection). However, if Polycarp chooses to drive to\nanother intersection \n    w\n instead, the navigator rebuilds the path: as soon\nas Polycarp arrives at \n    w\n, the navigation system chooses some shortest\npath from \n    w\n to \n    t\n and shows it to Polycarp. The same process\ncontinues until Polycarp arrives at \n    t\n: if Polycarp moves along the road\nrecommended by the system, it maintains the shortest path it has already\nbuilt; but if Polycarp chooses some other path, the system rebuilds the path\nby the same rules. Here is an example. Suppose the map of Bertown looks as\nfollows, and Polycarp drives along the path \n    [1, 2, 3, 4]\n (\n    s = 1\n,\n\n    t = 4\n): Check the picture by the link http://tk.codeforces.com/a.png\nWhen Polycarp starts at \n    1\n, the system chooses some shortest path from\n\n    1\n to \n    4\n. There is only one such path, it is \n    [1, 5, 4]\n;\nPolycarp chooses to drive to \n    2\n, which is not along the path chosen by\nthe system. When Polycarp arrives at \n    2\n, the navigator rebuilds the path\nby choosing some shortest path from \n    2\n to \n    4\n, for example, \n    [2, 6,\n    4]\n (note that it could choose \n    [2, 3, 4]\n); Polycarp chooses to drive\nto \n    3\n, which is not along the path chosen by the system. When Polycarp\narrives at \n    3\n, the navigator rebuilds the path by choosing the only\nshortest path from \n    3\n to \n    4\n, which is \n    [3, 4]\n; Polycarp arrives\nat \n    4\n along the road chosen by the navigator, so the system does not have\nto rebuild anything. Overall, we get \n    2\n rebuilds in this scenario. Note\nthat if the system chose \n    [2, 3, 4]\n instead of \n    [2, 6, 4]\n during the\nsecond step, there would be only \n    1\n rebuild (since Polycarp goes along\nthe path, so the system maintains the path \n    [3, 4]\n during the third\nstep). The example shows us that the number of rebuilds can differ even if the\nmap of Bertown and the path chosen by Polycarp stays the same. Given this\ninformation (the map and Polycarp's path), can you determine the minimum and\nthe maximum number of rebuilds that could have happened during the journey?\nInput The first line contains two integers \n    n\n and \n    m\n (\n    2 \n    \u2264 n\n    \n    \u2264 m \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the number of intersections and one-way\nroads in Bertown, respectively. Then \n    m\n lines follow, each describing a\nroad. Each line contains two integers \n    u\n and \n    v\n (\n    1 \n    \u2264 u, v\n    \n    \u2264 n\n, \n    u \n     v\n) denoting a road from intersection \n    u\n to\nintersection \n    v\n. All roads in Bertown are pairwise distinct, which means\nthat each ordered pair \n    (u, v)\n appears at most once in these \n    m\n\nlines (but if there is a road \n    (u, v)\n, the road \n    (v, u)\n can also\nappear). The following line contains one integer \n    k\n (\n    2 \n    \u2264 k \n    \u2264\n    n\n) \u2014 the number of intersections in Polycarp's path from home to his\nworkplace. The last line contains \n    k\n integers \n    p_1\n, \n    p_2\n, ...,\n\n    p_k\n (\n    1 \n    \u2264 p_i \n    \u2264 n\n, all these integers are pairwise\ndistinct) \u2014 the intersections along Polycarp's path in the order he arrived at\nthem. \n    p_1\n is the intersection where Polycarp lives (\n    s = p_1\n), and\n\n    p_k\n is the intersection where Polycarp's workplace is situated (\n    t =\n    p_k\n). It is guaranteed that for every \n    i \n    \u2208 [1, k - 1]\n the road\nfrom \n    p_i\n to \n    p_i + 1\n exists, so the path goes along the roads of\nBertown. Output Print two integers: the minimum and the maximum number of\nrebuilds that could have happened during the journey. Examples Input 6 9 1 5 5\n4 1 2 2 3 3 4 4 1 2 6 6 4 4 2 4 1 2 3 4 Output 1 2 Input 7 7 1 2 2 3 3 4 4 5 5\n6 6 7 7 1 7 1 2 3 4 5 6 7 Output 0 0 Input 8 13 8 7 8 6 7 5 7 4 6 5 6 4 5 3 5\n2 4 3 4 2 3 1 2 1 1 8 5 8 7 5 2 1 Output 0 3\n\n",
+        "cf_contest_id": 1320,
+        "cf_index": "B",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "6 9\r\n1 5\r\n5 4\r\n1 2\r\n2 3\r\n3 4\r\n4 1\r\n2 6\r\n6 4\r\n4 2\r\n4\r\n1 2 3 4\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "7 7\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 1\r\n7\r\n1 2 3 4 5 6 7\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "8 13\r\n8 7\r\n8 6\r\n7 5\r\n7 4\r\n6 5\r\n6 4\r\n5 3\r\n5 2\r\n4 3\r\n4 2\r\n3 1\r\n2 1\r\n1 8\r\n5\r\n8 7 5 2 1\r\n",
+                "0 3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "20 50\r\n2 3\r\n18 10\r\n11 6\r\n11 1\r\n18 17\r\n18 7\r\n15 20\r\n6 11\r\n11 2\r\n8 2\r\n14 2\r\n20 1\r\n1 19\r\n17 2\r\n5 17\r\n15 17\r\n19 12\r\n16 9\r\n12 4\r\n19 2\r\n2 19\r\n14 3\r\n6 5\r\n20 19\r\n2 16\r\n1 12\r\n2 12\r\n9 2\r\n13 18\r\n2 13\r\n10 4\r\n12 8\r\n12 3\r\n17 5\r\n18 12\r\n18 11\r\n2 17\r\n6 20\r\n19 20\r\n7 9\r\n3 2\r\n19 15\r\n10 20\r\n13 12\r\n4 3\r\n18 15\r\n13 9\r\n2 11\r\n19 14\r\n16 11\r\n8\r\n18 10 4 3 2 19 12 8\r\n",
+                "3 3\r\n"
+            ],
+            [
+                "20 50\r\n20 3\r\n5 16\r\n1 3\r\n10 11\r\n10 15\r\n15 9\r\n20 9\r\n14 6\r\n16 5\r\n13 4\r\n11 5\r\n3 20\r\n13 17\r\n11 8\r\n11 6\r\n12 14\r\n16 18\r\n17 13\r\n18 7\r\n3 1\r\n8 10\r\n17 15\r\n7 2\r\n9 13\r\n5 11\r\n6 1\r\n2 16\r\n8 18\r\n10 8\r\n4 13\r\n9 15\r\n14 12\r\n1 6\r\n9 20\r\n7 18\r\n6 14\r\n7 6\r\n18 16\r\n2 7\r\n3 11\r\n15 17\r\n3 12\r\n14 10\r\n4 14\r\n19 4\r\n11 10\r\n4 19\r\n8 12\r\n17 8\r\n12 8\r\n16\r\n7 2 16 5 11 8 10 15 9 13 4 14 6 1 3 20\r\n",
+                "5 8\r\n"
+            ],
+            [
+                "20 50\r\n18 11\r\n17 13\r\n19 6\r\n13 18\r\n20 9\r\n10 20\r\n6 13\r\n13 9\r\n2 1\r\n17 14\r\n11 20\r\n8 7\r\n14 9\r\n10 14\r\n8 16\r\n11 12\r\n1 3\r\n4 7\r\n7 15\r\n19 2\r\n9 14\r\n15 17\r\n14 7\r\n4 6\r\n20 19\r\n1 19\r\n13 4\r\n15 8\r\n6 9\r\n6 17\r\n1 20\r\n3 1\r\n16 15\r\n19 8\r\n15 14\r\n7 14\r\n16 18\r\n16 5\r\n5 9\r\n6 4\r\n11 16\r\n12 14\r\n3 17\r\n2 13\r\n5 4\r\n12 10\r\n18 15\r\n5 1\r\n6 14\r\n1 13\r\n12\r\n10 20 9 14 7 15 17 13 18 11 16 5\r\n",
+                "2 2\r\n"
+            ],
+            [
+                "20 50\r\n3 12\r\n5 18\r\n17 6\r\n19 12\r\n10 9\r\n18 12\r\n12 16\r\n11 15\r\n2 12\r\n12 18\r\n1 12\r\n20 3\r\n16 12\r\n6 12\r\n10 12\r\n4 12\r\n12 1\r\n5 12\r\n9 6\r\n13 12\r\n17 1\r\n10 5\r\n20 12\r\n11 12\r\n7 12\r\n20 16\r\n6 2\r\n13 14\r\n9 4\r\n16 7\r\n1 16\r\n5 13\r\n6 17\r\n9 2\r\n19 16\r\n18 11\r\n20 19\r\n12 20\r\n20 13\r\n14 17\r\n14 12\r\n8 12\r\n10 15\r\n15 12\r\n17 12\r\n2 8\r\n5 8\r\n9 12\r\n12 10\r\n12 9\r\n4\r\n18 12 20 19\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n2 1\r\n2\r\n1 2\r\n",
+                "0 0\r\n"
+            ]
+        ]
+    }
+]

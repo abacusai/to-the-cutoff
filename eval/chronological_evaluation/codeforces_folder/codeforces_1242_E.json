@@ -1,0 +1,64 @@
+[
+    {
+        "name": "Planar Perimeter",
+        "description": "Ujan has finally cleaned up his house and now wants to decorate the interior.\nHe decided to place a beautiful carpet that would really tie the guest room\ntogether. He is interested in carpets that are made up of polygonal patches\nsuch that each side of a patch is either a side of another (different) patch,\nor is an exterior side of the whole carpet. In other words, the carpet can be\nrepresented as a planar graph, where each patch corresponds to a face of the\ngraph, each face is a simple polygon. The perimeter of the carpet is the\nnumber of the exterior sides. Ujan considers a carpet beautiful if it consists\nof \n    f\n patches, where the \n    i\n-th patch has exactly \n    a_i\n sides,\nand the perimeter is the smallest possible. Find an example of such a carpet,\nso that Ujan can order it! Input The first line of input contains a single\ninteger \n    f\n (\n    1 \n    \u2264 f \n    \u2264 10^5\n), the number of patches in the\ncarpet. The next line contains \n    f\n integers \n    a_1, \n    \u2026, a_f\n (\n    3\n    \n    \u2264 a_i \n    \u2264 3\n    \u00b7 10^5\n), the number of sides of the patches. The\ntotal number of the sides of the patches \n    a_1 + \n    \u2026 + a_f\n does not\nexceed \n    3\n    \u00b710^5\n. Output Output the description of the carpet as a\ngraph. First, output a single integer \n    n\n (\n    3 \n    \u2264 n \n    \u2264 3 \n    \u00b7\n    10^5\n), the total number of vertices in your graph (the vertices must be\nnumbered from \n    1\n to \n    n\n). Then output \n    f\n lines containing the\ndescription of the faces. The \n    i\n-th line should describe the \n    i\n-th\nface and contain \n    a_i\n distinct integers \n    v_i,1, \n    \u2026,\n    v_i,a_i\n (\n    1 \n    \u2264 v_i,j\n    \u2264 n\n), which means that the vertices\n\n    v_i,j\n and \n    v_i,(j \n    a_i)+1\n are connected by an edge for\nany \n    1 \n    \u2264 j \n    \u2264 a_i\n. The graph should be planar and satisfy the\nrestrictions described in the problem statement. Its perimeter should be the\nsmallest possible. There should be no double edges or self-loops in the graph.\nThe graph should be connected. Note that a solution always exists; if there\nare multiple solutions, output any of them. Examples Input 2 3 3 Output 4 2 1\n4 1 2 3 Input 3 5 3 5 Output 6 1 2 3 4 5 4 5 6 1 3 4 6 5 Note In the first\nsample, the two triangular faces are connected by a single edge, which results\nin the minimum perimeter \n    4\n. The figure shows one possible configuration\nfor the second sample. The minimum perimeter in this case is \n    3\n.\n\n",
+        "cf_contest_id": 1242,
+        "cf_index": "E",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "graphs"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n3 3\r\n",
+                "4\r\n1 2 3 \r\n3 4 1 \r\n"
+            ],
+            [
+                "3\r\n5 3 5\r\n",
+                "6\r\n1 2 3 4 5 \r\n1 6 2 \r\n5 4 3 6 1 \r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n3\r\n",
+                "3\r\n1 2 3 \r\n"
+            ],
+            [
+                "3\r\n3 3 3\r\n",
+                "4\r\n1 2 3 \r\n3 4 1 \r\n1 4 2 \r\n"
+            ],
+            [
+                "3\r\n4 5 3\r\n",
+                "6\r\n5 4 3 1 \r\n1 2 3 4 5 \r\n1 6 2 \r\n"
+            ],
+            [
+                "4\r\n3 3 3 3\r\n",
+                "5\r\n1 2 3 \r\n3 4 1 \r\n1 4 2 \r\n2 5 3 \r\n"
+            ],
+            [
+                "5\r\n3 3 3 3 3\r\n",
+                "5\r\n1 2 3 \r\n3 4 1 \r\n1 4 2 \r\n2 5 3 \r\n3 5 4 \r\n"
+            ],
+            [
+                "6\r\n3 3 3 3 3 3\r\n",
+                "6\r\n1 2 3 \r\n3 4 1 \r\n1 4 2 \r\n2 5 3 \r\n3 5 4 \r\n4 6 2 \r\n"
+            ],
+            [
+                "10\r\n5 8 3 7 6 9 8 3 4 5\r\n",
+                "22\r\n4 18 17 19 5 \r\n9 8 7 6 10 11 12 1 \r\n15 21 17 \r\n2 14 13 6 15 16 3 \r\n3 16 15 17 18 4 \r\n1 2 3 4 5 6 7 8 9 \r\n1 12 11 10 6 13 14 2 \r\n17 22 20 \r\n6 20 21 15 \r\n5 19 17 20 6 \r\n"
+            ],
+            [
+                "10\r\n7 8 3 7 4 8 9 3 5 3\r\n",
+                "21\r\n2 14 13 15 16 17 3 \r\n9 8 7 6 10 11 12 1 \r\n6 20 13 \r\n3 17 16 15 13 18 4 \r\n5 19 20 6 \r\n1 12 11 10 6 13 14 2 \r\n1 2 3 4 5 6 7 8 9 \r\n13 21 19 \r\n4 18 13 19 5 \r\n19 21 20 \r\n"
+            ],
+            [
+                "10\r\n100 3 4 5 6 7 8 9 10 11\r\n",
+                "100\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 \r\n8 63 9 \r\n7 64 63 8 \r\n6 66 65 64 7 \r\n5 69 68 67 66 6 \r\n4 73 72 71 70 69 5 \r\n3 78 77 76 75 74 73 4 \r\n2 84 83 82 81 80 79 78 3 \r\n1 91 90 89 88 87 86 85 84 2 \r\n100 99 98 97 96 95 94 93 92 91 1 \r\n"
+            ]
+        ]
+    }
+]

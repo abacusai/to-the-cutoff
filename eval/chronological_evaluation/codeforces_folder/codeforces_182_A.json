@@ -1,0 +1,134 @@
+[
+    {
+        "name": "Battlefield",
+        "description": "Vasya lagged behind at the University and got to the battlefield. Just joking!\nHe's simply playing some computer game. The field is a flat platform with n\ntrenches dug on it. The trenches are segments on a plane parallel to the\ncoordinate axes. No two trenches intersect. There is a huge enemy laser far\naway from Vasya. The laser charges for a seconds, and then shoots continuously\nfor b seconds. Then, it charges for a seconds again. Then it shoots\ncontinuously for b seconds again and so on. Vasya knows numbers a and b. He\nalso knows that while the laser is shooting, Vasya must be in the trench, but\nwhile the laser is charging, Vasya can safely move around the field. The main\nthing is to have time to hide in the trench before the shot. If Vasya reaches\nthe trench exactly at the moment when the laser starts shooting, we believe\nthat Vasya managed to hide. Coincidentally, the length of any trench in meters\nnumerically does not exceed b. Initially, Vasya is at point A. He needs to get\nto point B. Vasya moves at speed 1 meter per second in either direction. You\ncan get in or out of the trench at any its point. Getting in or out of the\ntrench takes no time. It is also possible to move in the trench, without\nleaving it. What is the minimum time Vasya needs to get from point A to point\nB, if at the initial time the laser has just started charging? If Vasya cannot\nget from point A to point B, print -1. If Vasya reaches point B at the moment\nwhen the laser begins to shoot, it is believed that Vasya managed to reach\npoint B. Input The first line contains two space-separated integers: a and b\n(1 \u2264 a, b \u2264 1000), \u2014 the duration of charging and the duration of shooting, in\nseconds. The second line contains four space-separated integers: Ax, Ay, Bx,\nBy ( - 10^4 \u2264 Ax, Ay, Bx, By \u2264 10^4) \u2014 the coordinates of points \u0410 and B. It\nis guaranteed that points A and B do not belong to any trench. The third line\ncontains a single integer: n (1 \u2264 n \u2264 1000), \u2014 the number of trenches. Each of\nthe following n lines contains four space-separated integers: x1, y1, x2, y2 (\n- 10^4 \u2264 xi, yi \u2264 10^4) \u2014 the coordinates of ends of the corresponding trench.\nAll coordinates are given in meters. It is guaranteed that for any trench\neither x1 = x2, or y1 = y2. No two trenches intersect. The length of any\ntrench in meters doesn't exceed b numerically. Output If Vasya can get from\npoint A to point B, print the minimum time he will need for it. Otherwise,\nprint number -1. The answer will be considered correct if the absolute or\nrelative error does not exceed 10^-4 Examples Input 2 4 0 5 6 5 3 0 0 0 4 1 1\n4 1 6 0 6 4 Output 19.0000000000 Input 5 10 0 0 10 10 1 5 0 5 9 Output -1\n\n",
+        "cf_contest_id": 182,
+        "cf_index": "A",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "geometry",
+            "graphs",
+            "implementation",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 4\r\n0 5 6 5\r\n3\r\n0 0 0 4\r\n1 1 4 1\r\n6 0 6 4\r\n",
+                "19.0000000000"
+            ],
+            [
+                "5 10\r\n0 0 10 10\r\n1\r\n5 0 5 9\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 2\r\n6 1 0 2\r\n10\r\n-6 1 -6 3\r\n-4 1 -3 1\r\n-3 -6 -3 -4\r\n-5 4 -4 4\r\n-7 -6 -7 -5\r\n-8 6 -8 8\r\n6 10 7 10\r\n3 -7 5 -7\r\n2 -1 2 1\r\n-5 7 -4 7\r\n",
+                "8.2360679775"
+            ],
+            [
+                "4 4\r\n10 -9 -6 -9\r\n10\r\n-10 -2 -10 2\r\n-1 -9 2 -9\r\n-4 -9 -3 -9\r\n3 -9 4 -9\r\n-8 9 -5 9\r\n8 -7 9 -7\r\n4 8 6 8\r\n6 0 6 3\r\n1 0 1 2\r\n-5 -5 -2 -5\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 6\r\n-6 -7 4 8\r\n10\r\n-1 9 1 9\r\n-9 6 -9 8\r\n4 -8 4 -5\r\n-6 -3 -6 1\r\n-8 6 -8 9\r\n-1 7 1 7\r\n3 0 4 0\r\n-6 -9 -1 -9\r\n-8 -6 -8 -4\r\n2 6 2 8\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 8\r\n6 -8 -10 -3\r\n10\r\n-1 10 5 10\r\n3 -4 3 3\r\n5 -5 5 0\r\n7 7 7 10\r\n-3 6 5 6\r\n-4 -6 -4 -1\r\n7 -6 10 -6\r\n-7 7 -3 7\r\n-8 -7 -2 -7\r\n4 4 10 4\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 10\r\n6 -5 8 0\r\n10\r\n-9 -1 -9 0\r\n8 2 8 5\r\n2 8 10 8\r\n-5 8 -4 8\r\n-9 -4 -7 -4\r\n-10 -3 -10 1\r\n-2 -8 -2 -7\r\n-7 2 -3 2\r\n4 1 4 2\r\n1 -6 8 -6\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8 2\r\n7 -4 2 -10\r\n10\r\n8 -4 10 -4\r\n-10 -7 -10 -6\r\n-4 -1 -3 -1\r\n-9 6 -7 6\r\n8 -5 10 -5\r\n2 -9 2 -7\r\n-5 1 -4 1\r\n0 4 0 5\r\n3 8 3 9\r\n-9 0 -8 0\r\n",
+                "7.8102496759"
+            ],
+            [
+                "8 4\r\n-9 0 -5 8\r\n10\r\n5 -4 9 -4\r\n-8 4 -8 5\r\n9 -1 9 0\r\n-10 0 -10 1\r\n10 -1 10 1\r\n-9 -3 -6 -3\r\n6 -9 6 -7\r\n-8 0 -7 0\r\n-4 4 -3 4\r\n-6 5 -6 8\r\n",
+                "13.0000000000"
+            ],
+            [
+                "8 6\r\n-9 -1 -2 -4\r\n10\r\n5 5 5 7\r\n1 -9 1 -5\r\n2 1 2 6\r\n2 -7 2 -1\r\n-9 -4 -9 -3\r\n-5 0 -5 3\r\n9 -1 9 0\r\n7 4 10 4\r\n-1 -7 -1 -2\r\n8 2 8 3\r\n",
+                "7.6157731059"
+            ],
+            [
+                "8 8\r\n-3 9 10 -7\r\n10\r\n5 0 5 4\r\n9 -1 9 7\r\n1 -2 8 -2\r\n0 2 0 9\r\n8 0 8 3\r\n-1 0 2 0\r\n-3 -5 -3 0\r\n-9 1 -9 9\r\n-7 -6 -7 -4\r\n-4 -8 -4 -1\r\n",
+                "37.3851648071"
+            ],
+            [
+                "8 10\r\n-9 1 9 -4\r\n10\r\n0 4 3 4\r\n4 -1 5 -1\r\n1 -10 8 -10\r\n2 8 10 8\r\n-5 5 2 5\r\n0 10 2 10\r\n5 5 7 5\r\n-8 -4 -3 -4\r\n8 0 8 2\r\n-9 -2 0 -2\r\n",
+                "40.1231056256"
+            ],
+            [
+                "2 2\r\n-8 -8 2 -5\r\n10\r\n3 6 5 6\r\n7 -8 7 -6\r\n-4 0 -2 0\r\n6 2 8 2\r\n-7 -8 -7 -7\r\n-4 -2 -4 -1\r\n3 -1 3 0\r\n-9 9 -9 10\r\n2 -4 2 -2\r\n5 -2 6 -2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 4\r\n-2 -4 -8 4\r\n10\r\n7 0 9 0\r\n-1 -10 0 -10\r\n-1 2 2 2\r\n-2 6 0 6\r\n-8 -5 -6 -5\r\n4 -1 4 2\r\n7 2 7 5\r\n-2 -5 -1 -5\r\n3 9 3 10\r\n0 5 2 5\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 6\r\n-3 -7 6 1\r\n10\r\n8 1 8 5\r\n-7 10 -4 10\r\n2 -1 6 -1\r\n-4 -1 -4 3\r\n5 7 5 8\r\n-6 4 -5 4\r\n-2 3 -2 4\r\n5 -9 5 -4\r\n0 -1 0 4\r\n1 -3 1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 8\r\n3 4 -6 -6\r\n10\r\n-5 -3 -2 -3\r\n5 -10 5 -7\r\n-7 -8 -7 -7\r\n-4 10 4 10\r\n-5 5 -2 5\r\n0 -2 5 -2\r\n6 5 6 10\r\n-8 4 -8 7\r\n-7 10 -5 10\r\n8 5 8 7\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 10\r\n9 -8 -1 -9\r\n10\r\n-2 -2 -2 7\r\n7 3 8 3\r\n-2 8 7 8\r\n-5 6 -5 8\r\n8 -6 8 -4\r\n3 -9 6 -9\r\n0 -7 4 -7\r\n-7 9 -5 9\r\n3 -2 9 -2\r\n0 -2 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6 2\r\n-10 1 2 4\r\n10\r\n-7 9 -7 10\r\n7 -1 8 -1\r\n-3 -2 -2 -2\r\n-2 -8 -2 -6\r\n-5 -4 -3 -4\r\n-3 4 -3 6\r\n7 -5 7 -3\r\n-1 10 1 10\r\n0 0 2 0\r\n-2 1 -2 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6 4\r\n-6 0 -9 -8\r\n10\r\n-7 -3 -6 -3\r\n-6 5 -2 5\r\n-5 6 -5 9\r\n10 -6 10 -5\r\n-3 6 -3 7\r\n4 2 8 2\r\n-10 -7 -7 -7\r\n5 -9 9 -9\r\n0 6 0 10\r\n8 -8 10 -8\r\n",
+                "15.3851648071"
+            ],
+            [
+                "6 6\r\n0 9 -2 -7\r\n10\r\n-7 -4 -2 -4\r\n-5 -3 -3 -3\r\n3 0 3 1\r\n-10 7 -4 7\r\n-5 4 -4 4\r\n7 5 8 5\r\n-10 8 -9 8\r\n5 -2 5 2\r\n-8 -7 -8 -1\r\n8 1 8 3\r\n",
+                "42.0000000000"
+            ],
+            [
+                "6 8\r\n-1 -8 8 -9\r\n10\r\n-10 -4 -10 1\r\n5 3 9 3\r\n4 -3 4 0\r\n3 6 4 6\r\n-4 0 -4 6\r\n2 7 2 9\r\n5 9 10 9\r\n-9 -1 -9 7\r\n0 -1 3 -1\r\n0 1 2 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6 10\r\n-5 -3 8 6\r\n10\r\n-3 3 -3 6\r\n6 -4 6 5\r\n-7 9 0 9\r\n-6 3 -5 3\r\n-7 -7 -7 -2\r\n-6 -7 -6 0\r\n1 -2 5 -2\r\n6 -5 9 -5\r\n-4 -9 3 -9\r\n-4 2 2 2\r\n",
+                "34.2360679775"
+            ],
+            [
+                "10 2\r\n-4 7 1 -3\r\n10\r\n-4 3 -4 4\r\n0 5 2 5\r\n7 8 9 8\r\n-5 0 -4 0\r\n-1 9 1 9\r\n9 2 9 4\r\n5 -3 5 -2\r\n7 0 8 0\r\n-1 5 -1 7\r\n-1 -4 -1 -2\r\n",
+                "14.0000000000"
+            ],
+            [
+                "10 4\r\n1 10 -10 -6\r\n10\r\n-4 0 -4 1\r\n2 -9 4 -9\r\n-8 -7 -5 -7\r\n5 -4 5 -3\r\n9 -1 9 0\r\n10 -7 10 -4\r\n-2 -10 -2 -9\r\n1 -6 1 -3\r\n1 8 4 8\r\n-2 0 -2 4\r\n",
+                "24.0000000000"
+            ],
+            [
+                "10 6\r\n5 -1 -3 3\r\n10\r\n-3 -1 2 -1\r\n3 3 9 3\r\n8 -10 8 -6\r\n-9 3 -8 3\r\n-10 8 -8 8\r\n7 5 9 5\r\n-5 -6 -5 -1\r\n-10 -2 -10 4\r\n-1 3 1 3\r\n6 0 8 0\r\n",
+                "8.9442719100"
+            ],
+            [
+                "10 8\r\n7 -2 5 4\r\n10\r\n-7 8 -2 8\r\n-8 -10 -3 -10\r\n3 -3 3 -2\r\n-8 -5 -8 3\r\n-9 0 -9 8\r\n-6 -5 -1 -5\r\n-6 -9 -5 -9\r\n-1 2 -1 5\r\n2 1 2 9\r\n6 -9 6 -4\r\n",
+                "6.3245553203"
+            ],
+            [
+                "10 10\r\n7 6 5 -4\r\n10\r\n-1 -8 4 -8\r\n-2 -6 8 -6\r\n0 10 7 10\r\n-4 -8 -4 0\r\n3 2 5 2\r\n-5 -9 -4 -9\r\n-4 5 1 5\r\n-8 -7 -8 3\r\n9 -9 9 0\r\n8 10 9 10\r\n",
+                "24.0000000000"
+            ],
+            [
+                "5 100\r\n0 0 5 0\r\n1\r\n0 5 5 5\r\n",
+                "5.0000000000"
+            ]
+        ]
+    }
+]

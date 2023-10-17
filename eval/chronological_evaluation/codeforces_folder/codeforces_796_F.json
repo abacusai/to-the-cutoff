@@ -1,0 +1,181 @@
+[
+    {
+        "name": "Sequence Recovery",
+        "description": "Zane once had a good sequence a consisting of n integers a1, a2, ..., an \u2014 but\nhe has lost it. A sequence is said to be good if and only if all of its\nintegers are non-negative and do not exceed 10^9 in value. However, Zane\nremembers having played around with his sequence by applying m operations to\nit. There are two types of operations: 1\u1e1eind the maximum value of integers\nwith indices i such that l \u2264 i \u2264 r, given l and r. 2\u0226ssign d as the value\nof the integer with index k, given k and d. After he finished playing, he\nrestored his sequence to the state it was before any operations were applied.\nThat is, sequence a was no longer affected by the applied type 2 operations.\nThen, he lost his sequence at some time between now and then. Fortunately,\nZane remembers all the operations and the order he applied them to his\nsequence, along with the distinct results of all type 1 operations. Moreover,\namong all good sequences that would produce the same results when the same\noperations are applied in the same order, he knows that his sequence a has the\ngreatest cuteness. We define cuteness of a sequence as the bitwise OR result\nof all integers in such sequence. For example, the cuteness of Zane's sequence\na is a1 OR a2 OR ... OR an. Zane understands that it might not be possible to\nrecover exactly the lost sequence given his information, so he would be happy\nto get any good sequence b consisting of n integers b1, b2, ..., bn that: 1\u1e87ould give the same results when the same operations are applied in the same\norder, and 2\u1e23as the same cuteness as that of Zane's original sequence a. If\nthere is such a sequence, find it. Otherwise, it means that Zane must have\nremembered something incorrectly, which is possible. Input The first line\ncontains two integers n and m (1 \u2264 n, m \u2264 3\u00b710^5) \u2014 the number of integers in\nZane's original sequence and the number of operations that have been applied\nto the sequence, respectively. The i-th of the following m lines starts with\none integer ti () \u2014 the type of the i-th operation. If the operation is type 1\n(ti = 1), then three integers li, ri, and xi follow (1 \u2264 li \u2264 ri \u2264 n, 0 \u2264 xi \u2264\n10^9) \u2014 the leftmost index to be considered, the rightmost index to be\nconsidered, and the maximum value of all integers with indices between li and\nri, inclusive, respectively. If the operation is type 2 (ti = 2), then two\nintegers ki and di follow (1 \u2264 ki \u2264 n, 0 \u2264 di \u2264 10^9) \u2014 meaning that the\ninteger with index ki should become di after this operation. It is guaranteed\nthat xi \u2260 xj for all pairs (i, j) where 1 \u2264 i < j \u2264 m and ti = tj = 1. The\noperations are given in the same order they were applied. That is, the\noperation that is given first was applied first, the operation that is given\nsecond was applied second, and so on. Output If there does not exist a valid\ngood sequence, print \"NO\" (without quotation marks) in the first line.\nOtherwise, print \"YES\" (without quotation marks) in the first line, and print\nn space-separated integers b1, b2, ..., bn (0 \u2264 bi \u2264 10^9) in the second line.\nIf there are multiple answers, print any of them. Examples Input 5 4 1 1 5 19\n1 2 5 1 2 5 100 1 1 5 100 Output YES 19 0 0 0 1 Input 5 2 1 1 5 0 1 1 5 100\nOutput NO Note In the first sample, it is easy to verify that this good\nsequence is valid. In particular, its cuteness is 19 OR 0 OR 0 OR 0 OR 1 = 19.\nIn the second sample, the two operations clearly contradict, so there is no\nsuch good sequence.\n\n",
+        "cf_contest_id": 796,
+        "cf_index": "F",
+        "cf_rating": 2800,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "data structures",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 4\r\n1 1 5 19\r\n1 2 5 1\r\n2 5 100\r\n1 1 5 100\r\n",
+                "YES\r\n19 0 1 1 1 "
+            ],
+            [
+                "5 2\r\n1 1 5 0\r\n1 1 5 100\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 2\r\n1 1 2 1\r\n1 4 5 2\r\n",
+                "YES\r\n0 1 1000000000 0 2 "
+            ],
+            [
+                "2 1\r\n1 1 1 536870912\r\n",
+                "YES\r\n536870912 536870911 "
+            ],
+            [
+                "2 1\r\n1 2 2 268435456\r\n",
+                "YES\r\n805306367 268435456 "
+            ],
+            [
+                "5 4\r\n1 1 5 1024\r\n1 1 4 512\r\n1 1 3 256\r\n1 1 1 128\r\n",
+                "YES\r\n128 127 256 512 1024 "
+            ],
+            [
+                "300000 2\r\n1 1 300000 192939\r\n1 2033 200000 192940\r\n",
+                "NO\r\n"
+            ],
+            [
+                "284829 3\r\n2 222222 5949929\r\n1 2494 239593 301\r\n2 222222 301\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 1\r\n1 1 1 0\r\n",
+                "YES\r\n0 "
+            ],
+            [
+                "1 1\r\n1 1 1 1\r\n",
+                "YES\r\n1 "
+            ],
+            [
+                "1 1\r\n1 1 1 2\r\n",
+                "YES\r\n2 "
+            ],
+            [
+                "1 1\r\n1 1 1 32\r\n",
+                "YES\r\n32 "
+            ],
+            [
+                "1 2\r\n1 1 1 1\r\n2 1 4\r\n",
+                "YES\r\n1 "
+            ],
+            [
+                "1 2\r\n1 1 1 2\r\n2 1 0\r\n",
+                "YES\r\n2 "
+            ],
+            [
+                "1 2\r\n1 1 1 16\r\n2 1 102\r\n",
+                "YES\r\n16 "
+            ],
+            [
+                "2 1\r\n1 2 2 1\r\n",
+                "YES\r\n1000000000 1 "
+            ],
+            [
+                "2 1\r\n1 1 2 2\r\n",
+                "YES\r\n1 2 "
+            ],
+            [
+                "2 1\r\n1 2 2 16\r\n",
+                "YES\r\n1000000000 16 "
+            ],
+            [
+                "2 2\r\n1 1 2 1\r\n2 1 43\r\n",
+                "YES\r\n0 1 "
+            ],
+            [
+                "2 2\r\n1 2 2 1\r\n2 2 43\r\n",
+                "YES\r\n1000000000 1 "
+            ],
+            [
+                "2 2\r\n1 1 1 1\r\n1 2 2 4\r\n",
+                "YES\r\n1 4 "
+            ],
+            [
+                "1 10\r\n1 1 1 2\r\n2 1 59\r\n1 1 1 59\r\n2 1 38\r\n1 1 1 38\r\n2 1 99\r\n1 1 1 96\r\n1 1 1 99\r\n2 1 135\r\n1 1 1 135\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 20\r\n1 1 1 8\r\n2 1 105\r\n1 1 1 105\r\n2 1 118\r\n1 1 1 118\r\n2 1 189\r\n1 1 1 189\r\n2 1 241\r\n1 1 1 241\r\n2 1 266\r\n1 1 1 266\r\n2 1 365\r\n1 1 1 365\r\n2 1 462\r\n1 1 1 462\r\n2 1 511\r\n1 1 1 516\r\n1 1 1 511\r\n2 1 569\r\n1 1 1 569\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 1\r\n1 1 1 2\r\n",
+                "YES\r\n2 1000000000 "
+            ],
+            [
+                "1 1\r\n2 1 0\r\n",
+                "YES\r\n1000000000 "
+            ],
+            [
+                "3 1\r\n1 3 3 1\r\n",
+                "YES\r\n536870911 1000000000 1 "
+            ],
+            [
+                "3 1\r\n1 2 2 2\r\n",
+                "YES\r\n536870911 2 1000000000 "
+            ],
+            [
+                "3 2\r\n1 2 2 1\r\n2 2 82\r\n",
+                "YES\r\n536870911 1 1000000000 "
+            ],
+            [
+                "3 2\r\n1 2 3 2\r\n2 2 1\r\n",
+                "YES\r\n1000000000 1 2 "
+            ],
+            [
+                "3 4\r\n1 2 2 2\r\n1 1 3 4\r\n2 1 1\r\n1 1 3 3\r\n",
+                "YES\r\n4 2 3 "
+            ],
+            [
+                "1 1\r\n2 1 213\r\n",
+                "YES\r\n1000000000 "
+            ],
+            [
+                "1 2\r\n2 1 213\r\n1 1 1 29302444\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 2\r\n2 1 0\r\n2 2 1\r\n",
+                "YES\r\n536870911 1000000000 "
+            ],
+            [
+                "5 3\r\n1 1 5 19\r\n2 1 0\r\n1 1 5 1\r\n",
+                "YES\r\n19 0 1 1 1 "
+            ],
+            [
+                "5 6\r\n1 1 5 100000000\r\n1 1 4 6600000\r\n2 3 2200000\r\n1 1 4 6300000\r\n1 1 3 2200000\r\n1 1 2 4\r\n",
+                "YES\r\n3 4 6600000 6300000 100000000 "
+            ],
+            [
+                "3 2\r\n1 1 2 4\r\n1 3 3 3\r\n",
+                "YES\r\n0 4 3 "
+            ],
+            [
+                "1 1\r\n1 1 1 1000000000\r\n",
+                "YES\r\n1000000000 "
+            ],
+            [
+                "2 1\r\n1 1 2 1000000000\r\n",
+                "YES\r\n73741823 1000000000 "
+            ],
+            [
+                "2 1\r\n1 2 2 1000000000\r\n",
+                "YES\r\n73741823 1000000000 "
+            ],
+            [
+                "3 1\r\n1 1 2 33554432\r\n",
+                "YES\r\n33554431 33554432 939524096 "
+            ]
+        ]
+    }
+]

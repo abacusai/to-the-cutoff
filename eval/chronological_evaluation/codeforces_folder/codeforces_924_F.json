@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Minimal Subset Difference",
+        "description": "We call a positive integer x a k-beautiful integer if and only if it is\npossible to split the multiset of its digits in the decimal representation\ninto two subsets such that the difference between the sum of digits in one\nsubset and the sum of digits in the other subset is less than or equal to k.\nEach digit should belong to exactly one subset after the split. There are n\nqueries for you. Each query is described with three integers l, r and k, which\nmean that you are asked how many integers x between l and r (inclusive) are\nk-beautiful. Input The first line contains a single integer n (1 \u2264 n \u2264\n5\u00b710^4), indicating the number of queries. Each of the next n lines describes\na query, containing three integers l, r and k (1 \u2264 l \u2264 r \u2264 10^18, 0 \u2264 k \u2264 9).\nOutput For each query print a single number \u2014 the answer to the query.\nExamples Input 10 1 100 0 1 100 1 1 100 2 1 100 3 1 100 4 1 100 5 1 100 6 1\n100 7 1 100 8 1 100 9 Output 9 28 44 58 70 80 88 94 98 100 Input 10 1 1000 0 1\n1000 1 1 1000 2 1 1000 3 1 1000 4 1 1000 5 1 1000 6 1 1000 7 1 1000 8 1 1000 9\nOutput 135 380 573 721 830 906 955 983 996 1000 Note If 1 \u2264 x \u2264 9, integer x\nis k-beautiful if and only if x \u2264 k. If 10 \u2264 x \u2264 99, integer x = 10a + b is\nk-beautiful if and only if |a - b| \u2264 k, where a and b are integers between 0\nand 9, inclusive. 100 is k-beautiful if and only if k \u2265 1.\n\n",
+        "cf_contest_id": 924,
+        "cf_index": "F",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10\r\n1 100 0\r\n1 100 1\r\n1 100 2\r\n1 100 3\r\n1 100 4\r\n1 100 5\r\n1 100 6\r\n1 100 7\r\n1 100 8\r\n1 100 9\r\n",
+                "9\r\n28\r\n44\r\n58\r\n70\r\n80\r\n88\r\n94\r\n98\r\n100\r\n"
+            ],
+            [
+                "10\r\n1 1000 0\r\n1 1000 1\r\n1 1000 2\r\n1 1000 3\r\n1 1000 4\r\n1 1000 5\r\n1 1000 6\r\n1 1000 7\r\n1 1000 8\r\n1 1000 9\r\n",
+                "135\r\n380\r\n573\r\n721\r\n830\r\n906\r\n955\r\n983\r\n996\r\n1000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n5 10 8\r\n",
+                "5\r\n"
+            ],
+            [
+                "20\r\n2 91 2\r\n4 65 6\r\n27 88 9\r\n41 84 5\r\n47 64 4\r\n35 61 9\r\n31 34 2\r\n39 40 3\r\n28 45 2\r\n24 65 6\r\n34 96 1\r\n43 77 9\r\n92 100 9\r\n34 97 9\r\n61 72 9\r\n16 46 6\r\n70 91 9\r\n10 27 0\r\n51 66 4\r\n7 68 1\r\n",
+                "39\r\n56\r\n62\r\n38\r\n14\r\n27\r\n4\r\n0\r\n9\r\n41\r\n16\r\n35\r\n9\r\n64\r\n12\r\n28\r\n22\r\n2\r\n14\r\n18\r\n"
+            ],
+            [
+                "16\r\n66 171 0\r\n181 386 0\r\n14 952 0\r\n122 798 0\r\n182 415 0\r\n422 711 0\r\n72 256 0\r\n299 401 0\r\n8 613 0\r\n531 933 0\r\n281 361 0\r\n50 430 0\r\n445 574 0\r\n354 355 0\r\n237 699 0\r\n762 810 0\r\n",
+                "17\r\n35\r\n129\r\n101\r\n39\r\n40\r\n31\r\n16\r\n90\r\n48\r\n13\r\n61\r\n19\r\n0\r\n68\r\n4\r\n"
+            ],
+            [
+                "12\r\n5515 8975 1\r\n2679 9789 1\r\n204 7085 1\r\n2639 6351 1\r\n2401 7649 1\r\n2624 8043 1\r\n569 3074 1\r\n3087 4541 1\r\n3650 7280 1\r\n3174 8028 1\r\n4282 6207 1\r\n1539 7228 1\r\n",
+                "1793\r\n3884\r\n3898\r\n2196\r\n3077\r\n3094\r\n1383\r\n916\r\n2063\r\n2778\r\n1108\r\n3326\r\n"
+            ],
+            [
+                "8\r\n11712 57718 0\r\n83313 84588 0\r\n67188 86608 0\r\n16055 42221 1\r\n58817 94502 1\r\n38657 41710 1\r\n8268 88817 1\r\n45257 69848 1\r\n",
+                "15039\r\n389\r\n5509\r\n19917\r\n24021\r\n2142\r\n58488\r\n18066\r\n"
+            ],
+            [
+                "2\r\n386745 607632 5\r\n489233 868042 7\r\n",
+                "220861\r\n378795\r\n"
+            ],
+            [
+                "12\r\n1862539 2350203 0\r\n332787 4769721 3\r\n3528957 8864714 7\r\n4996555 7234739 5\r\n3212583 5098521 7\r\n5855626 8936610 2\r\n54986 2172079 6\r\n1843786 7619182 6\r\n1642771 5279124 3\r\n4433823 4564238 3\r\n1701793 1740012 4\r\n6805460 7122815 6\r\n",
+                "217465\r\n4405743\r\n5335719\r\n2237698\r\n1885939\r\n2995757\r\n2115890\r\n5775207\r\n3623958\r\n130229\r\n38126\r\n317310\r\n"
+            ],
+            [
+                "4\r\n3220037 5835494 2\r\n15909348 64446366 0\r\n67413333 75848987 3\r\n26362822 92330596 6\r\n",
+                "2592182\r\n23282644\r\n8415564\r\n65965203\r\n"
+            ],
+            [
+                "7\r\n347655706 819318654 5\r\n376240381 797987068 3\r\n317035035 991806265 2\r\n2715211 181444151 2\r\n645437334 969555307 4\r\n299637450 847292807 2\r\n260912136 691550326 1\r\n",
+                "471650983\r\n421585164\r\n672931865\r\n177654280\r\n323992315\r\n546573842\r\n426592092\r\n"
+            ],
+            [
+                "6\r\n5807022155 5892811313 0\r\n309506255 3084869469 1\r\n1672652305 3349100733 1\r\n2483850145 7030562464 1\r\n2612546368 8001008656 1\r\n1973853600 7729992586 0\r\n",
+                "42706434\r\n2759139454\r\n1670545982\r\n4530215723\r\n5367506755\r\n2859135850\r\n"
+            ]
+        ]
+    }
+]

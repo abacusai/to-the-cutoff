@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Lunar New Year and Food Ordering",
+        "description": "Lunar New Year is approaching, and Bob is planning to go for a famous\nrestaurant \u2014 \"Alice's\". The restaurant \"Alice's\" serves \n    n\n kinds of food.\nThe cost for the \n    i\n-th kind is always \n    c_i\n. Initially, the\nrestaurant has enough ingredients for serving exactly \n    a_i\n dishes of the\n\n    i\n-th kind. In the New Year's Eve, \n    m\n customers will visit Alice's\none after another and the \n    j\n-th customer will order \n    d_j\n dishes of\nthe \n    t_j\n-th kind of food. The \n    (i + 1)\n-st customer will only come\nafter the \n    i\n-th customer is completely served. Suppose there are\n\n    r_i\n dishes of the \n    i\n-th kind remaining (initially \n    r_i = a_i\n).\nWhen a customer orders \n    1\n dish of the \n    i\n-th kind, the following\nprinciples will be processed. If \n    r_i > 0\n, the customer will be served\nexactly \n    1\n dish of the \n    i\n-th kind. The cost for the dish is\n\n    c_i\n. Meanwhile, \n    r_i\n will be reduced by \n    1\n. Otherwise, the\ncustomer will be served \n    1\n dish of the cheapest available kind of food if\nthere are any. If there are multiple cheapest kinds of food, the one with the\nsmallest index among the cheapest will be served. The cost will be the cost\nfor the dish served and the remain for the corresponding dish will be reduced\nby \n    1\n. If there are no more dishes at all, the customer will leave\nangrily. Therefore, no matter how many dishes are served previously, the cost\nfor the customer is \n    0\n.If the customer doesn't leave after the \n    d_j\n\ndishes are served, the cost for the customer will be the sum of the cost for\nthese \n    d_j\n dishes. Please determine the total cost for each of the\n\n    m\n customers. Input The first line contains two integers \n    n\n and\n\n    m\n (\n    1 \n    \u2264 n, m \n    \u2264 10^5\n), representing the number of\ndifferent kinds of food and the number of customers, respectively. The second\nline contains \n    n\n positive integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    1\n    \n    \u2264 a_i \n    \u2264 10^7\n), where \n    a_i\n denotes the initial remain of the\n\n    i\n-th kind of dishes. The third line contains \n    n\n positive integers\n\n    c_1, c_2, \n    \u2026, c_n\n (\n    1 \n    \u2264 c_i \n    \u2264 10^6\n), where\n\n    c_i\n denotes the cost of one dish of the \n    i\n-th kind. The following\n\n    m\n lines describe the orders of the \n    m\n customers respectively. The\n\n    j\n-th line contains two positive integers \n    t_j\n and \n    d_j\n (\n    1\n    \n    \u2264 t_j \n    \u2264 n\n, \n    1 \n    \u2264 d_j \n    \u2264 10^7\n), representing the kind\nof food and the number of dishes the \n    j\n-th customer orders, respectively.\nOutput Print \n    m\n lines. In the \n    j\n-th line print the cost for the\n\n    j\n-th customer. Examples Input 8 5 8 6 2 1 4 5 7 5 6 3 3 2 6 2 3 2 2 8 1\n4 4 7 3 4 6 10 Output 22 24 14 10 39 Input 6 6 6 6 6 6 6 6 6 66 666 6666 66666\n666666 1 6 2 6 3 6 4 6 5 6 6 66 Output 36 396 3996 39996 399996 0 Input 6 6 6\n6 6 6 6 6 6 66 666 6666 66666 666666 1 6 2 13 3 6 4 11 5 6 6 6 Output 36 11058\n99996 4333326 0 0 Note In the first sample, \n    5\n customers will be served\nas follows. Customer \n    1\n will be served \n    6\n dishes of the \n    2\n-nd\nkind, \n    1\n dish of the \n    4\n-th kind, and \n    1\n dish of the \n    6\n-th\nkind. The cost is \n    6 \n    \u00b7 3 + 1 \n    \u00b7 2 + 1 \n    \u00b7 2 = 22\n. The\nremain of the \n    8\n kinds of food will be \n    8, 0, 2, 0, 4, 4, 7,\n    5\n. Customer \n    2\n will be served \n    4\n dishes of the \n    1\n-st\nkind. The cost is \n    4 \n    \u00b7 6 = 24\n. The remain will be \n    4, 0, 2,\n    0, 4, 4, 7, 5\n. Customer \n    3\n will be served \n    4\n dishes of the\n\n    6\n-th kind, \n    3\n dishes of the \n    8\n-th kind. The cost is \n    4\n    \n    \u00b7 2 + 3 \n    \u00b7 2 = 14\n. The remain will be \n    4, 0, 2, 0, 4, 0,\n    7, 2\n. Customer \n    4\n will be served \n    2\n dishes of the \n    3\n-rd\nkind, \n    2\n dishes of the \n    8\n-th kind. The cost is \n    2 \n    \u00b7 3 + 2\n    \n    \u00b7 2 = 10\n. The remain will be \n    4, 0, 0, 0, 4, 0, 7, 0\n.\nCustomer \n    5\n will be served \n    7\n dishes of the \n    7\n-th kind, \n    3\n\ndishes of the \n    1\n-st kind. The cost is \n    7 \n    \u00b7 3 + 3 \n    \u00b7 6 =\n    39\n. The remain will be \n    1, 0, 0, 0, 4, 0, 0, 0\n.In the second\nsample, each customer is served what they order except the last one, who\nleaves angrily without paying. For example, the second customer is served\n\n    6\n dishes of the second kind, so the cost is \n    66 \n    \u00b7 6 = 396\n. In\nthe third sample, some customers may not be served what they order. For\nexample, the second customer is served \n    6\n dishes of the second kind,\n\n    6\n of the third and \n    1\n of the fourth, so the cost is \n    66 \n    \u00b7 6\n    + 666 \n    \u00b7 6 + 6666 \n    \u00b7 1 = 11058\n.\n\n",
+        "cf_contest_id": 1106,
+        "cf_index": "B",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "8 5\r\n8 6 2 1 4 5 7 5\r\n6 3 3 2 6 2 3 2\r\n2 8\r\n1 4\r\n4 7\r\n3 4\r\n6 10\r\n",
+                "22\r\n24\r\n14\r\n10\r\n39\r\n"
+            ],
+            [
+                "6 6\r\n6 6 6 6 6 6\r\n6 66 666 6666 66666 666666\r\n1 6\r\n2 6\r\n3 6\r\n4 6\r\n5 6\r\n6 66\r\n",
+                "36\r\n396\r\n3996\r\n39996\r\n399996\r\n0\r\n"
+            ],
+            [
+                "6 6\r\n6 6 6 6 6 6\r\n6 66 666 6666 66666 666666\r\n1 6\r\n2 13\r\n3 6\r\n4 11\r\n5 6\r\n6 6\r\n",
+                "36\r\n11058\r\n99996\r\n4333326\r\n0\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n411017\r\n129875\r\n1 8160563\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 15\r\n132 138 38 75 14 115 129 68 119 118\r\n728344 513371 120930 757031 137753 453796 348671 185533 966778 521678\r\n4 58\r\n1 8\r\n8 22\r\n3 98\r\n2 111\r\n6 158\r\n2 82\r\n1 170\r\n1 26\r\n1 4\r\n4 76\r\n10 106\r\n5 100\r\n4 116\r\n7 62\r\n",
+                "43907798\r\n5826752\r\n4081726\r\n15058400\r\n56984181\r\n67179393\r\n33037922\r\n108948627\r\n13563628\r\n2086712\r\n43648529\r\n96247068\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "1 1\r\n8494441\r\n646015\r\n1 2198012\r\n",
+                "1419948722180\r\n"
+            ],
+            [
+                "1 1\r\n6577865\r\n227563\r\n1 5978566\r\n",
+                "1360500414658\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n558976\r\n1 1\r\n",
+                "558976\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n642400\r\n1 1\r\n",
+                "642400\r\n"
+            ],
+            [
+                "1 1\r\n10000000\r\n284517\r\n1 10000000\r\n",
+                "2845170000000\r\n"
+            ],
+            [
+                "1 1\r\n10000000\r\n367941\r\n1 10000000\r\n",
+                "3679410000000\r\n"
+            ],
+            [
+                "5 6\r\n26 75 98 33 53\r\n382051 563872 378058 483440 203755\r\n5 56\r\n3 9\r\n5 38\r\n5 6\r\n2 24\r\n2 2\r\n",
+                "11933189\r\n3402522\r\n14366204\r\n2268348\r\n13532928\r\n1127744\r\n"
+            ],
+            [
+                "10 20\r\n1 2 3 4 5 6 7 8 9 10\r\n1 2 3 4 5 6 7 8 9 10\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n1 1\r\n",
+                "1\r\n2\r\n2\r\n3\r\n3\r\n3\r\n4\r\n4\r\n4\r\n4\r\n5\r\n5\r\n5\r\n5\r\n5\r\n6\r\n6\r\n6\r\n6\r\n6\r\n"
+            ]
+        ]
+    }
+]

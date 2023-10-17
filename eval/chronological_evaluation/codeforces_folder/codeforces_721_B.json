@@ -1,0 +1,194 @@
+[
+    {
+        "name": "Passwords",
+        "description": "Vanya is managed to enter his favourite site Codehorses. Vanya uses n distinct\npasswords for sites at all, however he can't remember which one exactly he\nspecified during Codehorses registration. Vanya will enter passwords in order\nof non-decreasing their lengths, and he will enter passwords of same length in\narbitrary order. Just when Vanya will have entered the correct password, he is\nimmediately authorized on the site. Vanya will not enter any password twice.\nEntering any passwords takes one second for Vanya. But if Vanya will enter\nwrong password k times, then he is able to make the next try only 5 seconds\nafter that. Vanya makes each try immediately, that is, at each moment when\nVanya is able to enter password, he is doing that. Determine how many seconds\nwill Vanya need to enter Codehorses in the best case for him (if he spends\nminimum possible number of second) and in the worst case (if he spends maximum\npossible amount of seconds). Input The first line of the input contains two\nintegers n and k (1 \u2264 n, k \u2264 100) \u2014 the number of Vanya's passwords and the\nnumber of failed tries, after which the access to the site is blocked for 5\nseconds. The next n lines contains passwords, one per line \u2014 pairwise distinct\nnon-empty strings consisting of latin letters and digits. Each password length\ndoes not exceed 100 characters. The last line of the input contains the\nVanya's Codehorses password. It is guaranteed that the Vanya's Codehorses\npassword is equal to some of his n passwords. Output Print two integers \u2014 time\n(in seconds), Vanya needs to be authorized to Codehorses in the best case for\nhim and in the worst case respectively. Examples Input 5 2 cba abc bb1 abC ABC\nabc Output 1 15 Input 4 100 11 22 1 2 22 Output 3 4 Note Consider the first\nsample case. As soon as all passwords have the same length, Vanya can enter\nthe right password at the first try as well as at the last try. If he enters\nit at the first try, he spends exactly 1 second. Thus in the best case the\nanswer is 1. If, at the other hand, he enters it at the last try, he enters\nanother 4 passwords before. He spends 2 seconds to enter first 2 passwords,\nthen he waits 5 seconds as soon as he made 2 wrong tries. Then he spends 2\nmore seconds to enter 2 wrong passwords, again waits 5 seconds and, finally,\nenters the correct password spending 1 more second. In summary in the worst\ncase he is able to be authorized in 15 seconds. Consider the second sample\ncase. There is no way of entering passwords and get the access to the site\nblocked. As soon as the required password has length of 2, Vanya enters all\npasswords of length 1 anyway, spending 2 seconds for that. Then, in the best\ncase, he immediately enters the correct password and the answer for the best\ncase is 3, but in the worst case he enters wrong password of length 2 and only\nthen the right one, spending 4 seconds at all.\n\n",
+        "cf_contest_id": 721,
+        "cf_index": "B",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "math",
+            "sortings",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 2\r\ncba\r\nabc\r\nbb1\r\nabC\r\nABC\r\nabc\r\n",
+                "1 15\r\n"
+            ],
+            [
+                "4 100\r\n11\r\n22\r\n1\r\n2\r\n22\r\n",
+                "3 4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\na1\r\na1\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "1 100\r\na1\r\na1\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "2 1\r\nabc\r\nAbc\r\nAbc\r\n",
+                "1 7\r\n"
+            ],
+            [
+                "2 2\r\nabc\r\nAbc\r\nabc\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "2 1\r\nab\r\nabc\r\nab\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "2 2\r\nab\r\nabc\r\nab\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "2 1\r\nab\r\nabc\r\nabc\r\n",
+                "7 7\r\n"
+            ],
+            [
+                "2 2\r\nab\r\nabc\r\nabc\r\n",
+                "2 2\r\n"
+            ],
+            [
+                "10 3\r\nOIbV1igi\r\no\r\nZS\r\nQM\r\n9woLzI\r\nWreboD\r\nQ7yl\r\nA5Rb\r\nS9Lno72TkP\r\nfT97o\r\no\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "10 3\r\nHJZNMsT\r\nLaPcH2C\r\nlrhqIO\r\n9cxw\r\noTC1XwjW\r\nGHL9Ul6\r\nUyIs\r\nPuzwgR4ZKa\r\nyIByoKR5\r\nd3QA\r\nPuzwgR4ZKa\r\n",
+                "25 25\r\n"
+            ],
+            [
+                "20 5\r\nvSyC787KlIL8kZ2Uv5sw\r\nWKWOP\r\n7i8J3E8EByIq\r\nNW2VyGweL\r\nmyR2sRNu\r\nmXusPP0\r\nf4jgGxra\r\n4wHRzRhOCpEt\r\npPz9kybGb\r\nOtSpePCRoG5nkjZ2VxRy\r\nwHYsSttWbJkg\r\nKBOP9\r\nQfiOiFyHPPsw3GHo8J8\r\nxB8\r\nqCpehZEeEhdq\r\niOLjICK6\r\nQ91\r\nHmCsfMGTFKoFFnv238c\r\nJKjhg\r\ngkEUh\r\nKBOP9\r\n",
+                "3 11\r\n"
+            ],
+            [
+                "15 2\r\nw6S9WyU\r\nMVh\r\nkgUhQHW\r\nhGQNOF\r\nUuym\r\n7rGQA\r\nBM8vLPRB\r\n9E\r\nDs32U\r\no\r\nz1aV2C5T\r\n8\r\nzSXjrqQ\r\n1FO\r\n3kIt\r\nBM8vLPRB\r\n",
+                "44 50\r\n"
+            ],
+            [
+                "20 2\r\ni\r\n5Rp6\r\nE4vsr\r\nSY\r\nORXx\r\nh13C\r\nk6tzC\r\ne\r\nN\r\nKQf4C\r\nWZcdL\r\ndiA3v\r\n0InQT\r\nuJkAr\r\nGCamp\r\nBuIRd\r\nY\r\nM\r\nxZYx7\r\n0a5A\r\nWZcdL\r\n",
+                "36 65\r\n"
+            ],
+            [
+                "20 2\r\naWLQ6\r\nSgQ9r\r\nHcPdj\r\n2BNaO\r\n3TjNb\r\nnvwFM\r\nqsKt7\r\nFnb6N\r\nLoc0p\r\njxuLq\r\nBKAjf\r\nEKgZB\r\nBfOSa\r\nsMIvr\r\nuIWcR\r\nIura3\r\nLAqSf\r\ntXq3G\r\n8rQ8I\r\n8otAO\r\nsMIvr\r\n",
+                "1 65\r\n"
+            ],
+            [
+                "20 15\r\n0ZpQugVlN7\r\nm0SlKGnohN\r\nRFXTqhNGcn\r\n1qm2ZbB\r\nQXtJWdf78P\r\nbc2vH\r\nP21dty2Z1P\r\nm2c71LFhCk\r\n23EuP1Dvh3\r\nanwri5RhQN\r\n55v6HYv288\r\n1u5uKOjM5r\r\n6vg0GC1\r\nDAPYiA3ns1\r\nUZaaJ3Gmnk\r\nwB44x7V4Zi\r\n4hgB2oyU8P\r\npYFQpy8gGK\r\ndbz\r\nBv\r\n55v6HYv288\r\n",
+                "6 25\r\n"
+            ],
+            [
+                "3 1\r\na\r\nb\r\naa\r\naa\r\n",
+                "13 13\r\n"
+            ],
+            [
+                "6 3\r\nab\r\nac\r\nad\r\nabc\r\nabd\r\nabe\r\nabc\r\n",
+                "9 11\r\n"
+            ],
+            [
+                "4 2\r\n1\r\n2\r\n11\r\n22\r\n22\r\n",
+                "8 9\r\n"
+            ],
+            [
+                "2 1\r\n1\r\n12\r\n12\r\n",
+                "7 7\r\n"
+            ],
+            [
+                "3 1\r\nab\r\nabc\r\nabd\r\nabc\r\n",
+                "7 13\r\n"
+            ],
+            [
+                "2 1\r\na\r\nab\r\nab\r\n",
+                "7 7\r\n"
+            ],
+            [
+                "5 2\r\na\r\nb\r\nc\r\nab\r\naa\r\naa\r\n",
+                "9 15\r\n"
+            ],
+            [
+                "6 1\r\n1\r\n2\r\n11\r\n22\r\n111\r\n2222\r\n22\r\n",
+                "13 19\r\n"
+            ],
+            [
+                "3 1\r\n1\r\n2\r\n11\r\n11\r\n",
+                "13 13\r\n"
+            ],
+            [
+                "10 4\r\na\r\nb\r\nc\r\nd\r\ne\r\nf\r\nab\r\ncd\r\nac\r\nad\r\nac\r\n",
+                "12 20\r\n"
+            ],
+            [
+                "4 2\r\na\r\nb\r\nc\r\nd\r\na\r\n",
+                "1 9\r\n"
+            ],
+            [
+                "4 1\r\n1\r\n2\r\n3\r\n4\r\n4\r\n",
+                "1 19\r\n"
+            ],
+            [
+                "5 1\r\na\r\nb\r\nc\r\nd\r\nef\r\nef\r\n",
+                "25 25\r\n"
+            ],
+            [
+                "6 4\r\n1\r\n2\r\n22\r\n33\r\n44\r\n555\r\n555\r\n",
+                "11 11\r\n"
+            ],
+            [
+                "5 2\r\na\r\nb\r\nc\r\nd\r\nab\r\nab\r\n",
+                "15 15\r\n"
+            ],
+            [
+                "6 2\r\n1\r\n2\r\n3\r\n4\r\n5\r\n23\r\n23\r\n",
+                "16 16\r\n"
+            ],
+            [
+                "4 2\r\na\r\nb\r\naa\r\nbb\r\naa\r\n",
+                "8 9\r\n"
+            ],
+            [
+                "5 4\r\na\r\nbb\r\ncc\r\ndd\r\nee\r\nbb\r\n",
+                "2 10\r\n"
+            ],
+            [
+                "4 1\r\na\r\nb\r\nc\r\nab\r\nab\r\n",
+                "19 19\r\n"
+            ],
+            [
+                "7 100\r\na\r\nb\r\nc\r\nd\r\ne\r\ng\r\nab\r\nab\r\n",
+                "7 7\r\n"
+            ],
+            [
+                "6 1\r\na\r\nb\r\nc\r\nd\r\ne\r\naa\r\naa\r\n",
+                "31 31\r\n"
+            ],
+            [
+                "4 1\r\na\r\nas\r\nasd\r\nasde\r\nasde\r\n",
+                "19 19\r\n"
+            ],
+            [
+                "5 2\r\n1\r\n2\r\n3\r\n11\r\n22\r\n22\r\n",
+                "9 15\r\n"
+            ],
+            [
+                "10 2\r\na\r\nb\r\nc\r\nd\r\nee\r\nff\r\ngg\r\nhh\r\nii\r\njj\r\nii\r\n",
+                "15 30\r\n"
+            ],
+            [
+                "3 1\r\na\r\nab\r\nbc\r\nab\r\n",
+                "7 13\r\n"
+            ],
+            [
+                "6 4\r\na\r\nb\r\nc\r\nbb\r\nbc\r\ncc\r\ncc\r\n",
+                "4 11\r\n"
+            ]
+        ]
+    }
+]

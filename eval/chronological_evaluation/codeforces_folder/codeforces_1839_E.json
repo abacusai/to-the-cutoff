@@ -1,0 +1,99 @@
+[
+    {
+        "name": "Decreasing Game",
+        "description": "This is an interactive problem. Consider the following game for two players:\nInitially, an array of integers \n    a_1, a_2, \n    \u2026, a_n\n of length\n\n    n\n is written on blackboard. Game consists of rounds. On each round, the\nfollowing happens: The first player selects any \n    i\n such that \n    a_i \n    \n    0\n. If there is no such \n    i\n, the first player loses the game (the second\nplayer wins) and game ends. The second player selects any \n    j \n    \u2260 i\n\nsuch that \n    a_j \n     0\n. If there is no such \n    j\n, the second player\nloses the game (the first player wins) and game ends. Let \n    d = \n    min(a_i,\n    a_j)\n. The values of \n    a_i\n and \n    a_j\n are simultaneously decreased by\n\n    d\n and the next round starts. It can be shown that game always ends after\nthe finite number of rounds. You have to select which player you will play for\n(first or second) and win the game. Input The first line contains a single\ninteger \n    n\n (\n    1 \n    \u2264 n \n    \u2264 300\n) \u2014 the length of array \n    a\n. The\nsecond line contains \n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    1\n    \n    \u2264 a_i \n    \u2264 300\n) \u2014 array \n    a\n. Interaction Interaction begins after\nreading \n    n\n and array \n    a\n. You should start interaction by printing a\nsingle line, containing either \"First\" or \"Second\", representing the player\nyou select. On each round, the following happens: If you are playing as the\nfirst player, you should print a single integer \n    i\n (\n    1 \n    \u2264 i \n    \u2264\n    n\n) on a separate line. After that, you should read a single integer \n    j\n\n(\n    -1 \n    \u2264 j \n    \u2264 n\n) written on a separate line.If \n    j = -1\n, then\nyou made an incorrect move. In this case your program should terminate\nimmediately. If \n    j = 0\n, then the second player can't make a correct move\nand you win the game. In this case your program should also terminate\nimmediately. Otherwise \n    j\n is equal to the index chosen by the second\nplayer, and you should proceed to the next round. If you are playing as the\nsecond player, you should read a single integer \n    i\n (\n    -1 \n    \u2264 i \n    \u2264\n    n\n) written on a separate line.If \n    i = -1\n, then you made an incorrect\nmove on the previous round (this cannot happen on the first round). In that\ncase your program should terminate immediately. If \n    i = 0\n, then the first\nplayer can't make a correct move and you win the game. In this case your\nprogram should also terminate immediately. Otherwise \n    i\n is equal to the\nindex chosen by first player. In this case you should write single integer\n\n    j\n (\n    1 \n    \u2264 j \n    \u2264 n\n) on a separate line and proceed to the next\nround. After printing \n    i\n or \n    j\n, do not forget to output the end of\nline and flush the output. Otherwise, you will get Idleness limit exceeded. To\ndo this, use: fflush(stdout) or cout.flush() in C++; System.out.flush() in\nJava; flush(output) in Pascal; stdout.flush() in Python; see the documentation\nfor other languages. Hacks Hacks are disabled in this problem. Examples Input\n4 10 4 6 3 3 1 0 Output First 1 2 4 Input 6 4 5 5 11 3 2 2 5 4 6 1 0 Output\nSecond 4 4 3 1 3 Note In the first example \n    n = 4\n and array \n    a\n is\n\n    [\n      10, 4, 6, 3 \n     ]\n. The game goes as follows: After reading array\n\n    a\n contestant's program chooses to play as the first player and prints\n\"First\". First round: the first player chooses \n    i = 1\n, the second player\nchooses \n    j = 3\n. \n    d = \n    min(a_1, a_3) = \n    min(10, 6) = 6\n is\ncalculated. Elements \n    a_1\n and \n    a_3\n are decreased by \n    6\n. Array\n\n    a\n becomes equal to \n    [\n      4, 4, 0, 3 \n     ]\n. Second round: the first\nplayer chooses \n    i = 2\n, the second player chooses \n    j = 1\n. \n    d =\n    \n    min(a_2, a_1) = \n    min(4, 4) = 4\n is calculated. Elements \n    a_2\n and\n\n    a_1\n are decreased by \n    4\n. Array \n    a\n becomes equal to \n    [\n      0,\n    0, 0, 3 \n     ]\n. Third round: the first player chooses \n    i = 4\n. There is\nno \n    j \n    \u2260 4\n such that \n    a_j > 0\n, so the second player can't make a\ncorrect move and the first player wins. Jury's program prints \n    j = 0\n.\nAfter reading it, contestant's program terminates. In the second example \n    n\n    = 6\n and array \n    a\n is \n    [\n      4, 5, 5, 11, 3, 2 \n     ]\n. The game goes\nas follows: Contestant's program chooses to play as the second player and\nprints \"Second\". First round: \n    i = 2\n, \n    j = 4\n, \n    a = [\n      4, 0, 5,\n    6, 3, 2 \n     ]\n. Second round: \n    i = 5\n, \n    j = 4\n, \n    a = [\n      4, 0,\n    5, 3, 0, 2 \n     ]\n. Third round: \n    i = 4\n, \n    j = 3\n, \n    a = [\n      4, 0,\n    2, 0, 0, 2 \n     ]\n. Fourth round: \n    i = 6\n, \n    j = 1\n, \n    a = [\n      2,\n    0, 2, 0, 0, 0 \n     ]\n. Fifth round: \n    i = 1\n, \n    j = 3\n, \n    a = [\n      0,\n    0, 0, 0, 0, 0 \n     ]\n. Sixth round: the first player can't make a correct\nmove and the second player wins. Jury's program prints \n    i = 0\n. After\nreading it, contestant's program terminates. Note that the example interaction\ncontains extra empty lines so that it's easier to read. The real interaction\ndoesn't contain any empty lines and you shouldn't print any extra empty lines\nas well.\n\n",
+        "cf_contest_id": 1839,
+        "cf_index": "E",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "interactive"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "0\r\n4\r\n10 4 6 3\r\n",
+                "Ok Won as First"
+            ],
+            [
+                "0\r\n6\r\n4 5 5 11 3 2\r\n",
+                "Ok Won as Second"
+            ]
+        ],
+        "private_cases": [
+            [
+                "0\r\n100\r\n121 39 43 69 119 57 33 123 103 151 181 175 15 129 95 7 173 115 1 85 117 87 81 27 75 171 137 125 177 133 83 187 169 99 5 37 53 17 185 61 65 79 143 113 179 131 77 145 67 35 11 159 93 197 189 141 45 97 195 109 107 105 111 199 73 19 101 51 147 59 153 31 47 167 55 157 193 163 71 63 3 135 9 149 23 161 139 89 25 41 165 21 155 13 91 191 29 183 49 127\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "0\r\n99\r\n17 39 135 137 33 165 9 35 139 69 37 153 99 195 77 105 79 193 95 125 61 91 143 75 198 107 121 55 113 7 3 101 45 13 59 167 109 169 23 57 65 89 161 29 197 177 63 175 181 133 123 83 31 103 11 71 149 187 51 145 141 19 15 179 93 87 171 5 21 131 157 49 147 43 151 97 47 159 155 115 53 117 119 129 73 173 81 189 191 127 111 85 67 163 183 41 185 25 27\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "0\r\n200\r\n7 8 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 1 7 7 7 7 7 7 8 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 8 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 8 7 7 7 8 7 7 7 8 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 8 7 7 7 7 7 193 8 7 7 7\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "1\r\n200\r\n7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 8 7 7 7 7 7 7 7 7 193 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 8 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 8 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 1 7 7 8 7 7 7 7 7 7 8 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 8 7 7 7 7 7 7 7 7 7 7 7 7 7 8 7 7 7 7 7 7 7 8 7\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "0\r\n1\r\n123\r\n",
+                "Ok Won as First"
+            ],
+            [
+                "0\r\n65\r\n290 290 290 300 300 5 290 300 290 290 290 300 290 290 300 300 290 290 290 300 300 290 300 300 300 300 300 300 300 290 290 290 300 290 300 290 300 290 290 290 300 300 300 3 300 290 290 3 300 290 300 290 300 300 300 290 290 3 2 290 290 290 300 4 300\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "1\r\n65\r\n290 290 290 290 300 300 290 290 300 300 290 290 290 4 3 300 300 5 290 290 300 300 300 290 3 300 290 300 3 300 300 300 300 300 290 290 290 290 300 300 300 290 2 290 300 300 300 300 290 300 290 290 300 290 300 290 290 300 290 300 290 290 290 290 300\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "0\r\n42\r\n266 238 2 266 266 238 238 238 266 2 238 266 266 266 266 238 3 238 238 266 266 238 238 3 238 2 238 238 238 2 238 238 238 238 266 266 266 266 266 266 266 238\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "0\r\n71\r\n198 198 192 198 192 198 198 192 198 192 198 198 198 192 198 192 198 192 192 3 198 198 198 198 198 192 192 192 192 2 192 198 192 2 192 198 198 192 192 198 192 192 192 192 198 192 192 192 198 192 192 192 192 2 198 198 198 198 192 198 198 198 3 198 2 192 198 198 192 192 192\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "1\r\n42\r\n238 238 2 266 2 238 2 266 266 238 238 266 266 238 238 266 238 266 238 238 266 266 266 266 238 238 266 3 266 238 266 2 238 238 238 266 266 3 266 238 238 238\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "1\r\n71\r\n192 2 192 198 198 192 198 2 192 198 192 192 192 198 192 192 198 198 192 192 2 198 192 198 198 192 192 198 192 192 198 198 192 192 192 192 3 198 198 192 192 192 198 192 192 198 3 192 2 192 192 192 198 198 198 192 198 192 198 198 198 198 192 198 198 198 198 198 198 192 198\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "0\r\n200\r\n7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 193 193 7 7 7\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "0\r\n200\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 199 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "0\r\n50\r\n299 273 273 299 299 273 273 273 273 273 299 273 273 273 273 3 299 6 273 273 273 4 299 299 273 299 4 273 273 299 299 299 2 299 299 299 299 299 273 299 273 273 273 299 273 273 299 3 299 299\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "1\r\n200\r\n7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 193 7 7 7 7\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "1\r\n200\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 199 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "Ok Won as Second"
+            ],
+            [
+                "1\r\n50\r\n3 273 299 273 273 299 273 273 2 299 273 273 299 299 273 3 299 4 273 273 273 299 273 299 299 4 299 273 299 299 273 273 273 273 6 273 299 299 299 273 299 273 299 299 299 273 299 299 273 273\r\n",
+                "Ok Won as Second"
+            ]
+        ]
+    }
+]

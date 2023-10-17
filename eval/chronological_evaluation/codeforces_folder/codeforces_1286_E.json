@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Fedya the Potter Strikes Back",
+        "description": "Fedya has a string \n    S\n, initially empty, and an array \n    W\n, also\ninitially empty. There are \n    n\n queries to process, one at a time. Query\n\n    i\n consists of a lowercase English letter \n    c_i\n and a nonnegative\ninteger \n    w_i\n. First, \n    c_i\n must be appended to \n    S\n, and \n    w_i\n\nmust be appended to \n    W\n. The answer to the query is the sum of\nsuspiciousnesses for all subsegments of \n    W\n \n    [L, \n     R]\n, \n    (1 \n    \u2264\n    L \n    \u2264 R \n    \u2264 i)\n. We define the suspiciousness of a subsegment as\nfollows: if the substring of \n    S\n corresponding to this subsegment (that\nis, a string of consecutive characters from \n    L\n-th to \n    R\n-th,\ninclusive) matches the prefix of \n    S\n of the same length (that is, a\nsubstring corresponding to the subsegment \n    [1, \n     R - L + 1]\n), then its\nsuspiciousness is equal to the minimum in the array \n    W\n on the \n    [L, \n    R]\n subsegment. Otherwise, in case the substring does not match the\ncorresponding prefix, the suspiciousness is \n    0\n. Help Fedya answer all the\nqueries before the orderlies come for him! Input The first line contains an\ninteger \n    n\n \n    (1 \n    \u2264 n \n    \u2264 600\n     000)\n \u2014 the number of queries.\nThe \n    i\n-th of the following \n    n\n lines contains the query \n    i\n: a\nlowercase letter of the Latin alphabet \n    c_i\n and an integer \n    w_i\n\n\n    (0 \n    \u2264 w_i \n    \u2264 2^30 - 1)\n. All queries are given in an encrypted\nform. Let \n    ans\n be the answer to the previous query (for the first query\nwe set this value equal to \n    0\n). Then, in order to get the real query, you\nneed to do the following: perform a cyclic shift of \n    c_i\n in the alphabet\nforward by \n    ans\n, and set \n    w_i\n equal to \n    w_i \n    \u2295 (ans \n     \n    &\n     MASK)\n, where \n    \u2295\n is the bitwise exclusive \"or\", \n    &\n\nis the bitwise \"and\", and \n    MASK = 2^30 - 1\n. Output Print \n    n\n lines,\n\n    i\n-th line should contain a single integer \u2014 the answer to the \n    i\n-th\nquery. Examples Input 7 a 1 a 0 y 3 y 5 v 4 u 6 r 8 Output 1 2 4 5 7 9 12\nInput 4 a 2 y 2 z 0 y 2 Output 2 2 2 2 Input 5 a 7 u 5 t 3 s 10 s 11 Output 7\n9 11 12 13 Note For convenience, we will call \"suspicious\" those subsegments\nfor which the corresponding lines are prefixes of \n    S\n, that is, those\nwhose suspiciousness may not be zero. As a result of decryption in the first\nexample, after all requests, the string \n    S\n is equal to \"abacaba\", and all\n\n    w_i = 1\n, that is, the suspiciousness of all suspicious sub-segments is\nsimply equal to \n    1\n. Let's see how the answer is obtained after each\nrequest: 1$\u0307$\u0307S\n    = \"a\", the array\nW\n    has a single subsegment \u2014\n[1,\n\n 1]\n    , and the corresponding substring is \"a\", that is, the entire string\nS\n    , thus it is a prefix of\nS\n    , and the suspiciousness of the\n    subsegment is\n1\n    . 2$\u0307$\u0307S\n = \"ab\", suspicious subsegments: \n    [1, \n    1]\n and \n    [1, \n     2]\n, total \n    2\n. 3$\u0307$\u0307S\n    = \"aba\", suspicious\n    subsegments:\n[1, \n 1]\n    ,\n[1, \n 2]\n    ,\n[1, \n 3]\n    and\n[3,\n\n 3]\n    , total\n4\n    . 4$\u0307$\u0307S\n = \"abac\", suspicious subsegments: \n    [1,\n    \n     1]\n, \n    [1, \n     2]\n, \n    [1, \n     3]\n, \n    [1, \n     4]\n and \n    [3, \n    3]\n, total \n    5\n. 5$\u0307$\u0307S\n    = \"abaca\", suspicious subsegments:\n[1,\n\n 1]\n    ,\n[1, \n 2]\n    ,\n[1, \n 3]\n    ,\n[1, \n 4]\n    ,\n[1, \n5]\n    ,\n[3, \n 3]\n    and\n[5, \n 5]\n    , total\n7\n    . 6$\u0307$\u0307S\n =\n\"abacab\", suspicious subsegments: \n    [1, \n     1]\n, \n    [1, \n     2]\n, \n    [1,\n    \n     3]\n, \n    [1, \n     4]\n , \n    [1, \n     5]\n, \n    [1, \n     6]\n, \n    [3, \n    3]\n, \n    [5, \n     5]\n and \n    [5, \n     6]\n, total \n    9\n. 7$\u0307$\u0307S\n    =\n    \"abacaba\", suspicious subsegments:\n[1, \n 1]\n    ,\n[1, \n 2]\n    ,\n[1,\n\n 3]\n    ,\n[1, \n 4]\n    ,\n[1, \n 5]\n    ,\n[1, \n 6]\n    ,\n[1, \n7]\n    ,\n[3, \n 3]\n    ,\n[5, \n 5]\n    ,\n[5, \n 6]\n    ,\n[5, \n 7]\n    and\n[7, \n 7]\n    , total\n12\n    . In the second example, after all\n    requests\nS\n    = \"aaba\",\nW = [2, 0, 2, 0]\n    . 1$\u0307$\u0307S\n = \"a\",\nsuspicious subsegments: \n    [1, \n     1]\n (suspiciousness \n    2\n), totaling\n\n    2\n. 2$\u0307$\u0307S\n    = \"aa\", suspicious subsegments:\n[1, \n 1]\n    (\n2\n    ),\n[1, \n 2]\n    (\n0\n    ),\n[2, \n 2]\n    (\n0\n    ), totaling\n2\n    . 3$\u0307$\u0307S\n = \"aab\", suspicious subsegments: \n    [1, \n     1]\n\n(\n    2\n), \n    [1, \n     2]\n (\n    0\n), \n    [1, \n     3]\n ( \n    0\n), \n    [2, \n    2]\n (\n    0\n), totaling \n    2\n. 4$\u0307$\u0307S\n    = \"aaba\", suspicious\n    subsegments:\n[1, \n 1]\n    (\n2\n    ),\n[1, \n 2]\n    (\n0\n    ),\n[1,\n\n 3]\n    (\n0\n    ),\n[1, \n 4]\n    (\n0\n    ),\n[2, \n 2]\n    (\n0\n    ),\n[4, \n 4]\n    (\n0\n    ), totaling\n2\n    . In the third example, from the\n    condition after all requests\nS\n    = \"abcde\",\nW = [7, 2, 10, 1, 7]\n    .\n    1$\u0307$\u0307S\n = \"a\", suspicious subsegments: \n    [1, \n     1]\n (\n    7\n),\ntotaling \n    7\n. 2$\u0307$\u0307S\n    = \"ab\", suspicious subsegments:\n[1, \n 1]\n    (\n7\n    ),\n[1, \n 2]\n    (\n2\n    ), totaling\n9\n    . 3$\u0307$\u0307S\n = \"abc\",\nsuspicious subsegments: \n    [1, \n     1]\n (\n    7\n), \n    [1, \n     2]\n\n(\n    2\n), \n    [1, \n     3]\n ( \n    2\n), totaling \n    11\n. 4$\u0307$\u0307S\n    =\n    \"abcd\", suspicious subsegments:\n[1, \n 1]\n    (\n7\n    ),\n[1, \n 2]\n    (\n2\n    ),\n[1, \n 3]\n    (\n2\n    ),\n[1, \n 4]\n    (\n1\n    ), totaling\n12\n    . 5$\u0307$\u0307S\n = \"abcde\", suspicious subsegments: \n    [1, \n     1]\n\n(\n    7\n), \n    [1, \n     2]\n (\n    2\n), \n    [1, \n     3]\n ( \n    2\n), \n    [1, \n    4]\n (\n    1\n), \n    [1, \n     5]\n (\n    1\n), totaling \n    13\n.\n\n",
+        "cf_contest_id": 1286,
+        "cf_index": "E",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "strings"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7\r\na 1\r\na 0\r\ny 3\r\ny 5\r\nv 4\r\nu 6\r\nr 8\r\n",
+                "1\r\n2\r\n4\r\n5\r\n7\r\n9\r\n12\r\n"
+            ],
+            [
+                "4\r\na 2\r\ny 2\r\nz 0\r\ny 2\r\n",
+                "2\r\n2\r\n2\r\n2\r\n"
+            ],
+            [
+                "5\r\na 7\r\nu 5\r\nt 3\r\ns 10\r\ns 11\r\n",
+                "7\r\n9\r\n11\r\n12\r\n13\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\na 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "5\r\na 3\r\nx 5\r\no 8\r\ne 21\r\nb 24\r\n",
+                "3\r\n12\r\n23\r\n25\r\n27\r\n"
+            ],
+            [
+                "5\r\nr 2\r\nn 4\r\nl 0\r\nl 0\r\nk 6\r\n",
+                "2\r\n4\r\n6\r\n14\r\n16\r\n"
+            ],
+            [
+                "10\r\nj 43\r\no 22\r\nw 53\r\nk 199\r\nx 223\r\nr 285\r\nr 428\r\nz 620\r\nr 683\r\nn 751\r\n",
+                "43\r\n86\r\n129\r\n242\r\n330\r\n460\r\n599\r\n642\r\n724\r\n824\r\n"
+            ],
+            [
+                "15\r\nu 676\r\nt 620\r\nr 625\r\nw 1909\r\nh 1616\r\nz 1623\r\nu 1968\r\nf 1043\r\ny 2414\r\na 2674\r\ns 2608\r\nl 2631\r\ny 2189\r\nb 2281\r\nh 2186\r\n",
+                "676\r\n876\r\n1076\r\n1276\r\n1476\r\n1676\r\n1876\r\n2076\r\n2646\r\n2718\r\n2754\r\n2790\r\n2826\r\n2862\r\n2898\r\n"
+            ]
+        ]
+    }
+]

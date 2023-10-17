@@ -1,0 +1,220 @@
+[
+    {
+        "name": "Subsequences of Length Two",
+        "description": "You are given two strings \n    s\n and \n    t\n consisting of lowercase Latin\nletters. The length of \n    t\n is \n    2\n (i.e. this string consists only of\ntwo characters). In one move, you can choose any character of \n    s\n and\nreplace it with any lowercase Latin letter. More formally, you choose some\n\n    i\n and replace \n    s_i\n (the character at the position \n    i\n) with\nsome character from 'a' to 'z'. You want to do no more than \n    k\n\nreplacements in such a way that maximizes the number of occurrences of \n    t\n\nin \n    s\n as a subsequence. Recall that a subsequence is a sequence that can\nbe derived from the given sequence by deleting zero or more elements without\nchanging the order of the remaining elements. Input The first line of the\ninput contains two integers \n    n\n and \n    k\n (\n    2 \n    \u2264 n \n    \u2264 200\n;\n\n    0 \n    \u2264 k \n    \u2264 n\n) \u2014 the length of \n    s\n and the maximum number of\nmoves you can make. The second line of the input contains the string \n    s\n\nconsisting of \n    n\n lowercase Latin letters. The third line of the input\ncontains the string \n    t\n consisting of two lowercase Latin letters. Output\nPrint one integer \u2014 the maximum possible number of occurrences of \n    t\n in\n\n    s\n as a subsequence if you replace no more than \n    k\n characters in\n\n    s\n optimally. Examples Input 4 2 bbaa ab Output 3 Input 7 3 asddsaf sd\nOutput 10 Input 15 6 qwertyhgfdsazxc qa Output 16 Input 7 2 abacaba aa Output\n15 Note In the first example, you can obtain the string \"abab\" replacing\n\n    s_1\n with 'a' and \n    s_4\n with 'b'. Then the answer is \n    3\n. In the\nsecond example, you can obtain the string \"ssddsdd\" and get the answer\n\n    10\n. In the fourth example, you can obtain the string \"aaacaaa\" and get\nthe answer \n    15\n.\n\n",
+        "cf_contest_id": 1409,
+        "cf_index": "F",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 2\r\nbbaa\r\nab\r\n",
+                "3\r\n"
+            ],
+            [
+                "7 3\r\nasddsaf\r\nsd\r\n",
+                "10\r\n"
+            ],
+            [
+                "15 6\r\nqwertyhgfdsazxc\r\nqa\r\n",
+                "16\r\n"
+            ],
+            [
+                "7 2\r\nabacaba\r\naa\r\n",
+                "15\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "200 0\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naa\r\n",
+                "19900\r\n"
+            ],
+            [
+                "200 200\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naa\r\n",
+                "19900\r\n"
+            ],
+            [
+                "200 0\r\naaaaabbbbaccbacabaacaaaccccaabbabaacbabcbabbcbcbbaaaacccaabaabbbcbccccbbccaaacbabbabbbaaaccabaaacababacccbcaccccbbacbaccaccccaabaabaabbabcaaacbcbaaabacaaccbacaabacbcababccccaabaaaabcbcbbaabcabcaccccbb\r\nca\r\n",
+                "2206\r\n"
+            ],
+            [
+                "200 0\r\naeceedcbdeedaaaededcdeceeabdcaddaccaaccdbdeeeddaededcbbceeeeebbcbcbcbeddadcaeaabbecbdceabcbbdeaeecedeeecaccbacebaaecadbaccbadcbdbebcaeebecdddbaaaaeacbbacbbbedabeaaccbddacedccdaaaeaeebbbabebcebccbbdbba\r\nac\r\n",
+                "713\r\n"
+            ],
+            [
+                "200 0\r\nadagbgbcbdbbfdcdgfgagefceahdaafdcabfefcgbgecfgbggcfgbfbdabedfehdffhhcfeheacfgacdbbcgacagceaaeaefhfbadcbbfeffeacbhcebhdafgcedcfbdahadcbcdaadbeachbafebecbfhecdcfgabfdbgdcaghhhfahgeeahchbbcdfdfcffffgcdbh\r\nag\r\n",
+                "232\r\n"
+            ],
+            [
+                "200 0\r\ndchhfdcbiiibjhaecegaecfhdaedfhaffgaecaaecifdeefahcceahhacbijdjfdjbahjigjjidhdfebeggehgheaeibbegiajfbajjeffiiebidegjdjhedebdffgddbajefbfgeieidifjibjibbaebigibfddaidajfbajiiefgbjjefgdccicdabefcehjahhffg\r\nff\r\n",
+                "276\r\n"
+            ],
+            [
+                "200 0\r\nesiqcqkirmeamjmggfdgrkdjirlesspqqdprrapiaasmserepidgbisilehqmgiddgfssqfmmdsiisdlkhpeqnieghbfpantckqngrehsjcqreplogtljajppamnhlbpbmrmmrirmboacjjpnrdonkachnfcndbmmjfkateltmemofalfplhgrsecpkgmajnpstgpheb\r\ngb\r\n",
+                "59\r\n"
+            ],
+            [
+                "200 0\r\naonhtwfbjnceqdqitfcbizkxvmyizzuvbwkqtqwisxdlqfqcufmqqnfwknyvuttjcpkwmwqewstelpfdqacsfdheqlouhefsuvqvxxarjgpfqgsvxnqwyozlbzqxvdjkehbkmvtljioxfyiyabeklqjinclkoybfohjltjtrsokxqzyaurziicldapzqauqjzsxajjba\r\njk\r\n",
+                "32\r\n"
+            ],
+            [
+                "200 1\r\ncccbaacabcbbabbccbcaaabbbacacccbacaaababcabbaabacabaacbaacbaaccbcaabccabbaabcacabcaaaaaabaccbcacbbacabbaaccacabbcbcaaacaaccaccbabaaccbbccbaabbabbbaaaaacbacbcbaacbccabccbaacbacaaabbcbaaaacbccbbababacac\r\nac\r\n",
+                "2464\r\n"
+            ],
+            [
+                "200 1\r\nbbddbbcddeaaeacbdaabccdcacbddaaeaeddadcaedccdbadecabdeabecdbdddcacebaaeddecbedccdacedecabbadcacaaebbaaaeadccebbabddddbecebadaadeceaccdaceabadcebeaadacbadacbbbcdcacbdaaeadabaecdbcbbdbbbdabdeceeeacaadae\r\ned\r\n",
+                "608\r\n"
+            ],
+            [
+                "200 1\r\nheeaccgddefffgbegdfdefefabdgcabegecbbffagfcegdbaedgdeafahahebbegeebfgbfdefbddegbgbaebcfgedhdfgcfdbafggffbaebddehabhdedffbfebbcdccgcbbffdbbabddabdahgbadgeehdachhceefcfacdccfhbbaehegaebccebfgahfedahfdgf\r\nch\r\n",
+                "167\r\n"
+            ],
+            [
+                "200 1\r\nhfgeibjadejebicjdbaebagbjhfegebddcdjdffchiehcghabddgbigjfahaachhdebeihbdcdbcgecifghdejhcehbfhihiebgigfdebjebaiidfffdbcfedbiiaffddijabegdhighgaaeefebabaagjaajdcebicddfdjdegdhfefaagbhiiigbeajaachajejfae\r\nbi\r\n",
+                "282\r\n"
+            ],
+            [
+                "200 1\r\nstjfrqjrbjdooiolrmhtfieofdafjpqpltiarfkgfnqggqbmljnrlsohplehtjsghsdeofkpgjrnmkohlirgeqsctbdjbqojdnjtmlhjmostdlplfqgsloahpjipkinpelstrstpplqtddeajbigmaatcmtolbkemacaetpbdiclfodsgmmkaoneqfeothhamjsdphhh\r\nce\r\n",
+                "25\r\n"
+            ],
+            [
+                "200 1\r\nnryukcmomvckaoezqcowohrtnyyriiphwavhkluujzbjizrxqiqgmgpvqcdgjejxwvcpbbxspcgtixwvnstzyeqcekkkzsypvihejncvvirqzlktjoxocutwrqjorxwfzucxoowxyzooiabssvluagzehhsemtutsnrbbdbphmcqbybpxtgjerpeitdjhnwmvfynvsyu\r\nxg\r\n",
+                "32\r\n"
+            ],
+            [
+                "200 20\r\nbcbabacbaaaccbbaaabcabccaacaccccbbcbcacaacbaaababcbcaccbbbbcabccaaabbbbaabbbacbbbcacaaccbbbcbbcbbabbcbbcaaacccaccacbccbaccaccaababbccbcccaacbabccbbacbccbccaabaaacaabaaacabcacccbcccaacaccabcaabcbbaacaa\r\naa\r\n",
+                "3741\r\n"
+            ],
+            [
+                "200 20\r\nbbbbaaaccacdddeebdbddaadeedcbbdcaedccebcbbabccecacaaacdcaeaaaadaadbaabbeceecacdadebdddadeeadeedccdaaaeeabdbaabeccbedcaaccbbdbabbcdbdbcadeceadaacaaaabaadedecaaaabceeecadbaaacceedaebaedbcbcaabcdabcbdbca\r\ncd\r\n",
+                "1435\r\n"
+            ],
+            [
+                "200 20\r\nhbadbbhfcafhcecgfcecbbaagbegbahcdacgcfbefafhbhcehffhfbfahfgcghhhefhcadgeghdagbadhgabfgchgbgebgdffbhebhgccgefhgadchghhfbhdeeahagghgegbebfbabedefdgdbbcbagfdebbdddfddacfefabbhceahhfhebecbbfegbahfgaghdhca\r\nde\r\n",
+                "674\r\n"
+            ],
+            [
+                "200 20\r\nebjicbdicahigdfhbgcjgbhchcfcbdjadhhgjeejagfgdbhabiedejcfdffafgfbfbaggdcjjhhdbhhjadgefgdffhcjchjgiagcfehhedgedbjjibcbhcddibejiifdhgfjchbdeefhbdeaifhceiibaggdcegfdafhfdhggjafacagddgeajichjbgidjcgbaiabfg\r\nbi\r\n",
+                "600\r\n"
+            ],
+            [
+                "200 20\r\nepajbenfcpoajfftqhjnsafpcsjdenebneehortdglpprkjeampeomldcierqdhlsfnhdlbodaneglrhhoggrdgfnbnlpdgphbienmdarrlaqggticlipopftangkddprrpitdepmhftbeihpknkhjstqbpsemdoomrrghkrqnpnsbtjafmdnqdiiblkskgadtstfnpa\r\nao\r\n",
+                "318\r\n"
+            ],
+            [
+                "200 20\r\ncdraadywlpsubhlnmdekghqsdtpxrshaurfiimzznqaslmqwvwkfabgtzolgoixoqkclfhikifrwxkdjtbegwnwrjiqsghayeymyakykomohtcrnmkquqoemvvkbqwcvciheafldcajarhxcigmndjhroeukpqpbawguvvtnohpyktxsiasqpnathvevcmkqcgwhojti\r\nrp\r\n",
+                "274\r\n"
+            ],
+            [
+                "200 100\r\nbbbcccabbccabcccacabacbacaaabccbccbbcaabcbbbaaccbcbcaabbbbcbaaaabaccccbbabbaccacbaacababcbbbbcacaaabaccccbcbbaabcaaabbccbccbbcccabbcbbcccbbccccbcccbcbaabbbcbabcccbbbbcabacaccbcabccbacbbacbcabbacccaccc\r\nab\r\n",
+                "8984\r\n"
+            ],
+            [
+                "200 100\r\nbcacabeccaceeedbbaacedacadeebbecedebbedeaccdbabeedbccbebabcaccdeeccbdddbabdeadaedadbbddbaedbbadbcbbbdbdaceeaddeaebbbaabedabceebcccbbdcbcdbbedbdccaeacdccdcdaeaccbaebabbecaeeccbdbbaeeccbacaaebadccdcdbbb\r\ndc\r\n",
+                "6428\r\n"
+            ],
+            [
+                "200 100\r\nhageafgacbdbffeahgchedebcdgdgbahcfhbgfghdfgdaefahhbcgabcbhggbbfbfdcffhcaddebdbhhgdheefabgfcdgbhaddgbbhdbedhhgegfebdeeehdhggcgbacfhebaebdddfdeacfhbdgfhdbefdeaefccbdhfefdaaeegahabbgbedagcaaccdhccaabdafh\r\nhd\r\n",
+                "5415\r\n"
+            ],
+            [
+                "200 100\r\njfajfiiicgiehiihdbgghhiihijcejjabibhjcjdgdagbidecgifaagcehbjjbcgjcgijhjeegadcfjbfaahbfhbaddadgdfbjiahfcbhfbicffbhdiaafjjchjgbhdeehdgddahibehdhaeibhfbchadfjchgddgfhfjgihhgejdheajjjfbdibjadchgeeiggifice\r\ncf\r\n",
+                "4106\r\n"
+            ],
+            [
+                "200 100\r\nktlrcnrfmafobkjlianalpfkbfqmfjfbknqsocotoscohffjmbjsbbridajqsiegdgishnshsapmriacllkkkdklgghdqekqbdlcolroalqofkekrdtparekephodbbpehmpttdtqoejmiecdfblnlhsalahtekmrhtdkabshcarcidnqbpqoregtfdhqdjdpprtkabi\r\nll\r\n",
+                "6216\r\n"
+            ],
+            [
+                "200 100\r\ncxqtpwtozcnavklpcksprgecocdraaryxzztqkcfzsrhdrzabtwdukzmsgpnvvgigbtyaxubrngiomfatojjvnvhogqqlujsrglodzwmpyjijtzdzcczlxvhmkkefuereazzwfqbndaccpvlupgixdezadhvwdfzxqzmnkcgwktubylaiezruthgdzqqdrsrorvganxf\r\nwt\r\n",
+                "3125\r\n"
+            ],
+            [
+                "200 150\r\nbbbacaabaabaccbbcbbaacbcabacbcaaabcccabaacabaacbcbcccacbccccbaabbccccacccccbcaccbcbcaaaccbbbbbbabbcbcbcacababcccaccbcaabbbacaaacbcacaacbabbcbaacacabcccbbcccbbacbaabbccbaaabccccbbababaccacaccaaacbbcbab\r\naa\r\n",
+                "19900\r\n"
+            ],
+            [
+                "200 150\r\neabadadbeaeddccaabddacabacbaeecdbcdaadceaaaaacbabeaadbbcdbdabaeedbcaacdcecababaceeecddcbcabdcddedecccbcdcdeddacebbaacebbeccceeccabcedbdcdcdecadcebcaeeddbbdcebabdccbaddcbdacebaccececdadabdebcbcbbaedace\r\ncc\r\n",
+                "19503\r\n"
+            ],
+            [
+                "200 150\r\nhbbfcgafgcfcgcaadbcgefbgafbdfdachggccbacgcddghbeeadafgbfggddefeaagchddbfebddaghaghbcfgebaadeaageefbgghgachabfcbadadhgbbegegehcgfhdghaedcffffbaghfdhfdhdgfcdfaaadbdgebffcegdfggeaheghafddfaeebeagfcbdhddh\r\ndg\r\n",
+                "9177\r\n"
+            ],
+            [
+                "200 150\r\njbihceccaifigibbjechghaceaffchfjbhajifehfgcadcahgfecahagefjbjdjfdcdehiaicicdgfcadiafbjhigfcidbhfcchfacaibjeijagdiceaadggjcahdfghifebcabccdahbgheacifeiidaagceechdfadhebdaehcjdebccjbjdahhfacihijgdgihhfb\r\nfd\r\n",
+                "8355\r\n"
+            ],
+            [
+                "200 150\r\nshjhthdtsclitsndedjdjfifsrmenhamjcfalglldleihmmjqjfcksbedssiaacgqgspoojlgcretioiaakgngkintpjgjngodjqrifbmptemedchnngkplrmbteetnjasfaiqmomgktlkljgrccqtilgprrqctrefmchsnokanksoceinfanhrdrrkhhofhnchhcjef\r\nej\r\n",
+                "7065\r\n"
+            ],
+            [
+                "200 150\r\nkegdqehqjvqcbcrzovuueubttwyimeddqhazvdfvsmjvbozipwtpgfukiflhtpvdonfnaclrlxkqwnkmeoydwclgjfqanltdcijpiqpbbcmglionapitprpovmmxbkdoqylehyzasfiwlnyujffmcljztmakzwwoarfzgvuofujfxocltljbknjyvxzdrwgrgydpsuwv\r\nht\r\n",
+                "6380\r\n"
+            ],
+            [
+                "200 190\r\ncbccbbccaabacbbcbccbaccbcaababaacbbaaabccacababaacabbccacabacbcccbcabacabbacbbbcacbbcbbbbcccbbacbbbabcbccbcbbcbcabbabaacaacbacbccbccccaccccbacbacbabcbbaabcbacbbbcaccaaaccabcbbcbaaaacacacccbcacacbcabbc\r\nbb\r\n",
+                "19900\r\n"
+            ],
+            [
+                "200 190\r\nddeaecceeacbccbdbdaaecbeccddbdcdaaeababdccbdeedcaddaeaacbcdebccdaabbdeecdabadaadebaacbebcecdcecbccbaedbeaacddbccdcecbedcdaaccceeebeeceedaadceeedcebeecbcbddeaacddadddeecbacbaddabdeabbcccedbbbabdadcadeb\r\ndc\r\n",
+                "10000\r\n"
+            ],
+            [
+                "200 190\r\nghcebcdabheeeaeabfghdbegecabebhbahdhfchabchchbdcbcaebaebdbgebebhdadgegdahhdaaabehhgghchadfbggbgecahagdfceeffchfddecfgcdbbdhhecfhdfefdbeagcgaedahdebfffhecfcbbcdceghbfcggeaegcdhdchhebffhgchbgacddabcfbcg\r\nha\r\n",
+                "10000\r\n"
+            ],
+            [
+                "200 190\r\neaicbbaajbbcdfaefbebidiaecbhfeaeedgaaedfcdaeaehfcejfjghifdaijddcebecfdfffjabjfaecgbebbbdaffghfjfabcdjhgjihhdieffhgjjfjcchbhegbigefbbageeididibihhgihhecbaadecbaaigfjejddgecdgehihefacgdjgdjgcbhfgbbhcdbj\r\nha\r\n",
+                "10000\r\n"
+            ],
+            [
+                "200 190\r\ngpjlioirtffmgrmpaclokbglatpgqerrekmnppsttsmdootsaikijsseegrfhkqlspqddjeajngcostnjrjpbiedpsjjanpqmcdepclblllbbjcerhagfcfprlraggghgpmlqcpggqqqpecmomldjqmbgfciotqbtgggfddofahlfgpbnflbgktfgqrldgonnkmqhpic\r\ngs\r\n",
+                "9927\r\n"
+            ],
+            [
+                "200 190\r\nsxiwlhhumpluwfgjbuatlyfqnohqrneofdmmdyyrhiduckgtbubdyqrfnbyoitxergxnyzrnyuzcwzxbyyccxmdphkzqzjfmyvxhwedcmgcvhfhlzvzkmszgntyoenhrpyjkbmwiigalspfnfmvyrdtfgobcfxayvovdgzneqmfcvzfselroobmikqsklutxiezjbebv\r\nto\r\n",
+                "9938\r\n"
+            ],
+            [
+                "200 200\r\nnljzwiuvzizliajmqfyxyawpnlmyvmmbiqqoovvjyqlbenvdfhvueifaxpdyiiapysheelmlcebpedcqkvdkeklgiviheqnfipxdgdjppjuqdrmchtgefflwibhatoxecnbqzqftnudewkncezvbpzxeiyfpqrkfeghguiucodhtemmcpgxfyvqkhrzjkvlerchpxklt\r\ndv\r\n",
+                "10000\r\n"
+            ],
+            [
+                "2 0\r\nas\r\nas\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\nas\r\nsa\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2\r\nas\r\nsa\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\naa\r\nsb\r\n",
+                "0\r\n"
+            ],
+            [
+                "11 4\r\nbdfbdbccdad\r\nab\r\n",
+                "10\r\n"
+            ],
+            [
+                "200 200\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\r\nba\r\n",
+                "10000\r\n"
+            ],
+            [
+                "200 200\r\naaaaaaaaaaaaaaaaaaaaaaaaaacaaaaaaaaaaaaaaaabaaaaaaaaaaaacaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbabbbbbbb\r\nba\r\n",
+                "10000\r\n"
+            ]
+        ]
+    }
+]

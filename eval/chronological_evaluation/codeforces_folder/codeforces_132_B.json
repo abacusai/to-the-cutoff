@@ -1,0 +1,179 @@
+[
+    {
+        "name": "Piet",
+        "description": "Piet is one of the most known visual esoteric programming languages. The\nprograms in Piet are constructed from colorful blocks of pixels and\ninterpreted using pretty complicated rules. In this problem we will use a\nsubset of Piet language with simplified rules. The program will be a\nrectangular image consisting of colored and black pixels. The color of each\npixel will be given by an integer number between 0 and 9, inclusive, with 0\ndenoting black. A block of pixels is defined as a rectangle of pixels of the\nsame color (not black). It is guaranteed that all connected groups of colored\npixels of the same color will form rectangular blocks. Groups of black pixels\ncan form arbitrary shapes. The program is interpreted using movement of\ninstruction pointer (IP) which consists of three parts: current block pointer\n(BP); note that there is no concept of current pixel within the block;\ndirection pointer (DP) which can point left, right, up or down; block chooser\n(CP) which can point to the left or to the right from the direction given by\nDP; in absolute values CP can differ from DP by 90 degrees counterclockwise or\nclockwise, respectively.Initially BP points to the block which contains the\ntop-left corner of the program, DP points to the right, and CP points to the\nleft (see the orange square on the image below). One step of program\ninterpretation changes the state of IP in a following way. The interpreter\nfinds the furthest edge of the current color block in the direction of the DP.\nFrom all pixels that form this edge, the interpreter selects the furthest one\nin the direction of CP. After this, BP attempts to move from this pixel into\nthe next one in the direction of DP. If the next pixel belongs to a colored\nblock, this block becomes the current one, and two other parts of IP stay the\nsame. It the next pixel is black or outside of the program, BP stays the same\nbut two other parts of IP change. If CP was pointing to the left, now it\npoints to the right, and DP stays the same. If CP was pointing to the right,\nnow it points to the left, and DP is rotated 90 degrees clockwise. This way BP\nwill never point to a black block (it is guaranteed that top-left pixel of the\nprogram will not be black). You are given a Piet program. You have to figure\nout which block of the program will be current after n steps. Input The first\nline of the input contains two integer numbers m (1 \u2264 m \u2264 50) and n (1 \u2264 n \u2264\n5\u00b710^7). Next m lines contain the rows of the program. All the lines have the\nsame length between 1 and 50 pixels, and consist of characters 0-9. The first\ncharacter of the first line will not be equal to 0. Output Output the color of\nthe block which will be current after n steps of program interpretation.\nExamples Input 2 10 12 43 Output 1 Input 3 12 1423 6624 6625 Output 6 Input 5\n9 10345 23456 34567 45678 56789 Output 5 Note In the first example IP changes\nin the following way. After step 1 block 2 becomes current one and stays it\nafter two more steps. After step 4 BP moves to block 3, after step 7 \u2014 to\nblock 4, and finally after step 10 BP returns to block 1. The sequence of\nstates of IP is shown on the image: the arrows are traversed clockwise, the\nmain arrow shows direction of DP, the side one \u2014 the direction of CP.\n\n",
+        "cf_contest_id": 132,
+        "cf_index": "B",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 10\r\n12\r\n43\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 12\r\n1423\r\n6624\r\n6625\r\n",
+                "6\r\n"
+            ],
+            [
+                "5 9\r\n10345\r\n23456\r\n34567\r\n45678\r\n56789\r\n",
+                "5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 1000000\r\n444444444\r\n444444444\r\n444444444\r\n444444444\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 7\r\n901\r\n922\r\n934\r\n",
+                "3\r\n"
+            ],
+            [
+                "3 9\r\n888\r\n456\r\n226\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 9\r\n777\r\n120\r\n345\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 6\r\n122\r\n322\r\n000\r\n",
+                "3\r\n"
+            ],
+            [
+                "3 7\r\n922\r\n322\r\n022\r\n",
+                "9\r\n"
+            ],
+            [
+                "3 12\r\n123\r\n045\r\n666\r\n",
+                "5\r\n"
+            ],
+            [
+                "3 22\r\n1111\r\n0273\r\n4443\r\n",
+                "7\r\n"
+            ],
+            [
+                "5 1000000\r\n11100\r\n00200\r\n03330\r\n03330\r\n00000\r\n",
+                "3\r\n"
+            ],
+            [
+                "4 9995\r\n11122\r\n06330\r\n04470\r\n55800\r\n",
+                "3\r\n"
+            ],
+            [
+                "9 1000000\r\n123456789\r\n032567891\r\n345678902\r\n456789123\r\n567891234\r\n678912345\r\n789123456\r\n891234067\r\n912345678\r\n",
+                "3\r\n"
+            ],
+            [
+                "1 10\r\n8\r\n",
+                "8\r\n"
+            ],
+            [
+                "50 180667\r\n3\r\n8\r\n3\r\n6\r\n5\r\n6\r\n1\r\n9\r\n6\r\n7\r\n6\r\n3\r\n2\r\n9\r\n7\r\n8\r\n6\r\n3\r\n2\r\n5\r\n6\r\n7\r\n3\r\n7\r\n8\r\n2\r\n1\r\n7\r\n9\r\n4\r\n1\r\n2\r\n4\r\n3\r\n8\r\n9\r\n5\r\n9\r\n8\r\n9\r\n1\r\n4\r\n1\r\n5\r\n1\r\n9\r\n7\r\n3\r\n9\r\n8\r\n",
+                "4\r\n"
+            ],
+            [
+                "1 85699\r\n78924219635752981967414898939315271493564548581817\r\n",
+                "7\r\n"
+            ],
+            [
+                "15 357307\r\n666662222299999333337777700000\r\n666662222299999333337777700000\r\n666662222299999333337777700000\r\n666662222299999333337777700000\r\n666662222299999333337777700000\r\n222221111100000111115555566666\r\n222221111100000111115555566666\r\n222221111100000111115555566666\r\n222221111100000111115555566666\r\n222221111100000111115555566666\r\n000001111188888444441111144444\r\n000001111188888444441111144444\r\n000001111188888444441111144444\r\n000001111188888444441111144444\r\n000001111188888444441111144444\r\n",
+                "8\r\n"
+            ],
+            [
+                "8 194869\r\n6644\r\n6644\r\n0077\r\n0077\r\n2255\r\n2255\r\n6600\r\n6600\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 951706\r\n777111111111999444777555222555222666666999\r\n777111111111999444777555222555222666666999\r\n777111111111999444777555222555222666666999\r\n",
+                "9\r\n"
+            ],
+            [
+                "23 742870\r\n377777338888888888\r\n111111338888888888\r\n111111338888888888\r\n111111338888888888\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n111111335555555559\r\n",
+                "9\r\n"
+            ],
+            [
+                "12 534024\r\n66666999991175\r\n66666999991175\r\n66666999991175\r\n66666999993372\r\n66666999993316\r\n66666999993394\r\n66666999993392\r\n66666999993305\r\n66666999993305\r\n66666999993309\r\n66666999993303\r\n66666999993305\r\n",
+                "6\r\n"
+            ],
+            [
+                "12 899884\r\n70499\r\n70499\r\n75499\r\n75499\r\n75499\r\n75499\r\n70499\r\n70499\r\n00499\r\n03499\r\n00499\r\n00499\r\n",
+                "7\r\n"
+            ],
+            [
+                "8 215240\r\n888888888888884433333\r\n888888888888884455555\r\n222222222222221166077\r\n222222222222220222222\r\n222222222222220222222\r\n222222222222220222222\r\n488888888888888888888\r\n999999949211933222779\r\n",
+                "4\r\n"
+            ],
+            [
+                "15 6394\r\n55958\r\n55158\r\n55158\r\n55158\r\n55158\r\n66158\r\n66158\r\n66158\r\n22158\r\n22158\r\n22128\r\n22128\r\n22128\r\n22728\r\n22728\r\n",
+                "2\r\n"
+            ],
+            [
+                "30 279591\r\n811113337\r\n811119997\r\n811119997\r\n411119997\r\n411119997\r\n411119997\r\n411119997\r\n411119990\r\n411110777\r\n011119777\r\n011119777\r\n011119777\r\n888889777\r\n888889116\r\n888889117\r\n888881887\r\n888881887\r\n888881887\r\n888881887\r\n888889997\r\n888889997\r\n888889997\r\n055559997\r\n855559997\r\n811119997\r\n811119997\r\n811119997\r\n811119997\r\n588889997\r\n588889997\r\n",
+                "8\r\n"
+            ],
+            [
+                "49 749442\r\n8888888\r\n8888888\r\n8888888\r\n5777777\r\n5777777\r\n5777777\r\n5777777\r\n5777777\r\n5777777\r\n5777777\r\n5777777\r\n5777777\r\n5111111\r\n5111111\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n",
+                "6\r\n"
+            ],
+            [
+                "31 70745\r\n90016\r\n60016\r\n00016\r\n30016\r\n30016\r\n30013\r\n30013\r\n90014\r\n30014\r\n30014\r\n20014\r\n20014\r\n80014\r\n80014\r\n80016\r\n80016\r\n80016\r\n80016\r\n80016\r\n80013\r\n80013\r\n80016\r\n00016\r\n00016\r\n00016\r\n00016\r\n50016\r\n90016\r\n90016\r\n90016\r\n90016\r\n",
+                "6\r\n"
+            ],
+            [
+                "16 714827\r\n33333885555555555199311111111\r\n33333885555555555199377777774\r\n33333965555555555166377777774\r\n99111112222222222166377777774\r\n55555555555555543423877777774\r\n55555555555555543423977777774\r\n55555555555555577777077777774\r\n55555555555555577777077777774\r\n55555555555555511111177777774\r\n55555555555555511111177777774\r\n55555555555555511111177777774\r\n55555555555555511111177777774\r\n99999999999999999999977777774\r\n22222222222222222222277777774\r\n22222222222222222222277777774\r\n22222222222222222222277777774\r\n",
+                "1\r\n"
+            ],
+            [
+                "28 392042\r\n555555555\r\n444044444\r\n999944444\r\n999944444\r\n999944444\r\n999944444\r\n999944444\r\n999944444\r\n999944444\r\n999944444\r\n522744444\r\n522744444\r\n509644444\r\n888882290\r\n888882290\r\n888882290\r\n888882290\r\n888882233\r\n888882233\r\n888882233\r\n888882233\r\n888882233\r\n888882233\r\n555555555\r\n555555555\r\n555555555\r\n111111111\r\n111111111\r\n",
+                "5\r\n"
+            ],
+            [
+                "11 988024\r\n511111\r\n455555\r\n088883\r\n222227\r\n222228\r\n222221\r\n222221\r\n888881\r\n888886\r\n888883\r\n888883\r\n",
+                "5\r\n"
+            ],
+            [
+                "14 309330\r\n5998837733\r\n5998837733\r\n7998837733\r\n7998807733\r\n7998807733\r\n7998807733\r\n7885507733\r\n7885507733\r\n4885507733\r\n4885507733\r\n4885592233\r\n5885527777\r\n3885527777\r\n4444427777\r\n",
+                "5\r\n"
+            ],
+            [
+                "16 50000000\r\n33333885555555555199311111111\r\n33333885555555555199377777774\r\n33333965555555555166377777774\r\n99111112222222222166377777774\r\n55555555555555543423877777774\r\n55555555555555543423977777774\r\n55555555555555577777077777774\r\n55555555555555577777077777774\r\n55555555555555511111177777774\r\n55555555555555511111177777774\r\n55555555555555511111177777774\r\n55555555555555511111177777774\r\n99999999999999999999977777774\r\n22222222222222222222277777774\r\n22222222222222222222277777774\r\n22222222222222222222277777774\r\n",
+                "1\r\n"
+            ],
+            [
+                "28 50000000\r\n555555555\r\n444044444\r\n999944444\r\n999944444\r\n999944444\r\n999944444\r\n999944444\r\n999944444\r\n999944444\r\n999944444\r\n522744444\r\n522744444\r\n509644444\r\n888882290\r\n888882290\r\n888882290\r\n888882290\r\n888882233\r\n888882233\r\n888882233\r\n888882233\r\n888882233\r\n888882233\r\n555555555\r\n555555555\r\n555555555\r\n111111111\r\n111111111\r\n",
+                "9\r\n"
+            ],
+            [
+                "11 50000000\r\n511111\r\n455555\r\n088883\r\n222227\r\n222228\r\n222221\r\n222221\r\n888881\r\n888886\r\n888883\r\n888883\r\n",
+                "1\r\n"
+            ],
+            [
+                "14 50000000\r\n5998837733\r\n5998837733\r\n7998837733\r\n7998807733\r\n7998807733\r\n7998807733\r\n7885507733\r\n7885507733\r\n4885507733\r\n4885507733\r\n4885592233\r\n5885527777\r\n3885527777\r\n4444427777\r\n",
+                "7\r\n"
+            ],
+            [
+                "15 50000000\r\n55958\r\n55158\r\n55158\r\n55158\r\n55158\r\n66158\r\n66158\r\n66158\r\n22158\r\n22158\r\n22128\r\n22128\r\n22128\r\n22728\r\n22728\r\n",
+                "5\r\n"
+            ],
+            [
+                "30 50000000\r\n811113337\r\n811119997\r\n811119997\r\n411119997\r\n411119997\r\n411119997\r\n411119997\r\n411119990\r\n411110777\r\n011119777\r\n011119777\r\n011119777\r\n888889777\r\n888889116\r\n888889117\r\n888881887\r\n888881887\r\n888881887\r\n888881887\r\n888889997\r\n888889997\r\n888889997\r\n055559997\r\n855559997\r\n811119997\r\n811119997\r\n811119997\r\n811119997\r\n588889997\r\n588889997\r\n",
+                "9\r\n"
+            ],
+            [
+                "49 50000000\r\n8888888\r\n8888888\r\n8888888\r\n5777777\r\n5777777\r\n5777777\r\n5777777\r\n5777777\r\n5777777\r\n5777777\r\n5777777\r\n5777777\r\n5111111\r\n5111111\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n5666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n0666666\r\n",
+                "8\r\n"
+            ],
+            [
+                "31 50000000\r\n90016\r\n60016\r\n00016\r\n30016\r\n30016\r\n30013\r\n30013\r\n90014\r\n30014\r\n30014\r\n20014\r\n20014\r\n80014\r\n80014\r\n80016\r\n80016\r\n80016\r\n80016\r\n80016\r\n80013\r\n80013\r\n80016\r\n00016\r\n00016\r\n00016\r\n00016\r\n50016\r\n90016\r\n90016\r\n90016\r\n90016\r\n",
+                "9\r\n"
+            ]
+        ]
+    }
+]

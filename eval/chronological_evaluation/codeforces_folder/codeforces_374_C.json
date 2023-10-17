@@ -1,0 +1,94 @@
+[
+    {
+        "name": "Inna and Dima",
+        "description": "Inna and Dima bought a table of size n \u00d7 m in the shop. Each cell of the table\ncontains a single letter: \"D\", \"I\", \"M\", \"A\". Inna loves Dima, so she wants to\ngo through his name as many times as possible as she moves through the table.\nFor that, Inna acts as follows: initially, Inna chooses some cell of the table\nwhere letter \"D\" is written; then Inna can move to some side-adjacent table\ncell that contains letter \"I\"; then from this cell she can go to one of the\nside-adjacent table cells that contains the written letter \"M\"; then she can\ngo to a side-adjacent cell that contains letter \"A\". Then Inna assumes that\nshe has gone through her sweetheart's name; Inna's next move can be going to\none of the side-adjacent table cells that contains letter \"D\" and then walk on\nthrough name DIMA in the similar manner. Inna never skips a letter. So, from\nthe letter \"D\" she always goes to the letter \"I\", from the letter \"I\" she\nalways goes the to letter \"M\", from the letter \"M\" she always goes to the\nletter \"A\", and from the letter \"A\" she always goes to the letter \"D\".\nDepending on the choice of the initial table cell, Inna can go through name\nDIMA either an infinite number of times or some positive finite number of\ntimes or she can't go through his name once. Help Inna find out what maximum\nnumber of times she can go through name DIMA. Input The first line of the\ninput contains two integers n and m (1 \u2264 n, m \u2264 10^3). Then follow n lines\nthat describe Inna and Dima's table. Each line contains m characters. Each\ncharacter is one of the following four characters: \"D\", \"I\", \"M\", \"A\". Note\nthat it is not guaranteed that the table contains at least one letter \"D\".\nOutput If Inna cannot go through name DIMA once, print on a single line \"Poor\nDima!\" without the quotes. If there is the infinite number of names DIMA Inna\ncan go through, print \"Poor Inna!\" without the quotes. Otherwise print a\nsingle integer \u2014 the maximum number of times Inna can go through name DIMA.\nExamples Input 1 2 DI Output Poor Dima! Input 2 2 MA ID Output Poor Inna!\nInput 5 5 DIMAD DIMAI DIMAM DDMAA AAMID Output 4 Note Notes to the samples: In\nthe first test sample, Inna cannot go through name DIMA a single time. In the\nsecond test sample, Inna can go through the infinite number of words DIMA. For\nthat, she should move in the clockwise direction starting from the lower right\ncorner. In the third test sample the best strategy is to start from the cell\nin the upper left corner of the table. Starting from this cell, Inna can go\nthrough name DIMA four times.\n\n",
+        "cf_contest_id": 374,
+        "cf_index": "C",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1 2\r\nDI\r\n",
+                "Poor Dima!\r\n"
+            ],
+            [
+                "2 2\r\nMA\r\nID\r\n",
+                "Poor Inna!\r\n"
+            ],
+            [
+                "5 5\r\nDIMAD\r\nDIMAI\r\nDIMAM\r\nDDMAA\r\nAAMID\r\n",
+                "4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\nI\r\n",
+                "Poor Dima!\r\n"
+            ],
+            [
+                "5 5\r\nDIMAD\r\nADDDI\r\nMDDDM\r\nIDDDA\r\nDAMID\r\n",
+                "Poor Inna!\r\n"
+            ],
+            [
+                "5 5\r\nAAAAA\r\nAAAAA\r\nAAAAA\r\nAAAAA\r\nAAAAA\r\n",
+                "Poor Dima!\r\n"
+            ],
+            [
+                "1 1\r\nD\r\n",
+                "Poor Dima!\r\n"
+            ],
+            [
+                "1 4\r\nDIMA\r\n",
+                "1\r\n"
+            ],
+            [
+                "4 1\r\nD\r\nI\r\nM\r\nA\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2\r\nDI\r\nAM\r\n",
+                "Poor Inna!\r\n"
+            ],
+            [
+                "2 2\r\nDI\r\nMA\r\n",
+                "Poor Dima!\r\n"
+            ],
+            [
+                "5 5\r\nDIADD\r\nDMADD\r\nDDDID\r\nAMMMD\r\nMIDAD\r\n",
+                "3\r\n"
+            ],
+            [
+                "10 10\r\nDIDDIMDIDD\r\nDMDDAADIDD\r\nDADDDDDMDD\r\nDDDDDDDADD\r\nDIDDDDIDDD\r\nDMDDDDMDDD\r\nDADDDDADID\r\nDDIMDDDDMD\r\nDDAADDIAAD\r\nDDDDDDMADD\r\n",
+                "4\r\n"
+            ],
+            [
+                "14 34\r\nDDDDDDDDDDDDIMADDDDDDDDDDDDDDDIMAD\r\nDDDDDDIMADDDDDDDDDDDDDDDDDDDDDIMAD\r\nDDDDDDDDDDDDDIDDDDDDDDDDDIDIMIDIMA\r\nDDDDDDIMDDDDDDDDDDDDDIDDDDDDDDDDDD\r\nDDDDDDDDDDDDDDDDDMADDDDDDDDDDDDDMD\r\nDDDDDDIMIDDDDDDDDDDDDIMIDIMIDDDIDD\r\nDDDDDDDDDDDDDDDDDMIMDDDDIMDDIMADIM\r\nDDDDDDDDDDDADIMADIDDDDDDIDIMADADDD\r\nDDDDDDDDIDDDDDDDDDDDDDDDDMADIMDDAM\r\nDMDDDDDDDDDDDDIMADIMDDDDDMADDDMIDI\r\nDDDDDDDDIMDDDDDDDDDDIDIMADIDDDDMAD\r\nDDDIDDDDDDDDDDMIDIMADADADIMADIMAAD\r\nDDDADDDDDDDDDIMIMADIDDMDMAMIDMDDDM\r\nDIDIDDDDDDIIAAMMAIMIDADAAAMDIDDDID\r\n",
+                "Poor Inna!\r\n"
+            ],
+            [
+                "9 6\r\nDIMADD\r\nIDDDDD\r\nMDDDDD\r\nADDDDD\r\nDIMADD\r\nIDDDDD\r\nMDDDDD\r\nADDDDD\r\nDDDDDD\r\n",
+                "2\r\n"
+            ],
+            [
+                "1 1\r\nM\r\n",
+                "Poor Dima!\r\n"
+            ],
+            [
+                "1 1\r\nA\r\n",
+                "Poor Dima!\r\n"
+            ],
+            [
+                "1 4\r\nIMAD\r\n",
+                "Poor Dima!\r\n"
+            ]
+        ]
+    }
+]

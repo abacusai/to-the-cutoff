@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Verifying Kingdom",
+        "description": "This is an interactive problem. The judge has a hidden rooted full binary tree\nwith n leaves. A full binary tree is one where every node has either 0 or 2\nchildren. The nodes with 0 children are called the leaves of the tree. Since\nthis is a full binary tree, there are exactly 2n - 1 nodes in the tree. The\nleaves of the judge's tree has labels from 1 to n. You would like to\nreconstruct a tree that is isomorphic to the judge's tree. To do this, you can\nask some questions. A question consists of printing the label of three\ndistinct leaves a1, a2, a3. Let the depth of a node be the shortest distance\nfrom the node to the root of the tree. Let LCA(a, b) denote the node with\nmaximum depth that is a common ancestor of the nodes a and b. Consider X =\nLCA(a1, a2), Y = LCA(a2, a3), Z = LCA(a3, a1). The judge will tell you which\none of X, Y, Z has the maximum depth. Note, this pair is uniquely determined\nsince the tree is a binary tree; there can't be any ties. More specifically,\nif X (or Y, Z respectively) maximizes the depth, the judge will respond with\nthe string \"X\" (or \"Y\", \"Z\" respectively). You may only ask at most 10\u00b7n\nquestions. Input The first line of input will contain a single integer n (3 \u2264\nn \u2264 1 000) \u2014 the number of leaves in the tree. Output To print the final\nanswer, print out the string \"-1\" on its own line. Then, the next line should\ncontain 2n - 1 integers. The i-th integer should be the parent of the i-th\nnode, or -1, if it is the root. Your answer will be judged correct if your\noutput is isomorphic to the judge's tree. In particular, the labels of the\nleaves do not need to be labeled from 1 to n. Here, isomorphic means that\nthere exists a permutation \u03c0 such that node i is the parent of node j in the\njudge tree if and only node \u03c0(i) is the parent of node \u03c0(j) in your tree.\nInteraction To ask a question, print out three distinct integers a1, a2, a3.\nThese integers should be between 1 and n, inclusive. The judge will respond\nwith a single character, either \"X\", \"Y\", \"Z\". If the string is \"X\" (or \"Y\",\n\"Z\" respectively), that means the pair (a1, a2) (or (a2, a3), (a3, a1)\nrespectively) has the deepest LCA among the three pairs. You may only ask a\nquestion at most 10\u00b7n times, otherwise, you will get Wrong Answer. When you\nare ready to answer, print out a single integer \"-1\" on its own line. The next\nline should contain 2n - 1 integers. The i-th integer should be the parent of\nthe i-th node, or -1, if it is the root. Do not forget to flush the final\nanswer as well. Printing the answer does not count as asking a question. You\nwill get Wrong Answer verdict if Your question or answers are not in the\nformat described in this statement. You ask strictly more than 10\u00b7n questions.\nYour question contains duplicate indices. Your final answer is not isomorphic\nto the judge tree. You will get Idleness Limit Exceeded if you don't print\nanything or if you forget to flush the output, including for the final answer\n(more info about flushing output below). To flush you can use (just after\nprinting an integer and end-of-line): fflush(stdout) in C++;\nSystem.out.flush() in Java; stdout.flush() in Python; flush(output) in Pascal;\nSee the documentation for other languages. If at any moment your program reads\n-1 as an answer, it should immediately exit normally (for example, by calling\nexit(0)). You will get Wrong Answer in this case, it means that you made more\nqueries than allowed, or made an invalid query. If you ignore this, you can\nget other verdicts since your program will continue to read from a closed\nstream. Hacking To hack someone, use the following format n p_1 p_2 ...\np_2n-1 This denotes a tree where the parent of the i-th node is pi (pi = - 1\nor n < pi \u2264 2n - 1). If pi is equal to -1, then node i is the root. This input\nmust describe a valid full rooted binary tree. Of course, contestant programs\nwill not be able to see this input. Example Input 5 X Z Y Y X Output 1 4 2 1 2\n4 2 4 1 2 3 5 2 4 3 -1 -1 1 1 2 2 3 3 6 6 Note For the first sample, the judge\nhas the hidden tree: Here is a more readable format of the interaction: The\nlast line can also be 8 6 9 8 9 7 -1 6 7.\n\n",
+        "cf_contest_id": 772,
+        "cf_index": "E",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "divide and conquer",
+            "interactive",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n8 6 9 8 9 7 -1 6 7\r\n",
+                "4\r\n8 6 9 8 9 7 -1 6 7\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6\r\n8 7 10 9 10 11 9 11 -1 8 7\r\n",
+                "7\r\n8 7 10 9 10 11 9 11 -1 8 7\r\n"
+            ],
+            [
+                "3\r\n5 4 5 -1 4\r\n",
+                "1\r\n5 4 5 -1 4\r\n"
+            ],
+            [
+                "48\r\n88 82 65 77 82 56 92 50 89 93 69 68 89 87 66 74 53 91 66 55 65 69 74 58 85 88 71 56 79 67 91 93 79 68 52 73 58 61 92 71 51 53 77 64 85 49 52 70 83 81 83 80 55 94 84 73 75 49 95 57 76 75 86 78 61 76 84 81 78 54 63 62 72 67 -1 59 90 60 63 86 95 80 94 59 90 60 54 87 50 72 51 64 70 57 62\r\n",
+                "170\r\n73 52 68 90 52 75 86 56 60 79 69 81 60 61 66 70 89 78 66 67 68 69 70 84 92 73 87 75 80 77 78 79 80 81 94 83 84 85 86 87 88 89 90 91 92 93 94 95 50 -1 50 82 51 49 51 59 65 54 55 56 57 63 55 63 49 62 64 85 58 77 65 53 61 54 83 74 64 88 95 76 59 74 53 93 62 91 76 71 67 72 58 72 71 82 57\r\n"
+            ],
+            [
+                "48\r\n90 57 61 76 57 67 59 80 94 95 71 56 75 60 80 56 78 52 62 90 76 69 85 95 62 82 93 60 59 89 87 67 88 49 53 85 53 78 50 82 49 52 87 89 88 50 61 70 75 83 84 69 91 70 64 65 71 86 84 51 58 91 92 73 77 81 94 72 68 66 55 66 -1 55 51 93 68 65 64 54 73 74 79 72 58 63 74 54 92 83 77 81 86 79 63\r\n",
+                "161\r\n67 52 94 68 52 79 76 62 56 71 58 63 81 75 62 63 85 89 72 67 68 69 83 71 72 87 74 75 76 91 90 79 92 88 84 83 84 85 93 87 88 89 90 91 92 93 94 95 50 -1 57 58 49 50 54 53 77 73 55 59 60 80 64 66 59 65 86 74 65 51 57 82 49 51 61 60 54 73 56 95 61 66 70 82 64 53 78 81 69 78 77 80 86 70 55\r\n"
+            ],
+            [
+                "48\r\n92 69 53 71 51 73 64 66 94 59 90 55 73 65 86 68 51 62 95 89 50 54 64 95 52 86 66 62 70 92 84 80 75 89 88 80 85 53 90 71 85 78 55 50 70 81 88 54 61 63 78 87 82 69 84 76 93 -1 67 68 58 79 77 60 82 94 77 74 91 79 91 76 81 93 49 58 74 49 56 63 57 67 52 87 72 72 57 65 75 59 56 60 61 83 83\r\n",
+                "155\r\n77 69 85 87 64 60 70 74 56 58 86 90 60 82 73 63 64 75 71 81 91 95 70 71 72 73 74 75 92 77 78 83 80 81 94 83 88 85 86 87 88 89 90 91 92 93 94 95 -1 53 65 49 52 63 53 66 68 57 55 93 57 49 50 89 62 72 52 50 51 54 66 59 84 56 76 65 54 59 68 67 80 61 79 62 61 58 51 84 67 78 79 76 55 82 69\r\n"
+            ],
+            [
+                "48\r\n60 75 88 77 87 73 82 50 88 90 94 70 93 57 78 51 78 82 69 91 77 79 59 80 53 61 69 92 73 80 64 90 75 64 57 61 86 83 50 76 84 56 62 84 58 93 86 53 58 62 85 72 70 -1 65 71 59 74 67 52 95 67 54 56 87 54 89 55 89 63 49 65 55 63 81 68 76 94 85 95 66 91 92 60 72 83 81 51 49 71 68 74 79 52 66\r\n",
+                "163\r\n88 80 56 68 52 76 65 86 56 79 62 72 93 82 64 63 64 65 74 67 68 69 70 77 95 83 74 84 76 77 81 79 80 81 82 83 94 85 86 87 91 89 90 91 92 93 94 95 71 51 52 49 51 53 -1 63 92 50 55 50 66 58 60 62 67 57 54 87 60 61 55 59 71 66 59 53 73 57 78 49 89 70 73 75 84 90 54 58 78 61 88 75 69 85 72\r\n"
+            ],
+            [
+                "48\r\n88 86 53 95 85 89 59 94 84 62 75 74 76 67 49 86 58 80 61 63 78 55 78 55 51 90 70 52 85 71 56 65 64 84 68 63 56 90 57 87 82 74 69 87 92 80 83 93 51 95 69 77 57 91 83 49 72 50 66 92 71 58 79 65 67 54 93 62 73 60 70 81 82 61 52 53 79 50 81 77 94 76 60 68 75 73 64 89 66 59 -1 72 91 54 88\r\n",
+                "175\r\n51 63 50 56 76 53 73 55 81 57 58 89 60 79 78 63 64 93 66 83 70 71 70 71 72 85 74 75 76 77 84 80 87 81 82 83 84 85 86 91 88 89 90 91 92 93 94 95 61 86 53 55 54 49 49 51 64 75 52 50 -1 88 62 68 67 77 52 56 92 68 94 90 54 69 65 58 74 72 95 79 82 57 67 78 73 59 80 60 66 62 87 59 65 69 61\r\n"
+            ],
+            [
+                "48\r\n55 74 68 88 72 82 88 83 91 95 73 67 57 55 79 86 86 89 51 63 92 62 59 71 81 73 95 51 69 52 82 49 93 94 49 75 66 92 85 90 75 91 58 69 59 93 90 77 71 -1 54 70 54 87 80 84 94 50 76 61 80 60 85 74 84 57 63 87 60 78 61 62 53 79 68 50 78 65 70 52 53 64 89 76 66 77 72 65 56 56 64 83 67 81 58\r\n",
+                "181\r\n61 53 83 54 52 78 54 68 89 74 73 80 60 61 62 64 64 65 75 67 85 69 92 79 72 73 74 75 91 77 78 82 93 81 82 88 84 85 86 94 88 89 90 91 92 93 94 95 63 77 55 69 62 51 70 53 -1 52 66 81 50 49 51 95 87 58 86 65 76 57 50 59 59 90 66 71 49 56 71 67 72 79 58 60 68 84 55 83 56 57 76 70 80 87 63\r\n"
+            ],
+            [
+                "48\r\n67 78 51 63 66 92 94 90 89 49 57 61 82 52 72 70 91 69 76 85 61 52 84 59 77 93 74 59 91 62 95 58 50 55 50 79 75 69 81 87 64 65 86 81 76 78 86 88 89 56 68 57 84 -1 85 64 75 62 67 82 60 66 87 80 74 73 58 53 79 54 54 80 94 70 60 72 95 92 88 73 90 77 51 56 83 53 93 63 65 49 68 83 71 71 55\r\n",
+                "176\r\n71 93 50 65 52 53 54 86 56 57 61 68 60 69 66 63 76 85 92 67 68 69 70 75 72 73 74 75 76 77 78 79 82 81 82 83 84 85 91 87 88 89 94 91 92 93 94 95 54 64 55 49 58 51 -1 89 56 50 60 72 84 49 55 90 87 62 58 59 61 80 79 78 51 63 71 64 52 81 77 88 67 80 95 59 83 57 73 62 74 70 86 66 53 90 65\r\n"
+            ]
+        ]
+    }
+]

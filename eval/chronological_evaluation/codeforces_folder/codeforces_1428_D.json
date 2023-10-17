@@ -1,0 +1,233 @@
+[
+    {
+        "name": "Bouncing Boomerangs",
+        "description": "To improve the boomerang throwing skills of the animals, Zookeeper has set up\nan \n    n \n    \u00d7 n\n grid with some targets, where each row and each column\nhas at most \n    2\n targets each. The rows are numbered from \n    1\n to\n\n    n\n from top to bottom, and the columns are numbered from \n    1\n to\n\n    n\n from left to right. For each column, Zookeeper will throw a boomerang\nfrom the bottom of the column (below the grid) upwards. When the boomerang\nhits any target, it will bounce off, make a \n    90\n degree turn to the right\nand fly off in a straight line in its new direction. The boomerang can hit\nmultiple targets and does not stop until it leaves the grid. In the above\nexample, \n    n=6\n and the black crosses are the targets. The boomerang in\ncolumn \n    1\n (blue arrows) bounces \n    2\n times while the boomerang in\ncolumn \n    3\n (red arrows) bounces \n    3\n times. The boomerang in column\n\n    i\n hits exactly \n    a_i\n targets before flying out of the grid. It is\nknown that \n    a_i \n    \u2264 3\n. However, Zookeeper has lost the original\npositions of the targets. Thus, he asks you to construct a valid configuration\nof targets that matches the number of hits for each column, or tell him that\nno such configuration exists. If multiple valid configurations exist, you may\nprint any of them. Input The first line contains a single integer \n    n\n\n\n    (1 \n    \u2264 n \n    \u2264 10^5)\n. The next line contains \n    n\n integers\n\n    a_1,a_2,\n    \u2026,a_n\n \n    (0 \n    \u2264 a_i \n    \u2264 3)\n. Output If no\nconfiguration of targets exist, print \n    -1\n. Otherwise, on the first line\nprint a single integer \n    t\n \n    (0 \n    \u2264 t \n    \u2264 2n)\n: the number of\ntargets in your configuration. Then print \n    t\n lines with two spaced\nintegers each per line. Each line should contain two integers \n    r\n and\n\n    c\n \n    (1 \n    \u2264 r,c \n    \u2264 n)\n, where \n    r\n is the target's row and\n\n    c\n is the target's column. All targets should be different. Every row and\nevery column in your configuration should have at most two targets each.\nExamples Input 6 2 0 3 0 1 1 Output 5 2 1 2 5 3 3 3 6 5 6 Input 1 0 Output 0\nInput 6 3 2 2 2 1 1 Output -1 Note For the first test, the answer\nconfiguration is the same as in the picture from the statement. For the second\ntest, the boomerang is not supposed to hit anything, so we can place \n    0\n\ntargets. For the third test, the following configuration of targets matches\nthe number of hits, but is not allowed as row \n    3\n has \n    4\n targets. It\ncan be shown for this test case that no valid configuration of targets will\nresult in the given number of target hits.\n\n",
+        "cf_contest_id": 1428,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n2 0 3 0 1 1\r\n",
+                "5\r\n1 1\r\n3 3\r\n1 5\r\n3 6\r\n6 6\r\n"
+            ],
+            [
+                "1\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "6\r\n3 2 2 2 1 1\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n3 2 1\r\n",
+                "4\r\n1 1\r\n2 2\r\n1 2\r\n2 3\r\n"
+            ],
+            [
+                "4\r\n2 2 1 1\r\n",
+                "4\r\n1 1\r\n2 2\r\n2 3\r\n1 4\r\n"
+            ],
+            [
+                "4\r\n3 3 2 1\r\n",
+                "6\r\n1 1\r\n2 2\r\n1 2\r\n3 3\r\n2 3\r\n3 4\r\n"
+            ],
+            [
+                "4\r\n3 3 3 1\r\n",
+                "7\r\n1 1\r\n2 2\r\n1 2\r\n3 3\r\n2 3\r\n3 4\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n1 2 3 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n1 1 3 1\r\n",
+                "5\r\n1 1\r\n2 2\r\n3 3\r\n3 4\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n1 3 1 1\r\n",
+                "5\r\n1 1\r\n2 2\r\n2 3\r\n3 3\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n2 3 1 1\r\n",
+                "5\r\n1 1\r\n2 2\r\n1 3\r\n2 4\r\n4 4\r\n"
+            ],
+            [
+                "1\r\n2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "4\r\n3 2 3 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6\r\n0 0 1 3 2 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6\r\n0 0 2 1 0 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6\r\n0 0 0 2 1 0\r\n",
+                "2\r\n4 4\r\n4 5\r\n"
+            ],
+            [
+                "6\r\n0 1 2 0 3 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6\r\n0 1 3 2 1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6\r\n0 2 1 3 2 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6\r\n0 2 3 1 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6\r\n0 2 0 3 1 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6\r\n1 3 2 0 3 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6\r\n2 0 3 2 1 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n1 1 1 1\r\n",
+                "4\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n2 1 1 1\r\n",
+                "4\r\n1 1\r\n1 2\r\n3 3\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n3 1 1 1\r\n",
+                "5\r\n1 1\r\n1 2\r\n2 2\r\n3 3\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n1 2 1 1\r\n",
+                "4\r\n1 1\r\n2 2\r\n2 3\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n3 2 1 1\r\n",
+                "5\r\n1 1\r\n2 2\r\n1 2\r\n2 3\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n3 3 1 1\r\n",
+                "6\r\n1 1\r\n2 2\r\n1 2\r\n2 3\r\n3 3\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n1 1 2 1\r\n",
+                "4\r\n1 1\r\n2 2\r\n3 3\r\n3 4\r\n"
+            ],
+            [
+                "4\r\n2 1 2 1\r\n",
+                "4\r\n1 1\r\n1 2\r\n3 3\r\n3 4\r\n"
+            ],
+            [
+                "4\r\n3 1 2 1\r\n",
+                "5\r\n1 1\r\n1 2\r\n2 2\r\n3 3\r\n3 4\r\n"
+            ],
+            [
+                "4\r\n1 2 2 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n2 2 2 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n3 2 2 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n1 3 2 1\r\n",
+                "5\r\n1 1\r\n2 2\r\n3 3\r\n2 3\r\n3 4\r\n"
+            ],
+            [
+                "4\r\n2 3 2 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n2 1 3 1\r\n",
+                "5\r\n1 1\r\n1 2\r\n3 3\r\n3 4\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n3 1 3 1\r\n",
+                "6\r\n1 1\r\n1 2\r\n2 2\r\n3 3\r\n3 4\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n2 2 3 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n1 3 3 1\r\n",
+                "6\r\n1 1\r\n2 2\r\n3 3\r\n2 3\r\n3 4\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n2 3 3 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n1 1 1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n2 1 1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n3 1 1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n1 2 1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n2 2 1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n1 1 1 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n2 1 2 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n3 1 0 0\r\n",
+                "3\r\n1 1\r\n1 2\r\n2 2\r\n"
+            ],
+            [
+                "5\r\n2 3 1 2 1\r\n",
+                "6\r\n1 1\r\n2 2\r\n1 3\r\n4 4\r\n2 4\r\n4 5\r\n"
+            ]
+        ]
+    }
+]

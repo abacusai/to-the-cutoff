@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Tourists",
+        "description": "There are n cities in Cyberland, numbered from 1 to n, connected by m\nbidirectional roads. The j-th road connects city aj and bj. For tourists,\nsouvenirs are sold in every city of Cyberland. In particular, city i sell it\nat a price of wi. Now there are q queries for you to handle. There are two\ntypes of queries: \"C a w\": The price in city a is changed to w. \"A a b\": Now a\ntourist will travel from city a to b. He will choose a route, he also doesn't\nwant to visit a city twice. He will buy souvenirs at the city where the\nsouvenirs are the cheapest (possibly exactly at city a or b). You should\noutput the minimum possible price that he can buy the souvenirs during his\ntravel.More formally, we can define routes as follow: A route is a sequence of\ncities [x1, x2, ..., xk], where k is a certain positive integer. For any 1 \u2264 i\n< j \u2264 k, xi \u2260 xj. For any 1 \u2264 i < k, there is a road connecting xi and xi + 1.\nThe minimum price of the route is min(wx1, wx2, ..., wxk). The required answer\nis the minimum value of the minimum prices of all valid routes from a to b.\nInput The first line of input contains three integers n, m, q (1 \u2264 n, m, q \u2264\n10^5), separated by a single space. Next n lines contain integers wi (1 \u2264 wi \u2264\n10^9). Next m lines contain pairs of space-separated integers aj and bj (1 \u2264\naj, bj \u2264 n, aj \u2260 bj). It is guaranteed that there is at most one road\nconnecting the same pair of cities. There is always at least one valid route\nbetween any two cities. Next q lines each describe a query. The format is \"C a\nw\" or \"A a b\" (1 \u2264 a, b \u2264 n, 1 \u2264 w \u2264 10^9). Output For each query of type \"A\",\noutput the corresponding answer. Examples Input 3 3 3 1 2 3 1 2 2 3 1 3 A 2 3\nC 1 5 A 2 3 Output 1 2 Input 7 9 4 1 2 3 4 5 6 7 1 2 2 5 1 5 2 3 3 4 2 4 5 6 6\n7 5 7 A 2 3 A 6 4 A 6 7 A 3 3 Output 2 1 5 3 Note For the second sample, an\noptimal routes are: From 2 to 3 it is [2, 3]. From 6 to 4 it is [6, 5, 1, 2,\n4]. From 6 to 7 it is [6, 5, 7]. From 3 to 3 it is [3].\n\n",
+        "cf_contest_id": 487,
+        "cf_index": "E",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3 3\r\n1\r\n2\r\n3\r\n1 2\r\n2 3\r\n1 3\r\nA 2 3\r\nC 1 5\r\nA 2 3\r\n",
+                "1\r\n2\r\n"
+            ],
+            [
+                "7 9 4\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n1 2\r\n2 5\r\n1 5\r\n2 3\r\n3 4\r\n2 4\r\n5 6\r\n6 7\r\n5 7\r\nA 2 3\r\nA 6 4\r\nA 6 7\r\nA 3 3\r\n",
+                "2\r\n1\r\n5\r\n3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6 7 5\r\n4\r\n2\r\n1\r\n9\r\n7\r\n6\r\n2 1\r\n1 3\r\n2 3\r\n1 4\r\n5 1\r\n4 5\r\n4 6\r\nC 6 2\r\nA 5 4\r\nA 5 6\r\nA 4 1\r\nC 1 5\r\n",
+                "4\r\n2\r\n4\r\n"
+            ],
+            [
+                "9 9 2\r\n2\r\n1\r\n8\r\n7\r\n7\r\n6\r\n7\r\n8\r\n10\r\n2 1\r\n1 7\r\n3 2\r\n4 3\r\n5 4\r\n5 6\r\n6 7\r\n4 8\r\n2 9\r\nC 2 4\r\nA 4 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 6 6\r\n618977315\r\n274056818\r\n29588291\r\n424089927\r\n955162385\r\n2 1\r\n3 1\r\n3 2\r\n4 1\r\n5 1\r\n4 5\r\nA 3 1\r\nC 2 99159078\r\nA 3 1\r\nA 1 2\r\nA 2 2\r\nC 5 329955586\r\n",
+                "29588291\r\n29588291\r\n29588291\r\n99159078\r\n"
+            ],
+            [
+                "5 6 6\r\n124820425\r\n698207180\r\n616852002\r\n952907056\r\n696244135\r\n2 1\r\n1 3\r\n2 3\r\n1 4\r\n1 5\r\n5 4\r\nC 1 794202849\r\nA 3 1\r\nC 3 881984762\r\nA 4 1\r\nA 4 3\r\nA 3 4\r\n",
+                "616852002\r\n696244135\r\n696244135\r\n696244135\r\n"
+            ],
+            [
+                "9 12 12\r\n143171545\r\n629420297\r\n228288417\r\n529363375\r\n635420451\r\n749686836\r\n939343781\r\n970697126\r\n468856358\r\n2 1\r\n3 1\r\n3 2\r\n2 4\r\n5 2\r\n5 4\r\n6 5\r\n7 5\r\n7 6\r\n7 8\r\n7 9\r\n8 9\r\nC 9 227315421\r\nC 9 29228306\r\nA 8 4\r\nC 2 328781042\r\nC 5 656724208\r\nA 4 7\r\nA 4 4\r\nC 4 176212145\r\nC 9 69177357\r\nC 4 867393574\r\nC 8 541752763\r\nA 6 7\r\n",
+                "29228306\r\n328781042\r\n529363375\r\n656724208\r\n"
+            ],
+            [
+                "8 12 12\r\n143171545\r\n629420297\r\n228288417\r\n529363375\r\n635420451\r\n749686836\r\n939343781\r\n970697126\r\n1 2\r\n3 1\r\n3 2\r\n3 4\r\n3 5\r\n5 4\r\n6 5\r\n7 5\r\n7 6\r\n8 7\r\n7 1\r\n8 1\r\nA 5 7\r\nC 2 748240057\r\nC 1 117696912\r\nC 2 712069587\r\nA 8 1\r\nA 8 4\r\nA 8 8\r\nA 1 3\r\nA 5 1\r\nC 6 514703751\r\nA 3 7\r\nC 2 689032050\r\n",
+                "143171545\r\n117696912\r\n117696912\r\n970697126\r\n117696912\r\n117696912\r\n117696912\r\n"
+            ],
+            [
+                "11 10 11\r\n168416829\r\n247680897\r\n543015760\r\n694470709\r\n207722433\r\n166154497\r\n173991772\r\n592570924\r\n526914705\r\n148263494\r\n331109771\r\n2 1\r\n2 3\r\n3 4\r\n4 5\r\n6 5\r\n7 6\r\n8 7\r\n8 9\r\n10 9\r\n10 11\r\nA 8 10\r\nC 1 722476895\r\nA 3 5\r\nA 10 10\r\nC 5 372352248\r\nA 1 5\r\nA 6 9\r\nA 1 4\r\nC 11 583062476\r\nC 10 894427427\r\nC 6 410694418\r\n",
+                "148263494\r\n207722433\r\n148263494\r\n247680897\r\n166154497\r\n247680897\r\n"
+            ],
+            [
+                "13 13 13\r\n1180062\r\n809165625\r\n198328320\r\n579614756\r\n798375445\r\n393766650\r\n488716103\r\n185321\r\n909870046\r\n678057777\r\n762960310\r\n109455607\r\n34214450\r\n13 1\r\n1 2\r\n2 3\r\n4 3\r\n4 5\r\n6 5\r\n6 7\r\n8 7\r\n9 8\r\n9 10\r\n10 11\r\n12 11\r\n12 13\r\nC 8 346790012\r\nC 10 43312658\r\nA 8 11\r\nC 10 141932552\r\nC 9 348956056\r\nC 11 168966323\r\nA 9 8\r\nC 3 82437975\r\nC 12 773834608\r\nC 6 906216632\r\nC 2 116767622\r\nA 7 5\r\nA 3 5\r\n",
+                "1180062\r\n1180062\r\n1180062\r\n1180062\r\n"
+            ],
+            [
+                "17 16 17\r\n406384223\r\n77359273\r\n803920734\r\n909711362\r\n124905660\r\n143958252\r\n562875165\r\n665671011\r\n350687352\r\n882870535\r\n771885580\r\n935734323\r\n330484629\r\n268849742\r\n708711867\r\n67281248\r\n175120843\r\n1 2\r\n1 3\r\n1 4\r\n5 1\r\n1 6\r\n7 1\r\n8 1\r\n9 1\r\n10 1\r\n11 1\r\n1 12\r\n13 1\r\n14 1\r\n15 1\r\n1 16\r\n1 17\r\nC 2 479615141\r\nA 9 9\r\nA 15 1\r\nC 10 673514009\r\nC 5 959984957\r\nC 4 960283357\r\nA 5 13\r\nA 1 14\r\nA 11 1\r\nC 14 737794791\r\nC 1 138944365\r\nA 13 3\r\nA 10 1\r\nC 6 433580974\r\nA 7 3\r\nC 7 841165917\r\nA 14 5\r\n",
+                "350687352\r\n406384223\r\n330484629\r\n268849742\r\n406384223\r\n138944365\r\n138944365\r\n138944365\r\n138944365\r\n"
+            ],
+            [
+                "14 13 14\r\n565045326\r\n442424341\r\n246080343\r\n449574683\r\n738926143\r\n580184823\r\n515917116\r\n129120968\r\n513672580\r\n940695463\r\n904014028\r\n817155014\r\n432023819\r\n882120662\r\n1 2\r\n1 3\r\n2 4\r\n5 1\r\n6 1\r\n2 7\r\n7 8\r\n4 9\r\n4 10\r\n7 11\r\n12 1\r\n13 2\r\n5 14\r\nA 14 4\r\nC 7 336451374\r\nA 12 2\r\nA 11 6\r\nC 10 587185819\r\nA 11 1\r\nC 3 495392854\r\nC 13 527875170\r\nC 12 27145555\r\nC 12 255001950\r\nC 13 583910432\r\nA 11 12\r\nA 9 9\r\nC 3 192594547\r\n",
+                "442424341\r\n442424341\r\n336451374\r\n336451374\r\n255001950\r\n513672580\r\n"
+            ],
+            [
+                "14 13 14\r\n565045326\r\n442424341\r\n246080343\r\n449574683\r\n738926143\r\n580184823\r\n515917116\r\n129120968\r\n513672580\r\n940695463\r\n904014028\r\n817155014\r\n432023819\r\n882120662\r\n1 2\r\n1 3\r\n2 4\r\n5 1\r\n6 1\r\n2 7\r\n7 8\r\n4 9\r\n4 10\r\n7 11\r\n12 1\r\n13 2\r\n5 14\r\nA 4 2\r\nA 7 14\r\nA 7 2\r\nA 2 2\r\nA 2 12\r\nA 11 6\r\nA 1 7\r\nA 12 10\r\nA 11 1\r\nA 12 9\r\nA 11 3\r\nA 13 2\r\nA 7 1\r\nA 11 12\r\n",
+                "442424341\r\n442424341\r\n442424341\r\n442424341\r\n442424341\r\n442424341\r\n442424341\r\n442424341\r\n442424341\r\n442424341\r\n246080343\r\n432023819\r\n442424341\r\n442424341\r\n"
+            ],
+            [
+                "9 10 20\r\n725514155\r\n139059185\r\n845219142\r\n62528090\r\n359447816\r\n594676316\r\n130573598\r\n637054610\r\n889929556\r\n1 2\r\n1 5\r\n3 2\r\n4 3\r\n5 4\r\n6 4\r\n5 7\r\n5 9\r\n7 8\r\n9 8\r\nA 5 3\r\nC 1 299123056\r\nA 4 3\r\nA 7 9\r\nA 1 3\r\nC 1 977424768\r\nA 7 2\r\nC 1 14397410\r\nA 3 2\r\nA 4 3\r\nC 2 371790984\r\nA 1 9\r\nA 6 3\r\nA 7 3\r\nA 7 6\r\nA 2 6\r\nC 3 412013208\r\nC 8 109308692\r\nA 8 1\r\nC 4 15914749\r\n",
+                "62528090\r\n62528090\r\n130573598\r\n62528090\r\n62528090\r\n14397410\r\n14397410\r\n14397410\r\n14397410\r\n14397410\r\n14397410\r\n14397410\r\n14397410\r\n"
+            ],
+            [
+                "6 7 20\r\n136100754\r\n464703381\r\n503267626\r\n518409487\r\n881695099\r\n317555540\r\n1 2\r\n3 1\r\n3 2\r\n4 3\r\n3 5\r\n5 4\r\n6 1\r\nA 5 6\r\nC 5 496993813\r\nA 3 1\r\nC 4 836074856\r\nC 3 40217114\r\nC 5 41131955\r\nA 1 5\r\nA 4 2\r\nA 3 3\r\nA 3 1\r\nC 4 478319989\r\nC 4 27297711\r\nC 4 83870057\r\nC 6 987388864\r\nC 3 821342180\r\nC 3 526577833\r\nC 4 152107643\r\nA 3 6\r\nC 6 9683741\r\nC 4 914297322\r\n",
+                "136100754\r\n136100754\r\n40217114\r\n40217114\r\n40217114\r\n40217114\r\n136100754\r\n"
+            ]
+        ]
+    }
+]

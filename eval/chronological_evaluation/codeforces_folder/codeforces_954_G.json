@@ -1,0 +1,94 @@
+[
+    {
+        "name": "Castle Defense",
+        "description": "Today you are going to lead a group of elven archers to defend the castle that\nis attacked by an army of angry orcs. Three sides of the castle are protected\nby impassable mountains and the remaining side is occupied by a long wall that\nis split into n sections. At this moment there are exactly ai archers located\nat the i-th section of this wall. You know that archer who stands at section i\ncan shoot orcs that attack section located at distance not exceeding r, that\nis all such sections j that |i - j| \u2264 r. In particular, r = 0 means that\narchers are only capable of shooting at orcs who attack section i. Denote as\ndefense level of section i the total number of archers who can shoot at the\norcs attacking this section. Reliability of the defense plan is the minimum\nvalue of defense level of individual wall section. There is a little time left\ntill the attack so you can't redistribute archers that are already located at\nthe wall. However, there is a reserve of k archers that you can distribute\namong wall sections in arbitrary way. You would like to achieve maximum\npossible reliability of the defence plan. Input The first line of the input\ncontains three integers n, r and k (1 \u2264 n \u2264 500 000, 0 \u2264 r \u2264 n, 0 \u2264 k \u2264 10^18)\n\u2014 the number of sections of the wall, the maximum distance to other section\narchers can still shoot and the number of archers yet to be distributed along\nthe wall. The second line contains n integers a1, a2, ..., an (0 \u2264 ai \u2264 10^9)\n\u2014 the current number of archers at each section. Output Print one integer \u2014\nthe maximum possible value of defense plan reliability, i.e. the maximum\npossible value of minimum defense level if we distribute k additional archers\noptimally. Examples Input 5 0 6 5 4 3 4 9 Output 5 Input 4 2 0 1 2 3 4 Output\n6 Input 5 1 1 2 1 2 1 2 Output 3\n\n",
+        "cf_contest_id": 954,
+        "cf_index": "G",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "two pointers"
+        ],
+        "time_limit_seconds": 1.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 0 6\r\n5 4 3 4 9\r\n",
+                "5\r\n"
+            ],
+            [
+                "4 2 0\r\n1 2 3 4\r\n",
+                "6\r\n"
+            ],
+            [
+                "5 1 1\r\n2 1 2 1 2\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 0 0\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 0 1000000000000000000\r\n1000000000\r\n",
+                "1000000001000000000\r\n"
+            ],
+            [
+                "1 1 10\r\n23\r\n",
+                "33\r\n"
+            ],
+            [
+                "2 0 100\r\n98 2\r\n",
+                "100\r\n"
+            ],
+            [
+                "3 1 1000\r\n0 0 0\r\n",
+                "1000\r\n"
+            ],
+            [
+                "100 0 0\r\n607 169 477 518 368 54 15 471 604 138 982 836 563 886 466 118 366 670 257 37 868 142 14 666 670 624 427 281 995 133 914 413 356 852 63 894 430 310 634 253 281 938 975 272 821 247 626 294 25 829 919 340 728 461 864 756 157 798 474 513 760 107 519 102 69 519 443 65 402 133 752 446 204 509 816 313 900 669 86 400 186 565 951 101 396 822 130 153 980 848 910 219 876 581 35 756 513 314 804 887\r\n",
+                "14\r\n"
+            ],
+            [
+                "100 1 0\r\n724 108 796 141 159 89 957 672 396 460 791 468 147 431 700 934 298 95 131 53 676 96 361 438 413 23 171 529 258 834 612 398 120 429 296 231 273 159 936 623 85 72 598 550 205 345 1 414 772 912 464 953 909 883 524 46 542 898 984 859 432 551 972 763 310 233 399 358 875 660 992 946 883 96 20 626 663 234 896 233 790 644 6 563 341 201 980 391 619 508 610 534 698 110 468 934 320 331 700 638\r\n",
+                "279\r\n"
+            ],
+            [
+                "100 3 0\r\n483 655 856 10 354 917 853 843 968 309 819 150 532 993 693 498 124 303 121 186 938 587 184 859 440 665 314 751 346 999 593 396 48 119 327 902 540 107 722 641 263 853 113 209 832 379 250 501 395 379 928 57 260 589 156 763 254 591 395 356 459 996 720 544 49 59 149 442 188 628 438 774 639 474 355 669 739 957 757 906 692 27 464 256 932 39 278 866 866 515 793 151 110 991 725 989 96 21 931 653\r\n",
+                "1701\r\n"
+            ],
+            [
+                "100 100 0\r\n739 293 477 291 132 717 231 695 659 586 352 224 246 945 698 827 972 959 348 183 809 169 781 847 543 990 150 69 807 926 460 704 248 697 825 63 69 168 256 571 353 903 43 659 290 422 426 390 132 242 514 696 728 1 423 927 360 517 774 816 24 64 804 441 957 288 112 790 239 919 216 885 527 381 749 488 836 36 668 500 558 694 493 836 191 903 192 603 51 589 552 752 812 192 358 111 956 73 761 547\r\n",
+                "50490\r\n"
+            ],
+            [
+                "100 0 1000\r\n328 12 814 345 865 163 256 233 778 3 425 264 632 323 78 747 566 591 696 729 499 649 643 553 732 730 758 194 338 694 407 506 218 408 242 979 924 70 298 59 899 252 38 438 577 594 498 702 355 492 851 712 900 25 34 890 215 360 536 797 418 864 739 823 853 363 734 224 874 537 471 422 592 460 963 589 563 905 437 426 411 948 968 417 31 828 917 829 591 886 429 512 160 252 982 921 276 285 155 422\r\n",
+                "150\r\n"
+            ],
+            [
+                "100 1 1000\r\n923 286 937 954 258 701 953 262 346 809 109 678 963 496 245 110 75 633 900 434 608 144 574 425 646 458 188 991 341 293 121 513 548 323 139 5 360 95 951 725 107 727 892 139 493 206 433 390 733 568 629 525 303 570 539 151 266 273 459 604 724 682 411 187 763 624 610 596 383 447 376 671 479 815 2 192 270 245 187 790 159 359 561 541 66 882 809 595 980 421 753 795 551 331 296 872 929 77 207 447\r\n",
+                "739\r\n"
+            ],
+            [
+                "100 3 1000\r\n391 145 605 150 641 788 1000 471 328 15 753 161 472 311 963 398 687 81 309 316 87 346 798 59 411 608 437 697 665 264 673 546 10 688 749 302 824 661 693 357 870 560 874 265 185 628 402 534 1000 649 551 412 384 273 249 324 54 204 946 811 478 106 616 981 219 280 432 838 149 155 385 3 883 81 892 70 736 137 309 787 359 405 927 934 211 828 587 896 722 34 936 355 958 541 308 463 404 709 654 248\r\n",
+                "2050\r\n"
+            ],
+            [
+                "100 100 1000\r\n814 165 709 628 263 653 940 749 331 437 129 547 575 73 480 429 396 688 489 312 425 946 444 228 547 512 477 849 53 241 643 416 141 502 449 58 686 111 171 844 113 790 79 107 399 846 945 427 361 68 295 630 260 939 679 458 485 738 202 141 166 940 5 73 108 351 245 998 640 772 604 123 389 758 491 340 185 183 719 975 136 796 124 4 346 884 810 103 69 522 104 451 443 239 171 22 346 227 525 807\r\n",
+                "44706\r\n"
+            ],
+            [
+                "1 0 0\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 0 1\r\n1 1\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

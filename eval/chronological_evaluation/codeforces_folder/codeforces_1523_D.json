@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Love-Hate",
+        "description": "William is hosting a party for \n    n\n of his trader friends. They started a\ndiscussion on various currencies they trade, but there's an issue: not all of\nhis trader friends like every currency. They like some currencies, but not\nothers. For each William's friend \n    i\n it is known whether he likes\ncurrency \n    j\n. There are \n    m\n currencies in total. It is also known that\na trader may not like more than \n    p\n currencies. Because friends need to\nhave some common topic for discussions they need to find the largest by\ncardinality (possibly empty) subset of currencies, such that there are at\nleast \n    \u2308\n    n/2\n    \u2309\n friends (rounded up) who like each\ncurrency in this subset. Input The first line contains three integers \n    n,\n    m\n and \n    p\n \n    (1 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5, 1 \n    \u2264 p \n    \u2264 m \n    \u2264\n    60, 1 \n    \u2264 p \n    \u2264 15)\n, which is the number of trader friends, the number\nof currencies, the maximum number of currencies each friend can like. Each of\nthe next \n    n\n lines contain \n    m\n characters. The \n    j\n-th character of\n\n    i\n-th line is \n    1\n if friend \n    i\n likes the currency \n    j\n and\n\n    0\n otherwise. It is guaranteed that the number of ones in each line does\nnot exceed \n    p\n. Output Print a string of length \n    m\n, which defines the\nsubset of currencies of the maximum size, which are liked by at least half of\nall friends. Currencies belonging to this subset must be signified by the\ncharacter \n    1\n. If there are multiple answers, print any. Examples Input 3\n4 3 1000 0110 1001 Output 1000 Input 5 5 4 11001 10101 10010 01110 11011\nOutput 10001 Note In the first sample test case only the first currency is\nliked by at least \n    \u2308\n    3/2\n    \u2309 = 2\n friends, therefore\nit's easy to demonstrate that a better answer cannot be found. In the second\nsample test case the answer includes \n    2\n currencies and will be liked by\nfriends \n    1\n, \n    2\n, and \n    5\n. For this test case there are other\ncurrencies that are liked by at least half of the friends, but using them we\ncannot achieve a larger subset size.\n\n",
+        "cf_contest_id": 1523,
+        "cf_index": "D",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "probabilities"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 4 3\r\n1000\r\n0110\r\n1001\r\n",
+                "1000"
+            ],
+            [
+                "5 5 4\r\n11001\r\n10101\r\n10010\r\n01110\r\n11011\r\n",
+                "10001"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 1\r\n1\r\n",
+                "1"
+            ],
+            [
+                "20 15 10\r\n101001000100000\r\n101110000010010\r\n110010111001010\r\n101111101000100\r\n100000101101100\r\n011000000100100\r\n001001100100000\r\n001001100001000\r\n100000110101100\r\n001001010000100\r\n001000100011000\r\n110010001010000\r\n001011010000000\r\n001001110000000\r\n001000100100001\r\n111000101001000\r\n100000011100000\r\n001000001100010\r\n001100100000100\r\n101010100110100\r\n",
+                "001000000000000"
+            ],
+            [
+                "20 15 14\r\n111111111111011\r\n000000000000000\r\n000000000000000\r\n011111111111111\r\n101111111111111\r\n000000000000000\r\n101111111111111\r\n000000000000000\r\n111111111111110\r\n000000000000000\r\n111111111101111\r\n000000000000000\r\n000000000000000\r\n111111011111111\r\n011111111111111\r\n111111110111111\r\n000000000000000\r\n111111111111110\r\n000000000000000\r\n000000000000000\r\n",
+                "001111010101010"
+            ],
+            [
+                "20 15 4\r\n000000000000000\r\n000001110100000\r\n000000000000000\r\n000001110000010\r\n000000000000000\r\n100000011100000\r\n000100010101000\r\n000000000000000\r\n000000000000000\r\n000000000000000\r\n100100010000010\r\n100010010000001\r\n001010010100000\r\n010100011000000\r\n000100010101000\r\n000000000000000\r\n000000000000000\r\n000000000000000\r\n000000000000000\r\n000010010000110\r\n",
+                "000000010000000"
+            ],
+            [
+                "20 15 5\r\n101010000000001\r\n000001101000010\r\n100000000000001\r\n010000010000011\r\n100000100100010\r\n000110100000010\r\n100100100010000\r\n101000100000011\r\n001001001000010\r\n010000100100010\r\n000100000001110\r\n100001000000101\r\n111000000000000\r\n100000000100001\r\n100100000110001\r\n000100000001110\r\n010000101000010\r\n001000100000110\r\n100100000100010\r\n111000010000000\r\n",
+                "100000000000000"
+            ],
+            [
+                "20 15 10\r\n001010010001000\r\n001001010000010\r\n000101010100000\r\n010001010000001\r\n100110010010000\r\n010000110000100\r\n010100011000000\r\n100100011000001\r\n100111000001010\r\n100000010100100\r\n110000101110000\r\n000000011000011\r\n110001100110000\r\n101101000101000\r\n100001000110000\r\n010001011000000\r\n110001010000101\r\n101010100100010\r\n100000001000000\r\n000011010000001\r\n",
+                "100000000000000"
+            ],
+            [
+                "20 15 15\r\n100101000110100\r\n111000010101011\r\n111111100110001\r\n100110010011000\r\n110001100101100\r\n100111101110100\r\n110011011100000\r\n110101001100000\r\n101101001011000\r\n000101111100100\r\n100001011101100\r\n010001111001100\r\n100000110010100\r\n111001010001100\r\n101100100100111\r\n001001100100111\r\n110101011011010\r\n111001110000010\r\n111101101001011\r\n010001100001111\r\n",
+                "010001000000000"
+            ],
+            [
+                "20 15 10\r\n111001000010000\r\n101000010100110\r\n011100010110101\r\n100000101000010\r\n110100110100101\r\n101100110100101\r\n100000101011110\r\n100100010111101\r\n000101010110111\r\n100101010110101\r\n001110010100111\r\n100010100011100\r\n110011010000000\r\n100110011100101\r\n101011000011000\r\n000101110101101\r\n100100110100001\r\n100010101011000\r\n100110110100101\r\n101001110100001\r\n",
+                "000100010100101"
+            ],
+            [
+                "20 15 15\r\n111111111111111\r\n111111111111111\r\n111111001110101\r\n111010100100001\r\n111111111111111\r\n111111111111111\r\n101111010111010\r\n101001011001110\r\n111111111111111\r\n111111111111111\r\n110010101011100\r\n111111111111111\r\n111111111111111\r\n111111001111110\r\n111111111111111\r\n100111111011001\r\n100010011000101\r\n101010010010010\r\n111111111111111\r\n100100011101100\r\n",
+                "111111111111111"
+            ],
+            [
+                "6 30 15\r\n111111111111111000000000000000\r\n111111111111111000000000000000\r\n111111111111111000000000000000\r\n000000000000000111111111111111\r\n000000000000000111111111111111\r\n000000000000000111111111111111\r\n",
+                "000000000000000111111111111111"
+            ],
+            [
+                "2 30 15\r\n111010000000110001001001111111\r\n000101111111001110110110000000\r\n",
+                "000101111111001110110110000000"
+            ],
+            [
+                "2 41 2\r\n00000000000000000000000000000000000000011\r\n00000000000000000000000000000000000000001\r\n",
+                "00000000000000000000000000000000000000011"
+            ],
+            [
+                "4 5 5\r\n11000\r\n11000\r\n00111\r\n00111\r\n",
+                "00111"
+            ],
+            [
+                "3 22 15\r\n1111111111111110000000\r\n1111111000000001111111\r\n0000000111111111111111\r\n",
+                "0000000111111110000000"
+            ]
+        ]
+    }
+]

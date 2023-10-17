@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Mahmoud and a Dictionary",
+        "description": "Mahmoud wants to write a new dictionary that contains n words and relations\nbetween them. There are two types of relations: synonymy (i. e. the two words\nmean the same) and antonymy (i. e. the two words mean the opposite). From time\nto time he discovers a new relation between two words. He know that if two\nwords have a relation between them, then each of them has relations with the\nwords that has relations with the other. For example, if like means love and\nlove is the opposite of hate, then like is also the opposite of hate. One more\nexample: if love is the opposite of hate and hate is the opposite of like,\nthen love means like, and so on. Sometimes Mahmoud discovers a wrong relation.\nA wrong relation is a relation that makes two words equal and opposite at the\nsame time. For example if he knows that love means like and like is the\nopposite of hate, and then he figures out that hate means like, the last\nrelation is absolutely wrong because it makes hate and like opposite and have\nthe same meaning at the same time. After Mahmoud figured out many relations,\nhe was worried that some of them were wrong so that they will make other\nrelations also wrong, so he decided to tell every relation he figured out to\nhis coder friend Ehab and for every relation he wanted to know is it correct\nor wrong, basing on the previously discovered relations. If it is wrong he\nignores it, and doesn't check with following relations. After adding all\nrelations, Mahmoud asked Ehab about relations between some words based on the\ninformation he had given to him. Ehab is busy making a Codeforces round so he\nasked you for help. Input The first line of input contains three integers n, m\nand q (2 \u2264 n \u2264 10^5, 1 \u2264 m, q \u2264 10^5) where n is the number of words in the\ndictionary, m is the number of relations Mahmoud figured out and q is the\nnumber of questions Mahmoud asked after telling all relations. The second line\ncontains n distinct words a1, a2, ..., an consisting of small English letters\nwith length not exceeding 20, which are the words in the dictionary. Then m\nlines follow, each of them contains an integer t (1 \u2264 t \u2264 2) followed by two\ndifferent words xi and yi which has appeared in the dictionary words. If t =\n1, that means xi has a synonymy relation with yi, otherwise xi has an antonymy\nrelation with yi. Then q lines follow, each of them contains two different\nwords which has appeared in the dictionary. That are the pairs of words\nMahmoud wants to know the relation between basing on the relations he had\ndiscovered. All words in input contain only lowercase English letters and\ntheir lengths don't exceed 20 characters. In all relations and in all\nquestions the two words are different. Output First, print m lines, one per\neach relation. If some relation is wrong (makes two words opposite and have\nthe same meaning at the same time) you should print \"NO\" (without quotes) and\nignore it, otherwise print \"YES\" (without quotes). After that print q lines,\none per each question. If the two words have the same meaning, output 1. If\nthey are opposites, output 2. If there is no relation between them, output 3.\nSee the samples for better understanding. Examples Input 3 3 4 hate love like\n1 love like 2 love hate 1 hate like love like love hate like hate hate like\nOutput YES YES NO 1 2 2 2 Input 8 6 5 hi welcome hello ihateyou goaway dog cat\nrat 1 hi welcome 1 ihateyou goaway 2 hello ihateyou 2 hi goaway 2 hi hello 1\nhi hello dog cat dog hi hi hello ihateyou goaway welcome ihateyou Output YES\nYES YES YES NO YES 3 3 1 1 2\n\n",
+        "cf_contest_id": 766,
+        "cf_index": "D",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "graphs"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3 4\r\nhate love like\r\n1 love like\r\n2 love hate\r\n1 hate like\r\nlove like\r\nlove hate\r\nlike hate\r\nhate like\r\n",
+                "YES\r\nYES\r\nNO\r\n1\r\n2\r\n2\r\n2\r\n"
+            ],
+            [
+                "8 6 5\r\nhi welcome hello ihateyou goaway dog cat rat\r\n1 hi welcome\r\n1 ihateyou goaway\r\n2 hello ihateyou\r\n2 hi goaway\r\n2 hi hello\r\n1 hi hello\r\ndog cat\r\ndog hi\r\nhi hello\r\nihateyou goaway\r\nwelcome ihateyou\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nNO\r\nYES\r\n3\r\n3\r\n1\r\n1\r\n2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 4 5\r\nhello hi welcome ihateyou goaway\r\n1 hello hi\r\n1 hi welcome\r\n2 ihateyou hi\r\n2 goaway hi\r\nwelcome hello\r\nihateyou welcome\r\nwelcome goaway\r\ngoaway ihateyou\r\nwelcome hi\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\n1\r\n2\r\n2\r\n1\r\n1\r\n"
+            ],
+            [
+                "2 1 1\r\na b\r\n1 a b\r\na b\r\n",
+                "YES\r\n1\r\n"
+            ],
+            [
+                "5 5 5\r\nhello hi welcome hallo ahlan\r\n1 hello hi\r\n1 hi welcome\r\n1 welcome hallo\r\n1 hallo ahlan\r\n2 ahlan hello\r\nhello hi\r\nahlan welcome\r\nhi welcome\r\nhi ahlan\r\nhallo hello\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nNO\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "6 2 6\r\nhello hi welcome dog cat lion\r\n1 hello hi\r\n1 hi welcome\r\nhi dog\r\ndog cat\r\nhello hi\r\nhi hello\r\nwelcome cat\r\nlion cat\r\n",
+                "YES\r\nYES\r\n3\r\n3\r\n1\r\n1\r\n3\r\n3\r\n"
+            ],
+            [
+                "2 1 1\r\nhi hello\r\n1 hi hello\r\nhi hello\r\n",
+                "YES\r\n1\r\n"
+            ],
+            [
+                "8 4 12\r\nhello hi welcome goaway hateyou mmmm momo mana\r\n1 hello hi\r\n1 hi welcome\r\n2 goaway welcome\r\n2 hateyou hi\r\nhateyou goaway\r\nhateyou hi\r\nhateyou hi\r\nhateyou welcome\r\nmmmm momo\r\nwelcome hi\r\nwelcome hateyou\r\nhateyou goaway\r\nhello goaway\r\nhello goaway\r\nhello hateyou\r\ngoaway mmmm\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\n1\r\n2\r\n2\r\n2\r\n3\r\n1\r\n2\r\n1\r\n2\r\n2\r\n2\r\n3\r\n"
+            ],
+            [
+                "12 9 16\r\na b c d e f g h i j k l\r\n1 a b\r\n2 a c\r\n2 a d\r\n2 b e\r\n2 b f\r\n2 e g\r\n2 f h\r\n2 g i\r\n2 h j\r\ni j\r\ne i\r\nc d\r\ne f\r\nc f\r\nd e\r\nb c\r\nb c\r\nb f\r\nb f\r\nk a\r\nk b\r\nk l\r\nk l\r\nj e\r\nh g\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n2\r\n2\r\n2\r\n2\r\n3\r\n3\r\n3\r\n3\r\n1\r\n1\r\n"
+            ],
+            [
+                "10 5 10\r\na b c d e f g h i j\r\n1 f j\r\n2 a e\r\n2 b g\r\n2 f e\r\n2 j g\r\na b\r\nb c\r\na b\r\nb c\r\nh j\r\nh j\r\na f\r\ne g\r\nb e\r\na g\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\n1\r\n3\r\n1\r\n3\r\n3\r\n3\r\n1\r\n1\r\n2\r\n2\r\n"
+            ],
+            [
+                "10 7 10\r\na b c d e f g h i j\r\n1 h j\r\n2 a e\r\n2 b g\r\n2 g c\r\n2 e d\r\n2 d f\r\n2 c f\r\na b\r\nb c\r\na b\r\nb c\r\nh j\r\nh j\r\na f\r\ne g\r\nb e\r\na g\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n2\r\n1\r\n2\r\n2\r\n"
+            ]
+        ]
+    }
+]

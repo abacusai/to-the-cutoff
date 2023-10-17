@@ -1,0 +1,128 @@
+[
+    {
+        "name": "Kefa and Dishes",
+        "description": "When Kefa came to the restaurant and sat at a table, the waiter immediately\nbrought him the menu. There were n dishes. Kefa knows that he needs exactly m\ndishes. But at that, he doesn't want to order the same dish twice to taste as\nmany dishes as possible. Kefa knows that the i-th dish gives him ai units of\nsatisfaction. But some dishes do not go well together and some dishes go very\nwell together. Kefa set to himself k rules of eating food of the following\ntype \u2014 if he eats dish x exactly before dish y (there should be no other\ndishes between x and y), then his satisfaction level raises by c. Of course,\nour parrot wants to get some maximal possible satisfaction from going to the\nrestaurant. Help him in this hard task! Input The first line of the input\ncontains three space-separated numbers, n, m and k (1 \u2264 m \u2264 n \u2264 18, 0 \u2264 k \u2264 n\n* (n - 1)) \u2014 the number of dishes on the menu, the number of portions Kefa\nneeds to eat to get full and the number of eating rules. The second line\ncontains n space-separated numbers ai, (0 \u2264 ai \u2264 10^9) \u2014 the satisfaction he\ngets from the i-th dish. Next k lines contain the rules. The i-th rule is\ndescribed by the three numbers xi, yi and ci (1 \u2264 xi, yi \u2264 n, 0 \u2264 ci \u2264 10^9).\nThat means that if you eat dish xi right before dish yi, then the Kefa's\nsatisfaction increases by ci. It is guaranteed that there are no such pairs of\nindexes i and j (1 \u2264 i < j \u2264 k), that xi = xj and yi = yj. Output In the\nsingle line of the output print the maximum satisfaction that Kefa can get\nfrom going to the restaurant. Examples Input 2 2 1 1 1 2 1 1 Output 3 Input 4\n3 2 1 2 3 4 2 1 5 3 4 2 Output 12 Note In the first sample it is best to first\neat the second dish, then the first one. Then we get one unit of satisfaction\nfor each dish and plus one more for the rule. In the second test the fitting\nsequences of choice are 4 2 1 or 2 1 4. In both cases we get satisfaction 7\nfor dishes and also, if we fulfill rule 1, we get an additional satisfaction\n5.\n\n",
+        "cf_contest_id": 580,
+        "cf_index": "D",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2 1\r\n1 1\r\n2 1 1\r\n",
+                "3"
+            ],
+            [
+                "4 3 2\r\n1 2 3 4\r\n2 1 5\r\n3 4 2\r\n",
+                "12"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 0\r\n1000000000\r\n",
+                "1000000000"
+            ],
+            [
+                "4 2 1\r\n100 1 2 200\r\n2 3 400\r\n",
+                "403"
+            ],
+            [
+                "7 4 3\r\n2 6 13 5 7 1 9\r\n6 1 15\r\n2 5 3\r\n6 4 8\r\n",
+                "40"
+            ],
+            [
+                "5 5 5\r\n3 3 3 3 3\r\n3 4 6\r\n4 1 2\r\n1 5 7\r\n5 2 4\r\n2 3 5\r\n",
+                "37"
+            ],
+            [
+                "5 4 1\r\n1000000000 500000000 1 1000000000 1000000000\r\n3 5 700000000\r\n",
+                "3700000001"
+            ],
+            [
+                "6 3 6\r\n2 3 4 1 5 6\r\n1 5 3\r\n5 1 4\r\n2 6 1\r\n2 4 3\r\n3 5 3\r\n4 5 6\r\n",
+                "18"
+            ],
+            [
+                "10 5 5\r\n45 45 12 67 32 6 125 33 89 100\r\n6 3 78\r\n1 2 23\r\n5 7 17\r\n9 2 90\r\n4 8 39\r\n",
+                "516"
+            ],
+            [
+                "18 2 4\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0\r\n18 2 5\r\n7 8 3\r\n1 18 2\r\n6 4 1\r\n",
+                "6"
+            ],
+            [
+                "4 2 0\r\n1 2 3 2\r\n",
+                "5"
+            ],
+            [
+                "7 1 21\r\n15 11 13 13 15 8 5\r\n4 1 14\r\n7 2 5\r\n3 2 11\r\n6 4 19\r\n3 1 12\r\n1 3 9\r\n3 6 12\r\n2 5 10\r\n5 7 14\r\n2 6 5\r\n5 2 19\r\n7 5 9\r\n4 2 19\r\n5 1 6\r\n6 2 7\r\n1 7 6\r\n2 4 15\r\n7 4 10\r\n2 7 19\r\n4 5 14\r\n6 7 8\r\n",
+                "15"
+            ],
+            [
+                "8 4 56\r\n59 78 6 55 79 70 25 2\r\n1 2 47\r\n7 6 41\r\n5 1 28\r\n7 1 8\r\n5 8 7\r\n3 5 6\r\n3 6 5\r\n8 6 55\r\n2 4 44\r\n4 6 8\r\n3 7 95\r\n8 7 96\r\n6 2 11\r\n4 1 24\r\n6 5 86\r\n4 7 98\r\n2 6 24\r\n8 5 31\r\n5 3 35\r\n5 4 30\r\n4 8 52\r\n5 6 8\r\n8 1 71\r\n6 7 48\r\n1 4 39\r\n2 5 88\r\n2 3 18\r\n5 7 30\r\n2 1 32\r\n1 8 86\r\n6 1 30\r\n2 8 1\r\n3 4 16\r\n7 2 56\r\n5 2 28\r\n6 3 5\r\n1 6 24\r\n8 2 61\r\n4 5 58\r\n1 7 82\r\n4 2 58\r\n4 3 60\r\n3 8 26\r\n6 4 88\r\n7 4 32\r\n2 7 58\r\n8 4 22\r\n7 3 2\r\n7 8 61\r\n7 5 76\r\n1 3 17\r\n1 5 50\r\n3 2 4\r\n3 1 44\r\n6 8 89\r\n8 3 41\r\n",
+                "516"
+            ],
+            [
+                "8 8 7\r\n0 0 0 0 0 0 0 0\r\n1 5 97132661\r\n5 2 199172588\r\n2 7 815407164\r\n7 3 938757689\r\n3 8 843668614\r\n8 4 560487634\r\n4 6 244729651\r\n",
+                "3699356001"
+            ],
+            [
+                "14 14 13\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n6 4 4\r\n4 8 6\r\n8 3 6\r\n3 12 1\r\n12 14 5\r\n14 2 4\r\n2 10 5\r\n10 1 2\r\n1 9 4\r\n9 7 8\r\n7 13 1\r\n13 11 5\r\n11 5 1\r\n",
+                "52"
+            ],
+            [
+                "15 15 14\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n2 6 57661\r\n6 15 67617\r\n15 10 81652\r\n10 1 16278\r\n1 14 3009\r\n14 11 33687\r\n11 3 62989\r\n3 9 96410\r\n9 13 91302\r\n13 5 86368\r\n5 12 2182\r\n12 4 16546\r\n4 8 12851\r\n8 7 26224\r\n",
+                "654776"
+            ],
+            [
+                "15 15 14\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n7 11 6827\r\n11 5 7756\r\n5 14 6186\r\n14 8 1460\r\n8 13 1620\r\n13 9 1232\r\n9 15 7361\r\n15 3 2850\r\n3 4 4479\r\n4 2 6756\r\n2 6 3449\r\n6 10 8684\r\n10 1 6984\r\n1 12 2948\r\n",
+                "68592"
+            ],
+            [
+                "16 16 15\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n1 4 565659444\r\n4 11 593187381\r\n11 16 541913119\r\n16 14 657168751\r\n14 12 500399857\r\n12 6 662036115\r\n6 10 647286834\r\n10 3 579955363\r\n3 15 568540410\r\n15 5 581760329\r\n5 9 609894501\r\n9 13 537885589\r\n13 8 504299990\r\n8 2 656459498\r\n2 7 514164539\r\n",
+                "8720611720"
+            ],
+            [
+                "16 12 2\r\n215685056 606689499 786509392 322681480 170763622 255981931 402020260 580776290 525819654 50248606 830314959 223078821 851769718 76817680 251067040 491418559\r\n14 4 951819487\r\n4 2 770897556\r\n",
+                "7704583505"
+            ],
+            [
+                "17 17 16\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n11 7 231657830\r\n7 5 232292501\r\n5 8 231939378\r\n8 4 224957214\r\n4 12 229241817\r\n12 1 231562923\r\n1 3 226465387\r\n3 16 230627405\r\n16 10 229220153\r\n10 9 228646517\r\n9 2 230321133\r\n2 17 232190045\r\n17 6 229133406\r\n6 15 227156658\r\n15 13 228664795\r\n13 14 228903543\r\n",
+                "3672980705"
+            ],
+            [
+                "18 18 17\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n4 17 510748572\r\n17 10 696685757\r\n10 15 161105419\r\n15 1 126069679\r\n1 2 837682033\r\n2 12 436383858\r\n12 9 267569422\r\n9 16 881873714\r\n16 11 735761535\r\n11 6 259423529\r\n6 5 263222337\r\n5 18 697008445\r\n18 13 962557222\r\n13 7 790468460\r\n7 8 13582102\r\n8 14 510800814\r\n14 3 880706849\r\n",
+                "9031649747"
+            ],
+            [
+                "18 18 17\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n2 1 34349196\r\n1 8 40123769\r\n8 9 52139422\r\n9 15 10987402\r\n15 16 61786095\r\n16 12 77282765\r\n12 4 18495873\r\n4 11 85323692\r\n11 10 28529557\r\n10 5 53623688\r\n5 18 40093687\r\n18 3 67739085\r\n3 14 68785388\r\n14 6 65567931\r\n6 17 48915166\r\n17 7 27948918\r\n7 13 70519650\r\n",
+                "852211284"
+            ],
+            [
+                "18 17 16\r\n298794979 56088167 220017066 212013239 193074498 269869999 238524920 107690830 236214025 114513789 305713075 41451289 198089336 246759776 267311824 142373649 312495533 217782770\r\n9 4 70536531\r\n13 14 235114377\r\n18 4 38527037\r\n3 7 39141694\r\n1 17 15392162\r\n6 17 35451325\r\n17 14 2959732\r\n13 10 244941239\r\n12 4 249018275\r\n15 16 20714817\r\n1 2 37731505\r\n9 18 28754011\r\n4 17 56009536\r\n5 6 273584878\r\n6 4 291865229\r\n17 16 249459905\r\n",
+                "4858815472"
+            ],
+            [
+                "18 18 0\r\n115005244 38190165 126325576 840509301 765839937 656684780 596662787 415309843 853044850 645116094 328898380 458939277 646488701 699003763 666873084 991845119 532882957 385678203\r\n",
+                "9763298061"
+            ],
+            [
+                "18 18 3\r\n759507857 606098930 900220927 233055471 218518255 171579924 442155777 996213891 751779343 197968566 990617245 159772960 717293019 848554997 726485601 13147425 265922263 562203963\r\n13 4 408141884\r\n3 2 213428327\r\n10 17 126413702\r\n",
+                "10309080327"
+            ],
+            [
+                "18 18 17\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n7 2 554462987\r\n2 4 444921228\r\n4 6 157507820\r\n6 10 900032432\r\n10 9 888093209\r\n9 17 115896460\r\n17 5 904317029\r\n5 12 581655689\r\n12 3 743717743\r\n3 13 692735618\r\n13 11 607064833\r\n11 18 677893322\r\n18 1 909539256\r\n1 14 619680883\r\n14 15 933580266\r\n15 8 932409037\r\n8 16 555252931\r\n",
+                "11218760743"
+            ],
+            [
+                "18 18 17\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n18 1 1000000000\r\n1 5 1000000000\r\n5 13 1000000000\r\n13 16 1000000000\r\n16 17 1000000000\r\n17 7 1000000000\r\n7 9 1000000000\r\n9 6 1000000000\r\n6 15 1000000000\r\n15 14 1000000000\r\n14 12 1000000000\r\n12 4 1000000000\r\n4 8 1000000000\r\n8 10 1000000000\r\n10 3 1000000000\r\n3 11 1000000000\r\n11 2 1000000000\r\n",
+                "17000000000"
+            ]
+        ]
+    }
+]

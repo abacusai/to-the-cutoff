@@ -1,0 +1,77 @@
+[
+    {
+        "name": "NEKO's Maze Game",
+        "description": "3R2 as DJ Mashiro - Happiness Breeze Ice - DJ Mashiro is dead or alive\nNEKO#\u03a6\u03c9\u03a6 has just got a new maze game on her PC! The game's main puzzle is a\nmaze, in the forms of a \n    2 \n    \u00d7 n\n rectangle grid. NEKO's task is to\nlead a Nekomimi girl from cell \n    (1, 1)\n to the gate at \n    (2, n)\n and\nescape the maze. The girl can only move between cells sharing a common side.\nHowever, at some moments during the game, some cells may change their state:\neither from normal ground to lava (which forbids movement into that cell), or\nvice versa (which makes that cell passable again). Initially all cells are of\nthe ground type. After hours of streaming, NEKO finally figured out there are\nonly \n    q\n such moments: the \n    i\n-th moment toggles the state of cell\n\n    (r_i, c_i)\n (either from ground to lava or vice versa). Knowing this,\nNEKO wonders, after each of the \n    q\n moments, whether it is still possible\nto move from cell \n    (1, 1)\n to cell \n    (2, n)\n without going through any\nlava cells. Although NEKO is a great streamer and gamer, she still can't get\nthrough quizzes and problems requiring large amount of Brain Power. Can you\nhelp her? Input The first line contains integers \n    n\n, \n    q\n (\n    2 \n    \u2264\n    n \n    \u2264 10^5\n, \n    1 \n    \u2264 q \n    \u2264 10^5\n). The \n    i\n-th of \n    q\n\nfollowing lines contains two integers \n    r_i\n, \n    c_i\n (\n    1 \n    \u2264 r_i\n    \n    \u2264 2\n, \n    1 \n    \u2264 c_i \n    \u2264 n\n), denoting the coordinates of the cell\nto be flipped at the \n    i\n-th moment. It is guaranteed that cells \n    (1,\n    1)\n and \n    (2, n)\n never appear in the query list. Output For each moment,\nif it is possible to travel from cell \n    (1, 1)\n to cell \n    (2, n)\n, print\n\"Yes\", otherwise print \"No\". There should be exactly \n    q\n answers, one\nafter every update. You can print the words in any case (either lowercase,\nuppercase or mixed). Example Input 5 5 2 3 1 4 2 4 2 3 1 4 Output Yes No No No\nYes Note We'll crack down the example test here: After the first query, the\ngirl still able to reach the goal. One of the shortest path ways should be:\n\n    (1,1) \n    \u2192 (1,2) \n    \u2192 (1,3) \n    \u2192 (1,4) \n    \u2192 (1,5) \n    \u2192 (2,5)\n. After\nthe second query, it's impossible to move to the goal, since the farthest cell\nshe could reach is \n    (1, 3)\n. After the fourth query, the \n    (2, 3)\n is\nnot blocked, but now all the \n    4\n-th column is blocked, so she still can't\nreach the goal. After the fifth query, the column barrier has been lifted,\nthus she can go to the final goal again.\n\n",
+        "cf_contest_id": 1292,
+        "cf_index": "A",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dsu",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 5\r\n2 3\r\n1 4\r\n2 4\r\n2 3\r\n1 4\r\n",
+                "Yes\r\nNo\r\nNo\r\nNo\r\nYes\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\n2 1\r\n1 2\r\n",
+                "Yes\r\nNo\r\n"
+            ],
+            [
+                "2 4\r\n2 1\r\n1 2\r\n1 2\r\n1 2\r\n",
+                "Yes\r\nNo\r\nYes\r\nNo\r\n"
+            ],
+            [
+                "4 1\r\n1 4\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "10 42\r\n1 4\r\n1 2\r\n2 2\r\n2 8\r\n1 10\r\n1 7\r\n2 8\r\n2 3\r\n1 9\r\n1 2\r\n2 4\r\n2 8\r\n2 4\r\n1 7\r\n2 3\r\n1 9\r\n1 6\r\n2 7\r\n2 7\r\n1 10\r\n1 2\r\n1 10\r\n2 7\r\n1 5\r\n2 2\r\n1 4\r\n1 10\r\n1 2\r\n2 6\r\n2 9\r\n1 7\r\n1 2\r\n1 7\r\n2 3\r\n1 10\r\n2 7\r\n2 5\r\n2 5\r\n1 10\r\n1 8\r\n2 9\r\n1 6\r\n",
+                "Yes\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\n"
+            ],
+            [
+                "10 83\r\n1 3\r\n2 2\r\n2 2\r\n2 2\r\n2 2\r\n2 2\r\n2 2\r\n2 2\r\n1 4\r\n2 2\r\n2 3\r\n2 3\r\n2 3\r\n2 3\r\n2 3\r\n2 3\r\n1 4\r\n1 5\r\n1 7\r\n2 2\r\n2 2\r\n1 5\r\n2 2\r\n1 3\r\n2 1\r\n2 6\r\n1 5\r\n2 6\r\n2 9\r\n1 2\r\n2 5\r\n1 2\r\n2 5\r\n2 4\r\n2 4\r\n1 2\r\n1 2\r\n1 4\r\n2 6\r\n2 6\r\n2 4\r\n2 4\r\n1 2\r\n1 2\r\n2 4\r\n2 4\r\n2 3\r\n2 3\r\n1 2\r\n2 9\r\n1 2\r\n1 2\r\n1 2\r\n2 6\r\n2 6\r\n2 4\r\n2 4\r\n2 3\r\n2 5\r\n2 5\r\n2 3\r\n2 3\r\n2 3\r\n2 6\r\n2 6\r\n2 3\r\n2 3\r\n2 6\r\n2 6\r\n2 6\r\n2 6\r\n2 6\r\n2 6\r\n2 3\r\n2 3\r\n1 2\r\n1 2\r\n2 6\r\n2 1\r\n2 6\r\n2 6\r\n2 6\r\n2 7\r\n",
+                "Yes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nYes\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nNo\r\nYes\r\nYes\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\n"
+            ],
+            [
+                "855 26\r\n1 75\r\n2 74\r\n2 74\r\n2 74\r\n2 74\r\n2 74\r\n2 74\r\n2 74\r\n2 74\r\n1 323\r\n2 74\r\n2 74\r\n2 74\r\n2 74\r\n2 322\r\n2 322\r\n2 322\r\n2 649\r\n1 703\r\n1 251\r\n2 457\r\n2 322\r\n2 702\r\n2 382\r\n2 702\r\n2 500\r\n",
+                "Yes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "73034 53\r\n2 21523\r\n1 21522\r\n2 21523\r\n2 21521\r\n2 37146\r\n2 21521\r\n2 21521\r\n2 21521\r\n1 37145\r\n2 37146\r\n1 54737\r\n2 66924\r\n2 21521\r\n2 28767\r\n2 21521\r\n2 21521\r\n2 21521\r\n1 28766\r\n2 28767\r\n2 54736\r\n2 54736\r\n2 31558\r\n2 37144\r\n2 41201\r\n1 60566\r\n2 15970\r\n2 37144\r\n2 25868\r\n1 277\r\n2 1743\r\n1 25867\r\n2 25868\r\n1 40857\r\n1 38088\r\n2 21521\r\n2 21521\r\n1 15969\r\n2 39373\r\n1 51066\r\n2 15970\r\n1 24859\r\n2 28765\r\n2 28765\r\n2 60565\r\n2 60565\r\n2 21521\r\n2 21521\r\n2 38087\r\n2 38087\r\n2 21521\r\n2 21521\r\n2 45056\r\n2 21521\r\n",
+                "Yes\r\nNo\r\nYes\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nYes\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nYes\r\nYes\r\nYes\r\nNo\r\nYes\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\n"
+            ],
+            [
+                "100000 6\r\n2 72326\r\n1 72325\r\n2 72326\r\n2 72324\r\n2 72324\r\n2 91418\r\n",
+                "Yes\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "3 27\r\n2 2\r\n2 2\r\n1 2\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n1 2\r\n1 2\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n1 3\r\n2 2\r\n2 2\r\n2 1\r\n",
+                "Yes\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\n"
+            ],
+            [
+                "100000 46\r\n1 82674\r\n2 82673\r\n2 82673\r\n2 82673\r\n2 82673\r\n2 82673\r\n2 82673\r\n2 82673\r\n2 82673\r\n2 87908\r\n2 58694\r\n1 58693\r\n2 58694\r\n2 82673\r\n2 82673\r\n1 87907\r\n2 87908\r\n2 82673\r\n2 82673\r\n1 64610\r\n2 64609\r\n2 64609\r\n2 58692\r\n2 58692\r\n2 64609\r\n2 64609\r\n2 64609\r\n2 64609\r\n2 87906\r\n2 87906\r\n2 64609\r\n2 22164\r\n2 2840\r\n2 43302\r\n2 64609\r\n2 58692\r\n2 58692\r\n2 87906\r\n2 87906\r\n1 22163\r\n2 76010\r\n2 22164\r\n2 64609\r\n2 64609\r\n1 43301\r\n2 43302\r\n",
+                "Yes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\n"
+            ],
+            [
+                "3 68\r\n1 3\r\n2 2\r\n2 2\r\n2 2\r\n2 2\r\n2 2\r\n2 2\r\n2 2\r\n2 2\r\n2 2\r\n2 2\r\n1 3\r\n1 2\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n1 2\r\n1 2\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n2 1\r\n",
+                "Yes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\n"
+            ],
+            [
+                "327 22\r\n2 68\r\n1 67\r\n1 214\r\n2 68\r\n2 213\r\n2 213\r\n2 66\r\n2 66\r\n2 66\r\n2 66\r\n2 66\r\n2 66\r\n2 213\r\n2 213\r\n1 15\r\n2 14\r\n2 14\r\n2 213\r\n2 213\r\n2 66\r\n2 66\r\n2 14\r\n",
+                "Yes\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\n"
+            ],
+            [
+                "76183 37\r\n1 68009\r\n2 68008\r\n2 68008\r\n2 51883\r\n1 51882\r\n2 51883\r\n2 51881\r\n2 51881\r\n2 51881\r\n2 51881\r\n2 68008\r\n2 68008\r\n2 68008\r\n2 68008\r\n2 51881\r\n2 40751\r\n2 51881\r\n2 51881\r\n2 51881\r\n2 2204\r\n1 40750\r\n2 40751\r\n2 62512\r\n2 68008\r\n2 68008\r\n2 40749\r\n2 33598\r\n2 40749\r\n1 33597\r\n2 33598\r\n2 33596\r\n2 54671\r\n1 65682\r\n2 33596\r\n1 62511\r\n2 62512\r\n2 62510\r\n",
+                "Yes\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nNo\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Biridian Forest",
+        "description": "You're a mikemon breeder currently in the middle of your journey to become a\nmikemon master. Your current obstacle is go through the infamous Biridian\nForest. The forest The Biridian Forest is a two-dimensional grid consisting of\nr rows and c columns. Each cell in Biridian Forest may contain a tree, or may\nbe vacant. A vacant cell may be occupied by zero or more mikemon breeders\n(there may also be breeders other than you in the forest). Mikemon breeders\n(including you) cannot enter cells with trees. One of the cells is designated\nas the exit cell. The initial grid, including your initial position, the exit\ncell, and the initial positions of all other breeders, will be given to you.\nHere's an example of such grid (from the first example): Moves Breeders\n(including you) may move in the forest. In a single move, breeders may perform\none of the following actions: Do nothing. Move from the current cell to one of\nthe four adjacent cells (two cells are adjacent if they share a side). Note\nthat breeders cannot enter cells with trees. If you are located on the exit\ncell, you may leave the forest. Only you can perform this move \u2014 all other\nmikemon breeders will never leave the forest by using this type of movement.\nAfter each time you make a single move, each of the other breeders\nsimultaneously make a single move (the choice of which move to make may be\ndifferent for each of the breeders). Mikemon battle If you and t (t > 0)\nmikemon breeders are located on the same cell, exactly t mikemon battles will\nensue that time (since you will be battling each of those t breeders once).\nAfter the battle, all of those t breeders will leave the forest to heal their\nrespective mikemons. Note that the moment you leave the forest, no more\nmikemon battles can ensue, even if another mikemon breeder move to the exit\ncell immediately after that. Also note that a battle only happens between you\nand another breeders \u2014 there will be no battle between two other breeders\n(there may be multiple breeders coexisting in a single cell). Your goal You\nwould like to leave the forest. In order to do so, you have to make a sequence\nof moves, ending with a move of the final type. Before you make any move,\nhowever, you post this sequence on your personal virtual idol Blog. Then, you\nwill follow this sequence of moves faithfully. Goal of other breeders Because\nyou post the sequence in your Blog, the other breeders will all know your\nexact sequence of moves even before you make your first move. All of them will\nmove in such way that will guarantee a mikemon battle with you, if possible.\nThe breeders that couldn't battle you will do nothing. Your task Print the\nminimum number of mikemon battles that you must participate in, assuming that\nyou pick the sequence of moves that minimize this number. Note that you are\nnot required to minimize the number of moves you make. Input The first line\nconsists of two integers: r and c (1 \u2264 r, c \u2264 1000), denoting the number of\nrows and the number of columns in Biridian Forest. The next r rows will each\ndepict a row of the map, where each character represents the content of a\nsingle cell: 'T': A cell occupied by a tree. 'S': An empty cell, and your\nstarting position. There will be exactly one occurence of this in the map.\n'E': An empty cell, and where the exit is located. There will be exactly one\noccurence of this in the map. A digit (0-9): A cell represented by a digit X\nmeans that the cell is empty and is occupied by X breeders (in particular, if\nX is zero, it means that the cell is not occupied by any breeder). It is\nguaranteed that it will be possible for you to go from your starting position\nto the exit cell through a sequence of moves. Output A single line denoted the\nminimum possible number of mikemon battles that you have to participate in if\nyou pick a strategy that minimize this number. Examples Input 5 7 000E0T3\nT0TT0T0 010T0T0 2T0T0T0 0T0S000 Output 3 Input 1 4 SE23 Output 2 Note The\nfollowing picture illustrates the first example. The blue line denotes a\npossible sequence of moves that you should post in your blog: The three\nbreeders on the left side of the map will be able to battle you \u2014 the lone\nbreeder can simply stay in his place until you come while the other two\nbreeders can move to where the lone breeder is and stay there until you come.\nThe three breeders on the right does not have a way to battle you, so they\nwill stay in their place. For the second example, you should post this\nsequence in your Blog: Here's what happens. First, you move one cell to the\nright. Then, the two breeders directly to the right of the exit will\nsimultaneously move to the left. The other three breeder cannot battle you so\nthey will do nothing. You end up in the same cell with 2 breeders, so 2\nmikemon battles are conducted. After those battles, all of your opponents\nleave the forest. Finally, you make another move by leaving the forest.\n\n",
+        "cf_contest_id": 329,
+        "cf_index": "B",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 7\r\n000E0T3\r\nT0TT0T0\r\n010T0T0\r\n2T0T0T0\r\n0T0S000\r\n",
+                "3\r\n"
+            ],
+            [
+                "1 4\r\nSE23\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 3\r\n000\r\nS0E\r\n000\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 5\r\nS9999\r\nTTTT9\r\n99999\r\n9TTTT\r\n9999E\r\n",
+                "135\r\n"
+            ],
+            [
+                "1 10\r\n9T9TSET9T9\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 1\r\nS\r\n9\r\n9\r\n9\r\n9\r\nE\r\n9\r\n9\r\n9\r\n9\r\n",
+                "72\r\n"
+            ],
+            [
+                "4 3\r\nS01\r\n234\r\n567\r\n89E\r\n",
+                "45\r\n"
+            ],
+            [
+                "2 2\r\nE9\r\nS4\r\n",
+                "9\r\n"
+            ],
+            [
+                "3 3\r\n920\r\n752\r\nE8S\r\n",
+                "29\r\n"
+            ],
+            [
+                "5 1\r\n9\r\nT\r\nE\r\n6\r\nS\r\n",
+                "6\r\n"
+            ],
+            [
+                "1 5\r\n78S6E\r\n",
+                "6\r\n"
+            ],
+            [
+                "9 8\r\n38030772\r\n697T83S2\r\n8T626740\r\n86T02062\r\n05402864\r\nT7504180\r\n3T368E08\r\n90637446\r\n12709560\r\n",
+                "194\r\n"
+            ],
+            [
+                "3 5\r\n00000\r\nS0E01\r\n00000\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

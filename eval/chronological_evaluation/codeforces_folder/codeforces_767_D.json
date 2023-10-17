@@ -1,0 +1,55 @@
+[
+    {
+        "name": "Cartons of milk",
+        "description": "Olya likes milk very much. She drinks k cartons of milk each day if she has at\nleast k and drinks all of them if she doesn't. But there's an issue \u2014\nexpiration dates. Each carton has a date after which you can't drink it (you\nstill can drink it exactly at the date written on the carton). Due to this, if\nOlya's fridge contains a carton past its expiry date, she throws it away. Olya\nhates throwing out cartons, so when she drinks a carton, she chooses the one\nwhich expires the fastest. It's easy to understand that this strategy\nminimizes the amount of cartons thrown out and lets her avoid it if it's even\npossible. Milk. Best before: 20.02.2017. The main issue Olya has is the one of\nbuying new cartons. Currently, there are n cartons of milk in Olya's fridge,\nfor each one an expiration date is known (how soon does it expire, measured in\ndays). In the shop that Olya visited there are m cartons, and the expiration\ndate is known for each of those cartons as well. Find the maximum number of\ncartons Olya can buy so that she wouldn't have to throw away any cartons.\nAssume that Olya drank no cartons today. Input In the first line there are\nthree integers n, m, k (1 \u2264 n, m \u2264 10^6, 1 \u2264 k \u2264 n + m) \u2014 the amount of\ncartons in Olya's fridge, the amount of cartons in the shop and the number of\ncartons Olya drinks each day. In the second line there are n integers f1, f2,\n..., fn (0 \u2264 fi \u2264 10^7) \u2014 expiration dates of the cartons in Olya's fridge.\nThe expiration date is expressed by the number of days the drinking of this\ncarton can be delayed. For example, a 0 expiration date means it must be drunk\ntoday, 1 \u2014 no later than tomorrow, etc. In the third line there are m integers\ns1, s2, ..., sm (0 \u2264 si \u2264 10^7) \u2014 expiration dates of the cartons in the shop\nin a similar format. Output If there's no way for Olya to drink the cartons\nshe already has in her fridge, print -1. Otherwise, in the first line print\nthe maximum number x of cartons which Olya can buy so that she wouldn't have\nto throw a carton away. The next line should contain exactly x integers \u2014 the\nnumbers of the cartons that should be bought (cartons are numbered in an order\nin which they are written in the input, starting with 1). Numbers should not\nrepeat, but can be in arbitrary order. If there are multiple correct answers,\nprint any of them. Examples Input 3 6 2 1 0 1 2 0 2 0 0 2 Output 3 1 2 3 Input\n3 1 2 0 0 0 1 Output -1 Input 2 1 2 0 1 0 Output 1 1 Note In the first example\nk = 2 and Olya has three cartons with expiry dates 0, 1 and 1 (they expire\ntoday, tomorrow and tomorrow), and the shop has 3 cartons with expiry date 0\nand 3 cartons with expiry date 2. Olya can buy three cartons, for example, one\nwith the expiry date 0 and two with expiry date 2. In the second example all\nthree cartons Olya owns expire today and it means she would have to throw\npackets away regardless of whether she buys an extra one or not. In the third\nexample Olya would drink k = 2 cartons today (one she alreay has in her fridge\nand one from the shop) and the remaining one tomorrow.\n\n",
+        "cf_contest_id": 767,
+        "cf_index": "D",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "sortings",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 6 2\r\n1 0 1\r\n2 0 2 0 0 2\r\n",
+                "3\r\n2 1 3 "
+            ],
+            [
+                "3 1 2\r\n0 0 0\r\n1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 1 2\r\n0 1\r\n0\r\n",
+                "1\r\n1 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 3 1\r\n1 9\r\n2 2 2\r\n",
+                "2\r\n1 2 "
+            ],
+            [
+                "11 22 33\r\n0 0 0 0 0 1 1 1 1 1 2\r\n1 2 0 1 1 0 2 1 1 3 0 0 2 3 1 0 1 2 0 2 2 3\r\n",
+                "22\r\n3 6 11 12 16 19 1 4 5 8 9 15 17 2 7 13 18 20 21 10 14 22 "
+            ],
+            [
+                "73 10 23\r\n2 1 1 1 2 3 0 1 2 3 3 0 0 1 3 0 1 3 0 1 2 2 3 1 3 0 0 1 1 0 3 2 0 0 0 0 1 1 2 0 2 2 1 0 0 1 0 1 0 0 1 2 2 0 0 0 0 2 1 1 2 1 1 3 1 0 2 3 1 2 2 1 3\r\n1 1 1 1 1 1 1 1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "36 100 7\r\n3 4 0 0 3 2 0 3 1 0 0 0 2 1 0 3 2 4 4 1 4 2 1 5 0 0 3 3 1 2 4 3 1 3 1 2\r\n3 0 2 0 2 5 4 1 4 3 1 2 3 1 5 2 1 2 4 4 4 1 2 4 2 5 2 4 1 2 2 3 0 1 4 2 1 1 1 0 5 2 0 0 4 1 0 2 2 3 3 4 0 3 4 5 2 1 0 2 3 3 1 1 5 1 5 4 2 3 0 3 3 0 1 2 2 1 3 3 4 0 2 2 0 4 2 5 5 1 4 5 1 4 4 2 4 2 1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "40 30 2\r\n24 10 10 7 6 12 11 12 36 23 26 3 4 30 31 33 30 31 49 46 47 48 49 48 46 1 4 5 14 14 11 35 39 39 38 38 37 9 9 32\r\n28 26 16 17 14 16 15 12 14 12 9 9 10 12 12 10 12 8 11 12 12 9 12 10 16 13 13 13 16 16\r\n",
+                "20\r\n18 11 12 22 13 16 24 19 8 10 14 26 27 7 3 6 25 4 2 1 "
+            ]
+        ]
+    }
+]

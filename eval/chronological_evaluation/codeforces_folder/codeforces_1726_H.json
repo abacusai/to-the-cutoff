@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Mainak and the Bleeding Polygon",
+        "description": "Mainak has a convex polygon \n    \ud835\udcab\n with \n    n\n vertices labelled\nas \n    A_1, A_2, \n    \u2026, A_n\n in a counter-clockwise fashion. The\ncoordinates of the \n    i\n-th point \n    A_i\n are given by \n    (x_i, y_i)\n,\nwhere \n    x_i\n and \n    y_i\n are both integers. Further, it is known that the\ninterior angle at \n    A_i\n is either a right angle or a proper obtuse angle.\nFormally it is known that: \n    90 ^ \n    \u2218\n    \u2264\n    \u2220 A_i - 1A_iA_i +\n    1 < 180 ^ \n    \u2218\n, \n    \u2200 i \n    \u2208\n    \n    1, 2, \n    \u2026, n\n\nwhere we conventionally consider \n    A_0 = A_n\n and \n    A_n + 1 = A_1\n.\nMainak's friend insisted that all points \n    Q\n such that there exists a\nchord of the polygon \n    \ud835\udcab\n passing through \n    Q\n with length\nnot exceeding \n    1\n, must be coloured \n    red\n.\nMainak wants you to find the area of the coloured region formed by the\n\n    red\n points. Formally, determine the area of the\nregion \n    \ud835\udcae = \n    \n    Q \n    \u2208\n    \ud835\udcab|Q \n     is\n    coloured \n    \n    red\n. Recall that a chord of a\npolygon is a line segment between two points lying on the boundary (i.e.\nvertices or points on edges) of the polygon. Input The first line contains an\ninteger \n    n\n (\n    4 \n    \u2264 n \n    \u2264 5000\n) \u2014 the number of vertices of a\npolygon \n    \ud835\udcab\n. The \n    i\n-th line of the next \n    n\n lines\ncontain two integers \n    x_i\n and \n    y_i\n (\n    -10^9 \n    \u2264 x_i, y_i \n    \u2264\n    10^9\n) \u2014 the coordinates of \n    A_i\n. Additional constraint on the input:\nThe vertices form a convex polygon and are listed in counter-clockwise order.\nIt is also guaranteed that all interior angles are in the range \n    [90^\n    \u2218\n    ; 180^\n    \u2218 )\n. Output Print the area of the region coloured in\n\n    red\n. Your answer is considered correct if its\nabsolute or relative error does not exceed \n    10^-4\n. Formally, let your\nanswer be \n    a\n, and the jury's answer be \n    b\n. Your answer is accepted\nif and only if \n    |a - b|/\n    max(1, |b|)\n    \u2264 10^-4\n.\nExamples Input 4 4 5 4 1 7 1 7 5 Output 1.17809724510 Input 5 -3 3 3 1 4 2 -1\n9 -2 9 Output 1.07823651333 Note In the first example, the polygon\n\n    \ud835\udcab\n can be visualised on the Cartesian Plane as:\n\n",
+        "cf_contest_id": 1726,
+        "cf_index": "H",
+        "cf_rating": 3500,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "geometry",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n4 5\r\n4 1\r\n7 1\r\n7 5\r\n",
+                "1.17809724510\r\n"
+            ],
+            [
+                "5\r\n-3 3\r\n3 1\r\n4 2\r\n-1 9\r\n-2 9\r\n",
+                "1.07823651333\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n1 10\r\n1 1\r\n2 1\r\n2 10\r\n",
+                "9\r\n"
+            ],
+            [
+                "4\r\n1 0\r\n0 1\r\n-1 0\r\n0 -1\r\n",
+                "1.09244702779\r\n"
+            ],
+            [
+                "6\r\n-4 10\r\n-10 0\r\n-8 -10\r\n6 -10\r\n10 2\r\n6 10\r\n",
+                "1.10223866910\r\n"
+            ],
+            [
+                "6\r\n-400000000 1000000000\r\n-1000000000 0\r\n-800000000 -1000000000\r\n600000000 -1000000000\r\n1000000000 200000000\r\n600000000 1000000000\r\n",
+                "1.10223866910\r\n"
+            ],
+            [
+                "4\r\n1 10\r\n1 9\r\n2 9\r\n2 10\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\n10 10\r\n10 9\r\n20 9\r\n20 10\r\n",
+                "10\r\n"
+            ],
+            [
+                "4\r\n-1000000000 787878788\r\n-1000000000 787878787\r\n1000000000 787878787\r\n1000000000 787878788\r\n",
+                "2000000000\r\n"
+            ],
+            [
+                "6\r\n9 3\r\n2 9\r\n-7 6\r\n-9 -3\r\n-2 -9\r\n7 -6\r\n",
+                "1.09259432395\r\n"
+            ],
+            [
+                "12\r\n11641281 -576528611\r\n11641283 -576528610\r\n11641285 -576528607\r\n11641285 -576528606\r\n11641284 -576528604\r\n11641281 -576528602\r\n11641280 -576528602\r\n11641278 -576528603\r\n11641276 -576528606\r\n11641276 -576528607\r\n11641277 -576528609\r\n11641280 -576528611\r\n",
+                "1.01074073347\r\n"
+            ],
+            [
+                "16\r\n9300 3674\r\n7186 6953\r\n3978 9174\r\n164 9998\r\n-3674 9300\r\n-6953 7186\r\n-9174 3978\r\n-9998 164\r\n-9300 -3674\r\n-7186 -6953\r\n-3978 -9174\r\n-164 -9998\r\n3674 -9300\r\n6953 -7186\r\n9174 -3978\r\n9998 -164\r\n",
+                "1.05270166299\r\n"
+            ],
+            [
+                "5\r\n952635915 304113156\r\n5151888 999986728\r\n-949451873 313912630\r\n-591945417 -805978053\r\n583609486 -812034462\r\n",
+                "1.11801818517\r\n"
+            ],
+            [
+                "6\r\n1 0\r\n0 1\r\n-1 1\r\n-1 0\r\n0 -1\r\n1 -1\r\n",
+                "0.96595950088\r\n"
+            ],
+            [
+                "20\r\n-902094446 749085780\r\n-965204457 614845933\r\n-997785355 544196993\r\n-937364445 -130109074\r\n-854743909 -379093937\r\n-828638940 -428133386\r\n-381466807 -757072479\r\n124482675 -750218968\r\n197862461 -748014876\r\n700369181 -703818470\r\n789309079 -676472295\r\n874191768 -565877501\r\n896385490 -533268148\r\n980508640 -156003394\r\n998367688 237139537\r\n955090599 636905468\r\n930069474 679084786\r\n552870300 846379098\r\n219838147 991206869\r\n-251589972 997219791\r\n",
+                "1.05725491025\r\n"
+            ],
+            [
+                "8\r\n2 1\r\n1 2\r\n-1 2\r\n-2 1\r\n-2 -1\r\n-1 -2\r\n1 -2\r\n2 -1\r\n",
+                "1.05477649474\r\n"
+            ],
+            [
+                "16\r\n-99994 -58642\r\n-99785 -73385\r\n-99511 -87790\r\n-97100 -95682\r\n-82862 -99584\r\n90510 -99913\r\n96778 -72904\r\n99587 -59254\r\n99676 49306\r\n99613 97325\r\n97402 99776\r\n-41758 99253\r\n-97680 95960\r\n-98909 86615\r\n-99630 71189\r\n-99923 46276\r\n",
+                "1.09816787493\r\n"
+            ],
+            [
+                "20\r\n204817488 65943604\r\n201133461 72739917\r\n162632627 109324915\r\n127000215 125943172\r\n38240057 139796277\r\n-115392533 77216594\r\n-113098766 -4728192\r\n-113014717 -4837919\r\n-99337162 -19393197\r\n-94370343 -23562977\r\n-42378585 -50938426\r\n-33177985 -53846203\r\n-31542466 -54318874\r\n4955763 -61815635\r\n29992546 -63958129\r\n94990833 -58989676\r\n134940976 -47362956\r\n156243825 -37399709\r\n189416926 -12366147\r\n210139878 25365534\r\n",
+                "1.06497085949\r\n"
+            ],
+            [
+                "20\r\n77678473 37116743\r\n73825870 45550815\r\n61191238 64606176\r\n58399376 67797110\r\n12194496 96514859\r\n-1724866 99425511\r\n-57407299 90577663\r\n-97943709 54969301\r\n-111080953 25848636\r\n-111810412 -26444083\r\n-109254378 -35188288\r\n-104496085 -46790640\r\n-100711270 -53898682\r\n-71527935 -85699149\r\n-31126758 -102332533\r\n-21217201 -103491240\r\n-1576949 -102806346\r\n-833172 -102702260\r\n10009637 -100513323\r\n61130954 -68078832\r\n",
+                "1.05587658004\r\n"
+            ],
+            [
+                "10\r\n84618953 257944603\r\n-11393520 261384502\r\n-55833411 182443842\r\n-64807920 126085130\r\n-52763945 28098522\r\n33671809 -59787791\r\n42021480 -59349496\r\n49167112 -58023997\r\n132033417 70881432\r\n134555761 99354573\r\n",
+                "1.07919497524\r\n"
+            ],
+            [
+                "7\r\n-95838 62117\r\n-84129 14496\r\n-31704 -84460\r\n64350 -44125\r\n88609 60121\r\n80391 94579\r\n-21582 99578\r\n",
+                "1.11353002849\r\n"
+            ],
+            [
+                "8\r\n-992 143\r\n-899 -947\r\n926 -888\r\n934 507\r\n905 743\r\n851 924\r\n-120 999\r\n-857 831\r\n",
+                "1.12843453676\r\n"
+            ],
+            [
+                "18\r\n-9998403 9813308\r\n-9984319 -8971041\r\n-9907821 -9697216\r\n-7592060 -9979343\r\n-5781061 -9995359\r\n-268482 -9993057\r\n9527397 -9953805\r\n9893097 -9564144\r\n9958121 -8160181\r\n9970600 -2969825\r\n9985359 6353528\r\n9939549 6995541\r\n9449829 9157004\r\n9025872 9583538\r\n8940270 9645657\r\n8397212 9958196\r\n-323545 9988500\r\n-9917463 9963158\r\n",
+                "1.08147676906\r\n"
+            ],
+            [
+                "9\r\n-101044 -1220\r\n-85446 -72255\r\n-25251 -101285\r\n63704 -60381\r\n75911 -49018\r\n71211 62792\r\n48664 120281\r\n-25836 105341\r\n-95903 87726\r\n",
+                "1.09590242857\r\n"
+            ],
+            [
+                "20\r\n651034669 284679846\r\n651034673 284679847\r\n651034677 284679850\r\n651034681 284679855\r\n651034685 284679862\r\n651034685 284679863\r\n651034684 284679867\r\n651034681 284679871\r\n651034676 284679875\r\n651034669 284679879\r\n651034668 284679879\r\n651034664 284679878\r\n651034660 284679875\r\n651034656 284679870\r\n651034652 284679863\r\n651034652 284679862\r\n651034653 284679858\r\n651034656 284679854\r\n651034661 284679850\r\n651034668 284679846\r\n",
+                "1.02278873564\r\n"
+            ]
+        ]
+    }
+]

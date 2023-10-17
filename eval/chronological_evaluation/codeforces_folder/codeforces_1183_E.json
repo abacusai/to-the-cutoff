@@ -1,0 +1,258 @@
+[
+    {
+        "name": "Subsequences (easy version)",
+        "description": "The only difference between the easy and the hard versions is constraints. A\nsubsequence is a string that can be derived from another string by deleting\nsome or no symbols without changing the order of the remaining symbols.\nCharacters to be deleted are not required to go successively, there can be any\ngaps between them. For example, for the string \"abaca\" the following strings\nare subsequences: \"abaca\", \"aba\", \"aaa\", \"a\" and \"\" (empty string). But the\nfollowing strings are not subsequences: \"aabaca\", \"cb\" and \"bcaa\". You are\ngiven a string \n    s\n consisting of \n    n\n lowercase Latin letters. In one\nmove you can take any subsequence \n    t\n of the given string and add it to\nthe set \n    S\n. The set \n    S\n can't contain duplicates. This move costs\n\n    n - |t|\n, where \n    |t|\n is the length of the added subsequence (i.e.\nthe price equals to the number of the deleted characters). Your task is to\nfind out the minimum possible total cost to obtain a set \n    S\n of size\n\n    k\n or report that it is impossible to do so. Input The first line of the\ninput contains two integers \n    n\n and \n    k\n (\n    1 \n    \u2264 n, k \n    \u2264 100\n)\n\u2014 the length of the string and the size of the set, correspondingly. The\nsecond line of the input contains a string \n    s\n consisting of \n    n\n\nlowercase Latin letters. Output Print one integer \u2014 if it is impossible to\nobtain the set \n    S\n of size \n    k\n, print -1. Otherwise, print the minimum\npossible total cost to do it. Examples Input 4 5 asdf Output 4 Input 5 6 aaaaa\nOutput 15 Input 5 7 aaaaa Output -1 Input 10 100 ajihiushda Output 233 Note In\nthe first example we can generate \n    S\n =  \"asdf\", \"asd\", \"adf\", \"asf\",\n\"sdf\" . The cost of the first element in \n    S\n is \n    0\n and the cost of\nthe others is \n    1\n. So the total cost of \n    S\n is \n    4\n.\n\n",
+        "cf_contest_id": 1183,
+        "cf_index": "E",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "graphs",
+            "implementation",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 5\r\nasdf\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 6\r\naaaaa\r\n",
+                "15\r\n"
+            ],
+            [
+                "5 7\r\naaaaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10 100\r\najihiushda\r\n",
+                "233\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 2\r\nu\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 5\r\nw\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 10\r\ns\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 25\r\no\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 50\r\ns\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 100\r\np\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 2\r\nufdpx\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\nwnxcc\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 10\r\nbzitq\r\n",
+                "13\r\n"
+            ],
+            [
+                "5 25\r\nwjsel\r\n",
+                "52\r\n"
+            ],
+            [
+                "5 50\r\nbhhaj\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 100\r\nnvyoj\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10 2\r\nmllbxoykle\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 5\r\nnrdmcxnnbb\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 10\r\nhittmcsvmo\r\n",
+                "9\r\n"
+            ],
+            [
+                "10 25\r\nbpehfvamul\r\n",
+                "38\r\n"
+            ],
+            [
+                "10 50\r\nfpsafelqno\r\n",
+                "88\r\n"
+            ],
+            [
+                "10 100\r\nwfykkiubdk\r\n",
+                "242\r\n"
+            ],
+            [
+                "25 2\r\nvwxvqvouhtbprdhrhlhotyqjp\r\n",
+                "1\r\n"
+            ],
+            [
+                "25 5\r\nxcrhvdevynotmxzxqafeijadl\r\n",
+                "4\r\n"
+            ],
+            [
+                "25 10\r\nquomusasazkywxnfvfjimiytg\r\n",
+                "9\r\n"
+            ],
+            [
+                "25 25\r\nmdxynjiiivwifvaspplpkoffc\r\n",
+                "27\r\n"
+            ],
+            [
+                "25 50\r\nqbntoutmcylbrtfzauvxmqvyn\r\n",
+                "73\r\n"
+            ],
+            [
+                "25 100\r\niasrasqpntslqjkefyzbklmtr\r\n",
+                "173\r\n"
+            ],
+            [
+                "50 2\r\nvjrvahvokiudpiocpvoqsqhukavyrckhcbctrbprqxizcofrfr\r\n",
+                "1\r\n"
+            ],
+            [
+                "50 5\r\nxplfeoiobchekdeiwkmgkbunixgcyzngznoicllobsqbpkbwnp\r\n",
+                "4\r\n"
+            ],
+            [
+                "50 10\r\ndnovfytvosvwbeykfnkkebgonntfqapbuphspjsclowovrgrae\r\n",
+                "9\r\n"
+            ],
+            [
+                "50 25\r\naxxjyqblymjgkciyzwnochociulhtdsabhrdtfldmtugmlsbwu\r\n",
+                "24\r\n"
+            ],
+            [
+                "50 50\r\ndxldyzmsrrwzwaofkcxwehgvtrsximxgdqrhjthkgfucrjdvwl\r\n",
+                "49\r\n"
+            ],
+            [
+                "50 100\r\nbybehmveefoqvsronaztdwjzhfspmoszgibthctsamgixqailz\r\n",
+                "149\r\n"
+            ],
+            [
+                "100 2\r\nzqdvwjzmgfmgngaxzgvuuukxyfzecafuflxpkvemenkorwhmnsxuoxsatlymyjugwjmutfxcksnwhxrwruyqbouyflxhwqhflczz\r\n",
+                "1\r\n"
+            ],
+            [
+                "100 5\r\nayvharmmxcxhibqfixtjmhurxchhkvhubxjcveajrkssbsbrxpijxolrtmvanzyybzbdpgzocicakipmkpxhcjtegksbvabfghpf\r\n",
+                "4\r\n"
+            ],
+            [
+                "100 10\r\nmaorgdrrnhytzrswsuomkdkdrqyqmwcdekbkgymqaqnacrbbbvwqzcqsdboztxygqjxsqwhjnftiguhemxhvvrnjwpdvbjexhlqt\r\n",
+                "9\r\n"
+            ],
+            [
+                "100 25\r\nihxdcuahvemeipfkmdqqiktqnyrsrxfdmclwmvgretjsulnlxlvcuvjxxvnmrhjlerhvrzfdvxehnvgslrjzvbscfehtsxvvcabq\r\n",
+                "24\r\n"
+            ],
+            [
+                "100 50\r\nmhnzadklojbuumkrxjayikjhwuxihgkinllackcavhjpxlydxcgcxjdloyicqkfwulytkpiflkrsdjseynwohymlehmtgswjfxzp\r\n",
+                "49\r\n"
+            ],
+            [
+                "100 100\r\noaxflkpcwimoiocbudbxgzvekmengbumbcumwxjjcdtqzlijdqoelpevcqfiommjgioxaxdrhbyoszifgxjfprraisgzpxrjhyln\r\n",
+                "101\r\n"
+            ],
+            [
+                "100 1\r\nyyojtyktazyfegvnnsexxiosqxdlpdwlyojsghpvjpavnvjvttbylqcdabyhleltltzalmgoelxdalcbjejsjxnfebzsxusnujdy\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 100\r\nasdfgha\r\n",
+                "299\r\n"
+            ],
+            [
+                "7 100\r\nasdagha\r\n",
+                "309\r\n"
+            ],
+            [
+                "7 100\r\nasafgsa\r\n",
+                "319\r\n"
+            ],
+            [
+                "7 86\r\ndjfjfdj\r\n",
+                "273\r\n"
+            ],
+            [
+                "7 87\r\ndjfjfdj\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6 50\r\nfdjfjd\r\n",
+                "139\r\n"
+            ],
+            [
+                "6 49\r\nfdjfjd\r\n",
+                "133\r\n"
+            ],
+            [
+                "6 51\r\nfdjfjd\r\n",
+                "-1\r\n"
+            ],
+            [
+                "100 100\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "4950\r\n"
+            ],
+            [
+                "30 60\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaab\r\n",
+                "900\r\n"
+            ],
+            [
+                "50 60\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\r\n",
+                "900\r\n"
+            ],
+            [
+                "100 20\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "190\r\n"
+            ],
+            [
+                "100 100\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\r\n",
+                "2500\r\n"
+            ],
+            [
+                "30 30\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "435\r\n"
+            ],
+            [
+                "82 100\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "-1\r\n"
+            ],
+            [
+                "98 100\r\nabaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "453\r\n"
+            ],
+            [
+                "100 100\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbb\r\n",
+                "850\r\n"
+            ],
+            [
+                "50 100\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

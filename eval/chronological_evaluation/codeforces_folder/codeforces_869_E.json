@@ -1,0 +1,56 @@
+[
+    {
+        "name": "The Untended Antiquity",
+        "description": "Adieu l'ami. Koyomi is helping Oshino, an acquaintance of his, to take care of\nan open space around the abandoned Eikou Cram School building, Oshino's\nmakeshift residence. The space is represented by a rectangular grid of n \u00d7 m\ncells, arranged into n rows and m columns. The c-th cell in the r-th row is\ndenoted by (r, c). Oshino places and removes barriers around rectangular areas\nof cells. Specifically, an action denoted by \"1 r1 c1 r2 c2\" means Oshino's\nplacing barriers around a rectangle with two corners being (r1, c1) and (r2,\nc2) and sides parallel to squares sides. Similarly, \"2 r1 c1 r2 c2\" means\nOshino's removing barriers around the rectangle. Oshino ensures that no\nbarriers staying on the ground share any common points, nor do they intersect\nwith boundaries of the n \u00d7 m area. Sometimes Koyomi tries to walk from one\ncell to another carefully without striding over barriers, in order to avoid\ndamaging various items on the ground. \"3 r1 c1 r2 c2\" means that Koyomi tries\nto walk from (r1, c1) to (r2, c2) without crossing barriers. And you're here\nto tell Koyomi the feasibility of each of his attempts. Input The first line\nof input contains three space-separated integers n, m and q (1 \u2264 n, m \u2264 2 500,\n1 \u2264 q \u2264 100 000) \u2014 the number of rows and columns in the grid, and the total\nnumber of Oshino and Koyomi's actions, respectively. The following q lines\neach describes an action, containing five space-separated integers t, r1, c1,\nr2, c2 (1 \u2264 t \u2264 3, 1 \u2264 r1, r2 \u2264 n, 1 \u2264 c1, c2 \u2264 m) \u2014 the type and two\ncoordinates of an action. Additionally, the following holds depending on the\nvalue of t: If t = 1: 2 \u2264 r1 \u2264 r2 \u2264 n - 1, 2 \u2264 c1 \u2264 c2 \u2264 m - 1; If t = 2: 2 \u2264\nr1 \u2264 r2 \u2264 n - 1, 2 \u2264 c1 \u2264 c2 \u2264 m - 1, the specified group of barriers exist on\nthe ground before the removal. If t = 3: no extra restrictions. Output For\neach of Koyomi's attempts (actions with t = 3), output one line \u2014 containing\n\"Yes\" (without quotes) if it's feasible, and \"No\" (without quotes) otherwise.\nExamples Input 5 6 5 1 2 2 4 5 1 3 3 3 3 3 4 4 1 1 2 2 2 4 5 3 1 1 4 4 Output\nNo Yes Input 2500 2500 8 1 549 1279 1263 2189 1 303 795 1888 2432 1 2227 622\n2418 1161 3 771 2492 1335 1433 1 2017 2100 2408 2160 3 48 60 798 729 1 347 708\n1868 792 3 1940 2080 377 1546 Output No Yes No Note For the first example, the\nsituations of Koyomi's actions are illustrated below.\n\n",
+        "cf_contest_id": 869,
+        "cf_index": "E",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "hashing"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5 6 5\r\n1 2 2 4 5\r\n1 3 3 3 3\r\n3 4 4 1 1\r\n2 2 2 4 5\r\n3 1 1 4 4\r\n",
+                "No\r\nYes\r\n"
+            ],
+            [
+                "2500 2500 8\r\n1 549 1279 1263 2189\r\n1 303 795 1888 2432\r\n1 2227 622 2418 1161\r\n3 771 2492 1335 1433\r\n1 2017 2100 2408 2160\r\n3 48 60 798 729\r\n1 347 708 1868 792\r\n3 1940 2080 377 1546\r\n",
+                "No\r\nYes\r\nNo\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 3 5\r\n3 1 3 1 3\r\n3 1 1 3 1\r\n1 2 2 2 2\r\n3 2 3 2 2\r\n3 1 1 2 2\r\n",
+                "Yes\r\nYes\r\nNo\r\nNo\r\n"
+            ],
+            [
+                "3 4 5\r\n3 3 4 3 4\r\n1 2 2 2 3\r\n3 2 2 2 3\r\n3 3 3 2 4\r\n3 2 2 1 1\r\n",
+                "Yes\r\nYes\r\nYes\r\nNo\r\n"
+            ],
+            [
+                "5 5 10\r\n1 3 2 4 2\r\n1 4 4 4 4\r\n1 2 4 2 4\r\n3 4 2 4 1\r\n3 2 2 5 3\r\n3 2 2 1 5\r\n3 3 2 5 1\r\n3 4 5 2 3\r\n3 1 5 4 2\r\n3 1 2 5 2\r\n",
+                "No\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\n"
+            ],
+            [
+                "10 10 10\r\n1 5 7 8 8\r\n3 8 2 6 7\r\n1 5 4 9 4\r\n3 4 2 3 3\r\n1 2 3 3 4\r\n3 5 7 2 9\r\n1 3 6 9 9\r\n2 2 3 3 4\r\n3 1 2 2 2\r\n3 4 9 2 7\r\n",
+                "No\r\nYes\r\nNo\r\nYes\r\nNo\r\n"
+            ],
+            [
+                "10 10 10\r\n1 5 4 8 5\r\n3 3 6 5 9\r\n3 3 10 1 1\r\n1 3 5 3 5\r\n1 3 7 8 8\r\n1 2 2 2 3\r\n3 9 7 7 3\r\n1 4 2 8 2\r\n3 9 2 9 3\r\n3 7 4 7 4\r\n",
+                "Yes\r\nYes\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "2450 100 20\r\n1 333 19 414 95\r\n1 1121 15 2270 28\r\n3 539 27 2026 84\r\n1 1286 78 2422 84\r\n1 717 3 1051 65\r\n2 1121 15 2270 28\r\n3 1127 42 42 92\r\n3 1701 70 503 6\r\n1 2008 7 2363 59\r\n3 2183 52 282 43\r\n1 530 7 642 32\r\n3 13 57 2127 1\r\n2 717 3 1051 65\r\n2 2008 7 2363 59\r\n1 1501 10 2213 66\r\n3 596 15 1215 15\r\n1 1016 13 1262 65\r\n1 815 23 841 39\r\n2 530 7 642 32\r\n3 1189 5 794 33\r\n",
+                "Yes\r\nYes\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\n"
+            ],
+            [
+                "1 1 1\r\n3 1 1 1 1\r\n",
+                "Yes\r\n"
+            ]
+        ]
+    }
+]

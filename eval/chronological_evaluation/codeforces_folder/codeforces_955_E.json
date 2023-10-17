@@ -1,0 +1,181 @@
+[
+    {
+        "name": "Icicles",
+        "description": "Andrew's favourite Krakozyabra has recenly fled away and now he's eager to\nbring it back! At the moment the refugee is inside an icy cave with n icicles\ndangling from the ceiling located in integer coordinates numbered from 1 to n.\nThe distance between floor and the i-th icicle is equal to ai. Andrew is free\nto choose an arbitrary integer point T in range from 1 to n inclusive and at\ntime instant 0 launch a sound wave spreading into both sides (left and right)\nat the speed of one point per second. Any icicle touched by the wave starts\nfalling at the same speed (that means that in a second the distance from floor\nto icicle decreases by one but cannot become less that zero). While distance\nfrom icicle to floor is more than zero, it is considered passable; as soon as\nit becomes zero, the icicle blocks the path and prohibits passing. Krakozyabra\nis initially (i.e. at time instant 0) is located at point and starts running\nin the right direction at the speed of one point per second. You can assume\nthat events in a single second happen in the following order: first\nKrakozyabra changes its position, and only then the sound spreads and icicles\nfall; in particular, that means that if Krakozyabra is currently at point and\nthe falling (i.e. already touched by the sound wave) icicle at point i is 1\npoint from the floor, then Krakozyabra will pass it and find itself at and\nonly after that the icicle will finally fall and block the path. Krakozyabra\nis considered entrapped if there are fallen (i.e. with ai = 0) icicles both to\nthe left and to the right of its current position. Help Andrew find the\nminimum possible time it takes to entrap Krakozyabra by choosing the optimal\nvalue of T or report that this mission is impossible. Input The first line\ncontains the number of icicles n (2 \u2264 n \u2264 10^5). The next line contains n\nspace-separated numbers ai (1 \u2264 ai \u2264 10^5) \u2014 the distances from floor to\nicicles. Output Print an only integer \u2014 the minimum time it takes to entrap\nKrakozyabra between two fallen icicles. If it is impossible, print - 1.\nExamples Input 5 1 4 3 5 1 Output 3 Input 4 1 2 1 1 Output 2 Input 2 2 1\nOutput 3 Input 2 1 2 Output -1 Note In sample case one it's optimal to launch\nthe sound wave from point 3. Then in two seconds icicles 1 and 5 will start\nfalling, and in one more seconds they will block the paths. Krakozyabra will\nbe located at at that time. Note that icicle number 3 will also be fallen, so\nthere will actually be two icicles blocking the path to the left. In sample\ncase two it is optimal to launch the wave from point 2 and entrap Krakozyabra\nin 2 seconds. In sample case four the answer is impossible.\n\n",
+        "cf_contest_id": 955,
+        "cf_index": "E",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [],
+        "time_limit_seconds": 2.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n1 4 3 5 1\r\n",
+                "3"
+            ],
+            [
+                "4\r\n1 2 1 1\r\n",
+                "2"
+            ],
+            [
+                "2\r\n2 1\r\n",
+                "3"
+            ],
+            [
+                "2\r\n1 2\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "8\r\n3 9 4 1 3 1 1 6\r\n",
+                "4"
+            ],
+            [
+                "8\r\n3 8 10 10 3 10 6 5\r\n",
+                "6"
+            ],
+            [
+                "7\r\n3 9 8 9 3 1 2\r\n",
+                "5"
+            ],
+            [
+                "9\r\n3 10 6 3 8 4 2 3 5\r\n",
+                "4"
+            ],
+            [
+                "10\r\n1 1 1 1 1 1 1 1 1 1\r\n",
+                "2"
+            ],
+            [
+                "5\r\n5 5 5 1 1\r\n",
+                "5"
+            ],
+            [
+                "3\r\n1 77 76\r\n",
+                "-1\r\n"
+            ],
+            [
+                "7\r\n8 7 7 8 8 7 8\r\n",
+                "-1\r\n"
+            ],
+            [
+                "100\r\n17 49 21 25 19 42 11 48 25 32 18 35 21 39 24 6 39 18 29 36 23 28 1 26 24 32 22 16 14 42 7 9 20 31 18 47 2 38 9 19 8 14 24 25 26 39 3 30 40 1 12 42 28 45 14 48 37 39 16 29 20 37 30 13 1 47 23 44 36 36 25 28 49 35 4 22 14 20 6 5 29 23 50 46 2 28 10 40 8 11 46 4 50 19 29 3 49 49 17 13\r\n",
+                "13"
+            ],
+            [
+                "100\r\n4 39 23 36 10 30 2 46 47 48 49 3 37 21 4 20 9 8 39 11 40 19 18 41 22 35 20 5 22 40 43 23 3 50 40 14 20 7 5 28 44 22 47 21 41 12 8 25 37 24 45 38 6 21 7 41 21 5 44 6 3 48 44 6 1 10 12 33 49 1 19 24 23 29 11 18 39 1 29 5 20 23 4 10 19 38 43 23 22 11 48 20 1 4 38 35 5 29 33 25\r\n",
+                "6"
+            ],
+            [
+                "100\r\n32 30 30 18 13 49 35 38 3 30 38 46 32 50 23 41 28 16 12 10 38 4 27 20 29 43 33 16 38 10 19 40 48 33 45 15 50 32 43 39 45 33 40 30 30 46 19 19 5 33 13 36 37 46 3 29 3 26 49 11 7 15 34 34 36 25 43 10 40 35 18 10 38 37 28 10 41 34 28 21 21 33 38 34 12 2 15 19 21 34 36 33 50 19 47 37 21 27 17 50\r\n",
+                "10"
+            ],
+            [
+                "100\r\n6 24 26 46 17 25 11 22 8 12 28 40 22 42 42 8 50 20 34 1 41 32 36 49 40 2 4 23 4 26 33 18 36 15 8 23 34 11 30 8 41 47 25 34 22 33 31 9 23 50 27 38 27 20 49 13 44 1 46 27 22 20 23 11 17 40 24 30 39 11 21 42 7 49 3 41 1 21 31 25 22 27 18 11 43 24 28 16 21 48 24 3 12 22 11 31 29 28 17 16\r\n",
+                "10"
+            ],
+            [
+                "100\r\n30 18 30 27 29 48 48 14 18 44 22 30 20 21 11 21 14 29 2 3 31 10 46 32 1 22 21 33 21 47 9 38 27 47 17 23 2 32 26 14 42 16 6 39 19 5 42 3 41 8 41 40 20 48 49 48 31 22 1 31 25 41 8 39 40 44 13 4 30 49 19 33 22 10 29 21 7 8 34 33 26 37 45 31 28 34 50 13 24 25 12 16 23 37 20 17 38 25 1 36\r\n",
+                "14"
+            ],
+            [
+                "100\r\n8 13 29 5 28 17 19 2 23 27 19 31 10 12 30 30 37 41 24 44 30 50 13 12 8 34 42 40 33 13 36 9 22 34 26 31 35 49 14 25 35 30 37 47 8 42 50 43 9 25 12 34 5 19 45 36 22 43 6 35 28 4 43 21 26 9 44 36 29 37 14 15 33 26 8 1 13 41 29 49 27 43 25 47 21 10 22 5 24 48 42 32 30 6 37 20 4 26 43 2\r\n",
+                "6"
+            ],
+            [
+                "100\r\n32 7 37 28 32 40 6 40 29 9 9 21 1 41 45 47 5 37 42 39 28 27 18 45 19 43 13 47 3 33 8 37 17 16 26 31 11 20 5 36 36 45 30 44 4 26 23 33 23 34 26 39 40 47 37 21 9 14 49 2 40 13 28 49 7 24 25 9 28 21 21 9 10 30 26 35 19 36 32 6 23 46 5 25 2 28 36 6 24 17 30 37 33 17 46 6 12 24 35 26\r\n",
+                "7"
+            ],
+            [
+                "100\r\n6 5 33 6 43 17 40 28 42 41 48 19 41 33 18 14 28 49 14 38 19 1 27 16 18 1 31 8 16 3 30 8 4 2 39 35 45 45 39 46 28 13 11 48 43 10 31 27 41 50 40 37 37 17 37 5 50 39 4 6 47 31 17 35 38 28 14 33 19 5 16 45 25 42 5 12 21 19 40 18 24 6 32 49 36 41 4 2 23 31 17 3 45 32 5 4 28 25 23 43\r\n",
+                "13"
+            ],
+            [
+                "100\r\n30 50 36 34 1 35 11 16 48 24 38 8 35 16 41 35 46 50 36 28 21 37 41 49 25 17 6 19 36 32 6 32 49 35 2 40 29 20 26 3 33 28 41 6 32 47 46 17 13 9 3 35 19 42 29 1 40 10 13 10 12 40 7 13 15 43 41 7 22 31 15 32 40 3 34 46 32 2 35 26 28 50 16 27 29 13 29 49 15 4 5 20 6 47 14 44 37 22 15 17\r\n",
+                "8"
+            ],
+            [
+                "100\r\n8 44 44 11 12 8 48 4 3 6 32 10 25 7 6 2 19 12 4 31 20 15 8 32 36 29 27 22 44 2 24 6 40 21 49 48 4 44 18 22 26 46 30 15 28 23 4 7 31 22 21 37 16 16 26 36 19 23 10 26 16 3 38 40 46 8 26 30 9 19 21 14 5 15 10 30 34 39 38 34 21 6 42 50 14 35 43 45 19 23 43 32 13 12 24 38 45 20 49 29\r\n",
+                "8"
+            ],
+            [
+                "100\r\n28 39 40 31 12 39 24 34 21 38 21 50 16 36 29 12 45 12 26 22 18 46 17 12 47 38 44 33 11 18 50 35 27 3 11 44 38 19 5 28 15 11 15 19 17 6 15 1 45 35 31 39 47 40 18 24 10 44 11 30 27 24 27 22 28 23 15 50 7 3 16 50 24 19 27 6 44 22 41 46 26 16 23 24 45 45 15 42 22 49 19 3 16 27 37 37 11 21 41 3\r\n",
+                "16"
+            ],
+            [
+                "100\r\n7 17 40 22 18 29 6 47 7 33 25 30 13 10 18 6 47 5 36 8 19 45 27 32 3 12 8 42 8 48 8 48 39 20 35 34 3 5 44 1 45 4 21 11 12 22 44 48 38 20 43 5 2 42 23 6 10 37 2 24 15 7 12 45 30 25 32 47 2 9 6 20 48 30 19 4 1 7 39 28 14 42 46 37 43 49 22 6 12 36 32 46 46 39 42 39 6 1 30 1\r\n",
+                "8"
+            ],
+            [
+                "100\r\n31 16 44 50 21 2 43 39 13 15 15 24 50 39 29 23 19 14 4 7 10 34 37 11 10 20 25 3 20 14 22 14 26 3 44 42 36 26 28 12 37 15 6 20 9 6 2 42 2 28 7 2 45 12 19 44 1 50 7 28 22 17 1 23 15 41 9 21 50 43 12 3 13 42 49 39 7 36 34 36 14 2 23 11 28 13 44 48 12 9 20 9 7 8 1 37 14 2 22 17\r\n",
+                "10"
+            ],
+            [
+                "100\r\n5 10 43 23 29 33 18 27 18 43 4 14 44 31 2 40 38 18 22 2 8 8 50 45 21 33 46 2 41 35 48 43 17 39 7 42 8 1 16 23 38 37 45 24 48 32 17 28 20 45 21 50 30 40 15 29 42 25 8 37 33 30 36 9 46 2 44 48 41 31 11 39 28 50 24 15 14 23 37 48 19 4 49 39 21 35 7 45 3 31 8 25 14 23 19 27 30 4 22 37\r\n",
+                "10"
+            ],
+            [
+                "100\r\n33 8 1 1 32 48 1 11 24 29 44 19 34 14 17 7 14 26 48 42 7 36 9 28 28 3 13 17 49 5 24 13 16 21 7 4 38 22 7 33 31 48 26 21 36 19 25 22 38 50 34 6 20 11 15 17 29 46 9 49 37 43 25 41 28 13 29 18 40 15 6 33 6 11 49 49 20 10 44 6 12 10 29 13 6 3 25 46 7 50 46 42 18 34 28 21 39 5 6 4\r\n",
+                "3"
+            ],
+            [
+                "10\r\n10 5 3 5 5 4 4 4 3 6\r\n",
+                "5"
+            ],
+            [
+                "10\r\n10 9 9 7 9 10 3 6 9 8\r\n",
+                "7"
+            ],
+            [
+                "10\r\n8 8 6 5 4 5 2 10 8 10\r\n",
+                "5"
+            ],
+            [
+                "10\r\n2 2 6 10 4 2 6 8 8 3\r\n",
+                "4"
+            ],
+            [
+                "10\r\n10 6 10 2 7 5 1 10 3 5\r\n",
+                "4"
+            ],
+            [
+                "10\r\n10 1 3 10 9 4 4 6 9 1\r\n",
+                "5"
+            ],
+            [
+                "10\r\n4 9 1 3 8 1 1 7 1 7\r\n",
+                "3"
+            ],
+            [
+                "10\r\n4 3 4 3 3 8 8 5 4 9\r\n",
+                "4"
+            ],
+            [
+                "10\r\n3 6 10 5 7 1 4 3 10 2\r\n",
+                "5"
+            ],
+            [
+                "10\r\n7 6 8 2 6 9 3 5 9 4\r\n",
+                "4"
+            ],
+            [
+                "10\r\n1 1 3 4 8 6 2 9 5 6\r\n",
+                "2"
+            ],
+            [
+                "10\r\n5 5 1 3 1 9 6 7 10 8\r\n",
+                "3"
+            ],
+            [
+                "10\r\n3 9 9 5 3 8 9 5 3 1\r\n",
+                "5"
+            ],
+            [
+                "10\r\n7 2 4 3 7 5 4 3 9 3\r\n",
+                "4"
+            ]
+        ]
+    }
+]

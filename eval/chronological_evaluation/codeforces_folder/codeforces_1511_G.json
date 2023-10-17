@@ -1,0 +1,76 @@
+[
+    {
+        "name": "Chips on a Board",
+        "description": "Alice and Bob have a rectangular board consisting of \n    n\n rows and \n    m\n\ncolumns. Each row contains exactly one chip. Alice and Bob play the following\ngame. They choose two integers \n    l\n and \n    r\n such that \n    1 \n    \u2264 l\n    \n    \u2264 r \n    \u2264 m\n and cut the board in such a way that only the part of it\nbetween column \n    l\n and column \n    r\n (inclusive) remains. So, all columns\nto the left of column \n    l\n and all columns to the right of column \n    r\n\nno longer belong to the board. After cutting the board, they move chips on the\nremaining part of the board (the part from column \n    l\n to column \n    r\n).\nThey make alternating moves, and the player which cannot make a move loses the\ngame. The first move is made by Alice, the second \u2014 by Bob, the third \u2014 by\nAlice, and so on. During their move, the player must choose one of the chips\nfrom the board and move it any positive number of cells to the left (so, if\nthe chip was in column \n    i\n, it can move to any column \n    j < i\n, and the\nchips in the leftmost column cannot be chosen). Alice and Bob have \n    q\n\npairs of numbers \n    L_i\n and \n    R_i\n. For each such pair, they want to\ndetermine who will be the winner of the game if \n    l = L_i\n and \n    r =\n    R_i\n. Note that these games should be considered independently (they don't\naffect the state of the board for the next games), and both Alice and Bob play\noptimally. Input The first line contains two integers \n    n\n and \n    m\n\n(\n    1 \n    \u2264 n, m \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the number of rows and columns on\nthe board, respectively. The second line contains \n    n\n integers \n    c_1,\n    c_2, \n    \u2026, c_n\n (\n    1 \n    \u2264 c_i \n    \u2264 m\n), where \n    c_i\n is the index\nof the column where the chip in the \n    i\n-th row is located (so, the chip in\nthe \n    i\n-th row is in the \n    c_i\n-th column). The third line contains one\ninteger \n    q\n (\n    1 \n    \u2264 q \n    \u2264 2 \n    \u00b7 10^5\n). Then \n    q\n lines\nfollow, the \n    i\n-th of them contains two integers \n    L_i\n and \n    R_i\n\n(\n    1 \n    \u2264 L_i \n    \u2264 R_i \n    \u2264 m\n). Output Print a string of \n    q\n\ncharacters. The \n    i\n-th character should be A if Alice wins the game with\n\n    l = L_i\n and \n    r = R_i\n, or B if Bob wins it. Example Input 8 10 1 3 3\n7 4 2 6 9 7 2 3 1 3 1 4 1 10 5 10 8 10 9 10 Output BAAAAAB\n\n",
+        "cf_contest_id": 1511,
+        "cf_index": "G",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "dp",
+            "games",
+            "two pointers"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "8 10\r\n1 3 3 7 4 2 6 9\r\n7\r\n2 3\r\n1 3\r\n1 4\r\n1 10\r\n5 10\r\n8 10\r\n9 10\r\n",
+                "BAAAAAB"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 5\r\n5 2 1 5 4\r\n5\r\n2 4\r\n3 5\r\n1 4\r\n4 5\r\n4 5\r\n",
+                "AAABB"
+            ],
+            [
+                "3 200000\r\n48816 135120 103672\r\n3\r\n1084 119251\r\n59248 186352\r\n35287 134061\r\n",
+                "AAA"
+            ],
+            [
+                "3 200000\r\n99536 83965 108417\r\n3\r\n93441 148728\r\n158335 162217\r\n19275 68216\r\n",
+                "ABB"
+            ],
+            [
+                "3 200000\r\n15664 8617 121675\r\n3\r\n42695 178206\r\n8289 154510\r\n2372 3263\r\n",
+                "AAB"
+            ],
+            [
+                "3 200000\r\n131792 124757 159125\r\n3\r\n64580 191948\r\n87066 159198\r\n169231 187251\r\n",
+                "AAB"
+            ],
+            [
+                "3 200000\r\n15216 106306 139678\r\n3\r\n94057 117010\r\n122669 157331\r\n79195 171239\r\n",
+                "AAA"
+            ],
+            [
+                "3 200000\r\n98640 22446 177128\r\n3\r\n66264 156239\r\n36108 94652\r\n13350 155227\r\n",
+                "ABA"
+            ],
+            [
+                "3 200000\r\n182065 171290 157682\r\n3\r\n158621 185716\r\n99340 114885\r\n139215 147506\r\n",
+                "ABB"
+            ],
+            [
+                "3 200000\r\n98193 120135 138235\r\n3\r\n39386 107875\r\n62811 185149\r\n114365 123203\r\n",
+                "AAA"
+            ],
+            [
+                "3 200000\r\n148913 12083 142981\r\n3\r\n89832 101568\r\n63926 67498\r\n48521 139895\r\n",
+                "BBB"
+            ],
+            [
+                "3 200000\r\n173809 131738 119568\r\n3\r\n33634 78319\r\n7998 22270\r\n148504 180895\r\n",
+                "BBA"
+            ],
+            [
+                "1 1\r\n1\r\n1\r\n1 1\r\n",
+                "B"
+            ]
+        ]
+    }
+]

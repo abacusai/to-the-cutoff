@@ -1,0 +1,69 @@
+[
+    {
+        "name": "Dependency management",
+        "description": "Polycarp is currently developing a project in Vaja language and using a\npopular dependency management system called Vamen. From Vamen's point of view\nboth Vaja project and libraries are treated projects for simplicity. A project\nin Vaja has its own uniqie non-empty name consisting of lowercase latin\nletters with length not exceeding 10 and version \u2014 positive integer from 1 to\n10^6. Each project (keep in mind that it is determined by both its name and\nversion) might depend on other projects. For sure, there are no cyclic\ndependencies. You're given a list of project descriptions. The first of the\ngiven projects is the one being developed by Polycarp at this moment. Help\nPolycarp determine all projects that his project depends on (directly or via a\ncertain chain). It's possible that Polycarp's project depends on two different\nversions of some project. In this case collision resolving is applied, i.e.\nfor each such project the system chooses the version that minimizes the\ndistance from it to Polycarp's project. If there are several options, the\nnewer (with the maximum version) is preferred. This version is considered\nactual; other versions and their dependencies are ignored. More formal, choose\nsuch a set of projects of minimum possible size that the following conditions\nhold: Polycarp's project is chosen; Polycarp's project depends (directly or\nindirectly) on all other projects in the set; no two projects share the name;\nfor each project x that some other project in the set depends on we have\neither x or some y with other version and shorter chain to Polycarp's project\nchosen. In case of ties the newer one is chosen. Output all Polycarp's\nproject's dependencies (Polycarp's project itself should't be printed) in\nlexicographical order. Input The first line contains an only integer n (1 \u2264 n\n\u2264 1 000) \u2014 the number of projects in Vaja. The following lines contain the\nproject descriptions. Each project is described by a line consisting of its\nname and version separated by space. The next line gives the number of direct\ndependencies (from 0 to n - 1) and the dependencies themselves (one in a line)\nin arbitrary order. Each dependency is specified by its name and version. The\nprojects are also given in arbitrary order, but the first of them is always\nPolycarp's. Project descriptions are separated by one empty line. Refer to\nsamples for better understanding. It's guaranteed that there are no cyclic\ndependencies. Output Output all Polycarp's project's dependencies in\nlexicographical order. Examples Input 4 a 3 2 b 1 c 1 b 2 0 b 1 1 b 2 c 1 1 b\n2 Output 2 b 1 c 1 Input 9 codehorses 5 3 webfrmk 6 mashadb 1 mashadb 2\ncommons 2 0 mashadb 3 0 webfrmk 6 2 mashadb 3 commons 2 extra 4 1 extra 3\nextra 3 0 extra 1 0 mashadb 1 1 extra 3 mashadb 2 1 extra 1 Output 4 commons 2\nextra 1 mashadb 2 webfrmk 6 Input 3 abc 1 2 abc 3 cba 2 abc 3 0 cba 2 0 Output\n1 cba 2 Note The first sample is given in the pic below. Arrow from A to B\nmeans that B directly depends on A. Projects that Polycarp's project \u00aba\u00bb\n(version 3) depends on are painted black. The second sample is again given in\nthe pic below. Arrow from A to B means that B directly depends on A. Projects\nthat Polycarp's project \u00abcodehorses\u00bb (version 5) depends on are paint it\nblack. Note that \u00abextra 1\u00bb is chosen instead of \u00abextra 3\u00bb since \u00abmashadb 1\u00bb\nand all of its dependencies are ignored due to \u00abmashadb 2\u00bb.\n\n",
+        "cf_contest_id": 928,
+        "cf_index": "C",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "graphs",
+            "implementation"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\na 3\r\n2\r\nb 1\r\nc 1\r\n\r\nb 2\r\n0\r\n\r\nb 1\r\n1\r\nb 2\r\n\r\nc 1\r\n1\r\nb 2\r\n",
+                "2\r\nb 1\r\nc 1\r\n"
+            ],
+            [
+                "9\r\ncodehorses 5\r\n3\r\nwebfrmk 6\r\nmashadb 1\r\nmashadb 2\r\n\r\ncommons 2\r\n0\r\n\r\nmashadb 3\r\n0\r\n\r\nwebfrmk 6\r\n2\r\nmashadb 3\r\ncommons 2\r\n\r\nextra 4\r\n1\r\nextra 3\r\n\r\nextra 3\r\n0\r\n\r\nextra 1\r\n0\r\n\r\nmashadb 1\r\n1\r\nextra 3\r\n\r\nmashadb 2\r\n1\r\nextra 1\r\n",
+                "4\r\ncommons 2\r\nextra 1\r\nmashadb 2\r\nwebfrmk 6\r\n"
+            ],
+            [
+                "3\r\nabc 1\r\n2\r\nabc 3\r\ncba 2\r\n\r\nabc 3\r\n0\r\n\r\ncba 2\r\n0\r\n",
+                "1\r\ncba 2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\nabc 1000000\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\nppdpd 283157\r\n1\r\npddpdpp 424025\r\n\r\nppdpd 529292\r\n1\r\nppdpd 283157\r\n\r\npddpdpp 424025\r\n0\r\n",
+                "1\r\npddpdpp 424025\r\n"
+            ],
+            [
+                "5\r\nabbzzz 646068\r\n0\r\n\r\nzabza 468048\r\n2\r\nbb 902619\r\nzabza 550912\r\n\r\nzabza 217401\r\n2\r\nabbzzz 646068\r\nbb 902619\r\n\r\nzabza 550912\r\n1\r\nzabza 217401\r\n\r\nbb 902619\r\n1\r\nabbzzz 646068\r\n",
+                "0\r\n"
+            ],
+            [
+                "5\r\nyyyy 223967\r\n1\r\nyyyyyyy 254197\r\n\r\nyyyyyyy 254197\r\n0\r\n\r\ny 442213\r\n0\r\n\r\ny 965022\r\n1\r\nyyyyyyy 254197\r\n\r\nyyyy 766922\r\n4\r\nyyyyyyy 254197\r\ny 442213\r\nyyyy 223967\r\ny 965022\r\n",
+                "1\r\nyyyyyyy 254197\r\n"
+            ],
+            [
+                "3\r\nvvgvvgv 991444\r\n1\r\ngvgvgvgvgg 206648\r\n\r\nvvgvvgv 296188\r\n0\r\n\r\ngvgvgvgvgg 206648\r\n1\r\nvvgvvgv 296188\r\n",
+                "1\r\ngvgvgvgvgg 206648\r\n"
+            ],
+            [
+                "5\r\ntctocototo 984516\r\n1\r\ncttocottt 486791\r\n\r\ntctocototo 688522\r\n2\r\ncttocottt 486791\r\ntctocototo 984516\r\n\r\ncttocottt 486791\r\n0\r\n\r\ntctocototo 676435\r\n1\r\ntctocototo 394244\r\n\r\ntctocototo 394244\r\n2\r\ntctocototo 688522\r\ncttocottt 486791\r\n",
+                "1\r\ncttocottt 486791\r\n"
+            ],
+            [
+                "5\r\nggggggggg 202537\r\n4\r\ngggggggg 868552\r\ngggg 234633\r\ngggg 402994\r\ngggggggg 86863\r\n\r\ngggg 402994\r\n0\r\n\r\ngggggggg 868552\r\n1\r\ngggg 234633\r\n\r\ngggg 234633\r\n1\r\ngggg 402994\r\n\r\ngggggggg 86863\r\n0\r\n",
+                "2\r\ngggg 402994\r\ngggggggg 868552\r\n"
+            ],
+            [
+                "4\r\ncf 1\r\n2\r\ndb 1\r\ndb 2\r\n\r\ndb 2\r\n0\r\n\r\ndb 1\r\n1\r\nold 1\r\n\r\nold 1\r\n0\r\n",
+                "1\r\ndb 2\r\n"
+            ],
+            [
+                "5\r\ncf 1\r\n2\r\ndb 1\r\ndb 2\r\n\r\ndb 2\r\n1\r\nold 1\r\n\r\ndb 1\r\n1\r\nold 2\r\n\r\nold 1\r\n0\r\n\r\nold 2\r\n0\r\n",
+                "2\r\ndb 2\r\nold 1\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,104 @@
+[
+    {
+        "name": "Culture Code",
+        "description": "There are famous Russian nesting dolls named matryoshkas sold in one of the\nsouvenir stores nearby, and you'd like to buy several of them. The store has\n\n    n\n different matryoshkas. Any matryoshka is a figure of volume\n\n    out_i\n with an empty space inside of volume \n    in_i\n (of course,\n\n    out_i > in_i\n). You don't have much free space inside your bag, but,\nfortunately, you know that matryoshkas can be nested one inside another.\nFormally, let's call a set of matryoshkas nested if we can rearrange dolls in\nsuch a way, that the first doll can be nested inside the second one, the\nsecond doll \u2014 inside the third one and so on. Matryoshka \n    i\n can be nested\ninside matryoshka \n    j\n if \n    out_i \n    \u2264 in_j\n. So only the last doll\nwill take space inside your bag. Let's call extra space of a nested set of\ndolls as a total volume of empty space inside this structure. Obviously, it's\nequal to \n    in_i_1 + (in_i_2 - out_i_1) + (in_i_3 - out_i_2) +\n    \n    \u2026 + (in_i_k - out_i_k-1)\n, where \n    i_1\n, \n    i_2\n, ...,\n\n    i_k\n are the indices of the chosen dolls in the order they are nested in\neach other. Finally, let's call a nested subset of the given sequence as big\nenough if there isn't any doll from the sequence that can be added to the\nnested subset without breaking its nested property. You want to buy many\nmatryoshkas, so you should choose a big enough nested subset to buy it. But\nyou will be disappointed if too much space in your bag will be wasted, so you\nwant to choose a big enough subset so that its extra space is minimum possible\namong all big enough subsets. Now you wonder, how many different nested\nsubsets meet these conditions (they are big enough, and there is no big enough\nsubset such that its extra space is less than the extra space of the chosen\nsubset). Two subsets are considered different if there exists at least one\nindex \n    i\n such that one of the subsets contains the \n    i\n-th doll, and\nanother subset doesn't. Since the answer can be large, print it modulo \n    10^9\n    + 7\n. Input The first line contains a single integer \n    n\n (\n    1 \n    \u2264 n\n    \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the number of matryoshkas. The next \n    n\n lines\ncontain a description of each doll: two integers \n    out_i\n and \n    in_i\n\n(\n    1 \n    \u2264 in_i < out_i \n    \u2264 10^9\n) \u2014 the outer and inners volumes of the\n\n    i\n-th matryoshka. Output Print one integer \u2014 the number of big enough\nnested subsets such that extra space of each of these subsets is minimum\npossible. Since the answer can be large, print it modulo \n    10^9 + 7\n.\nExample Input 7 4 1 4 2 4 2 2 1 5 4 6 4 3 2 Output 6 Note There are \n    6\n\nbig enough nested subsets with minimum possible extra space in the example:\n\n    1, 5\n: we can't add any other matryoshka and keep it nested;\nit's extra space is \n    1\n; \n    1, 6\n; \n    2, 4, 5\n;\n\n    2, 4, 6\n; \n    3, 4, 5\n; \n    3, 4, 6\n.\nThere are no more \"good\" subsets because, for example, subset \n    6,\n    7\n is not big enough (we can add the \n    4\n-th matryoshka to it) or\nsubset \n    4, 6, 7\n has extra space equal to \n    2\n.\n\n",
+        "cf_contest_id": 1197,
+        "cf_index": "E",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "combinatorics",
+            "data structures",
+            "dp",
+            "shortest paths",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7\r\n4 1\r\n4 2\r\n4 2\r\n2 1\r\n5 4\r\n6 4\r\n3 2\r\n",
+                "6\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n1000000000 999999999\r\n",
+                "1\r\n"
+            ],
+            [
+                "10\r\n17 15\r\n5 4\r\n18 16\r\n13 12\r\n19 17\r\n3 1\r\n12 10\r\n5 3\r\n18 16\r\n11 10\r\n",
+                "1\r\n"
+            ],
+            [
+                "10\r\n19 17\r\n15 14\r\n10 7\r\n15 14\r\n5 2\r\n13 10\r\n20 18\r\n13 10\r\n6 4\r\n16 15\r\n",
+                "4\r\n"
+            ],
+            [
+                "10\r\n12 11\r\n14 13\r\n17 16\r\n3 2\r\n13 12\r\n4 3\r\n16 15\r\n16 15\r\n10 9\r\n12 11\r\n",
+                "4\r\n"
+            ],
+            [
+                "10\r\n4 2\r\n18 16\r\n8 7\r\n18 17\r\n18 16\r\n5 4\r\n3 2\r\n18 17\r\n11 9\r\n5 4\r\n",
+                "4\r\n"
+            ],
+            [
+                "10\r\n15 12\r\n13 10\r\n9 6\r\n11 8\r\n9 6\r\n11 8\r\n14 12\r\n7 6\r\n15 14\r\n9 8\r\n",
+                "6\r\n"
+            ],
+            [
+                "10\r\n7 6\r\n15 14\r\n6 5\r\n8 7\r\n9 8\r\n17 16\r\n9 8\r\n2 1\r\n3 2\r\n5 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "10\r\n13 11\r\n5 4\r\n19 17\r\n4 3\r\n7 5\r\n7 5\r\n20 19\r\n17 16\r\n14 13\r\n13 11\r\n",
+                "4\r\n"
+            ],
+            [
+                "10\r\n19 17\r\n14 11\r\n16 15\r\n19 18\r\n12 9\r\n5 3\r\n18 16\r\n13 12\r\n13 11\r\n3 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "10\r\n3 2\r\n15 14\r\n9 8\r\n13 12\r\n5 4\r\n18 17\r\n3 2\r\n3 2\r\n15 14\r\n12 11\r\n",
+                "6\r\n"
+            ],
+            [
+                "10\r\n3 2\r\n12 11\r\n13 12\r\n9 7\r\n20 18\r\n15 14\r\n10 8\r\n19 18\r\n15 14\r\n4 3\r\n",
+                "8\r\n"
+            ],
+            [
+                "20\r\n41 31\r\n51 42\r\n41 31\r\n51 42\r\n9 3\r\n41 31\r\n16 12\r\n31 23\r\n41 31\r\n20 16\r\n18 14\r\n31 23\r\n18 14\r\n30 22\r\n8 2\r\n9 3\r\n51 42\r\n31 23\r\n51 42\r\n8 2\r\n",
+                "256\r\n"
+            ],
+            [
+                "15\r\n51 43\r\n11 2\r\n29 22\r\n20 11\r\n28 21\r\n21 12\r\n35 31\r\n49 41\r\n36 32\r\n29 22\r\n10 1\r\n10 1\r\n50 42\r\n36 32\r\n20 11\r\n",
+                "81\r\n"
+            ],
+            [
+                "20\r\n51 47\r\n46 42\r\n25 22\r\n41 31\r\n11 2\r\n27 24\r\n18 13\r\n49 45\r\n16 11\r\n19 14\r\n10 1\r\n30 27\r\n10 1\r\n41 31\r\n16 11\r\n10 1\r\n41 31\r\n41 31\r\n31 28\r\n49 45\r\n",
+                "256\r\n"
+            ],
+            [
+                "15\r\n38 33\r\n38 33\r\n21 11\r\n51 41\r\n30 21\r\n9 1\r\n21 11\r\n31 22\r\n10 2\r\n51 41\r\n51 41\r\n21 11\r\n38 33\r\n30 21\r\n11 3\r\n",
+                "243\r\n"
+            ],
+            [
+                "20\r\n30 21\r\n30 21\r\n19 13\r\n51 41\r\n40 32\r\n9 7\r\n39 31\r\n40 32\r\n21 15\r\n17 11\r\n41 33\r\n20 14\r\n30 21\r\n6 4\r\n11 9\r\n51 41\r\n51 41\r\n51 41\r\n11 9\r\n31 22\r\n",
+                "512\r\n"
+            ],
+            [
+                "15\r\n51 44\r\n21 14\r\n51 44\r\n27 21\r\n28 22\r\n39 31\r\n40 32\r\n50 43\r\n40 32\r\n27 21\r\n11 1\r\n20 13\r\n21 14\r\n11 1\r\n11 1\r\n",
+                "81\r\n"
+            ],
+            [
+                "4\r\n3 2\r\n10 2\r\n4 3\r\n5 4\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

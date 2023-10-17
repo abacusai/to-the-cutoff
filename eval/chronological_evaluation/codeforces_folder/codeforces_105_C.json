@@ -1,0 +1,73 @@
+[
+    {
+        "name": "Item World",
+        "description": "Each item in the game has a level. The higher the level is, the higher basic\nparameters the item has. We shall consider only the following basic\nparameters: attack (atk), defense (def) and resistance to different types of\nimpact (res). Each item belongs to one class. In this problem we will only\nconsider three of such classes: weapon, armor, orb. Besides, there's a whole\nnew world hidden inside each item. We can increase an item's level travelling\nto its world. We can also capture the so-called residents in the Item World\nResidents are the creatures that live inside items. Each resident gives some\nbonus to the item in which it is currently located. We will only consider\nresidents of types: gladiator (who improves the item's atk), sentry (who\nimproves def) and physician (who improves res). Each item has the size\nparameter. The parameter limits the maximum number of residents that can live\ninside an item. We can move residents between items. Within one moment of time\nwe can take some resident from an item and move it to some other item if it\nhas a free place for a new resident. We cannot remove a resident from the\nitems and leave outside \u2014 any of them should be inside of some item at any\nmoment of time. Laharl has a certain number of items. He wants to move the\nresidents between items so as to equip himself with weapon, armor and a\ndefensive orb. The weapon's atk should be largest possible in the end. Among\nall equipping patterns containing weapon's maximum atk parameter we should\nchoose the ones where the armor\u2019s def parameter is the largest possible. Among\nall such equipment patterns we should choose the one where the defensive orb\nwould have the largest possible res parameter. Values of the parameters def\nand res of weapon, atk and res of armor and atk and def of orb are indifferent\nfor Laharl. Find the optimal equipment pattern Laharl can get. Input The first\nline contains number n (3 \u2264 n \u2264 100) \u2014 representing how many items Laharl has.\nThen follow n lines. Each line contains description of an item. The\ndescription has the following form: \"name class atk def res size\" \u2014 the item's\nname, class, basic attack, defense and resistance parameters and its size\ncorrespondingly. name and class are strings and atk, def, res and size are\nintegers. name consists of lowercase Latin letters and its length can range\nfrom 1 to 10, inclusive. class can be \"weapon\", \"armor\" or \"orb\". 0 \u2264 atk,\ndef, res \u2264 1000. 1 \u2264 size \u2264 10. It is guaranteed that Laharl has at least one\nitem of each class. The next line contains an integer k (1 \u2264 k \u2264 1000) \u2014 the\nnumber of residents. Then k lines follow. Each of them describes a resident. A\nresident description looks like: \"name type bonus home\" \u2014 the resident's name,\nhis type, the number of points the resident adds to the item's corresponding\nparameter and the name of the item which currently contains the resident.\nname, type and home are strings and bonus is an integer. name consists of\nlowercase Latin letters and its length can range from 1 to 10, inclusive. type\nmay be \"gladiator\", \"sentry\" or \"physician\". 1 \u2264 bonus \u2264 100. It is guaranteed\nthat the number of residents in each item does not exceed the item's size. The\nnames of all items and residents are pairwise different. All words and numbers\nin the input are separated by single spaces. Output Print on the first line\nthe name of the weapon in the optimal equipping pattern; then print the number\nof residents the weapon contains; then print the residents' names. Print on\nthe second and third lines in the same form the names of the armor and\ndefensive orb as well as the residents they contain. Use single spaces for\nseparation. If there are several possible solutions, print any of them.\nExamples Input 4 sword weapon 10 2 3 2 pagstarmor armor 0 15 3 1 iceorb orb 3\n2 13 2 longbow weapon 9 1 2 1 5 mike gladiator 5 longbow bobby sentry 6\npagstarmor petr gladiator 7 iceorb teddy physician 6 sword blackjack sentry 8\nsword Output sword 2 petr mike pagstarmor 1 blackjack iceorb 2 teddy bobby\nInput 4 sword weapon 10 2 3 2 pagstarmor armor 0 15 3 1 iceorb orb 3 2 13 2\nlongbow weapon 9 1 2 1 6 mike gladiator 5 longbow bobby sentry 6 pagstarmor\npetr gladiator 7 iceorb teddy physician 6 sword blackjack sentry 8 sword joe\nphysician 6 iceorb Output longbow 1 mike pagstarmor 1 bobby iceorb 2 petr joe\nNote In the second sample we have no free space inside the items, therefore we\ncannot move the residents between them.\n\n",
+        "cf_contest_id": 105,
+        "cf_index": "C",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\nsword weapon 10 2 3 2\r\npagstarmor armor 0 15 3 1\r\niceorb orb 3 2 13 2\r\nlongbow weapon 9 1 2 1\r\n5\r\nmike gladiator 5 longbow\r\nbobby sentry 6 pagstarmor\r\npetr gladiator 7 iceorb\r\nteddy physician 6 sword\r\nblackjack sentry 8 sword\r\n",
+                "sword 2 mike petr \r\npagstarmor 1 blackjack \r\niceorb 1 teddy \r\n"
+            ],
+            [
+                "4\r\nsword weapon 10 2 3 2\r\npagstarmor armor 0 15 3 1\r\niceorb orb 3 2 13 2\r\nlongbow weapon 9 1 2 1\r\n6\r\nmike gladiator 5 longbow\r\nbobby sentry 6 pagstarmor\r\npetr gladiator 7 iceorb\r\nteddy physician 6 sword\r\nblackjack sentry 8 sword\r\njoe physician 6 iceorb\r\n",
+                "longbow 1 mike \r\npagstarmor 1 bobby \r\niceorb 2 petr joe \r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\nweapon weapon 10 5 2 4\r\narmor armor 0 20 0 6\r\norb orb 3 4 25 3\r\n3\r\nx gladiator 12 armor\r\ny sentry 13 orb\r\nz physician 5 weapon\r\n",
+                "weapon 1 x \r\narmor 1 y \r\norb 1 z \r\n"
+            ],
+            [
+                "6\r\nc armor 0 13 0 3\r\na weapon 23 0 0 3\r\nb weapon 20 0 0 4\r\ne orb 0 0 13 3\r\nd armor 0 15 0 4\r\nf orb 0 0 17 5\r\n5\r\nj gladiator 7 a\r\nh gladiator 3 f\r\ng gladiator 4 e\r\ni gladiator 7 a\r\nk gladiator 1 b\r\n",
+                "a 3 j g i \r\nd 0 \r\nf 0 \r\n"
+            ],
+            [
+                "6\r\nc armor 0 13 0 3\r\na weapon 23 0 0 3\r\nb weapon 10 0 0 4\r\ne orb 0 0 19 3\r\nd armor 0 15 0 4\r\nf orb 0 0 17 5\r\n5\r\nj gladiator 7 e\r\nh gladiator 5 f\r\ng gladiator 4 c\r\ni gladiator 7 b\r\nk gladiator 1 d\r\n",
+                "a 3 j h i \r\nd 1 k \r\ne 0 \r\n"
+            ],
+            [
+                "6\r\nc armor 0 14 0 3\r\na weapon 23 0 0 3\r\nb weapon 21 0 0 4\r\ne orb 0 0 13 3\r\nd armor 0 5 0 4\r\nf orb 0 0 17 5\r\n5\r\nj gladiator 7 f\r\nh gladiator 5 a\r\ng gladiator 6 c\r\ni gladiator 7 d\r\nk gladiator 1 d\r\n",
+                "b 4 j h g i \r\nc 0 \r\nf 0 \r\n"
+            ],
+            [
+                "5\r\nxx weapon 15 0 0 2\r\nyy armor 0 14 0 2\r\nzz orb 0 0 16 2\r\npp weapon 1 0 0 5\r\nqq armor 0 1 0 4\r\n9\r\na gladiator 2 pp\r\nb gladiator 3 pp\r\nc gladiator 4 pp\r\nd sentry 1 pp\r\ne sentry 2 pp\r\nf sentry 3 qq\r\ng physician 2 qq\r\nh physician 3 qq\r\ni physician 3 qq\r\n",
+                "xx 2 b c \r\nyy 2 e f \r\nzz 2 h i \r\n"
+            ],
+            [
+                "5\r\npixiebow weapon 10 0 7 2\r\nlance weapon 12 4 2 1\r\nbushido armor 0 14 1 4\r\nstarorb orb 2 3 16 3\r\nmoonorb orb 3 4 8 1\r\n8\r\nste gladiator 10 moonorb\r\nphi gladiator 8 starorb\r\nhjk gladiator 5 starorb\r\npoi gladiator 7 starorb\r\njor gladiator 4 lance\r\npui gladiator 6 bushido\r\nzea gladiator 1 bushido\r\nqwe gladiator 2 pixiebow\r\n",
+                "pixiebow 2 ste phi \r\nbushido 2 pui zea \r\nstarorb 3 hjk poi qwe \r\n"
+            ],
+            [
+                "5\r\npixiebow weapon 10 0 7 2\r\nlance weapon 12 4 2 1\r\nbushido armor 0 14 1 4\r\nstarorb orb 2 3 16 3\r\nmoonorb orb 3 4 8 1\r\n11\r\nste gladiator 10 moonorb\r\nphi gladiator 8 starorb\r\nhjk gladiator 5 starorb\r\npoi gladiator 7 starorb\r\njor gladiator 4 lance\r\npui gladiator 6 bushido\r\nzea gladiator 1 bushido\r\nqwe gladiator 2 pixiebow\r\nkkk physician 20 bushido\r\nlkh sentry 4 pixiebow\r\noop sentry 8 bushido\r\n",
+                "lance 1 jor \r\nbushido 4 pui zea kkk oop \r\nstarorb 3 phi hjk poi \r\n"
+            ],
+            [
+                "3\r\nhcyc weapon 646 755 45 5\r\nhfh armor 556 875 434 6\r\njkob orb 654 0 65 7\r\n1\r\njhcytccc sentry 76 jkob\r\n",
+                "hcyc 0 \r\nhfh 1 jhcytccc \r\njkob 0 \r\n"
+            ],
+            [
+                "5\r\naxgovq orb 75 830 793 3\r\nzeckskde weapon 316 351 917 2\r\nnrtbk armor 540 178 332 2\r\nnhjodogdd armor 880 453 186 2\r\ndxrgvjhvhg weapon 961 616 561 3\r\n7\r\nzvi gladiator 16 axgovq\r\nrq gladiator 52 axgovq\r\njlr physician 69 zeckskde\r\njackbeadx sentry 90 zeckskde\r\nvuhpq gladiator 23 nrtbk\r\nvfhyjtps physician 88 nhjodogdd\r\nrb gladiator 90 nhjodogdd\r\n",
+                "dxrgvjhvhg 3 rq vuhpq rb \r\nnhjodogdd 1 jackbeadx \r\naxgovq 2 jlr vfhyjtps \r\n"
+            ],
+            [
+                "5\r\nhs orb 830 875 879 3\r\nfudflb weapon 13 854 317 1\r\nwwvhixixe armor 500 285 382 2\r\nh orb 58 57 409 2\r\ny weapon 734 408 297 4\r\n12\r\nwvxwgjoera physician 55 hs\r\nusukedr sentry 41 hs\r\niu physician 100 hs\r\ngixlx gladiator 42 fudflb\r\nrd sentry 95 wwvhixixe\r\nbaff sentry 6 wwvhixixe\r\nwkhxoubhy sentry 73 h\r\niat physician 3 h\r\nc sentry 24 y\r\noveuaziss gladiator 54 y\r\nbyfhpjezzv sentry 18 y\r\njxnpuofle gladiator 65 y\r\n",
+                "y 4 c oveuaziss byfhpjezzv jxnpuofle \r\nwwvhixixe 2 rd baff \r\nhs 3 wvxwgjoera usukedr iu \r\n"
+            ],
+            [
+                "4\r\nsword weapon 0 0 0 2\r\npagstarmor armor 0 0 0 1\r\niceorb orb 0 0 0 2\r\nlongbow weapon 0 0 0 1\r\n1\r\nteddy physician 1 iceorb\r\n",
+                "sword 0 \r\npagstarmor 0 \r\niceorb 1 teddy \r\n"
+            ]
+        ]
+    }
+]

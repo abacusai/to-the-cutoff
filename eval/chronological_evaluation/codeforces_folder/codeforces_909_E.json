@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Coprocessor",
+        "description": "You are given a program you want to execute as a set of tasks organized in a\ndependency graph. The dependency graph is a directed acyclic graph: each task\ncan depend on results of one or several other tasks, and there are no directed\ncircular dependencies between tasks. A task can only be executed if all tasks\nit depends on have already completed. Some of the tasks in the graph can only\nbe executed on a coprocessor, and the rest can only be executed on the main\nprocessor. In one coprocessor call you can send it a set of tasks which can\nonly be executed on it. For each task of the set, all tasks on which it\ndepends must be either already completed or be included in the set. The main\nprocessor starts the program execution and gets the results of tasks executed\non the coprocessor automatically. Find the minimal number of coprocessor calls\nwhich are necessary to execute the given program. Input The first line\ncontains two space-separated integers N (1 \u2264 N \u2264 10^5) \u2014 the total number of\ntasks given, and M (0 \u2264 M \u2264 10^5) \u2014 the total number of dependencies between\ntasks. The next line contains N space-separated integers . If Ei = 0, task i\ncan only be executed on the main processor, otherwise it can only be executed\non the coprocessor. The next M lines describe the dependencies between tasks.\nEach line contains two space-separated integers T1 and T2 and means that task\nT1 depends on task T2 (T1 \u2260 T2). Tasks are indexed from 0 to N - 1. All M\npairs (T1, T2) are distinct. It is guaranteed that there are no circular\ndependencies between tasks. Output Output one line containing an integer \u2014 the\nminimal number of coprocessor calls necessary to execute the program. Examples\nInput 4 3 0 1 0 1 0 1 1 2 2 3 Output 2 Input 4 3 1 1 1 0 0 1 0 2 3 0 Output 1\nNote In the first test, tasks 1 and 3 can only be executed on the coprocessor.\nThe dependency graph is linear, so the tasks must be executed in order 3 -> 2\n-> 1 -> 0. You have to call coprocessor twice: first you call it for task 3,\nthen you execute task 2 on the main processor, then you call it for for task\n1, and finally you execute task 0 on the main processor. In the second test,\ntasks 0, 1 and 2 can only be executed on the coprocessor. Tasks 1 and 2 have\nno dependencies, and task 0 depends on tasks 1 and 2, so all three tasks 0, 1\nand 2 can be sent in one coprocessor call. After that task 3 is executed on\nthe main processor.\n\n",
+        "cf_contest_id": 909,
+        "cf_index": "E",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "greedy"
+        ],
+        "time_limit_seconds": 1.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 3\r\n0 1 0 1\r\n0 1\r\n1 2\r\n2 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 3\r\n1 1 1 0\r\n0 1\r\n0 2\r\n3 0\r\n",
+                "1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 39\r\n0 1 0 1 0 1 1 0 1 1\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n0 5\r\n0 6\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n2 9\r\n3 4\r\n3 6\r\n3 7\r\n3 8\r\n3 9\r\n4 5\r\n4 6\r\n4 7\r\n4 9\r\n5 6\r\n5 7\r\n5 8\r\n5 9\r\n6 8\r\n6 9\r\n7 8\r\n7 9\r\n8 9\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 16\r\n0 1 1 0 0 1 1 0 0 1\r\n0 2\r\n0 3\r\n1 2\r\n1 3\r\n2 4\r\n2 5\r\n3 4\r\n3 5\r\n4 6\r\n4 7\r\n5 6\r\n5 7\r\n6 8\r\n6 9\r\n7 8\r\n7 9\r\n",
+                "3\r\n"
+            ],
+            [
+                "1 0\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 0\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\n0 1\r\n0 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\n1 0\r\n0 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 19\r\n0 0 0 0 0 0 0 0 1 1\r\n0 1\r\n0 3\r\n0 4\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 7\r\n1 8\r\n1 9\r\n2 3\r\n2 4\r\n3 4\r\n3 5\r\n4 6\r\n4 8\r\n5 7\r\n6 7\r\n7 9\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 29\r\n0 1 1 1 1 1 1 0 1 0\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n0 5\r\n0 6\r\n0 8\r\n1 2\r\n1 3\r\n1 4\r\n1 7\r\n1 8\r\n1 9\r\n2 3\r\n2 5\r\n2 7\r\n2 8\r\n2 9\r\n3 4\r\n3 9\r\n4 5\r\n4 8\r\n5 6\r\n5 7\r\n6 7\r\n6 8\r\n6 9\r\n7 8\r\n8 9\r\n",
+                "2\r\n"
+            ],
+            [
+                "10 9\r\n1 1 1 0 1 1 0 1 0 1\r\n0 1\r\n0 4\r\n0 5\r\n1 2\r\n1 3\r\n2 9\r\n3 6\r\n6 7\r\n7 8\r\n",
+                "2\r\n"
+            ],
+            [
+                "10 14\r\n1 1 0 0 1 0 1 0 1 1\r\n0 1\r\n0 2\r\n0 4\r\n0 9\r\n1 3\r\n2 5\r\n3 4\r\n3 6\r\n3 8\r\n4 9\r\n5 6\r\n6 7\r\n7 8\r\n7 9\r\n",
+                "3\r\n"
+            ],
+            [
+                "10 19\r\n0 1 0 1 1 1 1 1 1 1\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n0 8\r\n0 9\r\n1 4\r\n1 8\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n2 9\r\n3 6\r\n4 5\r\n4 7\r\n5 8\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 24\r\n0 1 0 0 0 1 0 0 0 1\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n0 6\r\n0 9\r\n1 3\r\n1 4\r\n1 7\r\n1 9\r\n2 4\r\n2 5\r\n2 7\r\n2 8\r\n3 4\r\n3 6\r\n4 5\r\n4 6\r\n5 6\r\n5 7\r\n6 7\r\n6 9\r\n7 8\r\n8 9\r\n",
+                "3\r\n"
+            ],
+            [
+                "10 29\r\n0 1 1 1 0 1 0 1 1 1\r\n0 1\r\n0 2\r\n0 4\r\n0 7\r\n0 8\r\n1 2\r\n1 4\r\n1 5\r\n1 7\r\n1 8\r\n1 9\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n3 5\r\n3 6\r\n3 7\r\n4 5\r\n4 6\r\n4 9\r\n5 7\r\n5 8\r\n6 8\r\n7 8\r\n7 9\r\n8 9\r\n",
+                "2\r\n"
+            ],
+            [
+                "10 39\r\n1 1 1 1 1 1 1 1 1 1\r\n0 1\r\n0 2\r\n0 3\r\n0 5\r\n0 6\r\n0 7\r\n0 8\r\n0 9\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n2 9\r\n3 4\r\n3 5\r\n3 7\r\n3 8\r\n3 9\r\n4 5\r\n4 6\r\n5 6\r\n5 7\r\n5 8\r\n5 9\r\n6 7\r\n6 8\r\n7 8\r\n7 9\r\n8 9\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

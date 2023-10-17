@@ -1,0 +1,98 @@
+[
+    {
+        "name": "Hierarchy",
+        "description": "Nick's company employed n people. Now Nick needs to build a tree hierarchy of\n\u00absupervisor-surbodinate\u00bb relations in the company (this is to say that each\nemployee, except one, has exactly one supervisor). There are m applications\nwritten in the following form: \u00abemployee ai is ready to become a supervisor of\nemployee bi at extra cost ci\u00bb. The qualification qj of each employee is known,\nand for each application the following is true: qai > qbi. Would you help Nick\ncalculate the minimum cost of such a hierarchy, or find out that it is\nimpossible to build it. Input The first input line contains integer n (1 \u2264 n \u2264\n1000) \u2014 amount of employees in the company. The following line contains n\nspace-separated numbers qj (0 \u2264 qj \u2264 10^6)\u2014 the employees' qualifications. The\nfollowing line contains number m (0 \u2264 m \u2264 10000) \u2014 amount of received\napplications. The following m lines contain the applications themselves, each\nof them in the form of three space-separated numbers: ai, bi and ci (1 \u2264 ai,\nbi \u2264 n, 0 \u2264 ci \u2264 10^6). Different applications can be similar, i.e. they can\ncome from one and the same employee who offered to become a supervisor of the\nsame person but at a different cost. For each application qai > qbi. Output\nOutput the only line \u2014 the minimum cost of building such a hierarchy, or -1 if\nit is impossible to build it. Examples Input 4 7 2 3 1 4 1 2 5 2 4 1 3 4 1 1 3\n5 Output 11 Input 3 1 2 3 2 3 1 2 3 1 3 Output -1 Note In the first sample one\nof the possible ways for building a hierarchy is to take applications with\nindexes 1, 2 and 4, which give 11 as the minimum total cost. In the second\nsample it is impossible to build the required hierarchy, so the answer is -1.\n\n",
+        "cf_contest_id": 17,
+        "cf_index": "B",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dsu",
+            "greedy",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 64.0,
+        "public_cases": [
+            [
+                "4\r\n7 2 3 1\r\n4\r\n1 2 5\r\n2 4 1\r\n3 4 1\r\n1 3 5\r\n",
+                "11\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n2\r\n3 1 2\r\n3 1 3\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n2\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n5 3\r\n4\r\n1 2 0\r\n1 2 5\r\n1 2 0\r\n1 2 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n9 4 5\r\n5\r\n3 2 4\r\n1 2 4\r\n3 2 8\r\n1 3 5\r\n3 2 5\r\n",
+                "9\r\n"
+            ],
+            [
+                "3\r\n2 5 9\r\n5\r\n3 1 7\r\n2 1 1\r\n2 1 6\r\n2 1 2\r\n3 1 5\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3\r\n6 2 9\r\n5\r\n1 2 10\r\n3 1 4\r\n1 2 5\r\n1 2 2\r\n3 1 4\r\n",
+                "6\r\n"
+            ],
+            [
+                "4\r\n10 6 7 4\r\n5\r\n1 3 1\r\n3 4 1\r\n3 2 2\r\n1 2 6\r\n1 4 7\r\n",
+                "4\r\n"
+            ],
+            [
+                "4\r\n2 7 0 6\r\n8\r\n4 3 5\r\n2 3 7\r\n4 3 1\r\n2 1 9\r\n1 3 1\r\n1 3 3\r\n2 3 1\r\n1 3 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5\r\n6 8 5 9 0\r\n8\r\n4 2 2\r\n2 3 10\r\n2 3 6\r\n4 5 4\r\n1 3 1\r\n4 3 4\r\n3 5 1\r\n2 3 8\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5\r\n10 9 5 0 3\r\n9\r\n1 5 1\r\n1 4 7\r\n1 4 0\r\n1 4 6\r\n3 4 6\r\n2 3 1\r\n1 2 2\r\n1 2 9\r\n2 3 9\r\n",
+                "4\r\n"
+            ],
+            [
+                "5\r\n3 9 2 1 8\r\n9\r\n2 5 10\r\n1 3 8\r\n3 4 9\r\n5 4 2\r\n2 1 4\r\n5 1 4\r\n2 4 2\r\n1 4 7\r\n5 1 2\r\n",
+                "22\r\n"
+            ],
+            [
+                "5\r\n6 10 7 8 5\r\n10\r\n3 1 5\r\n2 4 1\r\n2 3 2\r\n4 5 9\r\n3 5 0\r\n4 1 9\r\n4 5 2\r\n1 5 8\r\n2 3 7\r\n1 5 1\r\n",
+                "8\r\n"
+            ],
+            [
+                "7\r\n10 0 4 7 3 8 6\r\n10\r\n3 2 4\r\n6 4 3\r\n6 5 1\r\n1 2 1\r\n6 7 6\r\n7 3 9\r\n1 6 3\r\n3 2 1\r\n6 4 4\r\n1 4 4\r\n",
+                "23\r\n"
+            ],
+            [
+                "6\r\n10 2 4 3 1 6\r\n10\r\n1 4 7\r\n1 6 9\r\n6 4 1\r\n4 2 5\r\n4 5 7\r\n6 3 10\r\n3 2 3\r\n3 4 3\r\n6 5 2\r\n1 3 2\r\n",
+                "17\r\n"
+            ],
+            [
+                "1\r\n10\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n10 5\r\n0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2\r\n1000000 999999\r\n1\r\n1 2 1000000\r\n",
+                "1000000\r\n"
+            ],
+            [
+                "4\r\n3 2 2 1\r\n5\r\n1 2 1\r\n1 3 1\r\n1 4 500\r\n2 4 1\r\n3 4 2\r\n",
+                "3\r\n"
+            ]
+        ]
+    }
+]

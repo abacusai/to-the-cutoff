@@ -1,0 +1,175 @@
+[
+    {
+        "name": "Office Keys",
+        "description": "There are n people and k keys on a straight line. Every person wants to get to\nthe office which is located on the line as well. To do that, he needs to reach\nsome point with a key, take the key and then go to the office. Once a key is\ntaken by somebody, it couldn't be taken by anybody else. You are to determine\nthe minimum time needed for all n people to get to the office with keys.\nAssume that people move a unit distance per 1 second. If two people reach a\nkey at the same time, only one of them can take the key. A person can pass\nthrough a point with a key without taking it. Input The first line contains\nthree integers n, k and p (1 \u2264 n \u2264 1 000, n \u2264 k \u2264 2 000, 1 \u2264 p \u2264 10^9) \u2014 the\nnumber of people, the number of keys and the office location. The second line\ncontains n distinct integers a1, a2, ..., an (1 \u2264 ai \u2264 10^9) \u2014 positions in\nwhich people are located initially. The positions are given in arbitrary\norder. The third line contains k distinct integers b1, b2, ..., bk (1 \u2264 bj \u2264\n10^9) \u2014 positions of the keys. The positions are given in arbitrary order.\nNote that there can't be more than one person or more than one key in the same\npoint. A person and a key can be located in the same point. Output Print the\nminimum time (in seconds) needed for all n to reach the office with keys.\nExamples Input 2 4 50 20 100 60 10 40 80 Output 50 Input 1 2 10 11 15 7 Output\n7 Note In the first example the person located at point 20 should take the key\nlocated at point 40 and go with it to the office located at point 50. He\nspends 30 seconds. The person located at point 100 can take the key located at\npoint 80 and go to the office with it. He spends 50 seconds. Thus, after 50\nseconds everybody is in office with keys.\n\n",
+        "cf_contest_id": 830,
+        "cf_index": "A",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "brute force",
+            "dp",
+            "greedy",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 4 50\r\n20 100\r\n60 10 40 80\r\n",
+                "50\r\n"
+            ],
+            [
+                "1 2 10\r\n11\r\n15 7\r\n",
+                "7\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 5 15\r\n10 4\r\n29 23 21 22 26\r\n",
+                "23\r\n"
+            ],
+            [
+                "3 10 1500\r\n106 160 129\r\n1333 1532 1181 1091 1656 1698 1291 1741 1242 1163\r\n",
+                "1394\r\n"
+            ],
+            [
+                "5 20 1\r\n314 316 328 323 321\r\n30 61 11 83 19 63 97 87 14 79 43 57 75 48 47 95 41 27 8 88\r\n",
+                "327\r\n"
+            ],
+            [
+                "20 20 1000000000\r\n911196469 574676950 884047241 984218701 641693148 352743122 616364857 455260052 702604347 921615943 671695009 544819698 768892858 254148055 379968391 65297129 178692403 575557323 307174510 63022600\r\n1621 106 6866 6420 9307 6985 2741 9477 9837 5909 6757 3085 6139 1876 3726 9334 4321 1531 8534 560\r\n",
+                "1984199027\r\n"
+            ],
+            [
+                "40 45 1000\r\n6 55 34 32 20 76 2 84 47 68 31 60 14 70 99 72 21 61 81 79 26 51 96 86 10 1 43 69 87 78 13 11 80 67 50 52 9 29 94 12\r\n1974 1232 234 28 1456 626 408 1086 1525 1209 1096 940 795 1867 548 1774 1993 1199 1112 1087 1923 1156 876 1715 1815 1027 1658 955 398 910 620 1164 749 996 113 109 500 328 800 826 766 518 1474 1038 1029\r\n",
+                "2449\r\n"
+            ],
+            [
+                "50 55 2000\r\n9518 9743 9338 9956 9827 9772 9094 9644 9242 9292 9148 9205 9907 9860 9530 9814 9662 9482 9725 9227 9105 9424 9268 9427 9470 9578 9808 9976 9143 9070 9079 9896 9367 9235 9925 9009 9619 9012 9669 9077 9870 9766 9479 9598 9055 9988 9792 9197 9377 9610\r\n828 656 345 412 69 506 274 994 384 766 587 126 720 227 66 839 997 602 646 955 256 262 243 676 459 83 507 88 559 595 71 154 867 276 487 895 857 888 368 179 813 407 973 780 588 112 815 290 554 230 768 804 974 3 745\r\n",
+                "10833\r\n"
+            ],
+            [
+                "1 1 1\r\n1\r\n1000000000\r\n",
+                "1999999998\r\n"
+            ],
+            [
+                "1 1 1\r\n1000000000\r\n1\r\n",
+                "999999999\r\n"
+            ],
+            [
+                "1 1 1000000000\r\n1000000000\r\n1\r\n",
+                "1999999998\r\n"
+            ],
+            [
+                "1 1 1000000000\r\n1\r\n1000000000\r\n",
+                "999999999\r\n"
+            ],
+            [
+                "2 2 4\r\n3 4\r\n5 6\r\n",
+                "4\r\n"
+            ],
+            [
+                "2 2 5\r\n1 2\r\n3 1000000000\r\n",
+                "1999999993\r\n"
+            ],
+            [
+                "1 1 1000000000\r\n1000000000\r\n1\r\n",
+                "1999999998\r\n"
+            ],
+            [
+                "2 2 1\r\n2 3\r\n4 100\r\n",
+                "196\r\n"
+            ],
+            [
+                "2 2 10\r\n3 12\r\n1 9\r\n",
+                "11\r\n"
+            ],
+            [
+                "3 3 1\r\n1 2 3\r\n999 1000000000 1\r\n",
+                "1999999996\r\n"
+            ],
+            [
+                "1 1 1\r\n1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1 1\r\n1\r\n1000000000\r\n",
+                "1999999998\r\n"
+            ],
+            [
+                "1 1 1000000000\r\n1000000000\r\n10\r\n",
+                "1999999980\r\n"
+            ],
+            [
+                "2 2 7122\r\n123 456\r\n1 4444\r\n",
+                "7243\r\n"
+            ],
+            [
+                "1 1 10\r\n5\r\n15\r\n",
+                "15\r\n"
+            ],
+            [
+                "2 4 1000\r\n1000 999\r\n1 1000 2 999\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2 1000\r\n10 1010\r\n1 1001\r\n",
+                "1008\r\n"
+            ],
+            [
+                "1 1 1\r\n2\r\n1000000000\r\n",
+                "1999999997\r\n"
+            ],
+            [
+                "2 2 3\r\n1 5\r\n5 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 2 5\r\n2 3\r\n4 6\r\n",
+                "4\r\n"
+            ],
+            [
+                "2 2 10\r\n5 6\r\n4 6\r\n",
+                "7\r\n"
+            ],
+            [
+                "3 4 10\r\n5 7 9\r\n6 8 14 4\r\n",
+                "7\r\n"
+            ],
+            [
+                "1 1 10\r\n10\r\n10\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1 50\r\n1\r\n1000000000\r\n",
+                "1999999949\r\n"
+            ],
+            [
+                "1 1 42\r\n666\r\n1337\r\n",
+                "1966\r\n"
+            ],
+            [
+                "2 2 10\r\n9 11\r\n11 8\r\n",
+                "3\r\n"
+            ],
+            [
+                "3 10 5\r\n1 2 3\r\n10000 9999 9998 9997 9996 9995 9994 7 6 5\r\n",
+                "6\r\n"
+            ],
+            [
+                "1 1 2\r\n1\r\n1000000000\r\n",
+                "1999999997\r\n"
+            ],
+            [
+                "2 2 100\r\n99 150\r\n1 150\r\n",
+                "197\r\n"
+            ],
+            [
+                "3 3 4\r\n1 101 102\r\n2 3 100\r\n",
+                "99\r\n"
+            ]
+        ]
+    }
+]

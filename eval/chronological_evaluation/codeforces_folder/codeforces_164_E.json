@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Polycarpus and Tasks",
+        "description": "Polycarpus has many tasks. Each task is characterized by three integers li, ri\nand ti. Three integers (li, ri, ti) mean that to perform task i, one needs to\nchoose an integer si (li \u2264 si; si + ti - 1 \u2264 ri), then the task will be\ncarried out continuously for ti units of time, starting at time si and up to\ntime si + ti - 1, inclusive. In other words, a task is performed for a\ncontinuous period of time lasting ti, should be started no earlier than li,\nand completed no later than ri. Polycarpus's tasks have a surprising property:\nfor any task j, k (with j < k) lj < lk and rj < rk. Let's suppose there is an\nordered set of tasks A, containing |A| tasks. We'll assume that aj = (lj, rj,\ntj) (1 \u2264 j \u2264 |A|). Also, we'll assume that the tasks are ordered by increasing\nlj with the increase in number. Let's consider the following recursive\nfunction f, whose argument is an ordered set of tasks A, and the result is an\ninteger. The function f(A) is defined by the greedy algorithm, which is\ndescribed below in a pseudo-language of programming. Step 1. , ans = 0. Step\n2. We consider all tasks in the order of increasing of their numbers in the\nset A. Lets define the current task counter i = 0. Step 3. Consider the next\ntask: i = i + 1. If i > |A| fulfilled, then go to the 8 step. Step 4. If you\ncan get the task done starting at time si = max(ans + 1, li), then do the task\ni: si = max(ans + 1, li), ans = si + ti - 1, . Go to the next task (step 3).\nStep 5. Otherwise, find such task , that first, task ai can be done at time si\n= max, and secondly, the value of is positive and takes the maximum value\namong all bk that satisfy the first condition. If you can choose multiple\ntasks as bk, choose the one with the maximum number in set A. Step 6. If you\nmanaged to choose task bk, then , . Go to the next task (step 3). Step 7. If\nyou didn't manage to choose task bk, then skip task i. Go to the next task\n(step 3). Step 8. Return ans as a result of executing f(A). Polycarpus got\nentangled in all these formulas and definitions, so he asked you to simulate\nthe execution of the function f, calculate the value of f(A). Input The first\nline of the input contains a single integer n (1 \u2264 n \u2264 10^5) \u2014 the number of\ntasks in set A. Then n lines describe the tasks. The i-th line contains three\nspace-separated integers li, ri, ti (1 \u2264 li \u2264 ri \u2264 10^9, 1 \u2264 ti \u2264 ri - li + 1)\n\u2014 the description of the i-th task. It is guaranteed that for any tasks j, k\n(considering that j < k) the following is true: lj < lk and rj < rk. Output\nFor each task i print a single integer \u2014 the result of processing task i on\nthe i-th iteration of the cycle (step 3) in function f(A). In the i-th line\nprint: 0 \u2014 if you managed to add task i on step 4. -1 \u2014 if you didn't manage\nto add or replace task i (step 7). resi (1 \u2264 resi \u2264 n) \u2014 if you managed to\nreplace the task (step 6): resi equals the task number (in set A), that should\nbe chosen as bk and replaced by task ai. Examples Input 5 1 8 5 2 9 3 3 10 3 8\n11 4 11 12 2 Output 0 0 1 0 -1 Input 13 1 8 5 2 9 4 3 10 1 4 11 3 8 12 5 9 13\n5 10 14 5 11 15 1 12 16 1 13 17 1 14 18 3 15 19 3 16 20 2 Output 0 0 0 2 -1 -1\n0 0 0 0 7 0 12\n\n",
+        "cf_contest_id": 164,
+        "cf_index": "E",
+        "cf_rating": 3100,
+        "difficulty": 0,
+        "cf_tags": [],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n1 8 5\r\n2 9 3\r\n3 10 3\r\n8 11 4\r\n11 12 2\r\n",
+                "0\r\n0\r\n1\r\n0\r\n-1\r\n"
+            ],
+            [
+                "13\r\n1 8 5\r\n2 9 4\r\n3 10 1\r\n4 11 3\r\n8 12 5\r\n9 13 5\r\n10 14 5\r\n11 15 1\r\n12 16 1\r\n13 17 1\r\n14 18 3\r\n15 19 3\r\n16 20 2\r\n",
+                "0\r\n0\r\n0\r\n2\r\n-1\r\n-1\r\n0\r\n0\r\n0\r\n0\r\n7\r\n0\r\n12\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n1 1 1\r\n3 3 1\r\n4 5 1\r\n6 7 2\r\n7 9 2\r\n9 11 1\r\n10 12 3\r\n11 14 3\r\n12 15 2\r\n14 17 3\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n-1\r\n0\r\n0\r\n-1\r\n"
+            ],
+            [
+                "10\r\n10 10 1\r\n11 18 2\r\n17 23 4\r\n24 29 6\r\n25 35 6\r\n26 43 6\r\n29 48 20\r\n31 56 15\r\n34 59 7\r\n41 64 14\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n-1\r\n0\r\n8\r\n0\r\n"
+            ],
+            [
+                "20\r\n1 1001 101\r\n2 1002 101\r\n3 1003 101\r\n4 1004 101\r\n5 1005 101\r\n6 1006 101\r\n7 1007 101\r\n8 1008 101\r\n9 1009 101\r\n10 1010 101\r\n11 1011 100\r\n12 1012 100\r\n13 1013 100\r\n14 1014 100\r\n15 1015 100\r\n16 1016 100\r\n17 1017 100\r\n18 1018 100\r\n19 1019 100\r\n20 1020 100\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n10\r\n9\r\n8\r\n7\r\n6\r\n5\r\n4\r\n3\r\n2\r\n-1\r\n"
+            ]
+        ]
+    }
+]

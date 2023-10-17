@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Explosions?",
+        "description": "You are playing yet another game where you kill monsters using magic spells.\nThere are \n    n\n cells in the row, numbered from \n    1\n to \n    n\n.\nInitially, the \n    i\n-th cell contains the \n    i\n-th monster with \n    h_i\n\nhealth. You have a basic spell that costs \n    1\n MP and deals \n    1\n damage\nto the monster you choose. You can cast it any number of times. Also, you have\na special scroll with \"Explosion\" spell you can use only once. You want to\nfinish killing monsters with explosion, that's why you, firstly, cast the\nbasic spell several times (possibly, zero), and then after that, you cast one\n\"Explosion\". How does \"Explosion\" spell work? Firstly, you choose the power of\nthe spell: if you pour \n    x\n MP into it, \"Explosion\" will deal \n    x\n\ndamage. Secondly, you choose some monster \n    i\n, which will be targeted by\nthe spell. That's what happens next: if its current health \n    h_i > x\n, then\nhe stays alive with health decreased by \n    x\n; if \n    h_i \n    \u2264 x\n, the\n\n    i\n-th monster dies with an explosion that deals \n    h_i - 1\n damage to\nmonsters in the neighboring cells \n    i - 1\n and \n    i + 1\n, if these cells\nexist and monsters inside are still alive; if the damage dealt by the\nexplosion is enough to kill the monster \n    i - 1\n (or \n    i + 1\n), i. e.\nthe current \n    h_i - 1\n    \u2264 h_i - 1\n (or \n    h_i + 1\n    \u2264 h_i - 1\n),\nthen that monster also dies creating a secondary explosion of power \n    h_i-1\n    - 1\n (or \n    h_i+1 - 1\n) that may deals damage to their neighbors, and so\non, until the explosions end. Your goal is to kill all the remaining monsters\nwith those \"chaining\" explosions, that's why you need a basic spell to\ndecrease \n    h_i\n of some monsters or even kill them beforehand (monsters die\nwhen their current health \n    h_i\n becomes less or equal to zero). Note that\nmonsters don't move between cells, so, for example, monsters \n    i\n and \n    i\n    + 2\n will never become neighbors. What is the minimum total MP you need to\nkill all monsters in the way you want? The total MP is counted as the sum of\nthe number of basic spells you cast and the power \n    x\n of explosion scroll\nyou've chosen. Input The first line contains one integer \n    t\n (\n    1 \n    \u2264 t\n    \n    \u2264 10^4\n) \u2014 the number of test cases. The first line of each test case\ncontains the single integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264 3 \n    \u00b7 10^5\n) \u2014\nthe number of cells in the row, i. e. the number of monsters. The second line\nof each test case contains \n    n\n integers \n    h_1, h_2, \n    \u2026, h_n\n (\n    1\n    \n    \u2264 h_i \n    \u2264 10^6\n) \u2014 the initial health of the monsters. It's guaranteed\nthat the sum of \n    n\n over all test cases doesn't exceed \n    3 \n    \u00b7\n    10^5\n. Output For each test case, print one integer \u2014 the minimum total MP\nyou need to kill all monsters by finishing them with explosion. Example Input\n5 3 1 1 1 4 4 1 2 1 4 5 10 15 10 1 42 9 1 2 3 2 2 2 3 2 1 Output 3 6 15 42 12\nNote In the first test case, you can, for example, use basic spell on monsters\n\n    1\n and \n    2\n (once per monster) to kill them. After that, you cast\n\"Explosion\" of power \n    x = 1\n on monster \n    3\n to kill it. The total MP\nyou need is \n    2 + 1 = 3\n. In the second test case, it's optimal to cast\nbasic spell \n    4\n times onto monster \n    1\n to kill it. After that, you can\ncast \"Explosion\" of power \n    x = 2\n onto monster \n    3\n. It dies, creating\nan explosion of power \n    1\n that kills monsters \n    2\n and \n    4\n. The\ntotal MP you need is \n    4 + 2 = 6\n. In the third test case, you cast\n\"Explosion\" of power \n    15\n onto monster \n    3\n. Explosion of the\n\n    3\n-rd monster (of power \n    14\n) kills monsters \n    2\n and \n    4\n.\nSecondary explosion of monster \n    2\n (of power \n    9\n) kills monster\n\n    1\n.\n\n",
+        "cf_contest_id": 1795,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "greedy",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n3\r\n1 1 1\r\n4\r\n4 1 2 1\r\n4\r\n5 10 15 10\r\n1\r\n42\r\n9\r\n1 2 3 2 2 2 3 2 1\r\n",
+                "3\r\n6\r\n15\r\n42\r\n12\r\n"
+            ]
+        ],
+        "private_cases": []
+    }
+]

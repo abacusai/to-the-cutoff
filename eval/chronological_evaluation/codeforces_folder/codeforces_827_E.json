@@ -1,0 +1,85 @@
+[
+    {
+        "name": "Rusty String",
+        "description": "Grigory loves strings. Recently he found a metal strip on a loft. The strip\nhad length n and consisted of letters \"V\" and \"K\". Unfortunately, rust has\neaten some of the letters so that it's now impossible to understand which\nletter was written. Grigory couldn't understand for a long time what these\nletters remind him of, so he became interested in the following question: if\nwe put a letter \"V\" or \"K\" on each unreadable position, which values can the\nperiod of the resulting string be equal to? A period of a string is such an\ninteger d from 1 to the length of the string that if we put the string shifted\nby d positions to the right on itself, then all overlapping letters coincide.\nFor example, 3 and 5 are periods of \"VKKVK\". Input There are several (at least\none) test cases in the input. The first line contains single integer \u2014 the\nnumber of test cases. There is an empty line before each test case. Each test\ncase is described in two lines: the first line contains single integer n (1 \u2264\nn \u2264 5\u00b710^5) \u2014 the length of the string, the second line contains the string of\nlength n, consisting of letters \"V\", \"K\" and characters \"?\". The latter means\nthe letter on its position is unreadable. It is guaranteed that the sum of\nlengths among all test cases doesn't exceed 5\u00b710^5. For hacks you can only use\ntests with one test case. Output For each test case print two lines. In the\nfirst line print the number of possible periods after we replace each\nunreadable letter with \"V\" or \"K\". In the next line print all these values in\nincreasing order. Example Input 3 5 V??VK 6 ?????? 4 ?VK? Output 2 3 5 6 1 2 3\n4 5 6 3 2 3 4 Note In the first test case from example we can obtain, for\nexample, \"VKKVK\", which has periods 3 and 5. In the second test case we can\nobtain \"VVVVVV\" which has all periods from 1 to 6. In the third test case\nstring \"KVKV\" has periods 2 and 4, and string \"KVKK\" has periods 3 and 4.\n\n",
+        "cf_contest_id": 827,
+        "cf_index": "E",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "fft",
+            "math",
+            "strings"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3\r\n\r\n5\r\nV??VK\r\n\r\n6\r\n??????\r\n\r\n4\r\n?VK?\r\n",
+                "2\r\n3 5 \r\n6\r\n1 2 3 4 5 6 \r\n3\r\n2 3 4 \r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n\r\n1\r\nV\r\n\r\n1\r\nK\r\n\r\n1\r\n?\r\n",
+                "1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n"
+            ],
+            [
+                "9\r\n\r\n2\r\nVV\r\n\r\n2\r\nVK\r\n\r\n2\r\nV?\r\n\r\n2\r\nKV\r\n\r\n2\r\nKK\r\n\r\n2\r\nK?\r\n\r\n2\r\n?V\r\n\r\n2\r\n?K\r\n\r\n2\r\n??\r\n",
+                "2\r\n1 2 \r\n1\r\n2 \r\n2\r\n1 2 \r\n1\r\n2 \r\n2\r\n1 2 \r\n2\r\n1 2 \r\n2\r\n1 2 \r\n2\r\n1 2 \r\n2\r\n1 2 \r\n"
+            ],
+            [
+                "27\r\n\r\n3\r\nVVV\r\n\r\n3\r\nVVK\r\n\r\n3\r\nVV?\r\n\r\n3\r\nVKV\r\n\r\n3\r\nVKK\r\n\r\n3\r\nVK?\r\n\r\n3\r\nV?V\r\n\r\n3\r\nV?K\r\n\r\n3\r\nV??\r\n\r\n3\r\nKVV\r\n\r\n3\r\nKVK\r\n\r\n3\r\nKV?\r\n\r\n3\r\nKKV\r\n\r\n3\r\nKKK\r\n\r\n3\r\nKK?\r\n\r\n3\r\nK?V\r\n\r\n3\r\nK?K\r\n\r\n3\r\nK??\r\n\r\n3\r\n?VV\r\n\r\n3\r\n?VK\r\n\r\n3\r\n?V?\r\n\r\n3\r\n?KV\r\n\r\n3\r\n?KK\r\n\r\n3\r\n?K?\r\n\r\n3\r\n??V\r\n\r\n3\r\n??K\r\n\r\n3\r\n???\r\n",
+                "3\r\n1 2 3 \r\n1\r\n3 \r\n3\r\n1 2 3 \r\n2\r\n2 3 \r\n1\r\n3 \r\n2\r\n2 3 \r\n3\r\n1 2 3 \r\n1\r\n3 \r\n3\r\n1 2 3 \r\n1\r\n3 \r\n2\r\n2 3 \r\n2\r\n2 3 \r\n1\r\n3 \r\n3\r\n1 2 3 \r\n3\r\n1 2 3 \r\n1\r\n3 \r\n3\r\n1 2 3 \r\n3\r\n1 2 3 \r\n3\r\n1 2 3 \r\n2\r\n2 3 \r\n3\r\n1 2 3 \r\n2\r\n2 3 \r\n3\r\n1 2 3 \r\n3\r\n1 2 3 \r\n3\r\n1 2 3 \r\n3\r\n1 2 3 \r\n3\r\n1 2 3 \r\n"
+            ],
+            [
+                "22\r\n\r\n10\r\nVV?V?VVVVV\r\n\r\n4\r\nK?VV\r\n\r\n4\r\n?KVK\r\n\r\n12\r\n?VVKKK?VV???\r\n\r\n3\r\n?VV\r\n\r\n1\r\n?\r\n\r\n1\r\nK\r\n\r\n1\r\nK\r\n\r\n1\r\nV\r\n\r\n1\r\nK\r\n\r\n1\r\nK\r\n\r\n1\r\nV\r\n\r\n1\r\nK\r\n\r\n1\r\nV\r\n\r\n1\r\nV\r\n\r\n1\r\nV\r\n\r\n1\r\n?\r\n\r\n1\r\nV\r\n\r\n1\r\nK\r\n\r\n1\r\n?\r\n\r\n1\r\n?\r\n\r\n1\r\n?\r\n",
+                "10\r\n1 2 3 4 5 6 7 8 9 10 \r\n1\r\n4 \r\n3\r\n2 3 4 \r\n7\r\n6 7 8 9 10 11 12 \r\n3\r\n1 2 3 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n"
+            ],
+            [
+                "1\r\n\r\n1\r\nV\r\n",
+                "1\r\n1 \r\n"
+            ],
+            [
+                "1\r\n\r\n1\r\nV\r\n",
+                "1\r\n1 \r\n"
+            ],
+            [
+                "2\r\n\r\n2\r\nVV\r\n\r\n1\r\n?\r\n",
+                "2\r\n1 2 \r\n1\r\n1 \r\n"
+            ],
+            [
+                "2\r\n\r\n9\r\nVV?V?VVVV\r\n\r\n4\r\n?K?V\r\n",
+                "9\r\n1 2 3 4 5 6 7 8 9 \r\n2\r\n3 4 \r\n"
+            ],
+            [
+                "2\r\n\r\n61\r\nVV?V?VVVVV??K?VV???KVK?K?VVKKK?VV????V?VV?K?VVK??KV?VVVK??K??\r\n\r\n105\r\nKKKVV?VVKKV???KVVKVK???KK??K?KV???KK?V?K?K?VKKVKV???KK?V?KVVVKVKKV?VKVV??K??VK?VVKKVK????KVV?VVVKV?VVVKKK\r\n",
+                "4\r\n56 59 60 61 \r\n4\r\n102 103 104 105 \r\n"
+            ],
+            [
+                "1\r\n\r\n1\r\nV\r\n",
+                "1\r\n1 \r\n"
+            ],
+            [
+                "1\r\n\r\n1\r\nV\r\n",
+                "1\r\n1 \r\n"
+            ],
+            [
+                "22\r\n\r\n10\r\nVV?V?VVV?V\r\n\r\n2\r\nVV\r\n\r\n12\r\n?K?VV???KVK?\r\n\r\n4\r\nVVKK\r\n\r\n3\r\nVV?\r\n\r\n3\r\n?V?\r\n\r\n1\r\n?\r\n\r\n1\r\nV\r\n\r\n1\r\n?\r\n\r\n1\r\nV\r\n\r\n1\r\nV\r\n\r\n1\r\n?\r\n\r\n1\r\n?\r\n\r\n1\r\nV\r\n\r\n1\r\nK\r\n\r\n1\r\n?\r\n\r\n1\r\nK\r\n\r\n1\r\n?\r\n\r\n1\r\nK\r\n\r\n1\r\nK\r\n\r\n1\r\n?\r\n\r\n1\r\nK\r\n",
+                "10\r\n1 2 3 4 5 6 7 8 9 10 \r\n2\r\n1 2 \r\n4\r\n9 10 11 12 \r\n1\r\n4 \r\n3\r\n1 2 3 \r\n3\r\n1 2 3 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n1\r\n1 \r\n"
+            ],
+            [
+                "2\r\n\r\n2\r\nVV\r\n\r\n1\r\n?\r\n",
+                "2\r\n1 2 \r\n1\r\n1 \r\n"
+            ],
+            [
+                "2\r\n\r\n9\r\nVV?V?VVVV\r\n\r\n4\r\n?K?V\r\n",
+                "9\r\n1 2 3 4 5 6 7 8 9 \r\n2\r\n3 4 \r\n"
+            ],
+            [
+                "2\r\n\r\n61\r\nVV?V?VVVVV??K?VV???KVK?K?VVKKK?VVVV?V?VVVVV??K?VV???KVK?K?VVK\r\n\r\n143\r\n??V?VV?K?VVK??KV?VVVK??K??VVKKKVV?VVKKV???K??V?VV?K?VVK??KV?VVVK??K??VVKKKVV?VVKKV???K??V?VV?K?VVK??KV?VVVK??K??VVKKKVV?VVKKV???K??V?VV?K?VVK??\r\n",
+                "3\r\n33 58 61 \r\n10\r\n43 86 129 133 137 139 140 141 142 143 \r\n"
+            ]
+        ]
+    }
+]

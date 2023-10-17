@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Monsters and Potions",
+        "description": "Polycarp is an introvert person. In fact he is so much of an introvert that he\nplays \"Monsters and Potions\" board game alone. The board of the game is a row\nof \n    n\n cells. The cells are numbered from \n    1\n to \n    n\n from left to\nright. There are three types of cells: a cell containing a single monster, a\ncell containing a single potion or a blank cell (it contains neither a monster\nnor a potion). Polycarp has \n    m\n tokens representing heroes fighting\nmonsters, which are initially located in the blank cells \n    s_1, s_2, \n    \u2026,\n    s_m\n. Polycarp's task is to choose a single cell (rally point) and one by\none move all the heroes into this cell. A rally point can be a cell of any of\nthree types. After Policarp selects a rally point, he picks a hero and orders\nhim to move directly to the point. Once that hero reaches the point, Polycarp\npicks another hero and orders him also to go to the point. And so forth, until\nall the heroes reach the rally point cell. While going to the point, a hero\ncan not deviate from the direct route or take a step back. A hero just moves\ncell by cell in the direction of the point until he reaches it. It is possible\nthat multiple heroes are simultaneously in the same cell. Initially the\n\n    i\n-th hero has \n    h_i\n hit points (HP). Monsters also have HP,\ndifferent monsters might have different HP. And potions also have HP,\ndifferent potions might have different HP. If a hero steps into a cell which\nis blank (i.e. doesn't contain a monster/potion), hero's HP does not change.\nIf a hero steps into a cell containing a monster, then the hero and the\nmonster fight. If monster's HP is strictly higher than hero's HP, then the\nmonster wins and Polycarp loses the whole game. If hero's HP is greater or\nequal to monster's HP, then the hero wins and monster's HP is subtracted from\nhero's HP. I.e. the hero survives if his HP drops to zero, but dies (and\nPolycarp looses) if his HP becomes negative due to a fight. If a hero wins a\nfight with a monster, then the monster disappears, and the cell becomes blank.\nIf a hero steps into a cell containing a potion, then the hero drinks the\npotion immediately. As a result, potion's HP is added to hero's HP, the potion\ndisappears, and the cell becomes blank. Obviously, Polycarp wants to win the\ngame. It means that he must choose such rally point and the order in which\nheroes move, that every hero reaches the rally point and survives. I.e.\nPolycarp loses if a hero reaches rally point but is killed by a monster at the\nsame time. Polycarp can use any of \n    n\n cells as a rally point \u2014 initially\nit can contain a monster, a potion, or be a blank cell with or without a hero\nin it. Help Polycarp write a program to choose a rally point and the order in\nwhich heroes move. Input The first line of the input contains two integers\n\n    n\n and \n    m\n (\n    1 \n    \u2264 n \n    \u2264 100\n; \n    1 \n    \u2264 m \n    \u2264 n\n) \u2014\nlength of the game board and the number of heroes on it. The following \n    m\n\nlines describe heroes. Each line contains two integers \n    s_i\n and \n    h_i\n\n(\n    1 \n    \u2264 s_i \n    \u2264 n\n; \n    1 \n    \u2264 h_i \n    \u2264 10^6\n), where \n    s_i\n is\nthe initial position and \n    h_i\n is the initial HP of the \n    i\n-th hero.\nIt is guaranteed that each cell \n    s_i\n is blank. It is also guaranteed that\nall \n    s_i\n are different. The following line contains \n    n\n integers\n\n    a_1, a_2, \n    \u2026, a_n\n (\n    -10^6 \n    \u2264 a_j \n    \u2264 10^6\n), where\n\n    a_j\n describes the \n    i\n-th cell of the game board: \n    a_j=0\n means\nthat the \n    i\n-th cell is blank, \n    a_j<0\n means that the \n    i\n-th cell\ncontains monster with positive HP of \n    -a_j\n, \n    a_j>0\n means that the\n\n    i\n-th cell contains potion with \n    a_j\n HP. Output On the first line of\nthe output print the index of the rally point cell. On the second line print\n\n    m\n integers \u2014 the order in which heroes should move to the rally point.\nHeroes are numbered from \n    1\n to \n    m\n in the order they are given in the\ninput. If there are multiple solutions, print any of them. If it is impossible\nto find a rally point which can be reached by all heroes, print a single\ninteger -1 in the output. Examples Input 8 3 8 2 1 3 4 9 0 3 -5 0 -5 -4 -1 0\nOutput 6 3 1 2 Input 1 1 1 1 0 Output 1 1 Input 3 2 1 1 3 1 0 -5000 0 Output\n-1 Input 8 3 1 15 5 10 8 1 0 -5 -5 -5 0 -5 -5 0 Output 7 2 1 3 Note The\npicture illustrates the first example:\n\n",
+        "cf_contest_id": 1070,
+        "cf_index": "G",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "8 3\r\n8 2\r\n1 3\r\n4 9\r\n0 3 -5 0 -5 -4 -1 0\r\n",
+                "6\r\n3 2 1 \r\n"
+            ],
+            [
+                "1 1\r\n1 1\r\n0\r\n",
+                "1\r\n1 \r\n"
+            ],
+            [
+                "3 2\r\n1 1\r\n3 1\r\n0 -5000 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8 3\r\n1 15\r\n5 10\r\n8 1\r\n0 -5 -5 -5 0 -5 -5 0\r\n",
+                "7\r\n2 1 3 \r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 2\r\n2 1\r\n4 1\r\n5 0 -2 0 5\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 2\r\n1 1\r\n4 1\r\n0 1 -2 0\r\n",
+                "3\r\n1 2 \r\n"
+            ],
+            [
+                "4 2\r\n1 1\r\n4 1\r\n0 -2 1 0\r\n",
+                "1\r\n2 1 \r\n"
+            ],
+            [
+                "12 3\r\n1 15\r\n7 10\r\n12 1\r\n0 -5 -5 -5 5 -5 0 -5 5 -5 -5 0\r\n",
+                "11\r\n2 1 3 \r\n"
+            ],
+            [
+                "10 2\r\n1 1\r\n10 1\r\n0 1 1 1 1 1 1 1 -8 0\r\n",
+                "9\r\n1 2 \r\n"
+            ],
+            [
+                "11 3\r\n1 1\r\n6 1\r\n11 1\r\n0 1 1 1 1 0 1 1 1 1 0\r\n",
+                "1\r\n3 2 1 \r\n"
+            ],
+            [
+                "7 4\r\n1 100\r\n3 1\r\n5 1\r\n7 1\r\n0 -5 0 -5 0 -5 0\r\n",
+                "6\r\n1 3 2 4 \r\n"
+            ],
+            [
+                "7 4\r\n1 1\r\n3 1\r\n5 1\r\n7 100\r\n0 -5 0 -5 0 -5 0\r\n",
+                "1\r\n4 3 2 1 \r\n"
+            ],
+            [
+                "4 2\r\n1 1\r\n4 1\r\n0 1 -3 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 2\r\n1 1\r\n5 1\r\n0 1 -3 1 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 2\r\n1 1\r\n5 5\r\n0 -1 -4 -1 0\r\n",
+                "2\r\n1 2 \r\n"
+            ],
+            [
+                "5 2\r\n1 5\r\n5 1\r\n0 -1 -4 -1 0\r\n",
+                "3\r\n1 2 \r\n"
+            ],
+            [
+                "2 1\r\n1 1\r\n0 0\r\n",
+                "1\r\n1 \r\n"
+            ],
+            [
+                "2 1\r\n2 1\r\n0 0\r\n",
+                "1\r\n1 \r\n"
+            ],
+            [
+                "2 1\r\n1 1\r\n0 -5\r\n",
+                "1\r\n1 \r\n"
+            ],
+            [
+                "2 1\r\n2 1\r\n-5 0\r\n",
+                "2\r\n1 \r\n"
+            ],
+            [
+                "6 3\r\n1 4\r\n4 1\r\n6 3\r\n0 -5 4 0 -3 0\r\n",
+                "1\r\n2 1 3 \r\n"
+            ],
+            [
+                "6 3\r\n1 3\r\n3 1\r\n6 4\r\n0 -3 0 4 -5 0\r\n",
+                "5\r\n2 1 3 \r\n"
+            ],
+            [
+                "4 3\r\n1 1\r\n2 1\r\n4 1\r\n0 0 -2 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 3\r\n1 1\r\n3 1\r\n4 1\r\n0 -2 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "100 2\r\n1 1\r\n100 1\r\n0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 -98 0\r\n",
+                "99\r\n1 2 \r\n"
+            ],
+            [
+                "100 2\r\n1 1\r\n100 1\r\n0 -98 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0\r\n",
+                "1\r\n2 1 \r\n"
+            ],
+            [
+                "81 22\r\n55 103060\r\n29 425990\r\n38 402015\r\n14 55670\r\n52 210540\r\n24 54155\r\n43 322575\r\n67 475520\r\n4 990\r\n79 72075\r\n63 215645\r\n3 469220\r\n9 283695\r\n77 399330\r\n27 79900\r\n70 145355\r\n61 289655\r\n21 415890\r\n73 183960\r\n65 321495\r\n66 352165\r\n7 498415\r\n0 -84974 0 0 -64690 0 0 0 0 -121598 0 0 0 0 -167588 -51320 0 0 0 -28510 0 0 -136248 0 -25498 0 0 0 0 -17606 0 -109912 0 0 -133816 0 0 0 0 -99732 0 -144938 0 0 0 0 0 -78854 0 0 0 0 -120788 -107082 0 0 -4842 0 0 0 0 -84224 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -129982 0 0 -195450\r\n",
+                "78\r\n21 20 19 17 16 14 11 10 8 7 5 3 2 1 6 18 15 12 4 13 22 9 \r\n"
+            ],
+            [
+                "86 21\r\n4 280745\r\n14 70230\r\n62 484920\r\n39 86965\r\n5 66100\r\n44 197080\r\n34 405775\r\n64 322485\r\n23 384230\r\n8 127670\r\n80 204610\r\n83 460980\r\n69 267270\r\n63 482530\r\n85 405135\r\n17 305895\r\n21 16020\r\n47 344450\r\n50 309235\r\n82 424440\r\n13 212095\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -144784 0 0 0 -32374 0 0 0 -127198 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -246 -142606 0 0 0 0 0 0 0 0 0 -127794 -133586 -53092 0 0 0 0 0 -70682 -183006 0 0 0 0 0 -165448 0 0 -37660 0 0 0 0 0 -117666 0 0 0 0 -84826 0 0 0 0 0\r\n",
+                "52\r\n19 18 16 14 13 12 11 9 8 7 6 4 3 1 21 15 5 10 20 2 17 \r\n"
+            ],
+            [
+                "83 17\r\n17 218855\r\n52 171455\r\n38 147260\r\n35 21590\r\n76 59470\r\n53 142450\r\n22 39030\r\n75 54740\r\n51 315320\r\n14 327645\r\n36 413555\r\n21 177340\r\n61 22490\r\n2 239325\r\n70 74695\r\n32 139760\r\n41 459490\r\n0 0 -131938 0 0 0 0 0 0 0 -146324 0 -32518 0 0 0 0 0 0 -166220 0 0 0 -31146 0 0 -197972 0 0 0 -81844 0 -32018 0 0 0 0 0 0 0 0 -105314 -106828 0 -25262 0 0 0 0 0 0 0 0 0 0 0 -63910 -198250 0 0 0 0 -27544 0 0 -169980 -110360 -51290 0 0 -107748 0 0 0 0 0 -98744 0 -163422 -47332 -6296 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 2\r\n4 3\r\n1 2\r\n0 -2 -3 0\r\n",
+                "2\r\n2 1 \r\n"
+            ],
+            [
+                "5 3\r\n4 1\r\n2 1\r\n1 3\r\n0 0 -2 0 -2\r\n",
+                "3\r\n3 2 1 \r\n"
+            ],
+            [
+                "7 3\r\n4 1\r\n2 1\r\n1 3\r\n0 0 -2 0 -2 0 0\r\n",
+                "3\r\n3 2 1 \r\n"
+            ],
+            [
+                "7 3\r\n4 1\r\n7 3\r\n6 1\r\n0 0 -2 0 -2 0 0\r\n",
+                "4\r\n2 1 3 \r\n"
+            ],
+            [
+                "5 3\r\n2 1\r\n5 3\r\n4 1\r\n-2 0 -2 0 0\r\n",
+                "2\r\n2 1 3 \r\n"
+            ],
+            [
+                "7 5\r\n4 1\r\n1 2\r\n2 1\r\n7 3\r\n6 1\r\n0 0 -2 0 -2 0 0\r\n",
+                "3\r\n2 1 3 4 5 \r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,76 @@
+[
+    {
+        "name": "Parcels",
+        "description": "Jaroslav owns a small courier service. He has recently got and introduced a\nnew system of processing parcels. Each parcel is a box, the box has its weight\nand strength. The system works as follows. It originally has an empty platform\nwhere you can put boxes by the following rules: If the platform is empty, then\nthe box is put directly on the platform, otherwise it is put on the topmost\nbox on the platform. The total weight of all boxes on the platform cannot\nexceed the strength of platform S at any time. The strength of any box of the\nplatform at any time must be no less than the total weight of the boxes that\nstand above. You can take only the topmost box from the platform. The system\nreceives n parcels, the i-th parcel arrives exactly at time ini, its weight\nand strength are equal to wi and si, respectively. Each parcel has a value of\nvi bourles. However, to obtain this value, the system needs to give the parcel\nexactly at time outi, otherwise Jaroslav will get 0 bourles for it. Thus,\nJaroslav can skip any parcel and not put on the platform, formally deliver it\nat time ini and not get anything for it. Any operation in the problem is\nperformed instantly. This means that it is possible to make several operations\nof receiving and delivering parcels at the same time and in any order. Please\nnote that the parcel that is delivered at time outi, immediately gets outside\nof the system, and the following activities taking place at the same time are\nmade \u200b\u200bwithout taking it into consideration. Since the system is very complex,\nand there are a lot of received parcels, Jaroslav asks you to say what maximum\namount of money he can get using his system. Input The first line of the input\ncontains two space-separated integers n and S (1 \u2264 n \u2264 500, 0 \u2264 S \u2264 1000).\nThen n lines follow, the i-th line contains five space-separated integers:\nini, outi, wi, si and vi (0 \u2264 ini < outi < 2n, 0 \u2264 wi, si \u2264 1000, 1 \u2264 vi \u2264\n10^6). It is guaranteed that for any i and j (i \u2260 j) either ini \u2260 inj, or outi\n\u2260 outj. Output Print a single number \u2014 the maximum sum in bourles that\nJaroslav can get. Examples Input 3 2 0 1 1 1 1 1 2 1 1 1 0 2 1 1 1 Output 3\nInput 5 5 0 6 1 2 1 1 2 1 1 1 1 3 1 1 1 3 6 2 1 2 4 5 1 1 1 Output 5 Note Note\nto the second sample (T is the moment in time): T = 0: The first parcel\narrives, we put in on the first platform. T = 1: The second and third parcels\narrive, we put the third one on the current top (i.e. first) parcel on the\nplatform, then we put the secod one on the third one. Now the first parcel\nholds weight w2 + w3 = 2 and the third parcel holds w2 = 1. T = 2: We deliver\nthe second parcel and get v2 = 1 bourle. Now the first parcel holds weight w3\n= 1, the third one holds 0. T = 3: The fourth parcel comes. First we give the\nthird parcel and get v3 = 1 bourle. Now the first parcel holds weight 0. We\nput the fourth parcel on it \u2014 the first one holds w4 = 2. T = 4: The fifth\nparcel comes. We cannot put it on the top parcel of the platform as in that\ncase the first parcel will carry weight w4 + w5 = 3, that exceed its strength\ns1 = 2, that's unacceptable. We skip the fifth parcel and get nothing for it.\nT = 5: Nothing happens. T = 6: We deliver the fourth, then the first parcel\nand get v1 + v4 = 3 bourles for them. Note that you could have skipped the\nfourth parcel and got the fifth one instead, but in this case the final sum\nwould be 4 bourles.\n\n",
+        "cf_contest_id": 480,
+        "cf_index": "D",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2\r\n0 1 1 1 1\r\n1 2 1 1 1\r\n0 2 1 1 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "5 5\r\n0 6 1 2 1\r\n1 2 1 1 1\r\n1 3 1 1 1\r\n3 6 2 1 2\r\n4 5 1 1 1\r\n",
+                "5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "8 616\r\n1 9 82 770 671380\r\n1 14 599 397 619523\r\n2 12 358 976 623374\r\n5 10 396 133 606692\r\n3 14 407 261 232566\r\n0 10 524 554 333863\r\n1 5 430 410 255502\r\n10 15 603 853 706117\r\n",
+                "1711360\r\n"
+            ],
+            [
+                "10 186\r\n2 17 576 728 802923\r\n16 18 521 740 723326\r\n10 19 80 665 87717\r\n3 15 90 845 898112\r\n9 15 390 976 690476\r\n6 8 707 126 33270\r\n10 18 879 436 354834\r\n13 14 960 307 561966\r\n1 8 398 553 201052\r\n10 15 693 101 980902\r\n",
+                "898112\r\n"
+            ],
+            [
+                "1 376\r\n0 1 390 62 716268\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 559\r\n0 1 562 875 290202\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 129\r\n6 9 713 104 898696\r\n3 8 987 866 256001\r\n5 8 247 403 36404\r\n5 10 595 338 5810\r\n1 9 715 496 727409\r\n4 12 483 231 222929\r\n10 13 446 267 132612\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 10\r\n0 1 11 1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 20\r\n0 1 20 21 1000000\r\n",
+                "1000000\r\n"
+            ],
+            [
+                "2 1000\r\n0 1 1000 1000 1000000\r\n1 2 1000 1000 1000000\r\n",
+                "2000000\r\n"
+            ],
+            [
+                "3 100\r\n0 5 1 100 1\r\n1 3 1 100 1\r\n2 4 1 100 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 2\r\n0 2 1 1 2\r\n0 1 1 1 3\r\n0 3 2 100 4\r\n",
+                "5\r\n"
+            ],
+            [
+                "5 20\r\n0 2 9 11 1\r\n0 1 11 12 1\r\n3 5 5 10 1\r\n3 6 5 10 1\r\n3 7 6 4 3\r\n",
+                "5\r\n"
+            ],
+            [
+                "4 0\r\n0 1 1 1 10\r\n2 3 1 1 100\r\n4 5 0 0 1000\r\n6 7 1 1 10000\r\n",
+                "1000\r\n"
+            ]
+        ]
+    }
+]

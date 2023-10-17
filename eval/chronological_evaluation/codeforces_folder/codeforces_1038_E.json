@@ -1,0 +1,123 @@
+[
+    {
+        "name": "Maximum Matching",
+        "description": "You are given \n    n\n blocks, each of them is of the form\n[color\n    _1\n|value|color\n    _2\n], where the block can also be flipped to\nget [color\n    _2\n|value|color\n    _1\n]. A sequence of blocks is called valid\nif the touching endpoints of neighboring blocks have the same color. For\nexample, the sequence of three blocks A, B and C is valid if the left color of\nthe B is the same as the right color of the A and the right color of the B is\nthe same as the left color of C. The value of the sequence is defined as the\nsum of the values of the blocks in this sequence. Find the maximum possible\nvalue of the valid sequence that can be constructed from the subset of the\ngiven blocks. The blocks from the subset can be reordered and flipped if\nnecessary. Each block can be used at most once in the sequence. Input The\nfirst line of input contains a single integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264\n    100\n) \u2014 the number of given blocks. Each of the following \n    n\n lines\ndescribes corresponding block and consists of \n    color_1,i\n,\n\n    value_i\n and \n    color_2,i\n (\n    1 \n    \u2264\n    color_1,i, \n    color_2,i\n    \u2264 4\n, \n    1 \n    \u2264\n    value_i \n    \u2264 100\n     000\n). Output Print exactly one integer \u2014\nthe maximum total value of the subset of blocks, which makes a valid sequence.\nExamples Input 6 2 1 4 1 2 4 3 4 4 2 8 3 3 16 3 1 32 2 Output 63 Input 7 1\n100000 1 1 100000 2 1 100000 2 4 50000 3 3 50000 4 4 50000 4 3 50000 3 Output\n300000 Input 4 1 1000 1 2 500 2 3 250 3 4 125 4 Output 1000 Note In the first\nexample, it is possible to form a valid sequence from all blocks. One of the\nvalid sequences is the following: [4|2|1] [1|32|2] [2|8|3] [3|16|3] [3|4|4]\n[4|1|2] The first block from the input ([2|1|4] \n    \u2192\n [4|1|2]) and\nsecond ([1|2|4] \n    \u2192\n [4|2|1]) are flipped. In the second example, the\noptimal answers can be formed from the first three blocks as in the following\n(the second or the third block from the input is flipped): [2|100000|1]\n[1|100000|1] [1|100000|2] In the third example, it is not possible to form a\nvalid sequence of two or more blocks, so the answer is a sequence consisting\nonly of the first block since it is the block with the largest value.\n\n",
+        "cf_contest_id": 1038,
+        "cf_index": "E",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n2 1 4\r\n1 2 4\r\n3 4 4\r\n2 8 3\r\n3 16 3\r\n1 32 2\r\n",
+                "63\n"
+            ],
+            [
+                "7\r\n1 100000 1\r\n1 100000 2\r\n1 100000 2\r\n4 50000 3\r\n3 50000 4\r\n4 50000 4\r\n3 50000 3\r\n",
+                "300000\n"
+            ],
+            [
+                "4\r\n1 1000 1\r\n2 500 2\r\n3 250 3\r\n4 125 4\r\n",
+                "1000\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n3 96 2\r\n4 8 4\r\n",
+                "96\n"
+            ],
+            [
+                "5\r\n3 21 3\r\n1 73 2\r\n1 55 1\r\n4 30 1\r\n4 59 2\r\n",
+                "217\n"
+            ],
+            [
+                "6\r\n3 70 4\r\n2 26 3\r\n4 39 4\r\n2 77 1\r\n2 88 1\r\n4 43 2\r\n",
+                "343\n"
+            ],
+            [
+                "10\r\n2 18 3\r\n3 21 2\r\n3 7 2\r\n2 13 1\r\n3 73 1\r\n3 47 1\r\n4 17 4\r\n4 3 2\r\n4 28 4\r\n3 71 4\r\n",
+                "298\n"
+            ],
+            [
+                "3\r\n3 37 3\r\n1 58 1\r\n3 74 2\r\n",
+                "111\n"
+            ],
+            [
+                "1\r\n3 52 4\r\n",
+                "52\n"
+            ],
+            [
+                "7\r\n3 22 2\r\n4 88 4\r\n4 31 4\r\n1 17 4\r\n4 22 4\r\n1 73 1\r\n4 68 4\r\n",
+                "299\n"
+            ],
+            [
+                "9\r\n3 7 1\r\n3 91 2\r\n2 7 3\r\n1 100 4\r\n1 96 2\r\n3 10 1\r\n1 50 1\r\n3 2 3\r\n2 96 3\r\n",
+                "459\n"
+            ],
+            [
+                "4\r\n3 81 1\r\n3 11 2\r\n2 67 1\r\n2 90 1\r\n",
+                "249\n"
+            ],
+            [
+                "8\r\n3 63 3\r\n1 37 1\r\n3 19 3\r\n3 57 4\r\n2 59 3\r\n2 88 3\r\n2 9 4\r\n1 93 4\r\n",
+                "416\n"
+            ],
+            [
+                "28\r\n2 34079 2\r\n1 29570 3\r\n2 96862 3\r\n1 33375 4\r\n2 2312 3\r\n2 79585 2\r\n3 32265 3\r\n1 51217 1\r\n3 96690 3\r\n4 1213 4\r\n2 21233 1\r\n2 56188 3\r\n2 32018 3\r\n4 99364 3\r\n4 886 3\r\n4 12329 1\r\n1 95282 3\r\n3 11320 2\r\n1 5162 2\r\n1 32147 2\r\n2 41838 3\r\n1 42318 4\r\n4 27093 4\r\n1 4426 1\r\n3 21975 3\r\n4 56624 3\r\n1 94192 3\r\n2 49041 4\r\n",
+                "1160604\n"
+            ],
+            [
+                "39\r\n4 77095 3\r\n3 44517 1\r\n1 128 4\r\n3 34647 2\r\n4 28249 4\r\n1 68269 4\r\n4 54097 4\r\n4 56788 2\r\n3 79017 2\r\n2 31499 3\r\n2 64622 3\r\n2 46763 1\r\n4 93258 4\r\n1 2679 4\r\n4 66443 1\r\n3 25830 3\r\n4 26388 1\r\n2 31855 2\r\n2 92738 2\r\n3 41461 2\r\n3 74977 3\r\n4 35602 2\r\n3 1457 2\r\n1 84904 4\r\n2 46355 1\r\n3 34470 3\r\n1 15608 3\r\n1 21687 1\r\n2 39979 4\r\n1 15633 3\r\n4 6941 4\r\n2 50780 3\r\n2 12817 3\r\n3 71297 3\r\n4 49289 2\r\n4 78678 4\r\n3 14065 4\r\n2 60199 1\r\n1 23946 1\r\n",
+                "1705027\n"
+            ],
+            [
+                "40\r\n2 99891 4\r\n1 29593 4\r\n4 12318 1\r\n1 40460 3\r\n1 84340 2\r\n3 33349 4\r\n3 2121 4\r\n3 50068 3\r\n2 72029 4\r\n4 52319 3\r\n4 60726 2\r\n1 30229 1\r\n3 1887 2\r\n2 56145 4\r\n3 53121 1\r\n2 54227 4\r\n2 70016 3\r\n1 93754 4\r\n4 68567 3\r\n1 70373 2\r\n4 52983 3\r\n2 27467 2\r\n4 56860 2\r\n2 12665 2\r\n3 11282 3\r\n2 18731 4\r\n1 69767 4\r\n2 51820 4\r\n2 89393 2\r\n3 42834 1\r\n4 70914 2\r\n2 16820 2\r\n2 40042 4\r\n3 94927 4\r\n1 70157 2\r\n3 69144 2\r\n1 31749 1\r\n2 89699 4\r\n3 218 3\r\n1 20085 1\r\n",
+                "1973090\n"
+            ],
+            [
+                "34\r\n3 48255 1\r\n4 3073 2\r\n1 75598 2\r\n2 27663 2\r\n2 38982 1\r\n3 50544 2\r\n1 54526 1\r\n4 50358 3\r\n1 41820 1\r\n4 65348 1\r\n1 5066 3\r\n1 18940 1\r\n1 85757 4\r\n1 57322 3\r\n3 56515 3\r\n3 29360 1\r\n4 91854 3\r\n3 53265 2\r\n4 16638 2\r\n3 34625 1\r\n3 81011 4\r\n3 48844 4\r\n2 34611 2\r\n1 43878 4\r\n1 14712 3\r\n1 81651 3\r\n1 25982 3\r\n2 81592 1\r\n4 82091 1\r\n2 64322 3\r\n3 9311 4\r\n2 19668 1\r\n4 90814 2\r\n1 5334 4\r\n",
+                "1589330\n"
+            ],
+            [
+                "22\r\n4 1365 1\r\n4 79544 3\r\n3 60807 4\r\n3 35705 3\r\n1 7905 1\r\n1 37153 4\r\n1 21177 2\r\n4 16179 3\r\n4 76538 4\r\n4 54082 3\r\n4 66733 2\r\n4 85317 1\r\n2 588 3\r\n2 59575 1\r\n3 30596 1\r\n3 87725 2\r\n4 40298 4\r\n2 21693 2\r\n2 50145 4\r\n2 16461 1\r\n4 50314 3\r\n2 28506 4\r\n",
+                "928406\n"
+            ],
+            [
+                "34\r\n1 91618 4\r\n4 15565 2\r\n1 27127 3\r\n3 71241 1\r\n1 72886 4\r\n3 67359 2\r\n4 91828 2\r\n2 79231 4\r\n1 2518 4\r\n2 91908 2\r\n3 8751 4\r\n1 78216 1\r\n4 86652 4\r\n1 42983 1\r\n4 17501 4\r\n4 49048 3\r\n1 9781 1\r\n3 7272 4\r\n4 50885 1\r\n4 3897 1\r\n2 33253 4\r\n1 66074 2\r\n3 99395 2\r\n3 41446 4\r\n3 74336 2\r\n3 80002 4\r\n3 48871 2\r\n3 93650 4\r\n2 32944 4\r\n3 30204 4\r\n4 78805 4\r\n1 40801 1\r\n2 94708 2\r\n3 19544 3\r\n",
+                "1800300\n"
+            ],
+            [
+                "21\r\n1 22087 3\r\n3 90547 1\r\n1 49597 1\r\n3 34779 2\r\n1 20645 1\r\n1 71761 4\r\n1 85769 3\r\n4 89244 4\r\n3 81243 1\r\n1 23124 4\r\n1 38966 3\r\n4 34334 3\r\n3 56601 1\r\n1 32583 1\r\n3 88223 3\r\n3 63203 1\r\n4 84355 2\r\n4 17319 1\r\n2 37460 2\r\n3 92612 2\r\n3 42228 3\r\n",
+                "1156680\n"
+            ],
+            [
+                "2\r\n2 12549 2\r\n2 23712 2\r\n",
+                "36261\n"
+            ],
+            [
+                "22\r\n3 15252 3\r\n2 93191 1\r\n2 34999 1\r\n1 4967 3\r\n4 84548 2\r\n3 75332 2\r\n1 82238 4\r\n3 78744 1\r\n2 78456 1\r\n4 64186 3\r\n1 26178 4\r\n2 1841 4\r\n1 96600 2\r\n2 50842 2\r\n2 13518 4\r\n4 94133 4\r\n1 42934 1\r\n4 10390 4\r\n2 97716 3\r\n2 64586 1\r\n3 28644 2\r\n2 65832 2\r\n",
+                "1205127\n"
+            ],
+            [
+                "7\r\n1 64172 3\r\n4 85438 3\r\n2 55567 3\r\n3 9821 2\r\n2 3392 2\r\n3 73731 1\r\n1 2621 4\r\n",
+                "294742\n"
+            ],
+            [
+                "2\r\n1 3607 4\r\n4 62316 2\r\n",
+                "65923\n"
+            ],
+            [
+                "10\r\n2 49875 3\r\n1 14068 4\r\n3 57551 4\r\n2 49683 2\r\n3 75303 2\r\n1 60255 3\r\n4 18329 1\r\n2 42551 3\r\n1 14742 3\r\n1 90261 4\r\n",
+                "472618\n"
+            ]
+        ]
+    }
+]

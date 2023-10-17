@@ -1,0 +1,181 @@
+[
+    {
+        "name": "The Moral Dilemma",
+        "description": "Hibiki and Dita are in love with each other, but belong to communities that\nare in a long lasting conflict. Hibiki is deeply concerned with the state of\naffairs, and wants to figure out if his relationship with Dita is an act of\nlove or an act of treason. Hibiki prepared several binary features his\ndecision will depend on, and built a three layer logical circuit on top of\nthem, each layer consisting of one or more logic gates. Each gate in the\ncircuit is either \"or\", \"and\", \"nor\" (not or) or \"nand\" (not and). Each gate\nin the first layer is connected to exactly two features. Each gate in the\nsecond layer is connected to exactly two gates in the first layer. The third\nlayer has only one \"or\" gate, which is connected to all the gates in the\nsecond layer (in other words, the entire circuit produces 1 if and only if at\nleast one gate in the second layer produces 1). The problem is, Hibiki knows\nvery well that when the person is in love, his ability to think logically\ndegrades drastically. In particular, it is well known that when a person in\nlove evaluates a logical circuit in his mind, every gate evaluates to a value\nthat is the opposite of what it was supposed to evaluate to. For example, \"or\"\ngates return 1 if and only if both inputs are zero, \"tnand\" gates produce 1\nif and only if both inputs are one etc. In particular, the \"or\" gate in the\nlast layer also produces opposite results, and as such if Hibiki is in love,\nthe entire circuit produces 1 if and only if all the gates on the second layer\nproduced 0. Hibiki can\u2019t allow love to affect his decision. He wants to know\nwhat is the smallest number of gates that needs to be removed from the second\nlayer so that the output of the circuit for all possible inputs doesn't depend\non whether Hibiki is in love or not. Input The first line contains three\nintegers \n    n\n, \n    m\n, \n    k\n (\n    2 \n    \u2264 n, m \n    \u2264 50\n; \n    1 \n    \u2264 k\n    \n    \u2264 50\n) \u2014 the number of input features, the number of gates in the first\nlayer, and the number of gates in the second layer correspondingly. The second\nline contains \n    m\n pairs of strings separated by spaces describing the\nfirst layer. The first string in each pair describes the gate (\"and\", \"or\",\n\"nand\" or \"nor\"), and the second string describes the two input features the\ngate is connected two as a string consisting of exactly \n    n\n characters,\nwith exactly two characters (that correspond to the input features the gate is\nconnected to) equal to 'x' and the remaining characters equal to \".'. The\nthird line contains \n    k\n pairs of strings separated by spaces describing\nthe second layer in the same format, where the strings that describe the input\nparameters have length \n    m\n and correspond to the gates of the first layer.\nOutput Print the number of gates that need to be removed from the second layer\nso that the output of the remaining circuit doesn't depend on whether Hibiki\nis in love or not. If no matter how many gates are removed the output of the\ncircuit continues to depend on Hibiki's feelings, print \n    -1\n. Examples\nInput 2 2 2 and xx nand xx and xx or xx Output 1 Input 3 2 2 and xx. nor .xx\nand xx nor xx Output -1 Input 4 4 5 nor x..x and ..xx and xx.. nand xx.. nand\n..xx nor ..xx and xx.. nor ..xx or ..xx Output 2 Note In the first example the\ntwo gates in the first layer are connected to the same inputs, but first\ncomputes \"and\" while second computes \"nand\", and as such their output is\nalways different no matter what the input is and whether Hibiki is in love or\nnot. The second layer has \"or\" and \"and\" gates both connected to the two gates\nin the first layer. If Hibiki is not in love, the \"and\" gate will produce 0\nand the \"or\" gate will produce 1 no matter what input features are equal to,\nwith the final \"or\" gate in the third layer always producing the final answer\nof 1. If Hibiki is in love, \"and\" gate in the second layer will produce 1 and\n\"or\" gate will produce 0 no matter what the input is, with the final \"or\" gate\nin the third layer producing the final answer of 0. Thus, if both gates in the\nsecond layer are kept, the output of the circuit does depend on whether Hibiki\nis in love. If any of the two gates in the second layer is dropped, the output\nof the circuit will no longer depend on whether Hibiki is in love or not, and\nhence the answer is 1. In the second example no matter what gates are left in\nthe second layer, the output of the circuit will depend on whether Hibiki is\nin love or not. In the third example if Hibiki keeps second, third and fourth\ngates in the second layer, the circuit will not depend on whether Hibiki is in\nlove or not. Alternatively, he can keep the first and the last gates. The\nformer requires removing two gates, the latter requires removing three gates,\nso the former is better, and the answer is 2.\n\n",
+        "cf_contest_id": 993,
+        "cf_index": "F",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2 2\r\nand xx nand xx\r\nand xx or xx\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 2 2\r\nand xx. nor .xx\r\nand xx nor xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 4 5\r\nnor x..x and ..xx and xx.. nand xx..\r\nnand ..xx nor ..xx and xx.. nor ..xx or ..xx\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 3 1\r\nnand ..xx nand x..x nand x.x.\r\nnand .xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 2 4\r\nor x.x. or x.x.\r\nnand xx nand xx nand xx and xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 3 2\r\nnor xx.. nand .x.x or .xx.\r\nnor xx. nor xx.\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 2 3\r\nor .xx. nor .x.x\r\nnand xx nor xx nand xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 4 2\r\nand xx. nor x.x nand .xx or x.x\r\nnand ..xx and x..x\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 4 4\r\nnand .x.x or xx.. or ..xx nor ..xx\r\nor .x.x or x..x and ..xx nand .xx.\r\n",
+                "3\r\n"
+            ],
+            [
+                "4 4 4\r\nnand xx.. or ..xx and x..x nand x..x\r\nand .xx. nand .x.x and .x.x and x..x\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 4 4\r\nand .x.x nor x..x nand x.x. or .x.x\r\nnor xx.. nor x.x. and x..x and ..xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 7\r\nor xx and xx\r\nnor xx nand xx and xx and xx or xx or xx and xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 50\r\nand xx nor xx\r\nnand xx or xx or xx and xx nor xx nand xx and xx nand xx or xx nand xx and xx or xx or xx and xx or xx or xx and xx nand xx or xx nand xx or xx nor xx and xx nor xx or xx nand xx nor xx and xx nand xx or xx nor xx nand xx or xx or xx or xx nor xx and xx nand xx or xx or xx nand xx nor xx and xx nor xx and xx and xx or xx nor xx and xx nand xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 50\r\nand xx or xx\r\nnand xx or xx nor xx nor xx and xx and xx nand xx nand xx or xx nor xx or xx and xx and xx nand xx or xx nand xx and xx and xx nor xx or xx nand xx and xx nor xx or xx and xx or xx nand xx nor xx or xx nor xx or xx nor xx and xx and xx or xx nor xx or xx nor xx nor xx nor xx nand xx nand xx or xx or xx nand xx nor xx nand xx nand xx and xx or xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 50\r\nand xx nor xx\r\nand xx or xx nand xx nor xx nor xx or xx and xx and xx and xx or xx or xx or xx nor xx nor xx and xx nand xx and xx or xx and xx and xx nor xx and xx or xx nor xx nand xx or xx nor xx and xx and xx or xx and xx and xx or xx and xx nand xx and xx or xx nand xx nor xx and xx or xx nor xx nor xx and xx nor xx nand xx nand xx nand xx nor xx nor xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 50\r\nor xx and xx\r\nnand xx nand xx nand xx and xx nand xx nand xx nor xx and xx nor xx nor xx nor xx or xx nor xx and xx or xx nor xx or xx nor xx nand xx or xx nand xx and xx or xx nand xx and xx or xx nand xx or xx nor xx nand xx or xx and xx and xx and xx and xx and xx nor xx and xx and xx nand xx nand xx or xx nor xx nor xx or xx nand xx or xx nand xx and xx nor xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 2 3\r\nand .xx. nor ..xx\r\nnor xx or xx nor xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 2 3\r\nnand xx.. or ..xx\r\nnor xx nand xx nor xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 4 1\r\nnor .x.x or .x.x and x.x. nand .xx.\r\nnor x..x\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 3 3\r\nnor xx and xx nand xx\r\nor xx. and .xx nor xx.\r\n",
+                "2\r\n"
+            ],
+            [
+                "4 3 2\r\nand .xx. and ..xx or x..x\r\nand x.x and x.x\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 4 4\r\nand xx.. and x.x. nand ..xx or xx..\r\nor .x.x nand .x.x nand x..x nor x..x\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 4 4\r\nor .xx. nor .xx. nor .x.x or ..xx\r\nor .x.x or .xx. nand ..xx and x.x.\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 4 4\r\nand ..xx nor x.x. nor ..xx nand .xx.\r\nand x..x nor .xx. and ..xx nand .xx.\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 50\r\nand xx nor xx\r\nor xx or xx and xx nor xx and xx or xx or xx nand xx or xx nand xx nor xx nand xx nand xx nand xx or xx nand xx nor xx nor xx nor xx or xx nand xx and xx and xx or xx or xx nor xx and xx nor xx nor xx nor xx and xx and xx nand xx nor xx nor xx or xx nor xx and xx nor xx nand xx nor xx nor xx or xx nand xx and xx nor xx and xx nand xx and xx and xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 50\r\nor xx nor xx\r\nor xx nand xx nor xx or xx nor xx and xx nor xx and xx or xx nor xx or xx and xx and xx nor xx nor xx nor xx nand xx nor xx or xx nand xx nor xx and xx and xx nor xx and xx and xx and xx nor xx and xx nor xx nand xx or xx or xx nand xx nand xx nor xx nand xx or xx nand xx nand xx and xx or xx nand xx or xx and xx or xx or xx and xx nand xx nand xx\r\n",
+                "24\r\n"
+            ],
+            [
+                "2 2 50\r\nnand xx nand xx\r\nnor xx nor xx nand xx nand xx and xx and xx and xx nand xx nor xx nor xx and xx or xx and xx or xx nand xx nor xx nand xx and xx nand xx and xx nor xx nor xx and xx and xx nor xx and xx nor xx and xx nor xx or xx or xx or xx nand xx or xx or xx nand xx and xx or xx nor xx and xx nor xx nand xx or xx or xx and xx nand xx and xx or xx or xx or xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 50\r\nnand xx and xx\r\nor xx or xx and xx nor xx nand xx or xx nand xx nor xx nand xx or xx or xx nor xx or xx nand xx nand xx nor xx or xx nand xx or xx and xx nor xx nand xx nor xx and xx nand xx and xx and xx nand xx or xx or xx and xx nor xx or xx nand xx and xx and xx and xx nor xx or xx and xx or xx and xx nand xx nand xx nand xx and xx nor xx nor xx nand xx or xx\r\n",
+                "22\r\n"
+            ],
+            [
+                "4 4 1\r\nor xx.. nor .x.x nand xx.. or x..x\r\nnand ..xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 2 3\r\nand xx.. nor ..xx\r\nand xx nand xx or xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 4 4\r\nnand xx. nor x.x and .xx nor .xx\r\nand .x.x or .x.x nand .x.x or .x.x\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 4 2\r\nnor ..xx or x.x. or xx.. or ..xx\r\nnor ..xx nor x..x\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2 2\r\nand xx nor xx\r\nnand xx nor xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 4 4\r\nand xx.. or xx.. nor xx.. and ..xx\r\nnand x.x. or .xx. and x.x. nor .x.x\r\n",
+                "3\r\n"
+            ],
+            [
+                "4 4 4\r\nnand x.x. nand .x.x nor x..x and .xx.\r\nor x.x. nor .xx. nor x.x. nor x.x.\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 4 4\r\nand x..x and ..xx nor ..xx or x..x\r\nnor x.x. or ..xx nand x..x nor ..xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 3 8\r\nnor .x.x nor .x.x and ..xx\r\nor xx. and x.x and xx. and xx. nand x.x and xx. nor .xx and .xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 50\r\nor xx and xx\r\nnor xx nand xx nand xx nand xx nand xx or xx nand xx nand xx or xx or xx nor xx or xx and xx and xx or xx or xx nor xx or xx nor xx nand xx nor xx or xx or xx and xx nand xx nand xx nand xx nor xx nor xx nand xx or xx or xx nand xx nand xx or xx or xx and xx nor xx or xx nor xx nand xx or xx or xx nand xx or xx nor xx and xx nand xx nor xx nor xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 50\r\nnor xx and xx\r\nnand xx nor xx and xx nor xx or xx nand xx nand xx or xx and xx and xx nor xx and xx nor xx nand xx nor xx nor xx and xx nor xx or xx and xx nand xx and xx nand xx nor xx and xx nand xx nor xx or xx or xx nor xx and xx nor xx or xx and xx and xx nand xx or xx or xx and xx nand xx or xx or xx nand xx nor xx and xx nor xx and xx or xx nand xx and xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 50\r\nor xx or xx\r\nor xx nand xx or xx or xx or xx nand xx nand xx or xx nand xx nor xx or xx and xx nor xx and xx nor xx nand xx nor xx or xx or xx or xx nand xx and xx nand xx nor xx or xx nand xx nor xx nor xx nand xx nand xx or xx or xx or xx and xx nand xx nand xx nor xx or xx nor xx and xx nor xx nand xx or xx nand xx or xx nor xx or xx nor xx or xx or xx\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2 50\r\nor xx and xx\r\nnor xx and xx and xx nand xx nor xx nor xx and xx nand xx nor xx nor xx and xx nor xx nand xx nand xx nand xx and xx nor xx and xx or xx nand xx nand xx and xx nand xx nand xx nor xx and xx and xx nand xx and xx and xx nand xx or xx nand xx nor xx or xx and xx and xx nor xx nor xx or xx and xx nor xx nor xx and xx nor xx or xx or xx and xx nand xx or xx\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

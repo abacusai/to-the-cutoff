@@ -1,0 +1,105 @@
+[
+    {
+        "name": "Card Game",
+        "description": "Digital collectible card games have become very popular recently. So Vova\ndecided to try one of these. Vova has n cards in his collection. Each of these\ncards is characterised by its power pi, magic number ci and level li. Vova\nwants to build a deck with total power not less than k, but magic numbers may\nnot allow him to do so \u2014 Vova can't place two cards in a deck if the sum of\nthe magic numbers written on these cards is a prime number. Also Vova cannot\nuse a card if its level is greater than the level of Vova's character. At the\nmoment Vova's character's level is 1. Help Vova to determine the minimum level\nhe needs to reach in order to build a deck with the required total power.\nInput The first line contains two integers n and k (1 \u2264 n \u2264 100, 1 \u2264 k \u2264\n100000). Then n lines follow, each of these lines contains three numbers that\nrepresent the corresponding card: pi, ci and li (1 \u2264 pi \u2264 1000, 1 \u2264 ci \u2264\n100000, 1 \u2264 li \u2264 n). Output If Vova won't be able to build a deck with\nrequired power, print - 1. Otherwise print the minimum level Vova has to reach\nin order to build a deck. Examples Input 5 8 5 5 1 1 5 4 4 6 3 1 12 4 3 12 1\nOutput 4 Input 3 7 4 4 1 5 8 2 5 3 3 Output 2\n\n",
+        "cf_contest_id": 808,
+        "cf_index": "F",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "flows",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 8\r\n5 5 1\r\n1 5 4\r\n4 6 3\r\n1 12 4\r\n3 12 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "3 7\r\n4 4 1\r\n5 8 2\r\n5 3 3\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 10\r\n3 3 6\r\n5 10 4\r\n4 7 9\r\n4 9 7\r\n1 9 4\r\n1 6 10\r\n4 10 1\r\n4 4 6\r\n2 7 2\r\n1 5 4\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 20\r\n9 4 10\r\n2 8 9\r\n9 1 1\r\n8 10 10\r\n5 10 2\r\n1 2 10\r\n9 6 3\r\n2 10 5\r\n7 10 6\r\n6 3 1\r\n",
+                "6\r\n"
+            ],
+            [
+                "10 30\r\n23 83 9\r\n2 59 6\r\n10 6 4\r\n4 92 3\r\n19 13 6\r\n28 83 6\r\n25 58 4\r\n6 32 3\r\n4 15 3\r\n2 60 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 30\r\n2 20 10\r\n7 81 4\r\n7 27 5\r\n8 82 8\r\n1 6 4\r\n7 86 6\r\n4 78 10\r\n7 5 7\r\n3 7 8\r\n7 63 5\r\n",
+                "8\r\n"
+            ],
+            [
+                "15 40\r\n11 99 8\r\n9 86 12\r\n9 92 10\r\n6 88 7\r\n11 16 4\r\n7 15 13\r\n8 22 1\r\n6 67 5\r\n7 70 1\r\n1 18 5\r\n7 40 5\r\n8 15 3\r\n14 80 4\r\n1 78 1\r\n13 58 15\r\n",
+                "4\r\n"
+            ],
+            [
+                "30 100\r\n2 16 20\r\n12 125 8\r\n11 13 23\r\n20 58 7\r\n10 157 29\r\n17 58 6\r\n1 169 29\r\n17 33 26\r\n1 71 1\r\n4 94 16\r\n7 141 6\r\n8 168 23\r\n3 161 5\r\n15 126 1\r\n3 24 19\r\n4 196 7\r\n14 20 15\r\n9 11 29\r\n1 154 15\r\n10 184 3\r\n1 147 2\r\n19 57 24\r\n6 66 30\r\n6 156 1\r\n7 63 30\r\n15 2 30\r\n7 122 14\r\n2 178 25\r\n15 106 29\r\n17 1 22\r\n",
+                "19\r\n"
+            ],
+            [
+                "30 100\r\n10 30 27\r\n9 140 20\r\n5 77 3\r\n6 47 19\r\n2 56 22\r\n5 6 3\r\n9 175 4\r\n10 21 12\r\n5 69 4\r\n8 152 28\r\n8 24 22\r\n3 66 20\r\n3 126 10\r\n9 16 1\r\n2 34 12\r\n4 37 26\r\n3 191 26\r\n6 38 10\r\n7 132 11\r\n8 185 21\r\n8 72 25\r\n10 185 19\r\n4 56 1\r\n1 69 4\r\n7 175 30\r\n3 121 24\r\n10 181 30\r\n3 109 21\r\n10 35 24\r\n9 141 18\r\n",
+                "30\r\n"
+            ],
+            [
+                "2 2\r\n1 1 1\r\n1 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 8\r\n5 1 5\r\n1 1 4\r\n4 1 3\r\n1 1 4\r\n3 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 3\r\n1 1 1\r\n2 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 400\r\n228 1 1\r\n1 2 1\r\n1 9 1\r\n228 8 1\r\n1 41 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "4 10\r\n5 1 1\r\n1 2 1\r\n1 5 1\r\n5 8 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5\r\n3 2 1\r\n1 3 1\r\n1 3 1\r\n1 4 1\r\n2 7 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "18 598\r\n91 7 3\r\n54 8 4\r\n64 4 2\r\n83 5 4\r\n96 8 9\r\n63 8 1\r\n78 3 13\r\n91 2 7\r\n86 9 2\r\n68 5 1\r\n8 2 14\r\n10 9 3\r\n61 2 4\r\n93 8 14\r\n44 1 10\r\n21 7 2\r\n24 1 5\r\n38 7 15\r\n",
+                "15\r\n"
+            ],
+            [
+                "20 206\r\n52 8 1\r\n20 9 7\r\n85 9 18\r\n38 8 8\r\n89 7 5\r\n44 6 11\r\n14 8 7\r\n54 3 20\r\n34 3 14\r\n3 7 11\r\n10 7 3\r\n70 1 19\r\n24 8 16\r\n19 9 11\r\n4 2 12\r\n4 7 13\r\n43 9 6\r\n19 9 15\r\n9 4 8\r\n79 1 12\r\n",
+                "11\r\n"
+            ],
+            [
+                "14 2\r\n45 4 5\r\n38 3 5\r\n15 4 11\r\n2 2 4\r\n39 2 9\r\n54 3 8\r\n71 1 11\r\n94 9 1\r\n69 5 2\r\n45 2 3\r\n10 9 10\r\n96 8 9\r\n56 4 11\r\n86 1 9\r\n",
+                "1\r\n"
+            ],
+            [
+                "19 88\r\n78 6 9\r\n93 8 11\r\n37 9 15\r\n21 4 7\r\n28 9 15\r\n30 1 1\r\n32 7 19\r\n96 8 5\r\n19 8 18\r\n86 4 7\r\n100 9 5\r\n44 5 11\r\n5 8 13\r\n61 9 10\r\n59 1 10\r\n66 1 1\r\n69 6 2\r\n6 2 3\r\n99 3 15\r\n",
+                "5\r\n"
+            ],
+            [
+                "2 8\r\n5 1 1\r\n9 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 5\r\n3 1 2\r\n2 1 2\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

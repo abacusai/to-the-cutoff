@@ -1,0 +1,314 @@
+[
+    {
+        "name": "Batch Sort",
+        "description": "You are given a table consisting of n rows and m columns. Numbers in each row\nform a permutation of integers from 1 to m. You are allowed to pick two\nelements in one row and swap them, but no more than once for each row. Also,\nno more than once you are allowed to pick two columns and swap them. Thus, you\nare allowed to perform from 0 to n + 1 actions in total. Operations can be\nperformed in any order. You have to check whether it's possible to obtain the\nidentity permutation 1, 2, ..., m in each row. In other words, check if one\ncan perform some of the operation following the given rules and make each row\nsorted in increasing order. Input The first line of the input contains two\nintegers n and m (1 \u2264 n, m \u2264 20) \u2014 the number of rows and the number of\ncolumns in the given table. Each of next n lines contains m integers \u2014\nelements of the table. It's guaranteed that numbers in each line form a\npermutation of integers from 1 to m. Output If there is a way to obtain the\nidentity permutation in each row by following the given rules, print \"YES\"\n(without quotes) in the only line of the output. Otherwise, print \"NO\"\n(without quotes). Examples Input 2 4 1 3 2 4 1 3 4 2 Output YES Input 4 4 1 2\n3 4 2 3 4 1 3 4 1 2 4 1 2 3 Output NO Input 3 6 2 1 3 4 5 6 1 2 4 3 5 6 1 2 3\n4 6 5 Output YES Note In the first sample, one can act in the following way:\nSwap second and third columns. Now the table is 1 2 3 4 1 4 3 2 In the second\nrow, swap the second and the fourth elements. Now the table is 1 2 3 4 1 2 3 4\n\n",
+        "cf_contest_id": 724,
+        "cf_index": "B",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 4\r\n1 3 2 4\r\n1 3 4 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 4\r\n1 2 3 4\r\n2 3 4 1\r\n3 4 1 2\r\n4 1 2 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 6\r\n2 1 3 4 5 6\r\n1 2 4 3 5 6\r\n1 2 3 4 6 5\r\n",
+                "YES\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 10\r\n1 2 3 4 5 6 7 10 9 8\r\n5 2 3 4 1 6 7 8 9 10\r\n1 2 3 4 5 6 7 8 9 10\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 12\r\n1 2 3 4 5 6 7 10 9 8 11 12\r\n1 2 3 4 5 6 7 10 9 8 11 12\r\n1 2 3 8 5 6 7 10 9 4 11 12\r\n1 5 3 4 2 6 7 10 9 8 11 12\r\n1 2 3 4 5 6 7 10 9 8 11 12\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 10\r\n3 2 8 10 5 6 7 1 9 4\r\n1 2 9 4 5 3 7 8 10 6\r\n7 5 3 4 8 6 1 2 9 10\r\n4 2 3 9 8 6 7 5 1 10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 10\r\n9 2 3 4 5 6 7 8 1 10\r\n9 5 3 4 2 6 7 8 1 10\r\n9 5 3 4 2 6 7 8 1 10\r\n9 5 3 4 2 6 7 8 1 10\r\n9 5 3 4 2 10 7 8 1 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 10\r\n9 10 4 2 3 5 7 1 8 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 10\r\n6 4 7 3 5 8 1 9 10 2\r\n1 5 10 6 3 4 9 7 2 8\r\n3 2 1 7 8 6 5 4 10 9\r\n7 9 1 6 8 2 4 5 3 10\r\n3 4 6 9 8 7 1 2 10 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "20 2\r\n1 2\r\n1 2\r\n1 2\r\n2 1\r\n1 2\r\n1 2\r\n2 1\r\n1 2\r\n2 1\r\n2 1\r\n2 1\r\n1 2\r\n2 1\r\n2 1\r\n1 2\r\n1 2\r\n2 1\r\n2 1\r\n1 2\r\n2 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "20 3\r\n3 2 1\r\n2 3 1\r\n2 3 1\r\n2 1 3\r\n1 3 2\r\n2 1 3\r\n1 2 3\r\n3 2 1\r\n3 1 2\r\n1 3 2\r\n3 1 2\r\n2 1 3\r\n2 3 1\r\n2 3 1\r\n3 1 2\r\n1 3 2\r\n3 1 2\r\n1 3 2\r\n3 1 2\r\n3 1 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 10\r\n1 2 3 4 5 6 7 10 9 8\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 10\r\n6 9 3 4 5 1 8 7 2 10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 20\r\n1 2 3 4 5 6 7 8 9 10 11 12 19 14 15 16 17 18 13 20\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20\r\n1 2 3 4 5 6 7 19 9 10 11 12 13 14 15 16 17 18 8 20\r\n1 2 3 4 5 6 7 20 9 10 11 12 13 14 15 16 17 18 19 8\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 20\r\n1 2 3 4 5 6 7 8 12 10 11 9 13 14 15 16 17 18 19 20\r\n1 11 3 4 5 6 7 8 9 10 2 12 13 14 15 16 17 18 19 20\r\n1 2 3 4 5 6 8 7 9 10 11 12 13 14 15 16 17 18 19 20\r\n1 12 3 4 5 6 7 8 9 10 11 2 13 14 15 16 17 18 19 20\r\n1 2 3 4 5 6 7 8 9 10 19 12 13 14 15 16 17 18 11 20\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 20\r\n1 2 3 4 12 18 7 8 9 10 11 5 13 14 15 16 17 6 19 20\r\n6 2 3 4 5 1 7 8 9 10 11 12 13 20 15 16 17 18 19 14\r\n4 2 3 1 5 11 7 8 9 10 6 12 13 14 15 16 17 18 19 20\r\n1 2 3 4 5 6 19 8 9 10 11 12 13 14 15 20 17 18 7 16\r\n1 2 9 4 5 6 7 8 18 10 11 12 13 14 15 16 17 3 19 20\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 10\r\n4 2 3 8 5 6 7 1 9 10\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 10\r\n3 2 1 4 5 6 7 8 10 9\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 20\r\n1 2 3 4 5 6 7 8 9 10 19 12 18 14 15 16 17 13 11 20\r\n1 2 11 4 5 6 7 8 9 10 19 12 13 14 15 16 17 18 3 20\r\n13 2 3 4 5 6 7 8 9 10 19 12 1 14 15 16 17 18 11 20\r\n1 2 3 4 5 6 7 8 9 10 19 12 13 14 15 16 17 18 11 20\r\n1 2 3 4 5 6 7 8 9 10 19 12 13 14 15 16 17 18 11 20\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 20\r\n1 2 3 4 5 6 16 8 9 10 11 12 13 14 15 7 17 18 19 20\r\n1 2 3 14 5 6 16 8 9 10 11 12 13 4 15 7 17 18 19 20\r\n1 2 3 4 5 6 16 8 18 10 11 12 13 14 15 7 17 9 19 20\r\n1 2 3 4 5 6 16 8 9 15 11 12 13 14 10 7 17 18 19 20\r\n1 2 18 4 5 6 16 8 9 10 11 12 13 14 15 7 17 3 19 20\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 20\r\n1 2 18 4 5 6 7 8 9 10 11 12 13 14 15 16 19 3 17 20\r\n8 2 3 9 5 6 7 1 4 10 11 12 13 14 15 16 17 18 19 20\r\n7 2 3 4 5 6 1 8 9 10 11 12 13 14 15 16 17 20 19 18\r\n1 2 3 12 5 6 7 8 9 17 11 4 13 14 15 16 10 18 19 20\r\n1 11 3 4 9 6 7 8 5 10 2 12 13 14 15 16 17 18 19 20\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 10\r\n10 2 3 4 5 9 7 8 6 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 10\r\n1 9 2 4 6 5 8 3 7 10\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 20\r\n1 3 2 19 5 6 7 8 9 17 11 12 13 14 15 16 10 18 4 20\r\n1 3 2 4 5 6 7 8 9 17 11 12 13 14 15 16 10 18 19 20\r\n1 3 2 4 20 6 7 8 9 17 11 12 13 14 15 16 10 18 19 5\r\n1 3 2 4 5 6 7 8 9 17 11 12 13 14 15 16 10 18 19 20\r\n1 3 2 4 5 6 7 8 9 17 11 12 13 14 15 16 10 18 19 20\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 20\r\n1 6 17 4 5 2 7 14 9 10 11 12 13 8 15 16 3 18 19 20\r\n5 6 17 4 1 2 7 8 9 10 11 12 13 14 15 16 3 18 19 20\r\n1 6 17 4 5 2 7 8 9 10 11 12 13 14 15 18 3 16 19 20\r\n1 6 17 4 5 2 7 8 9 10 11 12 13 14 15 16 3 18 20 19\r\n1 6 17 8 5 2 7 4 9 10 11 12 13 14 15 16 3 18 19 20\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 20\r\n10 2 9 4 5 6 7 8 15 1 11 16 13 14 3 12 17 18 19 20\r\n10 2 3 4 5 6 7 1 9 8 11 16 13 14 15 12 17 18 19 20\r\n9 2 3 4 5 6 7 8 10 1 11 16 13 14 15 12 20 18 19 17\r\n10 2 3 4 7 6 5 8 9 1 11 16 18 14 15 12 17 13 19 20\r\n10 2 3 4 5 6 7 8 9 20 11 16 14 13 15 12 17 18 19 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 4\r\n2 3 4 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 3\r\n1 2 3\r\n2 1 3\r\n3 2 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "15 6\r\n2 1 4 3 6 5\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 4\r\n4 3 2 1\r\n4 3 1 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 4\r\n1 2 3 4\r\n2 1 4 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 6\r\n6 5 4 3 2 1\r\n6 5 4 3 2 1\r\n6 5 4 3 2 1\r\n6 5 4 3 2 1\r\n6 5 4 3 2 1\r\n6 5 4 3 2 1\r\n6 5 4 3 2 1\r\n6 5 4 3 2 1\r\n6 5 4 3 2 1\r\n6 5 4 3 2 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 4\r\n2 1 4 3\r\n2 1 4 3\r\n2 1 4 3\r\n2 1 4 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 8\r\n1 2 3 4 6 5 8 7\r\n1 2 3 4 6 5 8 7\r\n1 2 3 4 6 5 8 7\r\n1 2 3 4 6 5 8 7\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 6\r\n1 2 3 5 6 4\r\n3 2 1 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 3\r\n1 2 3\r\n3 1 2\r\n1 3 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 5\r\n5 2 1 4 3\r\n2 1 5 4 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "20 8\r\n4 3 2 1 5 6 7 8\r\n1 2 3 4 8 7 6 5\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 8\r\n8 7 6 5 4 3 2 1\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n1 2 3 4 5 6 7 8\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 12\r\n1 2 3 4 5 6 7 8 9 10 11 12\r\n1 2 3 4 5 6 7 8 10 9 12 11\r\n1 2 3 4 5 6 7 8 10 9 12 11\r\n1 2 3 4 5 6 7 8 10 9 12 11\r\n1 2 3 4 5 6 7 8 10 9 12 11\r\n1 2 3 4 5 6 7 8 10 9 12 11\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 12\r\n1 2 3 4 5 6 7 8 9 10 11 12\r\n1 2 3 4 5 6 7 8 9 10 11 12\r\n1 2 3 4 5 6 7 8 9 10 11 12\r\n1 2 3 4 5 6 7 8 9 10 11 12\r\n1 2 3 4 5 6 7 8 9 10 11 12\r\n1 2 3 4 5 6 7 8 10 11 12 9\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 4\r\n2 3 1 4\r\n3 2 1 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 4\r\n4 3 2 1\r\n1 2 3 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 4\r\n1 2 3 4\r\n4 3 2 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 6\r\n2 3 1 4 5 6\r\n1 2 3 5 6 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 3\r\n2 3 1\r\n2 3 1\r\n1 2 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 6\r\n6 5 4 3 2 1\r\n6 5 4 3 2 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 4\r\n2 1 4 3\r\n2 1 4 3\r\n2 1 4 3\r\n2 1 4 3\r\n2 1 4 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5 4\r\n3 1 4 2\r\n3 1 4 2\r\n3 1 4 2\r\n3 1 4 2\r\n3 1 4 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 8\r\n3 8 1 4 5 6 7 2\r\n1 8 3 6 5 4 7 2\r\n1 8 3 5 4 6 7 2\r\n1 8 3 7 5 6 4 2\r\n1 8 3 7 5 6 4 2\r\n1 8 3 7 5 6 4 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 5\r\n5 2 4 3 1\r\n2 1 5 4 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 4\r\n2 3 1 4\r\n1 2 3 4\r\n2 3 1 4\r\n2 1 3 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 4\r\n1 2 4 3\r\n2 1 4 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 5\r\n1 2 4 3 5\r\n2 1 4 3 5\r\n1 2 3 4 5\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 10\r\n2 1 3 4 5 6 8 7 10 9\r\n1 2 3 4 5 6 8 7 10 9\r\n1 2 3 4 6 5 8 7 10 9\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 4\r\n3 1 2 4\r\n3 2 4 1\r\n3 1 2 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 5\r\n1 4 2 3 5\r\n1 2 4 5 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 5\r\n2 1 5 3 4\r\n2 1 5 3 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 6\r\n2 3 1 4 5 6\r\n2 1 4 3 5 6\r\n1 2 3 4 5 6\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 6\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 4\r\n2 1 4 3\r\n2 1 4 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 6\r\n6 5 4 3 2 1\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 6\r\n6 5 4 3 2 1\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n1 2 3 4 5 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2 4\r\n2 3 1 4\r\n1 2 3 4\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 5\r\n1 2 3 4 5\r\n1 3 4 2 5\r\n1 4 2 3 5\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 3\r\n1 2 3\r\n1 2 3\r\n1 2 3\r\n3 1 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 3\r\n3 1 2\r\n1 2 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2 5\r\n2 1 5 4 3\r\n2 1 5 4 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "7 4\r\n1 2 3 4\r\n4 3 2 1\r\n4 3 2 1\r\n4 3 2 1\r\n4 3 2 1\r\n4 3 2 1\r\n4 3 2 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 3\r\n1 2 3\r\n1 3 2\r\n3 1 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 6\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n2 1 4 3 6 5\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

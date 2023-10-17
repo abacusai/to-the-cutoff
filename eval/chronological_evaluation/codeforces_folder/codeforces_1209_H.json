@@ -1,0 +1,89 @@
+[
+    {
+        "name": "Moving Walkways",
+        "description": "Airports often use moving walkways to help you walking big distances faster.\nEach such walkway has some speed that effectively increases your speed. You\ncan stand on such a walkway and let it move you, or you could also walk and\nthen your effective speed is your walking speed plus walkway's speed. Limak\nwants to get from point \n    0\n to point \n    L\n on a straight line. There are\n\n    n\n disjoint walkways in between. The \n    i\n-th walkway is described by\ntwo integers \n    x_i\n and \n    y_i\n and a real value \n    s_i\n. The\n\n    i\n-th walkway starts at \n    x_i\n, ends at \n    y_i\n and has speed\n\n    s_i\n. Every walkway is located inside the segment \n    [0, L]\n and no two\nwalkways have positive intersection. However, they can touch by endpoints.\nLimak needs to decide how to distribute his energy. For example, it might make\nmore sense to stand somewhere (or to walk slowly) to then have a lot of energy\nto walk faster. Limak's initial energy is \n    0\n and it must never drop below\nthat value. At any moment, he can walk with any speed \n    v\n in the interval\n\n    [0, 2]\n and it will cost him \n    v\n energy per second, but he\ncontinuously recovers energy with speed of \n    1\n energy per second. So, when\nhe walks with speed \n    v\n, his energy increases by \n    (1-v)\n. Note that\nnegative value would mean losing energy. In particular, he can walk with speed\n\n    1\n and this won't change his energy at all, while walking with speed\n\n    0.77\n effectively gives him \n    0.23\n energy per second. Limak can\nchoose his speed arbitrarily (any real value in interval \n    [0, 2]\n) at\nevery moment of time (including the moments when he is located on non-integer\npositions). Everything is continuous (non-discrete). What is the fastest time\nLimak can get from \n    0\n to \n    L\n? Input The first line contains integers\n\n    n\n and \n    L\n (\n    1 \n    \u2264 n \n    \u2264 200\n     000\n, \n    1 \n    \u2264 L \n    \u2264\n    10^9\n), the number of walkways and the distance to walk. Each of the next\n\n    n\n lines contains integers \n    x_i\n, \n    y_i\n and real value \n    s_i\n\n(\n    0 \n    \u2264 x_i < y_i \n    \u2264 L\n, \n    0.1 \n    \u2264 s_i \n    \u2264 10.0\n). The value\n\n    s_i\n is given with at most \n    9\n digits after decimal point. It's\nguaranteed, that no two walkways have a positive intersection. The walkways\nare listed from left to right. That is, \n    y_i \n    \u2264 x_i + 1\n for \n    1\n    \n    \u2264 i \n    \u2264 n - 1\n. Output Print one real value, the fastest possible time\nto reach \n    L\n. Your answer will be considered correct if its absolute or\nrelative error won't exceed \n    10^-9\n. Examples Input 1 5 0 2 2.0 Output\n3.000000000000 Input 1 5 2 4 0.91 Output 3.808900523560 Input 3 1000 0 990\n1.777777 995 996 1.123456789 996 1000 2.0 Output 361.568848429553 Note The\ndrawings show the first two examples. In the first one, there is a walkway\nfrom \n    0\n to \n    2\n with speed \n    2.0\n and Limak wants to get to point\n\n    5\n. The second example has a walkway from \n    2\n to \n    4\n with speed\n\n    0.91\n. In the first example, one of optimal strategies is as follows. Get\nfrom \n    0\n to \n    2\n by standing still on the walkway. It moves you with\nspeed \n    2\n so it takes \n    1\n second and you save up \n    1\n energy. Get\nfrom \n    2\n to \n    4\n by walking with max speed \n    2\n for next \n    1\n\nsecond. It takes \n    1\n second again and the energy drops to \n    0\n. Get\nfrom \n    4\n to \n    5\n by walking with speed \n    1\n. It takes \n    1\n second\nand the energy stays constant at the value \n    0\n. The total time is \n    1 + 1\n    + 1 = 3\n.\n\n",
+        "cf_contest_id": 1209,
+        "cf_index": "H",
+        "cf_rating": 3300,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "greedy",
+            "math"
+        ],
+        "time_limit_seconds": 2.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1 5\r\n0 2 2.0\r\n",
+                "3.000000000000000\r\n"
+            ],
+            [
+                "1 5\r\n2 4 0.91\r\n",
+                "3.808900523560209\r\n"
+            ],
+            [
+                "3 1000\r\n0 990 1.777777\r\n995 996 1.123456789\r\n996 1000 2.0\r\n",
+                "361.568848429552872\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n0 1 0.1\r\n",
+                "0.909090909090909\r\n"
+            ],
+            [
+                "1 1\r\n0 1 10.0\r\n",
+                "0.090909090909091\r\n"
+            ],
+            [
+                "1 1000000000\r\n0 12345 7.9\r\n",
+                "999987655.000000000000000\r\n"
+            ],
+            [
+                "1 1000000000\r\n0 998123100 0.941235121\r\n",
+                "515590971.578811883926392\r\n"
+            ],
+            [
+                "1 85112350\r\n84112350 85112350 0.1\r\n",
+                "85021440.909090906381607\r\n"
+            ],
+            [
+                "2 1000000000\r\n0 184481784 0.180631372\r\n184481784 1000000000 1.453890274\r\n",
+                "488593759.174707949161530\r\n"
+            ],
+            [
+                "3 1000000000\r\n22773351 143481217 0.294149291\r\n143481217 408377151 3.926252649\r\n747884839 1000000000 0.146389604\r\n",
+                "640526798.047408938407898\r\n"
+            ],
+            [
+                "4 10\r\n0 1 1.121414318\r\n3 4 0.384510828\r\n5 6 1.282815682\r\n7 8 1.476801368\r\n",
+                "6.571382605806269\r\n"
+            ],
+            [
+                "7 20\r\n0 6 0.294709290\r\n6 9 0.304380943\r\n9 11 0.622152889\r\n14 15 0.237395213\r\n16 18 0.174293660\r\n18 19 3.049755070\r\n19 20 0.111594021\r\n",
+                "14.545414768734137\r\n"
+            ],
+            [
+                "8 1000000000\r\n27584851 82964462 0.585798556\r\n107205042 298697619 7.371708596\r\n306023438 409211805 5.080951109\r\n581391806 593674606 1.555677815\r\n596188383 677676626 0.371680175\r\n745173058 748051327 0.152855557\r\n768795698 788452378 7.945296525\r\n928225051 1000000000 0.409519190\r\n",
+                "556630453.267699599266052\r\n"
+            ],
+            [
+                "1 17\r\n15 17 0.339160345\r\n",
+                "16.493473135959682\r\n"
+            ],
+            [
+                "2 8\r\n1 5 0.392732652\r\n7 8 1.488123309\r\n",
+                "5.991973803931527\r\n"
+            ],
+            [
+                "5 100\r\n0 3 0.167556562\r\n46 49 0.822586593\r\n49 60 0.537418363\r\n70 85 6.639253864\r\n85 100 0.783534802\r\n",
+                "69.084715868322732\r\n"
+            ],
+            [
+                "6 1000000000\r\n0 4501249 0.264862598\r\n4501249 345936630 2.097776966\r\n345936630 527351858 0.370645504\r\n527351858 780089563 0.877233089\r\n780089563 977832352 2.284785797\r\n977832352 1000000000 1.026362864\r\n",
+                "401295162.699355840682983\r\n"
+            ]
+        ]
+    }
+]

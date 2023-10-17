@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Lucky Segments",
+        "description": "Petya loves lucky numbers. Everybody knows that lucky numbers are positive\nintegers whose decimal representation contains only the lucky digits 4 and 7.\nFor example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not. Petya has n\nnumber segments [l1; r1], [l2; r2], ..., [ln; rn]. During one move Petya can\ntake any segment (let it be segment number i) and replace it with segment [li\n+ 1; ri + 1] or [li - 1; ri - 1]. In other words, during one move Petya can\nshift any segment to the left or to the right by a unit distance. Petya calls\na number full if it belongs to each segment. That is, number x is full if for\nany i (1 \u2264 i \u2264 n) the condition li \u2264 x \u2264 ri is fulfilled. Petya makes no more\nthan k moves. After that he counts the quantity of full lucky numbers. Find\nthe maximal quantity that he can get. Input The first line contains two\nintegers n and k (1 \u2264 n \u2264 10^5, 1 \u2264 k \u2264 10^18) \u2014 the number of segments and\nthe maximum number of moves. Next n lines contain pairs of integers li and ri\n(1 \u2264 li \u2264 ri \u2264 10^18). Please do not use the \nwrite 64-bit integers in \u0421++. It is preferred to use the \nOutput Print on the single line the single number \u2014 the answer to the problem.\nExamples Input 4 7 1 4 6 9 4 7 3 5 Output 1 Input 2 7 40 45 47 74 Output 2\nNote In the first sample Petya shifts the second segment by two units to the\nleft (it turns into [4; 7]), after that number 4 becomes full. In the second\nsample Petya shifts the first segment by two units to the right (it turns into\n[42; 47]), and shifts the second segment by three units to the left (it turns\ninto [44; 71]), after that numbers 44 and 47 become full.\n\n",
+        "cf_contest_id": 121,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "implementation",
+            "two pointers"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 7\r\n1 4\r\n6 9\r\n4 7\r\n3 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 7\r\n40 45\r\n47 74\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7 10\r\n1 5\r\n6 78\r\n5 8\r\n1 2\r\n6 9\r\n1 100\r\n200 400\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 1254\r\n1 10\r\n2 20\r\n3 30\r\n4 40\r\n5 50\r\n6 60\r\n7 4528\r\n9995 48888\r\n3 700\r\n9 20\r\n",
+                "0\r\n"
+            ],
+            [
+                "20 47\r\n363 875\r\n788 977\r\n889 953\r\n61 90\r\n675 795\r\n466 893\r\n53 795\r\n845 851\r\n979 986\r\n941 997\r\n684 871\r\n320 897\r\n953 967\r\n883 885\r\n252 280\r\n30 377\r\n500 850\r\n58 627\r\n541 591\r\n44 563\r\n",
+                "0\r\n"
+            ],
+            [
+                "74 77\r\n22 23\r\n21 23\r\n11 20\r\n15 19\r\n22 26\r\n26 27\r\n10 14\r\n18 23\r\n22 22\r\n16 18\r\n3 23\r\n6 6\r\n2 22\r\n13 24\r\n13 24\r\n8 12\r\n25 26\r\n3 26\r\n5 17\r\n7 7\r\n8 21\r\n2 6\r\n19 22\r\n6 16\r\n2 27\r\n10 18\r\n15 16\r\n10 12\r\n26 27\r\n9 12\r\n5 5\r\n21 22\r\n24 27\r\n26 26\r\n12 16\r\n26 27\r\n1 6\r\n17 18\r\n8 14\r\n4 11\r\n26 27\r\n5 14\r\n25 25\r\n13 17\r\n22 27\r\n5 9\r\n19 21\r\n8 15\r\n19 19\r\n6 8\r\n11 22\r\n8 12\r\n11 15\r\n10 24\r\n22 24\r\n8 10\r\n25 27\r\n7 7\r\n7 13\r\n15 17\r\n24 25\r\n26 26\r\n27 27\r\n26 27\r\n25 26\r\n2 4\r\n19 25\r\n4 8\r\n25 27\r\n19 23\r\n16 27\r\n15 21\r\n14 19\r\n2 15\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 1000000000000000000\r\n906800191 945159042\r\n763671464 768962261\r\n903914676 968530870\r\n536385336 680634352\r\n789894446 943163904\r\n165771870 768245516\r\n363529896 987831430\r\n786328304 851005237\r\n333410982 527035584\r\n922055665 952724537\r\n",
+                "190\r\n"
+            ],
+            [
+                "74 7\r\n12 25\r\n10 17\r\n23 23\r\n13 25\r\n21 26\r\n2 16\r\n2 11\r\n4 20\r\n4 16\r\n13 14\r\n17 24\r\n2 27\r\n20 25\r\n13 17\r\n19 24\r\n10 12\r\n26 26\r\n2 11\r\n22 25\r\n17 20\r\n23 25\r\n1 1\r\n5 27\r\n18 24\r\n20 27\r\n11 22\r\n13 22\r\n26 26\r\n17 17\r\n22 27\r\n4 17\r\n19 25\r\n20 23\r\n5 6\r\n20 27\r\n4 26\r\n3 20\r\n14 15\r\n24 24\r\n7 11\r\n1 8\r\n4 15\r\n18 20\r\n8 12\r\n5 14\r\n2 16\r\n13 15\r\n5 5\r\n1 12\r\n17 19\r\n22 26\r\n3 18\r\n4 10\r\n18 25\r\n20 20\r\n22 25\r\n17 18\r\n11 15\r\n12 18\r\n8 23\r\n23 23\r\n21 21\r\n5 22\r\n1 5\r\n10 26\r\n18 19\r\n26 26\r\n27 27\r\n13 15\r\n27 27\r\n23 23\r\n18 25\r\n9 26\r\n24 27\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1000000000000000000\r\n183333333 183333333\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1000000000\r\n299999999 299999999\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1000000000\r\n299999998 299999998\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 183333333\r\n261111110 261111110\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 183333333\r\n261111111 261111111\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 183333330\r\n261111110 261111110\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

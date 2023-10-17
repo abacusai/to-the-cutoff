@@ -1,0 +1,90 @@
+[
+    {
+        "name": "Around the World",
+        "description": "Guy-Manuel and Thomas are planning \n    144\n trips around the world. You are\ngiven a simple weighted undirected connected graph with \n    n\n vertexes and\n\n    m\n edges with the following restriction: there isn't any simple cycle (i.\ne. a cycle which doesn't pass through any vertex more than once) of length\ngreater than \n    3\n which passes through the vertex \n    1\n. The cost of a\npath (not necessarily simple) in this graph is defined as the XOR of weights\nof all edges in that path with each edge being counted as many times as the\npath passes through it. But the trips with cost \n    0\n aren't exciting. You\nmay choose any subset of edges incident to the vertex \n    1\n and remove them.\nHow many are there such subsets, that, when removed, there is not any\nnontrivial cycle with the cost equal to \n    0\n which passes through the\nvertex \n    1\n in the resulting graph? A cycle is called nontrivial if it\npasses through some edge odd number of times. As the answer can be very big,\noutput it modulo \n    10^9+7\n. Input The first line contains two integers\n\n    n\n and \n    m\n (\n    1 \n    \u2264 n,m \n    \u2264 10^5\n) \u2014 the number of vertexes\nand edges in the graph. The \n    i\n-th of the next \n    m\n lines contains\nthree integers \n    a_i\n, \n    b_i\n and \n    w_i\n (\n    1 \n    \u2264 a_i, b_i \n    \u2264\n    n, a_i \n    \u2260 b_i, 0 \n    \u2264 w_i < 32\n) \u2014 the endpoints of the \n    i\n-th edge\nand its weight. It's guaranteed there aren't any multiple edges, the graph is\nconnected and there isn't any simple cycle of length greater than \n    3\n\nwhich passes through the vertex \n    1\n. Output Output the answer modulo\n\n    10^9+7\n. Examples Input 6 8 1 2 0 2 3 1 2 4 3 2 6 2 3 4 8 3 5 4 5 4 5 5 6\n6 Output 2 Input 7 9 1 2 0 1 3 1 2 3 9 2 4 3 2 5 4 4 5 7 3 6 6 3 7 7 6 7 8\nOutput 1 Input 4 4 1 2 27 1 3 1 1 4 1 3 4 0 Output 6 Note The pictures below\nrepresent the graphs from examples. In the first example, there aren't any\nnontrivial cycles with cost \n    0\n, so we can either remove or keep the only\nedge incident to the vertex \n    1\n. In the second example, if we don't remove\nthe edge \n    1-2\n, then there is a cycle \n    1-2-4-5-2-1\n with cost \n    0\n;\nalso if we don't remove the edge \n    1-3\n, then there is a cycle\n\n    1-3-2-4-5-2-3-1\n of cost \n    0\n. The only valid subset consists of both\nedges. In the third example, all subsets are valid except for those two in\nwhich both edges \n    1-3\n and \n    1-4\n are kept.\n\n",
+        "cf_contest_id": 1299,
+        "cf_index": "D",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "combinatorics",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "graphs",
+            "math",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "6 8\r\n1 2 0\r\n2 3 1\r\n2 4 3\r\n2 6 2\r\n3 4 8\r\n3 5 4\r\n5 4 5\r\n5 6 6\r\n",
+                "2"
+            ],
+            [
+                "7 9\r\n1 2 0\r\n1 3 1\r\n2 3 9\r\n2 4 3\r\n2 5 4\r\n4 5 7\r\n3 6 6\r\n3 7 7\r\n6 7 8\r\n",
+                "1"
+            ],
+            [
+                "4 4\r\n1 2 27\r\n1 3 1\r\n1 4 1\r\n3 4 0\r\n",
+                "6"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 4\r\n1 2 0\r\n1 3 0\r\n1 4 1\r\n1 5 0\r\n",
+                "16"
+            ],
+            [
+                "5 6\r\n1 2 1\r\n1 3 0\r\n3 2 0\r\n1 4 9\r\n1 5 23\r\n4 5 31\r\n",
+                "15"
+            ],
+            [
+                "5 6\r\n1 2 1\r\n1 3 0\r\n3 2 0\r\n1 4 23\r\n1 5 23\r\n4 5 23\r\n",
+                "16"
+            ],
+            [
+                "5 6\r\n1 2 1\r\n1 3 0\r\n3 2 1\r\n1 4 23\r\n1 5 23\r\n4 5 23\r\n",
+                "12"
+            ],
+            [
+                "5 6\r\n1 2 1\r\n1 3 0\r\n3 2 1\r\n1 4 16\r\n1 5 8\r\n4 5 24\r\n",
+                "9"
+            ],
+            [
+                "2 1\r\n1 2 18\r\n",
+                "2"
+            ],
+            [
+                "16 21\r\n2 4 14\r\n1 2 2\r\n8 10 25\r\n5 7 0\r\n1 11 27\r\n1 5 16\r\n12 13 18\r\n3 4 8\r\n8 9 31\r\n14 15 3\r\n15 16 17\r\n9 10 4\r\n5 6 9\r\n1 8 28\r\n11 13 5\r\n2 14 7\r\n2 3 4\r\n14 16 7\r\n6 7 30\r\n1 14 19\r\n11 12 18\r\n",
+                "14"
+            ],
+            [
+                "4 4\r\n2 3 19\r\n3 4 17\r\n1 2 2\r\n2 4 7\r\n",
+                "2"
+            ],
+            [
+                "7 8\r\n1 2 2\r\n5 7 18\r\n5 6 31\r\n2 4 17\r\n6 7 1\r\n2 3 31\r\n3 4 23\r\n1 5 31\r\n",
+                "4"
+            ],
+            [
+                "10 12\r\n1 5 5\r\n5 7 2\r\n9 10 5\r\n1 8 5\r\n1 2 2\r\n3 4 28\r\n8 10 10\r\n5 6 24\r\n6 7 21\r\n8 9 18\r\n2 3 12\r\n2 4 26\r\n",
+                "8"
+            ],
+            [
+                "13 18\r\n5 6 17\r\n1 5 10\r\n3 4 2\r\n5 7 17\r\n2 3 24\r\n9 10 4\r\n2 11 29\r\n5 8 1\r\n8 9 9\r\n1 8 16\r\n11 13 18\r\n2 4 4\r\n1 2 2\r\n11 12 17\r\n6 7 10\r\n8 10 1\r\n12 13 5\r\n1 11 0\r\n",
+                "7"
+            ],
+            [
+                "3 3\r\n3 2 2\r\n1 2 19\r\n3 1 7\r\n",
+                "4"
+            ],
+            [
+                "21 30\r\n3 2 21\r\n1 2 5\r\n3 1 22\r\n5 4 2\r\n1 4 8\r\n5 1 29\r\n7 6 30\r\n1 6 6\r\n7 1 1\r\n9 8 1\r\n1 8 24\r\n9 1 8\r\n11 10 10\r\n1 10 16\r\n11 1 0\r\n13 12 10\r\n1 12 14\r\n13 1 12\r\n15 14 19\r\n1 14 16\r\n15 1 31\r\n17 16 27\r\n1 16 22\r\n17 1 1\r\n19 18 19\r\n1 18 7\r\n19 1 15\r\n21 20 10\r\n1 20 2\r\n21 1 31\r\n",
+                "896670"
+            ]
+        ]
+    }
+]

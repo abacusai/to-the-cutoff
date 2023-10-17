@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Sereja and Sets",
+        "description": "Sereja has m non-empty sets of integers A1, A2, ..., Am. What a lucky\ncoincidence! The given sets are a partition of the set of all integers from 1\nto n. In other words, for any integer v (1 \u2264 v \u2264 n) there is exactly one set\nAt such that . Also Sereja has integer d. Sereja decided to choose some sets\nfrom the sets he has. Let's suppose that i1, i2, ..., ik (1 \u2264 i1 < i2 < ... <\nik \u2264 m) are indexes of the chosen sets. Then let's define an array of integers\nb, sorted in ascending order, as a union of the chosen sets, that is, . We'll\nrepresent the element with number j in this array (in ascending order) as bj.\nSereja considers his choice of sets correct, if the following conditions are\nmet: b1 \u2264 d; bi + 1 - bi \u2264 d (1 \u2264 i < |b|); n - d + 1 \u2264 b|b|. Sereja wants to\nknow what is the minimum number of sets (k) that he can choose so that his\nchoice will be correct. Help him with that. Input The first line contains\nintegers n, m, d (1 \u2264 d \u2264 n \u2264 10^5, 1 \u2264 m \u2264 20). The next m lines contain\nsets. The first number in the i-th line is si (1 \u2264 si \u2264 n). This number\ndenotes the size of the i-th set. Then the line contains si distinct integers\nfrom 1 to n \u2014 set Ai. It is guaranteed that the sets form partition of all\nintegers from 1 to n. Output In a single line print the answer to the problem\n\u2014 the minimum value k at the right choice. Examples Input 3 2 2 1 2 2 1 3\nOutput 1 Input 5 1 1 5 4 5 3 2 1 Output 1 Input 7 3 1 4 1 3 5 7 2 2 6 1 4\nOutput 3\n\n",
+        "cf_contest_id": 367,
+        "cf_index": "D",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dfs and similar"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2 2\r\n1 2\r\n2 1 3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 1 1\r\n5 4 5 3 2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "7 3 1\r\n4 1 3 5 7\r\n2 2 6\r\n1 4\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7 3 4\r\n4 1 3 5 7\r\n2 2 6\r\n1 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "7 3 5\r\n4 1 3 5 7\r\n2 2 6\r\n1 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "17 2 17\r\n12 1 2 4 5 7 8 9 11 12 14 15 16\r\n5 3 6 10 13 17\r\n",
+                "1\r\n"
+            ],
+            [
+                "7 3 3\r\n4 1 3 5 7\r\n2 2 6\r\n1 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 2 2\r\n3 1 4 5\r\n2 2 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "1 1 1\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "130 20 7\r\n6 1 27 53 79 105 99\r\n9 2 28 54 80 106 21 75 127 52\r\n9 3 29 55 81 107 100 76 77 26\r\n5 4 30 56 82 108\r\n8 5 31 57 83 109 22 126 51\r\n7 6 32 58 84 110 23 49\r\n5 7 33 59 85 111\r\n8 8 34 60 86 112 47 101 102\r\n5 9 35 61 87 113\r\n6 10 36 62 88 114 125\r\n5 11 37 63 89 115\r\n7 12 38 64 90 116 24 25\r\n6 13 39 65 91 117 129\r\n6 14 40 66 92 118 103\r\n6 15 41 67 93 119 73\r\n7 16 42 68 94 120 50 130\r\n7 17 43 69 95 121 128 78\r\n5 18 44 70 96 122\r\n8 19 45 71 97 123 48 74 104\r\n5 20 46 72 98 124\r\n",
+                "4\r\n"
+            ],
+            [
+                "130 20 5\r\n5 1 27 53 79 105\r\n7 2 28 54 80 106 50 78\r\n7 3 29 55 81 107 75 77\r\n7 4 30 56 82 108 23 52\r\n7 5 31 57 83 109 24 51\r\n5 6 32 58 84 110\r\n6 7 33 59 85 111 47\r\n8 8 34 60 86 112 21 48 25\r\n6 9 35 61 87 113 128\r\n7 10 36 62 88 114 125 104\r\n5 11 37 63 89 115\r\n8 12 38 64 90 116 73 49 76\r\n6 13 39 65 91 117 22\r\n8 14 40 66 92 118 101 127 102\r\n6 15 41 67 93 119 126\r\n6 16 42 68 94 120 100\r\n5 17 43 69 95 121\r\n7 18 44 70 96 122 103 129\r\n7 19 45 71 97 123 99 130\r\n7 20 46 72 98 124 74 26\r\n",
+                "6\r\n"
+            ],
+            [
+                "130 20 5\r\n6 1 27 53 79 105 130\r\n4 2 28 106 97\r\n6 3 55 81 107 26 35\r\n6 4 30 56 82 108 102\r\n11 5 17 29 43 54 77 95 99 121 61 128\r\n6 6 32 58 84 110 40\r\n6 7 33 111 78 113 71\r\n4 8 60 86 112\r\n14 9 23 34 59 75 80 101 104 124 127 129 52 87 50\r\n6 10 36 62 88 92 76\r\n8 11 37 63 115 103 66 118 45\r\n4 12 38 90 116\r\n4 13 65 91 117\r\n9 14 31 39 57 64 83 85 109 123\r\n4 15 41 67 93\r\n5 16 42 68 120 51\r\n10 18 19 44 69 70 89 96 114 122 25\r\n9 20 24 46 49 72 73 94 98 119\r\n3 21 47 125\r\n5 22 48 74 100 126\r\n",
+                "5\r\n"
+            ]
+        ]
+    }
+]

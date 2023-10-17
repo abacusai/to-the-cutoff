@@ -1,0 +1,85 @@
+[
+    {
+        "name": "Most Dangerous Shark",
+        "description": "Semyon participates in the most prestigious competition of the world ocean for\nthe title of the most dangerous shark. During this competition sharks compete\nin different subjects: speed swimming, masking, map navigation and many\nothers. Now Semyon is taking part in \u00abdestruction\u00bb contest. During it, \n    m\n\ndominoes are placed in front of the shark. All dominoes are on the same line,\nbut the height of the dominoes may vary. The distance between adjacent\ndominoes is \n    1\n. Moreover, each Domino has its own cost value, expressed\nas an integer. The goal is to drop all the dominoes. To do this, the shark can\npush any domino to the left or to the right, and it will begin falling in this\ndirection. If during the fall the domino touches other dominoes, they will\nalso start falling in the same direction in which the original domino is\nfalling, thus beginning a chain reaction, as a result of which many dominoes\ncan fall. A falling domino touches another one, if and only if the distance\nbetween them was strictly less than the height of the falling domino, the\ndominoes do not necessarily have to be adjacent. Of course, any shark can\neasily drop all the dominoes in this way, so the goal is not to drop all the\ndominoes, but do it with a minimum cost. The cost of the destruction is the\nsum of the costs of dominoes that the shark needs to push to make all the\ndominoes fall. Simon has already won in the previous subjects, but is not\nsmart enough to win in this one. Help Semyon and determine the minimum total\ncost of the dominoes he will have to push to make all the dominoes fall. Input\nIn order to reduce input size, the heights and costs of the dominoes are\ndescribed with blocks. The first line contains two integers \n    n\n and\n\n    m\n (\n    1 \n    \u2264 n \n    \u2264 250\n     000, 1 \n    \u2264 m \n    \u2264 10^7\n) \u2014 the\nnumber of the blocks and the total number of the dominoes Semyon must drop.\nThen descriptions of \n    n\n blocks follow. Description of every block\nconsists of three lines. The first line of block's description contains a\nsingle integer \n    k_i\n (\n    1 \n    \u2264 k_i \n    \u2264 250\n     000, \n    \u2211_i =\n    1^nk_i\n    \u2264 250\n     000\n) \u2014 the number of dominoes in the block. The\nsecond line of block's description contains \n    k_i\n integers \n    a_j\n (\n    1\n    \n    \u2264 a_j \n    \u2264 m\n) \u2014 the heights of the dominoes in the blocks. The third\nline contains \n    k_i\n integers \n    c_j\n (\n    1 \n    \u2264 c_j \n    \u2264\n    100\n     000\n) \u2014 the costs of the dominoes in the block. Then the domino\nsequence is described (from left to right). The first line of this description\ncontains a single integer \n    q\n (\n    n \n    \u2264 q \n    \u2264 250\n     000\n) \u2014 the\nnumber of blocks in the sequence of domino sequence. Each of the following\n\n    q\n lines contains integers \n    id_i, mul_i\n (\n    1 \n    \u2264 id_i \n    \u2264\n    n\n, \n    1 \n    \u2264 mul_i \n    \u2264 100\n     000\n), denoting that the next\n\n    k_id_i\n dominoes are dominoes of the block \n    id_i\n, with their cost\nmultiplied by \n    mul_i\n. It's guaranteed, that \n    \u2211_i =\n    1^qk_id_i = m\n, and that's every block is used in the sequence at\nleast once. Output Print exactly one integer \u2014 the minimum cost to make all\nthe dominoes fall. Examples Input 2 7 3 1 2 2 1 2 1 1 3 2 3 2 2 1 3 1 1 Output\n5 Input 1 1 1 1 100000 1 1 100000 Output 10000000000 Note In the first\nexample, there are \n    7\n dominoes in front of the Semyon. Their heights are\nequal to \n    [3, 1, 2, 2, 1, 2, 2]\n, and their costs are equal to \n    [4, 3,\n    6, 3, 1, 2, 1]\n. Semyon should drop the domino with index \n    7\n to the\nleft, it will fall and drop the domino \n    6\n as well. The domino \n    6\n\nduring the fall will drop the domino \n    5\n, however the latter will not drop\nany more dominoes. Then Semyon should drop domino with number \n    1\n to the\nright and it will drop dominoes \n    2\n and \n    3\n after falling. And the\ndomino \n    3\n will drop the domino \n    4\n after falling. Hence all dominoes\nare fallen this way. In the second example, there is a single domino of cost\n\n    10000000000\n.\n\n",
+        "cf_contest_id": 1131,
+        "cf_index": "G",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dp",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 768.0,
+        "public_cases": [
+            [
+                "2 7\r\n3\r\n1 2 2\r\n1 2 1\r\n1\r\n3\r\n2\r\n3\r\n2 2\r\n1 3\r\n1 1\r\n",
+                "5\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n1\r\n100000\r\n1\r\n1 100000\r\n",
+                "10000000000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 6\r\n6\r\n2 2 1 1 1 3\r\n30651 50188 37452 56797 997 81358\r\n1\r\n1 72159\r\n",
+                "8082457431\r\n"
+            ],
+            [
+                "1 5\r\n5\r\n1 1 1 4 1\r\n33080 80744 50789 62656 14662\r\n1\r\n1 23943\r\n",
+                "1851224874\r\n"
+            ],
+            [
+                "1 4\r\n4\r\n1 1 1 2\r\n87534 16989 13131 65620\r\n1\r\n1 55300\r\n",
+                "9408907900\r\n"
+            ],
+            [
+                "1 10\r\n10\r\n2 4 2 2 3 6 2 4 2 2\r\n1609 18921 38382 48072 66320 34454 26821 12991 69124 15361\r\n1\r\n1 24791\r\n",
+                "39888719\r\n"
+            ],
+            [
+                "1 10\r\n10\r\n1 2 10 2 9 2 9 1 3 2\r\n81353 59092 71734 32155 43512 6521 29008 48487 56044 85584\r\n1\r\n1 32167\r\n",
+                "1142861343\r\n"
+            ],
+            [
+                "1 10\r\n10\r\n3 8 8 6 2 4 6 5 6 4\r\n33543 29018 11359 61280 17763 14312 41029 35145 70370 2182\r\n1\r\n1 13328\r\n",
+                "29081696\r\n"
+            ],
+            [
+                "1 10\r\n10\r\n9 7 6 5 10 7 2 10 6 10\r\n19714 16729 48533 20446 58225 17286 86957 85212 4534 19425\r\n1\r\n1 18624\r\n",
+                "361771200\r\n"
+            ],
+            [
+                "10 10\r\n1\r\n1\r\n100000\r\n1\r\n1\r\n100000\r\n1\r\n1\r\n100000\r\n1\r\n1\r\n100000\r\n1\r\n1\r\n100000\r\n1\r\n1\r\n100000\r\n1\r\n1\r\n100000\r\n1\r\n1\r\n100000\r\n1\r\n1\r\n100000\r\n1\r\n1\r\n100000\r\n10\r\n1 100000\r\n2 100000\r\n3 100000\r\n4 100000\r\n5 100000\r\n6 100000\r\n7 100000\r\n8 100000\r\n9 100000\r\n10 100000\r\n",
+                "100000000000\r\n"
+            ],
+            [
+                "1 10\r\n10\r\n1 1 2 1 1 1 2 1 1 1\r\n16558 46487 53315 50745 14264 43978 44700 92600 3642 34612\r\n1\r\n1 2330\r\n",
+                "600105480\r\n"
+            ],
+            [
+                "1 10\r\n10\r\n1 1 1 2 1 1 2 1 1 2\r\n436 58914 35736 88206 596 94789 38726 48191 11213 76698\r\n1\r\n1 60323\r\n",
+                "18806720741\r\n"
+            ],
+            [
+                "5 10\r\n1\r\n1\r\n10679\r\n1\r\n2\r\n35449\r\n1\r\n1\r\n1111\r\n3\r\n2 1 1\r\n79870 26437 43437\r\n4\r\n2 1 1 1\r\n55902 44239 34132 66239\r\n5\r\n4 69762\r\n3 54444\r\n2 31623\r\n5 13755\r\n1 81916\r\n",
+                "12039018014\r\n"
+            ],
+            [
+                "1 8\r\n8\r\n6 4 3 1 1 1 1 3\r\n68134 62904 90519 25293 85872 93447 88813 87121\r\n1\r\n1 51010\r\n",
+                "7919557550\r\n"
+            ],
+            [
+                "1 2\r\n2\r\n2 2\r\n26561 32412\r\n1\r\n1 89076\r\n",
+                "2365947636\r\n"
+            ],
+            [
+                "1 10\r\n10\r\n10 2 4 3 2 1 3 5 3 3\r\n1055 90517 56283 78373 61774 62838 81228 49835 67363 92825\r\n1\r\n1 23353\r\n",
+                "24637415\r\n"
+            ]
+        ]
+    }
+]

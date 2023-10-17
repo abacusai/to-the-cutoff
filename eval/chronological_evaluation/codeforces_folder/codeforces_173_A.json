@@ -1,0 +1,160 @@
+[
+    {
+        "name": "Rock-Paper-Scissors",
+        "description": "Nikephoros and Polycarpus play rock-paper-scissors. The loser gets pinched\n(not too severely!). Let us remind you the rules of this game. Rock-paper-\nscissors is played by two players. In each round the players choose one of\nthree items independently from each other. They show the items with their\nhands: a rock, scissors or paper. The winner is determined by the following\nrules: the rock beats the scissors, the scissors beat the paper and the paper\nbeats the rock. If the players choose the same item, the round finishes with a\ndraw. Nikephoros and Polycarpus have played n rounds. In each round the winner\ngave the loser a friendly pinch and the loser ended up with a fresh and new\nred spot on his body. If the round finished in a draw, the players did nothing\nand just played on. Nikephoros turned out to have worked out the following\nstrategy: before the game began, he chose some sequence of items A = (a1, a2,\n..., am), and then he cyclically showed the items from this sequence, starting\nfrom the first one. Cyclically means that Nikephoros shows signs in the\nfollowing order: a1, a2, ..., am, a1, a2, ..., am, a1, ... and so on.\nPolycarpus had a similar strategy, only he had his own sequence of items B =\n(b1, b2, ..., bk). Determine the number of red spots on both players after\nthey've played n rounds of the game. You can consider that when the game\nbegan, the boys had no red spots on them. Input The first line contains\ninteger n (1 \u2264 n \u2264 2\u00b710^9) \u2014 the number of the game's rounds. The second line\ncontains sequence A as a string of m characters and the third line contains\nsequence B as a string of k characters (1 \u2264 m, k \u2264 1000). The given lines only\ncontain characters \"R\", \"S\" and \"P\". Character \"R\" stands for the rock,\ncharacter \"S\" represents the scissors and \"P\" represents the paper. Output\nPrint two space-separated integers: the numbers of red spots Nikephoros and\nPolycarpus have. Examples Input 7 RPS RSPP Output 3 2 Input 5 RRRRRRRR R\nOutput 0 0 Note In the first sample the game went like this: R - R. Draw. P -\nS. Nikephoros loses. S - P. Polycarpus loses. R - P. Nikephoros loses. P - R.\nPolycarpus loses. S - S. Draw. R - P. Nikephoros loses. Thus, in total\nNikephoros has 3 losses (and 3 red spots), and Polycarpus only has 2.\n\n",
+        "cf_contest_id": 173,
+        "cf_index": "A",
+        "cf_rating": 1300,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7\r\nRPS\r\nRSPP\r\n",
+                "3 2\r\n"
+            ],
+            [
+                "5\r\nRRRRRRRR\r\nR\r\n",
+                "0 0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "23\r\nRSP\r\nRPSS\r\n",
+                "7 8\r\n"
+            ],
+            [
+                "52\r\nRRPSS\r\nRSSPRPRPPP\r\n",
+                "15 21\r\n"
+            ],
+            [
+                "1293\r\nRRPSSRSSPRPRPPPRPPPRPPPPPRPSPRSSRPSPPRPRR\r\nSSPSSSSRPPSSSSRPRPRPPSRSRRSPPSPPRPSRSPSRR\r\n",
+                "411 441\r\n"
+            ],
+            [
+                "103948\r\nRRPSSRSSPRPRPPPRPPPRPPPPPRPSPRSSRPSPPRPRRSSPSSSSRPPSSSSRPRPRPPSRSRRSPPSPPRPSRSPSRRPSRSRSRPRPRSSPSPRPRSSPRPSPPRPRRRPRRPRPSPRPRSSRRRSSSSPSRRSPPPRSSSRSRRSSSPPRRSPSSSPRRSSSSPSSPRRPRSRPPSSRPSRPPRPSSSRSRPPSRRSSSPPRRPPSPSSRRSSPPPPPRRSRSSRPP\r\nRPRRRSRSRPRPSRPPRSPRRRPSPRPRRRSRSRRSRSSSPSPPSPPPRSPRSSSRPSSSSPPPPSPRPPSSPPSSRRRPRPRRPSSRSPPPPRRSPSSRSRRSSRRPPRSRSRPPRRPRSPRPSPPRPPPSRRRSRRPSPRSSPRSRPSRRPSRSPRRSPSPRSRPSRRPRPRRSPPSRSSR\r\n",
+                "34707 34585\r\n"
+            ],
+            [
+                "1\r\nR\r\nR\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "5\r\nS\r\nR\r\n",
+                "5 0\r\n"
+            ],
+            [
+                "100\r\nR\r\nP\r\n",
+                "100 0\r\n"
+            ],
+            [
+                "145856\r\nS\r\nR\r\n",
+                "145856 0\r\n"
+            ],
+            [
+                "554858576\r\nP\r\nP\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2000000000\r\nS\r\nS\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1\r\nS\r\nSSRSRPSSSRPRRPSPRSRSPRRSRRPPRPRRPPRPPRRSPRPRRRPSRSRPPSRPRSPPPSSPPRRRPSSPRSRRSSRPRSRSRSRRRSPSRPPSPPRRSPPRPRSPPPPRPPPRRRPPRPRSSPRSPRRPRRSSPPPSSRPSSRRSRRSPRPPRPPPSPRPSRRPSSSRPPPPRSSPSSSSPRPRRRSRRPPPPPSRRPSSRSPSSRPSSSSPRPPRSRPSRPRRRPRSPSP\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1\r\nRPSSPSRSPRSRSRRPPSRPRPSSRRRRRPPSPR\r\nS\r\n",
+                "0 1\r\n"
+            ],
+            [
+                "1\r\nPSSSRPSRPRSPRP\r\nRRPSSPPSPRSSSSPPRSPSSRSSSRRPPSPPPSSPSRRRSRRSSRRPPRSSRRRPPSPRRPRRRPPSPSPPPPRSPPRPRRSRSSSSSPSRSSRPPRRPRRPRPRRRPPSSPPSRRSRPRPSSRSSSRPRPRP\r\n",
+                "0 1\r\n"
+            ],
+            [
+                "54\r\nSRPRPRSRSPPSSRRPPSSPRPPSRRSRPPSPPR\r\nSPRPSSSRSRPR\r\n",
+                "19 16\r\n"
+            ],
+            [
+                "234\r\nSRSSRRPSSSSPPRPRRPPRSSPSSSPSPRPSRRRSSSRRSPSRRPSRPPPSPSPPPRSRSPPPSPSRSSSPRRPPSRSSPRPSSRRPSSPSSPSRRPSRSSRSPSPPRSPRPRPPRRPRPRPSPRRSSRPSRPRSSSPSRRRSPRPPPPPSPRSSSPPSRRPRPSSRRPRRRSRSRRRSRRS\r\nPPPSRSSPRPSSRSSPSRSRSRSPSRSSRPRRPRRRPPPPSPSRRPPPSRPPPSPPRSRSRRRRRRPPRSSSRSPSRPRPSPPSPSPRPPRPRRSSRSSRPPPPPPRRRRSPPPPRSPRSRRP\r\n",
+                "74 80\r\n"
+            ],
+            [
+                "1457057352\r\nR\r\nPSRSRSSRPSRRSSSRSRRPRSPPSPPRPSRRPPRSRRSPPSPPSPRPRPRPSSRPRPRRPRSSSSPSRRRPSRSPPSPSRRSPSSRSRPSPRRRSRRRPSPRPPRPPPPPRPPRRRRRRPPRRSPSPSSPSSPRPRSPPRSRPSPSRSRRRRRPPPSRPRSPPSSRRRRPRPPRSPSSPRRRPPPPPRRSRSPRPPSRPRSRSRRPRRRPRSRSPRRRSRSSRPPPRRSRRSSRRPSRPPRSPSPRPRSSSRSSRRPSRRRRPSRRPPRPPRRPRSRPRSRRPPPPPSPPPSPSSPPRPPPRPPRSSPPSRPPSSRRSRSSSRPRRSRSSPRRSRPPRSRSSSRRSPRPPSSPSRPPSSPRPPPSSSSPPRPSRSRPRSPRPSSPPSSPRRPRRPRSPPRSRSPPPPRSRSSPRRSSSRRPPRPPSRPSSPSRPPSSRPPPRRRPSRPPSPRSPSRRRRPPRRPSRPRPSSPRSPPPRRSPPRSRS\r\n",
+                "508623712 421858498\r\n"
+            ],
+            [
+                "1983654300\r\nRSSSPPRRSSRSSRPPSRRSSRPPPPSRRPPPSPSSPPPRPSSSRPSPRPSPSPPRRPRSPPSPRRRPPPSPRSSPSSPSRRPSPRPRRRRPRRRRPPRSSSSSSRSSRSPRSPPPPSSRSRPPRPRPRPRPSSPRSSPPSPRRSRSSSRRSSSRSPPPPSPSPRPRPSSSPPPPRRRRPSPRSRPRSPPSPRPSSPPPSPPSPSRSPRPSSRRSPRRSPRRSRRPSPRPRPRRPPRPSPSRSRPRRRRSSRPRSPRPSPPSSSRPRSPPRSRPPRRPRSSRPRRPPRRPSRPRRRPPSRPRRPRPPRSPSRSSRRSRRPPSRPPPRPRPPRRRRRSSPRSPRPRPSSRSRPPRRPPPSSRRSPPSRRSSRRRRSSSPRRR\r\nP\r\n",
+                "697663183 588327921\r\n"
+            ],
+            [
+                "1958778499\r\nSPSSSRPSPPRRSSRSRRSSSSRSR\r\nPPSSRSPSPRRSRSSRSSRPRPSSSRRRPSRPPSRSSPPSSSPSSPRRRSPSRSPRPRRRSSSPPSSPSPP\r\n",
+                "604738368 654397557\r\n"
+            ],
+            [
+                "1609387747\r\nRPRPPPSSSPPSRRPSRRRPPRPPPRPRSRSRPPRRPSPRPSSRSSPPPPRRRRSSRPSPPRRSPPRPSRRRPSSRRPSSRSPRPRSRRSRRRSPRPRPRRSPSRSPSRPSSSPPRPSRPPRSRRRRPRRRSSRRRSSPSPSRSRPRPRPRSRPRSPSSRSPSRPRRRSRPPPPRPPPSSSRSRPSSRPSSPSRRSPS\r\nSSRSRPRSSPSPRRSPSRRRRPRRRRRSRSSPRSSRSPRSSRPSSRSRSSPSPPPSRRPRRSRSSRSPRPSRRPRSRRPRPPSSSPSRRSPPRRSRSPPPPPSRRRPRPPSPPPSPRSRSRRSPSRSSPPPPPPPSPSPPPPSSRSSSRSSRRRSPPPSPSRPRSPRRRRSSRRPPSSRRRPRPSPSPSRRRRSRRSSRPPPPRPPPRPSSSSPRRSRRSSRPRSSPPSSRPSPSRRRRRPSRRSPSRRSRRPRRPRPPSSSRPRPRRSSRRSRSRPRRSSPRP\r\n",
+                "535775691 539324629\r\n"
+            ],
+            [
+                "2000000000\r\nPSRRRPS\r\nSPSRRPSSSPRPS\r\n",
+                "659340660 703296704\r\n"
+            ],
+            [
+                "2000000000\r\nRRRRR\r\nRRR\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2000000000\r\nRRRRRRRRRR\r\nSSSSSSSSSSSSSSS\r\n",
+                "0 2000000000\r\n"
+            ],
+            [
+                "2000000000\r\nRRR\r\nPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP\r\n",
+                "2000000000 0\r\n"
+            ],
+            [
+                "2000000000\r\nSSSS\r\nS\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2000000000\r\nSSSS\r\nPPPPPP\r\n",
+                "0 2000000000\r\n"
+            ],
+            [
+                "2000000000\r\nPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP\r\nRRR\r\n",
+                "0 2000000000\r\n"
+            ],
+            [
+                "2000000000\r\nPPPPPPP\r\nSSSSSS\r\n",
+                "2000000000 0\r\n"
+            ],
+            [
+                "2000000000\r\nP\r\nP\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2000000000\r\nSSSS\r\nRRR\r\n",
+                "2000000000 0\r\n"
+            ],
+            [
+                "2000000000\r\nR\r\nS\r\n",
+                "0 2000000000\r\n"
+            ],
+            [
+                "2000000000\r\nRRRRRRRRRR\r\nSSSSSSP\r\n",
+                "285714285 1714285715\r\n"
+            ],
+            [
+                "6\r\nRR\r\nSSS\r\n",
+                "0 6\r\n"
+            ],
+            [
+                "5\r\nR\r\nR\r\n",
+                "0 0\r\n"
+            ]
+        ]
+    }
+]

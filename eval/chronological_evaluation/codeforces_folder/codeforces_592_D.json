@@ -1,0 +1,182 @@
+[
+    {
+        "name": "Super M",
+        "description": "Ari the monster is not an ordinary monster. She is the hidden identity of\nSuper M, the Byteforces\u2019 superhero. Byteforces is a country that consists of n\ncities, connected by n - 1 bidirectional roads. Every road connects exactly\ntwo distinct cities, and the whole road system is designed in a way that one\nis able to go from any city to any other city using only the given roads.\nThere are m cities being attacked by humans. So Ari... we meant Super M have\nto immediately go to each of the cities being attacked to scare those bad\nhumans. Super M can pass from one city to another only using the given roads.\nMoreover, passing through one road takes her exactly one kron - the time unit\nused in Byteforces. However, Super M is not on Byteforces now - she is\nattending a training camp located in a nearby country Codeforces. Fortunately,\nthere is a special device in Codeforces that allows her to instantly teleport\nfrom Codeforces to any city of Byteforces. The way back is too long, so for\nthe purpose of this problem teleportation is used exactly once. You are to\nhelp Super M, by calculating the city in which she should teleport at the\nbeginning in order to end her job in the minimum time (measured in krons).\nAlso, provide her with this time so she can plan her way back to Codeforces.\nInput The first line of the input contains two integers n and m (1 \u2264 m \u2264 n \u2264\n123456) - the number of cities in Byteforces, and the number of cities being\nattacked respectively. Then follow n - 1 lines, describing the road system.\nEach line contains two city numbers ui and vi (1 \u2264 ui, vi \u2264 n) - the ends of\nthe road i. The last line contains m distinct integers - numbers of cities\nbeing attacked. These numbers are given in no particular order. Output First\nprint the number of the city Super M should teleport to. If there are many\npossible optimal answers, print the one with the lowest city number. Then\nprint the minimum possible time needed to scare all humans in cities being\nattacked, measured in Krons. Note that the correct answer is always unique.\nExamples Input 7 2 1 2 1 3 1 4 3 5 3 6 3 7 2 7 Output 2 3 Input 6 4 1 2 2 3 2\n4 4 5 4 6 2 4 5 6 Output 2 4 Note In the first sample, there are two\npossibilities to finish the Super M's job in 3 krons. They are: and . However,\nyou should choose the first one as it starts in the city with the lower\nnumber.\n\n",
+        "cf_contest_id": 592,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7 2\r\n1 2\r\n1 3\r\n1 4\r\n3 5\r\n3 6\r\n3 7\r\n2 7\r\n",
+                "2\r\n3\r\n"
+            ],
+            [
+                "6 4\r\n1 2\r\n2 3\r\n2 4\r\n4 5\r\n4 6\r\n2 4 5 6\r\n",
+                "2\r\n4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n2 1\r\n1\r\n",
+                "1\r\n0\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n",
+                "1\r\n0\r\n"
+            ],
+            [
+                "10 2\r\n6 9\r\n6 2\r\n1 6\r\n4 10\r\n3 7\r\n9 4\r\n9 5\r\n6 7\r\n2 8\r\n7 6\r\n",
+                "6\r\n1\r\n"
+            ],
+            [
+                "15 2\r\n7 12\r\n13 11\r\n6 8\r\n2 15\r\n10 9\r\n5 1\r\n13 5\r\n5 4\r\n14 3\r\n8 9\r\n8 4\r\n4 7\r\n12 14\r\n5 2\r\n7 4\r\n",
+                "4\r\n1\r\n"
+            ],
+            [
+                "20 2\r\n1 16\r\n12 5\r\n15 19\r\n18 9\r\n8 4\r\n10 16\r\n9 16\r\n20 15\r\n14 19\r\n7 4\r\n18 12\r\n17 12\r\n2 20\r\n6 14\r\n3 19\r\n7 19\r\n18 15\r\n19 13\r\n9 11\r\n12 18\r\n",
+                "12\r\n1\r\n"
+            ],
+            [
+                "4 2\r\n4 3\r\n3 1\r\n1 2\r\n3 4\r\n",
+                "3\r\n1\r\n"
+            ],
+            [
+                "8 5\r\n2 5\r\n1 8\r\n6 7\r\n3 4\r\n6 8\r\n8 5\r\n5 3\r\n1 6 7 3 8\r\n",
+                "3\r\n6\r\n"
+            ],
+            [
+                "16 8\r\n16 12\r\n16 15\r\n15 9\r\n15 13\r\n16 3\r\n15 2\r\n15 10\r\n1 2\r\n6 16\r\n5 15\r\n2 7\r\n15 4\r\n14 15\r\n11 16\r\n8 5\r\n5 10 14 6 8 3 1 9\r\n",
+                "1\r\n16\r\n"
+            ],
+            [
+                "32 28\r\n30 12\r\n30 27\r\n24 32\r\n6 13\r\n11 5\r\n4 30\r\n8 28\r\n9 20\r\n8 20\r\n7 20\r\n5 30\r\n18 5\r\n20 14\r\n23 20\r\n17 20\r\n8 26\r\n20 1\r\n15 2\r\n20 13\r\n24 20\r\n22 24\r\n25 16\r\n2 3\r\n19 5\r\n16 10\r\n31 2\r\n29 5\r\n20 16\r\n2 20\r\n5 21\r\n5 20\r\n32 11 6 12 22 30 23 21 14 13 1 20 7 25 9 29 10 27 5 19 24 31 15 26 8 3 28 17\r\n",
+                "3\r\n53\r\n"
+            ],
+            [
+                "10 3\r\n10 5\r\n3 2\r\n6 8\r\n1 5\r\n10 4\r\n6 1\r\n9 8\r\n2 9\r\n7 3\r\n3 9 1\r\n",
+                "1\r\n5\r\n"
+            ],
+            [
+                "7 5\r\n6 4\r\n5 6\r\n6 7\r\n2 3\r\n5 2\r\n2 1\r\n4 6 1 7 3\r\n",
+                "1\r\n8\r\n"
+            ],
+            [
+                "15 7\r\n5 4\r\n12 5\r\n7 13\r\n10 11\r\n3 8\r\n6 12\r\n3 15\r\n1 3\r\n5 14\r\n7 9\r\n1 10\r\n6 1\r\n12 7\r\n10 2\r\n4 10 8 13 1 7 9\r\n",
+                "4\r\n14\r\n"
+            ],
+            [
+                "31 16\r\n3 25\r\n8 1\r\n1 9\r\n1 23\r\n16 15\r\n10 6\r\n25 30\r\n20 29\r\n2 24\r\n3 7\r\n19 22\r\n2 12\r\n16 4\r\n7 26\r\n31 10\r\n17 13\r\n25 21\r\n7 18\r\n28 2\r\n6 27\r\n19 5\r\n13 3\r\n17 31\r\n10 16\r\n20 14\r\n8 19\r\n6 11\r\n28 20\r\n13 28\r\n31 8\r\n31 27 25 20 26 8 28 15 18 17 10 23 4 16 30 22\r\n",
+                "4\r\n34\r\n"
+            ],
+            [
+                "63 20\r\n35 26\r\n54 5\r\n32 56\r\n56 53\r\n59 46\r\n37 31\r\n46 8\r\n4 1\r\n2 47\r\n59 42\r\n55 11\r\n62 6\r\n30 7\r\n60 24\r\n41 36\r\n34 22\r\n24 34\r\n21 2\r\n12 52\r\n8 44\r\n60 21\r\n24 30\r\n48 35\r\n48 25\r\n32 57\r\n20 37\r\n11 54\r\n11 62\r\n42 58\r\n31 43\r\n12 23\r\n55 48\r\n51 55\r\n41 27\r\n25 33\r\n21 18\r\n42 12\r\n4 15\r\n51 60\r\n62 39\r\n46 41\r\n57 9\r\n30 61\r\n31 4\r\n58 13\r\n34 29\r\n37 32\r\n18 16\r\n57 45\r\n2 49\r\n40 51\r\n43 17\r\n40 20\r\n20 59\r\n8 19\r\n58 10\r\n43 63\r\n54 50\r\n18 14\r\n25 38\r\n56 28\r\n35 3\r\n41 36 18 28 54 22 20 6 23 38 33 52 48 44 29 56 63 4 27 50\r\n",
+                "6\r\n66\r\n"
+            ],
+            [
+                "4 2\r\n2 3\r\n2 1\r\n2 4\r\n3 4\r\n",
+                "3\r\n2\r\n"
+            ],
+            [
+                "13 11\r\n4 11\r\n2 7\r\n4 13\r\n8 12\r\n8 9\r\n8 6\r\n3 8\r\n4 1\r\n2 10\r\n2 5\r\n3 4\r\n3 2\r\n10 4 5 6 1 2 3 9 13 7 12\r\n",
+                "1\r\n18\r\n"
+            ],
+            [
+                "7 5\r\n1 5\r\n4 1\r\n1 3\r\n7 1\r\n1 6\r\n1 2\r\n2 4 1 3 7\r\n",
+                "2\r\n6\r\n"
+            ],
+            [
+                "12 9\r\n11 12\r\n1 10\r\n1 7\r\n5 6\r\n8 7\r\n9 8\r\n4 5\r\n1 4\r\n2 3\r\n1 2\r\n10 11\r\n4 9 11 3 5 12 8 6 7\r\n",
+                "6\r\n16\r\n"
+            ],
+            [
+                "56 34\r\n7 31\r\n47 6\r\n13 4\r\n51 29\r\n13 12\r\n10 52\r\n10 41\r\n1 47\r\n47 54\r\n9 1\r\n4 27\r\n4 40\r\n49 19\r\n21 26\r\n24 33\r\n56 49\r\n41 56\r\n7 23\r\n41 48\r\n16 34\r\n35 9\r\n56 51\r\n5 43\r\n44 46\r\n10 25\r\n49 2\r\n1 21\r\n9 32\r\n33 20\r\n16 5\r\n5 35\r\n55 50\r\n55 53\r\n37 44\r\n43 15\r\n4 55\r\n8 10\r\n8 24\r\n21 42\r\n37 8\r\n39 13\r\n49 38\r\n39 16\r\n50 3\r\n55 7\r\n51 45\r\n21 11\r\n51 28\r\n50 18\r\n50 30\r\n5 37\r\n7 17\r\n35 22\r\n47 36\r\n35 14\r\n3 38 47 22 34 10 54 50 9 52 36 1 21 29 28 6 13 39 4 40 53 51 35 55 45 18 44 20 42 31 11 46 41 12\r\n",
+                "3\r\n70\r\n"
+            ],
+            [
+                "26 22\r\n20 16\r\n2 7\r\n7 19\r\n5 9\r\n20 23\r\n22 18\r\n24 3\r\n8 22\r\n16 10\r\n5 2\r\n7 15\r\n22 14\r\n25 4\r\n25 11\r\n24 13\r\n8 24\r\n13 1\r\n20 8\r\n22 6\r\n7 26\r\n16 12\r\n16 5\r\n13 21\r\n25 17\r\n2 25\r\n16 4 7 24 10 12 2 23 20 1 26 14 8 9 3 6 21 13 11 18 22 17\r\n",
+                "1\r\n37\r\n"
+            ],
+            [
+                "43 13\r\n7 28\r\n17 27\r\n39 8\r\n21 3\r\n17 20\r\n17 2\r\n9 6\r\n35 23\r\n43 22\r\n7 41\r\n5 24\r\n26 11\r\n21 43\r\n41 17\r\n16 5\r\n25 15\r\n39 10\r\n18 7\r\n37 33\r\n39 13\r\n39 16\r\n10 12\r\n1 21\r\n2 25\r\n14 36\r\n12 7\r\n16 34\r\n24 4\r\n25 40\r\n5 29\r\n37 31\r\n3 32\r\n22 14\r\n16 35\r\n5 37\r\n10 38\r\n25 19\r\n9 1\r\n26 42\r\n43 26\r\n10 30\r\n33 9\r\n28 6 42 38 27 32 8 11 36 7 41 29 19\r\n",
+                "19\r\n41\r\n"
+            ],
+            [
+                "21 20\r\n16 9\r\n7 11\r\n4 12\r\n2 17\r\n17 7\r\n5 2\r\n2 8\r\n4 10\r\n8 19\r\n6 15\r\n2 6\r\n12 18\r\n16 5\r\n20 16\r\n6 14\r\n5 3\r\n5 21\r\n20 1\r\n17 13\r\n6 4\r\n6 4 18 11 14 1 19 15 10 8 9 17 16 3 20 13 2 5 12 21\r\n",
+                "1\r\n32\r\n"
+            ],
+            [
+                "29 6\r\n16 9\r\n20 13\r\n24 3\r\n24 28\r\n22 12\r\n10 11\r\n10 26\r\n22 4\r\n10 27\r\n5 1\r\n2 23\r\n23 5\r\n16 7\r\n8 24\r\n7 19\r\n19 17\r\n8 10\r\n20 16\r\n20 25\r\n24 20\r\n23 15\r\n22 29\r\n2 8\r\n7 22\r\n2 21\r\n23 14\r\n19 18\r\n19 6\r\n19 17 18 27 29 4\r\n",
+                "4\r\n16\r\n"
+            ],
+            [
+                "31 29\r\n10 14\r\n16 6\r\n23 22\r\n25 23\r\n2 27\r\n24 17\r\n20 8\r\n5 2\r\n8 24\r\n16 5\r\n10 26\r\n8 7\r\n5 29\r\n20 16\r\n13 9\r\n13 21\r\n24 30\r\n13 1\r\n10 15\r\n23 3\r\n25 10\r\n2 25\r\n20 13\r\n25 11\r\n8 12\r\n30 28\r\n20 18\r\n5 4\r\n23 19\r\n16 31\r\n13 14 3 30 5 6 26 22 25 1 23 7 31 12 16 28 17 2 8 18 24 4 20 21 15 11 9 29 10\r\n",
+                "3\r\n46\r\n"
+            ],
+            [
+                "54 8\r\n33 9\r\n39 36\r\n22 14\r\n24 13\r\n8 50\r\n34 52\r\n47 2\r\n35 44\r\n16 54\r\n34 25\r\n1 3\r\n39 11\r\n9 17\r\n43 19\r\n10 40\r\n47 38\r\n5 37\r\n21 47\r\n37 12\r\n16 6\r\n37 7\r\n32 26\r\n39 42\r\n44 10\r\n1 18\r\n37 8\r\n9 1\r\n8 24\r\n10 33\r\n33 53\r\n5 4\r\n21 30\r\n9 31\r\n24 28\r\n24 49\r\n16 5\r\n34 35\r\n21 48\r\n47 43\r\n13 34\r\n39 16\r\n10 27\r\n22 32\r\n43 22\r\n13 46\r\n33 23\r\n44 15\r\n1 21\r\n8 41\r\n43 45\r\n5 29\r\n35 20\r\n13 51\r\n40 50 33 14 48 25 44 9\r\n",
+                "14\r\n21\r\n"
+            ],
+            [
+                "17 12\r\n5 2\r\n4 3\r\n8 17\r\n2 4\r\n2 8\r\n17 12\r\n8 10\r\n6 11\r\n16 7\r\n4 14\r\n15 13\r\n6 9\r\n4 6\r\n15 16\r\n16 5\r\n9 1\r\n4 8 1 9 3 12 15 10 13 6 14 16\r\n",
+                "1\r\n20\r\n"
+            ],
+            [
+                "28 6\r\n25 21\r\n9 18\r\n25 1\r\n16 5\r\n9 11\r\n28 19\r\n5 2\r\n20 16\r\n20 13\r\n2 23\r\n5 25\r\n8 24\r\n14 27\r\n3 15\r\n24 28\r\n8 10\r\n22 14\r\n14 17\r\n13 9\r\n3 22\r\n22 26\r\n16 7\r\n2 8\r\n25 3\r\n3 12\r\n14 4\r\n9 6\r\n28 27 22 24 20 16\r\n",
+                "27\r\n13\r\n"
+            ],
+            [
+                "10 9\r\n3 9\r\n4 8\r\n10 1\r\n2 3\r\n5 6\r\n4 3\r\n1 2\r\n5 4\r\n6 7\r\n9 1 5 8 7 3 4 6 10\r\n",
+                "7\r\n11\r\n"
+            ],
+            [
+                "9 6\r\n1 6\r\n3 4\r\n9 7\r\n3 2\r\n8 7\r\n2 1\r\n6 7\r\n3 5\r\n2 5 1 6 3 9\r\n",
+                "5\r\n6\r\n"
+            ],
+            [
+                "19 11\r\n8 9\r\n10 13\r\n16 15\r\n6 4\r\n3 2\r\n17 16\r\n4 7\r\n1 14\r\n10 11\r\n15 14\r\n4 3\r\n10 12\r\n4 5\r\n2 1\r\n16 19\r\n8 1\r\n10 9\r\n18 16\r\n10 14 18 12 17 11 19 8 1 3 9\r\n",
+                "11\r\n18\r\n"
+            ],
+            [
+                "36 5\r\n36 33\r\n11 12\r\n14 12\r\n25 24\r\n27 26\r\n23 24\r\n20 19\r\n1 2\r\n3 2\r\n17 18\r\n33 34\r\n23 1\r\n32 31\r\n12 15\r\n25 26\r\n4 5\r\n5 8\r\n5 6\r\n26 29\r\n1 9\r\n35 33\r\n33 32\r\n16 1\r\n3 4\r\n31 30\r\n16 17\r\n19 21\r\n1 30\r\n7 5\r\n9 10\r\n13 12\r\n19 18\r\n10 11\r\n22 19\r\n28 26\r\n29 12 11 17 33\r\n",
+                "12\r\n21\r\n"
+            ],
+            [
+                "10 2\r\n5 1\r\n1 3\r\n3 4\r\n4 2\r\n5 10\r\n1 9\r\n3 8\r\n4 7\r\n2 6\r\n3 4\r\n",
+                "3\r\n1\r\n"
+            ],
+            [
+                "53 30\r\n41 42\r\n27 24\r\n13 11\r\n10 11\r\n32 33\r\n34 33\r\n37 40\r\n21 22\r\n21 20\r\n46 47\r\n2 1\r\n31 30\r\n29 30\r\n11 14\r\n42 43\r\n50 51\r\n34 35\r\n36 35\r\n24 23\r\n48 47\r\n41 1\r\n28 29\r\n45 44\r\n16 15\r\n5 4\r\n6 5\r\n18 19\r\n9 8\r\n37 38\r\n11 12\r\n39 37\r\n49 48\r\n50 49\r\n43 44\r\n50 53\r\n3 4\r\n50 52\r\n24 25\r\n7 6\r\n46 45\r\n2 3\r\n17 18\r\n31 32\r\n19 20\r\n7 8\r\n15 1\r\n36 37\r\n23 22\r\n9 10\r\n17 16\r\n24 26\r\n28 1\r\n38 52 41 35 53 43 3 29 36 4 23 20 46 5 40 30 49 25 16 48 17 27 21 9 45 44 15 13 14 2\r\n",
+                "13\r\n74\r\n"
+            ],
+            [
+                "10 4\r\n2 3\r\n4 2\r\n8 9\r\n6 5\r\n8 1\r\n5 1\r\n8 10\r\n7 5\r\n1 2\r\n4 10 2 5\r\n",
+                "4\r\n6\r\n"
+            ],
+            [
+                "10 5\r\n4 5\r\n9 1\r\n1 2\r\n7 1\r\n5 1\r\n10 1\r\n7 3\r\n6 3\r\n5 8\r\n5 2 7 10 1\r\n",
+                "2\r\n6\r\n"
+            ],
+            [
+                "10 4\r\n8 7\r\n7 6\r\n1 2\r\n3 2\r\n3 4\r\n6 5\r\n10 7\r\n7 9\r\n5 4\r\n9 5 10 4\r\n",
+                "4\r\n6\r\n"
+            ],
+            [
+                "5 4\r\n2 3\r\n2 1\r\n3 5\r\n4 3\r\n4 2 5 1\r\n",
+                "1\r\n5\r\n"
+            ],
+            [
+                "5 1\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n4\r\n",
+                "4\r\n0\r\n"
+            ]
+        ]
+    }
+]

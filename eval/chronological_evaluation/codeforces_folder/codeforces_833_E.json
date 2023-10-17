@@ -1,0 +1,161 @@
+[
+    {
+        "name": "Caramel Clouds",
+        "description": "It is well-known that the best decoration for a flower bed in Sweetland are\nvanilla muffins. Seedlings of this plant need sun to grow up. Slastyona has m\nseedlings, and the j-th seedling needs at least kj minutes of sunlight to grow\nup. Most of the time it's sunny in Sweetland, but sometimes some caramel\nclouds come, the i-th of which will appear at time moment (minute) li and\ndisappear at time moment ri. Of course, the clouds make shadows, and the\nseedlings can't grow when there is at least one cloud veiling the sun.\nSlastyona wants to grow up her muffins as fast as possible. She has exactly C\ncandies, which is the main currency in Sweetland. One can dispel any cloud by\npaying ci candies. However, in order to comply with Sweetland's Department of\nMeteorology regulations, one can't dispel more than two clouds. Slastyona\nhasn't decided yet which of the m seedlings will be planted at the princess'\ngarden, so she needs your help. For each seedling determine the earliest\nmoment it can grow up if Slastyona won't break the law and won't spend more\ncandies than she has. Note that each of the seedlings is considered\nindependently. The seedlings start to grow at time moment 0. Input The first\nline contains two integers n and C (0 \u2264 n \u2264 3\u00b710^5, 0 \u2264 C \u2264 10^9) \u2013 the number\nof caramel clouds and the number of candies Slastyona has. The next n lines\ncontain three integers each: li, ri, ci (0 \u2264 li < ri \u2264 10^9, 0 \u2264 ci \u2264 10^9),\ndescribing one caramel cloud. The next line contains single integer m (1 \u2264 m \u2264\n3\u00b710^5) \u2013 the number of seedlings. Each of the seedlings is described with one\ninteger kj (1 \u2264 kj \u2264 10^9) \u2013 the required number of sunny minutes. Output For\neach seedling print one integer \u2013 the minimum minute Slastyona can grow it up.\nExamples Input 3 5 1 7 1 1 6 2 1 7 1 3 7 2 5 Output 12 7 10 Input 3 15 1 4 17\n2 8 6 4 8 9 2 5 1 Output 8 1 Input 2 10 3 7 9 10 90 10 2 10 100 Output 10 104\nNote Consider the first example. For each k it is optimal to dispel clouds 1\nand 3. Then the remaining cloud will give shadow on time segment [1..6]. So,\nintervals [0..1] and [6..inf) are sunny. In the second example for k = 1 it is\nnot necessary to dispel anything, and for k = 5 the best strategy is to dispel\nclouds 2 and 3. This adds an additional sunny segment [4..8], which together\nwith [0..1] allows to grow up the muffin at the eight minute. If the third\nexample the two seedlings are completely different. For the first one it is\nnecessary to dispel cloud 1 and obtain a sunny segment [0..10]. However, the\nsame strategy gives answer 180 for the second seedling. Instead, we can dispel\ncloud 2, to make segments [0..3] and [7..inf) sunny, and this allows up to\nshorten the time to 104.\n\n",
+        "cf_contest_id": 833,
+        "cf_index": "E",
+        "cf_rating": 3400,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dp",
+            "sortings"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 5\r\n1 7 1\r\n1 6 2\r\n1 7 1\r\n3\r\n7\r\n2\r\n5\r\n",
+                "12\r\n7\r\n10\r\n"
+            ],
+            [
+                "3 15\r\n1 4 17\r\n2 8 6\r\n4 8 9\r\n2\r\n5\r\n1\r\n",
+                "8\r\n1\r\n"
+            ],
+            [
+                "2 10\r\n3 7 9\r\n10 90 10\r\n2\r\n10\r\n100\r\n",
+                "10\r\n104\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 20\r\n15 40 8\r\n22 50 12\r\n3 8 7\r\n8 14 9\r\n101 199 20\r\n5\r\n200\r\n15\r\n89\r\n3\r\n47\r\n",
+                "246\r\n15\r\n100\r\n3\r\n58\r\n"
+            ],
+            [
+                "2 11\r\n1 10 7\r\n3 15 4\r\n2\r\n15\r\n2\r\n",
+                "15\r\n2\r\n"
+            ],
+            [
+                "15 30\r\n14 15 27\r\n9 10 10\r\n8 13 36\r\n3 12 15\r\n13 14 16\r\n1 9 37\r\n4 5 26\r\n4 7 11\r\n5 7 29\r\n2 15 8\r\n2 8 1\r\n4 8 12\r\n1 7 12\r\n4 7 4\r\n9 14 11\r\n7\r\n40\r\n99\r\n550\r\n7\r\n36\r\n22\r\n5\r\n",
+                "54\r\n113\r\n564\r\n21\r\n50\r\n36\r\n19\r\n"
+            ],
+            [
+                "5 5\r\n0 10 6\r\n6 8 2\r\n1 5 10\r\n7 8 4\r\n6 7 2\r\n3\r\n5\r\n12\r\n8\r\n",
+                "15\r\n22\r\n18\r\n"
+            ],
+            [
+                "1 0\r\n0 1 0\r\n1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 30\r\n10 1000 27\r\n10 980 29\r\n982 1010 4\r\n5\r\n9\r\n330\r\n1000000000\r\n779\r\n14866692\r\n",
+                "9\r\n1320\r\n1000000990\r\n1769\r\n14867682\r\n"
+            ],
+            [
+                "3 20\r\n10 50 10\r\n47 48 12\r\n70 80 10\r\n10\r\n1\r\n5\r\n7\r\n11\r\n26\r\n56\r\n77\r\n89\r\n111\r\n240\r\n",
+                "1\r\n5\r\n7\r\n11\r\n26\r\n57\r\n78\r\n90\r\n112\r\n241\r\n"
+            ],
+            [
+                "2 10\r\n10 20 5\r\n5 15 5\r\n3\r\n77\r\n180\r\n9\r\n",
+                "77\r\n180\r\n9\r\n"
+            ],
+            [
+                "2 30\r\n1 8 18\r\n9 19 11\r\n2\r\n20\r\n19\r\n",
+                "20\r\n19\r\n"
+            ],
+            [
+                "11 977779864\r\n0 77691 563291393\r\n61833 61846 3684006\r\n10969 10977 15343075\r\n52924 52937 16099752\r\n30123 30140 2991441\r\n47948 47956 21023693\r\n7927 7958 13871219\r\n51916 51942 35991547\r\n41054 41063 26595671\r\n60947 60975 8627275\r\n67179 67209 7056824\r\n1\r\n150756\r\n",
+                "150908\r\n"
+            ],
+            [
+                "11 512409822\r\n0 100 537\r\n92 95 636\r\n78 84 262\r\n62 63 118\r\n79 83 78\r\n67 76 258\r\n28 37 412\r\n19 21 44\r\n29 30 571\r\n41 47 9\r\n75 77 301\r\n1\r\n142\r\n",
+                "171\r\n"
+            ],
+            [
+                "10 30\r\n13 14 14\r\n28 33 15\r\n19 42 8\r\n26 42 14\r\n2 26 35\r\n12 33 2\r\n7 20 26\r\n14 19 26\r\n14 43 21\r\n27 39 25\r\n10\r\n22\r\n14\r\n43\r\n147\r\n175\r\n4\r\n73\r\n123\r\n21\r\n158\r\n",
+                "62\r\n54\r\n83\r\n187\r\n215\r\n44\r\n113\r\n163\r\n61\r\n198\r\n"
+            ],
+            [
+                "2 36\r\n0 9 35\r\n5 8 4\r\n10\r\n133\r\n75\r\n144\r\n48\r\n128\r\n8\r\n51\r\n166\r\n62\r\n107\r\n",
+                "136\r\n78\r\n147\r\n51\r\n131\r\n11\r\n54\r\n169\r\n65\r\n110\r\n"
+            ],
+            [
+                "2 34\r\n4 5 28\r\n11 12 19\r\n10\r\n113\r\n69\r\n79\r\n159\r\n34\r\n95\r\n188\r\n154\r\n114\r\n112\r\n",
+                "114\r\n70\r\n80\r\n160\r\n35\r\n96\r\n189\r\n155\r\n115\r\n113\r\n"
+            ],
+            [
+                "7 74\r\n36 47 71\r\n1 48 62\r\n2 18 57\r\n27 35 28\r\n46 50 70\r\n43 46 66\r\n9 34 73\r\n10\r\n178\r\n88\r\n182\r\n198\r\n100\r\n117\r\n20\r\n115\r\n10\r\n52\r\n",
+                "225\r\n135\r\n229\r\n245\r\n147\r\n164\r\n67\r\n162\r\n57\r\n99\r\n"
+            ],
+            [
+                "7 24\r\n14 35 28\r\n3 33 12\r\n42 45 28\r\n17 30 23\r\n0 28 26\r\n6 7 18\r\n7 20 17\r\n10\r\n54\r\n36\r\n97\r\n181\r\n196\r\n79\r\n148\r\n183\r\n145\r\n69\r\n",
+                "92\r\n74\r\n135\r\n219\r\n234\r\n117\r\n186\r\n221\r\n183\r\n107\r\n"
+            ],
+            [
+                "6 74\r\n46 55 61\r\n10 15 68\r\n22 25 2\r\n47 51 2\r\n31 47 59\r\n32 45 26\r\n10\r\n121\r\n144\r\n13\r\n154\r\n32\r\n71\r\n18\r\n157\r\n24\r\n160\r\n",
+                "145\r\n168\r\n13\r\n178\r\n56\r\n95\r\n18\r\n181\r\n24\r\n184\r\n"
+            ],
+            [
+                "7 80\r\n27 33 20\r\n28 29 13\r\n4 48 73\r\n37 47 57\r\n36 38 71\r\n11 32 63\r\n8 44 41\r\n10\r\n34\r\n22\r\n15\r\n68\r\n188\r\n92\r\n118\r\n167\r\n80\r\n85\r\n",
+                "73\r\n61\r\n54\r\n107\r\n227\r\n131\r\n157\r\n206\r\n119\r\n124\r\n"
+            ],
+            [
+                "7 55\r\n0 15 8\r\n10 11 25\r\n10 11 1\r\n1 2 54\r\n8 9 45\r\n3 7 53\r\n0 7 49\r\n10\r\n139\r\n9\r\n51\r\n9\r\n36\r\n195\r\n7\r\n160\r\n23\r\n73\r\n",
+                "147\r\n17\r\n59\r\n17\r\n44\r\n203\r\n15\r\n168\r\n31\r\n81\r\n"
+            ],
+            [
+                "6 216\r\n364 503 83\r\n346 601 90\r\n139 579 216\r\n136 480 166\r\n80 384 15\r\n124 401 201\r\n10\r\n128\r\n36\r\n75\r\n103\r\n181\r\n136\r\n89\r\n135\r\n44\r\n44\r\n",
+                "128\r\n36\r\n75\r\n103\r\n636\r\n136\r\n89\r\n135\r\n44\r\n44\r\n"
+            ],
+            [
+                "7 56\r\n30 53 43\r\n25 60 37\r\n50 81 23\r\n7 19 56\r\n3 64 15\r\n5 78 33\r\n49 58 61\r\n10\r\n171\r\n192\r\n64\r\n175\r\n65\r\n58\r\n123\r\n174\r\n87\r\n155\r\n",
+                "232\r\n253\r\n125\r\n236\r\n126\r\n119\r\n184\r\n235\r\n148\r\n216\r\n"
+            ],
+            [
+                "11 569\r\n157 213 199\r\n89 94 313\r\n116 205 563\r\n113 205 16\r\n278 307 458\r\n165 172 233\r\n15 46 505\r\n38 232 212\r\n237 274 504\r\n82 163 191\r\n111 117 240\r\n10\r\n84\r\n53\r\n14\r\n20\r\n197\r\n22\r\n32\r\n86\r\n83\r\n39\r\n",
+                "222\r\n84\r\n14\r\n20\r\n401\r\n22\r\n32\r\n224\r\n221\r\n70\r\n"
+            ],
+            [
+                "10 981\r\n139 255 826\r\n200 314 149\r\n138 165 830\r\n66 314 900\r\n182 263 115\r\n309 410 57\r\n90 148 510\r\n116 179 343\r\n56 63 812\r\n251 311 751\r\n10\r\n93\r\n85\r\n82\r\n100\r\n119\r\n55\r\n77\r\n155\r\n110\r\n88\r\n",
+                "324\r\n316\r\n89\r\n331\r\n350\r\n55\r\n84\r\n386\r\n341\r\n319\r\n"
+            ],
+            [
+                "6 184\r\n300 354 136\r\n49 160 60\r\n412 422 180\r\n248 347 92\r\n93 396 107\r\n6 221 133\r\n10\r\n24\r\n100\r\n110\r\n165\r\n83\r\n172\r\n54\r\n11\r\n4\r\n140\r\n",
+                "24\r\n431\r\n441\r\n496\r\n404\r\n503\r\n375\r\n11\r\n4\r\n471\r\n"
+            ],
+            [
+                "23 552\r\n99 151 186\r\n49 261 522\r\n200 206 95\r\n274 644 69\r\n176 419 352\r\n96 224 218\r\n263 420 45\r\n65 682 519\r\n418 679 2\r\n235 554 106\r\n194 306 302\r\n707 731 492\r\n546 701 86\r\n18 426 60\r\n100 462 231\r\n148 288 379\r\n344 438 103\r\n96 507 294\r\n100 585 203\r\n199 269 24\r\n95 523 489\r\n579 705 146\r\n106 629 75\r\n10\r\n108\r\n32\r\n9\r\n63\r\n144\r\n165\r\n182\r\n49\r\n135\r\n159\r\n",
+                "764\r\n32\r\n9\r\n719\r\n800\r\n821\r\n838\r\n49\r\n791\r\n815\r\n"
+            ],
+            [
+                "16 419\r\n154 256 300\r\n163 209 244\r\n109 114 205\r\n198 260 76\r\n46 133 92\r\n73 98 300\r\n17 21 235\r\n15 273 255\r\n1 143 4\r\n21 125 226\r\n25 210 263\r\n95 248 213\r\n193 207 208\r\n80 220 0\r\n264 271 255\r\n64 84 417\r\n10\r\n118\r\n30\r\n179\r\n158\r\n178\r\n32\r\n146\r\n105\r\n73\r\n45\r\n",
+                "368\r\n280\r\n429\r\n408\r\n428\r\n282\r\n396\r\n355\r\n323\r\n295\r\n"
+            ],
+            [
+                "7 11\r\n151 182 14\r\n40 192 2\r\n45 95 6\r\n139 154 14\r\n107 135 4\r\n88 228 16\r\n131 274 9\r\n10\r\n11\r\n57\r\n65\r\n183\r\n112\r\n65\r\n186\r\n79\r\n196\r\n95\r\n",
+                "11\r\n57\r\n65\r\n366\r\n295\r\n65\r\n369\r\n79\r\n379\r\n278\r\n"
+            ],
+            [
+                "30 251\r\n293 459 12\r\n206 309 210\r\n496 508 148\r\n20 409 165\r\n24 359 36\r\n30 85 43\r\n519 531 237\r\n202 211 227\r\n33 292 111\r\n45 287 4\r\n0 42 170\r\n24 415 17\r\n503 520 225\r\n251 431 57\r\n204 496 188\r\n166 442 92\r\n190 244 97\r\n47 300 76\r\n147 399 182\r\n32 74 233\r\n1 509 81\r\n54 116 255\r\n86 527 177\r\n454 483 204\r\n333 452 24\r\n13 269 62\r\n157 504 34\r\n23 216 147\r\n121 243 216\r\n41 132 253\r\n10\r\n84\r\n58\r\n163\r\n107\r\n184\r\n84\r\n198\r\n172\r\n91\r\n106\r\n",
+                "602\r\n576\r\n681\r\n625\r\n702\r\n602\r\n716\r\n690\r\n609\r\n624\r\n"
+            ],
+            [
+                "25 298\r\n452 546 31\r\n280 496 75\r\n286 392 200\r\n316 464 276\r\n362 423 90\r\n613 614 261\r\n12 50 19\r\n239 242 30\r\n310 623 149\r\n123 438 285\r\n184 560 85\r\n67 287 246\r\n199 241 265\r\n449 559 246\r\n218 327 225\r\n85 119 186\r\n306 493 230\r\n83 171 10\r\n327 340 81\r\n196 396 10\r\n579 593 79\r\n208 311 259\r\n221 510 194\r\n80 141 206\r\n422 470 90\r\n10\r\n26\r\n156\r\n155\r\n17\r\n96\r\n102\r\n142\r\n77\r\n95\r\n22\r\n",
+                "26\r\n664\r\n663\r\n17\r\n603\r\n609\r\n650\r\n77\r\n602\r\n22\r\n"
+            ],
+            [
+                "7 425\r\n171 530 114\r\n429 512 262\r\n394 546 81\r\n129 512 335\r\n428 473 208\r\n318 369 191\r\n208 289 30\r\n10\r\n194\r\n176\r\n148\r\n147\r\n60\r\n56\r\n166\r\n163\r\n87\r\n107\r\n",
+                "553\r\n535\r\n148\r\n147\r\n60\r\n56\r\n166\r\n163\r\n87\r\n107\r\n"
+            ],
+            [
+                "16 514\r\n90 146 432\r\n601 612 279\r\n111 705 147\r\n58 445 425\r\n474 484 389\r\n601 749 438\r\n85 518 296\r\n152 631 316\r\n409 516 116\r\n76 287 514\r\n136 269 493\r\n102 381 330\r\n48 309 332\r\n399 416 310\r\n279 663 155\r\n258 470 310\r\n10\r\n58\r\n1\r\n38\r\n49\r\n145\r\n185\r\n184\r\n145\r\n53\r\n184\r\n",
+                "58\r\n1\r\n38\r\n49\r\n802\r\n842\r\n841\r\n802\r\n53\r\n841\r\n"
+            ],
+            [
+                "11 892\r\n317 375 525\r\n288 394 326\r\n94 458 99\r\n243 244 125\r\n150 446 238\r\n335 415 601\r\n126 391 407\r\n23 448 723\r\n67 107 536\r\n289 403 327\r\n98 99 859\r\n10\r\n4\r\n197\r\n156\r\n125\r\n19\r\n191\r\n132\r\n175\r\n86\r\n107\r\n",
+                "4\r\n557\r\n516\r\n485\r\n19\r\n551\r\n492\r\n535\r\n126\r\n467\r\n"
+            ]
+        ]
+    }
+]

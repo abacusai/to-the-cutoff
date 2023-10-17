@@ -1,0 +1,111 @@
+[
+    {
+        "name": "Destruction of a Tree",
+        "description": "You are given a tree (a graph with n vertices and n - 1 edges in which it's\npossible to reach any vertex from any other vertex using only its edges). A\nvertex can be destroyed if this vertex has even degree. If you destroy a\nvertex, all edges connected to it are also deleted. Destroy all vertices in\nthe given tree or determine that it is impossible. Input The first line\ncontains integer n (1 \u2264 n \u2264 2\u00b710^5) \u2014 number of vertices in a tree. The second\nline contains n integers p1, p2, ..., pn (0 \u2264 pi \u2264 n). If pi \u2260 0 there is an\nedge between vertices i and pi. It is guaranteed that the given graph is a\ntree. Output If it's possible to destroy all vertices, print \"YES\" (without\nquotes), otherwise print \"NO\" (without quotes). If it's possible to destroy\nall vertices, in the next n lines print the indices of the vertices in order\nyou destroy them. If there are multiple correct answers, print any. Examples\nInput 5 0 1 2 1 2 Output YES 1 2 3 5 4 Input 4 0 1 2 3 Output NO Note In the\nfirst example at first you have to remove the vertex with index 1 (after that,\nthe edges (1, 2) and (1, 4) are removed), then the vertex with index 2 (and\nedges (2, 3) and (2, 5) are removed). After that there are no edges in the\ntree, so you can remove remaining vertices in any order.\n\n",
+        "cf_contest_id": 963,
+        "cf_index": "B",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n0 1 2 1 2\r\n",
+                "YES\r\n1\r\n2\r\n3\r\n5\r\n4\r\n"
+            ],
+            [
+                "4\r\n0 1 2 3\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n0\r\n",
+                "YES\r\n1\r\n"
+            ],
+            [
+                "8\r\n3 1 4 0 4 2 4 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100\r\n81 96 65 28 4 40 5 49 5 89 48 70 94 70 17 58 58 1 61 19 45 33 46 19 22 83 56 67 62 82 57 16 29 36 84 71 42 66 78 54 73 45 82 80 67 88 79 69 61 66 5 36 24 60 96 21 77 67 68 29 87 37 91 34 78 43 0 69 49 62 16 2 68 79 57 1 60 12 39 99 14 37 30 92 47 18 14 75 73 39 94 12 43 87 90 22 91 59 54 71\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100\r\n57 85 27 81 41 27 73 10 73 95 91 90 89 41 86 44 6 20 9 13 46 73 56 19 37 32 40 42 79 76 96 5 6 8 76 52 14 86 33 69 100 95 58 87 43 47 17 39 48 28 77 65 100 100 41 39 87 5 61 67 94 64 61 88 32 23 79 44 0 67 44 23 48 96 48 56 86 75 90 2 17 46 4 75 42 90 17 77 5 33 87 91 27 28 58 95 58 47 33 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "21\r\n11 10 12 3 6 0 8 6 16 14 5 9 7 19 1 13 15 21 4 2 20\r\n",
+                "YES\r\n15\r\n17\r\n11\r\n1\r\n21\r\n18\r\n2\r\n20\r\n14\r\n10\r\n4\r\n19\r\n12\r\n3\r\n16\r\n9\r\n7\r\n13\r\n6\r\n5\r\n8\r\n"
+            ],
+            [
+                "61\r\n10 42 20 50 4 24 18 55 19 5 57 13 3 35 58 48 31 46 40 45 15 53 14 25 43 41 22 23 54 39 38 44 16 37 12 34 32 28 26 30 59 47 21 9 8 52 1 0 33 49 36 51 17 11 29 7 48 61 6 27 2\r\n",
+                "YES\r\n7\r\n56\r\n46\r\n18\r\n51\r\n52\r\n34\r\n36\r\n32\r\n37\r\n9\r\n44\r\n40\r\n19\r\n39\r\n30\r\n41\r\n26\r\n6\r\n59\r\n25\r\n24\r\n21\r\n43\r\n58\r\n15\r\n2\r\n61\r\n47\r\n42\r\n10\r\n1\r\n4\r\n5\r\n49\r\n50\r\n16\r\n33\r\n27\r\n60\r\n53\r\n22\r\n31\r\n17\r\n28\r\n38\r\n14\r\n23\r\n12\r\n35\r\n3\r\n13\r\n45\r\n20\r\n55\r\n8\r\n54\r\n29\r\n57\r\n11\r\n48\r\n"
+            ],
+            [
+                "21\r\n11 19 4 19 6 0 13 7 6 2 5 3 16 10 1 9 15 21 9 21 2\r\n",
+                "YES\r\n15\r\n17\r\n11\r\n1\r\n7\r\n8\r\n16\r\n13\r\n10\r\n14\r\n2\r\n21\r\n18\r\n20\r\n3\r\n12\r\n19\r\n4\r\n6\r\n5\r\n9\r\n"
+            ],
+            [
+                "61\r\n47 61 20 5 10 59 46 55 44 1 57 13 3 35 21 48 31 7 9 45 43 53 14 6 42 39 22 23 54 40 45 37 16 36 12 44 34 28 25 19 26 33 25 39 33 36 42 0 50 4 52 46 17 11 29 7 48 15 41 27 58\r\n",
+                "YES\r\n6\r\n24\r\n41\r\n59\r\n40\r\n30\r\n9\r\n19\r\n37\r\n32\r\n52\r\n51\r\n46\r\n7\r\n18\r\n56\r\n36\r\n34\r\n61\r\n2\r\n15\r\n58\r\n43\r\n21\r\n25\r\n39\r\n26\r\n44\r\n50\r\n49\r\n5\r\n4\r\n1\r\n10\r\n42\r\n47\r\n28\r\n38\r\n14\r\n23\r\n12\r\n35\r\n3\r\n13\r\n27\r\n60\r\n53\r\n22\r\n31\r\n17\r\n45\r\n20\r\n16\r\n33\r\n55\r\n8\r\n54\r\n29\r\n57\r\n11\r\n48\r\n"
+            ],
+            [
+                "79\r\n0 56 56 42 56 56 56 56 4 56 56 22 56 56 56 48 56 56 56 56 56 24 56 16 56 56 56 9 56 56 56 56 56 56 56 56 56 55 56 56 12 20 56 28 56 56 56 38 56 56 56 56 56 56 44 1 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56\r\n",
+                "YES\r\n12\r\n41\r\n24\r\n22\r\n48\r\n16\r\n55\r\n38\r\n28\r\n44\r\n4\r\n9\r\n20\r\n42\r\n56\r\n2\r\n3\r\n5\r\n6\r\n7\r\n8\r\n10\r\n11\r\n13\r\n14\r\n15\r\n17\r\n18\r\n19\r\n21\r\n23\r\n25\r\n26\r\n27\r\n29\r\n30\r\n31\r\n32\r\n33\r\n34\r\n35\r\n36\r\n37\r\n39\r\n40\r\n43\r\n45\r\n46\r\n47\r\n49\r\n50\r\n51\r\n52\r\n53\r\n54\r\n57\r\n58\r\n59\r\n60\r\n61\r\n62\r\n63\r\n64\r\n65\r\n66\r\n67\r\n68\r\n69\r\n70\r\n71\r\n72\r\n73\r\n74\r\n75\r\n76\r\n77\r\n78\r\n79\r\n1\r\n"
+            ],
+            [
+                "121\r\n110 31 57 33 45 33 33 33 91 102 79 33 61 72 107 101 117 10 118 33 33 64 24 94 117 76 33 23 33 49 5 52 95 78 33 39 33 92 17 33 25 33 56 33 3 88 33 108 62 15 28 111 67 33 33 11 96 33 36 70 46 98 80 104 33 19 60 33 112 51 33 2 33 33 121 59 33 41 50 81 105 33 115 34 33 18 84 32 33 33 87 13 86 103 16 119 33 63 30 43 83 53 26 100 69 33 14 38 33 75 66 120 33 33 9 99 0 93 1 48 116\r\n",
+                "YES\r\n64\r\n22\r\n100\r\n104\r\n56\r\n43\r\n79\r\n11\r\n15\r\n50\r\n14\r\n107\r\n2\r\n72\r\n5\r\n31\r\n3\r\n45\r\n96\r\n57\r\n1\r\n119\r\n75\r\n110\r\n116\r\n121\r\n30\r\n99\r\n62\r\n49\r\n63\r\n98\r\n81\r\n80\r\n69\r\n105\r\n120\r\n112\r\n108\r\n48\r\n92\r\n38\r\n61\r\n13\r\n88\r\n46\r\n52\r\n32\r\n66\r\n111\r\n118\r\n19\r\n86\r\n93\r\n10\r\n18\r\n53\r\n102\r\n60\r\n67\r\n51\r\n70\r\n23\r\n28\r\n94\r\n24\r\n26\r\n103\r\n59\r\n76\r\n39\r\n36\r\n33\r\n4\r\n6\r\n7\r\n8\r\n12\r\n20\r\n21\r\n27\r\n29\r\n35\r\n37\r\n40\r\n42\r\n44\r\n47\r\n54\r\n55\r\n58\r\n65\r\n68\r\n71\r\n73\r\n74\r\n77\r\n82\r\n85\r\n89\r\n90\r\n97\r\n106\r\n109\r\n113\r\n114\r\n16\r\n95\r\n83\r\n101\r\n9\r\n115\r\n87\r\n91\r\n34\r\n84\r\n41\r\n78\r\n117\r\n17\r\n25\r\n"
+            ],
+            [
+                "21\r\n5 20 9 19 8 0 13 6 13 19 5 3 8 10 1 9 1 20 3 10 18\r\n",
+                "YES\r\n18\r\n21\r\n20\r\n2\r\n10\r\n14\r\n19\r\n4\r\n3\r\n12\r\n9\r\n16\r\n13\r\n7\r\n8\r\n5\r\n1\r\n15\r\n17\r\n11\r\n6\r\n"
+            ],
+            [
+                "61\r\n5 61 20 5 50 59 56 29 44 1 48 13 20 35 61 33 38 52 30 8 43 17 35 43 24 59 22 23 11 26 38 37 48 36 13 37 44 23 30 19 26 1 15 19 8 18 42 0 50 33 52 36 17 11 29 18 48 15 24 22 42\r\n",
+                "YES\r\n56\r\n7\r\n18\r\n46\r\n52\r\n51\r\n36\r\n34\r\n37\r\n32\r\n44\r\n9\r\n19\r\n40\r\n30\r\n39\r\n26\r\n41\r\n59\r\n6\r\n24\r\n25\r\n43\r\n21\r\n15\r\n58\r\n61\r\n2\r\n42\r\n47\r\n1\r\n10\r\n5\r\n4\r\n50\r\n49\r\n33\r\n16\r\n48\r\n11\r\n29\r\n8\r\n20\r\n3\r\n13\r\n12\r\n35\r\n14\r\n23\r\n28\r\n38\r\n17\r\n22\r\n27\r\n60\r\n53\r\n31\r\n45\r\n55\r\n54\r\n57\r\n"
+            ],
+            [
+                "21\r\n18 18 18 18 18 0 18 18 18 18 18 18 18 18 18 18 18 6 18 18 18\r\n",
+                "YES\r\n18\r\n1\r\n2\r\n3\r\n4\r\n5\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n19\r\n20\r\n21\r\n6\r\n"
+            ],
+            [
+                "61\r\n56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 56 0 56 56 56 56 56 56 56 48 56 56 56 56 56\r\n",
+                "YES\r\n56\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n18\r\n19\r\n20\r\n21\r\n22\r\n23\r\n24\r\n25\r\n26\r\n27\r\n28\r\n29\r\n30\r\n31\r\n32\r\n33\r\n34\r\n35\r\n36\r\n37\r\n38\r\n39\r\n40\r\n41\r\n42\r\n43\r\n44\r\n45\r\n46\r\n47\r\n49\r\n50\r\n51\r\n52\r\n53\r\n54\r\n55\r\n57\r\n58\r\n59\r\n60\r\n61\r\n48\r\n"
+            ],
+            [
+                "21\r\n15 6 13 7 15 21 8 0 7 16 16 21 12 6 12 12 13 6 15 16 7\r\n",
+                "YES\r\n6\r\n2\r\n14\r\n18\r\n15\r\n1\r\n5\r\n19\r\n16\r\n10\r\n11\r\n20\r\n12\r\n13\r\n3\r\n17\r\n7\r\n4\r\n9\r\n21\r\n8\r\n"
+            ],
+            [
+                "61\r\n58 39 45 57 31 43 11 24 8 18 56 54 47 37 50 40 19 16 29 10 1 23 36 28 21 48 52 55 27 42 2 33 46 25 53 6 15 26 14 17 9 44 56 34 5 61 38 12 30 7 49 32 20 41 51 0 3 4 60 35 13\r\n",
+                "YES\r\n60\r\n59\r\n53\r\n35\r\n10\r\n20\r\n16\r\n18\r\n17\r\n40\r\n29\r\n19\r\n52\r\n27\r\n33\r\n32\r\n61\r\n46\r\n47\r\n13\r\n26\r\n38\r\n12\r\n48\r\n41\r\n54\r\n8\r\n9\r\n28\r\n24\r\n51\r\n55\r\n30\r\n49\r\n44\r\n42\r\n25\r\n34\r\n1\r\n21\r\n4\r\n58\r\n3\r\n57\r\n5\r\n45\r\n2\r\n31\r\n14\r\n39\r\n15\r\n37\r\n7\r\n50\r\n23\r\n22\r\n6\r\n36\r\n56\r\n11\r\n43\r\n"
+            ],
+            [
+                "21\r\n21 6 4 20 14 1 13 10 11 0 10 18 10 12 4 1 2 2 8 2 13\r\n",
+                "YES\r\n8\r\n19\r\n11\r\n9\r\n14\r\n5\r\n18\r\n12\r\n20\r\n4\r\n3\r\n15\r\n2\r\n17\r\n21\r\n1\r\n6\r\n16\r\n13\r\n7\r\n10\r\n"
+            ],
+            [
+                "61\r\n17 19 8 53 10 38 59 60 46 25 49 28 46 15 25 56 53 60 60 54 18 49 10 53 29 19 11 61 24 11 17 52 32 54 29 55 0 1 14 56 25 14 33 53 47 56 8 6 53 55 16 46 47 9 24 37 3 52 25 37 26\r\n",
+                "YES\r\n16\r\n51\r\n9\r\n54\r\n20\r\n34\r\n33\r\n43\r\n3\r\n57\r\n6\r\n48\r\n1\r\n38\r\n17\r\n31\r\n15\r\n14\r\n39\r\n42\r\n59\r\n7\r\n8\r\n47\r\n45\r\n53\r\n4\r\n24\r\n29\r\n25\r\n10\r\n5\r\n23\r\n41\r\n35\r\n55\r\n36\r\n50\r\n44\r\n49\r\n11\r\n27\r\n30\r\n22\r\n18\r\n21\r\n28\r\n12\r\n26\r\n61\r\n19\r\n2\r\n37\r\n56\r\n40\r\n46\r\n13\r\n52\r\n32\r\n58\r\n60\r\n"
+            ],
+            [
+                "21\r\n18 0 18 2 21 2 9 15 3 5 8 2 8 21 6 10 21 13 9 1 13\r\n",
+                "YES\r\n1\r\n20\r\n3\r\n9\r\n7\r\n19\r\n10\r\n16\r\n21\r\n5\r\n14\r\n17\r\n13\r\n18\r\n8\r\n11\r\n6\r\n15\r\n2\r\n4\r\n12\r\n"
+            ],
+            [
+                "61\r\n45 48 30 23 15 47 8 3 35 56 54 35 17 47 35 56 32 42 14 37 36 44 6 44 1 44 41 46 43 0 33 3 44 54 43 3 47 57 7 32 29 60 36 36 43 61 36 47 3 48 18 8 17 29 3 54 3 6 43 43 56\r\n",
+                "YES\r\n7\r\n39\r\n8\r\n52\r\n41\r\n27\r\n46\r\n28\r\n56\r\n10\r\n16\r\n61\r\n29\r\n54\r\n11\r\n34\r\n15\r\n5\r\n1\r\n25\r\n18\r\n51\r\n60\r\n42\r\n43\r\n35\r\n9\r\n12\r\n45\r\n59\r\n33\r\n31\r\n44\r\n22\r\n24\r\n26\r\n23\r\n4\r\n6\r\n58\r\n14\r\n19\r\n37\r\n20\r\n47\r\n48\r\n2\r\n50\r\n36\r\n21\r\n57\r\n38\r\n3\r\n32\r\n17\r\n13\r\n53\r\n40\r\n49\r\n55\r\n30\r\n"
+            ]
+        ]
+    }
+]

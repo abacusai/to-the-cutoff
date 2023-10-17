@@ -1,0 +1,54 @@
+[
+    {
+        "name": "Jumping Through the Array",
+        "description": "You are given an array of integers \n    a\n of size \n    n\n and a permutation\n\n    p\n of size \n    n\n. There are \n    q\n queries of three types coming to\nyou: For given numbers \n    l\n and \n    r\n, calculate the sum in array \n    a\n\non the segment from \n    l\n to \n    r\n: \n    \u2211\n    _i=l^r a_i\n.\nYou are given two numbers \n    v\n and \n    x\n. Let's build a directed graph\nfrom the permutation \n    p\n: it has \n    n\n vertices and \n    n\n edges \n    i\n    \n    \u2192 p_i\n. Let \n    C\n be the set of vertices that are reachable from\n\n    v\n in this graph. You should add \n    x\n to all \n    a_u\n such that\n\n    u\n is in \n    C\n. You are given indices \n    i\n and \n    j\n. You should\nswap \n    p_i\n and \n    p_j\n. The graph corresponding to the permutation\n\n    [2, 3, 1, 5, 4]\n. Please, process all queries and print answers to\nqueries of type \n    1\n. Input The first line contains a single integer\n\n    n\n (\n    1 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the size of the array and\npermutation. The second line contains \n    n\n integers \n    a_1, a_2, \n    \u2026,\n    a_n\n (\n    -10^8 \n    \u2264 a_i \n    \u2264 10^8\n). The third line contains \n    n\n\ndistinct integers \n    p_1, p_2, \n    \u2026, p_n\n (\n    1 \n    \u2264 p_i \n    \u2264 n\n).\nThe fourth line contains a single integer \n    q\n \u2014 the number of queries\n(\n    1 \n    \u2264 q \n    \u2264 2 \n    \u00b7 10^5\n). Next \n    q\n lines contain description\nof queries. The \n    i\n-th of them starts with an integer \n    t_i\n (\n    1\n    \n    \u2264 t_i \n    \u2264 3\n) \u2014 the query type. If \n    t_i = 1\n, then the \n    i\n-th\nline also contains two integers \n    l\n, \n    r\n (\n    1 \n    \u2264 l \n    \u2264 r \n    \u2264\n    n\n). If \n    t_i = 2\n, then the \n    i\n-th line also contains two integers\n\n    v\n, \n    x\n (\n    1 \n    \u2264 v \n    \u2264 n\n, \n    -10^8 \n    \u2264 x \n    \u2264 10^8\n). If\n\n    t_i = 3\n, then the \n    i\n-th line also contains also two integers\n\n    i\n, \n    j\n (\n    1 \n    \u2264 i, j \n    \u2264 n\n). Output For every first type\nquery, print a single integer \u2014 the answer to this query. Examples Input 5 6 9\n-5 3 0 2 3 1 5 4 6 1 1 5 2 1 1 1 1 5 3 1 5 2 1 -1 1 1 5 Output 13 16 11 Input\n8 -15 52 -4 3 5 9 0 5 2 4 6 8 1 3 5 7 10 2 2 2 2 5 -1 1 1 8 1 1 5 1 5 8 3 1 6\n2 1 50 1 1 8 2 6 -20 1 1 8 Output 61 45 22 461 301 Input 1 1 1 1 1 1 1 Output\n1 Note In the first example: The graph corresponding to the initial\npermutation. There are \n    6\n queries. The sum on the segment from \n    1\n to\n\n    5\n is \n    a_1 + a_2 + a_3 + a_4 + a_5 = 6 + 9 + (-5) + 3 + 0 = 13\n. If\nwe start from \n    1\n, we can reach \n    1, 2, 3\n. After this query\n\n    a\n is: \n    [7, 10, -4, 3, 0]\n. The sum on the segment from \n    1\n to\n\n    5\n is \n    a_1 + a_2 + a_3 + a_4 + a_5 = 6 + 9 + (-5) + 3 + 0 = 16\n.\nAfter this query \n    p = [4, 3, 1, 5, 2]\n. The graph corresponding to the new\npermutation. If we start from \n    2\n, we can reach \n    1, 2, 3, 4,\n    5\n. After this query \n    a\n is: \n    [6, 9, -5, 2, -1]\n. The sum on\nthe segment from \n    1\n to \n    5\n is \n    a_1 + a_2 + a_3 + a_4 + a_5 = 6 + 9\n    + (-5) + 2 + (-1) = 11\n.\n\n",
+        "cf_contest_id": 1588,
+        "cf_index": "F",
+        "cf_rating": 3500,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "graphs",
+            "two pointers"
+        ],
+        "time_limit_seconds": 8.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5\r\n6 9 -5 3 0\r\n2 3 1 5 4\r\n6\r\n1 1 5\r\n2 1 1\r\n1 1 5\r\n3 1 5\r\n2 1 -1\r\n1 1 5\r\n",
+                "13\r\n16\r\n11\r\n"
+            ],
+            [
+                "8\r\n-15 52 -4 3 5 9 0 5\r\n2 4 6 8 1 3 5 7\r\n10\r\n2 2 2\r\n2 5 -1\r\n1 1 8\r\n1 1 5\r\n1 5 8\r\n3 1 6\r\n2 1 50\r\n1 1 8\r\n2 6 -20\r\n1 1 8\r\n",
+                "61\r\n45\r\n22\r\n461\r\n301\r\n"
+            ],
+            [
+                "1\r\n1\r\n1\r\n1\r\n1 1 1\r\n",
+                "1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n0\r\n1\r\n1\r\n2 1 0\r\n",
+                ""
+            ],
+            [
+                "5\r\n-3 0 9 -4 -6\r\n3 2 5 4 1\r\n5\r\n2 2 3\r\n3 2 5\r\n1 2 5\r\n2 5 6\r\n2 1 -8\r\n",
+                "2\r\n"
+            ],
+            [
+                "10\r\n74 92 -62 81 -87 -75 -67 -10 90 37\r\n9 2 1 3 8 10 7 5 4 6\r\n10\r\n3 7 10\r\n3 4 5\r\n3 7 9\r\n1 9 10\r\n1 4 5\r\n3 9 5\r\n1 8 9\r\n3 1 5\r\n1 5 7\r\n1 8 9\r\n",
+                "127\r\n-6\r\n80\r\n-229\r\n80\r\n"
+            ],
+            [
+                "10\r\n-26 -100 -15 -86 24 94 -88 -30 59 21\r\n6 7 10 1 9 3 4 8 2 5\r\n20\r\n2 9 62\r\n2 5 -3\r\n1 7 10\r\n2 2 54\r\n2 3 3\r\n2 10 -3\r\n2 1 92\r\n1 5 9\r\n3 1 6\r\n3 3 2\r\n3 7 8\r\n2 5 -11\r\n3 8 7\r\n3 2 5\r\n1 1 7\r\n1 8 9\r\n3 7 9\r\n1 5 10\r\n3 1 5\r\n2 3 65\r\n",
+                "139\r\n879\r\n1216\r\n223\r\n1072\r\n"
+            ],
+            [
+                "20\r\n-100 20 41 17 20 15 -97 -59 46 12 -35 -5 -14 -13 37 70 -85 12 43 -57\r\n14 18 20 2 15 6 7 19 5 13 17 9 16 1 3 8 10 12 11 4\r\n20\r\n3 5 2\r\n2 17 17\r\n1 14 20\r\n1 17 19\r\n3 3 11\r\n3 18 14\r\n2 6 94\r\n1 1 15\r\n1 19 20\r\n2 4 -76\r\n1 1 3\r\n3 15 12\r\n3 9 11\r\n2 16 -57\r\n3 17 6\r\n2 12 61\r\n1 16 18\r\n2 11 -4\r\n3 5 19\r\n3 10 3\r\n",
+                "58\r\n4\r\n47\r\n3\r\n-191\r\n-109\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,172 @@
+[
+    {
+        "name": "Bicycle Chain",
+        "description": "Vasya's bicycle chain drive consists of two parts: n stars are attached to the\npedal axle, m stars are attached to the rear wheel axle. The chain helps to\nrotate the rear wheel by transmitting the pedal rotation. We know that the\ni-th star on the pedal axle has ai (0 < a1 < a2 < ... < an) teeth, and the\nj-th star on the rear wheel axle has bj (0 < b1 < b2 < ... < bm) teeth. Any\npair (i, j) (1 \u2264 i \u2264 n; 1 \u2264 j \u2264 m) is called a gear and sets the indexes of\nstars to which the chain is currently attached. Gear (i, j) has a gear ratio,\nequal to the value . Since Vasya likes integers, he wants to find such gears\n(i, j), that their ratios are integers. On the other hand, Vasya likes fast\ndriving, so among all \"integer\" gears (i, j) he wants to choose a gear with\nthe maximum ratio. Help him to find the number of such gears. In the problem,\nfraction denotes division in real numbers, that is, no rounding is performed.\nInput The first input line contains integer n (1 \u2264 n \u2264 50) \u2014 the number of\nstars on the bicycle's pedal axle. The second line contains n integers a1, a2,\n..., an (1 \u2264 ai \u2264 10^4) in the order of strict increasing. The third input\nline contains integer m (1 \u2264 m \u2264 50) \u2014 the number of stars on the rear wheel\naxle. The fourth line contains m integers b1, b2, ..., bm (1 \u2264 bi \u2264 10^4) in\nthe order of strict increasing. It is guaranteed that there exists at least\none gear (i, j), that its gear ratio is an integer. The numbers on the lines\nare separated by spaces. Output Print the number of \"integer\" gears with the\nmaximum ratio among all \"integer\" gears. Examples Input 2 4 5 3 12 13 15\nOutput 2 Input 4 1 2 3 4 5 10 11 12 13 14 Output 1 Note In the first sample\nthe maximum \"integer\" gear ratio equals 3. There are two gears that have such\ngear ratio. For one of them a1 = 4, b1 = 12, and for the other a2 = 5, b3 =\n15.\n\n",
+        "cf_contest_id": 215,
+        "cf_index": "A",
+        "cf_rating": 900,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n4 5\r\n3\r\n12 13 15\r\n",
+                "2\n"
+            ],
+            [
+                "4\r\n1 2 3 4\r\n5\r\n10 11 12 13 14\r\n",
+                "1\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1\r\n1\r\n1\r\n",
+                "1\n"
+            ],
+            [
+                "2\r\n1 2\r\n1\r\n1\r\n",
+                "1\n"
+            ],
+            [
+                "1\r\n1\r\n2\r\n1 2\r\n",
+                "1\n"
+            ],
+            [
+                "4\r\n3 7 11 13\r\n4\r\n51 119 187 221\r\n",
+                "4\n"
+            ],
+            [
+                "4\r\n2 3 4 5\r\n3\r\n1 2 3\r\n",
+                "2\n"
+            ],
+            [
+                "10\r\n6 12 13 20 48 53 74 92 96 97\r\n10\r\n1 21 32 36 47 54 69 75 95 97\r\n",
+                "1\n"
+            ],
+            [
+                "10\r\n5 9 10 14 15 17 19 22 24 26\r\n10\r\n2 11 17 19 21 22 24 25 27 28\r\n",
+                "1\n"
+            ],
+            [
+                "10\r\n24 53 56 126 354 432 442 740 795 856\r\n10\r\n273 438 494 619 689 711 894 947 954 958\r\n",
+                "1\n"
+            ],
+            [
+                "10\r\n3 4 6 7 8 10 14 16 19 20\r\n10\r\n3 4 5 7 8 10 15 16 18 20\r\n",
+                "1\n"
+            ],
+            [
+                "10\r\n1 6 8 14 15 17 25 27 34 39\r\n10\r\n1 8 16 17 19 22 32 39 44 50\r\n",
+                "1\n"
+            ],
+            [
+                "10\r\n5 21 22 23 25 32 35 36 38 39\r\n10\r\n3 7 8 9 18 21 23 24 36 38\r\n",
+                "4\n"
+            ],
+            [
+                "10\r\n17 239 443 467 661 1069 1823 2333 3767 4201\r\n20\r\n51 83 97 457 593 717 997 1329 1401 1459 1471 1983 2371 2539 3207 3251 3329 5469 6637 6999\r\n",
+                "8\n"
+            ],
+            [
+                "20\r\n179 359 401 467 521 601 919 941 1103 1279 1709 1913 1949 2003 2099 2143 2179 2213 2399 4673\r\n20\r\n151 181 191 251 421 967 1109 1181 1249 1447 1471 1553 1619 2327 2551 2791 3049 3727 6071 7813\r\n",
+                "3\n"
+            ],
+            [
+                "20\r\n79 113 151 709 809 983 1291 1399 1409 1429 2377 2659 2671 2897 3217 3511 3557 3797 3823 4363\r\n10\r\n19 101 659 797 1027 1963 2129 2971 3299 9217\r\n",
+                "3\n"
+            ],
+            [
+                "30\r\n19 47 109 179 307 331 389 401 461 509 547 569 617 853 883 1249 1361 1381 1511 1723 1741 1783 2459 2531 2621 3533 3821 4091 5557 6217\r\n20\r\n401 443 563 941 967 997 1535 1567 1655 1747 1787 1945 1999 2251 2305 2543 2735 4415 6245 7555\r\n",
+                "8\n"
+            ],
+            [
+                "5\r\n33 78 146 3055 4268\r\n5\r\n2211 2584 5226 9402 9782\r\n",
+                "3\n"
+            ],
+            [
+                "5\r\n35 48 52 86 8001\r\n10\r\n332 3430 3554 4704 4860 5096 6215 7583 8228 8428\r\n",
+                "4\n"
+            ],
+            [
+                "10\r\n97 184 207 228 269 2084 4450 6396 7214 9457\r\n16\r\n338 1179 1284 1545 1570 2444 3167 3395 3397 5550 6440 7245 7804 7980 9415 9959\r\n",
+                "5\n"
+            ],
+            [
+                "30\r\n25 30 41 57 58 62 70 72 76 79 84 85 88 91 98 101 104 109 119 129 136 139 148 151 926 1372 3093 3936 5423 7350\r\n25\r\n1600 1920 2624 3648 3712 3968 4480 4608 4864 5056 5376 5440 5632 5824 6272 6464 6656 6934 6976 7616 8256 8704 8896 9472 9664\r\n",
+                "24\n"
+            ],
+            [
+                "5\r\n33 78 146 3055 4268\r\n5\r\n2211 2584 5226 9402 9782\r\n",
+                "3\n"
+            ],
+            [
+                "5\r\n35 48 52 86 8001\r\n10\r\n332 3430 3554 4704 4860 5096 6215 7583 8228 8428\r\n",
+                "4\n"
+            ],
+            [
+                "10\r\n97 184 207 228 269 2084 4450 6396 7214 9457\r\n16\r\n338 1179 1284 1545 1570 2444 3167 3395 3397 5550 6440 7245 7804 7980 9415 9959\r\n",
+                "5\n"
+            ],
+            [
+                "30\r\n25 30 41 57 58 62 70 72 76 79 84 85 88 91 98 101 104 109 119 129 136 139 148 151 926 1372 3093 3936 5423 7350\r\n25\r\n1600 1920 2624 3648 3712 3968 4480 4608 4864 5056 5376 5440 5632 5824 6272 6464 6656 6934 6976 7616 8256 8704 8896 9472 9664\r\n",
+                "24\n"
+            ],
+            [
+                "50\r\n51 67 75 186 194 355 512 561 720 876 1077 1221 1503 1820 2153 2385 2568 2608 2937 2969 3271 3311 3481 4081 4093 4171 4255 4256 4829 5020 5192 5636 5817 6156 6712 6717 7153 7436 7608 7612 7866 7988 8264 8293 8867 9311 9879 9882 9889 9908\r\n1\r\n5394\r\n",
+                "1\n"
+            ],
+            [
+                "3\r\n3 4 5\r\n3\r\n6 20 25\r\n",
+                "2\n"
+            ],
+            [
+                "4\r\n2 3 5 8\r\n4\r\n2 6 8 10\r\n",
+                "1\n"
+            ],
+            [
+                "4\r\n3 5 7 11\r\n4\r\n3 5 7 22\r\n",
+                "1\n"
+            ],
+            [
+                "2\r\n2 3\r\n3\r\n20 30 50\r\n",
+                "1\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n4\r\n2 4 6 49\r\n",
+                "1\n"
+            ],
+            [
+                "2\r\n4 5\r\n3\r\n12 15 20\r\n",
+                "1\n"
+            ],
+            [
+                "3\r\n2 5 7\r\n3\r\n4 5 7\r\n",
+                "1\n"
+            ],
+            [
+                "3\r\n3 5 8\r\n3\r\n6 8 10\r\n",
+                "2\n"
+            ],
+            [
+                "2\r\n2 3\r\n4\r\n4 6 9 33\r\n",
+                "1\n"
+            ],
+            [
+                "2\r\n2 3\r\n4\r\n4 6 21 40\r\n",
+                "1\n"
+            ],
+            [
+                "3\r\n4 9 10\r\n3\r\n8 9 10\r\n",
+                "1\n"
+            ],
+            [
+                "5\r\n1 5 6 9 51\r\n5\r\n5 12 18 27 10000\r\n",
+                "1\n"
+            ]
+        ]
+    }
+]

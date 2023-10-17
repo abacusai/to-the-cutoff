@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Product Tuples",
+        "description": "While roaming the mystic areas of Stonefalls, in order to drop legendary loot,\nan adventurer was given a quest as follows. He was given an array \n    A =\n    a_1,a_2,...,a_N\n of length \n    N\n, and a number \n    K\n. Define array\n\n    B\n as \n    B(q, A) =\n  \n    q-a_1, q-a_2, ..., q-a_N\n . Define\nfunction \n    F\n as \n    F(B,K)\n being sum of products of all \n    K\n-tuples\nof elements in array \n    B\n. For example, if the array \n    B\n is\n\n    [2,3,4,5]\n, and with \n    K=3\n, sum of products of all 3-tuples is\n\n    \n\n    F(B, 3) = 2*3*4+2*3*5+3*4*5+2*4*5\n\n    \n He was then given a number Q,\nnumber of queries of two types: Type 1: Given \n    q\n, \n    i\n, and \n    d\n\ncalculate \n    F(B(q, A), K)\n where we make change to initial array as \n    A[i]\n    = d\n. Type 2: Given \n    q\n, \n    L\n, \n    R\n, and \n    d\n calculate\n\n    F(B(q, A), K)\n where we make change to initial array as \n    A[i] = A[i] +\n    d\n for all \n    i\n in range \n    [L, R]\n inclusive. All changes are\ntemporarily made to initial array, and don't propagate to following queries.\nHelp the adventurer calculate the answer to a quest, and finally get that\nloot! Input In the first two lines, numbers \n    N\n (\n    1 \n    \u2264 N \n    \u2264\n    2*10^4\n) and \n    K\n (\n    1 \n    \u2264 K \n    \u2264 N\n), the length of initial\narray \n    A\n, and tuple size, followed by \n    a_1,a_2,a_3,\u2026,a_N\n (\n    0\n    \n    \u2264 a_i \n    \u2264 10^9\n) , elements of array \n    A\n, in the next line. Then\nfollows number \n    Q\n (\n    Q \n    \u2264 10\n), number of queries. In the next\n\n    Q\n lines come queries of the form: 1 q i d, for type 1, 2 q L R d, for\ntype 2, as explained above (\n    0 \n    \u2264 q, d \n    \u2264 10^9, 1 \n    \u2264 i,L,R\n    \n    \u2264 N\n) Output Print \n    Q\n lines, the answers to queries, modulo\n\n    998244353\n. Example Input 5 2 1 2 3 4 5 3 1 6 1 1 1 6 5 2 2 6 2 3 1\nOutput 85 127 63 Note In the first query array A = [1, 2, 3, 4, 5], B = [5, 4,\n3, 2, 1], sum of products of 2-tuples = 85. In second query array A = [1, 2,\n3, 4, 2], B = [5, 4, 3, 2, 4], sum of products of 2-tuples = 127 In third\nquery array A = [1, 3, 4, 4, 5], B = [5, 3, 2, 2, 1], sum of products of\n2-tuples = 63\n\n",
+        "cf_contest_id": 1218,
+        "cf_index": "E",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "divide and conquer",
+            "fft"
+        ],
+        "time_limit_seconds": 8.0,
+        "memory_limit_bytes": 128.0,
+        "public_cases": [
+            [
+                "5\r\n2\r\n1 2 3 4 5\r\n3\r\n1 6 1 1\r\n1 6 5 2\r\n2 6 2 3 1\r\n",
+                "85\r\n127\r\n63\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n2\r\n6 2 3\r\n3\r\n1 3 3 2\r\n2 9 2 3 6\r\n1 0 1 4\r\n",
+                "998244348\r\n3\r\n26\r\n"
+            ],
+            [
+                "3\r\n3\r\n4 1 0\r\n3\r\n1 5 3 5\r\n1 0 1 0\r\n1 3 1 6\r\n",
+                "0\r\n0\r\n998244335\r\n"
+            ],
+            [
+                "1\r\n1\r\n4\r\n3\r\n2 4 1 1 1\r\n2 2 1 1 1\r\n1 5 1 4\r\n",
+                "998244352\r\n998244350\r\n1\r\n"
+            ],
+            [
+                "2\r\n2\r\n2 0\r\n3\r\n1 3 2 2\r\n1 4 1 3\r\n1 9 2 0\r\n",
+                "1\r\n4\r\n63\r\n"
+            ],
+            [
+                "4\r\n4\r\n0 6 5 4\r\n3\r\n1 9 1 4\r\n1 0 1 0\r\n2 7 3 4 1\r\n",
+                "300\r\n0\r\n14\r\n"
+            ],
+            [
+                "9\r\n6\r\n7 57 67 66 14 53 26 95 91\r\n5\r\n1 40 1 82\r\n2 63 2 8 87\r\n1 1 7 73\r\n2 7 4 9 41\r\n1 55 3 76\r\n",
+                "721775050\r\n51777385\r\n55354090\r\n38429972\r\n854781175\r\n"
+            ],
+            [
+                "114\r\n89\r\n12 20 91 72 75 54 17 0 12 58 9 54 61 1 76 94 82 75 67 48 43 98 3 80 4 43 33 0 67 35 23 81 1 57 60 60 81 73 10 23 82 64 14 12 6 95 8 58 38 49 16 26 55 21 64 51 13 75 62 81 96 94 36 34 93 38 30 2 90 15 92 44 64 1 54 18 80 17 0 70 64 64 53 89 59 3 90 85 27 95 34 81 82 33 37 47 99 93 78 89 18 26 13 0 11 41 4 7 35 7 96 23 8 64\r\n5\r\n1 6 61 62\r\n1 53 26 73\r\n2 80 84 96 30\r\n2 85 50 103 38\r\n1 36 100 3\r\n",
+                "650086978\r\n920754809\r\n58540105\r\n454729376\r\n588561630\r\n"
+            ],
+            [
+                "6\r\n3\r\n124448109 834116510 242951030 544234021 438510772 702689545\r\n10\r\n1 657865126 1 856940136\r\n1 902996825 5 259570244\r\n2 932936731 2 2 717640357\r\n2 714250436 1 3 532707206\r\n1 554627665 2 96633939\r\n1 818149888 5 195496066\r\n1 680525064 3 103866689\r\n1 727717898 4 281629995\r\n2 3991478 1 2 266167989\r\n2 87108204 1 6 610809210\r\n",
+                "701165033\r\n359665876\r\n353991315\r\n951837937\r\n145605774\r\n491645505\r\n250945261\r\n586191748\r\n810629061\r\n687436875\r\n"
+            ],
+            [
+                "6\r\n5\r\n599225787 154600358 464125462 829838707 618358021 613940232\r\n10\r\n2 208039210 2 3 797664904\r\n2 376611867 3 4 593256098\r\n1 148414574 6 594265688\r\n2 177032375 2 4 540626360\r\n2 892834127 1 4 272021546\r\n2 483616877 3 4 621834006\r\n1 639740396 4 10292061\r\n2 732697311 2 4 797737749\r\n2 9232652 2 3 887679519\r\n2 560035854 3 3 877306203\r\n",
+                "784578762\r\n354308691\r\n401134062\r\n280413377\r\n947227308\r\n631070588\r\n949371966\r\n980959123\r\n93855125\r\n243643656\r\n"
+            ],
+            [
+                "8\r\n6\r\n212221387 239600606 92798741 372997949 181052269 40874550 910025489 977658422\r\n10\r\n1 156813704 6 106472225\r\n1 395278798 8 588697722\r\n1 3180649 4 251023303\r\n1 681436265 5 314840842\r\n1 833804344 4 413063960\r\n2 960999522 3 6 144744124\r\n2 96169748 1 2 293229078\r\n1 762178245 4 603733875\r\n2 109236844 1 5 318158759\r\n1 460646161 6 953458538\r\n",
+                "945734638\r\n986531510\r\n161305365\r\n123517970\r\n494695911\r\n724870422\r\n581523551\r\n539525960\r\n11488865\r\n832938149\r\n"
+            ],
+            [
+                "9\r\n2\r\n513383589 543092054 847722327 240153433 266461243 658405207 926319144 247602512 960694675\r\n10\r\n2 955410014 8 8 488926190\r\n1 607608646 2 335785794\r\n1 149576258 3 458366095\r\n1 893776008 5 660775370\r\n2 324045478 8 9 613154972\r\n2 962169136 2 3 360964976\r\n1 218861853 9 196636408\r\n2 22300597 2 7 917438297\r\n2 654880781 3 9 821561484\r\n2 902678183 3 4 859226075\r\n",
+                "382849766\r\n442347278\r\n583511315\r\n782242637\r\n165856437\r\n163170341\r\n26329953\r\n328453129\r\n526666114\r\n776101089\r\n"
+            ]
+        ]
+    }
+]

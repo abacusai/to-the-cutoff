@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Death DBMS",
+        "description": "For the simplicity, let's say that the \"Death Note\" is a notebook that kills a\nperson when their name is written in it. It's easy to kill with it, but it's\npretty hard to keep track of people you haven't killed and still plan to. You\ndecided to make a \"Death Database Management System\" \u2014 a computer program that\nprovides the easy access to the database of possible victims. Let me describe\nits specifications to you. Let's define a victim entity: a victim has a name\n(not necessarily unique) that consists only of lowercase Latin letters and an\ninteger suspicion value. At the start of the program the user enters a list of\n\n    n\n victim names into a database, each suspicion value is set to \n    0\n.\nThen the user makes queries of two types: \n    1\u00a0i\u00a0x\n \u2014 set the suspicion\nvalue of the \n    i\n-th victim to \n    x\n; \n    2\u00a0q\n \u2014 given a string \n    q\n\nfind the maximum suspicion value of a victim whose name is a contiguous\nsubstring of \n    q\n. Just to remind you, this program doesn't kill people, it\nonly helps to search for the names to write down in an actual notebook. Thus,\nthe list of the victims in the database doesn't change throughout the queries.\nWhat are you waiting for? Write that program now! Input The first line\ncontains two integers \n    n\n and \n    m\n (\n    1 \n    \u2264 n, m \n    \u2264 3 \n    \u00b7\n    10^5\n) \u2014 the number of victims and the number of queries, respectively. Each\nof the next \n    n\n lines contains a single string \n    s_i\n \u2014 the name of the\n\n    i\n-th victim. Each name consists only of lowercase Latin letters. Each of\nthe next \n    m\n lines contains a query of one of two types: \n    1\u00a0i\u00a0x\n (\n    1\n    \n    \u2264 i \n    \u2264 n\n, \n    0 \n    \u2264 x \n    \u2264 10^9\n) \u2014 change the suspicion value\nof the \n    i\n-th victim to \n    x\n; \n    2\u00a0q\n \u2014 given a string \n    q\n\nconsisting only of lowercase Latin letters find the maximum suspicion value of\na victim whose name is a contiguous substring of \n    q\n. There is at least\none query of the second type. The total length of the strings \n    s_i\n\ndoesn't exceed \n    3 \n    \u00b7 10^5\n. The total length of the strings \n    q\n\ndoesn't exceed \n    3 \n    \u00b7 10^5\n. Output For each query of the second type\nprint an integer value. If there is no victim name that is a contiguous\nsubstring of \n    q\n, then print \n    -1\n. Otherwise, print the maximum\nsuspicion value of a victim whose name is a contiguous substring of \n    q\n.\nExamples Input 5 8 kurou takuo takeshi naomi shingo 2 nakiraomi 2 abanaomicaba\n1 3 943 2 takuotakeshishingo 1 5 135832 2 shingotakeshi 1 5 0 2 shingotakeshi\nOutput -1 0 943 135832 943 Input 6 15 a ab ba b a ba 2 aa 1 4 4 2 bbb 1 2 1 1\n2 18 2 b 2 c 1 6 10 2 aba 2 abbbba 1 2 12 2 bbaaab 1 1 11 1 5 5 2 baa Output 0\n4 4 -1 18 18 12 11\n\n",
+        "cf_contest_id": 1437,
+        "cf_index": "G",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "string suffix structures",
+            "strings",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5 8\r\nkurou\r\ntakuo\r\ntakeshi\r\nnaomi\r\nshingo\r\n2 nakiraomi\r\n2 abanaomicaba\r\n1 3 943\r\n2 takuotakeshishingo\r\n1 5 135832\r\n2 shingotakeshi\r\n1 5 0\r\n2 shingotakeshi\r\n",
+                "-1\r\n0\r\n943\r\n135832\r\n943\r\n"
+            ],
+            [
+                "6 15\r\na\r\nab\r\nba\r\nb\r\na\r\nba\r\n2 aa\r\n1 4 4\r\n2 bbb\r\n1 2 1\r\n1 2 18\r\n2 b\r\n2 c\r\n1 6 10\r\n2 aba\r\n2 abbbba\r\n1 2 12\r\n2 bbaaab\r\n1 1 11\r\n1 5 5\r\n2 baa\r\n",
+                "0\r\n4\r\n4\r\n-1\r\n18\r\n18\r\n12\r\n11\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "9 8\r\naa\r\naa\r\nb\r\nb\r\nab\r\nb\r\na\r\na\r\nb\r\n1 5 1\r\n2 a\r\n1 8 8\r\n2 b\r\n2 bab\r\n2 ab\r\n2 a\r\n1 1 8\r\n",
+                "0\r\n0\r\n8\r\n8\r\n8\r\n"
+            ],
+            [
+                "6 6\r\naab\r\ncbc\r\naab\r\nccc\r\nb\r\nca\r\n1 1 9\r\n2 c\r\n2 b\r\n1 2 8\r\n2 aac\r\n1 1 9\r\n",
+                "-1\r\n0\r\n-1\r\n"
+            ],
+            [
+                "10 10\r\naaa\r\naaa\r\nbabbb\r\nbbbaa\r\nbb\r\nabbbb\r\nbbabb\r\nbb\r\nb\r\na\r\n2 baab\r\n2 b\r\n2 bbbba\r\n1 3 12\r\n2 aaa\r\n2 aabbb\r\n2 a\r\n1 1 16\r\n2 b\r\n1 10 12\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "20 20\r\naaccb\r\ncbacaaa\r\nccbabcc\r\nabab\r\nbabcbb\r\na\r\nc\r\nbab\r\nccab\r\naba\r\naabc\r\nccab\r\nc\r\nbaabc\r\na\r\nbc\r\nba\r\nbbaa\r\ncabc\r\naacab\r\n2 aaaccb\r\n2 baaacab\r\n2 abcabc\r\n1 13 38\r\n2 bc\r\n2 bbb\r\n2 ba\r\n2 cbac\r\n1 20 15\r\n1 10 30\r\n1 3 33\r\n2 a\r\n2 aaca\r\n1 18 20\r\n2 bacbccc\r\n2 babac\r\n2 bbbbaaa\r\n2 cba\r\n2 caaaa\r\n2 abbbbca\r\n",
+                "0\r\n0\r\n0\r\n38\r\n-1\r\n0\r\n38\r\n0\r\n38\r\n38\r\n38\r\n20\r\n38\r\n38\r\n38\r\n"
+            ],
+            [
+                "1 1\r\na\r\n2 b\r\n",
+                "-1\r\n"
+            ],
+            [
+                "1 1\r\nb\r\n2 b\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 15\r\na\r\na\r\na\r\na\r\na\r\na\r\n2 aaaa\r\n1 4 5\r\n2 aaa\r\n1 2 5\r\n1 6 5\r\n2 a\r\n2 aa\r\n1 5 5\r\n2 aa\r\n2 a\r\n1 4 1\r\n2 aaa\r\n1 5 1\r\n1 6 2\r\n2 a\r\n",
+                "0\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n"
+            ]
+        ]
+    }
+]

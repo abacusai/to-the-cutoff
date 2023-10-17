@@ -1,0 +1,90 @@
+[
+    {
+        "name": "A Certain Magical Party",
+        "description": "There are \n    n\n people at a party. The \n    i\n-th person has an amount of\nhappiness \n    a_i\n. Every person has a certain kind of personality which can\nbe represented as a binary integer \n    b\n. If \n    b = 0\n, it means the\nhappiness of the person will increase if he tells the story to someone\nstrictly less happy than them. If \n    b = 1\n, it means the happiness of the\nperson will increase if he tells the story to someone strictly more happy than\nthem. Let us define a speaking order as an ordering of the people from left to\nright. Now the following process occurs. We go from left to right. The current\nperson tells the story to all people other than himself. Note that all\nhappiness values stay constant while this happens. After the person is done,\nhe counts the number of people who currently have strictly less/more happiness\nthan him as per his kind of personality, and his happiness increases by that\nvalue. Note that only the current person's happiness value increases. As the\norganizer of the party, you don't want anyone to leave sad. Therefore, you\nwant to count the number of speaking orders such that at the end of the\nprocess all \n    n\n people have equal happiness. Two speaking orders are\nconsidered different if there exists at least one person who does not have the\nsame position in the two speaking orders. Input The first line contains a\nsingle integer \n    n\n (\n    1 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the number\nof people. The second line contains a sequence of \n    n\n integers\n\n    a_1,a_2,...,a_n\n (\n    1 \n    \u2264 a_i \n    \u2264 2n\n) \u2014 the happiness values.\nThe third line contains a sequence of \n    n\n binary numbers\n\n    b_1,b_2,...,b_n\n (\n    b_i \n    \u2208\n    \n    0,1\n) \u2014 the kinds of\npersonality. Output Output the number of different valid speaking orders.\nSince this number can be large, output it modulo \n    998244353\n. Examples\nInput 4 1 2 4 4 1 1 0 0 Output 2 Input 4 3 4 3 1 0 1 0 0 Output 0 Input 21 1 2\n19 19 19 19 19 19 19 19 19 21 21 21 21 21 21 21 21 21 21 1 1 0 0 0 0 0 0 0 0 0\n1 1 1 1 1 1 1 1 1 1 Output 49439766 Note Here is the explanation for the first\nexample. One valid speaking order is \n    [2,1,4,3]\n (here, we have written\nthe indices of each person). Each step shows the current happiness values and\nresults. Step \n    1\n: \n    [1,2,4,4]\n \n    \u2192\n Person \n    2\n\ntells the story to others. Since his kind of personality is \n    1\n, his\nhappiness increases by \n    2\n since persons \n    3\n and \n    4\n have strictly\ngreater happiness. Step \n    2\n: \n    [1,4,4,4]\n \n    \u2192\n Person\n\n    1\n tells the story to others. Since his kind of personality is \n    1\n,\nhis happiness increases by \n    3\n since persons \n    2\n, \n    3\n and \n    4\n\nhave strictly greater happiness. Step \n    3\n: \n    [4,4,4,4]\n\n\n    \u2192\n Person \n    4\n tells the story to others. Since his kind\nof personality is \n    0\n, his happiness increases by \n    0\n since no one has\nstrictly lesser happiness. Step \n    4\n: \n    [4,4,4,4]\n \n    \u2192\n\nPerson \n    3\n tells the story to others. Since his kind of personality is\n\n    0\n, his happiness increases by \n    0\n since no one has strictly lesser\nhappiness. At the end, everyone has equal happiness. Note that \n    [2,1,3,4]\n\nis also a valid answer for this example. It can be shown that there is no\nvalid ordering for the second example.\n\n",
+        "cf_contest_id": 1726,
+        "cf_index": "G",
+        "cf_rating": 3300,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "data structures",
+            "greedy",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n1 2 4 4\r\n1 1 0 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\n3 4 3 1\r\n0 1 0 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "21\r\n1 2 19 19 19 19 19 19 19 19 19 21 21 21 21 21 21 21 21 21 21\r\n1 1 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1\r\n",
+                "49439766\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n1 1 1 1\r\n0 1 1 0\r\n",
+                "24\r\n"
+            ],
+            [
+                "10\r\n14 14 5 6 11 11 13 7 11 13\r\n1 1 1 1 0 0 0 1 0 0\r\n",
+                "1080\r\n"
+            ],
+            [
+                "6\r\n1 3 5 5 2 4\r\n1 1 0 0 0 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "5\r\n10 2 4 1 2\r\n0 0 1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "20\r\n7 7 7 7 7 1 7 7 7 7 7 7 7 7 7 7 7 7 7 7\r\n0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "50\r\n44 50 20 31 16 32 31 36 48 39 40 28 49 17 55 11 51 27 14 18 21 41 47 10 8 9 22 45 29 53 7 30 25 37 42 23 13 6 26 34 43 52 35 46 33 24 12 15 38 19\r\n0 0 1 0 1 0 0 0 0 0 0 1 0 1 1 1 0 1 1 1 1 0 0 1 1 1 1 0 1 1 1 1 1 0 0 1 1 1 1 0 0 0 0 0 0 1 1 1 0 1\r\n",
+                "100\r\n"
+            ],
+            [
+                "1\r\n1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "15\r\n17 7 19 19 19 17 18 6 19 5 19 17 19 19 16\r\n0 1 0 1 1 0 0 1 1 1 1 0 1 1 0\r\n",
+                "21621600\r\n"
+            ],
+            [
+                "15\r\n7 7 7 7 7 7 7 7 7 7 7 7 7 7 7\r\n0 1 0 1 1 0 0 0 0 0 0 0 1 0 0\r\n",
+                "972509923\r\n"
+            ],
+            [
+                "50\r\n30 28 25 25 29 25 28 27 28 29 27 27 26 27 30 26 29 30 25 28 29 25 28 25 27 29 25 25 26 26 28 28 29 28 27 25 25 28 26 25 28 26 25 29 25 30 28 30 30 29\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "4\r\n1 3 3 4\r\n1 0 1 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "9\r\n2 3 7 4 9 5 7 8 9\r\n1 1 1 1 0 1 1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\n1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\n1 2 3 3 4\r\n1 1 0 0 1\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

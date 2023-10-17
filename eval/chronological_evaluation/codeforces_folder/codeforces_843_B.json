@@ -1,0 +1,81 @@
+[
+    {
+        "name": "Interactive LowerBound",
+        "description": "This is an interactive problem. You are given a sorted in increasing order\nsingly linked list. You should find the minimum integer in the list which is\ngreater than or equal to x. More formally, there is a singly liked list built\non an array of n elements. Element with index i contains two integers: valuei\nis the integer value in this element, and nexti that is the index of the next\nelement of the singly linked list (or -1, if the current element is the last).\nThe list is sorted, i.e. if nexti \u2260 - 1, then valuenexti > valuei. You are\ngiven the number of elements in the list n, the index of the first element\nstart, and the integer x. You can make up to 2000 queries of the following two\ntypes: ? i (1 \u2264 i \u2264 n) \u2014 ask the values valuei and nexti, ! ans \u2014 give the\nanswer for the problem: the minimum integer, greater than or equal to x, or !\n-1, if there are no such integers. Your program should terminate after this\nquery. Write a program that solves this problem. Input The first line contains\nthree integers n, start, x (1 \u2264 n \u2264 50000, 1 \u2264 start \u2264 n, 0 \u2264 x \u2264 10^9) \u2014 the\nnumber of elements in the list, the index of the first element and the integer\nx. Output To print the answer for the problem, print ! ans, where ans is the\nminimum integer in the list greater than or equal to x, or -1, if there is no\nsuch integer. Interaction To make a query of the first type, print ? i (1 \u2264 i\n\u2264 n), where i is the index of element you want to know information about.\nAfter each query of type ? read two integers valuei and nexti (0 \u2264 valuei \u2264\n10^9, - 1 \u2264 nexti \u2264 n, nexti \u2260 0). It is guaranteed that if nexti \u2260 - 1, then\nvaluenexti > valuei, and that the array values give a valid singly linked list\nwith start being the first element. Note that you can't ask more than 1999\nqueries of the type ?. If nexti = - 1 and valuei = - 1, then it means that you\nasked more queries than allowed, or asked an invalid query. Your program\nshould immediately terminate (for example, by calling exit(0)). You will\nreceive \"Wrong Answer\", it means that you asked more queries than allowed, or\nasked an invalid query. If you ignore this, you can get other verdicts since\nyour program will continue to read from a closed stream. Your solution will\nget \"Idleness Limit Exceeded\", if you don't print anything or forget to flush\nthe output, including the final answer. To flush you can use (just after\nprinting a query and line end): fflush(stdout) in C++; System.out.flush() in\nJava; stdout.flush() in Python; flush(output) in Pascal; For other languages\nsee documentation. Hacks format For hacks, use the following format: In the\nfirst line print three integers n, start, x (1 \u2264 n \u2264 50000, 1 \u2264 start \u2264 n, 0 \u2264\nx \u2264 10^9). In the next n lines print the description of the elements of the\nlist: in the i-th line print two integers valuei and nexti (0 \u2264 valuei \u2264 10^9,\n- 1 \u2264 nexti \u2264 n, nexti \u2260 0). The printed structure should be a valid singly\nlinked list. In particular, it should be possible to reach all elements from\nstart by following links nexti, and the last element end should have -1 in the\nnextend. Example Input 5 3 80 97 -1 58 5 16 2 81 1 79 4 Output ? 1 ? 2 ? 3 ? 4\n? 5 ! 81 Note You can read more about singly linked list by the following\nlink: https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list The\nillustration for the first sample case. Start and finish elements are marked\ndark.\n\n",
+        "cf_contest_id": 843,
+        "cf_index": "B",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "interactive",
+            "probabilities"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 3 80\r\n97 -1\r\n58 5\r\n16 2\r\n81 1\r\n79 4\r\n",
+                "81\r\n1003\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 1 6\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 -1\r\n",
+                "-1\r\n1002\r\n"
+            ],
+            [
+                "1 1 0\r\n0 -1\r\n",
+                "0\r\n1002\r\n"
+            ],
+            [
+                "1 1 2\r\n0 -1\r\n",
+                "-1\r\n1002\r\n"
+            ],
+            [
+                "1 1 1000000000\r\n0 -1\r\n",
+                "-1\r\n1002\r\n"
+            ],
+            [
+                "5 3 3\r\n3 5\r\n2 1\r\n0 4\r\n1 2\r\n4 -1\r\n",
+                "3\r\n1002\r\n"
+            ],
+            [
+                "5 3 145337745\r\n619347297 5\r\n344132479 1\r\n122841322 4\r\n169280018 2\r\n740666615 -1\r\n",
+                "169280018\r\n1003\r\n"
+            ],
+            [
+                "5 3 315433300\r\n411188472 5\r\n316581280 1\r\n200698791 4\r\n314885421 2\r\n759386148 -1\r\n",
+                "316581280\r\n1003\r\n"
+            ],
+            [
+                "5 3 381735506\r\n469559901 5\r\n359493082 1\r\n137017061 4\r\n202768106 2\r\n955698260 -1\r\n",
+                "469559901\r\n1003\r\n"
+            ],
+            [
+                "5 3 587634055\r\n563214082 5\r\n404100743 1\r\n179733654 4\r\n236438578 2\r\n673892808 -1\r\n",
+                "673892808\r\n1003\r\n"
+            ],
+            [
+                "5 3 974128233\r\n547205043 5\r\n318213550 1\r\n122625404 4\r\n184874700 2\r\n669820978 -1\r\n",
+                "-1\r\n1002\r\n"
+            ],
+            [
+                "10 3 2\r\n3 9\r\n9 -1\r\n0 7\r\n6 8\r\n5 4\r\n8 2\r\n1 10\r\n7 6\r\n4 5\r\n2 1\r\n",
+                "2\r\n1002\r\n"
+            ],
+            [
+                "10 3 632584719\r\n378382911 9\r\n978367651 -1\r\n176599346 7\r\n557138623 8\r\n441019502 4\r\n823417558 2\r\n244832688 10\r\n702148024 6\r\n385598339 5\r\n357778234 1\r\n",
+                "702148024\r\n1003\r\n"
+            ],
+            [
+                "1 1 50\r\n60 -1\r\n",
+                "60\r\n1002\r\n"
+            ],
+            [
+                "5 1 100\r\n200 2\r\n300 3\r\n400 4\r\n500 5\r\n600 -1\r\n",
+                "200\r\n1002\r\n"
+            ]
+        ]
+    }
+]

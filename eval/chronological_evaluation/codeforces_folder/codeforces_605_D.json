@@ -1,0 +1,124 @@
+[
+    {
+        "name": "Board Game",
+        "description": "You are playing a board card game. In this game the player has two\ncharacteristics, x and y \u2014 the white magic skill and the black magic skill,\nrespectively. There are n spell cards lying on the table, each of them has\nfour characteristics, ai, bi, ci and di. In one move a player can pick one of\nthe cards and cast the spell written on it, but only if first two of it's\ncharacteristics meet the requirement ai \u2264 x and bi \u2264 y, i.e. if the player has\nenough magic skill to cast this spell. However, after casting the spell the\ncharacteristics of a player change and become equal to x = ci and y = di. At\nthe beginning of the game both characteristics of a player are equal to zero.\nThe goal of the game is to cast the n-th spell. Your task is to make it in as\nfew moves as possible. You are allowed to use spell in any order and any\nnumber of times (for example, you may not use some spells at all). Input The\nfirst line of the input contains a single integer n (1 \u2264 n \u2264 100 000) \u2014 the\nnumber of cards on the table. Each of the next n lines contains four integers\nai, bi, ci, di (0 \u2264 ai, bi, ci, di \u2264 10^9) \u2014 the characteristics of the\ncorresponding card. Output In the first line print a single integer k \u2014 the\nminimum number of moves needed to cast the n-th spell and in the second line\nprint k numbers \u2014 the indices of the cards in the order in which you should\ncast them. In case there are multiple possible solutions, print any of them.\nIf it is impossible to cast the n-th spell, print - 1. Examples Input 4 0 0 3\n4 2 2 5 3 4 1 1 7 5 3 8 8 Output 3 1 2 4 Input 2 0 0 4 6 5 1 1000000000\n1000000000 Output -1\n\n",
+        "cf_contest_id": 605,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar"
+        ],
+        "time_limit_seconds": 2.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n0 0 3 4\r\n2 2 5 3\r\n4 1 1 7\r\n5 3 8 8\r\n",
+                "3\r\n1 2 4 "
+            ],
+            [
+                "2\r\n0 0 4 6\r\n5 1 1000000000 1000000000\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n0 0 1000000000 1000000000\r\n",
+                "1\r\n1 "
+            ],
+            [
+                "5\r\n0 0 1000000000 1000000000\r\n1000000000 1000000000 1 1\r\n1 1 2 2\r\n2 2 3 3\r\n3 3 1000000000 1000000000\r\n",
+                "2\r\n1 5 "
+            ],
+            [
+                "1\r\n1 1 1 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2\r\n0 0 1 1\r\n1 1 0 0\r\n",
+                "2\r\n1 2 "
+            ],
+            [
+                "3\r\n0 0 0 0\r\n0 0 0 0\r\n0 0 0 0\r\n",
+                "1\r\n3 "
+            ],
+            [
+                "3\r\n1 0 0 0\r\n0 0 0 0\r\n0 1 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3\r\n1 1 2 2\r\n2 2 3 3\r\n3 3 4 4\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5\r\n0 0 1000000000 999999999\r\n1000000000 999999999 1 1\r\n1 1 2 2\r\n2 2 3 3\r\n3 1000000000 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4\r\n0 0 999999999 999999999\r\n1 1000000000 1000000000 1000000000\r\n1000000000 1 1000000000 1000000000\r\n1000000000 1000000000 42 42\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8\r\n0 0 2 2\r\n1 0 4 1\r\n0 1 5 2\r\n3 0 2 4\r\n1 3 6 5\r\n4 4 3 6\r\n5 0 1 3\r\n3 6 6 6\r\n",
+                "6\r\n1 2 4 5 6 8 "
+            ],
+            [
+                "8\r\n0 0 2 2\r\n1 0 4 1\r\n0 1 5 2\r\n3 0 2 4\r\n1 3 6 5\r\n4 4 3 6\r\n5 0 4 5\r\n3 6 6 6\r\n",
+                "5\r\n1 3 7 6 8 "
+            ],
+            [
+                "5\r\n0 0 2 1\r\n9 7 2 10\r\n0 0 10 8\r\n9 4 4 1\r\n1 0 5 3\r\n",
+                "2\r\n1 5 "
+            ],
+            [
+                "6\r\n0 0 4 10\r\n3 11 9 2\r\n8 0 0 6\r\n2 9 0 3\r\n10 5 2 4\r\n0 0 5 3\r\n",
+                "1\r\n6 "
+            ],
+            [
+                "7\r\n0 0 1 2\r\n12 6 5 6\r\n12 2 4 6\r\n9 8 12 2\r\n6 12 4 11\r\n5 2 4 1\r\n0 11 2 12\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8\r\n1 10 11 6\r\n9 3 4 1\r\n13 10 3 4\r\n0 0 4 1\r\n9 3 3 12\r\n1 1 6 2\r\n11 12 11 13\r\n6 4 1 9\r\n",
+                "-1\r\n"
+            ],
+            [
+                "9\r\n9 14 2 0\r\n3 5 5 12\r\n0 9 2 10\r\n0 0 11 8\r\n1 10 2 5\r\n1 14 3 8\r\n0 7 11 3\r\n0 0 7 14\r\n11 9 7 13\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10\r\n3 3 3 5\r\n9 3 1 7\r\n2 10 8 2\r\n1 3 2 0\r\n10 1 9 2\r\n10 2 3 8\r\n5 4 8 6\r\n2 9 9 7\r\n1 4 5 0\r\n4 9 5 7\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10\r\n12 0 4 3\r\n1 12 3 11\r\n3 3 14 6\r\n0 0 15 5\r\n14 4 7 1\r\n12 4 1 11\r\n1 13 5 4\r\n0 0 1 5\r\n6 8 10 3\r\n0 0 0 1\r\n",
+                "1\r\n10 "
+            ],
+            [
+                "10\r\n14 20 5 13\r\n8 2 14 3\r\n0 16 17 1\r\n18 1 7 13\r\n6 12 19 0\r\n11 15 12 3\r\n3 20 17 9\r\n8 12 14 14\r\n19 15 9 20\r\n20 4 19 4\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10\r\n1 24 22 24\r\n13 21 20 16\r\n16 12 13 1\r\n16 21 2 0\r\n24 7 3 13\r\n18 20 15 24\r\n14 0 10 5\r\n8 2 12 11\r\n0 4 11 21\r\n20 18 7 8\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10\r\n8 17 12 24\r\n0 0 6 30\r\n0 0 26 27\r\n0 0 30 1\r\n26 4 8 11\r\n21 7 3 8\r\n29 19 5 24\r\n4 27 30 30\r\n23 23 24 23\r\n14 29 27 13\r\n",
+                "3\r\n2 8 10 "
+            ],
+            [
+                "10\r\n10 35 8 24\r\n26 17 6 22\r\n25 24 0 28\r\n14 29 14 27\r\n9 13 11 5\r\n4 1 0 20\r\n24 24 19 25\r\n15 5 11 2\r\n15 13 28 11\r\n11 29 18 7\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10\r\n15 6 4 0\r\n32 29 20 8\r\n21 37 34 34\r\n16 22 2 10\r\n10 9 22 17\r\n34 18 32 28\r\n1 38 37 28\r\n13 38 36 11\r\n36 27 36 13\r\n12 12 7 29\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10\r\n10 565 959 32\r\n0 0 513 797\r\n267 670 603 838\r\n657 81 598 430\r\n0 0 280 624\r\n970 268 330 891\r\n529 283 347 68\r\n948 50 650 842\r\n206 842 314 889\r\n905 82 275 969\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

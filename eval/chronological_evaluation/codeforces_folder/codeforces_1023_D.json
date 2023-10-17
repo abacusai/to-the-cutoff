@@ -1,0 +1,116 @@
+[
+    {
+        "name": "Array Restoration",
+        "description": "Initially there was an array \n    a\n consisting of \n    n\n integers. Positions\nin it are numbered from \n    1\n to \n    n\n. Exactly \n    q\n queries were\nperformed on the array. During the \n    i\n-th query some segment \n    (l_i,\n    r_i)\n \n    (1 \n    \u2264 l_i \n    \u2264 r_i \n    \u2264 n)\n was selected and values of\nelements on positions from \n    l_i\n to \n    r_i\n inclusive got changed to\n\n    i\n. The order of the queries couldn't be changed and all \n    q\n queries\nwere applied. It is also known that every position from \n    1\n to \n    n\n got\ncovered by at least one segment. We could have offered you the problem about\nchecking if some given array (consisting of \n    n\n integers with values from\n\n    1\n to \n    q\n) can be obtained by the aforementioned queries. However, we\ndecided that it will come too easy for you. So the enhancement we introduced\nto it is the following. Some set of positions (possibly empty) in this array\nis selected and values of elements on these positions are set to \n    0\n. Your\ntask is to check if this array can be obtained by the aforementioned queries.\nAlso if it can be obtained then restore this array. If there are multiple\npossible arrays then print any of them. Input The first line contains two\nintegers \n    n\n and \n    q\n (\n    1 \n    \u2264 n, q \n    \u2264 2 \n    \u00b7 10^5\n) \u2014 the\nnumber of elements of the array and the number of queries perfomed on it. The\nsecond line contains \n    n\n integer numbers \n    a_1, a_2, \n    \u2026, a_n\n\n(\n    0 \n    \u2264 a_i \n    \u2264 q\n) \u2014 the resulting array. If element at some position\n\n    j\n is equal to \n    0\n then the value of element at this position can be\nany integer from \n    1\n to \n    q\n. Output Print \"YES\" if the array \n    a\n\ncan be obtained by performing \n    q\n queries. Segments \n    (l_i, r_i)\n \n    (1\n    \n    \u2264 l_i \n    \u2264 r_i \n    \u2264 n)\n are chosen separately for each query. Every\nposition from \n    1\n to \n    n\n should be covered by at least one segment.\nOtherwise print \"NO\". If some array can be obtained then print \n    n\n\nintegers on the second line \u2014 the \n    i\n-th number should be equal to the\n\n    i\n-th element of the resulting array and should have value from \n    1\n\nto \n    q\n. This array should be obtainable by performing exactly \n    q\n\nqueries. If there are multiple possible arrays then print any of them.\nExamples Input 4 3 1 0 2 3 Output YES 1 2 2 3 Input 3 10 10 10 10 Output YES\n10 10 10 Input 5 6 6 5 6 2 2 Output NO Input 3 5 0 0 0 Output YES 5 4 2 Note\nIn the first example you can also replace \n    0\n with \n    1\n but not with\n\n    3\n. In the second example it doesn't really matter what segments to\nchoose until query \n    10\n when the segment is \n    (1, 3)\n. The third\nexample showcases the fact that the order of queries can't be changed, you\ncan't firstly set \n    (1, 3)\n to \n    6\n and after that change \n    (2, 2)\n\nto \n    5\n. The segment of \n    5\n should be applied before segment of\n\n    6\n. There is a lot of correct resulting arrays for the fourth example.\n\n",
+        "cf_contest_id": 1023,
+        "cf_index": "D",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "data structures"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 3\r\n1 0 2 3\r\n",
+                "YES\r\n1 1 2 3 "
+            ],
+            [
+                "3 10\r\n10 10 10\r\n",
+                "YES\r\n10 10 10 "
+            ],
+            [
+                "5 6\r\n6 5 6 2 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 5\r\n0 0 0\r\n",
+                "YES\r\n5 5 5 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "100 100\r\n19 67 31 66 29 23 62 17 63 93 71 87 82 62 38 49 77 35 61 36 32 18 93 7 31 73 17 3 15 82 80 19 26 87 38 57 30 86 31 8 21 22 93 52 41 3 92 29 45 18 93 18 80 9 5 52 9 65 85 79 33 50 5 11 49 14 64 86 81 5 58 32 24 92 39 86 97 37 55 80 35 93 14 97 55 97 96 3 6 91 85 61 13 26 93 61 42 74 77 73\r\n",
+                "NO\r\n"
+            ],
+            [
+                "50 2\r\n0 1 0 1 0 0 1 0 1 1 0 1 1 1 2 2 0 2 0 2 0 2 0 0 2 2 2 0 0 0 0 1 0 1 0 0 1 0 1 0 0 1 1 0 1 1 0 1 0 0\r\n",
+                "YES\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 "
+            ],
+            [
+                "1 2\r\n0\r\n",
+                "YES\r\n2 "
+            ],
+            [
+                "50 200000\r\n0 199989 0 0 0 0 200000 200000 0 200000 0 200000 200000 0 0 200000 0 0 0 0 200000 200000 200000 200000 0 0 0 200000 0 0 0 0 200000 200000 0 200000 0 200000 0 200000 200000 0 200000 0 199999 199980 199978 199978 199964 199952\r\n",
+                "YES\r\n199989 199989 199989 199989 199989 199989 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 200000 199999 199980 199978 199978 199964 199952 "
+            ],
+            [
+                "50 500\r\n466 466 480 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 468 459\r\n",
+                "YES\r\n466 466 480 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 468 459 "
+            ],
+            [
+                "50 500\r\n494 500 0 0 0 0 500 500 0 0 500 0 500 0 500 0 500 0 500 0 500 0 500 500 500 500 0 0 500 0 500 0 0 500 0 500 0 500 0 500 0 500 0 500 0 0 494 494 0 489\r\n",
+                "YES\r\n494 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 494 494 494 489 "
+            ],
+            [
+                "50 5\r\n1 1 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 1 1 1 1\r\n",
+                "YES\r\n1 1 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 1 1 1 1 "
+            ],
+            [
+                "50 5\r\n5 5 5 0 5 0 5 5 0 0 5 0 5 5 0 0 0 0 0 0 0 5 5 5 5 0 5 0 0 0 5 5 5 5 5 5 0 5 0 5 5 0 0 0 4 0 0 4 0 0\r\n",
+                "YES\r\n5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4 4 4 "
+            ],
+            [
+                "50 2\r\n1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "YES\r\n1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 "
+            ],
+            [
+                "1 1\r\n0\r\n",
+                "YES\r\n1 "
+            ],
+            [
+                "1 1\r\n1\r\n",
+                "YES\r\n1 "
+            ],
+            [
+                "1 2\r\n1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 3\r\n2 1 3 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 5\r\n0 0 5 5 5\r\n",
+                "YES\r\n5 5 5 5 5 "
+            ],
+            [
+                "5 5\r\n4 3 5 4 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 3\r\n0 1 2 3\r\n",
+                "YES\r\n1 1 2 3 "
+            ],
+            [
+                "5 2\r\n1 2 1 2 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 7\r\n1 1 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 10\r\n5 0 0\r\n",
+                "YES\r\n5 10 10 "
+            ],
+            [
+                "6 4\r\n4 4 3 3 4 4\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

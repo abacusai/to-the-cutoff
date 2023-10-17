@@ -1,0 +1,354 @@
+[
+    {
+        "name": "Viruses",
+        "description": "The Committee for Research on Binary Viruses discovered a method of\nreplication for a large family of viruses whose genetic codes are sequences of\nzeros and ones. Each virus originates from a single gene; for simplicity genes\nare denoted by integers from \n    0\n to \n    G - 1\n. At each moment in time a\nvirus is a sequence of genes. When mutation occurs, one of the genes from the\nsequence is replaced by a certain sequence of genes, according to the mutation\ntable. The virus stops mutating when it consists only of genes \n    0\n and\n\n    1\n. For instance, for the following mutation table: \n    \n\n    2 \n    \u2192\n    \u27e8 0\n     1 \n    \u27e9\n    \n    \n     3 \n    \u2192\n    \u27e8 2\n     0\n    0\n    \u27e9\n    \n    \n     3 \n    \u2192\n    \u27e8 1\n     3\n    \u27e9\n    \n    \n     4 \n    \u2192\n    \u27e8\n    0\n     3\n     1\n     2\n    \u27e9\n    \n    \n     5 \n    \u2192\n    \u27e8 2\n     1\n    \u27e9\n    \n    \n     5\n    \n    \u2192\n    \u27e8 5\n    \u27e9\n\n    \n a virus that initially consisted of a single\ngene \n    4\n, could have mutated as follows: \n    \n\n    \u27e8 4 \n    \u27e9\n    \u2192\n    \u27e8\n    0\n     3\n     1\n     2\n    \u27e9\n    \u2192\n    \u27e8 0\n    \n    2\n     0\n     0\n     1\n     2 \n    \u27e9\n    \u2192\n    \u27e8 0\n    \n    0\n     1\n     0\n     0\n     1\n     2 \n    \u27e9\n    \u2192\n    \u27e8 0\n     0\n    1\n     0\n     0\n     1\n     \n    0\n     1\n    \u27e9\n\n    \n or in another way:\n\n    \n\n    \u27e8 4 \n    \u27e9\n    \u2192\n    \u27e8\n    0\n     3\n     1\n     2\n    \u27e9\n    \u2192\n    \u27e8 0\n     \n    1\n     3\n     1\n     2 \n    \u27e9\n    \u2192\n    \u27e8 0\n     1\n     3\n     1\n     \n    0\n     1\n    \u27e9\n    \u2192\n    \u27e8\n    0\n     1\n     \n    2\n     0\n     0\n     1\n     0\n     1 \n    \u27e9\n    \u2192\n    \u27e8\n    0\n     1\n     \n    0\n     1\n     0\n     0\n     1\n     0\n     1 \n    \u27e9\n\n    \n\nViruses are detected by antibodies that identify the presence of specific\ncontinuous fragments of zeros and ones in the viruses' codes. For example, an\nantibody reacting to a fragment \n    \u27e8 0\n     0\n     1\n     0\n     0\n    \n    \u27e9\n will detect a virus \n    \u27e8 0\n     0\n     1\n     0\n     0\n     1\n    0\n     1 \n    \u27e9\n, but it will not detect a virus \n    \u27e8 0\n     1\n    0\n     1\n     0\n     0\n     1\n     0\n     1 \n    \u27e9\n. For each gene from \n    2\n to\n\n    G-1\n, the scientists are wondering whether a given set of antibodies is\nenough to detect all viruses that can emerge through mutations from this gene.\nIf not, they want to know the length of the shortest virus that cannot be\ndetected. It may happen that sometimes scientists don't have any antibodies.\nThen of course no virus can be detected, so the scientists are only interested\nin the length of the shortest possible virus that can emerge from the gene\nmutations. Input The first line of the input will contain three integers\n\n    G\n, \n    N\n and \n    M\n (\n    G > 2\n, \n    N \n    \u2265 G - 2\n, \n    M \n    \u2265\n    0\n) specifying the number of genes, the number of rows in the mutation\ntable, and the number of antibodies. The following \n    N\n lines contain\ndescriptions of rows of the mutation table; each line begins with two integers\n\n    a\n and \n    k\n (\n    2 \n    \u2264 a < G\n, \n    k \n    \u2265 1\n), followed by a\nsequence of \n    k\n integers \n    b_1, b_2, \n    \u2026, b_k\n (\n    0 \n    \u2264 b_i <\n    G\n), that encode the row \n    \n\n    a \n    \u2192\n    \u27e8 b_1\n     b_2\n     \n    \u2026\n    b_k \n    \u27e9\n\n    \n The sum of all values \n    k\n does not exceed \n    100\n.\nEvery integer from \n    2\n to \n    G - 1\n appears in the table as \n    a\n at\nleast once. The next \n    M\n lines contain descriptions of the antibodies;\neach such line begins with an integer \n    \u2113\n (\n    \u2113\n    \u2265 1\n),\nfollowed by a sequence of \n    \u2113\n integers \n    c_1, c_2, \n    \u2026,\n    c_\n    \u2113\n (\n    0 \n    \u2264 c_i \n    \u2264 1\n), describing the antibody. The sum of\nall values \n    \u2113\n does not exceed \n    50\n. Output Your program needs to\noutput exactly \n    G - 2\n lines, containing the answers for the subsequent\ngenes from \n    2\n to \n    G - 1\n. If all viruses that can mutate from this\nsingle gene can be detected by the given set of antibodies, you need to print\nthe word \"YES\". You also need to print this if there are no viruses that could\noriginate from this gene (it can happen when the sequences never stop\nmutating). Otherwise you need to print the word \"NO\", followed by an integer\ndenoting the minimal length of the undetectable virus. You can assume that for\nall the prepared input data this value will be smaller than \n    2^63\n.\nScoring Subtasks: (11 points) No antibodies (\n    M = 0\n) (14 points) \n    N = G\n    - 2\n (25 points) One antibody (\n    M = 1\n) (32 points) The sum of all\nvalues \n    \u2113\n does not exceed \n    10\n (18 points) No further\nconstraints Example Input 6 6 2 2 2 0 1 3 3 2 0 0 3 2 1 3 4 4 0 3 1 2 5 2 2 1\n5 1 5 2 1 1 5 0 0 1 0 0 Output NO 2 NO 4 NO 9 YES\n\n",
+        "cf_contest_id": 1387,
+        "cf_index": "C",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "dp",
+            "shortest paths",
+            "string suffix structures"
+        ],
+        "time_limit_seconds": 0.75,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 6 2\r\n2 2 0 1\r\n3 3 2 0 0\r\n3 2 1 3\r\n4 4 0 3 1 2\r\n5 2 2 1\r\n5 1 5\r\n2 1 1\r\n5 0 0 1 0 0\r\n",
+                "NO 2\r\nNO 4\r\nNO 9\r\nYES\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 23 0\r\n2 1 0\r\n2 1 1\r\n2 2 0 0\r\n2 2 0 1\r\n2 2 1 0\r\n2 2 1 1\r\n3 1 2\r\n3 3 0 0 0\r\n3 3 0 0 1\r\n3 3 0 1 0\r\n3 3 0 1 1\r\n3 3 1 0 0\r\n3 3 0 0 1\r\n3 3 1 1 0\r\n3 3 1 1 1\r\n3 4 0 0 0 3\r\n3 4 0 0 1 3\r\n3 4 0 1 0 3\r\n3 4 0 1 1 3\r\n3 4 1 0 0 3\r\n3 4 0 0 1 3\r\n3 4 1 1 0 3\r\n3 4 1 1 1 3\r\n",
+                "NO 1\r\nNO 1\r\n"
+            ],
+            [
+                "15 30 0\r\n2 4 1 1 0 0\r\n3 4 1 1 1 0\r\n4 4 1 0 0 0\r\n5 4 3 4 0 2\r\n6 1 8\r\n7 3 2 0 4\r\n8 1 9\r\n9 1 10\r\n10 1 13\r\n11 4 7 0 7 10\r\n12 2 0 7\r\n13 1 6\r\n14 4 1 12 13 10\r\n3 5 1 12 6 10 9\r\n3 3 4 11 0\r\n14 4 6 9 0 14\r\n2 4 14 10 3 0\r\n3 3 0 9 14\r\n2 3 14 0 2\r\n14 4 3 3 9 0\r\n14 3 10 0 6\r\n2 4 7 0 8 2\r\n3 4 8 1 4 5\r\n14 4 14 4 0 13\r\n4 4 11 1 13 14\r\n14 3 5 1 13\r\n12 4 11 4 0 14\r\n7 5 0 3 4 2 14\r\n4 4 0 2 13 4\r\n2 3 5 1 6\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 13\r\nYES\r\nNO 9\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO 10\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "14 27 0\r\n2 4 1 1 1 1\r\n3 4 0 0 0 1\r\n4 4 1 1 1 1\r\n5 3 1 1 0\r\n6 4 2 1 0 4\r\n7 3 4 1 4\r\n8 3 5 6 1\r\n9 4 8 6 1 7\r\n10 3 1 5 8\r\n11 3 0 10 10\r\n12 3 9 0 9\r\n13 3 10 11 0\r\n10 3 13 1 13\r\n3 5 10 13 12 1 7\r\n11 3 2 8 0\r\n6 5 4 13 10 3 1\r\n5 5 8 1 9 4 3\r\n9 4 2 0 6 6\r\n2 4 6 12 12 1\r\n6 3 8 0 9\r\n2 4 2 7 1 6\r\n9 3 13 1 9\r\n9 4 13 0 12 7\r\n4 3 8 0 12\r\n6 4 1 10 5 13\r\n11 3 5 2 1\r\n13 5 13 2 2 11 1\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 3\r\nNO 10\r\nNO 9\r\nNO 14\r\nNO 25\r\nNO 18\r\nNO 8\r\nNO 51\r\nNO 27\r\n"
+            ],
+            [
+                "7 24 0\r\n2 4 0 0 1 0\r\n3 4 1 1 1 1\r\n4 4 0 0 1 1\r\n5 3 1 0 2\r\n6 4 1 4 2 0\r\n5 4 5 2 6 0\r\n2 5 5 4 1 5 3\r\n3 5 1 4 2 3 2\r\n2 4 3 3 6 0\r\n4 3 2 5 0\r\n5 5 3 4 5 4 1\r\n6 5 5 5 4 1 5\r\n6 3 4 0 4\r\n6 4 3 4 5 0\r\n5 3 4 1 3\r\n3 3 4 6 0\r\n5 5 4 1 2 3 5\r\n2 5 6 1 2 6 3\r\n2 3 1 4 5\r\n3 5 2 0 5 6 4\r\n2 5 6 3 0 5 6\r\n2 3 1 4 3\r\n3 5 6 2 5 0 2\r\n3 5 6 4 1 5 4\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 6\r\nNO 9\r\n"
+            ],
+            [
+                "10 24 0\r\n2 4 0 1 0 0\r\n3 4 1 0 1 0\r\n4 4 0 1 1 1\r\n5 4 1 0 1 1\r\n6 4 0 5 2 1\r\n7 3 3 5 1\r\n8 4 3 7 1 4\r\n9 4 8 7 4 1\r\n7 5 9 4 6 6 1\r\n3 5 8 7 0 9 8\r\n3 5 9 9 7 6 1\r\n7 4 2 0 8 4\r\n3 4 4 0 3 5\r\n5 5 7 1 3 7 8\r\n5 4 7 3 1 6\r\n4 3 2 0 7\r\n7 3 0 3 7\r\n6 3 3 3 1\r\n5 4 4 5 1 5\r\n7 3 0 5 4\r\n4 4 2 1 5 8\r\n4 5 3 1 6 6 7\r\n6 4 4 3 0 9\r\n5 4 8 4 9 0\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 4\r\nNO 9\r\nNO 9\r\nNO 18\r\nNO 32\r\n"
+            ],
+            [
+                "8 24 0\r\n2 4 1 0 0 1\r\n3 4 1 0 0 1\r\n4 4 1 0 0 1\r\n5 4 2 3 2 0\r\n6 3 2 0 2\r\n7 3 5 1 5\r\n4 4 1 6 4 7\r\n3 5 6 6 4 2 1\r\n7 5 2 6 6 1 7\r\n3 3 4 3 0\r\n5 5 6 0 3 7 4\r\n5 5 4 7 7 1 3\r\n7 4 3 6 1 7\r\n7 3 0 3 2\r\n4 3 0 5 3\r\n5 4 2 6 1 7\r\n3 5 6 1 7 5 6\r\n3 5 4 6 0 5 6\r\n3 3 0 3 5\r\n3 3 7 1 5\r\n4 4 6 2 2 1\r\n5 4 0 4 2 3\r\n7 4 6 7 6 0\r\n4 5 5 4 0 6 7\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 13\r\nNO 9\r\nNO 9\r\n"
+            ],
+            [
+                "11 27 0\r\n2 4 0 0 1 1\r\n3 4 0 1 0 1\r\n4 4 0 1 1 0\r\n5 4 0 1 1 3\r\n6 3 2 4 1\r\n7 3 6 4 1\r\n8 4 1 5 3 6\r\n9 3 6 1 5\r\n10 3 9 0 9\r\n10 5 8 5 6 1 9\r\n3 3 1 8 2\r\n5 4 5 9 1 8\r\n6 3 3 0 2\r\n9 5 9 3 0 3 8\r\n10 4 0 9 8 9\r\n5 4 10 5 0 7\r\n6 3 9 1 3\r\n6 5 1 9 5 4 10\r\n6 4 5 8 0 5\r\n7 3 0 2 8\r\n8 3 5 2 1\r\n10 3 1 3 7\r\n10 3 0 2 3\r\n10 5 0 8 3 9 2\r\n7 3 0 2 10\r\n9 3 8 0 3\r\n4 4 8 10 8 0\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 7\r\nNO 9\r\nNO 14\r\nNO 12\r\nNO 17\r\nNO 9\r\n"
+            ],
+            [
+                "10 24 0\r\n2 4 1 0 1 1\r\n3 4 1 1 0 0\r\n4 4 0 1 0 0\r\n5 4 1 3 4 0\r\n6 3 5 4 1\r\n7 3 3 0 6\r\n8 3 0 5 6\r\n9 3 5 0 4\r\n6 4 8 8 8 1\r\n5 5 1 5 6 8 2\r\n9 3 2 8 0\r\n7 5 3 5 1 2 3\r\n8 5 3 8 0 2 2\r\n5 5 7 4 4 1 3\r\n4 4 9 1 2 6\r\n2 4 1 2 2 5\r\n6 5 1 9 9 2 2\r\n2 4 9 9 1 6\r\n2 4 6 7 8 1\r\n4 5 7 1 7 7 4\r\n9 5 5 0 5 5 6\r\n5 4 9 2 0 5\r\n9 5 8 5 0 8 2\r\n9 3 0 2 3\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 10\r\nNO 15\r\nNO 20\r\nNO 26\r\nNO 9\r\n"
+            ],
+            [
+                "19 25 0\r\n2 4 1 1 1 1\r\n3 4 0 1 1 0\r\n4 4 0 0 0 0\r\n5 4 3 4 1 0\r\n6 3 4 5 0\r\n7 3 1 3 3\r\n8 4 3 3 5 0\r\n9 3 6 0 4\r\n10 4 7 6 8 0\r\n11 4 9 1 7 6\r\n12 4 1 9 11 7\r\n13 3 8 11 0\r\n14 4 1 10 12 9\r\n15 4 12 14 13 1\r\n16 4 1 11 13 15\r\n17 3 14 0 16\r\n18 3 16 1 14\r\n15 5 6 8 9 3 0\r\n5 5 14 0 3 16 10\r\n15 5 3 15 1 8 9\r\n18 5 14 15 0 15 14\r\n2 4 0 2 5 12\r\n15 5 3 13 16 1 11\r\n11 4 0 17 12 3\r\n9 3 0 2 4\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 10\r\nNO 15\r\nNO 9\r\nNO 19\r\nNO 9\r\nNO 44\r\nNO 34\r\nNO 53\r\nNO 54\r\nNO 107\r\nNO 48\r\nNO 137\r\nNO 245\r\nNO 245\r\n"
+            ],
+            [
+                "6 25 0\r\n2 4 1 1 1 0\r\n3 4 0 1 1 0\r\n4 4 1 0 1 0\r\n5 4 4 1 1 1\r\n4 3 2 1 5\r\n3 5 5 2 1 5 4\r\n2 4 4 4 2 0\r\n2 3 1 3 5\r\n2 3 2 0 4\r\n5 3 3 1 4\r\n5 5 1 4 5 5 4\r\n2 3 3 0 3\r\n5 3 0 5 3\r\n3 5 4 4 1 4 3\r\n2 5 3 2 5 0 2\r\n3 5 1 3 2 2 3\r\n2 4 2 0 2 3\r\n4 3 4 0 2\r\n4 5 5 1 2 2 3\r\n4 5 2 2 2 1 5\r\n4 3 5 4 0\r\n4 5 5 1 5 5 5\r\n4 3 2 4 1\r\n2 3 5 1 2\r\n5 5 1 5 5 4 5\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 7\r\n"
+            ],
+            [
+                "10 24 0\r\n2 4 1 0 1 1\r\n3 4 0 1 1 1\r\n4 4 1 0 0 1\r\n5 3 0 4 0\r\n6 4 1 5 4 2\r\n7 4 5 1 3 2\r\n8 3 6 6 0\r\n9 4 6 5 0 5\r\n6 3 7 2 0\r\n9 3 8 0 4\r\n3 5 4 1 5 5 8\r\n6 4 0 4 3 4\r\n2 4 8 7 1 9\r\n6 4 6 5 0 5\r\n8 5 2 1 7 3 9\r\n3 3 6 0 3\r\n7 3 1 8 9\r\n2 5 5 5 6 3 0\r\n8 5 4 9 1 7 7\r\n9 4 7 1 4 4\r\n6 5 0 6 2 2 9\r\n9 4 4 8 3 1\r\n7 4 4 2 6 0\r\n6 5 0 6 5 6 3\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 6\r\nNO 13\r\nNO 15\r\nNO 27\r\nNO 24\r\n"
+            ],
+            [
+                "10 25 0\r\n2 4 1 0 1 1\r\n3 4 1 0 1 1\r\n4 4 1 0 0 1\r\n5 3 2 0 1\r\n6 4 1 0 1 3\r\n7 4 0 3 5 3\r\n8 3 5 5 0\r\n9 3 0 5 6\r\n5 4 8 9 2 0\r\n4 3 9 7 1\r\n7 5 9 5 7 0 6\r\n8 5 9 6 0 6 6\r\n3 3 2 8 0\r\n7 3 2 1 3\r\n7 4 0 4 7 7\r\n6 5 8 6 3 0 4\r\n5 4 8 1 9 7\r\n5 5 0 3 6 3 6\r\n4 3 1 8 2\r\n4 5 1 5 5 6 3\r\n3 5 2 5 4 8 0\r\n7 4 6 0 3 7\r\n3 3 9 2 1\r\n9 5 4 2 0 8 2\r\n3 4 4 1 2 3\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 6\r\nNO 7\r\nNO 9\r\nNO 13\r\nNO 14\r\n"
+            ],
+            [
+                "25 46 0\r\n2 3 22 22 22\r\n2 1 2\r\n3 3 21 21 21\r\n3 1 3\r\n4 3 14 14 14\r\n4 1 4\r\n5 3 4 4 4\r\n5 1 5\r\n6 3 19 19 19\r\n6 1 6\r\n7 3 20 20 20\r\n7 1 7\r\n8 3 10 10 10\r\n8 1 8\r\n9 3 11 11 11\r\n9 1 9\r\n10 3 16 16 16\r\n10 1 10\r\n11 3 6 6 6\r\n11 1 11\r\n12 3 17 17 17\r\n12 1 12\r\n13 3 12 12 12\r\n13 1 13\r\n14 3 23 23 23\r\n14 1 14\r\n15 3 7 7 7\r\n15 1 15\r\n16 3 18 18 18\r\n16 1 16\r\n17 3 9 9 9\r\n17 1 17\r\n18 3 5 5 5\r\n18 1 18\r\n19 3 24 24 24\r\n19 1 19\r\n20 3 2 2 2\r\n20 1 20\r\n21 3 1 1 1\r\n21 1 21\r\n22 3 13 13 13\r\n22 1 22\r\n23 3 3 3 3\r\n23 1 23\r\n24 3 8 8 8\r\n24 1 24\r\n",
+                "NO 3486784401\r\nNO 9\r\nNO 243\r\nNO 729\r\nNO 1594323\r\nNO 31381059609\r\nNO 59049\r\nNO 14348907\r\nNO 19683\r\nNO 4782969\r\nNO 129140163\r\nNO 387420489\r\nNO 81\r\nNO 94143178827\r\nNO 6561\r\nNO 43046721\r\nNO 2187\r\nNO 531441\r\nNO 10460353203\r\nNO 3\r\nNO 1162261467\r\nNO 27\r\nNO 177147\r\n"
+            ],
+            [
+                "16 28 0\r\n2 5 8 8 8 8 8\r\n2 1 2\r\n3 5 10 10 10 10 10\r\n3 1 3\r\n4 5 15 15 15 15 15\r\n4 1 4\r\n5 5 2 2 2 2 2\r\n5 1 5\r\n6 5 14 14 14 14 14\r\n6 1 6\r\n7 5 5 5 5 5 5\r\n7 1 7\r\n8 5 12 12 12 12 12\r\n8 1 8\r\n9 5 7 7 7 7 7\r\n9 1 9\r\n10 5 4 4 4 4 4\r\n10 1 10\r\n11 5 9 9 9 9 9\r\n11 1 11\r\n12 5 1 1 1 1 1\r\n12 1 12\r\n13 5 11 11 11 11 11\r\n13 1 13\r\n14 5 13 13 13 13 13\r\n14 1 14\r\n15 5 6 6 6 6 6\r\n15 1 15\r\n",
+                "NO 125\r\nNO 6103515625\r\nNO 244140625\r\nNO 625\r\nNO 9765625\r\nNO 3125\r\nNO 25\r\nNO 15625\r\nNO 1220703125\r\nNO 78125\r\nNO 5\r\nNO 390625\r\nNO 1953125\r\nNO 48828125\r\n"
+            ],
+            [
+                "12 20 0\r\n2 7 8 8 8 8 8 8 8\r\n2 1 2\r\n3 7 2 2 2 2 2 2 2\r\n3 1 3\r\n4 7 9 9 9 9 9 9 9\r\n4 1 4\r\n5 7 3 3 3 3 3 3 3\r\n5 1 5\r\n6 7 1 1 1 1 1 1 1\r\n6 1 6\r\n7 7 10 10 10 10 10 10 10\r\n7 1 7\r\n8 7 6 6 6 6 6 6 6\r\n8 1 8\r\n9 7 7 7 7 7 7 7 7\r\n9 1 9\r\n10 7 11 11 11 11 11 11 11\r\n10 1 10\r\n11 7 5 5 5 5 5 5 5\r\n11 1 11\r\n",
+                "NO 343\r\nNO 2401\r\nNO 282475249\r\nNO 16807\r\nNO 7\r\nNO 5764801\r\nNO 49\r\nNO 40353607\r\nNO 823543\r\nNO 117649\r\n"
+            ],
+            [
+                "18 16 12\r\n2 4 0 0 0 0\r\n3 4 0 0 0 1\r\n4 4 0 0 1 0\r\n5 4 0 0 1 1\r\n6 4 0 1 0 0\r\n7 4 0 1 0 1\r\n8 4 0 1 1 0\r\n9 4 0 1 1 1\r\n10 4 1 0 0 0\r\n11 4 1 0 0 1\r\n12 4 1 0 1 0\r\n13 4 1 0 1 1\r\n14 4 1 1 0 0\r\n15 4 1 1 0 1\r\n16 4 1 1 1 0\r\n17 4 1 1 1 1\r\n4 0 0 0 0\r\n4 0 0 0 1\r\n4 0 0 1 0\r\n4 0 0 1 1\r\n4 0 1 0 1\r\n4 0 1 1 0\r\n4 1 0 0 1\r\n4 1 0 1 0\r\n4 1 1 0 0\r\n4 1 1 0 1\r\n4 1 1 1 0\r\n4 1 1 1 1\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nNO 4\r\nYES\r\nYES\r\nNO 4\r\nNO 4\r\nYES\r\nYES\r\nNO 4\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "15 13 11\r\n2 4 1 0 0 1\r\n3 4 1 0 1 0\r\n4 4 1 1 1 1\r\n5 2 1 0\r\n6 1 6\r\n7 3 3 0 6\r\n8 4 6 6 3 0\r\n9 3 4 1 4\r\n10 4 1 6 9 6\r\n11 3 9 1 7\r\n12 2 11 0\r\n13 3 12 11 0\r\n14 3 13 1 12\r\n3 0 0 1\r\n4 1 1 1 1\r\n3 1 1 0\r\n5 0 1 0 1 0\r\n5 0 1 1 1 0\r\n4 0 0 1 1\r\n4 1 1 0 0\r\n5 1 0 0 0 0\r\n5 1 1 0 1 1\r\n5 1 1 0 1 0\r\n5 1 0 1 0 1\r\n",
+                "YES\r\nNO 4\r\nYES\r\nNO 2\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "20 18 7\r\n2 3 0 1 0\r\n3 3 0 0 0\r\n4 3 1 0 1\r\n5 4 3 0 3 0\r\n6 4 5 3 5 0\r\n7 4 5 0 3 2\r\n8 3 1 4 3\r\n9 3 7 0 8\r\n10 3 5 6 0\r\n11 5 0 8 9 6 7\r\n12 5 11 8 10 1 10\r\n13 4 9 0 12 10\r\n14 5 1 11 13 13 12\r\n15 3 11 14 0\r\n16 3 1 15 14\r\n17 4 15 1 12 13\r\n18 5 16 0 13 14 15\r\n19 5 1 14 16 18 14\r\n5 1 1 1 1 1\r\n8 0 1 0 1 1 1 1 1\r\n5 0 0 1 0 0\r\n8 0 0 1 1 0 0 1 1\r\n7 0 1 1 1 0 0 0\r\n8 0 0 0 1 1 1 0 0\r\n7 1 1 1 1 0 0 0\r\n",
+                "NO 3\r\nNO 3\r\nNO 3\r\nNO 8\r\nNO 20\r\nNO 15\r\nNO 7\r\nYES\r\nNO 29\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "12 10 7\r\n2 3 0 0 0\r\n3 4 0 1 0 1\r\n4 3 1 0 0\r\n5 5 4 0 0 4 2\r\n6 4 0 2 5 1\r\n7 4 2 0 2 6\r\n8 3 1 7 3\r\n9 3 8 6 1\r\n10 4 0 7 9 5\r\n11 3 6 1 7\r\n5 1 1 1 1 1\r\n7 0 0 0 0 0 0 1\r\n6 0 1 1 1 1 0\r\n6 1 1 1 0 1 0\r\n7 1 0 0 1 0 1 0\r\n6 0 0 1 1 1 1\r\n8 0 0 1 0 0 1 0 0\r\n",
+                "NO 3\r\nNO 4\r\nNO 3\r\nNO 11\r\nNO 16\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "17 15 7\r\n2 3 1 0 1\r\n3 3 1 0 0\r\n4 4 0 1 0 1\r\n5 5 1 0 1 2 0\r\n6 3 1 0 1\r\n7 5 0 4 4 3 2\r\n8 3 0 3 3\r\n9 5 7 0 7 5 8\r\n10 3 6 5 0\r\n11 4 10 7 0 7\r\n12 3 7 11 1\r\n13 4 0 10 10 11\r\n14 3 9 1 13\r\n15 5 0 11 12 10 12\r\n16 4 14 14 1 14\r\n7 1 0 0 1 0 1 1\r\n6 1 1 1 1 0 0\r\n7 0 1 1 0 1 0 1\r\n5 0 1 0 0 1\r\n8 0 1 0 0 1 0 1 1\r\n5 0 0 1 1 0\r\n7 0 0 0 1 1 0 1\r\n",
+                "NO 3\r\nNO 3\r\nNO 4\r\nNO 7\r\nNO 3\r\nNO 15\r\nYES\r\nYES\r\nNO 11\r\nNO 42\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "6 4 8\r\n2 3 0 0 0\r\n3 4 0 0 1 1\r\n4 3 1 0 1\r\n5 5 4 1 1 0 3\r\n5 1 1 0 1 0\r\n7 0 0 1 0 0 0 1\r\n5 1 0 0 0 0\r\n8 0 0 1 0 0 0 1 1\r\n5 1 0 1 0 0\r\n5 1 1 0 1 1\r\n6 1 0 1 1 0 1\r\n5 1 1 1 1 1\r\n",
+                "NO 3\r\nNO 4\r\nNO 3\r\nNO 10\r\n"
+            ],
+            [
+                "14 12 7\r\n2 3 1 0 0\r\n3 3 0 1 1\r\n4 3 1 1 0\r\n5 3 0 1 2\r\n6 5 5 2 5 3 1\r\n7 4 6 1 2 3\r\n8 4 4 5 0 5\r\n9 3 5 4 0\r\n10 5 5 8 7 1 8\r\n11 3 9 8 1\r\n12 3 9 10 1\r\n13 5 11 11 8 1 9\r\n8 0 0 0 1 0 1 0 0\r\n7 0 0 1 1 1 0 0\r\n8 0 0 1 0 1 1 1 1\r\n6 0 1 0 1 1 1\r\n7 0 1 1 0 1 0 1\r\n5 1 0 0 1 0\r\n8 0 1 0 0 0 1 1 1\r\n",
+                "NO 3\r\nNO 3\r\nNO 3\r\nNO 5\r\nYES\r\nYES\r\nNO 14\r\nNO 9\r\nYES\r\nNO 24\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "13 11 6\r\n2 3 0 0 0\r\n3 4 0 0 0 0\r\n4 4 1 1 0 0\r\n5 4 1 1 4 2\r\n6 5 4 3 1 0 1\r\n7 4 3 6 1 6\r\n8 4 7 7 7 0\r\n9 3 8 1 4\r\n10 5 5 9 7 0 6\r\n11 4 10 0 8 6\r\n12 4 8 10 0 10\r\n8 0 0 0 1 1 1 0 1\r\n7 0 0 0 0 1 0 0\r\n8 1 0 1 1 0 0 0 0\r\n7 1 0 1 1 1 1 0\r\n7 1 1 0 1 0 1 1\r\n8 0 0 1 1 0 0 0 1\r\n",
+                "NO 3\r\nNO 4\r\nNO 4\r\nNO 9\r\nNO 11\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "12 10 7\r\n2 3 0 1 1\r\n3 4 0 1 0 0\r\n4 4 0 1 0 0\r\n5 5 2 4 4 2 1\r\n6 3 1 4 2\r\n7 3 3 1 6\r\n8 5 4 4 0 6 3\r\n9 3 1 4 8\r\n10 5 8 8 7 5 0\r\n11 4 7 0 9 8\r\n6 0 1 1 0 0 0\r\n6 0 0 0 1 1 1\r\n7 1 0 1 0 1 0 0\r\n8 1 1 0 0 0 1 0 1\r\n5 0 1 0 1 1\r\n6 1 1 1 1 1 0\r\n8 0 1 0 0 1 1 1 1\r\n",
+                "NO 3\r\nNO 4\r\nNO 4\r\nYES\r\nNO 8\r\nNO 13\r\nNO 21\r\nNO 26\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "16 14 8\r\n2 3 1 1 0\r\n3 3 0 0 0\r\n4 3 1 1 1\r\n5 4 2 0 4 4\r\n6 4 4 3 1 1\r\n7 4 2 3 1 2\r\n8 4 5 1 4 5\r\n9 5 1 5 6 8 5\r\n10 3 6 5 1\r\n11 3 10 1 8\r\n12 4 1 9 7 8\r\n13 5 10 9 8 12 1\r\n14 5 12 10 9 11 1\r\n15 5 0 11 10 12 10\r\n6 1 0 0 0 0 0\r\n5 0 1 1 1 0\r\n6 1 0 0 1 1 0\r\n5 0 0 1 0 0\r\n5 1 0 1 0 0\r\n7 1 0 0 1 0 1 0\r\n7 0 0 0 1 0 1 1\r\n7 0 1 0 1 0 1 0\r\n",
+                "NO 3\r\nNO 3\r\nNO 3\r\nNO 10\r\nNO 8\r\nYES\r\nNO 24\r\nNO 53\r\nNO 19\r\nNO 44\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "15 13 7\r\n2 3 0 1 0\r\n3 3 1 0 0\r\n4 4 0 1 1 1\r\n5 3 0 4 0\r\n6 3 4 3 0\r\n7 5 6 2 4 1 6\r\n8 3 5 1 6\r\n9 3 4 4 1\r\n10 4 1 6 7 8\r\n11 4 8 1 7 8\r\n12 5 10 7 1 11 11\r\n13 4 10 1 10 10\r\n14 3 10 1 12\r\n8 0 0 0 1 0 1 0 1\r\n8 1 0 1 0 0 0 0 1\r\n8 1 0 0 0 1 1 0 1\r\n7 1 0 0 1 1 0 1\r\n6 0 0 1 1 1 0\r\n6 1 1 0 0 1 1\r\n7 0 0 1 1 0 0 1\r\n",
+                "NO 3\r\nNO 3\r\nNO 4\r\nYES\r\nNO 8\r\nNO 24\r\nYES\r\nNO 9\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "9 7 7\r\n2 4 1 1 1 1\r\n3 3 1 1 1\r\n4 3 0 1 0\r\n5 4 1 1 2 1\r\n6 3 0 5 5\r\n7 3 5 6 0\r\n8 3 5 0 6\r\n7 1 1 1 0 0 0 1\r\n8 0 1 1 0 0 0 1 0\r\n5 0 0 0 0 1\r\n6 0 0 0 1 1 0\r\n5 0 0 0 1 1\r\n8 0 1 0 1 1 0 1 0\r\n8 1 1 0 1 1 1 1 1\r\n",
+                "NO 4\r\nNO 3\r\nNO 3\r\nNO 7\r\nNO 15\r\nYES\r\nNO 23\r\n"
+            ],
+            [
+                "20 18 1\r\n2 5 19 19 19 19 19\r\n3 5 5 5 5 5 5\r\n4 5 10 10 10 10 10\r\n5 5 12 12 12 12 12\r\n6 5 1 1 1 1 1\r\n7 5 6 6 6 6 6\r\n8 5 3 3 3 3 3\r\n9 5 15 15 15 15 15\r\n10 5 9 9 9 9 9\r\n11 5 8 8 8 8 8\r\n12 5 13 13 13 13 13\r\n13 5 17 17 17 17 17\r\n14 5 16 16 16 16 16\r\n15 5 2 2 2 2 2\r\n16 5 11 11 11 11 11\r\n17 5 7 7 7 7 7\r\n18 5 4 4 4 4 4\r\n19 5 14 14 14 14 14\r\n49 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "NO 1220703125\r\nNO 78125\r\nNO 762939453125\r\nNO 15625\r\nNO 5\r\nNO 25\r\nNO 390625\r\nNO 30517578125\r\nNO 152587890625\r\nNO 1953125\r\nNO 3125\r\nNO 625\r\nNO 48828125\r\nNO 6103515625\r\nNO 9765625\r\nNO 125\r\nNO 3814697265625\r\nNO 244140625\r\n"
+            ],
+            [
+                "3 1 2\r\n2 2 1 0\r\n49 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\r\n1 0\r\n",
+                "YES\r\n"
+            ],
+            [
+                "20 18 1\r\n2 3 12 12 12\r\n3 5 16 16 16 16 16\r\n4 5 18 18 18 18 18\r\n5 2 10 10\r\n6 3 14 14 14\r\n7 3 8 8 8\r\n8 3 13 13 13\r\n9 3 1 1 1\r\n10 4 3 3 3 3\r\n11 3 19 19 19\r\n12 2 7 7\r\n13 2 4 4\r\n14 2 11 11\r\n15 3 9 9 9\r\n16 3 6 6 6\r\n17 4 2 2 2 2\r\n18 2 15 15\r\n19 4 17 17 17 17\r\n49 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "NO 9720\r\nNO 41990400\r\nNO 90\r\nNO 335923200\r\nNO 2799360\r\nNO 1620\r\nNO 540\r\nNO 3\r\nNO 167961600\r\nNO 466560\r\nNO 3240\r\nNO 180\r\nNO 933120\r\nNO 9\r\nNO 8398080\r\nNO 38880\r\nNO 18\r\nNO 155520\r\n"
+            ],
+            [
+                "22 40 1\r\n2 3 1 1 1\r\n2 2 0 1\r\n3 3 1 2 2\r\n3 2 0 2\r\n4 3 1 3 3\r\n4 2 0 3\r\n5 3 1 4 4\r\n5 2 0 4\r\n6 3 1 5 5\r\n6 2 0 5\r\n7 3 1 6 6\r\n7 2 0 6\r\n8 3 1 7 7\r\n8 2 0 7\r\n9 3 1 8 8\r\n9 2 0 8\r\n10 3 1 9 9\r\n10 2 0 9\r\n11 3 1 10 10\r\n11 2 0 10\r\n12 3 1 11 11\r\n12 2 0 11\r\n13 3 1 12 12\r\n13 2 0 12\r\n14 3 1 13 13\r\n14 2 0 13\r\n15 3 1 14 14\r\n15 2 0 14\r\n16 3 1 15 15\r\n16 2 0 15\r\n17 3 1 16 16\r\n17 2 0 16\r\n18 3 1 17 17\r\n18 2 0 17\r\n19 3 1 18 18\r\n19 2 0 18\r\n20 3 1 19 19\r\n20 2 0 19\r\n21 3 1 20 20\r\n21 2 0 20\r\n2 0 0\r\n",
+                "NO 2\r\nNO 4\r\nNO 6\r\nNO 10\r\nNO 14\r\nNO 22\r\nNO 30\r\nNO 46\r\nNO 62\r\nNO 94\r\nNO 126\r\nNO 190\r\nNO 254\r\nNO 382\r\nNO 510\r\nNO 766\r\nNO 1022\r\nNO 1534\r\nNO 2046\r\nNO 3070\r\n"
+            ],
+            [
+                "4 23 1\r\n2 1 0\r\n2 1 1\r\n2 2 0 0\r\n2 2 0 1\r\n2 2 1 0\r\n2 2 1 1\r\n3 1 2\r\n3 3 0 0 0\r\n3 3 0 0 1\r\n3 3 0 1 0\r\n3 3 0 1 1\r\n3 3 1 0 0\r\n3 3 0 0 1\r\n3 3 1 1 0\r\n3 3 1 1 1\r\n3 4 0 0 0 3\r\n3 4 0 0 1 3\r\n3 4 0 1 0 3\r\n3 4 0 1 1 3\r\n3 4 1 0 0 3\r\n3 4 0 0 1 3\r\n3 4 1 1 0 3\r\n3 4 1 1 1 3\r\n50 0 0 0 1 0 1 0 1 0 1 1 0 0 1 0 1 1 1 0 0 0 1 0 1 1 1 0 0 1 0 1 1 0 0 0 0 1 1 1 1 1 1 1 0 0 0 0 1 1 0\r\n",
+                "NO 1\r\nNO 1\r\n"
+            ],
+            [
+                "15 28 1\r\n2 4 1 0 1 1\r\n3 4 1 0 1 0\r\n4 4 0 0 0 1\r\n5 1 7\r\n6 4 4 3 1 4\r\n7 1 8\r\n8 1 5\r\n9 4 4 1 4 8\r\n10 3 8 1 9\r\n11 2 6 1\r\n12 2 1 7\r\n13 3 10 1 11\r\n14 2 9 0\r\n9 5 4 8 10 7 0\r\n9 5 10 1 14 14 13\r\n11 5 5 0 6 5 13\r\n13 4 2 2 1 11\r\n3 3 6 8 0\r\n13 4 9 10 9 1\r\n11 5 0 12 6 11 2\r\n9 4 10 0 13 4\r\n11 3 4 1 8\r\n10 5 14 11 9 5 1\r\n10 5 13 8 2 1 9\r\n9 3 12 0 12\r\n2 3 10 1 9\r\n2 4 0 3 14 2\r\n11 3 9 1 13\r\n3 0 1 1\r\n",
+                "YES\r\nNO 4\r\nNO 4\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "8 24 1\r\n2 4 1 1 1 0\r\n3 3 1 0 0\r\n4 4 0 0 1 1\r\n5 3 3 0 0\r\n6 5 1 4 1 0 4\r\n7 4 2 0 6 3\r\n6 3 1 6 4\r\n4 5 6 3 0 5 6\r\n2 5 2 7 7 1 7\r\n3 3 4 4 0\r\n3 4 4 7 2 1\r\n7 4 7 6 1 7\r\n7 5 2 4 1 5 2\r\n3 5 5 6 3 0 2\r\n5 5 7 7 3 3 1\r\n5 3 1 2 4\r\n7 4 2 6 5 0\r\n2 5 6 3 4 3 0\r\n4 4 2 1 6 3\r\n3 5 4 5 1 6 7\r\n4 3 5 1 7\r\n4 5 2 6 0 5 5\r\n6 3 5 1 2\r\n7 3 1 7 2\r\n3 0 0 0\r\n",
+                "NO 4\r\nNO 3\r\nNO 4\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "14 26 1\r\n2 3 0 1 1\r\n3 4 1 1 0 0\r\n4 3 1 1 0\r\n5 3 4 1 3\r\n6 5 1 4 5 1 5\r\n7 5 3 1 3 6 3\r\n8 3 5 6 1\r\n9 4 7 6 1 8\r\n10 3 9 6 1\r\n11 3 6 8 0\r\n12 5 9 10 8 0 7\r\n13 3 12 11 0\r\n10 5 10 1 5 13 11\r\n7 4 13 13 11 1\r\n3 3 1 4 11\r\n13 5 1 12 9 12 8\r\n3 4 0 12 2 2\r\n4 3 0 6 3\r\n8 3 11 12 0\r\n5 5 10 0 12 4 2\r\n5 5 11 0 4 2 2\r\n5 4 2 13 1 10\r\n5 3 4 1 13\r\n7 3 7 6 0\r\n10 3 7 12 0\r\n2 3 7 1 4\r\n3 0 1 1\r\n",
+                "YES\r\nNO 4\r\nNO 3\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "14 23 1\r\n2 4 0 1 0 1\r\n3 3 0 0 1\r\n4 4 1 1 0 1\r\n5 5 1 3 1 0 0\r\n6 4 1 5 2 0\r\n7 5 6 4 3 6 0\r\n8 5 3 3 6 1 4\r\n9 4 7 8 1 6\r\n10 5 5 5 9 6 1\r\n11 5 0 8 8 8 8\r\n12 3 8 11 0\r\n13 5 0 8 10 10 9\r\n4 5 13 12 9 10 0\r\n8 3 0 10 10\r\n2 4 3 1 12 5\r\n8 5 13 0 13 4 3\r\n5 4 11 1 4 8\r\n9 4 8 4 0 11\r\n11 4 8 3 4 1\r\n12 3 4 1 1\r\n9 4 9 5 9 1\r\n10 4 9 9 6 0\r\n5 4 5 7 5 0\r\n3 0 1 0\r\n",
+                "NO 17\r\nNO 3\r\nNO 4\r\nNO 7\r\nNO 26\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO 6\r\nYES\r\n"
+            ],
+            [
+                "14 25 1\r\n2 3 0 1 1\r\n3 3 0 0 0\r\n4 3 1 1 1\r\n5 5 0 1 2 1 4\r\n6 5 4 4 2 3 1\r\n7 3 2 4 1\r\n8 5 4 5 4 1 6\r\n9 4 8 4 0 8\r\n10 4 8 7 9 1\r\n11 3 1 7 8\r\n12 4 10 7 1 9\r\n13 4 8 1 11 9\r\n11 5 5 0 4 3 10\r\n6 3 1 4 6\r\n5 5 13 9 11 0 2\r\n7 4 2 2 6 0\r\n2 5 7 3 10 3 0\r\n12 3 12 1 9\r\n9 4 11 9 1 6\r\n2 4 6 2 11 0\r\n6 5 13 4 6 1 9\r\n7 3 0 3 5\r\n2 3 0 6 12\r\n12 3 1 11 11\r\n11 3 2 0 3\r\n3 0 0 1\r\n",
+                "NO 3\r\nNO 3\r\nNO 3\r\nNO 9\r\nYES\r\nNO 7\r\nYES\r\nYES\r\nYES\r\nNO 7\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "11 24 1\r\n2 4 0 0 0 0\r\n3 4 1 0 0 1\r\n4 4 0 1 1 1\r\n5 5 1 2 0 3 4\r\n6 4 1 2 0 3\r\n7 4 4 4 4 0\r\n8 5 3 5 5 3 0\r\n9 3 8 7 1\r\n10 5 6 5 5 8 0\r\n7 5 2 6 0 9 5\r\n5 3 9 1 4\r\n2 4 8 4 9 0\r\n5 4 5 8 0 3\r\n10 4 7 3 8 0\r\n6 3 8 0 6\r\n3 5 1 2 5 4 3\r\n7 4 10 6 8 1\r\n10 3 1 6 8\r\n8 4 8 10 1 4\r\n5 3 5 1 9\r\n3 5 2 9 1 10 8\r\n7 4 9 7 5 0\r\n3 5 2 8 1 7 5\r\n9 3 7 0 5\r\n3 0 1 1\r\n",
+                "NO 4\r\nNO 4\r\nYES\r\nYES\r\nNO 10\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "15 25 1\r\n2 3 0 1 1\r\n3 3 0 1 1\r\n4 4 0 0 1 1\r\n5 3 0 1 0\r\n6 3 1 1 5\r\n7 5 1 4 5 3 4\r\n8 3 4 4 0\r\n9 5 6 8 0 6 5\r\n10 4 5 5 7 0\r\n11 3 8 0 9\r\n12 5 1 8 8 9 11\r\n13 5 9 0 11 12 10\r\n14 5 11 10 0 10 11\r\n6 5 13 14 2 4 0\r\n7 4 7 13 7 1\r\n9 3 12 2 0\r\n3 3 3 7 0\r\n6 5 14 9 1 2 3\r\n3 3 4 6 1\r\n4 5 14 5 10 1 5\r\n3 3 7 4 0\r\n13 4 12 11 6 0\r\n2 5 7 12 5 7 0\r\n2 4 1 6 5 12\r\n6 5 1 10 8 6 6\r\n2 1 0\r\n",
+                "NO 3\r\nNO 3\r\nNO 4\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "15 24 1\r\n2 4 1 1 1 1\r\n3 4 1 1 1 1\r\n4 3 1 1 1\r\n5 3 0 0 0\r\n6 3 1 1 0\r\n7 5 6 1 6 3 4\r\n8 5 3 7 4 3 0\r\n9 3 6 7 1\r\n10 3 5 0 6\r\n11 5 8 7 8 8 1\r\n12 4 10 7 10 0\r\n13 5 1 9 12 12 9\r\n14 4 0 11 12 12\r\n5 3 0 9 9\r\n3 4 8 4 11 0\r\n11 4 6 14 8 0\r\n6 5 14 11 3 0 3\r\n6 5 4 1 13 2 4\r\n14 5 3 9 0 4 5\r\n12 4 9 4 0 5\r\n2 3 7 6 1\r\n5 4 10 11 1 9\r\n6 4 9 1 7 12\r\n6 5 4 3 0 8 6\r\n2 1 1\r\n",
+                "YES\r\nYES\r\nYES\r\nNO 3\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "11 25 1\r\n2 3 1 0 0\r\n3 4 0 1 0 1\r\n4 3 1 1 1\r\n5 5 3 0 4 0 3\r\n6 4 1 0 1 2\r\n7 3 4 0 3\r\n8 3 4 3 1\r\n9 5 8 1 7 7 5\r\n10 5 5 1 7 9 7\r\n9 5 2 0 3 9 3\r\n3 4 1 6 5 7\r\n7 5 8 3 0 4 4\r\n5 3 7 10 0\r\n9 3 0 4 4\r\n8 3 2 5 0\r\n10 4 1 3 5 4\r\n9 5 9 1 2 3 4\r\n10 5 10 9 0 6 6\r\n8 3 0 9 7\r\n7 4 3 1 2 6\r\n10 5 2 10 4 6 0\r\n4 3 4 1 2\r\n3 3 10 1 7\r\n10 4 3 1 3 6\r\n9 4 3 0 4 4\r\n2 0 1\r\n",
+                "NO 3\r\nYES\r\nNO 3\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "19 25 1\r\n2 4 0 1 1 1\r\n3 4 0 0 1 1\r\n4 4 0 1 0 0\r\n5 5 1 1 1 0 0\r\n6 4 4 0 3 4\r\n7 4 1 2 6 6\r\n8 4 0 4 4 3\r\n9 3 7 6 0\r\n10 5 5 1 7 5 5\r\n11 4 7 8 0 9\r\n12 5 9 8 1 7 7\r\n13 5 12 11 10 1 9\r\n14 5 11 12 11 0 10\r\n15 3 14 0 12\r\n16 4 0 15 13 11\r\n17 3 0 15 12\r\n18 3 0 16 15\r\n2 3 8 1 4\r\n10 5 5 18 1 18 7\r\n9 3 14 0 13\r\n12 3 10 10 1\r\n9 3 7 12 0\r\n8 5 1 2 14 15 2\r\n9 3 12 1 11\r\n8 5 7 3 2 16 1\r\n50 1 1 1 0 0 0 1 0 0 0 0 1 1 0 1 0 1 1 1 1 0 1 1 1 0 1 1 1 1 1 0 1 0 1 0 1 1 1 1 1 1 0 0 0 1 0 1 0 1 0\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 5\r\nNO 13\r\nNO 31\r\nNO 13\r\nNO 45\r\nNO 47\r\nNO 90\r\nNO 95\r\nNO 278\r\nNO 323\r\nNO 419\r\nNO 788\r\nNO 515\r\nNO 1208\r\n"
+            ],
+            [
+                "8 26 1\r\n2 3 0 1 1\r\n3 3 0 1 0\r\n4 3 0 0 0\r\n5 4 4 4 3 1\r\n6 4 5 0 1 2\r\n7 4 0 5 2 6\r\n4 3 0 3 3\r\n5 3 0 4 3\r\n6 5 3 0 5 5 6\r\n2 3 6 1 5\r\n5 3 6 6 0\r\n6 4 6 1 4 3\r\n4 5 0 4 3 7 2\r\n6 3 3 6 0\r\n7 3 4 1 6\r\n3 3 0 2 7\r\n4 4 0 5 4 7\r\n7 4 6 0 3 2\r\n6 5 4 4 5 5 1\r\n2 4 7 1 4 3\r\n3 4 4 7 0 7\r\n2 4 4 1 6 7\r\n2 4 5 1 2 7\r\n4 5 5 6 5 1 2\r\n3 5 3 5 7 7 0\r\n7 3 6 0 7\r\n5 0 0 0 0 0\r\n",
+                "NO 3\r\nNO 3\r\nNO 3\r\nNO 11\r\nNO 16\r\nNO 20\r\n"
+            ],
+            [
+                "20 36 1\r\n2 3 1 12 12\r\n2 2 0 12\r\n3 3 1 10 10\r\n3 2 0 10\r\n4 3 1 9 9\r\n4 2 0 9\r\n5 3 1 17 17\r\n5 2 0 17\r\n6 3 1 5 5\r\n6 2 0 5\r\n7 3 1 1 1\r\n7 2 0 1\r\n8 3 1 16 16\r\n8 2 0 16\r\n9 3 1 13 13\r\n9 2 0 13\r\n10 3 1 4 4\r\n10 2 0 4\r\n11 3 1 7 7\r\n11 2 0 7\r\n12 3 1 18 18\r\n12 2 0 18\r\n13 3 1 19 19\r\n13 2 0 19\r\n14 3 1 3 3\r\n14 2 0 3\r\n15 3 1 2 2\r\n15 2 0 2\r\n16 3 1 15 15\r\n16 2 0 15\r\n17 3 1 8 8\r\n17 2 0 8\r\n18 3 1 14 14\r\n18 2 0 14\r\n19 3 1 11 11\r\n19 2 0 11\r\n2 0 0\r\n",
+                "NO 190\r\nNO 46\r\nNO 22\r\nNO 1022\r\nNO 1534\r\nNO 2\r\nNO 510\r\nNO 14\r\nNO 30\r\nNO 4\r\nNO 126\r\nNO 10\r\nNO 62\r\nNO 254\r\nNO 382\r\nNO 766\r\nNO 94\r\nNO 6\r\n"
+            ],
+            [
+                "16 28 1\r\n2 4 1 13 13 13\r\n2 2 0 13\r\n3 4 1 4 4 4\r\n3 2 0 4\r\n4 4 1 14 14 14\r\n4 2 0 14\r\n5 4 1 9 9 9\r\n5 2 0 9\r\n6 4 1 15 15 15\r\n6 2 0 15\r\n7 4 1 5 5 5\r\n7 2 0 5\r\n8 4 1 10 10 10\r\n8 2 0 10\r\n9 4 1 3 3 3\r\n9 2 0 3\r\n10 4 1 7 7 7\r\n10 2 0 7\r\n11 4 1 1 1 1\r\n11 2 0 1\r\n12 4 1 11 11 11\r\n12 2 0 11\r\n13 4 1 6 6 6\r\n13 2 0 6\r\n14 4 1 2 2 2\r\n14 2 0 2\r\n15 4 1 12 12 12\r\n15 2 0 12\r\n2 0 0\r\n",
+                "NO 53\r\nNO 242\r\nNO 161\r\nNO 728\r\nNO 17\r\nNO 1457\r\nNO 4373\r\nNO 485\r\nNO 2186\r\nNO 2\r\nNO 5\r\nNO 26\r\nNO 80\r\nNO 8\r\n"
+            ],
+            [
+                "12 20 1\r\n2 3 1 11 11\r\n2 2 0 11\r\n3 4 1 8 8 8\r\n3 2 0 8\r\n4 5 1 10 10 10 10\r\n4 2 0 10\r\n5 4 1 3 3 3\r\n5 2 0 3\r\n6 4 1 2 2 2\r\n6 2 0 2\r\n7 3 1 1 1\r\n7 2 0 1\r\n8 5 1 6 6 6 6\r\n8 2 0 6\r\n9 4 1 5 5 5\r\n9 2 0 5\r\n10 5 1 9 9 9 9\r\n10 2 0 9\r\n11 4 1 7 7 7\r\n11 2 0 7\r\n2 0 0\r\n",
+                "NO 8\r\nNO 42\r\nNO 514\r\nNO 80\r\nNO 10\r\nNO 2\r\nNO 26\r\nNO 128\r\nNO 242\r\nNO 4\r\n"
+            ],
+            [
+                "22 40 2\r\n2 2 0 1\r\n2 2 1 0\r\n3 3 1 2 2\r\n3 2 0 2\r\n4 3 1 3 3\r\n4 2 0 3\r\n5 3 1 4 4\r\n5 2 0 4\r\n6 3 1 5 5\r\n6 2 0 5\r\n7 3 1 6 6\r\n7 2 0 6\r\n8 3 1 7 7\r\n8 2 0 7\r\n9 3 1 8 8\r\n9 2 0 8\r\n10 3 1 9 9\r\n10 2 0 9\r\n11 3 1 10 10\r\n11 2 0 10\r\n12 3 1 11 11\r\n12 2 0 11\r\n13 3 1 12 12\r\n13 2 0 12\r\n14 3 1 13 13\r\n14 2 0 13\r\n15 3 1 14 14\r\n15 2 0 14\r\n16 3 1 15 15\r\n16 2 0 15\r\n17 3 1 16 16\r\n17 2 0 16\r\n18 3 1 17 17\r\n18 2 0 17\r\n19 3 1 18 18\r\n19 2 0 18\r\n20 3 1 19 19\r\n20 2 0 19\r\n21 3 1 20 20\r\n21 2 0 20\r\n2 0 0\r\n2 1 1\r\n",
+                "NO 2\r\nNO 3\r\nNO 6\r\nNO 10\r\nNO 14\r\nNO 22\r\nNO 30\r\nNO 46\r\nNO 62\r\nNO 94\r\nNO 126\r\nNO 190\r\nNO 254\r\nNO 382\r\nNO 510\r\nNO 766\r\nNO 1022\r\nNO 1534\r\nNO 2046\r\nNO 3070\r\n"
+            ],
+            [
+                "7 10 4\r\n2 1 0\r\n2 1 1\r\n3 2 0 2\r\n3 2 1 2\r\n4 2 0 3\r\n4 2 1 3\r\n5 2 0 4\r\n5 2 1 4\r\n6 2 0 5\r\n6 2 1 5\r\n2 0 0\r\n2 0 1\r\n2 1 0\r\n2 1 1\r\n",
+                "NO 1\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "15 28 3\r\n2 4 1 1 0 0\r\n3 4 0 1 0 1\r\n4 4 1 0 1 0\r\n5 1 9\r\n6 2 0 2\r\n7 3 2 1 6\r\n8 4 3 7 6 1\r\n9 1 5\r\n10 3 8 0 5\r\n11 4 6 8 1 9\r\n12 2 11 0\r\n13 2 11 1\r\n14 2 10 1\r\n13 4 5 0 11 12\r\n7 4 7 0 4 13\r\n12 5 14 13 1 4 13\r\n6 5 0 11 5 3 6\r\n8 4 4 8 1 14\r\n3 4 8 1 2 8\r\n11 3 6 4 0\r\n14 3 6 1 11\r\n8 4 11 1 5 7\r\n2 4 2 0 6 8\r\n6 5 5 6 9 1 5\r\n13 3 9 14 0\r\n7 5 1 13 7 13 6\r\n2 5 3 3 0 4 4\r\n10 2 10 2\r\n2 0 0\r\n3 1 1 0\r\n4 0 0 1 0\r\n",
+                "NO 17\r\nNO 4\r\nNO 4\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "12 25 3\r\n2 3 0 0 1\r\n3 3 0 1 1\r\n4 4 0 1 1 0\r\n5 5 0 4 3 2 4\r\n6 5 5 5 5 2 1\r\n7 4 1 4 6 4\r\n8 5 3 7 7 0 5\r\n9 5 7 8 8 0 7\r\n10 3 7 6 1\r\n11 3 6 1 10\r\n3 3 0 10 10\r\n4 3 1 8 9\r\n11 3 7 7 1\r\n7 3 3 9 1\r\n11 5 0 3 10 3 5\r\n8 4 5 6 7 0\r\n3 5 2 2 2 2 2\r\n9 3 11 1 8\r\n8 5 6 0 2 10 11\r\n11 5 4 0 11 4 6\r\n2 3 8 1 9\r\n4 3 11 3 0\r\n8 3 1 5 3\r\n2 5 5 9 8 8 0\r\n2 5 3 1 7 5 8\r\n3 0 1 1\r\n3 1 1 1\r\n3 0 0 0\r\n",
+                "NO 3\r\nNO 15\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "15 24 2\r\n2 4 1 0 0 1\r\n3 4 0 0 1 1\r\n4 3 0 0 1\r\n5 4 2 0 1 12\r\n6 5 5 5 3 5 0\r\n7 4 6 0 3 3\r\n8 4 7 4 1 3\r\n9 5 0 5 8 7 7\r\n10 5 1 9 6 9 9\r\n11 3 0 9 6\r\n12 5 7 0 11 7 11\r\n13 3 0 12 8\r\n14 4 0 9 11 9\r\n3 5 1 13 3 12 2\r\n12 4 1 4 4 8\r\n5 3 1 2 14\r\n12 4 1 8 14 10\r\n2 4 1 4 4 13\r\n6 4 4 0 1 4\r\n11 3 4 11 1\r\n12 3 6 0 2\r\n6 5 1 6 2 2 7\r\n3 4 2 10 0 9\r\n4 5 8 0 13 12 3\r\n3 0 0 0\r\n2 1 1\r\n",
+                "NO 4\r\nYES\r\nNO 3\r\nNO 19\r\nNO 8\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO 13\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "8 24 3\r\n2 4 0 1 1 0\r\n3 4 1 0 0 0\r\n4 3 0 1 0\r\n5 4 0 2 4 1\r\n6 3 2 0 3\r\n7 3 3 3 1\r\n4 3 7 4 0\r\n3 5 2 6 1 7 3\r\n2 5 0 5 2 2 3\r\n3 4 4 0 3 5\r\n7 4 7 7 4 1\r\n2 5 3 5 5 1 7\r\n2 4 5 2 0 7\r\n6 3 1 6 6\r\n2 3 1 5 4\r\n6 4 5 5 1 3\r\n4 3 1 6 2\r\n7 5 5 4 5 0 6\r\n5 4 4 1 4 1\r\n2 5 5 0 2 3 4\r\n4 5 0 7 2 3 5\r\n6 4 6 2 7 1\r\n2 5 2 7 1 6 5\r\n2 5 6 1 2 7 7\r\n3 0 0 1\r\n4 1 1 1 1\r\n3 1 1 0\r\n",
+                "NO 12\r\nNO 4\r\nNO 3\r\nNO 8\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "11 25 2\r\n2 4 0 0 0 1\r\n3 4 1 0 0 1\r\n4 4 1 1 0 1\r\n5 4 3 0 4 4\r\n6 4 3 3 2 1\r\n7 3 5 3 1\r\n8 3 6 1 5\r\n9 4 6 8 1 5\r\n7 3 2 6 0\r\n3 4 0 8 6 4\r\n5 3 0 3 4\r\n7 5 5 5 9 0 4\r\n9 4 1 3 7 6\r\n4 3 5 8 0\r\n5 3 9 1 2\r\n6 4 4 1 2 7\r\n6 4 8 1 6 2\r\n8 3 7 8 1\r\n9 4 1 9 5 3\r\n3 4 3 8 3 0\r\n3 5 3 5 5 0 6\r\n6 5 3 8 5 0 2\r\n5 4 4 7 4 0\r\n7 4 6 2 0 2\r\n10 2 2 4\r\n5 0 1 0 1 0\r\n5 0 1 1 1 0\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 27\r\nNO 13\r\nNO 18\r\nNO 41\r\nNO 36\r\nNO 142\r\n"
+            ],
+            [
+                "19 27 1\r\n2 4 0 1 1 1\r\n3 4 0 0 0 1\r\n4 4 1 1 1 1\r\n5 4 3 4 0 0\r\n6 3 2 1 1\r\n7 4 3 5 5 0\r\n8 3 5 6 1\r\n9 3 0 4 8\r\n10 3 7 1 9\r\n11 3 7 6 1\r\n12 4 1 11 10 9\r\n13 3 0 9 9\r\n14 3 1 11 12\r\n15 4 13 10 0 13\r\n16 3 0 14 15\r\n17 4 16 14 0 13\r\n18 3 17 0 14\r\n9 4 6 11 17 0\r\n10 4 9 1 16 15\r\n13 5 17 1 17 6 11\r\n2 3 3 7 0\r\n8 3 1 4 5\r\n4 3 7 1 14\r\n3 4 15 18 6 0\r\n15 5 0 2 17 15 17\r\n2 3 6 1 4\r\n11 5 16 17 1 16 8\r\n4 0 0 1 1\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nYES\r\nNO 6\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "9 25 2\r\n2 4 0 1 1 1\r\n3 4 0 0 0 0\r\n4 4 0 0 1 1\r\n5 3 1 1 2\r\n6 4 5 0 1 3\r\n7 4 4 5 1 6\r\n8 4 1 5 6 3\r\n2 4 8 5 1 8\r\n2 3 2 0 7\r\n3 3 8 1 5\r\n3 4 7 7 0 5\r\n7 4 4 2 2 1\r\n3 4 4 3 0 7\r\n4 3 4 4 0\r\n5 3 4 4 1\r\n3 5 0 3 2 4 3\r\n4 4 0 5 7 6\r\n2 3 0 5 6\r\n4 3 8 2 0\r\n3 5 7 3 1 6 8\r\n7 4 4 3 6 0\r\n3 5 5 1 2 3 5\r\n5 5 0 6 3 2 5\r\n7 5 7 4 6 8 1\r\n4 4 6 6 5 0\r\n4 0 0 1 1\r\n4 1 1 0 0\r\n",
+                "NO 4\r\nNO 4\r\nYES\r\nNO 6\r\nNO 12\r\nYES\r\nNO 23\r\n"
+            ],
+            [
+                "16 26 3\r\n2 4 0 1 1 0\r\n3 4 0 1 0 0\r\n4 4 0 0 1 1\r\n5 4 1 0 4 1\r\n6 3 1 1 2\r\n7 4 0 5 5 4\r\n8 4 3 0 5 5\r\n9 4 5 7 7 1\r\n10 4 1 6 5 7\r\n11 4 6 8 0 8\r\n12 4 1 11 9 8\r\n13 3 10 1 9\r\n14 3 9 10 0\r\n15 3 14 1 11\r\n15 4 13 1 9 7\r\n13 4 1 6 8 10\r\n2 5 4 15 12 11 0\r\n5 3 3 11 0\r\n11 3 9 1 6\r\n12 3 7 4 1\r\n2 5 13 0 15 10 5\r\n3 3 9 1 5\r\n8 5 1 5 2 8 12\r\n2 3 10 0 5\r\n4 4 2 12 12 0\r\n2 4 0 12 14 9\r\n5 1 1 1 1 1\r\n3 0 1 0\r\n2 0 0\r\n",
+                "NO 4\r\nYES\r\nYES\r\nYES\r\nNO 6\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "3 1 2\r\n2 2 1 0\r\n9 1 0 1 0 1 0 1 0 1\r\n1 0\r\n",
+                "YES\r\n"
+            ],
+            [
+                "13 25 2\r\n2 4 1 1 0 1\r\n3 4 1 0 1 0\r\n4 4 1 0 1 0\r\n5 3 3 0 0\r\n6 4 3 0 2 5\r\n7 3 0 6 5\r\n8 3 4 1 4\r\n9 4 5 1 7 8\r\n10 3 9 0 9\r\n11 3 0 8 8\r\n12 4 10 1 11 7\r\n9 5 7 1 11 4 10\r\n5 4 2 1 6 2\r\n9 3 1 4 12\r\n8 5 9 7 1 12 3\r\n5 5 7 7 3 0 4\r\n11 4 6 1 11 6\r\n10 5 1 12 7 5 9\r\n5 5 11 3 0 7 3\r\n12 3 8 5 1\r\n2 4 0 10 4 2\r\n7 3 1 10 10\r\n11 3 12 0 4\r\n7 3 10 1 11\r\n3 4 8 4 1 12\r\n5 0 1 0 1 0\r\n5 0 1 1 1 0\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 6\r\nNO 15\r\nYES\r\nNO 9\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "10 26 2\r\n2 4 1 0 0 1\r\n3 4 0 1 0 0\r\n4 4 1 1 0 1\r\n5 4 4 2 2 1\r\n6 3 1 0 3\r\n7 3 0 3 5\r\n8 4 4 4 1 4\r\n9 4 4 0 8 8\r\n3 4 5 2 0 6\r\n3 4 7 3 4 0\r\n7 5 8 8 7 0 9\r\n8 5 6 7 1 9 7\r\n3 4 8 0 7 5\r\n4 5 3 1 8 2 9\r\n6 3 6 1 6\r\n6 3 5 1 4\r\n3 3 2 1 5\r\n7 3 2 2 0\r\n3 3 2 4 1\r\n2 4 1 2 5 6\r\n2 3 9 1 4\r\n6 3 5 8 1\r\n5 4 1 9 6 5\r\n4 4 4 7 0 2\r\n8 4 1 4 4 6\r\n7 3 1 8 4\r\n4 0 0 1 1\r\n4 1 1 0 0\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 77\r\nNO 6\r\nNO 18\r\nNO 13\r\nNO 31\r\n"
+            ],
+            [
+                "14 25 2\r\n2 4 0 1 1 1\r\n3 4 0 1 1 0\r\n4 4 1 1 0 1\r\n5 3 4 1 1\r\n6 4 5 1 4 0\r\n7 3 6 6 0\r\n8 3 7 0 4\r\n9 4 7 5 0 6\r\n10 4 7 1 7 5\r\n11 3 0 7 9\r\n12 3 7 0 11\r\n13 4 9 0 8 10\r\n10 5 8 5 4 1 7\r\n6 3 12 1 7\r\n6 5 10 5 0 12 10\r\n6 4 13 1 4 7\r\n4 4 12 12 4 0\r\n11 3 9 8 1\r\n10 3 8 11 1\r\n9 5 1 3 12 3 3\r\n10 4 10 6 3 0\r\n8 4 4 5 0 12\r\n4 5 2 7 5 0 13\r\n12 4 11 11 8 0\r\n8 3 7 0 6\r\n4 0 0 1 1\r\n4 1 1 0 0\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 6\r\nNO 12\r\nNO 25\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "14 25 2\r\n2 4 0 1 0 0\r\n3 4 0 1 0 1\r\n4 4 0 0 0 1\r\n5 3 2 3 0\r\n6 3 3 4 1\r\n7 4 5 5 0 5\r\n8 4 0 3 5 7\r\n9 4 6 5 4 0\r\n10 4 7 0 9 8\r\n11 4 10 10 10 1\r\n12 3 10 1 7\r\n13 3 9 10 0\r\n2 3 12 1 7\r\n9 3 6 9 1\r\n5 4 9 13 1 9\r\n6 5 8 7 7 1 13\r\n2 4 12 2 10 1\r\n13 3 10 7 0\r\n10 5 7 0 8 3 8\r\n13 3 0 10 9\r\n12 3 0 7 9\r\n8 5 9 2 3 1 5\r\n11 5 9 7 12 12 0\r\n8 3 11 0 2\r\n10 5 13 8 6 5 1\r\n2 1 1\r\n8 0 0 0 0 0 0 0 0\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 9\r\nNO 245\r\nNO 28\r\nNO 42\r\nNO 259\r\nNO 117\r\nNO 352\r\nNO 146\r\nNO 146\r\n"
+            ],
+            [
+                "14 25 1\r\n2 4 0 0 0 0\r\n3 4 1 0 0 1\r\n4 4 0 0 0 0\r\n5 4 1 2 0 2\r\n6 4 2 5 1 3\r\n7 3 5 3 1\r\n8 4 5 7 0 7\r\n9 4 1 6 7 4\r\n10 3 0 6 6\r\n11 4 10 0 8 10\r\n12 4 7 0 7 9\r\n13 3 12 1 8\r\n6 3 11 0 2\r\n8 3 13 10 0\r\n7 5 11 12 1 7 5\r\n5 5 9 2 6 1 6\r\n11 3 12 1 4\r\n8 5 0 9 9 5 2\r\n11 5 6 2 2 11 1\r\n2 3 13 1 5\r\n11 4 6 7 1 4\r\n12 3 11 9 1\r\n13 4 10 0 9 7\r\n3 5 5 8 3 5 1\r\n12 4 0 2 2 5\r\n4 0 0 1 1\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 10\r\nNO 29\r\nYES\r\nYES\r\nYES\r\nNO 59\r\nNO 24\r\nNO 19\r\nYES\r\n"
+            ],
+            [
+                "20 36 1\r\n2 3 1 18 18\r\n2 2 0 18\r\n3 3 1 1 1\r\n3 2 0 1\r\n4 3 1 7 7\r\n4 2 0 7\r\n5 3 1 17 17\r\n5 2 0 17\r\n6 3 1 5 5\r\n6 2 0 5\r\n7 3 1 14 14\r\n7 2 0 14\r\n8 3 1 16 16\r\n8 2 0 16\r\n9 3 1 2 2\r\n9 2 0 2\r\n10 3 1 13 13\r\n10 2 0 13\r\n11 3 1 3 3\r\n11 2 0 3\r\n12 3 1 6 6\r\n12 2 0 6\r\n13 3 1 15 15\r\n13 2 0 15\r\n14 3 1 10 10\r\n14 2 0 10\r\n15 3 1 11 11\r\n15 2 0 11\r\n16 3 1 9 9\r\n16 2 0 9\r\n17 3 1 19 19\r\n17 2 0 19\r\n18 3 1 12 12\r\n18 2 0 12\r\n19 3 1 4 4\r\n19 2 0 4\r\n10 0 0 0 0 0 0 0 0 0 0\r\n",
+                "NO 22\r\nNO 2\r\nNO 9\r\nNO 14\r\nNO 16\r\nNO 8\r\nNO 28\r\nNO 24\r\nNO 6\r\nNO 3\r\nNO 18\r\nNO 5\r\nNO 7\r\nNO 4\r\nNO 26\r\nNO 12\r\nNO 20\r\nNO 10\r\n"
+            ],
+            [
+                "7 10 12\r\n2 1 0\r\n2 1 1\r\n3 2 0 2\r\n3 2 1 2\r\n4 2 0 3\r\n4 2 1 3\r\n5 2 0 4\r\n5 2 1 4\r\n6 2 0 5\r\n6 2 1 5\r\n3 0 0 0\r\n3 1 1 1\r\n4 0 0 1 0\r\n4 0 0 1 1\r\n4 0 1 0 0\r\n4 0 1 0 1\r\n4 0 1 1 0\r\n4 1 0 0 1\r\n4 1 0 1 0\r\n4 1 0 1 1\r\n4 1 1 0 0\r\n4 1 1 0 1\r\n",
+                "NO 1\r\nNO 2\r\nNO 3\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "7 10 11\r\n2 1 0\r\n2 1 1\r\n3 2 0 2\r\n3 2 1 2\r\n4 2 0 3\r\n4 2 1 3\r\n5 2 0 4\r\n5 2 1 4\r\n6 2 0 5\r\n6 2 1 5\r\n3 1 1 1\r\n4 0 0 1 0\r\n4 0 0 1 1\r\n4 0 1 0 0\r\n4 0 1 0 1\r\n4 0 1 1 0\r\n4 1 0 0 1\r\n4 1 0 1 0\r\n4 1 0 1 1\r\n4 1 1 0 0\r\n4 1 1 0 1\r\n",
+                "NO 1\r\nNO 2\r\nNO 3\r\nNO 4\r\nNO 5\r\n"
+            ],
+            [
+                "15 28 10\r\n2 4 1 1 0 1\r\n3 4 1 0 0 0\r\n4 4 1 0 0 1\r\n5 1 6\r\n6 1 13\r\n7 2 1 2\r\n8 3 5 1 6\r\n9 3 8 7 1\r\n10 2 7 1\r\n11 3 10 7 0\r\n12 2 9 0\r\n13 1 5\r\n14 4 1 9 10 13\r\n12 4 10 1 9 8\r\n14 4 1 6 2 10\r\n9 4 13 4 1 3\r\n3 3 1 10 2\r\n2 4 7 4 1 14\r\n11 5 1 4 14 2 8\r\n10 3 4 0 4\r\n9 4 3 0 4 7\r\n7 5 3 14 1 4 13\r\n10 4 9 10 11 0\r\n9 5 14 13 7 8 0\r\n12 5 7 4 3 1 9\r\n8 5 6 9 13 1 7\r\n3 4 12 3 1 6\r\n9 3 1 14 10\r\n6 1 1 0 0 0 0\r\n4 1 1 0 1\r\n4 1 1 0 0\r\n5 0 1 0 1 1\r\n5 0 1 1 1 0\r\n5 1 1 0 0 0\r\n4 0 1 1 1\r\n6 0 0 1 1 1 1\r\n5 1 0 0 0 0\r\n4 1 0 0 0\r\n",
+                "YES\r\nYES\r\nNO 4\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO 9\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "9 25 6\r\n2 4 1 1 1 1\r\n3 4 1 0 0 1\r\n4 4 0 1 0 0\r\n5 4 0 3 3 1\r\n6 3 3 5 0\r\n7 3 4 6 0\r\n8 3 5 5 0\r\n4 3 8 0 7\r\n7 4 7 6 0 6\r\n3 5 8 6 4 7 1\r\n6 4 3 0 7 8\r\n6 5 8 2 0 4 3\r\n3 5 2 1 5 4 7\r\n3 3 4 1 2\r\n6 3 6 0 3\r\n4 4 6 1 2 3\r\n2 4 6 1 6 5\r\n6 4 5 5 3 1\r\n5 4 5 0 2 2\r\n4 4 6 6 8 0\r\n3 5 2 1 6 8 7\r\n5 4 6 0 8 6\r\n3 5 0 3 5 7 5\r\n7 3 8 6 1\r\n8 5 2 3 0 7 5\r\n8 1 1 1 1 1 0 0 1\r\n8 1 1 1 1 0 1 0 0\r\n8 1 0 0 1 1 1 1 1\r\n8 1 0 0 1 0 1 0 0\r\n8 0 1 0 0 1 1 1 1\r\n8 0 1 0 0 1 0 0 1\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 10\r\nNO 25\r\nNO 30\r\nNO 21\r\n"
+            ],
+            [
+                "8 24 6\r\n2 4 1 0 1 1\r\n3 3 0 1 0\r\n4 4 0 0 1 1\r\n5 5 2 0 4 4 0\r\n6 5 0 1 4 4 2\r\n7 5 5 5 3 1 4\r\n7 5 0 2 4 7 4\r\n7 5 2 6 7 1 4\r\n5 3 5 1 5\r\n4 3 3 0 6\r\n6 4 7 3 6 1\r\n6 4 7 2 2 0\r\n6 5 7 0 4 5 5\r\n4 3 3 1 3\r\n2 3 1 7 4\r\n6 3 7 0 2\r\n4 4 5 6 4 1\r\n3 4 0 7 6 5\r\n2 5 2 1 4 2 7\r\n7 3 3 0 4\r\n7 3 3 0 4\r\n2 3 7 5 0\r\n5 5 3 7 2 7 1\r\n5 5 1 2 6 6 5\r\n7 1 0 1 1 0 1 0\r\n8 1 0 1 1 0 0 1 1\r\n7 0 1 0 1 0 1 1\r\n7 0 1 0 0 0 1 1\r\n8 0 0 1 1 1 0 1 1\r\n7 0 0 1 1 0 1 0\r\n",
+                "NO 4\r\nNO 3\r\nNO 4\r\nNO 14\r\nNO 16\r\nNO 8\r\n"
+            ],
+            [
+                "16 24 7\r\n2 3 1 1 0\r\n3 3 0 1 0\r\n4 4 1 0 0 0\r\n5 4 4 0 1 1\r\n6 3 0 5 4\r\n7 5 2 4 5 5 1\r\n8 5 0 3 3 3 3\r\n9 3 5 8 1\r\n10 5 5 8 0 5 6\r\n11 4 10 7 0 8\r\n12 5 8 0 7 9 11\r\n13 4 8 8 9 0\r\n14 3 9 1 11\r\n15 4 13 13 11 1\r\n6 3 1 5 15\r\n9 5 1 8 14 11 14\r\n7 4 8 12 0 2\r\n4 4 0 9 7 11\r\n6 5 15 12 1 11 3\r\n11 3 6 4 0\r\n15 4 14 3 15 0\r\n9 4 5 3 0 15\r\n15 4 0 4 5 6\r\n2 5 15 0 14 15 14\r\n6 1 1 0 0 1 0\r\n7 1 1 0 1 0 0 0\r\n6 0 1 0 1 1 0\r\n7 0 1 0 1 0 0 0\r\n7 1 0 0 0 1 1 0\r\n7 1 0 0 0 0 1 0\r\n6 0 0 0 0 1 0\r\n",
+                "NO 3\r\nNO 3\r\nNO 4\r\nNO 7\r\nNO 12\r\nYES\r\nNO 13\r\nYES\r\nYES\r\nNO 17\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "14 26 8\r\n2 3 0 1 0\r\n3 3 1 1 0\r\n4 3 0 1 0\r\n5 3 2 0 0\r\n6 4 2 4 0 5\r\n7 3 0 4 6\r\n8 4 7 6 3 1\r\n9 5 8 5 4 1 7\r\n10 4 8 0 8 7\r\n11 5 1 8 9 9 7\r\n12 4 10 0 9 8\r\n13 3 12 11 1\r\n11 5 8 7 4 1 7\r\n4 3 12 7 1\r\n5 5 13 2 5 1 13\r\n7 4 1 2 11 8\r\n5 3 3 0 10\r\n5 3 1 12 12\r\n2 4 10 11 10 0\r\n3 3 9 1 8\r\n8 4 6 0 13 13\r\n4 5 9 11 0 6 6\r\n3 5 5 5 13 13 1\r\n13 4 3 7 12 1\r\n6 3 10 0 13\r\n4 4 12 1 4 5\r\n6 0 1 0 1 1 0\r\n6 0 1 0 0 1 0\r\n6 1 1 0 0 1 0\r\n6 1 1 0 0 1 0\r\n6 0 1 0 0 1 0\r\n6 0 1 0 1 1 0\r\n7 1 1 1 1 1 0 1\r\n6 1 0 1 1 0 0\r\n",
+                "NO 3\r\nNO 3\r\nNO 3\r\nNO 5\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "14 24 7\r\n2 4 0 1 1 0\r\n3 3 1 1 0\r\n4 3 1 1 1\r\n5 5 4 1 0 0 1\r\n6 3 0 5 5\r\n7 4 4 0 2 3\r\n8 3 5 3 0\r\n9 5 8 6 1 7 6\r\n10 4 6 9 1 6\r\n11 4 8 0 6 6\r\n12 5 11 11 7 0 11\r\n13 4 9 10 1 8\r\n5 5 0 8 12 11 2\r\n6 4 7 3 7 0\r\n8 3 0 6 9\r\n12 4 1 6 2 3\r\n10 5 0 9 9 13 6\r\n11 3 9 0 5\r\n7 5 7 8 2 11 1\r\n3 5 0 7 2 6 5\r\n11 3 10 0 5\r\n6 5 2 7 0 10 11\r\n3 4 0 4 13 7\r\n5 3 5 10 0\r\n7 0 1 1 0 1 1 0\r\n7 0 1 1 0 1 1 1\r\n7 1 1 0 0 1 1 0\r\n6 1 1 0 1 1 1\r\n7 1 1 1 0 1 1 0\r\n6 1 1 1 1 1 0\r\n7 0 0 1 0 0 1 0\r\n",
+                "NO 4\r\nNO 3\r\nNO 3\r\nNO 7\r\nYES\r\nYES\r\nNO 11\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "7 23 9\r\n2 4 0 0 1 0\r\n3 3 1 1 0\r\n4 4 1 1 1 1\r\n5 5 3 1 4 3 4\r\n6 5 4 2 2 0 3\r\n4 5 2 4 5 4 0\r\n4 5 6 2 1 4 2\r\n4 4 0 2 2 5\r\n3 4 4 1 5 2\r\n4 4 6 1 3 6\r\n6 5 6 4 0 6 5\r\n6 4 0 5 6 6\r\n6 5 3 0 4 5 3\r\n6 4 4 1 5 5\r\n4 4 6 6 6 0\r\n3 5 0 4 6 5 6\r\n5 3 5 6 1\r\n5 4 5 0 5 6\r\n4 4 4 2 1 5\r\n6 5 0 6 6 6 6\r\n3 3 0 3 3\r\n5 4 2 2 2 0\r\n3 5 3 4 1 6 5\r\n5 0 1 1 1 1\r\n4 1 1 1 1\r\n7 0 1 0 1 1 1 1\r\n7 1 0 0 0 1 1 1\r\n4 0 1 1 0\r\n4 1 1 1 0\r\n6 0 0 0 0 1 1\r\n4 1 1 1 1\r\n5 1 0 1 0 1\r\n",
+                "NO 4\r\nNO 3\r\nNO 22\r\nNO 13\r\nNO 49\r\n"
+            ],
+            [
+                "18 25 6\r\n2 4 1 1 1 0\r\n3 4 1 0 0 0\r\n4 3 1 0 1\r\n5 4 1 4 4 0\r\n6 5 1 2 4 2 3\r\n7 4 6 6 1 4\r\n8 3 5 0 3\r\n9 4 6 8 6 1\r\n10 5 7 7 7 8 0\r\n11 5 10 1 10 8 10\r\n12 4 1 11 11 9\r\n13 4 8 8 12 0\r\n14 3 0 10 13\r\n15 5 11 0 14 11 14\r\n16 5 13 1 12 12 15\r\n17 3 15 16 0\r\n2 4 0 13 16 3\r\n16 4 3 2 0 6\r\n17 3 2 0 4\r\n10 3 3 8 1\r\n9 4 14 14 1 5\r\n2 3 11 16 0\r\n10 4 15 0 12 6\r\n17 4 0 8 7 15\r\n14 5 0 14 12 15 13\r\n9 0 1 0 0 0 1 1 0 0\r\n9 1 0 0 0 1 1 0 1 0\r\n8 0 0 0 0 1 0 1 1\r\n7 1 0 0 1 0 0 0\r\n6 0 1 0 0 0 0\r\n7 1 1 1 1 1 0 1\r\n",
+                "NO 4\r\nNO 4\r\nNO 3\r\nNO 8\r\nNO 16\r\nNO 36\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO 25\r\nNO 8\r\n"
+            ],
+            [
+                "19 27 6\r\n2 3 0 0 0\r\n3 3 1 1 1\r\n4 3 1 1 0\r\n5 4 0 0 2 1\r\n6 4 2 1 1 5\r\n7 5 3 5 1 5 5\r\n8 5 7 3 1 7 3\r\n9 3 1 8 5\r\n10 5 1 9 7 8 5\r\n11 3 8 1 8\r\n12 4 7 1 11 8\r\n13 3 10 11 1\r\n14 3 13 12 0\r\n15 3 11 0 12\r\n16 3 1 11 12\r\n17 4 12 16 0 13\r\n18 5 15 17 15 14 1\r\n3 3 0 3 17\r\n16 4 2 18 1 9\r\n17 4 9 1 17 16\r\n11 3 13 3 0\r\n10 3 16 0 2\r\n11 3 0 4 18\r\n3 5 16 12 1 6 12\r\n18 3 4 2 0\r\n4 4 15 1 16 9\r\n14 3 2 1 13\r\n10 0 1 1 1 1 0 1 1 1 0\r\n9 1 1 0 0 0 0 1 0 0\r\n8 0 1 0 0 0 1 0 1\r\n7 1 1 1 1 1 0 1\r\n7 1 0 1 0 0 1 0\r\n9 1 0 1 1 1 1 0 0 0\r\n",
+                "NO 3\r\nNO 3\r\nNO 3\r\nNO 6\r\nNO 11\r\nNO 22\r\nNO 51\r\nNO 58\r\nNO 73\r\nNO 11\r\nNO 85\r\nNO 85\r\nNO 89\r\nNO 97\r\nNO 69\r\nNO 240\r\nNO 7\r\n"
+            ],
+            [
+                "13 24 5\r\n2 4 1 0 0 0\r\n3 3 0 0 1\r\n4 4 0 0 0 0\r\n5 5 2 0 0 2 1\r\n6 3 0 1 1\r\n7 5 4 5 4 5 1\r\n8 5 4 3 5 3 1\r\n9 4 6 1 5 7\r\n10 4 9 1 8 7\r\n11 5 7 0 7 9 9\r\n12 4 0 8 10 8\r\n10 5 12 7 3 1 8\r\n9 3 7 11 1\r\n3 4 11 7 11 0\r\n12 3 0 10 5\r\n8 3 8 2 0\r\n5 3 1 4 9\r\n8 5 11 0 6 11 3\r\n9 4 4 0 12 7\r\n10 3 6 10 1\r\n8 4 5 1 8 9\r\n6 5 11 9 1 12 2\r\n3 5 3 11 12 3 1\r\n5 3 10 1 5\r\n9 0 0 1 1 0 0 1 1 1\r\n10 1 1 0 0 1 0 1 1 1 1\r\n10 1 1 0 0 0 0 0 1 0 0\r\n9 1 0 0 1 0 1 1 0 0\r\n10 1 0 0 1 0 1 1 0 0 0\r\n",
+                "NO 4\r\nNO 3\r\nNO 4\r\nNO 11\r\nNO 3\r\nNO 31\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "16 26 6\r\n2 3 0 0 0\r\n3 3 1 1 0\r\n4 4 0 0 0 0\r\n5 3 0 1 0\r\n6 3 1 5 1\r\n7 3 1 5 2\r\n8 3 6 0 6\r\n9 4 6 5 8 0\r\n10 4 7 0 9 5\r\n11 5 8 6 8 8 1\r\n12 4 11 10 1 7\r\n13 4 10 0 11 12\r\n14 5 11 1 13 9 10\r\n15 4 11 1 12 13\r\n13 3 4 1 11\r\n12 5 14 6 5 0 11\r\n13 5 2 0 2 14 14\r\n6 3 8 2 0\r\n7 3 6 14 1\r\n15 3 12 0 8\r\n4 5 1 9 8 13 4\r\n12 3 6 15 1\r\n12 3 0 10 7\r\n15 3 1 13 6\r\n11 4 0 12 4 6\r\n10 4 1 7 12 14\r\n8 0 1 1 1 0 1 0 0\r\n7 1 0 0 1 0 1 1\r\n7 1 0 0 0 1 1 0\r\n10 1 0 0 0 1 0 1 0 1 0\r\n10 0 1 0 1 1 0 1 0 1 1\r\n7 0 1 0 1 1 0 1\r\n",
+                "NO 3\r\nNO 3\r\nNO 4\r\nNO 3\r\nNO 5\r\nNO 7\r\nNO 11\r\nNO 20\r\nNO 31\r\nNO 49\r\nNO 39\r\nNO 54\r\nNO 165\r\nNO 51\r\n"
+            ],
+            [
+                "12 23 2\r\n2 3 0 0 0\r\n3 3 1 1 1\r\n4 3 0 0 1\r\n5 5 1 0 1 2 0\r\n6 3 2 0 1\r\n7 5 3 6 4 3 1\r\n8 4 0 3 6 6\r\n9 5 7 5 8 4 0\r\n10 5 5 9 1 9 5\r\n11 5 9 10 1 9 7\r\n7 3 5 0 3\r\n9 4 10 2 11 1\r\n11 4 2 6 4 1\r\n5 5 0 7 2 11 9\r\n5 5 2 3 1 5 10\r\n7 5 7 9 1 9 3\r\n3 3 0 5 9\r\n4 5 8 9 10 2 1\r\n9 5 10 5 7 0 2\r\n7 5 5 0 10 6 2\r\n6 3 7 0 11\r\n10 5 10 2 5 5 1\r\n4 3 8 0 8\r\n20 1 0 1 0 0 1 1 1 1 1 1 1 0 1 1 1 1 0 1 1\r\n25 1 1 0 1 0 1 1 1 0 1 1 1 0 1 0 1 1 1 0 0 0 0 1 0 1\r\n",
+                "NO 3\r\nNO 3\r\nNO 3\r\nNO 7\r\nNO 5\r\nNO 11\r\nNO 14\r\nNO 36\r\nNO 87\r\nNO 12\r\n"
+            ],
+            [
+                "19 25 2\r\n2 4 0 0 0 0\r\n3 4 0 1 0 1\r\n4 3 1 0 0\r\n5 4 3 0 0 1\r\n6 4 1 3 3 3\r\n7 4 6 0 4 5\r\n8 3 4 0 5\r\n9 4 4 0 8 6\r\n10 3 0 7 7\r\n11 4 6 1 10 9\r\n12 5 9 10 7 1 9\r\n13 3 1 8 12\r\n14 5 11 10 10 12 0\r\n15 3 13 1 12\r\n16 4 11 14 0 15\r\n17 5 12 13 0 12 16\r\n18 4 15 0 14 14\r\n11 5 3 8 1 8 4\r\n2 3 17 0 10\r\n17 4 4 18 1 18\r\n12 4 0 15 15 15\r\n2 5 15 2 11 13 1\r\n16 4 5 1 2 14\r\n14 3 10 0 14\r\n15 5 6 4 4 1 11\r\n23 0 1 0 1 1 1 1 1 1 1 0 0 0 0 0 1 0 1 0 1 0 0 1\r\n21 0 0 0 1 1 1 1 1 1 0 1 1 0 0 1 1 1 1 1 0 0\r\n",
+                "NO 4\r\nNO 4\r\nNO 3\r\nNO 7\r\nNO 13\r\nNO 24\r\nNO 11\r\nNO 28\r\nNO 49\r\nNO 30\r\nNO 130\r\nNO 142\r\nNO 259\r\nNO 50\r\nNO 271\r\nNO 674\r\nNO 569\r\n"
+            ],
+            [
+                "18 25 2\r\n2 4 1 0 0 1\r\n3 3 1 0 1\r\n4 4 1 0 1 1\r\n5 4 2 3 1 0\r\n6 3 1 3 4\r\n7 5 3 3 5 0 4\r\n8 4 0 5 4 6\r\n9 5 8 6 5 1 7\r\n10 5 5 5 6 8 0\r\n11 3 9 0 9\r\n12 3 0 8 11\r\n13 5 11 9 1 10 12\r\n14 3 0 12 10\r\n15 3 14 1 12\r\n16 5 14 15 0 13 14\r\n17 3 16 15 0\r\n8 5 3 2 0 12 2\r\n17 3 5 1 9\r\n4 4 17 13 1 11\r\n5 3 0 17 8\r\n10 5 7 0 11 14 3\r\n6 4 0 10 9 11\r\n7 3 0 16 17\r\n3 4 10 0 5 3\r\n6 5 16 1 2 15 14\r\n21 0 1 0 1 1 0 1 1 0 0 1 1 1 1 1 1 1 1 0 0 1\r\n24 0 0 0 0 0 0 1 0 1 0 1 0 0 1 0 0 0 0 1 1 1 0 0 1\r\n",
+                "NO 4\r\nNO 3\r\nNO 4\r\nNO 9\r\nNO 8\r\nNO 20\r\nNO 22\r\nNO 60\r\nNO 49\r\nNO 121\r\nNO 144\r\nNO 375\r\nNO 194\r\nNO 339\r\nNO 1103\r\nNO 70\r\n"
+            ],
+            [
+                "16 22 1\r\n2 4 1 1 0 1\r\n3 4 1 1 0 0\r\n4 4 1 1 1 0\r\n5 5 0 0 2 3 0\r\n6 3 4 1 4\r\n7 5 6 0 5 6 6\r\n8 3 3 4 1\r\n9 5 1 4 4 5 4\r\n10 4 8 0 5 9\r\n11 5 10 10 1 6 8\r\n12 3 0 9 11\r\n13 3 0 8 12\r\n14 5 13 9 1 12 11\r\n15 12 2 3 4 4 3 2 3 4 2 2 2 3\r\n10 3 0 5 5\r\n7 5 6 15 5 11 0\r\n4 4 0 12 14 2\r\n6 5 15 1 4 6 4\r\n14 3 0 6 14\r\n7 3 13 3 1\r\n2 4 13 11 1 3\r\n6 3 11 1 7\r\n48 1 1 0 1 1 1 0 0 1 1 1 0 1 1 1 0 1 1 0 0 1 1 0 1 1 1 0 0 1 1 1 0 1 1 0 1 1 1 0 1 1 1 0 1 1 1 0 0\r\n",
+                "NO 4\r\nNO 4\r\nNO 4\r\nNO 11\r\nNO 9\r\nNO 39\r\nNO 9\r\nNO 24\r\nNO 23\r\nNO 65\r\nNO 90\r\nNO 100\r\nNO 280\r\nNO 214\r\n"
+            ],
+            [
+                "20 24 1\r\n2 4 0 1 1 1\r\n3 3 1 1 1\r\n4 3 0 1 1\r\n5 5 0 0 4 2 2\r\n6 3 3 1 3\r\n7 3 0 5 2\r\n8 4 1 4 7 3\r\n9 4 8 7 4 0\r\n10 4 8 1 8 7\r\n11 3 8 0 8\r\n12 3 0 11 9\r\n13 5 10 1 8 12 9\r\n14 5 1 9 11 11 13\r\n15 5 14 14 1 14 11\r\n16 4 13 11 12 0\r\n17 4 13 12 16 1\r\n18 5 15 0 17 16 15\r\n19 5 14 17 1 16 16\r\n17 3 7 1 11\r\n10 5 19 1 16 2 10\r\n8 5 17 10 0 14 13\r\n15 4 11 9 1 5\r\n6 5 17 4 0 8 15\r\n6 5 1 15 7 6 5\r\n50 1 1 1 1 0 0 0 1 1 0 0 0 0 0 1 0 0 1 0 1 0 0 0 0 1 1 0 0 1 0 0 0 1 0 0 1 0 1 1 0 1 1 0 1 1 1 1 1 1 0\r\n",
+                "NO 4\r\nNO 3\r\nNO 3\r\nNO 13\r\nNO 7\r\nNO 18\r\nNO 25\r\nNO 47\r\nNO 69\r\nNO 51\r\nNO 99\r\nNO 241\r\nNO 391\r\nNO 112\r\nNO 392\r\nNO 70\r\nNO 687\r\nNO 1246\r\n"
+            ],
+            [
+                "3 1 8\r\n2 2 1 0\r\n9 1 0 0 0 0 0 0 0 1\r\n8 1 0 0 0 0 0 0 1\r\n7 1 0 0 0 0 0 1\r\n6 1 0 0 0 0 1\r\n5 1 0 0 0 1\r\n4 1 0 0 1\r\n3 1 0 1\r\n1 0\r\n",
+                "YES\r\n"
+            ]
+        ]
+    }
+]

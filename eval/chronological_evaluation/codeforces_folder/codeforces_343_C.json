@@ -1,0 +1,97 @@
+[
+    {
+        "name": "Read Time",
+        "description": "Mad scientist Mike does not use slow hard disks. His modification of a hard\ndrive has not one, but n different heads that can read data in parallel. When\nviewed from the side, Mike's hard drive is an endless array of tracks. The\ntracks of the array are numbered from left to right with integers, starting\nwith 1. In the initial state the i-th reading head is above the track number\nhi. For each of the reading heads, the hard drive's firmware can move the head\nexactly one track to the right or to the left, or leave it on the current\ntrack. During the operation each head's movement does not affect the movement\nof the other heads: the heads can change their relative order; there can be\nmultiple reading heads above any of the tracks. A track is considered read if\nat least one head has visited this track. In particular, all of the tracks\nnumbered h1, h2, ..., hn have been read at the beginning of the operation.\nMike needs to read the data on m distinct tracks with numbers p1, p2, ..., pm.\nDetermine the minimum time the hard drive firmware needs to move the heads and\nread all the given tracks. Note that an arbitrary number of other tracks can\nalso be read. Input The first line of the input contains two space-separated\nintegers n, m (1 \u2264 n, m \u2264 10^5) \u2014 the number of disk heads and the number of\ntracks to read, accordingly. The second line contains n distinct integers hi\nin ascending order (1 \u2264 hi \u2264 10^10, hi < hi + 1) \u2014 the initial positions of\nthe heads. The third line contains m distinct integers pi in ascending order\n(1 \u2264 pi \u2264 10^10, pi < pi + 1) - the numbers of tracks to read. Please, do not\nuse the \nrecommended to use the cin, cout streams or the \na single number \u2014 the minimum time required, in seconds, to read all the\nneeded tracks. Examples Input 3 4 2 5 6 1 3 6 8 Output 2 Input 3 3 1 2 3 1 2 3\nOutput 0 Input 1 2 165 142 200 Output 81 Note The first test coincides with\nthe figure. In this case the given tracks can be read in 2 seconds in the\nfollowing way: during the first second move the 1-st head to the left and let\nit stay there; move the second head to the left twice; move the third head to\nthe right twice (note that the 6-th track has already been read at the\nbeginning). One cannot read the tracks in 1 second as the 3-rd head is at\ndistance 2 from the 8-th track.\n\n",
+        "cf_contest_id": 343,
+        "cf_index": "C",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "greedy",
+            "two pointers"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 4\r\n2 5 6\r\n1 3 6 8\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 3\r\n1 2 3\r\n1 2 3\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 2\r\n165\r\n142 200\r\n",
+                "81\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 2\r\n5000000000\r\n1 10000000000\r\n",
+                "14999999998\r\n"
+            ],
+            [
+                "2 4\r\n3 12\r\n1 7 8 14\r\n",
+                "8\r\n"
+            ],
+            [
+                "3 3\r\n1 2 3\r\n2 3 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\n1 10\r\n9\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 19\r\n7 10 13\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19\r\n",
+                "6\r\n"
+            ],
+            [
+                "3 3\r\n2 3 4\r\n1 3 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 11\r\n1 909090909 1818181817 2727272725 3636363633 4545454541 5454545449 6363636357 7272727265 8181818173\r\n454545455 1363636363 2272727271 3181818179 4090909087 4999999995 5909090903 6818181811 7727272719 8636363627 9545454535\r\n",
+                "1363636362\r\n"
+            ],
+            [
+                "3 10\r\n4999999999 5000000000 5000000001\r\n1 1000 100000 1000000 4999999999 5000000000 5000000001 6000000000 8000000000 10000000000\r\n",
+                "4999999999\r\n"
+            ],
+            [
+                "2 4\r\n4500000000 5500000000\r\n5 499999999 5000000001 9999999995\r\n",
+                "5499999993\r\n"
+            ],
+            [
+                "10 10\r\n331462447 1369967506 1504296131 2061390288 2309640071 3006707770 4530801731 4544099460 7357049371 9704808257\r\n754193799 3820869903 4594383880 5685752675 6303322854 6384906441 7863448848 8542634752 9573124462 9665646063\r\n",
+                "1840806981\r\n"
+            ],
+            [
+                "1 1\r\n10000000000\r\n1\r\n",
+                "9999999999\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n10000000000\r\n",
+                "9999999999\r\n"
+            ],
+            [
+                "10 10\r\n9999999991 9999999992 9999999993 9999999994 9999999995 9999999996 9999999997 9999999998 9999999999 10000000000\r\n1 2 3 4 5 6 7 8 9 10\r\n",
+                "9999999990\r\n"
+            ],
+            [
+                "3 12\r\n477702277 4717363935 8947981095\r\n477702276 477702304 477702312 477702317 4717363895 4717363896 4717363920 4717363936 8947981094 8947981111 8947981112 8947981135\r\n",
+                "42\r\n"
+            ],
+            [
+                "10 10\r\n389151626 1885767612 2609703695 3054567325 4421751790 5636236054 6336088034 7961001379 8631992167 9836923433\r\n389144165 389158510 1885760728 1885775073 2609696234 2609710579 3054559864 3054574209 4421744329 4421758674\r\n",
+                "21229\r\n"
+            ],
+            [
+                "1 1\r\n10000000000\r\n1\r\n",
+                "9999999999\r\n"
+            ]
+        ]
+    }
+]

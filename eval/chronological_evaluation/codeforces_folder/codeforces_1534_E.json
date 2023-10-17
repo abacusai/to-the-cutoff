@@ -1,0 +1,66 @@
+[
+    {
+        "name": "Lost Array",
+        "description": "This is an interactive problem. Note: the XOR-sum of an array \n    a_1, a_2,\n    \n    \u2026, a_n\n (\n    1 \n    \u2264 a_i \n    \u2264 10^9\n) is defined as \n    a_1 \n    \u2295\n    a_2 \n    \u2295\n    \u2026\n    \u2295 a_n\n, where \n    \u2295\n denotes the\nbitwise XOR operation. Little Dormi received an array of \n    n\n integers\n\n    a_1, a_2, \n    \u2026, a_n\n for Christmas. However, while playing with it\nover the winter break, he accidentally dropped it into his XOR machine, and\nthe array got lost. The XOR machine is currently configured with a query size\nof \n    k\n (which you cannot change), and allows you to perform the following\ntype of query: by giving the machine \n    k\n distinct indices \n    x_1, x_2,\n    \n    \u2026, x_k\n, it will output \n    a_x_1\n    \u2295 a_x_2\n    \u2295\n    \u2026\n    \u2295 a_x_k\n. As Little Dormi's older brother, you would like to help\nhim recover the XOR-sum of his array \n    a_1, a_2, \n    \u2026, a_n\n by querying\nthe XOR machine. Little Dormi isn't very patient, so to be as fast as\npossible, you must query the XOR machine the minimum number of times to find\nthe XOR-sum of his array. Formally, let \n    d\n be the minimum number of\nqueries needed to find the XOR-sum of any array of length \n    n\n with a query\nsize of \n    k\n. Your program will be accepted if you find the correct XOR-sum\nin at most \n    d\n queries. Lastly, you also noticed that with certain\nconfigurations of the machine \n    k\n and values of \n    n\n, it may not be\npossible to recover the XOR-sum of Little Dormi's lost array. If that is the\ncase, you should report it as well. The array \n    a_1, a_2, \n    \u2026, a_n\n is\nfixed before you start querying the XOR machine and does not change with the\nqueries. Input The only line of input contains the integers \n    n\n and\n\n    k\n (\n    1 \n    \u2264 n \n    \u2264 500\n, \n    1 \n    \u2264 k \n    \u2264 n\n), the length of\nthe lost array and the configured query size of the XOR machine. Elements of\nthe original array satisfy \n    1 \n    \u2264 a_i \n    \u2264 10^9\n. It can be proven that\nthat if it is possible to recover the XOR sum under the given constraints, it\ncan be done in at most \n    500\n queries. That is, \n    d \n    \u2264 500\n. After\ntaking \n    n\n and \n    k\n, begin interaction. Output If it is impossible to\nrecover the XOR-sum of the array, output \n    -1\n immediately after taking\n\n    n\n and \n    k\n. Do not begin interaction. Otherwise, when your program\nfinds the XOR-sum of the lost array \n    a_1, a_2, \n    \u2026, a_n\n, report the\nanswer in the following format: \"! x\", where \n    x\n is the XOR sum of the\narray \n    a_1, a_2, \n    \u2026, a_n\n, and terminate your program normally\nimmediately after flushing the output stream. Note that answering does not\ncount as a query. Interaction Each query is made in the format \"? b\", where\n\n    b\n is an array of exactly \n    k\n distinct integers from \n    1\n to\n\n    n\n denoting the indices of the elements in the lost array that you want\nto query the XOR sum of. You will then receive an integer \n    x\n, the XOR sum\nof the queried elements. It can be proven that \n    0 \n    \u2264 x \n    \u2264 2 \n    \u00b7\n    10^9\n will always be true. After printing a query do not forget to output\nend of line and flush the output. Otherwise, you will get Idleness limit\nexceeded. To do this, use: fflush(stdout) or cout.flush() in C++;\nSystem.out.flush() in Java; flush(output) in Pascal; stdout.flush() in Python;\nsee documentation for other languages.If at any point you make an invalid\nquery or try to make more than \n    500\n queries (which is the hard limit),\nthe interaction will terminate immediately and give you a Wrong Answer\nverdict. Note that if you exceed \n    d\n queries, the interaction will\ncontinue normally unless you also exceed the \n    500\n query hard limit,\nthough you will still receive a Wrong Answer verdict either way. Hacks To hack\na solution, use the following format. The first line contains the integers\n\n    n\n and \n    k\n (\n    1 \n    \u2264 n \n    \u2264 500\n, \n    1 \n    \u2264 k \n    \u2264 n\n). The\nsecond line contains the the array \n    a_1, a_2, \n    \u2026, a_n\n (\n    1 \n    \u2264\n    a_i \n    \u2264 10^9\n). Examples Input 5 3 4 0 1 Output ? 1 2 3 ? 2 3 5 ? 4 1 5 !\n7 Input 3 2 Output -1 Note In the first example interaction, the array \n    a_1,\n    a_2, \n    \u2026, a_n\n is \n    2, 1, 7, 5, 6\n and its XOR-sum is \n    7\n. The\nfirst query made asks for indices \n    1,2,3\n, so the response is \n    a_1\n    \n    \u2295 a_2 \n    \u2295 a_3 = 2 \n    \u2295 1 \n    \u2295 7 = 4\n. The second query\nmade asks for indices \n    2,3,5\n, so the response is \n    a_2 \n    \u2295 a_3\n    \n    \u2295 a_5 = 1 \n    \u2295 7 \n    \u2295 6 = 0\n. The third query made asks for\nindices \n    4,1,5\n, so the response is \n    a_4 \n    \u2295 a_1 \n    \u2295 a_5 = 5\n    \n    \u2295 2 \n    \u2295 6 = 1\n. Note that the indices may be output in any\norder. Additionally, even though three queries were made in the example\ninteraction, it is just meant to demonstrate the interaction format and does\nnot necessarily represent an optimal strategy. In the second example\ninteraction, there is no way to recover the XOR-sum of Little Dormi's array no\nmatter what is queried, so the program immediately outputs \n    -1\n and exits.\n\n",
+        "cf_contest_id": 1534,
+        "cf_index": "E",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "graphs",
+            "greedy",
+            "interactive",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 1.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 3\r\n2 1 7 5 6\r\n",
+                "3 7\r\n"
+            ],
+            [
+                "3 2\r\n1 2 3\r\n",
+                "-1 -1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "16 16\r\n308016736 956290215 528410265 714807573 549801784 640036314 72785399 243731193 64286020 242735735 652383284 747302261 133040055 523901569 310398221 592433960\r\n",
+                "1 1034151366\r\n"
+            ],
+            [
+                "1 1\r\n739798873\r\n",
+                "1 739798873\r\n"
+            ],
+            [
+                "2 1\r\n769773225 680769322\r\n",
+                "2 91388291\r\n"
+            ],
+            [
+                "3 1\r\n949490681 476940754 49124973\r\n",
+                "3 639110214\r\n"
+            ],
+            [
+                "4 3\r\n979465033 123369083 513295417 391744370\r\n",
+                "4 888851065\r\n"
+            ],
+            [
+                "5 5\r\n919540516 387531268 293208007 505542105 948660087\r\n",
+                "1 369441865\r\n"
+            ],
+            [
+                "4 3\r\n62 75 33 88\r\n",
+                "4 12\r\n"
+            ],
+            [
+                "9 5\r\n97 22 70 95 95 74 51 51 91\r\n",
+                "3 32\r\n"
+            ],
+            [
+                "28 9\r\n728106195 395506482 249394053 938103297 384796238 980712301 414135378 779046502 810719048 893648264 83443256 432572796 164808837 319362974 199155502 184159968 917815376 148415213 51314927 653346193 952649461 426025047 617494394 289013875 402548037 688588002 834143122 634339535\r\n",
+                "4 957306545\r\n"
+            ]
+        ]
+    }
+]

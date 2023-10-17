@@ -1,0 +1,313 @@
+[
+    {
+        "name": "Lesha and array splitting",
+        "description": "One spring day on his way to university Lesha found an array A. Lesha likes to\nsplit arrays into several parts. This time Lesha decided to split the array A\ninto several, possibly one, new arrays so that the sum of elements in each of\nthe new arrays is not zero. One more condition is that if we place the new\narrays one after another they will form the old array A. Lesha is tired now so\nhe asked you to split the array. Help Lesha! Input The first line contains\nsingle integer n (1 \u2264 n \u2264 100) \u2014 the number of elements in the array A. The\nnext line contains n integers a1, a2, ..., an ( - 10^3 \u2264 ai \u2264 10^3) \u2014 the\nelements of the array A. Output If it is not possible to split the array A and\nsatisfy all the constraints, print single line containing \"NO\" (without\nquotes). Otherwise in the first line print \"YES\" (without quotes). In the next\nline print single integer k \u2014 the number of new arrays. In each of the next k\nlines print two integers li and ri which denote the subarray A[li... ri] of\nthe initial array A being the i-th new array. Integers li, ri should satisfy\nthe following conditions: l1 = 1 rk = n ri + 1 = li + 1 for each 1 \u2264 i < k. If\nthere are multiple answers, print any of them. Examples Input 3 1 2 -3 Output\nYES 2 1 2 3 3 Input 8 9 -12 3 4 -4 -10 7 3 Output YES 2 1 2 3 8 Input 1 0\nOutput NO Input 4 1 2 3 -5 Output YES 4 1 1 2 2 3 3 4 4\n\n",
+        "cf_contest_id": 754,
+        "cf_index": "A",
+        "cf_rating": 1200,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n1 2 -3\r\n",
+                "YES\r\n3\r\n1 1\r\n2 2\r\n3 3\r\n"
+            ],
+            [
+                "8\r\n9 -12 3 4 -4 -10 7 3\r\n",
+                "YES\r\n8\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n"
+            ],
+            [
+                "1\r\n0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 2 3 -5\r\n",
+                "YES\r\n4\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6\r\n0 0 0 0 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7\r\n0 0 0 0 3 -3 0\r\n",
+                "YES\r\n2\r\n1 5\r\n6 7\r\n"
+            ],
+            [
+                "5\r\n0 0 -4 0 0\r\n",
+                "YES\r\n1\r\n1 5\r\n"
+            ],
+            [
+                "100\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -38 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "YES\r\n1\r\n1 100\r\n"
+            ],
+            [
+                "100\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100\r\n0 0 -17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 17 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "YES\r\n2\r\n1 34\r\n35 100\r\n"
+            ],
+            [
+                "3\r\n1 -3 3\r\n",
+                "YES\r\n3\r\n1 1\r\n2 2\r\n3 3\r\n"
+            ],
+            [
+                "3\r\n1 0 -1\r\n",
+                "YES\r\n2\r\n1 2\r\n3 3\r\n"
+            ],
+            [
+                "3\r\n3 0 0\r\n",
+                "YES\r\n1\r\n1 3\r\n"
+            ],
+            [
+                "3\r\n0 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\n-3 3 0\r\n",
+                "YES\r\n2\r\n1 1\r\n2 3\r\n"
+            ],
+            [
+                "4\r\n3 -2 -1 3\r\n",
+                "YES\r\n4\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n-1 0 1 0\r\n",
+                "YES\r\n2\r\n1 2\r\n3 4\r\n"
+            ],
+            [
+                "4\r\n0 0 0 3\r\n",
+                "YES\r\n1\r\n1 4\r\n"
+            ],
+            [
+                "4\r\n0 0 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n3 0 -3 0\r\n",
+                "YES\r\n2\r\n1 2\r\n3 4\r\n"
+            ],
+            [
+                "5\r\n-3 2 2 0 -2\r\n",
+                "YES\r\n4\r\n1 1\r\n2 2\r\n3 4\r\n5 5\r\n"
+            ],
+            [
+                "5\r\n0 -1 2 0 -1\r\n",
+                "YES\r\n3\r\n1 2\r\n3 4\r\n5 5\r\n"
+            ],
+            [
+                "5\r\n0 2 0 0 0\r\n",
+                "YES\r\n1\r\n1 5\r\n"
+            ],
+            [
+                "5\r\n0 0 0 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n0 0 0 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "20\r\n101 89 -166 -148 -38 -135 -138 193 14 -134 -185 -171 -52 -191 195 39 -148 200 51 -73\r\n",
+                "YES\r\n20\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 13\r\n14 14\r\n15 15\r\n16 16\r\n17 17\r\n18 18\r\n19 19\r\n20 20\r\n"
+            ],
+            [
+                "20\r\n-118 -5 101 7 9 144 55 -55 -9 -126 -71 -71 189 -64 -187 123 0 -48 -12 138\r\n",
+                "YES\r\n19\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 13\r\n14 14\r\n15 15\r\n16 17\r\n18 18\r\n19 19\r\n20 20\r\n"
+            ],
+            [
+                "20\r\n-161 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "YES\r\n1\r\n1 20\r\n"
+            ],
+            [
+                "20\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "20\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 -137 0 0 0 0 137\r\n",
+                "YES\r\n2\r\n1 19\r\n20 20\r\n"
+            ],
+            [
+                "40\r\n64 -94 -386 -78 35 -233 33 82 -5 -200 368 -259 124 353 390 -305 -247 -133 379 44 133 -146 151 -217 -16 53 -157 186 -203 -8 117 -71 272 -290 -97 133 52 113 -280 -176\r\n",
+                "YES\r\n40\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 13\r\n14 14\r\n15 15\r\n16 16\r\n17 17\r\n18 18\r\n19 19\r\n20 20\r\n21 21\r\n22 22\r\n23 23\r\n24 24\r\n25 25\r\n26 26\r\n27 27\r\n28 28\r\n29 29\r\n30 30\r\n31 31\r\n32 32\r\n33 33\r\n34 34\r\n35 35\r\n36 36\r\n37 37\r\n38 38\r\n39 39\r\n40 40\r\n"
+            ],
+            [
+                "40\r\n120 -96 -216 131 231 -80 -166 -102 16 227 -120 105 43 -83 -53 229 24 190 -268 119 230 348 -33 19 0 -187 -349 -25 80 -38 -30 138 -104 337 -98 0 1 -66 -243 -231\r\n",
+                "YES\r\n38\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 13\r\n14 14\r\n15 15\r\n16 16\r\n17 17\r\n18 18\r\n19 19\r\n20 20\r\n21 21\r\n22 22\r\n23 23\r\n24 25\r\n26 26\r\n27 27\r\n28 28\r\n29 29\r\n30 30\r\n31 31\r\n32 32\r\n33 33\r\n34 34\r\n35 36\r\n37 37\r\n38 38\r\n39 39\r\n40 40\r\n"
+            ],
+            [
+                "40\r\n0 0 0 0 0 0 324 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "YES\r\n1\r\n1 40\r\n"
+            ],
+            [
+                "40\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "40\r\n0 0 0 0 0 308 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -308 0 0 0 0 0 0 0\r\n",
+                "YES\r\n2\r\n1 32\r\n33 40\r\n"
+            ],
+            [
+                "60\r\n-288 -213 -213 -23 496 489 137 -301 -219 -296 -577 269 -153 -52 -505 -138 -377 500 -256 405 588 274 -115 375 -93 117 -360 -160 429 -339 502 310 502 572 -41 -26 152 -203 562 -525 -179 -67 424 62 -329 -127 352 -474 417 -30 518 326 200 -598 471 107 339 107 -9 -244\r\n",
+                "YES\r\n60\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 13\r\n14 14\r\n15 15\r\n16 16\r\n17 17\r\n18 18\r\n19 19\r\n20 20\r\n21 21\r\n22 22\r\n23 23\r\n24 24\r\n25 25\r\n26 26\r\n27 27\r\n28 28\r\n29 29\r\n30 30\r\n31 31\r\n32 32\r\n33 33\r\n34 34\r\n35 35\r\n36 36\r\n37 37\r\n38 38\r\n39 39\r\n40 40\r\n41 41\r\n42 42\r\n43 43\r\n44 44\r\n45 45\r\n46 46\r\n47 47\r\n48 48\r\n49 49\r\n50 50\r\n51 51\r\n52 52\r\n53 53\r\n54 54\r\n55 55\r\n56 56\r\n57 57\r\n58 58\r\n59 59\r\n60 60\r\n"
+            ],
+            [
+                "60\r\n112 141 -146 -389 175 399 -59 327 -41 397 263 -422 157 0 471 -2 -381 -438 99 368 173 9 -171 118 24 111 120 70 11 317 -71 -574 -139 0 -477 -211 -116 -367 16 568 -75 -430 75 -179 -21 156 291 -422 441 -224 -8 -337 -104 381 60 -138 257 91 103 -359\r\n",
+                "YES\r\n58\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n6 6\r\n7 7\r\n8 8\r\n9 9\r\n10 10\r\n11 11\r\n12 12\r\n13 14\r\n15 15\r\n16 16\r\n17 17\r\n18 18\r\n19 19\r\n20 20\r\n21 21\r\n22 22\r\n23 23\r\n24 24\r\n25 25\r\n26 26\r\n27 27\r\n28 28\r\n29 29\r\n30 30\r\n31 31\r\n32 32\r\n33 34\r\n35 35\r\n36 36\r\n37 37\r\n38 38\r\n39 39\r\n40 40\r\n41 41\r\n42 42\r\n43 43\r\n44 44\r\n45 45\r\n46 46\r\n47 47\r\n48 48\r\n49 49\r\n50 50\r\n51 51\r\n52 52\r\n53 53\r\n54 54\r\n55 55\r\n56 56\r\n57 57\r\n58 58\r\n59 59\r\n60 60\r\n"
+            ],
+            [
+                "60\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -238 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "YES\r\n1\r\n1 60\r\n"
+            ],
+            [
+                "60\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "60\r\n0 0 0 0 0 0 0 0 0 -98 0 0 0 0 0 0 0 0 98 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "YES\r\n2\r\n1 18\r\n19 60\r\n"
+            ],
+            [
+                "80\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 668 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "YES\r\n1\r\n1 80\r\n"
+            ],
+            [
+                "80\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "80\r\n0 0 0 0 0 0 0 0 0 0 0 0 -137 137 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "YES\r\n2\r\n1 13\r\n14 80\r\n"
+            ],
+            [
+                "100\r\n0 0 697 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "YES\r\n1\r\n1 100\r\n"
+            ],
+            [
+                "100\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -475 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 475 0 0 0 0\r\n",
+                "YES\r\n2\r\n1 95\r\n96 100\r\n"
+            ],
+            [
+                "4\r\n0 0 3 -3\r\n",
+                "YES\r\n2\r\n1 3\r\n4 4\r\n"
+            ],
+            [
+                "4\r\n1 0 0 0\r\n",
+                "YES\r\n1\r\n1 4\r\n"
+            ],
+            [
+                "4\r\n3 3 3 3\r\n",
+                "YES\r\n4\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n"
+            ],
+            [
+                "2\r\n0 1\r\n",
+                "YES\r\n1\r\n1 2\r\n"
+            ],
+            [
+                "4\r\n0 -1 1 0\r\n",
+                "YES\r\n2\r\n1 2\r\n3 4\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "YES\r\n1\r\n1 1\r\n"
+            ],
+            [
+                "5\r\n0 0 1 0 0\r\n",
+                "YES\r\n1\r\n1 5\r\n"
+            ],
+            [
+                "4\r\n0 0 1 0\r\n",
+                "YES\r\n1\r\n1 4\r\n"
+            ],
+            [
+                "10\r\n1 2 0 0 3 -3 0 0 -3 0\r\n",
+                "YES\r\n5\r\n1 1\r\n2 4\r\n5 5\r\n6 8\r\n9 10\r\n"
+            ],
+            [
+                "3\r\n0 -1 0\r\n",
+                "YES\r\n1\r\n1 3\r\n"
+            ],
+            [
+                "2\r\n1 0\r\n",
+                "YES\r\n1\r\n1 2\r\n"
+            ],
+            [
+                "5\r\n3 -3 0 0 0\r\n",
+                "YES\r\n2\r\n1 1\r\n2 5\r\n"
+            ],
+            [
+                "3\r\n0 1 0\r\n",
+                "YES\r\n1\r\n1 3\r\n"
+            ],
+            [
+                "4\r\n0 0 0 1\r\n",
+                "YES\r\n1\r\n1 4\r\n"
+            ],
+            [
+                "4\r\n1 -1 1 -1\r\n",
+                "YES\r\n4\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n"
+            ],
+            [
+                "1\r\n-1\r\n",
+                "YES\r\n1\r\n1 1\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n",
+                "YES\r\n2\r\n1 1\r\n2 2\r\n"
+            ],
+            [
+                "2\r\n1 -1\r\n",
+                "YES\r\n2\r\n1 1\r\n2 2\r\n"
+            ],
+            [
+                "2\r\n0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2\r\n0 -1\r\n",
+                "YES\r\n1\r\n1 2\r\n"
+            ],
+            [
+                "2\r\n-1 1\r\n",
+                "YES\r\n2\r\n1 1\r\n2 2\r\n"
+            ],
+            [
+                "2\r\n-1 0\r\n",
+                "YES\r\n1\r\n1 2\r\n"
+            ],
+            [
+                "2\r\n-1 -1\r\n",
+                "YES\r\n2\r\n1 1\r\n2 2\r\n"
+            ],
+            [
+                "3\r\n5 -5 5\r\n",
+                "YES\r\n3\r\n1 1\r\n2 2\r\n3 3\r\n"
+            ],
+            [
+                "5\r\n1 0 -1 0 1\r\n",
+                "YES\r\n3\r\n1 2\r\n3 4\r\n5 5\r\n"
+            ],
+            [
+                "6\r\n0 0 0 3 0 0\r\n",
+                "YES\r\n1\r\n1 6\r\n"
+            ],
+            [
+                "3\r\n1 -1 1\r\n",
+                "YES\r\n3\r\n1 1\r\n2 2\r\n3 3\r\n"
+            ]
+        ]
+    }
+]

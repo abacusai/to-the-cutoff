@@ -1,0 +1,88 @@
+[
+    {
+        "name": "XOR-ranges",
+        "description": "Given integers \n    c_0, c_1, \n    \u2026, c_k-1\n we can define the cost of\na number \n    0 \n    \u2264 x < 2^k\n as \n    p(x) = \n    \u2211_i=0^k-1\n    (\n    \n    \n    \u230a\n    x/2^i\n    \n    \u230b\n     2 \n    )\n    \n    \u00b7 c_i\n. In other words, the cost of number \n    x\n is the sum of\n\n    c_i\n over the bits of \n    x\n which are equal to one. Let's define the\ncost of array \n    a\n of length \n    n \n    \u2265 2\n with elements from \n    [0,\n    2^k)\n as follows: \n    cost(a) = \n    \u2211_i=1^n - 1 p(a_i\n    \u2295\n    a_i+1)\n, where \n    \u2295\n denotes bitwise exclusive OR operation. You\nhave to construct an array of length \n    n\n with minimal cost, given that\neach element should belong to the given segment: \n    l_i\n    \u2264 a_i\n    \u2264\n    r_i\n. Input The first line contains two integers \n    n\n and \n    k\n (\n    2\n    \n    \u2264 n \n    \u2264 50\n, \n    1 \n    \u2264 k \n    \u2264 50\n) \u2014 the size of an array and bit\nlength of the numbers in question. Next \n    n\n lines contain the restrictions\nfor elements of the array: the \n    i\n-th line contains two integers\n\n    l_i\n and \n    r_i\n (\n    0 \n    \u2264 l_i\n    \u2264 r_i < 2^k\n). The\nlast line contains integers \n    c_0, c_1, \n    \u2026, c_k-1\n (\n    0 \n    \u2264\n    c_i\n    \u2264 10^12\n). Output Output one integer \u2014 the minimal cost of an\narray satisfying all the restrictions. Examples Input 4 3 3 3 5 5 6 6 1 1 5 2\n7 Output 30 Input 3 3 2 2 3 4 4 6 1 10 100 Output 102 Note In the first\nexample there is only one array satisfying all the restrictions \u2014 \n    [3, 5, 6,\n    1]\n \u2014 and its cost is equal to \n    cost([3, 5, 6, 1]) = p(3 \n    \u2295 5) + p(5\n    \n    \u2295 6) + p(6 \n    \u2295 1) = p(6) + p(3) + p(7) = (c_1 + c_2) + (c_0\n    + c_1) + (c_0 + c_1 + c_2) = (2 + 7) + (5 + 2) + (5 + 2 + 7) = 30\n.\nIn the second example the only optimal array is \n    [2, 3, 6]\n.\n\n",
+        "cf_contest_id": 1456,
+        "cf_index": "E",
+        "cf_rating": 3500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 3\r\n3 3\r\n5 5\r\n6 6\r\n1 1\r\n5 2 7\r\n",
+                "30\r\n"
+            ],
+            [
+                "3 3\r\n2 2\r\n3 4\r\n4 6\r\n1 10 100\r\n",
+                "102\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 5\r\n21 22\r\n10 25\r\n5 6\r\n20 25\r\n15 22\r\n220831175973 881146983110 327593622957 374348001860 890323220936\r\n",
+                "1780646441872\r\n"
+            ],
+            [
+                "5 5\r\n29 30\r\n0 31\r\n27 27\r\n8 12\r\n22 29\r\n984073129692 983201572749 898754808413 467672937771 522930565016\r\n",
+                "2927817511194\r\n"
+            ],
+            [
+                "5 5\r\n15 15\r\n26 29\r\n21 24\r\n30 31\r\n29 31\r\n464924910211 532807243509 607000608879 778413775283 364534297122\r\n",
+                "2986976334706\r\n"
+            ],
+            [
+                "10 5\r\n15 24\r\n15 16\r\n6 31\r\n14 15\r\n11 27\r\n4 9\r\n13 24\r\n5 5\r\n12 17\r\n22 22\r\n235382999649 482767249668 234804588461 91777629988 456027010611\r\n",
+                "2115832659536\r\n"
+            ],
+            [
+                "10 5\r\n11 26\r\n5 13\r\n10 24\r\n23 31\r\n0 3\r\n24 31\r\n6 18\r\n9 11\r\n0 30\r\n7 30\r\n540296777747 288041865285 439725561347 57841389443 85715410454\r\n",
+                "458544420702\r\n"
+            ],
+            [
+                "10 5\r\n24 25\r\n19 25\r\n29 30\r\n10 10\r\n17 18\r\n3 5\r\n6 6\r\n27 28\r\n24 25\r\n18 19\r\n721346627811 595743484034 307306176471 985410838490 311769045406\r\n",
+                "8411250823148\r\n"
+            ],
+            [
+                "50 5\r\n2 2\r\n21 23\r\n23 24\r\n5 9\r\n1 10\r\n22 23\r\n20 20\r\n20 20\r\n4 30\r\n10 16\r\n13 16\r\n29 30\r\n15 27\r\n10 10\r\n7 10\r\n1 1\r\n9 20\r\n27 30\r\n16 18\r\n0 1\r\n19 19\r\n14 15\r\n21 21\r\n21 30\r\n5 10\r\n2 8\r\n9 10\r\n29 30\r\n13 18\r\n1 2\r\n27 28\r\n19 26\r\n18 20\r\n30 31\r\n1 1\r\n7 13\r\n14 16\r\n15 16\r\n13 13\r\n28 29\r\n7 11\r\n1 31\r\n12 17\r\n14 17\r\n4 4\r\n2 2\r\n25 26\r\n18 18\r\n21 22\r\n18 20\r\n610358230892 956644570492 252417318169 702589714456 805976417072\r\n",
+                "43106377711194\r\n"
+            ],
+            [
+                "50 5\r\n9 31\r\n5 24\r\n7 19\r\n30 30\r\n4 28\r\n9 30\r\n23 23\r\n17 17\r\n2 25\r\n16 28\r\n18 28\r\n1 27\r\n6 10\r\n17 24\r\n12 18\r\n9 23\r\n4 15\r\n0 31\r\n14 29\r\n4 25\r\n4 27\r\n6 30\r\n6 6\r\n27 30\r\n0 23\r\n21 31\r\n5 16\r\n4 30\r\n3 4\r\n1 13\r\n13 30\r\n14 29\r\n5 27\r\n23 25\r\n0 18\r\n19 30\r\n15 21\r\n7 8\r\n16 30\r\n23 23\r\n14 20\r\n10 25\r\n9 20\r\n11 23\r\n16 31\r\n5 28\r\n6 21\r\n7 16\r\n18 27\r\n2 30\r\n736459467753 75192169718 125521460660 821658773841 944005207884\r\n",
+                "16779323272217\r\n"
+            ],
+            [
+                "50 5\r\n26 27\r\n27 29\r\n1 2\r\n30 30\r\n13 14\r\n19 20\r\n11 13\r\n3 3\r\n16 16\r\n15 21\r\n8 9\r\n4 16\r\n27 29\r\n10 11\r\n20 20\r\n11 12\r\n21 21\r\n11 12\r\n15 15\r\n8 10\r\n28 29\r\n2 2\r\n27 27\r\n18 18\r\n4 5\r\n3 4\r\n8 9\r\n24 24\r\n4 5\r\n13 14\r\n15 18\r\n2 2\r\n8 10\r\n20 25\r\n18 19\r\n14 16\r\n11 12\r\n14 16\r\n22 23\r\n13 13\r\n28 29\r\n13 15\r\n26 27\r\n19 21\r\n14 14\r\n26 27\r\n27 28\r\n0 1\r\n15 17\r\n12 13\r\n9102704158 228514629834 240807728989 386790924916 734740190859\r\n",
+                "39006537491268\r\n"
+            ],
+            [
+                "5 10\r\n999 1006\r\n1001 1001\r\n228 230\r\n475 491\r\n278 278\r\n822033185899 869158082680 195840934985 845280730801 99478968027 325442362919 47069076860 247760589695 616492125634 941841336850\r\n",
+                "5626889519984\r\n"
+            ],
+            [
+                "5 10\r\n364 850\r\n152 337\r\n584 625\r\n571 591\r\n31 409\r\n671589620448 348684059492 446342640119 964651398011 560971597790 729760427496 732473634626 270241896972 367299080124 476104093674\r\n",
+                "1589749164444\r\n"
+            ],
+            [
+                "5 10\r\n96 106\r\n858 858\r\n911 912\r\n135 135\r\n835 835\r\n605368353849 241420779502 283796787974 231617150190 442025395694 251193677293 116715157928 806090090148 649673917949 900550969941\r\n",
+                "9036108708490\r\n"
+            ],
+            [
+                "10 10\r\n360 913\r\n575 575\r\n562 564\r\n908 954\r\n74 83\r\n207 208\r\n824 825\r\n255 255\r\n758 804\r\n921 928\r\n73289638790 105590679278 357210350312 115132814423 982410615752 997680839308 878580787865 110027694341 813421004463 40287166313\r\n",
+                "12588204794262\r\n"
+            ],
+            [
+                "10 10\r\n306 797\r\n0 509\r\n253 753\r\n477 683\r\n29 1021\r\n348 572\r\n715 775\r\n173 618\r\n329 359\r\n148 247\r\n16850339782 565954330434 872271041819 336536341130 710168555725 306935891005 487745959740 149265368568 669221940910 899930517279\r\n",
+                "4106057594424\r\n"
+            ],
+            [
+                "10 10\r\n480 484\r\n314 338\r\n241 295\r\n364 415\r\n46 94\r\n631 631\r\n996 1007\r\n391 502\r\n226 226\r\n249 249\r\n453990250951 758646225533 533256444716 941616975099 650219672031 464289848200 877903900957 897513204178 45405211314 796143664053\r\n",
+                "12761912173177\r\n"
+            ]
+        ]
+    }
+]

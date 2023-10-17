@@ -1,0 +1,163 @@
+[
+    {
+        "name": "Guard Towers",
+        "description": "In a far away kingdom lives a very greedy king. To defend his land, he built n\nguard towers. Apart from the towers the kingdom has two armies, each headed by\na tyrannical and narcissistic general. The generals can't stand each other,\nspecifically, they will never let soldiers of two armies be present in one\ntower. During defence operations to manage a guard tower a general has to send\npart of his army to that tower. Each general asks some fee from the king for\nmanaging towers. As they live in a really far away kingdom, each general\nevaluates his fee in the following weird manner: he finds two remotest (the\nmost distant) towers, where the soldiers of his army are situated and asks for\nthe fee equal to the distance. Each tower is represented by a point on the\nplane with coordinates (x, y), and the distance between two points with\ncoordinates (x1, y1) and (x2, y2) is determined in this kingdom as |x1 - x2| +\n|y1 - y2|. The greedy king was not exactly satisfied with such a requirement\nfrom the generals, that's why he only agreed to pay one fee for two generals,\nequal to the maximum of two demanded fees. However, the king is still green\nwith greed, and among all the ways to arrange towers between armies, he wants\nto find the cheapest one. Each tower should be occupied by soldiers of exactly\none army. He hired you for that. You should find the minimum amount of money\nthat will be enough to pay the fees. And as the king is also very scrupulous,\nyou should also count the number of arrangements that will cost the same\namount of money. As their number can be quite large, it is enough for the king\nto know it as a remainder from dividing by 10^9 + 7. Two arrangements are\ndistinct if the sets of towers occupied by soldiers of the first general are\ndistinct. Input The first line contains an integer n (2 \u2264 n \u2264 5000), n is the\nnumber of guard towers. Then follow n lines, each of which contains two\nintegers x, y \u2014 the coordinates of the i-th tower (0 \u2264 x, y \u2264 5000). No two\ntowers are present at one point. Pretest 6 is one of the maximal tests for\nthis problem. Output Print on the first line the smallest possible amount of\nmoney that will be enough to pay fees to the generals. Print on the second\nline the number of arrangements that can be carried out using the smallest\npossible fee. This number should be calculated modulo 1000000007 (10^9 + 7).\nExamples Input 2 0 0 1 1 Output 0 2 Input 4 0 0 0 1 1 0 1 1 Output 1 4 Input 3\n0 0 1000 1000 5000 5000 Output 2000 2 Note In the first example there are only\ntwo towers, the distance between which is equal to 2. If we give both towers\nto one general, then we well have to pay 2 units of money. If each general\nreceives a tower to manage, to fee will be equal to 0. That is the smallest\npossible fee. As you can easily see, we can obtain it in two ways.\n\n",
+        "cf_contest_id": 85,
+        "cf_index": "E",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "dsu",
+            "geometry",
+            "graphs",
+            "sortings"
+        ],
+        "time_limit_seconds": 1.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n0 0\r\n1 1\r\n",
+                "0\r\n2"
+            ],
+            [
+                "4\r\n0 0\r\n0 1\r\n1 0\r\n1 1\r\n",
+                "1\r\n4"
+            ],
+            [
+                "3\r\n0 0\r\n1000 1000\r\n5000 5000\r\n",
+                "2000\r\n2"
+            ]
+        ],
+        "private_cases": [
+            [
+                "8\r\n0 0\r\n0 1\r\n0 2\r\n0 3\r\n1 0\r\n1 1\r\n1 2\r\n1 3\r\n",
+                "2\r\n2"
+            ],
+            [
+                "10\r\n2274 3072\r\n4142 108\r\n4292 4174\r\n1463 4247\r\n2578 4955\r\n193 3332\r\n2294 1076\r\n4127 3922\r\n2050 1817\r\n939 3565\r\n",
+                "4357\r\n2"
+            ],
+            [
+                "10\r\n0 0\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n2274 0\r\n3072 1\r\n4142 2\r\n108 3\r\n4292 4\r\n",
+                "2022\r\n2"
+            ],
+            [
+                "2\r\n0 1746\r\n1 3472\r\n",
+                "0\r\n2"
+            ],
+            [
+                "5\r\n0 1991\r\n1 3679\r\n2 3121\r\n3 1916\r\n4 3925\r\n",
+                "806\r\n2"
+            ],
+            [
+                "4\r\n0 4989\r\n1 3101\r\n2 1790\r\n3 2468\r\n",
+                "1312\r\n2"
+            ],
+            [
+                "17\r\n0 0\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n0 5\r\n0 6\r\n0 7\r\n1650 0\r\n245 1\r\n2588 2\r\n2762 3\r\n3496 4\r\n1257 5\r\n4796 6\r\n3092 7\r\n3446 8\r\n",
+                "2212\r\n2"
+            ],
+            [
+                "37\r\n0 0\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n0 5\r\n0 6\r\n0 7\r\n0 8\r\n0 9\r\n0 10\r\n0 11\r\n0 12\r\n0 13\r\n0 14\r\n0 15\r\n0 16\r\n0 17\r\n652 0\r\n336 1\r\n2370 2\r\n4904 3\r\n1074 4\r\n54 5\r\n4595 6\r\n4123 7\r\n3658 8\r\n194 9\r\n1264 10\r\n248 11\r\n3792 12\r\n1699 13\r\n3964 14\r\n273 15\r\n3265 16\r\n1629 17\r\n2095 18\r\n",
+                "2385\r\n2"
+            ],
+            [
+                "20\r\n4048 2872\r\n1541 1218\r\n1973 3234\r\n2873 3352\r\n3453 3282\r\n2104 3819\r\n644 459\r\n1583 970\r\n4597 1107\r\n442 4704\r\n2654 1429\r\n2789 339\r\n34 2087\r\n1409 3207\r\n2509 3243\r\n2880 3414\r\n583 4412\r\n1583 2199\r\n4999 3837\r\n1048 3388\r\n",
+                "5543\r\n512"
+            ],
+            [
+                "19\r\n2235 2900\r\n4457 2636\r\n460 860\r\n1353 231\r\n3307 1250\r\n3669 112\r\n1492 1577\r\n4745 2641\r\n2425 3492\r\n4898 3501\r\n4164 3904\r\n1305 3680\r\n2740 1637\r\n2811 3384\r\n774 2397\r\n787 3221\r\n1492 3252\r\n329 4003\r\n4268 1527\r\n",
+                "4796\r\n16"
+            ],
+            [
+                "15\r\n1828 2590\r\n4957 3650\r\n2295 2417\r\n2476 1714\r\n4349 4865\r\n457 3549\r\n4373 243\r\n3914 178\r\n1062 1853\r\n4805 2550\r\n4725 4206\r\n2534 455\r\n476 3815\r\n958 4131\r\n689 4503\r\n",
+                "5208\r\n16"
+            ],
+            [
+                "15\r\n0 0\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n0 5\r\n0 6\r\n1828 0\r\n2590 1\r\n4957 2\r\n3650 3\r\n2295 4\r\n2417 5\r\n2476 6\r\n1714 7\r\n",
+                "2482\r\n2"
+            ],
+            [
+                "20\r\n0 0\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n0 5\r\n0 6\r\n0 7\r\n0 8\r\n0 9\r\n4048 0\r\n2872 1\r\n1541 2\r\n1218 3\r\n1973 4\r\n3234 5\r\n2873 6\r\n3352 7\r\n3453 8\r\n3282 9\r\n",
+                "1978\r\n2"
+            ],
+            [
+                "19\r\n0 0\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n0 5\r\n0 6\r\n0 7\r\n0 8\r\n2235 0\r\n2900 1\r\n4457 2\r\n2636 3\r\n460 4\r\n860 5\r\n1353 6\r\n231 7\r\n3307 8\r\n1250 9\r\n",
+                "2224\r\n2"
+            ],
+            [
+                "20\r\n0 4048\r\n1 2872\r\n2 1541\r\n3 1218\r\n4 1973\r\n5 3234\r\n6 2873\r\n7 3352\r\n8 3453\r\n9 3282\r\n10 2104\r\n11 3819\r\n12 644\r\n13 459\r\n14 1583\r\n15 970\r\n16 4597\r\n17 1107\r\n18 442\r\n19 4704\r\n",
+                "1850\r\n2"
+            ],
+            [
+                "19\r\n0 2235\r\n1 2900\r\n2 4457\r\n3 2636\r\n4 460\r\n5 860\r\n6 1353\r\n7 231\r\n8 3307\r\n9 1250\r\n10 3669\r\n11 112\r\n12 1492\r\n13 1577\r\n14 4745\r\n15 2641\r\n16 2425\r\n17 3492\r\n18 4898\r\n",
+                "2318\r\n2"
+            ],
+            [
+                "10\r\n0 2274\r\n1 3072\r\n2 4142\r\n3 108\r\n4 4292\r\n5 4174\r\n6 1463\r\n7 4247\r\n8 2578\r\n9 4955\r\n",
+                "2378\r\n2"
+            ],
+            [
+                "2\r\n0 1746\r\n5000 3472\r\n",
+                "0\r\n2"
+            ],
+            [
+                "5\r\n0 1991\r\n0 3679\r\n5000 3121\r\n5000 1916\r\n5000 3925\r\n",
+                "2009\r\n2"
+            ],
+            [
+                "10\r\n0 2274\r\n0 3072\r\n0 4142\r\n0 108\r\n0 4292\r\n5000 4174\r\n5000 1463\r\n5000 4247\r\n5000 2578\r\n5000 4955\r\n",
+                "4184\r\n2"
+            ],
+            [
+                "20\r\n0 4048\r\n0 2872\r\n0 1541\r\n0 1218\r\n0 1973\r\n0 3234\r\n0 2873\r\n0 3352\r\n0 3453\r\n0 3282\r\n5000 2104\r\n5000 3819\r\n5000 644\r\n5000 459\r\n5000 1583\r\n5000 970\r\n5000 4597\r\n5000 1107\r\n5000 442\r\n5000 4704\r\n",
+                "4262\r\n2"
+            ],
+            [
+                "30\r\n0 58\r\n0 1909\r\n0 3941\r\n0 2329\r\n0 4655\r\n0 3057\r\n0 45\r\n0 1693\r\n0 90\r\n0 1609\r\n0 4015\r\n0 4306\r\n0 4758\r\n0 604\r\n0 4041\r\n5000 3019\r\n5000 2906\r\n5000 1160\r\n5000 4946\r\n5000 841\r\n5000 4501\r\n5000 586\r\n5000 1783\r\n5000 695\r\n5000 3862\r\n5000 3507\r\n5000 1103\r\n5000 2790\r\n5000 2421\r\n5000 1281\r\n",
+                "4713\r\n2"
+            ],
+            [
+                "50\r\n0 3607\r\n0 1508\r\n0 2977\r\n0 4550\r\n0 780\r\n0 1940\r\n0 2865\r\n0 4140\r\n0 2603\r\n0 4027\r\n0 2835\r\n0 4517\r\n0 2221\r\n0 4370\r\n0 3955\r\n0 1352\r\n0 3763\r\n0 4742\r\n0 3189\r\n0 3882\r\n0 1667\r\n0 3901\r\n0 4771\r\n0 1407\r\n0 753\r\n5000 2871\r\n5000 491\r\n5000 1955\r\n5000 3007\r\n5000 2357\r\n5000 698\r\n5000 4579\r\n5000 3583\r\n5000 4305\r\n5000 3169\r\n5000 4248\r\n5000 1909\r\n5000 4564\r\n5000 4367\r\n5000 3948\r\n5000 1505\r\n5000 4637\r\n5000 1227\r\n5000 2741\r\n5000 497\r\n5000 4067\r\n5000 1371\r\n5000 2865\r\n5000 856\r\n5000 3293\r\n",
+                "4146\r\n2"
+            ],
+            [
+                "2\r\n0 0\r\n5000 5000\r\n",
+                "0\r\n2"
+            ],
+            [
+                "4\r\n0 0\r\n0 1\r\n5000 5000\r\n5000 4999\r\n",
+                "1\r\n2"
+            ],
+            [
+                "5\r\n0 0\r\n0 1\r\n5000 5000\r\n5000 4999\r\n5000 4998\r\n",
+                "2\r\n2"
+            ],
+            [
+                "10\r\n0 0\r\n0 1\r\n0 2\r\n0 3\r\n1 0\r\n5000 5000\r\n5000 4999\r\n5000 4998\r\n5000 4997\r\n4999 5000\r\n",
+                "4\r\n2"
+            ],
+            [
+                "20\r\n0 0\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n1 0\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n5000 5000\r\n5000 4999\r\n5000 4998\r\n5000 4997\r\n5000 4996\r\n4999 5000\r\n4999 4999\r\n4999 4998\r\n4999 4997\r\n4999 4996\r\n",
+                "5\r\n2"
+            ],
+            [
+                "30\r\n0 0\r\n0 1\r\n0 2\r\n0 3\r\n0 4\r\n1 0\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n2 0\r\n2 1\r\n2 2\r\n2 3\r\n2 4\r\n5000 5000\r\n5000 4999\r\n5000 4998\r\n5000 4997\r\n5000 4996\r\n4999 5000\r\n4999 4999\r\n4999 4998\r\n4999 4997\r\n4999 4996\r\n4998 5000\r\n4998 4999\r\n4998 4998\r\n4998 4997\r\n4998 4996\r\n",
+                "6\r\n2"
+            ],
+            [
+                "4\r\n0 0\r\n5000 5000\r\n0 5000\r\n5000 0\r\n",
+                "5000\r\n4"
+            ],
+            [
+                "10\r\n0 0\r\n0 1\r\n5000 5000\r\n5000 4999\r\n0 5000\r\n0 4999\r\n5000 0\r\n5000 1\r\n5000 2\r\n5000 3\r\n",
+                "5000\r\n2"
+            ],
+            [
+                "20\r\n0 0\r\n0 1\r\n0 2\r\n0 3\r\n1 0\r\n5000 5000\r\n5000 4999\r\n5000 4998\r\n5000 4997\r\n4999 5000\r\n0 5000\r\n0 4999\r\n0 4998\r\n0 4997\r\n1 5000\r\n5000 0\r\n5000 1\r\n5000 2\r\n5000 3\r\n4999 0\r\n",
+                "5001\r\n2"
+            ]
+        ]
+    }
+]

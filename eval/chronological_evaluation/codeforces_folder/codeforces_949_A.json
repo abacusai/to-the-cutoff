@@ -1,0 +1,107 @@
+[
+    {
+        "name": "Zebras",
+        "description": "Oleg writes down the history of the days he lived. For each day he decides if\nit was good or bad. Oleg calls a non-empty sequence of days a zebra, if it\nstarts with a bad day, ends with a bad day, and good and bad days are\nalternating in it. Let us denote bad days as 0 and good days as 1. Then, for\nexample, sequences of days 0, 010, 01010 are zebras, while sequences 1, 0110,\n0101 are not. Oleg tells you the story of days he lived in chronological order\nin form of string consisting of 0 and 1. Now you are interested if it is\npossible to divide Oleg's life history into several subsequences, each of\nwhich is a zebra, and the way it can be done. Each day must belong to exactly\none of the subsequences. For each of the subsequences, days forming it must be\nordered chronologically. Note that subsequence does not have to be a group of\nconsecutive days. Input In the only line of input data there is a non-empty\nstring s consisting of characters 0 and 1, which describes the history of\nOleg's life. Its length (denoted as |s|) does not exceed 200 000 characters.\nOutput If there is a way to divide history into zebra subsequences, in the\nfirst line of output you should print an integer k (1 \u2264 k \u2264 |s|), the\nresulting number of subsequences. In the i-th of following k lines first print\nthe integer li (1 \u2264 li \u2264 |s|), which is the length of the i-th subsequence,\nand then li indices of days forming the subsequence. Indices must follow in\nascending order. Days are numbered starting from 1. Each index from 1 to n\nmust belong to exactly one subsequence. If there is no way to divide day\nhistory into zebra subsequences, print -1. Subsequences may be printed in any\norder. If there are several solutions, you may print any of them. You do not\nhave to minimize nor maximize the value of k. Examples Input 0010100 Output 3\n3 1 3 4 3 2 5 6 1 7 Input 111 Output -1\n\n",
+        "cf_contest_id": 949,
+        "cf_index": "A",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "0010100\r\n",
+                "3\r\n1 1\r\n5 2 3 4 5 6\r\n1 7\r\n"
+            ],
+            [
+                "111\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "0\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "0101010101\r\n",
+                "-1\r\n"
+            ],
+            [
+                "010100001\r\n",
+                "-1\r\n"
+            ],
+            [
+                "000111000\r\n",
+                "3\r\n3 1 6 7\r\n3 2 5 8\r\n3 3 4 9\r\n"
+            ],
+            [
+                "0101001000\r\n",
+                "4\r\n5 1 2 3 4 5\r\n3 6 7 8\r\n1 9\r\n1 10\r\n"
+            ],
+            [
+                "0000001000\r\n",
+                "8\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n3 6 7 8\r\n1 9\r\n1 10\r\n"
+            ],
+            [
+                "0101\r\n",
+                "-1\r\n"
+            ],
+            [
+                "000101110\r\n",
+                "-1\r\n"
+            ],
+            [
+                "010101010\r\n",
+                "1\r\n9 1 2 3 4 5 6 7 8 9\r\n"
+            ],
+            [
+                "0101001010\r\n",
+                "2\r\n5 1 2 3 4 5\r\n5 6 7 8 9 10\r\n"
+            ],
+            [
+                "0100101100\r\n",
+                "2\r\n5 1 2 3 8 9\r\n5 4 5 6 7 10\r\n"
+            ],
+            [
+                "0110100000\r\n",
+                "-1\r\n"
+            ],
+            [
+                "0000000000\r\n",
+                "10\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n"
+            ],
+            [
+                "1111111111\r\n",
+                "-1\r\n"
+            ],
+            [
+                "0010101100\r\n",
+                "2\r\n3 1 8 9\r\n7 2 3 4 5 6 7 10\r\n"
+            ],
+            [
+                "1010000\r\n",
+                "-1\r\n"
+            ],
+            [
+                "0001110\r\n",
+                "-1\r\n"
+            ],
+            [
+                "0000000000011001100011110101000101000010010111000100110110000011010011110110001100100001001001010010\r\n",
+                "22\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n7 9 24 25 26 27 28 29\r\n7 10 13 14 17 18 23 30\r\n11 11 12 15 16 19 22 31 32 33 34 35\r\n3 20 21 36\r\n3 37 46 47\r\n9 38 39 40 45 48 57 58 75 76\r\n17 41 42 43 44 49 50 51 54 55 56 59 72 73 74 77 80 81\r\n9 52 53 60 71 78 79 82 83 84\r\n7 61 64 65 66 67 70 85\r\n5 62 63 68 69 86\r\n3 87 88 89\r\n3 90 91 92\r\n5 93 94 95 96 97\r\n3 98 99 100\r\n"
+            ],
+            [
+                "0010011100000000\r\n",
+                "8\r\n3 1 8 9\r\n5 2 3 4 7 10\r\n3 5 6 11\r\n1 12\r\n1 13\r\n1 14\r\n1 15\r\n1 16\r\n"
+            ]
+        ]
+    }
+]

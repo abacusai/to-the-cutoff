@@ -1,0 +1,105 @@
+[
+    {
+        "name": "Flipping Game",
+        "description": "Iahub got bored, so he invented a game to be played on paper. He writes n\nintegers a1, a2, ..., an. Each of those integers can be either 0 or 1. He's\nallowed to do exactly one move: he chooses two indices i and j (1 \u2264 i \u2264 j \u2264 n)\nand flips all values ak for which their positions are in range [i, j] (that is\ni \u2264 k \u2264 j). Flip the value of x means to apply operation x = 1 - x. The goal\nof the game is that after exactly one move to obtain the maximum number of\nones. Write a program to solve the little game of Iahub. Input The first line\nof the input contains an integer n (1 \u2264 n \u2264 100). In the second line of the\ninput there are n integers: a1, a2, ..., an. It is guaranteed that each of\nthose n values is either 0 or 1. Output Print an integer \u2014 the maximal number\nof 1s that can be obtained after exactly one move. Examples Input 5 1 0 0 1 0\nOutput 4 Input 4 1 0 0 1 Output 4 Note In the first case, flip the segment\nfrom 2 to 5 (i = 2, j = 5). That flip changes the sequence, it becomes: [1 1 1\n0 1]. So, it contains four ones. There is no way to make the whole sequence\nequal to [1 1 1 1 1]. In the second case, flipping only the second and the\nthird element (i = 2, j = 3) will turn all numbers into 1.\n\n",
+        "cf_contest_id": 327,
+        "cf_index": "A",
+        "cf_rating": 1200,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dp",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n1 0 0 1 0\r\n",
+                "4\r\n"
+            ],
+            [
+                "4\r\n1 0 0 1\r\n",
+                "4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "8\r\n1 0 0 0 1 0 0 0\r\n",
+                "7\r\n"
+            ],
+            [
+                "18\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "18\r\n"
+            ],
+            [
+                "23\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "22\r\n"
+            ],
+            [
+                "100\r\n0 1 0 1 1 1 0 1 0 1 0 0 1 1 1 1 0 0 1 1 1 1 1 1 1 0 0 1 1 1 0 1 1 0 0 0 1 1 1 1 0 0 1 1 1 0 0 1 1 0 1 1 1 0 0 0 1 0 0 0 0 0 1 1 0 0 1 1 1 1 1 1 1 1 0 1 1 1 0 1 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1\r\n",
+                "70\r\n"
+            ],
+            [
+                "100\r\n0 1 1 0 1 0 0 1 0 0 0 1 1 0 0 0 1 1 1 0 1 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0 0 0 1 0 0 0 0 0 1 1 0 1 0 1 0 1 1 1 0 1 0 1 1 0 0 1 1 0 0 1 1 1 0 0 1 0 0 1 1 0 1 0 0 1 1 0 1 0 0 1 1 0 0 0 0 1 0 0 0 0 1 1 1 1\r\n",
+                "60\r\n"
+            ],
+            [
+                "18\r\n0 1 0 1 0 1 0 1 0 1 1 0 1 1 0 1 1 0\r\n",
+                "11\r\n"
+            ],
+            [
+                "25\r\n0 1 0 0 0 0 0 1 0 1 0 1 0 0 0 0 1 1 1 0 0 1 1 0 1\r\n",
+                "18\r\n"
+            ],
+            [
+                "55\r\n0 0 1 1 0 0 0 1 0 1 1 0 1 1 1 0 1 1 1 1 1 0 0 1 0 0 1 0 1 1 0 0 1 0 1 1 0 1 1 1 1 0 1 1 0 0 0 0 1 1 0 1 1 1 1\r\n",
+                "36\r\n"
+            ],
+            [
+                "75\r\n1 1 0 1 0 1 1 0 0 0 0 0 1 1 1 1 1 0 1 0 1 0 0 0 0 1 1 1 0 1 0 0 1 1 0 1 0 0 1 1 0 1 0 1 0 1 0 0 0 0 1 0 0 1 1 1 0 0 1 0 1 1 0 0 0 0 1 1 0 0 0 1 0 0 0\r\n",
+                "44\r\n"
+            ],
+            [
+                "100\r\n0 0 1 0 1 0 0 1 1 0 1 1 0 1 0 1 1 0 0 0 0 0 1 0 0 1 1 0 0 0 1 0 0 1 1 0 0 1 1 1 0 0 0 0 1 0 1 1 1 0 0 1 0 1 1 1 1 1 1 1 0 1 0 1 0 0 1 0 1 1 1 0 0 0 0 1 0 1 1 0 0 1 1 0 1 1 1 1 0 1 1 1 0 0 1 1 0 1 0 1\r\n",
+                "61\r\n"
+            ],
+            [
+                "100\r\n0 0 0 1 0 0 0 1 0 1 1 0 1 1 1 1 1 0 1 0 1 1 0 0 1 1 0 1 0 1 0 1 0 1 1 0 1 1 0 0 0 1 1 1 1 0 1 1 0 1 1 1 1 0 1 0 0 1 0 1 0 0 0 0 1 1 0 0 1 0 0 1 1 0 1 1 0 1 0 0 1 1 0 1 1 1 1 0 1 0 0 1 0 1 1 1 0 1 1 0\r\n",
+                "61\r\n"
+            ],
+            [
+                "100\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "100\r\n"
+            ],
+            [
+                "100\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "99\r\n"
+            ],
+            [
+                "100\r\n0 0 1 1 1 0 1 1 0 0 1 0 1 0 1 0 0 1 0 1 1 0 0 1 1 1 1 1 1 0 1 0 0 1 0 0 0 0 1 1 1 0 1 1 1 0 1 1 1 0 0 1 0 0 1 1 0 0 0 1 1 1 0 1 1 0 0 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 1 1 0 1 1 1 0 1 1 1 1 1 0 0 0 0 1 0\r\n",
+                "61\r\n"
+            ],
+            [
+                "100\r\n0 1 1 1 1 1 1 0 0 0 1 1 0 0 0 1 0 0 0 0 0 0 1 1 1 0 0 0 1 1 1 0 1 0 0 1 1 0 0 0 1 1 1 1 1 1 1 1 1 1 0 0 1 0 1 0 0 0 0 1 0 1 0 1 0 0 1 0 1 0 1 1 0 0 0 0 0 1 1 1 0 1 1 0 1 1 0 0 0 1 0 1 1 0 0 0 0 0 0 1\r\n",
+                "59\r\n"
+            ],
+            [
+                "99\r\n1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 0 0 0 0 0 0 1 1 0 0 1 0 1 1 1 0 0 0 0 0 1 0 0 0 0 0 0 1 0 1 1 0 1 0 0 1 1 0 1 0 0 0 1 1 1 1 0 1 1 1 0 0 1 1 0 0 0 0 1 0 0 0 0 0 1 0 1 1 1\r\n",
+                "61\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

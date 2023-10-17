@@ -1,0 +1,80 @@
+[
+    {
+        "name": "Daleks' Invasion (easy)",
+        "description": "Heidi found out that the Daleks have created a network of bidirectional Time\nCorridors connecting different destinations (at different times!). She\nsuspects that they are planning another invasion on the entire Space and Time.\nIn order to counter the invasion, she plans to deploy a trap in the Time\nVortex, along a carefully chosen Time Corridor. She knows that tinkering with\nthe Time Vortex is dangerous, so she consulted the Doctor on how to proceed.\nShe has learned the following: Different Time Corridors require different\namounts of energy to keep stable. Daleks are unlikely to use all corridors in\ntheir invasion. They will pick a set of Corridors that requires the smallest\ntotal energy to maintain, yet still makes (time) travel possible between any\ntwo destinations (for those in the know: they will use a minimum spanning\ntree). Setting the trap may modify the energy required to keep the Corridor\nstable. Heidi decided to carry out a field test and deploy one trap, placing\nit along the first Corridor. But she needs to know whether the Daleks are\ngoing to use this corridor after the deployment of the trap. She gives you a\nmap of Time Corridors (an undirected graph) with energy requirements for each\nCorridor. For a Corridor \n    c\n, \n    E_max(c)\n is the largest \n    e \n    \u2264\n    10^9\n such that if we changed the required amount of energy of \n    c\n to\n\n    e\n, then the Daleks may still be using \n    c\n in their invasion (that\nis, it belongs to some minimum spanning tree). Your task is to calculate\n\n    E_max(c_1)\n for the Corridor \n    c_1\n that Heidi plans to arm with a\ntrap, which is the first edge in the graph. Input The first line contains\nintegers \n    n\n and \n    m\n (\n    2 \n    \u2264 n \n    \u2264 10^5\n, \n    n - 1 \n    \u2264 m\n    \n    \u2264 10^6\n), number of destinations to be invaded and the number of Time\nCorridors. Each of the next \n    m\n lines describes a Corridor: destinations\n\n    a\n, \n    b\n and energy \n    e\n (\n    1 \n    \u2264 a, b \n    \u2264 n\n, \n    a \n    \u2260\n    b\n, \n    0 \n    \u2264 e \n    \u2264 10^9\n). It's guaranteed, that no pair \n    a,\n    b\n will repeat and that the graph is connected \u2014 that is, it is\npossible to travel between any two destinations using zero or more Time\nCorridors. Output Output a single integer: \n    E_max(c_1)\n for the first\nCorridor \n    c_1\n from the input. Example Input 3 3 1 2 8 2 3 3 3 1 4 Output\n4 Note After the trap is set, the new energy requirement for the first\nCorridor may be either smaller, larger, or equal to the old energy\nrequiremenet. In the example, if the energy of the first Corridor is set to\n\n    4\n or less, then the Daleks may use the set of Corridors \n    1,2 \n    \n    , \n    \n     2,3\n (in particular, if it were set to less\nthan \n    4\n, then this would be the only set of Corridors that they would\nuse). However, if it is larger than \n    4\n, then they will instead use the\nset \n    2,3\n    \n    , \n    \n    3,1\n.\n\n",
+        "cf_contest_id": 1184,
+        "cf_index": "E1",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "graphs",
+            "trees"
+        ],
+        "time_limit_seconds": 6.0,
+        "memory_limit_bytes": 128.0,
+        "public_cases": [
+            [
+                "3 3\r\n1 2 8\r\n2 3 3\r\n3 1 4\r\n",
+                "4"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n1 2 944277353\r\n",
+                "1000000000"
+            ],
+            [
+                "10 9\r\n5 10 606854707\r\n3 8 737506631\r\n2 4 429066157\r\n8 9 947792932\r\n6 4 56831480\r\n2 5 541638168\r\n10 7 20498997\r\n7 9 250445792\r\n6 1 9522145\r\n",
+                "1000000000"
+            ],
+            [
+                "10 10\r\n4 8 149799098\r\n1 9 441387450\r\n2 6 928239402\r\n8 2 218467721\r\n5 4 977011818\r\n10 1 747500850\r\n10 7 851690801\r\n3 9 861306802\r\n6 3 699067097\r\n7 5 196064252\r\n",
+                "977011818"
+            ],
+            [
+                "10 9\r\n5 9 151288246\r\n3 5 481488672\r\n5 6 391594456\r\n10 5 728759526\r\n5 2 805393633\r\n5 4 714291015\r\n5 7 695244366\r\n1 5 225107090\r\n5 8 524571007\r\n",
+                "1000000000"
+            ],
+            [
+                "10 9\r\n2 6 346401989\r\n10 8 669413260\r\n1 2 610565686\r\n5 4 715678008\r\n7 3 871652693\r\n5 10 68113756\r\n8 3 201574229\r\n8 2 149162258\r\n5 9 785306306\r\n",
+                "1000000000"
+            ],
+            [
+                "10 9\r\n10 6 372466999\r\n8 10 747983735\r\n7 3 152533203\r\n9 4 277637756\r\n6 3 433907019\r\n3 5 559956918\r\n8 2 749679249\r\n3 1 793145160\r\n9 7 24657622\r\n",
+                "1000000000"
+            ],
+            [
+                "10 17\r\n8 2 166387394\r\n1 6 237498837\r\n6 9 99779164\r\n4 7 525284035\r\n5 3 354857458\r\n5 4 957219660\r\n4 8 447860623\r\n4 2 765484117\r\n4 1 862758183\r\n6 10 141683709\r\n6 3 249157457\r\n4 3 868580407\r\n4 10 509806549\r\n2 5 163095060\r\n6 4 653748301\r\n9 4 804011952\r\n7 6 240252621\r\n",
+                "509806549"
+            ],
+            [
+                "10 23\r\n3 7 292245429\r\n5 9 644603858\r\n6 1 884124407\r\n6 3 244841288\r\n1 10 38146622\r\n6 2 529286525\r\n8 9 335938769\r\n10 9 399043296\r\n5 1 23773535\r\n9 4 245601913\r\n1 4 137094263\r\n10 5 938320345\r\n8 10 163440023\r\n6 8 290082836\r\n8 5 883612433\r\n4 6 444836263\r\n5 7 574857993\r\n3 10 566664661\r\n1 7 471134851\r\n2 4 241024296\r\n3 9 830974156\r\n2 8 33633506\r\n2 5 836391860\r\n",
+                "471134851"
+            ],
+            [
+                "10 23\r\n6 4 861606467\r\n9 8 623704841\r\n10 1 133361044\r\n8 5 617644813\r\n6 7 165487071\r\n1 5 142216854\r\n3 5 794256868\r\n8 10 289613671\r\n2 10 444236719\r\n4 8 197742755\r\n9 7 686841046\r\n2 4 836881642\r\n4 1 256190959\r\n10 3 282914152\r\n2 5 819846864\r\n1 9 433108807\r\n5 4 253997951\r\n3 1 77348173\r\n3 2 726719509\r\n6 5 220427628\r\n7 3 870576760\r\n8 2 26067477\r\n9 3 980800089\r\n",
+                "253997951"
+            ],
+            [
+                "10 10\r\n9 1 0\r\n9 4 0\r\n5 2 0\r\n8 10 0\r\n8 3 0\r\n10 4 0\r\n1 2 0\r\n5 6 0\r\n7 3 0\r\n6 7 0\r\n",
+                "0"
+            ],
+            [
+                "10 10\r\n9 10 1000000000\r\n10 2 1000000000\r\n6 3 1000000000\r\n8 6 1000000000\r\n4 8 1000000000\r\n7 5 1000000000\r\n9 7 1000000000\r\n1 3 1000000000\r\n1 5 1000000000\r\n4 2 1000000000\r\n",
+                "1000000000"
+            ],
+            [
+                "10 21\r\n10 2 500000000\r\n8 7 500000000\r\n9 1 0\r\n9 8 1000000000\r\n3 4 1000000000\r\n2 4 1000000000\r\n5 4 500000000\r\n1 8 500000000\r\n2 9 0\r\n5 8 0\r\n7 3 0\r\n4 10 0\r\n7 10 500000000\r\n9 5 500000000\r\n10 6 1000000000\r\n5 7 1000000000\r\n6 7 0\r\n6 4 0\r\n1 3 500000000\r\n1 10 0\r\n2 8 0\r\n",
+                "0"
+            ],
+            [
+                "10 12\r\n6 10 826624278\r\n5 4 894720922\r\n7 6 936937925\r\n9 1 277439546\r\n1 3 253080431\r\n3 2 191875277\r\n3 5 830704966\r\n4 8 354568025\r\n7 5 786556082\r\n9 10 421459197\r\n3 10 184630839\r\n9 2 737415175\r\n",
+                "936937925"
+            ],
+            [
+                "10 26\r\n9 5 277429172\r\n10 8 789225932\r\n5 2 992601916\r\n9 8 277294258\r\n8 6 245446241\r\n6 2 439001127\r\n7 1 447891377\r\n10 6 699661758\r\n1 9 865851152\r\n2 8 299785854\r\n7 10 756200111\r\n8 3 431547893\r\n5 6 465205287\r\n7 4 957301499\r\n3 4 308491540\r\n3 7 252157788\r\n10 5 282875145\r\n1 8 262659451\r\n5 4 981921705\r\n2 4 160482450\r\n5 3 754541486\r\n7 8 608514491\r\n2 9 223037582\r\n4 8 437313046\r\n8 5 594074027\r\n6 9 843134026\r\n",
+                "465205287"
+            ]
+        ]
+    }
+]

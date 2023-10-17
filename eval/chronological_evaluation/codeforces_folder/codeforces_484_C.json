@@ -1,0 +1,36 @@
+[
+    {
+        "name": "Strange Sorting",
+        "description": "How many specific orders do you know? Ascending order, descending order, order\nof ascending length, order of ascending polar angle... Let's have a look at\nanother specific order: d-sorting. This sorting is applied to the strings of\nlength at least d, where d is some positive integer. The characters of the\nstring are sorted in following manner: first come all the 0-th characters of\nthe initial string, then the 1-st ones, then the 2-nd ones and so on, in the\nend go all the (d - 1)-th characters of the initial string. By the i-th\ncharacters we mean all the character whose positions are exactly i modulo d.\nIf two characters stand on the positions with the same remainder of integer\ndivision by d, their relative order after the sorting shouldn't be changed.\nThe string is zero-indexed. For example, for string 'qwerty': Its 1-sorting is\nthe string 'qwerty' (all characters stand on 0 positions), Its 2-sorting is\nthe string 'qetwry' (characters 'q', 'e' and 't' stand on 0 positions and\ncharacters 'w', 'r' and 'y' are on 1 positions), Its 3-sorting is the string\n'qrwtey' (characters 'q' and 'r' stand on 0 positions, characters 'w' and 't'\nstand on 1 positions and characters 'e' and 'y' stand on 2 positions), Its\n4-sorting is the string 'qtwyer', Its 5-sorting is the string 'qywert'. You\nare given string S of length n and m shuffling operations of this string. Each\nshuffling operation accepts two integer arguments k and d and transforms\nstring S as follows. For each i from 0 to n - k in the increasing order we\napply the operation of d-sorting to the substring S[i..i + k - 1]. Here\nS[a..b] represents a substring that consists of characters on positions from a\nto b inclusive. After each shuffling operation you need to print string S.\nInput The first line of the input contains a non-empty string S of length n,\nconsisting of lowercase and uppercase English letters and digits from 0 to 9.\nThe second line of the input contains integer m \u2013 the number of shuffling\noperations (1 \u2264 m\u00b7n \u2264 10^6). Following m lines contain the descriptions of the\noperations consisting of two integers k and d (1 \u2264 d \u2264 k \u2264 n). Output After\neach operation print the current state of string S. Examples Input qwerty 3 4\n2 6 3 5 2 Output qertwy qtewry qetyrw Note Here is detailed explanation of the\nsample. The first modification is executed with arguments k = 4, d = 2. That\nmeans that you need to apply 2-sorting for each substring of length 4 one by\none moving from the left to the right. The string will transform in the\nfollowing manner: qwerty \u2192 qewrty \u2192 qerwty \u2192 qertwy Thus, string S equals\n'qertwy' at the end of first query. The second modification is executed with\narguments k = 6, d = 3. As a result of this operation the whole string S is\nreplaced by its 3-sorting: qertwy \u2192 qtewry The third modification is executed\nwith arguments k = 5, d = 2. qtewry \u2192 qertwy \u2192 qetyrw\n\n",
+        "cf_contest_id": 484,
+        "cf_index": "C",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "qwerty\r\n3\r\n4 2\r\n6 3\r\n5 2\r\n",
+                "qertwy\r\nqtewry\r\nqetyrw\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "a\r\n1\r\n1 1\r\n",
+                "a\r\n"
+            ],
+            [
+                "059\r\n2\r\n3 2\r\n3 2\r\n",
+                "095\r\n059\r\n"
+            ],
+            [
+                "ABCDEFGHI\r\n4\r\n5 3\r\n6 4\r\n4 2\r\n7 5\r\n",
+                "ADCEFGBIH\r\nAFECGDHIB\r\nAECGDHIFB\r\nAHDGEBFIC\r\n"
+            ]
+        ]
+    }
+]

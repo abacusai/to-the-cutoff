@@ -1,0 +1,130 @@
+[
+    {
+        "name": "Spinach Pizza",
+        "description": "The two siblings Alberto and Beatrice have to eat a spinach pizza together.\nHowever, none of them likes spinach, so they both want to eat as little as\npossible. The pizza has the shape of a strictly convex polygon with \n    n\n\nvertices located at integer coordinates \n    (x_1, y_1), \n      (x_2, y_2), \n     \n    \u2026, \n      (x_n, y_n)\n of the plane. The siblings have decided to eat the\npizza in the following way: taking turns, starting with Alberto, each sibling\nchooses a vertex of the remaining part of the pizza and eats out the triangle\ndetermined by its two neighboring edges. In this way, after each of the first\n\n    n - 3\n turns the pizza will have one less vertex. The game ends after the\n\n    (n - 2)\n-th turn, when all the pizza has been eaten. Assuming that\nAlberto and Beatrice choose the slices to eat optimally, which of the siblings\nmanages to eat at most half of the pizza? You should identify a sibling that\nhas a strategy to do so and help them choose the slices appropriately. Note\nthat it is possible that both Alberto and Beatrice end up eating exactly half\nof the area if they choose their slices optimally. Input The first line\ncontains a single integer \n    n\n (\n    4 \n    \u2264 n \n    \u2264 100\n) \u2014 the number of\nvertices. The next \n    n\n lines contain two integers \n    x_i\n and \n    y_i\n\neach (\n    -10^6 \n    \u2264 x_i, y_i \n    \u2264 10^6\n) \u2014 the coordinates of the\n\n    i\n-th vertex of the polygon representing the initial shape of the pizza.\nIt is guaranteed that the polygon is strictly convex and that its vertices are\ngiven in counterclockwise order. Interaction First, you should print a line\ncontaining either the string \n    \n or the string\n\n    \n \u2014 the sibling that you will help to win. Then, for\nthe next \n    n - 2\n turns, you will alternate with the judge in choosing a\nslice of the pizza and removing it, starting with you if you chose to help\nAlberto, or starting with the judge if you chose to help Beatrice. When it is\nyour turn, print a single line containing an integer \n    p\n (\n    1 \n    \u2264 p\n    \n    \u2264 n\n) that has not been chosen before, indicating that you want to eat\nthe slice determined by the vertex located at \n    (x_p, y_p)\n. When it is the\njudge's turn, read an integer \n    q\n (\n    1 \n    \u2264 q \n    \u2264 n\n), indicating\nthat the other player eats the slice determined by the vertex located at\n\n    (x_q, y_q)\n. It is guaranteed that \n    q\n has not been chosen before. If\none of your interactions is malformed, the interactor terminates immediately\nand your program receives the verdict \n    \n.\nOtherwise, you will receive \n    \n if at the end your player\nhas eaten at most half of the pizza, and \n    \n\notherwise. After printing a line do not forget to end the line and flush the\noutput. Otherwise, you will get the verdict \n    \n. To\nflush the output, use: \n    \n in C;\n\n    \n, \n    \n or\n\n    \n in C++; \n    \n in\nJava and Kotlin; \n    \n in Python. Examples Input\n4 0 0 6 1 5 3 1 4 Output \u00ad Input 6 0 0 2 0 3 2 2 4 0 4 -1 2 Output \u00ad Input 7\n0 0 2 0 5 2 4 5 1 5 -1 4 -1 2 Output \u00ad Note In the first sample, the pizza\nhas area \n    15\n. Alberto can eat less than half of the pizza by eating the\nslice around vertex \n    2\n (which has area \n    6.5\n) or around vertex\n\n    3\n (which has area \n    3.5\n). In the second sample, it can be proved\nthat both players will eat exactly half of the pizza if they eat optimally.\nTherefore it is possible to choose to help either Alberto or Beatrice. In the\nthird sample, it is possible to show that only Beatrice has a strategy to eat\nat most half of the pizza. The following is an example of a valid interaction\n(after reading the input): \n    \n\n    [                                                             ;                                                             ;                                                   Contestant                                                             ;                                                        Judge                                                             ;                                                  Explanation; ; ;                                                             ;                                                             ;                                                                                                                                                                                       ;                            The contestant will help Beatrice; ; ;                                                             ;                                                                                                                          ;                                                                                                                          ;   Alberto eats the triangle with\n    vertices 6, 7, 1 and area 1; ; ;                                                             ;                                                             ;                                                                                                                                                                                       ;  Beatrice eats the triangle with vertices 1, 2, 3 and area 2; ; ;                                                             ;                                                                                                                          ;                                                                                                                          ; Alberto eats the triangle with\n    vertices 4, 5, 6 and area 1.5; ; ;                                                             ;                                                             ;                                                                                                                                                                                       ;  Beatrice eats the triangle with vertices 3, 4, 6 and area 8; ; ;                                                             ;                                                                                                                          ;                                                                                                                          ;  Alberto eats the triangle with\n    vertices 3, 6, 1 and area 11; ; ;                                                             ;                                                             ;  ]\n\n    \n\nThe total area eaten by Alberto is \n    13.5\n and the total area eaten by\nBeatrice is \n    10\n, which is less than half the area of the whole pizza. The\nactions performed by the contestant and the judge in this example of\ninteraction may be non-optimal. The process is illustrated below:\n\n",
+        "cf_contest_id": 1776,
+        "cf_index": "I",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "games",
+            "geometry",
+            "greedy",
+            "interactive"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n0 0\r\n6 1\r\n5 3\r\n1 4\r\n",
+                "< Alberto\r\n< 3\r\n> 4\r\n"
+            ],
+            [
+                "6\r\n0 0\r\n2 0\r\n3 2\r\n2 4\r\n0 4\r\n-1 2\r\n",
+                "< Alberto\r\n< 1\r\n> 3\r\n< 5\r\n> 6\r\n"
+            ],
+            [
+                "7\r\n0 0\r\n2 0\r\n5 2\r\n4 5\r\n1 5\r\n-1 4\r\n-1 2\r\n",
+                "< Beatrice\r\n> 7\r\n< 5\r\n> 2\r\n< 4\r\n> 6\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n0 0\r\n5 0\r\n7 3\r\n2 3\r\n",
+                "< Alberto\r\n< 1\r\n> 4\r\n"
+            ],
+            [
+                "4\r\n0 0\r\n5 0\r\n5 5\r\n0 5\r\n",
+                "< Alberto\r\n< 1\r\n> 4\r\n"
+            ],
+            [
+                "5\r\n0 0\r\n3 -1\r\n6 0\r\n4 4\r\n2 4\r\n",
+                "< Beatrice\r\n> 2\r\n< 4\r\n> 5\r\n"
+            ],
+            [
+                "6\r\n3 1\r\n8 0\r\n12 4\r\n11 8\r\n8 9\r\n4 7\r\n",
+                "< Alberto\r\n< 5\r\n> 3\r\n< 1\r\n> 6\r\n"
+            ],
+            [
+                "5\r\n-8 -2\r\n9 -9\r\n10 7\r\n3 9\r\n-7 6\r\n",
+                "< Beatrice\r\n> 4\r\n< 5\r\n> 3\r\n"
+            ],
+            [
+                "7\r\n-10 -10\r\n10 -10\r\n10 -3\r\n9 4\r\n6 10\r\n-7 10\r\n-10 9\r\n",
+                "< Beatrice\r\n> 3\r\n< 6\r\n> 4\r\n< 7\r\n> 5\r\n"
+            ],
+            [
+                "10\r\n-96 -90\r\n39 -96\r\n64 -95\r\n92 -39\r\n95 76\r\n10 96\r\n-53 75\r\n-80 55\r\n-84 40\r\n-93 -24\r\n",
+                "< Alberto\r\n< 9\r\n> 2\r\n< 10\r\n> 7\r\n< 4\r\n> 6\r\n< 1\r\n> 8\r\n"
+            ],
+            [
+                "8\r\n-195 -20\r\n-123 -172\r\n178 -192\r\n196 78\r\n189 133\r\n80 154\r\n-147 197\r\n-188 118\r\n",
+                "< Alberto\r\n< 6\r\n> 4\r\n< 8\r\n> 1\r\n< 3\r\n> 7\r\n"
+            ],
+            [
+                "8\r\n-1000000 0\r\n-707106 -707106\r\n0 -1000000\r\n707106 -707106\r\n1000000 0\r\n707106 707106\r\n0 1000000\r\n-707106 707106\r\n",
+                "< Alberto\r\n< 2\r\n> 8\r\n< 4\r\n> 6\r\n< 1\r\n> 7\r\n"
+            ],
+            [
+                "4\r\n-1000000 0\r\n0 -1000000\r\n1000000 0\r\n0 1000000\r\n",
+                "< Alberto\r\n< 1\r\n> 4\r\n"
+            ],
+            [
+                "4\r\n-1000000 -1000000\r\n1000000 -1000000\r\n1000000 1000000\r\n-1000000 1000000\r\n",
+                "< Alberto\r\n< 1\r\n> 4\r\n"
+            ],
+            [
+                "8\r\n0 0\r\n2 1\r\n3 3\r\n2 5\r\n0 6\r\n-2 5\r\n-3 3\r\n-2 1\r\n",
+                "< Alberto\r\n< 2\r\n> 8\r\n< 4\r\n> 6\r\n< 1\r\n> 7\r\n"
+            ],
+            [
+                "8\r\n2 1\r\n3 3\r\n2 5\r\n0 6\r\n-2 5\r\n-3 3\r\n-2 1\r\n0 0\r\n",
+                "< Alberto\r\n< 1\r\n> 3\r\n< 5\r\n> 7\r\n< 2\r\n> 8\r\n"
+            ],
+            [
+                "12\r\n0 0\r\n5 0\r\n9 3\r\n12 7\r\n12 12\r\n9 16\r\n5 19\r\n0 19\r\n-4 16\r\n-7 12\r\n-7 7\r\n-4 3\r\n",
+                "< Alberto\r\n< 3\r\n> 12\r\n< 6\r\n> 9\r\n< 1\r\n> 4\r\n< 7\r\n> 10\r\n< 2\r\n> 11\r\n"
+            ],
+            [
+                "12\r\n5 0\r\n9 3\r\n12 7\r\n12 12\r\n9 16\r\n5 19\r\n0 19\r\n-4 16\r\n-7 12\r\n-7 7\r\n-4 3\r\n0 0\r\n",
+                "< Alberto\r\n< 2\r\n> 5\r\n< 8\r\n> 11\r\n< 1\r\n> 4\r\n< 7\r\n> 10\r\n< 3\r\n> 12\r\n"
+            ],
+            [
+                "12\r\n9 3\r\n12 7\r\n12 12\r\n9 16\r\n5 19\r\n0 19\r\n-4 16\r\n-7 12\r\n-7 7\r\n-4 3\r\n0 0\r\n5 0\r\n",
+                "< Alberto\r\n< 1\r\n> 4\r\n< 7\r\n> 10\r\n< 2\r\n> 5\r\n< 8\r\n> 11\r\n< 3\r\n> 12\r\n"
+            ],
+            [
+                "16\r\n0 0\r\n4 1\r\n7 3\r\n9 6\r\n10 10\r\n9 14\r\n7 17\r\n4 19\r\n0 20\r\n-4 19\r\n-7 17\r\n-9 14\r\n-10 10\r\n-9 6\r\n-7 3\r\n-4 1\r\n",
+                "< Alberto\r\n< 2\r\n> 16\r\n< 4\r\n> 6\r\n< 8\r\n> 10\r\n< 12\r\n> 14\r\n< 3\r\n> 15\r\n< 7\r\n> 11\r\n< 1\r\n> 13\r\n"
+            ],
+            [
+                "16\r\n4 1\r\n7 3\r\n9 6\r\n10 10\r\n9 14\r\n7 17\r\n4 19\r\n0 20\r\n-4 19\r\n-7 17\r\n-9 14\r\n-10 10\r\n-9 6\r\n-7 3\r\n-4 1\r\n0 0\r\n",
+                "< Alberto\r\n< 1\r\n> 3\r\n< 5\r\n> 7\r\n< 9\r\n> 11\r\n< 13\r\n> 15\r\n< 2\r\n> 6\r\n< 10\r\n> 14\r\n< 4\r\n> 16\r\n"
+            ],
+            [
+                "16\r\n7 3\r\n9 6\r\n10 10\r\n9 14\r\n7 17\r\n4 19\r\n0 20\r\n-4 19\r\n-7 17\r\n-9 14\r\n-10 10\r\n-9 6\r\n-7 3\r\n-4 1\r\n0 0\r\n4 1\r\n",
+                "< Alberto\r\n< 1\r\n> 4\r\n< 6\r\n> 8\r\n< 10\r\n> 12\r\n< 14\r\n> 16\r\n< 3\r\n> 9\r\n< 13\r\n> 5\r\n< 15\r\n> 11\r\n"
+            ],
+            [
+                "16\r\n9 14\r\n7 17\r\n4 19\r\n0 20\r\n-4 19\r\n-7 17\r\n-9 14\r\n-10 10\r\n-9 6\r\n-7 3\r\n-4 1\r\n0 0\r\n4 1\r\n7 3\r\n9 6\r\n10 10\r\n",
+                "< Alberto\r\n< 1\r\n> 3\r\n< 5\r\n> 7\r\n< 9\r\n> 11\r\n< 13\r\n> 15\r\n< 2\r\n> 6\r\n< 10\r\n> 14\r\n< 4\r\n> 16\r\n"
+            ],
+            [
+                "8\r\n0 0\r\n3 2\r\n4 6\r\n2 9\r\n-2 10\r\n-5 8\r\n-6 4\r\n-4 1\r\n",
+                "< Alberto\r\n< 2\r\n> 8\r\n< 4\r\n> 6\r\n< 1\r\n> 7\r\n"
+            ],
+            [
+                "8\r\n3 2\r\n4 6\r\n2 9\r\n-2 10\r\n-5 8\r\n-6 4\r\n-4 1\r\n0 0\r\n",
+                "< Alberto\r\n< 1\r\n> 3\r\n< 5\r\n> 7\r\n< 2\r\n> 8\r\n"
+            ],
+            [
+                "44\r\n0 0\r\n1 0\r\n2 1\r\n3 3\r\n4 6\r\n5 10\r\n6 15\r\n7 21\r\n8 28\r\n9 36\r\n10 45\r\n11 55\r\n12 66\r\n13 78\r\n14 91\r\n15 105\r\n16 120\r\n17 136\r\n18 153\r\n19 171\r\n20 190\r\n21 210\r\n22 231\r\n-21 231\r\n-20 210\r\n-19 190\r\n-18 171\r\n-17 153\r\n-16 136\r\n-15 120\r\n-14 105\r\n-13 91\r\n-12 78\r\n-11 66\r\n-10 55\r\n-9 45\r\n-8 36\r\n-7 28\r\n-6 21\r\n-5 15\r\n-4 10\r\n-3 6\r\n-2 3\r\n-1 1\r\n",
+                "< Alberto\r\n< 1\r\n> 4\r\n< 6\r\n> 9\r\n< 11\r\n> 14\r\n< 16\r\n> 19\r\n< 21\r\n> 26\r\n< 28\r\n> 31\r\n< 33\r\n> 36\r\n< 38\r\n> 41\r\n< 43\r\n> 3\r\n< 7\r\n> 13\r\n< 17\r\n> 25\r\n< 22\r\n> 30\r\n< 34\r\n> 40\r\n< 10\r\n> 37\r\n< 44\r\n> 20\r\n< 27\r\n> 15\r\n< 5\r\n> 42\r\n< 32\r\n> 12\r\n< 35\r\n> 18\r\n< 2\r\n> 39\r\n< 29\r\n> 8\r\n"
+            ],
+            [
+                "45\r\n0 0\r\n1 1\r\n2 3\r\n3 6\r\n4 10\r\n5 15\r\n6 21\r\n7 28\r\n8 36\r\n9 45\r\n10 55\r\n11 66\r\n12 78\r\n13 91\r\n14 105\r\n15 120\r\n16 136\r\n17 153\r\n18 171\r\n19 190\r\n20 210\r\n21 231\r\n22 253\r\n-22 253\r\n-21 231\r\n-20 210\r\n-19 190\r\n-18 171\r\n-17 153\r\n-16 136\r\n-15 120\r\n-14 105\r\n-13 91\r\n-12 78\r\n-11 66\r\n-10 55\r\n-9 45\r\n-8 36\r\n-7 28\r\n-6 21\r\n-5 15\r\n-4 10\r\n-3 6\r\n-2 3\r\n-1 1\r\n",
+                "< Beatrice\r\n> 2\r\n< 4\r\n> 6\r\n< 8\r\n> 10\r\n< 12\r\n> 14\r\n< 16\r\n> 18\r\n< 20\r\n> 22\r\n< 25\r\n> 27\r\n< 29\r\n> 31\r\n< 33\r\n> 35\r\n< 37\r\n> 39\r\n< 41\r\n> 43\r\n< 45\r\n> 3\r\n< 7\r\n> 11\r\n< 15\r\n> 19\r\n< 26\r\n> 30\r\n< 34\r\n> 38\r\n< 42\r\n> 21\r\n< 44\r\n> 9\r\n< 28\r\n> 40\r\n< 17\r\n> 32\r\n< 5\r\n> 13\r\n< 36\r\n> 1\r\n"
+            ]
+        ]
+    }
+]

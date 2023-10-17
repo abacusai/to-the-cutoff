@@ -1,0 +1,139 @@
+[
+    {
+        "name": "Pawn",
+        "description": "On some square in the lowest row of a chessboard a stands a pawn. It has only\ntwo variants of moving: upwards and leftwards or upwards and rightwards. The\npawn can choose from which square of the lowest row it can start its journey.\nOn each square lay from 0 to 9 peas. The pawn wants to reach the uppermost row\nhaving collected as many peas as possible. As there it will have to divide the\npeas between itself and its k brothers, the number of peas must be divisible\nby k + 1. Find the maximal number of peas it will be able to collect and which\nmoves it should make to do it. The pawn cannot throw peas away or leave the\nboard. When a pawn appears in some square of the board (including the first\nand last square of the way), it necessarily takes all the peas. Input The\nfirst line contains three integers n, m, k (2 \u2264 n, m \u2264 100, 0 \u2264 k \u2264 10) \u2014 the\nnumber of rows and columns on the chessboard, the number of the pawn's\nbrothers. Then follow n lines containing each m numbers from 0 to 9 without\nspaces \u2014 the chessboard's description. Each square is described by one number\n\u2014 the number of peas in it. The first line corresponds to the uppermost row\nand the last line \u2014 to the lowest row. Output If it is impossible to reach the\nhighest row having collected the number of peas divisible by k + 1, print -1.\nOtherwise, the first line must contain a single number \u2014 the maximal number of\npeas the pawn can collect given that the number must be divisible by k + 1.\nThe second line must contain a single number \u2014 the number of the square's\ncolumn in the lowest row, from which the pawn must start its journey. The\ncolumns are numbered from the left to the right with integral numbers starting\nfrom 1. The third line must contain a line consisting of n - 1 symbols \u2014 the\ndescription of the pawn's moves. If the pawn must move upwards and leftwards,\nprint L, if it must move upwards and rightwards, print R. If there are several\nsolutions to that problem, print any of them. Examples Input 3 3 1 123 456 789\nOutput 16 2 RL Input 3 3 0 123 456 789 Output 17 3 LR Input 2 2 10 98 75\nOutput -1\n\n",
+        "cf_contest_id": 41,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3 1\r\n123\r\n456\r\n789\r\n",
+                "16\r\n2\r\nRL"
+            ],
+            [
+                "3 3 0\r\n123\r\n456\r\n789\r\n",
+                "17\r\n3\r\nLR"
+            ],
+            [
+                "2 2 10\r\n98\r\n75\r\n",
+                "-1"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 4 2\r\n8244\r\n4768\r\n4474\r\n",
+                "18\r\n3\r\nLR"
+            ],
+            [
+                "4 3 10\r\n194\r\n707\r\n733\r\n633\r\n",
+                "22\r\n3\r\nLLR"
+            ],
+            [
+                "5 6 0\r\n564132\r\n152314\r\n382748\r\n956060\r\n261008\r\n",
+                "31\r\n2\r\nLRRL"
+            ],
+            [
+                "2 4 2\r\n3916\r\n9593\r\n",
+                "18\r\n1\r\nR"
+            ],
+            [
+                "5 5 6\r\n78237\r\n84658\r\n09523\r\n48007\r\n70591\r\n",
+                "21\r\n1\r\nRLRR"
+            ],
+            [
+                "6 6 0\r\n962504\r\n555826\r\n306365\r\n336593\r\n304184\r\n461978\r\n",
+                "42\r\n4\r\nRLLLL"
+            ],
+            [
+                "7 7 8\r\n9178611\r\n1154936\r\n5736233\r\n3683401\r\n5972844\r\n1538360\r\n8915609\r\n",
+                "45\r\n2\r\nRLRRRR"
+            ],
+            [
+                "10 5 5\r\n57903\r\n23822\r\n16074\r\n14758\r\n17503\r\n85862\r\n22741\r\n24624\r\n91349\r\n59483\r\n",
+                "60\r\n1\r\nRRRLLRRLL"
+            ],
+            [
+                "3 10 5\r\n5982103711\r\n7068791203\r\n1573073434\r\n",
+                "18\r\n4\r\nLL"
+            ],
+            [
+                "22 13 9\r\n8184281791532\r\n5803370774001\r\n6603582781635\r\n2483939348867\r\n0830296902280\r\n3551639607305\r\n3444831623227\r\n3091545622824\r\n6913003961993\r\n3133646154943\r\n1940360624827\r\n6753210603109\r\n0151850545919\r\n3740837541625\r\n5803839641354\r\n8646937392812\r\n0603155734470\r\n7315747209948\r\n5161762550888\r\n5911134989142\r\n5126602312630\r\n9357303282764\r\n",
+                "140\r\n7\r\nRRLLRLRLLLRRRLRLLRRRL"
+            ],
+            [
+                "14 23 8\r\n68504025976030072501641\r\n56458987321578480010382\r\n46062870778554718112548\r\n81908609966761024372750\r\n76848590874509200408274\r\n37285110415074847067321\r\n66805521560779398220121\r\n50385391753925080239043\r\n49514980743485792107357\r\n72577075816570740728649\r\n39689681512498117328584\r\n91073140452682825237396\r\n40514188871545939304976\r\n13697029058487784430451\r\n",
+                "99\r\n4\r\nLRLRRLLRRRRRR"
+            ],
+            [
+                "23 2 6\r\n00\r\n47\r\n52\r\n36\r\n01\r\n01\r\n39\r\n04\r\n69\r\n93\r\n77\r\n72\r\n33\r\n95\r\n13\r\n50\r\n23\r\n48\r\n79\r\n98\r\n05\r\n63\r\n17\r\n",
+                "-1"
+            ],
+            [
+                "23 2 6\r\n00\r\n47\r\n52\r\n36\r\n01\r\n01\r\n39\r\n04\r\n69\r\n93\r\n77\r\n72\r\n33\r\n95\r\n13\r\n50\r\n23\r\n48\r\n79\r\n98\r\n05\r\n63\r\n17\r\n",
+                "-1"
+            ],
+            [
+                "2 2 3\r\n15\r\n52\r\n",
+                "-1"
+            ],
+            [
+                "2 2 0\r\n02\r\n64\r\n",
+                "8\r\n1\r\nR"
+            ],
+            [
+                "2 2 9\r\n82\r\n68\r\n",
+                "-1"
+            ],
+            [
+                "40 10 1\r\n3662957315\r\n8667652926\r\n0833069659\r\n7030124763\r\n0285674766\r\n3253847205\r\n3183518599\r\n6584668288\r\n6016531609\r\n4094512804\r\n8169065529\r\n5526028299\r\n1251249986\r\n3970729176\r\n7534232301\r\n4643554614\r\n8544233598\r\n3618335000\r\n4458737272\r\n2014874848\r\n2052050286\r\n2523863039\r\n3367463306\r\n7570627477\r\n6504863662\r\n5673627493\r\n9683553049\r\n5087433832\r\n4895351652\r\n8976415673\r\n7744852982\r\n8880573285\r\n8601062585\r\n9914945591\r\n6101306342\r\n4477024828\r\n6711693809\r\n9518645171\r\n0320790840\r\n1660676034\r\n",
+                "258\r\n5\r\nRLRRRRLRLRLRRLLLLLRLLRLRRRRRRLRLLLLRLLR"
+            ],
+            [
+                "100 2 7\r\n18\r\n70\r\n19\r\n42\r\n74\r\n37\r\n47\r\n43\r\n71\r\n66\r\n25\r\n64\r\n60\r\n45\r\n90\r\n54\r\n38\r\n35\r\n92\r\n79\r\n19\r\n94\r\n76\r\n61\r\n30\r\n49\r\n95\r\n72\r\n57\r\n05\r\n71\r\n10\r\n18\r\n40\r\n63\r\n01\r\n75\r\n44\r\n65\r\n47\r\n27\r\n37\r\n84\r\n30\r\n06\r\n15\r\n55\r\n19\r\n49\r\n00\r\n80\r\n77\r\n20\r\n78\r\n33\r\n67\r\n29\r\n20\r\n98\r\n28\r\n19\r\n00\r\n42\r\n88\r\n11\r\n58\r\n57\r\n69\r\n58\r\n92\r\n90\r\n73\r\n65\r\n09\r\n85\r\n08\r\n93\r\n83\r\n38\r\n54\r\n41\r\n20\r\n66\r\n99\r\n41\r\n01\r\n91\r\n91\r\n39\r\n60\r\n66\r\n82\r\n77\r\n25\r\n02\r\n55\r\n32\r\n64\r\n56\r\n30\r\n",
+                "-1"
+            ],
+            [
+                "100 3 4\r\n644\r\n861\r\n478\r\n250\r\n560\r\n998\r\n141\r\n162\r\n386\r\n778\r\n123\r\n811\r\n602\r\n533\r\n391\r\n515\r\n898\r\n215\r\n965\r\n556\r\n446\r\n883\r\n256\r\n195\r\n573\r\n889\r\n515\r\n240\r\n179\r\n339\r\n258\r\n593\r\n930\r\n730\r\n735\r\n949\r\n522\r\n067\r\n549\r\n366\r\n452\r\n405\r\n473\r\n188\r\n488\r\n994\r\n000\r\n046\r\n930\r\n217\r\n897\r\n580\r\n509\r\n032\r\n343\r\n722\r\n176\r\n925\r\n728\r\n717\r\n851\r\n925\r\n901\r\n665\r\n469\r\n029\r\n264\r\n801\r\n841\r\n196\r\n415\r\n923\r\n390\r\n832\r\n322\r\n616\r\n074\r\n238\r\n927\r\n350\r\n952\r\n060\r\n575\r\n355\r\n307\r\n971\r\n787\r\n796\r\n822\r\n080\r\n265\r\n609\r\n389\r\n851\r\n533\r\n061\r\n424\r\n517\r\n498\r\n623\r\n",
+                "545\r\n1\r\nRLRRLLRRLLRLRLRRLLRLRRLLRLRLRRLLRRLLRLRLRLRLRRLLRRLRLLRRLRLRLRLLRLRLRRLLRRLRLLRRLRLLRLRLRRLRLLRLRLR"
+            ],
+            [
+                "2 100 7\r\n9360286883185741015657297578030499122983212716269549322423994405864643235893094083435861617948832932\r\n6890233971690210653206070772331643207659524060492980513060276541348578771750981091169346350950048601\r\n",
+                "16\r\n37\r\nR"
+            ],
+            [
+                "3 100 2\r\n9274856291089022402330510299964972078374631084698909589848378120688833406094439833480605688734822538\r\n8559432619222401260831250315191045571941748630289435997646309147962549951488150729159571611224761557\r\n7459677994197468453434072563284883271493313149578657711970598092555372522009834711876673556425273784\r\n",
+                "27\r\n9\r\nRL"
+            ],
+            [
+                "4 100 8\r\n8197214719753093689382933229185566015858043325014460546254750743412353547105592762535428651419733324\r\n9148500337546694884364549640851337857223054489296090301133259534376331231215539538042806982497493773\r\n8861823647111079235007692880873989283264269770396047900111206380618089276133969173551645794471217161\r\n7380214222723596011942700126524470827522028978818427297837353995903366375498632353149447411505503535\r\n",
+                "27\r\n3\r\nLRR"
+            ],
+            [
+                "3 10 0\r\n1230000123\r\n4560000456\r\n7890000789\r\n",
+                "17\r\n3\r\nLR"
+            ],
+            [
+                "100 2 1\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n99\r\n",
+                "900\r\n1\r\nRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLR"
+            ],
+            [
+                "2 100 5\r\n9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999\r\n9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999\r\n",
+                "18\r\n1\r\nR"
+            ],
+            [
+                "100 2 8\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n00\r\n",
+                "0\r\n1\r\nRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLR"
+            ],
+            [
+                "2 100 2\r\n0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\r\n0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\r\n",
+                "0\r\n1\r\nR"
+            ]
+        ]
+    }
+]

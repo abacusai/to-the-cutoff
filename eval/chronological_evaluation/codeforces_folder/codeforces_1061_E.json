@@ -1,0 +1,244 @@
+[
+    {
+        "name": "Politics",
+        "description": "There are \n    n\n cities in the country. Two candidates are fighting for the\npost of the President. The elections are set in the future, and both\ncandidates have already planned how they are going to connect the cities with\nroads. Both plans will connect all cities using \n    n - 1\n roads only. That\nis, each plan can be viewed as a tree. Both of the candidates had also\nspecified their choice of the capital among \n    n\n cities (\n    x\n for the\nfirst candidate and \n    y\n for the second candidate), which may or may not be\nsame. Each city has a potential of building a port (one city can have at most\none port). Building a port in \n    i\n-th city brings \n    a_i\n amount of\nmoney. However, each candidate has his specific demands. The demands are of\nthe form: \n    k\n \n    x\n, which means that the candidate wants to build\nexactly \n    x\n ports in the subtree of the \n    k\n-th city of his tree (the\ntree is rooted at the capital of his choice). Find out the maximum revenue\nthat can be gained while fulfilling all demands of both candidates, or print\n-1 if it is not possible to do. It is additionally guaranteed, that each\ncandidate has specified the port demands for the capital of his choice. Input\nThe first line contains integers \n    n\n, \n    x\n and \n    y\n (\n    1 \n    \u2264 n\n    \n    \u2264 500\n, \n    1 \n    \u2264 x, y \n    \u2264 n\n) \u2014 the number of cities, the capital\nof the first candidate and the capital of the second candidate respectively.\nNext line contains integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    1 \n    \u2264 a_i\n    \n    \u2264 100\n     000\n) \u2014 the revenue gained if the port is constructed in the\ncorresponding city. Each of the next \n    n - 1\n lines contains integers\n\n    u_i\n and \n    v_i\n (\n    1 \n    \u2264 u_i, v_i \n    \u2264 n\n, \n    u_i \n     v_i\n),\ndenoting edges between cities in the tree of the first candidate. Each of the\nnext \n    n - 1\n lines contains integers \n    u'_i\n and \n    v'_i\n (\n    1 \n    \u2264\n    u'_i, v'_i \n    \u2264 n\n, \n    u'_i \n     v'_i\n), denoting edges between cities\nin the tree of the second candidate. Next line contains an integer \n    q_1\n\n(\n    1 \n    \u2264 q_1 \n    \u2264 n\n), denoting the number of demands of the first\ncandidate. Each of the next \n    q_1\n lines contains two integers \n    k\n and\n\n    x\n (\n    1 \n    \u2264 k \n    \u2264 n\n, \n    1 \n    \u2264 x \n    \u2264 n\n) \u2014 the city number\nand the number of ports in its subtree. Next line contains an integer\n\n    q_2\n (\n    1 \n    \u2264 q_2 \n    \u2264 n\n), denoting the number of demands of the\nsecond candidate. Each of the next \n    q_2\n lines contain two integers\n\n    k\n and \n    x\n (\n    1 \n    \u2264 k \n    \u2264 n\n, \n    1 \n    \u2264 x \n    \u2264 n\n) \u2014 the\ncity number and the number of ports in its subtree. It is guaranteed, that\ngiven edges correspond to valid trees, each candidate has given demand about\neach city at most once and that each candidate has specified the port demands\nfor the capital of his choice. That is, the city \n    x\n is always given in\ndemands of the first candidate and city \n    y\n is always given in the demands\nof the second candidate. Output Print exactly one integer \u2014 the maximum\npossible revenue that can be gained, while satisfying demands of both\ncandidates, or -1 if it is not possible to satisfy all of the demands.\nExamples Input 4 1 2 1 2 3 4 1 2 1 3 3 4 1 2 2 3 1 4 2 1 3 4 1 1 2 3 Output 9\nInput 5 1 1 3 99 99 100 2 1 2 1 3 3 4 3 5 1 3 1 2 2 4 2 5 2 1 2 3 1 2 1 2 2 1\nOutput 198 Input 4 1 2 1 2 3 4 1 2 1 3 3 4 2 1 2 4 4 3 1 1 4 2 4 1 2 4 Output\n-1 Note In the first example, it is optimal to build ports in cities \n    2\n,\n\n    3\n and \n    4\n, which fulfills all demands of both candidates and gives\nrevenue equal to \n    2 + 3 + 4 = 9\n. In the second example, it is optimal to\nbuild ports in cities \n    2\n and \n    3\n, which fulfills all demands of both\ncandidates and gives revenue equal to \n    99 + 99 = 198\n. In the third\nexample, it is not possible to build ports in such way, that all demands of\nboth candidates are specified, hence the answer is -1.\n\n",
+        "cf_contest_id": 1061,
+        "cf_index": "E",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "flows",
+            "graphs"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 1 2\r\n1 2 3 4\r\n1 2\r\n1 3\r\n3 4\r\n1 2\r\n2 3\r\n1 4\r\n2\r\n1 3\r\n4 1\r\n1\r\n2 3\r\n",
+                "9"
+            ],
+            [
+                "5 1 1\r\n3 99 99 100 2\r\n1 2\r\n1 3\r\n3 4\r\n3 5\r\n1 3\r\n1 2\r\n2 4\r\n2 5\r\n2\r\n1 2\r\n3 1\r\n2\r\n1 2\r\n2 1\r\n",
+                "198"
+            ],
+            [
+                "4 1 2\r\n1 2 3 4\r\n1 2\r\n1 3\r\n3 4\r\n2 1\r\n2 4\r\n4 3\r\n1\r\n1 4\r\n2\r\n4 1\r\n2 4\r\n",
+                "-1"
+            ]
+        ],
+        "private_cases": [
+            [
+                "25 3 5\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25\r\n2 3\r\n3 1\r\n4 3\r\n5 2\r\n2 6\r\n4 7\r\n7 8\r\n7 9\r\n7 10\r\n7 11\r\n7 12\r\n7 13\r\n7 14\r\n7 15\r\n7 16\r\n7 17\r\n7 18\r\n7 19\r\n7 20\r\n7 21\r\n7 22\r\n7 23\r\n7 24\r\n7 25\r\n3 5\r\n5 2\r\n5 4\r\n4 1\r\n3 6\r\n3 7\r\n7 8\r\n7 9\r\n7 10\r\n7 11\r\n7 12\r\n7 13\r\n7 14\r\n7 15\r\n7 16\r\n7 17\r\n7 18\r\n7 19\r\n7 20\r\n7 21\r\n7 22\r\n7 23\r\n7 24\r\n7 25\r\n4\r\n3 2\r\n2 1\r\n5 1\r\n6 1\r\n2\r\n5 2\r\n3 1\r\n",
+                "-1"
+            ],
+            [
+                "25 5 3\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25\r\n3 5\r\n5 2\r\n5 4\r\n4 1\r\n3 6\r\n3 7\r\n7 8\r\n7 9\r\n7 10\r\n7 11\r\n7 12\r\n7 13\r\n7 14\r\n7 15\r\n7 16\r\n7 17\r\n7 18\r\n7 19\r\n7 20\r\n7 21\r\n7 22\r\n7 23\r\n7 24\r\n7 25\r\n2 3\r\n3 1\r\n4 3\r\n5 2\r\n2 6\r\n4 7\r\n7 8\r\n7 9\r\n7 10\r\n7 11\r\n7 12\r\n7 13\r\n7 14\r\n7 15\r\n7 16\r\n7 17\r\n7 18\r\n7 19\r\n7 20\r\n7 21\r\n7 22\r\n7 23\r\n7 24\r\n7 25\r\n2\r\n5 2\r\n3 1\r\n4\r\n3 2\r\n2 1\r\n5 1\r\n6 1\r\n",
+                "-1"
+            ],
+            [
+                "1 1 1\r\n100000\r\n1\r\n1 1\r\n1\r\n1 1\r\n",
+                "100000"
+            ],
+            [
+                "2 1 2\r\n49091 24646\r\n2 1\r\n2 1\r\n2\r\n2 1\r\n1 1\r\n2\r\n1 1\r\n2 1\r\n",
+                "-1"
+            ],
+            [
+                "6 4 1\r\n97960 57635 45009 59308 56814 4514\r\n4 3\r\n3 6\r\n3 5\r\n1 2\r\n2 5\r\n6 5\r\n3 4\r\n2 4\r\n3 5\r\n1 6\r\n2\r\n4 2\r\n2 1\r\n3\r\n1 2\r\n2 1\r\n4 1\r\n",
+                "114449"
+            ],
+            [
+                "2 1 2\r\n92353 16341\r\n2 1\r\n1 2\r\n2\r\n2 1\r\n1 1\r\n1\r\n2 1\r\n",
+                "16341"
+            ],
+            [
+                "7 6 1\r\n92082 1669 39381 97650 2111 9668 5722\r\n4 7\r\n1 6\r\n2 1\r\n5 3\r\n1 5\r\n7 1\r\n3 5\r\n7 3\r\n3 4\r\n1 5\r\n1 6\r\n2 3\r\n3\r\n6 4\r\n2 1\r\n3 1\r\n3\r\n1 4\r\n3 2\r\n6 1\r\n",
+                "142800"
+            ],
+            [
+                "7 4 7\r\n25728 56175 90588 24904 76692 60681 82074\r\n6 5\r\n2 1\r\n7 1\r\n5 7\r\n4 1\r\n6 3\r\n3 6\r\n4 5\r\n1 4\r\n7 4\r\n7 2\r\n2 3\r\n1\r\n4 3\r\n4\r\n7 3\r\n4 2\r\n5 1\r\n2 1\r\n",
+                "193008"
+            ],
+            [
+                "15 11 10\r\n68701 35901 44135 60539 24524 61119 47205 22107 39327 19858 84700 42626 19426 19208 20949\r\n15 8\r\n13 5\r\n8 2\r\n14 1\r\n5 10\r\n3 9\r\n1 11\r\n7 2\r\n4 12\r\n10 3\r\n5 14\r\n12 15\r\n6 2\r\n12 5\r\n8 10\r\n7 10\r\n6 12\r\n4 2\r\n15 11\r\n15 9\r\n10 12\r\n10 1\r\n11 7\r\n3 5\r\n4 11\r\n15 3\r\n14 2\r\n13 9\r\n2\r\n11 5\r\n2 1\r\n4\r\n1 1\r\n10 5\r\n15 1\r\n8 1\r\n",
+                "280762"
+            ],
+            [
+                "13 6 3\r\n47118 58687 49938 28951 36887 72968 87732 53646 2405 16707 16931 93167 53341\r\n2 4\r\n5 6\r\n7 8\r\n10 8\r\n1 12\r\n2 3\r\n6 11\r\n4 8\r\n11 8\r\n12 6\r\n13 9\r\n7 13\r\n1 4\r\n10 6\r\n9 3\r\n1 12\r\n13 4\r\n2 13\r\n10 5\r\n3 1\r\n8 7\r\n3 5\r\n9 11\r\n3 7\r\n2\r\n1 1\r\n6 4\r\n5\r\n8 1\r\n4 1\r\n13 1\r\n7 1\r\n3 4\r\n",
+                "252618"
+            ],
+            [
+                "17 13 15\r\n85617 25960 39999 83286 84746 44994 76223 66282 74599 69000 89753 25043 13171 98085 64366 83019 56169\r\n6 11\r\n17 16\r\n10 2\r\n8 13\r\n7 5\r\n14 10\r\n6 3\r\n15 3\r\n6 7\r\n8 9\r\n4 9\r\n17 3\r\n1 13\r\n2 9\r\n14 15\r\n6 12\r\n16 17\r\n1 6\r\n14 2\r\n14 4\r\n1 5\r\n12 11\r\n8 5\r\n10 3\r\n11 6\r\n14 13\r\n15 7\r\n17 1\r\n10 8\r\n8 15\r\n13 5\r\n9 16\r\n9\r\n13 5\r\n15 3\r\n6 2\r\n14 3\r\n12 1\r\n1 1\r\n8 4\r\n3 3\r\n17 1\r\n6\r\n15 5\r\n7 1\r\n6 1\r\n5 3\r\n1 2\r\n10 1\r\n",
+                "-1"
+            ],
+            [
+                "12 10 6\r\n93389 70044 3945 5830 10769 73996 72524 82749 88803 68850 57384 14399\r\n1 5\r\n9 3\r\n6 8\r\n12 10\r\n11 10\r\n3 11\r\n1 7\r\n4 2\r\n8 5\r\n6 4\r\n3 1\r\n8 9\r\n7 4\r\n10 2\r\n5 12\r\n11 8\r\n6 5\r\n1 4\r\n6 11\r\n10 11\r\n3 10\r\n1 3\r\n5\r\n6 1\r\n10 4\r\n11 4\r\n9 1\r\n4 1\r\n3\r\n6 4\r\n10 2\r\n5 1\r\n",
+                "263005"
+            ],
+            [
+                "14 2 2\r\n50467 31918 20711 29008 70084 79497 37135 35833 62415 3624 33615 5709 78151 72448\r\n3 10\r\n12 10\r\n11 4\r\n9 14\r\n4 3\r\n2 5\r\n8 13\r\n14 2\r\n14 7\r\n1 11\r\n4 9\r\n6 9\r\n6 13\r\n13 3\r\n8 6\r\n2 10\r\n9 1\r\n5 14\r\n12 6\r\n9 12\r\n7 3\r\n7 9\r\n5 6\r\n2 5\r\n4 3\r\n11 10\r\n7\r\n6 2\r\n2 8\r\n11 1\r\n9 6\r\n14 7\r\n8 1\r\n12 1\r\n9\r\n9 3\r\n8 1\r\n2 8\r\n4 1\r\n1 1\r\n6 5\r\n7 2\r\n14 1\r\n11 1\r\n",
+                "-1"
+            ],
+            [
+                "2 1 1\r\n19067 80570\r\n1 2\r\n2 1\r\n2\r\n1 1\r\n2 1\r\n1\r\n1 1\r\n",
+                "80570"
+            ],
+            [
+                "1 1 1\r\n69899\r\n1\r\n1 1\r\n1\r\n1 1\r\n",
+                "69899"
+            ],
+            [
+                "1 1 1\r\n49032\r\n1\r\n1 1\r\n1\r\n1 1\r\n",
+                "49032"
+            ],
+            [
+                "7 6 5\r\n68673 94925 82908 40288 14484 92076 27285\r\n5 2\r\n3 6\r\n1 5\r\n7 4\r\n6 1\r\n7 5\r\n2 3\r\n2 5\r\n5 7\r\n6 1\r\n4 6\r\n3 6\r\n1\r\n6 3\r\n2\r\n5 3\r\n2 2\r\n",
+                "214286"
+            ],
+            [
+                "5 3 4\r\n56491 67565 91677 18823 39680\r\n5 4\r\n4 2\r\n2 1\r\n3 1\r\n5 4\r\n2 1\r\n3 4\r\n1 4\r\n3\r\n5 1\r\n4 1\r\n3 2\r\n1\r\n4 2\r\n",
+                "131357"
+            ],
+            [
+                "2 1 2\r\n46318 78528\r\n1 2\r\n2 1\r\n1\r\n1 1\r\n2\r\n1 1\r\n2 1\r\n",
+                "46318"
+            ],
+            [
+                "6 6 5\r\n85906 47761 86057 16994 91668 16960\r\n6 2\r\n1 6\r\n1 3\r\n5 1\r\n5 4\r\n2 5\r\n6 3\r\n6 4\r\n1 3\r\n3 5\r\n2\r\n6 2\r\n2 1\r\n1\r\n5 2\r\n",
+                "139429"
+            ],
+            [
+                "16 8 3\r\n56423 56306 77950 63887 65077 20798 36034 98289 32485 67290 4859 90274 18891 71317 8266 58579\r\n4 10\r\n14 1\r\n6 4\r\n12 6\r\n2 8\r\n15 6\r\n5 9\r\n4 3\r\n16 13\r\n1 6\r\n5 3\r\n4 11\r\n1 13\r\n12 8\r\n11 7\r\n13 8\r\n9 15\r\n1 10\r\n8 16\r\n10 9\r\n11 7\r\n12 15\r\n15 16\r\n14 7\r\n3 14\r\n7 2\r\n10 2\r\n4 11\r\n5 16\r\n6 7\r\n4\r\n8 7\r\n3 1\r\n13 1\r\n12 6\r\n7\r\n13 1\r\n10 5\r\n9 4\r\n7 7\r\n14 7\r\n1 1\r\n3 7\r\n",
+                "428875"
+            ],
+            [
+                "14 4 8\r\n57060 63116 17651 32836 79373 42604 29351 33914 62796 48842 12991 22845 28216 95171\r\n12 5\r\n6 8\r\n4 13\r\n7 9\r\n3 7\r\n8 4\r\n3 14\r\n1 2\r\n3 10\r\n14 13\r\n11 10\r\n8 2\r\n5 1\r\n7 12\r\n14 10\r\n2 6\r\n5 1\r\n1 11\r\n5 4\r\n12 11\r\n13 2\r\n9 4\r\n13 3\r\n2 10\r\n12 2\r\n13 8\r\n6\r\n9 1\r\n13 2\r\n4 5\r\n6 1\r\n1 1\r\n3 2\r\n6\r\n12 2\r\n10 1\r\n3 1\r\n13 5\r\n8 5\r\n6 1\r\n",
+                "-1"
+            ],
+            [
+                "18 6 5\r\n66495 49972 55549 90431 48504 14407 86677 87695 90088 94086 85414 43516 82253 23968 64919 65587 15561 21537\r\n14 6\r\n17 5\r\n15 10\r\n4 10\r\n13 2\r\n17 1\r\n18 8\r\n1 3\r\n4 13\r\n2 16\r\n1 9\r\n16 18\r\n14 7\r\n11 8\r\n12 15\r\n7 12\r\n1 14\r\n13 10\r\n3 10\r\n10 14\r\n4 6\r\n18 11\r\n12 7\r\n16 4\r\n3 1\r\n2 1\r\n13 9\r\n5 16\r\n3 8\r\n15 2\r\n1 17\r\n6 3\r\n7 15\r\n14 11\r\n4\r\n3 1\r\n6 9\r\n8 1\r\n16 2\r\n7\r\n15 1\r\n8 1\r\n16 9\r\n17 1\r\n6 8\r\n5 9\r\n18 1\r\n",
+                "623877"
+            ],
+            [
+                "10 7 8\r\n29318 95633 57161 96356 24707 26594 30062 84849 51270 18663\r\n6 8\r\n10 1\r\n2 8\r\n5 1\r\n7 8\r\n6 3\r\n1 8\r\n4 5\r\n8 9\r\n1 7\r\n1 8\r\n3 4\r\n10 3\r\n6 7\r\n9 4\r\n8 10\r\n1 5\r\n2 8\r\n4\r\n1 2\r\n7 5\r\n2 1\r\n10 1\r\n6\r\n3 1\r\n4 1\r\n2 1\r\n5 1\r\n9 1\r\n8 5\r\n",
+                "275122"
+            ],
+            [
+                "10 8 7\r\n34368 81525 38453 99639 71690 56620 13646 23903 59325 1495\r\n6 1\r\n7 9\r\n8 4\r\n1 3\r\n6 9\r\n5 7\r\n8 7\r\n2 8\r\n10 3\r\n2 3\r\n5 7\r\n9 2\r\n9 4\r\n7 8\r\n9 1\r\n8 6\r\n10 9\r\n5 4\r\n5\r\n6 2\r\n8 3\r\n9 2\r\n10 1\r\n7 2\r\n1\r\n7 3\r\n",
+                "157754"
+            ],
+            [
+                "3 3 1\r\n25349 13373 86616\r\n2 3\r\n1 2\r\n1 3\r\n2 1\r\n2\r\n2 1\r\n3 1\r\n2\r\n2 1\r\n1 2\r\n",
+                "-1"
+            ],
+            [
+                "5 5 3\r\n55185 80815 18138 76737 28991\r\n5 1\r\n3 4\r\n3 2\r\n2 5\r\n3 1\r\n4 5\r\n2 5\r\n3 4\r\n3\r\n5 3\r\n3 1\r\n1 1\r\n3\r\n3 2\r\n5 1\r\n2 1\r\n",
+                "-1"
+            ],
+            [
+                "12 6 2\r\n4802 33014 15412 42614 26941 64777 60876 39640 79319 61274 80970 98505\r\n3 6\r\n5 9\r\n2 5\r\n8 4\r\n12 1\r\n6 10\r\n10 1\r\n9 6\r\n2 7\r\n8 11\r\n8 10\r\n9 5\r\n10 5\r\n11 5\r\n11 7\r\n2 6\r\n10 4\r\n2 3\r\n1 3\r\n6 7\r\n8 10\r\n12 11\r\n4\r\n6 7\r\n7 1\r\n11 1\r\n1 1\r\n5\r\n2 6\r\n8 1\r\n7 4\r\n5 3\r\n11 4\r\n",
+                "-1"
+            ],
+            [
+                "13 4 2\r\n21246 56055 31364 72107 80429 29909 98782 50771 11497 20922 96423 14014 1562\r\n1 11\r\n6 2\r\n2 10\r\n7 3\r\n13 12\r\n3 9\r\n1 4\r\n1 6\r\n9 5\r\n1 5\r\n12 10\r\n6 8\r\n1 7\r\n9 12\r\n9 6\r\n5 3\r\n4 1\r\n10 11\r\n13 10\r\n13 8\r\n8 1\r\n12 4\r\n2 12\r\n12 5\r\n6\r\n11 1\r\n3 1\r\n6 3\r\n12 1\r\n4 6\r\n1 6\r\n5\r\n1 2\r\n13 1\r\n2 5\r\n4 2\r\n9 1\r\n",
+                "-1"
+            ],
+            [
+                "3 3 3\r\n72701 78053 30471\r\n3 1\r\n3 2\r\n3 2\r\n3 1\r\n2\r\n3 1\r\n1 1\r\n1\r\n3 1\r\n",
+                "72701"
+            ],
+            [
+                "5 3 3\r\n56865 14445 36654 1622 63735\r\n5 2\r\n4 2\r\n1 4\r\n3 5\r\n4 1\r\n1 5\r\n5 3\r\n4 2\r\n1\r\n3 1\r\n1\r\n3 1\r\n",
+                "63735"
+            ],
+            [
+                "4 1 1\r\n14339 97599 81781 92805\r\n3 2\r\n1 2\r\n2 4\r\n3 1\r\n2 3\r\n3 4\r\n2\r\n1 1\r\n2 1\r\n2\r\n3 1\r\n1 1\r\n",
+                "97599"
+            ],
+            [
+                "2 2 2\r\n69498 33854\r\n2 1\r\n1 2\r\n1\r\n2 1\r\n1\r\n2 1\r\n",
+                "69498"
+            ],
+            [
+                "8 2 8\r\n66237 39831 39447 34578 16767 36248 91737 14751\r\n8 5\r\n6 3\r\n6 2\r\n4 1\r\n8 7\r\n5 1\r\n6 1\r\n7 8\r\n6 8\r\n2 3\r\n4 5\r\n8 2\r\n5 2\r\n1 2\r\n1\r\n2 1\r\n1\r\n8 1\r\n",
+                "91737"
+            ],
+            [
+                "2 1 2\r\n54239 16387\r\n2 1\r\n2 1\r\n2\r\n1 2\r\n2 1\r\n2\r\n2 2\r\n1 1\r\n",
+                "70626"
+            ],
+            [
+                "10 6 2\r\n18630 64405 92350 526 75329 83162 67835 21713 8239 88632\r\n3 6\r\n8 4\r\n7 6\r\n10 1\r\n6 1\r\n3 5\r\n3 4\r\n7 9\r\n2 8\r\n1 10\r\n6 2\r\n9 1\r\n8 4\r\n5 9\r\n1 7\r\n7 8\r\n9 3\r\n1 6\r\n1\r\n6 3\r\n4\r\n2 3\r\n1 3\r\n7 1\r\n9 1\r\n",
+                "248817"
+            ],
+            [
+                "1 1 1\r\n32669\r\n1\r\n1 1\r\n1\r\n1 1\r\n",
+                "32669"
+            ],
+            [
+                "8 5 4\r\n15185 77339 36521 43847 54860 12149 47045 13342\r\n4 6\r\n3 7\r\n6 1\r\n6 8\r\n7 5\r\n2 8\r\n1 3\r\n7 1\r\n8 3\r\n1 6\r\n8 5\r\n8 2\r\n2 1\r\n7 4\r\n2\r\n5 2\r\n7 1\r\n3\r\n2 2\r\n4 2\r\n5 1\r\n",
+                "132199"
+            ],
+            [
+                "10 1 10\r\n41780 65713 52431 32210 60527 71187 31949 61787 21949 67376\r\n5 4\r\n2 1\r\n10 1\r\n9 3\r\n7 2\r\n7 8\r\n6 2\r\n9 5\r\n9 1\r\n9 10\r\n6 7\r\n4 6\r\n5 2\r\n2 1\r\n5 6\r\n3 8\r\n1 10\r\n8 1\r\n6\r\n7 1\r\n2 2\r\n10 1\r\n5 1\r\n9 3\r\n1 6\r\n5\r\n5 2\r\n6 1\r\n10 6\r\n7 1\r\n9 1\r\n",
+                "299945"
+            ],
+            [
+                "17 15 10\r\n28356 59965 70186 94368 15886 77102 5829 13586 2811 29997 99583 50774 1294 95314 77435 49356 84888\r\n8 9\r\n14 15\r\n13 3\r\n5 14\r\n16 7\r\n6 11\r\n7 10\r\n16 12\r\n10 17\r\n9 2\r\n12 4\r\n11 1\r\n14 13\r\n14 8\r\n10 9\r\n11 13\r\n10 6\r\n7 12\r\n4 11\r\n1 12\r\n8 5\r\n15 8\r\n6 12\r\n7 11\r\n13 2\r\n8 2\r\n11 9\r\n16 5\r\n8 17\r\n7 5\r\n14 13\r\n3 6\r\n7\r\n11 3\r\n8 2\r\n1 1\r\n15 8\r\n10 1\r\n2 1\r\n7 1\r\n6\r\n5 3\r\n10 8\r\n14 1\r\n11 1\r\n15 1\r\n12 6\r\n",
+                "558715"
+            ],
+            [
+                "19 16 7\r\n71534 1060 74674 17372 5741 22219 73838 96080 6553 30103 6297 63703 10033 6325 1872 91527 84258 49811 75139\r\n10 16\r\n16 6\r\n1 12\r\n8 11\r\n10 5\r\n4 7\r\n9 17\r\n7 15\r\n18 8\r\n16 4\r\n10 14\r\n10 1\r\n17 12\r\n19 2\r\n8 3\r\n10 18\r\n19 10\r\n13 10\r\n7 13\r\n6 1\r\n10 15\r\n18 13\r\n7 14\r\n4 11\r\n17 7\r\n3 4\r\n1 11\r\n4 8\r\n16 3\r\n8 12\r\n5 6\r\n14 9\r\n11 10\r\n2 7\r\n2 16\r\n19 4\r\n4\r\n16 4\r\n4 1\r\n10 3\r\n18 1\r\n7\r\n7 4\r\n10 1\r\n16 3\r\n11 2\r\n15 1\r\n14 1\r\n4 3\r\n",
+                "176039"
+            ],
+            [
+                "16 2 1\r\n22128 16581 66222 97410 19544 45269 35035 5141 10314 13241 40928 46960 49665 43054 9694 50817\r\n8 13\r\n16 4\r\n5 8\r\n5 2\r\n16 7\r\n1 9\r\n15 13\r\n11 7\r\n6 12\r\n6 10\r\n10 14\r\n7 15\r\n11 9\r\n3 8\r\n3 12\r\n9 1\r\n15 12\r\n7 2\r\n11 8\r\n16 9\r\n1 10\r\n4 6\r\n3 14\r\n15 11\r\n9 12\r\n13 16\r\n2 10\r\n5 9\r\n9 3\r\n9 6\r\n8\r\n5 6\r\n13 4\r\n3 2\r\n12 1\r\n1 1\r\n16 2\r\n11 1\r\n2 6\r\n1\r\n1 6\r\n",
+                "333202"
+            ],
+            [
+                "15 4 6\r\n41821 88709 1660 4938 13432 30960 71240 7283 53268 27383 48176 51346 3247 19575 10150\r\n9 6\r\n8 14\r\n5 15\r\n1 12\r\n11 7\r\n9 5\r\n2 14\r\n13 7\r\n3 12\r\n15 13\r\n7 1\r\n13 14\r\n8 10\r\n10 4\r\n2 15\r\n4 5\r\n1 8\r\n8 9\r\n12 6\r\n11 9\r\n15 1\r\n8 3\r\n15 7\r\n5 13\r\n10 12\r\n14 2\r\n13 10\r\n9 6\r\n1\r\n4 6\r\n1\r\n6 6\r\n",
+                "354560"
+            ],
+            [
+                "17 10 14\r\n48233 63277 63657 87554 69141 38866 90616 16442 1885 21148 16415 18913 16091 41306 53767 89762 41788\r\n16 1\r\n17 10\r\n5 4\r\n5 8\r\n7 12\r\n6 14\r\n14 11\r\n14 9\r\n1 11\r\n10 13\r\n2 16\r\n3 15\r\n7 14\r\n15 6\r\n12 17\r\n1 5\r\n12 6\r\n4 2\r\n6 9\r\n11 10\r\n17 3\r\n6 17\r\n5 14\r\n13 12\r\n2 8\r\n8 7\r\n16 8\r\n8 5\r\n15 10\r\n2 1\r\n10 4\r\n3 11\r\n5\r\n12 3\r\n10 3\r\n1 1\r\n6 1\r\n7 3\r\n3\r\n16 1\r\n14 3\r\n2 2\r\n",
+                "169834"
+            ],
+            [
+                "12 2 10\r\n80654 36029 45238 63007 42454 69040 68195 34447 22082 77369 61931 36120\r\n12 6\r\n10 7\r\n2 4\r\n9 3\r\n6 10\r\n1 2\r\n1 5\r\n9 11\r\n10 3\r\n11 8\r\n4 3\r\n6 11\r\n11 8\r\n1 12\r\n6 5\r\n9 3\r\n2 12\r\n3 11\r\n2 4\r\n4 10\r\n4 9\r\n7 1\r\n2\r\n2 1\r\n12 1\r\n1\r\n10 1\r\n",
+                "36120"
+            ],
+            [
+                "20 5 15\r\n75616 80111 23557 60141 41716 46081 32311 72564 39610 82522 71418 22211 98668 3259 61959 10815 10704 95452 6560 50246\r\n9 12\r\n10 14\r\n1 18\r\n1 8\r\n11 9\r\n7 8\r\n4 19\r\n16 5\r\n14 16\r\n15 11\r\n3 13\r\n13 7\r\n19 6\r\n15 6\r\n2 20\r\n9 13\r\n17 18\r\n5 13\r\n20 15\r\n13 8\r\n3 16\r\n14 20\r\n6 15\r\n15 2\r\n8 15\r\n1 17\r\n9 1\r\n10 4\r\n10 8\r\n15 11\r\n14 5\r\n13 14\r\n6 19\r\n15 1\r\n18 9\r\n7 8\r\n14 12\r\n7 3\r\n4\r\n16 2\r\n11 1\r\n15 1\r\n5 3\r\n5\r\n15 3\r\n16 1\r\n8 3\r\n13 1\r\n14 1\r\n",
+                "143583"
+            ],
+            [
+                "12 11 4\r\n44724 4601 31707 88459 78692 99992 23695 84446 23282 30039 52650 9243\r\n7 12\r\n11 8\r\n8 10\r\n2 1\r\n4 1\r\n5 12\r\n6 10\r\n9 4\r\n3 6\r\n12 4\r\n9 8\r\n12 2\r\n1 12\r\n11 12\r\n12 8\r\n4 5\r\n11 5\r\n10 11\r\n6 12\r\n12 9\r\n9 3\r\n1 7\r\n3\r\n11 7\r\n10 2\r\n2 1\r\n2\r\n4 7\r\n3 1\r\n",
+                "440547"
+            ],
+            [
+                "10 1 6\r\n90690 88183 60685 78356 20034 97497 68808 91962 52884 82342\r\n4 1\r\n3 5\r\n8 6\r\n9 2\r\n10 5\r\n6 7\r\n1 2\r\n5 4\r\n6 1\r\n10 8\r\n3 8\r\n4 3\r\n7 2\r\n4 2\r\n6 9\r\n4 6\r\n10 1\r\n6 5\r\n2\r\n4 1\r\n1 1\r\n1\r\n6 1\r\n",
+                "82342"
+            ],
+            [
+                "20 4 1\r\n62534 25666 86019 14979 42062 67258 14636 34802 38215 71900 78707 74910 91755 97189 25913 63350 83924 259 34020 29145\r\n12 16\r\n2 12\r\n6 15\r\n17 10\r\n16 4\r\n18 16\r\n17 5\r\n11 9\r\n15 8\r\n14 13\r\n5 3\r\n3 13\r\n8 2\r\n1 16\r\n15 20\r\n5 18\r\n7 17\r\n12 19\r\n3 9\r\n17 20\r\n14 11\r\n10 15\r\n18 10\r\n8 6\r\n12 20\r\n1 14\r\n13 18\r\n6 18\r\n10 4\r\n13 7\r\n16 3\r\n5 17\r\n19 3\r\n19 18\r\n10 5\r\n2 20\r\n3 14\r\n3 9\r\n4\r\n16 4\r\n4 5\r\n1 1\r\n12 3\r\n6\r\n19 4\r\n10 3\r\n20 2\r\n1 5\r\n12 1\r\n3 4\r\n",
+                "248826"
+            ],
+            [
+                "10 6 5\r\n94609 6452 78835 88147 96070 71987 62928 81641 64354 32402\r\n2 5\r\n10 6\r\n1 3\r\n3 2\r\n9 4\r\n7 5\r\n5 10\r\n4 2\r\n9 8\r\n8 10\r\n2 4\r\n9 2\r\n1 2\r\n9 7\r\n6 8\r\n10 5\r\n6 3\r\n9 8\r\n2\r\n10 4\r\n6 3\r\n4\r\n8 3\r\n4 1\r\n5 3\r\n9 3\r\n",
+                "-1"
+            ],
+            [
+                "1 1 1\r\n40601\r\n1\r\n1 1\r\n1\r\n1 1\r\n",
+                "40601"
+            ],
+            [
+                "10 9 8\r\n57617 7534 29489 72364 48359 33897 20165 97875 62362 19403\r\n9 5\r\n6 2\r\n8 10\r\n1 4\r\n2 5\r\n9 8\r\n5 7\r\n3 4\r\n6 3\r\n4 9\r\n3 5\r\n10 6\r\n2 5\r\n9 3\r\n5 7\r\n6 8\r\n4 1\r\n3 6\r\n1\r\n9 3\r\n1\r\n8 2\r\n",
+                "-1"
+            ],
+            [
+                "15 6 15\r\n39791 41833 30008 35401 5830 27389 11357 93011 26957 77500 78379 48536 76429 88321 833\r\n11 12\r\n5 14\r\n3 7\r\n9 6\r\n13 4\r\n11 15\r\n6 10\r\n12 6\r\n4 8\r\n1 6\r\n11 4\r\n5 2\r\n3 6\r\n5 12\r\n12 4\r\n7 5\r\n2 15\r\n1 13\r\n4 1\r\n8 15\r\n14 15\r\n9 1\r\n5 12\r\n6 8\r\n11 6\r\n8 10\r\n15 1\r\n3 9\r\n6\r\n4 1\r\n6 3\r\n12 1\r\n1 1\r\n11 2\r\n10 1\r\n3\r\n1 2\r\n8 1\r\n15 3\r\n",
+                "-1"
+            ]
+        ]
+    }
+]

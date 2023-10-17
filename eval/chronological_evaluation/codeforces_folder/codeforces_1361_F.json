@@ -1,0 +1,49 @@
+[
+    {
+        "name": "Johnny and New Toy",
+        "description": "Johnny has a new toy. As you may guess, it is a little bit extraordinary. The\ntoy is a permutation \n    P\n of numbers from \n    1\n to \n    n\n, written in\none row next to each other. For each \n    i\n from \n    1\n to \n    n - 1\n\nbetween \n    P_i\n and \n    P_i + 1\n there is a weight \n    W_i\n written, and\nthose weights form a permutation of numbers from \n    1\n to \n    n - 1\n. There\nare also extra weights \n    W_0 = W_n = 0\n. The instruction defines subsegment\n\n    [L, R]\n as good if \n    W_L - 1 < W_i\n and \n    W_R < W_i\n for any\n\n    i\n in \n    L, L + 1, \n    \u2026, R - 1\n. For such subsegment it\nalso defines \n    W_M\n as minimum of set \n    W_L, W_L + 1, \n    \u2026,\n    W_R - 1\n. Now the fun begins. In one move, the player can choose one\nof the good subsegments, cut it into \n    [L, M]\n and \n    [M + 1, R]\n and\nswap the two parts. More precisely, before one move the chosen subsegment of\nour toy looks like: \n    \n\n    W_L - 1, P_L, W_L, \n    \u2026, W_M - 1, P_M, W_M,\n    P_M + 1, W_M + 1, \n    \u2026, W_R - 1, P_R, W_R\n\n    \n and afterwards it\nlooks like this: \n    \n\n    W_L - 1, P_M + 1, W_M + 1, \n    \u2026, W_R - 1,\n    P_R, W_M, P_L, W_L, \n    \u2026, W_M - 1, P_M, W_R\n\n    \n Such a move can be\nperformed multiple times (possibly zero), and the goal is to achieve the\nminimum number of inversions in \n    P\n. Johnny's younger sister Megan thinks\nthat the rules are too complicated, so she wants to test her brother by\nchoosing some pair of indices \n    X\n and \n    Y\n, and swapping \n    P_X\n and\n\n    P_Y\n (\n    X\n might be equal \n    Y\n). After each sister's swap, Johnny\nwonders, what is the minimal number of inversions that he can achieve,\nstarting with current \n    P\n and making legal moves? You can assume that the\ninput is generated randomly. \n    P\n and \n    W\n were chosen independently and\nequiprobably over all permutations; also, Megan's requests were chosen\nindependently and equiprobably over all pairs of indices. Input The first line\ncontains single integer \n    n\n \n    (2 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5)\n\ndenoting the length of the toy. The second line contains \n    n\n distinct\nintegers \n    P_1, P_2, \n    \u2026, P_n\n \n    (1 \n    \u2264 P_i \n    \u2264 n)\n denoting\nthe initial permutation \n    P\n. The third line contains \n    n - 1\n distinct\nintegers \n    W_1, W_2, \n    \u2026, W_n - 1\n \n    (1 \n    \u2264 W_i \n    \u2264 n - 1)\n\ndenoting the weights. The fourth line contains single integer \n    q\n \n    (1\n    \n    \u2264 q \n    \u2264 5 \n    \u00b7 10^4)\n \u2014 the number of Megan's swaps. The\nfollowing \n    q\n lines contain two integers \n    X\n and \n    Y\n \n    (1 \n    \u2264\n    X, Y \n    \u2264 n)\n \u2014 the indices of elements of \n    P\n to swap. The queries\naren't independent; after each of them, the permutation is changed. Output\nOutput \n    q\n lines. The \n    i\n-th line should contain exactly one integer \u2014\nthe minimum number of inversions in permutation, which can be obtained by\nstarting with the \n    P\n after first \n    i\n queries and making moves\ndescribed in the game's instruction. Examples Input 3 3 2 1 2 1 3 1 3 3 2 3 1\nOutput 0 1 0 Input 5 4 3 2 5 1 3 2 1 4 7 5 4 5 2 1 5 2 4 2 4 4 3 3 3 Output 3\n1 2 1 2 3 3 Note Consider the first sample. After the first query, \n    P\n is\nsorted, so we already achieved a permutation with no inversions. After the\nsecond query, \n    P\n is equal to [\n    1\n, \n    3\n, \n    2\n], it has one\ninversion, it can be proven that it is impossible to achieve \n    0\n\ninversions. In the end, \n    P\n is equal to [\n    2\n, \n    3\n, \n    1\n]; we\ncan make a move on the whole permutation, as it is a good subsegment itself,\nwhich results in \n    P\n equal to [\n    1\n, \n    2\n, \n    3\n], which has\n\n    0\n inversions.\n\n",
+        "cf_contest_id": 1361,
+        "cf_index": "F",
+        "cf_rating": 3300,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 15.0,
+        "memory_limit_bytes": 1024.0,
+        "public_cases": [
+            [
+                "3\r\n3 2 1\r\n2 1\r\n3\r\n1 3\r\n3 2\r\n3 1\r\n",
+                "0\r\n1\r\n0\r\n"
+            ],
+            [
+                "5\r\n4 3 2 5 1\r\n3 2 1 4\r\n7\r\n5 4\r\n5 2\r\n1 5\r\n2 4\r\n2 4\r\n4 3\r\n3 3\r\n",
+                "3\r\n1\r\n2\r\n1\r\n2\r\n3\r\n3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n2 1\r\n1\r\n1\r\n2 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "10\r\n1 9 8 5 3 2 7 6 10 4\r\n4 3 9 6 8 1 5 2 7\r\n20\r\n6 8\r\n4 3\r\n1 4\r\n3 6\r\n4 10\r\n2 6\r\n5 8\r\n3 10\r\n7 1\r\n4 7\r\n3 6\r\n9 5\r\n3 6\r\n8 8\r\n4 7\r\n10 9\r\n6 10\r\n3 9\r\n6 6\r\n7 3\r\n",
+                "17\r\n17\r\n13\r\n14\r\n13\r\n17\r\n18\r\n12\r\n11\r\n16\r\n15\r\n11\r\n9\r\n9\r\n14\r\n14\r\n12\r\n18\r\n18\r\n17\r\n"
+            ],
+            [
+                "10\r\n4 8 6 9 10 7 1 2 3 5\r\n4 6 9 3 8 1 5 7 2\r\n20\r\n8 4\r\n4 7\r\n9 4\r\n7 10\r\n6 5\r\n1 10\r\n1 4\r\n8 7\r\n7 2\r\n6 1\r\n1 3\r\n8 6\r\n10 6\r\n4 1\r\n4 5\r\n6 3\r\n1 2\r\n1 5\r\n9 4\r\n3 7\r\n",
+                "11\r\n12\r\n11\r\n11\r\n11\r\n12\r\n13\r\n12\r\n11\r\n12\r\n14\r\n12\r\n13\r\n12\r\n11\r\n10\r\n10\r\n9\r\n13\r\n13\r\n"
+            ],
+            [
+                "10\r\n7 4 1 6 8 5 3 10 9 2\r\n9 1 6 5 3 7 8 4 2\r\n20\r\n6 7\r\n9 6\r\n6 4\r\n3 9\r\n3 2\r\n6 9\r\n1 9\r\n7 1\r\n8 8\r\n7 7\r\n2 4\r\n5 9\r\n9 3\r\n5 2\r\n5 10\r\n8 1\r\n9 9\r\n3 9\r\n1 10\r\n9 7\r\n",
+                "14\r\n14\r\n17\r\n16\r\n15\r\n15\r\n14\r\n13\r\n13\r\n13\r\n12\r\n11\r\n13\r\n14\r\n14\r\n9\r\n9\r\n5\r\n6\r\n7\r\n"
+            ],
+            [
+                "20\r\n14 16 12 6 1 11 2 18 3 15 20 13 17 9 8 7 5 10 4 19\r\n7 2 1 8 17 19 11 15 3 5 16 4 6 12 18 14 13 9 10\r\n50\r\n16 14\r\n18 9\r\n9 1\r\n11 14\r\n16 1\r\n13 17\r\n2 18\r\n14 6\r\n16 8\r\n16 14\r\n19 7\r\n13 5\r\n17 4\r\n6 7\r\n11 14\r\n18 16\r\n9 10\r\n13 8\r\n5 7\r\n18 3\r\n8 2\r\n20 14\r\n11 19\r\n11 8\r\n15 19\r\n4 10\r\n14 20\r\n16 8\r\n15 20\r\n17 6\r\n10 14\r\n11 11\r\n14 4\r\n1 17\r\n1 15\r\n1 19\r\n8 10\r\n4 6\r\n12 19\r\n8 5\r\n6 12\r\n8 16\r\n12 3\r\n15 5\r\n2 11\r\n1 18\r\n14 13\r\n17 17\r\n8 8\r\n9 20\r\n",
+                "47\r\n54\r\n59\r\n65\r\n66\r\n66\r\n58\r\n73\r\n64\r\n62\r\n63\r\n66\r\n68\r\n68\r\n64\r\n65\r\n64\r\n68\r\n67\r\n66\r\n65\r\n60\r\n68\r\n67\r\n64\r\n63\r\n65\r\n66\r\n67\r\n65\r\n63\r\n63\r\n59\r\n56\r\n64\r\n51\r\n61\r\n61\r\n59\r\n59\r\n58\r\n63\r\n66\r\n62\r\n65\r\n70\r\n68\r\n68\r\n68\r\n71\r\n"
+            ]
+        ]
+    }
+]

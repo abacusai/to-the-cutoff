@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Magic Tree",
+        "description": "We have a magic tree: a rooted tree on \n    n\n vertices. The vertices are\nnumbered \n    1\n through \n    n\n. Vertex \n    1\n is the root. The magic tree\ngives us magic fruit. The fruit only grows in vertices of the tree other than\nthe root. Each vertex contains at most one piece of fruit. It is now day 0 and\nno fruit is ripe yet. Each fruit will only be ripe for a single day. For each\nfruit, we are given the vertex \n    v_j\n where it grows, the day \n    d_j\n on\nwhich it will be ripe, and the amount \n    w_j\n of magic juice we can extract\nfrom it if we harvest it when it is ripe. The fruits have to be harvested by\ncutting some branches of the tree. On each day, you may cut as many branches\nof the tree as you like. The parts of the tree you cut off will fall to the\nground and you can collect all the ripe fruits they contain. All fruits that\nfall to the ground when they are not ripe are discarded and no magic juice is\ncollected from them. Formally, on each day, you may erase some edges of the\ntree. Whenever you do so, the tree will split into multiple connected\ncomponents. You then erase all components that do not contain the root and you\nharvest all ripe fruits those components contained. Given is a description of\nthe tree together with the locations, ripening days and juiciness of all\n\n    m\n fruits. Calculate the maximum total amount of magic juice we can\nharvest from the tree. Input The first line contains three space-separated\nintegers \n    n\n (\n    2 \n    \u2264 n \n    \u2264 100,000\n), \n    m\n (\n    1 \n    \u2264 m \n    \u2264\n    n-1\n) and \n    k\n (\n    1 \n    \u2264 k \n    \u2264 100,000\n) \u2013 the number of vertices,\nthe number of fruits, and the maximum day on which a fruit may become ripe.\nThe following \n    n-1\n lines contain the integers \n    p_2, \n    \u2026, p_n\n,\none per line. For each \n    i\n (from \n    2\n to \n    n\n, inclusive), vertex\n\n    p_i\n (\n    1 \n    \u2264 p_i \n    \u2264 i-1\n) is the parent of vertex \n    i\n. Each\nof the last \n    m\n lines describes one fruit. The \n    j\n-th of these lines\nhas the form \"\n    v_j\n     d_j\n     w_j\n\" (\n    2 \n    \u2264 v_j \n    \u2264 n\n, \n    1 \n    \u2264\n    d_j \n    \u2264 k\n, \n    1 \n    \u2264 w_j \n    \u2264 10^9\n). It is guaranteed that no vertex\ncontains more than one fruit (i.e., the values \n    v_j\n are distinct). Output\nOutput a single line with a single integer, the maximum amount of magic juice\nwe can harvest from the tree. Scoring Subtask 1 (6 points): \n    n, k \n    \u2264\n    20\n, and \n    w_j = 1\n for all \n    j\n Subtask 2 (3 points): fruits only\ngrow in the leaves of the tree Subtask 3 (11 points): \n    p_i = i-1\n for each\n\n    i\n, and \n    w_j = 1\n for all \n    j\n Subtask 4 (12 points): \n    k \n    \u2264\n    2\n Subtask 5 (16 points): \n    k \n    \u2264 20\n, and \n    w_j = 1\n for all\n\n    j\n Subtask 6 (13 points): \n    m \n    \u2264 1,000\n Subtask 7 (22 points):\n\n    w_j = 1\n for all \n    j\n Subtask 8 (17 points): no additional constraints\nExample Input 6 4 10 1 2 1 4 4 3 4 5 4 7 2 5 4 1 6 9 3 Output 9 Note In the\nexample input, one optimal solution looks as follows: On day 4, cut the edge\nbetween vertices 4 and 5 and harvest a ripe fruit with 1 unit of magic juice.\nOn the same day, cut the edge between vertices 1 and 2 and harvest 5 units of\nmagic juice from the ripe fruit in vertex 3. On day 7, do nothing. (We could\nharvest the fruit in vertex 4 that just became ripe, but doing so is not\noptimal.) On day 9, cut the edge between vertices 1 and 4. Discard the fruit\nin vertex 4 that is no longer ripe, and harvest 3 units of magic juice from\nthe ripe fruit in vertex 6. (Alternately, we could achieve the same effect by\ncutting the edge between vertices 4 and 6.)\n\n",
+        "cf_contest_id": 1193,
+        "cf_index": "B",
+        "cf_rating": 0,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "data structures",
+            "dp",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 1024.0,
+        "public_cases": [
+            [
+                "6 4 10\r\n1\r\n2\r\n1\r\n4\r\n4\r\n3 4 5\r\n4 7 2\r\n5 4 1\r\n6 9 3\r\n",
+                "9\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 9 10\r\n1\r\n1\r\n2\r\n2\r\n3\r\n1\r\n3\r\n8\r\n3\r\n5 4 1\r\n9 4 1\r\n6 8 1\r\n3 1 1\r\n4 9 1\r\n10 1 1\r\n2 6 1\r\n8 7 1\r\n7 9 1\r\n",
+                "7\r\n"
+            ],
+            [
+                "20 19 20\r\n1\r\n1\r\n2\r\n1\r\n3\r\n6\r\n5\r\n1\r\n5\r\n8\r\n1\r\n10\r\n3\r\n7\r\n4\r\n16\r\n13\r\n4\r\n2\r\n14 13 1\r\n18 9 1\r\n15 16 1\r\n9 20 1\r\n4 18 1\r\n12 15 1\r\n2 6 1\r\n16 13 1\r\n5 5 1\r\n17 19 1\r\n7 4 1\r\n11 14 1\r\n8 3 1\r\n10 1 1\r\n20 16 1\r\n13 1 1\r\n6 4 1\r\n3 12 1\r\n19 20 1\r\n",
+                "12\r\n"
+            ],
+            [
+                "20 10 10\r\n1\r\n1\r\n3\r\n1\r\n5\r\n2\r\n1\r\n8\r\n2\r\n4\r\n6\r\n9\r\n12\r\n8\r\n15\r\n14\r\n6\r\n5\r\n17\r\n6 7 1\r\n3 6 1\r\n14 5 1\r\n20 7 1\r\n16 7 1\r\n9 6 1\r\n13 4 1\r\n17 1 1\r\n4 2 1\r\n12 7 1\r\n",
+                "9\r\n"
+            ],
+            [
+                "20 19 8\r\n1\r\n2\r\n3\r\n3\r\n3\r\n5\r\n5\r\n4\r\n4\r\n4\r\n2\r\n11\r\n9\r\n6\r\n3\r\n2\r\n11\r\n2\r\n12\r\n3 6 1\r\n17 8 1\r\n20 6 1\r\n10 7 1\r\n8 5 1\r\n16 5 1\r\n11 2 1\r\n15 5 1\r\n18 8 1\r\n5 4 1\r\n7 8 1\r\n6 4 1\r\n2 4 1\r\n13 1 1\r\n9 6 1\r\n19 7 1\r\n12 7 1\r\n14 2 1\r\n4 8 1\r\n",
+                "14\r\n"
+            ],
+            [
+                "20 19 20\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n18\r\n19\r\n2 1 1\r\n3 3 1\r\n4 3 1\r\n5 4 1\r\n6 4 1\r\n7 6 1\r\n8 7 1\r\n9 9 1\r\n10 14 1\r\n11 14 1\r\n12 14 1\r\n13 15 1\r\n14 18 1\r\n15 19 1\r\n16 19 1\r\n17 19 1\r\n18 20 1\r\n19 20 1\r\n20 20 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "20 19 20\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n18\r\n19\r\n2 3 1\r\n3 12 1\r\n4 8 1\r\n5 20 1\r\n6 18 1\r\n7 6 1\r\n8 8 1\r\n9 14 1\r\n10 7 1\r\n11 5 1\r\n12 14 1\r\n13 13 1\r\n14 11 1\r\n15 7 1\r\n16 15 1\r\n17 18 1\r\n18 5 1\r\n19 10 1\r\n20 13 1\r\n",
+                "8\r\n"
+            ],
+            [
+                "20 19 20\r\n1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8\r\n9\r\n10\r\n11\r\n12\r\n13\r\n14\r\n15\r\n16\r\n17\r\n18\r\n19\r\n2 20 1\r\n3 17 1\r\n4 15 1\r\n5 14 1\r\n6 9 1\r\n7 9 1\r\n8 7 1\r\n9 7 1\r\n10 6 1\r\n11 4 1\r\n12 4 1\r\n13 4 1\r\n14 3 1\r\n15 3 1\r\n16 2 1\r\n17 2 1\r\n18 2 1\r\n19 1 1\r\n20 1 1\r\n",
+                "19\r\n"
+            ],
+            [
+                "20 15 20\r\n1\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2 14 1\r\n7 6 1\r\n20 3 1\r\n3 1 1\r\n18 7 1\r\n10 10 1\r\n11 3 1\r\n12 17 1\r\n9 14 1\r\n8 12 1\r\n5 12 1\r\n13 14 1\r\n4 11 1\r\n15 14 1\r\n17 5 1\r\n",
+                "14\r\n"
+            ],
+            [
+                "20 15 20\r\n1\r\n2\r\n3\r\n4\r\n2\r\n6\r\n7\r\n5\r\n8\r\n5\r\n10\r\n12\r\n11\r\n11\r\n13\r\n16\r\n15\r\n18\r\n19\r\n2 11 1\r\n12 15 1\r\n15 1 1\r\n20 12 1\r\n13 16 1\r\n10 6 1\r\n4 6 1\r\n11 19 1\r\n18 13 1\r\n3 14 1\r\n7 15 1\r\n16 11 1\r\n9 12 1\r\n14 3 1\r\n5 19 1\r\n",
+                "9\r\n"
+            ]
+        ]
+    }
+]

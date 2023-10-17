@@ -1,0 +1,135 @@
+[
+    {
+        "name": "Bear and Reverse Radewoosh",
+        "description": "Limak and Radewoosh are going to compete against each other in the upcoming\nalgorithmic contest. They are equally skilled but they won't solve problems in\nthe same order. There will be n problems. The i-th problem has initial score\npi and it takes exactly ti minutes to solve it. Problems are sorted by\ndifficulty \u2014 it's guaranteed that pi < pi + 1 and ti < ti + 1. A constant c is\ngiven too, representing the speed of loosing points. Then, submitting the i-th\nproblem at time x (x minutes after the start of the contest) gives max(0, pi -\nc\u00b7x) points. Limak is going to solve problems in order 1, 2, ..., n (sorted\nincreasingly by pi). Radewoosh is going to solve them in order n, n - 1, ...,\n1 (sorted decreasingly by pi). Your task is to predict the outcome \u2014 print the\nname of the winner (person who gets more points at the end) or a word \"Tie\" in\ncase of a tie. You may assume that the duration of the competition is greater\nor equal than the sum of all ti. That means both Limak and Radewoosh will\naccept all n problems. Input The first line contains two integers n and c (1 \u2264\nn \u2264 50, 1 \u2264 c \u2264 1000) \u2014 the number of problems and the constant representing\nthe speed of loosing points. The second line contains n integers p1, p2, ...,\npn (1 \u2264 pi \u2264 1000, pi < pi + 1) \u2014 initial scores. The third line contains n\nintegers t1, t2, ..., tn (1 \u2264 ti \u2264 1000, ti < ti + 1) where ti denotes the\nnumber of minutes one needs to solve the i-th problem. Output Print \"Limak\"\n(without quotes) if Limak will get more points in total. Print \"Radewoosh\"\n(without quotes) if Radewoosh will get more points in total. Print \"Tie\"\n(without quotes) if Limak and Radewoosh will get the same total number of\npoints. Examples Input 3 2 50 85 250 10 15 25 Output Limak Input 3 6 50 85 250\n10 15 25 Output Radewoosh Input 8 1 10 20 30 40 50 60 70 80 8 10 58 63 71 72\n75 76 Output Tie Note In the first sample, there are 3 problems. Limak solves\nthem as follows: Limak spends 10 minutes on the 1-st problem and he gets 50 -\nc\u00b710 = 50 - 2\u00b710 = 30 points. Limak spends 15 minutes on the 2-nd problem so\nhe submits it 10 + 15 = 25 minutes after the start of the contest. For the\n2-nd problem he gets 85 - 2\u00b725 = 35 points. He spends 25 minutes on the 3-rd\nproblem so he submits it 10 + 15 + 25 = 50 minutes after the start. For this\nproblem he gets 250 - 2\u00b750 = 150 points. So, Limak got 30 + 35 + 150 = 215\npoints. Radewoosh solves problem in the reversed order: Radewoosh solves 3-rd\nproblem after 25 minutes so he gets 250 - 2\u00b725 = 200 points. He spends 15\nminutes on the 2-nd problem so he submits it 25 + 15 = 40 minutes after the\nstart. He gets 85 - 2\u00b740 = 5 points for this problem. He spends 10 minutes on\nthe 1-st problem so he submits it 25 + 15 + 10 = 50 minutes after the start.\nHe gets max(0, 50 - 2\u00b750) = max(0, - 50) = 0 points. Radewoosh got 200 + 5 + 0\n= 205 points in total. Limak has 215 points so Limak wins. In the second\nsample, Limak will get 0 points for each problem and Radewoosh will first\nsolve the hardest problem and he will get 250 - 6\u00b725 = 100 points for that.\nRadewoosh will get 0 points for other two problems but he is the winner\nanyway. In the third sample, Limak will get 2 points for the 1-st problem and\n2 points for the 2-nd problem. Radewoosh will get 4 points for the 8-th\nproblem. They won't get points for other problems and thus there is a tie\nbecause 2 + 2 = 4.\n\n",
+        "cf_contest_id": 658,
+        "cf_index": "A",
+        "cf_rating": 800,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2\r\n50 85 250\r\n10 15 25\r\n",
+                "Limak\r\n"
+            ],
+            [
+                "3 6\r\n50 85 250\r\n10 15 25\r\n",
+                "Radewoosh\r\n"
+            ],
+            [
+                "8 1\r\n10 20 30 40 50 60 70 80\r\n8 10 58 63 71 72 75 76\r\n",
+                "Tie\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 1\r\n3 5 6 9\r\n1 2 4 8\r\n",
+                "Limak\r\n"
+            ],
+            [
+                "4 1\r\n1 3 6 10\r\n1 5 7 8\r\n",
+                "Radewoosh\r\n"
+            ],
+            [
+                "4 1\r\n2 4 5 10\r\n2 3 9 10\r\n",
+                "Tie\r\n"
+            ],
+            [
+                "18 4\r\n68 97 121 132 146 277 312 395 407 431 458 461 595 634 751 855 871 994\r\n1 2 3 4 9 10 13 21 22 29 31 34 37 38 39 41 48 49\r\n",
+                "Radewoosh\r\n"
+            ],
+            [
+                "50 1\r\n5 14 18 73 137 187 195 197 212 226 235 251 262 278 287 304 310 322 342 379 393 420 442 444 448 472 483 485 508 515 517 523 559 585 618 627 636 646 666 682 703 707 780 853 937 951 959 989 991 992\r\n30 84 113 173 199 220 235 261 266 277 300 306 310 312 347 356 394 396 397 409 414 424 446 462 468 487 507 517 537 566 594 643 656 660 662 668 706 708 773 774 779 805 820 827 868 896 929 942 961 995\r\n",
+                "Tie\r\n"
+            ],
+            [
+                "4 1\r\n4 6 9 10\r\n2 3 4 5\r\n",
+                "Radewoosh\r\n"
+            ],
+            [
+                "4 1\r\n4 6 9 10\r\n3 4 5 7\r\n",
+                "Radewoosh\r\n"
+            ],
+            [
+                "4 1\r\n1 6 7 10\r\n2 7 8 10\r\n",
+                "Tie\r\n"
+            ],
+            [
+                "4 1\r\n4 5 7 9\r\n1 4 5 8\r\n",
+                "Limak\r\n"
+            ],
+            [
+                "50 1\r\n6 17 44 82 94 127 134 156 187 211 212 252 256 292 294 303 352 355 379 380 398 409 424 434 480 524 584 594 631 714 745 756 777 778 789 793 799 821 841 849 859 878 879 895 925 932 944 952 958 990\r\n15 16 40 42 45 71 99 100 117 120 174 181 186 204 221 268 289 332 376 394 403 409 411 444 471 487 499 539 541 551 567 589 619 623 639 669 689 722 735 776 794 822 830 840 847 907 917 927 936 988\r\n",
+                "Radewoosh\r\n"
+            ],
+            [
+                "50 10\r\n25 49 52 73 104 117 127 136 149 164 171 184 226 251 257 258 286 324 337 341 386 390 428 453 464 470 492 517 543 565 609 634 636 660 678 693 710 714 729 736 739 749 781 836 866 875 956 960 977 979\r\n2 4 7 10 11 22 24 26 27 28 31 35 37 38 42 44 45 46 52 53 55 56 57 59 60 61 64 66 67 68 69 71 75 76 77 78 79 81 83 85 86 87 89 90 92 93 94 98 99 100\r\n",
+                "Limak\r\n"
+            ],
+            [
+                "50 10\r\n11 15 25 71 77 83 95 108 143 150 182 183 198 203 213 223 279 280 346 348 350 355 375 376 412 413 415 432 470 545 553 562 589 595 607 633 635 637 688 719 747 767 771 799 842 883 905 924 942 944\r\n1 3 5 6 7 10 11 12 13 14 15 16 19 20 21 23 25 32 35 36 37 38 40 41 42 43 47 50 51 54 55 56 57 58 59 60 62 63 64 65 66 68 69 70 71 72 73 75 78 80\r\n",
+                "Radewoosh\r\n"
+            ],
+            [
+                "32 6\r\n25 77 141 148 157 159 192 196 198 244 245 255 332 392 414 457 466 524 575 603 629 700 738 782 838 841 845 847 870 945 984 985\r\n1 2 4 5 8 9 10 12 13 14 15 16 17 18 20 21 22 23 24 26 28 31 38 39 40 41 42 43 45 47 48 49\r\n",
+                "Radewoosh\r\n"
+            ],
+            [
+                "5 1\r\n256 275 469 671 842\r\n7 9 14 17 26\r\n",
+                "Limak\r\n"
+            ],
+            [
+                "2 1000\r\n1 2\r\n1 2\r\n",
+                "Tie\r\n"
+            ],
+            [
+                "3 1\r\n1 50 809\r\n2 8 800\r\n",
+                "Limak\r\n"
+            ],
+            [
+                "1 13\r\n866\r\n10\r\n",
+                "Tie\r\n"
+            ],
+            [
+                "15 1\r\n9 11 66 128 199 323 376 386 393 555 585 718 935 960 971\r\n3 11 14 19 20 21 24 26 32 38 40 42 44 47 50\r\n",
+                "Limak\r\n"
+            ],
+            [
+                "1 10\r\n546\r\n45\r\n",
+                "Tie\r\n"
+            ],
+            [
+                "50 20\r\n21 43 51 99 117 119 158 167 175 190 196 244 250 316 335 375 391 403 423 428 451 457 460 480 487 522 539 559 566 584 598 602 604 616 626 666 675 730 771 787 828 841 861 867 886 889 898 970 986 991\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50\r\n",
+                "Limak\r\n"
+            ],
+            [
+                "50 21\r\n13 20 22 38 62 84 118 135 141 152 170 175 194 218 227 229 232 253 260 263 278 313 329 357 396 402 422 452 454 533 575 576 580 594 624 644 653 671 676 759 789 811 816 823 831 833 856 924 933 987\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50\r\n",
+                "Tie\r\n"
+            ],
+            [
+                "1 36\r\n312\r\n42\r\n",
+                "Tie\r\n"
+            ],
+            [
+                "1 1000\r\n1\r\n1000\r\n",
+                "Tie\r\n"
+            ],
+            [
+                "1 1\r\n1000\r\n1\r\n",
+                "Tie\r\n"
+            ],
+            [
+                "50 35\r\n9 17 28 107 136 152 169 174 186 188 201 262 291 312 324 330 341 358 385 386 393 397 425 431 479 498 502 523 530 540 542 554 578 588 622 623 684 696 709 722 784 819 836 845 850 932 945 969 983 984\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50\r\n",
+                "Tie\r\n"
+            ],
+            [
+                "50 20\r\n12 113 116 120 138 156 167 183 185 194 211 228 234 261 278 287 310 317 346 361 364 397 424 470 496 522 527 536 611 648 668 704 707 712 717 752 761 766 815 828 832 864 872 885 889 901 904 929 982 993\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50\r\n",
+                "Limak\r\n"
+            ]
+        ]
+    }
+]

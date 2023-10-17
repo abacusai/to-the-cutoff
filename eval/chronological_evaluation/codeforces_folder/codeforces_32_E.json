@@ -1,0 +1,340 @@
+[
+    {
+        "name": "Hide-and-Seek",
+        "description": "Victor and Peter are playing hide-and-seek. Peter has hidden, and Victor is to\nfind him. In the room where they are playing, there is only one non-\ntransparent wall and one double-sided mirror. Victor and Peter are points with\ncoordinates (xv, yv) and (xp, yp) respectively. The wall is a segment joining\npoints with coordinates (xw, 1, yw, 1) and (xw, 2, yw, 2), the mirror \u2014 a\nsegment joining points (xm, 1, ym, 1) and (xm, 2, ym, 2). If an obstacle has a\ncommon point with a line of vision, it's considered, that the boys can't see\neach other with this line of vision. If the mirror has a common point with the\nline of vision, it's considered, that the boys can see each other in the\nmirror, i.e. reflection takes place. The reflection process is governed by\nlaws of physics \u2014 the angle of incidence is equal to the angle of reflection.\nThe incident ray is in the same half-plane as the reflected ray, relative to\nthe mirror. I.e. to see each other Victor and Peter should be to the same side\nof the line, containing the mirror (see example 1). If the line of vision is\nparallel to the mirror, reflection doesn't take place, and the mirror isn't\nregarded as an obstacle (see example 4). Victor got interested if he can see\nPeter, while standing at the same spot. Help him solve this problem. Input The\nfirst line contains two numbers xv and yv \u2014 coordinates of Victor. The second\nline contains two numbers xp and yp \u2014 coordinates of Peter. The third line\ncontains 4 numbers xw, 1, yw, 1, xw, 2, yw, 2 \u2014 coordinates of the wall. The\nforth line contains 4 numbers xm, 1, ym, 1, xm, 2, ym, 2 \u2014 coordinates of the\nmirror. All the coordinates are integer numbers, and don't exceed 10^4 in\nabsolute value. It's guaranteed, that the segments don't have common points,\nVictor and Peter are not on any of the segments, coordinates of Victor and\nPeter aren't the same, the segments don't degenerate into points. Output\nOutput YES, if Victor can see Peter without leaving the initial spot.\nOtherwise output NO. Examples Input -1 3 1 3 0 2 0 4 0 0 0 1 Output NO Input 0\n0 1 1 0 1 1 0 -100 -100 -101 -101 Output NO Input 0 0 1 1 0 1 1 0 -1 1 1 3\nOutput YES Input 0 0 10 0 100 100 101 101 1 0 3 0 Output YES\n\n",
+        "cf_contest_id": 32,
+        "cf_index": "E",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "geometry",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "-1 3\r\n1 3\r\n0 2 0 4\r\n0 0 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 0\r\n1 1\r\n0 1 1 0\r\n-100 -100 -101 -101\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 0\r\n1 1\r\n0 1 1 0\r\n-1 1 1 3\r\n",
+                "YES\r\n"
+            ],
+            [
+                "0 0\r\n10 0\r\n100 100 101 101\r\n1 0 3 0\r\n",
+                "YES\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "0 0\r\n1 1\r\n100 100 101 101\r\n-100 -100 -101 -101\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-1 1\r\n1 1\r\n0 3 0 4\r\n0 0 0 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 0\r\n2 0\r\n1 1 1 -1\r\n0 2 1 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "0 0\r\n2 0\r\n1 1 1 -1\r\n-10 2 -12 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 0\r\n2 0\r\n0 2 2 2\r\n1 1 1 -1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 0\r\n2 0\r\n0 2 2 2\r\n1 0 1 -1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 0\r\n2 0\r\n0 2 2 2\r\n1 1 1 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 0\r\n3 0\r\n0 2 2 2\r\n1 0 2 0\r\n",
+                "YES\r\n"
+            ],
+            [
+                "0 0\r\n3 0\r\n1 0 2 0\r\n0 2 2 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "0 0\r\n3 0\r\n1 0 2 0\r\n-10 2 -12 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 0\r\n5 0\r\n1 0 2 0\r\n3 0 4 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 0\r\n10 0\r\n0 1 10 1\r\n1 0 9 0\r\n",
+                "YES\r\n"
+            ],
+            [
+                "0 0\r\n2 0\r\n1 1 1 -1\r\n0 2 2 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "0 0\r\n2 0\r\n1 1 1 -1\r\n1 2 2 2\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-1 2\r\n1 2\r\n0 2 0 4\r\n0 0 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-1 4\r\n1 4\r\n0 2 0 4\r\n0 0 0 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-1 5\r\n1 5\r\n0 2 0 4\r\n0 0 0 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-1 2\r\n1 2\r\n0 3 0 4\r\n0 0 0 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5023 -2243\r\n5648 1799\r\n1758 9228 -5815 3403\r\n-5967 -5718 -9900 -7956\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5498 9900\r\n7010 -7756\r\n-7598 8619 -7166 -3069\r\n-7486 -727 -9707 7115\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5974 2044\r\n8371 6409\r\n-675 4290 -8517 -9542\r\n-9005 4263 -9763 -8777\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2729 -5812\r\n9733 574\r\n9967 3682 -9868 3984\r\n9477 9254 2347 3997\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3205 -9947\r\n7374 -5260\r\n-3110 3073 5060 -2488\r\n7958 -5755 -7406 -816\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3680 2196\r\n8736 8904\r\n7532 2465 3709 -8961\r\n6439 -765 3053 3026\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4156 -5659\r\n-9903 3069\r\n-5545 1857 2358 4566\r\n4920 4225 5236 7868\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4632 -9795\r\n7738 -6486\r\n1377 1248 1007 -1906\r\n3402 9216 250 6991\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5108 2348\r\n9100 7679\r\n-7980 640 -4064 -8379\r\n1883 -5793 9041 8957\r\n",
+                "NO\r\n"
+            ],
+            [
+                "509 -7077\r\n1396 9890\r\n1192 2964 -1072 -8932\r\n-3260 -6877 -1781 1603\r\n",
+                "NO\r\n"
+            ],
+            [
+                "9060 4628\r\n5720 -2370\r\n-1791 9325 1552 -3684\r\n-161 -4597 2287 -3890\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-2389 53\r\n-9955 5368\r\n-4775 -593 7898 -2157\r\n6659 1403 9634 -3275\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6161 -4520\r\n-5630 -3171\r\n-7760 9489 -9477 -630\r\n9758 7404 -4730 -8056\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-5289 7185\r\n-5026 4568\r\n9256 -429 -3131 4617\r\n-7143 -6595 -5505 -370\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3261 2610\r\n-701 -7693\r\n6272 9652 -506 6144\r\n-322 -4315 -1436 -2142\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-8188 -5684\r\n3623 46\r\n3288 -265 5839 7672\r\n2776 1685 2632 -7636\r\n",
+                "NO\r\n"
+            ],
+            [
+                "362 9742\r\n7948 7786\r\n303 6095 -7816 9199\r\n5875 7686 6702 6871\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-7366 1446\r\n-7727 -754\r\n-2680 -3822 -5191 -5553\r\n-7304 -6313 -9229 1377\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1184 -3127\r\n-7123 6985\r\n-1943 6259 1154 -4026\r\n-4205 -4033 -5160 -4115\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-4496 6192\r\n-8443 7736\r\n2227 9746 -7197 6992\r\n-4002 -6638 7315 -9557\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-3802 -741\r\n-9954 6119\r\n-1364 -1523 -8659 2791\r\n6451 -4606 -7143 2288\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-3107 -7674\r\n4815 780\r\n-4957 3486 1980 -2625\r\n-432 -4075 -9497 -171\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1307 5392\r\n3305 -837\r\n-8550 -7782 5287 1042\r\n-2922 -287 8944 3865\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2001 2179\r\n-1925 -2455\r\n7858 948 71 2256\r\n4850 9947 1159 2295\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2696 -4753\r\n-3435 -7793\r\n4265 5958 -3218 -8692\r\n4458 4449 4175 1539\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7111 8313\r\n-4946 -9411\r\n672 -5310 -7733 -1889\r\n378 8589 -915 7675\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7806 5101\r\n9823 8971\r\n-6640 -300 9044 7390\r\n-2297 -3829 7806 2982\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-7779 -1832\r\n8313 7354\r\n9767 8430 -8438 -3487\r\n3855 4077 1085 -5181\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-7086 -8767\r\n6803 2015\r\n6175 -6560 3372 573\r\n256 3769 393 9678\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6777 -4260\r\n1717 5583\r\n3262 248 5800 1524\r\n9267 -7380 8541 5269\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3336 -9832\r\n-9350 -9113\r\n-939 3907 -3643 -9931\r\n8186 6365 6202 6802\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-6319 2768\r\n-431 5862\r\n-5417 8036 -5331 3150\r\n2385 -1888 3450 7359\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-7267 -975\r\n-7760 5217\r\n-9341 -5054 -7370 3072\r\n-4926 1220 7603 -1721\r\n",
+                "NO\r\n"
+            ],
+            [
+                "9293 -6547\r\n4895 -9479\r\n2738 -1395 8489 -8324\r\n3540 -4860 -8555 1675\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5851 7882\r\n-6171 -4174\r\n-1463 5985 4956 -8663\r\n6370 -9777 -864 9154\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-1311 2310\r\n2764 1131\r\n-1964 -5465 -199 2630\r\n-5664 9644 9110 2262\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-4752 -3262\r\n-4582 6436\r\n-8997 -6490 -4630 1426\r\n-9865 -6697 -2371 -5622\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-8193 -8833\r\n4353 -8260\r\n2214 683 -8074 -8978\r\n5548 -850 -1486 -8372\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4646 5596\r\n-2993 766\r\n2443 -3831 3479 5022\r\n-1987 4342 9668 7192\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1772 9009\r\n-8123 3429\r\n-1873 9437 -2887 -997\r\n8018 -9250 -5090 -9980\r\n",
+                "YES\r\n"
+            ],
+            [
+                "97 -43\r\n7213 -4204\r\n5460 -8068 4212 -2411\r\n9853 -8477 7807 6052\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-823 -3132\r\n-1924 -8397\r\n3277 5496 -1772 -6699\r\n-5322 -4634 922 182\r\n",
+                "YES\r\n"
+            ],
+            [
+                "7880 -7342\r\n1175 7552\r\n-6177 6690 6086 -2763\r\n6149 -2325 8602 -8496\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-3417 8449\r\n7996 3499\r\n3163 7949 5262 4575\r\n1340 -17 -3934 8703\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5286 518\r\n-8906 -4274\r\n-2162 1352 -751 -3408\r\n-3469 2291 -9521 -462\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-1541 -7140\r\n-3434 7016\r\n-831 6470 -4500 2354\r\n-5503 -553 -5998 6361\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-3234 2278\r\n-1683 1276\r\n-8143 -2879 -903 2275\r\n9053 -2468 7486 6408\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-8607 4167\r\n4114 -152\r\n3668 -1725 -7827 4541\r\n-5338 9216 880 9081\r\n",
+                "YES\r\n"
+            ],
+            [
+                "-1971 -1636\r\n8799 -5185\r\n2406 2302 1967 -7166\r\n-4122 5320 7348 337\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-1541 -7140\r\n-3434 7016\r\n-831 6470 -7233 -5530\r\n-5503 -553 -5998 6361\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-9867 3736\r\n2889 5086\r\n2601 -5285 -8930 4748\r\n-3752 511 3554 1104\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3874 -278\r\n-8905 -3524\r\n-1544 -3249 4063 -111\r\n-59 1361 7173 -847\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5567 -9695\r\n5625 2216\r\n1965 -7804 8129 -7554\r\n1665 -446 5340 7652\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-8240 -4453\r\n8478 -878\r\n7033 7520 -1002 -3146\r\n-9913 8035 -9876 -8757\r\n",
+                "NO\r\n"
+            ],
+            [
+                "866 4303\r\n-2945 -7242\r\n-8638 4653 -1155 -7439\r\n-950 -5491 2786 3812\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1462 5132\r\n-8664 2428\r\n175 -8258 -9863 8483\r\n-5685 3527 1556 5387\r\n",
+                "NO\r\n"
+            ],
+            [
+                "866 4303\r\n-2945 -7242\r\n-8638 4653 -1155 -7439\r\n-950 -5491 2786 3812\r\n",
+                "NO\r\n"
+            ],
+            [
+                "-8836 -5283\r\n-5804 9454\r\n-4442 76 -9550 -986\r\n-5178 -982 -7763 -7108\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

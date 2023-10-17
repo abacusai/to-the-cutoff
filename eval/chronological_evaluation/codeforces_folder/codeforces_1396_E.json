@@ -1,0 +1,101 @@
+[
+    {
+        "name": "Distance Matching",
+        "description": "You are given an integer \n    k\n and a tree \n    T\n with \n    n\n nodes\n(\n    n\n is even). Let \n    dist(u, v)\n be the number of edges on the shortest\npath from node \n    u\n to node \n    v\n in \n    T\n. Let us define a undirected\nweighted complete graph \n    G = (V, E)\n as following: \n    V = \n    \n    x \n    | 1\n    \n    \u2264 x \n    \u2264 n\n i.e. the set of integers from \n    1\n to \n    n\n \n    E\n    = \n    \n    (u, v, w) \n    | 1 \n    \u2264 u, v \n    \u2264 n, u \n    \u2260 v, w = dist(u, v)\n i.e. there is an edge between every pair of distinct nodes, the\nweight being the distance between their respective nodes in \n    T\n Your task\nis simple, find a perfect matching in \n    G\n with total edge weight \n    k\n\n\n    (1 \n    \u2264 k \n    \u2264 n^2)\n. Input The first line of input contains two\nintegers \n    n\n, \n    k\n (\n    2 \n    \u2264 n \n    \u2264 100\n     000\n, \n    n\n is even,\n\n    1 \n    \u2264 k \n    \u2264 n^2\n): number of nodes and the total edge weight of the\nperfect matching you need to find. The \n    i\n-th of the following \n    n - 1\n\nlines contains two integers \n    v_i\n, \n    u_i\n (\n    1 \n    \u2264 v_i, u_i \n    \u2264\n    n\n) denoting an edge between \n    v_i\n and \n    u_i\n in \n    T\n. It is\nguaranteed that the given graph is a tree. Output If there are no matchings\nthat satisfy the above condition, output \"NO\" (without quotes) on a single\nline. Otherwise, you should output \"YES\" (without quotes) on the first line of\noutput. You should then output \n    n/2\n lines, the \n    i\n-th line\ncontaining \n    p_i, q_i\n (\n    1 \n    \u2264 p_i, q_i \n    \u2264 n\n): the \n    i\n-th\npair of the matching. Examples Input 4 2 1 2 2 3 3 4 Output YES 2 1 3 4 Input\n4 4 1 2 2 3 3 4 Output YES 3 1 2 4 Note A tree is a connected acyclic\nundirected graph. A matching is set of pairwise non-adjacent edges, none of\nwhich are loops; that is, no two edges share a common vertex. A perfect\nmatching is a matching which matches all vertices of the graph; that is, every\nvertex of the graph is incident to exactly one edge of the matching.\n\n",
+        "cf_contest_id": 1396,
+        "cf_index": "E",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "4 2\r\n1 2\r\n2 3\r\n3 4\r\n",
+                "YES\r\n3 4\r\n1 2\r\n"
+            ],
+            [
+                "4 4\r\n1 2\r\n2 3\r\n3 4\r\n",
+                "YES\r\n2 4\r\n1 3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 8\r\n4 1\r\n3 4\r\n2 4\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 4\r\n2 6\r\n5 3\r\n1 5\r\n6 5\r\n4 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 13\r\n7 8\r\n1 8\r\n5 1\r\n3 6\r\n2 6\r\n1 2\r\n7 4\r\n",
+                "YES\r\n1 5\r\n2 8\r\n6 7\r\n3 4\r\n"
+            ],
+            [
+                "18 23\r\n15 18\r\n1 10\r\n18 13\r\n11 10\r\n8 4\r\n2 8\r\n5 3\r\n2 14\r\n2 11\r\n16 14\r\n17 2\r\n5 12\r\n5 7\r\n6 8\r\n10 18\r\n5 2\r\n9 14\r\n",
+                "YES\r\n5 3\r\n8 4\r\n2 9\r\n7 16\r\n12 6\r\n11 14\r\n10 15\r\n18 17\r\n1 13\r\n"
+            ],
+            [
+                "10 15\r\n7 1\r\n1 5\r\n8 3\r\n5 2\r\n3 9\r\n8 1\r\n4 8\r\n5 6\r\n1 10\r\n",
+                "YES\r\n1 9\r\n10 5\r\n8 6\r\n4 2\r\n3 7\r\n"
+            ],
+            [
+                "12 8\r\n10 4\r\n6 4\r\n3 2\r\n4 3\r\n9 3\r\n12 1\r\n1 2\r\n11 4\r\n5 8\r\n3 5\r\n1 7\r\n",
+                "YES\r\n5 8\r\n4 6\r\n11 10\r\n3 9\r\n1 2\r\n7 12\r\n"
+            ],
+            [
+                "14 94\r\n3 1\r\n7 10\r\n14 9\r\n9 2\r\n9 11\r\n13 10\r\n9 7\r\n3 2\r\n4 8\r\n5 1\r\n12 8\r\n8 2\r\n6 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "16 20\r\n8 7\r\n16 7\r\n7 5\r\n6 11\r\n9 10\r\n6 2\r\n4 1\r\n15 14\r\n1 7\r\n7 12\r\n14 13\r\n6 7\r\n10 6\r\n6 14\r\n3 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "20 33\r\n1 4\r\n3 2\r\n10 1\r\n11 15\r\n1 17\r\n5 15\r\n6 8\r\n12 8\r\n18 20\r\n15 1\r\n18 15\r\n5 16\r\n1 6\r\n1 19\r\n7 14\r\n9 6\r\n13 7\r\n7 1\r\n7 3\r\n",
+                "YES\r\n15 11\r\n1 8\r\n7 12\r\n3 18\r\n2 20\r\n13 5\r\n14 16\r\n19 17\r\n6 10\r\n9 4\r\n"
+            ],
+            [
+                "50 139\r\n16 25\r\n20 24\r\n39 19\r\n23 41\r\n45 43\r\n12 27\r\n13 28\r\n4 43\r\n2 28\r\n1 46\r\n43 10\r\n9 18\r\n5 32\r\n46 18\r\n38 16\r\n49 50\r\n49 20\r\n8 45\r\n31 49\r\n8 39\r\n22 40\r\n43 40\r\n28 15\r\n33 37\r\n32 28\r\n28 50\r\n40 29\r\n33 9\r\n7 28\r\n38 28\r\n5 33\r\n39 48\r\n27 23\r\n21 45\r\n28 40\r\n42 32\r\n50 14\r\n17 43\r\n38 47\r\n3 14\r\n4 6\r\n32 44\r\n23 5\r\n3 11\r\n30 28\r\n2 35\r\n45 34\r\n2 26\r\n4 36\r\n",
+                "YES\r\n43 19\r\n40 22\r\n28 11\r\n30 49\r\n29 31\r\n17 20\r\n10 24\r\n4 15\r\n36 2\r\n6 26\r\n45 35\r\n34 13\r\n32 14\r\n44 3\r\n5 47\r\n23 16\r\n27 25\r\n12 7\r\n41 50\r\n33 38\r\n42 37\r\n9 48\r\n18 39\r\n46 8\r\n1 21\r\n"
+            ],
+            [
+                "66 212\r\n40 47\r\n36 10\r\n57 16\r\n29 19\r\n26 5\r\n34 51\r\n33 27\r\n49 41\r\n9 57\r\n18 54\r\n2 58\r\n25 61\r\n57 56\r\n40 44\r\n64 51\r\n10 63\r\n1 56\r\n8 46\r\n52 16\r\n4 34\r\n9 22\r\n59 57\r\n25 43\r\n8 32\r\n37 21\r\n40 63\r\n66 61\r\n39 55\r\n30 6\r\n65 2\r\n45 39\r\n48 43\r\n38 35\r\n58 15\r\n16 17\r\n3 64\r\n12 63\r\n56 21\r\n21 8\r\n31 46\r\n26 55\r\n60 29\r\n22 30\r\n33 11\r\n62 50\r\n21 39\r\n24 4\r\n8 61\r\n51 7\r\n9 33\r\n29 46\r\n62 61\r\n11 23\r\n36 14\r\n13 58\r\n26 38\r\n21 64\r\n53 27\r\n39 63\r\n9 42\r\n28 14\r\n20 54\r\n18 63\r\n58 64\r\n49 40\r\n",
+                "YES\r\n39 38\r\n63 35\r\n18 5\r\n21 8\r\n64 61\r\n58 62\r\n13 50\r\n15 66\r\n2 25\r\n65 43\r\n3 48\r\n51 32\r\n7 46\r\n34 29\r\n4 60\r\n24 19\r\n54 31\r\n20 37\r\n56 59\r\n12 9\r\n40 42\r\n49 33\r\n41 11\r\n44 23\r\n47 27\r\n10 53\r\n36 22\r\n14 30\r\n28 6\r\n45 16\r\n55 17\r\n26 52\r\n1 57\r\n"
+            ],
+            [
+                "26 19\r\n4 25\r\n11 21\r\n9 21\r\n8 22\r\n13 21\r\n20 11\r\n3 7\r\n14 24\r\n2 9\r\n12 23\r\n13 12\r\n11 6\r\n23 17\r\n7 12\r\n10 21\r\n15 26\r\n22 13\r\n15 20\r\n12 14\r\n15 25\r\n21 1\r\n18 14\r\n19 2\r\n9 16\r\n25 5\r\n",
+                "YES\r\n22 8\r\n14 24\r\n7 3\r\n12 23\r\n18 17\r\n2 19\r\n9 16\r\n25 4\r\n15 26\r\n20 5\r\n11 6\r\n21 13\r\n1 10\r\n"
+            ],
+            [
+                "30 23\r\n13 25\r\n19 27\r\n4 10\r\n24 19\r\n24 26\r\n17 22\r\n7 8\r\n28 5\r\n12 21\r\n8 23\r\n27 1\r\n1 9\r\n18 6\r\n17 3\r\n6 14\r\n18 30\r\n13 26\r\n11 21\r\n22 20\r\n2 23\r\n2 25\r\n14 3\r\n29 5\r\n9 15\r\n15 20\r\n10 16\r\n11 30\r\n4 29\r\n28 12\r\n",
+                "YES\r\n10 16\r\n5 4\r\n12 29\r\n21 28\r\n18 11\r\n6 30\r\n3 14\r\n22 17\r\n15 20\r\n8 7\r\n2 23\r\n13 25\r\n24 26\r\n1 27\r\n9 19\r\n"
+            ],
+            [
+                "10 10\r\n3 8\r\n9 3\r\n9 2\r\n10 2\r\n10 4\r\n5 4\r\n1 9\r\n9 7\r\n6 9\r\n",
+                "YES\r\n10 5\r\n2 4\r\n9 3\r\n6 8\r\n1 7\r\n"
+            ],
+            [
+                "20 22\r\n13 2\r\n2 16\r\n6 16\r\n18 6\r\n18 5\r\n5 10\r\n7 10\r\n7 3\r\n3 11\r\n11 9\r\n8 9\r\n8 4\r\n20 4\r\n17 20\r\n14 20\r\n12 9\r\n11 19\r\n18 15\r\n3 1\r\n",
+                "YES\r\n20 17\r\n8 14\r\n9 4\r\n11 12\r\n2 13\r\n18 16\r\n5 6\r\n7 15\r\n3 10\r\n1 19\r\n"
+            ],
+            [
+                "50 580\r\n40 26\r\n16 40\r\n16 13\r\n13 2\r\n47 2\r\n47 17\r\n42 17\r\n10 42\r\n10 50\r\n50 19\r\n19 14\r\n14 22\r\n39 22\r\n44 39\r\n12 44\r\n38 12\r\n38 31\r\n37 31\r\n37 43\r\n43 7\r\n7 36\r\n29 36\r\n29 35\r\n5 35\r\n5 23\r\n23 30\r\n30 4\r\n4 49\r\n20 49\r\n28 20\r\n28 34\r\n46 34\r\n46 45\r\n25 45\r\n18 25\r\n27 18\r\n15 27\r\n21 15\r\n3 21\r\n3 32\r\n11 32\r\n24 11\r\n24 6\r\n6 1\r\n8 1\r\n41 8\r\n38 33\r\n3 9\r\n12 48\r\n",
+                "YES\r\n36 26\r\n35 40\r\n23 16\r\n30 13\r\n4 2\r\n49 47\r\n20 17\r\n28 42\r\n34 10\r\n46 50\r\n45 19\r\n25 14\r\n18 22\r\n27 39\r\n15 44\r\n21 48\r\n3 33\r\n9 12\r\n32 38\r\n11 31\r\n24 37\r\n6 43\r\n1 5\r\n8 29\r\n41 7\r\n"
+            ],
+            [
+                "2 1\r\n1 2\r\n",
+                "YES\r\n1 2\r\n"
+            ],
+            [
+                "30 70\r\n13 16\r\n23 16\r\n21 23\r\n6 21\r\n22 6\r\n25 22\r\n9 25\r\n9 12\r\n15 12\r\n15 18\r\n29 18\r\n29 2\r\n7 2\r\n24 7\r\n20 24\r\n20 14\r\n27 14\r\n27 10\r\n10 5\r\n4 5\r\n26 4\r\n30 26\r\n28 30\r\n28 3\r\n17 10\r\n23 11\r\n4 1\r\n23 19\r\n26 8\r\n",
+                "YES\r\n26 3\r\n23 13\r\n6 16\r\n25 11\r\n9 19\r\n15 21\r\n2 22\r\n7 12\r\n20 18\r\n10 24\r\n17 29\r\n4 5\r\n8 27\r\n30 14\r\n1 28\r\n"
+            ]
+        ]
+    }
+]

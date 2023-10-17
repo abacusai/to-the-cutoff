@@ -1,0 +1,175 @@
+[
+    {
+        "name": "New Year and Fireworks",
+        "description": "One tradition of welcoming the New Year is launching fireworks into the sky.\nUsually a launched firework flies vertically upward for some period of time,\nthen explodes, splitting into several parts flying in different directions.\nSometimes those parts also explode after some period of time, splitting into\neven more parts, and so on. Limak, who lives in an infinite grid, has a single\nfirework. The behaviour of the firework is described with a recursion depth n\nand a duration for each level of recursion t1, t2, ..., tn. Once Limak\nlaunches the firework in some cell, the firework starts moving upward. After\ncovering t1 cells (including the starting cell), it explodes and splits into\ntwo parts, each moving in the direction changed by 45 degrees (see the\npictures below for clarification). So, one part moves in the top-left\ndirection, while the other one moves in the top-right direction. Each part\nexplodes again after covering t2 cells, splitting into two parts moving in\ndirections again changed by 45 degrees. The process continues till the n-th\nlevel of recursion, when all 2^n-1 existing parts explode and disappear\nwithout creating new parts. After a few levels of recursion, it's possible\nthat some parts will be at the same place and at the same time \u2014 it is allowed\nand such parts do not crash. Before launching the firework, Limak must make\nsure that nobody stands in cells which will be visited at least once by the\nfirework. Can you count the number of those cells? Input The first line of the\ninput contains a single integer n (1 \u2264 n \u2264 30) \u2014 the total depth of the\nrecursion. The second line contains n integers t1, t2, ..., tn (1 \u2264 ti \u2264 5).\nOn the i-th level each of 2^i-1 parts will cover ti cells before exploding.\nOutput Print one integer, denoting the number of cells which will be visited\nat least once by any part of the firework. Examples Input 4 4 2 2 3 Output 39\nInput 6 1 1 1 1 1 3 Output 85 Input 1 3 Output 3 Note For the first sample,\nthe drawings below show the situation after each level of recursion. Limak\nlaunched the firework from the bottom-most red cell. It covered t1 = 4 cells\n(marked red), exploded and divided into two parts (their further movement is\nmarked green). All explosions are marked with an 'X' character. On the last\ndrawing, there are 4 red, 4 green, 8 orange and 23 pink cells. So, the total\nnumber of visited cells is 4 + 4 + 8 + 23 = 39. For the second sample, the\ndrawings below show the situation after levels 4, 5 and 6. The middle drawing\nshows directions of all parts that will move in the next level.\n\n",
+        "cf_contest_id": 750,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n4 2 2 3\r\n",
+                "39"
+            ],
+            [
+                "6\r\n1 1 1 1 1 3\r\n",
+                "85"
+            ],
+            [
+                "1\r\n3\r\n",
+                "3"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7\r\n5 3 3 5 5 4 4\r\n",
+                "480"
+            ],
+            [
+                "8\r\n3 3 3 3 3 3 3 1\r\n",
+                "384"
+            ],
+            [
+                "15\r\n4 4 4 3 2 1 5 3 5 3 4 1 2 4 4\r\n",
+                "5661"
+            ],
+            [
+                "20\r\n4 5 3 4 5 4 2 4 2 1 5 3 3 1 4 1 2 4 4 3\r\n",
+                "10495"
+            ],
+            [
+                "28\r\n1 3 4 4 4 3 1 4 5 1 3 5 3 2 5 1 4 4 5 3 4 2 5 4 2 5 3 2\r\n",
+                "26461"
+            ],
+            [
+                "30\r\n1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5\r\n",
+                "43348"
+            ],
+            [
+                "1\r\n1\r\n",
+                "1"
+            ],
+            [
+                "2\r\n5 5\r\n",
+                "15"
+            ],
+            [
+                "5\r\n1 2 3 4 5\r\n",
+                "122"
+            ],
+            [
+                "5\r\n5 4 3 2 1\r\n",
+                "57"
+            ],
+            [
+                "8\r\n3 3 3 3 5 5 5 5\r\n",
+                "905"
+            ],
+            [
+                "11\r\n5 5 5 5 5 5 5 5 5 4 4\r\n",
+                "3544"
+            ],
+            [
+                "10\r\n1 3 1 4 2 2 2 5 2 3\r\n",
+                "1145"
+            ],
+            [
+                "19\r\n5 1 2 1 1 2 1 2 1 2 1 2 1 2 5 5 5 5 5\r\n",
+                "6535"
+            ],
+            [
+                "29\r\n3 1 3 3 1 2 2 3 5 3 2 2 3 2 5 2 3 1 5 4 3 4 1 3 3 3 4 4 4\r\n",
+                "21903"
+            ],
+            [
+                "30\r\n5 5 1 1 4 4 3 1 5 3 5 5 1 2 2 3 4 5 2 1 4 3 1 1 4 5 4 4 2 2\r\n",
+                "24339"
+            ],
+            [
+                "30\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "2744"
+            ],
+            [
+                "30\r\n2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n",
+                "10479"
+            ],
+            [
+                "30\r\n4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4\r\n",
+                "30781"
+            ],
+            [
+                "30\r\n5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5\r\n",
+                "43348"
+            ],
+            [
+                "30\r\n2 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5\r\n",
+                "43348"
+            ],
+            [
+                "30\r\n4 1 3 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5\r\n",
+                "60096"
+            ],
+            [
+                "30\r\n1 4 5 3 3 3 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5\r\n",
+                "59453"
+            ],
+            [
+                "30\r\n1 3 4 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3\r\n",
+                "23706"
+            ],
+            [
+                "30\r\n5 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "2744"
+            ],
+            [
+                "1\r\n4\r\n",
+                "4"
+            ],
+            [
+                "5\r\n5 5 5 5 5\r\n",
+                "147"
+            ],
+            [
+                "3\r\n5 3 3\r\n",
+                "23"
+            ],
+            [
+                "5\r\n2 2 5 3 1\r\n",
+                "65"
+            ],
+            [
+                "3\r\n1 1 1\r\n",
+                "7"
+            ],
+            [
+                "4\r\n4 2 4 1\r\n",
+                "32"
+            ],
+            [
+                "1\r\n4\r\n",
+                "4"
+            ],
+            [
+                "30\r\n1 3 4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5\r\n",
+                "61237"
+            ],
+            [
+                "30\r\n2 5 4 3 2 3 4 2 4 4 1 2 1 2 4 4 1 3 3 2 1 5 4 2 2 2 1 5 2 4\r\n",
+                "21249"
+            ],
+            [
+                "10\r\n2 3 4 2 1 2 3 4 2 1\r\n",
+                "928"
+            ]
+        ]
+    }
+]

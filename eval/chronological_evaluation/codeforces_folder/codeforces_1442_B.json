@@ -1,0 +1,31 @@
+[
+    {
+        "name": "Identify the Operations",
+        "description": "We start with a permutation \n    a_1, a_2, \n    \u2026, a_n\n and with an empty\narray \n    b\n. We apply the following operation \n    k\n times. On the\n\n    i\n-th iteration, we select an index \n    t_i\n (\n    1 \n    \u2264 t_i \n    \u2264\n    n-i+1\n), remove \n    a_t_i\n from the array, and append one of the numbers\n\n    a_t_i-1\n or \n    a_t_i+1\n (if \n    t_i-1\n or \n    t_i+1\n are within\nthe array bounds) to the right end of the array \n    b\n. Then we move elements\n\n    a_t_i+1, \n    \u2026, a_n\n to the left in order to fill in the empty\nspace. You are given the initial permutation \n    a_1, a_2, \n    \u2026, a_n\n and\nthe resulting array \n    b_1, b_2, \n    \u2026, b_k\n. All elements of an array\n\n    b\n are distinct. Calculate the number of possible sequences of indices\n\n    t_1, t_2, \n    \u2026, t_k\n modulo \n    998\n     244\n     353\n. Input Each test\ncontains multiple test cases. The first line contains an integer \n    t\n (\n    1\n    \n    \u2264 t \n    \u2264 100\n     000\n), denoting the number of test cases, followed by a\ndescription of the test cases. The first line of each test case contains two\nintegers \n    n, k\n (\n    1 \n    \u2264 k < n \n    \u2264 200\n     000\n): sizes of arrays\n\n    a\n and \n    b\n. The second line of each test case contains \n    n\n\nintegers \n    a_1, a_2, \n    \u2026, a_n\n (\n    1 \n    \u2264 a_i \n    \u2264 n\n): elements\nof \n    a\n. All elements of \n    a\n are distinct. The third line of each test\ncase contains \n    k\n integers \n    b_1, b_2, \n    \u2026, b_k\n (\n    1 \n    \u2264 b_i\n    \n    \u2264 n\n): elements of \n    b\n. All elements of \n    b\n are distinct. The\nsum of all \n    n\n among all test cases is guaranteed to not exceed\n\n    200\n     000\n. Output For each test case print one integer: the number of\npossible sequences modulo \n    998\n     244\n     353\n. Example Input 3 5 3 1 2 3 4\n5 3 2 5 4 3 4 3 2 1 4 3 1 7 4 1 4 7 3 6 2 5 3 2 4 5 Output 2 0 4 Note\n\n    cancel\n Let's denote as \n    a_1 a_2 \n    \u2026\n    a_i\n    a_i+1\n    \u2026 a_n \n    \u2192 a_1 a_2 \n    \u2026 a_i-1\n    a_i+1\n    \u2026 a_n-1\n an operation over an element with index \n    i\n:\nremoval of element \n    a_i\n from array \n    a\n and appending element\n\n    a_i+1\n to array \n    b\n. In the first example test, the following two\noptions can be used to produce the given array \n    b\n: \n    1 2 \n    3\n    4 5 \n    \u2192 1 \n    2\n    3 5 \n    \u2192 1\n    \n    2\n    5\n    \u2192 1 2\n; \n    (t_1, t_2, t_3) = (4, 3,\n    2)\n; \n    1 2 \n    3\n    4 5 \n    \u2192\n    1\n    2 3 5 \n    \u2192 2 \n    3\n    5\n    \u2192\n    1 5\n; \n    (t_1, t_2, t_3) = (4, 1, 2)\n. In the second example test, it is\nimpossible to achieve the given array no matter the operations used. That's\nbecause, on the first application, we removed the element next to \n    4\n,\nnamely number \n    3\n, which means that it couldn't be added to array \n    b\n\non the second step. In the third example test, there are four options to\nachieve the given array \n    b\n: \n    1 4 \n    7\n    3 6 2 5\n    \n    \u2192 1 4 3 \n    6\n    2 5 \n    \u2192\n    1\n    4 3 2 5 \n    \u2192 4 3 \n    2\n    5\n    \u2192 4 3 5\n; \n    1 4 \n    7\n    3 6 2 5\n    \n    \u2192 1 4 3 \n    6\n    2 5 \n    \u2192 1\n    \n    4\n    3 2 5 \n    \u2192 1 4 \n    2\n    5\n    \u2192 1 4 5\n; \n    1 4 7 \n    3\n    6\n    2 5 \n    \u2192 1 4 7 \n    3\n    2 5 \n    \u2192\n    1\n    4 7 2 5 \n    \u2192 4 7 \n    2\n    5\n    \u2192 4 7 5\n; \n    1 4 7 \n    3\n    6\n    2 5 \n    \u2192 1 4 7 \n    3\n    2 5 \n    \u2192 1\n    \n    4\n    7 2 5 \n    \u2192 1 4 \n    2\n    5\n    \u2192 1 4 5\n;\n\n",
+        "cf_contest_id": 1442,
+        "cf_index": "B",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "data structures",
+            "dsu",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3\r\n5 3\r\n1 2 3 4 5\r\n3 2 5\r\n4 3\r\n4 3 2 1\r\n4 3 1\r\n7 4\r\n1 4 7 3 6 2 5\r\n3 2 4 5\r\n",
+                "2 0 4 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "6\r\n2 1\r\n2 1\r\n1\r\n3 2\r\n1 3 2\r\n1 3\r\n4 2\r\n4 1 3 2\r\n1 2\r\n5 3\r\n4 3 2 5 1\r\n1 4 5\r\n6 3\r\n2 4 5 6 1 3\r\n2 4 5\r\n7 3\r\n7 6 4 3 2 1 5\r\n1 2 6\r\n",
+                "1 0 2 0 0 4 "
+            ]
+        ]
+    }
+]

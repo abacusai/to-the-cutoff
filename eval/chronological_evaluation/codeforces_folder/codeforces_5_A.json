@@ -1,0 +1,91 @@
+[
+    {
+        "name": "Chat Servers Outgoing Traffic",
+        "description": "Polycarp is working on a new project called \"Polychat\". Following modern\ntendencies in IT, he decided, that this project should contain chat as well.\nTo achieve this goal, Polycarp has spent several hours in front of his laptop\nand implemented a chat server that can process three types of commands:\nInclude a person to the chat ('Add' command). Remove a person from the chat\n('Remove' command). Send a message from a person to all people, who are\ncurrently in the chat, including the one, who sends the message ('Send'\ncommand). Now Polycarp wants to find out the amount of outgoing traffic that\nthe server will produce while processing a particular set of commands.\nPolycarp knows that chat server sends no traffic for 'Add' and 'Remove'\ncommands. When 'Send' command is processed, server sends l bytes to each\nparticipant of the chat, where l is the length of the message. As Polycarp has\nno time, he is asking for your help in solving this problem. Input Input file\nwill contain not more than 100 commands, each in its own line. No line will\nexceed 100 characters. Formats of the commands will be the following: + for\n'Add' command. - for 'Remove' command. : for 'Send' command.  and  is a non-\nempty sequence of Latin letters and digits.  can contain letters, digits and\nspaces, but can't start or end with a space.  can be an empty line. It is\nguaranteed, that input data are correct, i.e. there will be no 'Add' command\nif person with such a name is already in the chat, there will be no 'Remove'\ncommand if there is no person with such a name in the chat etc. All names are\ncase-sensitive. Output Print a single number \u2014 answer to the problem. Examples\nInput +Mike Mike:hello +Kate +Dmitry -Dmitry Kate:hi -Kate Output 9 Input\n+Mike -Mike +Mike Mike:Hi I am here -Mike +Kate -Kate Output 14\n\n",
+        "cf_contest_id": 5,
+        "cf_index": "A",
+        "cf_rating": 1000,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 64.0,
+        "public_cases": [
+            [
+                "+Mike\r\nMike:hello\r\n+Kate\r\n+Dmitry\r\n-Dmitry\r\nKate:hi\r\n-Kate\r\n",
+                "9\r\n"
+            ],
+            [
+                "+Mike\r\n-Mike\r\n+Mike\r\nMike:Hi   I am here\r\n-Mike\r\n+Kate\r\n-Kate\r\n",
+                "14\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "+Dmitry\r\n+Mike\r\nDmitry:All letters will be used\r\nDmitry:qwertyuiopasdfghjklzxcvbnm QWERTYUIOPASDFGHJKLZXCVBNM\r\nDmitry:And digits too\r\nDmitry:1234567890 0987654321\r\n-Dmitry\r\n",
+                "224\r\n"
+            ],
+            [
+                "+Dmitry\r\n+Mike\r\n+Kate\r\nDmitry:\r\n",
+                "0\r\n"
+            ],
+            [
+                "+Dmitry\r\nDmitry:No phrases with spaces at the beginning and at the end\r\n+Mike\r\nDmitry:spaces    spaces\r\n-Dmitry\r\n",
+                "86\r\n"
+            ],
+            [
+                "+XqD\r\n+aT537\r\nXqD:x6ZPjMR1DDKG2\r\nXqD:lLCriywPnB\r\n-XqD\r\n",
+                "46\r\n"
+            ],
+            [
+                "+8UjgAJ\r\n8UjgAJ:02hR7UBc1tqqfL\r\n-8UjgAJ\r\n+zdi\r\n-zdi\r\n",
+                "14\r\n"
+            ],
+            [
+                "+6JPKkgXDrA\r\n+j6JHjv70An\r\n+QGtsceK0zJ\r\n6JPKkgXDrA:o4\r\n+CSmwi9zDra\r\nQGtsceK0zJ:Zl\r\nQGtsceK0zJ:0\r\nj6JHjv70An:7\r\nj6JHjv70An:B\r\nQGtsceK0zJ:OO\r\n",
+                "34\r\n"
+            ],
+            [
+                "+1aLNq9S7uLV\r\n-1aLNq9S7uLV\r\n+O9ykq3xDJv\r\n-O9ykq3xDJv\r\n+54Yq1xJq14F\r\n+0zJ5Vo0RDZ\r\n-54Yq1xJq14F\r\n-0zJ5Vo0RDZ\r\n+lxlH7sdolyL\r\n-lxlH7sdolyL\r\n",
+                "0\r\n"
+            ],
+            [
+                "+qlHEc2AuYy\r\nqlHEc2AuYy:YYRwD0 edNZgpE nGfOguRWnMYpTpGUVM aXDKGXo1Gv1tHL9\r\nqlHEc2AuYy:yvh3GsPcImqrvoUcBNQcP6ezwpU0 xAVltaKZp94VKiNao\r\nqlHEc2AuYy:zuCO6Opey L  eu7lTwysaSk00zjpv zrDfbt8l  hpHfu\r\n+pErDMxgVgh\r\nqlHEc2AuYy:I1FLis  mmQbZtd8Ui7y 1vcax6yZBMhVRdD6Ahlq7MNCw\r\nqlHEc2AuYy:lz MFUNJZhlqBYckHUDlNhLiEkmecRh1o0t7alXBvCRVEFVx\r\npErDMxgVgh:jCyMbu1dkuEj5TzbBOjyUhpfC50cL8R900Je3R KxRgAI dT\r\nqlHEc2AuYy:62b47eabo2hf vSUD7KioN ZHki6WB6gh3u GKv5rgwyfF\r\npErDMxgVgh:zD5 9 ympl4wR gy7a7eAGAn5xVdGP9FbL6hRCZAR6O4pT6zb\r\n",
+                "615\r\n"
+            ],
+            [
+                "+adabacaba0\r\n",
+                "0\r\n"
+            ],
+            [
+                "+acabadab\r\n+caba0aba\r\n",
+                "0\r\n"
+            ],
+            [
+                "+dabaca\r\n-dabaca\r\n+aba0ab\r\n",
+                "0\r\n"
+            ],
+            [
+                "+cab\r\n+abac\r\n-abac\r\n+baca\r\n",
+                "0\r\n"
+            ],
+            [
+                "+cabadabac\r\n-cabadabac\r\n+abacaba1ab\r\n-abacaba1ab\r\n+ba0abaca\r\n",
+                "0\r\n"
+            ],
+            [
+                "+adabacaba\r\n-adabacaba\r\n+aca\r\naca:caba\r\n-aca\r\n+bacaba\r\n-bacaba\r\n+aba\r\n-aba\r\n+bad\r\n",
+                "4\r\n"
+            ],
+            [
+                "+acabadab\r\n-acabadab\r\n+aba0abacab\r\n+baca\r\n+abacaba0ab\r\n-baca\r\n-abacaba0ab\r\n-aba0abacab\r\n+cab\r\n-cab\r\n+abacabada\r\n-abacabada\r\n+badabaca\r\n-badabaca\r\n+badaba\r\n",
+                "0\r\n"
+            ],
+            [
+                "+badabac\r\nbadabac:abacabad\r\n-badabac\r\n+0ab\r\n-0ab\r\n+dabacab\r\n-dabacab\r\n+a0ab\r\n-a0ab\r\n+0abaca\r\n-0abaca\r\n+dabac\r\n-dabac\r\n+abaca\r\n-abaca\r\n+bacabada\r\n-bacabada\r\n+aca\r\n-aca\r\n+abadabaca\r\n-abadabaca\r\n+acaba\r\n-acaba\r\n+abacabadab\r\n-abacabadab\r\n",
+                "8\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Complete Tripartite",
+        "description": "You have a simple undirected graph consisting of \n    n\n vertices and \n    m\n\nedges. The graph doesn't contain self-loops, there is at most one edge between\na pair of vertices. The given graph can be disconnected. Let's make a\ndefinition. Let \n    v_1\n and \n    v_2\n be two some nonempty subsets of\nvertices that do not intersect. Let \n    f(v_1, v_2)\n be true if and only\nif all the conditions are satisfied: There are no edges with both endpoints in\nvertex set \n    v_1\n. There are no edges with both endpoints in vertex set\n\n    v_2\n. For every two vertices \n    x\n and \n    y\n such that \n    x\n is in\n\n    v_1\n and \n    y\n is in \n    v_2\n, there is an edge between \n    x\n and\n\n    y\n. Create three vertex sets (\n    v_1\n, \n    v_2\n, \n    v_3\n)\nwhich satisfy the conditions below; All vertex sets should not be empty. Each\nvertex should be assigned to only one vertex set. \n    f(v_1, v_2)\n,\n\n    f(v_2, v_3)\n, \n    f(v_3, v_1)\n are all true. Is it possible to\ncreate such three vertex sets? If it's possible, print matching vertex set for\neach vertex. Input The first line contains two integers \n    n\n and \n    m\n\n(\n    3 \n    \u2264 n \n    \u2264 10^5\n, \n    0 \n    \u2264 m \n    \u2264\n    min(3 \n    \u00b7\n    10^5, \n    n(n-1)/2)\n) \u2014 the number of vertices and edges in the\ngraph. The \n    i\n-th of the next \n    m\n lines contains two integers\n\n    a_i\n and \n    b_i\n (\n    1 \n    \u2264 a_i\n     b_i\n    \u2264 n\n) \u2014 it\nmeans there is an edge between \n    a_i\n and \n    b_i\n. The graph doesn't\ncontain self-loops, there is at most one edge between a pair of vertices. The\ngiven graph can be disconnected. Output If the answer exists, print \n    n\n\nintegers. \n    i\n-th integer means the vertex set number (from \n    1\n to\n\n    3\n) of \n    i\n-th vertex. Otherwise, print \n    -1\n. If there are\nmultiple answers, print any. Examples Input 6 11 1 2 1 3 1 4 1 5 1 6 2 4 2 5 2\n6 3 4 3 5 3 6 Output 1 2 2 3 3 3 Input 4 6 1 2 1 3 1 4 2 3 2 4 3 4 Output -1\nNote In the first example, if \n    v_1 = \n    \n     1\n, \n    v_2 = \n    \n     2,\n    3\n, and \n    v_3 = \n    \n     4, 5, 6\n then vertex sets will\nsatisfy all conditions. But you can assign vertices to vertex sets in a\ndifferent way; Other answers like \"2 3 3 1 1 1\" will be accepted as well. In\nthe second example, it's impossible to make such vertex sets.\n\n",
+        "cf_contest_id": 1228,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "constructive algorithms",
+            "graphs",
+            "hashing",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 11\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n2 4\r\n2 5\r\n2 6\r\n3 4\r\n3 5\r\n3 6\r\n",
+                "1 2 2 3 3 3 "
+            ],
+            [
+                "4 6\r\n1 2\r\n1 3\r\n1 4\r\n2 3\r\n2 4\r\n3 4\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 3\r\n1 2\r\n2 3\r\n1 3\r\n",
+                "1 2 3 "
+            ],
+            [
+                "6 9\r\n1 4\r\n1 5\r\n1 6\r\n2 4\r\n2 5\r\n2 6\r\n3 4\r\n3 5\r\n3 6\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 1\r\n1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "4 3\r\n1 4\r\n2 4\r\n3 4\r\n",
+                "-1\r\n"
+            ],
+            [
+                "21 35\r\n1 4\r\n2 4\r\n1 5\r\n2 5\r\n1 6\r\n2 6\r\n1 7\r\n2 7\r\n1 8\r\n2 8\r\n1 9\r\n2 9\r\n1 10\r\n2 10\r\n1 11\r\n2 11\r\n1 12\r\n2 12\r\n1 13\r\n2 13\r\n1 14\r\n2 14\r\n1 15\r\n2 15\r\n1 16\r\n2 16\r\n1 17\r\n2 17\r\n1 18\r\n2 18\r\n1 19\r\n2 19\r\n1 20\r\n2 20\r\n3 21\r\n",
+                "-1\r\n"
+            ],
+            [
+                "6 12\r\n1 2\r\n1 4\r\n1 5\r\n1 6\r\n2 3\r\n3 4\r\n3 5\r\n3 6\r\n2 5\r\n2 6\r\n4 5\r\n4 6\r\n",
+                "1 2 1 2 3 3 "
+            ],
+            [
+                "12 17\r\n1 4\r\n2 4\r\n1 5\r\n2 5\r\n1 6\r\n2 6\r\n1 7\r\n2 7\r\n1 8\r\n2 8\r\n1 9\r\n2 9\r\n1 10\r\n2 10\r\n1 11\r\n2 11\r\n3 12\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 4\r\n1 3\r\n1 4\r\n2 3\r\n2 4\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

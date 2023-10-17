@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Quantifier Question",
+        "description": "Logical quantifiers are very useful tools for expressing claims about a set.\nFor this problem, let's focus on the set of real numbers specifically. The set\nof real numbers includes zero and negatives. There are two kinds of\nquantifiers: universal (\n    \u2200\n) and existential (\n    \u2203\n).\nYou can read more about them here. The universal quantifier is used to make a\nclaim that a statement holds for all real numbers. For example: \n    \u2200\n    x,x<100\n is read as: for all real numbers \n    x\n, \n    x\n is less than\n\n    100\n. This statement is false. \n    \u2200 x,x>x-1\n is read as: for\nall real numbers \n    x\n, \n    x\n is greater than \n    x-1\n. This statement is\ntrue. The existential quantifier is used to make a claim that there exists\nsome real number for which the statement holds. For example: \n    \u2203\n    x,x<100\n is read as: there exists a real number \n    x\n such that \n    x\n is\nless than \n    100\n. This statement is true. \n    \u2203 x,x>x-1\n is read\nas: there exists a real number \n    x\n such that \n    x\n is greater than\n\n    x-1\n. This statement is true. Moreover, these quantifiers can be nested.\nFor example: \n    \u2200 x,\n    \u2203 y,x<y\n is read as: for all real\nnumbers \n    x\n, there exists a real number \n    y\n such that \n    x\n is less\nthan \n    y\n. This statement is true since for every \n    x\n, there exists\n\n    y=x+1\n. \n    \u2203 y,\n    \u2200 x,x<y\n is read as: there exists a real\nnumber \n    y\n such that for all real numbers \n    x\n, \n    x\n is less than\n\n    y\n. This statement is false because it claims that there is a maximum\nreal number: a number \n    y\n larger than every \n    x\n. Note that the order\nof variables and quantifiers is important for the meaning and veracity of a\nstatement. There are \n    n\n variables \n    x_1,x_2,\n    \u2026,x_n\n, and you are\ngiven some formula of the form \n    \n\n    f(x_1,\n    \u2026,x_n):=(x_j_1<x_k_1)\n     (x_j_2<x_k_2)\n    \n    \u22ef\n     (x_j_m<x_k_m),\n\n    \n where \n    \n denotes logical\nAND. That is, \n    f(x_1,\n    \u2026, x_n)\n is true if every inequality\n\n    x_j_i<x_k_i\n holds. Otherwise, if at least one inequality does not\nhold, then \n    f(x_1,\n    \u2026,x_n)\n is false. Your task is to assign\nquantifiers \n    Q_1,\n    \u2026,Q_n\n to either universal (\n    \u2200\n) or\nexistential (\n    \u2203\n) so that the statement \n    \n\n    Q_1 x_1, Q_2 x_2,\n    \n    \u2026, Q_n x_n, f(x_1,\n    \u2026, x_n)\n\n    \n is true, and the number of\nuniversal quantifiers is maximized, or determine that the statement is false\nfor every possible assignment of quantifiers. Note that the order the\nvariables appear in the statement is fixed. For example, if\n\n    f(x_1,x_2):=(x_1<x_2)\n then you are not allowed to make \n    x_2\n appear\nfirst and use the statement \n    \u2200 x_2,\n    \u2203 x_1, x_1<x_2\n. If you\nassign \n    Q_1=\n    \u2203\n and \n    Q_2=\n    \u2200\n, it will only be\ninterpreted as \n    \u2203 x_1,\n    \u2200 x_2,x_1<x_2\n. Input The first line\ncontains two integers \n    n\n and \n    m\n (\n    2\n    \u2264 n\n    \u2264 2\n    \u00b7 10^5\n;\n\n    1\n    \u2264 m\n    \u2264 2\n    \u00b7 10^5\n) \u2014 the number of variables and the number of\ninequalities in the formula, respectively. The next \n    m\n lines describe the\nformula. The \n    i\n-th of these lines contains two integers\n\n    j_i\n,\n    k_i\n (\n    1\n    \u2264 j_i,k_i\n    \u2264 n\n, \n    j_i\n     k_i\n). Output\nIf there is no assignment of quantifiers for which the statement is true,\noutput a single integer \n    -1\n. Otherwise, on the first line output an\ninteger, the maximum possible number of universal quantifiers. On the next\nline, output a string of length \n    n\n, where the \n    i\n-th character is \"A\"\nif \n    Q_i\n should be a universal quantifier (\n    \u2200\n), or \"E\" if\n\n    Q_i\n should be an existential quantifier (\n    \u2203\n). All letters\nshould be upper-case. If there are multiple solutions where the number of\nuniversal quantifiers is maximum, print any. Examples Input 2 1 1 2 Output 1\nAE Input 4 3 1 2 2 3 3 1 Output -1 Input 3 2 1 3 2 3 Output 2 AAE Note For the\nfirst test, the statement \n    \u2200 x_1, \n    \u2203 x_2, x_1<x_2\n is true.\nAnswers of \"EA\" and \"AA\" give false statements. The answer \"EE\" gives a true\nstatement, but the number of universal quantifiers in this string is less than\nin our answer. For the second test, we can show that no assignment of\nquantifiers, for which the statement is true exists. For the third test, the\nstatement \n    \u2200 x_1, \n    \u2200 x_2, \n    \u2203 x_3, (x_1<x_3)\n    \n    (x_2<x_3)\n is true: We can set \n    x_3=\n    max\n    \n    x_1,x_2\n    \n    +1\n.\n\n",
+        "cf_contest_id": 1344,
+        "cf_index": "C",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "math"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 1\r\n1 2\r\n",
+                "1\r\nAE\r\n"
+            ],
+            [
+                "4 3\r\n1 2\r\n2 3\r\n3 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 2\r\n1 3\r\n2 3\r\n",
+                "2\r\nAAE\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6 3\r\n1 3\r\n2 5\r\n4 6\r\n",
+                "3\r\nAAEAEE\r\n"
+            ],
+            [
+                "100 50\r\n55 13\r\n84 2\r\n22 63\r\n100 91\r\n2 18\r\n98 64\r\n1 86\r\n93 11\r\n17 6\r\n24 97\r\n14 35\r\n24 74\r\n22 3\r\n42 5\r\n63 79\r\n31 89\r\n81 22\r\n86 88\r\n77 51\r\n81 34\r\n19 55\r\n41 54\r\n34 57\r\n45 9\r\n55 72\r\n67 61\r\n41 84\r\n39 32\r\n51 89\r\n58 74\r\n32 79\r\n65 6\r\n86 64\r\n63 42\r\n100 57\r\n46 39\r\n100 9\r\n23 58\r\n26 81\r\n61 49\r\n71 83\r\n66 2\r\n79 74\r\n30 27\r\n44 52\r\n50 49\r\n88 11\r\n94 89\r\n2 35\r\n80 94\r\n",
+                "59\r\nAAAAAAAAAAEAAAAAEEEAAEAAAEAAAEAAAEEAAAEAEEAAEEAAAEAEAEEAEEAAEAEEEEEAAAAEAEAAEAEAEAEEAEAEEAAAEEAAEEAE\r\n"
+            ],
+            [
+                "2 2\r\n2 1\r\n1 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 3\r\n1 2\r\n3 4\r\n5 4\r\n",
+                "2\r\nAEAEE\r\n"
+            ],
+            [
+                "5 5\r\n4 1\r\n5 4\r\n2 1\r\n3 2\r\n3 4\r\n",
+                "1\r\nAEEEE\r\n"
+            ],
+            [
+                "10 6\r\n6 2\r\n8 2\r\n1 5\r\n7 9\r\n5 1\r\n2 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10 8\r\n4 6\r\n1 6\r\n9 4\r\n9 5\r\n8 7\r\n7 4\r\n3 1\r\n2 9\r\n",
+                "3\r\nAAEEEEEEEA\r\n"
+            ],
+            [
+                "10 10\r\n4 1\r\n10 7\r\n5 4\r\n5 3\r\n7 6\r\n2 1\r\n6 4\r\n8 7\r\n6 8\r\n7 10\r\n",
+                "-1\r\n"
+            ],
+            [
+                "51 50\r\n4 34\r\n50 28\r\n46 41\r\n37 38\r\n29 9\r\n4 29\r\n38 42\r\n16 3\r\n34 21\r\n27 39\r\n34 29\r\n22 50\r\n14 47\r\n23 35\r\n11 4\r\n26 5\r\n50 27\r\n29 33\r\n18 14\r\n42 24\r\n18 29\r\n28 36\r\n17 48\r\n47 51\r\n51 37\r\n47 48\r\n35 9\r\n23 28\r\n41 36\r\n34 6\r\n8 17\r\n7 30\r\n27 23\r\n41 51\r\n19 6\r\n21 46\r\n11 22\r\n21 46\r\n16 15\r\n1 4\r\n51 29\r\n3 36\r\n15 40\r\n17 42\r\n29 3\r\n27 20\r\n3 17\r\n34 10\r\n10 31\r\n20 44\r\n",
+                "13\r\nAAEEAEAAEEEAAEAEEEEEEEEEAEEEEEEAEEEEEEEEEEAEAEEEAEE\r\n"
+            ],
+            [
+                "99 50\r\n34 91\r\n28 89\r\n62 71\r\n25 68\r\n88 47\r\n36 7\r\n85 33\r\n30 91\r\n45 39\r\n65 66\r\n69 80\r\n44 58\r\n67 98\r\n10 85\r\n88 48\r\n18 26\r\n83 24\r\n20 14\r\n26 3\r\n54 35\r\n48 3\r\n62 58\r\n99 27\r\n62 92\r\n5 65\r\n66 2\r\n95 62\r\n48 27\r\n17 56\r\n58 66\r\n98 73\r\n17 57\r\n73 40\r\n54 66\r\n56 75\r\n85 6\r\n70 63\r\n76 25\r\n85 40\r\n1 89\r\n21 65\r\n90 9\r\n62 5\r\n76 11\r\n18 50\r\n32 66\r\n10 74\r\n74 80\r\n44 33\r\n7 82\r\n",
+                "58\r\nAAAAEAAAAEAAAAAAAEAEEAAAAEAAAAAEEAAEAAAEAAAEEAAEAEAAAEAEEEAAAEAAEEEEAEEAEEEEAAAEAEEAEAAEEEEEAAEAAEE\r\n"
+            ],
+            [
+                "5 6\r\n1 4\r\n4 3\r\n5 4\r\n4 3\r\n2 3\r\n1 5\r\n",
+                "2\r\nAAEEE\r\n"
+            ],
+            [
+                "12 30\r\n2 11\r\n7 1\r\n9 5\r\n9 10\r\n10 7\r\n2 4\r\n12 6\r\n3 11\r\n9 6\r\n12 5\r\n12 3\r\n7 6\r\n7 4\r\n3 11\r\n6 5\r\n3 4\r\n10 1\r\n2 6\r\n2 3\r\n10 5\r\n10 1\r\n7 4\r\n9 1\r\n9 5\r\n12 11\r\n7 1\r\n9 3\r\n9 3\r\n8 1\r\n7 3\r\n",
+                "2\r\nAAEEEEEEEEEE\r\n"
+            ],
+            [
+                "12 11\r\n7 11\r\n4 1\r\n6 3\r\n3 4\r\n9 7\r\n1 5\r\n2 9\r\n5 10\r\n12 6\r\n11 12\r\n8 2\r\n",
+                "1\r\nAEEEEEEEEEEE\r\n"
+            ]
+        ]
+    }
+]

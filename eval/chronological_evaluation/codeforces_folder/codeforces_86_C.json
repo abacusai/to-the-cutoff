@@ -1,0 +1,401 @@
+[
+    {
+        "name": "Genetic engineering",
+        "description": "\"Multidimensional spaces are completely out of style these days, unlike\ngenetics problems\" \u2014 thought physicist Woll and changed his subject of study\nto bioinformatics. Analysing results of sequencing he faced the following\nproblem concerning DNA sequences. We will further think of a DNA sequence as\nan arbitrary string of uppercase letters \"A\", \"C\", \"G\" and \"T\" (of course,\nthis is a simplified interpretation). Let w be a long DNA sequence and s1, s2,\n..., sm \u2014 collection of short DNA sequences. Let us say that the collection\nfilters w iff w can be covered with the sequences from the collection.\nCertainly, substrings corresponding to the different positions of the string\nmay intersect or even cover each other. More formally: denote by |w| the\nlength of w, let symbols of w be numbered from 1 to |w|. Then for each\nposition i in w there exist pair of indices l, r (1 \u2264 l \u2264 i \u2264 r \u2264 |w|) such\nthat the substring w[l ... r] equals one of the elements s1, s2, ..., sm of\nthe collection. Woll wants to calculate the number of DNA sequences of a given\nlength filtered by a given collection, but he doesn't know how to deal with\nit. Help him! Your task is to find the number of different DNA sequences of\nlength n filtered by the collection si. Answer may appear very large, so\noutput it modulo 1000000009. Input First line contains two integer numbers n\nand m (1 \u2264 n \u2264 1000, 1 \u2264 m \u2264 10) \u2014 the length of the string and the number of\nsequences in the collection correspondently. Next m lines contain the\ncollection sequences si, one per line. Each si is a nonempty string of length\nnot greater than 10. All the strings consist of uppercase letters \"A\", \"C\",\n\"G\", \"T\". The collection may contain identical strings. Output Output should\ncontain a single integer \u2014 the number of strings filtered by the collection\nmodulo 1000000009 (10^9 + 9). Examples Input 2 1 A Output 1 Input 6 2 CAT TACT\nOutput 2 Note In the first sample, a string has to be filtered by \"A\".\nClearly, there is only one such string: \"AA\". In the second sample, there\nexist exactly two different strings satisfying the condition (see the pictures\nbelow).\n\n",
+        "cf_contest_id": 86,
+        "cf_index": "C",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "string suffix structures",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 1\r\nA\r\n",
+                "1"
+            ],
+            [
+                "6 2\r\nCAT\r\nTACT\r\n",
+                "2"
+            ]
+        ],
+        "private_cases": [
+            [
+                "8 2\r\nAGCT\r\nAGC\r\n",
+                "1"
+            ],
+            [
+                "12 1\r\nACC\r\n",
+                "1"
+            ],
+            [
+                "13 1\r\nACC\r\n",
+                "0"
+            ],
+            [
+                "20 1\r\nACA\r\n",
+                "49"
+            ],
+            [
+                "5 6\r\nCGTTGAA\r\nATTATGAACC\r\nTTA\r\nTCAG\r\nCCGAGG\r\nT\r\n",
+                "6"
+            ],
+            [
+                "5 4\r\nA\r\nC\r\nG\r\nT\r\n",
+                "1024"
+            ],
+            [
+                "4 5\r\nCTA\r\nA\r\nCA\r\nACAG\r\nACC\r\n",
+                "11"
+            ],
+            [
+                "4 5\r\nCTA\r\nA\r\nCA\r\nACC\r\nTCT\r\n",
+                "12"
+            ],
+            [
+                "4 4\r\nTCT\r\nCTA\r\nA\r\nCA\r\n",
+                "9"
+            ],
+            [
+                "1000 3\r\nAT\r\nTTT\r\nGTA\r\n",
+                "354668080"
+            ],
+            [
+                "13 3\r\nTCA\r\nAGTC\r\nGTT\r\n",
+                "94"
+            ],
+            [
+                "1000 10\r\nATTTTTTTTT\r\nAGGGGGGGGG\r\nACCCCCCCCC\r\nTGGGGGGGGG\r\nTAAAAAAAAA\r\nTCCCCCCCCC\r\nGCCCCCCCCC\r\nGTTTTTTTTT\r\nCAAAAAAAAA\r\nCGGGGGGGGG\r\n",
+                "824781477"
+            ],
+            [
+                "10 10\r\nAGA\r\nAT\r\nTAG\r\nGAG\r\nAT\r\nCAT\r\nTAT\r\nTACT\r\nGAT\r\nCAT\r\n",
+                "1087"
+            ],
+            [
+                "10 10\r\nAT\r\nTACT\r\nTAT\r\nTAT\r\nGAG\r\nAT\r\nGAT\r\nCAT\r\nTAG\r\nCAT\r\n",
+                "661"
+            ],
+            [
+                "10 10\r\nTAG\r\nACT\r\nCAT\r\nACT\r\nGAT\r\nGAG\r\nACT\r\nAGA\r\nAT\r\nGAG\r\n",
+                "894"
+            ],
+            [
+                "10 10\r\nAT\r\nTA\r\nTAT\r\nCAT\r\nGAT\r\nCAT\r\nTAG\r\nTAG\r\nTACT\r\nAT\r\n",
+                "1074"
+            ],
+            [
+                "10 10\r\nAT\r\nCAT\r\nTAT\r\nGAG\r\nAT\r\nTAT\r\nGAGA\r\nTACT\r\nAT\r\nGAT\r\n",
+                "282"
+            ],
+            [
+                "10 10\r\nACT\r\nAT\r\nTACT\r\nGAGA\r\nCAT\r\nAGA\r\nGAT\r\nTA\r\nAT\r\nTA\r\n",
+                "1860"
+            ],
+            [
+                "100 10\r\nTAT\r\nAGA\r\nAGA\r\nTAT\r\nCAT\r\nTAG\r\nAT\r\nCAT\r\nTACT\r\nTA\r\n",
+                "219832230"
+            ],
+            [
+                "100 10\r\nTACT\r\nTAT\r\nCAT\r\nTA\r\nTACT\r\nGAGA\r\nGAGA\r\nAGA\r\nTAT\r\nTAT\r\n",
+                "821129594"
+            ],
+            [
+                "100 10\r\nTACT\r\nACT\r\nTAT\r\nAGA\r\nTA\r\nTACT\r\nGAGA\r\nAT\r\nTAG\r\nGAG\r\n",
+                "951249461"
+            ],
+            [
+                "100 10\r\nGAGA\r\nACT\r\nTAG\r\nGAT\r\nTACT\r\nGAGA\r\nTAT\r\nTAT\r\nTAT\r\nACT\r\n",
+                "918741384"
+            ],
+            [
+                "100 10\r\nAGA\r\nTACT\r\nAGA\r\nGAG\r\nTAT\r\nCAT\r\nGAT\r\nTAT\r\nCAT\r\nCAT\r\n",
+                "510782351"
+            ],
+            [
+                "1000 10\r\nACT\r\nTAT\r\nTAG\r\nCAT\r\nGAGA\r\nAT\r\nGAGA\r\nTAG\r\nTA\r\nGAG\r\n",
+                "496495637"
+            ],
+            [
+                "1000 10\r\nTAG\r\nCAT\r\nAGA\r\nTACT\r\nCAT\r\nACT\r\nGAG\r\nGAT\r\nACT\r\nTAT\r\n",
+                "431753919"
+            ],
+            [
+                "1000 10\r\nGAGA\r\nGAGA\r\nGAGA\r\nTA\r\nGAG\r\nGAGA\r\nAGA\r\nTA\r\nTAT\r\nTAT\r\n",
+                "249066354"
+            ],
+            [
+                "1000 10\r\nTAT\r\nTAT\r\nCAT\r\nAT\r\nTA\r\nGAGA\r\nTACT\r\nAT\r\nTAT\r\nGAT\r\n",
+                "676775"
+            ],
+            [
+                "1000 10\r\nTA\r\nTAG\r\nTA\r\nACT\r\nTAT\r\nCAT\r\nTACT\r\nGAGA\r\nTA\r\nACT\r\n",
+                "326183001"
+            ],
+            [
+                "10 5\r\nAGT\r\nGTT\r\nA\r\nCCCC\r\nA\r\n",
+                "234"
+            ],
+            [
+                "6 5\r\nGGG\r\nAA\r\nA\r\nAGCT\r\nAGC\r\n",
+                "21"
+            ],
+            [
+                "6 7\r\nCGTTGAA\r\nATTATGAACC\r\nTTA\r\nTCAG\r\nCCGAGG\r\nT\r\nT\r\n",
+                "10"
+            ],
+            [
+                "9 8\r\nTACTACGCA\r\nA\r\nACAAT\r\nGCCCGA\r\nTA\r\nCATG\r\nTTAAC\r\nCTGG\r\n",
+                "220"
+            ],
+            [
+                "6 8\r\nCTAAATTCT\r\nCACACA\r\nGACCC\r\nG\r\nCGTCT\r\nTG\r\nGCAA\r\nAGT\r\n",
+                "38"
+            ],
+            [
+                "5 5\r\nATTATGAACC\r\nTTA\r\nTCAG\r\nCCGAGG\r\nT\r\n",
+                "6"
+            ],
+            [
+                "1000 5\r\nACGTAC\r\nTACTAG\r\nAGACGT\r\nCGTAGA\r\nGTAGAT\r\n",
+                "168020674"
+            ],
+            [
+                "312 7\r\nCCA\r\nCACTGATTTT\r\nTAGATGAAT\r\nG\r\nGATAAAC\r\nCCAACCG\r\nCCCCAGTGG\r\n",
+                "673272460"
+            ],
+            [
+                "356 6\r\nGG\r\nCG\r\nACAAT\r\nAAG\r\nGGCTCAC\r\nC\r\n",
+                "109620326"
+            ],
+            [
+                "524 1\r\nCCAGCCTG\r\n",
+                "0"
+            ],
+            [
+                "86 9\r\nGTTG\r\nCCAGC\r\nGTACTGAG\r\nGACCCACGCA\r\nTGCGGTGCT\r\nA\r\nA\r\nGTGG\r\nCCTATAC\r\n",
+                "139639918"
+            ],
+            [
+                "408 8\r\nAAAGGTGGCT\r\nG\r\nG\r\nGGAG\r\nCATACT\r\nCAACACCCGG\r\nCCT\r\nATTACT\r\n",
+                "471214946"
+            ],
+            [
+                "859 9\r\nCAAGAAG\r\nGCCGAGTA\r\nAAACTTTGGG\r\nTC\r\nAACGGAG\r\nC\r\nAT\r\nCGAATT\r\nGGTA\r\n",
+                "376160458"
+            ],
+            [
+                "787 3\r\nGGGGATTTG\r\nAGAT\r\nCGGTAC\r\n",
+                "646775261"
+            ],
+            [
+                "596 2\r\nGCC\r\nCTC\r\n",
+                "141314270"
+            ],
+            [
+                "889 8\r\nGGGGATCT\r\nCACTGTT\r\nTGCCA\r\nGCGCTTCAT\r\nTCGCAAGATT\r\nTCG\r\nGTAGCATTTG\r\nTAGGCACAC\r\n",
+                "330530182"
+            ],
+            [
+                "388 4\r\nCGCCA\r\nCTAATCA\r\nCAGTTTGC\r\nCTAATG\r\n",
+                "128236388"
+            ],
+            [
+                "898 5\r\nAAAGT\r\nCTCAAGT\r\nGTCGGAGAGT\r\nAT\r\nCGGAGGGCAT\r\n",
+                "293748514"
+            ],
+            [
+                "881 5\r\nGTAC\r\nTACAAT\r\nAATGTGCTC\r\nGCAAT\r\nCT\r\n",
+                "876433412"
+            ],
+            [
+                "135 10\r\nCTTATGAAA\r\nTATGA\r\nAGCTC\r\nG\r\nTTTTCT\r\nAC\r\nTTTGTGA\r\nC\r\nTCATAGCTT\r\nC\r\n",
+                "380808214"
+            ],
+            [
+                "985 10\r\nAACACCCCCC\r\nACCAAACAAA\r\nACCCAAAAAC\r\nCAACACCACA\r\nAAAAACACAA\r\nCACCAACCAC\r\nAAAAAAAAAC\r\nCCCCAAAACC\r\nCACCCACCCA\r\nCAACACAACC\r\n",
+                "95876385"
+            ],
+            [
+                "952 10\r\nCCACAAACCC\r\nCAAAACCACA\r\nACAACAACCC\r\nAAAAAACCAC\r\nCACAACACAC\r\nCCCCACACCC\r\nCACCAACAAC\r\nACACCAAACA\r\nACCACCAACC\r\nCCCACCACCC\r\n",
+                "581293618"
+            ],
+            [
+                "910 10\r\nACACAAAACA\r\nAACACACCAC\r\nCCCCAACCAA\r\nAACACCAACA\r\nCCCCCACCAA\r\nAAACACCCAC\r\nACCCAACAAC\r\nCCCCACAAAC\r\nACCCCAAAAA\r\nACAAACACCC\r\n",
+                "124152999"
+            ],
+            [
+                "953 10\r\nACCCCACACA\r\nCAAAAAAAAA\r\nAAACACCAAA\r\nCAAACACAAC\r\nAAAACCCAAC\r\nCCCACAACCC\r\nCAACCAACCC\r\nCACAAACCAC\r\nCCACAAAACA\r\nACACCAAAAA\r\n",
+                "359848089"
+            ],
+            [
+                "820 10\r\nACCCCCAACA\r\nAACACACCAC\r\nCACAAACCAA\r\nCCAACACACC\r\nACAAAAAACC\r\nCAAACCAACC\r\nCACCAAACCA\r\nAACACAACCC\r\nACCAACACCA\r\nAACCCCCCCA\r\n",
+                "625282992"
+            ],
+            [
+                "801 10\r\nCCCCCCACCA\r\nACACAACAAA\r\nCCCCCCCAAA\r\nCCAAACCCCC\r\nCACAAACAAA\r\nCAAAAACCCC\r\nCCAACACCAA\r\nACAAACCAAA\r\nCAAACCACCA\r\nCAACCACAAC\r\n",
+                "156320838"
+            ],
+            [
+                "983 10\r\nCACAAAACAC\r\nCAAACACAAA\r\nCACCCAACAA\r\nACACCAACAC\r\nAACAACCCAC\r\nAACCACCACC\r\nACACACCAAA\r\nACAAAAACAA\r\nACACACCCAA\r\nCCACCCAACA\r\n",
+                "4558945"
+            ],
+            [
+                "969 10\r\nCACAACCAAC\r\nCCACCACCCA\r\nAAAACCCCCA\r\nCCCAAACCCA\r\nCCACAACCCA\r\nCCACCACAAC\r\nCACACCCACC\r\nCCACCCCCCC\r\nCAACAACCAA\r\nCACACCAACC\r\n",
+                "611933333"
+            ],
+            [
+                "843 10\r\nAACCCCCCCC\r\nCCAAAAAACC\r\nACACACCCCC\r\nCCACCAACCC\r\nCCAACCACCC\r\nCAAACCCAAA\r\nCAACACACCA\r\nCAACCCCACA\r\nAAACCCAACC\r\nCCACCCAACA\r\n",
+                "812395062"
+            ],
+            [
+                "905 10\r\nCCAAACCCAA\r\nACACACAAAA\r\nCCACCAACCC\r\nCAACACACAC\r\nCCACCAAAAA\r\nACACCACAAC\r\nCACAAAAAAC\r\nAACACCCCCA\r\nCAACCACCAA\r\nCCCAAAAACA\r\n",
+                "544200998"
+            ],
+            [
+                "1000 10\r\nACCCC\r\nACACC\r\nACCC\r\nAACC\r\nACCA\r\nAAAAC\r\nACCA\r\nCACC\r\nAAAA\r\nCACCA\r\n",
+                "924594454"
+            ],
+            [
+                "1000 10\r\nCCCCA\r\nCACAA\r\nACCC\r\nCCCAA\r\nCAAC\r\nCCCAA\r\nAAACC\r\nCCCC\r\nACAAA\r\nCCCCC\r\n",
+                "43313937"
+            ],
+            [
+                "1000 10\r\nCACA\r\nACCC\r\nCCAA\r\nACCCA\r\nACCCC\r\nACCC\r\nCCCC\r\nCCCA\r\nCCAC\r\nACAAA\r\n",
+                "60965086"
+            ],
+            [
+                "1000 10\r\nCACAA\r\nAAAAC\r\nACAAC\r\nACAA\r\nAAACA\r\nCACC\r\nCCCCA\r\nCACCC\r\nCCAA\r\nCAAA\r\n",
+                "230123998"
+            ],
+            [
+                "1000 10\r\nCAAA\r\nACCCA\r\nACACA\r\nACAC\r\nCAAA\r\nCAAA\r\nAAAA\r\nCCAAC\r\nAAAAA\r\nCCCA\r\n",
+                "703792925"
+            ],
+            [
+                "1000 10\r\nACAC\r\nCCCAA\r\nAACAA\r\nCCCA\r\nACACA\r\nACCA\r\nCAAC\r\nAACC\r\nCCCC\r\nACAC\r\n",
+                "175815825"
+            ],
+            [
+                "1000 10\r\nCAAAC\r\nAACC\r\nCAACA\r\nCCAAA\r\nACAC\r\nACAAA\r\nCCCAC\r\nACCC\r\nACCAC\r\nAACC\r\n",
+                "879274869"
+            ],
+            [
+                "1000 10\r\nACAC\r\nACAA\r\nACCAA\r\nACCC\r\nAAAA\r\nACCCC\r\nAAAC\r\nCCCAC\r\nCACA\r\nAAAA\r\n",
+                "702626026"
+            ],
+            [
+                "1000 10\r\nTTTT\r\nGTTGT\r\nGTGT\r\nGGGGT\r\nGGTG\r\nTGTG\r\nTTTGT\r\nTTTTG\r\nGTGTG\r\nGTTTT\r\n",
+                "703149174"
+            ],
+            [
+                "1000 10\r\nTGTG\r\nTGTGG\r\nGTTTG\r\nGTGG\r\nGTTGG\r\nTTGG\r\nGTGTT\r\nGGGT\r\nGTTG\r\nTGTG\r\n",
+                "675696965"
+            ],
+            [
+                "1000 5\r\nGTTT\r\nTGTGG\r\nTGTT\r\nGGGG\r\nTGTGG\r\n",
+                "976604240"
+            ],
+            [
+                "1000 8\r\nTTGG\r\nGTTT\r\nGGGG\r\nGTTTT\r\nGTGGT\r\nTGTG\r\nGGTG\r\nGGTGG\r\n",
+                "284150940"
+            ],
+            [
+                "1000 3\r\nTTGTT\r\nTGTG\r\nGGTG\r\n",
+                "401641816"
+            ],
+            [
+                "1000 6\r\nTTGT\r\nTGGTT\r\nGGTT\r\nGGTGG\r\nTGTT\r\nGGGG\r\n",
+                "904765495"
+            ],
+            [
+                "1000 5\r\nTGTG\r\nTTTGG\r\nTGGG\r\nTTGGG\r\nGGGT\r\n",
+                "829495151"
+            ],
+            [
+                "1000 10\r\nTTATTGACCG\r\nACCACTAGCG\r\nGACCGGGTCC\r\nGTTCACAGAG\r\nCAAACCACCT\r\nTGCCCGCAAC\r\nAGAACCGGGG\r\nACCCCGGTGT\r\nAGACTTGCAT\r\nGAGAGCCCAC\r\n",
+                "303961596"
+            ],
+            [
+                "1000 10\r\nGATTCCACAA\r\nTCGCAATGTT\r\nTGATGTCCAA\r\nTCGCTTCTTG\r\nCAGAGACGGA\r\nGGTGCCCTGG\r\nCCAGTCCTTA\r\nTTCCTTATCT\r\nTCACGCACAT\r\nACGACATCTA\r\n",
+                "759680724"
+            ],
+            [
+                "1000 10\r\nTATGTTATGT\r\nGTTACATTAA\r\nTCATTGCTAC\r\nGCCTCTGACA\r\nGATATATCCA\r\nTTGGGCTTTA\r\nCTGTCTAGGA\r\nTCAGCAGTTC\r\nCAGCTTTAAA\r\nTCTCATATGG\r\n",
+                "247515990"
+            ],
+            [
+                "1000 10\r\nCACAAGTCCG\r\nTCAAATTGTT\r\nATTAAGTACT\r\nCTAAGGCGCC\r\nAGAAGGGTTG\r\nATGGTCCGAA\r\nTTCGCGCGAT\r\nGGGCGCGCCA\r\nAAAACGAGAT\r\nTGAATTCGAC\r\n",
+                "23954923"
+            ],
+            [
+                "1000 10\r\nAGTACTTTTA\r\nTAATTGTGAC\r\nCCAAGGCATA\r\nCGCGACTACC\r\nCCGCTGCTTT\r\nGCCCAACGAC\r\nGGCGTAGTGG\r\nGGCCGTCGAC\r\nTCCACGATGT\r\nTAATTTTCAT\r\n",
+                "591782113"
+            ],
+            [
+                "1000 10\r\nCAGTAGTGGA\r\nTATCGACTAC\r\nCCACTGCGCT\r\nCCTGCGCTCC\r\nTCGTCTATGG\r\nAGTTAAAGCT\r\nTACGACCTAT\r\nGTAGGTTTAC\r\nCTAAGGATTT\r\nCTCTACAATA\r\n",
+                "819181392"
+            ],
+            [
+                "1000 10\r\nCCCAGGAGGC\r\nTGCGAACTGG\r\nAGACATACGG\r\nATCTCTTTTG\r\nGCGGAGTCCT\r\nCTTGTGCCGC\r\nCGTCATCTTC\r\nTATGCACAAA\r\nTACATGGCTA\r\nATATCCAAGG\r\n",
+                "681627776"
+            ],
+            [
+                "1000 10\r\nATCCAGTTCG\r\nGCCGACTTAG\r\nATTGAAGATT\r\nGTAAAATCCC\r\nTTTACCGGTA\r\nGGATCCTTAG\r\nCCGAGGAAGC\r\nAAATACAACT\r\nAGGAGGCCTA\r\nCGTTCCGCCA\r\n",
+                "71903271"
+            ],
+            [
+                "1000 10\r\nCGCGAGGCGC\r\nGAACCTACTC\r\nGGAAGGCCTC\r\nCGAGTCTTTT\r\nCTAGCAGATT\r\nTCAATTGGCC\r\nGGGTAGGTTA\r\nAGGTGCCGCG\r\nCGAATAATTG\r\nTAACTCATGC\r\n",
+                "57916175"
+            ],
+            [
+                "1000 10\r\nCCACGTCTTG\r\nTGTCGTGAAC\r\nCCGGGTACAA\r\nACCCGGGGAA\r\nTTCTGTTACT\r\nCTTGAACGAA\r\nACGTCTACTA\r\nAATGAGATGC\r\nCGCAGACCGC\r\nCTCGGTACTT\r\n",
+                "700310600"
+            ],
+            [
+                "724 5\r\nGTCTTT\r\nTGGTGTC\r\nCTGCGGG\r\nTGGGGTC\r\nGGGG\r\n",
+                "88397587"
+            ],
+            [
+                "675 10\r\nCTTCGCT\r\nCTCG\r\nTGGGTC\r\nCCGTTT\r\nTCCG\r\nGCG\r\nCCCGCT\r\nCCGTT\r\nTTTGCG\r\nTCGC\r\n",
+                "221693941"
+            ],
+            [
+                "891 2\r\nCGTCTG\r\nCGGCCG\r\n",
+                "0"
+            ],
+            [
+                "574 3\r\nGCTGG\r\nTCGGTGC\r\nGTG\r\n",
+                "917296112"
+            ],
+            [
+                "856 8\r\nGGG\r\nCTG\r\nGCTCCTT\r\nGCTCCTG\r\nCGTTCC\r\nGTGTT\r\nCTG\r\nCGGT\r\n",
+                "266655823"
+            ],
+            [
+                "749 4\r\nCGGGTGC\r\nGTTTG\r\nGTGTTGT\r\nGCTC\r\n",
+                "146534805"
+            ],
+            [
+                "763 9\r\nCGTTT\r\nGGTC\r\nGTTTCGG\r\nCGCCC\r\nCGGCCGT\r\nCCTCTG\r\nTCC\r\nTTCTC\r\nCCGTGC\r\n",
+                "38493212"
+            ],
+            [
+                "995 10\r\nGGGCC\r\nTTCCT\r\nCGGTGT\r\nGGCCC\r\nTTGTGG\r\nTTCG\r\nTTTCGGG\r\nTGC\r\nTTTC\r\nTTT\r\n",
+                "458545678"
+            ],
+            [
+                "707 2\r\nGGTTGGC\r\nTCTTTTG\r\n",
+                "536680786"
+            ],
+            [
+                "867 4\r\nTCGTT\r\nCTG\r\nCCG\r\nGCGT\r\n",
+                "611141739"
+            ]
+        ]
+    }
+]

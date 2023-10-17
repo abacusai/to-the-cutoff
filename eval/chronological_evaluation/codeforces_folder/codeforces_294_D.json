@@ -1,0 +1,293 @@
+[
+    {
+        "name": "Shaass and Painter Robot",
+        "description": "Shaass thinks a kitchen with all white floor tiles is so boring. His kitchen\nfloor is made of n\u00b7m square tiles forming a n \u00d7 m rectangle. Therefore he's\ndecided to color some of the tiles in black so that the floor looks like a\ncheckerboard, which is no two side-adjacent tiles should have the same color.\nShaass wants to use a painter robot to color the tiles. In the beginning the\nrobot is standing in a border tile (xs, ys) facing a diagonal direction (i.e.\nupper-left, upper-right, down-left or down-right). As the robot walks in the\nkitchen he paints every tile he passes even if it's painted before. Painting\neach tile consumes one unit of black paint. If at any moment the robot hits a\nwall of the kitchen he changes his direction according the reflection rules.\nNote that a tile gets painted when the robot enters the tile from another\ntile, in other words changing direction in the same tile doesn't lead to any\npainting. The first tile the robot is standing on, is also painted. The robot\nstops painting the first moment the floor is checkered. Given the dimensions\nof the kitchen and the position of the robot, find out the amount of paint the\nrobot consumes before it stops painting the floor. Let's consider an examples\ndepicted below. If the robot starts at tile number 1 (the tile (1, 1)) of the\nleft grid heading to down-right it'll pass tiles 1354236 and consumes 7 units\nof black paint on his way until he stops at tile number 6. But if it starts at\ntile number 1 in the right grid heading to down-right it will get stuck in a\nloop painting tiles 1, 2, and 3. Input The first line of the input contains\ntwo integers n and m, (2 \u2264 n, m \u2264 10^5). The second line contains two integers\nxs and ys (1 \u2264 xs \u2264 n, 1 \u2264 ys \u2264 m) and the direction robot is facing\ninitially. Direction is one of the strings: \"UL\" (upper-left direction), \"UR\"\n(upper-right), \"DL\" (down-left) or \"DR\" (down-right). Note, that record (xs,\nys) denotes the tile that is located at the xs-th row from the top and at the\nys-th column from the left of the kitchen. It's guaranteed that the starting\nposition will be a border tile (a tile with less than four side-adjacent\ntiles). Output Print the amount of paint the robot consumes to obtain a\ncheckered kitchen floor. Or print -1 if it never happens. Please do not use\nthe \nto use the cin, cout streams or the \nDR Output 7 Input 3 4 3 3 DR Output 11 Input 3 3 1 1 DR Output -1 Input 3 3 1\n2 DL Output 4\n\n",
+        "cf_contest_id": 294,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation",
+            "number theory"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 4\r\n1 1 DR\r\n",
+                "7\r\n"
+            ],
+            [
+                "3 4\r\n3 3 DR\r\n",
+                "11\r\n"
+            ],
+            [
+                "3 3\r\n1 1 DR\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 3\r\n1 2 DL\r\n",
+                "4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 5\r\n2 3 DR\r\n",
+                "7\r\n"
+            ],
+            [
+                "2 3\r\n2 3 DL\r\n",
+                "3\r\n"
+            ],
+            [
+                "3 2\r\n3 1 DL\r\n",
+                "3\r\n"
+            ],
+            [
+                "3 4\r\n1 1 DL\r\n",
+                "7\r\n"
+            ],
+            [
+                "2 2\r\n2 2 UR\r\n",
+                "2\r\n"
+            ],
+            [
+                "547 180\r\n96 1 UR\r\n",
+                "135504\r\n"
+            ],
+            [
+                "657 213\r\n549 1 UL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "76 153\r\n1 74 UL\r\n",
+                "11626\r\n"
+            ],
+            [
+                "80304 59860\r\n27585 59860 UR\r\n",
+                "5862949615\r\n"
+            ],
+            [
+                "15954 45613\r\n15954 45142 UR\r\n",
+                "-1\r\n"
+            ],
+            [
+                "66972 6779\r\n1 5667 UL\r\n",
+                "778336963\r\n"
+            ],
+            [
+                "2622 82284\r\n2540 1 UL\r\n",
+                "216075159\r\n"
+            ],
+            [
+                "48517 68036\r\n48517 31953 DR\r\n",
+                "5618298349\r\n"
+            ],
+            [
+                "32132 32312\r\n1 2 DR\r\n",
+                "1551509598\r\n"
+            ],
+            [
+                "100000 99999\r\n100000 1 DR\r\n",
+                "9999700003\r\n"
+            ],
+            [
+                "100000 99999\r\n1 99999 DR\r\n",
+                "9999700003\r\n"
+            ],
+            [
+                "84166 43542\r\n54265 43542 DR\r\n",
+                "7214569537\r\n"
+            ],
+            [
+                "35185 19049\r\n31553 1 DR\r\n",
+                "-1\r\n"
+            ],
+            [
+                "70834 99677\r\n1 23598 DL\r\n",
+                "13418107690\r\n"
+            ],
+            [
+                "16730 65966\r\n12102 65966 DL\r\n",
+                "1171670331\r\n"
+            ],
+            [
+                "52379 51718\r\n52379 807 UR\r\n",
+                "3155460233\r\n"
+            ],
+            [
+                "93151 27224\r\n1 15542 UR\r\n",
+                "3301236001\r\n"
+            ],
+            [
+                "39047 2730\r\n16937 1 UR\r\n",
+                "195090753\r\n"
+            ],
+            [
+                "74696 83359\r\n74696 64325 UL\r\n",
+                "11273566961\r\n"
+            ],
+            [
+                "99999 99999\r\n99999 99999 UR\r\n",
+                "-1\r\n"
+            ],
+            [
+                "99999 99999\r\n99999 99998 UR\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2 2\r\n2 2 UR\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 2\r\n1 2 UR\r\n",
+                "2\r\n"
+            ],
+            [
+                "9684 98536\r\n9684 80875 DL\r\n",
+                "1908112615\r\n"
+            ],
+            [
+                "45333 74042\r\n1 43244 DL\r\n",
+                "4559265901\r\n"
+            ],
+            [
+                "91228 54671\r\n1674 1 DL\r\n",
+                "9870668501\r\n"
+            ],
+            [
+                "32001 30178\r\n32001 28119 UR\r\n",
+                "1850848001\r\n"
+            ],
+            [
+                "77896 5684\r\n18467 5684 UR\r\n",
+                "575273042\r\n"
+            ],
+            [
+                "13546 91435\r\n1002 1 UL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "64435 19953\r\n5705 19953 DR\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5208 582\r\n979 1 DR\r\n",
+                "3617888\r\n"
+            ],
+            [
+                "51103 66871\r\n1 57465 DL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "86752 42377\r\n72660 42377 DL\r\n",
+                "4398289793\r\n"
+            ],
+            [
+                "22402 28129\r\n22402 24340 DL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "73420 3635\r\n1 2940 UR\r\n",
+                "332220976\r\n"
+            ],
+            [
+                "9070 74017\r\n4901 1 UR\r\n",
+                "-1\r\n"
+            ],
+            [
+                "54965 59770\r\n54965 14083 UL\r\n",
+                "4668092521\r\n"
+            ],
+            [
+                "95737 26059\r\n30821 26059 UL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "41633 11811\r\n5694 1 UL\r\n",
+                "491662111\r\n"
+            ],
+            [
+                "93183 58113\r\n1 39140 DR\r\n",
+                "5414953246\r\n"
+            ],
+            [
+                "28833 43865\r\n22853 1 DL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "74728 19372\r\n74728 18073 DL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "10378 85660\r\n7751 85660 DL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "61396 66289\r\n50382 1 UR\r\n",
+                "-1\r\n"
+            ],
+            [
+                "97045 41795\r\n1 27338 UR\r\n",
+                "4055829600\r\n"
+            ],
+            [
+                "32695 27547\r\n17514 27547 UL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "78590 3053\r\n78590 239 UL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "19363 78559\r\n1 55927 UL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "65258 49971\r\n20976 1 DR\r\n",
+                "4857383821\r\n"
+            ],
+            [
+                "7593 1397\r\n1 1155 DL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "43242 82025\r\n19055 1 DL\r\n",
+                "6371542297\r\n"
+            ],
+            [
+                "89137 57531\r\n89137 3552 DL\r\n",
+                "5127940102\r\n"
+            ],
+            [
+                "29910 43284\r\n15956 43284 UR\r\n",
+                "2517815394\r\n"
+            ],
+            [
+                "75805 18790\r\n46466 1 UR\r\n",
+                "-1\r\n"
+            ],
+            [
+                "11455 85078\r\n11455 39494 UL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "47104 65707\r\n27797 65707 UL\r\n",
+                "-1\r\n"
+            ],
+            [
+                "98122 41213\r\n19832 1 UL\r\n",
+                "4804907081\r\n"
+            ],
+            [
+                "33772 26966\r\n1 6679 DR\r\n",
+                "1005599068\r\n"
+            ],
+            [
+                "79667 2472\r\n62739 2472 DR\r\n",
+                "301313741\r\n"
+            ]
+        ]
+    }
+]

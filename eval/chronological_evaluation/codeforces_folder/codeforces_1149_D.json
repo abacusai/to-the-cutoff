@@ -1,0 +1,98 @@
+[
+    {
+        "name": "Abandoning Roads",
+        "description": "Codefortia is a small island country located somewhere in the West Pacific. It\nconsists of \n    n\n settlements connected by \n    m\n bidirectional gravel\nroads. Curiously enough, the beliefs of the inhabitants require the time\nneeded to pass each road to be equal either to \n    a\n or \n    b\n seconds.\nIt's guaranteed that one can go between any pair of settlements by following a\nsequence of roads. Codefortia was recently struck by the financial crisis.\nTherefore, the king decided to abandon some of the roads so that: it will be\npossible to travel between each pair of cities using the remaining roads only,\nthe sum of times required to pass each remaining road will be minimum possible\n(in other words, remaining roads must form minimum spanning tree, using the\ntime to pass the road as its weight), among all the plans minimizing the sum\nof times above, the time required to travel between the king's residence (in\nsettlement \n    1\n) and the parliament house (in settlement \n    p\n) using the\nremaining roads only will be minimum possible. The king, however, forgot where\nthe parliament house was. For each settlement \n    p = 1, 2, \n    \u2026, n\n, can\nyou tell what is the minimum time required to travel between the king's\nresidence and the parliament house (located in settlement \n    p\n) after some\nroads are abandoned? Input The first line of the input contains four integers\n\n    n\n, \n    m\n, \n    a\n and \n    b\n (\n    2 \n    \u2264 n \n    \u2264 70\n, \n    n - 1\n    \n    \u2264 m \n    \u2264 200\n, \n    1 \n    \u2264 a < b \n    \u2264 10^7\n) \u2014 the number of\nsettlements and gravel roads in Codefortia, and two possible travel times.\nEach of the following lines contains three integers \n    u, v, c\n (\n    1 \n    \u2264\n    u, v \n    \u2264 n\n, \n    u \n    \u2260 v\n, \n    c \n    \u2208\n    \n    a, b\n) denoting a\nsingle gravel road between the settlements \n    u\n and \n    v\n, which requires\n\n    c\n minutes to travel. You can assume that the road network is connected\nand has no loops or multiedges. Output Output a single line containing \n    n\n\nintegers. The \n    p\n-th of them should denote the minimum possible time\nrequired to travel from \n    1\n to \n    p\n after the selected roads are\nabandoned. Note that for each \n    p\n you can abandon a different set of\nroads. Examples Input 5 5 20 25 1 2 25 2 3 25 3 4 20 4 5 20 5 1 20 Output 0 25\n60 40 20 Input 6 7 13 22 1 2 13 2 3 13 1 4 22 3 4 13 4 5 13 5 6 13 6 1 13\nOutput 0 13 26 39 26 13 Note The minimum possible sum of times required to\npass each road in the first example is \n    85\n \u2014 exactly one of the roads\nwith passing time \n    25\n must be abandoned. Note that after one of these\nroads is abandoned, it's now impossible to travel between settlements \n    1\n\nand \n    3\n in time \n    50\n.\n\n",
+        "cf_contest_id": 1149,
+        "cf_index": "D",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dp",
+            "graphs",
+            "greedy"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5 5 20 25\r\n1 2 25\r\n2 3 25\r\n3 4 20\r\n4 5 20\r\n5 1 20\r\n",
+                "0 25 60 40 20 "
+            ],
+            [
+                "6 7 13 22\r\n1 2 13\r\n2 3 13\r\n1 4 22\r\n3 4 13\r\n4 5 13\r\n5 6 13\r\n6 1 13\r\n",
+                "0 13 26 39 26 13 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1 1 2\r\n2 1 1\r\n",
+                "0 1 "
+            ],
+            [
+                "2 1 9999999 10000000\r\n1 2 10000000\r\n",
+                "0 10000000 "
+            ],
+            [
+                "3 3 78422 6789101\r\n3 1 6789101\r\n2 1 78422\r\n2 3 78422\r\n",
+                "0 78422 156844 "
+            ],
+            [
+                "3 3 2770628 3912422\r\n1 2 2770628\r\n2 3 2770628\r\n1 3 3912422\r\n",
+                "0 2770628 5541256 "
+            ],
+            [
+                "3 3 2566490 5132980\r\n1 2 2566490\r\n2 3 2566490\r\n3 1 5132980\r\n",
+                "0 2566490 5132980 "
+            ],
+            [
+                "3 2 509529 5982470\r\n1 2 509529\r\n3 2 509529\r\n",
+                "0 509529 1019058 "
+            ],
+            [
+                "3 2 1349740 8457492\r\n2 1 1349740\r\n3 1 1349740\r\n",
+                "0 1349740 1349740 "
+            ],
+            [
+                "3 2 150319 5002968\r\n3 2 150319\r\n1 2 5002968\r\n",
+                "0 5002968 5153287 "
+            ],
+            [
+                "3 2 990530 8623767\r\n3 2 8623767\r\n1 2 990530\r\n",
+                "0 990530 9614297 "
+            ],
+            [
+                "3 2 810925 2022506\r\n1 2 2022506\r\n1 3 810925\r\n",
+                "0 2022506 810925 "
+            ],
+            [
+                "3 2 1651136 5131013\r\n1 2 5131013\r\n3 2 5131013\r\n",
+                "0 5131013 10262026 "
+            ],
+            [
+                "3 2 451715 1577270\r\n1 3 1577270\r\n1 2 1577270\r\n",
+                "0 1577270 1577270 "
+            ],
+            [
+                "3 3 1291926 4943478\r\n2 3 1291926\r\n1 2 1291926\r\n3 1 1291926\r\n",
+                "0 1291926 1291926 "
+            ],
+            [
+                "3 3 2132137 9084127\r\n1 2 2132137\r\n3 2 9084127\r\n3 1 2132137\r\n",
+                "0 2132137 2132137 "
+            ],
+            [
+                "3 3 1126640 9858678\r\n3 1 9858678\r\n3 2 1126640\r\n1 2 9858678\r\n",
+                "0 9858678 9858678 "
+            ],
+            [
+                "3 3 1966851 6439891\r\n1 3 6439891\r\n1 2 1966851\r\n3 2 6439891\r\n",
+                "0 1966851 6439891 "
+            ],
+            [
+                "3 3 1787246 7806211\r\n3 2 7806211\r\n2 1 7806211\r\n1 3 7806211\r\n",
+                "0 7806211 7806211 "
+            ]
+        ]
+    }
+]

@@ -1,0 +1,101 @@
+[
+    {
+        "name": "Multithreading (Easy Version)",
+        "description": "The only difference between the two versions of the problem is that there are\nno updates in the easy version. There are \n    n\n spools of thread placed on\nthe rim of a circular table. The spools come in two types of thread: the first\nthread is black and the second thread is white. For any two spools of the same\ncolor, you can attach them with a thread of that color in a straight line\nsegment. Define a matching as a way to attach spools together so that each\nspool is attached to exactly one other spool. Coloring is an assignment of\ncolors (white and black) to the spools. A coloring is called valid if it has\nat least one matching. That is if the number of black spools and the number of\nwhite spools are both even. Given a matching, we can find the number of times\nsome white thread intersects some black thread. We compute the number of pairs\nof differently colored threads that intersect instead of the number of\nintersection points, so one intersection point may be counted multiple times\nif different pairs of threads intersect at the same point. If \n    c\n is a\nvalid coloring, let \n    f(c)\n denote the minimum number of such intersections\nout of all possible matchings. The circle above is described by the coloring\nbwbbbwww. After matching the spools as shown, there is one intersection\nbetween differently colored threads. It can be proven that it is the minimum\npossible, so \n    f(\n    bwbbbwww) = 1\n. You are given a string \n    s\n\nrepresenting an unfinished coloring, with black, white, and uncolored spools.\nA coloring \n    c\n is called \n    s\n-reachable if you can achieve it by\nassigning colors to the uncolored spools of \n    s\n without changing the\nothers. A coloring \n    c\n is chosen uniformly at random among all valid,\n\n    s\n-reachable colorings. Compute the expected value of \n    f(c)\n. You\nshould find it by modulo \n    998244353\n. We can show that the answer can be\nwritten in the form \n    p/q\n where \n    p\n and \n    q\n are\nrelatively prime integers and \n    q\n    \u2261 0\n    998244353\n. The\nanswer by modulo \n    998244353\n is equal to \n    (p\n    \u00b7 q^-1)\n modulo\n\n    998244353\n. Input The first line contains two integers \n    n\n, \n    m\n\n(\n    2\n    \u2264 n\n    \u2264 2\n    \u00b7 10^5\n, \n    n\n is even, \n    m=0\n) \u2014 the number\nof spools and updates, respectively. There are no updates in the easy version,\nso it is always \n    0\n. The second line contains a string \n    s\n of length\n\n    n\n \u2014 the unfinished coloring of the spools. The \n    i\n-th character will\nbe 'w', 'b', or '?', describing if the \n    i\n-th spool is white, black, or\nuncolored, respectively. It is guaranteed there exists at least one uncolored\nspool. Output Print the expected value of \n    f(c)\n by modulo\n\n    998244353\n. Examples Input 8 0 bwbb?www Output 1 Input 10 0 ???ww?wb??\nOutput 436731905 Input 4 0 bw?b Output 0 Note The first test corresponds\nclosely to the image. Coloring '?' as 'w' does not create a valid coloring\nbecause the number of black spools is odd. Then the only reachable valid\ncoloring is 'bwbbbwww' and \n    f(\n    bwbbbwww) = 1\n, so the expected\nvalue is \n    1\n. It can be shown that the expected value for the second test\nis \n    9/16\n.\n\n",
+        "cf_contest_id": 1450,
+        "cf_index": "H1",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "fft",
+            "math"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "8 0\r\nbwbb?www\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 0\r\n???ww?wb??\r\n",
+                "436731905\r\n"
+            ],
+            [
+                "4 0\r\nbw?b\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 0\r\nwb?b\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 0\r\n?w\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 0\r\nwbb?wbwbwb\r\n",
+                "2\r\n"
+            ],
+            [
+                "100 0\r\n???????bb????w?bw?????????bw?w??w???w?????????w????b???bwb??????w?w?????b????b?w???b?????ww?????b?b?\r\n",
+                "396794456\r\n"
+            ],
+            [
+                "100 0\r\nbwbbbbbbwbbbbwbwwwbwwbwbwwwbwwbbbbwbwwbwbwwwwwwwwwwbwbwwwwbbwbwbwbbbbwbwwwbwbwwwbwbwwwb?bbbbbbbbbwbw\r\n",
+                "2\r\n"
+            ],
+            [
+                "100 0\r\nbww??wbbbwwbwwbbbb?www?bwb?wwwbbwbbbw?www?ww??wwbw?wbwbbwbwwbbbbbwbw?b?wwbbwbbbbbbwwbwbwwwwww?bw?bww\r\n",
+                "994832387\r\n"
+            ],
+            [
+                "10 0\r\nb?bwbbbwbw\r\n",
+                "2\r\n"
+            ],
+            [
+                "10 0\r\nbw?wwwbbwb\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 0\r\nbbb?bwbbww\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 0\r\nwwbb?wwbbb\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 0\r\nbbbbb?bbbw\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 0\r\nbbbwbb?bwb\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 0\r\nwbbbwbbbbwwbbbbbwbbwbbwbwbwwbwwwbwwbbwbbbbwwbbwbwbbbwbbwbbwwbbwwbwbbbbbbwwwwwbbwwbwbbbbbwwwwbbb?bwbb\r\n",
+                "2\r\n"
+            ],
+            [
+                "100 0\r\nbbbwwwwwwbwwwbbwbwwwbwbwwbwbwbbwbwbbwbwbwwbb?bwbbbbbwwbwbbwbbwbbbbwwwwbwwbbwbbwbwwwbwbwbbwwwwwbwwwwb\r\n",
+                "1\r\n"
+            ],
+            [
+                "100 0\r\nwbbbbbwbwbbbwwbbwbbbbbwbbwbwwbwbwbbwwbbbbwbwwbbbbwbwwwbbwbb?wbbbwwwbbwwbbwwwbbbbwbwbwwwbbbwwwbwwwbwb\r\n",
+                "5\r\n"
+            ],
+            [
+                "100 0\r\nwwbwbbbbwwwbwwbbwbbwbbbbwbbbwwwbwwwbbb?wbbbwwbbwbbwwwwbwwbwwwbbbwwwbwwbbbbbwbwbwwwwwbwwbwbbbwbbwbbwb\r\n",
+                "1\r\n"
+            ],
+            [
+                "100 0\r\nwbwbwwbbwwbbbbwwbwbbbbwbbwbbbwwbwbwwbwwbwbwwbbbw?bwwbbwwbbwwwbwbwwbwwwwbbbbbbbwwbwwwwwwbbwbbwbbwbbbb\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

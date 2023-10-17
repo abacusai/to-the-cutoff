@@ -1,0 +1,64 @@
+[
+    {
+        "name": "INI-file",
+        "description": "The INI file format is a de facto standard for configuration files. INI files\nare simple text files with a basic structure. They are commonly associated\nwith Microsoft Windows, but are also used on other platforms. Each line in\nINI-file stands for key-value mapping or defines new section. A key-value line\nhas a format \"key=value\",where key \u2014 is the name of some property, and value \u2014\nit's value. It is possible that it will be spaces from the both sides of key\nand/or value, the spaces should be ignored. A section line has a format\n\"[section]\". It means that all key-value lines after it define properties of\nthe specified section. Of cause, the following section line changes the\ncurrent section. A section line may have spaces around any of brackets. Also\nyou should ignore comment lines \u2014 the first non-space character of comment\nline is \";\". You task is to write the program which will format given INI-file\nin a special way: first, print key-value lines which do not belong to any\nsection; print all the sections in the lexicographical (alphabetical) order of\ntheir names; inside each of two previous items, order key-value lines\nlexicographically by \"key\"; if there are more than one key-value lines with\nthe same key inside a single section (or outside any sections), leave only one\nline (which appears later in the input data); remove all redundant spaces and\nlines. Input The first line contains single integer n (1 \u2264 n \u2264 510) \u2014 the\nnumber of lines in given INI-file. The rest of the input contains a valid INI-\nfile in n lines. Values of section, key and value contain only Latin letters,\ndigits, \".\" and/or \"-\". Each line has length not exceeding 255 characters and\nnot less than 1 character. The total length of all the lines does\u2019t exceed\n10000. Output Print formatted INI-file. Examples Input 11 a= 1 b=a a = 2 ;\ncomment [z] 1=2 [y] 2=3 [z] 2=1 [w] Output a=2 b=a [w] [y] 2=3 [z] 1=2 2=1\n\n",
+        "cf_contest_id": 72,
+        "cf_index": "B",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "implementation"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "11\r\na= 1\r\nb=a\r\na = 2\r\n ; comment\r\n[z]\r\n1=2\r\n[y]\r\n2=3\r\n[z]\r\n2=1\r\n[w]\r\n",
+                "a=2\r\nb=a\r\n[w]\r\n[y]\r\n2=3\r\n[z]\r\n1=2\r\n2=1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\nt=1\r\n",
+                "t=1\r\n"
+            ],
+            [
+                "3\r\nt=1\r\nt=2\r\nt=3\r\n",
+                "t=3\r\n"
+            ],
+            [
+                "5\r\nt=1\r\nt=5\r\n[t]\r\nt=2\r\nt=3\r\n",
+                "t=5\r\n[t]\r\nt=3\r\n"
+            ],
+            [
+                "5\r\n[1]\r\n[2]\r\n[3]\r\n[4]\r\nt=2\r\n",
+                "[1]\r\n[2]\r\n[3]\r\n[4]\r\nt=2\r\n"
+            ],
+            [
+                "6\r\n[1]\r\n1=1\r\n[2]\r\n2=2\r\n[3]\r\n3=3\r\n",
+                "[1]\r\n1=1\r\n[2]\r\n2=2\r\n[3]\r\n3=3\r\n"
+            ],
+            [
+                "2\r\n;[2]\r\n1=2\r\n",
+                "1=2\r\n"
+            ],
+            [
+                "6\r\n;;;\r\n;\r\n;1=2\r\n;[2]\r\n;rr=rr\r\n.=-\r\n",
+                ".=-\r\n"
+            ],
+            [
+                "2\r\nr=1\r\ns=t\r\n",
+                "r=1\r\ns=t\r\n"
+            ],
+            [
+                "6\r\n   t  =  344\r\n   344 = 4\r\n  [  e  ] \r\n e = t\r\n t = 344\r\n344=e\r\n",
+                "344=4\r\nt=344\r\n[e]\r\n344=e\r\ne=t\r\nt=344\r\n"
+            ],
+            [
+                "2\r\n [bacab    ]  \r\n   ba  = adabaca\r\n",
+                "[bacab]\r\nba=adabaca\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,164 @@
+[
+    {
+        "name": "Magical Boxes",
+        "description": "Emuskald is a well-known illusionist. One of his trademark tricks involves a\nset of magical boxes. The essence of the trick is in packing the boxes inside\nother boxes. From the top view each magical box looks like a square with side\nlength equal to 2^k (k is an integer, k \u2265 0) units. A magical box v can be put\ninside a magical box u, if side length of v is strictly less than the side\nlength of u. In particular, Emuskald can put 4 boxes of side length 2^k-1 into\none box of side length 2^k, or as in the following figure: Emuskald is about\nto go on tour performing around the world, and needs to pack his magical boxes\nfor the trip. He has decided that the best way to pack them would be inside\nanother magical box, but magical boxes are quite expensive to make. Help him\nfind the smallest magical box that can fit all his boxes. Input The first line\nof input contains an integer n (1 \u2264 n \u2264 10^5), the number of different sizes\nof boxes Emuskald has. Each of following n lines contains two integers ki and\nai (0 \u2264 ki \u2264 10^9, 1 \u2264 ai \u2264 10^9), which means that Emuskald has ai boxes with\nside length 2^ki. It is guaranteed that all of ki are distinct. Output Output\na single integer p, such that the smallest magical box that can contain all of\nEmuskald\u2019s boxes has side length 2^p. Examples Input 2 0 3 1 5 Output 3 Input\n1 0 4 Output 1 Input 2 1 10 2 2 Output 3 Note Picture explanation. If we have\n3 boxes with side length 2 and 5 boxes with side length 1, then we can put all\nthese boxes inside a box with side length 4, for example, as shown in the\npicture. In the second test case, we can put all four small boxes into a box\nwith side length 2.\n\n",
+        "cf_contest_id": 269,
+        "cf_index": "A",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n0 3\r\n1 5\r\n",
+                "3\r\n"
+            ],
+            [
+                "1\r\n0 4\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n1 10\r\n2 2\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n0 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n1000000000 1000000000\r\n",
+                "1000000015\r\n"
+            ],
+            [
+                "1\r\n0 16\r\n",
+                "2\r\n"
+            ],
+            [
+                "1\r\n0 17\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n0 16\r\n1 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n0 20\r\n1 18\r\n2 4\r\n",
+                "4\r\n"
+            ],
+            [
+                "3\r\n0 64\r\n1 16\r\n2 4\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\n1 1000000\r\n100 100\r\n101 9\r\n102 4\r\n103 8\r\n",
+                "105\r\n"
+            ],
+            [
+                "10\r\n11 69\r\n7 56\r\n8 48\r\n2 56\r\n12 6\r\n9 84\r\n1 81\r\n4 80\r\n3 9\r\n5 18\r\n",
+                "15\r\n"
+            ],
+            [
+                "15\r\n0 268435456\r\n1 67108864\r\n2 16777216\r\n3 4194304\r\n4 1048576\r\n5 262144\r\n6 65536\r\n7 16384\r\n8 4096\r\n9 1024\r\n10 256\r\n11 64\r\n12 16\r\n13 4\r\n14 1\r\n",
+                "15\r\n"
+            ],
+            [
+                "14\r\n0 268435456\r\n1 67108864\r\n2 16777216\r\n3 4194304\r\n4 1048576\r\n5 262144\r\n6 65536\r\n7 16384\r\n8 4096\r\n9 1024\r\n10 256\r\n11 64\r\n12 16\r\n13 4\r\n",
+                "14\r\n"
+            ],
+            [
+                "14\r\n0 268435456\r\n1 67108864\r\n2 16777216\r\n3 4194305\r\n4 1048576\r\n5 262144\r\n6 65536\r\n7 16384\r\n8 4096\r\n9 1024\r\n10 256\r\n11 64\r\n12 16\r\n13 4\r\n",
+                "15\r\n"
+            ],
+            [
+                "14\r\n0 268435457\r\n1 67108865\r\n2 16777217\r\n3 4194305\r\n4 1048577\r\n5 262145\r\n6 65537\r\n7 16383\r\n8 4097\r\n9 1025\r\n10 257\r\n11 65\r\n12 17\r\n13 4\r\n",
+                "15\r\n"
+            ],
+            [
+                "16\r\n1296 2\r\n1568 1\r\n7435 2\r\n3660 1\r\n6863 2\r\n886 2\r\n2596 1\r\n7239 1\r\n6146 1\r\n5634 1\r\n3119 2\r\n1166 2\r\n7610 2\r\n5992 1\r\n630 2\r\n8491 2\r\n",
+                "8492\r\n"
+            ],
+            [
+                "17\r\n8028 11\r\n4011 32\r\n8609 52\r\n1440 25\r\n6752 42\r\n536 47\r\n761 15\r\n2749 60\r\n5363 62\r\n7170 23\r\n9734 10\r\n8487 28\r\n6147 20\r\n5257 54\r\n821 49\r\n7219 19\r\n6150 43\r\n",
+                "9736\r\n"
+            ],
+            [
+                "15\r\n999999986 268435456\r\n999999987 67108864\r\n999999988 16777216\r\n999999989 4194304\r\n999999990 1048576\r\n999999991 262144\r\n999999992 65536\r\n999999993 16384\r\n999999994 4096\r\n999999995 1024\r\n999999996 256\r\n999999997 64\r\n999999998 16\r\n999999999 4\r\n1000000000 1\r\n",
+                "1000000001\r\n"
+            ],
+            [
+                "3\r\n1 4\r\n0 17\r\n2 4\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n0 13\r\n1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n0 2\r\n1 4\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n100 52\r\n101 4\r\n",
+                "103\r\n"
+            ],
+            [
+                "10\r\n1 1\r\n10 1\r\n100 1\r\n1000 1\r\n10000 1\r\n100000 1\r\n1000000 1\r\n10000000 1\r\n100000000 1\r\n1000000000 1\r\n",
+                "1000000001\r\n"
+            ],
+            [
+                "1\r\n0 268435456\r\n",
+                "14\r\n"
+            ],
+            [
+                "1\r\n0 268435457\r\n",
+                "15\r\n"
+            ],
+            [
+                "1\r\n1 1000000000\r\n",
+                "16\r\n"
+            ],
+            [
+                "9\r\n0 268435456\r\n2 16777216\r\n3 4194304\r\n6 65536\r\n7 16384\r\n8 4096\r\n11 64\r\n12 16\r\n14 1\r\n",
+                "15\r\n"
+            ],
+            [
+                "8\r\n0 268435456\r\n2 16777216\r\n3 4194304\r\n6 65536\r\n7 16384\r\n8 4096\r\n11 64\r\n12 16\r\n",
+                "14\r\n"
+            ],
+            [
+                "8\r\n0 268435456\r\n2 16777216\r\n3 4195304\r\n6 65536\r\n7 16384\r\n8 4096\r\n11 64\r\n12 16\r\n",
+                "15\r\n"
+            ],
+            [
+                "7\r\n1 16777216\r\n2 1000000000\r\n5 65537\r\n6 16384\r\n7 4096\r\n10 64\r\n11 16\r\n",
+                "17\r\n"
+            ],
+            [
+                "10\r\n0 689790649\r\n10 494030130\r\n6 210447956\r\n3 993638872\r\n7 116080273\r\n8 802686533\r\n2 677383122\r\n9 936407280\r\n4 593615642\r\n1 853659941\r\n",
+                "25\r\n"
+            ],
+            [
+                "2\r\n0 16777216\r\n16 1\r\n",
+                "17\r\n"
+            ],
+            [
+                "1\r\n1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n21 134217728\r\n1 1024\r\n",
+                "35\r\n"
+            ],
+            [
+                "2\r\n10 3\r\n25 747\r\n",
+                "30\r\n"
+            ]
+        ]
+    }
+]

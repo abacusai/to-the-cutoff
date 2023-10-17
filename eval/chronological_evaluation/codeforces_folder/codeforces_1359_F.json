@@ -1,0 +1,135 @@
+[
+    {
+        "name": "RC Kaboom Show",
+        "description": "You know, it's hard to conduct a show with lots of participants and spectators\nat the same place nowadays. Still, you are not giving up on your dream to make\na car crash showcase! You decided to replace the real cars with remote\ncontrolled ones, call the event \"Remote Control Kaboom Show\" and stream\neverything online. For the preparation you arranged an arena \u2014 an infinite\n2D-field. You also bought \n    n\n remote controlled cars and set them up on\nthe arena. Unfortunately, the cars you bought can only go forward without\nturning left, right or around. So you additionally put the cars in the\ndirection you want them to go. To be formal, for each car \n    i\n (\n    1 \n    \u2264\n    i \n    \u2264 n\n) you chose its initial position (\n    x_i, y_i\n) and a direction\nvector (\n    dx_i, dy_i\n). Moreover, each car has a constant speed \n    s_i\n\nunits per second. So after car \n    i\n is launched, it stars moving from\n(\n    x_i, y_i\n) in the direction (\n    dx_i, dy_i\n) with constant speed\n\n    s_i\n. The goal of the show is to create a car collision as fast as\npossible! You noted that launching every car at the beginning of the show\noften fails to produce any collisions at all. Thus, you plan to launch the\n\n    i\n-th car at some moment \n    t_i\n. You haven't chosen \n    t_i\n, that's\nyet to be decided. Note that it's not necessary for \n    t_i\n to be integer\nand \n    t_i\n is allowed to be equal to \n    t_j\n for any \n    i, j\n. The show\nstarts at time \n    0\n. The show ends when two cars \n    i\n and \n    j\n (\n    i\n    \n     j\n) collide (i. e. come to the same coordinate at the same time). The\nduration of the show is the time between the start and the end. What's the\nfastest crash you can arrange by choosing all \n    t_i\n? If it's possible to\narrange a crash then print the shortest possible duration of the show.\nOtherwise, report that it's impossible. Input The first line contains a single\ninteger \n    n\n (\n    1 \n    \u2264 n \n    \u2264 25000\n) \u2014 the number of cars. Each of\nthe next \n    n\n lines contains five integers \n    x_i\n, \n    y_i\n,\n\n    dx_i\n, \n    dy_i\n, \n    s_i\n (\n    -10^3 \n    \u2264 x_i, y_i \n    \u2264 10^3\n; \n    1\n    \n    \u2264 |dx_i| \n    \u2264 10^3\n; \n    1 \n    \u2264 |dy_i| \n    \u2264 10^3\n; \n    1 \n    \u2264 s_i\n    \n    \u2264 10^3\n) \u2014 the initial position of the \n    i\n-th car, its direction\nvector and its speed, respectively. It's guaranteed that all cars start at\ndistinct positions (i. e. \n    (x_i, y_i) \n    \u2260 (x_j, y_j)\n for \n    i \n    \u2260\n    j\n). Output Print the shortest possible duration of the show if it's\npossible to arrange a crash by choosing all \n    t_i\n. Otherwise, print \"No\nshow :(\". Your answer is considered correct if its absolute or relative error\ndoes not exceed \n    10^-6\n. Formally, let your answer be \n    a\n, and the\njury's answer be \n    b\n. Your answer is accepted if and only if \n    |a\n    - b|/\n    max(1, |b|)\n    \u2264 10^-6\n. Examples Input 4 3 -1 -1 1 2 2 3 -3\n-2 10 -4 2 1 -2 1 -2 -2 -1 2 4 Output 0.585902082262898 Input 2 -1 1 -1 1 200\n1 1 1 5 200 Output No show :( Note Here is the picture for the first example:\nThe fastest cars to crash are cars \n    2\n and \n    4\n. Let's launch car\n\n    2\n at \n    0\n, car \n    4\n at about \n    0.096762\n and cars \n    1\n and\n\n    3\n at arbitrary time. That way cars \n    2\n and \n    4\n will crash into\neach other at about \n    0.585902\n. So here's what it looks like at the moment\nof the collision: Here's the picture for the second example:\n\n",
+        "cf_contest_id": 1359,
+        "cf_index": "F",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "geometry",
+            "math"
+        ],
+        "time_limit_seconds": 6.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n3 -1 -1 1 2\r\n2 3 -3 -2 10\r\n-4 2 1 -2 1\r\n-2 -2 -1 2 4\r\n",
+                "0.5859020823\r\n"
+            ],
+            [
+                "2\r\n-1 1 -1 1 200\r\n1 1 1 5 200\r\n",
+                "No show :("
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n-2 6 -3 -2 6\r\n-5 -9 2 -6 4\r\n",
+                "No show :("
+            ],
+            [
+                "3\r\n-7 -2 4 5 3\r\n1 4 4 2 1\r\n3 5 4 2 3\r\n",
+                "2.2360679775\r\n"
+            ],
+            [
+                "4\r\n5 1 -2 -2 3\r\n-4 5 3 -3 4\r\n2 5 -1 -4 1\r\n4 -2 -3 1 5\r\n",
+                "1.1785113020\r\n"
+            ],
+            [
+                "3\r\n-8 -5 2 3 1\r\n-6 0 -6 -2 2\r\n-2 0 -4 -3 3\r\n",
+                "2.2222222222\r\n"
+            ],
+            [
+                "4\r\n1 0 6 1 1\r\n-7 -3 4 2 1\r\n2 -7 2 -2 1\r\n4 -2 9 3 1\r\n",
+                "18.2482875909\r\n"
+            ],
+            [
+                "4\r\n4 7 -6 -2 1\r\n7 -7 2 -1 1\r\n0 -1 -8 -4 1\r\n-6 -5 6 4 1\r\n",
+                "7.2111025509\r\n"
+            ],
+            [
+                "6\r\n3 2 1 -1 40\r\n1 -3 -1 -1 59\r\n-1 -3 1 1 5\r\n-3 0 -1 1 57\r\n3 1 -1 -1 3\r\n-2 3 1 -1 1\r\n",
+                "0.7071067812\r\n"
+            ],
+            [
+                "9\r\n2 3 -1 -1 42\r\n2 -3 -1 -1 73\r\n3 -2 -1 1 24\r\n-2 -2 1 1 39\r\n1 -3 1 1 25\r\n-3 2 1 -1 66\r\n3 -1 -1 -1 6\r\n0 3 -1 -1 13\r\n2 1 1 -1 40\r\n",
+                "0.0543928293\r\n"
+            ],
+            [
+                "5\r\n6 2 -8 5 1\r\n-6 0 5 2 3\r\n4 4 -5 -2 5\r\n6 4 -9 -9 4\r\n-3 3 -7 8 10\r\n",
+                "1.3462912018\r\n"
+            ],
+            [
+                "4\r\n-58 -59 -3 -17 5\r\n-16 57 22 16 3\r\n-59 7 24 13 1\r\n36 52 -1 -5 2\r\n",
+                "1612.5649211737\r\n"
+            ],
+            [
+                "2\r\n-34 16 38 -42 5\r\n-42 -86 49 48 67\r\n",
+                "13.4638490718\r\n"
+            ],
+            [
+                "3\r\n-35 -34 -36 35 38\r\n-27 44 14 -15 50\r\n-31 -20 -7 -5 8\r\n",
+                "1.6293816094\r\n"
+            ],
+            [
+                "2\r\n45 32 -1 -21 22\r\n-18 13 26 -15 11\r\n",
+                "6.3428499918\r\n"
+            ],
+            [
+                "6\r\n-12 -13 -9 10 2\r\n-4 -8 -1 -4 2\r\n19 24 10 -8 1\r\n-3 -17 3 9 2\r\n-8 -12 7 7 2\r\n7 0 -8 5 1\r\n",
+                "2.8284271247\r\n"
+            ],
+            [
+                "2\r\n999 0 -999 1000 1\r\n499 -999 -998 999 1\r\n",
+                "2115315855.8619501591\r\n"
+            ],
+            [
+                "5\r\n-3 -8 1 1 2\r\n5 8 -2 -2 2\r\n0 0 -1 -2 2\r\n0 -3 -4 2 2\r\n4 -6 -2 4 1\r\n",
+                "1.3416407865\r\n"
+            ],
+            [
+                "4\r\n-2 -3 -6 -8 3\r\n-1 0 9 6 5\r\n6 0 -1 4 2\r\n2 -6 5 -7 4\r\n",
+                "2.0615528128\r\n"
+            ],
+            [
+                "3\r\n36 59 -37 14 3\r\n21 58 -10 14 1\r\n35 -46 -37 -22 2\r\n",
+                "11.2421922802\r\n"
+            ],
+            [
+                "3\r\n51 21 -46 -39 60\r\n5 -38 46 -37 46\r\n10 -34 -29 17 22\r\n",
+                "1.2042593958\r\n"
+            ],
+            [
+                "10\r\n2 -60 -21 52 18\r\n-49 -55 -62 62 17\r\n-55 63 25 -18 1\r\n-1 79 -10 61 19\r\n-64 41 3 42 5\r\n-63 26 -10 -56 31\r\n-79 -25 18 43 12\r\n27 -66 -47 -4 33\r\n-68 85 -38 58 9\r\n37 -2 -62 -29 9\r\n",
+                "2.0091411929\r\n"
+            ],
+            [
+                "1\r\n1 1 -1 -1 1\r\n",
+                "No show :("
+            ],
+            [
+                "2\r\n1000 1000 -999 1000 1\r\n-1000 -1000 -998 999 1\r\n",
+                "5645545491.4489889145\r\n"
+            ],
+            [
+                "2\r\n1000 1000 -999 1000 2\r\n-1000 -1000 -998 999 2\r\n",
+                "2822772745.7244944572\r\n"
+            ],
+            [
+                "10\r\n0 -1000 1 1 1000\r\n1 -1000 1 1 1000\r\n2 -1000 1 1 1000\r\n3 -1000 1 1 1000\r\n4 -1000 1 1 1000\r\n5 -1000 1 1 1000\r\n6 -1000 1 1 1000\r\n7 -1000 1 1 1000\r\n-1 500 1 1 1\r\n8 509 -1 -1 1\r\n",
+                "6.3639610307\r\n"
+            ],
+            [
+                "20\r\n0 -1000 1 1 1000\r\n1 -1000 1 1 1000\r\n2 -1000 1 1 1000\r\n3 -1000 1 1 1000\r\n4 -1000 1 1 1000\r\n5 -1000 1 1 1000\r\n6 -1000 1 1 1000\r\n7 -1000 1 1 1000\r\n8 -1000 1 1 1000\r\n9 -1000 1 1 1000\r\n10 -1000 1 1 1000\r\n11 -1000 1 1 1000\r\n12 -1000 1 1 1000\r\n13 -1000 1 1 1000\r\n14 -1000 1 1 1000\r\n15 -1000 1 1 1000\r\n16 -1000 1 1 1000\r\n17 -1000 1 1 1000\r\n-6 490 1 1 1\r\n24 520 -1 -1 1\r\n",
+                "21.2132034356\r\n"
+            ],
+            [
+                "2\r\n-3 -3 1 -2 1\r\n-2 -1 -1 -2 1\r\n",
+                "2.2360679775\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,106 @@
+[
+    {
+        "name": "Mars rover",
+        "description": "Natasha travels around Mars in the Mars rover. But suddenly it broke down,\nnamely \u2014 the logical scheme inside it. The scheme is an undirected tree\n(connected acyclic graph) with a root in the vertex \n    1\n, in which every\nleaf (excluding root) is an input, and all other vertices are logical\nelements, including the root, which is output. One bit is fed to each input.\nOne bit is returned at the output. There are four types of logical elements:\nAND (\n    2\n inputs), OR (\n    2\n inputs), XOR (\n    2\n inputs), NOT (\n    1\n\ninput). Logical elements take values from their direct descendants (inputs)\nand return the result of the function they perform. Natasha knows the logical\nscheme of the Mars rover, as well as the fact that only one input is broken.\nIn order to fix the Mars rover, she needs to change the value on this input.\nFor each input, determine what the output will be if Natasha changes this\ninput. Input The first line contains a single integer \n    n\n (\n    2 \n    \u2264 n\n    \n    \u2264 10^6\n) \u2014 the number of vertices in the graph (both inputs and\nelements). The \n    i\n-th of the next \n    n\n lines contains a description of\n\n    i\n-th vertex: the first word \"AND\", \"OR\", \"XOR\", \"NOT\" or \"IN\" (means the\ninput of the scheme) is the vertex type. If this vertex is \"IN\", then the\nvalue of this input follows (\n    0\n or \n    1\n), otherwise follow the indices\nof input vertices of this element: \"AND\", \"OR\", \"XOR\" have \n    2\n inputs,\nwhereas \"NOT\" has \n    1\n input. The vertices are numbered from one. It is\nguaranteed that input data contains a correct logical scheme with an output\nproduced by the vertex \n    1\n. Output Print a string of characters '0' and\n'1' (without quotes) \u2014 answers to the problem for each input in the ascending\norder of their vertex indices. Example Input 10 AND 9 4 IN 1 IN 1 XOR 6 5 AND\n3 7 IN 0 NOT 10 IN 1 IN 1 AND 2 8 Output 10110 Note The original scheme from\nthe example (before the input is changed): Green indicates bits '1', yellow\nindicates bits '0'. If Natasha changes the input bit \n    2\n to \n    0\n, then\nthe output will be \n    1\n. If Natasha changes the input bit \n    3\n to\n\n    0\n, then the output will be \n    0\n. If Natasha changes the input bit\n\n    6\n to \n    1\n, then the output will be \n    1\n. If Natasha changes the\ninput bit \n    8\n to \n    0\n, then the output will be \n    1\n. If Natasha\nchanges the input bit \n    9\n to \n    0\n, then the output will be \n    0\n.\n\n",
+        "cf_contest_id": 1010,
+        "cf_index": "D",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs",
+            "implementation",
+            "trees"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10\r\nAND 9 4\r\nIN 1\r\nIN 1\r\nXOR 6 5\r\nAND 3 7\r\nIN 0\r\nNOT 10\r\nIN 1\r\nIN 1\r\nAND 2 8\r\n",
+                "10110\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\nAND 2 3\r\nIN 0\r\nIN 0\r\n",
+                "00\n"
+            ],
+            [
+                "3\r\nAND 2 3\r\nIN 1\r\nIN 0\r\n",
+                "01\n"
+            ],
+            [
+                "3\r\nAND 2 3\r\nIN 0\r\nIN 1\r\n",
+                "10\n"
+            ],
+            [
+                "3\r\nAND 2 3\r\nIN 1\r\nIN 1\r\n",
+                "00\n"
+            ],
+            [
+                "3\r\nOR 2 3\r\nIN 0\r\nIN 0\r\n",
+                "11\n"
+            ],
+            [
+                "3\r\nOR 2 3\r\nIN 1\r\nIN 0\r\n",
+                "01\n"
+            ],
+            [
+                "3\r\nOR 2 3\r\nIN 0\r\nIN 1\r\n",
+                "10\n"
+            ],
+            [
+                "3\r\nOR 2 3\r\nIN 1\r\nIN 1\r\n",
+                "11\n"
+            ],
+            [
+                "3\r\nXOR 2 3\r\nIN 0\r\nIN 0\r\n",
+                "11\n"
+            ],
+            [
+                "3\r\nXOR 2 3\r\nIN 1\r\nIN 0\r\n",
+                "00\n"
+            ],
+            [
+                "3\r\nXOR 2 3\r\nIN 0\r\nIN 1\r\n",
+                "00\n"
+            ],
+            [
+                "3\r\nXOR 2 3\r\nIN 1\r\nIN 1\r\n",
+                "11\n"
+            ],
+            [
+                "2\r\nNOT 2\r\nIN 0\r\n",
+                "0\n"
+            ],
+            [
+                "2\r\nNOT 2\r\nIN 1\r\n",
+                "1\n"
+            ],
+            [
+                "20\r\nOR 17 10\r\nIN 0\r\nIN 0\r\nNOT 6\r\nOR 18 14\r\nIN 1\r\nOR 16 3\r\nXOR 5 4\r\nIN 0\r\nXOR 11 9\r\nNOT 15\r\nAND 20 19\r\nIN 0\r\nIN 1\r\nIN 1\r\nNOT 8\r\nNOT 12\r\nIN 1\r\nAND 13 7\r\nNOT 2\r\n",
+                "11111111\n"
+            ],
+            [
+                "30\r\nXOR 4 11\r\nXOR 6 25\r\nNOT 29\r\nNOT 9\r\nNOT 17\r\nNOT 26\r\nNOT 30\r\nNOT 27\r\nNOT 14\r\nIN 1\r\nNOT 5\r\nNOT 15\r\nNOT 22\r\nIN 0\r\nNOT 24\r\nIN 1\r\nNOT 3\r\nNOT 19\r\nNOT 8\r\nNOT 16\r\nNOT 23\r\nNOT 28\r\nNOT 7\r\nNOT 2\r\nNOT 10\r\nNOT 13\r\nNOT 12\r\nNOT 20\r\nNOT 21\r\nNOT 18\r\n",
+                "000\n"
+            ],
+            [
+                "40\r\nOR 9 2\r\nAND 30 31\r\nIN 1\r\nIN 1\r\nIN 0\r\nOR 25 21\r\nIN 1\r\nXOR 20 10\r\nAND 24 34\r\nIN 0\r\nIN 0\r\nNOT 16\r\nAND 14 4\r\nIN 0\r\nAND 18 27\r\nIN 1\r\nAND 15 22\r\nOR 26 12\r\nIN 1\r\nAND 36 3\r\nXOR 11 38\r\nIN 1\r\nIN 1\r\nNOT 29\r\nIN 0\r\nXOR 32 13\r\nIN 1\r\nIN 0\r\nNOT 8\r\nIN 1\r\nXOR 37 39\r\nXOR 7 23\r\nIN 1\r\nXOR 33 5\r\nIN 0\r\nOR 40 28\r\nIN 1\r\nIN 0\r\nAND 35 17\r\nXOR 6 19\r\n",
+                "1111111111111111111\n"
+            ],
+            [
+                "50\r\nNOT 37\r\nOR 23 10\r\nIN 1\r\nAND 28 48\r\nIN 0\r\nIN 0\r\nIN 0\r\nAND 39 21\r\nNOT 6\r\nNOT 40\r\nAND 18 36\r\nIN 0\r\nIN 1\r\nOR 33 43\r\nNOT 27\r\nNOT 25\r\nNOT 35\r\nXOR 16 34\r\nNOT 22\r\nIN 1\r\nAND 4 13\r\nNOT 46\r\nIN 1\r\nNOT 3\r\nOR 5 49\r\nXOR 30 15\r\nOR 41 31\r\nIN 0\r\nIN 0\r\nOR 8 38\r\nIN 1\r\nAND 7 20\r\nNOT 11\r\nIN 1\r\nXOR 2 32\r\nXOR 29 9\r\nAND 50 44\r\nIN 1\r\nIN 0\r\nOR 42 47\r\nIN 0\r\nNOT 14\r\nIN 1\r\nNOT 19\r\nIN 1\r\nIN 0\r\nNOT 26\r\nOR 45 12\r\nIN 1\r\nOR 24 17\r\n",
+                "0110111111111111111\n"
+            ],
+            [
+                "60\r\nAND 20 4\r\nNOT 42\r\nAND 48 59\r\nOR 17 7\r\nIN 0\r\nAND 36 37\r\nIN 1\r\nIN 0\r\nIN 1\r\nNOT 47\r\nAND 52 49\r\nOR 44 35\r\nIN 0\r\nIN 1\r\nAND 33 56\r\nIN 0\r\nIN 0\r\nIN 0\r\nAND 31 41\r\nOR 15 3\r\nOR 43 46\r\nIN 1\r\nXOR 22 28\r\nIN 1\r\nIN 1\r\nIN 1\r\nAND 34 21\r\nIN 1\r\nIN 1\r\nIN 0\r\nXOR 51 23\r\nXOR 10 54\r\nOR 57 40\r\nIN 0\r\nNOT 18\r\nNOT 25\r\nIN 1\r\nAND 5 50\r\nIN 0\r\nAND 60 53\r\nAND 45 8\r\nIN 0\r\nIN 1\r\nNOT 27\r\nIN 0\r\nIN 1\r\nAND 19 2\r\nOR 29 32\r\nAND 58 24\r\nNOT 16\r\nXOR 55 11\r\nIN 0\r\nNOT 30\r\nAND 12 38\r\nAND 14 9\r\nIN 1\r\nIN 0\r\nOR 26 6\r\nIN 0\r\nAND 13 39\r\n",
+                "000000000000000000000000011\n"
+            ],
+            [
+                "9\r\nAND 2 3\r\nIN 1\r\nOR 4 5\r\nIN 0\r\nAND 6 7\r\nIN 1\r\nOR 8 9\r\nIN 0\r\nIN 0\r\n",
+                "01011\n"
+            ]
+        ]
+    }
+]

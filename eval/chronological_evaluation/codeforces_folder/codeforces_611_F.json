@@ -1,0 +1,300 @@
+[
+    {
+        "name": "New Year and Cleaning",
+        "description": "Limak is a little polar bear. His parents told him to clean a house before the\nNew Year's Eve. Their house is a rectangular grid with h rows and w columns.\nEach cell is an empty square. He is a little bear and thus he can't clean a\nhouse by himself. Instead, he is going to use a cleaning robot. A cleaning\nrobot has a built-in pattern of n moves, defined by a string of the length n.\nA single move (character) moves a robot to one of four adjacent cells. Each\ncharacter is one of the following four: 'U' (up), 'D' (down), 'L' (left), 'R'\n(right). One move takes one minute. A cleaning robot must be placed and\nstarted in some cell. Then it repeats its pattern of moves till it hits a wall\n(one of four borders of a house). After hitting a wall it can be placed and\nused again. Limak isn't sure if placing a cleaning robot in one cell will be\nenough. Thus, he is going to start it w\u00b7h times, one time in each cell. Maybe\nsome cells will be cleaned more than once but who cares? Limak asks you one\nquestion. How much time will it take to clean a house? Find and print the\nnumber of minutes modulo 10^9 + 7. It's also possible that a cleaning robot\nwill never stop \u2014 then print \"-1\" (without the quotes) instead. Placing and\nstarting a robot takes no time, however, you must count a move when robot hits\na wall. Take a look into samples for further clarification. Input The first\nline contains three integers n, h and w (1 \u2264 n, h, w \u2264 500 000) \u2014 the length\nof the pattern, the number of rows and the number of columns, respectively.\nThe second line contains a string of length n \u2014 the pattern of n moves. Each\ncharacter is one of uppercase letters 'U', 'D', 'L' or 'R'. Output Print one\nline with the answer. If a cleaning robot will never stop, print \"-1\" (without\nthe quotes). Otherwise, print the number of minutes it will take to clean a\nhouse modulo 10^9 + 7. Examples Input 1 10 2 R Output 30 Input 3 4 6 RUL\nOutput 134 Input 4 1 500000 RLRL Output -1 Note In the first sample house is a\ngrid with 10 rows and 2 columns. Starting a robot anywhere in the second\ncolumn will result in only one move (thus, one minute of cleaning) in which\nrobot will hit a wall \u2014 he tried to go right but there is no third column.\nStarting a robot anywhere in the first column will result in two moves. The\ntotal number of minutes is 10\u00b71 + 10\u00b72 = 30. In the second sample a started\nrobot will try to move \"RULRULRULR...\" For example, for the leftmost cell in\nthe second row robot will make 5 moves before it stops because of hitting an\nupper wall.\n\n",
+        "cf_contest_id": 611,
+        "cf_index": "F",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1 10 2\r\nR\r\n",
+                "30\r\n"
+            ],
+            [
+                "3 4 6\r\nRUL\r\n",
+                "134\r\n"
+            ],
+            [
+                "4 1 500000\r\nRLRL\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 10 20\r\nDDLUU\r\n",
+                "8140\r\n"
+            ],
+            [
+                "5 20 10\r\nDUDDU\r\n",
+                "9320\r\n"
+            ],
+            [
+                "50 500000 500000\r\nLDUDULURLRURLLLLLRLLDDULURLRRRLLLLLRULRUURRLLURLRU\r\n",
+                "823358683\r\n"
+            ],
+            [
+                "1 1 1\r\nD\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 1\r\nR\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 500000 1\r\nU\r\n",
+                "249125\r\n"
+            ],
+            [
+                "1 500000 1\r\nL\r\n",
+                "500000\r\n"
+            ],
+            [
+                "1 500000 1\r\nD\r\n",
+                "249125\r\n"
+            ],
+            [
+                "1 500000 1\r\nR\r\n",
+                "500000\r\n"
+            ],
+            [
+                "3 3 1\r\nDDU\r\n",
+                "8\r\n"
+            ],
+            [
+                "2 2 1\r\nRL\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 500000 500000\r\nDRRLD\r\n",
+                "922542991\r\n"
+            ],
+            [
+                "5 500000 500000\r\nUUUUU\r\n",
+                "562499132\r\n"
+            ],
+            [
+                "5 500000 500000\r\nUUUDD\r\n",
+                "818516646\r\n"
+            ],
+            [
+                "5 500000 500000\r\nRRDRR\r\n",
+                "832072051\r\n"
+            ],
+            [
+                "5 500000 500000\r\nRRDRR\r\n",
+                "832072051\r\n"
+            ],
+            [
+                "15 500000 500000\r\nULDRDRLUURRRRDD\r\n",
+                "561411237\r\n"
+            ],
+            [
+                "15 500000 500000\r\nUUUUUUUUUUUUUUU\r\n",
+                "562499132\r\n"
+            ],
+            [
+                "15 500000 500000\r\nDUDUDDDDDDDUDDD\r\n",
+                "938830720\r\n"
+            ],
+            [
+                "15 500000 500000\r\nDDRRRRRRDRDDRDR\r\n",
+                "321601014\r\n"
+            ],
+            [
+                "15 500000 500000\r\nLRDRRRRLRDLDDRR\r\n",
+                "36901862\r\n"
+            ],
+            [
+                "25 500000 500000\r\nLRUULDULRULLULDRLDLLLULLR\r\n",
+                "867461987\r\n"
+            ],
+            [
+                "25 500000 500000\r\nUUUUUUUUUUUUUUUUUUUUUUUUU\r\n",
+                "562499132\r\n"
+            ],
+            [
+                "25 500000 500000\r\nUUDUUUUDDUUDUUUDUDUUDUUUU\r\n",
+                "819681115\r\n"
+            ],
+            [
+                "25 500000 500000\r\nRDDDDDDRDRRDDDDRRDRDDDDDR\r\n",
+                "766472977\r\n"
+            ],
+            [
+                "25 500000 500000\r\nLDRLDRRLLLRDRRDLRDLRLDRRD\r\n",
+                "228562559\r\n"
+            ],
+            [
+                "45 500000 500000\r\nLDUDDLLURUUULDLULLDLLUUDLURDLURDRLRURULLRDUUL\r\n",
+                "8967897\r\n"
+            ],
+            [
+                "45 500000 500000\r\nUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\r\n",
+                "562499132\r\n"
+            ],
+            [
+                "45 500000 500000\r\nUDUDDUDUUUUUUDUDDUUDDUDUDUDUUUDDUUUDDDDDDUUDD\r\n",
+                "861529515\r\n"
+            ],
+            [
+                "45 500000 500000\r\nRRDDRDDDRRRRDDDRRDRRDDRRDRDRDRDRDRDRRDDRRRRDR\r\n",
+                "422218936\r\n"
+            ],
+            [
+                "45 500000 500000\r\nDLDRDRRDRDLRRRRLLLLLRDLLRRDRLRDDDDLDRDRLDDLRL\r\n",
+                "751477994\r\n"
+            ],
+            [
+                "85 500000 500000\r\nUURRRLLRLDLRRLUUUUDDUDRRULLURLDUULLLURLLDULUULUDULLURLLDDRUULLRRLRLDDUDDDLDLUULDDRLUR\r\n",
+                "436565254\r\n"
+            ],
+            [
+                "85 500000 500000\r\nUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\r\n",
+                "562499132\r\n"
+            ],
+            [
+                "85 500000 500000\r\nDUDUUUDUUUDUDUDDUUDUUUUDUDDDDUDUUDDUDUDDDUDUUUUUDDUUUDUDDDDDDDUDDDDDDDDUUDDDUDUUUUUUD\r\n",
+                "308209540\r\n"
+            ],
+            [
+                "85 500000 500000\r\nDRDRDDDDDRDRRDRRDRRRDRRRDDDDRRRDDRDRRDDRDDDRDRDDDDDDRRDRDDRRRRDDRRDDRRDRDDRRDDRRRRDRR\r\n",
+                "94137368\r\n"
+            ],
+            [
+                "85 500000 500000\r\nDDLLLDLLRDLDDRRDRLDRRRLLDRDRRDLDLDRLRDDLLRRRRDRRLDRDDLRLDDLLLDLRDDRLDRLDLRRRLLRRLRRLD\r\n",
+                "920429705\r\n"
+            ],
+            [
+                "205 500000 500000\r\nDLUDDRRDDUDRDDDRRLULRUDLLLRRULDLUURLDRUDRLUUDDDDLRRRLLRLRDUDRLDRRDULULDRLUDUDLUURRURLRLDDUDDLLLRUUDURDRDLRRDULLDDUDLLLUULDRLUDDUUURRLUDULRLULLULURDRRULDULDRUULRURDDUUUDDRRLUDDRDRURDURRULURLDLRLUUDURLLLUDUD\r\n",
+                "994835756\r\n"
+            ],
+            [
+                "205 500000 500000\r\nUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\r\n",
+                "562499132\r\n"
+            ],
+            [
+                "205 500000 500000\r\nDDUDDDUUUDDUUUUUUDDUDUDUDDUDDDUDUDUUDUUDDUDUUDDUUUUDDDUDUDDDUDDDDDUDDUDUDDDDDDDDDUUUDUUDDDUUDUDUDDDDDDUDUUDUDUUUUUUDDDDDDDUDDDUUUUDUDDUUDDDUDUUUUUDUUDUDUDDUDDDUDUDUDDDDDDDDUDDDDUDUUDUDUDDDDUDDUUDUUUDUUDUUU\r\n",
+                "998154179\r\n"
+            ],
+            [
+                "205 500000 500000\r\nDRDRRRRDRDRRDDRRDDDRRRDDDDRDRRRDDDRRDRRRRRRRDRRDDRDRDDDDRRRDDRDDDRRDDDDRDDDDRDDDDRRRRRDDRRDDDRDDRDRRRDDRRRDDDDRRDDRDRRRDDDRDRRDDDDDDDRDDRDRRDRRRRRRDDDRRRDRRDDDDDDDRDDRRDDRDRDDRDRDDRDRDDDDDDDDDRRDRRDRRDDRDD\r\n",
+                "256000592\r\n"
+            ],
+            [
+                "205 500000 500000\r\nDDLRDDLRRLRDLRRDRDDLDDRLLRLDDDDDLLLLRLRDDRDRRLDLDDLRDLLRLLRLLLLDLLLDRRDLRLRLRRRDDLLRRLDLRLLLDDDDDDRDDDLLLDLLDDRLRDRLDRRLRRLLLRDDRDDDRLDRRLRDRLRLDLLLLRDLLRDDRLDLRDDDRRRRRRDDDRRLDDLLRLLDDDLRLRRLLLRLLRRRDRDRL\r\n",
+                "915180984\r\n"
+            ],
+            [
+                "10 500000 500000\r\nRDRDLURRLU\r\n",
+                "821516635\r\n"
+            ],
+            [
+                "30 500000 500000\r\nLLLLDLRLRRLURRDULRUDURRLDLLUDU\r\n",
+                "475107856\r\n"
+            ],
+            [
+                "50 500000 500000\r\nLDLDURDLRULLLRURRLRDDDDDRDUULDUDLUULRRRLURUDLRULDR\r\n",
+                "402761534\r\n"
+            ],
+            [
+                "70 500000 500000\r\nULULRRUUDLRLURUDRUDRRUULUUDLRRRLULUDULLDLLRLRRURRDLUDLDURDLRDLDLUDURLL\r\n",
+                "144619380\r\n"
+            ],
+            [
+                "90 500000 500000\r\nUDUDUDLUUDRRURLUDDULLLLDDRLRDLDDDRUURDDLDDLDDRUDLULRRDUULULDRDDDULDLLUDDUURUULURLLLRULLLUR\r\n",
+                "646376481\r\n"
+            ],
+            [
+                "110 500000 500000\r\nLUDDLRLULLRRLLURRLUDRRUDRLDURURULRDRURUUDDDRUDLDLLLLULUDDLLLUUUUULLURDLURULDLUUDRLUDLDRDLUULUDUDUDLDLDDUULLDUL\r\n",
+                "437242189\r\n"
+            ],
+            [
+                "130 500000 500000\r\nURRLDRRDRDRDULUURULRLDLLLDRLDUURUUUURLRRULLLLDLUURRDDDRRLRLRRRULUUUURRDRDRUURLLRLDDRUURRRDDULRURDLLRLUDLLDRRRRLLDRDDRURDRRRLDDUUDU\r\n",
+                "825926704\r\n"
+            ],
+            [
+                "190 500000 500000\r\nDULDUUURUUDLRRRDDUUDRRUDUDLDDLULLUULURLURLLDURUDURLLRRRLLRULUDRLLURRDRURLRUUURDDDUDRDURDDLLRDLDLDULUDDLURDRRLLUDURDDRDDUDUDDDDLURDRLLUULLDLDLLDRRDLUDLDRLRDULUUUURURUUUDRDRDRUULDUULLDUDLULLLL\r\n",
+                "27873270\r\n"
+            ],
+            [
+                "280 500000 500000\r\nLDDLRLDULUUDLDLRUULDDRRLUURULLRLLLRUUUUULURURRDLURDLRLRUUUDRRUDDRRRUUDDURURUULDLRDRRRDDRDDRULDRUUDUDLRDLLDUUUDLULUDDURDUDRDRRLDLLUURUULURRDULRLRDLRDUUURULLULURLDLRULRLULUUDLURLRLDURRRDUULLLRRLDRLRUUDDLDDRRRLDDRLURUDULRDRDDURLRRLURRRULULLDRLLRLUDRLLUURDDLDLURLRRDULDDRULLLDLRDURDLR\r\n",
+                "796461419\r\n"
+            ],
+            [
+                "3 3 3\r\nLUD\r\n",
+                "29\r\n"
+            ],
+            [
+                "3 3 4\r\nDUR\r\n",
+                "64\r\n"
+            ],
+            [
+                "3 4 4\r\nLRL\r\n",
+                "88\r\n"
+            ],
+            [
+                "3 3 2\r\nDLD\r\n",
+                "13\r\n"
+            ],
+            [
+                "3 1 4\r\nRDD\r\n",
+                "7\r\n"
+            ],
+            [
+                "2 3 4\r\nDL\r\n",
+                "31\r\n"
+            ],
+            [
+                "4 3 4\r\nRDLR\r\n",
+                "50\r\n"
+            ],
+            [
+                "1 3 4\r\nU\r\n",
+                "24\r\n"
+            ],
+            [
+                "5 3 4\r\nRRUDL\r\n",
+                "53\r\n"
+            ],
+            [
+                "2 2 2\r\nLD\r\n",
+                "7\r\n"
+            ],
+            [
+                "2 10 10\r\nDD\r\n",
+                "550\r\n"
+            ],
+            [
+                "2 500000 500000\r\nDL\r\n",
+                "749915801\r\n"
+            ],
+            [
+                "50 500000 50000\r\nUDURUURRRUUURUDUULURRRRRLRLDDRDLULULDDUDUDLDRDUULR\r\n",
+                "862301079\r\n"
+            ],
+            [
+                "50 500000 50000\r\nRDDRLDDDRRRDRDRRLLLLDRLDLDLDDDDLDDDDLLRLRLLRDRRDLD\r\n",
+                "282856592\r\n"
+            ],
+            [
+                "50 500000 50000\r\nDUUUUDUDDUUUDUUUDUDDUDUDUUUDUDUDUDUUUDUDUUDUUDUUUU\r\n",
+                "771700144\r\n"
+            ],
+            [
+                "50 500000 50000\r\nDDDRDRRRDRRRRRDRDDDDRDRRDDRDDDRRDRDDDDRRDRDRDRDRDR\r\n",
+                "818561534\r\n"
+            ],
+            [
+                "50 500000 50000\r\nLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL\r\n",
+                "495624916\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Complete The Graph",
+        "description": "ZS the Coder has drawn an undirected graph of n vertices numbered from 0 to n\n- 1 and m edges between them. Each edge of the graph is weighted, each weight\nis a positive integer. The next day, ZS the Coder realized that some of the\nweights were erased! So he wants to reassign positive integer weight to each\nof the edges which weights were erased, so that the length of the shortest\npath between vertices s and t in the resulting graph is exactly L. Can you\nhelp him? Input The first line contains five integers n, m, L, s, t (2 \u2264 n \u2264\n1000, 1 \u2264 m \u2264 10 000, 1 \u2264 L \u2264 10^9, 0 \u2264 s, t \u2264 n - 1, s \u2260 t) \u2014 the number of\nvertices, number of edges, the desired length of shortest path, starting\nvertex and ending vertex respectively. Then, m lines describing the edges of\nthe graph follow. i-th of them contains three integers, ui, vi, wi (0 \u2264 ui, vi\n\u2264 n - 1, ui \u2260 vi, 0 \u2264 wi \u2264 10^9). ui and vi denote the endpoints of the edge\nand wi denotes its weight. If wi is equal to 0 then the weight of the\ncorresponding edge was erased. It is guaranteed that there is at most one edge\nbetween any pair of vertices. Output Print \"NO\" (without quotes) in the only\nline if it's not possible to assign the weights in a required way. Otherwise,\nprint \"YES\" in the first line. Next m lines should contain the edges of the\nresulting graph, with weights assigned to edges which weights were erased.\ni-th of them should contain three integers ui, vi and wi, denoting an edge\nbetween vertices ui and vi of weight wi. The edges of the new graph must\ncoincide with the ones in the graph from the input. The weights that were not\nerased must remain unchanged whereas the new weights can be any positive\ninteger not exceeding 10^18. The order of the edges in the output doesn't\nmatter. The length of the shortest path between s and t must be equal to L. If\nthere are multiple solutions, print any of them. Examples Input 5 5 13 0 4 0 1\n5 2 1 2 3 2 3 1 4 0 4 3 4 Output YES 0 1 5 2 1 2 3 2 3 1 4 8 4 3 4 Input 2 1\n123456789 0 1 0 1 0 Output YES 0 1 123456789 Input 2 1 999999999 1 0 0 1\n1000000000 Output NO Note Here's how the graph in the first sample case looks\nlike : In the first sample case, there is only one missing edge weight.\nPlacing the weight of 8 gives a shortest path from 0 to 4 of length 13. In the\nsecond sample case, there is only a single edge. Clearly, the only way is to\nreplace the missing weight with 123456789. In the last sample case, there is\nno weights to assign but the length of the shortest path doesn't match the\nrequired value, so the answer is \"NO\".\n\n",
+        "cf_contest_id": 715,
+        "cf_index": "B",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "constructive algorithms",
+            "graphs",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 5 13 0 4\r\n0 1 5\r\n2 1 2\r\n3 2 3\r\n1 4 0\r\n4 3 4\r\n",
+                "YES\r\n0 1 5\r\n2 1 2\r\n3 2 3\r\n1 4 8\r\n4 3 4\r\n"
+            ],
+            [
+                "2 1 123456789 0 1\r\n0 1 0\r\n",
+                "YES\r\n0 1 123456789\r\n"
+            ],
+            [
+                "2 1 999999999 1 0\r\n0 1 1000000000\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 5 10 1 2\r\n0 1 3\r\n1 2 0\r\n1 3 4\r\n2 3 4\r\n2 0 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 1 123456 99 0\r\n0 99 123456\r\n",
+                "YES\r\n0 99 123456\r\n"
+            ],
+            [
+                "1000 1 5 999 0\r\n0 999 0\r\n",
+                "YES\r\n0 999 5\r\n"
+            ],
+            [
+                "1000 1 1000000000 998 0\r\n0 999 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 4 14 1 3\r\n1 3 13\r\n2 3 0\r\n2 0 0\r\n1 0 12\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 4 13 1 3\r\n1 3 13\r\n2 3 0\r\n2 0 0\r\n1 0 12\r\n",
+                "YES\r\n1 3 13\r\n2 3 1\r\n2 0 1\r\n1 0 12\r\n"
+            ],
+            [
+                "4 4 2 1 3\r\n1 3 13\r\n2 3 0\r\n2 0 0\r\n1 0 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 4 8 1 3\r\n1 3 13\r\n2 3 0\r\n2 0 0\r\n1 0 6\r\n",
+                "YES\r\n1 3 13\r\n2 3 1\r\n2 0 1\r\n1 0 6\r\n"
+            ],
+            [
+                "5 6 1000000000 0 4\r\n0 1 1\r\n2 0 2\r\n3 0 3\r\n4 1 0\r\n4 2 0\r\n3 4 0\r\n",
+                "YES\r\n0 1 1\r\n2 0 2\r\n3 0 3\r\n4 1 999999999\r\n4 2 999999998\r\n3 4 999999997\r\n"
+            ],
+            [
+                "7 9 320 0 3\r\n0 1 0\r\n1 2 0\r\n2 3 0\r\n0 4 1\r\n4 1 1\r\n1 5 100\r\n5 2 100\r\n2 6 59\r\n6 3 61\r\n",
+                "YES\r\n0 1 318\r\n1 2 317\r\n2 3 118\r\n0 4 1\r\n4 1 1\r\n1 5 100\r\n5 2 100\r\n2 6 59\r\n6 3 61\r\n"
+            ],
+            [
+                "7 9 319 0 3\r\n0 1 0\r\n1 2 0\r\n2 3 0\r\n0 4 1\r\n4 1 1\r\n1 5 100\r\n5 2 100\r\n2 6 59\r\n6 3 61\r\n",
+                "YES\r\n0 1 317\r\n1 2 316\r\n2 3 117\r\n0 4 1\r\n4 1 1\r\n1 5 100\r\n5 2 100\r\n2 6 59\r\n6 3 61\r\n"
+            ],
+            [
+                "7 9 999999999 0 3\r\n0 1 0\r\n1 2 0\r\n2 3 0\r\n0 4 1\r\n4 1 1\r\n1 5 499999999\r\n5 2 499999999\r\n2 6 1\r\n6 3 1\r\n",
+                "YES\r\n0 1 999999997\r\n1 2 999999996\r\n2 3 1\r\n0 4 1\r\n4 1 1\r\n1 5 499999999\r\n5 2 499999999\r\n2 6 1\r\n6 3 1\r\n"
+            ],
+            [
+                "5 5 2 0 2\r\n0 1 1\r\n1 2 1\r\n0 4 0\r\n4 3 0\r\n3 2 0\r\n",
+                "YES\r\n0 1 1\r\n1 2 1\r\n0 4 1\r\n4 3 1\r\n3 2 1\r\n"
+            ],
+            [
+                "5 5 1 0 2\r\n0 1 1\r\n1 2 1\r\n0 4 0\r\n4 3 0\r\n3 2 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 5 3 0 2\r\n0 1 1\r\n1 2 1\r\n0 4 0\r\n4 3 0\r\n3 2 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 9 10 1 0\r\n1 2 1\r\n2 4 1\r\n1 3 0\r\n3 4 0\r\n4 5 0\r\n5 6 1\r\n6 0 1\r\n5 7 0\r\n7 0 0\r\n",
+                "YES\r\n1 2 1\r\n2 4 1\r\n1 3 6\r\n3 4 4\r\n4 5 6\r\n5 6 1\r\n6 0 1\r\n5 7 1\r\n7 0 1\r\n"
+            ],
+            [
+                "4 5 7 0 3\r\n0 1 0\r\n1 2 3\r\n2 3 0\r\n0 2 5\r\n1 3 5\r\n",
+                "YES\r\n0 1 3\r\n1 2 3\r\n2 3 2\r\n0 2 5\r\n1 3 5\r\n"
+            ]
+        ]
+    }
+]

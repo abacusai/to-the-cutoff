@@ -1,0 +1,267 @@
+[
+    {
+        "name": "Abracadabra",
+        "description": "Polycarpus analyzes a string called abracadabra. This string is constructed\nusing the following algorithm: On the first step the string consists of a\nsingle character \"a\". On the k-th step Polycarpus concatenates two copies of\nthe string obtained on the (k - 1)-th step, while inserting the k-th character\nof the alphabet between them. Polycarpus uses the alphabet that consists of\nlowercase Latin letters and digits (a total of 36 characters). The alphabet\ncharacters are numbered like this: the 1-st character is \"a\", the 2-nd \u2014 \"b\",\n..., the 26-th \u2014 \"z\", the 27-th \u2014 \"0\", the 28-th \u2014 \"1\", ..., the 36-th \u2014 \"9\".\nLet's have a closer look at the algorithm. On the second step Polycarpus will\nconcatenate two strings \"a\" and insert the character \"b\" between them,\nresulting in \"aba\" string. The third step will transform it into \"abacaba\",\nand the fourth one - into \"abacabadabacaba\". Thus, the string constructed on\nthe k-th step will consist of 2^k - 1 characters. Polycarpus wrote down the\nstring he got after 30 steps of the given algorithm and chose two non-empty\nsubstrings of it. Your task is to find the length of the longest common\nsubstring of the two substrings selected by Polycarpus. A substring s[i... j]\n(1 \u2264 i \u2264 j \u2264 |s|) of string s = s1s2... s|s| is a string sisi + 1... sj. For\nexample, substring s[2...4] of string s = \"abacaba\" equals \"bac\". The string\nis its own substring. The longest common substring of two strings s and t is\nthe longest string that is a substring of both s and t. For example, the\nlongest common substring of \"contest\" and \"systemtesting\" is string \"test\".\nThere can be several common substrings of maximum length. Input The input\nconsists of a single line containing four integers l1, r1, l2, r2 (1 \u2264 li \u2264 ri\n\u2264 10^9, i = 1, 2). The numbers are separated by single spaces. li and ri give\nthe indices of the first and the last characters of the i-th chosen substring,\ncorrespondingly (i = 1, 2). The characters of string abracadabra are numbered\nstarting from 1. Output Print a single number \u2014 the length of the longest\ncommon substring of the given strings. If there are no common substrings,\nprint 0. Examples Input 3 6 1 4 Output 2 Input 1 1 4 4 Output 0 Note In the\nfirst sample the first substring is \"acab\", the second one is \"abac\". These\ntwo substrings have two longest common substrings \"ac\" and \"ab\", but we are\nonly interested in their length \u2014 2. In the second sample the first substring\nis \"a\", the second one is \"c\". These two substrings don't have any common\ncharacters, so the length of their longest common substring is 0.\n\n",
+        "cf_contest_id": 161,
+        "cf_index": "C",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "divide and conquer"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 6 1 4\r\n",
+                "2"
+            ],
+            [
+                "1 1 4 4\r\n",
+                "0"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2 6 6\r\n",
+                "1"
+            ],
+            [
+                "73426655 594361930 343984155 989446962\r\n",
+                "379149396"
+            ],
+            [
+                "169720415 312105195 670978284 671296539\r\n",
+                "207899"
+            ],
+            [
+                "1 1 1 1\r\n",
+                "1"
+            ],
+            [
+                "1 1 2 3\r\n",
+                "1"
+            ],
+            [
+                "2 3 1 1\r\n",
+                "1"
+            ],
+            [
+                "4 5 6 7\r\n",
+                "1"
+            ],
+            [
+                "5 6 5 10\r\n",
+                "2"
+            ],
+            [
+                "20 59 93 97\r\n",
+                "5"
+            ],
+            [
+                "59 797 761 863\r\n",
+                "103"
+            ],
+            [
+                "3563 8248 1195 5811\r\n",
+                "2901"
+            ],
+            [
+                "26733 47464 19138 46248\r\n",
+                "19516"
+            ],
+            [
+                "183307 582175 813247 925985\r\n",
+                "112739"
+            ],
+            [
+                "42765 7043311 3930802 8641200\r\n",
+                "4151539"
+            ],
+            [
+                "48358214 56090000 19994986 77748608\r\n",
+                "7731787"
+            ],
+            [
+                "326428072 910655768 241366302 856438517\r\n",
+                "530010446"
+            ],
+            [
+                "1 1000000000 1 1000000000\r\n",
+                "1000000000"
+            ],
+            [
+                "601080293 742283208 417827259 630484959\r\n",
+                "71194568"
+            ],
+            [
+                "933937636 947664621 406658382 548532154\r\n",
+                "8140525"
+            ],
+            [
+                "876260202 917475655 508441743 544698794\r\n",
+                "28429169"
+            ],
+            [
+                "260267830 630246217 436204204 880818505\r\n",
+                "268435455"
+            ],
+            [
+                "1 463129088 536870913 1000000000\r\n",
+                "463129088"
+            ],
+            [
+                "1 463129088 536870914 1000000000\r\n",
+                "463129087"
+            ],
+            [
+                "58660225 863918362 315894896 954309337\r\n",
+                "548023467"
+            ],
+            [
+                "462616550 929253987 199885647 365920450\r\n",
+                "166034804"
+            ],
+            [
+                "166724572 472113234 358126054 528083792\r\n",
+                "125430608"
+            ],
+            [
+                "654444727 988815385 77276659 644738371\r\n",
+                "334370659"
+            ],
+            [
+                "346539730 828420288 373318830 643522086\r\n",
+                "270203257"
+            ],
+            [
+                "156642200 503020953 296806626 871864091\r\n",
+                "234585497"
+            ],
+            [
+                "229012373 968585257 177685154 283692208\r\n",
+                "106007055"
+            ],
+            [
+                "225343773 292960163 388346281 585652974\r\n",
+                "43091683"
+            ],
+            [
+                "760202684 921630809 8799976 434695123\r\n",
+                "161428126"
+            ],
+            [
+                "489816019 571947327 244679586 543875061\r\n",
+                "54059043"
+            ],
+            [
+                "377544108 461895419 242140460 901355034\r\n",
+                "84351312"
+            ],
+            [
+                "293057586 653835431 583814665 643163992\r\n",
+                "59349328"
+            ],
+            [
+                "926028190 962292871 588752738 848484542\r\n",
+                "36264682"
+            ],
+            [
+                "79844257 998861014 59606735 909001530\r\n",
+                "829157274"
+            ],
+            [
+                "656438998 774335411 16384880 470969252\r\n",
+                "117896414"
+            ],
+            [
+                "287551411 788248606 147317343 692683069\r\n",
+                "405131659"
+            ],
+            [
+                "677764866 754506263 454018800 668014358\r\n",
+                "76741398"
+            ],
+            [
+                "1 2 3 6\r\n",
+                "2"
+            ],
+            [
+                "1 1 2 1000000000\r\n",
+                "1"
+            ],
+            [
+                "5 7 13 15\r\n",
+                "3"
+            ],
+            [
+                "1 3 5 7\r\n",
+                "3"
+            ],
+            [
+                "1 3 9 11\r\n",
+                "3"
+            ],
+            [
+                "5 7 1 3\r\n",
+                "3"
+            ],
+            [
+                "1 4 4 7\r\n",
+                "3"
+            ],
+            [
+                "4 7 12 15\r\n",
+                "4"
+            ],
+            [
+                "1 4 9 12\r\n",
+                "4"
+            ],
+            [
+                "4 7 1 4\r\n",
+                "3"
+            ],
+            [
+                "3 3 1 2\r\n",
+                "1"
+            ],
+            [
+                "1 2 3 3\r\n",
+                "1"
+            ],
+            [
+                "3 4 1 2\r\n",
+                "1"
+            ],
+            [
+                "8136 12821 10573 15189\r\n",
+                "2901"
+            ],
+            [
+                "331458616 472661531 443256865 655914565\r\n",
+                "71194568"
+            ],
+            [
+                "156266169 197481622 529043030 565300081\r\n",
+                "28429169"
+            ],
+            [
+                "443495607 813473994 192923319 637537620\r\n",
+                "268435455"
+            ],
+            [
+                "1 2 2 1000000000\r\n",
+                "2"
+            ],
+            [
+                "1 3 4 1000000000\r\n",
+                "3"
+            ],
+            [
+                "1 999999999 999999998 1000000000\r\n",
+                "3"
+            ]
+        ]
+    }
+]

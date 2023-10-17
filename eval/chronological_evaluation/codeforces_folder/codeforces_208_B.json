@@ -1,0 +1,216 @@
+[
+    {
+        "name": "Solitaire",
+        "description": "A boy named Vasya wants to play an old Russian solitaire called \"Accordion\".\nIn this solitaire, the player must observe the following rules: A deck of n\ncards is carefully shuffled, then all n cards are put on the table in a line\nfrom left to right; Before each move the table has several piles of cards\nlying in a line (initially there are n piles, each pile has one card). Let's\nnumber the piles from left to right, from 1 to x. During one move, a player\ncan take the whole pile with the maximum number x (that is the rightmost of\nremaining) and put it on the top of pile x - 1 (if it exists) or on the top of\npile x - 3 (if it exists). The player can put one pile on top of another one\nonly if the piles' top cards have the same suits or values. Please note that\nif pile x goes on top of pile y, then the top card of pile x becomes the top\ncard of the resulting pile. Also note that each move decreases the total\nnumber of piles by 1; The solitaire is considered completed if all cards are\nin the same pile. Vasya has already shuffled the cards and put them on the\ntable, help him understand whether completing this solitaire is possible or\nnot. Input The first input line contains a single integer n (1 \u2264 n \u2264 52) \u2014 the\nnumber of cards in Vasya's deck. The next line contains n space-separated\nstrings c1, c2, ..., cn, where string ci describes the i-th card on the table.\nEach string ci consists of exactly two characters, the first one represents\nthe card's value, the second one represents its suit. Cards on the table are\nnumbered from left to right. A card's value is specified by one of these\ncharacters: \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"T\", \"J\", \"Q\", \"K\", \"A\". A\ncard's suit is specified by one of these characters: \"S\", \"D\", \"H\", \"C\". It is\nnot guaranteed that the deck has all possible cards. Also, the cards in\nVasya's deck can repeat. Output On a single line print the answer to the\nproblem: string \"YES\" (without the quotes) if completing the solitaire is\npossible, string \"NO\" (without the quotes) otherwise. Examples Input 4 2S 2S\n2C 2C Output YES Input 2 3S 2C Output NO Note In the first sample you can act\nlike that: put the 4-th pile on the 1-st one; put the 3-rd pile on the 2-nd\none; put the 2-nd pile on the 1-st one. In the second sample there is no way\nto complete the solitaire.\n\n",
+        "cf_contest_id": 208,
+        "cf_index": "B",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n2S 2S 2C 2C\r\n",
+                "YES\r\n"
+            ],
+            [
+                "2\r\n3S 2C\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5\r\n2S 2S 4S 3S 2S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5\r\n5S 5S 7S 4S 3H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n7S 7S 4S 8H 4H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n4S 2H 3S 3S 2H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "52\r\n3H 6S 3S 2S 2S 3S 4S 3H 2C 4S 3C 3S 2S 2C 2S 6S 4C 3S 5C 3S 2S 4S 3S 5S 2H 2S 4H 3S 3S 4H 4S 2C 2H 2S 4S 6D 4C 4H 2H 4S 3H 6D 6S 3C 3C 4H 5S 3S 3S 2H 2S 4C\r\n",
+                "NO\r\n"
+            ],
+            [
+                "52\r\n2S 4S 3S 2S 4S 3S 4S 4S 8S 3S 2S 2S 5S 3S 3S 2S 3S 5S 4S 4S 2S 2S 4S 4S 6S 2S 5S 2S 5S 2S 2S 2S 4S 2S 5S 5S 2S 6S 8S 6S 2S 2S TS 2H 4S 4S 3S 3S 2S 2S 7S 3S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5\r\nAD 5S KH AH AS\r\n",
+                "YES\r\n"
+            ],
+            [
+                "50\r\nTS 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\nAD 5S KH AH KS\r\n",
+                "YES\r\n"
+            ],
+            [
+                "5\r\nAD 5S KH AH JS\r\n",
+                "NO\r\n"
+            ],
+            [
+                "20\r\nJD 5H 3H 9H 2S 5S 5H QS 8D 7H TS 9S 4H 5S 9H 4H 3S KS KS JS\r\n",
+                "NO\r\n"
+            ],
+            [
+                "21\r\nJS 5S 9S KH 9D JH 3S KH QH 5D TC 3S 5S 4H 4H 5S 7S AH 4S 3S 6S\r\n",
+                "NO\r\n"
+            ],
+            [
+                "51\r\nJD 8D QD TC JD AD JD 5D 5S QC TC 4H 8S 7D QD QD 3H TH 8D 9D 5D 4D 6D 7D 9C 2D AD 6D 6H AD 5D 3D AC AC JC 5D 3D KC 7C AD 4D 8C QD QH 6D 9C 2D 6D 3C KC TD\r\n",
+                "NO\r\n"
+            ],
+            [
+                "52\r\nKD KD 8H 9C 7C 8D JD 3D 9C KD 6D 9C QD TC 7D TD 3C KD 6D 2D TC 6D AC QD 2C 3D 8D KH AD QD 2C 6C JH 6D 8D 2C 7D QD 7C 7H TD 4D 2D 8D TC 5D 8D KD 7C QC TD 5D\r\n",
+                "NO\r\n"
+            ],
+            [
+                "52\r\nJS 7S 3S 2S 7S TS 4S 6S 5H TS 4S TH 6H 9S TH TH 4S 4H 2H TH TC TH TS TS 4S TS 2S TH TH TS 6S TS TS 3S TS TH 5H TS TS 5S 7H 2H TS 6S 6H 2H TS TH 2S 4S 4H 4S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\n8D AD AC 9H AS AD KH AD QH AH AC AS 8H KS TD AH KS AD AD AS KD AD AS AH AS AD AD AH AC AD KC JD 8D AC 9D AC AD QD KC AD JS JC AD TD KC JD TD 8D KS KC KD KD\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\nAD JD JD TD AD 8D QD AH TC QH AD TD 2D AD QD 4D 3C 3D 3H 6D 8C 3C 3S 6C QC KD 2D 4S TD 5D 3S 3S 3H 3S KH 3H 3D 3H JH JH QH 9H TH 3H KH 7H 3H TH AH 3S 4H 3H\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10\r\n4C 8C 8D JC 8C 5S 8H 8C 8S 8H\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10\r\nQH QS QS JH QS 6S 7H QH QH QS\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10\r\nKS 4S KS KH TS TS KC KH KH KS\r\n",
+                "YES\r\n"
+            ],
+            [
+                "11\r\nJD 5D JC JH 6C 6D JH 6S 6S JS JD\r\n",
+                "YES\r\n"
+            ],
+            [
+                "11\r\nJS KH JC JS 9S 9H 6H 7H JH AS AH\r\n",
+                "YES\r\n"
+            ],
+            [
+                "11\r\n3S 2H TS 9D 9S 2S 2S 9S 3C 2S 2C\r\n",
+                "YES\r\n"
+            ],
+            [
+                "12\r\n9S TS QS KD KS AS QS KS 6S AD AD AS\r\n",
+                "YES\r\n"
+            ],
+            [
+                "12\r\nJC 8C AC TH AH AC TC AS AH TC AS AS\r\n",
+                "YES\r\n"
+            ],
+            [
+                "12\r\n6S 6S 3S 4C 2S 2S 7S 2C 2S 4S 2S 2S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "51\r\n7S 4C 2S JS 5C 2H 2C 3C 4C QC 2C 2C 2S 4S 2H 2H 4C 2C 6C 2C 2C JC 8C QC JC 8C TC 7H 4C 8S QH 4H 8C 3H 4S 3H 7H 8S 4C 4S 4S 4S 2H 4H QH 3H 3H 3H 4H 8C 3C\r\n",
+                "YES\r\n"
+            ],
+            [
+                "51\r\n2S 2H 2C 2C 3H 2H 7S 2D 6H 2H 2C 2H 2H 5S 2S 3C 2C 2H 2S 2C 5C JC 2S 4C 3C 2C 5C 4C 4D 8C 5C 6C 7C 4C 4C 6S TS 3C TH 4C 4C TS 7C TC 3C TS TC 2S TH TC 2C\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\nAC 4C TC 9C TH AD 3C TC 4S 5C TD QD TH 4C 4D 3H TC 4S TH 8H 7H 4D TH QD 4D 8H QH 4D 4H 8D 4H 4D 8H 3D 9D 8H 9D 9C 9H 8D TD 3H 5H 6D QD 9H 6D KD 9H 6D 2D 9D\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\nJH 8H 9D TH 5H 9H 5H JH 5H 8H 9D QH 9H 6C AD AC 9C AD AH 9C AC 5C 5C AC 5H 5C 8C 5D KD 5H 5C 8D 5D 8D KD 5D QD 8S 8C 8C 8H 8C JD 8C 8D 8C 8H 9C JD 8D 8D JD\r\n",
+                "NO\r\n"
+            ],
+            [
+                "52\r\n9D AD 9C 6C 9D 7D 6D TS 6D 6D 3D QH 9D 9D 9H 9D 9D 2H 5D JH 9H 5C JC TC 9D 9C 2C 9C 9D 4H 4D AC 9D 4C AC 8C 9C QC 8C 9D 7D QC 9H 9D 2C 9D 9C 3C 7H 9C TC 9H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "52\r\n9D 5D TC 4D 7D 3D JD 5C 7D TD 5D TD 6H TD TD AD 6D AD TD 2C TD TS TD TD 2H 7D TD QD 2D 2H AC 9D 2D 2C QC AD 2D 4C JC 2D AD 5D 5C AC AD 6C 8D 4D 7C 8C JC AC\r\n",
+                "NO\r\n"
+            ],
+            [
+                "51\r\nAH 6S 2S 6H 6S 4S 3S 9S 5S 4S 2S 9S 2S 3S 2S JS 2S 2S 9H 2S 9S 2S 3S 9S 4S 4S 9S 9S 2S 2S 3S 2S 6H 7S 3S 3H 6S 3S 2H 6S 3S 6H 7H 6S 6S 4S 4H 5H 4H 4H 6H\r\n",
+                "YES\r\n"
+            ],
+            [
+                "51\r\nJC 6S 2S 6H 6S 4S 3S 9S 5S 4S 2S 9S 2S 3S 2S JS 2S 2S 9H 2S 9S 2S 3S 9S 4S 4S 9S 9S 2S 2S 3S 2S 6H 7S 3S 3H 6S 3S 2H 6S 3S 6H 7H 6S 6S 4S 4H 5H 4H 4H 6H\r\n",
+                "YES\r\n"
+            ],
+            [
+                "51\r\n9C 6S 2S 6H 6S 4S 3S 9S 5S 4S 2S 9S 2S 3S 2S JS 2S 2S 9H 2S 9S 2S 3S 9S 4S 4S 9S 9S 2S 2S 3S 2S 6H 7S 3S 3H 6S 3S 2H 6S 3S 6H 7H 6S 6S 4S 4H 5H 4H 4H 6H\r\n",
+                "YES\r\n"
+            ],
+            [
+                "51\r\n7C 6S 2S 6H 6S 4S 3S 9S 5S 4S 2S 9S 2S 3S 2S JS 2S 2S 9H 2S 9S 2S 3S 9S 4S 4S 9S 9S 2S 2S 3S 2S 6H 7S 3S 3H 6S 3S 2H 6S 3S 6H 7H 6S 6S 4S 4H 5H 4H 4H 6H\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\n2D 5S 5S JS 5H 5C 5S 5H 2S 5S 9S 3S 2S 5S 2S 2S 5S 4S 3S 5S 7H 3S 5S 7S 4S 2S TS 2S 3S 3S 3S 3S 3S 3S 2S 7S 3S 2S 2S 2S 2S 2S 5S 2H 2C 4S 2S 2S 4S 7S 2S 2S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\n3D 5S 5S JS 5H 5C 5S 5H 2S 5S 9S 3S 2S 5S 2S 2S 5S 4S 3S 5S 7H 3S 5S 7S 4S 2S TS 2S 3S 3S 3S 3S 3S 3S 2S 7S 3S 2S 2S 2S 2S 2S 5S 2H 2C 4S 2S 2S 4S 7S 2S 2S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\nTD 5S 5S JS 5H 5C 5S 5H 2S 5S 9S 3S 2S 5S 2S 2S 5S 4S 3S 5S 7H 3S 5S 7S 4S 2S TS 2S 3S 3S 3S 3S 3S 3S 2S 7S 3S 2S 2S 2S 2S 2S 5S 2H 2C 4S 2S 2S 4S 7S 2S 2S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\nJD 5S 5S JS 5H 5C 5S 5H 2S 5S 9S 3S 2S 5S 2S 2S 5S 4S 3S 5S 7H 3S 5S 7S 4S 2S TS 2S 3S 3S 3S 3S 3S 3S 2S 7S 3S 2S 2S 2S 2S 2S 5S 2H 2C 4S 2S 2S 4S 7S 2S 2S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\nAH 5S 5S JS 5H 5C 5S 5H 2S 5S 9S 3S 2S 5S 2S 2S 5S 4S 3S 5S 7H 3S 5S 7S 4S 2S TS 2S 3S 3S 3S 3S 3S 3S 2S 7S 3S 2S 2S 2S 2S 2S 5S 2H 2C 4S 2S 2S 4S 7S 2S 2S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\n7H 5S 5S JS 5H 5C 5S 5H 2S 5S 9S 3S 2S 5S 2S 2S 5S 4S 3S 5S 7H 3S 5S 7S 4S 2S TS 2S 3S 3S 3S 3S 3S 3S 2S 7S 3S 2S 2S 2S 2S 2S 5S 2H 2C 4S 2S 2S 4S 7S 2S 2S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\n2D 5S 4S 4S 4C 2S 4H 4S 4H 4C 3S 4S 4S 4H 5S 4H 4H 5S 2S 4S 4S 2S 4S 4C 4S 4S 9S 4H 4S 3S 3H 4S 4S 7S 3S 3S 2H 3S 7S 4S 2S 7S 2S 2S 3S 3C 2S 3S 3S 2S 5S 3S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\nAC 5S 4S 4S 4C 2S 4H 4S 4H 4C 3S 4S 4S 4H 5S 4H 4H 5S 2S 4S 4S 2S 4S 4C 4S 4S 9S 4H 4S 3S 3H 4S 4S 7S 3S 3S 2H 3S 7S 4S 2S 7S 2S 2S 3S 3C 2S 3S 3S 2S 5S 3S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "52\r\n7D 5S 4S 4S 4C 2S 4H 4S 4H 4C 3S 4S 4S 4H 5S 4H 4H 5S 2S 4S 4S 2S 4S 4C 4S 4S 9S 4H 4S 3S 3H 4S 4S 7S 3S 3S 2H 3S 7S 4S 2S 7S 2S 2S 3S 3C 2S 3S 3S 2S 5S 3S\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1\r\n3C\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4\r\n2C 3D 4D 5C\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

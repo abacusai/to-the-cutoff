@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Order book",
+        "description": "Let's consider a simplified version of order book of some stock. The order\nbook is a list of orders (offers) from people that want to buy or sell one\nunit of the stock, each order is described by direction (BUY or SELL) and\nprice. At every moment of time, every SELL offer has higher price than every\nBUY offer. In this problem no two ever existed orders will have the same\nprice. The lowest-price SELL order and the highest-price BUY order are called\nthe best offers, marked with black frames on the picture below. The presented\norder book says that someone wants to sell the product at price \n    12\n and\nit's the best SELL offer because the other two have higher prices. The best\nBUY offer has price \n    10\n. There are two possible actions in this\norderbook: Somebody adds a new order of some direction with some price.\nSomebody accepts the best possible SELL or BUY offer (makes a deal). It's\nimpossible to accept not the best SELL or BUY offer (to make a deal at worse\nprice). After someone accepts the offer, it is removed from the orderbook\nforever.It is allowed to add new BUY order only with prices less than the best\nSELL offer (if you want to buy stock for higher price, then instead of adding\nan order you should accept the best SELL offer). Similarly, one couldn't add a\nnew SELL order with price less or equal to the best BUY offer. For example,\nyou can't add a new offer \"SELL \n    20\n\" if there is already an offer \"BUY\n\n    20\n\" or \"BUY \n    25\n\" \u2014 in this case you just accept the best BUY offer.\nYou have a damaged order book log (in the beginning the are no orders in\nbook). Every action has one of the two types: \"ADD \n    p\n\" denotes adding a\nnew order with price \n    p\n and unknown direction. The order must not\ncontradict with orders still not removed from the order book. \"ACCEPT \n    p\n\"\ndenotes accepting an existing best offer with price \n    p\n and unknown\ndirection.The directions of all actions are lost. Information from the log\nisn't always enough to determine these directions. Count the number of ways to\ncorrectly restore all ADD action directions so that all the described\nconditions are satisfied at any moment. Since the answer could be large,\noutput it modulo \n    10^9 + 7\n. If it is impossible to correctly restore\ndirections, then output \n    0\n. Input The first line contains an integer\n\n    n\n (\n    1 \n    \u2264 n \n    \u2264 363\n     304\n) \u2014 the number of actions in the log.\nEach of the next \n    n\n lines contains a string \"ACCEPT\" or \"ADD\" and an\ninteger \n    p\n (\n    1 \n    \u2264 p \n    \u2264 308\n     983\n     066\n), describing an\naction type and price. All ADD actions have different prices. For ACCEPT\naction it is guaranteed that the order with the same price has already been\nadded but has not been accepted yet. Output Output the number of ways to\nrestore directions of ADD actions modulo \n    10^9 + 7\n. Examples Input 6 ADD\n1 ACCEPT 1 ADD 2 ACCEPT 2 ADD 3 ACCEPT 3 Output 8 Input 4 ADD 1 ADD 2 ADD 3\nACCEPT 2 Output 2 Input 7 ADD 1 ADD 2 ADD 3 ADD 4 ADD 5 ACCEPT 3 ACCEPT 5\nOutput 0 Note In the first example each of orders may be BUY or SELL. In the\nsecond example the order with price \n    1\n has to be BUY order, the order\nwith the price \n    3\n has to be SELL order.\n\n",
+        "cf_contest_id": 1028,
+        "cf_index": "D",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "data structures",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\nADD 1\r\nACCEPT 1\r\nADD 2\r\nACCEPT 2\r\nADD 3\r\nACCEPT 3\r\n",
+                "8\r\n"
+            ],
+            [
+                "4\r\nADD 1\r\nADD 2\r\nADD 3\r\nACCEPT 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "7\r\nADD 1\r\nADD 2\r\nADD 3\r\nADD 4\r\nADD 5\r\nACCEPT 3\r\nACCEPT 5\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6\r\nADD 10\r\nADD 7\r\nADD 13\r\nADD 15\r\nADD 12\r\nACCEPT 10\r\n",
+                "2\r\n"
+            ],
+            [
+                "8\r\nADD 10\r\nADD 7\r\nADD 13\r\nADD 15\r\nADD 12\r\nACCEPT 10\r\nADD 11\r\nADD 8\r\n",
+                "6\r\n"
+            ],
+            [
+                "15\r\nADD 14944938\r\nADD 40032655\r\nACCEPT 14944938\r\nACCEPT 40032655\r\nADD 79373162\r\nACCEPT 79373162\r\nADD 55424250\r\nACCEPT 55424250\r\nADD 67468892\r\nACCEPT 67468892\r\nADD 51815959\r\nADD 13976252\r\nADD 2040654\r\nADD 74300637\r\nACCEPT 51815959\r\n",
+                "32\r\n"
+            ],
+            [
+                "12\r\nADD 85752704\r\nACCEPT 85752704\r\nADD 82888551\r\nADD 31364670\r\nACCEPT 82888551\r\nADD 95416363\r\nADD 27575237\r\nADD 47306380\r\nACCEPT 31364670\r\nACCEPT 47306380\r\nADD 22352020\r\nADD 32836602\r\n",
+                "8\r\n"
+            ],
+            [
+                "5\r\nADD 187264133\r\nACCEPT 187264133\r\nADD 182071021\r\nACCEPT 182071021\r\nADD 291739970\r\n",
+                "8\r\n"
+            ],
+            [
+                "1\r\nADD 308983066\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,237 @@
+[
+    {
+        "name": "Borya and Hanabi",
+        "description": "Have you ever played Hanabi? If not, then you've got to try it out! This\nproblem deals with a simplified version of the game. Overall, the game has 25\ntypes of cards (5 distinct colors and 5 distinct values). Borya is holding n\ncards. The game is somewhat complicated by the fact that everybody sees\nBorya's cards except for Borya himself. Borya knows which cards he has but he\nknows nothing about the order they lie in. Note that Borya can have multiple\nidentical cards (and for each of the 25 types of cards he knows exactly how\nmany cards of this type he has). The aim of the other players is to achieve\nthe state when Borya knows the color and number value of each of his cards.\nFor that, other players can give him hints. The hints can be of two types:\ncolor hints and value hints. A color hint goes like that: a player names some\ncolor and points at all the cards of this color. Similarly goes the value\nhint. A player names some value and points at all the cards that contain the\nvalue. Determine what minimum number of hints the other players should make\nfor Borya to be certain about each card's color and value. Input The first\nline contains integer n (1 \u2264 n \u2264 100) \u2014 the number of Borya's cards. The next\nline contains the descriptions of n cards. The description of each card\nconsists of exactly two characters. The first character shows the color\n(overall this position can contain five distinct letters \u2014 R, G, B, Y, W). The\nsecond character shows the card's value (a digit from 1 to 5). Borya doesn't\nknow exact order of the cards they lie in. Output Print a single integer \u2014 the\nminimum number of hints that the other players should make. Examples Input 2\nG3 G3 Output 0 Input 4 G4 R4 R3 B3 Output 2 Input 5 B1 Y1 W1 G1 R1 Output 4\nNote In the first sample Borya already knows for each card that it is a green\nthree. In the second sample we can show all fours and all red cards. In the\nthird sample you need to make hints about any four colors.\n\n",
+        "cf_contest_id": 442,
+        "cf_index": "A",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\nG3 G3\r\n",
+                "0\r\n"
+            ],
+            [
+                "4\r\nG4 R4 R3 B3\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\nB1 Y1 W1 G1 R1\r\n",
+                "4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\nY4 B1 R3 G5 R5 W3 W5 W2 R1 Y1\r\n",
+                "6\r\n"
+            ],
+            [
+                "3\r\nG4 G3 B4\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\nW3 Y5\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\nW5 Y5\r\n",
+                "1\r\n"
+            ],
+            [
+                "100\r\nW4 Y1 W5 R4 W3 Y1 R4 W2 G3 G1 B5 Y5 Y2 Y3 G4 B5 W1 G5 Y5 Y3 G2 Y5 Y5 G5 R2 B3 B1 W5 Y1 W5 B4 W4 R4 B1 R1 W3 R5 R4 G2 W3 W3 R2 W5 Y2 B2 R3 R3 Y1 G5 G2 Y1 R4 Y5 W5 G5 B3 W2 R1 B2 W2 W2 Y5 W3 G1 B1 G2 Y3 W3 G1 W5 W1 G5 G2 Y1 W5 B5 W4 Y5 G2 R3 B4 R5 B1 R1 B4 Y4 Y4 Y3 R5 Y3 B3 W5 R5 Y5 G2 G5 W5 B4 G4 W5\r\n",
+                "8\r\n"
+            ],
+            [
+                "100\r\nB5 G3 Y2 W3 W1 G1 Y4 G3 G4 B5 W4 B5 Y3 R5 B4 G4 G4 B1 G1 R5 G4 B4 G1 G2 W1 Y4 R5 Y3 W5 W4 Y5 W1 B4 G3 R2 R3 W1 B4 Y4 G2 G2 R1 Y5 W1 Y3 B3 G5 Y3 G3 W2 W5 Y4 B2 Y5 R4 B2 Y3 W4 G2 G3 R2 W1 B4 B2 B1 Y2 Y2 Y3 W3 Y5 W1 R1 R1 R4 R4 R4 Y1 Y3 B2 Y3 Y1 R3 G4 G4 Y5 B5 W2 G1 G5 B3 G1 Y1 R2 G5 R2 Y5 R5 Y4 R4 W2\r\n",
+                "8\r\n"
+            ],
+            [
+                "100\r\nY3 Y3 Y5 Y2 Y4 Y1 Y2 Y3 Y1 Y5 Y3 Y1 Y4 Y5 Y5 Y3 Y1 Y5 Y2 Y3 Y1 Y4 Y4 Y1 Y2 Y2 Y4 Y2 Y4 Y5 Y5 Y2 Y3 Y1 Y3 Y5 Y3 Y1 Y5 Y3 Y3 Y2 Y5 Y1 Y5 Y5 Y4 Y2 Y2 Y1 Y2 Y4 Y3 Y2 Y5 Y3 Y4 Y3 Y1 Y4 Y2 Y4 Y4 Y3 Y3 Y1 Y1 Y4 Y2 Y5 Y3 Y4 Y4 Y4 Y3 Y2 Y2 Y2 Y3 Y4 Y4 Y2 Y1 Y2 Y2 Y4 Y3 Y5 Y4 Y2 Y5 Y3 Y1 Y5 Y2 Y5 Y4 Y1 Y2 Y1\r\n",
+                "4\r\n"
+            ],
+            [
+                "100\r\nG3 B3 G3 Y3 R3 G3 R3 G3 W3 B3 B3 B3 R3 Y3 Y3 W3 R3 B3 G3 W3 G3 W3 Y3 R3 Y3 W3 W3 G3 W3 G3 W3 Y3 G3 R3 Y3 W3 W3 Y3 Y3 Y3 R3 W3 R3 G3 W3 W3 G3 Y3 B3 W3 B3 Y3 G3 Y3 B3 Y3 W3 Y3 R3 Y3 R3 W3 W3 W3 G3 Y3 G3 R3 B3 R3 Y3 R3 Y3 R3 Y3 R3 Y3 R3 W3 Y3 R3 W3 W3 W3 G3 G3 Y3 B3 Y3 R3 G3 G3 B3 B3 Y3 R3 G3 R3 W3 G3\r\n",
+                "4\r\n"
+            ],
+            [
+                "100\r\nW5 Y5 Y3 W3 Y5 Y5 W5 W5 Y3 W5 Y5 Y3 W5 Y5 W5 W3 Y3 Y5 W3 W5 Y5 W3 Y5 Y3 W3 W3 Y3 Y5 W3 W3 Y3 Y5 W3 Y5 Y5 Y5 W5 Y5 W5 Y5 W5 W5 W3 W5 W3 Y3 W5 W3 W3 W5 Y3 Y5 W5 W5 W3 W5 W5 Y5 W5 W3 W3 W3 Y3 Y5 Y5 Y3 Y5 W5 W5 Y5 W3 W3 W5 Y5 Y5 Y3 W5 W5 W3 Y5 W3 W5 Y3 Y5 W5 Y3 Y3 W3 Y3 Y5 Y3 Y3 W5 Y5 Y3 Y5 Y3 W3 Y3 W5\r\n",
+                "2\r\n"
+            ],
+            [
+                "100\r\nY5 Y5 Y3 Y5 Y3 Y5 Y5 Y5 Y3 Y3 Y5 Y3 Y3 Y5 Y3 Y3 Y5 Y3 Y3 Y5 Y3 Y5 Y5 Y3 Y3 Y5 Y3 Y5 Y3 Y3 Y3 Y5 Y3 Y3 Y3 Y3 Y3 Y3 Y3 Y5 Y5 Y5 Y5 Y3 Y5 Y5 Y5 Y5 Y3 Y3 Y3 Y5 Y5 Y3 Y3 Y3 Y5 Y3 Y3 Y5 Y3 Y3 Y3 Y5 Y3 Y5 Y5 Y5 Y5 Y3 Y3 Y5 Y5 Y5 Y5 Y5 Y5 Y5 Y5 Y3 Y5 Y5 Y5 Y5 Y5 Y5 Y3 Y5 Y3 Y5 Y5 Y5 Y5 Y5 Y5 Y3 Y3 Y3 Y5 Y5\r\n",
+                "1\r\n"
+            ],
+            [
+                "100\r\nY3 Y3 Y3 W3 W3 Y3 Y3 W3 Y3 Y3 W3 Y3 Y3 Y3 W3 Y3 Y3 W3 Y3 Y3 Y3 W3 Y3 W3 W3 W3 W3 W3 Y3 Y3 W3 Y3 Y3 W3 W3 Y3 Y3 W3 Y3 Y3 W3 W3 W3 W3 W3 Y3 Y3 Y3 Y3 W3 Y3 Y3 W3 W3 W3 Y3 W3 W3 W3 Y3 Y3 Y3 Y3 W3 W3 W3 W3 W3 Y3 Y3 W3 Y3 W3 Y3 Y3 Y3 Y3 Y3 Y3 Y3 W3 W3 W3 W3 Y3 W3 Y3 Y3 Y3 Y3 Y3 Y3 Y3 Y3 W3 Y3 Y3 W3 W3 Y3\r\n",
+                "1\r\n"
+            ],
+            [
+                "10\r\nW1 Y4 Y3 W3 Y2 W2 W1 Y2 Y3 W3\r\n",
+                "3\r\n"
+            ],
+            [
+                "10\r\nW2 R2 B5 W5 W2 B3 B2 R5 Y5 R2\r\n",
+                "5\r\n"
+            ],
+            [
+                "5\r\nW3 Y5 W2 G3 Y3\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\nW5 G5 W2 Y5 G2\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\nW5 W3 Y3 Y5 W2\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\nY5 W3 W2 G5 W3\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\nG5 G3 G5 G5 W2\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\nW2 Y2 G3 G3 G3\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\nG3 Y5 Y2 Y5 W3\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\nW3 W5 Y3 W2 G5\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\nY3 Y2 Y3 Y5 Y5\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\nW5 Y3 W5 W5 Y5\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\nG3 Y3 G3 Y3 G3\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\nG4 W5 Y4 Y4 R5\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\nG3 R2 R5 B3 W4\r\n",
+                "4\r\n"
+            ],
+            [
+                "5\r\nW2 G5 W3 R4 R4\r\n",
+                "3\r\n"
+            ],
+            [
+                "5\r\nY3 Y3 G3 Y3 W3\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\nW5 W5 W3 Y3 Y5\r\n",
+                "2\r\n"
+            ],
+            [
+                "35\r\nG5 G5 G3 G2 G3 Y3 W3 Y3 G5 W5 G2 G2 W5 G5 G5 W3 G3 G2 Y3 W5 W3 G5 W5 G2 Y2 Y3 W5 G3 W3 W2 G2 W3 Y2 G3 G3\r\n",
+                "4\r\n"
+            ],
+            [
+                "35\r\nG3 G2 G5 G2 W2 G3 W2 W5 Y5 G5 W2 W2 W2 G5 Y2 G5 W5 W3 W2 Y2 G5 W5 W3 W5 Y2 Y5 W2 W2 W3 Y3 G2 W3 G5 G3 W2\r\n",
+                "4\r\n"
+            ],
+            [
+                "35\r\nW2 W3 Y2 G5 G2 W3 G5 Y2 W5 Y5 W3 G2 G3 W5 W2 W3 Y2 Y5 Y2 Y5 Y2 Y2 G2 Y5 W3 Y5 G3 Y2 G3 Y2 Y5 W5 G3 W5 W5\r\n",
+                "4\r\n"
+            ],
+            [
+                "35\r\nY2 Y3 Y2 Y3 Y5 Y5 Y3 Y5 Y5 Y2 Y2 Y5 Y2 Y2 Y5 Y3 Y2 Y5 Y5 Y3 Y3 Y2 Y2 Y2 Y3 Y5 Y2 Y5 Y5 Y3 Y5 Y2 Y3 Y3 Y2\r\n",
+                "2\r\n"
+            ],
+            [
+                "35\r\nY5 Y5 W5 Y5 W3 Y3 W5 W3 W5 W3 W5 Y5 Y3 W3 W5 W5 W5 W3 Y5 Y3 Y5 W5 W5 Y3 Y5 Y5 Y3 W5 W3 W3 W3 W5 Y5 W3 W5\r\n",
+                "2\r\n"
+            ],
+            [
+                "35\r\nG3 G3 W3 W3 G3 G3 Y3 G3 Y3 Y3 G3 W3 Y3 G3 W3 Y3 W3 Y3 Y3 Y3 Y3 G3 G3 Y3 Y3 G3 G3 G3 G3 G3 Y3 W3 W3 W3 G3\r\n",
+                "2\r\n"
+            ],
+            [
+                "35\r\nR2 R2 R2 R2 G3 G2 Y3 G2 R3 W5 G4 Y3 Y3 G2 Y5 W5 G4 G2 W4 Y2 W3 R5 W5 G4 G4 Y2 G2 Y5 G2 Y4 W3 G5 G2 R3 G4\r\n",
+                "6\r\n"
+            ],
+            [
+                "35\r\nG2 Y1 Y1 R4 G5 B5 R2 G4 G2 G3 W4 W1 B3 W5 R2 Y5 R4 R4 B5 Y2 B4 B1 R3 G4 Y3 G2 R4 G3 B2 G2 R3 B2 R1 W2 B4\r\n",
+                "8\r\n"
+            ],
+            [
+                "35\r\nW4 Y5 Y3 Y3 R5 W3 R5 W2 R5 Y2 R2 Y2 G2 G3 Y4 Y4 R4 Y3 G2 W2 R2 R3 Y3 W5 W2 G4 R3 R3 W2 W5 Y4 R3 W2 R4 R2\r\n",
+                "6\r\n"
+            ],
+            [
+                "35\r\nY3 Y3 Y3 Y3 Y3 Y3 W3 G3 G3 G3 W3 G3 G3 Y3 Y3 W3 G3 G3 Y3 W3 W3 Y3 Y3 G3 W3 W3 G3 Y3 Y3 W3 G3 W3 G3 W3 G3\r\n",
+                "2\r\n"
+            ],
+            [
+                "35\r\nW3 Y3 W3 W5 Y5 W3 W3 Y5 W3 W3 W3 W5 W3 Y3 Y5 Y3 Y5 Y3 W3 W3 W5 W5 W3 Y5 W3 W3 Y3 W3 W5 W3 Y3 Y3 Y5 Y5 Y3\r\n",
+                "2\r\n"
+            ],
+            [
+                "25\r\nY3 R2 R2 Y2 Y5 Y4 B3 B3 Y4 W3 R1 W3 W5 B5 R1 Y4 B4 B5 B3 G3 B1 R2 R4 G5 Y5\r\n",
+                "7\r\n"
+            ],
+            [
+                "25\r\nW5 R1 Y3 G5 G3 G5 W2 Y1 R3 R4 B3 G5 G2 Y2 W1 G2 Y1 B4 Y2 G3 G3 Y4 W3 W5 Y2\r\n",
+                "7\r\n"
+            ],
+            [
+                "25\r\nY1 W2 G3 W1 G1 G3 G4 W1 B2 W3 R4 B1 G2 Y4 G1 R2 R3 Y4 B2 G4 W2 Y2 R2 Y5 R4\r\n",
+                "7\r\n"
+            ],
+            [
+                "25\r\nB3 Y1 R3 Y3 R5 B4 B3 G1 R1 B4 B5 W3 R4 W1 B3 Y3 B3 Y4 B2 G5 Y1 G5 R4 B5 Y1\r\n",
+                "7\r\n"
+            ],
+            [
+                "25\r\nG4 R4 Y1 Y4 R3 B5 W2 G4 B5 B2 G1 B4 R4 G2 Y3 Y4 G5 Y3 R1 G2 Y5 G3 Y3 Y4 W3\r\n",
+                "8\r\n"
+            ],
+            [
+                "25\r\nR1 R3 G1 B5 Y5 W3 R4 R4 R1 G3 R2 W1 B1 G2 W2 G4 R2 W3 B1 W3 B5 Y5 R2 B4 B5\r\n",
+                "7\r\n"
+            ],
+            [
+                "5\r\nW3 B1 Y1 R3 Y5\r\n",
+                "3\r\n"
+            ],
+            [
+                "4\r\nR1 R2 G1 Y5\r\n",
+                "2\r\n"
+            ],
+            [
+                "4\r\nR1 R2 G1 B3\r\n",
+                "2\r\n"
+            ],
+            [
+                "15\r\nY3 R4 G1 W1 R3 R2 W4 W1 R5 Y4 G3 R5 Y2 W1 Y1\r\n",
+                "6\r\n"
+            ],
+            [
+                "4\r\nG5 W5 W4 R3\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

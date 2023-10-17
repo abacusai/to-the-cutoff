@@ -1,0 +1,87 @@
+[
+    {
+        "name": "Bitwise Formula",
+        "description": "Bob recently read about bitwise operations used in computers: AND, OR and XOR.\nHe have studied their properties and invented a new game. Initially, Bob\nchooses integer m, bit depth of the game, which means that all numbers in the\ngame will consist of m bits. Then he asks Peter to choose some m-bit number.\nAfter that, Bob computes the values of n variables. Each variable is assigned\neither a constant m-bit number or result of bitwise operation. Operands of the\noperation may be either variables defined before, or the number, chosen by\nPeter. After that, Peter's score equals to the sum of all variable values. Bob\nwants to know, what number Peter needs to choose to get the minimum possible\nscore, and what number he needs to choose to get the maximum possible score.\nIn both cases, if there are several ways to get the same score, find the\nminimum number, which he can choose. Input The first line contains two\nintegers n and m, the number of variables and bit depth, respectively (1 \u2264 n \u2264\n5000; 1 \u2264 m \u2264 1000). The following n lines contain descriptions of the\nvariables. Each line describes exactly one variable. Description has the\nfollowing format: name of a new variable, space, sign \":=\", space, followed by\none of: Binary number of exactly m bits. The first operand, space, bitwise\noperation (\"AND\", \"OR\" or \"XOR\"), space, the second operand. Each operand is\neither the name of variable defined before or symbol '?', indicating the\nnumber chosen by Peter. Variable names are strings consisting of lowercase\nLatin letters with length at most 10. All variable names are different. Output\nIn the first line output the minimum number that should be chosen by Peter, to\nmake the sum of all variable values minimum possible, in the second line\noutput the minimum number that should be chosen by Peter, to make the sum of\nall variable values maximum possible. Both numbers should be printed as m-bit\nbinary numbers. Examples Input 3 3 a := 101 b := 011 c := ? XOR b Output 011\n100 Input 5 1 a := 1 bb := 0 cx := ? OR a d := ? XOR ? e := d AND bb Output 0\n0 Note In the first sample if Peter chooses a number 0112, then a = 1012, b =\n0112, c = 0002, the sum of their values is 8. If he chooses the number 1002,\nthen a = 1012, b = 0112, c = 1112, the sum of their values is 15. For the\nsecond test, the minimum and maximum sum of variables a, bb, cx, d and e is 2,\nand this sum doesn't depend on the number chosen by Peter, so the minimum\nPeter can choose is 0.\n\n",
+        "cf_contest_id": 778,
+        "cf_index": "B",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "dfs and similar",
+            "expression parsing",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3 3\r\na := 101\r\nb := 011\r\nc := ? XOR b\r\n",
+                "011\r\n100"
+            ],
+            [
+                "5 1\r\na := 1\r\nbb := 0\r\ncx := ? OR a\r\nd := ? XOR ?\r\ne := d AND bb\r\n",
+                "0\r\n0"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 10\r\nb := 0100101101\r\na := ? XOR b\r\n",
+                "0100101101\r\n1011010010"
+            ],
+            [
+                "1 10\r\na := 0110110011\r\n",
+                "0000000000\r\n0000000000"
+            ],
+            [
+                "1 6\r\na := ? OR ?\r\n",
+                "000000\r\n111111"
+            ],
+            [
+                "13 6\r\na := 111010\r\nb := 100100\r\nc := 001110\r\nd := b AND b\r\ne := c AND ?\r\nf := e OR c\r\ng := 011110\r\nh := d XOR ?\r\ni := 010111\r\nj := 000011\r\nk := d OR ?\r\nl := 011101\r\nm := b OR j\r\n",
+                "100000\r\n011011"
+            ],
+            [
+                "16 3\r\na := 011\r\nb := 110\r\nc := a XOR b\r\nd := 110\r\ne := a XOR b\r\nf := b XOR a\r\ng := b XOR e\r\nh := 111\r\ni := a XOR h\r\nj := f XOR ?\r\nk := 100\r\nl := 000\r\nm := 100\r\nn := 110\r\no := 110\r\np := 110\r\n",
+                "101\r\n010"
+            ],
+            [
+                "29 2\r\naa := 10\r\nba := 11\r\nca := 01\r\nda := aa AND ?\r\nea := ba OR ?\r\nfa := da XOR ?\r\nga := 11\r\nha := fa XOR ea\r\nia := 01\r\nja := ca OR ha\r\nka := ha XOR ia\r\nla := ha OR ?\r\nma := ba AND ba\r\nna := ma OR ?\r\noa := 11\r\npa := oa OR ba\r\nqa := 00\r\nra := qa AND ia\r\nsa := fa OR ?\r\nta := ha OR ga\r\nua := 00\r\nva := 00\r\nwa := 11\r\nxa := 10\r\nya := ja XOR ?\r\nza := 00\r\nab := 00\r\nbb := pa OR qa\r\ncb := bb AND ?\r\n",
+                "00\r\n11"
+            ],
+            [
+                "10 3\r\na := 011\r\nb := ? OR a\r\nc := 000\r\nd := ? AND c\r\ne := 101\r\nf := ? AND e\r\ng := 001\r\nh := ? XOR g\r\ni := 001\r\nj := ? XOR i\r\n",
+                "001\r\n110"
+            ],
+            [
+                "12 3\r\na := 101\r\nb := a XOR ?\r\nc := b XOR b\r\nd := b XOR a\r\ne := c XOR ?\r\nf := e XOR ?\r\ng := c XOR f\r\nh := 100\r\ni := c XOR h\r\nj := c XOR i\r\nk := b XOR ?\r\nl := 111\r\n",
+                "000\r\n111"
+            ],
+            [
+                "12 14\r\na := 01100010000111\r\nb := ? XOR a\r\nc := 01101111001010\r\nd := ? XOR c\r\ne := 10000011101111\r\nf := ? XOR e\r\ng := 10100011001010\r\nh := ? XOR g\r\ni := 10010110111111\r\nj := ? XOR i\r\nk := 10000111110001\r\nl := ? XOR k\r\n",
+                "10000011001011\r\n01011000010000"
+            ],
+            [
+                "14 8\r\na := 01010000\r\nb := 10101111\r\nc := 01100100\r\nd := 10011011\r\ne := 01001100\r\nf := 10110011\r\ng := ? XOR a\r\nh := b XOR ?\r\ni := ? XOR c\r\nj := d XOR ?\r\nk := ? XOR e\r\nl := f XOR ?\r\nm := 00101111\r\nn := ? XOR m\r\n",
+                "00101111\r\n11010000"
+            ],
+            [
+                "14 14\r\na := 10000100110000\r\nb := 01111011001111\r\nc := 11110001111101\r\nd := 00001110000010\r\ne := 00111100000010\r\nf := 11000011111101\r\ng := ? XOR a\r\nh := b XOR ?\r\ni := ? XOR c\r\nj := d XOR ?\r\nk := ? XOR e\r\nl := f XOR ?\r\nm := 11110011011001\r\nn := ? XOR m\r\n",
+                "11110011011001\r\n00001100100110"
+            ],
+            [
+                "17 15\r\na := 010000111111110\r\nb := 101100110000100\r\nc := 100101100100111\r\nd := 010110101110110\r\ne := 111111000010110\r\nf := 011001110111110\r\ng := 110011010100101\r\nh := 000001010010001\r\ni := 110000111001011\r\nj := 000010000010111\r\nk := 110110111110110\r\nl := 010000110000100\r\nm := 000111101101000\r\nn := 011111011000111\r\no := 010110110010100\r\np := 111001110011001\r\nq := 000100110001000\r\n",
+                "000000000000000\r\n000000000000000"
+            ],
+            [
+                "22 9\r\na := 100101111\r\nb := 010001100\r\nc := b AND b\r\nd := 111000010\r\ne := c AND a\r\nf := a OR e\r\ng := e AND ?\r\nh := 000010001\r\ni := b OR ?\r\nj := d AND ?\r\nk := g AND h\r\nl := 010100000\r\nm := a AND a\r\nn := j AND ?\r\no := m OR n\r\np := o AND ?\r\nq := f OR ?\r\nr := 000011011\r\ns := 001110011\r\nt := 100111100\r\nu := l AND p\r\nv := g OR h\r\n",
+                "000000000\r\n111111111"
+            ],
+            [
+                "2 109\r\na := 1010101010100000000000011111111111111111111111111111111111111111111000000000000000000000000000111111111111111\r\nb := ? XOR a\r\n",
+                "1010101010100000000000011111111111111111111111111111111111111111111000000000000000000000000000111111111111111\r\n0101010101011111111111100000000000000000000000000000000000000000000111111111111111111111111111000000000000000"
+            ]
+        ]
+    }
+]

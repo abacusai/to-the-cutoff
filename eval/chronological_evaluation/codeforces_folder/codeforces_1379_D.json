@@ -1,0 +1,51 @@
+[
+    {
+        "name": "New Passenger Trams",
+        "description": "There are many freight trains departing from Kirnes planet every day. One day\non that planet consists of \n    h\n hours, and each hour consists of \n    m\n\nminutes, where \n    m\n is an even number. Currently, there are \n    n\n freight\ntrains, and they depart every day at the same time: \n    i\n-th train departs\nat \n    h_i\n hours and \n    m_i\n minutes. The government decided to add\npassenger trams as well: they plan to add a regular tram service with half-\nhour intervals. It means that the first tram of the day must depart at \n    0\n\nhours and \n    t\n minutes, where \n    0 \n    \u2264 t < m \n     2\n, the second\ntram departs \n    m \n     2\n minutes after the first one and so on. This\nschedule allows exactly two passenger trams per hour, which is a great\nimprovement. To allow passengers to board the tram safely, the tram must\narrive \n    k\n minutes before. During the time when passengers are boarding\nthe tram, no freight train can depart from the planet. However, freight trains\nare allowed to depart at the very moment when the boarding starts, as well as\nat the moment when the passenger tram departs. Note that, if the first\npassenger tram departs at \n    0\n hours and \n    t\n minutes, where \n    t <\n    k\n, then the freight trains can not depart during the last \n    k - t\n\nminutes of the day. A schematic picture of the correct way to run passenger\ntrams. Here \n    h=2\n (therefore, the number of passenger trams is\n\n    2h=4\n), the number of freight trains is \n    n=6\n. The passenger trams\nare marked in red (note that the spaces between them are the same). The\nfreight trains are marked in blue. Time segments of length \n    k\n before each\npassenger tram are highlighted in red. Note that there are no freight trains\ninside these segments. Unfortunately, it might not be possible to satisfy the\nrequirements of the government without canceling some of the freight trains.\nPlease help the government find the optimal value of \n    t\n to minimize the\nnumber of canceled freight trains in case all passenger trams depart according\nto schedule. Input The first line of input contains four integers \n    n\n,\n\n    h\n, \n    m\n, \n    k\n (\n    1 \n    \u2264 n \n    \u2264 100\n     000\n, \n    1 \n    \u2264 h\n    \n    \u2264 10^9\n, \n    2 \n    \u2264 m \n    \u2264 10^9\n, \n    m\n is even, \n    1 \n    \u2264 k \n    \u2264m \n     2\n) \u2014 the number of freight trains per day, the number of hours\nand minutes on the planet, and the boarding time for each passenger tram.\n\n    n\n lines follow, each contains two integers \n    h_i\n and \n    m_i\n (\n    0\n    \n    \u2264 h_i < h\n, \n    0 \n    \u2264 m_i < m\n) \u2014 the time when \n    i\n-th freight\ntrain departs. It is guaranteed that no freight trains depart at the same\ntime. Output The first line of output should contain two integers: the minimum\nnumber of trains that need to be canceled, and the optimal starting time\n\n    t\n. Second line of output should contain freight trains that need to be\ncanceled. Examples Input 2 24 60 15 16 0 17 15 Output 0 0 Input 2 24 60 16 16\n0 17 15 Output 1 0 2 Note In the first test case of the example the first tram\ncan depart at 0 hours and 0 minutes. Then the freight train at 16 hours and 0\nminutes can depart at the same time as the passenger tram, and the freight\ntrain at 17 hours and 15 minutes can depart at the same time as the boarding\nstarts for the upcoming passenger tram. In the second test case of the example\nit is not possible to design the passenger tram schedule without cancelling\nany of the freight trains: if \n    t \n    \u2208 [1, 15]\n, then the freight train at\n16 hours and 0 minutes is not able to depart (since boarding time is 16\nminutes). If \n    t = 0\n or \n    t \n    \u2208 [16, 29]\n, then the freight train\ndeparting at 17 hours 15 minutes is not able to depart. However, if the second\nfreight train is canceled, one can choose \n    t = 0\n. Another possible option\nis to cancel the first train and choose \n    t = 13\n.\n\n",
+        "cf_contest_id": 1379,
+        "cf_index": "D",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "sortings",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "2 24 60 15\r\n16 0\r\n17 15\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2 24 60 16\r\n16 0\r\n17 15\r\n",
+                "1 0\r\n2 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 24 60 8\r\n10 59\r\n21 56\r\n0 42\r\n21 27\r\n5 24\r\n5 53\r\n16 5\r\n5 22\r\n10 11\r\n10 46\r\n",
+                "1 5\r\n1 "
+            ],
+            [
+                "9 3 24 9\r\n1 15\r\n0 6\r\n0 22\r\n2 22\r\n2 7\r\n1 7\r\n1 23\r\n2 14\r\n0 14\r\n",
+                "5 7\r\n7 8 9 1 2 "
+            ],
+            [
+                "9 24 60 21\r\n1 36\r\n2 35\r\n2 16\r\n2 55\r\n1 16\r\n0 35\r\n0 55\r\n1 56\r\n0 15\r\n",
+                "5 16\r\n8 2 6 1 9 "
+            ],
+            [
+                "10 11 12 6\r\n9 5\r\n8 5\r\n9 11\r\n7 5\r\n10 5\r\n1 5\r\n2 11\r\n3 5\r\n2 5\r\n3 11\r\n",
+                "0 5\r\n"
+            ],
+            [
+                "1 1 2 1\r\n0 1\r\n",
+                "0 0\r\n"
+            ]
+        ]
+    }
+]

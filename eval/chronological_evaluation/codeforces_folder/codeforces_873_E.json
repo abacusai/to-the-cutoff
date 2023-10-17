@@ -1,0 +1,97 @@
+[
+    {
+        "name": "Awards For Contestants",
+        "description": "Alexey recently held a programming contest for students from Berland. n\nstudents participated in a contest, i-th of them solved ai problems. Now he\nwants to award some contestants. Alexey can award the students with diplomas\nof three different degrees. Each student either will receive one diploma of\nsome degree, or won't receive any diplomas at all. Let cntx be the number of\nstudents that are awarded with diplomas of degree x (1 \u2264 x \u2264 3). The following\nconditions must hold: For each x (1 \u2264 x \u2264 3) cntx > 0; For any two degrees x\nand y cntx \u2264 2\u00b7cnty. Of course, there are a lot of ways to distribute the\ndiplomas. Let bi be the degree of diploma i-th student will receive (or - 1 if\ni-th student won't receive any diplomas). Also for any x such that 1 \u2264 x \u2264 3\nlet cx be the maximum number of problems solved by a student that receives a\ndiploma of degree x, and dx be the minimum number of problems solved by a\nstudent that receives a diploma of degree x. Alexey wants to distribute the\ndiplomas in such a way that: If student i solved more problems than student j,\nthen he has to be awarded not worse than student j (it's impossible that\nstudent j receives a diploma and i doesn't receive any, and also it's\nimpossible that both of them receive a diploma, but bj < bi); d1 - c2 is\nmaximum possible; Among all ways that maximize the previous expression, d2 -\nc3 is maximum possible; Among all ways that correspond to the two previous\nconditions, d3 - c - 1 is maximum possible, where c - 1 is the maximum number\nof problems solved by a student that doesn't receive any diploma (or 0 if each\nstudent is awarded with some diploma). Help Alexey to find a way to award the\ncontestants! Input The first line contains one integer number n (3 \u2264 n \u2264\n3000). The second line contains n integer numbers a1, a2, ..., an (1 \u2264 ai \u2264\n5000). Output Output n numbers. i-th number must be equal to the degree of\ndiploma i-th contestant will receive (or - 1 if he doesn't receive any\ndiploma). If there are multiple optimal solutions, print any of them. It is\nguaranteed that the answer always exists. Examples Input 4 1 2 3 4 Output 3 3\n2 1 Input 6 1 4 3 1 1 2 Output -1 1 2 -1 -1 3\n\n",
+        "cf_contest_id": 873,
+        "cf_index": "E",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "data structures",
+            "dp"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n1 2 3 4\r\n",
+                "-1 3 2 1 "
+            ],
+            [
+                "6\r\n1 4 3 1 1 2\r\n",
+                "-1 1 2 -1 -1 3 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "100\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "3 3 3 3 3 3 3 3 3 3 3 3 2 3 3 3 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 "
+            ],
+            [
+                "100\r\n82 51 81 14 37 17 78 92 64 15 8 86 89 8 87 77 66 10 15 12 100 25 92 47 21 78 20 63 13 49 41 36 41 79 16 87 87 69 3 76 80 60 100 49 70 59 72 8 38 71 45 97 71 14 76 54 81 4 59 46 39 29 92 3 49 22 53 99 59 52 74 31 92 43 42 23 44 9 82 47 7 40 12 9 3 55 37 85 46 22 84 52 98 41 21 77 63 17 62 91\r\n",
+                "-1 -1 -1 -1 -1 -1 -1 2 -1 -1 -1 3 3 -1 3 -1 -1 -1 -1 -1 1 -1 2 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 3 3 -1 -1 -1 -1 -1 1 -1 -1 -1 -1 -1 -1 -1 -1 1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 2 -1 -1 -1 -1 1 -1 -1 -1 -1 2 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 3 -1 -1 3 -1 1 -1 -1 -1 -1 -1 -1 2 "
+            ],
+            [
+                "100\r\n591 417 888 251 792 847 685 3 182 461 102 348 555 956 771 901 712 878 580 631 342 333 285 899 525 725 537 718 929 653 84 788 104 355 624 803 253 853 201 995 536 184 65 205 540 652 549 777 248 405 677 950 431 580 600 846 328 429 134 983 526 103 500 963 400 23 276 704 570 757 410 658 507 620 984 244 486 454 802 411 985 303 635 283 96 597 855 775 139 839 839 61 219 986 776 72 729 69 20 917\r\n",
+                "2 3 1 3 2 1 2 -1 3 3 -1 3 2 1 2 1 2 1 2 2 3 3 3 1 2 2 2 2 1 2 -1 2 -1 3 2 2 3 1 3 1 2 3 -1 3 2 2 2 2 3 3 2 1 3 2 2 1 3 3 -1 1 2 -1 2 1 3 -1 3 2 2 2 3 2 2 2 1 3 2 3 2 3 1 3 2 3 -1 2 1 2 -1 1 1 -1 3 1 2 -1 2 -1 -1 1 "
+            ],
+            [
+                "70\r\n30 19 11 23 3 21 12 30 8 21 22 13 32 19 12 30 19 25 22 25 7 14 15 16 32 29 9 18 6 26 26 26 2 11 27 30 19 22 20 23 1 2 9 7 1 28 22 27 33 12 32 3 8 19 27 5 3 29 20 28 13 1 30 29 28 14 27 30 6 4\r\n",
+                "1 2 3 2 -1 2 3 1 -1 2 2 3 1 2 3 1 2 1 2 1 -1 3 3 3 1 1 3 2 -1 1 1 1 -1 3 1 1 2 2 2 2 -1 -1 3 -1 -1 1 2 1 1 3 1 -1 -1 2 1 -1 -1 1 2 1 3 -1 1 1 1 3 1 1 -1 -1 "
+            ],
+            [
+                "54\r\n30 28 29 28 60 27 57 45 22 18 12 12 64 43 12 60 56 72 71 21 37 3 7 15 8 66 70 68 40 62 48 53 32 37 44 46 1 58 47 32 22 19 46 58 59 69 13 67 14 15 20 46 12 39\r\n",
+                "3 3 3 3 1 3 1 2 3 3 3 3 1 2 3 1 1 1 1 3 2 -1 -1 3 -1 1 1 1 2 1 2 1 3 2 2 2 -1 1 2 3 3 3 2 1 1 1 3 1 3 3 3 2 3 2 "
+            ],
+            [
+                "8\r\n99 88 58 84 34 109 70 11\r\n",
+                "1 1 2 1 3 1 2 3 "
+            ],
+            [
+                "86\r\n241 180 140 393 301 202 217 323 150 101 175 221 148 94 338 360 149 193 387 262 309 282 88 362 151 50 234 330 325 379 42 87 204 167 245 108 374 130 200 104 49 47 261 56 111 287 32 190 197 150 206 140 290 287 221 346 218 188 178 95 400 181 214 264 403 340 218 162 175 140 280 283 329 3 3 241 290 161 242 386 308 128 310 161 15 343\r\n",
+                "2 2 3 1 1 2 2 1 3 3 2 2 3 3 1 1 3 2 1 2 1 1 3 1 3 -1 2 1 1 1 -1 3 2 2 2 3 1 3 2 3 -1 -1 2 -1 3 1 -1 2 2 3 2 3 1 1 2 1 2 2 2 3 1 2 2 2 1 1 2 2 2 3 1 1 1 -1 -1 2 1 2 2 1 1 3 1 2 -1 1 "
+            ],
+            [
+                "8\r\n64 54 6 736 630 113 870 61\r\n",
+                "2 3 3 1 1 2 1 2 "
+            ],
+            [
+                "3\r\n100 100 100\r\n",
+                "1 2 3 "
+            ],
+            [
+                "3\r\n19 435 12\r\n",
+                "2 1 3 "
+            ],
+            [
+                "3\r\n4998 4999 5000\r\n",
+                "3 2 1 "
+            ],
+            [
+                "11\r\n5 4 7 5 2 7 8 5 7 8 8\r\n",
+                "3 3 2 3 -1 2 1 3 2 1 1 "
+            ],
+            [
+                "8\r\n3 3 2 3 4 2 2 3\r\n",
+                "2 2 -1 3 1 -1 -1 3 "
+            ],
+            [
+                "6\r\n7 7 7 7 6 7\r\n",
+                "1 1 2 2 3 3 "
+            ],
+            [
+                "10\r\n1 1 1 8 8 1 1 8 8 8\r\n",
+                "3 3 -1 1 1 -1 -1 2 2 2 "
+            ],
+            [
+                "6\r\n401 351 548 829 698 438\r\n",
+                "3 -1 2 1 1 3 "
+            ],
+            [
+                "84\r\n362 480 551 307 4 118 376 541 494 472 75 450 192 458 450 390 447 62 239 362 301 243 248 102 85 430 231 195 316 283 128 252 569 282 205 390 461 114 390 121 3 125 23 471 88 13 8 289 143 352 523 217 342 98 116 279 327 133 199 164 89 318 76 480 199 401 32 430 281 438 460 484 433 292 433 210 137 138 172 501 253 417 120 432\r\n",
+                "-1 2 1 -1 -1 -1 -1 1 2 2 -1 3 -1 3 3 -1 3 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1 -1 -1 -1 3 -1 -1 -1 -1 -1 -1 2 -1 -1 -1 -1 -1 -1 1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 2 -1 -1 -1 -1 -1 -1 3 2 -1 -1 -1 -1 -1 -1 -1 2 -1 -1 -1 -1 "
+            ]
+        ]
+    }
+]

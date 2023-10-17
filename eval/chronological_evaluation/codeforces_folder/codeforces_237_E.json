@@ -1,0 +1,144 @@
+[
+    {
+        "name": "Build String",
+        "description": "You desperately need to build some string t. For that you've got n more\nstrings s1, s2, ..., sn. To build string t, you are allowed to perform exactly\n|t| (|t| is the length of string t) operations on these strings. Each\noperation looks like that: choose any non-empty string from strings s1, s2,\n..., sn; choose an arbitrary character from the chosen string and write it on\na piece of paper; remove the chosen character from the chosen string. Note\nthat after you perform the described operation, the total number of characters\nin strings s1, s2, ..., sn decreases by 1. We are assumed to build string t,\nif the characters, written on the piece of paper, in the order of performed\noperations form string t. There are other limitations, though. For each string\nsi you know number ai \u2014 the maximum number of characters you are allowed to\ndelete from string si. You also know that each operation that results in\ndeleting a character from string si, costs i rubles. That is, an operation on\nstring s1 is the cheapest (it costs 1 ruble), and the operation on string sn\nis the most expensive one (it costs n rubles). Your task is to count the\nminimum amount of money (in rubles) you will need to build string t by the\ngiven rules. Consider the cost of building string t to be the sum of prices of\nthe operations you use. Input The first line of the input contains string t \u2014\nthe string that you need to build. The second line contains a single integer n\n(1 \u2264 n \u2264 100) \u2014 the number of strings to which you are allowed to apply the\ndescribed operation. Each of the next n lines contains a string and an\ninteger. The i-th line contains space-separated string si and integer ai (0 \u2264\nai \u2264 100). Number ai represents the maximum number of characters that can be\ndeleted from string si. All strings in the input only consist of lowercase\nEnglish letters. All strings are non-empty. The lengths of all strings do not\nexceed 100 characters. Output Print a single number \u2014 the minimum money (in\nrubles) you need in order to build string t. If there is no solution, print\n-1. Examples Input bbaze 3 bzb 2 aeb 3 ba 10 Output 8 Input abacaba 4 aba 2\nbcc 1 caa 2 bbb 5 Output 18 Input xyz 4 axx 8 za 1 efg 4 t 1 Output -1 Note\nNotes to the samples: In the first sample from the first string you should\ntake characters \"b\" and \"z\" with price 1 ruble, from the second string\ncharacters \"a\", \"e\" \u0438 \"b\" with price 2 rubles. The price of the string t in\nthis case is 2\u00b71 + 3\u00b72 = 8. In the second sample from the first string you\nshould take two characters \"a\" with price 1 ruble, from the second string\ncharacter \"c\" with price 2 rubles, from the third string two characters \"a\"\nwith price 3 rubles, from the fourth string two characters \"b\" with price 4\nrubles. The price of the string t in this case is 2\u00b71 + 1\u00b72 + 2\u00b73 + 2\u00b74 = 18.\nIn the third sample the solution doesn't exist because there is no character\n\"y\" in given strings.\n\n",
+        "cf_contest_id": 237,
+        "cf_index": "E",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "flows",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "bbaze\r\n3\r\nbzb 2\r\naeb 3\r\nba 10\r\n",
+                "8\r\n"
+            ],
+            [
+                "abacaba\r\n4\r\naba 2\r\nbcc 1\r\ncaa 2\r\nbbb 5\r\n",
+                "18\r\n"
+            ],
+            [
+                "xyz\r\n4\r\naxx 8\r\nza 1\r\nefg 4\r\nt 1\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "aaabbtttefg\r\n6\r\nabbbca 3\r\nffatgg 2\r\nyioa 4\r\nppaeg 2\r\naetgffff 4\r\ntreiiaav 10\r\n",
+                "34\r\n"
+            ],
+            [
+                "tatarioispoe\r\n5\r\ntyfad 3\r\npopsia 10\r\ntszza 3\r\nioioioio 4\r\nrarartteea 3\r\n",
+                "33\r\n"
+            ],
+            [
+                "abcdabcd\r\n4\r\nabc 10\r\nab 3\r\nefg 3\r\nsahdjqwegadjhgasddddd 5\r\n",
+                "-1\r\n"
+            ],
+            [
+                "jnwjjnj\r\n5\r\njwjj 10\r\nw 3\r\njn 8\r\nnnjnnjw 0\r\nnjn 4\r\n",
+                "15\r\n"
+            ],
+            [
+                "jjrrj\r\n10\r\nrrr 1\r\njjr 1\r\nrjjj 2\r\nrjr 1\r\njjj 2\r\njj 0\r\njjr 1\r\nr 0\r\nj 3\r\nrj 4\r\n",
+                "13\r\n"
+            ],
+            [
+                "ttkdddjffp\r\n10\r\npjpeds 10\r\nsikkj 3\r\ni 0\r\nbie 4\r\nttbk 7\r\nsdbtiijb 2\r\nss 3\r\nebjt 10\r\np 8\r\nsfeppt 9\r\n",
+                "-1\r\n"
+            ],
+            [
+                "twjlurqzfgayvrtpxhim\r\n30\r\ndwrvsqel 5\r\nvynx 3\r\nztsffsqw 6\r\ntxbdos 8\r\njahla 9\r\nk 6\r\np 5\r\ntqkrooxqtu 0\r\ntnpgcoxs 10\r\neuvxbsm 4\r\nnrbhmh 9\r\nii 4\r\nqmqsndmcvg 9\r\nhdtj 10\r\nnukhd 9\r\nqcknuopm 3\r\nolzxz 8\r\njt 5\r\nvtjlfqrjmb 6\r\nlevduxh 6\r\nde 7\r\nbxctx 5\r\nsocuozifj 1\r\nyvvd 3\r\nq 1\r\nbrmjhasvjk 6\r\nj 7\r\ntemzqxb 3\r\npxpi 6\r\nxegdemdgzi 6\r\n",
+                "96\r\n"
+            ],
+            [
+                "vwwvwwvwvwwv\r\n50\r\nwwvww 2\r\nwvv 0\r\nwvvv 1\r\nvww 5\r\nvv 4\r\nw 0\r\nv 6\r\nwvvwvv 6\r\nwwv 1\r\nvvvw 0\r\nvvv 1\r\nvvvvv 3\r\nvv 5\r\nvvvvww 4\r\nwwvwwv 1\r\nwwwvvw 2\r\nwvwww 4\r\nww 5\r\nwvvw 4\r\nww 3\r\nvvvv 6\r\nwwwvv 4\r\nvwvw 6\r\nv 0\r\nwvvwvv 3\r\nvv 0\r\nww 2\r\nvv 6\r\nwvvw 3\r\nw 6\r\nwwvwwv 0\r\nvwww 5\r\nwwvw 3\r\nw 5\r\nvw 4\r\nwv 2\r\nwvvvwv 6\r\nwvwwvw 3\r\nwwwwww 6\r\nvvvwww 6\r\nvvv 6\r\nwwvw 0\r\nvwwvw 3\r\nw 4\r\nvv 3\r\nwvvwvv 6\r\nvvwwv 5\r\nvv 6\r\nvww 5\r\nv 5\r\n",
+                "58\r\n"
+            ],
+            [
+                "gjvloevyfiwysrzapfyyh\r\n3\r\nt 1\r\nr 0\r\nc 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "z\r\n5\r\ng 9\r\nkfpocdpy 5\r\nblrxt 10\r\ndsxgcf 6\r\nyiasu 1\r\n",
+                "-1\r\n"
+            ],
+            [
+                "ffbj\r\n10\r\nyzzyu 10\r\njaujvabz 9\r\nuqvbqyazcz 10\r\nzzbcq 3\r\nvzczjja 1\r\nbjbquzz 3\r\naf 8\r\nvj 6\r\nzbjbaucj 3\r\nqucafqq 8\r\n",
+                "21\r\n"
+            ],
+            [
+                "pmjafkxnjsmhebnmdmbm\r\n5\r\nennerpkefuisnbwiupwripixpwbjhamkumbbeifsxsbpaofbpkfzyzanybp 76\r\nkrzefdpni 82\r\noybmamibkknobxxeaodeapwozirddjrdbroskfadzsxmepdoembuapemniuhjwsp 84\r\nwxzxadinxubeeoumszozxnexnxhynhfsxwmojhyzjzpounfkximnohrxsapjmkjhxfaymzu 90\r\nozfsdprykiuusajddxzemxrxsxmrfhnjyfyyisuuorxkpmoeupfxbhufraiyahxunukmhkeuaakbhwp 35\r\n",
+                "29\r\n"
+            ],
+            [
+                "bhtqhbqttnnnhnbnqbqnbhqqhnhbqhqhthhhttnbbhbnqtqbqnntnnqthhtt\r\n20\r\nhbnh 3\r\nbtnn 5\r\nttq 0\r\nbhnh 2\r\nqntqt 1\r\nhnbb 0\r\nhq 0\r\nqtnbn 4\r\nh 0\r\nt 0\r\nbq 3\r\nbh 0\r\ntqqnn 3\r\nqbnh 0\r\nntbt 1\r\nnbb 1\r\nnqnnn 3\r\nqh 1\r\nhqn 3\r\nn 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "zzttfhudetfskeekfkkuffsdbpdbuttcsrjdbsfdfodopuhzcfkubospmrsoeohmbbjmsbfe\r\n10\r\ncmod 2\r\nub 5\r\nssbzfj 0\r\nce 1\r\nzdz 2\r\nfm 0\r\ndz 3\r\njsd 5\r\nssjpjtf 3\r\nrbur 4\r\n",
+                "-1\r\n"
+            ],
+            [
+                "wwhiwjwwihxxxjhxxxxwjxjijhjjhwhhjixxhxjjixxxjiwiwxh\r\n1\r\nijwii 86\r\n",
+                "-1\r\n"
+            ],
+            [
+                "upumummuumpmumumupppp\r\n10\r\np 3\r\np 1\r\nu 1\r\nu 3\r\nupm 1\r\num 1\r\npu 0\r\nm 1\r\nm 1\r\nmum 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "wvokxtxxeh\r\n40\r\nvjf 4\r\nxxh 4\r\nzdh 0\r\nkzk 4\r\nhgpeb 1\r\njee 3\r\nllg 4\r\nyr 4\r\nulmbi 4\r\nt 4\r\njjg 0\r\nn 1\r\nnf 5\r\nrd 0\r\nm 1\r\ntaacp 2\r\nt 4\r\nirnf 1\r\nq 1\r\nqadr 1\r\nggis 0\r\nllo 2\r\npng 3\r\nxu 2\r\njha 1\r\njyik 2\r\ncx 3\r\nhdey 0\r\nxhh 4\r\nh 4\r\nu 5\r\nv 3\r\nx 1\r\ngzy 0\r\nvwz 2\r\nm 3\r\ncvgst 0\r\npevwn 0\r\nxkt 3\r\nuuj 5\r\n",
+                "107\r\n"
+            ],
+            [
+                "jdnpjbbeenepebwudwujwppdppbjepenwb\r\n50\r\ndu 2\r\nnjdp 4\r\np 3\r\nj 1\r\nebnb 5\r\ndu 1\r\nup 1\r\nb 2\r\nujn 1\r\nednun 2\r\nepd 2\r\nwuune 3\r\nwdjbb 2\r\njwpn 2\r\nw 5\r\nuw 1\r\njjund 1\r\nuwwen 2\r\nedwjn 4\r\nu 1\r\nep 1\r\nuudpd 4\r\nue 5\r\nju 4\r\nej 2\r\nwew 3\r\nbb 2\r\nddwuj 2\r\npnu 5\r\njwnn 4\r\nwnb 0\r\nnjuu 1\r\ndne 1\r\newbwb 4\r\nejpjb 0\r\nn 0\r\nn 2\r\njdnn 0\r\nbwwj 5\r\nuw 1\r\nwddnu 4\r\njbe 2\r\nj 0\r\nu 0\r\nn 2\r\njwj 1\r\nwnpn 5\r\nne 3\r\nwdeb 2\r\nu 5\r\n",
+                "327\r\n"
+            ],
+            [
+                "loqlqshq\r\n29\r\ngsgqlass 9\r\naoqglllh 3\r\ngqqqgo 1\r\nqoqnou 3\r\nhsuaquunus 1\r\nqghlnunl 0\r\ngsahq 3\r\nqouqogasa 2\r\nllu 0\r\nh 1\r\nlghl 1\r\nl 7\r\nhhoahn 1\r\naoghqhaau 10\r\nnso 2\r\ngaul 1\r\nnaagonusln 5\r\naagooa 9\r\naaqnlgnsqs 10\r\nql 7\r\nnuuooqlq 9\r\nuq 5\r\nlhslnha 1\r\noslglosuah 7\r\nglqulguooo 8\r\nnguoaouqu 8\r\naqohshaq 3\r\noounho 6\r\nnnh 7\r\n",
+                "16\r\n"
+            ],
+            [
+                "d\r\n100\r\nq 0\r\nj 0\r\nl 1\r\nn 1\r\nv 0\r\nx 1\r\nj 1\r\np 1\r\nb 1\r\nv 1\r\nu 1\r\ng 0\r\nk 1\r\nu 1\r\nc 1\r\nj 0\r\nd 1\r\nc 0\r\nv 1\r\nv 0\r\nu 1\r\nq 0\r\nf 0\r\ni 0\r\nn 1\r\nd 1\r\nh 1\r\ni 1\r\nj 1\r\ns 0\r\ni 0\r\nx 0\r\nb 0\r\nc 1\r\np 0\r\np 1\r\no 1\r\nc 1\r\nn 1\r\nf 0\r\no 0\r\nx 0\r\nu 0\r\ni 0\r\ng 0\r\ni 1\r\nl 0\r\np 0\r\nl 1\r\nl 1\r\nn 0\r\nq 1\r\nn 1\r\ng 1\r\nd 0\r\nb 0\r\nl 1\r\ni 1\r\nv 0\r\nl 1\r\nf 0\r\nx 0\r\nf 0\r\no 0\r\nl 1\r\ny 0\r\nc 0\r\nj 0\r\nx 1\r\no 0\r\nj 0\r\nn 1\r\nx 1\r\nq 0\r\ny 0\r\nu 0\r\nu 0\r\nd 1\r\nk 0\r\nv 1\r\nd 0\r\nk 0\r\ni 0\r\nv 0\r\ns 0\r\nx 0\r\np 1\r\nh 1\r\nq 1\r\ny 0\r\nb 1\r\nn 0\r\nj 1\r\nl 0\r\ni 1\r\nc 1\r\ng 1\r\nj 1\r\nq 0\r\nj 0\r\n",
+                "17\r\n"
+            ],
+            [
+                "xxwxxxxppwpxwpxwppxppwwwwwppxpw\r\n37\r\nwpwpx 2\r\nxp 0\r\nppx 1\r\npx 5\r\nppww 5\r\nxp 2\r\npxp 3\r\nwxppp 1\r\nw 2\r\npwx 5\r\npwwp 5\r\nxxxwp 4\r\npp 2\r\npwx 3\r\npxxw 4\r\nwwxp 0\r\np 4\r\np 3\r\nxw 4\r\nx 4\r\nwxxxp 4\r\nxxx 1\r\nwxw 2\r\np 4\r\np 2\r\nxww 2\r\npwx 4\r\nwpp 2\r\nxw 4\r\nxpxp 4\r\nw 4\r\nwwpw 2\r\nwpw 2\r\nxwwpx 5\r\nwxw 2\r\nwpx 5\r\npwpxx 4\r\n",
+                "259\r\n"
+            ],
+            [
+                "tkwkxtvwvtekejkwlwmtxvjxexlxlkmtjxklvjlekljxwleewmxekwtwexvjjwmwjmvjwmeetwjvw\r\n33\r\njmwexm 9\r\nmlvl 11\r\nltkmvjlvkmtxl 1\r\njwe 4\r\nllmkxewtkxkk 2\r\nveeewmjjlw 0\r\nexmtwwxkw 8\r\nexjklmvkkejwx 13\r\nmmjwkmemwwm 0\r\ntxetttxe 9\r\ne 9\r\nmw 7\r\nmkmt 3\r\nwk 0\r\nmvltketkvww 6\r\nj 5\r\nmjmemtjew 11\r\nvwmmvvlvljvtv 0\r\nttvx 11\r\njkmwwkkl 1\r\nxkvvel 9\r\neljwejjjwjj 3\r\ntmjlwx 0\r\nktvvkmjvkkx 4\r\net 10\r\ne 13\r\nkljxemllkmj 12\r\nwmmkell 8\r\nwm 1\r\nxm 9\r\nwjj 5\r\ntmm 6\r\nelw 6\r\n",
+                "838\r\n"
+            ],
+            [
+                "clegxixgziecxzcsgexcglsxccszzlzggzellxseiselcsexsszxxx\r\n21\r\nc 9\r\nsxiixzgelcsxx 1\r\nzlllllzlllgzlixgxl 22\r\neslxese 0\r\ncxszxzgclcgecieixsleee 6\r\nxxecxilceisscisxecigez 12\r\niceissizceizsze 1\r\ngzxigs 14\r\neixsligzsli 22\r\neceeeizzsezzzee 15\r\nselgxs 18\r\nzseggxgcczcxzgcxi 21\r\neixixslllgzc 18\r\ngiceicezzxgcgsigsxgxx 16\r\nxlsseeslzg 11\r\nzxgil 9\r\negczii 1\r\nxzexscgggl 6\r\nllegxggsleezcggeieis 17\r\nieeliesell 7\r\nxsxlsxsxcicce 6\r\n",
+                "325\r\n"
+            ],
+            [
+                "abcdefghijklmnopqrstuvwxyz\r\n26\r\na 2\r\nb 8\r\nc 5\r\nd 1\r\ne 10\r\nf 5\r\ng 9\r\nh 9\r\ni 3\r\nj 5\r\nk 6\r\nl 6\r\nm 2\r\nn 8\r\no 2\r\np 2\r\nq 6\r\nr 3\r\ns 8\r\nt 7\r\nu 2\r\nv 5\r\nw 3\r\nx 4\r\ny 3\r\nz 3\r\n",
+                "351\r\n"
+            ],
+            [
+                "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz\r\n26\r\na 2\r\nb 8\r\nc 5\r\nd 1\r\ne 10\r\nf 5\r\ng 9\r\nh 9\r\ni 3\r\nj 5\r\nk 6\r\nl 6\r\nm 2\r\nn 8\r\no 2\r\np 2\r\nq 6\r\nr 3\r\ns 8\r\nt 7\r\nu 2\r\nv 5\r\nw 3\r\nx 4\r\ny 3\r\nz 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 100\r\n",
+                "100\r\n"
+            ],
+            [
+                "abc\r\n10\r\nabc 2\r\nb 1\r\nd 1\r\nd 1\r\nd 1\r\nd 1\r\nd 1\r\nd 1\r\nd 1\r\nc 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "a\r\n1\r\na 0\r\n",
+                "-1\r\n"
+            ]
+        ]
+    }
+]

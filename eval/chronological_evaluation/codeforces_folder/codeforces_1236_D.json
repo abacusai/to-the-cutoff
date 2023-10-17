@@ -1,0 +1,158 @@
+[
+    {
+        "name": "Alice and the Doll",
+        "description": "Alice got a new doll these days. It can even walk! Alice has built a maze for\nthe doll and wants to test it. The maze is a grid with \n    n\n rows and\n\n    m\n columns. There are \n    k\n obstacles, the \n    i\n-th of them is on the\ncell \n    (x_i, y_i)\n, which means the cell in the intersection of the\n\n    x_i\n-th row and the \n    y_i\n-th column. However, the doll is clumsy in\nsome ways. It can only walk straight or turn right at most once in the same\ncell (including the start cell). It cannot get into a cell with an obstacle or\nget out of the maze. More formally, there exist \n    4\n directions, in which\nthe doll can look: The doll looks in the direction along the row from the\nfirst cell to the last. While moving looking in this direction the doll will\nmove from the cell \n    (x, y)\n into the cell \n    (x, y + 1)\n; The doll looks\nin the direction along the column from the first cell to the last. While\nmoving looking in this direction the doll will move from the cell \n    (x, y)\n\ninto the cell \n    (x + 1, y)\n; The doll looks in the direction along the row\nfrom the last cell to first. While moving looking in this direction the doll\nwill move from the cell \n    (x, y)\n into the cell \n    (x, y - 1)\n; The doll\nlooks in the direction along the column from the last cell to the first. While\nmoving looking in this direction the doll will move from the cell \n    (x, y)\n\ninto the cell \n    (x - 1, y)\n. .Standing in some cell the doll can move into\nthe cell in the direction it looks or it can turn right once. Turning right\nonce, the doll switches it's direction by the following rules: \n    1 \n    \u2192\n    2\n, \n    2 \n    \u2192 3\n, \n    3 \n    \u2192 4\n, \n    4 \n    \u2192 1\n. Standing in one cell,\nthe doll can make at most one turn right. Now Alice is controlling the doll's\nmoves. She puts the doll in of the cell \n    (1, 1)\n (the upper-left cell of\nthe maze). Initially, the doll looks to the direction \n    1\n, so along the\nrow from the first cell to the last. She wants to let the doll walk across all\nthe cells without obstacles exactly once and end in any place. Can it be\nachieved? Input The first line contains three integers \n    n\n, \n    m\n and\n\n    k\n, separated by spaces (\n    1 \n    \u2264 n,m \n    \u2264 10^5, 0 \n    \u2264 k \n    \u2264\n    10^5\n) \u2014 the size of the maze and the number of obstacles. Next \n    k\n\nlines describes the obstacles, the \n    i\n-th line contains two integer\nnumbers \n    x_i\n and \n    y_i\n, separated by spaces (\n    1 \n    \u2264 x_i \n    \u2264\n    n,1 \n    \u2264 y_i \n    \u2264 m\n), which describes the position of the \n    i\n-th\nobstacle. It is guaranteed that no two obstacles are in the same cell and no\nobstacle is in cell \n    (1, 1)\n. Output Print 'Yes' (without quotes) if the\ndoll can walk across all the cells without obstacles exactly once by the\nrules, described in the statement. If it is impossible to walk across the maze\nby these rules print 'No' (without quotes). Examples Input 3 3 2 2 2 2 1\nOutput Yes Input 3 3 2 3 1 2 2 Output No Input 3 3 8 1 2 1 3 2 1 2 2 2 3 3 1 3\n2 3 3 Output Yes Note Here is the picture of maze described in the first\nexample: In the first example, the doll can walk in this way: The doll is in\nthe cell \n    (1, 1)\n, looks to the direction \n    1\n. Move straight; The doll\nis in the cell \n    (1, 2)\n, looks to the direction \n    1\n. Move straight;\nThe doll is in the cell \n    (1, 3)\n, looks to the direction \n    1\n. Turn\nright; The doll is in the cell \n    (1, 3)\n, looks to the direction \n    2\n.\nMove straight; The doll is in the cell \n    (2, 3)\n, looks to the direction\n\n    2\n. Move straight; The doll is in the cell \n    (3, 3)\n, looks to the\ndirection \n    2\n. Turn right; The doll is in the cell \n    (3, 3)\n, looks to\nthe direction \n    3\n. Move straight; The doll is in the cell \n    (3, 2)\n,\nlooks to the direction \n    3\n. Move straight; The doll is in the cell \n    (3,\n    1)\n, looks to the direction \n    3\n. The goal is achieved, all cells of the\nmaze without obstacles passed exactly once.\n\n",
+        "cf_contest_id": 1236,
+        "cf_index": "D",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 3 2\r\n2 2\r\n2 1\r\n",
+                "Yes"
+            ],
+            [
+                "3 3 2\r\n3 1\r\n2 2\r\n",
+                "No"
+            ],
+            [
+                "3 3 8\r\n1 2\r\n1 3\r\n2 1\r\n2 2\r\n2 3\r\n3 1\r\n3 2\r\n3 3\r\n",
+                "Yes"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 10 40\r\n6 8\r\n9 5\r\n7 5\r\n4 7\r\n9 2\r\n6 2\r\n6 5\r\n3 5\r\n5 8\r\n4 2\r\n7 4\r\n7 6\r\n3 3\r\n3 8\r\n7 2\r\n5 4\r\n6 6\r\n5 5\r\n9 3\r\n5 6\r\n9 8\r\n7 8\r\n4 6\r\n3 2\r\n6 7\r\n4 4\r\n3 7\r\n4 5\r\n7 7\r\n3 4\r\n4 8\r\n8 2\r\n6 4\r\n9 7\r\n9 6\r\n9 4\r\n3 6\r\n5 2\r\n9 9\r\n5 7\r\n",
+                "Yes"
+            ],
+            [
+                "10 10 31\r\n8 2\r\n10 4\r\n4 5\r\n10 3\r\n5 3\r\n5 5\r\n10 5\r\n10 1\r\n5 7\r\n8 5\r\n10 8\r\n10 10\r\n6 6\r\n8 8\r\n8 3\r\n4 3\r\n10 7\r\n6 7\r\n10 9\r\n4 7\r\n10 6\r\n5 6\r\n5 4\r\n8 7\r\n8 6\r\n6 3\r\n8 4\r\n8 9\r\n4 4\r\n6 5\r\n6 4\r\n",
+                "No"
+            ],
+            [
+                "1 1 0\r\n",
+                "Yes"
+            ],
+            [
+                "10 10 70\r\n10 4\r\n5 5\r\n6 10\r\n8 9\r\n3 8\r\n10 9\r\n10 10\r\n8 2\r\n2 10\r\n7 2\r\n7 3\r\n10 2\r\n8 3\r\n9 8\r\n2 9\r\n3 1\r\n6 5\r\n6 9\r\n2 8\r\n10 7\r\n8 4\r\n8 6\r\n7 6\r\n5 6\r\n9 10\r\n3 9\r\n5 8\r\n4 8\r\n3 10\r\n10 5\r\n5 2\r\n5 4\r\n8 8\r\n3 2\r\n3 6\r\n2 3\r\n1 9\r\n6 6\r\n2 4\r\n6 2\r\n5 3\r\n6 4\r\n7 9\r\n2 2\r\n5 9\r\n7 10\r\n7 8\r\n3 3\r\n2 6\r\n7 5\r\n8 10\r\n3 4\r\n6 8\r\n8 5\r\n1 8\r\n10 6\r\n10 8\r\n1 10\r\n7 4\r\n4 9\r\n10 3\r\n2 1\r\n3 5\r\n5 10\r\n4 10\r\n4 6\r\n9 9\r\n6 3\r\n2 5\r\n10 1\r\n",
+                "Yes"
+            ],
+            [
+                "10 10 39\r\n5 4\r\n6 4\r\n9 8\r\n7 5\r\n2 9\r\n5 6\r\n5 8\r\n5 3\r\n4 3\r\n2 8\r\n8 3\r\n8 8\r\n6 3\r\n3 4\r\n6 5\r\n3 8\r\n4 8\r\n6 9\r\n6 8\r\n4 5\r\n3 6\r\n5 9\r\n6 6\r\n4 4\r\n5 5\r\n7 6\r\n7 4\r\n3 9\r\n8 5\r\n7 8\r\n3 5\r\n7 3\r\n8 4\r\n4 9\r\n8 9\r\n8 6\r\n7 9\r\n4 6\r\n9 9\r\n",
+                "Yes"
+            ],
+            [
+                "10 10 39\r\n2 5\r\n7 5\r\n2 4\r\n4 7\r\n7 7\r\n8 8\r\n5 8\r\n7 8\r\n5 3\r\n2 8\r\n6 3\r\n2 6\r\n6 7\r\n2 9\r\n5 7\r\n6 5\r\n5 4\r\n7 3\r\n4 8\r\n2 1\r\n6 6\r\n8 5\r\n2 7\r\n4 6\r\n2 2\r\n8 7\r\n4 3\r\n7 4\r\n4 4\r\n6 4\r\n7 6\r\n6 8\r\n5 5\r\n4 5\r\n2 3\r\n5 6\r\n8 4\r\n8 6\r\n8 3\r\n",
+                "Yes"
+            ],
+            [
+                "10 10 50\r\n6 4\r\n6 8\r\n8 4\r\n4 6\r\n5 8\r\n8 6\r\n7 3\r\n2 7\r\n8 7\r\n7 5\r\n8 3\r\n5 3\r\n9 6\r\n4 7\r\n2 9\r\n7 7\r\n2 5\r\n5 5\r\n2 4\r\n6 2\r\n7 4\r\n4 2\r\n8 8\r\n9 7\r\n2 1\r\n6 7\r\n5 4\r\n9 8\r\n2 3\r\n5 6\r\n8 9\r\n9 3\r\n4 8\r\n9 5\r\n7 6\r\n9 4\r\n8 5\r\n6 6\r\n6 3\r\n2 8\r\n9 2\r\n9 9\r\n6 5\r\n7 8\r\n4 4\r\n4 3\r\n2 2\r\n8 2\r\n2 6\r\n5 7\r\n",
+                "No"
+            ],
+            [
+                "10 10 54\r\n6 4\r\n6 8\r\n8 4\r\n4 6\r\n5 8\r\n8 6\r\n7 3\r\n2 7\r\n4 5\r\n8 7\r\n7 5\r\n8 3\r\n5 3\r\n9 6\r\n4 7\r\n5 2\r\n2 9\r\n7 7\r\n2 5\r\n5 5\r\n2 4\r\n6 2\r\n7 2\r\n7 4\r\n4 2\r\n8 8\r\n9 7\r\n2 1\r\n6 7\r\n5 4\r\n9 8\r\n2 3\r\n5 6\r\n8 9\r\n9 3\r\n4 8\r\n9 5\r\n7 6\r\n9 4\r\n8 5\r\n6 6\r\n6 3\r\n2 8\r\n9 2\r\n9 9\r\n6 5\r\n7 8\r\n4 4\r\n4 3\r\n2 2\r\n8 2\r\n2 6\r\n5 7\r\n9 1\r\n",
+                "No"
+            ],
+            [
+                "10 10 31\r\n4 5\r\n9 7\r\n3 9\r\n7 3\r\n4 3\r\n9 3\r\n6 9\r\n8 9\r\n7 5\r\n9 6\r\n6 6\r\n6 4\r\n7 9\r\n7 6\r\n5 3\r\n5 6\r\n6 5\r\n6 3\r\n5 9\r\n9 2\r\n9 8\r\n2 9\r\n9 9\r\n5 4\r\n7 4\r\n4 4\r\n4 9\r\n9 4\r\n4 6\r\n5 5\r\n9 5\r\n",
+                "Yes"
+            ],
+            [
+                "10 10 19\r\n4 4\r\n7 5\r\n4 7\r\n5 7\r\n4 6\r\n6 6\r\n6 7\r\n7 3\r\n7 7\r\n5 6\r\n6 5\r\n4 3\r\n6 4\r\n6 3\r\n5 4\r\n5 5\r\n5 3\r\n7 4\r\n4 5\r\n",
+                "No"
+            ],
+            [
+                "10 10 29\r\n8 5\r\n4 4\r\n7 9\r\n9 9\r\n7 6\r\n6 6\r\n6 4\r\n7 4\r\n6 3\r\n4 9\r\n2 9\r\n5 6\r\n7 5\r\n8 3\r\n7 3\r\n3 9\r\n4 6\r\n4 3\r\n5 4\r\n5 3\r\n5 9\r\n8 6\r\n8 9\r\n6 5\r\n6 9\r\n5 5\r\n8 4\r\n4 5\r\n8 7\r\n",
+                "Yes"
+            ],
+            [
+                "10 10 25\r\n6 4\r\n6 7\r\n6 3\r\n8 6\r\n8 8\r\n5 6\r\n8 7\r\n4 4\r\n7 5\r\n4 3\r\n6 5\r\n6 6\r\n7 6\r\n5 4\r\n4 5\r\n4 6\r\n7 4\r\n7 7\r\n5 3\r\n5 5\r\n8 5\r\n4 7\r\n7 3\r\n8 4\r\n5 7\r\n",
+                "No"
+            ],
+            [
+                "10 10 31\r\n3 10\r\n7 10\r\n5 5\r\n8 6\r\n7 3\r\n5 6\r\n7 6\r\n4 10\r\n4 5\r\n8 10\r\n6 6\r\n2 10\r\n6 10\r\n5 10\r\n6 5\r\n8 3\r\n8 4\r\n8 5\r\n4 6\r\n7 5\r\n6 4\r\n4 4\r\n5 4\r\n5 3\r\n7 4\r\n6 3\r\n1 10\r\n9 10\r\n8 7\r\n4 3\r\n10 10\r\n",
+                "Yes"
+            ],
+            [
+                "10 10 19\r\n5 6\r\n4 5\r\n6 5\r\n8 5\r\n6 3\r\n4 4\r\n6 7\r\n8 8\r\n5 7\r\n4 3\r\n5 5\r\n5 4\r\n8 6\r\n6 4\r\n5 3\r\n8 7\r\n8 4\r\n6 6\r\n4 6\r\n",
+                "No"
+            ],
+            [
+                "10 10 57\r\n6 5\r\n8 5\r\n2 7\r\n4 5\r\n4 6\r\n7 3\r\n8 9\r\n4 2\r\n3 6\r\n9 8\r\n2 3\r\n7 2\r\n2 6\r\n7 4\r\n7 9\r\n3 4\r\n8 3\r\n9 3\r\n9 5\r\n2 2\r\n2 9\r\n5 8\r\n3 7\r\n2 4\r\n4 3\r\n8 4\r\n4 8\r\n4 4\r\n6 8\r\n3 2\r\n3 5\r\n4 7\r\n3 8\r\n4 1\r\n8 6\r\n9 9\r\n7 6\r\n6 9\r\n7 5\r\n2 5\r\n2 1\r\n3 3\r\n6 2\r\n6 3\r\n5 9\r\n2 8\r\n3 1\r\n6 6\r\n4 9\r\n9 4\r\n6 4\r\n7 8\r\n9 6\r\n8 8\r\n8 2\r\n9 2\r\n3 9\r\n",
+                "Yes"
+            ],
+            [
+                "10 10 64\r\n10 1\r\n4 7\r\n8 4\r\n9 7\r\n3 7\r\n4 3\r\n7 1\r\n9 4\r\n8 7\r\n6 4\r\n3 1\r\n5 4\r\n4 5\r\n6 6\r\n5 8\r\n8 8\r\n4 6\r\n2 5\r\n6 9\r\n6 7\r\n5 3\r\n6 1\r\n6 5\r\n8 3\r\n9 5\r\n2 6\r\n2 4\r\n5 6\r\n7 7\r\n9 1\r\n8 5\r\n3 8\r\n2 9\r\n5 7\r\n4 1\r\n3 5\r\n3 9\r\n9 9\r\n2 3\r\n3 3\r\n3 4\r\n6 3\r\n6 8\r\n4 8\r\n2 7\r\n2 8\r\n7 3\r\n2 1\r\n8 1\r\n5 5\r\n4 9\r\n9 8\r\n9 6\r\n8 9\r\n9 3\r\n7 5\r\n7 8\r\n3 6\r\n5 1\r\n5 9\r\n7 9\r\n4 4\r\n7 6\r\n7 4\r\n",
+                "No"
+            ],
+            [
+                "10 10 36\r\n3 3\r\n3 5\r\n8 7\r\n7 3\r\n7 8\r\n7 7\r\n8 8\r\n8 4\r\n7 5\r\n7 6\r\n5 5\r\n3 8\r\n5 7\r\n3 4\r\n4 7\r\n8 3\r\n4 6\r\n7 4\r\n8 5\r\n5 6\r\n5 8\r\n4 5\r\n3 6\r\n8 6\r\n4 3\r\n5 3\r\n6 7\r\n6 5\r\n6 4\r\n6 3\r\n5 4\r\n6 6\r\n4 4\r\n3 7\r\n4 8\r\n6 8\r\n",
+                "Yes"
+            ],
+            [
+                "10 10 25\r\n8 6\r\n8 5\r\n8 4\r\n4 6\r\n6 3\r\n7 7\r\n4 4\r\n8 8\r\n6 4\r\n8 3\r\n4 7\r\n5 6\r\n6 6\r\n5 4\r\n5 5\r\n7 4\r\n4 5\r\n4 3\r\n7 5\r\n6 5\r\n7 3\r\n5 7\r\n8 7\r\n7 6\r\n6 7\r\n",
+                "No"
+            ],
+            [
+                "10 10 46\r\n5 4\r\n3 5\r\n5 3\r\n3 2\r\n6 6\r\n3 7\r\n7 5\r\n3 6\r\n6 3\r\n10 3\r\n5 7\r\n5 6\r\n10 7\r\n7 6\r\n5 5\r\n4 5\r\n7 4\r\n10 2\r\n10 6\r\n6 7\r\n10 1\r\n6 4\r\n7 7\r\n3 3\r\n3 8\r\n4 3\r\n7 8\r\n8 2\r\n4 4\r\n10 5\r\n10 9\r\n6 2\r\n4 8\r\n4 7\r\n4 2\r\n7 2\r\n5 2\r\n6 8\r\n4 6\r\n6 5\r\n10 10\r\n3 4\r\n7 3\r\n10 4\r\n10 8\r\n5 8\r\n",
+                "Yes"
+            ],
+            [
+                "10 10 44\r\n10 6\r\n10 7\r\n5 6\r\n7 6\r\n6 7\r\n4 2\r\n7 7\r\n4 8\r\n4 5\r\n4 7\r\n10 2\r\n10 10\r\n6 5\r\n5 4\r\n3 7\r\n5 7\r\n6 4\r\n6 6\r\n4 4\r\n10 8\r\n5 8\r\n5 2\r\n10 3\r\n3 2\r\n10 1\r\n3 4\r\n8 3\r\n6 8\r\n5 5\r\n7 4\r\n3 3\r\n10 9\r\n6 2\r\n7 5\r\n10 4\r\n7 3\r\n4 3\r\n5 3\r\n6 3\r\n8 2\r\n10 5\r\n3 5\r\n7 2\r\n7 8\r\n",
+                "No"
+            ],
+            [
+                "10 10 36\r\n5 6\r\n5 7\r\n5 3\r\n3 8\r\n8 3\r\n4 6\r\n4 4\r\n7 3\r\n3 3\r\n6 4\r\n3 4\r\n4 5\r\n7 4\r\n6 7\r\n4 7\r\n7 8\r\n8 8\r\n5 8\r\n6 8\r\n8 4\r\n3 5\r\n4 3\r\n5 5\r\n7 6\r\n8 7\r\n5 4\r\n4 8\r\n6 6\r\n7 7\r\n3 7\r\n3 6\r\n8 5\r\n7 5\r\n8 6\r\n6 5\r\n6 3\r\n",
+                "Yes"
+            ],
+            [
+                "10 10 48\r\n3 6\r\n9 3\r\n3 4\r\n8 6\r\n6 2\r\n5 4\r\n9 2\r\n8 3\r\n5 5\r\n7 3\r\n4 4\r\n3 9\r\n3 5\r\n6 7\r\n7 2\r\n3 2\r\n8 9\r\n8 4\r\n4 5\r\n8 2\r\n3 7\r\n9 8\r\n5 7\r\n7 7\r\n4 6\r\n6 9\r\n5 9\r\n7 5\r\n4 3\r\n7 4\r\n6 5\r\n7 9\r\n8 7\r\n9 4\r\n4 9\r\n9 5\r\n9 9\r\n5 2\r\n9 7\r\n5 6\r\n8 5\r\n2 9\r\n4 7\r\n3 3\r\n6 4\r\n9 6\r\n6 3\r\n7 6\r\n",
+                "No"
+            ],
+            [
+                "100000 1000 7\r\n498 500\r\n498 503\r\n498 502\r\n498 501\r\n498 499\r\n498 498\r\n498 497\r\n",
+                "Yes"
+            ],
+            [
+                "1000 100000 26\r\n494 99514\r\n499 99514\r\n513 99514\r\n512 99514\r\n500 99514\r\n495 99514\r\n491 99514\r\n507 99514\r\n493 99514\r\n505 99514\r\n497 99514\r\n489 99514\r\n501 99514\r\n506 99514\r\n487 99514\r\n514 99514\r\n504 99514\r\n496 99514\r\n510 99514\r\n511 99514\r\n490 99514\r\n503 99514\r\n498 99514\r\n508 99514\r\n492 99514\r\n488 99514\r\n",
+                "No"
+            ],
+            [
+                "5 5 22\r\n4 1\r\n5 1\r\n1 2\r\n2 2\r\n3 2\r\n4 2\r\n5 2\r\n1 3\r\n2 3\r\n3 3\r\n4 3\r\n5 3\r\n1 4\r\n2 4\r\n3 4\r\n4 4\r\n5 4\r\n1 5\r\n2 5\r\n3 5\r\n4 5\r\n5 5\r\n",
+                "Yes"
+            ],
+            [
+                "2 1 0\r\n",
+                "Yes"
+            ],
+            [
+                "2 2 2\r\n1 2\r\n2 2\r\n",
+                "Yes"
+            ],
+            [
+                "3 1 0\r\n",
+                "Yes"
+            ],
+            [
+                "3 1 1\r\n3 1\r\n",
+                "Yes"
+            ],
+            [
+                "48145 89209 5\r\n3 1\r\n3 2\r\n3 3\r\n2 3\r\n1 3\r\n",
+                "No"
+            ],
+            [
+                "48145 89209 5\r\n1 2\r\n2 2\r\n3 2\r\n4 2\r\n5 1\r\n",
+                "No"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,144 @@
+[
+    {
+        "name": "Field of Wonders",
+        "description": "Polycarpus takes part in the \"Field of Wonders\" TV show. The participants of\nthe show have to guess a hidden word as fast as possible. Initially all the\nletters of the word are hidden. The game consists of several turns. At each\nturn the participant tells a letter and the TV show host responds if there is\nsuch letter in the word or not. If there is such letter then the host reveals\nall such letters. For example, if the hidden word is \"abacaba\" and the player\ntells the letter \"a\", the host will reveal letters at all positions, occupied\nby \"a\": 1, 3, 5 and 7 (positions are numbered from left to right starting from\n1). Polycarpus knows m words of exactly the same length as the hidden word.\nThe hidden word is also known to him and appears as one of these m words. At\ncurrent moment a number of turns have already been made and some letters\n(possibly zero) of the hidden word are already revealed. Previously Polycarp\nhas told exactly the letters which are currently revealed. It is Polycarpus'\nturn. He wants to tell a letter in such a way, that the TV show host will\nassuredly reveal at least one more letter. Polycarpus cannot tell the letters,\nwhich are already revealed. Your task is to help Polycarpus and find out the\nnumber of letters he can tell so that the show host will assuredly reveal at\nleast one of the remaining letters. Input The first line contains one integer\nn (1 \u2264 n \u2264 50) \u2014 the length of the hidden word. The following line describes\nalready revealed letters. It contains the string of length n, which consists\nof lowercase Latin letters and symbols \"*\". If there is a letter at some\nposition, then this letter was already revealed. If the position contains\nsymbol \"*\", then the letter at this position has not been revealed yet. It is\nguaranteed, that at least one letter is still closed. The third line contains\nan integer m (1 \u2264 m \u2264 1000) \u2014 the number of words of length n, which\nPolycarpus knows. The following m lines contain the words themselves \u2014\nn-letter strings of lowercase Latin letters. All words are distinct. It is\nguaranteed that the hidden word appears as one of the given m words. Before\nthe current move Polycarp has told exactly the letters which are currently\nrevealed. Output Output the single integer \u2014 the number of letters Polycarpus\ncan tell so that the TV show host definitely reveals at least one more letter.\nIt is possible that this number is zero. Examples Input 4 a**d 2 abcd acbd\nOutput 2 Input 5 lo*er 2 lover loser Output 0 Input 3 a*a 2 aaa aba Output 1\nNote In the first example Polycarpus can tell letters \"b\" and \"c\", which\nassuredly will be revealed. The second example contains no letters which can\nbe told as it is not clear, which of the letters \"v\" or \"s\" is located at the\nthird position of the hidden word. In the third example Polycarpus exactly\nknows that the hidden word is \"aba\", because in case it was \"aaa\", then the\nsecond letter \"a\" would have already been revealed in one of previous turns.\n\n",
+        "cf_contest_id": 883,
+        "cf_index": "E",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\na**d\r\n2\r\nabcd\r\nacbd\r\n",
+                "2\r\n"
+            ],
+            [
+                "5\r\nlo*er\r\n2\r\nlover\r\nloser\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\na*a\r\n2\r\naaa\r\naba\r\n",
+                "1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n*\r\n1\r\na\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n*\r\n1\r\nz\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n*\r\n2\r\na\r\nz\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n**\r\n1\r\naa\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n**\r\n1\r\nfx\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n**\r\n2\r\nfx\r\nab\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n**\r\n2\r\nfx\r\naf\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\na*\r\n2\r\naa\r\nab\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\na*b*\r\n2\r\nabbc\r\nadbd\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\na*b*\r\n3\r\nabbc\r\nadbd\r\nacbe\r\n",
+                "0\r\n"
+            ],
+            [
+                "4\r\na*b*\r\n3\r\nabbc\r\nadbd\r\nacbd\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n***\r\n2\r\naaa\r\nbbb\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n***\r\n2\r\naab\r\nabb\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n*a*\r\n4\r\naaa\r\ncac\r\naab\r\nbaa\r\n",
+                "1\r\n"
+            ],
+            [
+                "42\r\n*****o*******t********************oo******\r\n10\r\nvcrccobltkeidtxhsxhccaslkjhfyeqsetoowaemso\r\nuimjsoxifamvctkgqmrwhyjrgmlydczzqjoobnnwch\r\nuvmjsoqizfavctkxemrpaycngmlyemzzqjoobszwbh\r\nusmjsoviskzvctkljmrlmylugmlydfzzqvoobzawgh\r\nfeqweodinkhiatqmfokaxwcmlmbmvskssyookgcrax\r\ntackfosjhxeqftkgjynbbedrczegtimuvooosypczy\r\nxanuvoeismzmctruyplxgmfcpyrpqopyctoozlquvg\r\nurmjsouirdrvctkepmrwjyaxgmlyzvzzqcoobjgwih\r\nuymjsogivzivctkydmrgwyavgmlyphzzquoobclwhh\r\nkodyeoyihylgrtrdwudrsyonmuhtxaqklcoolsaclu\r\n",
+                "18\r\n"
+            ],
+            [
+                "50\r\n***********************************o**************\r\n5\r\nwrubnrgpqmduhgxtlxymsmcaiimivvypkkeouspglhzkfbpzcu\r\nfrubkrgplrduhgjuuxdmsgeaiimavvypkkeousulbhnkebpzcu\r\nwrubkrgpdrduhgfanxdmsufaiimgvvypkkeouwvsshikhbpzcu\r\nvhyfvnnobcguishyvuswkaxhkesgatuvbkyodxdrvlwwifiimd\r\nwrubwrgpvaduhgfnqxtmsjqaiimcvvypkkeouiqpyhckkbpzcu\r\n",
+                "20\r\n"
+            ],
+            [
+                "10\r\n**********\r\n10\r\nmvsthotcmi\r\nhmivtctsmo\r\nmmcostthiv\r\ntmomihtsvc\r\nmottsivmch\r\nhtomvcsmit\r\nsvhmotmcti\r\nmitotmvhcs\r\nvomcttmish\r\ncmostitvmh\r\n",
+                "8\r\n"
+            ],
+            [
+                "20\r\n********************\r\n1\r\nlaizpfbafxrugjcytfbs\r\n",
+                "16\r\n"
+            ],
+            [
+                "50\r\n**************************************************\r\n1\r\nqgaeytghzvvtgeitpovqozyclectzcohivbggudhiylaecbdzq\r\n",
+                "17\r\n"
+            ],
+            [
+                "50\r\n**************************************************\r\n2\r\nhvjbrfkhdaobruoptrrachzuvkxvvsckycfiroipqicoqvcqpr\r\nuirvabciccxdvpryroisvpoqvthrpurkzhoovcfqcjbhkarkqf\r\n",
+                "20\r\n"
+            ],
+            [
+                "26\r\n**************************\r\n10\r\nevfsnczuiodgbhqmlypkjatxrw\r\nuapqfdtoxkzynlbrehgwismvjc\r\nwjuyacngtzmvhqelikxoprdfbs\r\nyjgstlkvrhoqadxwfbiucpznem\r\nvebnxtrlocgkajqmwfuiszhypd\r\nroaqchwlpvtzxymnbkjigfedsu\r\noxmwaqpcendihzkutsybrjgfvl\r\nbnfzlwcsagxojdiyktqvruemhp\r\npdjahwnvmouxgqlciktzrfeysb\r\nbznurcyefxiapgktmqwjvsdloh\r\n",
+                "26\r\n"
+            ],
+            [
+                "26\r\n**************************\r\n1\r\nayvguplhjsoiencbkxdrfwmqtz\r\n",
+                "26\r\n"
+            ],
+            [
+                "26\r\n*lmnotuvwxyzjkabcdehiqfgrs\r\n2\r\nblmnotuvwxyzjkabcdehiqfgrs\r\nplmnotuvwxyzjkabcdehiqfgrs\r\n",
+                "1\r\n"
+            ],
+            [
+                "16\r\nx*d**s******xd*u\r\n22\r\nxfdeoshogyqjxdmu\r\nxvdvdsnwfwakxdyu\r\nxfdjoshftykjxdmu\r\nxfdcoshfwyajxdmu\r\nxfdfoshkmyajxdmu\r\nxfdyoshpoycjxdmu\r\nxmdhcswqnhxjxdtu\r\nxxdxwsoogqzwxdcu\r\nxxdhhsxqzciuxdfu\r\nxddcmswqzksqxdhu\r\nxfdtoshioyvjxdmu\r\nxsdxmsfmgjbyxdgu\r\nxadfssplfnlbxdru\r\nxndcasykmqmbxdru\r\nxrdxgszaisicxdlu\r\nxfdfoshhmypjxdmu\r\nxfdioshfiyhjxdmu\r\nxvdzysydlmyuxdnu\r\nxjdbqszgkuwhxdmu\r\nxfdfoshjyymjxdmu\r\nxgdjksubrmrfxdpu\r\nxkdshsfszixmxdcu\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n*vt\r\n2\r\ncvt\r\nqvb\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\ntv*\r\n2\r\ntvc\r\nbvq\r\n",
+                "1\r\n"
+            ],
+            [
+                "41\r\n*z*hjcxxdgkny*tc*rmaov***fra**efs*lbi*puw\r\n1\r\nqzqhjcxxdgknyqtcqrmaovqqqfraqqefsqlbiqpuw\r\n",
+                "1\r\n"
+            ],
+            [
+                "48\r\n*h*i**ag**um**fuxvmxlj*dsyt*gb*dxkzp*brnelctkq*w\r\n1\r\nohoiooagooumoofuxvmxljodsytogbodxkzpobrnelctkqow\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,109 @@
+[
+    {
+        "name": "Neural Network Problem",
+        "description": "You want to train a neural network model for your graduation work. There are\n\n    n\n images in the dataset, the \n    i\n-th image's size is \n    a_i\n bytes.\nYou don't have any powerful remote servers to train this model so you have to\ndo it on your local machine. But there is a problem: the total size of the\ndataset is too big for your machine, so you decided to remove some images \u2014\nthough you don't want to make the dataset too weak so you can remove no more\nthan \n    k\n images from it. Note that you can only remove images, you can't\nchange their order. You want to remove these images optimally so you came up\nwith a metric (you're a data scientist after all) that allows to measure the\nresult of removals. Consider the array \n    b_1, b_2, \n    \u2026, b_m\n after\nremoving at most \n    k\n images (\n    n - k \n    \u2264 m \n    \u2264 n\n). The data from\nthis array will be uploaded to the machine in blocks of \n    x\n consecutive\nelements each. More precisely: elements with indices from \n    1\n to \n    x\n\n(\n    b_1, b_2, \n    \u2026, b_x\n) belong to the first block; elements with\nindices from \n    x + 1\n to \n    2x\n (\n    b_x + 1, b_x + 2, \n    \u2026,\n    b_2x\n) belong to the second block; elements with indices from \n    2x + 1\n\nto \n    3x\n (\n    b_2x + 1, b_2x + 2, \n    \u2026, b_3x\n) belong to the\nthird block; and so on. There will be \n    cnt =\n    \n    \n    \u2308\n    m/x\n    \n    \u2309\n blocks in total. Note that if\n\n    m\n is not divisible by \n    x\n then the last block contains less than\n\n    x\n elements, and it's okay. Let \n    w(i)\n be the total size of the\n\n    i\n-th block \u2014 that is, the sum of sizes of images inside this block. For\nexample, the size of the first block \n    w(1)\n is \n    b_1 + b_2 + \n    \u2026 +\n    b_x\n, the size of the second block \n    w(2)\n is \n    b_x + 1 + b_x + 2 +\n    \n    \u2026 + b_2x\n. The value of the metric you came up with is the maximum\nblock size over the blocks of the resulting dataset. In other words, the value\nof the metric is \n    max\n    _i=1^cnt w(i)\n. You don't want to\noverload your machine too much, so you have to remove at most \n    k\n images\nin a way that minimizes the value of the metric described above. Input The\nfirst line of the input contains three integers \n    n\n, \n    k\n and \n    x\n\n(\n    1 \n    \u2264 n \n    \u2264 10^5\n; \n    1 \n    \u2264 k, x \n    \u2264 n\n) \u2014 the number of\nimages in the dataset, the maximum number of images you can remove and the\nlength of each block (except maybe for the last one), respectively. The second\nline of the input contains \n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n\n(\n    1 \n    \u2264 a_i \n    \u2264 10^5\n), where \n    a_i\n is the size of the \n    i\n-th\nimage. Output Print one integer: the minimum possible value of the metric\ndescribed in the problem statement after removing no more than \n    k\n images\nfrom the dataset. Examples Input 5 5 4 1 1 5 4 5 Output 0 Input 5 2 4 6 1 5 5\n6 Output 11 Input 6 1 4 3 3 1 3 1 2 Output 8 Input 6 1 3 2 2 1 2 2 1 Output 5\nNote In the first example, you can remove the whole array so the answer is\n\n    0\n. In the second example, you can remove the first and the last elements\nof \n    a\n and obtain \n    b = [1, 5, 5]\n. The size of the first (and the\nonly) block is \n    11\n. So the answer is \n    11\n. In the third example, you\ncan remove the second element of \n    a\n and obtain \n    b = [3, 1, 3, 1, 2]\n.\nThe size of the first block is \n    8\n and the size of the second block is\n\n    2\n. So the answer is \n    8\n. In the fourth example, you can keep the\narray \n    a\n unchanged and obtain \n    b = [2, 2, 1, 2, 2, 1]\n. The size of\nthe first block is \n    5\n as well as the size of the second block. So the\nanswer is \n    5\n.\n\n",
+        "cf_contest_id": 1431,
+        "cf_index": "F",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "binary search",
+            "greedy"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 5 4\r\n1 1 5 4 5\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 2 4\r\n6 1 5 5 6\r\n",
+                "11\r\n"
+            ],
+            [
+                "6 1 4\r\n3 3 1 3 1 2\r\n",
+                "8\r\n"
+            ],
+            [
+                "6 1 3\r\n2 2 1 2 2 1\r\n",
+                "5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7 2 4\r\n4 6 8 2 6 8 4\r\n",
+                "18\r\n"
+            ],
+            [
+                "6 1 2\r\n1 3 2 1 3 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "44 26 16\r\n41 163 146 161 57 88 132 66 170 93 53 136 27 132 87 171 133 65 41 69 1 24 41 53 128 2 165 65 170 27 162 82 129 148 149 121 67 163 169 51 134 168 68 4\r\n",
+                "681\r\n"
+            ],
+            [
+                "153 37 49\r\n46 65 12 43 20 65 51 27 23 44 11 37 6 65 29 15 4 25 17 31 40 33 49 1 22 12 48 30 36 8 58 67 16 35 34 35 4 60 16 23 24 46 33 32 32 15 58 66 39 26 45 38 46 26 41 14 19 58 18 69 46 34 60 25 34 24 42 60 16 23 34 11 44 48 66 68 19 65 49 31 27 58 31 61 49 1 22 23 49 5 63 6 20 18 41 23 66 2 31 51 57 69 5 7 43 58 44 59 9 22 14 60 37 6 18 53 34 3 22 46 36 12 32 22 45 27 64 58 42 52 28 15 36 63 23 43 26 52 27 21 31 28 46 6 19 51 56 33 1 15 4 50 12\r\n",
+                "1251\r\n"
+            ],
+            [
+                "1 1 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1 1\r\n100000\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1 1\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1 1\r\n2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1 2\r\n1 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1 2\r\n2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2 1\r\n1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2 1\r\n2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2 2\r\n1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2 2\r\n2 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 1 2\r\n2 2 2 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 2 2\r\n3 2 4 6 1\r\n",
+                "5\r\n"
+            ],
+            [
+                "5 2 2\r\n71 81 11 113 60\r\n",
+                "82\r\n"
+            ],
+            [
+                "163 69 96\r\n40 93 108 66 26 77 108 19 101 19 25 50 94 55 3 67 33 68 112 10 28 89 7 49 49 91 70 102 56 97 109 42 10 87 65 3 87 12 74 26 1 4 69 94 15 86 2 64 43 46 103 85 52 77 75 87 29 52 44 100 108 109 90 93 92 98 89 57 11 84 51 47 29 5 68 111 23 30 76 10 101 42 65 101 100 25 42 107 8 110 37 8 40 66 65 30 77 78 21 20 55 5 24 82 72 104 102 102 6 31 97 66 93 7 46 11 59 15 84 28 3 42 17 81 91 32 52 44 45 108 36 20 57 111 55 65 2 60 28 97 13 26 50 87 5 53 62 70 9 46 89 106 92 38 80 111 85 23 50 40 45 91 70\r\n",
+                "3082\r\n"
+            ]
+        ]
+    }
+]

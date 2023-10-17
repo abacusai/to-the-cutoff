@@ -1,0 +1,107 @@
+[
+    {
+        "name": "Shichikuji and Power Grid",
+        "description": "Shichikuji is the new resident deity of the South Black Snail Temple. Her\nfirst job is as follows: There are \n    n\n new cities located in Prefecture X.\nCities are numbered from \n    1\n to \n    n\n. City \n    i\n is located \n    x_i\n\nkm North of the shrine and \n    y_i\n km East of the shrine. It is possible\nthat \n    (x_i, y_i) = (x_j, y_j)\n even when \n    i \n     j\n. Shichikuji must\nprovide electricity to each city either by building a power station in that\ncity, or by making a connection between that city and another one that already\nhas electricity. So the City has electricity if it has a power station in it\nor it is connected to a City which has electricity by a direct connection or\nvia a chain of connections. Building a power station in City \n    i\n will cost\n\n    c_i\n yen; Making a connection between City \n    i\n and City \n    j\n will\ncost \n    k_i + k_j\n yen per km of wire used for the connection. However,\nwires can only go the cardinal directions (North, South, East, West). Wires\ncan cross each other. Each wire must have both of its endpoints in some\ncities. If City \n    i\n and City \n    j\n are connected by a wire, the wire\nwill go through any shortest path from City \n    i\n to City \n    j\n. Thus, the\nlength of the wire if City \n    i\n and City \n    j\n are connected is \n    |x_i -\n    x_j| + |y_i - y_j|\n km. Shichikuji wants to do this job spending as little\nmoney as possible, since according to her, there isn't really anything else in\nthe world other than money. However, she died when she was only in fifth grade\nso she is not smart enough for this. And thus, the new resident deity asks for\nyour help. And so, you have to provide Shichikuji with the following\ninformation: minimum amount of yen needed to provide electricity to all\ncities, the cities in which power stations will be built, and the connections\nto be made. If there are multiple ways to choose the cities and the\nconnections to obtain the construction of minimum price, then print any of\nthem. Input First line of input contains a single integer \n    n\n (\n    1 \n    \u2264\n    n \n    \u2264 2000\n) \u2014 the number of cities. Then, \n    n\n lines follow. The\n\n    i\n-th line contains two space-separated integers \n    x_i\n (\n    1 \n    \u2264\n    x_i \n    \u2264 10^6\n) and \n    y_i\n (\n    1 \n    \u2264 y_i \n    \u2264 10^6\n) \u2014 the\ncoordinates of the \n    i\n-th city. The next line contains \n    n\n space-\nseparated integers \n    c_1, c_2, \n    \u2026, c_n\n (\n    1 \n    \u2264 c_i \n    \u2264\n    10^9\n) \u2014 the cost of building a power station in the \n    i\n-th city. The\nlast line contains \n    n\n space-separated integers \n    k_1, k_2, \n    \u2026,\n    k_n\n (\n    1 \n    \u2264 k_i \n    \u2264 10^9\n). Output In the first line print a\nsingle integer, denoting the minimum amount of yen needed. Then, print an\ninteger \n    v\n \u2014 the number of power stations to be built. Next, print\n\n    v\n space-separated integers, denoting the indices of cities in which a\npower station will be built. Each number should be from \n    1\n to \n    n\n and\nall numbers should be pairwise distinct. You can print the numbers in\narbitrary order. After that, print an integer \n    e\n \u2014 the number of\nconnections to be made. Finally, print \n    e\n pairs of integers \n    a\n and\n\n    b\n (\n    1 \n    \u2264 a, b \n    \u2264 n\n, \n    a \n     b\n), denoting that a\nconnection between City \n    a\n and City \n    b\n will be made. Each unordered\npair of cities should be included at most once (for each \n    (a, b)\n there\nshould be no more \n    (a, b)\n or \n    (b, a)\n pairs). You can print the pairs\nin arbitrary order. If there are multiple ways to choose the cities and the\nconnections to obtain the construction of minimum price, then print any of\nthem. Examples Input 3 2 3 1 1 3 2 3 2 3 3 2 3 Output 8 3 1 2 3 0 Input 3 2 1\n1 2 3 3 23 2 23 3 2 3 Output 27 1 2 2 1 2 2 3 Note For the answers given in\nthe samples, refer to the following diagrams (cities with power stations are\ncolored green, other cities are colored blue, and wires are colored red): For\nthe first example, the cost of building power stations in all cities is \n    3 +\n    2 + 3 = 8\n. It can be shown that no configuration costs less than 8 yen. For\nthe second example, the cost of building a power station in City 2 is 2. The\ncost of connecting City 1 and City 2 is \n    2 \n    \u00b7 (3 + 2) = 10\n. The cost\nof connecting City 2 and City 3 is \n    3 \n    \u00b7 (2 + 3) = 15\n. Thus the\ntotal cost is \n    2 + 10 + 15 = 27\n. It can be shown that no configuration\ncosts less than 27 yen.\n\n",
+        "cf_contest_id": 1245,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "dsu",
+            "graphs",
+            "greedy",
+            "shortest paths",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n2 3\r\n1 1\r\n3 2\r\n3 2 3\r\n3 2 3\r\n",
+                "8\r\n3\r\n2 1 3 \r\n0\r\n"
+            ],
+            [
+                "3\r\n2 1\r\n1 2\r\n3 3\r\n23 2 23\r\n3 2 3\r\n",
+                "27\r\n1\r\n2 \r\n2\r\n1 2\r\n3 2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1 1\r\n1\r\n1\r\n",
+                "1\r\n1\r\n1 \r\n0\r\n"
+            ],
+            [
+                "6\r\n802169 415058\r\n438621 719382\r\n427378 361095\r\n938841 703007\r\n651689 546630\r\n543902 45803\r\n928313110 402257489 40475518 321650025 335526487 752229521\r\n91 19 18 39 15 99\r\n",
+                "171488866\r\n1\r\n3 \r\n5\r\n5 3\r\n2 5\r\n4 5\r\n1 5\r\n6 3\r\n"
+            ],
+            [
+                "6\r\n926735 182606\r\n976455 103965\r\n903029 607032\r\n680319 517825\r\n543456 192460\r\n94688 397177\r\n618976837 975363653 408000284 178858761 676137906 146508492\r\n54 55 34 54 13 95\r\n",
+                "315834104\r\n1\r\n6 \r\n5\r\n5 6\r\n1 5\r\n2 1\r\n4 5\r\n3 4\r\n"
+            ],
+            [
+                "6\r\n556213 963159\r\n679424 196322\r\n54313 379016\r\n984501 484684\r\n70496 420196\r\n888417 164564\r\n135914456 52811570 691248006 333106319 549568628 440548541\r\n6 41 44 29 78 3\r\n",
+                "143180751\r\n1\r\n2 \r\n5\r\n6 2\r\n1 6\r\n4 6\r\n3 6\r\n5 3\r\n"
+            ],
+            [
+                "6\r\n218394 609\r\n125496 545576\r\n238301 375191\r\n288683 418840\r\n630240 489147\r\n714851 773166\r\n503108971 275483679 974495729 337610773 717966646 584845486\r\n55 19 53 8 35 19\r\n",
+                "357440423\r\n1\r\n2 \r\n5\r\n4 2\r\n3 4\r\n5 4\r\n6 5\r\n1 4\r\n"
+            ],
+            [
+                "6\r\n847872 781162\r\n636977 894829\r\n454993 147174\r\n592866 128803\r\n933087 749587\r\n284388 573256\r\n725079294 352931596 402967643 491858331 296430072 729142430\r\n3 97 70 92 92 32\r\n",
+                "453153574\r\n1\r\n5 \r\n5\r\n1 5\r\n6 1\r\n2 1\r\n3 6\r\n4 3\r\n"
+            ],
+            [
+                "6\r\n734246 561716\r\n339946 19891\r\n606277 951862\r\n897048 62959\r\n525535 42731\r\n110821 373346\r\n92273809 430379513 686215366 791330082 464828090 23182479\r\n44 86 75 71 53 44\r\n",
+                "304410151\r\n1\r\n6 \r\n5\r\n1 6\r\n3 1\r\n5 1\r\n2 5\r\n4 5\r\n"
+            ],
+            [
+                "6\r\n363723 566462\r\n786019 369145\r\n822969 915333\r\n201230 62522\r\n52575 303170\r\n713062 206141\r\n314244132 507827430 524752688 650610344 633226108 167479424\r\n97 64 85 54 10 60\r\n",
+                "423032742\r\n1\r\n6 \r\n5\r\n2 6\r\n5 6\r\n4 5\r\n1 5\r\n3 2\r\n"
+            ],
+            [
+                "6\r\n993201 412423\r\n264796 685694\r\n6957 720020\r\n505413 996678\r\n612318 563610\r\n539496 6231\r\n831181751 290308051 808000411 950082094 506656830 606743665\r\n45 38 94 25 59 68\r\n",
+                "544353233\r\n1\r\n2 \r\n5\r\n4 2\r\n3 2\r\n5 4\r\n1 5\r\n6 5\r\n"
+            ],
+            [
+                "6\r\n622678 417169\r\n935060 810756\r\n190945 716196\r\n809595 930833\r\n139358 824049\r\n109033 806321\r\n903408970 512980161 236472325 809362356 675054848 605816417\r\n86 16 15 9 16 81\r\n",
+                "338195376\r\n1\r\n3 \r\n5\r\n5 3\r\n6 5\r\n4 5\r\n2 4\r\n1 4\r\n"
+            ],
+            [
+                "6\r\n252156 197723\r\n413837 160009\r\n374933 455475\r\n113777 897693\r\n474909 84489\r\n935466 382220\r\n420346589 590428078 519720047 963609915 548485570 45080658\r\n34 1 25 88 81 97\r\n",
+                "224331229\r\n1\r\n6 \r\n5\r\n2 6\r\n1 2\r\n3 2\r\n5 2\r\n4 3\r\n"
+            ],
+            [
+                "6\r\n138530 202468\r\n892614 285071\r\n526217 260162\r\n417959 831848\r\n34653 377633\r\n505003 182310\r\n492573808 667875995 948191962 968114369 421916292 44153411\r\n83 83 30 71 38 5\r\n",
+                "209141710\r\n1\r\n6 \r\n5\r\n3 6\r\n5 6\r\n1 5\r\n2 6\r\n4 6\r\n"
+            ],
+            [
+                "6\r\n862253 209081\r\n59382 488491\r\n371124 175714\r\n882694 913875\r\n546059 428629\r\n590484 483948\r\n43070242 866242458 707998877 527550450 663998638 751947391\r\n798 823 935 224 560 645\r\n",
+                "2713848452\r\n2\r\n1 4 \r\n4\r\n6 4\r\n5 6\r\n3 5\r\n2 5\r\n"
+            ],
+            [
+                "6\r\n732137 565948\r\n791193 300578\r\n88037 910089\r\n539349 148542\r\n64631 953906\r\n886167 568333\r\n592018697 995629676 481078526 287841236 644943736 419884292\r\n1136 8201 9386 1715 7306 5427\r\n",
+                "3421396163\r\n6\r\n4 6 3 1 5 2 \r\n0\r\n"
+            ],
+            [
+                "6\r\n622699 16861\r\n486958 358721\r\n711478 582636\r\n346081 750046\r\n712010 3921\r\n78459 264205\r\n230876603 184938207 471730104 928852539 248266476 391700575\r\n33786 73208 90808 39720 35842 14936\r\n",
+                "2456364504\r\n6\r\n2 1 5 6 3 4 \r\n0\r\n"
+            ],
+            [
+                "6\r\n452449 104020\r\n791176 983410\r\n296826 521797\r\n520327 553663\r\n984761 165257\r\n625545 737116\r\n980937935 886752659 831177840 440196237 626483094 778180277\r\n785654 842185 743349 211644 292863 953830\r\n",
+                "4543728042\r\n6\r\n4 5 6 3 2 1 \r\n0\r\n"
+            ],
+            [
+                "6\r\n236832 684348\r\n391537 966045\r\n439690 693393\r\n249488 277330\r\n239568 644254\r\n890036 29069\r\n573445925 571389425 43331501 778964355 57769471 315207900\r\n6134562 5013209 6889304 9566967 5028787 4924420\r\n",
+                "2340108577\r\n6\r\n3 5 6 2 1 4 \r\n0\r\n"
+            ],
+            [
+                "6\r\n530206 274867\r\n903219 359018\r\n581758 629424\r\n20884 876353\r\n665515 848473\r\n401289 464386\r\n763803694 119928701 675008390 422750290 345531458 606976962\r\n54034874 2213609 16994493 84526714 8129441 96886006\r\n",
+                "2933999495\r\n6\r\n2 5 4 6 3 1 \r\n0\r\n"
+            ],
+            [
+                "6\r\n734304 42385\r\n464187 237466\r\n222360 313647\r\n364202 733043\r\n89833 694920\r\n398339 845862\r\n877584430 903224720 864319998 168282570 210185542 507819772\r\n660835099 966875896 281317003 56653645 396685040 815735737\r\n",
+                "3531417032\r\n6\r\n4 5 6 3 1 2 \r\n0\r\n"
+            ]
+        ]
+    }
+]

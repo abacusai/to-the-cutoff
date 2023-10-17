@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Chicken or Fish?",
+        "description": "Polycarp is flying in the airplane. Finally, it is his favorite time \u2014 the\nlunchtime. The BerAvia company stewardess is giving food consecutively to all\nthe passengers from the 1-th one to the last one. Polycarp is sitting on seat\nm, that means, he will be the m-th person to get food. The flight menu has k\ndishes in total and when Polycarp boarded the flight, he had time to count the\nnumber of portions of each dish on board. Thus, he knows values a1, a2, ...,\nak, where ai is the number of portions of the i-th dish. The stewardess has\nalready given food to m - 1 passengers, gave Polycarp a polite smile and asked\nhim what he would prefer. That's when Polycarp realized that they might have\nrun out of some dishes by that moment. For some of the m - 1 passengers ahead\nof him, he noticed what dishes they were given. Besides, he's heard some\nstrange mumbling from some of the m - 1 passengers ahead of him, similar to\nphrase 'I'm disappointed'. That happened when a passenger asked for some dish\nbut the stewardess gave him a polite smile and said that they had run out of\nthat dish. In that case the passenger needed to choose some other dish that\nwas available. If Polycarp heard no more sounds from a passenger, that meant\nthat the passenger chose his dish at the first try. Help Polycarp to find out\nfor each dish: whether they could have run out of the dish by the moment\nPolyarp was served or that dish was definitely available. Input Each test in\nthis problem consists of one or more input sets. First goes a string that\ncontains a single integer t (1 \u2264 t \u2264 100 000) \u2014 the number of input data sets\nin the test. Then the sets follow, each set is preceded by an empty line. The\nfirst line of each set of the input contains integers m, k (2 \u2264 m \u2264 100 000, 1\n\u2264 k \u2264 100 000) \u2014 the number of Polycarp's seat and the number of dishes,\nrespectively. The second line contains a sequence of k integers a1, a2, ...,\nak (1 \u2264 ai \u2264 100 000), where ai is the initial number of portions of the i-th\ndish. Then m - 1 lines follow, each line contains the description of\nPolycarp's observations about giving food to a passenger sitting in front of\nhim: the j-th line contains a pair of integers tj, rj (0 \u2264 tj \u2264 k, 0 \u2264 rj \u2264\n1), where tj is the number of the dish that was given to the j-th passenger\n(or 0, if Polycarp didn't notice what dish was given to the passenger), and rj\n\u2014 a 1 or a 0, depending on whether the j-th passenger was or wasn't\ndisappointed, respectively. We know that sum ai equals at least m, that\nis,Polycarp will definitely get some dish, even if it is the last thing he\nwanted. It is guaranteed that the data is consistent. Sum m for all input sets\ndoesn't exceed 100 000. Sum k for all input sets doesn't exceed 100 000.\nOutput For each input set print the answer as a single line. Print a string of\nk letters \"Y\" or \"N\". Letter \"Y\" in position i should be printed if they could\nhave run out of the i-th dish by the time the stewardess started serving\nPolycarp. Examples Input 2 3 4 2 3 2 1 1 0 0 0 5 5 1 2 1 3 1 3 0 0 0 2 1 4 0\nOutput YNNY YYYNY Note In the first input set depending on the choice of the\nsecond passenger the situation could develop in different ways: If he chose\nthe first dish, then by the moment the stewardess reaches Polycarp, they will\nhave run out of the first dish; If he chose the fourth dish, then by the\nmoment the stewardess reaches Polycarp, they will have run out of the fourth\ndish; Otherwise, Polycarp will be able to choose from any of the four dishes.\nThus, the answer is \"YNNY\". In the second input set there is, for example, the\nfollowing possible scenario. First, the first passenger takes the only third\ndish, then the second passenger takes the second dish. Then, the third\npassenger asks for the third dish, but it is not available, so he makes\ndisappointed muttering and ends up with the second dish. Then the fourth\npassenger takes the fourth dish, and Polycarp ends up with the choice between\nthe first, fourth and fifth dish. Likewise, another possible scenario is when\nby the time the stewardess comes to Polycarp, they will have run out of either\nthe first or the fifth dish (this can happen if one of these dishes is taken\nby the second passenger). It is easy to see that there is more than enough of\nthe fourth dish, so Polycarp can always count on it. Thus, the answer is\n\"YYYNY\".\n\n",
+        "cf_contest_id": 522,
+        "cf_index": "C",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n\r\n3 4\r\n2 3 2 1\r\n1 0\r\n0 0\r\n\r\n5 5\r\n1 2 1 3 1\r\n3 0\r\n0 0\r\n2 1\r\n4 0\r\n",
+                "YNNY\r\nYYYNY\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n\r\n2 1\r\n42\r\n0 0\r\n\r\n2 1\r\n2\r\n0 0\r\n\r\n2 1\r\n42\r\n1 0\r\n\r\n2 1\r\n2\r\n1 0\r\n",
+                "N\r\nN\r\nN\r\nN\r\n"
+            ],
+            [
+                "5\r\n\r\n3 3\r\n1 1 1\r\n0 0\r\n0 1\r\n\r\n3 3\r\n1 1 1\r\n1 0\r\n2 1\r\n\r\n3 3\r\n1 1 1\r\n1 0\r\n0 1\r\n\r\n3 3\r\n1 1 1\r\n0 0\r\n1 0\r\n\r\n3 3\r\n1 1 1\r\n0 0\r\n1 1\r\n",
+                "YYY\r\nYYN\r\nYYY\r\nYYY\r\nYYY\r\n"
+            ],
+            [
+                "1\r\n\r\n4 2\r\n2 2\r\n0 0\r\n0 0\r\n1 1\r\n",
+                "NY\r\n"
+            ]
+        ]
+    }
+]

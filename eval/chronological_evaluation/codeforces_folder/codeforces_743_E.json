@@ -1,0 +1,118 @@
+[
+    {
+        "name": "Vladik and cards",
+        "description": "Vladik was bored on his way home and decided to play the following game. He\ntook n cards and put them in a row in front of himself. Every card has a\npositive integer number not exceeding 8 written on it. He decided to find the\nlongest subsequence of cards which satisfies the following conditions: the\nnumber of occurrences of each number from 1 to 8 in the subsequence doesn't\ndiffer by more then 1 from the number of occurrences of any other number.\nFormally, if there are ck cards with number k on them in the subsequence, than\nfor all pairs of integers the condition |ci - cj| \u2264 1 must hold. if there is\nat least one card with number x on it in the subsequence, then all cards with\nnumber x in this subsequence must form a continuous segment in it (but not\nnecessarily a continuous segment in the original sequence). For example, the\nsubsequence [1, 1, 2, 2] satisfies this condition while the subsequence [1, 2,\n2, 1] doesn't. Note that [1, 1, 2, 2] doesn't satisfy the first condition.\nPlease help Vladik to find the length of the longest subsequence that\nsatisfies both conditions. Input The first line contains single integer n (1 \u2264\nn \u2264 1000) \u2014 the number of cards in Vladik's sequence. The second line contains\nthe sequence of n positive integers not exceeding 8 \u2014 the description of\nVladik's sequence. Output Print single integer \u2014 the length of the longest\nsubsequence of Vladik's sequence that satisfies both conditions. Examples\nInput 3 1 1 1 Output 1 Input 8 8 7 6 5 4 3 2 1 Output 8 Input 24 1 8 1 2 8 2 3\n8 3 4 8 4 5 8 5 6 8 6 7 8 7 8 8 8 Output 17 Note In the first sample all the\nnumbers written on the cards are equal, so you can't take more than one card,\notherwise you'll violate the first condition.\n\n",
+        "cf_contest_id": 743,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n1 1 1\r\n",
+                "1"
+            ],
+            [
+                "8\r\n8 7 6 5 4 3 2 1\r\n",
+                "8"
+            ],
+            [
+                "24\r\n1 8 1 2 8 2 3 8 3 4 8 4 5 8 5 6 8 6 7 8 7 8 8 8\r\n",
+                "17"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n8\r\n",
+                "1"
+            ],
+            [
+                "2\r\n5 4\r\n",
+                "2"
+            ],
+            [
+                "3\r\n3 3 2\r\n",
+                "2"
+            ],
+            [
+                "18\r\n3 6 6 8 8 1 1 4 4 3 3 5 5 7 7 2 2 3\r\n",
+                "16"
+            ],
+            [
+                "5\r\n2 6 1 2 6\r\n",
+                "3"
+            ],
+            [
+                "6\r\n4 3 1 6 7 4\r\n",
+                "5"
+            ],
+            [
+                "7\r\n8 8 2 6 1 8 5\r\n",
+                "5"
+            ],
+            [
+                "8\r\n2 8 4 7 5 3 6 1\r\n",
+                "8"
+            ],
+            [
+                "8\r\n8 6 3 6 7 5 5 3\r\n",
+                "5"
+            ],
+            [
+                "15\r\n5 2 2 7 5 2 6 4 3 8 1 8 4 2 7\r\n",
+                "9"
+            ],
+            [
+                "15\r\n8 8 1 6 2 2 4 5 4 2 4 8 2 5 2\r\n",
+                "6"
+            ],
+            [
+                "16\r\n8 2 1 5 7 6 2 5 4 4 8 2 2 6 3 8\r\n",
+                "10"
+            ],
+            [
+                "16\r\n2 2 8 8 5 5 3 3 7 7 1 1 6 6 4 4\r\n",
+                "16"
+            ],
+            [
+                "18\r\n4 3 3 3 7 7 5 2 1 1 3 3 6 1 2 4 1 8\r\n",
+                "11"
+            ],
+            [
+                "30\r\n5 5 4 8 6 6 7 7 8 2 2 2 1 4 4 4 8 8 6 3 5 7 7 3 7 1 6 1 1 8\r\n",
+                "19"
+            ],
+            [
+                "30\r\n1 7 2 2 2 3 1 1 1 3 7 3 7 3 7 7 1 7 6 6 6 5 5 5 4 4 4 8 8 8\r\n",
+                "24"
+            ],
+            [
+                "120\r\n6 7 8 5 2 8 5 4 6 4 3 2 5 6 5 7 5 7 1 7 4 6 4 1 4 1 1 7 6 7 3 7 4 7 4 6 4 7 6 6 6 5 5 7 3 5 3 7 2 2 4 2 5 6 8 4 1 2 2 8 3 3 2 5 6 4 3 6 2 4 1 4 2 8 8 3 7 6 4 7 2 7 3 3 8 8 6 8 7 7 6 8 3 2 5 2 6 5 7 5 7 5 3 2 6 2 6 5 7 8 7 7 2 6 5 4 2 3 1 8\r\n",
+                "34"
+            ],
+            [
+                "120\r\n5 4 1 4 1 7 7 1 1 1 8 2 3 3 6 3 6 2 7 3 7 3 2 8 1 6 6 1 8 3 4 6 4 7 5 8 1 4 3 5 7 6 1 5 8 5 8 5 6 5 7 4 3 4 5 2 6 3 2 4 4 4 4 7 4 5 2 7 2 6 2 2 7 2 4 7 2 1 6 4 2 8 6 2 3 4 4 8 1 6 7 6 2 7 5 6 7 6 2 3 7 8 5 2 7 7 7 7 2 7 8 8 7 5 5 6 8 8 8 3\r\n",
+                "46"
+            ],
+            [
+                "120\r\n6 6 6 6 3 6 6 6 6 6 6 8 2 8 8 8 8 8 4 8 8 8 8 2 1 6 1 3 1 1 1 1 1 5 1 1 1 5 2 1 7 7 7 1 7 7 3 7 7 7 7 7 7 3 7 5 6 2 1 5 4 5 4 5 5 5 6 4 5 5 5 3 5 5 4 2 4 3 2 4 4 4 4 7 4 2 4 4 3 8 4 3 3 4 7 3 3 3 3 3 3 3 3 2 2 2 1 2 7 1 2 2 2 6 2 8 2 2 3 2\r\n",
+                "84"
+            ],
+            [
+                "120\r\n8 8 8 8 8 8 8 8 8 8 8 8 1 8 8 4 6 4 4 4 4 4 4 4 4 3 4 4 4 4 4 6 6 6 6 6 6 6 6 6 6 6 6 6 6 3 3 3 3 3 3 3 3 3 3 3 3 3 3 7 7 7 7 7 8 7 7 7 7 7 7 4 7 7 7 3 5 5 5 1 5 5 5 5 5 5 5 5 5 5 5 5 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "113"
+            ],
+            [
+                "120\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5\r\n",
+                "120"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,340 @@
+[
+    {
+        "name": "PalindORme",
+        "description": "An integer array \n    a\n of length \n    n\n is said to be a PalindORme if\n(\n    a_1\n \n    |\n \n    a_2\n \n    |\n \n    \u2026\n \n    |\n \n    a_i)\n    = (a_n - i + 1\n \n    |\n \n    \u2026\n \n    |\n \n    a_n - 1\n\n\n    |\n \n    a_n)\n for all \n    1 \n    \u2264 i \n    \u2264 n\n, where \n    |\n\ndenotes the bitwise OR operation. An integer array \n    a\n of length \n    n\n\nis considered to be good if its elements can be rearranged to form a\nPalindORme. Formally, array \n    a\n is good if there exists a permutation\n\n    p_1, p_2, \n    \u2026 p_n\n (an array where each integer from \n    1\n to\n\n    n\n appears exactly once) for which \n    a_p_1, a_p_2, \n    \u2026\n    a_p_n\n is a PalindORme. Find the number of good arrays of length \n    n\n,\nconsisting only of integers in the range \n    [0, 2^k - 1]\n, and print it\nmodulo some prime \n    m\n. Two arrays \n    a_1, a_2, \n    \u2026, a_n\n and\n\n    b_1, b_2, \n    \u2026, b_n\n are considered to be different if there exists\nany \n    i\n \n    (1 \n    \u2264 i \n    \u2264 n)\n such that \n    a_i \n     b_i\n. Input\nThe first and only line of the input contains three integers \n    n\n, \n    k\n\nand \n    m\n (\n    1 \n    \u2264 n,k \n    \u2264 80\n, \n    10^8 \n     m \n     10^9\n). It\nis guaranteed that \n    m\n is prime. Output Print a single integer \u2014 the\nnumber of good arrays modulo \n    m\n. Examples Input 1 1 998244353 Output 2\nInput 3 2 999999733 Output 40 Input 7 3 796735397 Output 1871528 Input 2 46\n606559127 Output 177013 Note In the first sample, both the possible arrays\n\n    [0]\n and \n    [1]\n are good. In the second sample, some examples of good\narrays are: \n    [2, 1, 2]\n because it is already PalindORme. \n    [1, 1, 0]\n\nbecause it can rearranged to \n    [1, 0, 1]\n which is PalindORmeNote that\n\n    [1, 1, 0]\n, \n    [1, 0, 1]\n and \n    [0, 1, 1]\n are all good arrays and\nare considered to be different according to the definition in the statement.\nIn the third sample, an example of a good array is \n    [1, 0, 1, 4, 2, 5,\n    4]\n. It can be rearranged to an array \n    b = [1, 5, 0, 2, 4, 4, 1]\n which\nis a PalindORme because: \n    OR(1, 1)\n = \n    OR(7, 7)\n\n= \n    1\n \n    OR(1, 2)\n = \n    OR(6, 7)\n = \n    5\n\n\n    OR(1, 3)\n = \n    OR(5, 7)\n = \n    5\n\n\n    OR(1, 4)\n = \n    OR(4, 7)\n = \n    7\n\n\n    OR(1, 5)\n = \n    OR(3, 7)\n = \n    7\n\n\n    OR(1, 6)\n = \n    OR(2, 7)\n = \n    7\n\n\n    OR(1, 7)\n = \n    OR(1, 7)\n = \n    7\nHere\n\n    OR(l, r)\n denotes \n    b_l\n \n    |\n \n    b_l+1\n \n    |\n\n\n    \u2026\n \n    |\n \n    b_r\n\n\n",
+        "cf_contest_id": 1605,
+        "cf_index": "F",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "dp"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1 1 998244353\r\n",
+                "2"
+            ],
+            [
+                "3 2 999999733\r\n",
+                "40"
+            ],
+            [
+                "7 3 796735397\r\n",
+                "1871528"
+            ],
+            [
+                "2 46 606559127\r\n",
+                "177013"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 1 746985131\r\n",
+                "8"
+            ],
+            [
+                "3 3 716147519\r\n",
+                "176"
+            ],
+            [
+                "3 11 693168331\r\n",
+                "12578816"
+            ],
+            [
+                "3 12 436766543\r\n",
+                "50323456"
+            ],
+            [
+                "4 1 520112561\r\n",
+                "12"
+            ],
+            [
+                "4 2 504693737\r\n",
+                "120"
+            ],
+            [
+                "4 3 201083989\r\n",
+                "936"
+            ],
+            [
+                "4 8 325736071\r\n",
+                "9830136"
+            ],
+            [
+                "4 9 515348597\r\n",
+                "59525352"
+            ],
+            [
+                "5 1 293239981\r\n",
+                "32"
+            ],
+            [
+                "5 2 889629943\r\n",
+                "904"
+            ],
+            [
+                "5 3 874211189\r\n",
+                "19208"
+            ],
+            [
+                "5 7 319313641\r\n",
+                "192014646"
+            ],
+            [
+                "5 8 303894847\r\n",
+                "233486538"
+            ],
+            [
+                "14 11 586059517\r\n",
+                "307954481"
+            ],
+            [
+                "12 11 688283237\r\n",
+                "589329310"
+            ],
+            [
+                "11 4 585475571\r\n",
+                "349975906"
+            ],
+            [
+                "9 29 752046593\r\n",
+                "233723266"
+            ],
+            [
+                "8 53 937429853\r\n",
+                "822135202"
+            ],
+            [
+                "6 41 139653803\r\n",
+                "61521107"
+            ],
+            [
+                "45 11 122859619\r\n",
+                "5907229"
+            ],
+            [
+                "73 11 225083293\r\n",
+                "196675731"
+            ],
+            [
+                "58 7 122275627\r\n",
+                "68367584"
+            ],
+            [
+                "31 50 518322631\r\n",
+                "3781838"
+            ],
+            [
+                "75 75 703705913\r\n",
+                "90895891"
+            ],
+            [
+                "43 47 600898157\r\n",
+                "148181230"
+            ],
+            [
+                "71 73 816402163\r\n",
+                "356385563"
+            ],
+            [
+                "79 71 306817039\r\n",
+                "72524918"
+            ],
+            [
+                "79 75 204009373\r\n",
+                "35536821"
+            ],
+            [
+                "1 80 701679127\r\n",
+                "265891059"
+            ],
+            [
+                "80 1 228168167\r\n",
+                "74266006"
+            ],
+            [
+                "80 80 906923221\r\n",
+                "200781261"
+            ],
+            [
+                "79 80 862601167\r\n",
+                "347804949"
+            ],
+            [
+                "80 79 910560113\r\n",
+                "212502238"
+            ],
+            [
+                "79 79 866238073\r\n",
+                "43065609"
+            ],
+            [
+                "9 12 770858813\r\n",
+                "144965826"
+            ],
+            [
+                "9 12 873082459\r\n",
+                "141979413"
+            ],
+            [
+                "7 17 158466001\r\n",
+                "144708329"
+            ],
+            [
+                "6 50 936845857\r\n",
+                "798010483"
+            ],
+            [
+                "19 74 222229411\r\n",
+                "62154405"
+            ],
+            [
+                "17 55 324453029\r\n",
+                "305660921"
+            ],
+            [
+                "42 12 307658891\r\n",
+                "24916122"
+            ],
+            [
+                "70 12 409882567\r\n",
+                "130647581"
+            ],
+            [
+                "70 16 595265779\r\n",
+                "118101332"
+            ],
+            [
+                "43 72 703121869\r\n",
+                "303008204"
+            ],
+            [
+                "71 36 888505129\r\n",
+                "485197296"
+            ],
+            [
+                "55 76 785697499\r\n",
+                "146470465"
+            ],
+            [
+                "77 80 389392607\r\n",
+                "35901820"
+            ],
+            [
+                "71 74 286584941\r\n",
+                "279091721"
+            ],
+            [
+                "75 78 593839969\r\n",
+                "327165605"
+            ],
+            [
+                "1 2 368471449\r\n",
+                "4"
+            ],
+            [
+                "1 3 269892977\r\n",
+                "8"
+            ],
+            [
+                "1 78 349908971\r\n",
+                "297323861"
+            ],
+            [
+                "1 79 500284679\r\n",
+                "239888539"
+            ],
+            [
+                "2 1 362049001\r\n",
+                "2"
+            ],
+            [
+                "2 2 958438939\r\n",
+                "4"
+            ],
+            [
+                "2 3 943020101\r\n",
+                "8"
+            ],
+            [
+                "2 78 193470169\r\n",
+                "82671118"
+            ],
+            [
+                "2 79 837068101\r\n",
+                "472712792"
+            ],
+            [
+                "2 80 833431223\r\n",
+                "307299892"
+            ],
+            [
+                "3 78 325222301\r\n",
+                "235162954"
+            ],
+            [
+                "3 79 968820169\r\n",
+                "246302818"
+            ],
+            [
+                "3 80 965183291\r\n",
+                "517981682"
+            ],
+            [
+                "78 1 286737359\r\n",
+                "5443482"
+            ],
+            [
+                "78 2 883127347\r\n",
+                "168594439"
+            ],
+            [
+                "78 3 662677181\r\n",
+                "507229449"
+            ],
+            [
+                "78 78 508465423\r\n",
+                "326566121"
+            ],
+            [
+                "78 79 252063649\r\n",
+                "111380213"
+            ],
+            [
+                "78 80 453458053\r\n",
+                "175749834"
+            ],
+            [
+                "79 1 259894867\r\n",
+                "177506626"
+            ],
+            [
+                "79 2 856284833\r\n",
+                "573581483"
+            ],
+            [
+                "79 3 840865997\r\n",
+                "72013220"
+            ],
+            [
+                "79 78 222640087\r\n",
+                "60984635"
+            ],
+            [
+                "80 2 907717753\r\n",
+                "680275062"
+            ],
+            [
+                "80 3 892298933\r\n",
+                "152593622"
+            ],
+            [
+                "80 78 555153121\r\n",
+                "1999425"
+            ]
+        ]
+    }
+]

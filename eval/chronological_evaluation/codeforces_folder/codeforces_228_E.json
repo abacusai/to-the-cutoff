@@ -1,0 +1,86 @@
+[
+    {
+        "name": "The Road to Berland is Paved With Good Intentions",
+        "description": "Berland has n cities, some of them are connected by bidirectional roads. For\neach road we know whether it is asphalted or not. The King of Berland Valera\nII wants to asphalt all roads of Berland, for that he gathered a group of\nworkers. Every day Valera chooses exactly one city and orders the crew to\nasphalt all roads that come from the city. The valiant crew fulfilled the\nKing's order in a day, then workers went home. Unfortunately, not everything\nis as great as Valera II would like. The main part of the group were\ngastarbeiters \u2014 illegal immigrants who are enthusiastic but not exactly good\nat understanding orders in Berlandian. Therefore, having received orders to\nasphalt the roads coming from some of the city, the group asphalted all non-\nasphalted roads coming from the city, and vice versa, took the asphalt from\nthe roads that had it. Upon learning of this progress, Valera II was very\nupset, but since it was too late to change anything, he asked you to make a\nprogram that determines whether you can in some way asphalt Berlandian roads\nin at most n days. Help the king. Input The first line contains two space-\nseparated integers n, m \u2014 the number of cities and roads in Berland,\ncorrespondingly. Next m lines contain the descriptions of roads in Berland:\nthe i-th line contains three space-separated integers ai, bi, ci (1 \u2264 ai, bi \u2264\nn; ai \u2260 bi; 0 \u2264 ci \u2264 1). The first two integers (ai, bi) are indexes of the\ncities that are connected by the i-th road, the third integer (ci) equals 1,\nif the road was initially asphalted, and 0 otherwise. Consider the cities in\nBerland indexed from 1 to n, and the roads indexed from 1 to m. It is\nguaranteed that between two Berlandian cities there is not more than one road.\nOutput In the first line print a single integer x (0 \u2264 x \u2264 n) \u2014 the number of\ndays needed to asphalt all roads. In the second line print x space-separated\nintegers \u2014 the indexes of the cities to send the workers to. Print the cities\nin the order, in which Valera send the workers to asphalt roads. If there are\nmultiple solutions, print any of them. If there's no way to asphalt all roads,\nprint \"Impossible\" (without the quotes). Examples Input 4 4 1 2 1 2 4 0 4 3 1\n3 2 0 Output 4 3 2 1 3 Input 3 3 1 2 0 2 3 0 3 1 0 Output Impossible\n\n",
+        "cf_contest_id": 228,
+        "cf_index": "E",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "2-sat",
+            "dfs and similar",
+            "dsu",
+            "graphs"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 4\r\n1 2 1\r\n2 4 0\r\n4 3 1\r\n3 2 0\r\n",
+                "2\r\n1 2 "
+            ],
+            [
+                "3 3\r\n1 2 0\r\n2 3 0\r\n3 1 0\r\n",
+                "Impossible\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 5\r\n3 2 0\r\n1 4 0\r\n4 3 1\r\n3 1 0\r\n1 2 0\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "2 1\r\n2 1 0\r\n",
+                "1\r\n2 "
+            ],
+            [
+                "6 13\r\n4 6 0\r\n4 2 1\r\n6 2 0\r\n5 4 1\r\n1 3 1\r\n5 6 1\r\n1 5 1\r\n1 4 1\r\n2 3 1\r\n1 2 1\r\n3 6 0\r\n6 1 1\r\n2 5 1\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "7 13\r\n5 7 1\r\n1 2 0\r\n5 3 0\r\n6 1 1\r\n6 3 0\r\n2 7 0\r\n7 1 1\r\n6 4 1\r\n6 2 1\r\n4 7 1\r\n2 5 0\r\n1 5 0\r\n7 3 0\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "16 20\r\n8 5 1\r\n12 11 1\r\n13 2 1\r\n3 7 0\r\n6 8 0\r\n16 6 0\r\n7 14 0\r\n13 12 1\r\n8 15 1\r\n14 5 0\r\n12 10 0\r\n11 16 1\r\n11 9 0\r\n2 15 1\r\n12 1 0\r\n9 5 0\r\n14 15 0\r\n3 14 1\r\n2 8 1\r\n1 14 1\r\n",
+                "9\r\n2 5 7 8 11 12 13 15 16 "
+            ],
+            [
+                "15 33\r\n12 4 1\r\n8 10 1\r\n6 13 0\r\n2 6 1\r\n10 7 0\r\n1 14 1\r\n3 9 0\r\n3 1 0\r\n7 12 1\r\n13 5 0\r\n10 4 0\r\n1 7 1\r\n11 15 0\r\n2 3 0\r\n9 8 1\r\n6 9 1\r\n9 4 1\r\n4 8 1\r\n7 8 0\r\n2 13 1\r\n15 8 0\r\n12 15 0\r\n14 4 0\r\n1 11 1\r\n4 2 0\r\n13 11 0\r\n13 3 0\r\n14 7 1\r\n12 11 1\r\n13 8 0\r\n2 8 1\r\n9 5 1\r\n12 2 1\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "14 10\r\n12 11 1\r\n7 6 1\r\n7 9 1\r\n6 9 1\r\n5 4 0\r\n2 7 1\r\n1 8 1\r\n1 4 0\r\n13 5 0\r\n8 4 0\r\n",
+                "3\r\n1 5 8 "
+            ],
+            [
+                "18 32\r\n10 11 1\r\n16 7 1\r\n18 10 0\r\n15 2 1\r\n14 2 0\r\n4 9 1\r\n10 16 1\r\n13 17 0\r\n8 3 1\r\n14 8 1\r\n17 11 0\r\n16 9 1\r\n12 1 1\r\n5 11 0\r\n16 13 0\r\n18 4 0\r\n5 7 0\r\n4 13 1\r\n17 1 0\r\n8 12 1\r\n10 1 0\r\n8 18 1\r\n5 9 0\r\n2 3 0\r\n3 15 1\r\n11 4 1\r\n14 11 1\r\n7 6 0\r\n1 2 0\r\n6 10 0\r\n3 1 1\r\n13 2 0\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "19 40\r\n10 13 0\r\n3 9 0\r\n5 12 0\r\n8 16 0\r\n4 10 1\r\n2 5 0\r\n17 6 1\r\n5 13 0\r\n5 11 0\r\n12 11 0\r\n17 16 0\r\n2 9 1\r\n6 9 0\r\n7 9 0\r\n10 14 1\r\n14 2 1\r\n12 6 1\r\n6 1 0\r\n11 17 0\r\n13 19 0\r\n16 14 1\r\n7 11 1\r\n18 6 0\r\n18 12 1\r\n2 15 1\r\n8 12 0\r\n9 1 1\r\n2 19 1\r\n17 2 0\r\n5 7 0\r\n6 2 1\r\n13 7 0\r\n9 14 0\r\n13 8 0\r\n11 1 1\r\n9 15 0\r\n18 4 0\r\n18 7 0\r\n1 14 0\r\n3 12 1\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "20 40\r\n5 16 0\r\n6 10 0\r\n16 12 0\r\n13 15 1\r\n18 13 1\r\n15 18 1\r\n4 13 0\r\n12 10 1\r\n13 9 1\r\n19 5 0\r\n18 10 0\r\n8 18 0\r\n3 15 0\r\n12 13 0\r\n3 20 1\r\n11 15 1\r\n15 1 1\r\n3 2 1\r\n12 9 0\r\n10 16 0\r\n5 7 1\r\n7 6 0\r\n5 20 1\r\n20 18 0\r\n20 10 1\r\n16 15 1\r\n7 1 0\r\n3 8 1\r\n3 10 1\r\n9 7 0\r\n9 20 0\r\n17 1 1\r\n2 1 0\r\n2 19 0\r\n8 16 0\r\n11 7 0\r\n6 20 0\r\n16 2 0\r\n10 15 0\r\n10 19 0\r\n",
+                "10\r\n1 6 9 11 13 15 16 17 18 19 "
+            ],
+            [
+                "11 18\r\n10 2 0\r\n9 10 0\r\n3 10 1\r\n9 4 1\r\n6 10 0\r\n5 7 1\r\n3 1 0\r\n7 2 1\r\n8 2 1\r\n10 7 0\r\n6 8 1\r\n5 2 1\r\n10 11 0\r\n4 3 0\r\n7 8 1\r\n4 5 1\r\n7 11 1\r\n9 7 1\r\n",
+                "2\r\n3 10 "
+            ],
+            [
+                "100 49\r\n9 51 0\r\n59 35 0\r\n42 4 1\r\n18 70 1\r\n95 44 0\r\n8 57 0\r\n38 1 1\r\n33 56 1\r\n44 30 1\r\n62 98 0\r\n99 7 0\r\n9 71 1\r\n63 76 0\r\n45 22 1\r\n24 43 0\r\n97 3 1\r\n23 71 1\r\n98 8 1\r\n67 69 1\r\n39 15 1\r\n71 74 1\r\n9 85 1\r\n85 91 1\r\n93 40 0\r\n76 70 0\r\n22 5 1\r\n36 29 1\r\n10 80 1\r\n38 12 0\r\n68 86 0\r\n53 25 0\r\n2 39 1\r\n50 43 1\r\n60 76 0\r\n96 36 0\r\n95 34 0\r\n31 4 1\r\n82 76 1\r\n50 63 0\r\n4 72 0\r\n32 63 0\r\n26 7 0\r\n76 96 1\r\n10 97 1\r\n91 58 0\r\n4 10 0\r\n83 12 1\r\n97 80 1\r\n48 12 0\r\n",
+                "27\r\n1 4 8 9 23 26 31 32 38 42 43 48 50 53 59 68 71 74 76 82 85 91 93 95 96 98 99 "
+            ],
+            [
+                "100 41\r\n3 89 1\r\n31 33 0\r\n88 83 0\r\n45 97 0\r\n32 86 0\r\n19 12 1\r\n75 74 0\r\n74 10 0\r\n69 73 1\r\n69 80 0\r\n97 61 1\r\n73 68 0\r\n70 51 1\r\n56 92 1\r\n95 42 0\r\n69 51 1\r\n2 51 0\r\n72 38 1\r\n86 10 1\r\n35 50 1\r\n81 58 0\r\n34 8 0\r\n93 82 1\r\n81 84 1\r\n68 61 0\r\n69 20 0\r\n77 25 1\r\n81 13 0\r\n21 20 1\r\n46 5 1\r\n71 60 1\r\n46 65 1\r\n29 54 1\r\n11 55 1\r\n16 81 0\r\n77 30 1\r\n68 45 1\r\n74 84 0\r\n89 1 1\r\n70 83 1\r\n18 4 0\r\n",
+                "16\r\n2 10 18 20 21 31 34 45 68 75 80 81 84 86 88 95 "
+            ],
+            [
+                "4 2\r\n1 2 0\r\n3 4 0\r\n",
+                "2\r\n1 3 "
+            ]
+        ]
+    }
+]

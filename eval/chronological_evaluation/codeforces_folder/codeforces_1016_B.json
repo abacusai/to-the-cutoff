@@ -1,0 +1,236 @@
+[
+    {
+        "name": "Segment Occurrences",
+        "description": "You are given two strings \n    s\n and \n    t\n, both consisting only of\nlowercase Latin letters. The substring \n    s[l..r]\n is the string which is\nobtained by taking characters \n    s_l, s_l + 1, \n    \u2026, s_r\n without\nchanging the order. Each of the occurrences of string \n    a\n in a string\n\n    b\n is a position \n    i\n (\n    1 \n    \u2264 i \n    \u2264 |b| - |a| + 1\n) such that\n\n    b[i..i + |a| - 1] = a\n (\n    |a|\n is the length of string \n    a\n). You\nare asked \n    q\n queries: for the \n    i\n-th query you are required to\ncalculate the number of occurrences of string \n    t\n in a substring\n\n    s[l_i..r_i]\n. Input The first line contains three integer numbers\n\n    n\n, \n    m\n and \n    q\n (\n    1 \n    \u2264 n, m \n    \u2264 10^3\n, \n    1 \n    \u2264 q\n    \n    \u2264 10^5\n) \u2014 the length of string \n    s\n, the length of string \n    t\n\nand the number of queries, respectively. The second line is a string \n    s\n\n(\n    |s| = n\n), consisting only of lowercase Latin letters. The third line is\na string \n    t\n (\n    |t| = m\n), consisting only of lowercase Latin letters.\nEach of the next \n    q\n lines contains two integer numbers \n    l_i\n and\n\n    r_i\n (\n    1 \n    \u2264 l_i \n    \u2264 r_i \n    \u2264 n\n) \u2014 the arguments for the\n\n    i\n-th query. Output Print \n    q\n lines \u2014 the \n    i\n-th line should\ncontain the answer to the \n    i\n-th query, that is the number of occurrences\nof string \n    t\n in a substring \n    s[l_i..r_i]\n. Examples Input 10 3 4\ncodeforces for 1 3 3 10 5 6 5 7 Output 0 1 0 1 Input 15 2 3 abacabadabacaba ba\n1 15 3 4 2 14 Output 4 0 3 Input 3 5 2 aaa baaab 1 3 1 1 Output 0 0 Note In\nthe first example the queries are substrings: \"cod\", \"deforces\", \"fo\" and\n\"for\", respectively.\n\n",
+        "cf_contest_id": 1016,
+        "cf_index": "B",
+        "cf_rating": 1300,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 3 4\r\ncodeforces\r\nfor\r\n1 3\r\n3 10\r\n5 6\r\n5 7\r\n",
+                "0\r\n1\r\n0\r\n1\r\n"
+            ],
+            [
+                "15 2 3\r\nabacabadabacaba\r\nba\r\n1 15\r\n3 4\r\n2 14\r\n",
+                "4\r\n0\r\n3\r\n"
+            ],
+            [
+                "3 5 2\r\naaa\r\nbaaab\r\n1 3\r\n1 1\r\n",
+                "0\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "11 3 66\r\nssszzzzsssz\r\nsss\r\n1 1\r\n1 2\r\n2 2\r\n1 3\r\n2 3\r\n3 3\r\n1 4\r\n2 4\r\n3 4\r\n4 4\r\n1 5\r\n2 5\r\n3 5\r\n4 5\r\n5 5\r\n1 6\r\n2 6\r\n3 6\r\n4 6\r\n5 6\r\n6 6\r\n1 7\r\n2 7\r\n3 7\r\n4 7\r\n5 7\r\n6 7\r\n7 7\r\n1 8\r\n2 8\r\n3 8\r\n4 8\r\n5 8\r\n6 8\r\n7 8\r\n8 8\r\n1 9\r\n2 9\r\n3 9\r\n4 9\r\n5 9\r\n6 9\r\n7 9\r\n8 9\r\n9 9\r\n1 10\r\n2 10\r\n3 10\r\n4 10\r\n5 10\r\n6 10\r\n7 10\r\n8 10\r\n9 10\r\n10 10\r\n1 11\r\n2 11\r\n3 11\r\n4 11\r\n5 11\r\n6 11\r\n7 11\r\n8 11\r\n9 11\r\n10 11\r\n11 11\r\n",
+                "0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n2\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n0\r\n0\r\n2\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5 5 15\r\nabaca\r\nabaca\r\n1 1\r\n1 2\r\n2 2\r\n1 3\r\n2 3\r\n3 3\r\n1 4\r\n2 4\r\n3 4\r\n4 4\r\n1 5\r\n2 5\r\n3 5\r\n4 5\r\n5 5\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "3 1 1\r\naaa\r\na\r\n1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "22 22 1\r\nbabbabbaabaaababbbbbbb\r\nabbbbbabbabbbabababbab\r\n1 22\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1 1\r\na\r\na\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 1 1\r\nccooddccdc\r\nc\r\n1 10\r\n",
+                "5\r\n"
+            ],
+            [
+                "5 3 5\r\naaaaa\r\naaa\r\n1 2\r\n1 5\r\n1 4\r\n1 3\r\n2 5\r\n",
+                "0\r\n3\r\n2\r\n1\r\n2\r\n"
+            ],
+            [
+                "10 10 1\r\nhackedhash\r\nfaaajetbmj\r\n1 10\r\n",
+                "0\r\n"
+            ],
+            [
+                "51 4 40\r\nlevuquangioiioiioiioiioiioiioiioiioiioiioiioiioiioi\r\nioii\r\n1 50\r\n2 50\r\n3 49\r\n4 48\r\n5 47\r\n6 46\r\n7 45\r\n8 44\r\n9 43\r\n10 42\r\n11 41\r\n10 40\r\n9 39\r\n8 38\r\n7 37\r\n6 36\r\n5 35\r\n4 34\r\n3 33\r\n2 32\r\n1 31\r\n2 30\r\n3 29\r\n4 28\r\n5 27\r\n6 26\r\n5 25\r\n4 24\r\n3 23\r\n2 22\r\n1 21\r\n2 20\r\n3 19\r\n4 18\r\n5 17\r\n6 16\r\n7 15\r\n8 14\r\n9 13\r\n10 12\r\n",
+                "13\r\n13\r\n13\r\n12\r\n12\r\n12\r\n11\r\n11\r\n11\r\n10\r\n9\r\n10\r\n9\r\n9\r\n9\r\n8\r\n8\r\n8\r\n7\r\n7\r\n7\r\n6\r\n6\r\n6\r\n5\r\n5\r\n5\r\n4\r\n4\r\n4\r\n3\r\n3\r\n3\r\n2\r\n2\r\n2\r\n1\r\n1\r\n1\r\n0\r\n"
+            ],
+            [
+                "43 3 30\r\ntriocchotriocchotriocchoochochooccococcococ\r\noco\r\n3 5\r\n33 35\r\n1 42\r\n12 32\r\n40 42\r\n1 34\r\n32 39\r\n9 39\r\n9 29\r\n11 22\r\n34 42\r\n33 33\r\n21 32\r\n5 41\r\n21 38\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n2 11\r\n2 12\r\n2 24\r\n2 42\r\n35 43\r\n11 33\r\n",
+                "0\r\n0\r\n2\r\n0\r\n1\r\n0\r\n1\r\n1\r\n0\r\n0\r\n2\r\n0\r\n0\r\n1\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n2\r\n2\r\n0\r\n"
+            ],
+            [
+                "50 50 1\r\nqwsciaejnbtjybwvesgxoqjxjafmgxvpfjcnsoatqgtuhcfbnd\r\nwgjfewxqkbocfupcdnggixvvbcaweaobsoxopzohggiponjjsh\r\n1 50\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 10 1\r\naaaaaaaaaa\r\naaadlynrgh\r\n1 10\r\n",
+                "0\r\n"
+            ],
+            [
+                "22 1 5\r\nlevuquangbestadvietnam\r\nn\r\n1 22\r\n3 5\r\n2 5\r\n21 22\r\n2 22\r\n",
+                "2\r\n0\r\n0\r\n0\r\n2\r\n"
+            ],
+            [
+                "25 2 5\r\ntruongminhtriyeutranmaile\r\ntr\r\n1 25\r\n2 24\r\n1 12\r\n12 25\r\n1 2\r\n",
+                "3\r\n2\r\n2\r\n1\r\n1\r\n"
+            ],
+            [
+                "3 1 6\r\nbaa\r\na\r\n1 1\r\n1 2\r\n1 3\r\n2 2\r\n2 3\r\n3 3\r\n",
+                "0\r\n1\r\n2\r\n1\r\n2\r\n1\r\n"
+            ],
+            [
+                "19 19 1\r\nsqfhspmmatslxtdayek\r\ntkfwlqxzkumlijleskx\r\n1 19\r\n",
+                "0\r\n"
+            ],
+            [
+                "11 11 1\r\nrmeejqgfsxn\r\nijlctpntrix\r\n1 11\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 1 6\r\naaa\r\na\r\n1 1\r\n1 2\r\n1 3\r\n2 2\r\n2 3\r\n3 3\r\n",
+                "1\r\n2\r\n3\r\n1\r\n2\r\n1\r\n"
+            ],
+            [
+                "15 15 1\r\ntevjxzaccclsldh\r\noxcpasdbfqsmmnz\r\n1 15\r\n",
+                "0\r\n"
+            ],
+            [
+                "8 3 36\r\nbacbaaaa\r\naaa\r\n1 6\r\n4 8\r\n3 4\r\n6 6\r\n3 5\r\n4 6\r\n3 8\r\n2 4\r\n5 5\r\n3 6\r\n1 3\r\n2 3\r\n2 6\r\n7 8\r\n3 3\r\n1 2\r\n1 5\r\n2 7\r\n5 7\r\n1 7\r\n3 7\r\n5 8\r\n6 7\r\n2 5\r\n1 8\r\n1 1\r\n4 5\r\n5 6\r\n4 7\r\n2 8\r\n7 7\r\n1 4\r\n2 2\r\n6 8\r\n4 4\r\n8 8\r\n",
+                "0\r\n2\r\n0\r\n0\r\n0\r\n0\r\n2\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n1\r\n2\r\n0\r\n0\r\n2\r\n0\r\n0\r\n0\r\n1\r\n2\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n"
+            ],
+            [
+                "9 9 1\r\neswmupyhu\r\nvhtuymino\r\n1 9\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 2 1\r\nazaza\r\nbc\r\n1 5\r\n",
+                "0\r\n"
+            ],
+            [
+                "12 12 1\r\ncnptdbktfedv\r\nisbbqbkqzhnl\r\n1 12\r\n",
+                "0\r\n"
+            ],
+            [
+                "16 16 1\r\nlxbbpnfagdzjylqx\r\npygsmkqaiidukqjb\r\n1 16\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2 1\r\nan\r\nba\r\n1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\naaaaaaa\r\ncpsshdk\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\naacfzii\r\nbeaaaaa\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "8 4 36\r\nabaabaaa\r\nabaa\r\n2 6\r\n4 7\r\n3 5\r\n5 5\r\n1 1\r\n1 8\r\n4 8\r\n6 7\r\n7 8\r\n1 4\r\n2 2\r\n4 5\r\n3 6\r\n1 5\r\n5 7\r\n3 4\r\n2 8\r\n3 3\r\n2 3\r\n3 8\r\n2 5\r\n2 7\r\n5 8\r\n1 6\r\n6 8\r\n2 4\r\n4 6\r\n7 7\r\n1 7\r\n6 6\r\n3 7\r\n1 3\r\n4 4\r\n1 2\r\n8 8\r\n5 6\r\n",
+                "0\r\n1\r\n0\r\n0\r\n0\r\n2\r\n1\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n1\r\n0\r\n0\r\n1\r\n0\r\n1\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n2\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "23 23 1\r\nqfvqtceutwxhgjlveeojzoa\r\nxoinljhhzwvmuclsrjnhbxf\r\n1 23\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\niizfcaa\r\naaaaaeb\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\nfekjogq\r\nhucavjy\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\nepynrgh\r\njapvjeg\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\ndgehtyt\r\ngmipnxm\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\naaayagc\r\nadkaaaa\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\nbtvzcsz\r\ndkovfiv\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\naeueaav\r\najfgzvz\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1 3\r\naa\r\na\r\n1 1\r\n1 2\r\n2 2\r\n",
+                "1\r\n2\r\n1\r\n"
+            ],
+            [
+                "1 1 1\r\na\r\nb\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\nepynvbv\r\ngxucecq\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\nlilkbeg\r\nmmjeiet\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\nxusiqiz\r\nyyqcxjh\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\nouexwfo\r\nwquojim\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\nbeaaaan\r\nepynvbv\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "100 100 1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n1 100\r\n",
+                "1\r\n"
+            ],
+            [
+                "7 7 1\r\naaaaaaa\r\nasuacne\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 2 1\r\na\r\naa\r\n1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "14 14 1\r\naaaaaaaaaaaaaa\r\nbkhknxfzrpvvad\r\n1 14\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 7 1\r\ndmquwtg\r\nmkwonih\r\n1 7\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 5 1\r\naaafe\r\nkzvaa\r\n1 5\r\n",
+                "0\r\n"
+            ],
+            [
+                "7 4 28\r\nabaaaaa\r\naaaa\r\n1 6\r\n1 3\r\n4 4\r\n6 6\r\n5 6\r\n5 5\r\n2 5\r\n3 5\r\n1 2\r\n3 7\r\n1 7\r\n4 6\r\n2 3\r\n1 1\r\n2 2\r\n1 5\r\n2 4\r\n2 7\r\n2 6\r\n4 7\r\n3 4\r\n4 5\r\n6 7\r\n3 6\r\n7 7\r\n5 7\r\n1 4\r\n3 3\r\n",
+                "1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n2\r\n2\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n2\r\n1\r\n1\r\n0\r\n0\r\n0\r\n1\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "7 1 28\r\nbbaaaaa\r\nb\r\n2 7\r\n4 7\r\n1 1\r\n3 3\r\n4 4\r\n1 6\r\n3 4\r\n1 4\r\n4 5\r\n1 5\r\n6 7\r\n2 4\r\n6 6\r\n3 6\r\n2 6\r\n2 3\r\n3 5\r\n5 5\r\n1 3\r\n2 2\r\n2 5\r\n5 7\r\n4 6\r\n3 7\r\n7 7\r\n5 6\r\n1 2\r\n1 7\r\n",
+                "1\r\n0\r\n1\r\n0\r\n0\r\n2\r\n0\r\n2\r\n0\r\n2\r\n0\r\n1\r\n0\r\n0\r\n1\r\n1\r\n0\r\n0\r\n2\r\n1\r\n1\r\n0\r\n0\r\n0\r\n0\r\n0\r\n2\r\n2\r\n"
+            ]
+        ]
+    }
+]

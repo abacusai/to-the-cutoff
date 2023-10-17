@@ -1,0 +1,60 @@
+[
+    {
+        "name": "Merging Two Decks",
+        "description": "There are two decks of cards lying on the table in front of you, some cards in\nthese decks lay face up, some of them lay face down. You want to merge them\ninto one deck in which each card is face down. You're going to do it in two\nstages. The first stage is to merge the two decks in such a way that the\nrelative order of the cards from the same deck doesn't change. That is, for\nany two different cards i and j in one deck, if card i lies above card j, then\nafter the merge card i must also be above card j. The second stage is\nperformed on the deck that resulted from the first stage. At this stage, the\nexecuted operation is the turning operation. In one turn you can take a few of\nthe top cards, turn all of them, and put them back. Thus, each of the taken\ncards gets turned and the order of these cards is reversed. That is, the card\nthat was on the bottom before the turn, will be on top after it. Your task is\nto make sure that all the cards are lying face down. Find such an order of\nmerging cards in the first stage and the sequence of turning operations in the\nsecond stage, that make all the cards lie face down, and the number of turns\nis minimum. Input The first input line contains a single integer n \u2014 the\nnumber of cards in the first deck (1 \u2264 n \u2264 10^5). The second input line\ncontains n integers, separated by single spaces a1, a2, ..., an (0 \u2264 ai \u2264 1).\nValue ai equals 0, if the i-th card is lying face down, and 1, if the card is\nlying face up. The cards are given in the order from the topmost one to the\nbottommost one. The third input line contains integer m \u2014 the number of cards\nin the second deck (1 \u2264 m \u2264 10^5). The fourth input line contains m integers,\nseparated by single spaces b1, b2, ..., bm (0 \u2264 bi \u2264 1). Value bi equals 0, if\nthe i-th card is lying face down, and 1, if the card is lying face up. The\ncards are given in the order from the topmost to the bottommost. Output In the\nfirst line print n + m space-separated integers \u2014 the numbers of the cards in\nthe order, in which they will lie after the first stage. List the cards from\ntop to bottom. The cards from the first deck should match their indexes from 1\nto n in the order from top to bottom. The cards from the second deck should\nmatch their indexes, increased by n, that is, numbers from n + 1 to n + m in\nthe order from top to bottom. In the second line print a single integer x \u2014\nthe minimum number of turn operations you need to make all cards in the deck\nlie face down. In the third line print x integers: c1, c2, ..., cx (1 \u2264 ci \u2264 n\n+ m), each of them represents the number of cards to take from the top of the\ndeck to perform a turn operation. Print the operations in the order, in which\nthey should be performed. If there are multiple optimal solutions, print any\nof them. It is guaranteed that the minimum number of operations doesn't exceed\n6\u00b710^5. Examples Input 3 1 0 1 4 1 1 1 1 Output 1 4 5 6 7 2 3 3 5 6 7 Input 5\n1 1 1 1 1 5 0 1 0 1 0 Output 6 1 2 3 4 5 7 8 9 10 4 1 7 8 9\n\n",
+        "cf_contest_id": 234,
+        "cf_index": "H",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n1 0 1\r\n4\r\n1 1 1 1\r\n",
+                "1 2 4 5 6 7 3 \r\n3\r\n1 2 7 "
+            ],
+            [
+                "5\r\n1 1 1 1 1\r\n5\r\n0 1 0 1 0\r\n",
+                "6 7 8 9 1 2 3 4 5 10 \r\n4\r\n1 2 3 9 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "5\r\n1 1 0 0 1\r\n5\r\n0 0 1 1 1\r\n",
+                "1 2 6 7 3 4 8 9 10 5 \r\n3\r\n2 6 10 "
+            ],
+            [
+                "5\r\n1 0 1 1 0\r\n5\r\n0 0 1 1 1\r\n",
+                "1 6 7 2 8 9 10 3 4 5 \r\n3\r\n1 4 9 "
+            ],
+            [
+                "5\r\n1 0 0 1 0\r\n5\r\n0 1 0 1 1\r\n",
+                "6 7 1 8 2 3 9 10 4 5 \r\n4\r\n1 3 6 9 "
+            ],
+            [
+                "8\r\n0 0 0 0 0 1 1 1\r\n11\r\n1 0 1 0 0 1 1 0 1 1 0\r\n",
+                "9 10 11 12 13 14 15 16 1 2 3 4 5 17 18 6 7 8 19 \r\n7\r\n1 2 3 5 7 13 18 "
+            ],
+            [
+                "11\r\n1 0 1 0 0 1 1 0 0 1 0\r\n8\r\n0 0 0 0 1 1 1 0\r\n",
+                "1 2 3 4 5 6 7 12 13 14 15 8 9 16 17 18 10 19 11 \r\n7\r\n1 2 3 5 7 13 17 "
+            ],
+            [
+                "9\r\n1 1 1 0 0 0 1 1 1\r\n12\r\n0 0 1 0 0 1 0 1 1 0 1 0\r\n",
+                "10 11 12 13 14 15 16 17 18 1 2 3 19 4 5 6 20 7 8 9 21 \r\n8\r\n2 3 5 6 7 12 16 20 "
+            ],
+            [
+                "12\r\n0 1 1 0 1 1 1 1 1 1 0 0\r\n9\r\n1 1 0 0 1 0 0 0 0\r\n",
+                "1 13 14 2 3 15 16 4 17 5 6 7 8 9 10 18 19 20 21 11 12 \r\n4\r\n1 5 8 15 "
+            ],
+            [
+                "11\r\n0 1 1 1 1 0 0 0 1 1 1\r\n13\r\n1 1 0 0 1 0 0 1 0 1 1 0 0\r\n",
+                "12 13 14 15 16 17 18 1 19 2 3 4 5 20 6 7 8 21 22 9 10 11 23 24 \r\n7\r\n2 4 5 8 13 17 22 "
+            ]
+        ]
+    }
+]

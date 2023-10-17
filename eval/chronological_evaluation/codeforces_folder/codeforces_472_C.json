@@ -1,0 +1,127 @@
+[
+    {
+        "name": "Design Tutorial: Make It Nondeterministic",
+        "description": "A way to make a new task is to make it nondeterministic or probabilistic. For\nexample, the hard task of Topcoder SRM 595, Constellation, is the\nprobabilistic version of a convex hull. Let's try to make a new task. Firstly\nwe will use the following task. There are n people, sort them by their name.\nIt is just an ordinary sorting problem, but we can make it more interesting by\nadding nondeterministic element. There are n people, each person will use\neither his/her first name or last name as a handle. Can the lexicographical\norder of the handles be exactly equal to the given permutation p? More\nformally, if we denote the handle of the i-th person as hi, then the following\ncondition must hold: . Input The first line contains an integer n (1 \u2264 n \u2264\n10^5) \u2014 the number of people. The next n lines each contains two strings. The\ni-th line contains strings fi and si (1 \u2264 |fi|, |si| \u2264 50) \u2014 the first name\nand last name of the i-th person. Each string consists only of lowercase\nEnglish letters. All of the given 2n strings will be distinct. The next line\ncontains n distinct integers: p1, p2, ..., pn (1 \u2264 pi \u2264 n). Output If it is\npossible, output \"YES\", otherwise output \"NO\". Examples Input 3 gennady\nkorotkevich petr mitrichev gaoyuan chen 1 2 3 Output NO Input 3 gennady\nkorotkevich petr mitrichev gaoyuan chen 3 1 2 Output YES Input 2 galileo\ngalilei nicolaus copernicus 2 1 Output YES Input 10 rean schwarzer fei\nclaussell alisa reinford eliot craig laura arseid jusis albarea machias\nregnitz sara valestin emma millstein gaius worzel 1 2 3 4 5 6 7 8 9 10 Output\nNO Input 10 rean schwarzer fei claussell alisa reinford eliot craig laura\narseid jusis albarea machias regnitz sara valestin emma millstein gaius worzel\n2 4 9 6 5 7 1 3 8 10 Output YES Note In example 1 and 2, we have 3 people:\ntourist, Petr and me (cgy4ever). You can see that whatever handle is chosen, I\nmust be the first, then tourist and Petr must be the last. In example 3, if\nCopernicus uses \"copernicus\" as his handle, everything will be alright.\n\n",
+        "cf_contest_id": 472,
+        "cf_index": "C",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\ngennady korotkevich\r\npetr mitrichev\r\ngaoyuan chen\r\n1 2 3\r\n",
+                "NO"
+            ],
+            [
+                "3\r\ngennady korotkevich\r\npetr mitrichev\r\ngaoyuan chen\r\n3 1 2\r\n",
+                "YES"
+            ],
+            [
+                "2\r\ngalileo galilei\r\nnicolaus copernicus\r\n2 1\r\n",
+                "YES"
+            ],
+            [
+                "10\r\nrean schwarzer\r\nfei claussell\r\nalisa reinford\r\neliot craig\r\nlaura arseid\r\njusis albarea\r\nmachias regnitz\r\nsara valestin\r\nemma millstein\r\ngaius worzel\r\n1 2 3 4 5 6 7 8 9 10\r\n",
+                "NO"
+            ],
+            [
+                "10\r\nrean schwarzer\r\nfei claussell\r\nalisa reinford\r\neliot craig\r\nlaura arseid\r\njusis albarea\r\nmachias regnitz\r\nsara valestin\r\nemma millstein\r\ngaius worzel\r\n2 4 9 6 5 7 1 3 8 10\r\n",
+                "YES"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\na b\r\n1\r\n",
+                "YES"
+            ],
+            [
+                "6\r\na b\r\nc d\r\ne f\r\ng h\r\ni j\r\nk l\r\n1 2 3 4 5 6\r\n",
+                "YES"
+            ],
+            [
+                "6\r\na b\r\nc d\r\ne f\r\ng h\r\ni j\r\nk l\r\n1 2 3 4 6 5\r\n",
+                "NO"
+            ],
+            [
+                "6\r\na l\r\nb k\r\nc j\r\nd i\r\ne h\r\nf g\r\n1 3 5 2 4 6\r\n",
+                "NO"
+            ],
+            [
+                "6\r\na l\r\nb k\r\nc j\r\nd i\r\ne h\r\nf g\r\n1 3 5 6 4 2\r\n",
+                "YES"
+            ],
+            [
+                "5\r\nofxaenogpwskpjjo baoqtoeskrwjfm\r\nqtcmjzkvsoiwyuifmxu yrjjtmszpsuaaneetn\r\nvcuwolwntm lpfsjemzppwqgh\r\npiopqgktjlsg ncufxflxyzvwsaftiyd\r\ngxjkoxyzznwjrs clnohbgotljvqkmcjs\r\n5 1 4 2 3\r\n",
+                "YES"
+            ],
+            [
+                "6\r\nzfnkpxaavrcvqhhkclcuiswawpghlqrlq wnvbzhvsjozlkwxowcvyclmehjkkvkxin\r\nzkxkvlnovnloxjdydujkjydaegzjypsgrzq dmiilhmkspokltabpvwalijhlitbfp\r\nldfbfggqsdqethdgkmbcwloluguxiluqjyr fewoondewvndcxticvpiqnvvdhsnzfd\r\nepokfmixjnawdfgkmqlcyirxuprrvudh xvijbdzqdyjwsyhjucytuxrxuiynxf\r\nxntrjusjwbfemnysqrloflcmuiiqxdwviaux vxwmfeyzhfiakbcaiidklvglxdxizbd\r\nyuamigghgdczicqjkhgfwahorgdocgwdjif nlnfwetlhwknpsfemhyotmycdbgdcbvws\r\n4 3 5 6 2 1\r\n",
+                "NO"
+            ],
+            [
+                "1\r\nno np\r\n1\r\n",
+                "YES"
+            ],
+            [
+                "5\r\naab aac\r\naad aae\r\naaf aag\r\naah aai\r\naaj aak\r\n5 4 3 2 1\r\n",
+                "NO"
+            ],
+            [
+                "4\r\na b\r\nc d\r\nz e\r\nf g\r\n1 2 3 4\r\n",
+                "YES"
+            ],
+            [
+                "2\r\naab aac\r\naa aaa\r\n1 2\r\n",
+                "NO"
+            ],
+            [
+                "3\r\nf a\r\ng b\r\nc d\r\n1 2 3\r\n",
+                "YES"
+            ],
+            [
+                "2\r\na b\r\nx y\r\n2 1\r\n",
+                "NO"
+            ],
+            [
+                "3\r\na b\r\nz c\r\nd e\r\n1 2 3\r\n",
+                "YES"
+            ],
+            [
+                "2\r\naa ab\r\nax ay\r\n2 1\r\n",
+                "NO"
+            ],
+            [
+                "3\r\nd f\r\nz a\r\nb c\r\n1 2 3\r\n",
+                "NO"
+            ],
+            [
+                "4\r\ng y\r\nh a\r\ni b\r\nd c\r\n1 2 3 4\r\n",
+                "NO"
+            ],
+            [
+                "3\r\nd e\r\nf a\r\nb c\r\n1 2 3\r\n",
+                "NO"
+            ],
+            [
+                "2\r\naaz aa\r\naab aac\r\n1 2\r\n",
+                "YES"
+            ],
+            [
+                "4\r\na b\r\nd c\r\nh e\r\nf g\r\n1 2 3 4\r\n",
+                "YES"
+            ],
+            [
+                "3\r\nb c\r\nf a\r\nd e\r\n1 2 3\r\n",
+                "NO"
+            ],
+            [
+                "3\r\na b\r\nzzz zzzz\r\nz zz\r\n1 2 3\r\n",
+                "NO"
+            ]
+        ]
+    }
+]

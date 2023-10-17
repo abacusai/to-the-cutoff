@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Smart Beaver and Resolving Collisions",
+        "description": "The Smart Beaver from ABBYY has a lot of hobbies. One of them is constructing\nefficient hash tables. One of the most serious problems in hash tables is\nresolving collisions. The Beaver is interested in this problem very much and\nhe decided to explore it in detail. We assume that the hash table consists of\nh cells numbered from 0 to h - 1. Objects are added to and removed from it.\nEvery object has its own unique identifier. In addition, every object has a\ncorresponding hash value \u2014 an integer between 0 and h - 1, inclusive. When an\nobject is added to the table, if the cell corresponding to the hash value of\nthe object is free, then this object goes there. If the cell is already\noccupied by another object, there is a collision. When an object is deleted\nfrom the table, the cell which it occupied becomes empty. The Smart Beaver has\nrecently learned about the method of linear probing to resolve collisions. It\nis as follows. Let's say that the hash value for the added object equals t and\ncell t of the table is already occupied. Then we try to add this object to\ncell (t + m) mod h. If it is also occupied, then we try cell (t + 2\u00b7m) mod h,\nthen cell (t + 3\u00b7m) mod h, and so on. Note that in some cases it's possible\nthat the new object can not be added to the table. It is guaranteed that the\ninput for this problem doesn't contain such situations. The operation a mod b\nmeans that we take the remainder of the division of number a by number b. This\ntechnique immediately seemed very inoptimal to the Beaver, and he decided to\nassess its inefficiency. So, you are given a sequence of operations, each of\nwhich is either an addition of an object to the table or a deletion of an\nobject from the table. When adding a new object, a sequence of calls to the\ntable is performed. Calls to occupied cells are called dummy. In other words,\nif the result of the algorithm described above is the object being added to\ncell (t + i\u00b7m) mod h (i \u2265 0), then exactly i dummy calls have been performed.\nYour task is to calculate the total number of dummy calls to the table for the\ngiven sequence of additions and deletions. When an object is deleted from the\ntable, assume that no dummy calls are performed. The table is empty before\nperforming the operations, that is, initially it doesn't contain any objects.\nInput The first line of input contains three integers h, m and n (1 \u2264 m < h),\nseparated by spaces, where h is the size of the hash table, m is the number\nthat is used to resolve collisions, n is the number of operations. The\nfollowing n lines contains the descriptions of the operations. Their execution\norder corresponds to the order in which they appear in the input file. Each\noperation is described by a single line. The operations are described as\nfollows: \"+ id hash\"This is the format of the operation that adds an object to\nthe table. The first character is \"+\" (ASCII 43), followed by a single space,\nthen the object identifier id (0 \u2264 id \u2264 10^9), then another space, and the\nhash value of the given object hash (0 \u2264 hash < h). The object identifier and\nthe hash value of this object are integers. \"- id\"This is the format of the\noperation that deletes an object from the table. The first character is \"-\"\n(ASCII 45), followed by a single space, then the object identifier id (0 \u2264 id\n\u2264 10^9). The object identifier is an integer. It is guaranteed that for all\naddition operations the value of id is unique. It is also guaranteed that the\ninitial data is correct, that is, it's always possible to add an object to the\nhash table and there won't be any deletions of nonexisting objects. The input\nlimitations for getting 20 points are: 1 \u2264 h \u2264 5000 1 \u2264 n \u2264 5000 The input\nlimitations for getting 50 points are: 1 \u2264 h \u2264 5\u00b710^4 1 \u2264 n \u2264 5\u00b710^4 The input\nlimitations for getting 100 points are: 1 \u2264 h \u2264 2\u00b710^5 1 \u2264 n \u2264 2\u00b710^5 Output\nPrint a single number \u2014 the total number of dummy calls to the hash table.\nPlease, do not use the \nIt is preferred to use cin, cout streams and the \nInput 10 2 7  11 0  22 2  33 6  44 0  55 0 \u00ad 22  66 0 Output 7\nInput 5 1 6  123 0  234 1  345 2 \u00ad 234  456 0  567 0 Output 4\n\n",
+        "cf_contest_id": 178,
+        "cf_index": "C2",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 2 7\r\n+ 11 0\r\n+ 22 2\r\n+ 33 6\r\n+ 44 0\r\n+ 55 0\r\n- 22\r\n+ 66 0\r\n",
+                "7\r\n"
+            ],
+            [
+                "5 1 6\r\n+ 123 0\r\n+ 234 1\r\n+ 345 2\r\n- 234\r\n+ 456 0\r\n+ 567 0\r\n",
+                "4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "9 3 20\r\n+ 309 1\r\n+ 321 6\r\n- 321\r\n+ 99 3\r\n+ 217 3\r\n+ 95 3\r\n+ 936 1\r\n- 95\r\n+ 354 8\r\n+ 82 6\r\n+ 653 5\r\n+ 730 7\r\n+ 272 8\r\n- 309\r\n+ 211 4\r\n- 217\r\n+ 385 3\r\n- 385\r\n+ 27 3\r\n- 936\r\n",
+                "10\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,117 @@
+[
+    {
+        "name": "Flow Control",
+        "description": "Raj has a single physical network line that connects his office to the\nInternet. This line bandwidth is \n    b\n bytes per millisecond. There are\n\n    n\n users who would like to use this network line to transmit some data.\nThe \n    i\n-th of them will use the line from millisecond \n    s_i\n to\nmillisecond \n    f_i\n inclusive. His initial data rate will be set to\n\n    d_i\n. That means he will use data rate equal to \n    d_i\n for millisecond\n\n    s_i\n, and then it will change according to the procedure described below.\nThe flow control will happen as follows. Suppose there are \n    m\n users\ntrying to transmit some data via the given network line during millisecond\n\n    x\n. Denote as \n    t_i\n the data rate that the \n    i\n-th of these\n\n    m\n users has at the beginning of this millisecond. All \n    t_i\n are non-\nnegative integer values. If \n    m = 0\n, i. e. there are no users trying to\ntransmit data during this millisecond, nothing happens. If the sum of all\n\n    t_i\n is less than or equal to \n    b\n, each active user successfully\ncompletes his transmission (the \n    i\n-th active user transmits \n    t_i\n\nbytes). After that, the data rate of each active user grows by \n    1\n, i. e.\neach \n    t_i\n is increased by \n    1\n. If the sum of all \n    t_i\n is greater\nthan \n    b\n, the congestion occurs and no data transmissions succeed this\nmillisecond at all. If that happens, each \n    t_i\n decreases twice, i. e.\neach \n    t_i\n is replaced with \n    \u230a\n    t_i/2\n    \u230b\n. Raj\nknows all the values \n    n\n, \n    b\n, \n    s_i\n, \n    f_i\n, and \n    d_i\n, he\nwants to calculate the total number of bytes transmitted by all the users in\nthe aggregate. Input The first line of the input contains two integers \n    n\n\nand \n    b\n (\n    1 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5\n, \n    1 \n    \u2264 b \n    \u2264\n    10^9\n), the number of users who will use the line and the line bandwidth,\nrespectively. Each of the following \n    n\n lines contains three integers\n\n    s_i\n, \n    f_i\n and \n    d_i\n (\n    1 \n    \u2264 s_i \n    \u2264 f_i \n    \u2264 10^9\n,\n\n    1 \n    \u2264 d_i \n    \u2264 10^9\n), denoting that the \n    i\n-th user will try to\ntransmit data during each millisecond between \n    s_i\n and \n    f_i\n\ninclusive, and the initial data rate of the \n    i\n-th user. Output Print one\ninteger \u2014 the total number of bytes all users will successfully transmit.\nExamples Input 1 3 1 5 2 Output 10 Input 1 10 7 11 1000 Output 0 Input 2 6 1\n12 1 8 20 3 Output 64 Input 3 10 1 100 1 30 60 20 40 80 6 Output 534 Note\nConsider the first example. Millisecond \n    1\n: User \n    1\n transmits\n\n    2\n bytes. Millisecond \n    2\n: User \n    1\n transmits \n    3\n bytes.\nMillisecond \n    3\n: Congestion occurs, and no user transmits data.\nMillisecond \n    4\n: User \n    1\n transmits \n    2\n bytes. Millisecond\n\n    5\n: User \n    1\n transmits \n    3\n bytes. In the second example, at each\nmillisecond from the \n    7\n-th to the \n    11\n-th inclusive, congestion\noccurs, and the only user decreases their rate twice. However, they don't\ndecrease the speed enough before disconnecting. Consider the third example.\nMillisecond \n    1\n: User \n    1\n transmits \n    1\n bytes. Millisecond\n\n    2\n: User \n    1\n transmits \n    2\n bytes. Millisecond \n    3\n: User\n\n    1\n transmits \n    3\n bytes. Millisecond \n    4\n: User \n    1\n transmits\n\n    4\n bytes. Millisecond \n    5\n: User \n    1\n transmits \n    5\n bytes.\nMillisecond \n    6\n: User \n    1\n transmits \n    6\n bytes. Millisecond\n\n    7\n: Congestion occurs, and no user transmits data. Millisecond \n    8\n:\nUser \n    1\n transmits \n    3\n bytes. User \n    2\n transmits \n    3\n bytes.\nMillisecond \n    9\n: Congestion occurs, and no user transmits data.\nMillisecond \n    10\n: User \n    1\n transmits \n    2\n bytes. User \n    2\n\ntransmits \n    2\n bytes. Millisecond \n    11\n: User \n    1\n transmits \n    3\n\nbytes. User \n    2\n transmits \n    3\n bytes. Millisecond \n    12\n: Congestion\noccurs, and no user transmits data. Millisecond \n    13\n: User \n    2\n\ntransmits \n    2\n bytes. Millisecond \n    14\n: User \n    2\n transmits \n    3\n\nbytes. Millisecond \n    15\n: User \n    2\n transmits \n    4\n bytes. Millisecond\n\n    16\n: User \n    2\n transmits \n    5\n bytes. Millisecond \n    17\n: User\n\n    2\n transmits \n    6\n bytes. Millisecond \n    18\n: Congestion occurs, and\nno user transmits data. Millisecond \n    19\n: User \n    2\n transmits \n    3\n\nbytes. Millisecond \n    20\n: User \n    2\n transmits \n    4\n bytes.\n\n",
+        "cf_contest_id": 1804,
+        "cf_index": "G",
+        "cf_rating": 3500,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dsu",
+            "implementation"
+        ],
+        "time_limit_seconds": 6.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "1 3\r\n1 5 2\r\n",
+                "10"
+            ],
+            [
+                "1 10\r\n7 11 1000\r\n",
+                "0"
+            ],
+            [
+                "2 6\r\n1 12 1\r\n8 20 3\r\n",
+                "64"
+            ],
+            [
+                "3 10\r\n1 100 1\r\n30 60 20\r\n40 80 6\r\n",
+                "534"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1000000000\r\n1 1000000000 1\r\n",
+                "500000000500000000"
+            ],
+            [
+                "1 1000000000\r\n1 1000000000 1000000000\r\n",
+                "749999997500000010"
+            ],
+            [
+                "3 2\r\n1 1000000000 256\r\n1 1000000000 256\r\n1 1000000000 256\r\n",
+                "0"
+            ],
+            [
+                "2 6\r\n1 1000000000 1\r\n1 1000000000 2\r\n",
+                "2666666667"
+            ],
+            [
+                "1 1000000000\r\n79014 703073 758476722\r\n",
+                "473529708261090"
+            ],
+            [
+                "2 1000000000\r\n272931 543228 910213578\r\n781511 789195 675240121\r\n",
+                "251254689931152"
+            ],
+            [
+                "3 1000000000\r\n40145 651301 61950435\r\n48141 253062 630845445\r\n44623 89165 642384769\r\n",
+                "99457873263465"
+            ],
+            [
+                "4 1000000000\r\n221159 504359 213687292\r\n82896 659204 881418064\r\n295239 884484 428681767\r\n247020 974204 948410037\r\n",
+                "505614231023905"
+            ],
+            [
+                "5 1000000000\r\n33981 599529 365424148\r\n84947 130755 837023388\r\n545854 903995 625044173\r\n704362 928762 733971373\r\n543165 972293 560820120\r\n",
+                "373794059263134"
+            ],
+            [
+                "10 1000000000\r\n89498 793601 456232624\r\n65916 572078 625453165\r\n143032 367133 980836000\r\n291334 530966 444194312\r\n288322 851834 957114926\r\n98763 924716 810958013\r\n100138 893853 573663509\r\n577670 836287 517324362\r\n30750 966224 951317012\r\n509339 860871 46318426\r\n",
+                "602845123344255"
+            ],
+            [
+                "20 1000000000\r\n460545 683193 416989314\r\n259036 497503 880990864\r\n593384 914258 589527562\r\n3105 442224 572728348\r\n612264 655571 120903228\r\n638026 719444 678863486\r\n77233 110196 218203206\r\n475321 848541 822158938\r\n618023 671841 300457855\r\n76092 90055 471147808\r\n404725 711843 376225209\r\n369360 548911 634611959\r\n358207 761697 85223883\r\n468657 652794 846875366\r\n214176 572516 193933913\r\n211922 971666 152365381\r\n250126 528989 714068711\r\n474385 991855 56455780\r\n278694 651552 452026142\r\n10781 153766 660054906\r\n",
+                "441604986019798"
+            ],
+            [
+                "1 1000000000\r\n557574222 569773929 463491316\r\n",
+                "5728875147278506"
+            ],
+            [
+                "2 1000000000\r\n297199644 498099202 318330874\r\n444671388 477468622 481785747\r\n",
+                "92100999424674298"
+            ],
+            [
+                "3 1000000000\r\n733591479 879401167 27946241\r\n595692700 989855372 150494599\r\n71100739 257096272 902848244\r\n",
+                "292507546276266374"
+            ],
+            [
+                "4 1000000000\r\n606826882 969083756 177753095\r\n535039355 568692585 114170747\r\n507074837 562712388 440031204\r\n792552329 831542087 392374389\r\n",
+                "176504497822765718"
+            ],
+            [
+                "5 1000000000\r\n204576033 629219893 32592653\r\n391949367 934999146 223071087\r\n18071609 92792040 977214164\r\n18001011 773474626 463468587\r\n136676834 246134842 432655988\r\n",
+                "547071593574317983"
+            ],
+            [
+                "10 1000000000\r\n615854725 854635295 68039667\r\n488711418 941631141 624375333\r\n476148113 716812002 25920762\r\n109105006 943044940 954667811\r\n25939834 395573674 211660215\r\n604893853 691791944 747228986\r\n80478555 979822489 312171336\r\n107408880 110910774 462134774\r\n659106229 809554128 473832759\r\n119747492 645076793 192658420\r\n",
+                "644428041291023730"
+            ],
+            [
+                "2 3\r\n5 9 3\r\n1 9 8\r\n",
+                "10"
+            ],
+            [
+                "2 2\r\n8 10 10\r\n2 2 4\r\n",
+                "2"
+            ],
+            [
+                "1 4\r\n6 10 10\r\n",
+                "9"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,137 @@
+[
+    {
+        "name": "Compute Power",
+        "description": "You need to execute several tasks, each associated with number of processors\nit needs, and the compute power it will consume. You have sufficient number of\nanalog computers, each with enough processors for any task. Each computer can\nexecute up to one task at a time, and no more than two tasks total. The first\ntask can be any, the second task on each computer must use strictly less power\nthan the first. You will assign between 1 and 2 tasks to each computer. You\nwill then first execute the first task on each computer, wait for all of them\nto complete, and then execute the second task on each computer that has two\ntasks assigned. If the average compute power per utilized processor (the sum\nof all consumed powers for all tasks presently running divided by the number\nof utilized processors) across all computers exceeds some unknown threshold\nduring the execution of the first tasks, the entire system will blow up. There\nis no restriction on the second tasks execution. Find the lowest threshold for\nwhich it is possible. Due to the specifics of the task, you need to print the\nanswer multiplied by 1000 and rounded up. Input The first line contains a\nsingle integer n (1 \u2264 n \u2264 50) \u2014 the number of tasks. The second line contains\nn integers a1, a2, ..., an (1 \u2264 ai \u2264 10^8), where ai represents the amount of\npower required for the i-th task. The third line contains n integers b1, b2,\n..., bn (1 \u2264 bi \u2264 100), where bi is the number of processors that i-th task\nwill utilize. Output Print a single integer value \u2014 the lowest threshold for\nwhich it is possible to assign all tasks in such a way that the system will\nnot blow up after the first round of computation, multiplied by 1000 and\nrounded up. Examples Input 6 8 10 9 9 8 10 1 1 1 1 1 1 Output 9000 Input 6 8\n10 9 9 8 10 1 10 5 5 1 10 Output 1160 Note In the first example the best\nstrategy is to run each task on a separate computer, getting average compute\nper processor during the first round equal to 9. In the second task it is best\nto run tasks with compute 10 and 9 on one computer, tasks with compute 10 and\n8 on another, and tasks with compute 9 and 8 on the last, averaging (10 + 10 +\n9) / (10 + 10 + 5) = 1.16 compute power per processor during the first round.\n\n",
+        "cf_contest_id": 993,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "dp",
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n8 10 9 9 8 10\r\n1 1 1 1 1 1\r\n",
+                "9000\r\n"
+            ],
+            [
+                "6\r\n8 10 9 9 8 10\r\n1 10 5 5 1 10\r\n",
+                "1160\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1\r\n100\r\n",
+                "10\r\n"
+            ],
+            [
+                "50\r\n83 43 73 75 11 53 6 43 67 38 83 12 70 27 60 13 9 79 61 30 29 71 10 11 95 87 26 26 19 99 13 47 66 93 91 47 90 75 68 3 22 29 59 12 44 41 64 3 99 100\r\n31 36 69 25 18 33 15 70 12 91 41 44 1 96 80 74 12 80 16 82 88 25 87 17 53 63 3 42 81 6 50 78 34 68 65 78 94 14 53 14 41 97 63 44 21 62 95 37 36 31\r\n",
+                "705\r\n"
+            ],
+            [
+                "50\r\n95 86 10 54 82 42 64 88 14 62 2 31 10 80 18 47 73 81 42 98 30 86 65 77 45 28 39 9 88 58 19 70 41 6 33 7 50 34 22 69 37 65 98 89 46 48 9 76 57 64\r\n87 39 41 23 49 45 91 83 50 92 25 11 76 1 97 42 62 91 2 53 40 11 93 72 66 8 8 62 35 14 57 95 15 80 95 51 60 95 25 70 27 59 51 76 99 100 87 58 24 7\r\n",
+                "637\r\n"
+            ],
+            [
+                "50\r\n1 2 7 8 4 9 1 8 3 6 7 2 10 10 4 2 1 7 9 10 10 1 4 7 5 6 1 6 6 2 5 4 5 10 9 9 7 5 5 7 1 3 9 6 2 3 9 10 6 3\r\n29 37 98 68 71 45 20 38 88 34 85 33 55 80 99 29 28 53 79 100 76 53 18 32 39 29 54 18 56 95 94 60 80 3 24 69 52 91 51 7 36 37 67 28 99 10 99 66 92 48\r\n",
+                "78\r\n"
+            ],
+            [
+                "5\r\n99999948 99999931 99999946 99999958 99999965\r\n43 42 42 24 87\r\n",
+                "1744185140\r\n"
+            ],
+            [
+                "5\r\n61 56 77 33 13\r\n79 40 40 26 56\r\n",
+                "863\r\n"
+            ],
+            [
+                "5\r\n99999943 99999973 99999989 99999996 99999953\r\n2 6 5 2 1\r\n",
+                "23076919847\r\n"
+            ],
+            [
+                "5\r\n21581303 73312811 99923326 93114466 53291492\r\n32 75 75 33 5\r\n",
+                "1070425495\r\n"
+            ],
+            [
+                "5\r\n99999950 99999991 99999910 99999915 99999982\r\n99 55 71 54 100\r\n",
+                "1181102060\r\n"
+            ],
+            [
+                "5\r\n81372426 35955615 58387606 77143158 48265342\r\n9 8 1 6 3\r\n",
+                "8455269522\r\n"
+            ],
+            [
+                "5\r\n88535415 58317418 74164690 46139122 28946947\r\n3 9 3 1 4\r\n",
+                "10987486250\r\n"
+            ],
+            [
+                "5\r\n5 4 3 7 3\r\n7 7 14 57 94\r\n",
+                "89\r\n"
+            ],
+            [
+                "5\r\n99 65 93 94 17\r\n1 5 6 2 3\r\n",
+                "18267\r\n"
+            ],
+            [
+                "10\r\n99999917 99999940 99999907 99999901 99999933 99999930 99999964 99999929 99999967 99999947\r\n93 98 71 41 13 7 24 70 52 70\r\n",
+                "1305482246\r\n"
+            ],
+            [
+                "10\r\n7 9 8 9 4 8 5 2 10 5\r\n6 6 7 8 9 7 10 1 1 7\r\n",
+                "977\r\n"
+            ],
+            [
+                "10\r\n68 10 16 26 94 30 17 90 40 26\r\n36 3 5 9 60 92 55 10 25 27\r\n",
+                "871\r\n"
+            ],
+            [
+                "10\r\n4 6 4 4 6 7 2 7 7 8\r\n35 50 93 63 8 59 46 97 50 88\r\n",
+                "75\r\n"
+            ],
+            [
+                "10\r\n99999954 99999947 99999912 99999920 99999980 99999928 99999908 99999999 99999927 99999957\r\n15 97 18 8 82 21 73 15 28 75\r\n",
+                "1621620860\r\n"
+            ],
+            [
+                "10\r\n46 29 60 65 57 95 82 52 39 21\r\n35 24 8 69 63 27 69 29 94 64\r\n",
+                "918\r\n"
+            ],
+            [
+                "10\r\n9 5 1 4 7 6 10 10 3 8\r\n40 84 53 88 20 33 55 41 34 55\r\n",
+                "100\r\n"
+            ],
+            [
+                "10\r\n99999983 99999982 99999945 99999989 99999981 99999947 99999941 99999987 99999965 99999914\r\n65 14 84 48 71 14 86 65 61 76\r\n",
+                "1414140889\r\n"
+            ],
+            [
+                "10\r\n3 10 3 1 3 8 9 7 1 5\r\n11 18 35 41 47 38 51 68 85 58\r\n",
+                "96\r\n"
+            ],
+            [
+                "50\r\n2 10 10 6 8 1 5 10 3 4 3 5 5 8 4 5 8 2 3 3 3 8 8 5 5 5 5 8 2 5 1 5 4 8 3 7 10 8 6 1 4 9 4 9 1 9 2 7 9 9\r\n10 6 2 2 3 6 5 5 4 1 3 1 2 3 10 10 6 8 7 2 8 5 2 5 4 9 7 5 2 8 3 6 9 8 2 5 8 3 7 3 3 6 3 7 6 10 9 2 9 7\r\n",
+                "785\r\n"
+            ],
+            [
+                "50\r\n88 86 31 49 90 52 57 70 39 94 8 90 39 89 56 78 10 80 9 18 95 96 8 57 29 37 13 89 32 99 85 61 35 37 44 55 92 16 69 80 90 34 84 25 26 17 71 93 46 7\r\n83 95 7 23 34 68 100 89 8 82 36 84 52 42 44 2 25 6 40 72 19 2 75 70 83 3 92 58 51 88 77 75 75 52 15 20 77 63 6 32 39 86 16 22 8 83 53 66 39 13\r\n",
+                "751\r\n"
+            ],
+            [
+                "50\r\n84 98 70 31 72 99 83 73 24 28 100 87 3 12 84 85 28 16 53 29 77 64 38 85 44 60 12 58 3 61 88 42 14 83 1 11 57 63 77 37 99 97 50 94 55 3 12 50 27 68\r\n9 1 4 6 10 5 3 2 4 6 6 9 8 6 1 2 2 1 8 5 8 1 9 1 2 10 2 7 5 1 7 4 7 1 3 6 10 7 3 5 1 3 4 8 4 7 3 3 10 7\r\n",
+                "7265\r\n"
+            ],
+            [
+                "50\r\n5 6 10 7 3 8 5 1 5 3 10 7 9 3 9 5 5 4 8 1 6 10 6 7 8 2 2 3 1 4 10 1 2 9 6 6 10 10 2 7 1 6 1 1 7 9 1 8 5 4\r\n2 2 6 1 5 1 4 9 5 3 5 3 2 1 5 7 4 10 9 8 5 8 1 10 6 7 5 4 10 3 9 4 1 5 6 9 3 8 9 8 2 10 7 3 10 1 1 7 5 3\r\n",
+                "736\r\n"
+            ],
+            [
+                "1\r\n100000000\r\n1\r\n",
+                "100000000000\r\n"
+            ]
+        ]
+    }
+]

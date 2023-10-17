@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Nanami's Digital Board",
+        "description": "Nanami is an expert at playing games. This day, Nanami's good friend Hajime\ninvited her to watch a game of baseball. Unwilling as she was, she followed\nhim to the stadium. But Nanami had no interest in the game, so she looked\naround to see if there was something that might interest her. That's when she\nsaw the digital board at one end of the stadium. The digital board is n pixels\nin height and m pixels in width, every pixel is either light or dark. The\npixels are described by its coordinate. The j-th pixel of the i-th line is\npixel (i, j). The board displays messages by switching a combination of pixels\nto light, and the rest to dark. Nanami notices that the state of the pixels on\nthe board changes from time to time. At certain times, certain pixels on the\nboard may switch from light to dark, or from dark to light. Nanami wonders,\nwhat is the area of the biggest light block such that a specific pixel is on\nits side. A light block is a sub-rectangle of the board, in which all pixels\nare light. Pixel (i, j) belongs to a side of sub-rectangle with (x1, y1) and\n(x2, y2) as its upper-left and lower-right vertex if and only if it satisfies\nthe logical condition: ((i = x1 or i = x2) and (y1 \u2264 j \u2264 y2)) or ((j = y1 or j\n= y2) and (x1 \u2264 i \u2264 x2)). Nanami has all the history of changing pixels, also\nshe has some questions of the described type, can you answer them? Input The\nfirst line contains three space-separated integers n, m and q (1 \u2264 n, m, q \u2264\n1000) \u2014 the height and width of the digital board, and the number of\noperations. Then follow n lines, each line containing m space-separated\nintegers. The j-th integer of the i-th line is ai, j \u2014 the initial state of\npixel (i, j). If ai, j = 0, pixel (i, j) is initially dark. If ai, j = 1,\npixel (i, j) is initially light. Then follow q lines, each line containing\nthree space-separated integers op, x, and y (1 \u2264 op \u2264 2; 1 \u2264 x \u2264 n; 1 \u2264 y \u2264\nm), describing an operation. If op = 1, the pixel at (x, y) changes its state\n(from light to dark or from dark to light). If op = 2, Nanami queries the\nbiggest light block with pixel (x, y) on its side. Output For each query,\nprint a single line containing one integer \u2014 the answer to Nanami's query.\nExamples Input 3 4 5 0 1 1 0 1 0 0 1 0 1 1 0 2 2 2 2 1 2 1 2 2 1 2 3 2 2 2\nOutput 0 2 6 Input 3 3 4 1 1 1 1 1 1 1 1 1 2 2 2 1 2 2 2 1 1 2 2 1 Output 6 3\n3 Note Consider the first sample. The first query specifies pixel (2, 2),\nwhich is dark itself, so there are no valid light blocks, thus the answer is\n0. The second query specifies pixel (1, 2). The biggest light block is the\nblock with (1, 2) as its upper-left vertex and (1, 3) as its lower-right\nvertex. The last query specifies pixel (2, 2), which became light in the third\noperation. The biggest light block is the block with (1, 2) as its upper-left\nvertex and (3, 3) as its lower-right vertex.\n\n",
+        "cf_contest_id": 433,
+        "cf_index": "D",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "dsu",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 4 5\r\n0 1 1 0\r\n1 0 0 1\r\n0 1 1 0\r\n2 2 2\r\n2 1 2\r\n1 2 2\r\n1 2 3\r\n2 2 2\r\n",
+                "0 2 6 "
+            ],
+            [
+                "3 3 4\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n2 2 2\r\n1 2 2\r\n2 1 1\r\n2 2 1\r\n",
+                "6 3 3 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2 5\r\n1 1\r\n1 0\r\n1 1 2\r\n2 2 1\r\n1 1 1\r\n1 2 1\r\n1 2 2\r\n",
+                "2 "
+            ],
+            [
+                "4 5 10\r\n0 0 0 0 1\r\n1 0 0 1 1\r\n1 0 1 1 1\r\n0 0 0 1 0\r\n1 3 3\r\n2 1 5\r\n2 1 5\r\n1 3 2\r\n2 3 4\r\n2 3 2\r\n2 3 1\r\n1 3 5\r\n2 3 2\r\n2 4 4\r\n",
+                "3 3 4 2 2 2 3 "
+            ],
+            [
+                "1 1 10\r\n1\r\n2 1 1\r\n1 1 1\r\n2 1 1\r\n2 1 1\r\n2 1 1\r\n2 1 1\r\n2 1 1\r\n1 1 1\r\n2 1 1\r\n2 1 1\r\n",
+                "1 0 0 0 0 0 1 1 "
+            ],
+            [
+                "10 4 15\r\n0 0 0 1\r\n0 1 0 1\r\n0 1 1 1\r\n1 1 1 1\r\n1 0 0 0\r\n1 1 1 0\r\n0 0 0 1\r\n0 0 0 0\r\n1 1 1 0\r\n1 1 0 1\r\n2 4 2\r\n2 7 4\r\n2 10 4\r\n2 6 4\r\n2 4 1\r\n2 4 4\r\n2 7 4\r\n2 2 2\r\n2 9 3\r\n2 3 3\r\n2 4 2\r\n2 10 1\r\n2 10 2\r\n1 1 1\r\n2 1 1\r\n",
+                "6 1 1 0 4 6 1 3 3 6 6 4 4 1 "
+            ]
+        ]
+    }
+]

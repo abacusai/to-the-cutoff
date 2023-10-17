@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Race",
+        "description": "The Old City is a rectangular city represented as an m \u00d7 n grid of blocks.\nThis city contains many buildings, straight two-way streets and junctions.\nEach junction and each building is exactly one block. All the streets have\nwidth of one block and are either vertical or horizontal. There is a junction\non both sides of each street. We call two blocks adjacent if and only if they\nshare a common side. No two blocks of different streets are adjacent and no\ntwo junctions are adjacent. There is an annual festival and as a part of it,\nThe Old Peykan follows a special path in the city. This path starts from a\nblock in a street, continues with many junctions and ends in a block of some\nstreet. For each street block, we know how much time it takes for the Old\nPeykan to go from this block to an adjacent block. Also the Old Peykan can go\nfrom each junction to its adjacent street blocks in one minute. Of course Old\nPeykan can't go to building blocks. We know the initial position of the Old\nPeykan and the sequence of junctions that it passes to reach its destination.\nAfter passing all the junctions and reaching the destination, it will stay\nthere forever. Your task is to find out where will the Old Peykan be k minutes\nafter it starts moving. Consider that The Old Peykan always follows the\nshortest path that passes through the given sequence of junctions and reaches\nthe destination. Note that the Old Peykan may visit some blocks more than\nonce. Input The first line of input contains three integers m, n and k (3 \u2264 m,\nn \u2264 100, 1 \u2264 k \u2264 100000). Next m lines are representing the city's map. Each\nof them containts n characters, each character is a block: Character \"#\"\nrepresents a building. Digits \"1\", \"2\", ..., \"9\" represent a block of an\nstreet and this digit means the number of minutes it takes for the Old Peykan\nto pass this block. Characters \"a\", \"b\", ..., \"z\" means that this block is a\njunction and this character is it's name. All the junction names are unique.\nConsider that all blocks have the coordinates: the j-th in the i-th line have\ncoordinates (i, j) (1 \u2264 i \u2264 m, 1 \u2264 j \u2264 n). The (m + 2)th line contains two\nintegers rs and cs (1 \u2264 rs \u2264 m, 1 \u2264 cs \u2264 n), string s and another two integers\nre and ce (1 \u2264 re \u2264 m, 1 \u2264 ce \u2264 n). The path starts from block (rs, cs),\ncontinues through junctions in the order that is specified by s and will end\nin block (re, ce). Length of s is between 1 and 1000. It's guaranteed that\nstring s denotes a correct path from the start position to the end position\nand string s doesn't contain two consecutive equal letters. Also start\nposition (rs, cs) and the end position (re, ce) are street blocks. Output In a\nsingle line print two integers rf and cf \u2014 (rf, cf) being the position of the\nOld Peykan after exactly k minutes. Examples Input 3 10 12 ##########\n#z1a1111b# ########## 2 3 ab 2 8 Output 2 8 Input 10 3 5 ### #w# #1# #a# #1#\n#1# #1# #1# #b# ### 3 2 abababababababab 6 2 Output 8 2 Input 3 10 6\n########## #z1a1311b# ########## 2 3 ab 2 8 Output 2 7\n\n",
+        "cf_contest_id": 241,
+        "cf_index": "F",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 10 12\r\n##########\r\n#z1a1111b#\r\n##########\r\n2 3 ab 2 8\r\n",
+                "2 8\r\n"
+            ],
+            [
+                "10 3 5\r\n###\r\n#w#\r\n#1#\r\n#a#\r\n#1#\r\n#1#\r\n#1#\r\n#1#\r\n#b#\r\n###\r\n3 2 abababababababab 6 2\r\n",
+                "8 2\r\n"
+            ],
+            [
+                "3 10 6\r\n##########\r\n#z1a1311b#\r\n##########\r\n2 3 ab 2 8\r\n",
+                "2 7\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "14 14 187\r\n##############\r\n##############\r\n##############\r\n##############\r\n#####a5284b7c#\r\n#####1####7#7#\r\n#####d4343e1f#\r\n##########9#5#\r\n##########8#3#\r\n##########9#3#\r\n##########8#4#\r\n##########g1h#\r\n##############\r\n##############\r\n6 11 efcfedadabedadadegh 10 13\r\n",
+                "10 13\r\n"
+            ],
+            [
+                "20 20 244\r\n####################\r\n###########a96b449c#\r\n###########5##6###1#\r\n###########1##2###6#\r\n###########7##1###7#\r\n###########3##4###2#\r\n###########1##1###5#\r\n###########d47e679f#\r\n####################\r\n####################\r\n####################\r\n####################\r\n####################\r\n####################\r\n####################\r\n####################\r\n####################\r\n####################\r\n####################\r\n####################\r\n4 15 bcfefcbebcfcbabebab 2 13\r\n",
+                "2 15\r\n"
+            ],
+            [
+                "20 20 387\r\n####################\r\n####################\r\n####################\r\n####################\r\n####################\r\n########a7b32137c###\r\n########7#8#####1###\r\n########8#7#####8###\r\n########8#1#####4###\r\n########5#5#####8###\r\n########d6e69515f###\r\n########5#5#####7###\r\n########2#5#####1###\r\n########7#3#####8###\r\n########6#8#####4###\r\n########8#8#####4###\r\n########g6h82878i###\r\n####################\r\n####################\r\n####################\r\n15 11 efifihedadebcfihgda 6 10\r\n",
+                "16 9\r\n"
+            ]
+        ]
+    }
+]

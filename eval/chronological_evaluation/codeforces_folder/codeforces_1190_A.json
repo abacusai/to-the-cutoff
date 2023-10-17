@@ -1,0 +1,104 @@
+[
+    {
+        "name": "Tokitsukaze and Discard Items",
+        "description": "Recently, Tokitsukaze found an interesting game. Tokitsukaze had \n    n\n items\nat the beginning of this game. However, she thought there were too many items,\nso now she wants to discard \n    m\n (\n    1 \n    \u2264 m \n    \u2264 n\n) special items of\nthem. These \n    n\n items are marked with indices from \n    1\n to \n    n\n. In\nthe beginning, the item with index \n    i\n is placed on the \n    i\n-th\nposition. Items are divided into several pages orderly, such that each page\ncontains exactly \n    k\n positions and the last positions on the last page may\nbe left empty. Tokitsukaze would do the following operation: focus on the\nfirst special page that contains at least one special item, and at one time,\nTokitsukaze would discard all special items on this page. After an item is\ndiscarded or moved, its old position would be empty, and then the item below\nit, if exists, would move up to this empty position. The movement may bring\nmany items forward and even into previous pages, so Tokitsukaze would keep\nwaiting until all the items stop moving, and then do the operation (i.e. check\nthe special page and discard the special items) repeatedly until there is no\nitem need to be discarded. Consider the first example from the statement:\n\n    n=10\n, \n    m=4\n, \n    k=5\n, \n    p=[3, 5, 7, 10]\n. The are two pages.\nInitially, the first page is special (since it is the first page containing a\nspecial item). So Tokitsukaze discards the special items with indices \n    3\n\nand \n    5\n. After, the first page remains to be special. It contains \n    [1,\n    2, 4, 6, 7]\n, Tokitsukaze discards the special item with index \n    7\n.\nAfter, the second page is special (since it is the first page containing a\nspecial item). It contains \n    [9, 10]\n, Tokitsukaze discards the special\nitem with index \n    10\n. Tokitsukaze wants to know the number of operations\nshe would do in total. Input The first line contains three integers \n    n\n,\n\n    m\n and \n    k\n (\n    1 \n    \u2264 n \n    \u2264 10^18\n, \n    1 \n    \u2264 m \n    \u2264\n    10^5\n, \n    1 \n    \u2264 m, k \n    \u2264 n\n) \u2014 the number of items, the number of\nspecial items to be discarded and the number of positions in each page. The\nsecond line contains \n    m\n distinct integers \n    p_1, p_2, \n    \u2026, p_m\n\n(\n    1 \n    \u2264 p_1 < p_2 < \n    \u2026 < p_m \n    \u2264 n\n) \u2014 the indices of special\nitems which should be discarded. Output Print a single integer \u2014 the number of\noperations that Tokitsukaze would do in total. Examples Input 10 4 5 3 5 7 10\nOutput 3 Input 13 4 5 7 8 9 10 Output 1 Note For the first example: In the\nfirst operation, Tokitsukaze would focus on the first page \n    [1, 2, 3, 4,\n    5]\n and discard items with indices \n    3\n and \n    5\n; In the second\noperation, Tokitsukaze would focus on the first page \n    [1, 2, 4, 6, 7]\n and\ndiscard item with index \n    7\n; In the third operation, Tokitsukaze would\nfocus on the second page \n    [9, 10]\n and discard item with index \n    10\n.\nFor the second example, Tokitsukaze would focus on the second page \n    [6, 7,\n    8, 9, 10]\n and discard all special items at once.\n\n",
+        "cf_contest_id": 1190,
+        "cf_index": "A",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "two pointers"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 4 5\r\n3 5 7 10\r\n",
+                "3\r\n"
+            ],
+            [
+                "13 4 5\r\n7 8 9 10\r\n",
+                "1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "11 7 3\r\n2 3 4 5 6 7 11\r\n",
+                "4\r\n"
+            ],
+            [
+                "13 9 4\r\n1 2 3 6 7 8 11 12 13\r\n",
+                "4\r\n"
+            ],
+            [
+                "16 7 5\r\n2 3 4 5 6 15 16\r\n",
+                "4\r\n"
+            ],
+            [
+                "10 5 5\r\n2 3 4 5 6\r\n",
+                "2\r\n"
+            ],
+            [
+                "1000000000 2 1000000000\r\n1 1000000000\r\n",
+                "1\r\n"
+            ],
+            [
+                "1000000000000000000 2 1\r\n1 1000000000000000000\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 2 1\r\n1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "15 15 15\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15\r\n",
+                "1\r\n"
+            ],
+            [
+                "21 21 20\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21\r\n",
+                "2\r\n"
+            ],
+            [
+                "35 35 1\r\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35\r\n",
+                "35\r\n"
+            ],
+            [
+                "33 32 1\r\n1 2 3 4 5 6 7 8 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33\r\n",
+                "32\r\n"
+            ],
+            [
+                "45 43 2\r\n1 2 3 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45\r\n",
+                "35\r\n"
+            ],
+            [
+                "101 55 10\r\n1 3 5 7 8 9 10 16 18 21 22 23 24 25 27 30 32 35 36 37 38 39 40 43 45 47 49 50 51 52 54 57 59 61 64 66 67 68 69 70 71 72 73 80 83 86 87 88 89 90 91 92 96 97 98\r\n",
+                "15\r\n"
+            ],
+            [
+                "107 20 13\r\n5 9 20 25 26 30 37 45 51 58 62 73 82 87 89 90 99 101 104 106\r\n",
+                "9\r\n"
+            ],
+            [
+                "1000000000000000000 10 68\r\n9818112234872670 233245257111863071 266483628625876079 375103213040049805 431982380866113633 489732004669478331 501030096787260719 541800997319766183 551892546260532408 696178619227890200\r\n",
+                "10\r\n"
+            ],
+            [
+                "1000000000000000000 20 365\r\n31881893160049984 103938857870698567 103962228223609431 140762820261865064 175962215264653912 239086305245565642 354522451098745823 383839975876242372 443471287955807705 478923027151493682 511195154588214957 619570919279066139 677571312513476877 705864797651447277 789633853044745934 867300890280086078 883297431113041450 891736036124527038 937306858250803630 990892290394455512\r\n",
+                "20\r\n"
+            ],
+            [
+                "1000000000000000000 2 1000000000\r\n102306300054748096 267367244641009859\r\n",
+                "2\r\n"
+            ],
+            [
+                "1000000000000000000 5 1000\r\n1 1000000000 1000000000000 1000000000000000 1000000000000001\r\n",
+                "4\r\n"
+            ]
+        ]
+    }
+]

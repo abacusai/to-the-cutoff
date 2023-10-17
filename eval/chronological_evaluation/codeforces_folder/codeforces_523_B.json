@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Mean Requests",
+        "description": "In this problem you will have to deal with a real algorithm that is used in\nthe VK social network. As in any other company that creates high-loaded\nwebsites, the VK developers have to deal with request statistics regularly. An\nimportant indicator reflecting the load of the site is the mean number of\nrequests for a certain period of time of T seconds (for example, T = 60\nseconds = 1 min and T = 86400 seconds = 1 day). For example, if this value\ndrops dramatically, that shows that the site has access problem. If this value\ngrows, that may be a reason to analyze the cause for the growth and add more\nservers to the website if it is really needed. However, even such a natural\nproblem as counting the mean number of queries for some period of time can be\na challenge when you process the amount of data of a huge social network.\nThat's why the developers have to use original techniques to solve problems\napproximately, but more effectively at the same time. Let's consider the\nfollowing formal model. We have a service that works for n seconds. We know\nthe number of queries to this resource at at each moment of time t (1 \u2264 t \u2264\nn). Let's formulate the following algorithm of calculating the mean with\nexponential decay. Let c be some real number, strictly larger than one. //\nsetting this constant value correctly can adjust // the time range for which\nstatistics will be calculated double c = some constant value; // as the result\nof the algorithm's performance this variable will contain // the mean number\nof queries for the last // T seconds by the current moment of time double mean\n= 0.0; for t = 1..n: // at each second, we do the following: // at is the\nnumber of queries that came at the last second; mean = (mean + at / T) / c;\nThus, the mean variable is recalculated each second using the number of\nqueries that came at that second. We can make some mathematical calculations\nand prove that choosing the value of constant c correctly will make the value\nof mean not very different from the real mean value ax at t - T + 1 \u2264 x \u2264 t.\nThe advantage of such approach is that it only uses the number of requests at\nthe current moment of time and doesn't require storing the history of requests\nfor a large time range. Also, it considers the recent values with the weight\nlarger than the weight of the old ones, which helps to react to dramatic\nchange in values quicker. However before using the new theoretical approach in\nindustrial programming, there is an obligatory step to make, that is, to test\nits credibility practically on given test data sets. Your task is to compare\nthe data obtained as a result of the work of an approximate algorithm to the\nreal data. You are given n values at, integer T and real number c. Also, you\nare given m moments pj (1 \u2264 j \u2264 m), where we are interested in the mean value\nof the number of queries for the last T seconds. Implement two algorithms. The\nfirst one should calculate the required value by definition, i.e. by the\nformula . The second algorithm should calculate the mean value as is described\nabove. Print both values and calculate the relative error of the second\nalgorithm by the formula , where approx is the approximate value, obtained by\nthe second algorithm, and real is the exact value obtained by the first\nalgorithm. Input The first line contains integer n (1 \u2264 n \u2264 2\u00b710^5), integer T\n(1 \u2264 T \u2264 n) and real number c (1 < c \u2264 100) \u2014 the time range when the resource\nshould work, the length of the time range during which we need the mean number\nof requests and the coefficient c of the work of approximate algorithm. Number\nc is given with exactly six digits after the decimal point. The next line\ncontains n integers at (1 \u2264 at \u2264 10^6) \u2014 the number of queries to the service\nat each moment of time. The next line contains integer m (1 \u2264 m \u2264 n) \u2014 the\nnumber of moments of time when we are interested in the mean number of queries\nfor the last T seconds. The next line contains m integers pj (T \u2264 pj \u2264 n),\nrepresenting another moment of time for which we need statistics. Moments pj\nare strictly increasing. Output Print m lines. The j-th line must contain\nthree numbers real, approx and error, where: is the real mean number of\nqueries for the last T seconds; approx is calculated by the given algorithm\nand equals mean at the moment of time t = pj (that is, after implementing the\npj-th iteration of the cycle); is the relative error of the approximate\nalgorithm. The numbers you printed will be compared to the correct numbers\nwith the relative or absolute error 10^-4. It is recommended to print the\nnumbers with at least five digits after the decimal point. Examples Input 1 1\n2.000000 1 1 1 Output 1.000000 0.500000 0.500000 Input 11 4 1.250000 9 11 7 5\n15 6 6 6 6 6 6 8 4 5 6 7 8 9 10 11 Output 8.000000 4.449600 0.443800 9.500000\n6.559680 0.309507 8.250000 6.447744 0.218455 8.000000 6.358195 0.205226\n8.250000 6.286556 0.237993 6.000000 6.229245 0.038207 6.000000 6.183396\n0.030566 6.000000 6.146717 0.024453 Input 13 4 1.250000 3 3 3 3 3 20 3 3 3 3 3\n3 3 10 4 5 6 7 8 9 10 11 12 13 Output 3.000000 1.771200 0.409600 3.000000\n2.016960 0.327680 7.250000 5.613568 0.225715 7.250000 5.090854 0.297813\n7.250000 4.672684 0.355492 7.250000 4.338147 0.401635 3.000000 4.070517\n0.356839 3.000000 3.856414 0.285471 3.000000 3.685131 0.228377 3.000000\n3.548105 0.182702\n\n",
+        "cf_contest_id": 523,
+        "cf_index": "B",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "implementation"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1 1 2.000000\r\n1\r\n1\r\n1\r\n",
+                "1.0000 0.5000 0.5000\r\n"
+            ],
+            [
+                "11 4 1.250000\r\n9 11 7 5 15 6 6 6 6 6 6\r\n8\r\n4 5 6 7 8 9 10 11\r\n",
+                "8.0000 4.4496 0.4438\r\n9.5000 6.5597 0.3095\r\n8.2500 6.4477 0.2185\r\n8.0000 6.3582 0.2052\r\n8.2500 6.2866 0.2380\r\n6.0000 6.2292 0.0382\r\n6.0000 6.1834 0.0306\r\n6.0000 6.1467 0.0245\r\n"
+            ],
+            [
+                "13 4 1.250000\r\n3 3 3 3 3 20 3 3 3 3 3 3 3\r\n10\r\n4 5 6 7 8 9 10 11 12 13\r\n",
+                "3.0000 1.7712 0.4096\r\n3.0000 2.0170 0.3277\r\n7.2500 5.6136 0.2257\r\n7.2500 5.0909 0.2978\r\n7.2500 4.6727 0.3555\r\n7.2500 4.3381 0.4016\r\n3.0000 4.0705 0.3568\r\n3.0000 3.8564 0.2855\r\n3.0000 3.6851 0.2284\r\n3.0000 3.5481 0.1827\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 2.000000\r\n4\r\n1\r\n1\r\n",
+                "4.0000 2.0000 0.5000\r\n"
+            ],
+            [
+                "1 1 2.000000\r\n1121\r\n1\r\n1\r\n",
+                "1121.0000 560.5000 0.5000\r\n"
+            ],
+            [
+                "1 1 2.000000\r\n758432\r\n1\r\n1\r\n",
+                "758432.0000 379216.0000 0.5000\r\n"
+            ],
+            [
+                "3 1 2.000000\r\n8 25 21\r\n3\r\n1 2 3\r\n",
+                "8.0000 4.0000 0.5000\r\n25.0000 14.5000 0.4200\r\n21.0000 17.7500 0.1548\r\n"
+            ],
+            [
+                "19 3 1.333333\r\n12 15 11 10 16 4 9 2 24 3 6 3 21 21 2 16 13 12 2\r\n17\r\n3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19\r\n",
+                "12.6667 7.2500 0.4276\r\n12.0000 7.9375 0.3385\r\n12.3333 9.9531 0.1930\r\n10.0000 8.4649 0.1535\r\n9.6667 8.5986 0.1105\r\n5.0000 6.9490 0.3898\r\n11.6667 11.2117 0.0390\r\n9.6667 9.1588 0.0525\r\n11.0000 8.3691 0.2392\r\n4.0000 7.0268 0.7567\r\n10.0000 10.5201 0.0520\r\n15.0000 13.1401 0.1240\r\n14.6667 10.3551 0.2940\r\n13.0000 11.7663 0.0949\r\n10.3333 12.0747 0.1685\r\n13.6667 12.0561 0.1178\r\n9.0000 9.5420 0.0602\r\n"
+            ]
+        ]
+    }
+]

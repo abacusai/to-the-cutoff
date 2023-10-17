@@ -1,0 +1,173 @@
+[
+    {
+        "name": "Mountain Scenery",
+        "description": "Little Bolek has found a picture with n mountain peaks painted on it. The n\npainted peaks are represented by a non-closed polyline, consisting of 2n\nsegments. The segments go through 2n + 1 points with coordinates (1, y1), (2,\ny2), ..., (2n + 1, y2n + 1), with the i-th segment connecting the point (i,\nyi) and the point (i + 1, yi + 1). For any even i (2 \u2264 i \u2264 2n) the following\ncondition holds: yi - 1 < yi and yi > yi + 1. We shall call a vertex of a\npolyline with an even x coordinate a mountain peak. The figure to the left\nshows the initial picture, the figure to the right shows what the picture\nlooks like after Bolek's actions. The affected peaks are marked red, k = 2.\nBolek fancied a little mischief. He chose exactly k mountain peaks, rubbed out\nthe segments that went through those peaks and increased each peak's height by\none (that is, he increased the y coordinate of the corresponding points). Then\nhe painted the missing segments to get a new picture of mountain peaks. Let us\ndenote the points through which the new polyline passes on Bolek's new picture\nas (1, r1), (2, r2), ..., (2n + 1, r2n + 1). Given Bolek's final picture,\nrestore the initial one. Input The first line contains two space-separated\nintegers n and k (1 \u2264 k \u2264 n \u2264 100). The next line contains 2n + 1 space-\nseparated integers r1, r2, ..., r2n + 1 (0 \u2264 ri \u2264 100) \u2014 the y coordinates of\nthe polyline vertices on Bolek's picture. It is guaranteed that we can obtain\nthe given picture after performing the described actions on some picture of\nmountain peaks. Output Print 2n + 1 integers y1, y2, ..., y2n + 1 \u2014 the y\ncoordinates of the vertices of the polyline on the initial picture. If there\nare multiple answers, output any one of them. Examples Input 3 2 0 5 3 5 1 5 2\nOutput 0 5 3 4 1 4 2 Input 1 1 0 2 0 Output 0 1 0\n\n",
+        "cf_contest_id": 218,
+        "cf_index": "A",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "constructive algorithms",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2\r\n0 5 3 5 1 5 2\r\n",
+                "0 4 3 4 1 5 2"
+            ],
+            [
+                "1 1\r\n0 2 0\r\n",
+                "0 1 0"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n1 100 0\r\n",
+                "1 99 0"
+            ],
+            [
+                "3 1\r\n0 1 0 1 0 2 0\r\n",
+                "0 1 0 1 0 1 0"
+            ],
+            [
+                "3 1\r\n0 1 0 2 0 1 0\r\n",
+                "0 1 0 1 0 1 0"
+            ],
+            [
+                "3 3\r\n0 100 35 67 40 60 3\r\n",
+                "0 99 35 66 40 59 3"
+            ],
+            [
+                "7 3\r\n1 2 1 3 1 2 1 2 1 3 1 3 1 2 1\r\n",
+                "1 2 1 2 1 2 1 2 1 2 1 2 1 2 1"
+            ],
+            [
+                "30 20\r\n1 3 1 3 0 2 0 4 1 3 0 3 1 3 1 4 2 3 1 2 0 4 2 4 0 4 1 3 0 4 1 4 2 4 2 4 0 3 1 2 1 4 0 3 0 4 1 3 1 4 1 3 0 1 0 4 0 3 2 3 1\r\n",
+                "1 2 1 2 0 1 0 3 1 2 0 2 1 2 1 3 2 3 1 2 0 3 2 3 0 3 1 2 0 3 1 3 2 3 2 3 0 2 1 2 1 3 0 2 0 3 1 3 1 4 1 3 0 1 0 4 0 3 2 3 1"
+            ],
+            [
+                "10 6\r\n0 5 2 4 1 5 2 5 2 4 2 5 3 5 0 2 0 1 0 1 0\r\n",
+                "0 4 2 3 1 4 2 4 2 3 2 4 3 5 0 2 0 1 0 1 0"
+            ],
+            [
+                "11 6\r\n3 5 1 4 3 5 0 2 0 2 0 4 0 3 0 4 1 5 2 4 0 4 0\r\n",
+                "3 4 1 4 3 4 0 1 0 1 0 3 0 2 0 4 1 5 2 4 0 4 0"
+            ],
+            [
+                "12 6\r\n1 2 1 5 0 2 0 4 1 3 1 4 2 4 0 4 0 4 2 4 0 4 0 5 3\r\n",
+                "1 2 1 4 0 1 0 3 1 2 1 3 2 3 0 4 0 4 2 4 0 4 0 5 3"
+            ],
+            [
+                "13 6\r\n3 5 2 5 0 3 0 1 0 2 0 1 0 1 0 2 1 4 3 5 1 3 1 3 2 3 1\r\n",
+                "3 4 2 4 0 2 0 1 0 1 0 1 0 1 0 2 1 4 3 4 1 2 1 3 2 3 1"
+            ],
+            [
+                "24 7\r\n3 4 2 4 1 4 3 4 3 5 1 3 1 3 0 3 0 3 1 4 0 3 0 1 0 1 0 3 2 3 2 3 1 2 1 3 2 5 1 3 0 1 0 2 0 3 1 3 1\r\n",
+                "3 4 2 3 1 4 3 4 3 4 1 2 1 2 0 2 0 2 1 3 0 3 0 1 0 1 0 3 2 3 2 3 1 2 1 3 2 5 1 3 0 1 0 2 0 3 1 3 1"
+            ],
+            [
+                "25 8\r\n3 5 2 4 2 4 0 1 0 1 0 1 0 2 1 5 2 4 2 4 2 3 1 2 0 1 0 2 0 3 2 5 3 5 0 4 2 3 2 4 1 4 0 4 1 4 0 1 0 4 2\r\n",
+                "3 4 2 3 2 3 0 1 0 1 0 1 0 2 1 4 2 3 2 3 2 3 1 2 0 1 0 1 0 3 2 4 3 5 0 4 2 3 2 4 1 4 0 4 1 4 0 1 0 4 2"
+            ],
+            [
+                "26 9\r\n3 4 2 3 1 3 1 3 2 4 0 1 0 2 1 3 1 3 0 5 1 4 3 5 0 5 2 3 0 3 1 4 1 3 1 4 2 3 1 4 3 4 1 3 2 4 1 3 2 5 1 2 0\r\n",
+                "3 4 2 3 1 2 1 3 2 3 0 1 0 2 1 2 1 2 0 4 1 4 3 4 0 4 2 3 0 2 1 3 1 3 1 4 2 3 1 4 3 4 1 3 2 4 1 3 2 5 1 2 0"
+            ],
+            [
+                "27 10\r\n3 5 3 5 3 4 1 3 1 3 1 3 2 3 2 3 2 4 2 3 0 4 2 5 3 4 3 4 1 5 3 4 1 2 1 5 0 3 0 5 0 5 3 4 0 1 0 2 0 2 1 4 0 2 1\r\n",
+                "3 4 3 4 3 4 1 2 1 2 1 3 2 3 2 3 2 3 2 3 0 3 2 4 3 4 3 4 1 4 3 4 1 2 1 4 0 2 0 5 0 5 3 4 0 1 0 2 0 2 1 4 0 2 1"
+            ],
+            [
+                "40 1\r\n0 2 1 2 0 2 1 2 1 2 1 2 1 2 1 3 0 1 0 1 0 1 0 2 0 2 1 2 0 2 1 2 1 2 1 2 1 2 0 2 1 2 1 2 0 1 0 2 0 2 0 1 0 1 0 1 0 1 0 1 0 2 0 2 0 2 0 1 0 2 0 1 0 2 0 1 0 2 1 2 0\r\n",
+                "0 2 1 2 0 2 1 2 1 2 1 2 1 2 1 2 0 1 0 1 0 1 0 2 0 2 1 2 0 2 1 2 1 2 1 2 1 2 0 2 1 2 1 2 0 1 0 2 0 2 0 1 0 1 0 1 0 1 0 1 0 2 0 2 0 2 0 1 0 2 0 1 0 2 0 1 0 2 1 2 0"
+            ],
+            [
+                "40 2\r\n0 3 1 2 1 2 0 1 0 2 1 3 0 2 0 3 0 3 0 1 0 2 0 3 1 2 0 2 1 2 0 2 0 1 0 1 0 2 0 2 1 3 0 2 0 1 0 1 0 1 0 3 1 3 1 2 1 2 0 3 0 1 0 3 0 2 1 2 0 1 0 2 0 3 1 2 1 3 1 3 0\r\n",
+                "0 2 1 2 1 2 0 1 0 2 1 2 0 2 0 3 0 3 0 1 0 2 0 3 1 2 0 2 1 2 0 2 0 1 0 1 0 2 0 2 1 3 0 2 0 1 0 1 0 1 0 3 1 3 1 2 1 2 0 3 0 1 0 3 0 2 1 2 0 1 0 2 0 3 1 2 1 3 1 3 0"
+            ],
+            [
+                "40 3\r\n1 3 1 2 0 4 1 2 0 1 0 1 0 3 0 3 2 3 0 3 1 3 0 4 1 3 2 3 0 2 1 3 0 2 0 1 0 3 1 3 2 3 2 3 0 1 0 2 0 1 0 1 0 3 1 3 0 3 1 3 1 2 0 1 0 3 0 2 0 3 0 1 0 2 0 3 1 2 0 3 0\r\n",
+                "1 2 1 2 0 3 1 2 0 1 0 1 0 2 0 3 2 3 0 3 1 3 0 4 1 3 2 3 0 2 1 3 0 2 0 1 0 3 1 3 2 3 2 3 0 1 0 2 0 1 0 1 0 3 1 3 0 3 1 3 1 2 0 1 0 3 0 2 0 3 0 1 0 2 0 3 1 2 0 3 0"
+            ],
+            [
+                "50 40\r\n1 4 2 4 1 2 1 4 1 4 2 3 1 2 1 4 1 3 0 2 1 4 0 1 0 3 1 3 1 3 0 4 2 4 2 4 2 4 2 4 2 4 2 4 0 4 1 3 1 3 0 4 1 4 2 3 2 3 0 3 0 3 0 4 1 4 1 3 1 4 1 3 0 4 0 3 0 2 0 2 0 4 1 4 0 2 0 4 1 4 0 3 0 2 1 3 0 2 0 4 0\r\n",
+                "1 3 2 3 1 2 1 3 1 3 2 3 1 2 1 3 1 2 0 2 1 3 0 1 0 2 1 2 1 2 0 3 2 3 2 3 2 3 2 3 2 3 2 3 0 3 1 2 1 2 0 3 1 3 2 3 2 3 0 2 0 2 0 3 1 3 1 2 1 3 1 2 0 3 0 2 0 1 0 1 0 3 1 3 0 1 0 3 1 3 0 2 0 2 1 2 0 2 0 4 0"
+            ],
+            [
+                "2 1\r\n0 2 1 4 1\r\n",
+                "0 2 1 3 1"
+            ],
+            [
+                "2 1\r\n0 2 1 5 1\r\n",
+                "0 2 1 4 1"
+            ],
+            [
+                "3 3\r\n1 12 9 11 6 8 1\r\n",
+                "1 11 9 10 6 7 1"
+            ],
+            [
+                "3 2\r\n0 7 4 7 1 3 2\r\n",
+                "0 6 4 6 1 3 2"
+            ],
+            [
+                "2 1\r\n1 3 2 4 1\r\n",
+                "1 3 2 3 1"
+            ],
+            [
+                "4 1\r\n5 6 5 6 5 6 1 3 1\r\n",
+                "5 6 5 6 5 6 1 2 1"
+            ],
+            [
+                "2 1\r\n0 2 1 3 0\r\n",
+                "0 2 1 2 0"
+            ],
+            [
+                "2 2\r\n98 100 1 7 2\r\n",
+                "98 99 1 6 2"
+            ],
+            [
+                "3 1\r\n8 10 9 10 3 5 1\r\n",
+                "8 10 9 10 3 4 1"
+            ],
+            [
+                "3 2\r\n0 4 3 5 2 5 2\r\n",
+                "0 4 3 4 2 4 2"
+            ],
+            [
+                "2 1\r\n4 5 2 4 2\r\n",
+                "4 5 2 3 2"
+            ],
+            [
+                "3 1\r\n0 2 1 2 0 2 0\r\n",
+                "0 2 1 2 0 1 0"
+            ],
+            [
+                "1 1\r\n5 7 2\r\n",
+                "5 6 2"
+            ],
+            [
+                "2 1\r\n3 4 1 3 1\r\n",
+                "3 4 1 2 1"
+            ],
+            [
+                "3 1\r\n0 4 3 5 0 5 0\r\n",
+                "0 4 3 4 0 5 0"
+            ],
+            [
+                "3 1\r\n1 3 2 3 1 3 1\r\n",
+                "1 3 2 3 1 2 1"
+            ],
+            [
+                "2 1\r\n0 8 7 100 0\r\n",
+                "0 8 7 99 0"
+            ],
+            [
+                "2 1\r\n1 3 2 5 1\r\n",
+                "1 3 2 4 1"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,199 @@
+[
+    {
+        "name": "Complete the Projects (easy version)",
+        "description": "The only difference between easy and hard versions is that you should complete\nall the projects in easy version but this is not necessary in hard version.\nPolycarp is a very famous freelancer. His current rating is \n    r\n units.\nSome very rich customers asked him to complete some projects for their\ncompanies. To complete the \n    i\n-th project, Polycarp needs to have at least\n\n    a_i\n units of rating; after he completes this project, his rating will\nchange by \n    b_i\n (his rating will increase or decrease by \n    b_i\n)\n(\n    b_i\n can be positive or negative). Polycarp's rating should not fall\nbelow zero because then people won't trust such a low rated freelancer. Is it\npossible to complete all the projects? Formally, write a program to check if\nsuch an order of the projects exists, that Polycarp has enough rating before\nstarting each project, and he has non-negative rating after completing each\nproject. In other words, you have to check that there exists such an order of\nprojects in which Polycarp will complete them, so he has enough rating before\nstarting each project, and has non-negative rating after completing each\nproject. Input The first line of the input contains two integers \n    n\n and\n\n    r\n (\n    1 \n    \u2264 n \n    \u2264 100, 1 \n    \u2264 r \n    \u2264 30000\n) \u2014 the number of\nprojects and the initial rating of Polycarp, respectively. The next \n    n\n\nlines contain projects, one per line. The \n    i\n-th project is represented as\na pair of integers \n    a_i\n and \n    b_i\n (\n    1 \n    \u2264 a_i \n    \u2264 30000\n,\n\n    -300 \n    \u2264 b_i \n    \u2264 300\n) \u2014 the rating required to complete the\n\n    i\n-th project and the rating change after the project completion. Output\nPrint \"YES\" or \"NO\". Examples Input 3 4 4 6 10 -2 8 -1 Output YES Input 3 5 4\n-5 4 -2 1 3 Output YES Input 4 4 5 2 5 -3 2 1 4 -2 Output YES Input 3 10 10 0\n10 -10 30 0 Output NO Note In the first example, the possible order is: \n    1,\n    2, 3\n. In the second example, the possible order is: \n    2, 3, 1\n. In the\nthird example, the possible order is: \n    3, 1, 4, 2\n.\n\n",
+        "cf_contest_id": 1203,
+        "cf_index": "F1",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 4\r\n4 6\r\n10 -2\r\n8 -1\r\n",
+                "YES\n"
+            ],
+            [
+                "3 5\r\n4 -5\r\n4 -2\r\n1 3\r\n",
+                "YES\n"
+            ],
+            [
+                "4 4\r\n5 2\r\n5 -3\r\n2 1\r\n4 -2\r\n",
+                "YES\n"
+            ],
+            [
+                "3 10\r\n10 0\r\n10 -10\r\n30 0\r\n",
+                "NO\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "52 276\r\n303 6\r\n222 -6\r\n28 0\r\n93 6\r\n96 7\r\n223 0\r\n154 -4\r\n309 -7\r\n329 6\r\n94 3\r\n11 -3\r\n126 0\r\n210 2\r\n101 7\r\n154 4\r\n54 6\r\n33 5\r\n324 -4\r\n86 5\r\n220 -2\r\n137 -1\r\n49 -4\r\n109 6\r\n107 4\r\n270 2\r\n209 -2\r\n235 -5\r\n39 1\r\n110 5\r\n116 4\r\n155 1\r\n37 -1\r\n193 0\r\n356 -1\r\n320 -6\r\n261 -7\r\n316 6\r\n137 2\r\n165 2\r\n350 7\r\n224 6\r\n89 3\r\n149 7\r\n348 3\r\n271 3\r\n52 -5\r\n186 -5\r\n13 0\r\n173 -6\r\n285 2\r\n20 -5\r\n152 -5\r\n",
+                "YES\n"
+            ],
+            [
+                "1 1\r\n1 0\r\n",
+                "YES\n"
+            ],
+            [
+                "2 2\r\n1 2\r\n2 -2\r\n",
+                "YES\n"
+            ],
+            [
+                "3 1\r\n1 0\r\n1 -1\r\n3 0\r\n",
+                "NO\n"
+            ],
+            [
+                "4 1\r\n3 -1\r\n1 4\r\n2 -4\r\n4 2\r\n",
+                "YES\n"
+            ],
+            [
+                "5 1\r\n4 5\r\n2 3\r\n4 5\r\n2 1\r\n5 3\r\n",
+                "NO\n"
+            ],
+            [
+                "6 1\r\n4 6\r\n5 -6\r\n4 -3\r\n5 2\r\n2 4\r\n3 -5\r\n",
+                "NO\n"
+            ],
+            [
+                "7 6\r\n2 3\r\n5 3\r\n7 2\r\n7 -1\r\n4 -4\r\n3 -4\r\n6 -6\r\n",
+                "NO\n"
+            ],
+            [
+                "8 1\r\n2 8\r\n2 -6\r\n6 -5\r\n7 5\r\n6 8\r\n6 8\r\n2 5\r\n1 -2\r\n",
+                "NO\n"
+            ],
+            [
+                "9 9\r\n9 -6\r\n1 -9\r\n5 -8\r\n7 -3\r\n4 1\r\n9 1\r\n1 -1\r\n1 -8\r\n7 8\r\n",
+                "NO\n"
+            ],
+            [
+                "10 1\r\n7 -10\r\n2 -2\r\n7 5\r\n1 8\r\n10 -10\r\n5 6\r\n7 -9\r\n1 6\r\n6 4\r\n3 -2\r\n",
+                "NO\n"
+            ],
+            [
+                "11 1\r\n6 -8\r\n4 11\r\n5 -10\r\n5 2\r\n8 7\r\n9 -1\r\n7 -10\r\n3 -10\r\n2 6\r\n3 4\r\n7 8\r\n",
+                "NO\n"
+            ],
+            [
+                "12 10\r\n11 -12\r\n11 -5\r\n7 6\r\n2 1\r\n12 -2\r\n3 -12\r\n4 -12\r\n3 -11\r\n9 0\r\n9 4\r\n2 12\r\n5 -5\r\n",
+                "NO\n"
+            ],
+            [
+                "13 11\r\n11 -7\r\n9 -11\r\n12 8\r\n12 4\r\n11 -12\r\n6 -4\r\n11 5\r\n5 -13\r\n5 -8\r\n10 2\r\n11 -8\r\n13 -11\r\n7 -10\r\n",
+                "NO\n"
+            ],
+            [
+                "14 7\r\n4 -12\r\n5 -5\r\n4 -10\r\n14 3\r\n1 6\r\n4 -12\r\n6 -10\r\n4 -8\r\n5 -2\r\n2 -10\r\n9 -6\r\n1 6\r\n7 -4\r\n11 9\r\n",
+                "NO\n"
+            ],
+            [
+                "15 11\r\n5 1\r\n1 -7\r\n14 6\r\n5 -7\r\n9 -3\r\n12 10\r\n9 -8\r\n8 -11\r\n8 12\r\n3 -1\r\n2 -1\r\n13 3\r\n13 -12\r\n3 12\r\n3 -5\r\n",
+                "YES\n"
+            ],
+            [
+                "16 8\r\n16 -4\r\n12 15\r\n4 15\r\n13 10\r\n9 -4\r\n1 7\r\n16 -4\r\n1 -5\r\n13 8\r\n14 0\r\n8 -13\r\n10 11\r\n16 8\r\n10 6\r\n3 -5\r\n11 -8\r\n",
+                "YES\n"
+            ],
+            [
+                "17 3\r\n12 -6\r\n7 -8\r\n14 -2\r\n4 -5\r\n8 0\r\n7 9\r\n17 -12\r\n10 -4\r\n2 -8\r\n16 -14\r\n4 1\r\n8 4\r\n14 -15\r\n3 13\r\n17 -1\r\n9 8\r\n11 -9\r\n",
+                "NO\n"
+            ],
+            [
+                "18 4\r\n3 15\r\n7 3\r\n15 16\r\n18 -1\r\n10 10\r\n4 3\r\n2 18\r\n5 -2\r\n9 -5\r\n15 12\r\n8 5\r\n16 -7\r\n16 -9\r\n16 0\r\n8 8\r\n14 2\r\n8 -4\r\n13 -15\r\n",
+                "YES\n"
+            ],
+            [
+                "19 11\r\n12 -10\r\n17 -18\r\n8 15\r\n5 4\r\n16 -6\r\n11 9\r\n10 -2\r\n2 -6\r\n8 -10\r\n8 -8\r\n8 13\r\n3 -12\r\n18 -11\r\n3 19\r\n16 19\r\n12 8\r\n15 4\r\n8 -16\r\n18 -14\r\n",
+                "NO\n"
+            ],
+            [
+                "20 10\r\n19 -20\r\n7 4\r\n19 6\r\n10 -10\r\n13 4\r\n4 4\r\n19 20\r\n9 -9\r\n19 8\r\n13 9\r\n5 -16\r\n12 -1\r\n9 -7\r\n15 7\r\n6 -20\r\n2 -11\r\n1 -14\r\n13 -18\r\n12 -19\r\n6 19\r\n",
+                "NO\n"
+            ],
+            [
+                "58 168\r\n25 -3\r\n70 -3\r\n169 2\r\n182 -4\r\n183 2\r\n178 4\r\n14 2\r\n18 0\r\n167 3\r\n8 4\r\n215 -4\r\n146 -3\r\n229 1\r\n27 3\r\n88 3\r\n202 4\r\n208 3\r\n33 2\r\n161 -4\r\n87 -1\r\n115 0\r\n175 2\r\n220 -4\r\n119 3\r\n188 -4\r\n50 1\r\n71 -2\r\n118 4\r\n55 1\r\n55 -4\r\n144 0\r\n66 -3\r\n90 -2\r\n147 3\r\n83 0\r\n111 -2\r\n10 1\r\n106 4\r\n117 -1\r\n43 3\r\n36 0\r\n227 -4\r\n107 -2\r\n106 4\r\n164 -1\r\n26 3\r\n227 -4\r\n202 -3\r\n176 4\r\n84 -1\r\n161 -2\r\n199 2\r\n29 2\r\n13 -3\r\n194 2\r\n110 1\r\n191 2\r\n92 2\r\n",
+                "YES\n"
+            ],
+            [
+                "4 2\r\n3 0\r\n2 -3\r\n2 -1\r\n2 2\r\n",
+                "YES\n"
+            ],
+            [
+                "3 10\r\n7 6\r\n9 -13\r\n4 -3\r\n",
+                "YES\n"
+            ],
+            [
+                "6 12\r\n15 15\r\n25 -26\r\n8 3\r\n11 -6\r\n26 -19\r\n26 23\r\n",
+                "YES\n"
+            ],
+            [
+                "9 4\r\n3 3\r\n7 0\r\n2 0\r\n5 4\r\n7 -3\r\n7 -7\r\n7 -6\r\n6 5\r\n5 0\r\n",
+                "YES\n"
+            ],
+            [
+                "1 100\r\n200 -100\r\n",
+                "NO\n"
+            ],
+            [
+                "2 4\r\n2 -1\r\n4 -3\r\n",
+                "NO\n"
+            ],
+            [
+                "10 10\r\n1 1\r\n9 -5\r\n9 -6\r\n10 -2\r\n2 0\r\n5 5\r\n2 8\r\n10 -9\r\n5 -2\r\n4 4\r\n",
+                "YES\n"
+            ],
+            [
+                "2 1000\r\n900 -1\r\n1000 -101\r\n",
+                "NO\n"
+            ],
+            [
+                "6 104\r\n100 -99\r\n99 -1\r\n98 -1\r\n97 -1\r\n96 -1\r\n95 -1\r\n",
+                "NO\n"
+            ],
+            [
+                "3 110\r\n100 -25\r\n90 -10\r\n70 -10\r\n",
+                "YES\n"
+            ],
+            [
+                "3 100\r\n98 -50\r\n50 -1\r\n50 -1\r\n",
+                "YES\n"
+            ],
+            [
+                "20 30000\r\n29889 -298\r\n29133 -283\r\n29949 -296\r\n29323 -297\r\n29642 -287\r\n29863 -299\r\n29962 -300\r\n29906 -297\r\n29705 -295\r\n29967 -296\r\n29804 -295\r\n29886 -295\r\n29984 -297\r\n29943 -298\r\n29711 -300\r\n29685 -295\r\n29805 -293\r\n29994 -292\r\n29472 -297\r\n29909 -296\r\n",
+                "NO\n"
+            ],
+            [
+                "2 1000\r\n1000 -101\r\n900 -1\r\n",
+                "NO\n"
+            ],
+            [
+                "3 20\r\n7 -13\r\n5 -4\r\n4 -3\r\n",
+                "YES\n"
+            ],
+            [
+                "2 10\r\n10 -1\r\n10 -1\r\n",
+                "NO\n"
+            ],
+            [
+                "1 4\r\n5 -3\r\n",
+                "NO\n"
+            ],
+            [
+                "3 100\r\n96 -50\r\n50 -2\r\n50 -2\r\n",
+                "YES\n"
+            ],
+            [
+                "10 300\r\n300 -1\r\n299 -1\r\n298 -1\r\n297 -1\r\n296 -1\r\n295 -1\r\n294 -1\r\n293 -1\r\n292 -1\r\n291 -1\r\n",
+                "YES\n"
+            ],
+            [
+                "3 20\r\n16 -6\r\n14 -1\r\n15 -3\r\n",
+                "YES\n"
+            ]
+        ]
+    }
+]

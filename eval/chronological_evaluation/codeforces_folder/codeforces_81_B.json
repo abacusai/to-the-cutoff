@@ -1,0 +1,104 @@
+[
+    {
+        "name": "Sequence Formatting",
+        "description": "Polycarp is very careful. He even types numeric sequences carefully, unlike\nhis classmates. If he sees a sequence without a space after the comma, with\ntwo spaces in a row, or when something else does not look neat, he rushes to\ncorrect it. For example, number sequence written like \"1,2 ,3,..., 10\" will be\ncorrected to \"1, 2, 3, ..., 10\". In this task you are given a string s, which\nis composed by a concatination of terms, each of which may be: a positive\ninteger of an arbitrary length (leading zeroes are not allowed), a \"comma\"\nsymbol (\",\"), a \"space\" symbol (\" \"), \"three dots\" (\"...\", that is, exactly\nthree points written one after another, also known as suspension points).\nPolycarp wants to add and remove spaces in the string s to ensure the\nfollowing: each comma is followed by exactly one space (if the comma is the\nlast character in the string, this rule does not apply to it), each \"three\ndots\" term is preceded by exactly one space (if the dots are at the beginning\nof the string, this rule does not apply to the term), if two consecutive\nnumbers were separated by spaces only (one or more), then exactly one of them\nshould be left, there should not be other spaces. Automate Polycarp's work and\nwrite a program that will process the given string s. Input The input data\ncontains a single string s. Its length is from 1 to 255 characters. The string\ns does not begin and end with a space. Its content matches the description\ngiven above. Output Print the string s after it is processed. Your program's\noutput should be exactly the same as the expected answer. It is permissible to\nend output line with a line-break character, and without it. Examples Input\n1,2 ,3,..., 10 Output 1, 2, 3, ..., 10 Input 1,,,4...5......6 Output 1, , , 4\n...5 ... ...6 Input ...,1,2,3,... Output ..., 1, 2, 3, ...\n\n",
+        "cf_contest_id": 81,
+        "cf_index": "B",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1,2 ,3,...,     10\r\n",
+                "1, 2, 3, ..., 10\r\n"
+            ],
+            [
+                "1,,,4...5......6\r\n",
+                "1, , , 4 ...5 ... ...6\r\n"
+            ],
+            [
+                "...,1,2,3,...\r\n",
+                "..., 1, 2, 3, ...\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                ",,,,,,,,,,,,,\r\n",
+                ", , , , , , , , , , , , ,\r\n"
+            ],
+            [
+                "123456789\r\n",
+                "123456789\r\n"
+            ],
+            [
+                ",\r\n",
+                ",\r\n"
+            ],
+            [
+                "1 4 5    6 7 999 1 1    1 2 311111111111111111111111111111111111111111\r\n",
+                "1 4 5 6 7 999 1 1 1 2 311111111111111111111111111111111111111111\r\n"
+            ],
+            [
+                "1,2,,,,,,,,,5566\r\n",
+                "1, 2, , , , , , , , , 5566\r\n"
+            ],
+            [
+                ",,\r\n",
+                ", ,\r\n"
+            ],
+            [
+                ",                              ,\r\n",
+                ", ,\r\n"
+            ],
+            [
+                "123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123\r\n",
+                "123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563461511123\r\n"
+            ],
+            [
+                "12 56                511 23         12356346151112          1235634615111235634615       34615111235634615111          1123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563  151112356346151112356346151         1511  3\r\n",
+                "12 56 511 23 12356346151112 1235634615111235634615 34615111235634615111 1123563461511123563461511123563461511123563461511123563461511123563461511123563461511123563 151112356346151112356346151 1511 3\r\n"
+            ],
+            [
+                "1, 56                511 23         12356,,,151112          1235,34,15,11,356,4615  ,  , 34615111235,34615111,    ,    11235634615111235634615111235634615111235634615111235,3461511123563461511123563461511123563 ,151112356346151112356346151         15,, ,3\r\n",
+                "1, 56 511 23 12356, , , 151112 1235, 34, 15, 11, 356, 4615, , 34615111235, 34615111, , 11235634615111235634615111235634615111235634615111235, 3461511123563461511123563461511123563, 151112356346151112356346151 15, , , 3\r\n"
+            ],
+            [
+                ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,\r\n",
+                ", , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,\r\n"
+            ],
+            [
+                "12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12\r\n",
+                "12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12\r\n"
+            ],
+            [
+                "1,\r\n",
+                "1,\r\n"
+            ],
+            [
+                ",1\r\n",
+                ", 1\r\n"
+            ],
+            [
+                "1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "1 1 1\r\n",
+                "1 1 1\r\n"
+            ],
+            [
+                "9999999999999999999999999999999999999999999999999999999999, 1\r\n",
+                "9999999999999999999999999999999999999999999999999999999999, 1\r\n"
+            ]
+        ]
+    }
+]

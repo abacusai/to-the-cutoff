@@ -1,0 +1,76 @@
+[
+    {
+        "name": "Sockets",
+        "description": "The ICM ACPC World Finals is coming! Unfortunately, the organizers of the\ncompetition were so busy preparing tasks that totally missed an important\ntechnical point \u2014 the organization of electricity supplement for all the\nparticipants workstations. There are n computers for participants, the i-th of\nwhich has power equal to positive integer pi. At the same time there are m\nsockets available, the j-th of which has power euqal to positive integer sj.\nIt is possible to connect the i-th computer to the j-th socket if and only if\ntheir powers are the same: pi = sj. It is allowed to connect no more than one\ncomputer to one socket. Thus, if the powers of all computers and sockets are\ndistinct, then no computer can be connected to any of the sockets. In order to\nfix the situation professor Puch Williams urgently ordered a wagon of adapters\n\u2014 power splitters. Each adapter has one plug and one socket with a voltage\ndivider between them. After plugging an adapter to a socket with power x, the\npower on the adapter's socket becomes equal to , it means that it is equal to\nthe socket's power divided by two with rounding up, for example and . Each\nadapter can be used only once. It is possible to connect several adapters in a\nchain plugging the first to a socket. For example, if two adapters are plugged\none after enother to a socket with power 10, it becomes possible to connect\none computer with power 3 to this socket. The organizers should install\nadapters so that it will be possible to supply with electricity the maximum\nnumber of computers c at the same time. If there are several possible\nconnection configurations, they want to find the one that uses the minimum\nnumber of adapters u to connect c computers. Help organizers calculate the\nmaximum number of connected computers c and the minimum number of adapters u\nneeded for this. The wagon of adapters contains enough of them to do the task.\nIt is guaranteed that it's possible to connect at least one computer. Input\nThe first line contains two integers n and m (1 \u2264 n, m \u2264 200 000) \u2014 the number\nof computers and the number of sockets. The second line contains n integers\np1, p2, ..., pn (1 \u2264 pi \u2264 10^9) \u2014 the powers of the computers. The third line\ncontains m integers s1, s2, ..., sm (1 \u2264 si \u2264 10^9) \u2014 the power of the\nsockets. Output In the first line print two numbers c and u \u2014 the maximum\nnumber of computers which can at the same time be connected to electricity and\nthe minimum number of adapters needed to connect c computers. In the second\nline print m integers a1, a2, ..., am (0 \u2264 ai \u2264 10^9), where ai equals the\nnumber of adapters orginizers need to plug into the i-th socket. The sum of\nall ai should be equal to u. In third line print n integers b1, b2, ..., bn (0\n\u2264 bi \u2264 m), where the bj-th equals the number of the socket which the j-th\ncomputer should be connected to. bj = 0 means that the j-th computer should\nnot be connected to any socket. All bj that are different from 0 should be\ndistinct. The power of the j-th computer should be equal to the power of the\nsocket bj after plugging in abj adapters. The number of non-zero bj should be\nequal to c. If there are multiple answers, print any of them. Examples Input 2\n2 1 1 2 2 Output 2 2 1 1 1 2 Input 2 1 2 100 99 Output 1 6 6 1 0\n\n",
+        "cf_contest_id": 732,
+        "cf_index": "E",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2\r\n1 1\r\n2 2\r\n",
+                "2 2\r\n1 1 \r\n2 1 "
+            ],
+            [
+                "2 1\r\n2 100\r\n99\r\n",
+                "1 6\r\n6 \r\n1 0 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n1\r\n1\r\n",
+                "1 0\r\n0 \r\n1 "
+            ],
+            [
+                "2 1\r\n2 570129\r\n753393670\r\n",
+                "1 29\r\n29 \r\n1 0 "
+            ],
+            [
+                "1 2\r\n258\r\n270411237 421787464\r\n",
+                "1 20\r\n20 0 \r\n1 "
+            ],
+            [
+                "2 2\r\n607578 103023\r\n185480405 843960081\r\n",
+                "1 13\r\n0 13 \r\n0 2 "
+            ],
+            [
+                "7 14\r\n3001266 412 1 6352768 8464826 377123633 47905\r\n754247265 394532939 770046583 653892313 683423733 954533833 49604822 768323920 915021669 957143548 958842438 215985395 436153649 784873711\r\n",
+                "5 68\r\n1 0 0 0 0 0 26 8 0 0 0 19 0 14 \r\n8 12 7 0 0 1 14 "
+            ],
+            [
+                "20 6\r\n324808990 694282896 520370119 517339237 249359185 819827071 836664188 76139629 244199124 859108203 814663867 990442180 691917477 27941652 77863315 303453003 127803150 902014007 4 9889\r\n280249976 516845282 648041227 501870516 331037759 269068401\r\n",
+                "2 43\r\n0 0 16 27 0 0 \r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 3 "
+            ],
+            [
+                "20 20\r\n358327 61255 12574 9380 648412 27 60308 161816 959334 3323307 57728 14362672 407549 919521 304966 903649 183517838 137 343976 707862\r\n385844885 411993472 662795782 682392195 420983806 236452620 212691602 367035675 542587750 793595102 417329702 210900246 286770075 128917988 494041151 229802747 164905921 109491119 981875934 337128745\r\n",
+                "10 116\r\n0 15 12 0 0 12 6 1 0 0 10 0 21 0 13 4 0 22 0 0 \r\n0 0 2 0 0 18 15 3 0 7 6 16 11 0 0 0 8 13 0 0 "
+            ],
+            [
+                "12 20\r\n673751 364358 11 569147 4743 872206 139438 573283 424256 1446 43981 119128\r\n835584295 255782087 822018911 771649013 621621692 505282732 552293130 993930709 587169173 273568178 123207358 575541287 352014954 690005410 571134122 681872675 757895271 172751211 650124600 393178774\r\n",
+                "4 72\r\n0 0 0 0 17 0 0 0 0 0 0 0 0 0 12 0 19 24 0 0 \r\n0 0 18 0 5 0 15 0 0 17 0 0 "
+            ],
+            [
+                "17 19\r\n2 4 5 2 1 2 3 3 3 4 1 1 2 3 4 2 4\r\n999999998 999999998 1000000000 1000000000 999999996 999999998 999999999 1000000000 999999999 999999996 999999996 999999998 1000000000 999999997 999999999 999999996 1000000000 999999996 1000000000\r\n",
+                "12 347\r\n29 29 0 0 28 29 30 0 30 28 28 30 0 29 0 28 0 29 0 \r\n6 16 0 2 9 1 0 0 0 11 7 12 14 0 10 18 5 "
+            ],
+            [
+                "18 16\r\n4 4 10 2 8 2 5 2 7 2 1 3 10 8 2 7 1 7\r\n999999990 999999939 999999987 999999980 999999913 999999934 999999992 999999915 999999985 999999942 999999946 999999931 999999917 999999923 999999929 999999902\r\n",
+                "11 315\r\n0 29 0 0 27 29 0 28 0 30 30 29 28 29 29 27 \r\n13 8 0 2 5 6 0 12 0 15 11 0 0 16 14 0 10 0 "
+            ],
+            [
+                "10 20\r\n92004 532907 4 483 975386 12721 298085 98 407776 82592864\r\n405840200 505732458 951128293 660742906 376845577 590033550 833632727 9301018 200803969 843977787 841335596 177264092 410815195 696181563 73521741 834528337 107557963 610477119 918083019 214974686\r\n",
+                "7 109\r\n0 20 0 3 12 0 16 0 0 0 0 0 22 0 0 0 25 11 0 0 \r\n5 0 17 2 0 7 18 13 0 4 "
+            ],
+            [
+                "2 2\r\n9 17\r\n33 36\r\n",
+                "2 3\r\n1 2 \r\n2 1 "
+            ]
+        ]
+    }
+]

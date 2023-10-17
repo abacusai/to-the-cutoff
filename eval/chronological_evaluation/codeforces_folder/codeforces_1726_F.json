@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Late For Work (submissions are not allowed)",
+        "description": "This problem was copied by the author from another online platform. Codeforces\nstrongly condemns this action and therefore further submissions to this\nproblem are not accepted. Debajyoti has a very important meeting to attend and\nhe is already very late. Harsh, his driver, needs to take Debajyoti to the\ndestination for the meeting as fast as possible. Harsh needs to pick up\nDebajyoti from his home and take him to the destination so that Debajyoti can\nattend the meeting in time. A straight road with \n    n\n traffic lights\nconnects the home and the destination for the interview. The traffic lights\nare numbered in order from \n    1\n to \n    n\n. Each traffic light cycles after\n\n    t\n seconds. The \n    i\n-th traffic light is\n\n    green\n (in which case Harsh can cross the\ntraffic light) for the first \n    g_i\n seconds, and\n\n    red\n (in which case Harsh must wait for the light\nto turn \n    green\n) for the remaining \n    (t\u2212g_i)\n\nseconds, after which the pattern repeats. Each light's cycle repeats\nindefinitely and initially, the \n    i\n-th light is \n    c_i\n seconds into its\ncycle (a light with \n    c_i=0\n has just turned\n\n    green\n). In the case that Harsh arrives at a\nlight at the same time it changes colour, he will obey the new colour.\nFormally, the \n    i\n-th traffic light is\n\n    green\n from \n    [0,g_i)\n and\n\n    red\n from \n    [g_i,t)\n (after which it repeats\nthe cycle). The \n    i\n-th traffic light is initially at the \n    c_i\n-th\nsecond of its cycle. From the \n    i\n-th traffic light, exactly \n    d_i\n\nseconds are required to travel to the next traffic light (that is to the\n\n    (i+1)\n-th light). Debajyoti's home is located just before the first light\nand Debajyoti drops for the interview as soon as he passes the \n    n\n-th\nlight. In other words, no time is required to reach the first light from\nDebajyoti's home or to reach the interview centre from the \n    n\n-th light.\nHarsh does not know how much longer it will take for Debajyoti to get ready.\nWhile waiting, he wonders what is the minimum possible amount of time he will\nspend driving provided he starts the moment Debajyoti arrives, which can be\nanywhere between \n    0\n to \n    \u221e\n seconds from now. Can you tell\nHarsh the minimum possible amount of time he needs to spend on the road?\nPlease note that Harsh can only start or stop driving at integer moments of\ntime. Input The first line of input will contain two integers, \n    n\n and\n\n    t\n (\n    2 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5\n, \n    2 \n    \u2264 t \n    \u2264 10^9\n)\ndenoting the number of traffic lights and the cycle length of the traffic\nlights respectively. \n    n\n lines of input follow. The \n    i\n-th line will\ncontain two integers \n    g_i\n and \n    c_i\n (\n    1 \n    \u2264 g_i < t\n, \n    0\n    \n    \u2264 c_i < t\n) describing the \n    i\n-th traffic light. The following line\nof input contains \n    n\u22121\n integers \n    d_1, d_2, \n    \u2026, d_n-1\n (\n    0\n    \n    \u2264 d_i \n    \u2264 10^9\n) \u2014 the time taken to travel from the \n    i\n-th to the\n\n    (i+1)\n-th traffic light. Output Output a single integer \u2014 the minimum\npossible amount of time Harsh will spend driving. Examples Input 5 10 4 2 7 3\n3 6 5 2 8 0 1 2 3 4 Output 11 Input 6 9 5 3 5 5 7 0 5 8 7 7 6 6 0 0 0 0 0\nOutput 3 Note In the first example, Harsh can do the following: Initially, the\n\n    5\n traffic lights are at the following seconds in their cycle:\n\n    2,3,6,2,0\n. An optimal time for Harsh to start is if Debajyoti\narrives after \n    1\n second. Note that this \n    1\n second will not be\ncounted in the final answer. The lights will be now at\n\n    3,4,7,3,1\n, so Harsh can drive from the \n    1\n-st light to the\n\n    2\n-nd light, which requires \n    1\n second to travel. The lights are now\nat \n    4,5,8,4,2\n, so Harsh can continue driving, without stopping,\nto the \n    3\n-rd light, which requires \n    2\n seconds to travel. The lights\nare now at \n    6,7,0,6,4\n, so Harsh continues to the \n    4\n-th\nlight, which requires \n    3\n seconds to travel. The lights are now at\n\n    9,0,3,9,7\n. Harsh must wait \n    1\n second for the \n    4\n-th\nlight to turn green before going to the \n    5\n-th light, which requires\n\n    4\n seconds to travel. The lights are now at \n    4,5,8,4,2\n, so\nHarsh can continue traveling, without stopping, to the meeting destination.\nThe total time that Harsh had to drive for is \n    1+2+3+1+4=11\n seconds.In\nthe second example, Harsh can do the following: Initially, the \n    6\n traffic\nlights are at the following seconds in their cycle:\n\n    3,5,0,8,7,6\n. An optimal time for Harsh to start is if\nDebajyoti arrives after \n    1\n second. Note that this \n    1\n second will not\nbe counted in the final answer. The lights will be now at\n\n    4,6,1,0,8,7\n, so Harsh can drive from the \n    1\n-st light to\nthe \n    2\n-nd light, which requires \n    0\n seconds to travel. The lights are\nstill at \n    4,6,1,0,8,7\n. Harsh must wait \n    3\n seconds for the\n\n    2\n-nd light to turn green, before going to the \n    3\n-rd light, which\nrequires \n    0\n seconds to travel. The lights are now at\n\n    7,0,4,3,2,1\n, so Harsh continues to the \n    4\n-th light, which\nrequires \n    0\n seconds to travel. The lights are still at\n\n    7,0,4,3,2,1\n, so Harsh continues to the \n    5\n-th light, which\nrequires \n    0\n seconds to travel. The lights are still at\n\n    7,0,4,3,2,1\n, so Harsh continues to the \n    6\n-th light, which\nrequires \n    0\n seconds to travel. The lights are still at\n\n    7,0,4,3,2,1\n, so Harsh can continue traveling, without\nstopping, to the meeting destination. The total time that Harsh had to drive\nfor is \n    0+3+0+0+0=3\n seconds.\n\n",
+        "cf_contest_id": 1726,
+        "cf_index": "F",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "greedy",
+            "schedules",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 10\r\n4 2\r\n7 3\r\n3 6\r\n5 2\r\n8 0\r\n1 2 3 4\r\n",
+                "11\r\n"
+            ],
+            [
+                "6 9\r\n5 3\r\n5 5\r\n7 0\r\n5 8\r\n7 7\r\n6 6\r\n0 0 0 0 0\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "20 30\r\n2 12\r\n6 3\r\n12 0\r\n19 6\r\n17 19\r\n6 19\r\n20 10\r\n17 12\r\n20 10\r\n7 2\r\n17 7\r\n9 8\r\n15 12\r\n18 3\r\n6 16\r\n10 15\r\n2 2\r\n22 0\r\n4 6\r\n19 17\r\n912309750 902911213 837471305 848838716 922639262 975414120 899955435 999693217 804962820 916738586 806914613 810224129 839216171 926915080 852835536 952641946 971903621 834553549 806250275\r\n",
+                "16822389460\r\n"
+            ],
+            [
+                "10 12\r\n6 8\r\n3 7\r\n7 0\r\n4 1\r\n4 1\r\n2 1\r\n2 1\r\n6 2\r\n2 6\r\n2 0\r\n5 9 6 9 9 0 5 1 8\r\n",
+                "87\r\n"
+            ],
+            [
+                "2 16\r\n2 0\r\n7 6\r\n1\r\n",
+                "9\r\n"
+            ],
+            [
+                "9 11\r\n2 9\r\n2 2\r\n1 10\r\n2 4\r\n3 1\r\n2 1\r\n2 2\r\n1 3\r\n3 6\r\n51 59 82 78 60 87 53 86\r\n",
+                "575\r\n"
+            ],
+            [
+                "2 10\r\n5 5\r\n1 9\r\n0\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

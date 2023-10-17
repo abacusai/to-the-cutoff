@@ -1,0 +1,223 @@
+[
+    {
+        "name": "Candy Shop",
+        "description": "The prestigious Codeforces kindergarten consists of n kids, numbered 1 through\nn. Each of them are given allowance in rubles by their parents. Today, they\nare going to the most famous candy shop in the town. The shop sells candies in\npackages: for all i between 1 and m, inclusive, it sells a package containing\nexactly i candies. A candy costs one ruble, so a package containing x candies\ncosts x rubles. The kids will purchase candies in turns, starting from kid 1.\nIn a single turn, kid i will purchase one candy package. Due to the highly\ncompetitive nature of Codeforces kindergarten, during a turn, the number of\ncandies contained in the package purchased by the kid will always be strictly\ngreater than the number of candies contained in the package purchased by the\nkid in the preceding turn (an exception is in the first turn: the first kid\nmay purchase any package). Then, the turn proceeds to kid i + 1, or to kid 1\nif it was kid n's turn. This process can be ended at any time, but at the end\nof the purchase process, all the kids must have the same number of candy\npackages. Of course, the amount spent by each kid on the candies cannot exceed\ntheir allowance. You work at the candy shop and would like to prepare the\ncandies for the kids. Print the maximum number of candies that can be sold by\nthe candy shop to the kids. If the kids cannot purchase any candy (due to\ninsufficient allowance), print 0. Input The first line contains two space-\nseparated integers n and m (2 \u2264 n \u2264 2\u00b710^5, 2 \u2264 m \u2264 5\u00b710^6, n \u2264 m), denoting\nthe number of kids and the maximum number of candies in a package sold by the\ncandy shop, respectively. Then n lines follow, each line will contain a single\npositive integer not exceeding denoting the allowance of a kid in rubles. The\nallowances are given in order from kid 1 to kid n. Please, do not use the \nspecificator to read or write 64-bit integers in C++. It is recommended to use\ncin, cout streams (also you may use \ninteger denoting the maximum number of candies that can be sold by the candy\nshop. Examples Input 2 5 5 10 Output 13 Input 3 8 8 16 13 Output 32 Input 2\n5000000 12500002500000 12500002500000 Output 12500002500000 Note For the first\nexample, one of the scenarios that will result in 13 purchased candies is as\nfollows. Turn 1. Kid 1 purchases 1 candy. Turn 2. Kid 2 purchases 3 candies.\nTurn 3. Kid 1 purchases 4 candies. Turn 4. Kid 2 purchases 5 candies.\n\n",
+        "cf_contest_id": 183,
+        "cf_index": "E",
+        "cf_rating": 2900,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 5\r\n5\r\n10\r\n",
+                "13\r\n"
+            ],
+            [
+                "3 8\r\n8\r\n16\r\n13\r\n",
+                "32\r\n"
+            ],
+            [
+                "2 5000000\r\n12500002500000\r\n12500002500000\r\n",
+                "12500002500000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 3\r\n1\r\n1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 10\r\n10\r\n2\r\n",
+                "3\r\n"
+            ],
+            [
+                "5 12\r\n7\r\n9\r\n11\r\n13\r\n15\r\n",
+                "55\r\n"
+            ],
+            [
+                "3 100\r\n2\r\n23\r\n98\r\n",
+                "123\r\n"
+            ],
+            [
+                "3 100\r\n100\r\n50\r\n25\r\n",
+                "72\r\n"
+            ],
+            [
+                "3 15\r\n100\r\n50\r\n25\r\n",
+                "69\r\n"
+            ],
+            [
+                "5 16\r\n27\r\n18\r\n21\r\n24\r\n36\r\n",
+                "106\r\n"
+            ],
+            [
+                "5 20\r\n154\r\n6\r\n107\r\n12\r\n177\r\n",
+                "54\r\n"
+            ],
+            [
+                "2 2\r\n1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 3\r\n2\r\n2\r\n",
+                "3\r\n"
+            ],
+            [
+                "10 50\r\n415\r\n598\r\n603\r\n540\r\n1196\r\n679\r\n615\r\n430\r\n1115\r\n950\r\n",
+                "1275\r\n"
+            ],
+            [
+                "10 59\r\n309\r\n1699\r\n1415\r\n1002\r\n1096\r\n1317\r\n1217\r\n1404\r\n1386\r\n1146\r\n",
+                "1725\r\n"
+            ],
+            [
+                "30 123\r\n5302\r\n6492\r\n697\r\n3634\r\n6667\r\n4517\r\n3519\r\n4798\r\n3472\r\n352\r\n7043\r\n4695\r\n2984\r\n6779\r\n200\r\n2953\r\n192\r\n1550\r\n3873\r\n1108\r\n5377\r\n4281\r\n7429\r\n5349\r\n5454\r\n5033\r\n2136\r\n4472\r\n1131\r\n3880\r\n",
+                "6054\r\n"
+            ],
+            [
+                "45 4505\r\n4858191\r\n5452751\r\n472514\r\n4821551\r\n6601693\r\n5838482\r\n7395107\r\n4109401\r\n6136010\r\n6218008\r\n1962355\r\n6310331\r\n3294588\r\n1024244\r\n7892509\r\n9634941\r\n1833626\r\n5254614\r\n6104230\r\n7476145\r\n2165577\r\n1313416\r\n3206892\r\n6346046\r\n529425\r\n4759836\r\n765898\r\n9047398\r\n5546565\r\n6997259\r\n2097041\r\n3161470\r\n9229478\r\n6863114\r\n9857616\r\n7877094\r\n4648929\r\n94962\r\n7647331\r\n9662528\r\n837104\r\n4980990\r\n1189087\r\n9400779\r\n4540888\r\n",
+                "4280075\r\n"
+            ],
+            [
+                "2 5000000\r\n12500002500000\r\n12500002500000\r\n",
+                "12500002500000\r\n"
+            ],
+            [
+                "2 5000000\r\n1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2\r\n1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 200000\r\n1\r\n2\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 5000000\r\n4999999\r\n5000000\r\n",
+                "9999999\r\n"
+            ],
+            [
+                "2 2\r\n3\r\n3\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 2\r\n1\r\n2\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 2\r\n1\r\n2\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 5000000\r\n496407\r\n1241629\r\n",
+                "1738036\r\n"
+            ],
+            [
+                "2 5000000\r\n7008373\r\n8448813\r\n",
+                "15457186\r\n"
+            ],
+            [
+                "2 5000000\r\n329490756\r\n318059752\r\n",
+                "636119440\r\n"
+            ],
+            [
+                "2 5000000\r\n3613743079\r\n3391798962\r\n",
+                "6783597245\r\n"
+            ],
+            [
+                "2 5000000\r\n27133922124\r\n26404395073\r\n",
+                "52808784859\r\n"
+            ],
+            [
+                "2 5000000\r\n308378932313\r\n251878839001\r\n",
+                "503757627108\r\n"
+            ],
+            [
+                "2 5000000\r\n3041741119206\r\n2631001558837\r\n",
+                "5262002520040\r\n"
+            ],
+            [
+                "2 5000000\r\n7025617254763\r\n7295457553471\r\n",
+                "12500002500000\r\n"
+            ],
+            [
+                "2 5000000\r\n6250000000000\r\n6250002500000\r\n",
+                "12500002500000\r\n"
+            ],
+            [
+                "3 5000000\r\n2464593\r\n4893959\r\n4552403\r\n",
+                "11569398\r\n"
+            ],
+            [
+                "3 5000000\r\n68127167677\r\n65220255538\r\n69315684002\r\n",
+                "195665727323\r\n"
+            ],
+            [
+                "3 5000000\r\n4423756660412\r\n4269409215394\r\n4906822885560\r\n",
+                "12500002499997\r\n"
+            ],
+            [
+                "3 5000000\r\n4166663104815\r\n4166664771482\r\n4166666438149\r\n",
+                "12499994314446\r\n"
+            ],
+            [
+                "37 5000000\r\n5434258479\r\n6056814305\r\n5538861749\r\n6164242816\r\n6222365713\r\n5957861612\r\n6103297473\r\n5609774137\r\n5745178178\r\n6009870888\r\n5444969044\r\n6440459065\r\n6360888038\r\n5937989534\r\n5553264819\r\n6434797530\r\n6460987725\r\n6141749179\r\n5802359684\r\n5838613907\r\n6410267303\r\n5654438485\r\n5814469706\r\n6295916075\r\n5654309199\r\n5565274240\r\n5752081424\r\n6205054240\r\n6350358442\r\n6305513265\r\n6012351367\r\n6247530853\r\n6240396850\r\n6188925286\r\n5749765869\r\n6485337011\r\n5620311732\r\n",
+                "201246835785\r\n"
+            ],
+            [
+                "28 5000000\r\n2481661744\r\n2378862408\r\n2439675780\r\n2275578957\r\n2321937604\r\n2325865822\r\n2466236851\r\n2199849572\r\n2366257140\r\n2195757449\r\n2410150335\r\n2188476325\r\n2429995550\r\n2273296042\r\n2249216795\r\n2225651535\r\n2459056539\r\n2128714572\r\n2458184484\r\n2481549888\r\n2289323300\r\n2046428215\r\n2053288765\r\n2273517836\r\n2221200453\r\n2339265690\r\n2151890633\r\n2295040958\r\n",
+                "57329834662\r\n"
+            ],
+            [
+                "9 5000000\r\n370261660392\r\n305967233384\r\n301597438505\r\n129369048943\r\n179965209850\r\n332219865668\r\n190192655296\r\n159325245865\r\n191347121565\r\n",
+                "1164345486199\r\n"
+            ],
+            [
+                "9 5000000\r\n24063316\r\n23031163\r\n22652286\r\n25394911\r\n25506951\r\n27083354\r\n26203204\r\n26730342\r\n24416750\r\n",
+                "214457268\r\n"
+            ],
+            [
+                "9 5000000\r\n1220209570855\r\n1133593331091\r\n1311856824387\r\n1244347263666\r\n1203411497940\r\n1166654402403\r\n1156440734210\r\n1221268305839\r\n1309256592559\r\n",
+                "10202363554427\r\n"
+            ],
+            [
+                "9 5000000\r\n1250104028109\r\n1250104583767\r\n1250105139067\r\n1250105694704\r\n1250106250398\r\n1250106806151\r\n1250107362041\r\n1250107917717\r\n1250108472708\r\n",
+                "11250956254662\r\n"
+            ],
+            [
+                "9 5000000\r\n24048794\r\n24615758\r\n25313327\r\n25979307\r\n26339999\r\n26753913\r\n27454388\r\n27821128\r\n28111236\r\n",
+                "236437850\r\n"
+            ],
+            [
+                "9 5000000\r\n1389817429800\r\n1389189836390\r\n1389864392140\r\n1388890294295\r\n1389312073814\r\n1389197766212\r\n1389160875760\r\n1389211729992\r\n1389853632390\r\n",
+                "12500002499985\r\n"
+            ],
+            [
+                "9 5000000\r\n1389081462549\r\n1389693356906\r\n1389914710476\r\n1389164248499\r\n1389146274116\r\n1388921543057\r\n1388979451669\r\n1389286862809\r\n1390154868362\r\n",
+                "12500002499985\r\n"
+            ],
+            [
+                "9 5000000\r\n1388884700233\r\n1388885255788\r\n1388885811344\r\n1388886366899\r\n1388886922455\r\n1388887478010\r\n1388888033565\r\n1388888589121\r\n1388889144677\r\n",
+                "12499982302092\r\n"
+            ],
+            [
+                "5 20\r\n206\r\n167\r\n103\r\n20\r\n51\r\n",
+                "100\r\n"
+            ],
+            [
+                "5 20\r\n149\r\n10\r\n160\r\n99\r\n79\r\n",
+                "90\r\n"
+            ],
+            [
+                "7 20\r\n122\r\n75\r\n203\r\n176\r\n160\r\n140\r\n199\r\n",
+                "189\r\n"
+            ]
+        ]
+    }
+]

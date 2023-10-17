@@ -1,0 +1,209 @@
+[
+    {
+        "name": "Sereja and Periods",
+        "description": "Let's introduce the designation , where x is a string, n is a positive integer\nand operation \" + \" is the string concatenation operation. For example, [abc,\n2] = abcabc. We'll say that string s can be obtained from string t, if we can\nremove some characters from string t and obtain string s. For example, strings\nab and a\u0441ba can be obtained from string xacbac, and strings bx and aaa cannot\nbe obtained from it. Sereja has two strings, w = [a, b] and q = [c, d]. He\nwants to find such maximum integer p (p > 0), that [q, p] can be obtained from\nstring w. Input The first line contains two integers b, d (1 \u2264 b, d \u2264 10^7).\nThe second line contains string a. The third line contains string c. The given\nstrings are not empty and consist of lowercase English letters. Their lengths\ndo not exceed 100. Output In a single line print an integer \u2014 the largest\nnumber p. If the required value of p doesn't exist, print 0. Examples Input 10\n3 abab bab Output 3\n\n",
+        "cf_contest_id": 314,
+        "cf_index": "B",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "dfs and similar",
+            "strings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 3\r\nabab\r\nbab\r\n",
+                "3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "841 7\r\nqjqhrksmvedtqldrqgchhsofokfcovut\r\nqhtmothoulodshrfejterjlguvooccsvqrrdfqfvkqhtecuhhuqhshthrkusrc\r\n",
+                "5\r\n"
+            ],
+            [
+                "901 8\r\nkikjbkgkkjeeficiigjjidfhkfdckjdkkbkfhkhdcjidjbfdfkbhbfjeiffkfgcaigck\r\ngcjifhjjfedbfbdhickjbkkghfhbigkeff\r\n",
+                "28\r\n"
+            ],
+            [
+                "933 5\r\nabaabdcbbabacbdddadbbb\r\nbabbadbaaadbbbbaabbaabccbbdbadbbbbbbdbcbdbaaadbdbdbbbbdcbbdcbdaadbd\r\n",
+                "15\r\n"
+            ],
+            [
+                "875 10\r\nhjeaiemqfliohlicmhndhbfdmlmcnjjgbg\r\nhojqhmbgjlfmlliimlhahfeihgmhhhnbmebhgnfhgmhfjqhmlnnddgmqldelnhebi\r\n",
+                "4\r\n"
+            ],
+            [
+                "262 6\r\nidoprkilgmrjqiaieqgfpdflbdjrelpgrqekdmbiqfgeiokslonhrrljoabpfgohp\r\ngfiolaoiprdpe\r\n",
+                "21\r\n"
+            ],
+            [
+                "585 5\r\nbedhdhddadchgchfhdbfgcgfhcghfbgfgebabcebefbhhggdfagadababdaccbeahbhaafcbf\r\nzbabbgbhhffcdaeeggfhbhhbhaafbdfbafcfaaghbdafecgddagbaeghfdfagbhafbabgghdhbehdcadhdcfgadhabeg\r\n",
+                "0\r\n"
+            ],
+            [
+                "541 9\r\nbxhwcmunbdxcatppdsw\r\nshbppncwbnsxxnxunwsbncpdchcbcspdcppdchmbbcuapphpdxbpcswcxpxpdscxpddbcppdxhpxbuxxdbpdpuudb\r\n",
+                "1\r\n"
+            ],
+            [
+                "894 7\r\nrpphclsbplntekrdqffisrbminmnabdopfojhopdckpaqccjiudrq\r\ndpfrdonoknolipbedqicfppccmcrmsbobphqof\r\n",
+                "11\r\n"
+            ],
+            [
+                "978 7\r\nibaddieiabfebdhdfifgjaijdgagjhijebfggggghbeagbcbejfcdebfcdbgiichhbcgaejegadgcefiibcbejicef\r\nebbefcgacccbadceefgjegejejfbcfiifgegfgaiebijgijjhfhgd\r\n",
+                "27\r\n"
+            ],
+            [
+                "2980676 3\r\nemedsmsifhaqiklmcgggkjihdchleppcffrkgnscqskqbmopqprnaaf\r\nqcnradhfncpsaaromkdhgflrrmddckshcfqklpreiegqbpbaqmrkgalgfpecpfcsiihflllqmsfbr\r\n",
+                "55197\r\n"
+            ],
+            [
+                "6557487 3\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaa\r\n",
+                "11172014\r\n"
+            ],
+            [
+                "4098112 3\r\ntgprnsjwwfbrccucogpxmxeutcrkhibmudbinkilrkwdjqsdrpnghaoxilnghdokpallikfxdripqkkymrhdcttticwhk\r\nfithllrrr\r\n",
+                "683018\r\n"
+            ],
+            [
+                "745524 1\r\ncaalfoghakfrhfmebkjmmepnhenjaqnopl\r\noopkpnamhhjlnefafhmakhaajfmofogfmnmamehfgnhrheapjaohpegclheeaahjmpfhfclcloklnn\r\n",
+                "32414\r\n"
+            ],
+            [
+                "8116900 2\r\nbbjbegeabfiikbhhkhagdkgdfdkgeefeficegbhehffkfcefcddfadaaaffbcjikkjjiejgahebkikbifhbfbecjehjhec\r\nfbkiebakhjabhjbjeffcbcfjhfiekfkfghkicaghbeadfiiekeehfcfjeikgefhfhgbegefgfkbbegfefek\r\n",
+                "450938\r\n"
+            ],
+            [
+                "1748016 1\r\nmnrnsfijnamfrfoibjilgkjflcieialoskehqjodkasncimicqfhljbcqjshraqlmhimi\r\nlsnkkhanlsmimlnsmlrcnialrismmjhcfldkaemghsko\r\n",
+                "174801\r\n"
+            ],
+            [
+                "6266081 2\r\neccfbahaaddcfebadebbeahcdgfcaacafccchhbhhadhbhfbebbfdcfdegg\r\naachbfbhccbadbdheeaddfaechgbfdaeacbbbhafceacb\r\n",
+                "522173\r\n"
+            ],
+            [
+                "320672 1\r\nwyyojuothwmlvrglfzdzdbtubxuoffvncrswsaznmoijoi\r\nttvlvzxcvczuagwzgbfuwmmt\r\n",
+                "40084\r\n"
+            ],
+            [
+                "5608475 1\r\ngbagadghfaedhddefgbehbbdedefbaaeddachgebhbcgahfdchffhbhfahhdegdhdfbccgefhcdhhcdfgdgfhcdffaacch\r\nfgfadaaecdgabeahcacadcbfhhe\r\n",
+                "1869491\r\n"
+            ],
+            [
+                "1263204 1\r\ndcbabceabbaebddaaecbddaceaedacddadadcbbadbdccdecdacdcaadbceeddccbceaade\r\nabddbccbdca\r\n",
+                "1894805\r\n"
+            ],
+            [
+                "6387150 3\r\ngrlqvotdxnwkxqxvlcidkkgqxmluvqucmxeotdjdgooes\r\nqkoeldlicvkdlxlqvqrnggl\r\n",
+                "425809\r\n"
+            ],
+            [
+                "5654408 3\r\nacbbedadcdaedcdbacccbdacadbdbeabbabaecdadbabcbceeedaabdaadecdadabecdbbbdadbacbacdd\r\ncbcaeacedacbeababdedadbcccbdeadaedbeaccbbecadbbaaccaaacb\r\n",
+                "628267\r\n"
+            ],
+            [
+                "9777605 2\r\nkaecbhbjejamhkjcmmgcikkklmdlfkgjjgaidlakldlecekibekklfifddlgghchllfjcjfflbglgmmbiagaggahbdgbaclm\r\neeibmalcemfdikjkkagaajefbhldcfmkhmlcbclcfkjbkkaagmhcebbmidmcfhh\r\n",
+                "543200\r\n"
+            ],
+            [
+                "5723830 1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "9444319\r\n"
+            ],
+            [
+                "2218633 3\r\nrmsjbustjajqilaeqktslspjordmefdusghkorhggcjpcltrrscioedblqmdqcgjedt\r\nsaoseotdjusdmkhdiqrlbfghcjqurjegedh\r\n",
+                "105649\r\n"
+            ],
+            [
+                "9973868 3\r\nfhballjkkj\r\nkfjkhkllkhklbhklahffflffkkjljhlkfkjjkjjjjfjakfajjlbfllajjhkjhhkjalfjhfkbbjkjkkkjaf\r\n",
+                "81088\r\n"
+            ],
+            [
+                "9447267 1\r\ncbdcbdbcdacbcabddbaabcbacbabcaacbabaccddcbbdbbaddcbcbaaadc\r\nbbbbdbcbbbdbdbcdcacccbdcadadbacbcccc\r\n",
+                "4723633\r\n"
+            ],
+            [
+                "6647453 1\r\ndnccjbmkdlmabcckikqiqkieohnkphinffqojnedo\r\nincmnmbhdofjncmonodedikbddjkef\r\n",
+                "738605\r\n"
+            ],
+            [
+                "6568966 2\r\nhyujabtqwwtbkdog\r\nwtdubaqqyqw\r\n",
+                "821120\r\n"
+            ],
+            [
+                "3459996 3\r\ntomnkbosggldihteenpeochhfggjarktsqrdcalfdpq\r\nahtcoldeklhlddee\r\n",
+                "288332\r\n"
+            ],
+            [
+                "1099044 2\r\ncdccbdbcaacbbcbbabddcbddadbbcaadbabbbddbddbacacaacdbadccbacdcbdaaddddcbcbdbaddabb\r\naadddbccdcdacaccbbdaccbccbbca\r\n",
+                "274761\r\n"
+            ],
+            [
+                "3887919 3\r\nefdkclohoddlpggqjljpcmknepebeindejdkdebkdmfdgilcnmrroeclgebopdliojkhokbroqlbnqrpqdlcogn\r\njdjhdjdnelonqejdepfjohoggebl\r\n",
+                "259194\r\n"
+            ],
+            [
+                "2723752 1\r\nsjbkpbmpllbbgcnokempfjhckcohscaknpbjldhbenskfadpfkbsroldgmfcjoercarjcorsakqqmlifgsrsrnbjbaaeqa\r\ncsossphdodrbblajpafmbqfaglhhcmqem\r\n",
+                "453958\r\n"
+            ],
+            [
+                "2308056 3\r\ngabbfdehcegkmjicakkfhfahllalmkhhhjejfibdhgldjcbfmkfbmileigdmlhajfcciemfcbg\r\nm\r\n",
+                "4616112\r\n"
+            ],
+            [
+                "9148326 1\r\ncddcecc\r\ncccdecdecccccccdcddcccccedcdcdcccccddcccccdceddccccccccceddcccedddccddcccecccdccdcddd\r\n",
+                "351858\r\n"
+            ],
+            [
+                "8058035 2\r\nrioqrqetkzfbldjiemsfzbhzfnwywmxxgdpyl\r\ngfmhefhyyndzmsbfnefmwmpxfxfhflzplgoxfrrdxilibzlephlezisfztsfitnrzrilzmtipzofkrwlmhnifdzwexzzxjpy\r\n",
+                "125906\r\n"
+            ],
+            [
+                "1181362 3\r\nfckmaalkicfakhcbiglkekajmadjkj\r\nzfkjkjgkmjhfkackkhhjalgkkclcklabggk\r\n",
+                "0\r\n"
+            ],
+            [
+                "10000000 1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\na\r\n",
+                "1000000000\r\n"
+            ],
+            [
+                "10000000 10000000\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "1\r\n"
+            ],
+            [
+                "10000000 1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "10000000\r\n"
+            ],
+            [
+                "10000000 1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\nz\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1\r\na\r\nb\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1\r\na\r\na\r\n",
+                "1\r\n"
+            ],
+            [
+                "1000000 1\r\na\r\na\r\n",
+                "1000000\r\n"
+            ],
+            [
+                "1 1000000\r\na\r\na\r\n",
+                "0\r\n"
+            ],
+            [
+                "1000 1\r\nbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\nab\r\n",
+                "999\r\n"
+            ],
+            [
+                "10000000 1\r\nbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\r\na\r\n",
+                "980000000\r\n"
+            ]
+        ]
+    }
+]

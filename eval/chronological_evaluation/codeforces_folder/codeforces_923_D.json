@@ -1,0 +1,73 @@
+[
+    {
+        "name": "Picking Strings",
+        "description": "Alice has a string consisting of characters 'A', 'B' and 'C'. Bob can use the\nfollowing transitions on any substring of our string in any order any number\nof times: A BC B AC C AB AAA empty string Note that a substring is one or more\nconsecutive characters. For given queries, determine whether it is possible to\nobtain the target string from source. Input The first line contains a string S\n(1 \u2264 |S| \u2264 10^5). The second line contains a string T (1 \u2264 |T| \u2264 10^5), each\nof these strings consists only of uppercase English letters 'A', 'B' and 'C'.\nThe third line contains the number of queries Q (1 \u2264 Q \u2264 10^5). The following\nQ lines describe queries. The i-th of these lines contains four space\nseparated integers ai, bi, ci, di. These represent the i-th query: is it\npossible to create T[ci..di] from S[ai..bi] by applying the above transitions\nfinite amount of times? Here, U[x..y] is a substring of U that begins at index\nx (indexed from 1) and ends at index y. In particular, U[1..|U|] is the whole\nstring U. It is guaranteed that 1 \u2264 a \u2264 b \u2264 |S| and 1 \u2264 c \u2264 d \u2264 |T|. Output\nPrint a string of Q characters, where the i-th character is '1' if the answer\nto the i-th query is positive, and '0' otherwise. Example Input AABCCBAAB ABCB\n5 1 3 1 2 2 2 2 4 7 9 1 1 3 4 2 3 4 5 1 3 Output 10011 Note In the first query\nwe can achieve the result, for instance, by using transitions . The third\nquery asks for changing AAB to A \u2014 but in this case we are not able to get rid\nof the character 'B'.\n\n",
+        "cf_contest_id": 923,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "AABCCBAAB\r\nABCB\r\n5\r\n1 3 1 2\r\n2 2 2 4\r\n7 9 1 1\r\n3 4 2 3\r\n4 5 1 3\r\n",
+                "10011"
+            ]
+        ],
+        "private_cases": [
+            [
+                "AAAAAA\r\nAAAAAA\r\n30\r\n3 4 1 2\r\n3 3 4 4\r\n5 6 3 4\r\n3 3 2 3\r\n6 6 1 5\r\n2 4 4 6\r\n1 6 2 5\r\n6 6 3 4\r\n3 5 1 4\r\n4 5 3 6\r\n2 3 2 4\r\n3 4 4 4\r\n6 6 4 6\r\n3 3 2 5\r\n1 5 3 3\r\n4 6 1 2\r\n6 6 6 6\r\n3 3 3 4\r\n6 6 6 6\r\n5 6 4 4\r\n6 6 5 5\r\n2 3 1 4\r\n3 6 4 5\r\n3 5 6 6\r\n4 5 2 6\r\n5 6 6 6\r\n1 4 2 5\r\n4 5 2 5\r\n4 5 1 3\r\n2 2 4 6\r\n",
+                "111001000000000010101000001000"
+            ],
+            [
+                "A\r\nA\r\n1\r\n1 1 1 1\r\n",
+                "1"
+            ],
+            [
+                "CCBACACBCCCBBAAC\r\nCACCAAABAACBBBBAC\r\n20\r\n7 7 2 15\r\n3 11 14 15\r\n4 9 6 12\r\n10 15 13 17\r\n10 16 5 14\r\n14 15 12 16\r\n16 16 16 16\r\n3 15 9 14\r\n10 12 8 12\r\n15 15 9 10\r\n14 15 8 15\r\n7 14 17 17\r\n15 15 17 17\r\n15 15 5 9\r\n4 14 12 17\r\n13 15 8 12\r\n1 4 2 2\r\n6 13 17 17\r\n11 14 5 11\r\n15 16 2 9\r\n",
+                "00001100101000010000"
+            ],
+            [
+                "ABAAAAAA\r\nABABBAAAAAA\r\n5\r\n3 8 4 11\r\n3 8 3 11\r\n2 8 2 11\r\n1 8 1 11\r\n1 8 2 11\r\n",
+                "00111"
+            ],
+            [
+                "ABC\r\nABC\r\n9\r\n1 1 1 1\r\n1 1 2 2\r\n1 1 3 3\r\n2 2 1 1\r\n2 2 2 2\r\n2 2 3 3\r\n3 3 1 1\r\n3 3 2 2\r\n3 3 3 3\r\n",
+                "100011011"
+            ],
+            [
+                "A\r\nBB\r\n1\r\n1 1 1 2\r\n",
+                "1"
+            ],
+            [
+                "BBAACCBACACBCCCBBAAC\r\nCACCAAABAACBBBBACABC\r\n1\r\n3 10 6 13\r\n",
+                "0"
+            ],
+            [
+                "AAAAACAAAAAB\r\nAAAAABAAAAAC\r\n20\r\n1 6 10 12\r\n10 12 7 12\r\n9 12 8 12\r\n2 6 8 12\r\n7 12 2 6\r\n9 12 7 12\r\n1 6 10 12\r\n4 6 3 6\r\n7 12 7 12\r\n4 6 5 6\r\n3 6 12 12\r\n5 6 8 12\r\n9 12 1 6\r\n2 6 3 6\r\n10 12 2 6\r\n1 6 12 12\r\n7 12 3 6\r\n9 12 3 6\r\n10 12 10 12\r\n11 12 11 12\r\n",
+                "11111111111111111111"
+            ],
+            [
+                "AAABABACACACAAACAC\r\nAABCBBACABACBBCBCC\r\n20\r\n6 17 17 17\r\n14 17 13 14\r\n1 13 7 12\r\n11 17 5 17\r\n6 10 16 17\r\n16 17 16 16\r\n15 17 17 17\r\n15 15 7 10\r\n1 4 10 14\r\n4 11 2 17\r\n6 9 1 7\r\n16 16 11 18\r\n4 14 6 17\r\n1 17 6 18\r\n13 18 15 18\r\n1 12 5 11\r\n8 8 12 17\r\n10 15 3 7\r\n17 17 9 14\r\n6 17 6 6\r\n",
+                "00010001011111100110"
+            ],
+            [
+                "AAACAABB\r\nCACBCCBB\r\n10\r\n2 2 4 5\r\n4 4 3 3\r\n1 4 1 8\r\n5 5 2 8\r\n7 7 3 4\r\n6 6 2 2\r\n1 7 1 1\r\n6 7 7 8\r\n4 6 6 8\r\n8 8 6 8\r\n",
+                "1111010011"
+            ],
+            [
+                "A\r\nCB\r\n1\r\n1 1 1 2\r\n",
+                "1"
+            ],
+            [
+                "BCBBC\r\nABBCB\r\n5\r\n2 2 2 4\r\n3 4 2 4\r\n1 2 2 2\r\n2 3 4 5\r\n5 5 2 4\r\n",
+                "10011"
+            ]
+        ]
+    }
+]

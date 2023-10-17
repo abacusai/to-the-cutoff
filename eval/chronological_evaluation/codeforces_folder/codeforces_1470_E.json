@@ -1,0 +1,49 @@
+[
+    {
+        "name": "Strange Permutation",
+        "description": "Alice had a permutation \n    p_1, p_2, \n    \u2026, p_n\n. Unfortunately, the\npermutation looked very boring, so she decided to change it and choose some\nnon-overlapping subranges of this permutation and reverse them. The cost of\nreversing a single subrange \n    [l, r]\n (elements from position \n    l\n to\nposition \n    r\n, inclusive) is equal to \n    r - l\n, and the cost of the\noperation is the sum of costs of reversing individual subranges. Alice had an\ninteger \n    c\n in mind, so she only considered operations that cost no more\nthan \n    c\n. Then she got really bored, and decided to write down all the\npermutations that she could possibly obtain by performing exactly one\noperation on the initial permutation. Of course, Alice is very smart, so she\nwrote down each obtainable permutation exactly once (no matter in how many\nways it can be obtained), and of course the list was sorted lexicographically.\nNow Bob would like to ask Alice some questions about her list. Each question\nis in the following form: what is the \n    i\n-th number in the \n    j\n-th\npermutation that Alice wrote down? Since Alice is too bored to answer these\nquestions, she asked you to help her out. Input The first line contains a\nsingle integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264 30\n) \u2014 the number of test\ncases. The first line of each test case contains three integers \n    n\n,\n\n    c\n, \n    q\n (\n    1 \n    \u2264 n \n    \u2264 3 \n    \u00b7 10^4\n, \n    1 \n    \u2264 c \n    \u2264\n    4\n, \n    1 \n    \u2264 q \n    \u2264 3 \n    \u00b7 10^5\n) \u2014 the length of the permutation,\nthe maximum cost of the operation, and the number of queries. The next line of\neach test case contains \n    n\n integers \n    p_1, p_2, \n    \u2026, p_n\n (\n    1\n    \n    \u2264 p_i \n    \u2264 n\n, \n    p_i \n    \u2260 p_j\n if \n    i \n    \u2260 j\n), describing\nthe initial permutation. The following \n    q\n lines describe the queries.\nEach of them contains two integers \n    i\n and \n    j\n (\n    1 \n    \u2264 i \n    \u2264\n    n\n, \n    1 \n    \u2264 j \n    \u2264 10^18\n), denoting parameters of this query. It\nis guaranteed that the sum of values \n    n\n over all test cases does not\nexceed \n    3 \n    \u00b7 10^5\n, and the sum of values \n    q\n over all test cases\ndoes not exceed \n    3 \n    \u00b7 10^5\n. Output For each query output the answer\nfor this query, or \n    -1\n if \n    j\n-th permutation does not exist in her\nlist. Examples Input 2 3 1 9 1 2 3 1 1 2 1 3 1 1 2 2 2 3 2 1 3 2 3 3 3 6 4 4 6\n5 4 3 1 2 1 1 3 14 1 59 2 6 Output 1 2 3 1 3 2 2 1 3 1 4 -1 5 Input 1 12 4 2 1\n2 3 4 5 6 7 8 9 10 11 12 2 20 2 21 Output 2 2 Note In the first test case,\nAlice wrote down the following permutations: \n    [1, 2, 3]\n, \n    [1, 3, 2]\n,\n\n    [2, 1, 3]\n. Note that, for a permutation \n    [3, 2, 1]\n Alice would have\nto reverse the whole array, and it would cost her \n    2\n, which is greater\nthan the specified value \n    c=1\n. The other two permutations can not be\nobtained by performing exactly one operation described in the problem\nstatement.\n\n",
+        "cf_contest_id": 1470,
+        "cf_index": "E",
+        "cf_rating": 3200,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "combinatorics",
+            "data structures",
+            "dp",
+            "graphs",
+            "implementation",
+            "two pointers"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n3 1 9\r\n1 2 3\r\n1 1\r\n2 1\r\n3 1\r\n1 2\r\n2 2\r\n3 2\r\n1 3\r\n2 3\r\n3 3\r\n6 4 4\r\n6 5 4 3 1 2\r\n1 1\r\n3 14\r\n1 59\r\n2 6\r\n",
+                "1\r\n2\r\n3\r\n1\r\n3\r\n2\r\n2\r\n1\r\n3\r\n1\r\n4\r\n-1\r\n5\r\n"
+            ],
+            [
+                "1\r\n12 4 2\r\n1 2 3 4 5 6 7 8 9 10 11 12\r\n2 20\r\n2 21\r\n",
+                "2\r\n2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1 1 4\r\n1\r\n1 1\r\n1 2\r\n1 3\r\n1 4\r\n",
+                "1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "1\r\n10 1 1\r\n10 4 6 5 7 9 8 1 3 2\r\n6 10\r\n",
+                "9\r\n"
+            ],
+            [
+                "1\r\n47 1 47\r\n40 45 19 10 44 33 47 12 2 46 16 23 3 14 21 28 31 42 22 18 35 38 24 25 36 32 4 34 5 20 37 39 6 9 1 7 29 8 17 27 30 11 13 41 15 43 26\r\n39 25\r\n41 24\r\n32 30\r\n10 6\r\n30 13\r\n24 35\r\n41 17\r\n31 31\r\n9 44\r\n21 8\r\n43 23\r\n8 5\r\n29 13\r\n8 4\r\n47 20\r\n22 10\r\n37 27\r\n17 39\r\n43 23\r\n14 42\r\n46 19\r\n43 24\r\n30 31\r\n24 35\r\n31 13\r\n31 32\r\n20 9\r\n3 2\r\n20 9\r\n14 7\r\n7 3\r\n21 36\r\n32 30\r\n47 19\r\n11 43\r\n6 2\r\n31 31\r\n26 12\r\n47 20\r\n2 1\r\n40 24\r\n16 40\r\n45 21\r\n36 28\r\n36 28\r\n17 38\r\n30 31\r\n",
+                "27\r\n27\r\n37\r\n16\r\n20\r\n24\r\n11\r\n20\r\n46\r\n35\r\n11\r\n2\r\n34\r\n47\r\n26\r\n24\r\n7\r\n28\r\n11\r\n3\r\n26\r\n13\r\n37\r\n24\r\n37\r\n37\r\n22\r\n10\r\n22\r\n14\r\n47\r\n38\r\n37\r\n43\r\n23\r\n33\r\n20\r\n4\r\n26\r\n19\r\n30\r\n21\r\n43\r\n1\r\n1\r\n42\r\n37\r\n"
+            ],
+            [
+                "1\r\n10 2 20\r\n8 5 2 4 10 3 9 7 1 6\r\n5 10\r\n3 17\r\n6 31\r\n3 46\r\n10 42\r\n7 19\r\n9 36\r\n7 3\r\n3 13\r\n8 32\r\n10 25\r\n9 34\r\n10 34\r\n6 33\r\n3 9\r\n2 17\r\n4 5\r\n10 44\r\n9 15\r\n5 40\r\n",
+                "3\r\n2\r\n7\r\n10\r\n6\r\n7\r\n7\r\n7\r\n5\r\n1\r\n6\r\n6\r\n1\r\n9\r\n4\r\n4\r\n4\r\n1\r\n1\r\n3\r\n"
+            ]
+        ]
+    }
+]

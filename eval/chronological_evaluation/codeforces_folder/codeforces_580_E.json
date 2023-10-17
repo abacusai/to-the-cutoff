@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Kefa and Watch",
+        "description": "One day Kefa the parrot was walking down the street as he was on the way home\nfrom the restaurant when he saw something glittering by the road. As he came\nnearer he understood that it was a watch. He decided to take it to the\npawnbroker to earn some money. The pawnbroker said that each watch contains a\nserial number represented by a string of digits from 0 to 9, and the more\nquality checks this number passes, the higher is the value of the watch. The\ncheck is defined by three positive integers l, r and d. The watches pass a\ncheck if a substring of the serial number from l to r has period d. Sometimes\nthe pawnbroker gets distracted and Kefa changes in some substring of the\nserial number all digits to c in order to increase profit from the watch. The\nseller has a lot of things to do to begin with and with Kefa messing about, he\ngave you a task: to write a program that determines the value of the watch.\nLet us remind you that number x is called a period of string s (1 \u2264 x \u2264 |s|),\nif si = si + x for all i from 1 to |s| - x. Input The first line of the input\ncontains three positive integers n, m and k (1 \u2264 n \u2264 10^5, 1 \u2264 m + k \u2264 10^5) \u2014\nthe length of the serial number, the number of change made by Kefa and the\nnumber of quality checks. The second line contains a serial number consisting\nof n digits. Then m + k lines follow, containing either checks or changes. The\nchanges are given as 1 l r c (1 \u2264 l \u2264 r \u2264 n, 0 \u2264 c \u2264 9). That means that Kefa\nchanged all the digits from the l-th to the r-th to be c. The checks are given\nas 2 l r d (1 \u2264 l \u2264 r \u2264 n, 1 \u2264 d \u2264 r - l + 1). Output For each check on a\nsingle line print \"YES\" if the watch passed it, otherwise print \"NO\". Examples\nInput 3 1 2 112 2 2 3 1 1 1 3 8 2 1 2 1 Output NO YES Input 6 2 3 334934 2 2 5\n2 1 4 4 3 2 1 6 3 1 2 3 8 2 3 6 1 Output NO YES NO Note In the first sample\ntest two checks will be made. In the first one substring \"12\" is checked on\nwhether or not it has period 1, so the answer is \"NO\". In the second one\nsubstring \"88\", is checked on whether or not it has period 1, and it has this\nperiod, so the answer is \"YES\". In the second statement test three checks will\nbe made. The first check processes substring \"3493\", which doesn't have period\n2. Before the second check the string looks as \"334334\", so the answer to it\nis \"YES\". And finally, the third check processes substring \"8334\", which does\nnot have period 1.\n\n",
+        "cf_contest_id": 580,
+        "cf_index": "E",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "hashing",
+            "strings"
+        ],
+        "time_limit_seconds": 1.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 1 2\r\n112\r\n2 2 3 1\r\n1 1 3 8\r\n2 1 2 1\r\n",
+                "NO\r\nYES\r\n"
+            ],
+            [
+                "6 2 3\r\n334934\r\n2 2 5 2\r\n1 4 4 3\r\n2 1 6 3\r\n1 2 3 8\r\n2 3 6 1\r\n",
+                "NO\r\nYES\r\nNO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 0 1\r\n5\r\n2 1 1 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 1 0\r\n8\r\n1 1 1 5\r\n",
+                ""
+            ],
+            [
+                "20 1 2\r\n34075930750342906718\r\n2 1 20 20\r\n1 1 20 6\r\n2 1 20 1\r\n",
+                "YES\r\nYES\r\n"
+            ],
+            [
+                "10 1 4\r\n4545454545\r\n2 1 10 2\r\n2 2 4 2\r\n2 2 9 4\r\n1 2 9 6\r\n2 3 8 3\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "15 1 5\r\n234072305423089\r\n2 1 15 1\r\n2 5 6 1\r\n2 8 11 2\r\n2 2 13 6\r\n1 5 12 4\r\n2 5 13 3\r\n",
+                "NO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "9 7 5\r\n622851212\r\n2 1 9 3\r\n1 1 4 2\r\n1 6 9 7\r\n2 2 8 1\r\n1 2 3 9\r\n1 7 8 5\r\n2 1 9 9\r\n1 2 3 7\r\n1 7 7 2\r\n2 4 9 3\r\n1 2 2 5\r\n2 1 9 3\r\n",
+                "NO\r\nNO\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "18 0 6\r\n000000000000000000\r\n2 1 18 1\r\n2 1 18 18\r\n2 1 18 6\r\n2 1 18 3\r\n2 1 18 9\r\n2 1 18 2\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "8 3 4\r\n90925761\r\n2 5 8 2\r\n1 2 4 5\r\n2 2 5 2\r\n1 6 7 5\r\n2 2 7 3\r\n1 3 4 9\r\n2 1 4 2\r\n",
+                "NO\r\nYES\r\nYES\r\nNO\r\n"
+            ],
+            [
+                "10 10 7\r\n8888888888\r\n1 1 1 4\r\n1 2 2 5\r\n1 3 3 7\r\n1 4 4 7\r\n1 5 5 7\r\n1 6 6 7\r\n1 7 7 5\r\n1 8 8 6\r\n1 9 9 3\r\n1 10 10 7\r\n2 5 6 1\r\n2 8 8 1\r\n2 5 6 1\r\n2 7 9 3\r\n2 5 6 1\r\n2 4 4 1\r\n2 9 10 1\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\n"
+            ],
+            [
+                "20 5 5\r\n23655146364900318111\r\n1 5 19 9\r\n2 1 3 3\r\n2 4 5 1\r\n1 2 17 9\r\n2 4 5 1\r\n1 8 9 0\r\n2 4 5 1\r\n1 4 15 2\r\n2 1 3 3\r\n1 20 20 6\r\n",
+                "YES\r\nNO\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "20 10 15\r\n00137794455431057085\r\n2 1 20 1\r\n2 8 10 3\r\n2 1 20 1\r\n1 2 2 6\r\n1 11 13 0\r\n2 1 20 1\r\n2 1 2 1\r\n1 14 16 0\r\n1 5 9 0\r\n1 5 8 3\r\n1 10 11 7\r\n1 17 19 5\r\n2 1 20 1\r\n2 8 10 3\r\n2 1 20 1\r\n1 17 20 0\r\n1 7 10 7\r\n1 7 12 7\r\n2 1 20 1\r\n2 1 2 1\r\n2 8 10 3\r\n2 1 2 1\r\n2 8 10 3\r\n2 8 10 3\r\n2 8 10 3\r\n",
+                "NO\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\nYES\r\nNO\r\nNO\r\nNO\r\nYES\r\nNO\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "50 10 9\r\n78117811831783178317831700000000000000000000117773\r\n1 5 22 4\r\n1 11 24 0\r\n1 35 37 5\r\n2 45 46 1\r\n2 45 46 1\r\n1 41 41 3\r\n1 24 27 1\r\n2 9 24 4\r\n1 2 21 5\r\n2 45 46 1\r\n1 3 9 1\r\n1 11 23 5\r\n1 25 32 1\r\n2 47 49 1\r\n2 9 24 4\r\n1 34 45 0\r\n2 9 24 4\r\n2 1 8 4\r\n2 9 24 4\r\n",
+                "YES\r\nYES\r\nNO\r\nYES\r\nYES\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "52 5 30\r\n0073971598462524060181848948785829847120611111998011\r\n2 43 46 1\r\n1 25 28 2\r\n1 1 30 4\r\n2 1 52 1\r\n2 1 3 3\r\n2 1 3 3\r\n1 11 15 2\r\n2 1 52 1\r\n2 43 46 1\r\n1 3 7 9\r\n2 1 3 3\r\n1 26 49 3\r\n2 1 3 3\r\n2 1 52 1\r\n2 43 46 1\r\n2 1 3 3\r\n2 1 52 1\r\n2 1 52 1\r\n2 1 3 3\r\n2 1 52 1\r\n2 1 3 3\r\n2 1 3 3\r\n2 1 52 1\r\n2 1 3 3\r\n2 1 52 1\r\n2 43 46 1\r\n2 1 52 1\r\n2 43 46 1\r\n2 1 3 3\r\n2 43 46 1\r\n2 43 46 1\r\n2 43 46 1\r\n2 1 3 3\r\n2 1 52 1\r\n2 43 46 1\r\n",
+                "YES\r\nNO\r\nYES\r\nYES\r\nNO\r\nYES\r\nYES\r\nYES\r\nNO\r\nYES\r\nYES\r\nNO\r\nNO\r\nYES\r\nNO\r\nYES\r\nYES\r\nNO\r\nYES\r\nNO\r\nYES\r\nNO\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nNO\r\nYES\r\n"
+            ],
+            [
+                "314 0 1\r\n12121112111122221121111111212111122212111111112211111111111211121121212112222211222222112222121112121112211211111211111221211112111122212121112221111112111111121122122111111211121112111111121112121222222111211212221212111221112121111112111111112111121121121222112211212212121111112112122111112121212111222221111111\r\n2 1 314 157\r\n",
+                "NO\r\n"
+            ],
+            [
+                "153 0 16\r\n000000000961748941961748947961748951961748969961748987961748993961749023961749037961749043961749067961749079961749091961749097961749101961749121961749157\r\n2 1 18 9\r\n2 1 27 18\r\n2 1 36 27\r\n2 1 45 36\r\n2 1 54 45\r\n2 1 63 54\r\n2 1 72 63\r\n2 1 81 72\r\n2 1 90 81\r\n2 1 99 90\r\n2 1 108 99\r\n2 1 117 108\r\n2 1 126 117\r\n2 1 135 126\r\n2 1 144 135\r\n2 1 153 144\r\n",
+                "NO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "20 1 1\r\n52018731676138902386\r\n2 1 20 10\r\n1 1 20 8\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

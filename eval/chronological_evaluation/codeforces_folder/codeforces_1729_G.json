@@ -1,0 +1,183 @@
+[
+    {
+        "name": "Cut Substrings",
+        "description": "You are given two non-empty strings \n    s\n and \n    t\n, consisting of Latin\nletters. In one move, you can choose an occurrence of the string \n    t\n in\nthe string \n    s\n and replace it with dots. Your task is to remove all\noccurrences of the string \n    t\n in the string \n    s\n in the minimum number\nof moves, and also calculate how many different sequences of moves of the\nminimum length exist. Two sequences of moves are considered different if the\nsets of indices at which the removed occurrences of the string \n    t\n in\n\n    s\n begin differ. For example, the sets \n    1, 2, 3\n and\n\n    1, 2, 4\n are considered different, the sets \n    2, 4,\n    6\n and \n    2, 6\n \u2014 too, but sets \n    3, 5\n and\n\n    5, 3\n \u2014 not. For example, let the string \n    s =\n\n\"abababacababa\" and the string \n    t =\n \"aba\". We can remove all occurrences\nof the string \n    t\n in \n    2\n moves by cutting out the occurrences of the\nstring \n    t\n at the \n    3\nth and \n    9\nth positions. In this case, the\nstring \n    s\n is an example of the form \"ab...bac...ba\". It is also possible\nto cut occurrences of the string \n    t\n at the \n    3\nth and \n    11\nth\npositions. There are two different sequences of minimum length moves. Since\nthe answer can be large, output it modulo \n    10^9 + 7\n. Input The first line\nof the input contains a single integer \n    q\n (\n    1 \n    \u2264 q \n    \u2264 50\n) \u2014\nthe number of test cases. The descriptions of the sets follow. The first line\nof each set contains a non-empty string \n    s\n (\n    1 \n    \u2264 |s| \n    \u2264 500\n)\nconsisting of lowercase Latin letters. The second line of each set contains a\nnon-empty string \n    t\n (\n    1 \n    \u2264 |t| \n    \u2264 500\n) consisting of lowercase\nLatin letters. It is guaranteed that the sum of string lengths \n    s\n over\nall test cases does not exceed \n    500\n. Similarly, it is guaranteed that the\nsum of string lengths \n    t\n over all test cases does not exceed \n    500\n.\nOutput For each test case print two integers \u2014 the minimum number of moves and\nthe number of different optimal sequences, modulo \n    10^9 + 7\n. Example\nInput 8 abababacababa aba ddddddd dddd xyzxyz xyz abc abcd abacaba abaca abc\ndef aaaaaaaa a aaaaaaaa aa Output 2 2 1 4 2 1 0 1 1 1 0 1 8 1 3 6 Note The\nfirst test case is explained in the statement. In the second case, it is\nenough to cut any of the four occurrences. In the third case, string \n    s\n\nis the concatenation of two strings \n    t =\n \"xyz\", so there is a unique\noptimal sequence of \n    2\n moves. In the fourth and sixth cases, the string\n\n    s\n initially contains no occurrences of the string \n    t\n. In the fifth\ncase, the string \n    s\n contains exactly one occurrence of the string\n\n    t\n.\n\n",
+        "cf_contest_id": 1729,
+        "cf_index": "G",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "dp",
+            "hashing",
+            "strings",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "8\r\nabababacababa\r\naba\r\nddddddd\r\ndddd\r\nxyzxyz\r\nxyz\r\nabc\r\nabcd\r\nabacaba\r\nabaca\r\nabc\r\ndef\r\naaaaaaaa\r\na\r\naaaaaaaa\r\naa\r\n",
+                "2 2\n1 4\n2 1\n0 1\n1 1\n0 1\n8 1\n3 6\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\nabababacabababababababacababababacacababababababababacababababababacabacabababababababacabababababababababacabababacabababababababacababababababacabacababababacababababacabacababababababacabababababababacababababacabababacabababacabacababababacacabababababababababacababababababacababababababacababababababababacacababababacabababababababacabababababababacababababababacabababababababababacacababacababacabababacababacababacababababababacababababacababaca\r\naba\r\n",
+                "75 242775700\n"
+            ],
+            [
+                "1\r\nocjlcnttoiyugtlvrdmwxnjlfufkwumuwrwockifcydlusgnnggobpfzziqikphoseucnxkpsrcxvbrvnjyksottxqqbyuyotzlquahhvyeftazhxahvsnllfnaxktbetghoyidjhpfixfgcpqbmzvbnrcbjzvwydxhpbyzqbcykuosdxcupswprgpvucrezahgnpapztddwemcivkqyaqnyogwqlzblesocmktklikldppjjqawnbvukepvapsrruvpnpxtslqfyzbtcdbtrgozpybwdsbmmmmjvmhhnzcgnbedetocnoqwncqnkewqmvqseznsqopoywlcrfzgkpdgymgtfejddfpcleihdphcpozfwuqpiwyrgqynnbehfraesuzrjtqtwykxuusdduckyyppezzvtpdlxmoofagfbejrzbri\r\nmnpvxidzuozokjudwirqbouhfsglskehsjoozwmlwxouqjchhiz\r\n",
+                "0 1\n"
+            ],
+            [
+                "13\r\nabacaaa\r\naba\r\naabacabaa\r\naba\r\nabacabada\r\naba\r\nababa\r\naba\r\nabaabacaa\r\naba\r\nabacaaaa\r\naba\r\naabacaba\r\naba\r\nabacabad\r\naba\r\nabababaaa\r\naba\r\naababac\r\naba\r\nababacaba\r\naba\r\nabacabad\r\naba\r\nabaab\r\naba\r\n",
+                "1 1\n2 1\n2 1\n1 2\n2 1\n1 1\n2 1\n2 1\n1 1\n1 2\n2 2\n2 1\n1 1\n"
+            ],
+            [
+                "12\r\nabacabadaa\r\nabacaba\r\naabaaba\r\nabacaba\r\nabacaaba\r\nabacaba\r\nabacabada\r\nabacaba\r\nabababaaba\r\nabacaba\r\nabacaa\r\nabacaba\r\nabacabaa\r\nabacaba\r\nabacabad\r\nabacaba\r\nabacabadaa\r\nabacaba\r\nabacabad\r\nabacaba\r\nabaaabaca\r\nabacaba\r\nababacaba\r\nabacaba\r\n",
+                "1 1\n0 1\n0 1\n1 1\n0 1\n0 1\n1 1\n1 1\n1 1\n1 1\n0 1\n1 1\n"
+            ],
+            [
+                "8\r\nabaaabacaba\r\naba\r\nabacabadaba\r\naba\r\nabacabadabacabaabaa\r\naba\r\naabacaabaabac\r\naba\r\nabacabadabaa\r\naba\r\nabacabadabacabaea\r\naba\r\nabacabadabacab\r\naba\r\nabacabacaaba\r\naba\r\n",
+                "3 1\n3 1\n5 1\n3 1\n3 1\n4 1\n3 1\n3 1\n"
+            ],
+            [
+                "7\r\nabacabadabaca\r\nabacaba\r\nabacabadababaa\r\nabacaba\r\nabacabadabaababaa\r\nabacaba\r\nabacabacabada\r\nabacaba\r\nabaabacabadabacabaab\r\nabacaba\r\nabacabadaabacaba\r\nabacaba\r\nabacaabacabadaba\r\nabacaba\r\n",
+                "1 1\n1 1\n1 1\n1 2\n2 1\n2 1\n1 1\n"
+            ],
+            [
+                "7\r\nabacabacabadabacabab\r\nabacabadabacaba\r\nabacabadabacabaca\r\nabacabadabacaba\r\nabacabaabab\r\nabacabadabacaba\r\nabacabadabacabaeaaa\r\nabacabadabacaba\r\nabacabadabacaa\r\nabacabadabacaba\r\nabacabadaababacaab\r\nabacabadabacaba\r\nabacabadabacabadaba\r\nabacabadabacaba\r\n",
+                "1 1\n1 1\n0 1\n1 1\n0 1\n0 1\n1 1\n"
+            ],
+            [
+                "3\r\nabacabadabacabaeabacabadabacabafabacabadabacabac\r\naba\r\nabacabadabacabaabacabadabaabaabacabaa\r\naba\r\nabacabadaababaaabacaaab\r\naba\r\n",
+                "12 1\n10 1\n4 2\n"
+            ],
+            [
+                "4\r\nabacaabacabacababacabacabaa\r\nabacaba\r\naabacabadabacabababacabadababaca\r\nabacaba\r\nabacabadabacabaeabacabadabacaba\r\nabacaba\r\nababacabadabacabaeabacabadabacabaeabacaabaca\r\nabacaba\r\n",
+                "2 3\n3 1\n4 1\n4 1\n"
+            ],
+            [
+                "3\r\nabacabadabacabaeabaababacababababa\r\nabacabadabacaba\r\nabacabadabacabaeabacabadaabacaba\r\nabacabadabacaba\r\nabacabadabacabaeabacabadabacabafabaababacab\r\nabacabadabacaba\r\n",
+                "1 1\n1 1\n2 1\n"
+            ],
+            [
+                "2\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabafaba\r\naba\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacaabacabadabacababacabadabacabaeaababacaa\r\naba\r\n",
+                "17 1\n23 4\n"
+            ],
+            [
+                "2\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacababaab\r\nabacaba\r\nabacabadabacabaeabacabadababacababacabadabacabaeabacabadabacabafabacabadaba\r\nabacaba\r\n",
+                "8 1\n8 2\n"
+            ],
+            [
+                "2\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadababacaba\r\nabacabadabacaba\r\nabacabadabacabaeabacabadabacabafabacabaabacabadabacabaeabacabadabacabafabaaabacabadabacaab\r\nabacabadabacaba\r\n",
+                "3 1\n4 1\n"
+            ],
+            [
+                "2\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabaabacabacabaaba\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacaba\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeaabacabadabac\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacaba\r\n",
+                "1 1\n0 1\n"
+            ],
+            [
+                "1\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabahabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaeabacabadabacabafabacabadabacababacabadabacabaeabacabadabacabafabacabadabacabaeabacabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaeabacabadabacabafabacabadabaca\r\naba\r\n",
+                "99 2\n"
+            ],
+            [
+                "1\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadaabacabadabacabaeabacabadabacabafabacabadabacabaeaabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabaaba\r\nabacaba\r\n",
+                "30 1\n"
+            ],
+            [
+                "1\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabahabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabaiabacabadabacaabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaabacabadabacabaeabacabadaabacaab\r\nabacabadabacaba\r\n",
+                "22 1\n"
+            ],
+            [
+                "1\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaeabacabadabacabafabacabacabadabacabaeabacabadabacabafabacabadabacabaeabacababacabadabacabaeabacabacabadaabaabaa\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacaba\r\n",
+                "2 1\n"
+            ],
+            [
+                "1\r\nabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabahabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabaiabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabahabacabadabacabaeabacabadabacabafabacabadabacabaeabacabadabacabagabacabadabacabaeabacabadabacabadabacabaeabacabadaaab\r\naba\r\n",
+                "124 1\n"
+            ],
+            [
+                "2\r\naaaaaaaaaaaa\r\naaa\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaa\r\n",
+                "2 1\n56 1\n"
+            ],
+            [
+                "1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\na\r\n",
+                "463 1\n"
+            ],
+            [
+                "1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaa\r\n",
+                "6 210\n"
+            ],
+            [
+                "1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+                "7 346104\n"
+            ],
+            [
+                "1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaaaaaaaa\r\n",
+                "27 910683735\n"
+            ],
+            [
+                "1\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\naaa\r\n",
+                "100 5151\n"
+            ],
+            [
+                "31\r\nuuuu\r\nuuu\r\ntrero\r\nqqqq\r\nstkk\r\nttt\r\nbh\r\nuuu\r\ncxwdh\r\nww\r\nvgo\r\nvv\r\narau\r\naaa\r\nee\r\neeee\r\niurwy\r\nww\r\ngk\r\ncccc\r\nquf\r\nff\r\nuzhx\r\nee\r\nptpp\r\npp\r\nxqyk\r\nss\r\nh\r\nvvv\r\nnww\r\nnn\r\nwu\r\naa\r\njz\r\nzzz\r\nr\r\noooo\r\njun\r\nnnnn\r\nkdcdy\r\ndddd\r\nsq\r\nnnn\r\npoq\r\nwww\r\nfyylw\r\nyy\r\njjm\r\njj\r\nasa\r\naa\r\nnv\r\nkk\r\ntzzwh\r\nzz\r\nvree\r\neeee\r\nlxxt\r\nxxxx\r\nxfpp\r\npppp\r\n",
+                "1 2\n0 1\n0 1\n0 1\n0 1\n0 1\n0 1\n0 1\n0 1\n0 1\n0 1\n0 1\n1 1\n0 1\n0 1\n0 1\n0 1\n0 1\n0 1\n0 1\n0 1\n0 1\n0 1\n1 1\n1 1\n0 1\n0 1\n1 1\n0 1\n0 1\n0 1\n"
+            ],
+            [
+                "16\r\nezcsrjua\r\nmmmm\r\nmqzmtbmzz\r\nmm\r\ndgfaexvr\r\nyyyy\r\nmcmdymmxmm\r\nmm\r\nrta\r\nee\r\nh\r\nff\r\nubkn\r\nuu\r\nzhbaxmy\r\nxxxx\r\nj\r\njjjj\r\nqkakkksk\r\nkkk\r\neebeeeewet\r\neeee\r\nl\r\nkk\r\nooo\r\noooo\r\nupxajjphqz\r\njjj\r\nqvzrauqoqi\r\nqq\r\ndimbmhfhr\r\naaa\r\n",
+                "0 1\n0 1\n0 1\n2 1\n0 1\n0 1\n0 1\n0 1\n0 1\n1 1\n1 1\n0 1\n0 1\n0 1\n0 1\n0 1\n"
+            ],
+            [
+                "9\r\nnvnbxttannjawdqjldkq\r\njjj\r\nttzwzrogluitptpcttq\r\ntttt\r\ntxuegtute\r\ntt\r\nwspzmybak\r\nvvv\r\npmeq\r\npppp\r\njqyaviyyhwccyy\r\nyy\r\nwxodkxsvdrdhedxd\r\nddd\r\nbgkggzd\r\nggg\r\nxxxix\r\nxx\r\n",
+                "0 1\n0 1\n0 1\n0 1\n0 1\n2 1\n0 1\n0 1\n1 2\n"
+            ],
+            [
+                "6\r\ncgleetgjqctvoln\r\ntttt\r\nqcmivmmvgifpnm\r\nmmmm\r\nxxxrgxxgwexlxxxxlxxxrxxxxo\r\nxx\r\nkkgkkkxkak\r\nkk\r\nviovvvrhdouvqvpvyvolvfvvlvqv\r\nvvvv\r\nyeygaaeheeexeeu\r\neeee\r\n",
+                "0 1\n0 1\n5 4\n2 2\n0 1\n0 1\n"
+            ],
+            [
+                "5\r\nunkhbabenvqqryktmlttqlktznxnegp\r\neeee\r\nsrrlvubrrfrvrerrszrcrltxw\r\nrr\r\nepyaltnttjgtnilythtgfwn\r\nttt\r\npxjffvfffrf\r\nffff\r\nqqqbbrvuaqloxdcxacyqabqmq\r\nqqqq\r\n",
+                "0 1\n3 1\n0 1\n0 1\n0 1\n"
+            ],
+            [
+                "3\r\nyivntiiiiktgujc\r\niii\r\niqbnegcccccomwvfzczcyqpcyckccitchulhudccccyfcnrccccccccyrc\r\nccc\r\nyzzrzzzxzxyxzdhsitudxmcizfzxzhktznzzsboznhznnhazjzsunzwzzazxxzzaylqzas\r\nzzzz\r\n",
+                "1 2\n4 36\n0 1\n"
+            ],
+            [
+                "1\r\nmzjstbmimopmmowegmjmuuxxmrchmkcmmhoaeknashkwygomrqmmfyoaordzmmvsqjqhmhmwhqcmgynmmsmqsmvuthtnfmkznqrmeggxhamllaiotjyjkmuccyagbsjvoamnummmum\r\nmmm\r\n",
+                "1 1\n"
+            ],
+            [
+                "1\r\nqxexxxehxxxcxxuxkvxxxxlgdplxxxiqxxhiuzxqsxzxxnxxxlvxypwuxgcxxxzxxxxxglnxxxxjyxxbpfuxxfsrxxcgrxiarxptxnrxkdgrjhxystmdxxxxdvucexxxvpxgpdxjxxkxqrknxlxxxkxtfxhxemxumxhlxxxgbpxwpdnuvzwllxxxxlxojliwxbhdpadxclbwxxxemxoxwrxnpxxssxqxwkixlgxxxzxxihxjdxxxhazvnxuxxxuyxgxxafvaxigcvxesfxxxxnxxlzxxxakox\r\nxxxx\r\n",
+                "6 2\n"
+            ],
+            [
+                "1\r\noooqvzoqosgooozroooonpovcpeoemmovoiokoogsojooaxoouwoobhbukioopyoowoohqjaroolhvoolqguoolnoebugocolooooozoaidoaoxoonjoooxofookobooytkmexobvtoooeooooooophboodproyodfbpydwdomooogzdooraoobmzhomvwoqoiojelooovkwoosoycooaouoooinpooowygoclmooootjfhokqqnotoowtjsfmzloorvxroookowloowpppoaoofojooobycmctpoxozzsohtiooookookozgooaoqooocgyxoykorooaooxvoosnocooshjwojhpoofiwbnnfoduoxycwoeokjsiofddkoohoowodovoooqosduooovuoooeooqjvonoooooqoleoxoazlvoloooxvjyzokovykoojgeoctooopooveosdoogsoowfooakoowooofoohooqolonooth\r\noo\r\n",
+                "67 1179648\n"
+            ],
+            [
+                "10\r\nakhvjuejwrazexjkmzfersbjnvdvdbrdvuexbdloltpllcnvqtdoooftuhphtdfcveomexsbn\r\ni\r\ndgkrbariruzn\r\njwa\r\nttbbvxlxjsksrziizcmhhxpntxvmkqvhtqqedhqprzdidcvgfgrbqyhlrpwpisajpwmbszyjntqgaoskvc\r\nmk\r\ntwakxsrktfktpkrmrxsruzjvivionieksdngxrhcifxcyzuqfaciojwifrusfrlvikfcqeextlfcudoahqqm\r\na\r\nb\r\nwr\r\nds\r\na\r\npwrawcwzympnqwbqho\r\nxe\r\ndumektyqtydxfbrwgfxcrnzglqiwqthrrfsurjjfzcqyasvfyfgpdexoeouqaiqoeztvrodszxbbeyxsvvjo\r\nxhw\r\nudqbre\r\np\r\ndjgbltaxdrqlabamrqcpwiquokiiovvzhbzheyuagbnceiflzrlzhntlhdbeyptlyvtnqhanwtrpsibgnapvaols\r\ny\r\n",
+                "0 1\n0 1\n1 1\n3 1\n0 1\n0 1\n0 1\n0 1\n0 1\n3 1\n"
+            ],
+            [
+                "2\r\nvfcffeddjfau\r\naxa\r\nfrdcwlnrxhlopqimntngnpcoyxnoieatrvfkmmkcxidwekzuuocbrlemnpavjrkjvchpioepvppuwuxfmzgysscktocfbdlxtktspkpzhfyuovaxugrtueavbxrqsusalscnnitorozyrrihgbewyicyzitffzwujzwywbfxtszzrhbsiqkjfjcstbpbappefdcongwrvjrmzxoqwlxyvxgysrmisvbuqbqotngmtsngrritwvkoncqkvpkycvpgepkrmuiicszvvghumnltpqjpexumxrkghfmemhgcatybalsenbaebozdrngiyicwwuquicyigyhyzigbqrqqjfhapwwlgqpsszyiovnscywlqzznbuatbr\r\nyfb\r\n",
+                "0 1\n0 1\n"
+            ],
+            [
+                "1\r\nwnonmqlujrvjnulaidozpssxflwewpmcstmgokvoszuelcmjhbblldvucnejrwjrobyestaipacjvhwoasazwlloxkaymmdyaywahhneduxittjvzkjvwhlzpnsbhjszwlxhwasknrgzfirdfrnacumtvoujfprbhektlkqryqmpogzsfcnqcdqisxirkgunmbxcwtcskbffmbgynxnjarzfygjfunotegoqiqetfvvteuenhfttjhjoiymnqkzzfeljchijitredwttkfwkoqykicnpzxvmtshniztgplqarbmelphirkogiuhugpknrsnomxxmxvwxsvgzijgkouukjkclfjwojrubejyotefqntxuqsyguamawbababnbujmvxvktbicqjftydrjhauqllsayluuhwavacbrdnargcovjtyhdcblrlnrmhuznhayasyvwazfckvq\r\nd\r\n",
+                "10 1\n"
+            ],
+            [
+                "2\r\ngwfifrfshmqschqfgpmwiyoympbacgbvbtqmceulifkdbifmidmatnxkgcvninpmsqwtihdqdfxneijxrdsoewuiljizzyvkvxulvtimwdnqgkeysaapsarhkucdxmlxszneludifgyjkueddduboxxswsftnuexbbrkhmrutmyfkmdnrmnqqioplnvmvbbmptcypqxgsdokwdexzt\r\ncbehmshrbernovtil\r\nkjlaywetettthxxvwviydxbchtihflzavztrdaerjoblxnqecjwaggcfdrwkawzhpowdlzaowuwypvszogutpxyecchofswfjbqqfylacsabxzwumdlloksvimdvyquywgjnvpcfjqicw\r\njpocwpbbrgrhtzgcfrcrnj\r\n",
+                "0 1\n0 1\n"
+            ],
+            [
+                "1\r\nxzuygyvhtvbqvayfqhgbbnqehekyasxdolqqsjsicwdltuaqeoqubijxjmqpuniuasccklmgcqxcsvtiojchaxilzgekalhtfjohysbqvhgmezhtivsekitkryklevoujsfuxlpzidbhbadyxkkfmeahbcbgwaelpdsbrqkdepufuzxcfhpcxluedkbsesecybnenhnyrqzvsqnjzwhpxetrlejgehupswsygktimgheptjblfmqjyihkgeysumzxxcasxqsztjgrgrrhlfcrfwdolgonejaizbajuffqkpcbhbnrttjjnrcezttdrwvwwubwohsyebsmeauvuqoaxrrppvxgmumjeqjbjefwvjuwqwfvmfkxmzddexbhxsfdkxsujeuwhxapfcuovonyyyxayugrengzxphdpzqwlxesifdutvrvravbpuuccizkjvdkwy\r\nrminazsrp\r\n",
+                "0 1\n"
+            ]
+        ]
+    }
+]

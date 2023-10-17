@@ -1,0 +1,272 @@
+[
+    {
+        "name": "Cutlet",
+        "description": "Arkady wants to have a dinner. He has just returned from a shop where he has\nbought a semifinished cutlet. He only needs to fry it. The cutlet should be\nfried for 2n seconds, in particular, it should be fried for n seconds on one\nside and n seconds on the other side. Arkady has already got a frying pan and\nturn on fire, but understood that maybe he won't be able to flip the cutlet\nexactly after n seconds after the beginning of cooking. Arkady is too busy\nwith sorting sticker packs in his favorite messenger and can flip the cutlet\nonly in some periods of time. Namely, there are k periods of time in which he\ncan do it, the i-th of them is an interval of time from li seconds after he\nstarts cooking till ri seconds, inclusive. Arkady decided that it's not\nrequired to flip the cutlet exactly in the middle of cooking, instead, he will\nflip it several times in such a way that the cutlet will be fried exactly n\nseconds on one side and n seconds on the other side in total. Help Arkady and\nfind out if it's possible for him to cook the cutlet, if he is able to flip\nthe cutlet only in given periods of time; and if yes, find the minimum number\nof flips he needs to cook the cutlet. Input The first line contains two\nintegers n and k (1 \u2264 n \u2264 100 000, 1 \u2264 k \u2264 100) \u2014 the number of seconds the\ncutlet should be cooked on each side and number of periods of time in which\nArkady can flip it. The next k lines contain descriptions of these intervals.\nEach line contains two integers li and ri (0 \u2264 li \u2264 ri \u2264 2\u00b7n), meaning that\nArkady can flip the cutlet in any moment starting from li seconds after the\nbeginning of cooking and finishing at ri seconds after beginning of cooking.\nIn particular, if li = ri then Arkady can flip the cutlet only in the moment\nli = ri. It's guaranteed that li > ri - 1 for all 2 \u2264 i \u2264 k. Output Output\n\"Hungry\" if Arkady won't be able to fry the cutlet for exactly n seconds on\none side and exactly n seconds on the other side. Otherwise, output \"Full\" in\nthe first line, and the minimum number of times he should flip the cutlet in\nthe second line. Examples Input 10 2 3 5 11 13 Output Full 2 Input 10 3 3 5 9\n10 11 13 Output Full 1 Input 20 1 3 19 Output Hungry Note In the first example\nArkady should flip the cutlet in time moment 3 seconds after he starts cooking\nand in time moment 13 seconds after he starts cooking. In the second example,\nArkady can flip the cutlet at 10 seconds after he starts cooking.\n\n",
+        "cf_contest_id": 939,
+        "cf_index": "F",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dp"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 2\r\n3 5\r\n11 13\r\n",
+                "Full\r\n2"
+            ],
+            [
+                "10 3\r\n3 5\r\n9 10\r\n11 13\r\n",
+                "Full\r\n1"
+            ],
+            [
+                "20 1\r\n3 19\r\n",
+                "Hungry\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 1\r\n0 20\r\n",
+                "Full\r\n1"
+            ],
+            [
+                "10 1\r\n0 1\r\n",
+                "Hungry\r\n"
+            ],
+            [
+                "10 1\r\n10 10\r\n",
+                "Full\r\n1"
+            ],
+            [
+                "10 2\r\n4 4\r\n14 14\r\n",
+                "Full\r\n2"
+            ],
+            [
+                "1 1\r\n0 0\r\n",
+                "Hungry\r\n"
+            ],
+            [
+                "10 5\r\n3 3\r\n5 5\r\n8 8\r\n13 13\r\n16 16\r\n",
+                "Full\r\n2"
+            ],
+            [
+                "10 7\r\n0 0\r\n2 6\r\n8 10\r\n12 12\r\n14 14\r\n17 17\r\n19 19\r\n",
+                "Full\r\n1"
+            ],
+            [
+                "100 10\r\n18 18\r\n30 30\r\n37 37\r\n59 59\r\n83 83\r\n90 90\r\n141 141\r\n149 149\r\n173 173\r\n189 189\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 3\r\n0 50000\r\n99999 99999\r\n199998 199998\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 17\r\n7247 18957\r\n56758 64403\r\n79823 83648\r\n83649 83715\r\n83732 84946\r\n84947 84963\r\n84964 84968\r\n84970 84978\r\n84982 84991\r\n84992 87130\r\n172421 176513\r\n176514 176596\r\n176629 176689\r\n176692 177213\r\n197692 199830\r\n199831 199993\r\n199997 200000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 20\r\n1425 1425\r\n14050 14050\r\n17375 17375\r\n17609 17609\r\n22704 22704\r\n25922 25922\r\n37894 37894\r\n92308 92308\r\n94002 94002\r\n99619 99619\r\n103208 103208\r\n110194 110194\r\n114468 114468\r\n141214 141214\r\n145980 145980\r\n159553 159553\r\n168441 168441\r\n169633 169633\r\n182674 182674\r\n195738 195738\r\n",
+                "Full\r\n8"
+            ],
+            [
+                "100000 3\r\n54962 59962\r\n98273 103273\r\n174042 179042\r\n",
+                "Full\r\n1"
+            ],
+            [
+                "100000 20\r\n5000 9999\r\n14999 19998\r\n24998 29997\r\n34997 39996\r\n44996 49995\r\n54995 59994\r\n64994 69993\r\n74993 79992\r\n84992 89991\r\n94991 99990\r\n104990 109989\r\n114989 119988\r\n124988 129987\r\n134987 139986\r\n144986 149985\r\n154985 159984\r\n164984 169983\r\n174983 179982\r\n184982 189981\r\n194981 199980\r\n",
+                "Full\r\n2"
+            ],
+            [
+                "100 19\r\n1 1\r\n14 14\r\n16 16\r\n36 36\r\n45 45\r\n51 51\r\n67 67\r\n77 77\r\n90 90\r\n106 106\r\n116 116\r\n129 129\r\n142 142\r\n153 153\r\n168 169\r\n180 180\r\n183 183\r\n185 185\r\n191 191\r\n",
+                "Full\r\n2"
+            ],
+            [
+                "1000 10\r\n1 1\r\n122 122\r\n502 502\r\n687 687\r\n731 731\r\n737 737\r\n825 825\r\n878 878\r\n1159 1159\r\n1396 1396\r\n",
+                "Hungry\r\n"
+            ],
+            [
+                "1000 4\r\n184 196\r\n726 737\r\n1114 1131\r\n1571 1581\r\n",
+                "Full\r\n4"
+            ],
+            [
+                "1000 6\r\n292 304\r\n1135 1147\r\n1338 1350\r\n1472 1491\r\n1720 1732\r\n1773 1790\r\n",
+                "Full\r\n4"
+            ],
+            [
+                "1000 5\r\n509 528\r\n540 551\r\n1332 1347\r\n1732 1743\r\n1777 1787\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 1\r\n0 200000\r\n",
+                "Full\r\n1"
+            ],
+            [
+                "100000 1\r\n100000 100000\r\n",
+                "Full\r\n1"
+            ],
+            [
+                "100000 2\r\n234 234\r\n99766 99766\r\n",
+                "Hungry\r\n"
+            ],
+            [
+                "100000 2\r\n0 99999\r\n100001 200000\r\n",
+                "Full\r\n2"
+            ],
+            [
+                "511 18\r\n1 1\r\n2 2\r\n4 4\r\n6 6\r\n10 10\r\n14 14\r\n22 22\r\n30 30\r\n46 46\r\n62 62\r\n94 94\r\n126 126\r\n190 190\r\n254 254\r\n382 382\r\n510 510\r\n766 766\r\n1022 1022\r\n",
+                "Full\r\n9"
+            ],
+            [
+                "1000 20\r\n225 225\r\n429 429\r\n560 560\r\n632 632\r\n650 650\r\n704 704\r\n768 768\r\n797 797\r\n983 983\r\n991 991\r\n1046 1046\r\n1082 1082\r\n1233 1233\r\n1366 1366\r\n1394 1394\r\n1456 1456\r\n1459 1459\r\n1519 1519\r\n1967 1967\r\n1996 1996\r\n",
+                "Full\r\n4"
+            ],
+            [
+                "10000 10\r\n479 479\r\n1024 1024\r\n4388 4388\r\n4810 4810\r\n6557 6557\r\n9697 9697\r\n11393 11393\r\n12124 12124\r\n14600 14600\r\n17536 17536\r\n",
+                "Full\r\n7"
+            ],
+            [
+                "10000 20\r\n746 746\r\n1145 1145\r\n1897 1897\r\n4254 4254\r\n6893 6893\r\n7434 7434\r\n8130 8130\r\n9755 9755\r\n10033 10033\r\n10636 10636\r\n11342 11342\r\n11651 11651\r\n12005 12005\r\n14567 14567\r\n15196 15196\r\n15947 15947\r\n16385 16385\r\n17862 17862\r\n18540 18540\r\n18948 18948\r\n",
+                "Full\r\n5"
+            ],
+            [
+                "10000 12\r\n1407 1407\r\n1878 1878\r\n4636 4636\r\n5055 5055\r\n5640 5640\r\n6379 6379\r\n6490 6490\r\n10303 10303\r\n13028 13028\r\n13578 13578\r\n18040 18040\r\n19477 19477\r\n",
+                "Full\r\n8"
+            ],
+            [
+                "55 20\r\n1 1\r\n2 2\r\n4 4\r\n6 6\r\n9 9\r\n12 12\r\n16 16\r\n20 20\r\n25 25\r\n30 30\r\n36 36\r\n42 42\r\n49 49\r\n56 56\r\n64 64\r\n72 72\r\n81 81\r\n90 90\r\n100 100\r\n110 110\r\n",
+                "Full\r\n2"
+            ],
+            [
+                "6 6\r\n3 3\r\n5 5\r\n7 7\r\n8 8\r\n9 9\r\n12 12\r\n",
+                "Full\r\n2"
+            ],
+            [
+                "100000 4\r\n0 40000\r\n41000 80000\r\n99999 99999\r\n199998 199998\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 12\r\n1 1751\r\n23999 25007\r\n33798 37031\r\n37117 37426\r\n37428 37436\r\n37437 40132\r\n48648 51062\r\n51071 51743\r\n51763 54643\r\n116077 119442\r\n190627 195558\r\n197662 200000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 14\r\n213 1640\r\n6778 14112\r\n62548 68221\r\n68495 68864\r\n68887 68889\r\n68890 68894\r\n68896 68988\r\n69034 71515\r\n73645 77764\r\n80059 81085\r\n81086 81589\r\n136294 151585\r\n194157 199448\r\n199559 200000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 16\r\n1 7\r\n9 307\r\n405 5574\r\n50346 54067\r\n54069 54100\r\n54101 55097\r\n56093 61752\r\n77951 78580\r\n78585 80749\r\n85191 87424\r\n87485 87490\r\n87491 87694\r\n87715 94544\r\n136369 138773\r\n140012 143346\r\n195045 200000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 2\r\n60000 81999\r\n120000 140000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 12\r\n65418 84245\r\n86341 90510\r\n135508 139243\r\n139287 139389\r\n139393 139437\r\n139440 147819\r\n198670 199954\r\n199955 199963\r\n199968 199979\r\n199980 199985\r\n199986 199997\r\n199999 200000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 11\r\n42866 45922\r\n45923 49957\r\n63729 84014\r\n115856 125872\r\n125988 126003\r\n126004 129147\r\n131201 134555\r\n183782 189949\r\n189955 189967\r\n189968 197363\r\n198291 200000\r\n",
+                "Full\r\n2"
+            ],
+            [
+                "100000 8\r\n69804 76492\r\n76493 78217\r\n129407 137816\r\n137817 139388\r\n142035 152201\r\n153150 162227\r\n196326 199996\r\n200000 200000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 18\r\n16 46\r\n47 154\r\n445 526\r\n537 571\r\n572 573\r\n574 580\r\n582 5922\r\n70364 73612\r\n73625 80571\r\n81628 88168\r\n122927 127021\r\n127027 127056\r\n127204 127409\r\n127410 134203\r\n145658 155259\r\n155270 163684\r\n198635 199999\r\n200000 200000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 15\r\n10387 11995\r\n12012 12188\r\n12297 14393\r\n14589 15140\r\n17771 26488\r\n68905 72975\r\n73509 73881\r\n73886 73886\r\n73887 79513\r\n143598 147981\r\n150145 152841\r\n189148 199265\r\n199597 199724\r\n199772 199994\r\n199999 200000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 12\r\n589 2312\r\n2349 12326\r\n12499 12759\r\n12796 21228\r\n70394 77570\r\n77571 86238\r\n133314 135096\r\n135104 135113\r\n135118 135128\r\n135135 137324\r\n190272 199989\r\n199998 200000\r\n",
+                "Full\r\n4"
+            ],
+            [
+                "100000 14\r\n3182 5382\r\n5847 10785\r\n26776 36809\r\n36961 39608\r\n65919 72524\r\n73806 75651\r\n79173 81114\r\n81115 84538\r\n112469 113763\r\n113767 113771\r\n113777 113790\r\n113792 119192\r\n193181 198259\r\n199859 200000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 18\r\n3 535\r\n551 7905\r\n74333 87542\r\n124358 135027\r\n135108 142254\r\n142265 143895\r\n144091 145169\r\n145255 145273\r\n145275 145275\r\n145279 145295\r\n145302 145336\r\n145337 145348\r\n145350 145429\r\n145430 145431\r\n145441 145459\r\n145460 147266\r\n198447 199999\r\n200000 200000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 8\r\n244 293\r\n379 886\r\n68058 75221\r\n102015 112569\r\n140672 146088\r\n146090 146284\r\n146289 149770\r\n197995 200000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 5\r\n18547 19547\r\n24249 25249\r\n58262 59262\r\n102965 103965\r\n109453 110453\r\n",
+                "Full\r\n5"
+            ],
+            [
+                "100000 9\r\n5071 6797\r\n6916 13337\r\n64413 72188\r\n72231 72441\r\n72458 74946\r\n122835 133275\r\n133562 134079\r\n134098 141894\r\n195543 200000\r\n",
+                "Full\r\n4"
+            ],
+            [
+                "100000 6\r\n8828 9828\r\n81857 82857\r\n88071 89071\r\n94010 95010\r\n141844 142844\r\n165669 166669\r\n",
+                "Full\r\n6"
+            ],
+            [
+                "100000 7\r\n5645 6645\r\n30563 31563\r\n75140 76140\r\n107764 108764\r\n108910 109910\r\n162122 163122\r\n169774 170774\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 7\r\n17993 18993\r\n30906 31906\r\n49354 50354\r\n60696 61696\r\n106638 107638\r\n188177 189177\r\n190333 191333\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "100000 18\r\n299 2359\r\n2646 3120\r\n3122 3123\r\n3124 4562\r\n5401 5753\r\n5754 10619\r\n72022 81017\r\n81018 81019\r\n81020 81020\r\n81021 81573\r\n82730 83638\r\n83643 83648\r\n83663 83668\r\n83669 83673\r\n83678 83681\r\n83686 91779\r\n156345 158432\r\n194512 200000\r\n",
+                "Full\r\n4"
+            ],
+            [
+                "100000 6\r\n397 1397\r\n15892 16892\r\n35746 36746\r\n94193 95193\r\n166848 167848\r\n185228 186228\r\n",
+                "Full\r\n5"
+            ],
+            [
+                "100000 16\r\n41569 49839\r\n49854 54485\r\n59507 68882\r\n68884 69855\r\n69997 72083\r\n105481 108926\r\n108927 108944\r\n108969 109043\r\n109105 109306\r\n110096 110365\r\n110573 114375\r\n180359 187643\r\n191157 196987\r\n197083 197113\r\n197140 197892\r\n199113 200000\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "1000 2\r\n909 961\r\n1820 1859\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "1000 5\r\n123 174\r\n716 789\r\n1284 1360\r\n1415 1443\r\n1623 1648\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "1000 5\r\n381 426\r\n1092 1122\r\n1462 1481\r\n1708 1756\r\n1799 1847\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "1000 4\r\n241 259\r\n1127 1154\r\n1219 1239\r\n1739 1758\r\n",
+                "Full\r\n4"
+            ],
+            [
+                "1000 5\r\n388 407\r\n488 504\r\n640 658\r\n856 875\r\n1060 1074\r\n",
+                "Full\r\n9"
+            ],
+            [
+                "1000 5\r\n182 199\r\n444 460\r\n628 640\r\n693 708\r\n1107 1119\r\n",
+                "Full\r\n7"
+            ],
+            [
+                "1000 2\r\n771 837\r\n1015 1049\r\n",
+                "Full\r\n3"
+            ],
+            [
+                "1000 3\r\n581 617\r\n802 825\r\n1040 1080\r\n",
+                "Full\r\n5"
+            ],
+            [
+                "100000 7\r\n27522 27693\r\n47266 47410\r\n58768 58929\r\n64532 64665\r\n141173 141356\r\n150364 150551\r\n183020 183160\r\n",
+                "Full\r\n9"
+            ]
+        ]
+    }
+]

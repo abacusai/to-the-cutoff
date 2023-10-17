@@ -1,0 +1,244 @@
+[
+    {
+        "name": "Cutting Jigsaw Puzzle",
+        "description": "The Hedgehog recently remembered one of his favorite childhood activities, \u2014\nsolving puzzles, and got into it with new vigor. He would sit day in, day out\nwith his friend buried into thousands of tiny pieces of the picture, looking\nfor the required items one by one. Soon the Hedgehog came up with a brilliant\nidea: instead of buying ready-made puzzles, one can take his own large piece\nof paper with some picture and cut it into many small rectangular pieces, then\nmix them and solve the resulting puzzle, trying to piece together the picture.\nThe resulting task is even more challenging than the classic puzzle: now all\nthe fragments have the same rectangular shape, and one can assemble the puzzle\nonly relying on the picture drawn on the pieces. All puzzle pieces turn out to\nbe of the same size X \u00d7 Y, because the picture is cut first by horizontal cuts\nwith the pitch of X, then with vertical cuts with the pitch of Y. If we denote\nthe initial size of the picture as A \u00d7 B, then A must be divisible by X and B\nmust be divisible by Y (X and Y are integer numbers). However, not every such\ncutting of the picture will result in a good puzzle. The Hedgehog finds a\npuzzle good if no two pieces in it are the same (It is allowed to rotate the\npieces when comparing them, but it is forbidden to turn them over). Your task\nis to count for a given picture the number of good puzzles that you can make\nfrom it, and also to find the puzzle with the minimal piece size. Input The\nfirst line contains two numbers A and B which are the sizes of the picture.\nThey are positive integers not exceeding 20. Then follow A lines containing B\nsymbols each, describing the actual picture. The lines only contain uppercase\nEnglish letters. Output In the first line print the number of possible good\npuzzles (in other words, the number of pairs (X, Y) such that the puzzle with\nthe corresponding element sizes will be good). This number should always be\npositive, because the whole picture is a good puzzle itself. In the second\nline print two numbers \u2014 the sizes X and Y of the smallest possible element\namong all good puzzles. The comparison is made firstly by the area XY of one\nelement and secondly \u2014 by the length X. Examples Input 2 4 ABDC ABDC Output 3\n2 1 Input 2 6 ABCCBA ABCCBA Output 1 2 6 Note The picture in the first sample\ntest has the following good puzzles: (2, 1), (2, 2), (2, 4).\n\n",
+        "cf_contest_id": 54,
+        "cf_index": "B",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "hashing",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 4\r\nABDC\r\nABDC\r\n",
+                "3\r\n2 1\r\n"
+            ],
+            [
+                "2 6\r\nABCCBA\r\nABCCBA\r\n",
+                "1\r\n2 6\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\nAB\r\nCD\r\n",
+                "4\r\n1 1\r\n"
+            ],
+            [
+                "4 6\r\nABABAC\r\nBABABC\r\nABABAC\r\nCCCCCA\r\n",
+                "4\r\n2 3\r\n"
+            ],
+            [
+                "1 12\r\nABAAADCAAABX\r\n",
+                "4\r\n1 3\r\n"
+            ],
+            [
+                "4 6\r\nABCDEF\r\nGHIJKL\r\nMNOPQR\r\nSTUVWX\r\n",
+                "12\r\n1 1\r\n"
+            ],
+            [
+                "5 5\r\nABAAA\r\nBBBAA\r\nABABA\r\nBBABB\r\nBAAAB\r\n",
+                "3\r\n1 5\r\n"
+            ],
+            [
+                "5 6\r\nBBBABB\r\nAAAABB\r\nABABAA\r\nABBBAA\r\nBABBBA\r\n",
+                "4\r\n1 6\r\n"
+            ],
+            [
+                "7 7\r\nBBAAABB\r\nAABBBBA\r\nAABABBA\r\nAABABAB\r\nAABBBAA\r\nBAAAABA\r\nBBABBBB\r\n",
+                "3\r\n1 7\r\n"
+            ],
+            [
+                "8 7\r\nBABABBB\r\nABABABA\r\nAABBABA\r\nABBABAA\r\nBABAAAB\r\nAABBBBA\r\nABBBBAB\r\nBBAAABA\r\n",
+                "5\r\n1 7\r\n"
+            ],
+            [
+                "8 9\r\nBAABABAAB\r\nBAABAAAAB\r\nBBBBBAABB\r\nAAAAAAAAB\r\nBABBABBAA\r\nBBABABBBB\r\nBABABBAAA\r\nAABAABBBB\r\n",
+                "7\r\n8 1\r\n"
+            ],
+            [
+                "10 10\r\nABBAABAABB\r\nABAAAAAABA\r\nBAABABABAA\r\nBAAAAAAAAB\r\nBABABBBAAB\r\nABBABBBBBA\r\nAABABAAAAA\r\nBAAAABAABA\r\nABABAABBAA\r\nBBABBABABB\r\n",
+                "9\r\n1 10\r\n"
+            ],
+            [
+                "10 11\r\nABBBAABABBB\r\nBBAABABBAAB\r\nAABBBBBAAAA\r\nBBABABAAABA\r\nAABABBBAABB\r\nAAABABAABAB\r\nBBABBBABBBB\r\nBBABABABBAA\r\nBBABABAAABB\r\nBABAABAABAB\r\n",
+                "5\r\n10 1\r\n"
+            ],
+            [
+                "12 11\r\nBBAAAABBAAB\r\nBBABBABBABB\r\nBAABABBABBA\r\nBABBBAAAABA\r\nABBAABBBBBA\r\nABBABBABABB\r\nAAABBBABBBB\r\nBAABAAABAAA\r\nAAAABBBBABA\r\nAAABAAABBBB\r\nBAAAAABABAB\r\nABBBBABABBB\r\n",
+                "7\r\n1 11\r\n"
+            ],
+            [
+                "12 13\r\nBBABABAAAAABA\r\nABAAAAAAAABBA\r\nABBBABAAAAABA\r\nBBBAABABBABBB\r\nABABAAABABABB\r\nABBAABAABBAAA\r\nAABABBAAABBAB\r\nABBBBBABBAABA\r\nBBBBBABBABBAA\r\nAAAAAAABBBAAB\r\nBAABBBAABAAAA\r\nBBBBBBABABABA\r\n",
+                "7\r\n12 1\r\n"
+            ],
+            [
+                "14 12\r\nBBAAABBBAAAB\r\nBBABAAAAABAA\r\nAABBABBBABBA\r\nBABAABAABBBB\r\nBBBABBBBABAA\r\nABBAABBAAABA\r\nABAAAAABBBAB\r\nBBAABBABBBAA\r\nBAABABAAABAB\r\nAAABBBABBABA\r\nBABBBBAABBBA\r\nAAAAABABBAAB\r\nBABBBABBBBBA\r\nBAAAABAABAAA\r\n",
+                "14\r\n1 12\r\n"
+            ],
+            [
+                "14 10\r\nABBAAABBAA\r\nBBBBBABBAA\r\nBABABBABAB\r\nAAABABBAAB\r\nBBABABBBAB\r\nBBABBABABB\r\nAABBBBABAA\r\nABBBAAAABB\r\nABBABAABAA\r\nABABABABBA\r\nABAABBBAAB\r\nAAAAAAAAAA\r\nABABBAABAA\r\nBABAABABBB\r\n",
+                "10\r\n1 10\r\n"
+            ],
+            [
+                "16 15\r\nABBBBAAABABBABB\r\nABBBAAABBABBBBB\r\nBABABAABBBABABB\r\nAAABBBBBABBABBB\r\nBAABAABAABAABBA\r\nABBBBAAAAAAAABB\r\nBAABBBABABAAAAB\r\nAAAABBAABBAABAA\r\nABBABABAAABABBB\r\nAAABBBABAABABAA\r\nBAABABBAAABBAAA\r\nAAAAAAABABBBAAA\r\nBABBAABBABAAAAB\r\nABABAAABBBBBAAB\r\nBBABBAABABAABBB\r\nBAAAABBBABABBBA\r\n",
+                "12\r\n4 3\r\n"
+            ],
+            [
+                "16 16\r\nABBABBABBAABBBAB\r\nBABABBAABAABBAAA\r\nBAAABBAABAABBBAA\r\nAABAAAABAAAABBBA\r\nBAAAABAABBBABBAA\r\nAABBABABABAABBBA\r\nBABBBABAAAAABABB\r\nBABBBBBBBBABBBAB\r\nBAAAABBBABAABBBA\r\nBABBBABBAABABBAA\r\nBBBBBBAABBBABBBA\r\nBABAAAABAABAABBB\r\nAAAAABBAAABABAAA\r\nBABBABABABAAABAB\r\nBAAAAAAAABBABAAA\r\nBAAAAABABBBBAAAA\r\n",
+                "15\r\n1 16\r\n"
+            ],
+            [
+                "18 18\r\nBBBBBBBABABBBABABA\r\nBAAABAAABBBABABBBB\r\nBABBAAABAAABAAABAA\r\nAABBABBBABBBBBAAAB\r\nBBBAAAAABBABBAAAAA\r\nAABBAABABABBBABABA\r\nBAABBAAAABABAABABB\r\nBABBABBBAAAABAABBA\r\nBBBBAABAAABAAABBBA\r\nABABBAAABBBBBABABA\r\nABABAABBBBBABBBBBB\r\nABAAABBABBABAAAABA\r\nBABAAABABABBBABBBB\r\nBBBBABBBABBBBBBBBA\r\nBAAABAABABABBBBAAB\r\nBABBAABABBABAABBBB\r\nBAABABAAAABBABBAAA\r\nBAAABBBAABABBABBAB\r\n",
+                "23\r\n2 6\r\n"
+            ],
+            [
+                "17 17\r\nBBAABAABBBBBAABBB\r\nBBABABBBBABAAABBB\r\nAAAABAAAABABABBAA\r\nBBABAAABBABBAAABA\r\nAAABBBBBAABABBBAB\r\nAABBBBBABABABABBB\r\nBAABAAABAAABBAABB\r\nBBAAAAAABABABBAAB\r\nAAAAABAABBAAAABAA\r\nBABAABABABABABBBB\r\nBAABABBAAABBAAABB\r\nABBAAABBBBAAAABAB\r\nBBABAABAAAAAABBBB\r\nAAABBABBAAAAABBBB\r\nAABAABBAABBABAABB\r\nABABAAABBABAAABAB\r\nBBABABBBAAAAAAABA\r\n",
+                "3\r\n1 17\r\n"
+            ],
+            [
+                "20 20\r\nABBBAAABABAAAAABBABB\r\nBABABBAABAABBAAABABB\r\nBABBBAABAABBABBBBABA\r\nBAAABBAAABABBABBAAAA\r\nABBAABAABBBBAAABBBAA\r\nBAAAAAAAABABBAAAAABB\r\nAAAAAAABABBBBBAABAAB\r\nABBBBABAABBAAAAABAAA\r\nBAAAAABBABAAAAABAAAB\r\nABABAABABBBABBAABBAA\r\nBAAABBBAAAABBBBBABAA\r\nAAABBABABAABBABAABAB\r\nABBABABABABAAABABABA\r\nBAABAAAAABBAABBBAAAB\r\nABAAABBABAABBBABAABA\r\nBAABBBBBABBBABBBABAB\r\nBABBABABBBBBBBBABAAA\r\nABAAABAAABAAABABABAA\r\nBAABBBBAABBAAAAAABBA\r\nABAABBABAAABBABABAAA\r\n",
+                "23\r\n1 10\r\n"
+            ],
+            [
+                "1 1\r\nC\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "2 2\r\nCC\r\nBB\r\n",
+                "2\r\n1 2\r\n"
+            ],
+            [
+                "3 3\r\nACA\r\nCCA\r\nACB\r\n",
+                "3\r\n1 3\r\n"
+            ],
+            [
+                "4 4\r\nACAC\r\nCBCC\r\nABBC\r\nCCAC\r\n",
+                "5\r\n1 4\r\n"
+            ],
+            [
+                "5 5\r\nBBCAB\r\nBCBAC\r\nCAAAB\r\nACBBA\r\nCAACB\r\n",
+                "3\r\n1 5\r\n"
+            ],
+            [
+                "14 16\r\nCBCCCABCBBBAAACC\r\nAABAACBACBCBACCA\r\nABBBABAACCACCCCC\r\nBBACACACCCCBBBAC\r\nBBCAABACBAACBCAA\r\nAAACCACBBCABABCB\r\nABCBCAAAAACBABBA\r\nAAABBBCCBAACBBCA\r\nBBAACBABBBCCBAAC\r\nBAABCCBAAABAACAC\r\nABBBBCBAACACCBCB\r\nBCABACBBBCAACACC\r\nACCCCABCCCBBCAAC\r\nBCBBCCCBCBCCACAA\r\n",
+                "15\r\n7 1\r\n"
+            ],
+            [
+                "16 16\r\nACABBCCBAABCCCCB\r\nAABCACCAAACACABB\r\nBCCCAABBAACBACAA\r\nBCACAABBBCAAAABA\r\nACCBABCCACABBCCC\r\nCCAAACACACBCABCA\r\nBCAACBBBCACBBCAB\r\nBABBCBBBCCCBAACC\r\nBBBBBABACBABBCBA\r\nABAACBACCACBBABA\r\nABAACBACCBCBCCBB\r\nBCACCCAABCBBCBCB\r\nBBBCCCBCCBCBACCA\r\nAABCBBBBACCACCBB\r\nBCABCCCBCBBBCBCC\r\nACCCCCCBBBAABACC\r\n",
+                "17\r\n4 2\r\n"
+            ],
+            [
+                "17 17\r\nBCBAAABAABCCCAAAC\r\nBBAABCABBAACCACBB\r\nABCCBAABBCCABBBAB\r\nAACCBBACCAAACCACA\r\nABBACBAAAABBABCAA\r\nACBACCCABAABBCABB\r\nCBCCCBCACBABCAAAA\r\nAAABACACABABCCCBC\r\nCABABBABBBABBBCAB\r\nBCBCBAAACCCACACBA\r\nBBACABACAAABCCBBC\r\nABAABBABCCAABBCCA\r\nAABBACBCBCCBAACBB\r\nBBABCBBCCCBCACBCB\r\nBABCBBCCABCABBAAA\r\nAABAABBBBAACAABCC\r\nBACCCBBCCABBBACBB\r\n",
+                "3\r\n1 17\r\n"
+            ],
+            [
+                "19 19\r\nACCACBCABACABCACCAA\r\nBCACAAAACCACCCCBCCB\r\nCBACBBCBCBCABCABACA\r\nAACCAABBBCAAABACAAC\r\nACACCCBBBACACCAAABA\r\nAACAABCACCBCACCABBA\r\nAABBCCABACCACABACAA\r\nACBCCACBACCACABCABC\r\nAACAABCAACCBBAACBCA\r\nAAACACBAABCBACCAAAB\r\nAABACABBABCACAACBCA\r\nBABAAABCACBABACBBBC\r\nBAABCAAABCAABBCCAAC\r\nBCABCCBCCBCBABCBCCA\r\nBACACBACBCABBCBCABB\r\nABCACCBBBBCBBCABAAC\r\nBBBBCCBCBACAACBCBCA\r\nAAABBBBCACCACCAAACC\r\nCCCCCBAABAAAACCCBBA\r\n",
+                "3\r\n1 19\r\n"
+            ],
+            [
+                "20 18\r\nAABCAACCBBCBABBBBB\r\nBBCBAACCBCAACBBCCB\r\nACCBABABACBBACBBAB\r\nACBBBCBAAACAAAAABB\r\nBCBABABAACCCABBBCC\r\nBAAAAAACACABBCCCAC\r\nCBACCBCBACACAAACBC\r\nCBACAACBCBCAACACCA\r\nCCCBACCBACACCCBCCB\r\nCACABBBBBBCCBACCBA\r\nCCBCACABCBACABBCCB\r\nAACACCCCCABAABCACC\r\nCBBACCBBCBCBBCCAAB\r\nCABBABACCABACAABAB\r\nBBBABBCBCBACBCCABA\r\nBCCAACBCBCAAAABACA\r\nAAABACBBCCCACACBAC\r\nBABAAAACCBACBACAAA\r\nAABBABCBBBACAACBAB\r\nBBABBAABACBAABCCBB\r\n",
+                "27\r\n4 2\r\n"
+            ],
+            [
+                "1 1\r\nZ\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "2 2\r\nML\r\nWQ\r\n",
+                "4\r\n1 1\r\n"
+            ],
+            [
+                "3 3\r\nBXP\r\nUJF\r\nAQT\r\n",
+                "4\r\n1 1\r\n"
+            ],
+            [
+                "4 3\r\nOKJ\r\nXTV\r\nDVW\r\nHMK\r\n",
+                "5\r\n2 1\r\n"
+            ],
+            [
+                "5 5\r\nDZEZF\r\nOHZZC\r\nCNDOX\r\nNVYDP\r\nUCIAX\r\n",
+                "3\r\n1 5\r\n"
+            ],
+            [
+                "6 6\r\nQLXBOE\r\nKEEYTR\r\nZLPMSP\r\nWOKAHN\r\nLYXBXU\r\nSZOEZV\r\n",
+                "14\r\n2 1\r\n"
+            ],
+            [
+                "6 7\r\nGYSGYUL\r\nKGTJUVI\r\nFNRHOND\r\nZGZAFYZ\r\nQVCRZCA\r\nJCCXKGV\r\n",
+                "7\r\n2 1\r\n"
+            ],
+            [
+                "8 8\r\nTNMIIMOP\r\nJOAXSHVN\r\nQYHMVXGM\r\nQOXAIUMI\r\nLAAXNKCH\r\nORWESZUV\r\nPMIXHLEA\r\nAENPGVYK\r\n",
+                "13\r\n1 4\r\n"
+            ],
+            [
+                "9 9\r\nIZHKRCRTM\r\nLQBOENMNQ\r\nYLNVFBFUY\r\nACTTYWABL\r\nYSEGWNQHC\r\nTZASWPPAG\r\nLLZTKFPMV\r\nGXBETPPPN\r\nUCPEFNJKN\r\n",
+                "8\r\n1 3\r\n"
+            ],
+            [
+                "9 10\r\nXHPCDAAFPZ\r\nJRZCDTQBYP\r\nZBTAMDPIFY\r\nXBKTMXNIWM\r\nDAIONPEBYF\r\nAFHBCBDTKB\r\nKRVEBSUXRM\r\nWGMEZTWDBX\r\nNOJUCDZPZY\r\n",
+                "10\r\n3 1\r\n"
+            ],
+            [
+                "12 13\r\nTHSGJEPTDFEIJ\r\nOWPJGXSXJRYGD\r\nVYENWXFWSOSMX\r\nFZDFXFPWEIYYV\r\nOEODFOGQWJEEU\r\nSQRNSBTAMLQRU\r\nLXGZERSWTJWQK\r\nLGRJJMDTZVZWJ\r\nDWVBTSZKFUAHT\r\nHSSZHXAWVWMHB\r\nJZOCNFUHTHQYV\r\nTUHDMTZAQVWDL\r\n",
+                "10\r\n3 1\r\n"
+            ],
+            [
+                "14 13\r\nBGBALYLHQYMFM\r\nRLFOZFDFMRFEN\r\nGDWROOMXUVBOW\r\nDPXWRDPCEFMRQ\r\nJOSEGKGMHGHFC\r\nJHXUBTPOZOYGJ\r\nFHUUMHWSQRNEP\r\nVGWYMTMWHWGIL\r\nVMWDTBDJGEVZI\r\nLEJSIHTQKYDXY\r\nOLUOIWECMZVAI\r\nVDXSGRPMCCJEM\r\nMYWMDDAQAPBSG\r\nXQWPFRAPVEOYO\r\n",
+                "6\r\n7 1\r\n"
+            ],
+            [
+                "14 15\r\nJFLSOQHVDRTCPWZ\r\nWSROLOOQOCWPJNX\r\nEEUZVBLQXBFQKNA\r\nQIGZDIMDXVCHJFJ\r\nUDJGIZWDBMMMBJR\r\nEWXAQHPRYBQOYDT\r\nUDEAPOBVZOXNVMK\r\nAYEVKFIKNRUVRQC\r\nNLTLJBXWMUQXAZD\r\nKOXESBBUYLMIDOI\r\nZOJWEOJFCYTILHE\r\nRQDNTBZZXPKNCEN\r\nSYGFASAQUSMYYRP\r\nUOYCFYUDACJDTAD\r\n",
+                "13\r\n1 5\r\n"
+            ],
+            [
+                "16 15\r\nPFUMRKDISIBBVYP\r\nMZKXWWSQXADAPEB\r\nVTBYXGWQYZTHBHY\r\nONGURZKWHZDKIDF\r\nGCMHQQNJJXHHPVU\r\nNLMUXXKZOFNMFTG\r\nANDDDPHEDVWVHLC\r\nOYGXUHIMYPNIXCT\r\nILCGDQZNCSTIILX\r\nZVSYMJBHAUEXZMY\r\nMYOKFPJKKJLKVWI\r\nUEMUOOAJSNTOLEN\r\nLKIROZUNWRZBMZP\r\nYYWCXLGHLZQVPOB\r\nFMHPKABCBAAYCFA\r\nNRGFEWPLKNORSZR\r\n",
+                "18\r\n1 3\r\n"
+            ],
+            [
+                "14 17\r\nXGFETCAWEBHYYDECE\r\nCGFEUQEYMLSVHNKJA\r\nZMGSXZJASBUPTHRFQ\r\nGQREDKHDBTZPGWHEO\r\nQGACDHZVBAOGLHHEL\r\nLKLKVFVDHSRQNEDXC\r\nVNREYHZDJHPJKHXDO\r\nKBOMZYHZEUOYUOXSQ\r\nFNQGOBVDBTMUJPAKU\r\nXFPGQQXBPELKWSXCJ\r\nABUKLBPTFOGUJFDEQ\r\nKXPJEZJQCHTENYSKY\r\nXXOKEXESEVLQMFDZG\r\nVPGUBSJLGBWZWAMFZ\r\n",
+                "6\r\n7 1\r\n"
+            ],
+            [
+                "16 17\r\nFFOYWWWJRUPVBGSSJ\r\nVPOMWQMWUWYMMDAPB\r\nARQUYXZTHVSQZHMVJ\r\nCJAGELECYEXSHEYTU\r\nXRSZPRCBQPJQACNWR\r\nJISALKDCKJUWWHMYH\r\nGMISALZMLGRRGALJA\r\nCWPYTQYBXKLBGWKNF\r\nMJJYWBIHJLARHFNWB\r\nKEREXXISTPANXGGJG\r\nLECEJLPAFOZHLRTJM\r\nHBOWFNSQFRRGEJFMJ\r\nVEGIRVEXACMJVKFYN\r\nSCGOPQKUHEDNIPIRE\r\nLENRPPYJBEVDTOPOY\r\nFHJOESUHLIJRFPVBK\r\n",
+                "8\r\n4 1\r\n"
+            ],
+            [
+                "18 19\r\nLEXQWPUXGOWSELHIQPY\r\nZUYPTUDHEEQVRWBCXBU\r\nZUPMYQQQFHGKZZDMLFM\r\nCASSUVIKQKCEALUDDFK\r\nFDBZOXULVGFARYPNAQY\r\nWEFLTZOSOAGAMBWNGVC\r\nEVAPNTSSIMKNBOAHFSC\r\nUHTWEBRCEUJSARNEWYI\r\nGXGSDCDUIWYQRZUPQBZ\r\nFMYJUOHENURMDINJGCN\r\nHIBATJCOGWWRQWTLXDH\r\nRDDXJNZHQGUWPNGIDRO\r\nAJGHDUCGGLPYYDYSFRS\r\nAZGBVLJYYZWSQGBFJVU\r\nQJJRSHZFOECHGRGALML\r\nJKDMLPREFTISSSAJKJN\r\nGRHGVYSVQLYKCIMBIKA\r\nMSHRBZJJLDHBCAWAJBN\r\n",
+                "10\r\n3 1\r\n"
+            ],
+            [
+                "20 18\r\nNLBILWYVJJLCACSMUA\r\nAAMAWVGEZDTWUUZNMM\r\nWWNOTPPFXJSWWSPPRB\r\nYUJXZSHHNFGKXIXEJN\r\nLTKNJOJALEQURSYVBI\r\nSVXHFTUYWTLBXWFDXD\r\nLQUEBPXELRNAXFIKFT\r\nZGZEPWGVLVNMQVRMJM\r\nWTMIPWRNQCWKZACSKQ\r\nYGUREEGHTVMICOCUHE\r\nUNIJGNPINIFWCIHGIQ\r\nIRGJEHFRUJOHIXRSLF\r\nDQVCPHUSKYEHFGWBPS\r\nJIIGNJKTRAAPRBOGMQ\r\nHFNGDLVBUVECUMQDMT\r\nGEGCSOPRXQAEMDQAYO\r\nOHSBTADOWBVKZINKXC\r\nIIPWCAZSNDFVBMTGMI\r\nOZZTLUOFRYDNTPIAVA\r\nTFBGPAMJPIWLEZOKXB\r\n",
+                "33\r\n1 3\r\n"
+            ],
+            [
+                "2 4\r\nABAA\r\nABBB\r\n",
+                "2\r\n1 4\r\n"
+            ],
+            [
+                "6 6\r\nCCABCA\r\nBCBCBC\r\nBAAAAA\r\nCBBCAA\r\nACBBCA\r\nCCAABA\r\n",
+                "10\r\n1 6\r\n"
+            ],
+            [
+                "16 4\r\nBAAC\r\nBACA\r\nACBC\r\nABCC\r\nCCAC\r\nBBCC\r\nCCAB\r\nABCC\r\nCBCA\r\nBCBC\r\nBCBC\r\nCBBB\r\nBBAA\r\nBACA\r\nABCB\r\nAABA\r\n",
+                "9\r\n2 4\r\n"
+            ],
+            [
+                "2 14\r\nAABACBACBCBBCB\r\nBACCBBBCBAABBC\r\n",
+                "4\r\n1 7\r\n"
+            ],
+            [
+                "4 8\r\nCACABCCA\r\nABCBAACA\r\nACABBBCC\r\nAACCBCBB\r\n",
+                "8\r\n1 4\r\n"
+            ],
+            [
+                "12 18\r\nCBBCAACABACCACABBC\r\nABCAACABAABCBCBCCC\r\nBCAACCCBBBABBACBBA\r\nACCBCBBBAABACCACCC\r\nCAABCCCACACCBACACC\r\nBBBCBCACCABCCBCBBB\r\nBAABBCACAAAAACCBCB\r\nBAABAABACBCABACBCA\r\nAABCBCCBCCABACCCAC\r\nCCBBBAACCCBCACCCBB\r\nCBABACBBBABCBACCCB\r\nAABACCCBCCACBCACCB\r\n",
+                "24\r\n4 2\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Omkar and Tours",
+        "description": "Omkar is hosting tours of his country, Omkarland! There are \n    n\n cities in\nOmkarland, and, rather curiously, there are exactly \n    n-1\n bidirectional\nroads connecting the cities to each other. It is guaranteed that you can reach\nany city from any other city through the road network. Every city has an\nenjoyment value \n    e\n. Each road has a capacity \n    c\n, denoting the\nmaximum number of vehicles that can be on it, and an associated toll \n    t\n.\nHowever, the toll system in Omkarland has an interesting quirk: if a vehicle\ntravels on multiple roads on a single journey, they pay only the highest toll\nof any single road on which they traveled. (In other words, they pay \n    max\n    t\n over all the roads on which they traveled.) If a vehicle traverses no\nroads, they pay \n    0\n toll. Omkar has decided to host \n    q\n tour groups.\nEach tour group consists of \n    v\n vehicles starting at city \n    x\n. (Keep\nin mind that a tour group with \n    v\n vehicles can travel only on roads with\ncapacity \n    \u2265 v\n.) Being the tour organizer, Omkar wants his groups to\nhave as much fun as they possibly can, but also must reimburse his groups for\nthe tolls that they have to pay. Thus, for each tour group, Omkar wants to\nknow two things: first, what is the enjoyment value of the city \n    y\n with\nmaximum enjoyment value that the tour group can reach from their starting\ncity, and second, how much per vehicle will Omkar have to pay to reimburse the\nentire group for their trip from \n    x\n to \n    y\n? (This trip from \n    x\n\nto \n    y\n will always be on the shortest path from \n    x\n to \n    y\n.) In\nthe case that there are multiple reachable cities with the maximum enjoyment\nvalue, Omkar will let his tour group choose which one they want to go to.\nTherefore, to prepare for all possible scenarios, he wants to know the amount\nof money per vehicle that he needs to guarantee that he can reimburse the\ngroup regardless of which city they choose. Input The first line contains two\nintegers \n    n\n and \n    q\n (\n    2 \n    \u2264 n \n    \u2264 2 \n    \u00b7 10^5\n, \n    1\n    \n    \u2264 q \n    \u2264 2 \n    \u00b7 10^5\n), representing the number of cities and the\nnumber of groups, respectively. The next line contains \n    n\n integers\n\n    e_1, e_2, \n    \u2026, e_n\n (\n    1 \n    \u2264 e_i \n    \u2264 10^9\n), where\n\n    e_i\n represents the enjoyment value for city \n    i\n. The next \n    n-1\n\nlines each contain four integers \n    a\n, \n    b\n, \n    c\n, and \n    t\n (\n    1\n    \n    \u2264 a,b \n    \u2264 n\n, \n    1 \n    \u2264 c \n    \u2264 10^9\n, \n    1 \n    \u2264 t \n    \u2264\n    10^9\n), representing an road between city \n    a\n and city \n    b\n with\ncapacity \n    c\n and toll \n    t\n. The next \n    q\n lines each contain two\nintegers \n    v\n and \n    x\n (\n    1 \n    \u2264 v \n    \u2264 10^9\n, \n    1 \n    \u2264 x\n    \n    \u2264 n\n), representing the number of vehicles in the tour group and the\nstarting city, respectively. Output Output \n    q\n lines. The \n    i\n-th line\nshould contain two integers: the highest possible enjoyment value of a city\nreachable by the \n    i\n-th tour group, and the amount of money per vehicle\nOmkar needs to guarantee that he can reimburse the \n    i\n-th tour group.\nExamples Input 5 3 2 2 3 3 3 1 2 4 7 1 3 2 8 2 4 8 2 2 5 1 1 1 3 9 5 6 2\nOutput 3 8 3 0 3 2 Input 5 5 1 2 3 4 5 1 2 4 1 1 3 3 1 1 4 2 1 2 5 1 1 5 1 4 1\n3 1 2 1 1 1 Output 1 0 2 1 3 1 4 1 5 1 Input 5 5 1 2 2 2 2 1 2 5 8 1 3 6 3 1 4\n4 5 1 5 7 1 4 1 5 1 6 1 7 1 8 1 Output 2 8 2 8 2 3 2 1 1 0 Note A map of the\nfirst sample is shown below. For the nodes, unbolded numbers represent indices\nand bolded numbers represent enjoyment values. For the edges, unbolded numbers\nrepresent capacities and bolded numbers represent tolls. For the first query,\na tour group of size \n    1\n starting at city \n    3\n can reach cities\n\n    1\n, \n    2\n, \n    3\n, \n    4\n, and \n    5\n. Thus, the largest enjoyment\nvalue that they can reach is \n    3\n. If the tour group chooses to go to city\n\n    4\n, Omkar will have to pay \n    8\n per vehicle, which is the maximum. For\nthe second query, a tour group of size \n    9\n starting at city \n    5\n can\nreach only city \n    5\n. Thus, the largest reachable enjoyment value is still\n\n    3\n, and Omkar will pay \n    0\n per vehicle. For the third query, a tour\ngroup of size \n    6\n starting at city \n    2\n can reach cities \n    2\n and\n\n    4\n. The largest reachable enjoyment value is again \n    3\n. If the tour\ngroup chooses to go to city \n    4\n, Omkar will have to pay \n    2\n per\nvehicle, which is the maximum. A map of the second sample is shown below: For\nthe first query, a tour group of size \n    5\n starting at city \n    1\n can\nonly reach city \n    1\n. Thus, their maximum enjoyment value is \n    1\n and\nthe cost Omkar will have to pay is \n    0\n per vehicle. For the second query,\na tour group of size \n    4\n starting at city \n    1\n can reach cities \n    1\n\nand \n    2\n. Thus, their maximum enjoyment value is \n    2\n and Omkar will pay\n\n    1\n per vehicle. For the third query, a tour group of size \n    3\n\nstarting at city \n    1\n can reach cities \n    1\n, \n    2\n, and \n    3\n. Thus,\ntheir maximum enjoyment value is \n    3\n and Omkar will pay \n    1\n per\nvehicle. For the fourth query, a tour group of size \n    2\n starting at city\n\n    1\n can reach cities \n    1\n, \n    2\n, \n    3\n and \n    4\n. Thus, their\nmaximum enjoyment value is \n    4\n and Omkar will pay \n    1\n per vehicle. For\nthe fifth query, a tour group of size \n    1\n starting at city \n    1\n can\nreach cities \n    1\n, \n    2\n, \n    3\n, \n    4\n, and \n    5\n. Thus, their\nmaximum enjoyment value is \n    5\n and Omkar will pay \n    1\n per vehicle.\n\n",
+        "cf_contest_id": 1583,
+        "cf_index": "H",
+        "cf_rating": 3300,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "divide and conquer",
+            "sortings",
+            "trees"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5 3\r\n2 2 3 3 3\r\n1 2 4 7\r\n1 3 2 8\r\n2 4 8 2\r\n2 5 1 1\r\n1 3\r\n9 5\r\n6 2\r\n",
+                "3 8\r\n3 0\r\n3 2\r\n"
+            ],
+            [
+                "5 5\r\n1 2 3 4 5\r\n1 2 4 1\r\n1 3 3 1\r\n1 4 2 1\r\n2 5 1 1\r\n5 1\r\n4 1\r\n3 1\r\n2 1\r\n1 1\r\n",
+                "1 0\r\n2 1\r\n3 1\r\n4 1\r\n5 1\r\n"
+            ],
+            [
+                "5 5\r\n1 2 2 2 2\r\n1 2 5 8\r\n1 3 6 3\r\n1 4 4 5\r\n1 5 7 1\r\n4 1\r\n5 1\r\n6 1\r\n7 1\r\n8 1\r\n",
+                "2 8\r\n2 8\r\n2 3\r\n2 1\r\n1 0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 2\r\n7 3\r\n1 2 4 9\r\n10 1\r\n5 2\r\n",
+                "7 0\r\n3 0\r\n"
+            ],
+            [
+                "8 64\r\n1 1 1 1 1 1 1 1\r\n6 1 31 60\r\n1 3 3 8\r\n1 2 4 27\r\n4 1 41 27\r\n7 1 6 39\r\n1 5 28 46\r\n1 8 8 55\r\n55 6\r\n24 1\r\n28 1\r\n46 4\r\n15 6\r\n52 4\r\n58 4\r\n19 1\r\n55 8\r\n59 8\r\n18 2\r\n18 7\r\n26 1\r\n41 3\r\n48 4\r\n41 7\r\n46 6\r\n42 8\r\n44 4\r\n56 4\r\n13 1\r\n46 6\r\n1 2\r\n34 5\r\n47 6\r\n18 5\r\n35 8\r\n26 6\r\n57 7\r\n35 2\r\n27 3\r\n26 2\r\n39 2\r\n11 5\r\n23 1\r\n1 2\r\n54 3\r\n47 5\r\n48 2\r\n13 8\r\n40 6\r\n7 6\r\n38 2\r\n35 5\r\n6 6\r\n19 3\r\n10 6\r\n64 1\r\n2 3\r\n31 2\r\n1 6\r\n59 7\r\n47 3\r\n38 7\r\n18 4\r\n6 6\r\n27 7\r\n13 5\r\n63 8\r\n10 8\r\n11 4\r\n30 6\r\n2 2\r\n34 5\r\n",
+                "1 0\r\n1 60\r\n1 60\r\n1 0\r\n1 60\r\n1 0\r\n1 0\r\n1 60\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 60\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 60\r\n1 0\r\n1 60\r\n1 0\r\n1 0\r\n1 60\r\n1 0\r\n1 60\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 60\r\n1 60\r\n1 60\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 0\r\n1 60\r\n1 0\r\n1 0\r\n1 60\r\n1 0\r\n1 60\r\n1 0\r\n1 60\r\n1 0\r\n1 60\r\n1 0\r\n1 0\r\n1 0\r\n1 60\r\n1 60\r\n1 0\r\n1 60\r\n1 0\r\n1 0\r\n1 60\r\n1 60\r\n1 60\r\n1 0\r\n"
+            ],
+            [
+                "2 6\r\n1 2\r\n1 2 2 1\r\n1 1\r\n2 1\r\n3 1\r\n1 2\r\n2 2\r\n3 2\r\n",
+                "2 1\r\n2 1\r\n1 0\r\n2 0\r\n2 0\r\n2 0\r\n"
+            ]
+        ]
+    }
+]

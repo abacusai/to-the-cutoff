@@ -1,0 +1,54 @@
+[
+    {
+        "name": "Gates to Another World",
+        "description": "As mentioned previously William really likes playing video games. In one of\nhis favorite games, the player character is in a universe where every planet\nis designated by a binary number from \n    0\n to \n    2^n - 1\n. On each\nplanet, there are gates that allow the player to move from planet \n    i\n to\nplanet \n    j\n if the binary representations of \n    i\n and \n    j\n differ in\nexactly one bit. William wants to test you and see how you can handle\nprocessing the following queries in this game universe: Destroy planets with\nnumbers from \n    l\n to \n    r\n inclusively. These planets cannot be moved to\nanymore. Figure out if it is possible to reach planet \n    b\n from planet\n\n    a\n using some number of planetary gates. It is guaranteed that the\nplanets \n    a\n and \n    b\n are not destroyed. Input The first line contains\ntwo integers \n    n\n, \n    m\n (\n    1 \n    \u2264 n \n    \u2264 50\n, \n    1 \n    \u2264 m\n    \n    \u2264 5 \n    \u00b7 10^4\n), which are the number of bits in binary\nrepresentation of each planets' designation and the number of queries,\nrespectively. Each of the next \n    m\n lines contains a query of two types:\nblock l r \u2014 query for destruction of planets with numbers from \n    l\n to\n\n    r\n inclusively (\n    0 \n    \u2264 l \n    \u2264 r < 2^n\n). It's guaranteed that no\nplanet will be destroyed twice. ask a b \u2014 query for reachability between\nplanets \n    a\n and \n    b\n (\n    0 \n    \u2264 a, b < 2^n\n). It's guaranteed that\nplanets \n    a\n and \n    b\n hasn't been destroyed yet. Output For each query\nof type ask you must output \"1\" in a new line, if it is possible to reach\nplanet \n    b\n from planet \n    a\n and \"0\" otherwise (without quotation\nmarks). Examples Input 3 3 ask 0 7 block 3 6 ask 0 7 Output 1 0 Input 6 10\nblock 12 26 ask 44 63 block 32 46 ask 1 54 block 27 30 ask 10 31 ask 11 31 ask\n49 31 block 31 31 ask 2 51 Output 1 1 0 0 1 0 Note The first example test can\nbe visualized in the following way: Response to a query ask 0 7 is positive.\nNext after query block 3 6 the graph will look the following way (destroyed\nvertices are highlighted): Response to a query ask 0 7 is negative, since any\npath from vertex \n    0\n to vertex \n    7\n must go through one of the\ndestroyed vertices.\n\n",
+        "cf_contest_id": 1556,
+        "cf_index": "G",
+        "cf_rating": 3300,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "data structures",
+            "dsu",
+            "two pointers"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 1024.0,
+        "public_cases": [
+            [
+                "3 3\r\nask 0 7\r\nblock 3 6\r\nask 0 7\r\n",
+                "1\r\n0\r\n"
+            ],
+            [
+                "6 10\r\nblock 12 26\r\nask 44 63\r\nblock 32 46\r\nask 1 54\r\nblock 27 30\r\nask 10 31\r\nask 11 31\r\nask 49 31\r\nblock 31 31\r\nask 2 51\r\n",
+                "1\r\n1\r\n0\r\n0\r\n1\r\n0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "7 4\r\nblock 37 112\r\nask 18 122\r\nask 119 127\r\nblock 122 127\r\n",
+                "0\r\n1\r\n"
+            ],
+            [
+                "7 4\r\nblock 63 125\r\nblock 126 127\r\nask 54 36\r\nask 43 45\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "10 5\r\nblock 371 426\r\nask 94 743\r\nblock 834 999\r\nblock 1004 1011\r\nask 1020 1016\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "10 10\r\nblock 230 855\r\nask 864 114\r\nblock 879 990\r\nask 187 168\r\nblock 859 869\r\nask 873 1\r\nblock 856 857\r\nask 33 182\r\nask 21 858\r\nask 123 858\r\n",
+                "0\r\n1\r\n0\r\n1\r\n0\r\n0\r\n"
+            ],
+            [
+                "10 12\r\nblock 555 934\r\nblock 974 1005\r\nask 303 209\r\nask 29 1011\r\nblock 939 945\r\nask 1010 962\r\nask 286 79\r\nask 455 937\r\nask 1012 443\r\nask 189 970\r\nask 74 951\r\nblock 103 424\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "10 25\r\nblock 178 1000\r\nask 1001 1018\r\nask 1006 89\r\nblock 1003 1023\r\nblock 1001 1002\r\nblock 134 168\r\nask 169 1\r\nblock 28 47\r\nask 113 3\r\nblock 14 20\r\nask 173 4\r\nask 22 26\r\nblock 23 25\r\nask 21 21\r\nblock 80 127\r\nask 128 27\r\nblock 26 27\r\nask 22 173\r\nblock 171 175\r\nblock 176 177\r\nblock 21 22\r\nblock 58 58\r\nblock 169 169\r\nask 170 133\r\nblock 55 56\r\n",
+                "1\r\n0\r\n1\r\n1\r\n0\r\n1\r\n1\r\n1\r\n0\r\n0\r\n"
+            ]
+        ]
+    }
+]

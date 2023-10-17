@@ -1,0 +1,61 @@
+[
+    {
+        "name": "New Year Domino",
+        "description": "Celebrating the new year, many people post videos of falling dominoes; Here's\na list of them: https://www.youtube.com/results?search_query=New+Years+Dominos\nUser ainta, who lives in a 2D world, is going to post a video as well. There\nare n dominoes on a 2D Cartesian plane. i-th domino (1 \u2264 i \u2264 n) can be\nrepresented as a line segment which is parallel to the y-axis and whose length\nis li. The lower point of the domino is on the x-axis. Let's denote the\nx-coordinate of the i-th domino as pi. Dominoes are placed one after another,\nso p1 < p2 < ... < pn - 1 < pn holds. User ainta wants to take a video of\nfalling dominoes. To make dominoes fall, he can push a single domino to the\nright. Then, the domino will fall down drawing a circle-shaped orbit until the\nline segment totally overlaps with the x-axis. Also, if the s-th domino\ntouches the t-th domino while falling down, the t-th domino will also fall\ndown towards the right, following the same procedure above. Domino s touches\ndomino t if and only if the segment representing s and t intersects. See the\npicture above. If he pushes the leftmost domino to the right, it falls down,\ntouching dominoes (A), (B) and (C). As a result, dominoes (A), (B), (C) will\nalso fall towards the right. However, domino (D) won't be affected by pushing\nthe leftmost domino, but eventually it will fall because it is touched by\ndomino (C) for the first time. The picture above is an example of falling\ndominoes. Each red circle denotes a touch of two dominoes. User ainta has q\nplans of posting the video. j-th of them starts with pushing the xj-th domino,\nand lasts until the yj-th domino falls. But sometimes, it could be impossible\nto achieve such plan, so he has to lengthen some dominoes. It costs one dollar\nto increase the length of a single domino by 1. User ainta wants to know, for\neach plan, the minimum cost needed to achieve it. Plans are processed\nindependently, i. e. if domino's length is increased in some plan, it doesn't\naffect its length in other plans. Set of dominos that will fall except xj-th\ndomino and yj-th domino doesn't matter, but the initial push should be on\ndomino xj. Input The first line contains an integer n (2 \u2264 n \u2264 2 \u00d7 10^5)\u2014 the\nnumber of dominoes. Next n lines describe the dominoes. The i-th line (1 \u2264 i \u2264\nn) contains two space-separated integers pi, li (1 \u2264 pi, li \u2264 10^9)\u2014 the\nx-coordinate and the length of the i-th domino. It is guaranteed that p1 < p2\n< ... < pn - 1 < pn. The next line contains an integer q (1 \u2264 q \u2264 2 \u00d7 10^5) \u2014\nthe number of plans. Next q lines describe the plans. The j-th line (1 \u2264 j \u2264\nq) contains two space-separated integers xj, yj (1 \u2264 xj < yj \u2264 n). It means\nthe j-th plan is, to push the xj-th domino, and shoot a video until the yj-th\ndomino falls. Output For each plan, print a line containing the minimum cost\nneeded to achieve it. If no cost is needed, print 0. Examples Input 6 1 5 3 3\n4 4 9 2 10 1 12 1 4 1 2 2 4 2 5 2 6 Output 0 1 1 2 Note Consider the example.\nThe dominoes are set like the picture below. Let's take a look at the 4th\nplan. To make the 6th domino fall by pushing the 2nd domino, the length of the\n3rd domino (whose x-coordinate is 4) should be increased by 1, and the 5th\ndomino (whose x-coordinate is 9) should be increased by 1 (other option is to\nincrease 4th domino instead of 5th also by 1). Then, the dominoes will fall\nlike in the picture below. Each cross denotes a touch between two dominoes.\n\n",
+        "cf_contest_id": 500,
+        "cf_index": "E",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dp",
+            "dsu"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\n1 5\r\n3 3\r\n4 4\r\n9 2\r\n10 1\r\n12 1\r\n4\r\n1 2\r\n2 4\r\n2 5\r\n2 6\r\n",
+                "0\r\n1\r\n1\r\n2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n399580054 931100304\r\n652588203 507603581\r\n1\r\n1 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "10\r\n142699629 183732682\r\n229190264 203769218\r\n582937498 331846994\r\n637776490 872587100\r\n646511567 582113351\r\n708368481 242093919\r\n785185417 665206490\r\n827596004 933089845\r\n905276008 416253629\r\n916536536 583835690\r\n5\r\n9 10\r\n4 9\r\n1 10\r\n6 10\r\n4 5\r\n",
+                "0\r\n0\r\n149978016\r\n0\r\n0\r\n"
+            ],
+            [
+                "2\r\n304 54\r\n88203 83\r\n1\r\n1 2\r\n",
+                "87845\r\n"
+            ],
+            [
+                "10\r\n11567 8\r\n13351 90\r\n32682 29\r\n36536 45\r\n37498 64\r\n46994 29\r\n69218 81\r\n85417 90\r\n87100 90\r\n96004 86\r\n5\r\n8 9\r\n4 5\r\n9 10\r\n8 10\r\n1 3\r\n",
+                "1593\r\n917\r\n8814\r\n10407\r\n21017\r\n"
+            ],
+            [
+                "20\r\n4524 38\r\n14370 10\r\n22402 37\r\n34650 78\r\n50164 57\r\n51744 30\r\n55372 55\r\n56064 77\r\n57255 57\r\n58862 64\r\n59830 38\r\n60130 68\r\n66176 20\r\n67502 39\r\n67927 84\r\n68149 63\r\n71392 62\r\n74005 14\r\n76084 74\r\n86623 91\r\n5\r\n19 20\r\n13 18\r\n11 14\r\n7 8\r\n16 17\r\n",
+                "10465\r\n7561\r\n7546\r\n637\r\n3180\r\n"
+            ],
+            [
+                "2\r\n1 1\r\n1000000000 1000000000\r\n3\r\n1 2\r\n1 2\r\n1 2\r\n",
+                "999999998\r\n999999998\r\n999999998\r\n"
+            ],
+            [
+                "3\r\n1 1\r\n500000000 100\r\n1000000000 1000000000\r\n5\r\n1 2\r\n1 3\r\n2 3\r\n1 3\r\n1 2\r\n",
+                "499999998\r\n999999898\r\n499999900\r\n999999898\r\n499999998\r\n"
+            ],
+            [
+                "2\r\n1 1000000000\r\n1000000000 1000000000\r\n2\r\n1 2\r\n1 2\r\n",
+                "0\r\n0\r\n"
+            ],
+            [
+                "3\r\n1 1000000000\r\n999999999 1000000000\r\n1000000000 1000000000\r\n4\r\n1 2\r\n1 2\r\n2 3\r\n1 3\r\n",
+                "0\r\n0\r\n0\r\n0\r\n"
+            ]
+        ]
+    }
+]

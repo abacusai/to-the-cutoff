@@ -1,0 +1,146 @@
+[
+    {
+        "name": "Geometry Horse",
+        "description": "Vasya plays the Geometry Horse. The game goal is to destroy geometric figures\nof the game world. A certain number of points is given for destroying each\nfigure depending on the figure type and the current factor value. There are n\ntypes of geometric figures. The number of figures of type ki and figure cost\nci is known for each figure type. A player gets ci\u00b7f points for destroying one\nfigure of type i, where f is the current factor. The factor value can be an\ninteger number from 1 to t + 1, inclusive. At the beginning of the game the\nfactor value is equal to 1. The factor is set to i + 1 after destruction of pi\n(1 \u2264 i \u2264 t) figures, so the (pi + 1)-th figure to be destroyed is considered\nwith factor equal to i + 1. Your task is to determine the maximum number of\npoints Vasya can get after he destroys all figures. Take into account that\nVasya is so tough that he can destroy figures in any order chosen by him.\nInput The first line contains the only integer number n (1 \u2264 n \u2264 100) \u2014 the\nnumber of figure types. Each of the following n lines contains two integer\nnumbers ki and ci (1 \u2264 ki \u2264 10^9, 0 \u2264 ci \u2264 1000), separated with space \u2014 the\nnumber of figures of the i-th type and the cost of one i-type figure,\ncorrespondingly. The next line contains the only integer number t (1 \u2264 t \u2264\n100) \u2014 the number that describe the factor's changes. The next line contains t\ninteger numbers pi (1 \u2264 p1 < p2 < ... < pt \u2264 10^12), separated with spaces.\nPlease, do not use the \n\u0421++. It is preferred to use cin, cout streams or the \nOutput Print the only number \u2014 the maximum number of points Vasya can get.\nExamples Input 1 5 10 2 3 6 Output 70 Input 2 3 8 5 10 1 20 Output 74 Note In\nthe first example Vasya destroys three figures first and gets 3\u00b71\u00b710 = 30\npoints. Then the factor will become equal to 2 and after destroying the last\ntwo figures Vasya will get 2\u00b72\u00b710 = 40 points. As a result Vasya will get 70\npoints. In the second example all 8 figures will be destroyed with factor 1,\nso Vasya will get (3\u00b78 + 5\u00b710)\u00b71 = 74 points.\n\n",
+        "cf_contest_id": 175,
+        "cf_index": "C",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation",
+            "sortings",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1\r\n5 10\r\n2\r\n3 6\r\n",
+                "70\r\n"
+            ],
+            [
+                "2\r\n3 8\r\n5 10\r\n1\r\n20\r\n",
+                "74\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n10 3\r\n20 2\r\n30 1\r\n3\r\n30 50 60\r\n",
+                "200\r\n"
+            ],
+            [
+                "1\r\n100 1000\r\n1\r\n1\r\n",
+                "199000\r\n"
+            ],
+            [
+                "1\r\n1 1000\r\n1\r\n1\r\n",
+                "1000\r\n"
+            ],
+            [
+                "1\r\n1 1000\r\n1\r\n2\r\n",
+                "1000\r\n"
+            ],
+            [
+                "2\r\n1000000000 1000\r\n1 1\r\n1\r\n10\r\n",
+                "1999999991001\r\n"
+            ],
+            [
+                "6\r\n5 9\r\n63 3\r\n30 4\r\n25 6\r\n48 2\r\n29 9\r\n8\r\n105 137 172 192 632 722 972 981\r\n",
+                "2251\r\n"
+            ],
+            [
+                "7\r\n9902 9\r\n5809 6\r\n2358 0\r\n6868 7\r\n9630 2\r\n8302 10\r\n9422 3\r\n4\r\n2148 4563 8488 9575\r\n",
+                "1481866\r\n"
+            ],
+            [
+                "9\r\n60129 6\r\n44235 10\r\n13131 8\r\n2012 2\r\n27536 4\r\n38950 6\r\n39080 2\r\n13892 3\r\n48709 0\r\n1\r\n23853\r\n",
+                "2751752\r\n"
+            ],
+            [
+                "10\r\n3466127 4\r\n3477072 1\r\n9690039 9\r\n9885165 6\r\n2559197 4\r\n3448456 3\r\n9169542 1\r\n6915866 2\r\n1702896 10\r\n8934261 5\r\n6\r\n3041416 5811699 5920083 8250213 8694306 8899250\r\n",
+                "1843409345\r\n"
+            ],
+            [
+                "4\r\n4059578 5\r\n20774712 1\r\n64867825 7\r\n5606945 8\r\n1\r\n337246111\r\n",
+                "540002937\r\n"
+            ],
+            [
+                "16\r\n196661091 17\r\n765544213 322\r\n134522506 115\r\n914609421 163\r\n219016066 227\r\n835576807 856\r\n682158845 914\r\n11248128 145\r\n876496017 854\r\n141052597 530\r\n163180278 315\r\n407245991 60\r\n294673989 270\r\n2976249 26\r\n674132026 519\r\n347829904 23\r\n16\r\n6280951514 53396669509 79113951711 87247958777 121933859963 219062570855 250484361488 292915737777 357877371567 638447479028 646055798354 733144914116 746148995326 752707219571 888597178968 929325038582\r\n",
+                "3493909415554\r\n"
+            ],
+            [
+                "12\r\n559720489 0\r\n961035680 0\r\n953017025 0\r\n333351645 0\r\n840947432 0\r\n265712969 0\r\n484023361 0\r\n215786741 0\r\n880533785 0\r\n678800187 0\r\n817395626 0\r\n591321601 0\r\n13\r\n2165448470 32644841954 456375244913 510187375384 524722185932 628130306204 701569710739 731515209935 745407119699 772031092452 783514111802 933457816308 991905864630\r\n",
+                "0\r\n"
+            ],
+            [
+                "22\r\n2 103\r\n10 84\r\n7 834\r\n9 527\r\n3 415\r\n10 943\r\n1 633\r\n9 444\r\n7 639\r\n2 146\r\n9 208\r\n5 637\r\n4 1000\r\n4 606\r\n6 43\r\n2 437\r\n4 855\r\n1 70\r\n4 780\r\n8 214\r\n2 196\r\n1 261\r\n61\r\n2 3 6 9 11 12 13 16 17 19 21 24 26 29 31 33 35 36 38 39 40 42 44 46 49 52 53 54 56 59 61 64 66 67 70 72 75 77 78 80 83 84 87 90 92 93 95 98 100 102 105 107 109 112 114 115 116 117 120 122 125\r\n",
+                "2004140\r\n"
+            ],
+            [
+                "14\r\n3 689\r\n4 4\r\n6 40\r\n10 309\r\n2 216\r\n5 575\r\n1 203\r\n5 216\r\n10 544\r\n7 979\r\n1 19\r\n1 876\r\n8 505\r\n4 217\r\n51\r\n1 4 5 8 12 18 20 22 26 30 33 39 43 46 50 52 57 59 63 68 73 74 78 79 82 85 90 96 100 104 109 113 118 119 122 126 130 136 138 140 144 147 149 150 156 157 163 164 169 174 178\r\n",
+                "412722\r\n"
+            ],
+            [
+                "2\r\n3 116\r\n3 869\r\n80\r\n3 5 11 17 23 31 33 41 42 49 51 53 58 60 65 70 79 84 87 88 89 93 98 102 109 110 111 114 123 129 134 142 143 152 160 162 166 167 174 179 186 191 199 205 214 219 224 227 236 241 249 252 260 268 272 275 282 288 292 293 297 302 310 314 317 319 321 330 336 340 349 358 366 374 378 383 387 390 397 405\r\n",
+                "6431\r\n"
+            ],
+            [
+                "20\r\n1 529\r\n15 864\r\n1 26\r\n7 582\r\n7 914\r\n4 535\r\n5 371\r\n15 500\r\n13 912\r\n1 354\r\n7 327\r\n7 470\r\n4 277\r\n20 656\r\n8 501\r\n8 419\r\n16 569\r\n2 587\r\n13 294\r\n11 37\r\n77\r\n1 3 6 8 9 11 12 13 14 16 18 20 22 24 27 30 33 34 35 36 38 40 43 44 46 49 52 54 56 57 60 63 64 66 68 70 73 74 75 77 78 79 80 81 84 86 89 92 93 95 96 97 99 101 103 106 109 111 112 114 115 118 119 120 121 122 123 124 125 128 130 133 134 137 139 140 142\r\n",
+                "4860712\r\n"
+            ],
+            [
+                "20\r\n1 676\r\n10 2\r\n10 467\r\n7 826\r\n7 138\r\n8 76\r\n8 148\r\n2 121\r\n7 527\r\n3 571\r\n10 410\r\n7 174\r\n2 318\r\n6 97\r\n3 919\r\n8 684\r\n3 586\r\n4 570\r\n10 494\r\n8 582\r\n74\r\n1 6 10 15 20 22 25 26 27 29 32 33 34 37 39 44 49 52 53 55 56 61 65 66 70 72 74 77 79 80 83 85 88 91 95 98 103 106 107 112 114 119 124 129 133 137 138 140 144 146 147 149 153 155 157 160 165 168 172 173 177 180 181 184 188 193 198 201 206 208 209 213 216 218\r\n",
+                "1497278\r\n"
+            ],
+            [
+                "1\r\n555 100\r\n10\r\n1 2 3 4 5 6 7 8 9 10\r\n",
+                "605000\r\n"
+            ],
+            [
+                "1\r\n1 1\r\n1\r\n100000000000\r\n",
+                "1\r\n"
+            ],
+            [
+                "12\r\n1000000000 1\r\n1000000000 2\r\n1000000000 3\r\n1000000000 4\r\n1000000000 5\r\n1000000000 6\r\n1000000000 7\r\n1000000000 8\r\n1000000000 9\r\n1000000000 10\r\n1000000000 11\r\n1000000000 12\r\n1\r\n10000000000\r\n",
+                "101000000000\r\n"
+            ],
+            [
+                "11\r\n1000000000 1\r\n1000000000 2\r\n1000000000 3\r\n1000000000 4\r\n1000000000 5\r\n1000000000 6\r\n1000000000 7\r\n1000000000 8\r\n1000000000 9\r\n1000000000 10\r\n1000000000 11\r\n1\r\n10000000000\r\n",
+                "77000000000\r\n"
+            ],
+            [
+                "1\r\n10 10\r\n3\r\n1 2 3\r\n",
+                "340\r\n"
+            ],
+            [
+                "1\r\n1000000000 1000\r\n2\r\n3 6\r\n",
+                "2999999991000\r\n"
+            ],
+            [
+                "1\r\n100 100\r\n3\r\n3 6 9\r\n",
+                "38200\r\n"
+            ],
+            [
+                "1\r\n10 1\r\n10\r\n1 2 3 4 5 6 7 8 9 10\r\n",
+                "55\r\n"
+            ],
+            [
+                "1\r\n10 10\r\n5\r\n1 2 3 4 5\r\n",
+                "450\r\n"
+            ],
+            [
+                "10\r\n10 10\r\n10 10\r\n10 10\r\n10 10\r\n10 10\r\n10 10\r\n10 10\r\n10 10\r\n10 10\r\n10 10\r\n1\r\n1\r\n",
+                "1990\r\n"
+            ],
+            [
+                "1\r\n10 10\r\n2\r\n3 6\r\n",
+                "210\r\n"
+            ],
+            [
+                "10\r\n1000 1000\r\n1000 1000\r\n1000 1000\r\n1000 1000\r\n1000 1000\r\n1000 1000\r\n1000 1000\r\n1000 1000\r\n1000 1000\r\n1000 1000\r\n1\r\n1000000\r\n",
+                "10000000\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Guess The Maximums",
+        "description": "This is an interactive problem. Ayush devised a new scheme to set the password\nof his lock. The lock has \n    k\n slots where each slot can hold integers from\n\n    1\n to \n    n\n. The password \n    P\n is a sequence of \n    k\n integers\neach in the range \n    [1, n]\n, \n    i\n-th element of which goes into the\n\n    i\n-th slot of the lock. To set the password of his lock, Ayush comes up\nwith an array \n    A\n of \n    n\n integers each in the range \n    [1, n]\n (not\nnecessarily distinct). He then picks \n    k\n non-empty mutually disjoint\nsubsets of indices \n    S_1, S_2, ..., S_k\n \n    (S_i \n    i \n    \u2260 j\n    \u2229 S_j = \n    \u2205)\n and sets his password as \n    P_i =\n    \n    max\n    _j \n    \u2209 S_i A[j]\n. In other words, the \n    i\n-th\ninteger in the password is equal to the maximum over all elements of \n    A\n\nwhose indices do not belong to \n    S_i\n. You are given the subsets of indices\nchosen by Ayush. You need to guess the password. To make a query, you can\nchoose a non-empty subset of indices of the array and ask the maximum of all\nelements of the array with index in this subset. You can ask no more than 12\nqueries. Input The first line of the input contains a single integer \n    t\n\n\n    (1 \n    \u2264 t \n    \u2264 10)\n \u2014 the number of test cases. The description of\nthe test cases follows. The first line of each test case contains two integers\n\n    n\n and \n    k\n \n    (2 \n    \u2264 n \n    \u2264 1000, 1 \n    \u2264 k \n    \u2264 n)\n \u2014 the\nsize of the array and the number of subsets. \n    k\n lines follow. The\n\n    i\n-th line contains an integer \n    c\n \n    (1 \n    \u2264 c \n     n)\n \u2014 the\nsize of subset \n    S_i\n, followed by \n    c\n distinct integers in the range\n\n    [1, n]\n \u2014 indices from the subset \n    S_i\n. It is guaranteed that the\nintersection of any two subsets is empty. Interaction To ask a query print a\nsingle line: In the beginning print \"? c \" (without quotes) where \n    c\n\n\n    (1 \n    \u2264 c \n    \u2264 n)\n denotes the size of the subset of indices being\nqueried, followed by \n    c\n distinct space-separated integers in the range\n\n    [1, n]\n. For each query, you will receive an integer \n    x\n \u2014 the\nmaximum of value in the array among all the indices queried. If the subset of\nindices queried is invalid or you exceeded the number of queries (for example\none of the indices is greater than \n    n\n) then you will get \n    x = -1\n. In\nthis case, you should terminate the program immediately. When you have guessed\nthe password, print a single line \"! \" (without quotes), followed by \n    k\n\nspace-separated integers \u2014 the password sequence. Guessing the password does\nnot count towards the number of queries asked. After this, you should read a\nstring. If you guess the password correctly, you will receive the string\n\"Correct\". In this case, you should continue solving the remaining test cases.\nIf the guessed password is incorrect, you will receive the string \"Incorrect\".\nIn this case, you should terminate the program immediately. The interactor is\nnot adaptive. The array \n    A\n does not change with queries. After printing a\nquery do not forget to output end of line and flush the output. Otherwise, you\nwill get Idleness limit exceeded. To do this, use: fflush(stdout) or\ncout.flush() in C++; System.out.flush() in Java; flush(output) in Pascal;\nstdout.flush() in Python; see documentation for other languages.Hacks To hack\nthe solution use the following test format: The first line of the input should\ncontain a single integer \n    t\n \n    (1 \n    \u2264 t \n    \u2264 10)\n \u2014 the number of\ntest cases. The first line of each test case should contain two integers\n\n    n\n and \n    k\n \n    (2 \n    \u2264 n \n    \u2264 1000, 1 \n    \u2264 k \n    \u2264 n)\n \u2014 the\nsize of the array and the number of subsets. The next line should consist of\n\n    n\n space separated integers in the range \n    [1, n]\n \u2014 the array\n\n    A\n. \n    k\n lines should follow. The \n    i\n-th line should contain an\ninteger \n    c\n \n    (1 \n    \u2264 c \n     n)\n \u2014 the size of subset \n    S_i\n,\nfollowed by \n    c\n distinct integers in the range \n    [1, n]\n \u2014 indices from\nthe subset \n    S_i\n. The intersection of any two subsets has to be empty.\nExample Input 1 4 2 2 1 3 2 2 4 1 2 3 4 Correct Output ? 1 1 ? 1 2 ? 1 3 ? 1 4\n! 4 3 Note The array \n    A\n in the example is \n    [1, 2, 3, 4]\n. The length\nof the password is \n    2\n. The first element of the password is the maximum\nof \n    A[2]\n, \n    A[4]\n (since the first subset contains indices \n    1\n and\n\n    3\n, we take maximum over remaining indices). The second element of the\npassword is the maximum of \n    A[1]\n, \n    A[3]\n (since the second subset\ncontains indices \n    2\n, \n    4\n). Do not forget to read the string \"Correct\"\n/ \"Incorrect\" after guessing the password.\n\n",
+        "cf_contest_id": 1363,
+        "cf_index": "D",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "implementation",
+            "interactive",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1\r\n4 2\r\n1 2 3 4\r\n2 1 3\r\n2 2 4\r\n",
+                "4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n2 2\r\n1 2\r\n1 2\r\n1 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "1\r\n4 4\r\n3 4 1 2\r\n1 2\r\n1 1\r\n1 4\r\n1 3\r\n",
+                "4\r\n"
+            ],
+            [
+                "10\r\n5 5\r\n2 5 1 3 4\r\n1 5\r\n1 3\r\n1 1\r\n1 2\r\n1 4\r\n7 7\r\n1 5 3 7 2 6 4\r\n1 2\r\n1 6\r\n1 3\r\n1 7\r\n1 1\r\n1 5\r\n1 4\r\n7 7\r\n7 6 1 3 5 4 2\r\n1 6\r\n1 5\r\n1 7\r\n1 4\r\n1 1\r\n1 2\r\n1 3\r\n4 4\r\n4 3 2 1\r\n1 1\r\n1 3\r\n1 2\r\n1 4\r\n5 5\r\n5 1 3 2 4\r\n1 1\r\n1 4\r\n1 5\r\n1 3\r\n1 2\r\n4 4\r\n1 4 2 3\r\n1 1\r\n1 3\r\n1 4\r\n1 2\r\n5 5\r\n1 3 2 5 4\r\n1 4\r\n1 5\r\n1 2\r\n1 1\r\n1 3\r\n10 10\r\n8 3 5 2 10 4 7 9 6 1\r\n1 10\r\n1 1\r\n1 3\r\n1 9\r\n1 4\r\n1 6\r\n1 2\r\n1 8\r\n1 7\r\n1 5\r\n3 3\r\n3 2 1\r\n1 1\r\n1 3\r\n1 2\r\n6 6\r\n6 2 4 3 1 5\r\n1 1\r\n1 3\r\n1 4\r\n1 2\r\n1 5\r\n1 6\r\n",
+                "4\r\n5\r\n4\r\n4\r\n4\r\n4\r\n5\r\n6\r\n3\r\n4\r\n"
+            ],
+            [
+                "10\r\n2 2\r\n2 1\r\n1 1\r\n1 2\r\n2 1\r\n1 2\r\n1 1\r\n2 2\r\n2 1\r\n1 1\r\n1 2\r\n2 1\r\n1 2\r\n1 2\r\n2 1\r\n2 1\r\n1 2\r\n2 1\r\n1 2\r\n1 2\r\n2 1\r\n2 1\r\n1 2\r\n2 1\r\n2 1\r\n1 1\r\n2 1\r\n1 2\r\n1 1\r\n2 1\r\n2 1\r\n1 2\r\n",
+                "3\r\n2\r\n3\r\n3\r\n2\r\n3\r\n2\r\n3\r\n2\r\n2\r\n"
+            ],
+            [
+                "10\r\n3 3\r\n3 2 2\r\n1 1\r\n1 3\r\n1 2\r\n2 2\r\n2 1\r\n1 1\r\n1 2\r\n2 2\r\n2 1\r\n1 1\r\n1 2\r\n2 2\r\n2 1\r\n1 1\r\n1 2\r\n3 3\r\n2 3 1\r\n1 2\r\n1 3\r\n1 1\r\n3 3\r\n2 2 3\r\n1 3\r\n1 2\r\n1 1\r\n2 2\r\n1 2\r\n1 2\r\n1 1\r\n2 2\r\n2 1\r\n1 1\r\n1 2\r\n3 3\r\n1 3 1\r\n1 2\r\n1 3\r\n1 1\r\n2 2\r\n1 2\r\n1 2\r\n1 1\r\n",
+                "3\r\n3\r\n3\r\n3\r\n4\r\n4\r\n3\r\n3\r\n4\r\n3\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n1 2 2\r\n1 1\r\n1 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "1\r\n4 3\r\n1 2 3 4\r\n1 1\r\n1 2\r\n1 3\r\n",
+                "3\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n3 2 1\r\n1 2\r\n1 3\r\n",
+                "2\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n1 2 3\r\n1 1\r\n1 2\r\n",
+                "3\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,74 @@
+[
+    {
+        "name": "Optimizer",
+        "description": "Let's analyze a program written on some strange programming language. The\nvariables in this language have names consisting of \n    1\n to \n    4\n\ncharacters, and each character is a lowercase or an uppercase Latin letter, or\na digit. There is an extra constraint that the first character should not be a\ndigit. There are four types of operations in the program, each denoted by one\nof the characters: , ^, # or    . Each line of the program has one of the\nfollowing formats: =, where  and  are valid variable names; =, where ,  and\nare valid variable names, and  is an operation character. The program is\nexecuted line-by-line, and the result of execution is stored in a variable\nhaving the name res. If res is never assigned in the program, then the result\nwill be equal to the value of res before running the program. Two programs are\ncalled equivalent if no matter which operations do characters, ^, # and    \ndenote (but, obviously, performing the same operation on the same arguments\ngives the same result) and which values do variables have before execution of\nprogram, the value of res after running the first program is equal to the\nvalue of res after running the second program (the programs are executed\nindependently). You are given a program consisting of \n    n\n lines. Your task\nis to write a program consisting of minimum possible number of lines that is\nequivalent to the program you are given. Input The first line contains one\ninteger \n    n\n (\n    1 \n    \u2264 n \n    \u2264 1000\n) \u2014 the number of lines in the\nprogram. Then \n    n\n lines follow \u2014 the program itself. Each line corresponds\nto the format described in the statement and has no extra whitespaces. Output\nIn the first line print \n    k\n \u2014 the minimum number of lines in the\nequivalent program. Then print \n    k\n lines without any whitespaces \u2014 an\nequivalent program having exactly \n    k\n lines, in the same format it is\ndescribed in the statement. Examples Input 4 c=aa#bb d12=c res=c^d12 tmp=aac\nOutput 2 aaaa=aa#bb res=aaaa^aaaa Input 2 max=aaaabbbb min=bbbb^aaaa Output 0\n\n",
+        "cf_contest_id": 1156,
+        "cf_index": "G",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "graphs",
+            "greedy",
+            "hashing",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\nc=aa#bb\r\nd12=c\r\nres=c^d12\r\ntmp=aa$c\r\n",
+                "2\r\na0=aa#bb\r\nres=a0^a0\r\n"
+            ],
+            [
+                "2\r\nmax=aaaa$bbbb\r\nmin=bbbb^aaaa\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6\r\nres=res\r\nb=a\r\nc=b\r\nd=c\r\nres=d\r\nres=res\r\n",
+                "1\r\nres=a\r\n"
+            ],
+            [
+                "4\r\nc=a\r\na=b\r\nb=c\r\nres=a&b\r\n",
+                "1\r\nres=b&a\r\n"
+            ],
+            [
+                "1\r\nres=res\r\n",
+                "0\r\n"
+            ],
+            [
+                "6\r\na=b\r\nb=c\r\nc=a\r\nres=res&a\r\nres=res#b\r\nres=res^c\r\n",
+                "3\r\na0=res&b\r\na1=a0#c\r\nres=a1^b\r\n"
+            ],
+            [
+                "3\r\na=res\r\nres=x^y\r\nres=a\r\n",
+                "0\r\n"
+            ],
+            [
+                "9\r\nc=a$b\r\ne=c#c\r\nf=c$c\r\nh=a$b\r\nx=h$h\r\ny=h#h\r\nz=x^y\r\ng=f^e\r\nres=z&g\r\n",
+                "5\r\na0=a$b\r\na1=a0$a0\r\na2=a0#a0\r\na3=a1^a2\r\nres=a3&a3\r\n"
+            ],
+            [
+                "3\r\nd=a$b\r\nres=d^c\r\nddd=c#b\r\n",
+                "2\r\na0=a$b\r\nres=a0^c\r\n"
+            ],
+            [
+                "5\r\nres=a\r\nb=c&d\r\ne=res&a\r\nx=y\r\nres=c$x\r\n",
+                "1\r\nres=c$y\r\n"
+            ],
+            [
+                "9\r\nc111=a&b\r\nd=b^a\r\ne=c111#d\r\nd=d\r\nf=f\r\nf=c111$d\r\ng=e$f\r\nh=e#f\r\nres=g^h\r\n",
+                "7\r\na0=a&b\r\na1=b^a\r\na2=a0#a1\r\na3=a0$a1\r\na4=a2$a3\r\na5=a2#a3\r\nres=a4^a5\r\n"
+            ],
+            [
+                "7\r\na=b&c\r\nw=r#e\r\nx=b^c\r\nz=a&b\r\nt=w^x\r\nz=x&b\r\nres=x$w\r\n",
+                "3\r\na0=b^c\r\na1=r#e\r\nres=a0$a1\r\n"
+            ],
+            [
+                "2\r\np1=p2^p2\r\nres=p1^p0\r\n",
+                "2\r\na0=p2^p2\r\nres=a0^p0\r\n"
+            ]
+        ]
+    }
+]

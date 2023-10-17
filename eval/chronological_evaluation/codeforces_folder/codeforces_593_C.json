@@ -1,0 +1,60 @@
+[
+    {
+        "name": "Beautiful Function",
+        "description": "Every day Ruslan tried to count sheep to fall asleep, but this didn't help.\nNow he has found a more interesting thing to do. First, he thinks of some set\nof circles on a plane, and then tries to choose a beautiful set of points,\nsuch that there is at least one point from the set inside or on the border of\neach of the imagined circles. Yesterday Ruslan tried to solve this problem for\nthe case when the set of points is considered beautiful if it is given as (xt\n= f(t), yt = g(t)), where argument t takes all integer values from 0 to 50.\nMoreover, f(t) and g(t) should be correct functions. Assume that w(t) and h(t)\nare some correct functions, and c is an integer ranging from 0 to 50. The\nfunction s(t) is correct if it's obtained by one of the following rules: s(t)\n= abs(w(t)), where abs(x) means taking the absolute value of a number x, i.e.\n|x|; s(t) = (w(t) + h(t)); s(t) = (w(t) - h(t)); s(t) = (w(t) * h(t)), where *\nmeans multiplication, i.e. (w(t)\u00b7h(t)); s(t) = c; s(t) = t;Yesterday Ruslan\nthought on and on, but he could not cope with the task. Now he asks you to\nwrite a program that computes the appropriate f(t) and g(t) for any set of at\nmost 50 circles. In each of the functions f(t) and g(t) you are allowed to use\nno more than 50 multiplications. The length of any function should not exceed\n100\u00b7n characters. The function should not contain spaces. Ruslan can't keep\nbig numbers in his memory, so you should choose f(t) and g(t), such that for\nall integer t from 0 to 50 value of f(t) and g(t) and all the intermediate\ncalculations won't exceed 10^9 by their absolute value. Input The first line\nof the input contains number n (1 \u2264 n \u2264 50) \u2014 the number of circles Ruslan\nthinks of. Next follow n lines, each of them containing three integers xi, yi\nand ri (0 \u2264 xi, yi \u2264 50, 2 \u2264 ri \u2264 50) \u2014 the coordinates of the center and the\nraduis of the i-th circle. Output In the first line print a correct function\nf(t). In the second line print a correct function g(t). The set of the points\n(xt = f(t), yt = g(t)) (0 \u2264 t \u2264 50) must satisfy the condition, that there is\nat least one point inside or on the border of each of the circles, Ruslan\nthinks of at the beginning. Examples Input 3 0 10 4 10 0 4 20 10 4 Output t\nabs((t-10)) Note Correct functions: 10 (1+2) ((t-3)+(t*4)) abs((t-10))\n(abs((((23-t)*(t*t))+((45+12)*(t*t))))*((5*t)+((12*t)-13)))\nabs((t-(abs((t*31))+14))))Incorrect functions: 3+5+7 (not enough brackets, it\nshould be ((3+5)+7) or (3+(5+7))) abs(t-3) (not enough brackets, it should be\nabs((t-3)) 2+(2-3 (one bracket too many) 1(t+5) (no arithmetic operation\nbetween 1 and the bracket) 5000*5000 (the number exceeds the maximum) The\npicture shows one of the possible solutions\n\n",
+        "cf_contest_id": 593,
+        "cf_index": "C",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n0 10 4\r\n10 0 4\r\n20 10 4\r\n",
+                "(((0*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(5*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(10*(abs((abs((t-3))-1))-(abs((t-3))-1))))\r\n(((5*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(0*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(5*(abs((abs((t-3))-1))-(abs((t-3))-1))))\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n0 0 2\r\n5 7 5\r\n20 25 10\r\n",
+                "(((0*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(2*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(10*(abs((abs((t-3))-1))-(abs((t-3))-1))))\r\n(((0*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(3*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(12*(abs((abs((t-3))-1))-(abs((t-3))-1))))\r\n"
+            ],
+            [
+                "1\r\n0 0 2\r\n",
+                "(0*(abs((abs((t-1))-1))-(abs((t-1))-1)))\r\n(0*(abs((abs((t-1))-1))-(abs((t-1))-1)))\r\n"
+            ],
+            [
+                "4\r\n0 0 2\r\n50 50 2\r\n50 0 2\r\n0 50 2\r\n",
+                "((((0*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(25*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(25*(abs((abs((t-3))-1))-(abs((t-3))-1))))+(0*(abs((abs((t-4))-1))-(abs((t-4))-1))))\r\n((((0*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(25*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(0*(abs((abs((t-3))-1))-(abs((t-3))-1))))+(25*(abs((abs((t-4))-1))-(abs((t-4))-1))))\r\n"
+            ],
+            [
+                "1\r\n50 50 50\r\n",
+                "(25*(abs((abs((t-1))-1))-(abs((t-1))-1)))\r\n(25*(abs((abs((t-1))-1))-(abs((t-1))-1)))\r\n"
+            ],
+            [
+                "5\r\n0 0 2\r\n1 1 2\r\n3 3 2\r\n40 40 2\r\n50 50 50\r\n",
+                "(((((0*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(0*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(1*(abs((abs((t-3))-1))-(abs((t-3))-1))))+(20*(abs((abs((t-4))-1))-(abs((t-4))-1))))+(25*(abs((abs((t-5))-1))-(abs((t-5))-1))))\r\n(((((0*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(0*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(1*(abs((abs((t-3))-1))-(abs((t-3))-1))))+(20*(abs((abs((t-4))-1))-(abs((t-4))-1))))+(25*(abs((abs((t-5))-1))-(abs((t-5))-1))))\r\n"
+            ],
+            [
+                "3\r\n3 3 3\r\n5 9 3\r\n49 1 7\r\n",
+                "(((1*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(2*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(24*(abs((abs((t-3))-1))-(abs((t-3))-1))))\r\n(((1*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(4*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(0*(abs((abs((t-3))-1))-(abs((t-3))-1))))\r\n"
+            ],
+            [
+                "3\r\n9 5 8\r\n8 9 10\r\n9 5 2\r\n",
+                "(((4*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(4*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(4*(abs((abs((t-3))-1))-(abs((t-3))-1))))\r\n(((2*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(4*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(2*(abs((abs((t-3))-1))-(abs((t-3))-1))))\r\n"
+            ],
+            [
+                "5\r\n2 0 4\r\n5 6 10\r\n7 2 8\r\n3 10 8\r\n8 2 9\r\n",
+                "(((((1*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(2*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(3*(abs((abs((t-3))-1))-(abs((t-3))-1))))+(1*(abs((abs((t-4))-1))-(abs((t-4))-1))))+(4*(abs((abs((t-5))-1))-(abs((t-5))-1))))\r\n(((((0*(abs((abs((t-1))-1))-(abs((t-1))-1)))+(3*(abs((abs((t-2))-1))-(abs((t-2))-1))))+(1*(abs((abs((t-3))-1))-(abs((t-3))-1))))+(5*(abs((abs((t-4))-1))-(abs((t-4))-1))))+(1*(abs((abs((t-5))-1))-(abs((t-5))-1))))\r\n"
+            ],
+            [
+                "1\r\n1 1 32\r\n",
+                "(0*(abs((abs((t-1))-1))-(abs((t-1))-1)))\r\n(0*(abs((abs((t-1))-1))-(abs((t-1))-1)))\r\n"
+            ]
+        ]
+    }
+]

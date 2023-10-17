@@ -1,0 +1,80 @@
+[
+    {
+        "name": "Balanced Removals (Harder)",
+        "description": "This is a harder version of the problem. In this version, \n    n \n    \u2264\n    50\n     000\n. There are \n    n\n distinct points in three-dimensional space\nnumbered from \n    1\n to \n    n\n. The \n    i\n-th point has coordinates\n\n    (x_i, y_i, z_i)\n. The number of points \n    n\n is even. You'd like to\nremove all \n    n\n points using a sequence of \n    n/2\n snaps. In\none snap, you can remove any two points \n    a\n and \n    b\n that have not been\nremoved yet and form a perfectly balanced pair. A pair of points \n    a\n and\n\n    b\n is perfectly balanced if no other point \n    c\n (that has not been\nremoved yet) lies within the axis-aligned minimum bounding box of points\n\n    a\n and \n    b\n. Formally, point \n    c\n lies within the axis-aligned\nminimum bounding box of points \n    a\n and \n    b\n if and only if\n\n    min(x_a, x_b) \n    \u2264 x_c \n    \u2264\n    max(x_a, x_b)\n, \n    min(y_a, y_b)\n    \n    \u2264 y_c \n    \u2264\n    max(y_a, y_b)\n, and \n    min(z_a, z_b) \n    \u2264 z_c \n    \u2264\n    max(z_a, z_b)\n. Note that the bounding box might be degenerate. Find a\nway to remove all points in \n    n/2\n snaps. Input The first line\ncontains a single integer \n    n\n (\n    2 \n    \u2264 n \n    \u2264 50\n     000\n; \n    n\n is\neven), denoting the number of points. Each of the next \n    n\n lines contains\nthree integers \n    x_i\n, \n    y_i\n, \n    z_i\n (\n    -10^8 \n    \u2264 x_i, y_i, z_i\n    \n    \u2264 10^8\n), denoting the coordinates of the \n    i\n-th point. No two\npoints coincide. Output Output \n    n/2\n pairs of integers \n    a_i,\n    b_i\n (\n    1 \n    \u2264 a_i, b_i \n    \u2264 n\n), denoting the indices of points\nremoved on snap \n    i\n. Every integer between \n    1\n and \n    n\n, inclusive,\nmust appear in your output exactly once. We can show that it is always\npossible to remove all points. If there are many solutions, output any of\nthem. Examples Input 6 3 1 0 0 3 0 2 2 0 1 0 0 1 3 0 0 1 0 Output 3 6 5 1 2 4\nInput 8 0 1 1 1 0 1 1 1 0 1 1 1 2 2 2 3 2 2 2 3 2 2 2 3 Output 4 5 1 6 2 7 3 8\nNote In the first example, here is what points and their corresponding\nbounding boxes look like (drawn in two dimensions for simplicity, as all\npoints lie on \n    z = 0\n plane). Note that order of removing matters: for\nexample, points \n    5\n and \n    1\n don't form a perfectly balanced pair\ninitially, but they do after point \n    3\n is removed.\n\n",
+        "cf_contest_id": 1237,
+        "cf_index": "C2",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "constructive algorithms",
+            "divide and conquer",
+            "greedy",
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "6\r\n3 1 0\r\n0 3 0\r\n2 2 0\r\n1 0 0\r\n1 3 0\r\n0 1 0\r\n",
+                "6 2\r\n4 5\r\n3 1\r\n"
+            ],
+            [
+                "8\r\n0 1 1\r\n1 0 1\r\n1 1 0\r\n1 1 1\r\n2 2 2\r\n3 2 2\r\n2 3 2\r\n2 2 3\r\n",
+                "3 4\r\n2 5\r\n1 8\r\n7 6\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n-32839949 -68986721 41592956\r\n-32839949 -31435211 41592956\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "2\r\n34319950 -11299623 -19866275\r\n34319950 -11299623 98728529\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "2\r\n62887961 73879338 -68804433\r\n62887961 63665147 -68804433\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "2\r\n35627406 -93449884 80249079\r\n52771770 -93449884 80249079\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "4\r\n-42939263 80157803 90523514\r\n-42939263 94977529 90523514\r\n-42939263 94977529 -3280468\r\n-42939263 80157803 -3280468\r\n",
+                "4 1\r\n3 2\r\n"
+            ],
+            [
+                "4\r\n32117556 7831842 -38931866\r\n32117556 -42244261 -38931866\r\n-24487444 -42244261 -38931866\r\n-24487444 7831842 -38931866\r\n",
+                "3 4\r\n2 1\r\n"
+            ],
+            [
+                "4\r\n-53055455 42895224 28613596\r\n-53061404 42895224 39577025\r\n-53061404 42895224 28613596\r\n-53055455 42895224 39577025\r\n",
+                "3 2\r\n1 4\r\n"
+            ],
+            [
+                "2\r\n-100000000 -100000000 -100000000\r\n-100000000 -100000000 100000000\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "2\r\n-100000000 100000000 -100000000\r\n-100000000 -100000000 -100000000\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "2\r\n100000000 -100000000 -100000000\r\n-100000000 -100000000 -100000000\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "2\r\n-100000000 -100000000 -100000000\r\n100000000 -100000000 -100000000\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "8\r\n-100000000 -100000000 -100000000\r\n100000000 100000000 100000000\r\n-100000000 100000000 100000000\r\n-100000000 -100000000 100000000\r\n100000000 100000000 -100000000\r\n100000000 -100000000 -100000000\r\n-100000000 100000000 -100000000\r\n100000000 -100000000 100000000\r\n",
+                "1 4\r\n7 3\r\n6 8\r\n5 2\r\n"
+            ]
+        ]
+    }
+]

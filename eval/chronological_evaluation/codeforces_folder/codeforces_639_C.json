@@ -1,0 +1,189 @@
+[
+    {
+        "name": "Bear and Polynomials",
+        "description": "Limak is a little polar bear. He doesn't have many toys and thus he often\nplays with polynomials. He considers a polynomial valid if its degree is n and\nits coefficients are integers not exceeding k by the absolute value. More\nformally: Let a0, a1, ..., an denote the coefficients, so . Then, a polynomial\nP(x) is valid if all the following conditions are satisfied: ai is integer for\nevery i; |ai| \u2264 k for every i; an \u2260 0. Limak has recently got a valid\npolynomial P with coefficients a0, a1, a2, ..., an. He noticed that P(2) \u2260 0\nand he wants to change it. He is going to change one coefficient to get a\nvalid polynomial Q of degree n that Q(2) = 0. Count the number of ways to do\nso. You should count two ways as a distinct if coefficients of target polynoms\ndiffer. Input The first line contains two integers n and k (1 \u2264 n \u2264 200 000, 1\n\u2264 k \u2264 10^9) \u2014 the degree of the polynomial and the limit for absolute values\nof coefficients. The second line contains n + 1 integers a0, a1, ..., an (|ai|\n\u2264 k, an \u2260 0) \u2014 describing a valid polynomial . It's guaranteed that P(2) \u2260 0.\nOutput Print the number of ways to change one coefficient to get a valid\npolynomial Q that Q(2) = 0. Examples Input 3 1000000000 10 -9 -3 5 Output 3\nInput 3 12 10 -9 -3 5 Output 2 Input 2 20 14 -7 19 Output 0 Note In the first\nsample, we are given a polynomial P(x) = 10 - 9x - 3x^2 + 5x^3. Limak can\nchange one coefficient in three ways: He can set a0 = - 10. Then he would get\nQ(x) = - 10 - 9x - 3x^2 + 5x^3 and indeed Q(2) = - 10 - 18 - 12 + 40 = 0. Or\nhe can set a2 = - 8. Then Q(x) = 10 - 9x - 8x^2 + 5x^3 and indeed Q(2) = 10 -\n18 - 32 + 40 = 0. Or he can set a1 = - 19. Then Q(x) = 10 - 19x - 3x^2 + 5x^3\nand indeed Q(2) = 10 - 38 - 12 + 40 = 0. In the second sample, we are given\nthe same polynomial. This time though, k is equal to 12 instead of 10^9. Two\nfirst of ways listed above are still valid but in the third way we would get\n|a1| > k what is not allowed. Thus, the answer is 2 this time.\n\n",
+        "cf_contest_id": 639,
+        "cf_index": "C",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "hashing",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 1000000000\r\n10 -9 -3 5\r\n",
+                "3\r\n"
+            ],
+            [
+                "3 12\r\n10 -9 -3 5\r\n",
+                "2\r\n"
+            ],
+            [
+                "2 20\r\n14 -7 19\r\n",
+                "0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 5\r\n0 -4 -2 -2 0 5\r\n",
+                "1\r\n"
+            ],
+            [
+                "6 10\r\n-2 -1 7 -3 2 7 -6\r\n",
+                "2\r\n"
+            ],
+            [
+                "7 100\r\n2 21 11 45 58 85 -59 38\r\n",
+                "1\r\n"
+            ],
+            [
+                "100 1000\r\n-62 57 -27 -67 49 -10 66 -64 -36 -78 62 -75 -39 75 -47 -36 41 -88 62 -43 22 29 -20 58 40 16 71 -2 -87 12 86 -90 -92 67 -12 -48 -10 -26 78 68 22 -3 66 -95 -81 34 14 -76 -27 76 -60 87 -84 3 35 -60 46 -65 29 -29 2 -44 -55 18 -75 91 36 34 -86 53 59 -54 -29 33 -95 66 9 72 67 -44 37 44 32 -52 -34 -4 -99 58 7 -22 -53 11 10 10 -25 -100 -95 -27 43 -46 25\r\n",
+                "10\r\n"
+            ],
+            [
+                "1 5\r\n5 -3\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 10\r\n-6 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 10000\r\n-160 3408 -4620 5869 7434 -6253\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 1\r\n0 0 0 0 0 0 0 0 0 0 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 1\r\n0 0 1 -1 1 0 0 1 1 -1 -1\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 2\r\n-2 -2 1 2 -1 -2 1 -2 1 2 -1\r\n",
+                "2\r\n"
+            ],
+            [
+                "20 100\r\n52 -82 36 90 -62 -35 -93 -98 -80 -40 29 8 43 26 35 55 -56 -99 -17 13 11\r\n",
+                "1\r\n"
+            ],
+            [
+                "90 10\r\n-4 2 2 5 -1 3 4 1 -2 10 -9 -2 -4 3 8 0 -8 -3 9 1 2 4 8 2 0 2 -10 4 -4 -6 2 -9 3 -9 -3 8 8 9 -7 -10 3 9 -2 -7 5 -7 -5 6 1 5 1 -8 3 8 0 -6 2 2 3 -10 2 1 4 8 -3 1 5 7 -7 -3 2 -2 -9 7 7 -2 7 -6 7 -3 2 -5 10 0 0 9 -1 -4 1 -8 4\r\n",
+                "4\r\n"
+            ],
+            [
+                "101 20\r\n4 16 -5 8 -13 -6 -19 -4 18 9 -5 5 3 13 -12 -2 -1 -4 -13 14 2 15 -11 -17 -15 6 9 -15 -10 16 18 -7 8 -19 17 11 -6 -5 -16 -7 -14 5 -17 -6 18 19 -14 -5 1 11 -17 18 4 9 -1 19 1 8 9 -14 11 -8 -18 -12 15 14 -8 0 8 16 2 -20 -19 17 14 -2 3 -9 -13 4 6 -16 3 -12 19 -14 -8 -16 7 -4 5 9 17 7 -3 -15 6 18 -13 10 -8 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "10 1000\r\n-538 -553 -281 -270 209 -989 -418 486 330 725 -430\r\n",
+                "1\r\n"
+            ],
+            [
+                "30 1000\r\n622 815 -733 -613 -741 571 -761 -432 -7 201 554 730 607 415 -453 820 161 147 406 875 -413 462 998 481 698 661 18 -331 752 -232 -72\r\n",
+                "2\r\n"
+            ],
+            [
+                "5 2000000\r\n1038520 -406162 -106421 106958 -807010 850753\r\n",
+                "2\r\n"
+            ],
+            [
+                "10 1000000000\r\n-857095622 -567296277 -923645190 -246044525 610990226 -617677619 -239569893 355377587 222686442 250110001 -200293692\r\n",
+                "2\r\n"
+            ],
+            [
+                "20 1000000000\r\n-924490890 231431639 -579465017 -690485236 173663728 144784457 364609617 444830562 48833250 1095623 333652904 -901650010 -850265945 844112020 -9178988 -527869441 93581840 607677914 -521131467 -628140952 329057708\r\n",
+                "3\r\n"
+            ],
+            [
+                "2 2\r\n1 1 -1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2\r\n1 1 -1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2\r\n-1 0 -2\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 2\r\n-1 -1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2\r\n1 1 -2\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 2\r\n2 -1 -1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "35 1000000000\r\n1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 536870912\r\n",
+                "0\r\n"
+            ],
+            [
+                "35 1000000000\r\n-1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 536870912\r\n",
+                "0\r\n"
+            ],
+            [
+                "35 1000000000\r\n1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -536870912\r\n",
+                "0\r\n"
+            ],
+            [
+                "35 1000000000\r\n-1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -536870912\r\n",
+                "0\r\n"
+            ],
+            [
+                "32 1000000000\r\n1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 536870912\r\n",
+                "0\r\n"
+            ],
+            [
+                "32 1000000000\r\n-1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 536870912\r\n",
+                "0\r\n"
+            ],
+            [
+                "32 1000000000\r\n1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -536870912\r\n",
+                "0\r\n"
+            ],
+            [
+                "32 1000000000\r\n-1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -536870912\r\n",
+                "0\r\n"
+            ],
+            [
+                "55 1000000000\r\n1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 536870912\r\n",
+                "0\r\n"
+            ],
+            [
+                "55 1000000000\r\n-1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 536870912\r\n",
+                "0\r\n"
+            ],
+            [
+                "69 1000000000\r\n1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -536870912\r\n",
+                "0\r\n"
+            ],
+            [
+                "69 1000000000\r\n-1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -536870912\r\n",
+                "0\r\n"
+            ],
+            [
+                "61 10\r\n0 1 0 0 1 1 0 0 0 1 1 1 0 1 0 1 0 1 0 0 0 0 1 0 0 0 0 0 0 1 0 1 1 0 0 1 0 1 0 0 1 1 1 0 1 0 1 0 1 0 1 0 0 1 0 1 1 0 0 1 0 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 10\r\n1 -2 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "65 1\r\n-1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

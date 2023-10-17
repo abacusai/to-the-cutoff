@@ -1,0 +1,65 @@
+[
+    {
+        "name": "Bear and Cavalry",
+        "description": "Would you want to fight against bears riding horses? Me neither. Limak is a\ngrizzly bear. He is general of the dreadful army of Bearland. The most\nimportant part of an army is cavalry of course. Cavalry of Bearland consists\nof n warriors and n horses. i-th warrior has strength wi and i-th horse has\nstrength hi. Warrior together with his horse is called a unit. Strength of a\nunit is equal to multiplied strengths of warrior and horse. Total strength of\ncavalry is equal to sum of strengths of all n units. Good assignment of\nwarriors and horses makes cavalry truly powerful. Initially, i-th warrior has\ni-th horse. You are given q queries. In each query two warriors swap their\nhorses with each other. General Limak must be ready for every possible\nsituation. What if warriors weren't allowed to ride their own horses? After\neach query find the maximum possible strength of cavalry if we consider\nassignments of all warriors to all horses that no warrior is assigned to his\nown horse (it can be proven that for n \u2265 2 there is always at least one\ncorrect assignment). Note that we can't leave a warrior without a horse. Input\nThe first line contains two space-separated integers, n and q (2 \u2264 n \u2264 30 000,\n1 \u2264 q \u2264 10 000). The second line contains n space-separated integers, w1, w2,\n..., wn (1 \u2264 wi \u2264 10^6) \u2014 strengths of warriors. The third line contains n\nspace-separated integers, h1, h2, ..., hn (1 \u2264 hi \u2264 10^6) \u2014 strengths of\nhorses. Next q lines describe queries. i-th of them contains two space-\nseparated integers ai and bi (1 \u2264 ai, bi \u2264 n, ai \u2260 bi), indices of warriors\nwho swap their horses with each other. Output Print q lines with answers to\nqueries. In i-th line print the maximum possible strength of cavalry after\nfirst i queries. Examples Input 4 2 1 10 100 1000 3 7 2 5 2 4 2 4 Output 5732\n7532 Input 3 3 7 11 5 3 2 1 1 2 1 3 2 3 Output 44 48 52 Input 7 4 1 2 4 8 16\n32 64 87 40 77 29 50 11 18 1 5 2 7 6 2 5 6 Output 9315 9308 9315 9315 Note\nClarification for the first sample: Warriors: 1 10 100 1000Horses: 3 7 2 5\nAfter first query situation looks like the following: Warriors: 1 10 100\n1000Horses: 3 5 2 7 We can get 1\u00b72 + 10\u00b73 + 100\u00b77 + 1000\u00b75 = 5732 (note that\nno hussar takes his own horse in this assignment). After second query we get\nback to initial situation and optimal assignment is 1\u00b72 + 10\u00b73 + 100\u00b75 +\n1000\u00b77 = 7532. Clarification for the second sample. After first query:\nWarriors: 7 11 5Horses: 2 3 1 Optimal assignment is 7\u00b71 + 11\u00b72 + 5\u00b73 = 44.\nThen after second query 7\u00b73 + 11\u00b72 + 5\u00b71 = 48. Finally 7\u00b72 + 11\u00b73 + 5\u00b71 = 52.\n\n",
+        "cf_contest_id": 573,
+        "cf_index": "D",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "divide and conquer",
+            "dp"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 2\r\n1 10 100 1000\r\n3 7 2 5\r\n2 4\r\n2 4\r\n",
+                "5732\r\n7532\r\n"
+            ],
+            [
+                "3 3\r\n7 11 5\r\n3 2 1\r\n1 2\r\n1 3\r\n2 3\r\n",
+                "44\r\n48\r\n52\r\n"
+            ],
+            [
+                "7 4\r\n1 2 4 8 16 32 64\r\n87 40 77 29 50 11 18\r\n1 5\r\n2 7\r\n6 2\r\n5 6\r\n",
+                "9315\r\n9308\r\n9315\r\n9315\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 4\r\n8 1\r\n9 8\r\n1 2\r\n1 2\r\n1 2\r\n2 1\r\n",
+                "80\r\n73\r\n80\r\n73\r\n"
+            ],
+            [
+                "4 15\r\n70 46 78 69\r\n90 93 83 11\r\n2 3\r\n3 4\r\n4 1\r\n3 1\r\n4 3\r\n3 1\r\n2 4\r\n3 1\r\n3 2\r\n3 4\r\n2 3\r\n1 2\r\n1 4\r\n4 1\r\n1 2\r\n",
+                "19763\r\n19780\r\n19787\r\n19763\r\n19787\r\n19780\r\n19780\r\n19780\r\n19753\r\n19787\r\n19787\r\n18131\r\n18131\r\n18131\r\n19787\r\n"
+            ],
+            [
+                "5 7\r\n43 78 14 66 28\r\n81 100 30 83 46\r\n4 2\r\n5 3\r\n5 1\r\n4 2\r\n1 4\r\n1 4\r\n5 1\r\n",
+                "18199\r\n18423\r\n18469\r\n18265\r\n18265\r\n18265\r\n18195\r\n"
+            ],
+            [
+                "2 1\r\n1 1\r\n1 1\r\n1 2\r\n",
+                "2\r\n"
+            ],
+            [
+                "3 20\r\n50 57 55\r\n53 56 55\r\n2 3\r\n3 2\r\n3 2\r\n1 2\r\n2 1\r\n3 1\r\n1 2\r\n2 3\r\n2 3\r\n2 3\r\n2 1\r\n2 3\r\n1 3\r\n1 2\r\n3 2\r\n2 1\r\n1 3\r\n3 2\r\n2 3\r\n1 3\r\n",
+                "8857\r\n8851\r\n8857\r\n8867\r\n8857\r\n8867\r\n8865\r\n8867\r\n8865\r\n8867\r\n8857\r\n8851\r\n8865\r\n8867\r\n8865\r\n8851\r\n8865\r\n8867\r\n8865\r\n8851\r\n"
+            ],
+            [
+                "4 3\r\n1000000 1000000 1000000 1000000\r\n1000000 1000000 1000000 1000000\r\n3 4\r\n3 2\r\n4 3\r\n",
+                "4000000000000\r\n4000000000000\r\n4000000000000\r\n"
+            ],
+            [
+                "7 5\r\n634074 1059 511990 847730 58905 637821 803126\r\n516699 269185 430517 809074 286352 599212 675131\r\n7 6\r\n3 5\r\n3 1\r\n4 7\r\n1 6\r\n",
+                "2157991111467\r\n2168203378544\r\n2168512554755\r\n2174486948327\r\n2174486948327\r\n"
+            ],
+            [
+                "10 30\r\n6 7 8 9 4 2 3 1 5 10\r\n1005 1006 1007 1008 1003 1001 1002 1000 1004 1009\r\n1 2\r\n1 2\r\n10 4\r\n7 5\r\n1 2\r\n1 2\r\n7 6\r\n1 2\r\n6 8\r\n8 6\r\n6 7\r\n2 1\r\n7 5\r\n1 9\r\n3 2\r\n3 4\r\n3 4\r\n1 2\r\n9 5\r\n6 8\r\n1 2\r\n7 5\r\n5 9\r\n10 4\r\n3 4\r\n5 9\r\n1 2\r\n4 3\r\n3 2\r\n6 7\r\n",
+                "55325\r\n55325\r\n55326\r\n55327\r\n55327\r\n55327\r\n55327\r\n55327\r\n55328\r\n55327\r\n55327\r\n55327\r\n55326\r\n55327\r\n55328\r\n55328\r\n55328\r\n55328\r\n55328\r\n55329\r\n55329\r\n55330\r\n55329\r\n55328\r\n55328\r\n55329\r\n55329\r\n55329\r\n55328\r\n55328\r\n"
+            ]
+        ]
+    }
+]

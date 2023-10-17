@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Innokenty and a Football League",
+        "description": "Innokenty is a president of a new football league in Byteland. The first task\nhe should do is to assign short names to all clubs to be shown on TV next to\nthe score. Of course, the short names should be distinct, and Innokenty wants\nthat all short names consist of three letters. Each club's full name consist\nof two words: the team's name and the hometown's name, for example, \"DINAMO\nBYTECITY\". Innokenty doesn't want to assign strange short names, so he wants\nto choose such short names for each club that: the short name is the same as\nthree first letters of the team's name, for example, for the mentioned club it\nis \"DIN\", or, the first two letters of the short name should be the same as\nthe first two letters of the team's name, while the third letter is the same\nas the first letter in the hometown's name. For the mentioned club it is\n\"DIB\". Apart from this, there is a rule that if for some club x the second\noption of short name is chosen, then there should be no club, for which the\nfirst option is chosen which is the same as the first option for the club x.\nFor example, if the above mentioned club has short name \"DIB\", then no club\nfor which the first option is chosen can have short name equal to \"DIN\".\nHowever, it is possible that some club have short name \"DIN\", where \"DI\" are\nthe first two letters of the team's name, and \"N\" is the first letter of\nhometown's name. Of course, no two teams can have the same short name. Help\nInnokenty to choose a short name for each of the teams. If this is impossible,\nreport that. If there are multiple answer, any of them will suit Innokenty. If\nfor some team the two options of short name are equal, then Innokenty will\nformally think that only one of these options is chosen. Input The first line\ncontains a single integer n (1 \u2264 n \u2264 1000) \u2014 the number of clubs in the\nleague. Each of the next n lines contains two words \u2014 the team's name and the\nhometown's name for some club. Both team's name and hometown's name consist of\nuppercase English letters and have length at least 3 and at most 20. Output It\nit is not possible to choose short names and satisfy all constraints, print a\nsingle line \"NO\". Otherwise, in the first line print \"YES\". Then print n\nlines, in each line print the chosen short name for the corresponding club.\nPrint the clubs in the same order as they appeared in input. If there are\nmultiple answers, print any of them. Examples Input 2 DINAMO BYTECITY FOOTBALL\nMOSCOW Output YES DIN FOO Input 2 DINAMO BYTECITY DINAMO BITECITY Output NO\nInput 3 PLAYFOOTBALL MOSCOW PLAYVOLLEYBALL SPB GOGO TECHNOCUP Output YES PLM\nPLS GOG Input 3 ABC DEF ABC EFG ABD OOO Output YES ABD ABE ABO Note In the\nfirst sample Innokenty can choose first option for both clubs. In the second\nexample it is not possible to choose short names, because it is not possible\nthat one club has first option, and the other has second option if the first\noptions are equal for both clubs. In the third example Innokenty can choose\nthe second options for the first two clubs, and the first option for the third\nclub. In the fourth example note that it is possible that the chosen short\nname for some club x is the same as the first option of another club y if the\nfirst options of x and y are different.\n\n",
+        "cf_contest_id": 780,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "2-sat",
+            "graphs",
+            "greedy",
+            "implementation",
+            "shortest paths",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\nDINAMO BYTECITY\r\nFOOTBALL MOSCOW\r\n",
+                "YES\r\nDIB\r\nFOM\r\n"
+            ],
+            [
+                "2\r\nDINAMO BYTECITY\r\nDINAMO BITECITY\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\nPLAYFOOTBALL MOSCOW\r\nPLAYVOLLEYBALL SPB\r\nGOGO TECHNOCUP\r\n",
+                "YES\r\nPLM\r\nPLS\r\nGOT\r\n"
+            ],
+            [
+                "3\r\nABC DEF\r\nABC EFG\r\nABD OOO\r\n",
+                "YES\r\nABD\r\nABE\r\nABO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\nABC DEF\r\nABC EFG\r\nABC EEEEE\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3\r\nABC DEF\r\nABC EFG\r\nABD CABA\r\n",
+                "YES\r\nABD\r\nABE\r\nABC\r\n"
+            ],
+            [
+                "3\r\nABC DEF\r\nABC EFG\r\nABD EABA\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1\r\nAAA AAA\r\n",
+                "YES\r\nAAA\r\n"
+            ],
+            [
+                "1\r\nAAAAAAAAAAAAAAAAAAAA ZZZZZZZZZZZZZZZZZZZZ\r\n",
+                "YES\r\nAAZ\r\n"
+            ],
+            [
+                "5\r\nADAC BABC\r\nABB DCB\r\nABB BCDC\r\nDBAC BAC\r\nDBBC DBC\r\n",
+                "YES\r\nADB\r\nABD\r\nABB\r\nDBB\r\nDBD\r\n"
+            ],
+            [
+                "5\r\nIAH HJIE\r\nIAH FJK\r\nIAH BIAA\r\nIAH AFG\r\nIAH DEFF\r\n",
+                "YES\r\nIAH\r\nIAF\r\nIAB\r\nIAA\r\nIAD\r\n"
+            ],
+            [
+                "10\r\nIJGDI KHB\r\nHBI CKKCG\r\nFHE GCAA\r\nEDCGH HHICE\r\nGFH AIHD\r\nHED KIK\r\nDCK BCFIJ\r\nFFIHE FDB\r\nJGB AKKI\r\nIJD CAG\r\n",
+                "YES\r\nIJK\r\nHBC\r\nFHG\r\nEDH\r\nGFA\r\nHEK\r\nDCB\r\nFFF\r\nJGA\r\nIJC\r\n"
+            ],
+            [
+                "10\r\nEDBG IGGAC\r\nEDBG GIKAG\r\nEDBG IKGEI\r\nEDBG AJEG\r\nEDBG HAD\r\nEDBG ACKK\r\nEDBG FEDE\r\nEDBG DAB\r\nEDBG CCJBD\r\nEDBG KKGFB\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10\r\nADE GBH\r\nJJDGJ AAF\r\nJJDGJ BBKG\r\nADE FKH\r\nADE CIA\r\nAIE JCBJ\r\nAIE BBJB\r\nEBAK JDB\r\nJJDGJ IDBG\r\nCEJE FIG\r\n",
+                "YES\r\nADG\r\nJJA\r\nJJB\r\nADF\r\nADC\r\nAIJ\r\nAIB\r\nEBJ\r\nJJI\r\nCEF\r\n"
+            ],
+            [
+                "4\r\nABA DEF\r\nABB DEF\r\nABC DEF\r\nABE DEF\r\n",
+                "YES\r\nABD\r\nABB\r\nABC\r\nABE\r\n"
+            ],
+            [
+                "2\r\nABC CCC\r\nABE CCC\r\n",
+                "YES\r\nABC\r\nABE\r\n"
+            ],
+            [
+                "2\r\nABS SSS\r\nABD SSD\r\n",
+                "YES\r\nABS\r\nABD\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,224 @@
+[
+    {
+        "name": "Stepan's Series",
+        "description": "Well, the series which Stepan watched for a very long time, ended. In total,\nthe series had n episodes. For each of them, Stepan remembers either that he\ndefinitely has watched it, or that he definitely hasn't watched it, or he is\nunsure, has he watched this episode or not. Stepan's dissatisfaction is the\nmaximum number of consecutive series that Stepan did not watch. Your task is\nto determine according to Stepan's memories if his dissatisfaction could be\nexactly equal to k. Input The first line contains two integers n and k (1 \u2264 n\n\u2264 100, 0 \u2264 k \u2264 n) \u2014 the number of episodes in the series and the\ndissatisfaction which should be checked. The second line contains the sequence\nwhich consists of n symbols \"Y\", \"N\" and \"?\". If the i-th symbol equals \"Y\",\nStepan remembers that he has watched the episode number i. If the i-th symbol\nequals \"N\", Stepan remembers that he hasn't watched the epizode number i. If\nthe i-th symbol equals \"?\", Stepan doesn't exactly remember if he has watched\nthe episode number i or not. Output If Stepan's dissatisfaction can be exactly\nequal to k, then print \"YES\" (without qoutes). Otherwise print \"NO\" (without\nqoutes). Examples Input 5 2 NYNNY Output YES Input 6 1 ????NN Output NO Note\nIn the first test Stepan remembers about all the episodes whether he has\nwatched them or not. His dissatisfaction is 2, because he hasn't watch two\nepisodes in a row \u2014 the episode number 3 and the episode number 4. The answer\nis \"YES\", because k = 2. In the second test k = 1, Stepan's dissatisfaction is\ngreater than or equal to 2 (because he remembers that he hasn't watch at least\ntwo episodes in a row \u2014 number 5 and number 6), even if he has watched the\nepisodes from the first to the fourth, inclusive.\n\n",
+        "cf_contest_id": 774,
+        "cf_index": "J",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 2\r\nNYNNY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 1\r\n????NN\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "100 8\r\nNYNNY?YNNNNNN?NNNNNYNY?YYNYNN?NNNY??NNYNYNNNYNNNYNNNNNNNNY?NNNYNYN?NNNY?YY?NNYNN?NNNYNNYNNYN?NNYNYNN\r\n",
+                "YES\r\n"
+            ],
+            [
+                "10 1\r\nNY???NY?Y?\r\n",
+                "YES\r\n"
+            ],
+            [
+                "20 7\r\nN?N??NNN?NNN?Y???Y??\r\n",
+                "YES\r\n"
+            ],
+            [
+                "30 1\r\nNYYYNYYY?Y?YY?YYYYYYYYYYYYYNYY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "40 14\r\nNNNNNNNNNNNNNNNNNYNNNNYNNYNNNNNNYNNNNNNN\r\n",
+                "NO\r\n"
+            ],
+            [
+                "51 1\r\nYYYNYNYNNYYNNY?YNYYYYYYNNYNYN??NYNYYNYYYYYYNNYNNNYY\r\n",
+                "NO\r\n"
+            ],
+            [
+                "70 3\r\nYNNNYYYNY?YYNYYNYYN?NYYYYYYYYYYYYYNYYNNYYYYYYYNYYNNNY??YYNYYYYYYYYNYYN\r\n",
+                "YES\r\n"
+            ],
+            [
+                "85 10\r\nYNNYNNNNNYNNNNNNNNNNNYNYYNNYNNNYYYNNNYYNNNNYNNNYNNNYNNNNNNNNNNNNN?NNNNYNNYYNNNNNNYNNN\r\n",
+                "NO\r\n"
+            ],
+            [
+                "90 18\r\nNNNN?NNNNNYNYNYNNY?NNNNNNNNNNNNNNYNNNNNNYYNYYNNNNYNNNNNNNNNNNNNNNNNNNYNNYYNYNNNNNNNYNNNNYN\r\n",
+                "NO\r\n"
+            ],
+            [
+                "99 2\r\nYNYYYYYYYYYYYN?YYNYYYYYYYYYYYYYY?YYYNYYYYYYYYYYYYYNYYYYYYNY?YYYYYNNYYYNYNYYYYNYYYYYYYYYYYNYY?NYYYYY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 74\r\nNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN?NNNNNNNNNNNN?NNNNNNNNNNNNNN\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 19\r\nYYNN?NNNNNNNNNNNYNYYNYNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNYNNNNNNYNNYYNNNYNNNYNYNNYNNNYYNNNYNNN?NNNNN?YNN\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 10\r\nNNNNYNNNYNNNNNNNNYNYNYNNNNNYNNNNNYNNNNNNNNNNNYNYYNNNNNNNYYNNYNYNNYYNNNNYNNNNNYNNNNYNNNNYNNY??YNNNNYY\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 4\r\nYYNNNNYYYNNNNNNYNYYYNYYNYYNNYYNNNNNNNYNYYNYYNNYNNNNNYN?YNYYYNNYNNNNNYNNNNYYNYYYYYNYNNNNYYNNNNYNNNNYY\r\n",
+                "NO\r\n"
+            ],
+            [
+                "100 2\r\nYYNNYYYNNYYYYYYYYYYYYYYYNYYYNYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYNYNYYYYYYNNYYYNYYNNYYNYYYYNYNYYYYYYNYYY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 3\r\nYYYYYYYYNNNYNYNYYYYNY?YYYYYYNYYYNYYYYYYYYYYYYNNYYYYYNYNYYNYYYYYYYYYYYYYYYYYYY?YYNNYYNNYYYNYYYYYYYYYY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 2\r\nYYYYYYYYYYYNYYYYYYYYYYYYYYYYYYYYYYYYYNYY?YYYYYYYYYYYYYYYNYYYYYYYYYYYYNNYYYYYYYYYNYYYYYYYYYYNYYYYYYYY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 3\r\nNYNNYYYYYYNYNNYYYYYYNYYNYNYYYYYNYYYYYNNNYYYYYNYNYYNYYNYYNYNNNYYNYYYYYNYYYYYYNNYYNYNNYYNYYYY?YYNNYYNN\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 26\r\nNNYNNNNNNNNNNNNN?NNNNNNNNNNNNNYNNNNYNNNNNNNNNNNNYNNNNNN?NNNYNNNNNNNNNNYYNNNNNNNNYNNNNNNNNYYYNNNNYYNY\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 1\r\nY\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 1\r\nN\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 1\r\n?\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 0\r\n?\r\n",
+                "YES\r\n"
+            ],
+            [
+                "1 0\r\nN\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 0\r\nY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 100\r\n????????????????????????????????????????????????????????????????????????????????????????????????????\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 4\r\nNN??NN\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 3\r\nNNYYN?\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7 3\r\nN?YY???\r\n",
+                "YES\r\n"
+            ],
+            [
+                "24 4\r\nY?NYYNYYYNYYN?NNN?N?Y?Y?\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 3\r\n?Y?\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 1\r\nNY???NY?Y?\r\n",
+                "YES\r\n"
+            ],
+            [
+                "20 8\r\nNNNYY?????NN???N?YN?\r\n",
+                "YES\r\n"
+            ],
+            [
+                "30 2\r\n??????????????????????????????\r\n",
+                "YES\r\n"
+            ],
+            [
+                "40 17\r\nNNNNNNNNNNNNNNNNNYNNNNYNNYNNNNNNYNNNNNNN\r\n",
+                "YES\r\n"
+            ],
+            [
+                "51 5\r\nY??N????????Y??N?????N???N???YN?N?Y?N??Y?Y??Y???NN?\r\n",
+                "YES\r\n"
+            ],
+            [
+                "70 3\r\nY?N?Y???NN?NY?N?YY?Y????YNYY?Y?N??Y????YY??N????NY?NYY?YY?YYYY?YY?N?Y?\r\n",
+                "YES\r\n"
+            ],
+            [
+                "85 18\r\nNNNNNNN??Y???NN?YNNNNNNNN???YNNNNNN??Y?N?YNYYNN?NNNNNNNNNNNNNN????NNY??NNNN?NN??NNNNN\r\n",
+                "YES\r\n"
+            ],
+            [
+                "90 15\r\nYNNNNN?NNYNNYNNNN?NNNNYNNY?NNNNNNN?NNNNNNYN?NNYNNNNNN?NNYYNNYN?NNN??NNNNYNNN?YN?NNNNYNN?NY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "99 1\r\nYYYYYYYNYYY??YY??YYYYYYY????NYY?YYY?Y??YYYY????YY?YY?YYY?YY??YYY?Y??NYYYY?YNYY??Y??YYYYY?YYY????YYY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 34\r\n?NNNN??N???NNNN?NNN?N???N?N????NNNNNNN?N??N???NNNN???N?N?NN?NNNNN?NNN???N??NN??Y??NNN??N?NNN???NN?NN\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 21\r\n?NNNNNYNN??NNN?N????N?NN?N??NN?NNNY?NN?NY?NN?NNN?NN?N?NNNNNNY?NYNN??N??NYNN?NN?NNNN?N???NN?NN?Y?NYNY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 10\r\nN?NNYYYNNNNNNYYNNYYNNNNNNNNYYNNNYYNNYNYNY?NNNNNNNNNYYNNNNYNNNNYNNNYNNYNNN?NNY?NNNNNNNNN?NYNYNNNNNNNN\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 6\r\n????????????????????????????????????????????????????????????????????????????????????????????????????\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 2\r\nYYNNYYYNNYYYYYYYYYYYYYYYNYYYNYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYNYNYYYYYYNNYYYNYYNNYYNYYYYNYNYYYYYYNYYY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 1\r\n???Y??????????????????????????????????????Y?????????N???Y????????Y?????Y???????Y??Y??????????YY?????\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 1\r\nYYYYYYYYY??YYN?YYNYYYYYYYNYYYYYYYYYYY?YN?YYYYY?YYYYYYYYYYYYY?YYYYYYYYYYYYN?YYYYYYYY?YYYYY?YYNYYYYYNY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "100 3\r\n?YNNYYNYYYYYYNYYYYYNY?NNYYYYNYY??NYYNYNYYYY?YYNYYNYYYYYYYYYYNYYYYNYYYYNYYYYNYYNYYYYYYNYNYNYYYYYYNNYY\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 2\r\n?Y?\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

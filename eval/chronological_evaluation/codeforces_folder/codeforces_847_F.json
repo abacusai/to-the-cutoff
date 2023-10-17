@@ -1,0 +1,476 @@
+[
+    {
+        "name": "Berland Elections",
+        "description": "The elections to Berland parliament are happening today. Voting is in full\nswing! Totally there are n candidates, they are numbered from 1 to n. Based on\nelection results k (1 \u2264 k \u2264 n) top candidates will take seats in the\nparliament. After the end of the voting the number of votes for each candidate\nis calculated. In the resulting table the candidates are ordered by the number\nof votes. In case of tie (equal number of votes) they are ordered by the time\nof the last vote given. The candidate with ealier last vote stands higher in\nthe resulting table. So in the resulting table candidates are sorted by the\nnumber of votes (more votes stand for the higher place) and if two candidates\nhave equal number of votes they are sorted by the time of last vote (earlier\nlast vote stands for the higher place). There is no way for a candidate with\nzero votes to take a seat in the parliament. So it is possible that less than\nk candidates will take a seat in the parliament. In Berland there are m\ncitizens who can vote. Each of them will vote for some candidate. Each citizen\nwill give a vote to exactly one of n candidates. There is no option \"against\neveryone\" on the elections. It is not accepted to spoil bulletins or not to go\nto elections. So each of m citizens will vote for exactly one of n candidates.\nAt the moment a citizens have voted already (1 \u2264 a \u2264 m). This is an open\nelection, so for each citizen it is known the candidate for which the citizen\nhas voted. Formally, the j-th citizen voted for the candidate gj. The citizens\nwho already voted are numbered in chronological order; i.e. the (j + 1)-th\ncitizen voted after the j-th. The remaining m - a citizens will vote before\nthe end of elections, each of them will vote for one of n candidates. Your\ntask is to determine for each of n candidates one of the three possible\noutcomes: a candidate will be elected to the parliament regardless of votes of\nthe remaining m - a citizens; a candidate has chance to be elected to the\nparliament after all n citizens have voted; a candidate has no chances to be\nelected to the parliament regardless of votes of the remaining m - a citizens.\nInput The first line contains four integers n, k, m and a (1 \u2264 k \u2264 n \u2264 100, 1\n\u2264 m \u2264 100, 1 \u2264 a \u2264 m) \u2014 the number of candidates, the number of seats in the\nparliament, the number of Berland citizens and the number of citizens who\nalready have voted. The second line contains a sequence of a integers g1, g2,\n..., ga (1 \u2264 gj \u2264 n), where gj is the candidate for which the j-th citizen has\nvoted. Citizens who already voted are numbered in increasing order of voting\ntimes. Output Print the sequence consisting of n integers r1, r2, ..., rn\nwhere: ri = 1 means that the i-th candidate is guaranteed to take seat in the\nparliament regardless of votes of the remaining m - a citizens; ri = 2 means\nthat the i-th candidate has a chance to take a seat in the parliament, i.e.\nthe remaining m - a citizens can vote in such a way that the candidate will\ntake a seat in the parliament; ri = 3 means that the i-th candidate will not\ntake a seat in the parliament regardless of votes of the remaining m - a\ncitizens. Examples Input 3 1 5 4 1 2 1 3 Output 1 3 3 Input 3 1 5 3 1 3 1\nOutput 2 3 2 Input 3 2 5 3 1 3 1 Output 1 2 2\n\n",
+        "cf_contest_id": 847,
+        "cf_index": "F",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "sortings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 1 5 4\r\n1 2 1 3\r\n",
+                "1 3 3\r\n"
+            ],
+            [
+                "3 1 5 3\r\n1 3 1\r\n",
+                "2 3 2\r\n"
+            ],
+            [
+                "3 2 5 3\r\n1 3 1\r\n",
+                "1 2 2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 1 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 1 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 2 2\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 2 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 1 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 3 3\r\n1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 1 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 3 3\r\n1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 5 4\r\n1 1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 4 2\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 1 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 3 3\r\n1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1 1 1\r\n2\r\n",
+                "3 1\r\n"
+            ],
+            [
+                "2 2 1 1\r\n1\r\n",
+                "1 3\r\n"
+            ],
+            [
+                "1 1 2 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 2 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1 1 1\r\n1\r\n",
+                "1 3\r\n"
+            ],
+            [
+                "2 1 1 1\r\n1\r\n",
+                "1 3\r\n"
+            ],
+            [
+                "1 1 3 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 4 4\r\n1 1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2 3 1\r\n1\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "2 1 1 1\r\n1\r\n",
+                "1 3\r\n"
+            ],
+            [
+                "2 2 3 3\r\n2 2 1\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "2 1 5 3\r\n1 1 1\r\n",
+                "1 3\r\n"
+            ],
+            [
+                "1 1 1 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 2 1 1\r\n3\r\n",
+                "3 3 1\r\n"
+            ],
+            [
+                "1 1 2 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 1 1 1\r\n2\r\n",
+                "3 1 3\r\n"
+            ],
+            [
+                "2 1 1 1\r\n2\r\n",
+                "3 1\r\n"
+            ],
+            [
+                "1 1 3 3\r\n1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2 4 4\r\n2 1 2 2\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "2 1 2 1\r\n2\r\n",
+                "3 1\r\n"
+            ],
+            [
+                "3 3 5 4\r\n1 2 3 2\r\n",
+                "1 1 1\r\n"
+            ],
+            [
+                "2 2 5 1\r\n2\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "3 2 1 1\r\n3\r\n",
+                "3 3 1\r\n"
+            ],
+            [
+                "2 2 6 6\r\n1 2 1 1 1 2\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "3 1 1 1\r\n3\r\n",
+                "3 3 1\r\n"
+            ],
+            [
+                "3 3 1 1\r\n1\r\n",
+                "1 3 3\r\n"
+            ],
+            [
+                "2 2 1 1\r\n1\r\n",
+                "1 3\r\n"
+            ],
+            [
+                "2 1 1 1\r\n1\r\n",
+                "1 3\r\n"
+            ],
+            [
+                "1 1 3 3\r\n1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 3 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 2 2 1\r\n3\r\n",
+                "2 2 1\r\n"
+            ],
+            [
+                "4 4 3 2\r\n4 1\r\n",
+                "1 2 2 1\r\n"
+            ],
+            [
+                "2 2 2 2\r\n1 2\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "2 2 3 2\r\n1 1\r\n",
+                "1 2\r\n"
+            ],
+            [
+                "1 1 6 2\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 2 2\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 1 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5 1 1\r\n5\r\n",
+                "3 3 3 3 1\r\n"
+            ],
+            [
+                "4 2 1 1\r\n1\r\n",
+                "1 3 3 3\r\n"
+            ],
+            [
+                "2 1 1 1\r\n1\r\n",
+                "1 3\r\n"
+            ],
+            [
+                "4 4 1 1\r\n4\r\n",
+                "3 3 3 1\r\n"
+            ],
+            [
+                "2 2 3 2\r\n2 2\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "4 2 3 2\r\n1 4\r\n",
+                "1 3 3 1\r\n"
+            ],
+            [
+                "2 2 1 1\r\n2\r\n",
+                "3 1\r\n"
+            ],
+            [
+                "4 3 2 1\r\n4\r\n",
+                "2 2 2 1\r\n"
+            ],
+            [
+                "2 2 4 1\r\n2\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "1 1 4 3\r\n1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5 5 5 2\r\n5 5\r\n",
+                "2 2 2 2 1\r\n"
+            ],
+            [
+                "4 2 1 1\r\n1\r\n",
+                "1 3 3 3\r\n"
+            ],
+            [
+                "4 2 1 1\r\n3\r\n",
+                "3 3 1 3\r\n"
+            ],
+            [
+                "1 1 1 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 2 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 3 2\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "4 2 1 1\r\n4\r\n",
+                "3 3 3 1\r\n"
+            ],
+            [
+                "4 3 1 1\r\n3\r\n",
+                "3 3 1 3\r\n"
+            ],
+            [
+                "6 4 3 2\r\n3 1\r\n",
+                "1 2 1 2 2 2\r\n"
+            ],
+            [
+                "3 1 3 2\r\n2 1\r\n",
+                "2 2 3\r\n"
+            ],
+            [
+                "5 2 2 2\r\n2 2\r\n",
+                "3 1 3 3 3\r\n"
+            ],
+            [
+                "6 1 5 2\r\n4 4\r\n",
+                "2 2 2 2 2 2\r\n"
+            ],
+            [
+                "2 1 1 1\r\n2\r\n",
+                "3 1\r\n"
+            ],
+            [
+                "25 15 1 1\r\n23\r\n",
+                "3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 3 3\r\n"
+            ],
+            [
+                "45 4 1 1\r\n28\r\n",
+                "3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3\r\n"
+            ],
+            [
+                "1 1 2 2\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 1 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "9 6 13 1\r\n6\r\n",
+                "2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "42 38 10 1\r\n36\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "23 13 85 26\r\n20 21 4 10 7 20 12 23 13 20 11 19 9 13 7 21 19 21 4 10 14 9 10 5 14 7\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "47 21 39 9\r\n7 16 46 13 11 36 1 20 15\r\n",
+                "2 2 2 2 2 2 1 2 2 2 2 2 1 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2\r\n"
+            ],
+            [
+                "71 56 84 50\r\n31 35 58 16 1 67 31 66 16 32 47 51 62 52 16 68 46 3 47 34 45 44 43 31 62 34 71 21 16 58 71 64 22 11 67 46 29 46 11 62 19 41 22 51 49 16 9 33 55 9\r\n",
+                "1 2 1 2 2 2 2 2 1 2 1 2 2 2 2 1 2 2 1 2 1 1 2 2 2 2 2 2 1 2 1 1 1 1 1 2 2 2 2 2 1 2 1 1 1 1 1 2 1 2 1 1 2 2 1 2 2 1 2 2 2 1 2 1 2 1 1 1 2 2 1\r\n"
+            ],
+            [
+                "95 17 38 3\r\n22 79 50\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "23 12 87 42\r\n9 10 15 11 2 4 3 17 22 11 7 9 3 15 10 1 11 21 3 10 11 2 22 4 11 17 22 22 10 4 22 22 7 9 1 15 19 1 21 20 6 8\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2\r\n"
+            ],
+            [
+                "47 8 41 14\r\n3 7 25 10 30 40 43 38 36 8 6 2 10 42\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "71 28 95 28\r\n17 32 47 35 34 65 44 11 32 9 34 19 34 15 68 7 42 53 67 6 7 70 18 28 45 67 10 20\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "95 84 40 2\r\n65 13\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "23 9 2 1\r\n1\r\n",
+                "1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "94 47 43 42\r\n94 50 49 41 79 89 37 90 19 85 86 79 50 74 9 21 30 55 22 26 61 33 1 16 16 84 87 43 87 68 72 72 77 3 85 26 34 44 48 69 7 64\r\n",
+                "1 2 1 2 2 2 1 2 1 2 2 2 2 2 2 1 2 2 1 2 1 1 2 2 2 1 2 2 2 1 2 2 1 1 2 2 1 2 2 2 1 2 1 1 2 2 2 1 1 1 2 2 2 2 1 2 2 2 2 2 1 2 2 1 2 2 2 1 1 2 2 1 2 1 2 2 1 2 1 2 2 2 2 1 1 1 1 2 1 1 2 2 2 1\r\n"
+            ],
+            [
+                "22 2 1 1\r\n19\r\n",
+                "3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 3 3 3\r\n"
+            ],
+            [
+                "46 20 46 31\r\n10 10 8 10 1 46 28 14 41 32 37 5 28 8 41 32 15 32 32 16 41 32 46 41 11 41 3 13 24 43 6\r\n",
+                "1 2 2 2 2 2 2 1 2 1 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 1 2 2 2 2 2 2 2 2 1 2 2 2 2 1\r\n"
+            ],
+            [
+                "70 1 100 64\r\n37 16 56 30 60 29 16 27 56 70 35 60 16 25 38 21 46 49 38 3 29 16 33 13 3 22 4 22 52 24 42 17 3 25 9 63 21 22 65 66 28 54 8 39 60 52 25 69 67 6 50 9 15 69 16 60 43 6 53 65 48 29 34 44\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "98 73 50 42\r\n18 14 97 78 43 80 58 89 23 64 7 22 43 3 78 60 71 61 16 71 68 96 72 16 63 49 72 80 71 6 69 92 11 82 54 93 22 60 96 22 82 35\r\n",
+                "2 2 1 2 2 1 1 2 2 2 1 2 2 1 2 1 2 1 2 2 2 1 1 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 1 2 2 2 2 2 1 2 2 2 2 1 2 2 2 1 2 1 1 2 1 1 2 2 2 1 1 2 1 1 2 2 2 2 2 1 2 1 2 1 2 2 2 2 2 2 1 2 2 1 1 2 2 1 1 2\r\n"
+            ],
+            [
+                "18 9 3 1\r\n9\r\n",
+                "2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "47 6 53 19\r\n18 44 7 6 37 18 26 32 24 28 18 11 43 7 32 11 22 7 7\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "71 66 7 6\r\n38 59 17 14 35 30\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 1 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "99 1 64 29\r\n87 6 41 97 40 32 21 37 39 1 2 30 63 58 10 44 98 3 41 42 70 46 62 51 58 44 6 40 64\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "19 17 10 10\r\n16 15 8 2 16 3 17 2 5 1\r\n",
+                "1 1 1 3 1 3 3 1 3 3 3 3 3 3 1 1 1 3 3\r\n"
+            ],
+            [
+                "9 2 65 39\r\n1 7 2 8 6 8 3 7 1 8 8 7 4 4 4 7 7 4 4 4 2 5 1 6 4 9 5 2 9 5 9 9 9 6 3 5 5 5 8\r\n",
+                "2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "14 1 33 26\r\n8 2 2 8 14 2 8 2 13 8 4 1 14 1 3 4 11 10 9 9 10 9 6 6 12 5\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "18 12 46 2\r\n10 7\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "6 2 93 68\r\n1 1 1 2 2 2 3 1 4 4 3 3 1 1 5 5 4 2 5 2 5 1 3 2 2 2 2 2 2 2 2 5 2 2 1 2 6 3 5 3 3 4 5 5 2 3 5 6 2 5 4 6 1 3 1 1 1 1 1 1 6 1 6 5 3 1 2 5\r\n",
+                "2 2 2 2 2 2\r\n"
+            ],
+            [
+                "8 5 67 31\r\n8 2 2 6 7 7 8 4 1 7 3 3 1 1 7 3 1 1 1 6 2 2 6 7 2 4 1 6 2 2 1\r\n",
+                "2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "1 1 5 1\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 20 17\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "100 100 100 100\r\n71 22 92 3 19 90 1 16 88 56 62 37 56 84 52 46 4 64 21 19 37 54 21 81 56 33 71 57 86 75 62 42 79 67 14 8 66 30 13 38 20 71 36 66 46 55 4 99 18 37 7 24 72 46 32 86 87 7 90 93 96 94 21 23 62 53 16 11 11 83 21 81 68 50 85 9 94 60 47 41 34 82 11 12 95 81 61 81 86 85 64 36 57 62 86 3 16 90 73 91\r\n",
+                "1 3 1 1 3 3 1 1 1 3 1 1 1 1 3 1 3 1 1 1 1 1 1 1 3 3 3 3 3 1 3 1 1 1 3 1 1 1 3 3 1 1 3 3 3 1 1 3 3 1 3 1 1 1 1 1 1 3 3 1 1 1 3 1 3 1 1 1 3 3 1 1 1 3 1 3 3 3 1 3 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 3 3 1 3\r\n"
+            ],
+            [
+                "100 1 100 100\r\n71 22 92 3 19 90 1 16 88 56 62 37 56 84 52 46 4 64 21 19 37 54 21 81 56 33 71 57 86 75 62 42 79 67 14 8 66 30 13 38 20 71 36 66 46 55 4 99 18 37 7 24 72 46 32 86 87 7 90 93 96 94 21 23 62 53 16 11 11 83 21 81 68 50 85 9 94 60 47 41 34 82 11 12 95 81 61 81 86 85 64 36 57 62 86 3 16 90 73 91\r\n",
+                "3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3\r\n"
+            ],
+            [
+                "100 100 100 1\r\n71\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "100 1 100 1\r\n71\r\n",
+                "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "8 7 22 2\r\n1 8\r\n",
+                "2 2 2 2 2 2 2 2\r\n"
+            ],
+            [
+                "5 4 14 2\r\n1 2\r\n",
+                "2 2 2 2 2\r\n"
+            ],
+            [
+                "4 2 15 12\r\n4 3 4 1 2 1 3 3 4 3 2 2\r\n",
+                "2 2 1 2\r\n"
+            ]
+        ]
+    }
+]

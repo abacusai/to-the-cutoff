@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Number Circle",
+        "description": "You are given \n    n\n numbers \n    a_1, a_2, \n    \u2026, a_n\n. Is it possible to\narrange them in a circle in such a way that every number is strictly less than\nthe sum of its neighbors? For example, for the array \n    [1, 4, 5, 6, 7, 8]\n,\nthe arrangement on the left is valid, while arrangement on the right is not,\nas \n    5\n    \u2265 4 + 1\n and \n    8> 1 + 6\n. Input The first line contains a\nsingle integer \n    n\n (\n    3\n    \u2264 n \n    \u2264 10^5\n) \u2014 the number of numbers.\nThe second line contains \n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n (\n    1\n    \n    \u2264 a_i \n    \u2264 10^9\n) \u2014 the numbers. The given numbers are not necessarily\ndistinct (i.e. duplicates are allowed). Output If there is no solution, output\n\"NO\" in the first line. If there is a solution, output \"YES\" in the first\nline. In the second line output \n    n\n numbers \u2014 elements of the array in the\norder they will stay in the circle. The first and the last element you output\nare considered neighbors in the circle. If there are multiple solutions,\noutput any of them. You can print the circle starting with any element.\nExamples Input 3 2 4 3 Output YES 4 2 3 Input 5 1 2 3 4 4 Output YES 4 4 2 1 3\nInput 3 13 8 5 Output NO Input 4 1 10 100 1000 Output NO Note One of the\npossible arrangements is shown in the first example: \n    4< 2 + 3\n; \n    2 < 4\n    + 3\n; \n    3< 4 + 2\n. One of the possible arrangements is shown in the\nsecond example. No matter how we arrange \n    13, 8, 5\n in a circle in the\nthird example, \n    13\n will have \n    8\n and \n    5\n as neighbors, but\n\n    13\n    \u2265 8 + 5\n. There is no solution in the fourth example.\n\n",
+        "cf_contest_id": 1189,
+        "cf_index": "B",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "math",
+            "sortings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n2 4 3\r\n",
+                "YES 2 4 3\r\n"
+            ],
+            [
+                "5\r\n1 2 3 4 4\r\n",
+                "YES 1 2 3 4 4\r\n"
+            ],
+            [
+                "3\r\n13 8 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 10 100 1000\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n1 1000000000 999999999\r\n",
+                "NO\r\n"
+            ],
+            [
+                "35\r\n5856 4937422 170055 7988916 88598426 20915252 3051495 1885928 720361 2233 12926337 842 231953689 24812 33 260 33841588 54756839 15334 275154 40145 982571591 375308952 551 607262640 228 64956 292 143355264 1392 9479 3624 1165568 445208 105100\r\n",
+                "YES 33 228 260 292 551 842 1392 2233 3624 5856 9479 15334 24812 40145 64956 105100 170055 275154 445208 720361 1165568 1885928 3051495 4937422 7988916 12926337 20915252 33841588 54756839 88598426 143355264 231953689 375308952 982571591 607262640\r\n"
+            ],
+            [
+                "27\r\n496869708 6536632 139291 53540 27689600 72492314 189787341 364332 953704 2496779 10576485 307082368 85752 44802715 21328 10886 1543076 10000 17113116 32213 117295028 444 589373 803952075 10443 225042 4039854\r\n",
+                "YES 444 10000 10443 10886 21328 32213 53540 85752 139291 225042 364332 589373 953704 1543076 2496779 4039854 6536632 10576485 17113116 27689600 44802715 72492314 117295028 189787341 307082368 803952075 496869708\r\n"
+            ],
+            [
+                "4\r\n100 21 52 49\r\n",
+                "YES 21 49 100 52\r\n"
+            ],
+            [
+                "3\r\n4 10 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n3 11 15 1\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n4 2 2 3\r\n",
+                "YES 2 2 4 3\r\n"
+            ],
+            [
+                "5\r\n2 5 1 2 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "20\r\n81068139 119396832 83838155 1000000000 159840370 103235333 5918577 125483356 178466846 136582489 44105349 274856214 1669196 97691244 38933329 67086034 67211704 59593309 135002571 70170536\r\n",
+                "NO\r\n"
+            ],
+            [
+                "43\r\n4182 3 6766 701408734 14930353 2585 39088170 1598 10947 988 28658 3524579 611 196419 378 22 14 267914297 90 17712 433494438 24157818 9227466 121394 832041 63245987 165580142 46369 2 514230 6 35 4 234 9 317812 145 102334156 75026 1346270 5702888 56 2178310\r\n",
+                "YES 2 3 4 6 9 14 22 35 56 90 145 234 378 611 988 1598 2585 4182 6766 10947 17712 28658 46369 75026 121394 196419 317812 514230 832041 1346270 2178310 3524579 5702888 9227466 14930353 24157818 39088170 63245987 102334156 165580142 267914297 701408734 433494438\r\n"
+            ],
+            [
+                "38\r\n302 346604864 11937715 19315628 790 115 3344 97062 42 188 50568969 907423313 214213587 560818450 1278 254110 4559802 22914 31253342 59988 10 7377914 33 132391278 489 5410 2067 8753 14162 2818113 411158 37075 81822310 74 1076424 1741690 665267 157049\r\n",
+                "YES 10 33 42 74 115 188 302 489 790 1278 2067 3344 5410 8753 14162 22914 37075 59988 97062 157049 254110 411158 665267 1076424 1741690 2818113 4559802 7377914 11937715 19315628 31253342 50568969 81822310 132391278 214213587 346604864 907423313 560818450\r\n"
+            ],
+            [
+                "5\r\n2 2 2 2 2\r\n",
+                "YES 2 2 2 2 2\r\n"
+            ],
+            [
+                "4\r\n1 2 99 100\r\n",
+                "YES 1 2 100 99\r\n"
+            ],
+            [
+                "3\r\n1 1 1\r\n",
+                "YES 1 1 1\r\n"
+            ]
+        ]
+    }
+]

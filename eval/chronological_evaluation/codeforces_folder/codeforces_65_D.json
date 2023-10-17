@@ -1,0 +1,145 @@
+[
+    {
+        "name": "Harry Potter and the Sorting Hat",
+        "description": "As you know, Hogwarts has four houses: Gryffindor, Hufflepuff, Ravenclaw and\nSlytherin. The sorting of the first-years into houses is done by the Sorting\nHat. The pupils are called one by one in the alphabetical order, each of them\nshould put a hat on his head and, after some thought, the hat solemnly\nannounces the name of the house the student should enter. At that the Hat is\nbelieved to base its considerations on the student's personal qualities: it\nsends the brave and noble ones to Gryffindor, the smart and shrewd ones \u2014 to\nRavenclaw, the persistent and honest ones \u2014 to Hufflepuff and the clever and\ncunning ones \u2014 to Slytherin. However, a first year student Hermione Granger\ngot very concerned about the forthcoming sorting. She studied all the\nliterature on the Sorting Hat and came to the conclusion that it is much\nsimpler than that. If the relatives of the student have already studied at\nHogwarts, the hat puts the student to the same house, where his family used to\nstudy. In controversial situations, when the relatives studied in different\nhouses or when they were all Muggles like Hermione's parents, then the Hat\nsorts the student to the house, to which the least number of first years has\nbeen sent at that moment. If there are several such houses, the choice is\ngiven to the student himself. Then the student can choose any of the houses,\nto which the least number of first years has been sent so far. Hermione has\nalready asked the students that are on the list before her about their\nrelatives. Now she and her new friends Harry Potter and Ron Weasley want to\nfind out into what house the Hat will put Hermione. Input The first input line\ncontains an integer n (1 \u2264 n \u2264 10000). It is the number of students who are in\nthe list before Hermione. The next line contains n symbols. If all the\nrelatives of a student used to study in the same house, then the i-th\ncharacter in the string coincides with the first letter of the name of this\nhouse. Otherwise, the i-th symbol is equal to \"?\". Output Print all the\npossible houses where Hermione can be sent. The names of the houses should be\nprinted in the alphabetical order, one per line. Examples Input 11 G????SS???H\nOutput Gryffindor Ravenclaw Input 2 H? Output Gryffindor Ravenclaw Slytherin\nNote Consider the second example. There are only two students before Hermione.\nThe first student is sent to Hufflepuff. The second disciple is given the\nchoice between the houses where the least number of students has been sent,\ni.e. Gryffindor, Slytherin and Ravenclaw. If he chooses Gryffindor, Hermione\nis forced to choose between Ravenclaw and Slytherin, if he chooses Ravenclaw,\nHermione will choose between Gryffindor and Slytherin, if he chooses\nSlytherin, Hermione will choose between Gryffindor and Ravenclaw. In the end,\nthe following situation is possible (it depends on the choice of the second\nstudent and Hermione). Hermione will end up 1) in Gryffindor, 2) in Ravenclaw,\n3) in Slytherin. Note that, despite the fact that in neither case Hermione\nwill be given a choice between all the three options, they are all possible\nand they should all be printed in the answer. Hermione will not, under any\ncircumstances, end up in Hufflepuff.\n\n",
+        "cf_contest_id": 65,
+        "cf_index": "D",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "dfs and similar",
+            "hashing"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "11\r\nG????SS???H\r\n",
+                "Gryffindor\r\nRavenclaw\r\n"
+            ],
+            [
+                "2\r\nH?\r\n",
+                "Gryffindor\r\nRavenclaw\r\nSlytherin\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n?\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "1\r\nG\r\n",
+                "Hufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "3\r\nGHS\r\n",
+                "Ravenclaw\r\n"
+            ],
+            [
+                "4\r\n????\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "5\r\nGH??S\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\n"
+            ],
+            [
+                "5\r\nH?S?G\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "7\r\n???????\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "10\r\n??HS??HSGR\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "55\r\n??RS?HGH?S?GS?HRGHRHRR?G?GSGSSHGS?HRSHRSR?HGHGRH?GGGHHH\r\n",
+                "Ravenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "108\r\n??RS?HGH?S?GS?HRGHRHRR?G?GSGSSHGS?HRSHRSR?HGHGRH??????????????RS?HGH?S?GS?HRGHRHRR?G?GSGSSHGS?HRSHRSR?HGHGRH\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "20\r\n?HH?RH???HG??G?RG?H?\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "20\r\nGSGHGRHHGRHRSGRRRHGS\r\n",
+                "Slytherin\r\n"
+            ],
+            [
+                "50\r\nS?HRHSGHRHS?GRRG?GSHHR?RRRHG?S?S?G?GR????GG?HS?HRG\r\n",
+                "Hufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "50\r\n?SR?SRR?RGSH?R?RSHRSRR?GS?H??GH??????G?HG??G??RSRH\r\n",
+                "Gryffindor\r\nHufflepuff\r\nSlytherin\r\n"
+            ],
+            [
+                "50\r\n?GGGS???????????S?????G????H??SRG?????????G???????\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "50\r\n?????????S??????????????S?????????????????GS??????\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "50\r\n?SRSRRSRSHRRH?GHSHGGRSH?G?HRHH??RG?RHSGHRRGGHSGHHR\r\n",
+                "Slytherin\r\n"
+            ],
+            [
+                "50\r\n?SHGHRRGHGSGSR?G?HHHHHSHGGSRSSGHH?RHRRSRSRRGHS?HSS\r\n",
+                "Gryffindor\r\nRavenclaw\r\n"
+            ],
+            [
+                "100\r\nGSHRR?SRRRHGHGRGRGHGGHRHR?SSGGHRSGSGGGRRRRSSG?RRSRSGSGHSSGHRHRHSSRHSRSR??SRHSSHRGG?RRGHSSHSRGHSSRRHG\r\n",
+                "Gryffindor\r\nHufflepuff\r\n"
+            ],
+            [
+                "100\r\nGHHRHGS??H?GR?G?G?HHSR?SG?SR?SSSSS?G?G?RG?SHHHGR??SRHGGSRSHS?HR?HSGGSSHRR?G?RR?G?SRGGHSSSR?SGSGGS???\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\n"
+            ],
+            [
+                "100\r\n??RH?S?HH?RGHR?HS?RHH?GRGRRGSSRSG??S???HSSS?S?SH??RGGSSGRHGGG?SGR??HRGRGH?R?GSGHSRHHRHSS??S?HGHRHHSG\r\n",
+                "Gryffindor\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "100\r\n?RSGG??R?GGGRRGHHH?SGRGRSRHGGSRS??RS?GHSRRSRRGHH?HG?GRGSHS?GSHGSGRGRRHHGHRSRG?SSG?SRHS?S??RHS?HGH?SH\r\n",
+                "Gryffindor\r\nRavenclaw\r\n"
+            ],
+            [
+                "100\r\nRSS??RSGGH?RGHRG?SGSHSH?HRR?R?SSG?GRRSRR???SHRG??R?SG??GSR??HR?HSSRHHRGGR?G?GR??SH?R??SHHRS?HHHG??SH\r\n",
+                "Gryffindor\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "100\r\nR?H?GGGHG?H?RGSS?GS??S??HS?S??GRRH?HSGRHRS?GS??GRS?SGRHSGS?HHGS???HG?GG?HRGRRG?SSGH??R?GR?SR?GH?HHR?\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "100\r\nHGR?RHS?HSS?RRH?R?GS?GG??S????GG???GRR?HSGG?H?SS?RSG?G?H?RGH?RS?GRSHRH?SGH??G??H?G?H?G?GSH?SRRHSGRR?\r\n",
+                "Gryffindor\r\nHufflepuff\r\nSlytherin\r\n"
+            ],
+            [
+                "100\r\n??SRHG?R??????S????RHR?GHGHH??H?SSHRR??R?GR?S?HGGR?H??S??G???H???SSR?R??R??GSHSRS?H??SRS???????SR??R\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "100\r\nHR????G?HHRGH??S?R?HH?GH?GSG?R???GHH?HS?S?S?GR??R?HRHRGG?G?????S?H??HSSS??G??SG???S?S?S?RH?HR?HHHG??\r\n",
+                "Gryffindor\r\nRavenclaw\r\nSlytherin\r\n"
+            ],
+            [
+                "100\r\nSHRSR??SRGGGS???GRSRRSS??S??SH?GSSR?G?RHS?R?SRS??SS?G?G?H?S?GHR?GSGR?GRHR?H??SG???SSRH?GR??SSS?SS??H\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\n"
+            ],
+            [
+                "20\r\n?G?S???R?S??HRHH???R\r\n",
+                "Gryffindor\r\nHufflepuff\r\nRavenclaw\r\nSlytherin\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,329 @@
+[
+    {
+        "name": "Just Add an Edge",
+        "description": "You are given a directed acyclic graph with \n    n\n vertices and \n    m\n\nedges. For all edges \n    a \n    \u2192 b\n in the graph, \n    a < b\n holds. You need\nto find the number of pairs of vertices \n    x\n, \n    y\n, such that \n    x >\n    y\n and after adding the edge \n    x \n    \u2192 y\n to the graph, it has a\nHamiltonian path. Input The first line of input contains one integer \n    t\n\n(\n    1 \n    \u2264 t \n    \u2264 5\n): the number of test cases. The next lines contains\nthe descriptions of the test cases. In the first line you are given two\nintegers \n    n\n and \n    m\n (\n    1 \n    \u2264 n \n    \u2264 150\n     000\n, \n    0 \n    \u2264\n    m \n    \u2264\n    min(150\n     000, \n    n(n-1)/2)\n): the number of vertices\nand edges in the graph. Each of the next \n    m\n lines contains two integers\n\n    a\n, \n    b\n (\n    1 \n    \u2264 a < b \n    \u2264 n\n), specifying an edge \n    a\n    \n    \u2192 b\n in the graph. No edge \n    a \n    \u2192 b\n appears more than once.\nOutput For each test case, print one integer: the number of pairs of vertices\n\n    x\n, \n    y\n, \n    x > y\n, such that after adding the edge \n    x \n    \u2192 y\n\nto the graph, it has a Hamiltonian path. Example Input 3 3 2 1 2 2 3 4 3 1 2 3\n4 1 4 4 4 1 3 1 4 2 3 3 4 Output 3 1 4 Note In the first example, any edge\n\n    x \n    \u2192 y\n such that \n    x > y\n is valid, because there already is a\npath \n    1 \n    \u2192 2 \n    \u2192 3\n. In the second example only the edge \n    4 \n    \u2192\n    1\n is valid. There is a path \n    3 \n    \u2192 4 \n    \u2192 1 \n    \u2192 2\n if this edge is\nadded. In the third example you can add edges \n    2 \n    \u2192 1\n, \n    3 \n    \u2192\n    1\n, \n    4 \n    \u2192 1\n, \n    4 \n    \u2192 2\n.\n\n",
+        "cf_contest_id": 1616,
+        "cf_index": "G",
+        "cf_rating": 3500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "graphs"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n3 2\r\n1 2\r\n2 3\r\n4 3\r\n1 2\r\n3 4\r\n1 4\r\n4 4\r\n1 3\r\n1 4\r\n2 3\r\n3 4\r\n",
+                "3\r\n1\r\n4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "5\r\n2 1\r\n1 2\r\n2 1\r\n1 2\r\n2 1\r\n1 2\r\n2 1\r\n1 2\r\n2 1\r\n1 2\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "5\r\n3 1\r\n2 3\r\n3 1\r\n1 3\r\n3 1\r\n2 3\r\n3 1\r\n1 2\r\n3 1\r\n2 3\r\n",
+                "1\r\n2\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "5\r\n3 2\r\n2 3\r\n1 3\r\n3 2\r\n2 3\r\n1 2\r\n3 2\r\n2 3\r\n1 3\r\n3 2\r\n1 2\r\n2 3\r\n3 2\r\n1 3\r\n2 3\r\n",
+                "3\r\n3\r\n3\r\n3\r\n3\r\n"
+            ],
+            [
+                "5\r\n3 3\r\n2 3\r\n1 3\r\n1 2\r\n3 3\r\n2 3\r\n1 3\r\n1 2\r\n3 3\r\n1 2\r\n2 3\r\n1 3\r\n3 3\r\n1 3\r\n2 3\r\n1 2\r\n3 3\r\n1 2\r\n2 3\r\n1 3\r\n",
+                "3\r\n3\r\n3\r\n3\r\n3\r\n"
+            ],
+            [
+                "5\r\n4 1\r\n1 3\r\n4 1\r\n3 4\r\n4 1\r\n2 4\r\n4 1\r\n1 2\r\n4 1\r\n2 4\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n4 2\r\n1 3\r\n3 4\r\n4 2\r\n2 4\r\n1 2\r\n4 2\r\n2 4\r\n1 3\r\n4 2\r\n3 4\r\n1 4\r\n4 2\r\n1 3\r\n1 4\r\n",
+                "2\r\n2\r\n2\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n4 3\r\n1 3\r\n3 4\r\n2 4\r\n4 3\r\n1 2\r\n2 4\r\n1 3\r\n4 3\r\n3 4\r\n1 4\r\n1 3\r\n4 3\r\n1 3\r\n1 4\r\n1 2\r\n4 3\r\n3 4\r\n1 4\r\n2 3\r\n",
+                "4\r\n4\r\n2\r\n0\r\n3\r\n"
+            ],
+            [
+                "5\r\n4 4\r\n1 3\r\n3 4\r\n2 4\r\n1 2\r\n4 4\r\n2 4\r\n1 3\r\n3 4\r\n1 4\r\n4 4\r\n1 3\r\n1 4\r\n1 2\r\n3 4\r\n4 4\r\n1 4\r\n2 3\r\n3 4\r\n1 3\r\n4 4\r\n1 3\r\n2 3\r\n3 4\r\n2 4\r\n",
+                "6\r\n4\r\n3\r\n4\r\n4\r\n"
+            ],
+            [
+                "5\r\n4 5\r\n1 3\r\n3 4\r\n2 4\r\n1 2\r\n1 4\r\n4 5\r\n1 3\r\n1 4\r\n1 2\r\n3 4\r\n2 3\r\n4 5\r\n3 4\r\n1 3\r\n2 3\r\n2 4\r\n1 4\r\n4 5\r\n2 4\r\n1 4\r\n3 4\r\n2 3\r\n1 3\r\n4 5\r\n1 3\r\n1 2\r\n1 4\r\n3 4\r\n2 4\r\n",
+                "6\r\n6\r\n5\r\n5\r\n6\r\n"
+            ],
+            [
+                "5\r\n4 6\r\n1 3\r\n3 4\r\n2 4\r\n1 2\r\n1 4\r\n2 3\r\n4 6\r\n3 4\r\n1 3\r\n2 3\r\n2 4\r\n1 4\r\n1 2\r\n4 6\r\n1 2\r\n1 4\r\n3 4\r\n1 3\r\n2 4\r\n2 3\r\n4 6\r\n1 2\r\n2 3\r\n1 3\r\n1 4\r\n2 4\r\n3 4\r\n4 6\r\n1 4\r\n1 2\r\n2 3\r\n2 4\r\n1 3\r\n3 4\r\n",
+                "6\r\n6\r\n6\r\n6\r\n6\r\n"
+            ],
+            [
+                "5\r\n8 8\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n5 8\r\n8 8\r\n3 7\r\n5 7\r\n1 7\r\n4 5\r\n1 6\r\n4 7\r\n2 6\r\n2 7\r\n8 8\r\n1 5\r\n3 4\r\n1 7\r\n1 3\r\n5 7\r\n6 7\r\n3 7\r\n4 8\r\n8 8\r\n3 7\r\n4 6\r\n1 5\r\n4 5\r\n6 8\r\n5 8\r\n3 4\r\n6 7\r\n8 8\r\n2 6\r\n3 4\r\n3 8\r\n1 7\r\n4 8\r\n5 7\r\n5 6\r\n1 5\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n8 9\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n5 8\r\n3 7\r\n8 9\r\n5 7\r\n1 7\r\n4 5\r\n1 6\r\n4 7\r\n2 6\r\n2 7\r\n1 5\r\n3 4\r\n8 9\r\n1 7\r\n1 3\r\n5 7\r\n6 7\r\n3 4\r\n3 7\r\n4 8\r\n4 6\r\n1 5\r\n8 9\r\n4 6\r\n4 5\r\n6 8\r\n5 8\r\n3 4\r\n6 7\r\n2 6\r\n3 8\r\n1 7\r\n8 9\r\n4 8\r\n5 7\r\n5 6\r\n1 5\r\n2 5\r\n2 6\r\n1 8\r\n3 4\r\n1 2\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n8 10\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n5 8\r\n3 7\r\n5 7\r\n8 10\r\n1 7\r\n4 5\r\n1 6\r\n4 7\r\n2 6\r\n2 7\r\n1 5\r\n3 4\r\n1 3\r\n5 7\r\n8 10\r\n6 7\r\n3 4\r\n3 7\r\n4 8\r\n4 6\r\n1 5\r\n4 5\r\n6 8\r\n5 8\r\n2 6\r\n8 10\r\n3 4\r\n3 8\r\n1 7\r\n4 8\r\n5 7\r\n5 6\r\n1 5\r\n2 5\r\n2 6\r\n1 8\r\n8 10\r\n5 6\r\n3 4\r\n1 2\r\n3 7\r\n1 7\r\n6 8\r\n2 4\r\n2 3\r\n2 5\r\n3 6\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n5 1\r\n2 4\r\n5 1\r\n2 5\r\n5 1\r\n3 4\r\n5 1\r\n1 3\r\n5 1\r\n4 5\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n5 2\r\n2 4\r\n2 5\r\n5 2\r\n3 4\r\n1 3\r\n5 2\r\n4 5\r\n1 5\r\n5 2\r\n2 3\r\n2 4\r\n5 2\r\n1 2\r\n2 5\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n5 3\r\n2 4\r\n2 5\r\n3 4\r\n5 3\r\n1 3\r\n4 5\r\n1 5\r\n5 3\r\n2 3\r\n2 4\r\n1 2\r\n5 3\r\n2 5\r\n3 4\r\n3 5\r\n5 3\r\n3 4\r\n1 4\r\n3 5\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n5 4\r\n2 4\r\n2 5\r\n3 4\r\n1 3\r\n5 4\r\n4 5\r\n1 5\r\n2 3\r\n2 4\r\n5 4\r\n1 2\r\n2 5\r\n3 4\r\n3 5\r\n5 4\r\n3 4\r\n1 4\r\n3 5\r\n1 2\r\n5 4\r\n2 4\r\n1 5\r\n2 3\r\n1 2\r\n",
+                "2\r\n0\r\n2\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n5 5\r\n2 4\r\n2 5\r\n3 4\r\n1 3\r\n4 5\r\n5 5\r\n1 5\r\n2 3\r\n2 4\r\n1 2\r\n2 5\r\n5 5\r\n3 4\r\n3 5\r\n1 4\r\n1 2\r\n2 4\r\n5 5\r\n1 5\r\n2 3\r\n1 2\r\n3 4\r\n4 5\r\n5 5\r\n1 4\r\n1 2\r\n3 5\r\n4 5\r\n3 4\r\n",
+                "5\r\n0\r\n2\r\n10\r\n1\r\n"
+            ],
+            [
+                "5\r\n5 6\r\n2 4\r\n2 5\r\n3 4\r\n1 3\r\n4 5\r\n1 5\r\n5 6\r\n2 3\r\n2 4\r\n1 2\r\n2 5\r\n3 4\r\n3 5\r\n5 6\r\n3 4\r\n1 4\r\n3 5\r\n1 2\r\n2 4\r\n1 5\r\n5 6\r\n2 3\r\n1 2\r\n3 4\r\n4 5\r\n1 4\r\n3 5\r\n5 6\r\n4 5\r\n3 4\r\n1 4\r\n2 4\r\n1 5\r\n1 2\r\n",
+                "5\r\n5\r\n2\r\n10\r\n3\r\n"
+            ],
+            [
+                "5\r\n5 7\r\n2 4\r\n2 5\r\n3 4\r\n1 3\r\n4 5\r\n1 5\r\n2 3\r\n5 7\r\n2 4\r\n1 2\r\n2 5\r\n3 4\r\n3 5\r\n1 4\r\n1 5\r\n5 7\r\n2 3\r\n1 2\r\n3 4\r\n4 5\r\n1 4\r\n3 5\r\n2 4\r\n5 7\r\n1 5\r\n4 5\r\n1 2\r\n3 5\r\n1 4\r\n3 4\r\n1 3\r\n5 7\r\n2 4\r\n1 5\r\n3 4\r\n4 5\r\n1 3\r\n2 3\r\n3 5\r\n",
+                "6\r\n4\r\n10\r\n3\r\n5\r\n"
+            ],
+            [
+                "5\r\n5 8\r\n2 4\r\n2 5\r\n3 4\r\n1 3\r\n4 5\r\n1 5\r\n2 3\r\n1 2\r\n5 8\r\n2 5\r\n3 4\r\n3 5\r\n1 4\r\n1 2\r\n2 4\r\n1 5\r\n2 3\r\n5 8\r\n1 2\r\n3 4\r\n4 5\r\n1 4\r\n3 5\r\n2 4\r\n1 5\r\n1 3\r\n5 8\r\n2 4\r\n1 5\r\n3 4\r\n4 5\r\n1 3\r\n2 3\r\n3 5\r\n1 2\r\n5 8\r\n1 2\r\n2 4\r\n4 5\r\n1 4\r\n2 3\r\n1 5\r\n1 3\r\n2 5\r\n",
+                "10\r\n7\r\n8\r\n10\r\n5\r\n"
+            ],
+            [
+                "5\r\n5 9\r\n2 4\r\n2 5\r\n3 4\r\n1 3\r\n4 5\r\n1 5\r\n2 3\r\n1 2\r\n3 5\r\n5 9\r\n3 4\r\n1 4\r\n3 5\r\n1 2\r\n2 4\r\n1 5\r\n2 3\r\n4 5\r\n1 3\r\n5 9\r\n2 4\r\n1 5\r\n3 4\r\n4 5\r\n1 3\r\n2 3\r\n3 5\r\n1 2\r\n1 4\r\n5 9\r\n1 4\r\n2 4\r\n1 2\r\n2 3\r\n1 5\r\n1 3\r\n2 5\r\n3 4\r\n3 5\r\n5 9\r\n3 5\r\n1 2\r\n2 4\r\n3 4\r\n1 5\r\n1 3\r\n2 3\r\n4 5\r\n1 4\r\n",
+                "10\r\n10\r\n10\r\n7\r\n10\r\n"
+            ],
+            [
+                "5\r\n5 10\r\n2 4\r\n2 5\r\n3 4\r\n1 3\r\n4 5\r\n1 5\r\n2 3\r\n1 2\r\n3 5\r\n1 4\r\n5 10\r\n3 5\r\n1 2\r\n2 4\r\n1 5\r\n2 3\r\n3 4\r\n4 5\r\n1 4\r\n1 3\r\n2 5\r\n5 10\r\n1 2\r\n2 4\r\n3 4\r\n3 5\r\n1 5\r\n1 3\r\n2 3\r\n4 5\r\n1 4\r\n2 5\r\n5 10\r\n1 4\r\n3 4\r\n1 2\r\n3 5\r\n1 3\r\n1 5\r\n2 4\r\n2 5\r\n4 5\r\n2 3\r\n5 10\r\n2 3\r\n3 5\r\n1 2\r\n1 5\r\n3 4\r\n1 3\r\n2 5\r\n4 5\r\n1 4\r\n2 4\r\n",
+                "10\r\n10\r\n10\r\n10\r\n10\r\n"
+            ],
+            [
+                "5\r\n6 1\r\n1 4\r\n6 1\r\n2 6\r\n6 1\r\n1 6\r\n6 1\r\n2 6\r\n6 1\r\n1 5\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n6 2\r\n1 4\r\n2 6\r\n6 2\r\n1 6\r\n2 6\r\n6 2\r\n1 5\r\n3 5\r\n6 2\r\n1 6\r\n1 2\r\n6 2\r\n1 5\r\n5 6\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n6 3\r\n1 4\r\n2 6\r\n1 6\r\n6 3\r\n2 6\r\n1 5\r\n3 5\r\n6 3\r\n1 6\r\n1 2\r\n1 5\r\n6 3\r\n1 5\r\n5 6\r\n3 4\r\n6 3\r\n3 4\r\n2 3\r\n1 4\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n6 4\r\n1 4\r\n2 6\r\n1 6\r\n1 5\r\n6 4\r\n3 5\r\n1 6\r\n1 2\r\n1 5\r\n6 4\r\n1 5\r\n5 6\r\n3 4\r\n2 3\r\n6 4\r\n1 4\r\n1 3\r\n4 5\r\n1 5\r\n6 4\r\n1 2\r\n2 3\r\n1 3\r\n1 6\r\n",
+                "0\r\n0\r\n2\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n6 5\r\n1 4\r\n2 6\r\n1 6\r\n1 5\r\n3 5\r\n6 5\r\n1 6\r\n1 2\r\n1 5\r\n5 6\r\n3 4\r\n6 5\r\n3 4\r\n2 3\r\n1 4\r\n1 3\r\n4 5\r\n6 5\r\n1 5\r\n1 2\r\n2 3\r\n1 3\r\n1 6\r\n6 5\r\n2 6\r\n1 3\r\n1 6\r\n1 2\r\n2 4\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n6 6\r\n1 4\r\n2 6\r\n1 6\r\n1 5\r\n3 5\r\n1 2\r\n6 6\r\n1 5\r\n5 6\r\n3 4\r\n2 3\r\n1 4\r\n1 3\r\n6 6\r\n4 5\r\n1 5\r\n1 2\r\n2 3\r\n1 3\r\n1 6\r\n6 6\r\n2 6\r\n1 3\r\n1 6\r\n1 2\r\n2 4\r\n4 5\r\n6 6\r\n1 6\r\n4 6\r\n2 3\r\n3 4\r\n4 5\r\n3 5\r\n",
+                "0\r\n2\r\n0\r\n0\r\n2\r\n"
+            ],
+            [
+                "5\r\n6 7\r\n1 4\r\n2 6\r\n1 6\r\n1 5\r\n3 5\r\n1 2\r\n5 6\r\n6 7\r\n3 4\r\n2 3\r\n1 4\r\n1 3\r\n4 5\r\n1 5\r\n1 2\r\n6 7\r\n2 3\r\n1 3\r\n1 6\r\n2 6\r\n1 2\r\n2 4\r\n4 5\r\n6 7\r\n1 6\r\n4 6\r\n2 3\r\n3 4\r\n4 5\r\n3 5\r\n5 6\r\n6 7\r\n2 5\r\n2 4\r\n3 6\r\n4 5\r\n2 3\r\n1 3\r\n1 5\r\n",
+                "0\r\n1\r\n0\r\n3\r\n2\r\n"
+            ],
+            [
+                "5\r\n6 8\r\n1 4\r\n2 6\r\n1 6\r\n1 5\r\n3 5\r\n1 2\r\n5 6\r\n3 4\r\n6 8\r\n3 4\r\n2 3\r\n1 4\r\n1 3\r\n4 5\r\n1 5\r\n1 2\r\n1 6\r\n6 8\r\n2 6\r\n1 3\r\n1 6\r\n1 2\r\n2 4\r\n4 5\r\n4 6\r\n2 3\r\n6 8\r\n3 4\r\n4 6\r\n4 5\r\n3 5\r\n1 6\r\n5 6\r\n2 5\r\n2 4\r\n6 8\r\n3 6\r\n4 5\r\n2 5\r\n2 3\r\n1 3\r\n1 5\r\n1 2\r\n2 6\r\n",
+                "0\r\n3\r\n0\r\n0\r\n2\r\n"
+            ],
+            [
+                "5\r\n6 9\r\n1 4\r\n2 6\r\n1 6\r\n1 5\r\n3 5\r\n1 2\r\n5 6\r\n3 4\r\n2 3\r\n6 9\r\n1 4\r\n1 3\r\n4 5\r\n1 5\r\n1 2\r\n2 3\r\n1 6\r\n2 6\r\n2 4\r\n6 9\r\n4 5\r\n1 6\r\n4 6\r\n2 3\r\n3 4\r\n3 5\r\n5 6\r\n2 5\r\n2 4\r\n6 9\r\n3 6\r\n4 5\r\n2 5\r\n2 3\r\n1 3\r\n1 5\r\n1 2\r\n2 6\r\n1 4\r\n6 9\r\n2 3\r\n4 5\r\n3 5\r\n1 4\r\n2 5\r\n3 4\r\n1 2\r\n1 5\r\n2 4\r\n",
+                "5\r\n0\r\n3\r\n4\r\n1\r\n"
+            ],
+            [
+                "5\r\n6 10\r\n1 4\r\n2 6\r\n1 6\r\n1 5\r\n3 5\r\n1 2\r\n5 6\r\n3 4\r\n2 3\r\n1 3\r\n6 10\r\n4 5\r\n1 5\r\n1 2\r\n2 3\r\n1 3\r\n1 6\r\n2 6\r\n2 4\r\n4 6\r\n3 4\r\n6 10\r\n4 6\r\n4 5\r\n3 5\r\n1 6\r\n5 6\r\n2 5\r\n2 4\r\n3 6\r\n2 3\r\n1 3\r\n6 10\r\n1 3\r\n1 5\r\n1 2\r\n2 6\r\n3 6\r\n1 4\r\n2 3\r\n4 5\r\n3 5\r\n2 5\r\n6 10\r\n3 5\r\n2 3\r\n3 4\r\n1 2\r\n4 5\r\n1 5\r\n2 4\r\n1 4\r\n2 6\r\n1 6\r\n",
+                "5\r\n6\r\n6\r\n4\r\n4\r\n"
+            ],
+            [
+                "5\r\n6 11\r\n1 4\r\n2 6\r\n1 6\r\n1 5\r\n3 5\r\n1 2\r\n5 6\r\n3 4\r\n2 3\r\n1 3\r\n4 5\r\n6 11\r\n1 5\r\n1 2\r\n2 3\r\n1 3\r\n1 6\r\n2 6\r\n2 4\r\n4 5\r\n4 6\r\n3 4\r\n3 5\r\n6 11\r\n1 6\r\n5 6\r\n2 5\r\n2 4\r\n3 6\r\n4 5\r\n2 3\r\n1 3\r\n1 5\r\n1 2\r\n2 6\r\n6 11\r\n2 6\r\n3 6\r\n1 4\r\n2 3\r\n4 5\r\n3 5\r\n2 5\r\n3 4\r\n1 2\r\n1 5\r\n2 4\r\n6 11\r\n2 3\r\n1 4\r\n2 6\r\n3 4\r\n1 6\r\n2 5\r\n4 5\r\n2 4\r\n1 5\r\n1 3\r\n3 5\r\n",
+                "15\r\n7\r\n8\r\n6\r\n4\r\n"
+            ],
+            [
+                "5\r\n6 12\r\n1 4\r\n2 6\r\n1 6\r\n1 5\r\n3 5\r\n1 2\r\n5 6\r\n3 4\r\n2 3\r\n1 3\r\n4 5\r\n2 4\r\n6 12\r\n4 5\r\n1 6\r\n4 6\r\n2 3\r\n3 4\r\n3 5\r\n5 6\r\n2 5\r\n2 4\r\n3 6\r\n1 3\r\n1 5\r\n6 12\r\n1 2\r\n2 6\r\n3 6\r\n1 4\r\n2 3\r\n4 5\r\n3 5\r\n2 5\r\n3 4\r\n1 5\r\n2 4\r\n1 6\r\n6 12\r\n2 5\r\n1 4\r\n4 5\r\n3 4\r\n2 3\r\n2 4\r\n1 5\r\n1 6\r\n1 3\r\n3 5\r\n5 6\r\n3 6\r\n6 12\r\n3 5\r\n3 6\r\n2 5\r\n1 6\r\n5 6\r\n3 4\r\n2 4\r\n4 6\r\n1 5\r\n2 6\r\n1 3\r\n1 4\r\n",
+                "15\r\n8\r\n7\r\n9\r\n6\r\n"
+            ],
+            [
+                "5\r\n6 13\r\n1 4\r\n2 6\r\n1 6\r\n1 5\r\n3 5\r\n1 2\r\n5 6\r\n3 4\r\n2 3\r\n1 3\r\n4 5\r\n2 4\r\n4 6\r\n6 13\r\n2 3\r\n3 4\r\n4 6\r\n4 5\r\n3 5\r\n1 6\r\n5 6\r\n2 5\r\n2 4\r\n3 6\r\n1 3\r\n1 5\r\n1 2\r\n6 13\r\n2 6\r\n3 6\r\n1 4\r\n2 3\r\n4 5\r\n3 5\r\n2 5\r\n3 4\r\n1 2\r\n1 5\r\n2 4\r\n1 6\r\n1 3\r\n6 13\r\n3 5\r\n1 3\r\n5 6\r\n1 6\r\n2 3\r\n1 4\r\n2 4\r\n3 6\r\n2 5\r\n3 4\r\n4 6\r\n1 5\r\n2 6\r\n6 13\r\n2 4\r\n4 6\r\n1 3\r\n1 6\r\n5 6\r\n3 4\r\n3 5\r\n2 6\r\n3 6\r\n2 5\r\n1 4\r\n1 5\r\n1 2\r\n",
+                "15\r\n15\r\n7\r\n6\r\n9\r\n"
+            ],
+            [
+                "5\r\n6 14\r\n1 4\r\n2 6\r\n1 6\r\n1 5\r\n3 5\r\n1 2\r\n5 6\r\n3 4\r\n2 3\r\n1 3\r\n4 5\r\n2 4\r\n4 6\r\n2 5\r\n6 14\r\n2 4\r\n3 6\r\n4 5\r\n2 5\r\n2 3\r\n1 3\r\n1 5\r\n1 2\r\n2 6\r\n1 4\r\n3 5\r\n3 4\r\n1 6\r\n5 6\r\n6 14\r\n1 6\r\n3 5\r\n2 3\r\n1 4\r\n2 4\r\n5 6\r\n1 3\r\n3 6\r\n2 5\r\n3 4\r\n4 6\r\n1 5\r\n2 6\r\n1 2\r\n6 14\r\n2 6\r\n4 5\r\n1 4\r\n4 6\r\n1 6\r\n2 5\r\n5 6\r\n1 5\r\n3 4\r\n2 4\r\n2 3\r\n1 2\r\n1 3\r\n3 6\r\n6 14\r\n1 6\r\n4 6\r\n2 5\r\n1 3\r\n3 5\r\n5 6\r\n3 6\r\n3 4\r\n4 5\r\n1 4\r\n2 4\r\n1 2\r\n2 6\r\n2 3\r\n",
+                "15\r\n15\r\n12\r\n15\r\n15\r\n"
+            ],
+            [
+                "5\r\n6 15\r\n1 4\r\n2 6\r\n1 6\r\n1 5\r\n3 5\r\n1 2\r\n5 6\r\n3 4\r\n2 3\r\n1 3\r\n4 5\r\n2 4\r\n4 6\r\n2 5\r\n3 6\r\n6 15\r\n4 5\r\n2 5\r\n2 3\r\n1 3\r\n1 5\r\n1 2\r\n2 6\r\n3 6\r\n1 4\r\n3 5\r\n3 4\r\n2 4\r\n1 6\r\n5 6\r\n4 6\r\n6 15\r\n5 6\r\n3 4\r\n2 5\r\n3 6\r\n4 6\r\n1 5\r\n1 6\r\n2 6\r\n2 4\r\n1 3\r\n3 5\r\n1 4\r\n1 2\r\n4 5\r\n2 3\r\n6 15\r\n1 6\r\n4 6\r\n3 4\r\n5 6\r\n1 4\r\n1 2\r\n2 6\r\n1 3\r\n2 5\r\n3 6\r\n3 5\r\n4 5\r\n2 4\r\n2 3\r\n1 5\r\n6 15\r\n4 6\r\n1 2\r\n5 6\r\n1 5\r\n3 5\r\n2 4\r\n1 6\r\n1 4\r\n3 4\r\n2 3\r\n4 5\r\n1 3\r\n3 6\r\n2 6\r\n2 5\r\n",
+                "15\r\n15\r\n15\r\n15\r\n15\r\n"
+            ],
+            [
+                "5\r\n7 1\r\n4 7\r\n7 1\r\n3 5\r\n7 1\r\n2 3\r\n7 1\r\n3 6\r\n7 1\r\n5 7\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 2\r\n4 7\r\n3 5\r\n7 2\r\n2 3\r\n3 6\r\n7 2\r\n5 7\r\n4 7\r\n7 2\r\n6 7\r\n1 7\r\n7 2\r\n2 3\r\n1 6\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 3\r\n4 7\r\n3 5\r\n2 3\r\n7 3\r\n3 6\r\n5 7\r\n4 7\r\n7 3\r\n6 7\r\n1 7\r\n2 3\r\n7 3\r\n1 6\r\n4 6\r\n6 7\r\n7 3\r\n4 7\r\n1 2\r\n1 6\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 4\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n7 4\r\n5 7\r\n4 7\r\n6 7\r\n1 7\r\n7 4\r\n2 3\r\n1 6\r\n4 6\r\n6 7\r\n7 4\r\n4 7\r\n1 2\r\n1 6\r\n3 5\r\n7 4\r\n6 7\r\n1 3\r\n2 7\r\n1 2\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 5\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n7 5\r\n4 7\r\n6 7\r\n1 7\r\n2 3\r\n1 6\r\n7 5\r\n4 6\r\n6 7\r\n4 7\r\n1 2\r\n1 6\r\n7 5\r\n3 5\r\n6 7\r\n1 3\r\n2 7\r\n1 2\r\n7 5\r\n4 5\r\n1 4\r\n2 4\r\n3 5\r\n2 5\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 6\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n7 6\r\n1 7\r\n2 3\r\n1 6\r\n4 6\r\n6 7\r\n4 7\r\n7 6\r\n1 2\r\n1 6\r\n3 5\r\n6 7\r\n1 3\r\n2 7\r\n7 6\r\n1 2\r\n4 5\r\n1 4\r\n2 4\r\n3 5\r\n2 5\r\n7 6\r\n6 7\r\n4 7\r\n3 4\r\n2 7\r\n3 7\r\n3 5\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 7\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n7 7\r\n2 3\r\n1 6\r\n4 6\r\n6 7\r\n4 7\r\n1 2\r\n3 5\r\n7 7\r\n6 7\r\n1 3\r\n2 7\r\n1 2\r\n4 5\r\n1 4\r\n2 4\r\n7 7\r\n3 5\r\n2 5\r\n6 7\r\n4 7\r\n3 4\r\n2 7\r\n3 7\r\n7 7\r\n3 5\r\n1 3\r\n3 4\r\n2 3\r\n3 7\r\n2 5\r\n4 6\r\n",
+                "0\r\n2\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 8\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n1 6\r\n7 8\r\n4 6\r\n6 7\r\n4 7\r\n1 2\r\n1 6\r\n3 5\r\n1 3\r\n2 7\r\n7 8\r\n1 2\r\n4 5\r\n1 4\r\n2 4\r\n3 5\r\n2 5\r\n6 7\r\n4 7\r\n7 8\r\n6 7\r\n3 4\r\n2 7\r\n3 7\r\n3 5\r\n1 3\r\n2 3\r\n2 5\r\n7 8\r\n4 6\r\n6 7\r\n4 5\r\n2 5\r\n3 5\r\n2 4\r\n2 3\r\n2 7\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 9\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n1 6\r\n4 6\r\n7 9\r\n6 7\r\n4 7\r\n1 2\r\n1 6\r\n3 5\r\n1 3\r\n2 7\r\n4 5\r\n1 4\r\n7 9\r\n2 4\r\n3 5\r\n2 5\r\n6 7\r\n4 7\r\n3 4\r\n2 7\r\n3 7\r\n1 3\r\n7 9\r\n3 4\r\n2 3\r\n3 7\r\n2 5\r\n4 6\r\n6 7\r\n4 5\r\n3 5\r\n2 4\r\n7 9\r\n4 6\r\n2 3\r\n2 7\r\n3 7\r\n1 3\r\n1 7\r\n2 6\r\n6 7\r\n3 5\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 10\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n1 6\r\n4 6\r\n1 2\r\n7 10\r\n1 6\r\n3 5\r\n6 7\r\n1 3\r\n2 7\r\n1 2\r\n4 5\r\n1 4\r\n2 4\r\n2 5\r\n7 10\r\n6 7\r\n4 7\r\n3 4\r\n2 7\r\n3 7\r\n3 5\r\n1 3\r\n2 3\r\n2 5\r\n4 6\r\n7 10\r\n6 7\r\n4 5\r\n2 5\r\n3 5\r\n2 4\r\n4 6\r\n2 3\r\n2 7\r\n3 7\r\n1 3\r\n7 10\r\n4 6\r\n1 7\r\n2 6\r\n1 3\r\n6 7\r\n3 5\r\n4 5\r\n1 6\r\n4 7\r\n2 3\r\n",
+                "4\r\n0\r\n2\r\n2\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 11\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n1 6\r\n4 6\r\n1 2\r\n1 3\r\n7 11\r\n2 7\r\n1 2\r\n4 5\r\n1 4\r\n2 4\r\n3 5\r\n2 5\r\n6 7\r\n4 7\r\n3 4\r\n3 7\r\n7 11\r\n3 5\r\n1 3\r\n3 4\r\n2 3\r\n3 7\r\n2 5\r\n4 6\r\n6 7\r\n4 5\r\n2 4\r\n2 7\r\n7 11\r\n3 7\r\n1 3\r\n4 6\r\n1 7\r\n2 6\r\n6 7\r\n3 5\r\n4 5\r\n1 6\r\n4 7\r\n2 3\r\n7 11\r\n4 5\r\n2 4\r\n2 7\r\n2 3\r\n2 5\r\n4 6\r\n1 5\r\n2 6\r\n6 7\r\n3 6\r\n4 7\r\n",
+                "4\r\n0\r\n4\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 12\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n1 6\r\n4 6\r\n1 2\r\n1 3\r\n2 7\r\n7 12\r\n1 2\r\n4 5\r\n1 4\r\n2 4\r\n3 5\r\n2 5\r\n6 7\r\n4 7\r\n3 4\r\n2 7\r\n3 7\r\n1 3\r\n7 12\r\n3 4\r\n2 3\r\n3 7\r\n2 5\r\n4 6\r\n6 7\r\n4 5\r\n3 5\r\n2 4\r\n2 7\r\n1 3\r\n1 7\r\n7 12\r\n2 6\r\n1 3\r\n1 7\r\n6 7\r\n3 5\r\n4 5\r\n1 6\r\n4 7\r\n2 3\r\n2 4\r\n2 7\r\n2 5\r\n7 12\r\n2 3\r\n2 4\r\n4 6\r\n2 7\r\n1 5\r\n2 6\r\n6 7\r\n3 6\r\n4 7\r\n2 5\r\n3 5\r\n1 6\r\n",
+                "4\r\n0\r\n4\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n7 13\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n1 6\r\n4 6\r\n1 2\r\n1 3\r\n2 7\r\n4 5\r\n7 13\r\n1 4\r\n2 4\r\n3 5\r\n2 5\r\n6 7\r\n4 7\r\n3 4\r\n2 7\r\n3 7\r\n1 3\r\n2 3\r\n4 6\r\n4 5\r\n7 13\r\n2 5\r\n3 5\r\n2 4\r\n4 6\r\n2 3\r\n2 7\r\n3 7\r\n1 3\r\n1 7\r\n2 6\r\n6 7\r\n4 5\r\n1 6\r\n7 13\r\n4 7\r\n2 3\r\n4 5\r\n2 4\r\n2 7\r\n2 5\r\n4 6\r\n1 5\r\n2 6\r\n6 7\r\n3 6\r\n3 5\r\n1 6\r\n7 13\r\n2 5\r\n4 7\r\n4 6\r\n6 7\r\n1 3\r\n1 6\r\n1 5\r\n1 7\r\n3 4\r\n2 4\r\n2 7\r\n2 3\r\n1 4\r\n",
+                "6\r\n4\r\n2\r\n0\r\n4\r\n"
+            ],
+            [
+                "5\r\n7 14\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n1 6\r\n4 6\r\n1 2\r\n1 3\r\n2 7\r\n4 5\r\n1 4\r\n7 14\r\n2 4\r\n3 5\r\n2 5\r\n6 7\r\n4 7\r\n3 4\r\n2 7\r\n3 7\r\n1 3\r\n2 3\r\n4 6\r\n4 5\r\n1 7\r\n2 6\r\n7 14\r\n1 3\r\n1 7\r\n6 7\r\n3 5\r\n4 5\r\n1 6\r\n4 7\r\n2 3\r\n2 4\r\n2 7\r\n2 5\r\n4 6\r\n1 5\r\n2 6\r\n7 14\r\n6 7\r\n3 6\r\n4 7\r\n2 5\r\n3 5\r\n1 6\r\n4 6\r\n1 3\r\n1 5\r\n1 7\r\n3 4\r\n2 4\r\n2 7\r\n2 3\r\n7 14\r\n1 3\r\n1 4\r\n2 4\r\n2 7\r\n1 6\r\n6 7\r\n3 5\r\n5 6\r\n5 7\r\n1 5\r\n2 5\r\n4 6\r\n3 6\r\n3 4\r\n",
+                "9\r\n4\r\n2\r\n4\r\n8\r\n"
+            ],
+            [
+                "5\r\n7 15\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n1 6\r\n4 6\r\n1 2\r\n1 3\r\n2 7\r\n4 5\r\n1 4\r\n2 4\r\n7 15\r\n3 5\r\n2 5\r\n6 7\r\n4 7\r\n3 4\r\n2 7\r\n3 7\r\n1 3\r\n2 3\r\n4 6\r\n4 5\r\n2 4\r\n1 7\r\n2 6\r\n1 6\r\n7 15\r\n4 7\r\n2 3\r\n4 5\r\n2 4\r\n2 7\r\n2 5\r\n4 6\r\n1 5\r\n2 6\r\n6 7\r\n3 6\r\n3 5\r\n1 6\r\n1 3\r\n1 7\r\n7 15\r\n3 4\r\n1 5\r\n2 4\r\n2 7\r\n2 3\r\n1 3\r\n1 4\r\n1 6\r\n6 7\r\n3 5\r\n5 6\r\n5 7\r\n2 5\r\n4 6\r\n3 6\r\n7 15\r\n1 3\r\n3 5\r\n1 6\r\n3 4\r\n2 6\r\n6 7\r\n5 7\r\n1 5\r\n2 3\r\n1 4\r\n4 5\r\n3 6\r\n2 7\r\n4 6\r\n5 6\r\n",
+                "12\r\n4\r\n4\r\n8\r\n10\r\n"
+            ],
+            [
+                "5\r\n7 16\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n1 6\r\n4 6\r\n1 2\r\n1 3\r\n2 7\r\n4 5\r\n1 4\r\n2 4\r\n2 5\r\n7 16\r\n6 7\r\n4 7\r\n3 4\r\n2 7\r\n3 7\r\n3 5\r\n1 3\r\n2 3\r\n2 5\r\n4 6\r\n4 5\r\n2 4\r\n1 7\r\n2 6\r\n1 6\r\n1 5\r\n7 16\r\n2 6\r\n6 7\r\n3 6\r\n4 7\r\n2 5\r\n3 5\r\n1 6\r\n4 6\r\n1 3\r\n1 5\r\n1 7\r\n3 4\r\n2 4\r\n2 7\r\n2 3\r\n1 4\r\n7 16\r\n2 4\r\n2 7\r\n1 6\r\n6 7\r\n1 4\r\n3 5\r\n5 6\r\n5 7\r\n1 5\r\n2 5\r\n4 6\r\n3 6\r\n1 3\r\n3 4\r\n2 6\r\n2 3\r\n7 16\r\n1 6\r\n1 5\r\n3 5\r\n1 4\r\n4 5\r\n3 6\r\n2 7\r\n2 6\r\n3 4\r\n4 6\r\n5 6\r\n4 7\r\n1 7\r\n3 7\r\n2 5\r\n1 2\r\n",
+                "12\r\n4\r\n4\r\n8\r\n4\r\n"
+            ],
+            [
+                "5\r\n7 17\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n1 6\r\n4 6\r\n1 2\r\n1 3\r\n2 7\r\n4 5\r\n1 4\r\n2 4\r\n2 5\r\n3 4\r\n7 17\r\n2 7\r\n3 7\r\n3 5\r\n1 3\r\n3 4\r\n2 3\r\n2 5\r\n4 6\r\n6 7\r\n4 5\r\n2 4\r\n1 7\r\n2 6\r\n1 6\r\n4 7\r\n1 5\r\n3 6\r\n7 17\r\n4 7\r\n2 5\r\n3 5\r\n1 6\r\n4 6\r\n6 7\r\n1 3\r\n1 5\r\n1 7\r\n3 4\r\n2 4\r\n2 7\r\n2 3\r\n1 4\r\n5 6\r\n5 7\r\n3 6\r\n7 17\r\n1 3\r\n3 5\r\n1 6\r\n3 4\r\n2 6\r\n6 7\r\n5 7\r\n1 5\r\n2 3\r\n1 4\r\n4 5\r\n3 6\r\n2 7\r\n4 6\r\n5 6\r\n4 7\r\n1 7\r\n7 17\r\n3 6\r\n3 7\r\n1 4\r\n2 7\r\n1 7\r\n4 5\r\n2 5\r\n1 2\r\n2 4\r\n1 3\r\n5 7\r\n2 3\r\n5 6\r\n3 5\r\n4 7\r\n3 4\r\n1 6\r\n",
+                "15\r\n4\r\n8\r\n10\r\n10\r\n"
+            ],
+            [
+                "5\r\n7 18\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n1 6\r\n4 6\r\n1 2\r\n1 3\r\n2 7\r\n4 5\r\n1 4\r\n2 4\r\n2 5\r\n3 4\r\n3 7\r\n7 18\r\n3 5\r\n1 3\r\n3 4\r\n2 3\r\n3 7\r\n2 5\r\n4 6\r\n6 7\r\n4 5\r\n2 4\r\n2 7\r\n1 7\r\n2 6\r\n1 6\r\n4 7\r\n1 5\r\n3 6\r\n1 4\r\n7 18\r\n2 4\r\n2 7\r\n1 6\r\n6 7\r\n1 4\r\n3 5\r\n5 6\r\n5 7\r\n1 5\r\n2 5\r\n4 6\r\n3 6\r\n1 3\r\n3 4\r\n2 6\r\n2 3\r\n4 5\r\n4 7\r\n7 18\r\n3 6\r\n4 5\r\n4 7\r\n2 7\r\n1 4\r\n1 7\r\n3 7\r\n2 5\r\n1 2\r\n2 4\r\n1 3\r\n5 7\r\n2 3\r\n5 6\r\n3 5\r\n3 4\r\n1 6\r\n2 6\r\n7 18\r\n2 5\r\n5 7\r\n5 6\r\n1 6\r\n1 7\r\n3 7\r\n4 6\r\n3 4\r\n3 5\r\n1 2\r\n1 3\r\n6 7\r\n3 6\r\n2 6\r\n2 3\r\n4 5\r\n1 4\r\n2 7\r\n",
+                "15\r\n4\r\n11\r\n10\r\n21\r\n"
+            ],
+            [
+                "5\r\n7 19\r\n4 7\r\n3 5\r\n2 3\r\n3 6\r\n5 7\r\n6 7\r\n1 7\r\n1 6\r\n4 6\r\n1 2\r\n1 3\r\n2 7\r\n4 5\r\n1 4\r\n2 4\r\n2 5\r\n3 4\r\n3 7\r\n2 6\r\n7 19\r\n1 3\r\n1 7\r\n6 7\r\n3 5\r\n4 5\r\n1 6\r\n4 7\r\n2 3\r\n2 4\r\n2 7\r\n2 5\r\n4 6\r\n1 5\r\n2 6\r\n3 6\r\n3 4\r\n1 4\r\n5 6\r\n5 7\r\n7 19\r\n3 5\r\n1 5\r\n2 4\r\n2 5\r\n5 7\r\n4 6\r\n1 4\r\n3 6\r\n1 3\r\n1 6\r\n3 4\r\n2 6\r\n6 7\r\n2 3\r\n4 5\r\n2 7\r\n5 6\r\n4 7\r\n1 7\r\n7 19\r\n3 6\r\n3 7\r\n1 4\r\n2 7\r\n1 7\r\n4 5\r\n2 5\r\n1 2\r\n2 4\r\n1 3\r\n5 7\r\n2 3\r\n5 6\r\n3 5\r\n4 7\r\n3 4\r\n1 6\r\n2 6\r\n4 6\r\n7 19\r\n5 7\r\n1 7\r\n3 4\r\n3 5\r\n4 6\r\n1 6\r\n1 2\r\n1 3\r\n3 7\r\n6 7\r\n3 6\r\n2 6\r\n2 3\r\n4 5\r\n1 4\r\n2 7\r\n5 6\r\n4 7\r\n2 5\r\n",
+                "15\r\n11\r\n11\r\n11\r\n21\r\n"
+            ],
+            [
+                "5\r\n8 1\r\n1 7\r\n8 1\r\n3 4\r\n8 1\r\n4 6\r\n8 1\r\n1 6\r\n8 1\r\n2 8\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n8 2\r\n1 7\r\n3 4\r\n8 2\r\n4 6\r\n1 6\r\n8 2\r\n2 8\r\n1 7\r\n8 2\r\n1 5\r\n3 8\r\n8 2\r\n5 8\r\n3 7\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n8 3\r\n1 7\r\n3 4\r\n4 6\r\n8 3\r\n1 6\r\n2 8\r\n1 7\r\n8 3\r\n1 5\r\n3 8\r\n5 8\r\n8 3\r\n3 7\r\n5 7\r\n1 7\r\n8 3\r\n4 5\r\n1 6\r\n4 7\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n8 4\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n8 4\r\n2 8\r\n1 7\r\n1 5\r\n3 8\r\n8 4\r\n5 8\r\n3 7\r\n5 7\r\n1 7\r\n8 4\r\n4 5\r\n1 6\r\n4 7\r\n2 6\r\n8 4\r\n4 5\r\n2 6\r\n2 7\r\n1 5\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n8 5\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n8 5\r\n1 7\r\n1 5\r\n3 8\r\n5 8\r\n3 7\r\n8 5\r\n5 7\r\n1 7\r\n4 5\r\n1 6\r\n4 7\r\n8 5\r\n2 6\r\n4 5\r\n2 7\r\n1 5\r\n3 4\r\n8 5\r\n1 7\r\n1 3\r\n5 7\r\n6 7\r\n3 4\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n8 6\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n8 6\r\n3 8\r\n5 8\r\n3 7\r\n5 7\r\n1 7\r\n4 5\r\n8 6\r\n1 6\r\n4 7\r\n2 6\r\n4 5\r\n2 7\r\n1 5\r\n8 6\r\n3 4\r\n1 7\r\n1 3\r\n5 7\r\n6 7\r\n3 7\r\n8 6\r\n4 8\r\n3 7\r\n4 6\r\n1 5\r\n4 5\r\n6 8\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n8 7\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n8 7\r\n5 8\r\n3 7\r\n5 7\r\n1 7\r\n4 5\r\n1 6\r\n4 7\r\n8 7\r\n2 6\r\n4 5\r\n2 7\r\n1 5\r\n3 4\r\n1 7\r\n1 3\r\n8 7\r\n5 7\r\n6 7\r\n3 4\r\n3 7\r\n4 8\r\n4 6\r\n1 5\r\n8 7\r\n4 6\r\n4 5\r\n6 8\r\n5 8\r\n3 4\r\n6 7\r\n2 6\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n8 11\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n5 8\r\n3 7\r\n5 7\r\n4 5\r\n8 11\r\n1 6\r\n4 7\r\n2 6\r\n4 5\r\n2 7\r\n1 5\r\n3 4\r\n1 7\r\n1 3\r\n5 7\r\n6 7\r\n8 11\r\n3 4\r\n3 7\r\n4 8\r\n4 6\r\n1 5\r\n4 5\r\n6 8\r\n5 8\r\n6 7\r\n2 6\r\n3 8\r\n8 11\r\n1 7\r\n4 8\r\n5 7\r\n5 6\r\n1 5\r\n2 5\r\n2 6\r\n1 8\r\n3 4\r\n1 2\r\n3 7\r\n8 11\r\n1 7\r\n1 2\r\n6 8\r\n2 4\r\n2 3\r\n2 5\r\n3 6\r\n3 5\r\n5 7\r\n4 5\r\n1 6\r\n",
+                "0\r\n0\r\n0\r\n0\r\n4\r\n"
+            ],
+            [
+                "5\r\n8 12\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n5 8\r\n3 7\r\n5 7\r\n4 5\r\n4 7\r\n8 12\r\n2 6\r\n4 5\r\n2 7\r\n1 5\r\n3 4\r\n1 7\r\n1 3\r\n5 7\r\n6 7\r\n3 7\r\n4 8\r\n4 6\r\n8 12\r\n1 5\r\n4 6\r\n4 5\r\n6 8\r\n5 8\r\n3 4\r\n6 7\r\n2 6\r\n3 8\r\n1 7\r\n4 8\r\n5 7\r\n8 12\r\n5 6\r\n1 5\r\n2 5\r\n2 6\r\n1 8\r\n3 4\r\n1 2\r\n3 7\r\n1 7\r\n6 8\r\n2 4\r\n2 3\r\n8 12\r\n2 5\r\n3 6\r\n3 5\r\n1 2\r\n5 7\r\n4 5\r\n1 7\r\n1 6\r\n3 7\r\n1 8\r\n2 7\r\n5 8\r\n",
+                "0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n8 13\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n5 8\r\n3 7\r\n5 7\r\n4 5\r\n4 7\r\n2 6\r\n8 13\r\n4 5\r\n2 6\r\n2 7\r\n1 5\r\n3 4\r\n1 7\r\n1 3\r\n5 7\r\n6 7\r\n3 7\r\n4 8\r\n4 6\r\n6 8\r\n8 13\r\n5 8\r\n3 4\r\n4 6\r\n6 8\r\n6 7\r\n2 6\r\n3 8\r\n1 7\r\n4 8\r\n5 7\r\n5 6\r\n1 5\r\n2 5\r\n8 13\r\n5 6\r\n2 5\r\n2 6\r\n1 8\r\n3 4\r\n1 2\r\n3 7\r\n1 7\r\n6 8\r\n2 4\r\n2 3\r\n3 6\r\n3 5\r\n8 13\r\n1 2\r\n5 7\r\n2 5\r\n4 5\r\n1 7\r\n1 6\r\n3 7\r\n1 8\r\n2 7\r\n5 8\r\n2 6\r\n2 4\r\n6 8\r\n",
+                "0\r\n2\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5\r\n8 14\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n5 8\r\n3 7\r\n5 7\r\n4 5\r\n4 7\r\n2 6\r\n2 7\r\n8 14\r\n1 5\r\n3 4\r\n1 7\r\n1 3\r\n5 7\r\n6 7\r\n3 7\r\n4 8\r\n4 6\r\n4 5\r\n6 8\r\n5 8\r\n2 6\r\n3 8\r\n8 14\r\n1 7\r\n4 8\r\n5 7\r\n5 6\r\n1 5\r\n2 5\r\n2 6\r\n1 8\r\n3 4\r\n1 2\r\n3 7\r\n6 8\r\n2 4\r\n2 3\r\n8 14\r\n2 5\r\n3 6\r\n3 5\r\n1 2\r\n5 7\r\n4 5\r\n1 7\r\n1 6\r\n3 7\r\n1 8\r\n2 7\r\n5 8\r\n2 6\r\n2 4\r\n8 14\r\n6 8\r\n4 6\r\n2 4\r\n3 4\r\n1 4\r\n2 5\r\n2 7\r\n6 7\r\n5 8\r\n2 8\r\n3 5\r\n3 8\r\n3 7\r\n1 3\r\n",
+                "0\r\n4\r\n0\r\n0\r\n4\r\n"
+            ],
+            [
+                "5\r\n8 15\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n5 8\r\n3 7\r\n5 7\r\n4 5\r\n4 7\r\n2 6\r\n2 7\r\n1 3\r\n8 15\r\n5 7\r\n6 7\r\n3 4\r\n3 7\r\n4 8\r\n4 6\r\n1 5\r\n4 5\r\n6 8\r\n5 8\r\n2 6\r\n3 8\r\n1 7\r\n5 6\r\n2 5\r\n8 15\r\n5 6\r\n2 5\r\n2 6\r\n1 8\r\n3 4\r\n1 2\r\n3 7\r\n1 7\r\n6 8\r\n2 4\r\n2 3\r\n3 6\r\n3 5\r\n5 7\r\n4 5\r\n8 15\r\n1 7\r\n1 6\r\n3 7\r\n1 8\r\n2 7\r\n5 8\r\n2 6\r\n4 5\r\n2 4\r\n6 8\r\n4 6\r\n3 4\r\n1 4\r\n2 5\r\n6 7\r\n8 15\r\n5 8\r\n2 8\r\n3 5\r\n3 8\r\n3 7\r\n1 3\r\n7 8\r\n5 6\r\n3 6\r\n4 5\r\n6 8\r\n3 4\r\n2 3\r\n1 5\r\n4 7\r\n",
+                "0\r\n0\r\n9\r\n0\r\n4\r\n"
+            ],
+            [
+                "5\r\n8 16\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n5 8\r\n3 7\r\n5 7\r\n4 5\r\n4 7\r\n2 6\r\n2 7\r\n1 3\r\n6 7\r\n8 16\r\n3 4\r\n3 7\r\n4 8\r\n4 6\r\n1 5\r\n4 5\r\n6 8\r\n5 8\r\n6 7\r\n2 6\r\n3 8\r\n1 7\r\n5 7\r\n5 6\r\n2 5\r\n1 8\r\n8 16\r\n5 6\r\n3 4\r\n1 2\r\n3 7\r\n1 7\r\n6 8\r\n2 4\r\n2 3\r\n2 5\r\n3 6\r\n3 5\r\n5 7\r\n4 5\r\n1 6\r\n1 8\r\n2 7\r\n8 16\r\n5 8\r\n1 7\r\n2 6\r\n1 8\r\n4 5\r\n2 4\r\n6 8\r\n4 6\r\n3 4\r\n1 4\r\n2 5\r\n2 7\r\n6 7\r\n2 8\r\n3 5\r\n3 8\r\n8 16\r\n2 8\r\n3 7\r\n3 5\r\n1 3\r\n7 8\r\n5 6\r\n3 6\r\n4 5\r\n6 8\r\n3 4\r\n2 3\r\n3 8\r\n1 5\r\n4 7\r\n1 7\r\n2 7\r\n",
+                "2\r\n0\r\n10\r\n0\r\n6\r\n"
+            ],
+            [
+                "5\r\n8 17\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n5 8\r\n3 7\r\n5 7\r\n4 5\r\n4 7\r\n2 6\r\n2 7\r\n1 3\r\n6 7\r\n4 8\r\n8 17\r\n3 7\r\n4 6\r\n1 5\r\n4 5\r\n6 8\r\n5 8\r\n3 4\r\n6 7\r\n2 6\r\n3 8\r\n1 7\r\n4 8\r\n5 7\r\n5 6\r\n2 5\r\n1 8\r\n1 2\r\n8 17\r\n3 7\r\n1 7\r\n1 2\r\n6 8\r\n2 4\r\n2 3\r\n2 5\r\n3 6\r\n3 5\r\n5 7\r\n4 5\r\n1 6\r\n1 8\r\n2 7\r\n5 8\r\n2 6\r\n4 6\r\n8 17\r\n6 8\r\n2 4\r\n3 4\r\n1 4\r\n2 5\r\n2 7\r\n6 7\r\n5 8\r\n2 8\r\n3 5\r\n3 8\r\n3 7\r\n1 3\r\n7 8\r\n5 6\r\n3 6\r\n4 5\r\n8 17\r\n6 8\r\n3 4\r\n2 3\r\n3 8\r\n1 5\r\n3 7\r\n3 6\r\n4 7\r\n1 7\r\n2 7\r\n1 8\r\n5 8\r\n7 8\r\n2 6\r\n4 8\r\n5 6\r\n1 2\r\n",
+                "2\r\n4\r\n6\r\n11\r\n7\r\n"
+            ],
+            [
+                "5\r\n8 18\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n5 8\r\n3 7\r\n5 7\r\n4 5\r\n4 7\r\n2 6\r\n2 7\r\n1 3\r\n6 7\r\n4 8\r\n6 8\r\n8 18\r\n5 8\r\n3 4\r\n4 6\r\n6 8\r\n6 7\r\n2 6\r\n3 8\r\n1 7\r\n4 8\r\n5 7\r\n5 6\r\n1 5\r\n2 5\r\n1 8\r\n1 2\r\n3 7\r\n2 4\r\n2 3\r\n8 18\r\n2 5\r\n3 6\r\n3 5\r\n1 2\r\n5 7\r\n4 5\r\n1 7\r\n1 6\r\n3 7\r\n1 8\r\n2 7\r\n5 8\r\n2 6\r\n2 4\r\n6 8\r\n4 6\r\n3 4\r\n1 4\r\n8 18\r\n2 5\r\n2 7\r\n6 7\r\n5 8\r\n2 8\r\n3 5\r\n3 8\r\n3 7\r\n1 3\r\n7 8\r\n5 6\r\n3 6\r\n4 5\r\n6 8\r\n3 4\r\n2 3\r\n1 5\r\n4 7\r\n8 18\r\n1 7\r\n2 7\r\n1 8\r\n2 3\r\n5 8\r\n3 4\r\n7 8\r\n2 6\r\n4 8\r\n3 8\r\n5 6\r\n1 2\r\n3 6\r\n3 5\r\n5 7\r\n4 7\r\n2 8\r\n4 6\r\n",
+                "4\r\n8\r\n4\r\n9\r\n6\r\n"
+            ],
+            [
+                "5\r\n8 19\r\n1 7\r\n3 4\r\n4 6\r\n1 6\r\n2 8\r\n1 5\r\n3 8\r\n5 8\r\n3 7\r\n5 7\r\n4 5\r\n4 7\r\n2 6\r\n2 7\r\n1 3\r\n6 7\r\n4 8\r\n6 8\r\n5 6\r\n8 19\r\n1 5\r\n2 5\r\n5 6\r\n2 6\r\n1 8\r\n3 4\r\n1 2\r\n3 7\r\n1 7\r\n6 8\r\n2 4\r\n2 3\r\n3 6\r\n3 5\r\n5 7\r\n4 5\r\n1 6\r\n2 7\r\n5 8\r\n8 19\r\n1 7\r\n2 6\r\n1 8\r\n4 5\r\n2 4\r\n6 8\r\n4 6\r\n3 4\r\n1 4\r\n2 5\r\n2 7\r\n6 7\r\n5 8\r\n2 8\r\n3 5\r\n3 8\r\n3 7\r\n1 3\r\n7 8\r\n8 19\r\n5 6\r\n3 5\r\n3 6\r\n4 5\r\n6 8\r\n3 4\r\n2 3\r\n3 8\r\n1 5\r\n3 7\r\n4 7\r\n1 7\r\n2 7\r\n1 8\r\n5 8\r\n7 8\r\n2 6\r\n4 8\r\n1 2\r\n8 19\r\n1 2\r\n3 6\r\n2 6\r\n3 5\r\n5 7\r\n4 7\r\n2 8\r\n4 6\r\n4 5\r\n1 6\r\n1 7\r\n2 7\r\n5 8\r\n4 8\r\n3 4\r\n1 5\r\n2 4\r\n6 8\r\n7 8\r\n",
+                "4\r\n10\r\n6\r\n14\r\n6\r\n"
+            ],
+            [
+                "5\r\n2 0\r\n2 0\r\n2 0\r\n2 0\r\n2 0\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "5\r\n4 2\r\n1 2\r\n2 3\r\n4 2\r\n1 2\r\n2 3\r\n4 2\r\n2 3\r\n3 4\r\n4 2\r\n1 2\r\n3 4\r\n4 2\r\n1 2\r\n2 3\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "5\r\n8 12\r\n1 2\r\n1 4\r\n1 8\r\n2 3\r\n2 4\r\n2 8\r\n3 4\r\n3 7\r\n5 6\r\n6 7\r\n6 8\r\n7 8\r\n8 10\r\n1 6\r\n1 8\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n5 7\r\n5 8\r\n6 7\r\n7 8\r\n8 11\r\n1 2\r\n1 5\r\n2 4\r\n2 5\r\n2 6\r\n3 4\r\n4 5\r\n5 6\r\n5 8\r\n6 7\r\n7 8\r\n8 11\r\n1 2\r\n1 4\r\n1 7\r\n2 3\r\n3 4\r\n4 6\r\n4 7\r\n4 8\r\n5 6\r\n6 7\r\n7 8\r\n8 11\r\n1 2\r\n1 8\r\n2 3\r\n3 7\r\n4 5\r\n4 8\r\n5 6\r\n5 7\r\n6 7\r\n6 8\r\n7 8\r\n",
+                "1\r\n6\r\n6\r\n5\r\n4\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,53 @@
+[
+    {
+        "name": "Budget Distribution",
+        "description": "Distributing budgeted money with limited resources and many constraints is a\nhard problem. A budget plan consists of \n    t\n topics; \n    i\n-th topic\nconsists of \n    n_i\n items. For each topic, the optimal relative money\ndistribution is known. The optimal relative distribution for the topic \n    i\n\nis a list of real numbers \n    p_i,j\n, where\n\n    \u2211\n    _j=1^n_ip_i,j = 1\n. Let's denote the amount of\nmoney assigned to \n    j\n-th item of the topic \n    i\n as \n    c_i, j\n; the\ntotal amount of money for the topic is \n    C_i =\n    \n    \u2211\n    _j=1^n_ic_i,j\n. A non-optimality of the plan for the\ntopic \n    i\n is defined as\n\n    \u2211\n    _j=1^n_i\n    |\n    c_i, j/C_i - p_i,\n    j\n    |\n. Informally, the non-optimality is the total difference between\nthe optimal and the actual ratios of money assigned to all the items in the\ntopic. The total plan non-optimality is the sum of non-optimalities of all\n\n    t\n topics. Your task is to minimize the total plan non-optimality.\nHowever, the exact amount of money available is not known yet. \n    j\n-th item\nof \n    i\n-th topic already has \n    \u0109_i,j\n dollars assigned to it\nand they cannot be taken back. Also, there are \n    q\n possible values of the\nextra unassigned amounts of money available \n    x_k\n. For each of them, you\nneed to calculate the minimal possible total non-optimality among all ways to\ndistribute this extra money. You don't need to assign an integer amount of\nmoney to an item, any real number is possible, but all the extra money must be\ndistributed among all the items in addition to \n    \u0109_i,j\n already\nassigned. Formally, for each value of extra money \n    x_k\n you'll need to\nfind its distribution \n    d_i,j\n such that \n    d_i, j\n    \u2265 0\n and\n\n    \u2211\n    _i=1^t\n    \u2211\n    _j=1^n_i d_i,j = x_k\n,\ngiving the resulting budget assignments \n    c_i,j = \n    \u0109_i,j +\n    d_i,j\n that minimize the total plan non-optimality. Input The first line\ncontains two integers \n    t\n (\n    1 \n    \u2264 t \n    \u2264 5 \n    \u00b7 10^4\n) and\n\n    q\n (\n    1 \n    \u2264 q \n    \u2264 3 \n    \u00b7 10^5\n) \u2014 the number of topics in the\nbudget and the number of possible amounts of extra money. The next \n    t\n\nlines contain descriptions of topics. Each line starts with an integer\n\n    n_i\n (\n    2 \n    \u2264 n_i \n    \u2264 5\n) \u2014 the number of items in \n    i\n-th\ntopic; it is followed by \n    n_i\n integers \n    \u0109_i, j\n (\n    0 \n    \u2264\n    \u0109_i, j\n    \u2264 10^5\n; for any \n    i\n, at least one of \n    \u0109_i,j > 0\n) \u2014 the amount of money already assigned to \n    j\n-th item in\n\n    i\n-th topic; they are followed by \n    n_i\n integers \n    p'_i,j\n (\n    1\n    \n    \u2264 p'_i,j\n    \u2264 1000\n) \u2014 they determine the values of \n    p_i,j\n as\n\n    p_i, j = p'_i, j\n    / \n    \u2211\n    _j=1^n_ip'_i, j\n\nwith \n    \u2211\n    _j=1^n_ip_i,j = 1\n. The next line contains\n\n    q\n integers \n    x_k\n (\n    0 \n    \u2264 x_k \n    \u2264 10^12\n) \u2014 \n    k\n-th\npossible amount of extra money. Output Output \n    q\n real numbers \u2014 the\nminimal possible non-optimality for the corresponding amount of extra money\n\n    x_k\n. An absolute or a relative error of the answer must not exceed\n\n    10^-6\n. Examples Input 1 5 3 1 7 10 700 400 100 0 2 10 50 102 Output\n1.0555555555555556 0.8666666666666667 0.5476190476190478 0.12745098039215708\n0.0 Input 2 5 3 10 70 100 700 400 100 3 10 30 100 700 400 100 2 10 50 70 110\nOutput 2.2967032967032974 2.216776340655188 1.8690167362600323\n1.7301587301587305 1.5271317829457367\n\n",
+        "cf_contest_id": 1666,
+        "cf_index": "B",
+        "cf_rating": 3300,
+        "difficulty": 0,
+        "cf_tags": [],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "1 5\r\n3 1 7 10 700 400 100\r\n0 2 10 50 102\r\n",
+                "1.055555556\r\n0.866666667\r\n0.547619048\r\n0.127450980\r\n0.000000000\r\n"
+            ],
+            [
+                "2 5\r\n3 10 70 100 700 400 100\r\n3 10 30 100 700 400 100\r\n2 10 50 70 110\r\n",
+                "2.296703297\r\n2.216776341\r\n1.869016736\r\n1.730158730\r\n1.527131783\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 10\r\n2 33942 868 371 78\r\n2 76858 41608 333 100\r\n2 6654 20321 170 203\r\n2 2620 63358 632 53\r\n2 93065 61561 594 212\r\n2 57474 542 813 559\r\n2 40721 17760 290 976\r\n2 46703 85826 255 366\r\n2 46854 97247 875 814\r\n2 86728 83989 602 306\r\n201032820943 922351084935 360042197511 441040805811 822857993607 196200869890 485673364020 35433185196 352286771852 579498152261\r\n",
+                "0.000000000\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n"
+            ],
+            [
+                "10 10\r\n2 96134 53888 702 380\r\n2 13325 18733 529 846\r\n2 88540 54362 938 703\r\n2 8808 55334 591 19\r\n2 44013 54721 319 891\r\n2 83136 55364 214 73\r\n2 20391 6867 838 8\r\n2 26623 38206 497 763\r\n2 17952 8445 377 586\r\n2 44642 45084 728 45\r\n79 70 52 33 63 42 12 63 43 19\r\n",
+                "4.470926408\r\n4.471387543\r\n4.472310755\r\n4.473286621\r\n4.471746421\r\n4.472824194\r\n4.474366843\r\n4.471746421\r\n4.472772832\r\n4.474006578\r\n"
+            ],
+            [
+                "10 10\r\n2 87040 85595 968 661\r\n2 30804 2371 595 360\r\n2 67653 67814 918 546\r\n2 41321 35253 782 456\r\n2 87902 48810 187 121\r\n2 42170 84373 530 949\r\n2 50987 54778 671 987\r\n2 14728 42286 11 621\r\n2 58533 75318 331 777\r\n2 16391 57471 903 6\r\n59864 120 8708 29592 32313 33728 70753 22703 10343 23788\r\n",
+                "2.603437800\r\n3.802300656\r\n3.422887535\r\n2.960168133\r\n2.920269830\r\n2.900461223\r\n2.498443288\r\n3.073271492\r\n3.367622792\r\n3.054187598\r\n"
+            ],
+            [
+                "10 10\r\n2 55721 79321 580 343\r\n2 95806 49722 805 940\r\n2 78827 17939 667 94\r\n2 6559 95072 787 101\r\n2 94219 75884 552 449\r\n2 30793 62126 870 399\r\n2 85442 23970 408 302\r\n2 1278 2598 862 62\r\n2 31318 32132 323 412\r\n2 58132 71731 139 922\r\n3906840 989184 7399265 8741239 2517664 9283266 5589494 6287477 4787549 4589132\r\n",
+                "0.000000000\r\n0.225625565\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n0.000000000\r\n"
+            ],
+            [
+                "10 10\r\n4 65110 95449 82698 71008 894 648 27 228\r\n5 60011 10464 57083 68265 68445 36 90 754 229 247\r\n3 21233 63487 79092 912 892 495\r\n4 4035 24700 13745 33736 266 456 164 626\r\n4 27592 83673 71525 32997 202 865 529 751\r\n4 26109 14552 17478 72487 443 788 339 241\r\n5 37454 13011 7612 9873 80264 117 650 120 349 16\r\n4 15493 23971 85714 84630 426 816 386 268\r\n3 40586 39967 74963 156 245 222\r\n2 26353 67754 640 358\r\n100 32 15 46 96 13 74 78 37 68\r\n",
+                "6.689345075\r\n6.691032085\r\n6.691454308\r\n6.690684514\r\n6.689444227\r\n6.691503994\r\n6.689989753\r\n6.689890543\r\n6.690907938\r\n6.690138587\r\n"
+            ],
+            [
+                "10 10\r\n3 9723 45483 41663 180 412 187\r\n4 97649 15044 76931 1479 971 143 884 205\r\n4 98370 39080 92343 85645 864 528 311 139\r\n3 87812 41408 3618 520 439 162\r\n4 57153 91809 20722 52851 904 299 271 644\r\n2 94086 60318 194 512\r\n2 46688 66547 603 750\r\n4 44879 94379 75684 3996 260 291 680 444\r\n4 94896 69948 61990 90625 790 759 670 815\r\n2 44596 1774 571 797\r\n21765 56205 79435 91515 2080 40948 60197 31773 92686 88094\r\n",
+                "4.062859719\r\n3.617201124\r\n3.408142996\r\n3.310524627\r\n4.594719658\r\n3.775273289\r\n3.579016362\r\n3.895206128\r\n3.301373559\r\n3.337516658\r\n"
+            ],
+            [
+                "10 10\r\n4 15609 65721 77099 1645 403 541 288 785\r\n4 44486 61984 94869 40006 68 826 483 561\r\n3 28190 3593 87641 8 570 561\r\n2 55124 97214 146 846\r\n5 78455 77453 36526 32533 89431 704 182 808 163 167\r\n3 85119 41444 46422 289 157 887\r\n5 78190 8611 92893 60931 69904 332 580 194 151 778\r\n4 68482 41077 79758 39706 725 602 356 568\r\n3 94745 52500 83643 50 393 563\r\n5 54037 88356 22200 59800 84363 923 431 256 196 984\r\n9314710 4879435 2064248 7161927 6921157 6542935 8444693 1748782 3060351 2980741\r\n",
+                "0.001359522\r\n0.209376470\r\n1.437850995\r\n0.023374384\r\n0.030492231\r\n0.048515910\r\n0.006165005\r\n1.772841665\r\n0.717942035\r\n0.760415339\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,88 @@
+[
+    {
+        "name": "Google Code Jam",
+        "description": "Many of you must be familiar with the Google Code Jam round rules. Let us\nremind you of some key moments that are crucial to solving this problem.\nDuring the round, the participants are suggested to solve several problems,\neach divided into two subproblems: an easy one with small limits (Small\ninput), and a hard one with large limits (Large input). You can submit a\nsolution for Large input only after you've solved the Small input for this\nproblem. There are no other restrictions on the order of solving inputs. In\nparticular, the participant can first solve the Small input, then switch to\nanother problem, and then return to the Large input. Solving each input gives\nthe participant some number of points (usually different for each problem).\nThis takes into account only complete solutions that work correctly on all\ntests of the input. The participant gets the test result of a Small input\nright after he submits it, but the test result of a Large input are out only\nafter the round's over. In the final results table the participants are sorted\nby non-increasing of received points. If the points are equal, the\nparticipants are sorted by ascending of time penalty. By the Google Code Jam\nrules the time penalty is the time when the last correct solution was\nsubmitted. Vasya decided to check out a new tactics on another round. As soon\nas the round begins, the boy quickly read all the problems and accurately\nevaluated the time it takes to solve them. Specifically, for each one of the n\nproblems Vasya knows five values: Solving the Small input of the i-th problem\ngives to the participant scoreSmalli points, and solving the Large input gives\nscoreLargei more points. That is, the maximum number of points you can get for\nthe i-th problem equals scoreSmalli + scoreLargei. Writing the solution for\nthe Small input of the i-th problem takes exactly timeSmalli minutes for\nVasya. Improving this code and turning it into the solution of the Large input\ntakes another timeLargei minutes. Vasya's had much practice, so he solves all\nSmall inputs from the first attempt. But it's not so easy with the Large\ninput: there is the probFaili probability that the solution to the Large input\nwill turn out to be wrong at the end of the round. Please keep in mind that\nthese solutions do not affect the participants' points and the time penalty.A\nround lasts for t minutes. The time for reading problems and submitting\nsolutions can be considered to equal zero. Vasya is allowed to submit a\nsolution exactly at the moment when the round ends. Vasya wants to choose a\nset of inputs and the order of their solution so as to make the expectation of\nthe total received points maximum possible. If there are multiple ways to do\nthis, he needs to minimize the expectation of the time penalty. Help Vasya to\ncope with this problem. Input The first line contains two integers n and t (1\n\u2264 n \u2264 1000, 1 \u2264 t \u2264 1560). Then follow n lines, each containing 5 numbers:\nscoreSmalli, scoreLargei, timeSmalli, timeLargei, probFaili (1 \u2264 scoreSmalli,\nscoreLargei \u2264 10^9, 1 \u2264 timeSmalli, timeLargei \u2264 1560, 0 \u2264 probFaili \u2264 1).\nprobFaili are real numbers, given with at most 6 digits after the decimal\npoint. All other numbers in the input are integers. Output Print two real\nnumbers \u2014 the maximum expectation of the total points and the corresponding\nminimum possible time penalty expectation. The answer will be considered\ncorrect if the absolute or relative error doesn't exceed 10^-9. Examples Input\n3 40 10 20 15 4 0.5 4 100 21 1 0.99 1 4 1 1 0.25 Output 24.0 18.875 Input 1 1\n100000000 200000000 1 1 0 Output 100000000 1 Note In the first sample one of\nthe optimal orders of solving problems is: The Small input of the third\nproblem. The Small input of the first problem. The Large input of the third\nproblem. The Large input of the first problem.Note that if you solve the Small\ninput of the second problem instead of two inputs of the third one, then total\nscore expectation will be the same but the time penalty expectation will be\nworse (38).\n\n",
+        "cf_contest_id": 277,
+        "cf_index": "D",
+        "cf_rating": 2800,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "probabilities"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 40\r\n10 20 15 4 0.5\r\n4 100 21 1 0.99\r\n1 4 1 1 0.25\r\n",
+                "24 18.875\r\n"
+            ],
+            [
+                "1 1\r\n100000000 200000000 1 1 0\r\n",
+                "100000000 1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 40\r\n10 20 15 4 0.5\r\n5 100 21 1 0.99\r\n1 4 1 1 0.25\r\n",
+                "25 38\r\n"
+            ],
+            [
+                "3 40\r\n10 20 15 4 0.5\r\n4 1000 21 1 0.99\r\n1 4 1 1 0.25\r\n",
+                "28 37.7625\r\n"
+            ],
+            [
+                "5 100\r\n222357969 33256752 739 273 0.11\r\n415865593 976150462 1409 949 0.080207\r\n99424096 48077311 1072 1306 0.50103\r\n135213513 593028355 1493 1134 0.557167\r\n427637033 278464036 919 125 0\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "5 100\r\n3598341 10466053 3 34 0.085985\r\n11661599 16337200 17 1 0.8\r\n5545156 5295311 32 1 0.7271\r\n17752212 3764727 23 2 0.5388\r\n1647286 7421294 13 64 0.18\r\n",
+                "49229299.525195 89.7870820512\r\n"
+            ],
+            [
+                "10 10\r\n1 1 2 1 0.211702\r\n1 1 3 3 0.156743\r\n1 1 3 1 0.346281\r\n1 1 6 1 0.084251\r\n1 2 2 3 0.735256\r\n2 1 7 1 0.576956\r\n1 1 3 1 0.602158\r\n1 1 1 3 0.164370\r\n1 1 2 6 0.066189\r\n1 1 1 1 0.034618\r\n",
+                "6.75368 9.780969300164\r\n"
+            ],
+            [
+                "10 10\r\n4 5 1 1 0.55\r\n4 1 3 1 0.55\r\n2 2 2 4 0.55\r\n3 2 1 1 0.55\r\n1 1 2 2 0.55\r\n2 2 1 2 0.55\r\n1 1 3 6 0.55\r\n1 1 3 1 0.55\r\n1 2 2 1 0.55\r\n4 1 3 4 0.55\r\n",
+                "19.25 9.45\r\n"
+            ],
+            [
+                "10 10\r\n1 2 2 1 0.55\r\n1 1 1 1 0.55\r\n1 1 4 2 0.55\r\n1 1 2 3 0.55\r\n1 3 1 1 0.55\r\n1 1 1 3 0.55\r\n1 1 2 1 0.55\r\n1 1 1 1 0.55\r\n1 3 3 1 0.55\r\n1 1 1 2 0.55\r\n",
+                "8.7 8.981125\r\n"
+            ],
+            [
+                "20 20\r\n3 2 1 1 0.55\r\n1 1 1 3 0.55\r\n1 1 1 1 0.55\r\n1 2 2 3 0.55\r\n1 2 1 1 0.55\r\n3 1 1 1 0.55\r\n1 1 2 3 0.55\r\n1 4 2 2 0.55\r\n2 1 1 1 0.55\r\n1 1 1 1 0.55\r\n1 1 4 1 0.55\r\n1 1 1 1 0.55\r\n1 1 1 2 0.55\r\n3 3 1 1 0.55\r\n1 1 1 5 0.55\r\n1 2 5 1 0.55\r\n1 1 1 2 0.55\r\n1 1 1 2 0.55\r\n1 1 1 2 0.55\r\n2 1 1 2 0.55\r\n",
+                "27.15 18.5975\r\n"
+            ],
+            [
+                "10 30\r\n1 1 1 1 0.55\r\n1 1 2 1 0.55\r\n2 1 1 1 0.55\r\n1 2 1 1 0.55\r\n3 1 3 2 0.55\r\n1 1 2 2 0.55\r\n2 2 1 1 0.55\r\n2 2 1 3 0.55\r\n1 1 1 3 0.55\r\n2 3 1 1 0.55\r\n",
+                "22.75 26.8179923575370117\r\n"
+            ],
+            [
+                "10 30\r\n1 1 1 2 0.42\r\n1 1 5 1 0.42\r\n1 2 1 4 0.42\r\n1 1 4 1 0.42\r\n1 1 3 5 0.42\r\n1 1 1 1 0.42\r\n3 1 1 3 0.42\r\n1 1 1 4 0.42\r\n1 2 1 5 0.42\r\n3 1 5 1 0.42\r\n",
+                "17.06 27.0761259168\r\n"
+            ],
+            [
+                "2 10\r\n10 20 1 7 0.5\r\n10 40 1 8 0.75\r\n",
+                "30 4\r\n"
+            ],
+            [
+                "2 10\r\n10 20 1 8 0.5\r\n10 40 1 7 0.75\r\n",
+                "30 3.75\r\n"
+            ],
+            [
+                "3 11\r\n10 20 1 7 0.5\r\n10 40 1 8 0.75\r\n10 50 1 9 0.8\r\n",
+                "40 5\r\n"
+            ],
+            [
+                "20 20\r\n1 1 1 1 0.55\r\n1 1 1 4 0.55\r\n1 1 3 1 0.55\r\n1 1 1 2 0.55\r\n1 1 1 1 0.55\r\n1 1 2 1 0.55\r\n1 1 1 1 0.55\r\n1 1 3 1 0.55\r\n1 1 1 2 0.55\r\n1 1 1 1 0.55\r\n1 2 3 1 0.55\r\n1 1 2 1 0.55\r\n1 1 1 2 0.55\r\n2 1 1 1 0.55\r\n1 1 1 1 0.55\r\n1 1 1 1 0.55\r\n2 1 1 1 0.55\r\n1 1 5 1 0.55\r\n1 1 1 2 0.55\r\n1 1 3 1 0.55\r\n",
+                "18.35 18.981125\r\n"
+            ],
+            [
+                "1 2\r\n1000000000 1000000000 1 1 0\r\n",
+                "2000000000 2\r\n"
+            ]
+        ]
+    }
+]

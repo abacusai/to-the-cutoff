@@ -1,0 +1,113 @@
+[
+    {
+        "name": "T-shirts Distribution",
+        "description": "The organizers of a programming contest have decided to present t-shirts to\nparticipants. There are six different t-shirts sizes in this problem: S, M, L,\nXL, XXL, XXXL (sizes are listed in increasing order). The t-shirts are already\nprepared. For each size from S to XXXL you are given the number of t-shirts of\nthis size. During the registration, the organizers asked each of the n\nparticipants about the t-shirt size he wants. If a participant hesitated\nbetween two sizes, he could specify two neighboring sizes \u2014 this means that\nany of these two sizes suits him. Write a program that will determine whether\nit is possible to present a t-shirt to each participant of the competition, or\nnot. Of course, each participant should get a t-shirt of proper size: the size\nhe wanted, if he specified one size; any of the two neibouring sizes, if he\nspecified two sizes. If it is possible, the program should find any valid\ndistribution of the t-shirts. Input The first line of the input contains six\nnon-negative integers \u2014 the number of t-shirts of each size. The numbers are\ngiven for the sizes S, M, L, XL, XXL, XXXL, respectively. The total number of\nt-shirts doesn't exceed 100 000. The second line contains positive integer n\n(1 \u2264 n \u2264 100 000) \u2014 the number of participants. The following n lines contain\nthe sizes specified by the participants, one line per participant. The i-th\nline contains information provided by the i-th participant: single size or two\nsizes separated by comma (without any spaces). If there are two sizes, the\nsizes are written in increasing order. It is guaranteed that two sizes\nseparated by comma are neighboring. Output If it is not possible to present a\nt-shirt to each participant, print \u00abNO\u00bb (without quotes). Otherwise, print n +\n1 lines. In the first line print \u00abYES\u00bb (without quotes). In the following n\nlines print the t-shirt sizes the orginizers should give to participants, one\nper line. The order of the participants should be the same as in the input. If\nthere are multiple solutions, print any of them. Examples Input 0 1 0 1 1 0 3\nXL S,M XL,XXL Output YES XL M XXL Input 1 1 2 0 1 1 5 S M S,M XXL,XXXL XL,XXL\nOutput NO\n\n",
+        "cf_contest_id": 727,
+        "cf_index": "D",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "flows",
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "0 1 0 1 1 0\r\n3\r\nXL\r\nS,M\r\nXL,XXL\r\n",
+                "YES\r\nXL\r\nM\r\nXXL\r\n"
+            ],
+            [
+                "1 1 2 0 1 1\r\n5\r\nS\r\nM\r\nS,M\r\nXXL,XXXL\r\nXL,XXL\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 2 4 4 1 1\r\n10\r\nXL\r\nXL\r\nS,M\r\nL\r\nM,L\r\nL\r\nS,M\r\nM\r\nXL,XXL\r\nXL\r\n",
+                "YES\r\nXL\r\nXL\r\nS\r\nL\r\nL\r\nL\r\nM\r\nM\r\nXL\r\nXL\r\n"
+            ],
+            [
+                "1 3 0 2 2 2\r\n10\r\nL,XL\r\nS,M\r\nXXL,XXXL\r\nS,M\r\nS,M\r\nXXXL\r\nXL,XXL\r\nXXL\r\nS,M\r\nXL\r\n",
+                "YES\r\nXL\r\nS\r\nXXXL\r\nM\r\nM\r\nXXXL\r\nXXL\r\nXXL\r\nM\r\nXL\r\n"
+            ],
+            [
+                "5 1 5 2 4 3\r\n20\r\nL,XL\r\nS,M\r\nL,XL\r\nXXL,XXXL\r\nS,M\r\nS,M\r\nXL,XXL\r\nL,XL\r\nS,M\r\nL,XL\r\nS,M\r\nM,L\r\nXXL,XXXL\r\nXXL,XXXL\r\nL\r\nXXL,XXXL\r\nXL,XXL\r\nM,L\r\nS,M\r\nXXL\r\n",
+                "YES\r\nL\r\nS\r\nL\r\nXXL\r\nS\r\nS\r\nXXL\r\nXL\r\nS\r\nXL\r\nS\r\nL\r\nXXXL\r\nXXXL\r\nL\r\nXXXL\r\nXXL\r\nL\r\nM\r\nXXL\r\n"
+            ],
+            [
+                "4 8 8 1 6 3\r\n30\r\nS,M\r\nM,L\r\nM\r\nXXL,XXXL\r\nXXL\r\nM,L\r\nS,M\r\nS,M\r\nXXL,XXXL\r\nL\r\nL\r\nS,M\r\nM\r\nL,XL\r\nS,M\r\nM,L\r\nL\r\nXXL,XXXL\r\nS,M\r\nXXL\r\nM,L\r\nM,L\r\nM,L\r\nXXL\r\nXXL,XXXL\r\nM,L\r\nS,M\r\nXXL\r\nM,L\r\nXXL,XXXL\r\n",
+                "YES\r\nS\r\nM\r\nM\r\nXXL\r\nXXL\r\nM\r\nS\r\nS\r\nXXL\r\nL\r\nL\r\nS\r\nM\r\nXL\r\nM\r\nM\r\nL\r\nXXXL\r\nM\r\nXXL\r\nL\r\nL\r\nL\r\nXXL\r\nXXXL\r\nL\r\nM\r\nXXL\r\nL\r\nXXXL\r\n"
+            ],
+            [
+                "1 0 0 0 0 0\r\n1\r\nS\r\n",
+                "YES\r\nS\r\n"
+            ],
+            [
+                "0 1 0 0 0 0\r\n1\r\nS\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 0 0 0 0 0\r\n1\r\nM\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 1 0 0 0 0\r\n1\r\nM\r\n",
+                "YES\r\nM\r\n"
+            ],
+            [
+                "0 0 0 0 0 1\r\n1\r\nL\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 0 1 0 0 0\r\n1\r\nL\r\n",
+                "YES\r\nL\r\n"
+            ],
+            [
+                "0 0 0 1 0 0\r\n1\r\nXL\r\n",
+                "YES\r\nXL\r\n"
+            ],
+            [
+                "1 0 0 0 0 0\r\n1\r\nXL\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 0 0 0 1 0\r\n1\r\nXXL\r\n",
+                "YES\r\nXXL\r\n"
+            ],
+            [
+                "0 1 0 0 0 0\r\n1\r\nXXL\r\n",
+                "NO\r\n"
+            ],
+            [
+                "0 0 0 0 0 1\r\n1\r\nXXXL\r\n",
+                "YES\r\nXXXL\r\n"
+            ],
+            [
+                "0 0 1 0 0 0\r\n1\r\nXXXL\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 2 3 6 1 2\r\n10\r\nXL\r\nXL\r\nM\r\nL,XL\r\nL,XL\r\nL,XL\r\nS\r\nS,M\r\nXL\r\nL,XL\r\n",
+                "YES\r\nXL\r\nXL\r\nM\r\nL\r\nL\r\nL\r\nS\r\nM\r\nXL\r\nXL\r\n"
+            ],
+            [
+                "9 8 1 7 2 3\r\n20\r\nL,XL\r\nM,L\r\nS\r\nXL,XXL\r\nM,L\r\nXL,XXL\r\nS\r\nL,XL\r\nS,M\r\nS,M\r\nXXL,XXXL\r\nS,M\r\nS,M\r\nS,M\r\nXL,XXL\r\nL\r\nXXL,XXXL\r\nS,M\r\nXL,XXL\r\nM,L\r\n",
+                "YES\r\nXL\r\nM\r\nS\r\nXL\r\nM\r\nXL\r\nS\r\nXL\r\nS\r\nS\r\nXXL\r\nS\r\nS\r\nS\r\nXL\r\nL\r\nXXL\r\nS\r\nXL\r\nM\r\n"
+            ],
+            [
+                "9 12 3 8 4 14\r\n30\r\nS,M\r\nS,M\r\nXL\r\nXXXL\r\nXXL,XXXL\r\nXXL,XXXL\r\nXXXL\r\nS,M\r\nXXL,XXXL\r\nM,L\r\nXXL\r\nXXL,XXXL\r\nXL,XXL\r\nL,XL\r\nXXL,XXXL\r\nM\r\nS,M\r\nXXXL\r\nXXL,XXXL\r\nXXL,XXXL\r\nM\r\nM,L\r\nS,M\r\nS,M\r\nXXL,XXXL\r\nXL,XXL\r\nXXL,XXXL\r\nXXL,XXXL\r\nS,M\r\nM,L\r\n",
+                "YES\r\nS\r\nS\r\nXL\r\nXXXL\r\nXXL\r\nXXL\r\nXXXL\r\nS\r\nXXL\r\nM\r\nXXL\r\nXXXL\r\nXL\r\nL\r\nXXXL\r\nM\r\nS\r\nXXXL\r\nXXXL\r\nXXXL\r\nM\r\nM\r\nS\r\nS\r\nXXXL\r\nXL\r\nXXXL\r\nXXXL\r\nS\r\nM\r\n"
+            ],
+            [
+                "1 3 0 0 4 2\r\n10\r\nXXL\r\nS,M\r\nXXXL\r\nS,M\r\nS\r\nXXL,XXXL\r\nXXL\r\nXXL,XXXL\r\nM\r\nXXL,XXXL\r\n",
+                "YES\r\nXXL\r\nM\r\nXXXL\r\nM\r\nS\r\nXXL\r\nXXL\r\nXXL\r\nM\r\nXXXL\r\n"
+            ],
+            [
+                "5 6 0 0 6 3\r\n20\r\nXXL,XXXL\r\nS,M\r\nS,M\r\nXXL,XXXL\r\nS\r\nS\r\nXXL,XXXL\r\nM\r\nS,M\r\nXXL,XXXL\r\nS\r\nM\r\nXXXL\r\nXXL,XXXL\r\nS,M\r\nXXXL\r\nXXL,XXXL\r\nS,M\r\nS\r\nXXL,XXXL\r\n",
+                "YES\r\nXXL\r\nS\r\nM\r\nXXL\r\nS\r\nS\r\nXXL\r\nM\r\nM\r\nXXL\r\nS\r\nM\r\nXXXL\r\nXXL\r\nM\r\nXXXL\r\nXXL\r\nM\r\nS\r\nXXXL\r\n"
+            ]
+        ]
+    }
+]

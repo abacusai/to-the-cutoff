@@ -1,0 +1,83 @@
+[
+    {
+        "name": "Servers",
+        "description": "There are n servers in a laboratory, each of them can perform tasks. Each\nserver has a unique id \u2014 integer from 1 to n. It is known that during the day\nq tasks will come, the i-th of them is characterized with three integers: ti \u2014\nthe moment in seconds in which the task will come, ki \u2014 the number of servers\nneeded to perform it, and di \u2014 the time needed to perform this task in\nseconds. All ti are distinct. To perform the i-th task you need ki servers\nwhich are unoccupied in the second ti. After the servers begin to perform the\ntask, each of them will be busy over the next di seconds. Thus, they will be\nbusy in seconds ti, ti + 1, ..., ti + di - 1. For performing the task, ki\nservers with the smallest ids will be chosen from all the unoccupied servers.\nIf in the second ti there are not enough unoccupied servers, the task is\nignored. Write the program that determines which tasks will be performed and\nwhich will be ignored. Input The first line contains two positive integers n\nand q (1 \u2264 n \u2264 100, 1 \u2264 q \u2264 10^5) \u2014 the number of servers and the number of\ntasks. Next q lines contains three integers each, the i-th line contains\nintegers ti, ki and di (1 \u2264 ti \u2264 10^6, 1 \u2264 ki \u2264 n, 1 \u2264 di \u2264 1000) \u2014 the moment\nin seconds in which the i-th task will come, the number of servers needed to\nperform it, and the time needed to perform this task in seconds. The tasks are\ngiven in a chronological order and they will come in distinct seconds. Output\nPrint q lines. If the i-th task will be performed by the servers, print in the\ni-th line the sum of servers' ids on which this task will be performed.\nOtherwise, print -1. Examples Input 4 3 1 3 2 2 2 1 3 4 3 Output 6 -1 10 Input\n3 2 3 2 3 5 1 2 Output 3 3 Input 8 6 1 3 20 4 2 1 6 5 5 10 1 1 15 3 6 21 8 8\nOutput 6 9 30 -1 15 36 Note In the first example in the second 1 the first\ntask will come, it will be performed on the servers with ids 1, 2 and 3 (the\nsum of the ids equals 6) during two seconds. In the second 2 the second task\nwill come, it will be ignored, because only the server 4 will be unoccupied at\nthat second. In the second 3 the third task will come. By this time, servers\nwith the ids 1, 2 and 3 will be unoccupied again, so the third task will be\ndone on all the servers with the ids 1, 2, 3 and 4 (the sum of the ids is 10).\nIn the second example in the second 3 the first task will come, it will be\nperformed on the servers with ids 1 and 2 (the sum of the ids is 3) during\nthree seconds. In the second 5 the second task will come, it will be performed\non the server 3, because the first two servers will be busy performing the\nfirst task.\n\n",
+        "cf_contest_id": 747,
+        "cf_index": "C",
+        "cf_rating": 1300,
+        "difficulty": 0,
+        "cf_tags": [
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 3\r\n1 3 2\r\n2 2 1\r\n3 4 3\r\n",
+                "6\r\n-1\r\n10\r\n"
+            ],
+            [
+                "3 2\r\n3 2 3\r\n5 1 2\r\n",
+                "3\r\n3\r\n"
+            ],
+            [
+                "8 6\r\n1 3 20\r\n4 2 1\r\n6 5 5\r\n10 1 1\r\n15 3 6\r\n21 8 8\r\n",
+                "6\r\n9\r\n30\r\n-1\r\n15\r\n36\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 1\r\n6 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 10\r\n4 1 1\r\n9 1 1\r\n10 1 1\r\n12 1 1\r\n13 1 1\r\n15 1 1\r\n16 1 1\r\n18 1 1\r\n19 1 1\r\n20 1 1\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "4 10\r\n1 1 1\r\n3 1 2\r\n4 1 2\r\n6 1 2\r\n8 1 2\r\n13 1 2\r\n16 1 1\r\n17 1 2\r\n19 3 1\r\n20 1 1\r\n",
+                "1\r\n1\r\n2\r\n1\r\n1\r\n1\r\n1\r\n1\r\n6\r\n1\r\n"
+            ],
+            [
+                "100 1\r\n1000000 100 1000\r\n",
+                "5050\r\n"
+            ],
+            [
+                "5 3\r\n1 4 10\r\n2 2 5\r\n3 1 6\r\n",
+                "10\r\n-1\r\n5\r\n"
+            ],
+            [
+                "4 5\r\n1 2 3\r\n2 1 3\r\n3 1 2\r\n4 3 3\r\n5 4 1\r\n",
+                "3\r\n3\r\n4\r\n-1\r\n10\r\n"
+            ],
+            [
+                "5 3\r\n1 4 4\r\n4 2 2\r\n5 5 2\r\n",
+                "10\r\n-1\r\n15\r\n"
+            ],
+            [
+                "10 4\r\n1 5 20\r\n2 5 200\r\n100 6 20\r\n101 1 100\r\n",
+                "15\r\n40\r\n-1\r\n1\r\n"
+            ],
+            [
+                "8 6\r\n1 3 20\r\n4 2 1\r\n6 6 5\r\n9 1 1\r\n15 3 6\r\n21 8 8\r\n",
+                "6\r\n9\r\n-1\r\n4\r\n15\r\n36\r\n"
+            ],
+            [
+                "5 4\r\n1 1 4\r\n2 4 4\r\n5 2 20\r\n11 5 2\r\n",
+                "1\r\n14\r\n-1\r\n15\r\n"
+            ],
+            [
+                "8 4\r\n1 3 2\r\n2 3 100\r\n10 6 20\r\n11 5 20\r\n",
+                "6\r\n15\r\n-1\r\n21\r\n"
+            ],
+            [
+                "5 3\r\n1 3 4\r\n4 3 4\r\n6 4 1\r\n",
+                "6\r\n-1\r\n10\r\n"
+            ],
+            [
+                "4 3\r\n1 3 10\r\n2 2 15\r\n12 4 1\r\n",
+                "6\r\n-1\r\n10\r\n"
+            ]
+        ]
+    }
+]

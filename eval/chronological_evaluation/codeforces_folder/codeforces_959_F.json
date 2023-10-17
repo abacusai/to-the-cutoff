@@ -1,0 +1,158 @@
+[
+    {
+        "name": "Mahmoud and Ehab and yet another xor task",
+        "description": "Ehab has an array a of n integers. He likes the bitwise-xor operation and he\nlikes to bother Mahmoud so he came up with a problem. He gave Mahmoud q\nqueries. In each of them, he gave Mahmoud 2 integers l and x, and asked him to\nfind the number of subsequences of the first l elements of the array such that\ntheir bitwise-xor sum is x. Can you help Mahmoud answer the queries? A\nsubsequence can contain elements that are not neighboring. Input The first\nline contains integers n and q (1 \u2264 n, q \u2264 10^5), the number of elements in\nthe array and the number of queries. The next line contains n integers a1, a2,\n..., an (0 \u2264 ai < 2^20), the elements of the array. The next q lines, each\ncontains integers l and x (1 \u2264 l \u2264 n, 0 \u2264 x < 2^20), representing the queries.\nOutput For each query, output its answer modulo 10^9 + 7 in a newline.\nExamples Input 5 5 0 1 2 3 4 4 3 2 0 3 7 5 7 5 8 Output 4 2 0 4 0 Input 3 2 1\n1 1 3 1 2 0 Output 4 2 Note The bitwise-xor sum of the empty set is 0 and the\nbitwise-xor sum of a set containing one element is that element itself.\n\n",
+        "cf_contest_id": 959,
+        "cf_index": "F",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dp",
+            "math",
+            "matrices"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5 5\r\n0 1 2 3 4\r\n4 3\r\n2 0\r\n3 7\r\n5 7\r\n5 8\r\n",
+                "4\r\n2\r\n0\r\n4\r\n0\r\n"
+            ],
+            [
+                "3 2\r\n1 1 1\r\n3 1\r\n2 0\r\n",
+                "4\r\n2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "20 20\r\n353123 353123 677328 353123 0 997043 677328 420884 968991 566539 420884 801220 1030642 937882 762558 599450 196420 299659 101896 600581\r\n14 764540\r\n10 140147\r\n20 631492\r\n15 403662\r\n14 730429\r\n11 566539\r\n2 353123\r\n9 353123\r\n18 463456\r\n15 714519\r\n16 418098\r\n8 623050\r\n10 369379\r\n9 801220\r\n11 705280\r\n3 156540\r\n4 507911\r\n10 338945\r\n11 496568\r\n1 360148\r\n",
+                "256\r\n0\r\n1024\r\n0\r\n256\r\n128\r\n2\r\n32\r\n256\r\n0\r\n0\r\n0\r\n0\r\n32\r\n0\r\n0\r\n0\r\n0\r\n128\r\n0\r\n"
+            ],
+            [
+                "20 20\r\n306892 1035619 634501 191090 883124 315497 52694 533023 671659 798312 656827 376229 777308 233774 1044523 889658 1001600 326577 1019534 723866\r\n19 454109\r\n12 293130\r\n11 1024526\r\n9 97284\r\n8 418790\r\n1 306892\r\n16 795066\r\n5 1020870\r\n20 526791\r\n18 338417\r\n17 990717\r\n11 101307\r\n12 792824\r\n18 108354\r\n1 158141\r\n20 471906\r\n14 180513\r\n5 100587\r\n1 752042\r\n15 704444\r\n",
+                "512\r\n4\r\n2\r\n1\r\n1\r\n1\r\n0\r\n1\r\n1024\r\n0\r\n128\r\n0\r\n4\r\n256\r\n0\r\n1024\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5 6\r\n4 4 0 14 14\r\n2 2\r\n4 10\r\n5 4\r\n3 0\r\n5 4\r\n2 4\r\n",
+                "0\r\n4\r\n8\r\n4\r\n8\r\n2\r\n"
+            ],
+            [
+                "11 3\r\n8 290 0 298 8 290 290 290 298 8 0\r\n2 290\r\n9 311\r\n10 487\r\n",
+                "1\r\n0\r\n0\r\n"
+            ],
+            [
+                "20 4\r\n3543 10760 559 23602 14947 30833 5084 17919 10471 10689 21846 11925 23128 11184 24426 19945 19340 4464 9112 21680\r\n2 4015\r\n2 18599\r\n7 31496\r\n10 11700\r\n",
+                "0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "9 7\r\n0 0 2 2 3 2 3 0 1\r\n3 3\r\n9 1\r\n7 0\r\n4 1\r\n8 3\r\n4 1\r\n9 0\r\n",
+                "0\r\n128\r\n32\r\n0\r\n64\r\n0\r\n128\r\n"
+            ],
+            [
+                "13 18\r\n2 0 0 0 0 0 1 1 1 0 3 3 1\r\n5 2\r\n11 2\r\n1 4\r\n12 7\r\n11 4\r\n2 2\r\n6 1\r\n13 0\r\n2 5\r\n9 1\r\n5 5\r\n2 2\r\n7 4\r\n11 4\r\n8 5\r\n10 4\r\n3 3\r\n12 6\r\n",
+                "16\r\n512\r\n0\r\n0\r\n0\r\n2\r\n0\r\n2048\r\n0\r\n128\r\n0\r\n2\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "2 2\r\n3 1\r\n2 3\r\n1 0\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "3 7\r\n2 3 3\r\n3 1\r\n2 0\r\n2 1\r\n1 0\r\n3 2\r\n2 3\r\n1 0\r\n",
+                "2\r\n1\r\n1\r\n1\r\n2\r\n1\r\n1\r\n"
+            ],
+            [
+                "3 10\r\n3 6 5\r\n2 4\r\n3 1\r\n2 4\r\n3 0\r\n2 5\r\n2 5\r\n2 6\r\n2 0\r\n1 3\r\n2 7\r\n",
+                "0\r\n0\r\n0\r\n2\r\n1\r\n1\r\n1\r\n1\r\n1\r\n0\r\n"
+            ],
+            [
+                "3 18\r\n0 1 2\r\n1 0\r\n3 3\r\n1 0\r\n2 1\r\n2 0\r\n2 1\r\n3 5\r\n3 3\r\n2 2\r\n3 1\r\n2 4\r\n2 1\r\n2 0\r\n2 2\r\n1 7\r\n1 0\r\n3 2\r\n3 4\r\n",
+                "2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n0\r\n2\r\n0\r\n2\r\n0\r\n2\r\n2\r\n0\r\n0\r\n2\r\n2\r\n0\r\n"
+            ],
+            [
+                "4 3\r\n3 10 9 0\r\n1 3\r\n4 9\r\n2 9\r\n",
+                "1\r\n4\r\n1\r\n"
+            ],
+            [
+                "9 10\r\n10 16 16 10 0 0 26 0 16\r\n1 14\r\n1 10\r\n2 16\r\n1 21\r\n8 16\r\n8 26\r\n6 16\r\n2 26\r\n3 10\r\n7 22\r\n",
+                "0\r\n1\r\n1\r\n0\r\n64\r\n64\r\n16\r\n1\r\n2\r\n0\r\n"
+            ],
+            [
+                "5 8\r\n0 0 0 14 6\r\n2 12\r\n4 3\r\n4 5\r\n5 0\r\n1 13\r\n5 7\r\n4 12\r\n2 0\r\n",
+                "0\r\n0\r\n0\r\n8\r\n0\r\n0\r\n0\r\n4\r\n"
+            ],
+            [
+                "8 2\r\n0 0 0 11 2 36 61 2\r\n8 53\r\n7 10\r\n",
+                "0\r\n0\r\n"
+            ],
+            [
+                "2 4\r\n1 2\r\n1 3\r\n2 3\r\n1 2\r\n1 3\r\n",
+                "0\r\n1\r\n0\r\n0\r\n"
+            ],
+            [
+                "3 5\r\n3 1 7\r\n3 2\r\n3 1\r\n2 3\r\n3 0\r\n2 2\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "6 7\r\n4 4 4 3 1 3\r\n4 4\r\n6 4\r\n1 3\r\n2 4\r\n3 0\r\n6 4\r\n1 3\r\n",
+                "4\r\n8\r\n0\r\n2\r\n4\r\n8\r\n0\r\n"
+            ],
+            [
+                "3 8\r\n3 2 4\r\n3 4\r\n2 7\r\n1 2\r\n3 1\r\n3 5\r\n3 1\r\n2 7\r\n2 4\r\n",
+                "1\r\n0\r\n0\r\n1\r\n1\r\n1\r\n0\r\n0\r\n"
+            ],
+            [
+                "3 15\r\n4 3 1\r\n3 2\r\n3 2\r\n3 7\r\n1 6\r\n3 7\r\n2 0\r\n1 0\r\n1 3\r\n1 4\r\n3 3\r\n3 1\r\n1 4\r\n1 4\r\n2 6\r\n1 0\r\n",
+                "1\r\n1\r\n1\r\n0\r\n1\r\n1\r\n1\r\n0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n0\r\n1\r\n"
+            ],
+            [
+                "4 19\r\n2 5 6 4\r\n1 3\r\n4 4\r\n1 0\r\n1 7\r\n4 3\r\n4 5\r\n3 2\r\n4 1\r\n1 0\r\n2 2\r\n3 2\r\n1 0\r\n4 1\r\n4 1\r\n2 6\r\n1 2\r\n2 6\r\n2 4\r\n1 7\r\n",
+                "0\r\n2\r\n1\r\n0\r\n2\r\n2\r\n1\r\n2\r\n1\r\n1\r\n1\r\n1\r\n2\r\n2\r\n0\r\n1\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "5 9\r\n5 4 7 4 7\r\n2 4\r\n3 5\r\n2 3\r\n5 7\r\n3 2\r\n3 5\r\n2 5\r\n1 5\r\n5 7\r\n",
+                "1\r\n1\r\n0\r\n4\r\n1\r\n1\r\n1\r\n1\r\n4\r\n"
+            ],
+            [
+                "9 5\r\n0 0 30 30 0 0 52 43 53\r\n4 45\r\n4 23\r\n2 63\r\n2 0\r\n1 0\r\n",
+                "0\r\n0\r\n0\r\n4\r\n2\r\n"
+            ],
+            [
+                "10 10\r\n0 31 62 32 0 62 32 30 30 33\r\n2 34\r\n7 49\r\n10 31\r\n5 46\r\n8 12\r\n4 24\r\n6 15\r\n7 52\r\n9 30\r\n2 0\r\n",
+                "0\r\n0\r\n128\r\n0\r\n0\r\n0\r\n0\r\n0\r\n64\r\n2\r\n"
+            ],
+            [
+                "6 6\r\n4 3 11 2 2 4\r\n3 1\r\n5 13\r\n3 8\r\n3 4\r\n3 8\r\n1 8\r\n",
+                "0\r\n2\r\n1\r\n1\r\n1\r\n0\r\n"
+            ],
+            [
+                "8 5\r\n0 0 127 127 48 0 66 253\r\n6 79\r\n1 111\r\n4 0\r\n7 213\r\n1 126\r\n",
+                "16\r\n0\r\n8\r\n0\r\n0\r\n"
+            ],
+            [
+                "17 5\r\n234 55 212 253 148 148 212 163 96 55 0 163 157 131 94 119 189\r\n2 55\r\n11 172\r\n8 41\r\n7 135\r\n14 180\r\n",
+                "1\r\n0\r\n8\r\n0\r\n512\r\n"
+            ],
+            [
+                "10 9\r\n286 621 876 0 31 883 31 257 163 670\r\n8 257\r\n6 196\r\n3 883\r\n2 286\r\n1 286\r\n8 252\r\n2 572\r\n6 565\r\n6 626\r\n",
+                "32\r\n0\r\n1\r\n1\r\n1\r\n0\r\n0\r\n0\r\n8\r\n"
+            ],
+            [
+                "7 10\r\n3 2 1 0 2 3 3\r\n6 1\r\n5 1\r\n4 3\r\n3 0\r\n6 2\r\n3 3\r\n1 3\r\n4 0\r\n7 1\r\n7 3\r\n",
+                "16\r\n8\r\n4\r\n2\r\n16\r\n2\r\n1\r\n4\r\n32\r\n32\r\n"
+            ],
+            [
+                "13 16\r\n201 2016 1726 1340 2030 1712 2030 0 1650 983 1299 838 1670\r\n3 1995\r\n3 1412\r\n4 667\r\n10 78\r\n13 1377\r\n12 1388\r\n6 837\r\n4 2016\r\n6 1531\r\n1 0\r\n12 2012\r\n10 905\r\n12 1040\r\n10 284\r\n3 2016\r\n12 1819\r\n",
+                "0\r\n0\r\n0\r\n0\r\n8\r\n8\r\n2\r\n1\r\n2\r\n1\r\n0\r\n8\r\n8\r\n0\r\n1\r\n0\r\n"
+            ],
+            [
+                "7 10\r\n1 7 2 3 0 3 2\r\n5 0\r\n1 0\r\n6 2\r\n7 1\r\n3 2\r\n3 7\r\n1 2\r\n4 2\r\n5 3\r\n3 4\r\n",
+                "4\r\n1\r\n8\r\n16\r\n1\r\n1\r\n0\r\n2\r\n4\r\n1\r\n"
+            ],
+            [
+                "9 10\r\n0 0 72 177 1 167 95 72 23\r\n9 0\r\n1 149\r\n2 0\r\n6 94\r\n7 176\r\n6 177\r\n2 0\r\n1 198\r\n6 239\r\n9 221\r\n",
+                "32\r\n0\r\n4\r\n4\r\n8\r\n4\r\n4\r\n0\r\n4\r\n0\r\n"
+            ]
+        ]
+    }
+]

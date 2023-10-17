@@ -1,0 +1,63 @@
+[
+    {
+        "name": "Rowena Ravenclaw's Diadem",
+        "description": "Harry, upon inquiring Helena Ravenclaw's ghost, came to know that she told Tom\nRiddle or You-know-who about Rowena Ravenclaw's diadem and that he stole it\nfrom her. Harry thought that Riddle would have assumed that he was the only\none to discover the Room of Requirement and thus, would have hidden it there.\nSo Harry is trying to get inside the Room of Requirement to destroy the diadem\nas he knows that it is a horcrux. But he has to answer a puzzle in order to\nenter the room. He is given n objects, numbered from 1 to n. Some of the\nobjects have a parent object, that has a lesser number. Formally, object i may\nhave a parent object parenti such that parenti < i. There is also a type\nassociated with each parent relation, it can be either of type 1 or type 2.\nType 1 relation means that the child object is like a special case of the\nparent object. Type 2 relation means that the second object is always a part\nof the first object and all its special cases. Note that if an object b is a\nspecial case of object a, and c is a special case of object b, then c is\nconsidered to be a special case of object a as well. The same holds for parts:\nif object b is a part of a, and object c is a part of b, then we say that\nobject c is a part of a. Also note, that if object b is a part of a, and\nobject c is a special case of a, then b is a part of c as well. An object is\nconsidered to be neither a part of itself nor a special case of itself. Now,\nHarry has to answer two type of queries: 1 u v: he needs to tell if object v\nis a special case of object u. 2 u v: he needs to tell if object v is a part\nof object u. Input First line of input contains the number n (1 \u2264 n \u2264 10^5),\nthe number of objects. Next n lines contain two integer parenti and typei ( -\n1 \u2264 parenti < i parenti \u2260 0, - 1 \u2264 typei \u2264 1), implying that the i-th object\nhas the parent parenti. (If typei = 0, this implies that the object i is a\nspecial case of object parenti. If typei = 1, this implies that the object i\nis a part of object parenti). In case the i-th object has no parent, both\nparenti and typei are -1. Next line contains an integer q (1 \u2264 q \u2264 10^5), the\nnumber of queries. Next q lines each represent a query having three space\nseparated integers typei, ui, vi (1 \u2264 typei \u2264 2, 1 \u2264 u, v \u2264 n). Output Output\nwill contain q lines, each containing the answer for the corresponding query\nas \"YES\" (affirmative) or \"NO\" (without quotes). You can output each letter in\nany case (upper or lower). Examples Input 3 -1 -1 1 0 2 0 2 1 1 3 2 1 3 Output\nYES NO Input 3 -1 -1 1 0 1 1 2 2 2 3 2 3 2 Output YES NO Note In test case 1,\nas object 2 is a special case of object 1 and object 3 is a special case of\nobject 2, this makes object 3 a special case of object 1. In test case 2, as\nobject 2 is a special case of object 1 and object 1 has object 3, this will\nmean that object 2 will also have object 3. This is because when a general\ncase (object 1) has object 3, its special case (object 2) will definitely have\nobject 3.\n\n",
+        "cf_contest_id": 855,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\n-1 -1\r\n1 0\r\n2 0\r\n2\r\n1 1 3\r\n2 1 3\r\n",
+                "YES\r\nNO\r\n"
+            ],
+            [
+                "3\r\n-1 -1\r\n1 0\r\n1 1\r\n2\r\n2 2 3\r\n2 3 2\r\n",
+                "YES\r\nNO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n-1 -1\r\n-1 -1\r\n-1 -1\r\n2\r\n1 3 3\r\n1 1 3\r\n",
+                "NO\r\nNO\r\n"
+            ],
+            [
+                "5\r\n-1 -1\r\n1 0\r\n2 0\r\n1 0\r\n2 1\r\n3\r\n2 3 5\r\n2 2 5\r\n1 2 3\r\n",
+                "YES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "20\r\n-1 -1\r\n1 0\r\n2 0\r\n2 1\r\n2 1\r\n4 0\r\n1 0\r\n4 0\r\n3 0\r\n9 0\r\n6 1\r\n3 1\r\n11 1\r\n2 0\r\n2 1\r\n8 1\r\n14 1\r\n5 1\r\n15 0\r\n18 1\r\n20\r\n2 3 15\r\n2 9 12\r\n2 9 12\r\n2 9 12\r\n2 14 20\r\n2 9 4\r\n2 10 18\r\n2 14 15\r\n2 14 20\r\n2 10 4\r\n2 14 4\r\n2 9 12\r\n2 3 15\r\n2 3 18\r\n2 9 4\r\n2 9 4\r\n2 9 5\r\n2 14 15\r\n2 9 12\r\n2 14 4\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "20\r\n-1 -1\r\n1 0\r\n2 0\r\n2 1\r\n2 1\r\n4 0\r\n1 0\r\n4 0\r\n3 0\r\n9 0\r\n6 1\r\n3 1\r\n11 1\r\n2 0\r\n2 1\r\n8 1\r\n14 1\r\n5 1\r\n15 0\r\n18 1\r\n20\r\n2 9 17\r\n2 3 18\r\n2 15 20\r\n2 9 7\r\n2 9 4\r\n2 10 15\r\n2 9 12\r\n2 6 8\r\n2 5 4\r\n2 14 4\r\n2 14 20\r\n2 15 20\r\n2 9 4\r\n2 10 14\r\n2 14 5\r\n2 9 15\r\n2 3 7\r\n2 10 15\r\n2 2 7\r\n2 9 20\r\n",
+                "NO\r\nYES\r\nNO\r\nNO\r\nYES\r\nYES\r\nYES\r\nNO\r\nNO\r\nYES\r\nYES\r\nNO\r\nYES\r\nNO\r\nYES\r\nYES\r\nNO\r\nYES\r\nNO\r\nYES\r\n"
+            ],
+            [
+                "20\r\n-1 -1\r\n1 0\r\n2 0\r\n2 1\r\n2 1\r\n4 0\r\n1 0\r\n4 0\r\n3 0\r\n9 0\r\n6 1\r\n3 1\r\n11 1\r\n2 0\r\n2 1\r\n8 1\r\n14 1\r\n5 1\r\n15 0\r\n18 1\r\n20\r\n1 11 11\r\n2 6 8\r\n1 13 13\r\n2 3 4\r\n2 3 7\r\n2 14 5\r\n2 5 4\r\n1 7 7\r\n2 10 15\r\n2 3 5\r\n1 16 16\r\n1 20 20\r\n2 3 4\r\n1 10 10\r\n2 10 12\r\n1 19 19\r\n2 9 17\r\n2 5 4\r\n2 3 18\r\n2 19 5\r\n",
+                "NO\r\nNO\r\nNO\r\nYES\r\nNO\r\nYES\r\nNO\r\nNO\r\nYES\r\nYES\r\nNO\r\nNO\r\nYES\r\nNO\r\nYES\r\nNO\r\nNO\r\nNO\r\nYES\r\nNO\r\n"
+            ],
+            [
+                "10\r\n-1 -1\r\n1 1\r\n-1 -1\r\n1 0\r\n-1 -1\r\n4 1\r\n-1 -1\r\n-1 -1\r\n-1 -1\r\n5 0\r\n8\r\n2 8 10\r\n2 10 7\r\n1 3 5\r\n1 1 9\r\n2 3 4\r\n1 2 3\r\n1 7 2\r\n2 5 1\r\n",
+                "NO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\nNO\r\n"
+            ],
+            [
+                "10\r\n-1 -1\r\n1 1\r\n1 1\r\n3 0\r\n4 1\r\n2 0\r\n3 1\r\n2 1\r\n5 0\r\n5 0\r\n8\r\n1 2 6\r\n2 3 7\r\n2 4 7\r\n1 3 4\r\n2 2 8\r\n2 6 8\r\n1 5 9\r\n2 4 5\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "10\r\n-1 -1\r\n1 1\r\n2 1\r\n1 1\r\n1 1\r\n2 0\r\n4 1\r\n3 1\r\n3 0\r\n9 1\r\n8\r\n2 4 7\r\n2 9 8\r\n2 3 8\r\n2 9 10\r\n1 2 6\r\n1 3 9\r\n2 2 8\r\n2 6 8\r\n",
+                "YES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\nYES\r\n"
+            ],
+            [
+                "2\r\n-1 -1\r\n1 0\r\n1\r\n2 2 1\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

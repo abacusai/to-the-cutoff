@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Count Seconds",
+        "description": "Cirno has a DAG (Directed Acyclic Graph) with \n    n\n nodes and \n    m\n edges.\nThe graph has exactly one node that has no out edges. The \n    i\n-th node has\nan integer \n    a_i\n on it. Every second the following happens: Let \n    S\n be\nthe set of nodes \n    x\n that have \n    a_x > 0\n. For all \n    x \n    \u2208 S\n,\n\n    1\n is subtracted from \n    a_x\n, and then for each node \n    y\n, such\nthat there is an edge from \n    x\n to \n    y\n, \n    1\n is added to\n\n    a_y\n.Find the first moment of time when all \n    a_i\n become \n    0\n.\nSince the answer can be very large, output it modulo \n    998\n     244\n     353\n.\nInput The first line contains a single integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264\n    1000\n) \u2014 the number of test cases. Description of test cases follows. The\nfirst line of each test case contains two integers \n    n, m\n (\n    1 \n    \u2264 n,\n    m \n    \u2264 1000\n) \u2014 the number of vertices and edges in the graph. The second\nline of each test case contains \n    n\n integers \n    a_1, a_2, \n    \u2026, a_n\n\n(\n    0 \n    \u2264 a_i \n    \u2264 10^9\n) \u2014 the integer on vertices. Each line of the\nfollowing \n    m\n lines contains two integers \n    x, y\n (\n    1 \n    \u2264 x, y\n    \n    \u2264 n\n), represent a directed edge from \n    x\n to \n    y\n. It is\nguaranteed that the graph is a DAG with no multi-edges, and there is exactly\none node that has no out edges. It is guaranteed that both sum of \n    n\n and\nsum of \n    m\n over all test cases are less than or equal to \n    10\n     000\n.\nOutput For each test case, print an integer in a separate line \u2014 the first\nmoment of time when all \n    a_i\n become \n    0\n, modulo\n\n    998\n     244\n     353\n. Example Input 5 3 2 1 1 1 1 2 2 3 5 5 1 0 0 0 0 1 2 2\n3 3 4 4 5 1 5 10 11 998244353 0 0 0 998244353 0 0 0 0 0 1 2 2 3 3 4 4 5 5 6 6\n7 7 8 8 9 9 10 1 3 7 9 5 6 1293 1145 9961 9961 1919 1 2 2 3 3 4 5 4 1 4 2 4 6\n9 10 10 10 10 10 10 1 2 1 3 2 3 4 3 6 3 3 5 6 5 6 1 6 2 Output 3 5 4 28010 110\nNote In the first test case: At time \n    0\n, the values of the nodes are\n\n    [1, 1, 1]\n. At time \n    1\n, the values of the nodes are \n    [0, 1, 1]\n.\nAt time \n    2\n, the values of the nodes are \n    [0, 0, 1]\n. At time \n    3\n,\nthe values of the nodes are \n    [0, 0, 0]\n.So the answer is \n    3\n. In the\nsecond test case: At time \n    0\n, the values of the nodes are \n    [1, 0, 0, 0,\n    0]\n. At time \n    1\n, the values of the nodes are \n    [0, 1, 0, 0, 1]\n. At\ntime \n    2\n, the values of the nodes are \n    [0, 0, 1, 0, 0]\n. At time\n\n    3\n, the values of the nodes are \n    [0, 0, 0, 1, 0]\n. At time \n    4\n,\nthe values of the nodes are \n    [0, 0, 0, 0, 1]\n. At time \n    5\n, the values\nof the nodes are \n    [0, 0, 0, 0, 0]\n. So the answer is \n    5\n.In the third\ntest case: The first moment of time when all \n    a_i\n become \n    0\n is\n\n    6\n    \u00b7 998244353 + 4\n.\n\n",
+        "cf_contest_id": 1704,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "constructive algorithms",
+            "dp",
+            "graphs",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n3 2\r\n1 1 1\r\n1 2\r\n2 3\r\n5 5\r\n1 0 0 0 0\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n1 5\r\n10 11\r\n998244353 0 0 0 998244353 0 0 0 0 0\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n8 9\r\n9 10\r\n1 3\r\n7 9\r\n5 6\r\n1293 1145 9961 9961 1919\r\n1 2\r\n2 3\r\n3 4\r\n5 4\r\n1 4\r\n2 4\r\n6 9\r\n10 10 10 10 10 10\r\n1 2\r\n1 3\r\n2 3\r\n4 3\r\n6 3\r\n3 5\r\n6 5\r\n6 1\r\n6 2\r\n",
+                "3\r\n5\r\n4\r\n28010\r\n110\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n10 9\r\n327 0 0 781 331 109 0 0 0 11\r\n2 1\r\n3 2\r\n4 3\r\n5 4\r\n6 5\r\n7 6\r\n8 7\r\n9 8\r\n10 9\r\n",
+                "1559\r\n"
+            ],
+            [
+                "1\r\n10 9\r\n0 560 612 466 0 950 0 89 230 137\r\n2 1\r\n3 1\r\n4 1\r\n5 1\r\n6 1\r\n7 1\r\n8 1\r\n9 1\r\n10 1\r\n",
+                "3045\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n998244352 0 1\r\n1 2\r\n3 2\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n4 3\r\n1 1 0 0\r\n2 1\r\n3 1\r\n4 1\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

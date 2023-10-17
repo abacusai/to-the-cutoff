@@ -1,0 +1,63 @@
+[
+    {
+        "name": "String Manipulation 1.0",
+        "description": "One popular website developed an unusual username editing procedure. One can\nchange the username only by deleting some characters from it: to change the\ncurrent name s, a user can pick number p and character c and delete the p-th\noccurrence of character c from the name. After the user changed his name, he\ncan't undo the change. For example, one can change name \"arca\" by removing the\nsecond occurrence of character \"a\" to get \"arc\". Polycarpus learned that some\nuser initially registered under nickname t, where t is a concatenation of k\ncopies of string s. Also, Polycarpus knows the sequence of this user's name\nchanges. Help Polycarpus figure out the user's final name. Input The first\nline contains an integer k (1 \u2264 k \u2264 2000). The second line contains a non-\nempty string s, consisting of lowercase Latin letters, at most 100 characters\nlong. The third line contains an integer n (0 \u2264 n \u2264 20000) \u2014 the number of\nusername changes. Each of the next n lines contains the actual changes, one\nper line. The changes are written as \"pi ci\" (without the quotes), where pi (1\n\u2264 pi \u2264 200000) is the number of occurrences of letter ci, ci is a lowercase\nLatin letter. It is guaranteed that the operations are correct, that is, the\nletter to be deleted always exists, and after all operations not all letters\nare deleted from the name. The letters' occurrences are numbered starting from\n1. Output Print a single string \u2014 the user's final name after all changes are\napplied to it. Examples Input 2 bac 3 2 a 1 b 2 c Output acb Input 1 abacaba 4\n1 a 1 a 1 c 2 b Output baa Note Let's consider the first sample. Initially we\nhave name \"bacbac\"; the first operation transforms it into \"bacbc\", the second\none \u2014 to \"acbc\", and finally, the third one transforms it into \"acb\".\n\n",
+        "cf_contest_id": 159,
+        "cf_index": "C",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "binary search",
+            "brute force",
+            "data structures",
+            "strings"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\nbac\r\n3\r\n2 a\r\n1 b\r\n2 c\r\n",
+                "acb\r\n"
+            ],
+            [
+                "1\r\nabacaba\r\n4\r\n1 a\r\n1 a\r\n1 c\r\n2 b\r\n",
+                "baa\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\naabbabbb\r\n7\r\n2 a\r\n1 a\r\n1 a\r\n2 b\r\n1 b\r\n3 b\r\n1 b\r\n",
+                "b\r\n"
+            ],
+            [
+                "1\r\na\r\n0\r\n",
+                "a\r\n"
+            ],
+            [
+                "4\r\ndb\r\n5\r\n1 d\r\n2 d\r\n2 b\r\n1 d\r\n2 b\r\n",
+                "bdb\r\n"
+            ],
+            [
+                "10\r\nbabcbcbcba\r\n40\r\n24 b\r\n14 a\r\n19 b\r\n25 b\r\n26 c\r\n7 c\r\n5 c\r\n2 a\r\n4 c\r\n7 a\r\n46 b\r\n14 a\r\n28 b\r\n4 c\r\n5 a\r\n10 c\r\n4 c\r\n4 b\r\n12 a\r\n4 a\r\n30 b\r\n4 a\r\n16 b\r\n4 c\r\n4 c\r\n23 b\r\n8 c\r\n20 c\r\n12 c\r\n2 a\r\n9 c\r\n37 b\r\n11 c\r\n27 b\r\n16 c\r\n5 b\r\n6 b\r\n3 c\r\n4 b\r\n16 b\r\n",
+                "babcbcbbbabbbbbbbccbbacbcbabacbbaabcbcbabbcbcbbbcbbcababcbba\r\n"
+            ],
+            [
+                "10\r\nbcbccaacab\r\n40\r\n37 c\r\n21 a\r\n18 a\r\n5 b\r\n1 a\r\n8 c\r\n9 a\r\n38 c\r\n10 b\r\n12 c\r\n18 a\r\n23 a\r\n20 c\r\n7 b\r\n33 c\r\n4 c\r\n22 c\r\n28 c\r\n9 a\r\n12 a\r\n22 a\r\n1 b\r\n6 a\r\n31 c\r\n19 b\r\n19 a\r\n15 a\r\n6 c\r\n11 c\r\n18 b\r\n19 c\r\n24 c\r\n8 a\r\n16 c\r\n2 c\r\n12 b\r\n8 a\r\n14 c\r\n18 b\r\n19 c\r\n",
+                "cbcaabbccaaabbcccacabbccbbcbccabbcaacbbbcaacbccabbccaabbbcab\r\n"
+            ],
+            [
+                "10\r\nccbcabbaca\r\n40\r\n2 c\r\n8 b\r\n26 b\r\n12 b\r\n24 a\r\n29 a\r\n20 c\r\n17 b\r\n32 c\r\n9 c\r\n16 b\r\n13 b\r\n19 a\r\n3 c\r\n2 b\r\n18 c\r\n4 a\r\n13 c\r\n8 c\r\n5 c\r\n13 a\r\n19 c\r\n26 c\r\n13 c\r\n6 c\r\n3 c\r\n4 a\r\n5 a\r\n9 c\r\n8 b\r\n9 c\r\n2 c\r\n19 a\r\n5 a\r\n12 c\r\n10 c\r\n2 b\r\n19 c\r\n21 a\r\n16 b\r\n",
+                "cbaaacbbbcabbcacccabbaaabcabcabaacbbacaccbcabaccbcbaacbcabbc\r\n"
+            ],
+            [
+                "10\r\nabaabbaaac\r\n40\r\n10 b\r\n24 a\r\n15 a\r\n7 b\r\n22 b\r\n23 b\r\n50 a\r\n43 a\r\n2 c\r\n24 b\r\n9 b\r\n5 c\r\n6 c\r\n18 b\r\n33 a\r\n5 c\r\n2 a\r\n3 c\r\n2 b\r\n27 a\r\n2 c\r\n4 a\r\n1 c\r\n6 a\r\n1 b\r\n12 b\r\n31 a\r\n13 b\r\n35 a\r\n2 c\r\n40 a\r\n24 a\r\n1 c\r\n31 a\r\n17 b\r\n4 b\r\n1 c\r\n12 b\r\n4 b\r\n39 a\r\n",
+                "aabaaababaaaaabaaaaaabaaabaabbaabaabaaaaaababaaaabaaaaabbaaa\r\n"
+            ],
+            [
+                "10\r\nabbaa\r\n10\r\n20 a\r\n2 b\r\n25 a\r\n22 a\r\n13 a\r\n5 b\r\n17 b\r\n1 a\r\n16 b\r\n6 a\r\n",
+                "baaabbaabaaabbaabbaaabbaaabbaabbaabaabaa\r\n"
+            ]
+        ]
+    }
+]

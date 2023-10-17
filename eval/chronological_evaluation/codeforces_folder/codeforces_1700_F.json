@@ -1,0 +1,121 @@
+[
+    {
+        "name": "Puzzle",
+        "description": "Pupils Alice and Ibragim are best friends. It's Ibragim's birthday soon, so\nAlice decided to gift him a new puzzle. The puzzle can be represented as a\nmatrix with \n    2\n rows and \n    n\n columns, every element of which is either\n\n    0\n or \n    1\n. In one move you can swap two values in neighboring cells.\nMore formally, let's number rows \n    1\n to \n    2\n from top to bottom, and\ncolumns \n    1\n to \n    n\n from left to right. Also, let's denote a cell in\nrow \n    x\n and column \n    y\n as \n    (x, y)\n. We consider cells \n    (x_1,\n    y_1)\n and \n    (x_2, y_2)\n neighboring if \n    |x_1 - x_2| + |y_1 - y_2| =\n    1\n. Alice doesn't like the way in which the cells are currently arranged, so\nshe came up with her own arrangement, with which she wants to gift the puzzle\nto Ibragim. Since you are her smartest friend, she asked you to help her find\nthe minimal possible number of operations in which she can get the desired\narrangement. Find this number, or determine that it's not possible to get the\nnew arrangement. Input The first line contains an integer \n    n\n (\n    1 \n    \u2264\n    n \n    \u2264 200\n     000\n) \u2014 the number of columns in the puzzle. Following two\nlines describe the current arrangement on the puzzle. Each line contains\n\n    n\n integers, every one of which is either \n    0\n or \n    1\n. The last\ntwo lines describe Alice's desired arrangement in the same format. Output If\nit is possible to get the desired arrangement, print the minimal possible\nnumber of steps, otherwise print \n    -1\n. Examples Input 5 0 1 0 1 0 1 1 0 0\n1 1 0 1 0 1 0 0 1 1 0 Output 5 Input 3 1 0 0 0 0 0 0 0 0 0 0 0 Output -1 Note\nIn the first example the following sequence of swaps will suffice: \n    (2, 1),\n    (1, 1)\n, \n    (1, 2), (1, 3)\n, \n    (2, 2), (2, 3)\n, \n    (1, 4), (1, 5)\n,\n\n    (2, 5), (2, 4)\n. It can be shown that \n    5\n is the minimal possible\nanswer in this case. In the second example no matter what swaps you do, you\nwon't get the desired arrangement, so the answer is \n    -1\n.\n\n",
+        "cf_contest_id": 1700,
+        "cf_index": "F",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "dp",
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n0 1 0 1 0\r\n1 1 0 0 1\r\n1 0 1 0 1\r\n0 0 1 1 0\r\n",
+                "5\r\n"
+            ],
+            [
+                "3\r\n1 0 0\r\n0 0 0\r\n0 0 0\r\n0 0 0\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n0\r\n1\r\n1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "7\r\n1 0 0 1 1 0 1\r\n1 0 0 0 1 1 1\r\n1 1 1 0 0 1 0\r\n0 1 1 1 0 0 0\r\n",
+                "-1\r\n"
+            ],
+            [
+                "7\r\n0 0 1 0 1 0 1\r\n0 0 0 0 0 0 1\r\n0 1 0 1 0 1 0\r\n1 0 0 0 0 0 0\r\n",
+                "9\r\n"
+            ],
+            [
+                "7\r\n0 0 0 0 0 0 0\r\n1 0 0 0 0 0 0\r\n0 0 0 0 0 1 0\r\n0 0 0 0 0 0 0\r\n",
+                "6\r\n"
+            ],
+            [
+                "7\r\n0 0 0 0 0 0 0\r\n1 0 0 0 0 0 0\r\n0 1 0 0 0 0 0\r\n0 0 0 0 0 0 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "7\r\n0 0 1 0 0 0 0\r\n1 1 0 0 1 0 1\r\n1 0 0 1 1 1 0\r\n0 0 0 0 0 1 0\r\n",
+                "9\r\n"
+            ],
+            [
+                "7\r\n1 1 1 1 0 0 1\r\n0 0 0 0 1 0 0\r\n0 0 0 0 1 1 0\r\n0 0 1 1 0 1 1\r\n",
+                "12\r\n"
+            ],
+            [
+                "7\r\n1 1 1 0 0 1 1\r\n1 0 0 1 0 0 0\r\n0 0 0 1 1 0 0\r\n0 1 1 0 1 1 1\r\n",
+                "11\r\n"
+            ],
+            [
+                "17\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1\r\n0 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\r\n1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\r\n",
+                "24\r\n"
+            ],
+            [
+                "17\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "17\r\n0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0\r\n0 0 0 1 0 1 0 0 0 1 0 1 0 0 0 1 1\r\n0 1 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0\r\n1 0 1 0 0 0 0 0 1 0 1 0 0 0 1 0 0\r\n",
+                "20\r\n"
+            ],
+            [
+                "17\r\n0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0\r\n0 0 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0\r\n0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 1 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0\r\n",
+                "22\r\n"
+            ],
+            [
+                "17\r\n0 0 1 0 0 0 1 0 0 0 1 0 1 0 1 0 0\r\n0 0 1 0 1 0 0 0 1 0 0 1 1 0 0 0 0\r\n0 0 0 1 0 1 0 1 0 1 0 0 0 1 0 1 0\r\n0 1 0 0 0 0 0 1 0 1 1 0 0 0 0 0 0\r\n",
+                "13\r\n"
+            ],
+            [
+                "17\r\n1 1 1 1 1 1 0 0 0 1 0 1 0 0 0 0 1\r\n0 0 0 0 0 0 0 1 1 1 0 0 1 1 0 0 1\r\n0 0 0 0 0 0 1 1 0 0 1 0 1 1 1 1 0\r\n0 0 1 1 1 1 0 0 0 0 1 1 0 0 1 1 0\r\n",
+                "35\r\n"
+            ],
+            [
+                "17\r\n1 0 1 1 1 1 1 0 0 0 0 0 1 0 1 0 1\r\n0 0 1 0 1 1 0 1 0 0 0 0 0 1 1 1 1\r\n0 1 0 0 0 0 0 1 1 1 1 1 0 1 0 1 0\r\n1 1 0 1 0 0 1 0 1 1 1 1 1 0 0 0 0\r\n",
+                "39\r\n"
+            ],
+            [
+                "50\r\n1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0\r\n1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1\r\n",
+                "74\r\n"
+            ],
+            [
+                "50\r\n0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0\r\n0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0\r\n0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0\r\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0\r\n",
+                "81\r\n"
+            ],
+            [
+                "50\r\n1 0 1 0 0 0 1 0 1 1 0 0 1 0 0 1 1 1 0 0 0 1 0 1 0 1 1 1 1 0 0 0 0 1 1 0 0 1 0 0 0 0 0 1 1 1 0 1 0 1\r\n1 1 1 0 1 0 1 0 0 0 0 0 1 0 0 1 1 1 0 1 1 0 1 0 0 1 0 0 0 0 0 1 0 1 1 1 0 1 0 0 1 1 1 0 1 1 0 0 0 0\r\n0 1 0 1 1 1 0 1 0 0 1 1 0 1 1 0 0 0 1 1 1 0 0 0 0 0 0 0 0 1 1 1 0 0 0 1 1 0 1 1 1 0 1 0 0 0 1 0 1 0\r\n0 0 0 1 0 1 0 1 1 1 1 0 0 0 1 0 0 0 1 0 0 1 0 1 1 0 0 1 1 1 1 0 1 0 0 0 1 0 1 1 0 0 0 1 0 0 0 1 1 1\r\n",
+                "85\r\n"
+            ],
+            [
+                "50\r\n0 1 1 1 0 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 1 0\r\n0 0 0 1 0 1 0 0 0 1 0 1 1 1 0 0 0 0 0 1 0 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 1 0 0 0 1\r\n0 0 0 0 1 1 0 0 1 0 0 0 1 0 0 0 1 1 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 0 0 0 0 1 0 0 1 0 1 1 0 0 1 0 0 0\r\n1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 1 1 0 0 0 0 0 0 0 0 1 0 1 1 0 0\r\n",
+                "144\r\n"
+            ],
+            [
+                "50\r\n0 0 0 0 1 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 1 1 1 0 0 0 0 1 0 1 0 1 1 1 0 1 1 0 1 0 0 0 0 0 1 0\r\n0 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 0 1 1 0 0 1 0 0 0 1 0 0 0 0 0 1 0 0 1 1 0 1 0 1 1 0 1 1 0 0 0 1 0 1\r\n0 1 1 1 0 1 0 1 1 1 0 1 0 0 1 0 1 0 0 1 0 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 1 0 0 1 0 1 1 1 0 1 0 0\r\n1 0 0 0 0 0 0 0 1 1 0 0 1 1 0 1 1 0 0 1 0 0 1 0 1 0 1 1 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0\r\n",
+                "252\r\n"
+            ],
+            [
+                "50\r\n0 1 0 0 1 1 1 0 0 0 0 1 1 0 1 1 0 1 1 1 0 0 0 0 1 0 0 0 1 1 0 1 0 0 0 1 1 0 0 1 0 1 0 1 1 0 1 1 0 0\r\n0 0 0 0 1 0 0 0 1 1 1 1 1 0 1 0 1 0 0 1 0 0 0 0 0 0 1 1 1 1 1 0 1 0 1 0 0 1 0 0 0 0 1 0 1 1 1 0 0 1\r\n1 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 1 0 0 0 1 1 1 1 0 1 1 1 0 0 1 0 1 1 1 0 0 0 1 0 0 0 1 0 0 1 0 0 1 1\r\n1 0 1 1 0 1 1 0 0 0 0 0 0 1 0 1 0 1 1 0 1 1 1 1 1 1 0 0 0 0 0 1 0 1 0 0 1 0 1 1 1 1 0 1 0 0 0 0 1 0\r\n",
+                "117\r\n"
+            ],
+            [
+                "50\r\n1 0 0 0 1 1 0 1 1 0 0 1 1 0 1 0 1 1 0 1 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 1 0 1 1 0 1 0 0 1 1 0 0 1 0 1\r\n0 0 1 0 0 1 1 1 1 0 1 0 1 1 1 0 0 1 1 1 0 0 0 1 0 0 0 1 1 1 0 1 0 1 0 1 1 1 0 1 1 0 1 1 0 0 0 1 0 1\r\n0 1 1 1 0 0 1 0 0 1 1 0 0 1 0 1 0 0 1 0 1 1 1 0 1 1 1 1 0 0 1 1 1 1 0 0 1 0 0 1 0 1 1 0 0 1 1 0 1 0\r\n1 1 0 1 1 0 0 0 0 1 0 1 0 0 0 1 1 0 0 0 1 1 1 0 1 1 1 0 0 0 1 0 1 0 1 0 0 0 1 0 0 1 0 0 1 1 1 0 1 0\r\n",
+                "106\r\n"
+            ],
+            [
+                "6\r\n1 1 1 1 1 1\r\n0 0 0 1 0 0\r\n1 0 1 1 1 0\r\n1 1 0 0 1 0\r\n",
+                "6\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,81 @@
+[
+    {
+        "name": "Coloring Game",
+        "description": "Alice and Bob want to play a game. They have \n    n\n colored paper strips; the\n\n    i\n-th strip is divided into \n    a_i\n cells numbered from \n    1\n to\n\n    a_i\n. Each cell can have one of \n    3\n colors. In the beginning of the\ngame, Alice and Bob put \n    n\n chips, the \n    i\n-th chip is put in the\n\n    a_i\n-th cell of the \n    i\n-th strip. Then they take turns, Alice is\nfirst. Each player during their turn has to choose one chip and move it\n\n    1\n, \n    2\n or \n    3\n cells backwards (i. e. if the current cell is\n\n    x\n, then the chip can be moved to the cell \n    x - 1\n, \n    x - 2\n or\n\n    x - 3\n). There are two restrictions: the chip cannot leave the borders of\nthe strip (for example, if the current cell is \n    3\n, then you can't move\nthe chip \n    3\n cells backwards); and some moves may be prohibited because of\ncolor of the current cell (a matrix \n    f\n with size \n    3 \n    \u00d7 3\n is\ngiven, where \n    f_i, j = 1\n if it is possible to move the chip \n    j\n\ncells backwards from the cell which has color \n    i\n, or \n    f_i, j = 0\n\nif such move is prohibited). The player who cannot make a move loses the game.\nInitially some cells may be uncolored. Bob can color all uncolored cells as he\nwants (but he cannot leave any cell uncolored). Let's call a coloring good if\nBob can win the game no matter how Alice acts, if the cells are colored\naccording to this coloring. Two colorings are different if at least one cell\nis colored in different colors in these two colorings. Bob wants you to\ncalculate the number of good colorings. Can you do it for him? Since the\nanswer can be really large, you have to print it modulo \n    998244353\n. Input\nThe first line contains one integer \n    n\n \u2014 the number of paper strips (\n    1\n    \n    \u2264 n \n    \u2264 1000\n). The second line contains \n    n\n integers \n    a_1\n,\n\n    a_2\n, ..., \n    a_n\n (\n    1 \n    \u2264 a_i \n    \u2264 10^9\n), where \n    a_i\n is\nthe number of cells in the \n    i\n-th strip. The third line contains one\ninteger \n    m\n (\n    1 \n    \u2264 m \n    \u2264 1000\n) \u2014 the number of cells that are\nalready colored. Then \n    m\n lines follow, each describing an already colored\ncell. The \n    i\n-th of these lines contains three integers \n    x_i\n,\n\n    y_i\n and \n    c_i\n (\n    1 \n    \u2264 x_i \n    \u2264 n\n, \n    1 \n    \u2264 y_i \n    \u2264\n    a_x_i\n, \n    1 \n    \u2264 c_i \n    \u2264 3\n) denoting that the cell \n    y_i\n in the\nstrip \n    x_i\n has color \n    c_i\n. It is guaranteed that if \n    i \n     j\n,\nthen either \n    x_i \n     x_j\n or \n    y_i \n     y_j\n (or both). Then \n    3\n\nlines follow, \n    i\n-th line containing \n    3\n numbers \n    f_i, 1\n,\n\n    f_i, 2\n, \n    f_i, 3\n (\n    0 \n    \u2264 f_i, j\n    \u2264 1\n). If \n    f_i,\n    j = 1\n, then it is possible to move the chip \n    j\n cells backwards from\nthe cell having color \n    i\n; if \n    f_i, j = 0\n, then such move is\nimpossible. Output Print one integer: the number of good colorings, taken\nmodulo \n    998244353\n. Examples Input 3 3 4 5 2 1 1 1 2 2 2 1 1 1 1 0 0 0 1 1\nOutput 14346 Input 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 Output 1 Input 3 1 1 1 1 1 1\n1 1 1 1 1 1 1 1 1 1 Output 9\n\n",
+        "cf_contest_id": 1197,
+        "cf_index": "F",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "games",
+            "matrices"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "3\r\n3 4 5\r\n2\r\n1 1 1\r\n2 2 2\r\n1 1 1\r\n1 0 0\r\n0 1 1\r\n",
+                "14346\r\n"
+            ],
+            [
+                "1\r\n1\r\n1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n1 1 1\r\n1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n",
+                "9\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\n5 3 9 3 5 5 5 6 1 7\r\n10\r\n8 5 3\r\n5 2 2\r\n5 4 2\r\n3 2 2\r\n3 9 3\r\n5 5 1\r\n2 2 1\r\n10 3 3\r\n3 6 2\r\n7 1 2\r\n1 1 0\r\n1 0 1\r\n1 1 1\r\n",
+                "769670736\r\n"
+            ],
+            [
+                "10\r\n568 370 720 753 901 564 740 395 951 602\r\n10\r\n3 254 1\r\n8 160 1\r\n7 403 3\r\n8 134 3\r\n2 53 1\r\n5 105 3\r\n7 620 2\r\n1 157 3\r\n3 316 3\r\n1 482 2\r\n0 1 0\r\n0 0 1\r\n1 0 1\r\n",
+                "281435642\r\n"
+            ],
+            [
+                "10\r\n278860675 473632335 954397618 150602725 400782106 377968668 136709021 427381790 254556828 197247580\r\n1\r\n1 108854898 1\r\n0 0 0\r\n0 0 0\r\n0 0 0\r\n",
+                "578554542\r\n"
+            ],
+            [
+                "10\r\n345016248 75472204 108380130 993184192 938470876 83980435 762131947 994373025 330698075 843995049\r\n1\r\n5 588491279 3\r\n0 0 0\r\n0 0 0\r\n0 0 0\r\n",
+                "775516142\r\n"
+            ],
+            [
+                "10\r\n581074169 728194139 459910121 162307901 575935467 78757041 473777742 265039203 194605309 752359876\r\n1\r\n2 208409947 2\r\n1 0 1\r\n1 0 1\r\n0 1 0\r\n",
+                "429703929\r\n"
+            ],
+            [
+                "10\r\n327530734 867690029 426710014 424160714 776397432 491474590 797141072 635670614 61599177 957030512\r\n1\r\n3 173424750 1\r\n0 1 1\r\n1 1 0\r\n1 1 1\r\n",
+                "304608900\r\n"
+            ],
+            [
+                "10\r\n106854555 625181002 495623556 699644470 88138974 984988220 236059213 387970621 487795312 668958169\r\n1\r\n3 74071647 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n",
+                "309982615\r\n"
+            ],
+            [
+                "10\r\n126162437 525712112 594207423 171669773 168494655 378140519 888999749 684237353 633873348 656728879\r\n10\r\n3 443272611 1\r\n6 23555758 2\r\n10 513493609 3\r\n2 354615190 3\r\n5 151070276 2\r\n7 221532690 1\r\n10 408318897 2\r\n8 668437311 2\r\n10 304793957 3\r\n2 116917522 1\r\n0 0 0\r\n0 0 0\r\n0 0 0\r\n",
+                "268980471\r\n"
+            ],
+            [
+                "10\r\n123472152 76294175 190485519 566762406 468952825 822784727 803368917 55158117 570272481 427666807\r\n10\r\n4 244757915 1\r\n9 149021213 2\r\n7 42629343 1\r\n6 66122151 3\r\n5 76363811 1\r\n7 725007081 1\r\n7 193326658 3\r\n10 338354803 3\r\n4 74843299 3\r\n7 725972512 3\r\n0 0 1\r\n0 0 0\r\n0 0 1\r\n",
+                "171772318\r\n"
+            ],
+            [
+                "10\r\n64562776 874240303 542015509 881110308 811450119 817561333 515014712 30856999 583922820 630998930\r\n10\r\n9 11409744 3\r\n6 580532785 1\r\n9 446037495 1\r\n5 663233 3\r\n9 253220888 1\r\n2 873818472 3\r\n5 743708043 2\r\n6 180625364 3\r\n5 601290618 2\r\n6 64979301 2\r\n0 1 0\r\n0 1 1\r\n0 1 1\r\n",
+                "787113168\r\n"
+            ],
+            [
+                "10\r\n251210829 868512000 363591210 142963120 306879381 230278882 543410746 256264218 155949392 540702270\r\n10\r\n4 1115223 3\r\n3 170718239 3\r\n2 461856887 3\r\n9 140358932 3\r\n1 170449317 3\r\n2 777738366 2\r\n3 53255727 1\r\n7 174989091 2\r\n3 215734984 1\r\n7 137680897 1\r\n1 1 1\r\n1 1 0\r\n1 1 1\r\n",
+                "978594783\r\n"
+            ],
+            [
+                "10\r\n599125819 559958103 221723308 322132827 88310825 737278948 638138967 767287141 387468099 515042289\r\n10\r\n10 100569705 2\r\n10 278906737 2\r\n6 388014969 3\r\n9 362740089 2\r\n1 237479623 1\r\n7 132398056 3\r\n7 173079483 3\r\n9 186593134 3\r\n10 166707284 3\r\n8 151665076 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

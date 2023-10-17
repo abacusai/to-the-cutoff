@@ -1,0 +1,392 @@
+[
+    {
+        "name": "Nuclear Fusion",
+        "description": "There is the following puzzle popular among nuclear physicists. A reactor\ncontains a set of n atoms of some chemical elements. We shall understand the\nphrase \"atomic number\" as the number of this atom's element in the periodic\ntable of the chemical elements. You are allowed to take any two different\natoms and fuse a new one from them. That results in a new atom, whose number\nis equal to the sum of the numbers of original atoms. The fusion operation can\nbe performed several times. The aim is getting a new pregiven set of k atoms.\nThe puzzle's difficulty is that it is only allowed to fuse two atoms into one,\nit is not allowed to split an atom into several atoms. You are suggested to\ntry to solve the puzzle. Input The first line contains two integers n and k (1\n\u2264 k \u2264 n \u2264 17). The second line contains space-separated symbols of elements of\nn atoms, which are available from the start. The third line contains space-\nseparated symbols of elements of k atoms which need to be the result of the\nfusion. The symbols of the elements coincide with the symbols from the\nperiodic table of the chemical elements. The atomic numbers do not exceed 100\n(elements possessing larger numbers are highly unstable). Some atoms can have\nidentical numbers (that is, there can be several atoms of the same element).\nThe sum of numbers of initial atoms is equal to the sum of numbers of the\natoms that need to be synthesized. Output If it is impossible to synthesize\nthe required atoms, print \"NO\" without the quotes. Otherwise, print on the\nfirst line \u00abYES\u00bb, and on the next k lines print the way of synthesizing each\nof k atoms as equations. Each equation has the following form:\n\"x1+x2+...+xt->yi\", where xj is the symbol of the element of some atom from\nthe original set, and yi is the symbol of the element of some atom from the\nresulting set. Each atom from the input data should occur in the output data\nexactly one time. The order of summands in the equations, as well as the\noutput order does not matter. If there are several solutions, print any of\nthem. For a better understanding of the output format, see the samples.\nExamples Input 10 3 Mn Co Li Mg C P F Zn Sc K Sn Pt Y Output YES Mn+C+K->Sn\nCo+Zn+Sc->Pt Li+Mg+P+F->Y Input 2 1 H H He Output YES H+H->He Input 2 2 Bk Fm\nCf Es Output NO Note The reactions from the first example possess the\nfollowing form (the atomic number is written below and to the left of the\nelement): To find a periodic table of the chemical elements, you may use your\nfavorite search engine. The pretest set contains each of the first 100\nelements of the periodic table at least once. You can use that information to\ncheck for misprints.\n\n",
+        "cf_contest_id": 71,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "dp"
+        ],
+        "time_limit_seconds": 1.5,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10 3\r\nMn Co Li Mg C P F Zn Sc K\r\nSn Pt Y\r\n",
+                "YES\r\nLi+F+Mg+P->Y\r\nC+K+Mn->Sn\r\nSc+Co+Zn->Pt\r\n"
+            ],
+            [
+                "2 1\r\nH H\r\nHe\r\n",
+                "YES\r\nH+H->He\r\n"
+            ],
+            [
+                "2 2\r\nBk Fm\r\nCf Es\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "8 8\r\nTl Pb Bi Po Np Pu Am Cm\r\nAt Rn Fr Ra Ac Th Pa U\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 2\r\nZr Nb Sr Zr\r\nHg Au\r\n",
+                "YES\r\nSr+Nb->Au\r\nZr+Zr->Hg\r\n"
+            ],
+            [
+                "8 1\r\nBe B N O Ne Na Al Si\r\nHf\r\n",
+                "YES\r\nBe+B+N+O+Ne+Na+Al+Si->Hf\r\n"
+            ],
+            [
+                "7 3\r\nH He Be O S Ge Gd\r\nIr Cr Fe\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 3\r\nCl Ni Ti V Ar Cu\r\nRh Br La\r\n",
+                "YES\r\nCl+Ar->Br\r\nTi+V->Rh\r\nNi+Cu->La\r\n"
+            ],
+            [
+                "5 5\r\nOs Lu Ta Re W\r\nW Ta Re Os Lu\r\n",
+                "YES\r\nLu->Lu\r\nTa->Ta\r\nW->W\r\nRe->Re\r\nOs->Os\r\n"
+            ],
+            [
+                "8 7\r\nCa Ga As Er Tm Yb Se Ho\r\nEu Sm Dy Tb Pm Kr Y\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 2\r\nRb Rb Mo\r\nNd Ba\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 8\r\nTc Ru Ce Pr Pd Ba Ag Cs\r\nCd In Sn Sb Sb Te I Xe\r\n",
+                "NO\r\n"
+            ],
+            [
+                "1 1\r\nH\r\nH\r\n",
+                "YES\r\nH->H\r\n"
+            ],
+            [
+                "1 1\r\nFm\r\nFm\r\n",
+                "YES\r\nFm->Fm\r\n"
+            ],
+            [
+                "17 17\r\nFm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm\r\nFm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm Fm\r\n",
+                "YES\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\nFm->Fm\r\n"
+            ],
+            [
+                "17 17\r\nEs Es Es Es Es Es Es Es Es Es Es Es Es Es Es Es Es\r\nFm Fm Fm Fm Fm Fm Fm Fm Cf Cf Cf Cf Cf Cf Cf Cf Es\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 1\r\nH H H\r\nLi\r\n",
+                "YES\r\nH+H+H->Li\r\n"
+            ],
+            [
+                "4 2\r\nBe Li He B\r\nN N\r\n",
+                "YES\r\nHe+B->N\r\nLi+Be->N\r\n"
+            ],
+            [
+                "5 2\r\nH S He Be O\r\nAr Al\r\n",
+                "YES\r\nH+Be+O->Al\r\nHe+S->Ar\r\n"
+            ],
+            [
+                "17 17\r\nH H H H H H H H H H H H H H H H H\r\nH H H H H H H H H H H H H H H H H\r\n",
+                "YES\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\n"
+            ],
+            [
+                "17 1\r\nH H H H H H H H H H H H H H H H H\r\nCl\r\n",
+                "YES\r\nH+H+H+H+H+H+H+H+H+H+H+H+H+H+H+H+H->Cl\r\n"
+            ],
+            [
+                "17 10\r\nH H H H H H H H H H H H H H H H H\r\nH H H H H H H H H O\r\n",
+                "YES\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH+H+H+H+H+H+H+H->O\r\n"
+            ],
+            [
+                "17 10\r\nH H H H H H H H H H H H H H H H H\r\nO H H H H H H H H H\r\n",
+                "YES\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH+H+H+H+H+H+H+H->O\r\n"
+            ],
+            [
+                "17 4\r\nH H H H H H H H H H H H H H H H H\r\nHe B B B\r\n",
+                "YES\r\nH+H->He\r\nH+H+H+H+H->B\r\nH+H+H+H+H->B\r\nH+H+H+H+H->B\r\n"
+            ],
+            [
+                "17 3\r\nH H H H H H H H H H H H H H H H H\r\nH O O\r\n",
+                "YES\r\nH->H\r\nH+H+H+H+H+H+H+H->O\r\nH+H+H+H+H+H+H+H->O\r\n"
+            ],
+            [
+                "17 10\r\nH H H H H H H H H H H H H H H H H\r\nH H H H H H H H He N\r\n",
+                "YES\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH->H\r\nH+H->He\r\nH+H+H+H+H+H+H->N\r\n"
+            ],
+            [
+                "17 6\r\nH H H H H H H H H H H H H H H H H\r\nH H H He Be O\r\n",
+                "YES\r\nH->H\r\nH->H\r\nH->H\r\nH+H->He\r\nH+H+H+H->Be\r\nH+H+H+H+H+H+H+H->O\r\n"
+            ],
+            [
+                "17 17\r\nNe Na Mg B C N O F P Al Si He Li H Be S Cl\r\nH Mg Be B Na Si P C N Cl O Al He Li F Ne S\r\n",
+                "YES\r\nH->H\r\nHe->He\r\nLi->Li\r\nBe->Be\r\nB->B\r\nC->C\r\nN->N\r\nO->O\r\nF->F\r\nNe->Ne\r\nNa->Na\r\nMg->Mg\r\nAl->Al\r\nSi->Si\r\nP->P\r\nS->S\r\nCl->Cl\r\n"
+            ],
+            [
+                "16 8\r\nLi Li Li Li Li Li Li Li Li Li Li Li Li Li Li Li\r\nC C C C C C C C\r\n",
+                "YES\r\nLi+Li->C\r\nLi+Li->C\r\nLi+Li->C\r\nLi+Li->C\r\nLi+Li->C\r\nLi+Li->C\r\nLi+Li->C\r\nLi+Li->C\r\n"
+            ],
+            [
+                "17 17\r\nHe He He He He He He He He He He He He He He He He\r\nHe He He He He He He He He He He He He He He Li H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 10\r\nHe He He He He He He He He He He He He He He He He\r\nHe He He He He He He He Li P\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 11\r\nHe He He He He He He He He He He He He He He He He\r\nHe He He He He He He He S H H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 4\r\nHe He He He He He He He He He He He He He He He He\r\nS S H H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 6\r\nHe He He He He He He He He He He He He He He He He\r\nNe Ne Ne He H H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 2\r\nH H H H H H H H H H H H H H H H H\r\nO F\r\n",
+                "YES\r\nH+H+H+H+H+H+H+H->O\r\nH+H+H+H+H+H+H+H+H->F\r\n"
+            ],
+            [
+                "17 2\r\nH H H H H H H H H H H H H H H H H\r\nF O\r\n",
+                "YES\r\nH+H+H+H+H+H+H+H->O\r\nH+H+H+H+H+H+H+H+H->F\r\n"
+            ],
+            [
+                "17 3\r\nH H H H H H H H H H H H H H H H H\r\nO H O\r\n",
+                "YES\r\nH->H\r\nH+H+H+H+H+H+H+H->O\r\nH+H+H+H+H+H+H+H->O\r\n"
+            ],
+            [
+                "17 3\r\nH H H H H H H H H H H H H H H H H\r\nO O H\r\n",
+                "YES\r\nH->H\r\nH+H+H+H+H+H+H+H->O\r\nH+H+H+H+H+H+H+H->O\r\n"
+            ],
+            [
+                "17 12\r\nHe He He He He He He He He He He He He He He He He\r\nHe He He He He He He He O O H H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 5\r\nNa F Li Zn Sr Kr Rh As Ru Se\r\nPa As Rn Y Se\r\n",
+                "YES\r\nAs->As\r\nSe->Se\r\nLi+Kr->Y\r\nNa+Zn+Rh->Rn\r\nF+Sr+Ru->Pa\r\n"
+            ],
+            [
+                "13 4\r\nNa Br V N Cu Nb Se Zn Zn Al C B Cu\r\nFr Gd Ce Po\r\n",
+                "YES\r\nB+C+N+Na+Cu->Ce\r\nCu+Br->Gd\r\nAl+Zn+Nb->Po\r\nV+Zn+Se->Fr\r\n"
+            ],
+            [
+                "15 7\r\nAr Br Pd Y Na Mn Ga Rb He Br In Pd O Kr In\r\nPa Dy Ra Yb Pd Nd Pd\r\n",
+                "YES\r\nPd->Pd\r\nPd->Pd\r\nNa+In->Nd\r\nHe+O+Mn+Ga->Dy\r\nBr+Br->Yb\r\nY+In->Ra\r\nAr+Kr+Rb->Pa\r\n"
+            ],
+            [
+                "16 5\r\nSr Kr S S Rh Ar Cu Sc O Be Ca Ga B Be Tc Ne\r\nTh Tc Fr Ir Ag\r\n",
+                "YES\r\nBe+Be+B+Ne+Ca->Tc\r\nS+Ga->Ag\r\nAr+Sc+Sr->Ir\r\nO+Kr+Tc->Fr\r\nS+Cu+Rh->Th\r\n"
+            ],
+            [
+                "16 6\r\nRh Pd N N Ar Y S S Sn Br Zn P Sn Ne Sr Mn\r\nCm At S Fr Re Ra\r\n",
+                "YES\r\nS->S\r\nN+N+Ne+S+Br->Re\r\nP+Mn+Rh->At\r\nAr+Zn+Y->Fr\r\nSr+Sn->Ra\r\nPd+Sn->Cm\r\n"
+            ],
+            [
+                "16 7\r\nGa As Ne In Ga Be Ag Cr H Se Ge Pd Ag He Co Cr\r\nBk W Pt Cr Hg As Ba\r\n",
+                "YES\r\nCr->Cr\r\nH+Ge->As\r\nNe+Pd->Ba\r\nCo+Ag->W\r\nGa+Ag->Pt\r\nGa+In->Hg\r\nHe+Be+Cr+As+Se->Bk\r\n"
+            ],
+            [
+                "16 8\r\nSr Ge Be Kr P Zr Al P Na Ne F B Ru Rh C K\r\nZr C Sm Zr K Os Pd I\r\n",
+                "YES\r\nC->C\r\nK->K\r\nB+F+Na+P->Zr\r\nZr->Zr\r\nNe+Kr->Pd\r\nP+Sr->I\r\nBe+Al+Rh->Sm\r\nGe+Ru->Os\r\n"
+            ],
+            [
+                "17 5\r\nKr Ge N K Ar Zn N Ni Sc Pd Zn Cl Al Be Ca Cu He\r\nOs Zn Th Tl Pb\r\n",
+                "YES\r\nHe+Be+N+Cl->Zn\r\nN+Ar+K+Ge->Os\r\nSc+Zn+Zn->Tl\r\nKr+Pd->Pb\r\nAl+Ca+Ni+Cu->Th\r\n"
+            ],
+            [
+                "17 6\r\nTc Li Zn Ne Tc Pd S Fe Tc S Co Cr Mn F Fe K Sc\r\nAu Fm Yb Fe Tm Bi\r\n",
+                "YES\r\nNe+S->Fe\r\nFe+Tc->Tm\r\nLi+S+Mn+Fe->Yb\r\nF+Cr+Pd->Au\r\nK+Sc+Tc->Bi\r\nCo+Zn+Tc->Fm\r\n"
+            ],
+            [
+                "17 7\r\nK K Ga In Nb Ca Cr Cu Cr C Na Mg Li Ge Ga Br K\r\nSe Pt Ho Sm Xe Cf Mg\r\n",
+                "YES\r\nMg->Mg\r\nLi+Na+Ca->Se\r\nC+Cr+Cr->Xe\r\nGa+Ga->Sm\r\nGe+Br->Ho\r\nCu+In->Pt\r\nK+K+K+Nb->Cf\r\n"
+            ],
+            [
+                "17 8\r\nSc C Li Mg Ar Al Al C Na Tc Mo Cl O Sn S Ar Sc\r\nSc Rh Cu Al Pt C Lu Cs\r\n",
+                "YES\r\nC->C\r\nAl->Al\r\nLi+C+Mg->Sc\r\nO+Sc->Cu\r\nNa+S+Ar->Rh\r\nAl+Mo->Cs\r\nSc+Sn->Lu\r\nCl+Ar+Tc->Pt\r\n"
+            ],
+            [
+                "17 13\r\nHe Ru Cu Sr P Br Ar Cr Na In Kr In Ca K Zn Rb Se\r\nKr Sr Na K P Hf He In Cf Ca Ar Cu Bi\r\n",
+                "YES\r\nHe->He\r\nNa->Na\r\nP->P\r\nAr->Ar\r\nK->K\r\nCa->Ca\r\nCu->Cu\r\nKr->Kr\r\nSr->Sr\r\nIn->In\r\nBr+Rb->Hf\r\nSe+In->Bi\r\nCr+Zn+Ru->Cf\r\n"
+            ],
+            [
+                "17 16\r\nCu C C Ti Ca Ag Y Ru Rh Cu Na Rh Pd Br Br Li Sr\r\nLi Ag Ti Te C Sr Ru Br Na Br Ca Rh Rh Cu Cu Y\r\n",
+                "YES\r\nLi->Li\r\nC->C\r\nNa->Na\r\nCa->Ca\r\nTi->Ti\r\nCu->Cu\r\nCu->Cu\r\nBr->Br\r\nBr->Br\r\nSr->Sr\r\nY->Y\r\nRu->Ru\r\nRh->Rh\r\nRh->Rh\r\nAg->Ag\r\nC+Pd->Te\r\n"
+            ],
+            [
+                "17 17\r\nNa Fe K Nb Ti As Se Rb Pd Y In Co Kr Al Sc Ni Ar\r\nAl In K Se Pd Na Y Ar Ti Ni Sc Kr Fe Co Rb Nb As\r\n",
+                "YES\r\nNa->Na\r\nAl->Al\r\nAr->Ar\r\nK->K\r\nSc->Sc\r\nTi->Ti\r\nFe->Fe\r\nCo->Co\r\nNi->Ni\r\nAs->As\r\nSe->Se\r\nKr->Kr\r\nRb->Rb\r\nY->Y\r\nNb->Nb\r\nPd->Pd\r\nIn->In\r\n"
+            ],
+            [
+                "15 8\r\nSi Pr Se F Br Sb Ti Cs Cr Sb La Cu V Ca Cr\r\nSb Sb Cd Fr Eu Mo Lu Pu\r\n",
+                "YES\r\nCa+Ti->Mo\r\nCr+Cr->Cd\r\nSb->Sb\r\nSb->Sb\r\nCu+Se->Eu\r\nSi+La->Lu\r\nF+V+Cs->Fr\r\nBr+Pr->Pu\r\n"
+            ],
+            [
+                "16 7\r\nSe Ba Cr O Sb Sn In Cr Pd V Zr Na Sn F Ti Pr\r\nFm Y Ac Pb Ba Es Pa\r\n",
+                "YES\r\nO+F+Ti->Y\r\nBa->Ba\r\nV+Pr->Pb\r\nZr+In->Ac\r\nNa+Se+Pd->Pa\r\nCr+Cr+Sb->Es\r\nSn+Sn->Fm\r\n"
+            ],
+            [
+                "16 6\r\nV Rh Nd Ce S Mn O N Cu Ni Ne Ne Y V Co Li\r\nFr Tm Cf Es Cr Se\r\n",
+                "YES\r\nO+S->Cr\r\nN+Co->Se\r\nLi+Ne+Ne+V+V->Tm\r\nCu+Ce->Fr\r\nMn+Ni+Rh->Cf\r\nY+Nd->Es\r\n"
+            ],
+            [
+                "16 6\r\nBr Nd Mn Li Li Br Na Mo Sb Ne Mn Cr V N Ne Cr\r\nCu Yb Nd Mo Ac Cf\r\n",
+                "YES\r\nLi+Li+V->Cu\r\nMo->Mo\r\nNd->Nd\r\nBr+Br->Yb\r\nN+Ne+Ne+Na+Sb->Ac\r\nCr+Cr+Mn+Mn->Cf\r\n"
+            ],
+            [
+                "17 8\r\nTe Cu Ca O Be Y Ge Sc Al Sb Pr Zn As Pd V Mo N\r\nYb Cu V Bk Hf Pu Br Ac\r\n",
+                "YES\r\nV->V\r\nCu->Cu\r\nN+O+Ca->Br\r\nBe+Al+Sc+Ge->Yb\r\nAs+Y->Hf\r\nZn+Pr->Ac\r\nMo+Te->Pu\r\nPd+Sb->Bk\r\n"
+            ],
+            [
+                "17 8\r\nNb Tc O Si Zr Ti Tc Ce C Ar Sc Sb S Ag I Rh Li\r\nSe Sb I Mo Am Tl Fr Rn\r\n",
+                "YES\r\nS+Ar->Se\r\nC+Si+Ti->Mo\r\nSb->Sb\r\nI->I\r\nZr+Nb->Tl\r\nTc+Tc->Rn\r\nO+Sc+Ce->Fr\r\nLi+Rh+Ag->Am\r\n"
+            ],
+            [
+                "17 7\r\nSc Ti Kr Cr Zr C F Ne Ge Kr In Se I Cd Sr Ru He\r\nBr Ra Bi Tc Np Hf Th\r\n",
+                "YES\r\nHe+F+Cr->Br\r\nSc+Ti->Tc\r\nKr+Kr->Hf\r\nSe+In->Bi\r\nC+Sr+Ru->Ra\r\nNe+Ge+Cd->Th\r\nZr+I->Np\r\n"
+            ],
+            [
+                "14 6\r\nH C Ca S Fe Na H S F V C Sc Ne B\r\nFe Sc P O Es He\r\n",
+                "NO\r\n"
+            ],
+            [
+                "15 5\r\nCo V Na C Fe S Ca Ca V Fe O N N Sc Sc\r\nRn Te Bi V Ar\r\n",
+                "YES\r\nN+Na->Ar\r\nN+S->V\r\nFe+Fe->Te\r\nC+O+Sc+Sc+Co->Bi\r\nCa+Ca+V+V->Rn\r\n"
+            ],
+            [
+                "15 5\r\nNi F Si Ca Mg Mn Ar Ca Ar B Cu H S Li Li\r\nNe Pu Ru Mn Cd\r\n",
+                "YES\r\nH+F->Ne\r\nLi+Li+B+Si->Mn\r\nS+Ni->Ru\r\nMg+Ar+Ar->Cd\r\nCa+Ca+Mn+Cu->Pu\r\n"
+            ],
+            [
+                "16 7\r\nBe Fe Cr O Sc Ca K Cr S V Ne Na Ca F Ti Cu\r\nFe Cl V Pu Re Sc Zn\r\n",
+                "YES\r\nO+F->Cl\r\nSc->Sc\r\nBe+K->V\r\nFe->Fe\r\nNe+Ca->Zn\r\nNa+S+Cr+Cr->Re\r\nCa+Ti+V+Cu->Pu\r\n"
+            ],
+            [
+                "16 7\r\nV P Zn Ni S Mn O N Cu Ni Ne Ne F V Co Li\r\nBa Cr Gd Nd Na Zn Pd\r\n",
+                "YES\r\nLi+O->Na\r\nF+P->Cr\r\nN+V->Zn\r\nS+Zn->Pd\r\nNi+Ni->Ba\r\nNe+V+Co->Nd\r\nNe+Mn+Cu->Gd\r\n"
+            ],
+            [
+                "16 9\r\nB Zn Mn Li Li B Na Mg Sc Ne Mn Cr V N Ne Cr\r\nB V Cd Sc Al Fm B Cl C\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 6\r\nTi Cu Ca O Be F He Sc Al Sc Cu Zn Li S V Mg N\r\nK Ra N Ag Na Bk\r\n",
+                "YES\r\nLi+Be->N\r\nHe+F->Na\r\nN+Mg->K\r\nO+S+V->Ag\r\nCu+Cu+Zn->Ra\r\nAl+Ca+Sc+Sc+Ti->Bk\r\n"
+            ],
+            [
+                "17 8\r\nNa Al O Si Ne Ti Al Ni C Ar Sc Sc S Cl V P Li\r\nSi Ba Pa Na F Ar Fe Se\r\n",
+                "YES\r\nLi+C->F\r\nNa->Na\r\nSi->Si\r\nAr->Ar\r\nNe+S->Fe\r\nAl+Sc->Se\r\nAl+P+Ni->Ba\r\nO+Cl+Sc+Ti+V->Pa\r\n"
+            ],
+            [
+                "17 10\r\nSc Ti C Cr Ne C F Ne He C K Be V Ar O Si He\r\nO Pb Sc Ca V Be O Be Ca Si\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 6\r\nNi Mn H Cr P Ca Cu Sc Be P Be P C Ne He Zn Ti\r\nPd Ta Fm Ti He Ni\r\n",
+                "YES\r\nHe->He\r\nH+C+P->Ti\r\nBe+Be+Ca->Ni\r\nNe+P+Sc->Pd\r\nP+Ni+Zn->Ta\r\nTi+Cr+Mn+Cu->Fm\r\n"
+            ],
+            [
+                "14 8\r\nS Br Sc Pd Ga Ga C Fe Zr Ga Li Cu Pd Sn\r\nPm Au Te Y Sm Ag Li Er\r\n",
+                "NO\r\n"
+            ],
+            [
+                "15 6\r\nNe Cl Ar Co Li S Nb Pd S V H Nb Ag Pd Ca\r\nSm Ho Xe U Tb Ge\r\n",
+                "YES\r\nS+S->Ge\r\nLi+Ne+Nb->Xe\r\nH+Ca+Nb->Sm\r\nAr+Ag->Tb\r\nCl+V+Co->Ho\r\nPd+Pd->U\r\n"
+            ],
+            [
+                "15 7\r\nH Ge Rh Ar Y Ca Ni Tc B Li Zn Ru O Pd K\r\nAl Eu Se Cu At Gd Np\r\n",
+                "NO\r\n"
+            ],
+            [
+                "16 7\r\nKr Se F Ca Cu H Zr He Cd Tc F Na Ru Zr Fe Si\r\nEu Ga Th At F Ho Pm\r\n",
+                "NO\r\n"
+            ],
+            [
+                "16 11\r\nCa Kr Cl Ar V F Tc Sr Li Zn Cd P N In Ca Mn\r\nLi Fr Tb Be Os S Ni Ga Cd Ne As\r\n",
+                "NO\r\n"
+            ],
+            [
+                "16 8\r\nBr Al Ga Zn Rh Ne V Zn Se H Br Mg Se Tc Mn Ag\r\nSi Fm Po Rn Gd Mo N Sb\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 11\r\nV In Si Mg F Cd V Nb V Zr In Co Ge Kr Sn Nb Mg\r\nAl Es Ac Ac Ti Sb Mg Th Co Mn Mg\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 10\r\nCd Nb Li Rb Tc Sn V Nb Cr Mo Sr Ga C Cd Rh Kr Tc\r\nBk Te V U Ta Es Be I Es N\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 11\r\nMg As Sc Se Ni Cu Ti Sr Mo Sn Se Fe Sn Se Fe Y Pd\r\nCr Cu Ca Hf Fr Tm K In Tc La Am\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 8\r\nGe Sc Se Fe Ge Mn Ca Rh Ca Br Ru F Cr Zr P Ar H\r\nTc Cm Fm Gd Se Ti Mn La\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 10\r\nHe He He He He He He He He He He He He He He He He\r\nHe He He He He He He Ar H H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 4\r\nHe He He He He He He He He He He He He He He He He\r\nAr Si H H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 4\r\nHe He He He He He He He He He He He He He He He He\r\nSi Ar H H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 4\r\nH H H H H H H H H H H H H H H H F\r\nO O O H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 4\r\nH H H H H H H H H H H H H H H H O\r\nN N N Li\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 5\r\nH H H H H H H H H H H H H H H H Ne\r\nC C C C He\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 5\r\nH H H H H H H H H H H H H H H H O\r\nB B B B Be\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 6\r\nH H H H H H H H H H H H H H H H B\r\nBe Be Be Be Be H\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 7\r\nH H H H H H H H H H H H H H H H B\r\nLi Li Li Li Li Li Li\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 10\r\nH H H H H H H H H H H H H H H H Be\r\nHe He He He He He He He He He\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 17\r\nH H H H H H H H H H H H H H H H Li\r\nHe H H H H H H H H H H H H H H H He\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 17\r\nBe Be Be Be Be Be Be Be Be Be Be Be Be Be Be Be Be\r\nBe Be Be Be Be Be Be Be Be Be Be Be Be Be Be He C\r\n",
+                "NO\r\n"
+            ],
+            [
+                "17 17\r\nH He Li Be B C N O F Ne Na Mg Al Si P S Cl\r\nCl S P Si Al Mg Na Ne F O N C B Be Li He H\r\n",
+                "YES\r\nH->H\r\nHe->He\r\nLi->Li\r\nBe->Be\r\nB->B\r\nC->C\r\nN->N\r\nO->O\r\nF->F\r\nNe->Ne\r\nNa->Na\r\nMg->Mg\r\nAl->Al\r\nSi->Si\r\nP->P\r\nS->S\r\nCl->Cl\r\n"
+            ]
+        ]
+    }
+]

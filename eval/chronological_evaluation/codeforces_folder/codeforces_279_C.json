@@ -1,0 +1,53 @@
+[
+    {
+        "name": "Ladder",
+        "description": "You've got an array, consisting of n integers a1, a2, ..., an. Also, you've\ngot m queries, the i-th query is described by two integers li, ri. Numbers li,\nri define a subsegment of the original array, that is, the sequence of numbers\nali, ali + 1, ali + 2, ..., ari. For each query you should check whether the\ncorresponding segment is a ladder. A ladder is a sequence of integers b1, b2,\n..., bk, such that it first doesn't decrease, then doesn't increase. In other\nwords, there is such integer x (1 \u2264 x \u2264 k), that the following inequation\nfulfills: b1 \u2264 b2 \u2264 ... \u2264 bx \u2265 bx + 1 \u2265 bx + 2... \u2265 bk. Note that the non-\ndecreasing and the non-increasing sequences are also considered ladders. Input\nThe first line contains two integers n and m (1 \u2264 n, m \u2264 10^5) \u2014 the number of\narray elements and the number of queries. The second line contains the\nsequence of integers a1, a2, ..., an (1 \u2264 ai \u2264 10^9), where number ai stands\nfor the i-th array element. The following m lines contain the description of\nthe queries. The i-th line contains the description of the i-th query,\nconsisting of two integers li, ri (1 \u2264 li \u2264 ri \u2264 n) \u2014 the boundaries of the\nsubsegment of the initial array. The numbers in the lines are separated by\nsingle spaces. Output Print m lines, in the i-th line print word \"Yes\"\n(without the quotes), if the subsegment that corresponds to the i-th query is\nthe ladder, or word \"No\" (without the quotes) otherwise. Examples Input 8 6 1\n2 1 3 3 5 2 1 1 3 2 3 2 4 8 8 1 4 5 8 Output Yes Yes No Yes No Yes\n\n",
+        "cf_contest_id": 279,
+        "cf_index": "C",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "implementation",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "8 6\r\n1 2 1 3 3 5 2 1\r\n1 3\r\n2 3\r\n2 4\r\n8 8\r\n1 4\r\n5 8\r\n",
+                "Yes\r\nYes\r\nNo\r\nYes\r\nNo\r\nYes\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n6\r\n1 1\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "2 5\r\n1 1\r\n1 2\r\n2 2\r\n2 2\r\n1 2\r\n1 2\r\n",
+                "Yes\r\nYes\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "10 10\r\n4 7 2 6 4 8 1 2 1 9\r\n6 10\r\n1 9\r\n9 9\r\n2 8\r\n9 9\r\n1 1\r\n8 8\r\n4 8\r\n8 8\r\n7 7\r\n",
+                "No\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nYes\r\nNo\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "7 5\r\n13 13 16 12 16 3 19\r\n2 7\r\n3 4\r\n7 7\r\n1 2\r\n4 7\r\n",
+                "No\r\nYes\r\nYes\r\nYes\r\nNo\r\n"
+            ],
+            [
+                "13 6\r\n2 6 1 3 5 2 2 1 6 4 2 5 2\r\n10 13\r\n4 10\r\n4 11\r\n3 5\r\n9 13\r\n3 13\r\n",
+                "No\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\n"
+            ],
+            [
+                "20 20\r\n17 11 7 4 1 17 7 20 12 12 15 14 7 12 5 13 9 16 7 19\r\n9 16\r\n11 11\r\n18 19\r\n1 10\r\n14 19\r\n6 13\r\n5 16\r\n1 17\r\n5 15\r\n5 5\r\n1 13\r\n20 20\r\n20 20\r\n3 18\r\n16 20\r\n16 18\r\n17 18\r\n14 20\r\n13 14\r\n14 15\r\n",
+                "No\r\nYes\r\nYes\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\nNo\r\nNo\r\nNo\r\nYes\r\nNo\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "100 10\r\n53 72 2 58 6 29 65 7 43 9 77 10 58 25 49 95 88 11 7 36 51 25 78 20 15 2 69 76 1 66 17 4 91 66 50 66 69 94 74 31 19 96 35 84 83 15 33 73 39 73 29 53 9 47 3 19 4 16 85 6 49 6 57 70 96 19 66 63 86 61 27 21 33 82 13 98 59 48 85 1 13 65 28 34 93 16 88 32 60 50 33 37 36 57 97 28 18 23 30 70\r\n25 43\r\n20 70\r\n13 51\r\n64 66\r\n1 60\r\n17 86\r\n100 100\r\n94 98\r\n51 66\r\n18 92\r\n",
+                "No\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\nYes\r\nNo\r\nNo\r\nNo\r\n"
+            ]
+        ]
+    }
+]

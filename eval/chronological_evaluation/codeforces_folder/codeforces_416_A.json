@@ -1,0 +1,257 @@
+[
+    {
+        "name": "Guess a number!",
+        "description": "A TV show called \"Guess a number!\" is gathering popularity. The whole Berland,\nthe old and the young, are watching the show. The rules are simple. The host\nthinks of an integer y and the participants guess it by asking questions to\nthe host. There are four types of acceptable questions: Is it true that y is\nstrictly larger than number x? Is it true that y is strictly smaller than\nnumber x? Is it true that y is larger than or equal to number x? Is it true\nthat y is smaller than or equal to number x? On each question the host answers\ntruthfully, \"yes\" or \"no\". Given the sequence of questions and answers, find\nany integer value of y that meets the criteria of all answers. If there isn't\nsuch value, print \"Impossible\". Input The first line of the input contains a\nsingle integer n (1 \u2264 n \u2264 10000) \u2014 the number of questions (and answers). Next\nn lines each contain one question and one answer to it. The format of each\nline is like that: \"sign x answer\", where the sign is: \">\" (for the first type\nqueries), \"<\" (for the second type queries), \">=\" (for the third type\nqueries), \"<=\" (for the fourth type queries). All values of x are integer and\nmeet the inequation - 10^9 \u2264 x \u2264 10^9. The answer is an English letter \"Y\"\n(for \"yes\") or \"N\" (for \"no\"). Consequtive elements in lines are separated by\na single space. Output Print any of such integers y, that the answers to all\nthe queries are correct. The printed number y must meet the inequation -\n2\u00b710^9 \u2264 y \u2264 2\u00b710^9. If there are many answers, print any of them. If such\nvalue doesn't exist, print word \"Impossible\" (without the quotes). Examples\nInput 4 >= 1 Y < 3 N <= -3 N > 55 N Output 17 Input 2 > 100 Y < -100 Y Output\nImpossible\n\n",
+        "cf_contest_id": 416,
+        "cf_index": "A",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation",
+            "two pointers"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n>= 1 Y\r\n< 3 N\r\n<= -3 N\r\n> 55 N\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n> 100 Y\r\n< -100 Y\r\n",
+                "Impossible\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\n< 1 N\r\n> 1 N\r\n> 1 N\r\n> 1 N\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\n<= 1 Y\r\n>= 1 Y\r\n>= 1 Y\r\n<= 1 Y\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\n< 10 Y\r\n> -6 Y\r\n< 10 Y\r\n< -10 N\r\n",
+                "-5\r\n"
+            ],
+            [
+                "1\r\n< 1 N\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n<= 1 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n> 1 N\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n>= 1 Y\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\n< 1 N\r\n< 1 N\r\n< 1 N\r\n<= 1 Y\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\n< 1 N\r\n>= 1 Y\r\n< 1 N\r\n< 1 N\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\n> 1 N\r\n<= 1 Y\r\n<= 1 Y\r\n> 1 N\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "4\r\n>= 1 Y\r\n> 1 N\r\n>= 1 Y\r\n>= 1 Y\r\n",
+                "1\r\n"
+            ],
+            [
+                "4\r\n<= 9 Y\r\n< 3 Y\r\n< 2 Y\r\n< 2 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "4\r\n< 0 N\r\n< -7 N\r\n>= 8 N\r\n>= -5 Y\r\n",
+                "0\r\n"
+            ],
+            [
+                "4\r\n<= -6 N\r\n<= -8 N\r\n<= 3 Y\r\n<= 7 Y\r\n",
+                "-5\r\n"
+            ],
+            [
+                "4\r\n>= 7 N\r\n<= -1 N\r\n>= 5 N\r\n<= -10 N\r\n",
+                "0\r\n"
+            ],
+            [
+                "4\r\n> 5 N\r\n>= -5 Y\r\n> -9 Y\r\n> -9 Y\r\n",
+                "-5\r\n"
+            ],
+            [
+                "10\r\n<= -60 N\r\n>= -59 Y\r\n> 22 Y\r\n> 95 N\r\n<= 91 Y\r\n> 77 Y\r\n>= -59 Y\r\n> -25 Y\r\n> -22 Y\r\n>= 52 Y\r\n",
+                "78\r\n"
+            ],
+            [
+                "10\r\n>= -18 Y\r\n>= -35 Y\r\n> -94 Y\r\n< -23 N\r\n< -69 N\r\n< -68 N\r\n< 82 Y\r\n> 92 N\r\n< 29 Y\r\n>= -25 Y\r\n",
+                "-18\r\n"
+            ],
+            [
+                "10\r\n>= 18 Y\r\n<= -32 N\r\n>= 85 N\r\n<= 98 Y\r\n<= -43 N\r\n<= -79 N\r\n>= 97 N\r\n< -38 N\r\n< -55 N\r\n<= -93 N\r\n",
+                "18\r\n"
+            ],
+            [
+                "10\r\n<= 2 Y\r\n< -33 Y\r\n> 6 N\r\n> -6 N\r\n< -28 Y\r\n> -62 Y\r\n< 57 Y\r\n<= 24 Y\r\n> 23 N\r\n> -25 N\r\n",
+                "-61\r\n"
+            ],
+            [
+                "10\r\n<= -31 N\r\n>= 66 N\r\n<= 0 Y\r\n> -95 Y\r\n< 27 Y\r\n< -42 N\r\n> 3 N\r\n< 6 Y\r\n>= -42 Y\r\n> -70 Y\r\n",
+                "-30\r\n"
+            ],
+            [
+                "10\r\n>= 54 N\r\n<= -52 N\r\n>= 64 N\r\n> 65 N\r\n< 37 Y\r\n> -84 Y\r\n>= -94 Y\r\n>= -95 Y\r\n> -72 Y\r\n<= 18 N\r\n",
+                "19\r\n"
+            ],
+            [
+                "10\r\n> -24 N\r\n<= -5 Y\r\n<= -33 Y\r\n> 45 N\r\n> -59 Y\r\n> -21 N\r\n<= -48 N\r\n> 40 N\r\n< 12 Y\r\n>= 14 N\r\n",
+                "-47\r\n"
+            ],
+            [
+                "10\r\n>= 91 Y\r\n>= -68 Y\r\n< 92 N\r\n>= -15 Y\r\n> 51 Y\r\n<= 14 N\r\n> 17 Y\r\n< 94 Y\r\n>= 49 Y\r\n> -36 Y\r\n",
+                "92\r\n"
+            ],
+            [
+                "1\r\n< -1000000000 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n< 1 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n>= -999999999 Y\r\n",
+                "-999999999\r\n"
+            ],
+            [
+                "1\r\n> 100000 Y\r\n",
+                "100001\r\n"
+            ],
+            [
+                "1\r\n<= 999999999 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n<= 1000000000 N\r\n",
+                "1000000001\r\n"
+            ],
+            [
+                "4\r\n< -1000000000 Y\r\n< -1000000000 Y\r\n< -1000000000 Y\r\n< -1000000000 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n>= 1000000000 Y\r\n",
+                "1000000000\r\n"
+            ],
+            [
+                "1\r\n<= 999999999 N\r\n",
+                "1000000000\r\n"
+            ],
+            [
+                "1\r\n<= 100 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n> 1000000000 Y\r\n",
+                "1000000001\r\n"
+            ],
+            [
+                "1\r\n<= 1 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n<= 1000000000 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n<= -1000000000 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n<= -999999999 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n> 100 Y\r\n",
+                "101\r\n"
+            ],
+            [
+                "2\r\n< -1000000000 Y\r\n< 3 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n<= -1000000 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "8\r\n< -1000000000 Y\r\n< -1000000000 Y\r\n< -1000000000 Y\r\n< -1000000000 Y\r\n< -1000000000 Y\r\n< -1000000000 Y\r\n< -1000000000 Y\r\n< -1000000000 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n<= 15 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n< 1000000000 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n> 10000000 Y\r\n",
+                "10000001\r\n"
+            ],
+            [
+                "1\r\n< 0 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n< 100 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "1\r\n<= 5 Y\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "3\r\n> 5 Y\r\n> 0 Y\r\n< 4 Y\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "1\r\n>= -1000000000 N\r\n",
+                "-2000000000\r\n"
+            ],
+            [
+                "3\r\n>= 1 Y\r\n<= 1 Y\r\n> 10 Y\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "2\r\n> 1 Y\r\n< 2 Y\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "3\r\n>= 5 Y\r\n<= 5 Y\r\n< 5 Y\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "2\r\n>= 5 N\r\n> 5 Y\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "3\r\n>= 4 Y\r\n> 4 Y\r\n<= 4 Y\r\n",
+                "Impossible\r\n"
+            ],
+            [
+                "2\r\n>= 4 Y\r\n> 4 Y\r\n",
+                "5\r\n"
+            ]
+        ]
+    }
+]

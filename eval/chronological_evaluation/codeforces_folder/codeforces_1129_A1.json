@@ -1,0 +1,144 @@
+[
+    {
+        "name": "Toy Train (Simplified)",
+        "description": "This is a simplified version of the task Toy Train. These two versions differ\nonly in the constraints. Hacks for this version are disabled. Alice received a\nset of Toy Train\u2122 from Bob. It consists of one train and a connected railway\nnetwork of \n    n\n stations, enumerated from \n    1\n through \n    n\n. The\ntrain occupies one station at a time and travels around the network of\nstations in a circular manner. More precisely, the immediate station that the\ntrain will visit after station \n    i\n is station \n    i+1\n if \n    1 \n    \u2264 i <\n    n\n or station \n    1\n if \n    i = n\n. It takes the train \n    1\n second to\ntravel to its next station as described. Bob gave Alice a fun task before he\nleft: to deliver \n    m\n candies that are initially at some stations to their\nindependent destinations using the train. The candies are enumerated from\n\n    1\n through \n    m\n. Candy \n    i\n (\n    1 \n    \u2264 i \n    \u2264 m\n), now at\nstation \n    a_i\n, should be delivered to station \n    b_i\n (\n    a_i \n    \u2260\n    b_i\n). The blue numbers on the candies correspond to \n    b_i\n values. The\nimage corresponds to the \n    1\n-st example. The train has infinite capacity,\nand it is possible to load off any number of candies at a station. However,\nonly at most one candy can be loaded from a station onto the train before it\nleaves the station. You can choose any candy at this station. The time it\ntakes to move the candies is negligible. Now, Alice wonders how much time is\nneeded for the train to deliver all candies. Your task is to find, for each\nstation, the minimum time the train would need to deliver all the candies were\nit to start from there. Input The first line contains two space-separated\nintegers \n    n\n and \n    m\n (\n    2 \n    \u2264 n \n    \u2264 100\n; \n    1 \n    \u2264 m\n    \n    \u2264 200\n) \u2014 the number of stations and the number of candies,\nrespectively. The \n    i\n-th of the following \n    m\n lines contains two\nspace-separated integers \n    a_i\n and \n    b_i\n (\n    1 \n    \u2264 a_i, b_i \n    \u2264\n    n\n; \n    a_i \n    \u2260 b_i\n) \u2014 the station that initially contains candy\n\n    i\n and the destination station of the candy, respectively. Output In the\nfirst and only line, print \n    n\n space-separated integers, the \n    i\n-th of\nwhich is the minimum time, in seconds, the train would need to deliver all the\ncandies were it to start from station \n    i\n. Examples Input 5 7 2 4 5 1 2 3\n3 4 4 1 5 3 3 5 Output 10 9 10 10 9 Input 2 3 1 2 1 2 1 2 Output 5 6 Note\nConsider the second sample. If the train started at station \n    1\n, the\noptimal strategy is as follows. Load the first candy onto the train. Proceed\nto station \n    2\n. This step takes \n    1\n second. Deliver the first candy.\nProceed to station \n    1\n. This step takes \n    1\n second. Load the second\ncandy onto the train. Proceed to station \n    2\n. This step takes \n    1\n\nsecond. Deliver the second candy. Proceed to station \n    1\n. This step takes\n\n    1\n second. Load the third candy onto the train. Proceed to station\n\n    2\n. This step takes \n    1\n second. Deliver the third candy. Hence, the\ntrain needs \n    5\n seconds to complete the tasks. If the train were to start\nat station \n    2\n, however, it would need to move to station \n    1\n before\nit could load the first candy, which would take one additional second. Thus,\nthe answer in this scenario is \n    5+1 = 6\n seconds.\n\n",
+        "cf_contest_id": 1129,
+        "cf_index": "A1",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 7\r\n2 4\r\n5 1\r\n2 3\r\n3 4\r\n4 1\r\n5 3\r\n3 5\r\n",
+                "10 9 10 10 9 "
+            ],
+            [
+                "2 3\r\n1 2\r\n1 2\r\n1 2\r\n",
+                "5 6 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "5 1\r\n3 2\r\n",
+                "6 5 4 8 7 "
+            ],
+            [
+                "10 3\r\n3 4\r\n1 3\r\n5 2\r\n",
+                "11 11 10 10 9 16 15 14 13 12 "
+            ],
+            [
+                "20 5\r\n3 12\r\n5 20\r\n16 4\r\n13 3\r\n9 14\r\n",
+                "23 22 21 28 27 34 33 32 31 30 29 28 27 29 28 27 27 26 25 24 "
+            ],
+            [
+                "50 20\r\n4 18\r\n39 33\r\n49 32\r\n7 32\r\n38 1\r\n46 11\r\n8 1\r\n3 31\r\n30 47\r\n24 16\r\n33 5\r\n5 21\r\n3 48\r\n13 23\r\n49 50\r\n18 47\r\n40 32\r\n9 23\r\n19 39\r\n25 12\r\n",
+                "99 98 97 127 126 125 124 123 122 121 120 119 118 117 116 115 114 113 112 111 110 109 108 107 106 105 104 103 102 101 100 99 98 97 96 95 94 93 92 93 92 91 90 89 88 87 86 85 84 100 "
+            ],
+            [
+                "100 50\r\n55 68\r\n94 68\r\n39 6\r\n45 32\r\n59 20\r\n72 53\r\n41 25\r\n63 32\r\n78 18\r\n79 97\r\n17 1\r\n72 64\r\n85 89\r\n26 25\r\n82 29\r\n15 1\r\n8 18\r\n28 3\r\n33 61\r\n87 25\r\n90 62\r\n86 60\r\n90 66\r\n55 10\r\n16 21\r\n23 97\r\n38 100\r\n64 66\r\n63 83\r\n99 97\r\n97 43\r\n88 21\r\n79 32\r\n47 36\r\n83 26\r\n71 52\r\n76 75\r\n80 1\r\n48 26\r\n65 87\r\n73 12\r\n73 21\r\n46 15\r\n5 32\r\n77 8\r\n91 90\r\n39 29\r\n41 70\r\n36 52\r\n80 88\r\n",
+                "261 260 259 258 257 256 255 254 253 252 251 250 249 248 247 246 245 244 243 242 241 240 239 238 237 236 235 234 233 232 231 230 229 228 227 226 225 224 223 266 265 264 263 262 261 260 259 258 257 256 255 254 253 252 251 250 249 248 247 246 245 244 243 242 241 240 239 238 237 236 235 234 280 279 278 277 276 275 274 273 272 271 270 269 268 267 266 265 264 263 271 270 269 268 267 266 265 264 263 262 "
+            ],
+            [
+                "5 3\r\n1 2\r\n4 3\r\n1 5\r\n",
+                "7 10 9 8 8 "
+            ],
+            [
+                "100 1\r\n7 75\r\n",
+                "74 73 72 71 70 69 68 167 166 165 164 163 162 161 160 159 158 157 156 155 154 153 152 151 150 149 148 147 146 145 144 143 142 141 140 139 138 137 136 135 134 133 132 131 130 129 128 127 126 125 124 123 122 121 120 119 118 117 116 115 114 113 112 111 110 109 108 107 106 105 104 103 102 101 100 99 98 97 96 95 94 93 92 91 90 89 88 87 86 85 84 83 82 81 80 79 78 77 76 75 "
+            ],
+            [
+                "10 3\r\n7 9\r\n3 2\r\n7 1\r\n",
+                "18 17 16 18 17 16 15 21 20 19 "
+            ],
+            [
+                "50 20\r\n45 33\r\n44 7\r\n31 41\r\n45 12\r\n3 13\r\n18 17\r\n3 39\r\n31 11\r\n31 1\r\n44 7\r\n44 23\r\n18 46\r\n44 1\r\n45 6\r\n31 22\r\n18 13\r\n31 22\r\n45 8\r\n45 17\r\n18 43\r\n",
+                "255 254 253 252 251 250 249 248 247 246 245 244 243 242 241 240 239 238 237 236 235 234 233 232 231 230 229 228 227 226 225 259 258 257 256 255 254 253 252 251 250 249 248 247 246 260 259 258 257 256 "
+            ],
+            [
+                "100 50\r\n29 35\r\n10 75\r\n29 34\r\n10 87\r\n29 13\r\n29 38\r\n41 21\r\n10 6\r\n29 94\r\n10 47\r\n31 27\r\n41 24\r\n41 8\r\n10 93\r\n41 52\r\n41 36\r\n31 32\r\n85 81\r\n31 32\r\n41 79\r\n41 99\r\n85 88\r\n41 25\r\n31 68\r\n41 93\r\n10 87\r\n85 97\r\n41 85\r\n10 64\r\n10 68\r\n85 22\r\n10 45\r\n85 15\r\n10 16\r\n10 21\r\n41 66\r\n29 68\r\n41 96\r\n29 34\r\n10 22\r\n41 72\r\n85 54\r\n29 48\r\n10 100\r\n29 91\r\n41 43\r\n85 59\r\n85 10\r\n31 90\r\n41 64\r\n",
+                "1442 1441 1440 1439 1438 1437 1436 1435 1434 1433 1432 1431 1430 1429 1428 1427 1426 1425 1424 1423 1422 1421 1420 1419 1418 1417 1416 1415 1414 1413 1412 1411 1410 1409 1408 1407 1406 1405 1404 1403 1402 1501 1500 1499 1498 1497 1496 1495 1494 1493 1492 1491 1490 1489 1488 1487 1486 1485 1484 1483 1482 1481 1480 1479 1478 1477 1476 1475 1474 1473 1472 1471 1470 1469 1468 1467 1466 1465 1464 1463 1462 1461 1460 1459 1458 1457 1456 1455 1454 1453 1452 1451 1450 1449 1448 1447 1446 1445 1444 1443 "
+            ],
+            [
+                "10 10\r\n6 5\r\n1 10\r\n6 5\r\n10 9\r\n5 4\r\n7 6\r\n5 4\r\n6 5\r\n1 10\r\n1 10\r\n",
+                "34 38 37 36 35 34 38 37 36 35 "
+            ],
+            [
+                "10 2\r\n9 2\r\n10 8\r\n",
+                "17 16 15 14 13 12 11 10 9 12 "
+            ],
+            [
+                "10 4\r\n8 6\r\n1 7\r\n6 1\r\n5 1\r\n",
+                "15 15 14 13 12 15 14 13 17 16 "
+            ],
+            [
+                "10 6\r\n6 8\r\n4 5\r\n1 9\r\n1 6\r\n7 5\r\n8 3\r\n",
+                "15 24 23 22 21 20 19 18 17 16 "
+            ],
+            [
+                "10 8\r\n5 2\r\n6 5\r\n3 8\r\n9 10\r\n4 3\r\n9 5\r\n2 6\r\n9 10\r\n",
+                "29 28 27 26 25 24 23 22 21 30 "
+            ],
+            [
+                "10 11\r\n10 1\r\n7 6\r\n6 5\r\n2 9\r\n1 8\r\n10 8\r\n8 10\r\n7 2\r\n1 6\r\n1 5\r\n4 5\r\n",
+                "24 33 32 31 30 29 28 27 26 25 "
+            ],
+            [
+                "10 13\r\n9 5\r\n10 4\r\n9 5\r\n8 7\r\n10 2\r\n9 1\r\n9 1\r\n10 8\r\n9 1\r\n5 7\r\n9 3\r\n3 7\r\n6 5\r\n",
+                "60 59 58 57 56 55 54 53 52 61 "
+            ],
+            [
+                "10 20\r\n6 10\r\n2 3\r\n10 7\r\n8 10\r\n4 7\r\n6 2\r\n7 10\r\n7 4\r\n10 3\r\n9 3\r\n4 8\r\n1 7\r\n2 10\r\n6 9\r\n3 6\r\n6 3\r\n10 2\r\n10 7\r\n10 5\r\n4 5\r\n",
+                "51 50 49 48 47 46 45 44 43 42 "
+            ],
+            [
+                "10 10\r\n6 1\r\n6 10\r\n5 7\r\n5 6\r\n9 3\r\n2 1\r\n4 10\r\n6 7\r\n4 1\r\n1 5\r\n",
+                "26 25 24 23 25 24 30 29 28 27 "
+            ],
+            [
+                "3 1\r\n3 1\r\n",
+                "3 2 1 "
+            ],
+            [
+                "3 1\r\n3 2\r\n",
+                "4 3 2 "
+            ],
+            [
+                "3 1\r\n1 2\r\n",
+                "1 3 2 "
+            ],
+            [
+                "3 2\r\n1 3\r\n2 1\r\n",
+                "3 4 4 "
+            ],
+            [
+                "3 2\r\n3 2\r\n1 2\r\n",
+                "4 3 2 "
+            ],
+            [
+                "3 2\r\n3 1\r\n1 3\r\n",
+                "3 4 3 "
+            ],
+            [
+                "3 3\r\n1 2\r\n1 2\r\n1 2\r\n",
+                "7 9 8 "
+            ],
+            [
+                "3 3\r\n1 2\r\n3 2\r\n2 3\r\n",
+                "4 3 3 "
+            ],
+            [
+                "3 3\r\n2 1\r\n1 2\r\n1 3\r\n",
+                "4 6 5 "
+            ],
+            [
+                "3 2\r\n2 1\r\n2 3\r\n",
+                "5 4 6 "
+            ]
+        ]
+    }
+]

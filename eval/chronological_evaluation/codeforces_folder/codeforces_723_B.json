@@ -1,0 +1,185 @@
+[
+    {
+        "name": "Text Document Analysis",
+        "description": "Modern text editors usually show some information regarding the document being\nedited. For example, the number of words, the number of pages, or the number\nof characters. In this problem you should implement the similar functionality.\nYou are given a string which only consists of: uppercase and lowercase English\nletters, underscore symbols (they are used as separators), parentheses (both\nopening and closing). It is guaranteed that each opening parenthesis has a\nsucceeding closing parenthesis. Similarly, each closing parentheses has a\npreceding opening parentheses matching it. For each pair of matching\nparentheses there are no other parenthesis between them. In other words, each\nparenthesis in the string belongs to a matching \"opening-closing\" pair, and\nsuch pairs can't be nested. For example, the following string is valid:\n\"_Hello_Vasya(and_Petya)__bye_(and_OK)\". Word is a maximal sequence of\nconsecutive letters, i.e. such sequence that the first character to the left\nand the first character to the right of it is an underscore, a parenthesis, or\nit just does not exist. For example, the string above consists of seven words:\n\"Hello\", \"Vasya\", \"and\", \"Petya\", \"bye\", \"and\" and \"OK\". Write a program that\nfinds: the length of the longest word outside the parentheses (print 0, if\nthere is no word outside the parentheses), the number of words inside the\nparentheses (print 0, if there is no word inside the parentheses). Input The\nfirst line of the input contains a single integer n (1 \u2264 n \u2264 255) \u2014 the length\nof the given string. The second line contains the string consisting of only\nlowercase and uppercase English letters, parentheses and underscore symbols.\nOutput Print two space-separated integers: the length of the longest word\noutside the parentheses (print 0, if there is no word outside the\nparentheses), the number of words inside the parentheses (print 0, if there is\nno word inside the parentheses). Examples Input 37\n_Hello_Vasya(and_Petya)__bye_(and_OK) Output 5 4 Input 37\n_a_(_b___c)__de_f(g_)__h__i(j_k_l)m__ Output 2 6 Input 27\n(LoooonG)__shOrt__(LoooonG) Output 5 2 Input 5 (___) Output 0 0 Note In the\nfirst sample, the words \"Hello\", \"Vasya\" and \"bye\" are outside any of the\nparentheses, and the words \"and\", \"Petya\", \"and\" and \"OK\" are inside. Note,\nthat the word \"and\" is given twice and you should count it twice in the\nanswer.\n\n",
+        "cf_contest_id": 723,
+        "cf_index": "B",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "expression parsing",
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "37\r\n_Hello_Vasya(and_Petya)__bye_(and_OK)\r\n",
+                "5 4\r\n"
+            ],
+            [
+                "37\r\n_a_(_b___c)__de_f(g_)__h__i(j_k_l)m__\r\n",
+                "2 6\r\n"
+            ],
+            [
+                "27\r\n(LoooonG)__shOrt__(LoooonG)\r\n",
+                "5 2\r\n"
+            ],
+            [
+                "5\r\n(___)\r\n",
+                "0 0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "254\r\n()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "14\r\nQ(___)_u(_U)HG\r\n",
+                "2 1\r\n"
+            ],
+            [
+                "50\r\n_F_()___(____q)H_(__)__(_____p________o_)__Bz()___\r\n",
+                "2 3\r\n"
+            ],
+            [
+                "10\r\ndJ_R_____K\r\n",
+                "2 0\r\n"
+            ],
+            [
+                "20\r\nm(_)jzay()s()d()T(M)\r\n",
+                "4 1\r\n"
+            ],
+            [
+                "50\r\n()()W()g_(EEX)UADba(R)()TD(L)X(Aub)DN(a)(YYJXNgyK)\r\n",
+                "5 6\r\n"
+            ],
+            [
+                "80\r\n_____(_____k_____q____N)(e___sM__pf___)_(___g_____)__V_n___________z(__)__(___)U\r\n",
+                "1 7\r\n"
+            ],
+            [
+                "100\r\nFE_i_UhQF_oIh(v__qf)WVa_gND___caHkdU(_WP_Kxm__WEIn_KZLBS)_XDwNnR_c(_Pv_A)LXO__GEd_R_bTP_hAnZ_____sDL\r\n",
+                "6 8\r\n"
+            ],
+            [
+                "150\r\njUcWddnQOXvZcdiQm_ngFnpbXyQCIzHHwU(KHNQPMDPFkoihdhZAthjelfgAHS_tco_JwgEFu)q_WLbNsZgQLJFFX_vAOClrvJQm_XWhHDOP_aMT_RuCFsegLgwQbI_FTJPfIHwmpr_jrtbiTsiIaX\r\n",
+                "17 3\r\n"
+            ],
+            [
+                "200\r\n()()()()()(_)()()()()()()()_()()()()()()()()(_)()()()()()()()()()()()()()()()()()()()()()()()()()()()()()y()()()()()()()()()()()(_)()_()()()()()()()(_)()()()()()()()()()()()()(B)()()N_()()()()()()()()\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "250\r\nST()jw()()()(c)()()s_(bB)()q()()()()()()()(_)()()()()()()()(u)()()(e)()()()()()()()()()(_)()()()()()_(B_)()()()()n(_)(A)()()()()(M)I()P()(VT)o(_)q()()()()(f)()()()()()()a(Du)()()()k(Q)()(_)()()()()(U)Z()(d)()_(D)()y()()i(i)(O)_b()()()(__M)()()()()()w\r\n",
+                "2 17\r\n"
+            ],
+            [
+                "255\r\nMSGxEfof_UkcbUrRTEUgYLoWoVjuQJbqbBBmvUPLU_BXTXNjysGvgZqtwh_snLtUPhFGJMnyRvF_lG_eEu_J__qI_wrADYbAKZjhJuYVC_etLQgvmVaeqJ_a(Xh_Z_zkWmHxSQYvBOP__nLINkxiWlGzQiFv_GgGGqShWhBS_lEqCidMabWaYwIx_fVTluiPJuBryPtBkkCGxb)lOj_iJXBGOqj_aerFn_cKkEWbAK_YrgX__mcroeiRmuaMqYh\r\n",
+                "32 7\r\n"
+            ],
+            [
+                "255\r\n___t_Cjo_____J___c__F_(_c______JY__Ub__x___________K_zf___T_U___Kc_______P_____W__S__o____Yx__ge___v____S___N_p_v____n_b___E__e_V___a___S____yvZk_Lr___U_e__x____i_____m___Z______E__A_________k____T__)l_B_________________q(__O___oi___B_b______Gf____jz____)\r\n",
+                "3 45\r\n"
+            ],
+            [
+                "255\r\nT___J(M_XZJlr_lH___mqJA_p__kW)ko__F_M_Aro__ZA_G_M_P_____j_V(J_Jk_dkR_ta_lbIUhKFfo_y_DluW)IVFj_gouRfMhabn()_e___q_vo__QPEGBI_TpVVI_clPwwb_m_yL_cMVKgi___RJb_J_f____tPCyntLOr_s_x_N_SyqQw_zP_mycsW_o_c_o_Yzb_UVa_ATd(BYH_gl___Y__Uzok_Y_IA_XL_D__bkJ____e__K_quk)\r\n",
+                "10 25\r\n"
+            ],
+            [
+                "255\r\ngB(ZKoVzD_WVZaYCzXGJYiTHB_XpOcKuLmclmw)UmpgxadtSQ(jGo)KQfXT(Yr_fP_CPbdIv)(AAmaGwrvN)(_Zg)dw(q_O_yLXQzdf)cVN_hd__EaTKwvYNte(_NmFs_)d_KOCp(UWUuGkuMJ)IXwulpMrJwBqdprtLcOE_JSnifGNBBQnuB_(_rhlesFvqglyJ_OYr_WpRM)_fjIfYdXpEbSOZCvk()x_YLygRDpOOZrjycBG_NEa_KjII_Db\r\n",
+                "20 17\r\n"
+            ],
+            [
+                "255\r\n__X__()__x___X_(_)(_Ax)__H()_(_)_(_________)___(Y_p__t)_(_F)_(bY__S__)_____v_()__()J____q_(__)_c___G_SI__(__ynv)_M_______(_x_____V___ib__i)(__r_)__A(_)d(H)____H_K_Q_(___KW)(p_n)__(______g)____L(_)_T_hL___(__)___(_)(_)_h()(f_____)_l_____(_)(l)____(_)_h(_)F\r\n",
+                "2 20\r\n"
+            ],
+            [
+                "255\r\njNufi_Tql(Q)()_Rm(_RS)w()(Q)_(_)(c)Eme()()()J(vKJ_)(X_si)()g(u)(_)n()F()a()(_)(U)fx(c__qivDE)J(__pS_k)r()(N_Z_cW__)__z_LgHJE_()s_()BCKMgJ(eW)_t(oGp)()kl()(_)_(__tn_W_Y)dD()(_)_()()x_(u)(W)(T)E(_LF_DkdIx)sx__(Q_)(bL)V(_)(oKrE)__(_)(fW_)_z_()()O(O)_()cacQg_\r\n",
+                "6 31\r\n"
+            ],
+            [
+                "255\r\na()J()f()vAL()(pV)(Ve)()()c()()(Wtg)(_)DW(D)()()sEXF()(_B)V(_W)Z_a_(_)U(tb)(u)I()Z()_()()()cw()ZW()Z()V()A(T)_a()()_jL(V)()(z)()Tn()y()(B)uEf()(B)()()p()()(B_)nz(Xs)(o)T()()IkH()()(pJ)()()()()()E()z()Ja_()Z()(Q)(_)(N)()c()p()g(_)l()()Q()()U()()()()(aZ)m()\r\n",
+                "4 20\r\n"
+            ],
+            [
+                "255\r\nAf________T_C____t_p(_Ug___Fr_Wg_)j_____x__j_a___Q_____(__p_____M)__J__jj____E__J(_W____eT)__wtm____T____Z_c_____C____P_____k___(___ql_X_B_________l____L_______F___m___p_S__DI______w)_f__r_lGG_m__SJ(__q__G_____s___s___o_______bg____f____vZ___rg_k___C____)\r\n",
+                "3 29\r\n"
+            ],
+            [
+                "255\r\n(s)()(y)()()l()()()()()()()()_c()()()()X()()()()(l)()()()()()ND()(F)()()_()()()()a()()F(O)(e)()(_)(t)(_)()_()()_()()()()()(So)()()(Lm)(e)()()(F)()Yt(_)()()__()()()(w)T()(s)()_()()()()O(j)()U()()()()()_(_H)()()_()()()c()(_)()()y(j)()C_()()HRx()()(EE)()p()W\r\n",
+                "3 17\r\n"
+            ],
+            [
+                "255\r\n()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()_()()()()()()()()K()()()()()()()()()()()()(_)()()_()()()z()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "255\r\n(I_____)_________Q__W(P_V___G__m_U_)___________a_X__X_n__Br______N___(__)(_q)(___G____x_)__r_ru__D_(____E_u)_cV_joiL_(______)C__W(___BtgJ__ga_FFwpcu_K)_Tm(____h__)_(____v_)_(_F___E_n_lm_kctg_____u__)Q___vh(u_)__(____CAM__F_Y___O__G_P___)_P_ZLo__K__nGAgq_S\r\n",
+                "5 30\r\n"
+            ],
+            [
+                "255\r\nacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJasdza\r\n",
+                "255 0\r\n"
+            ],
+            [
+                "255\r\n(cvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJacvfrAGKFJasdz)\r\n",
+                "0 1\r\n"
+            ],
+            [
+                "255\r\n(a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a_a)\r\n",
+                "0 127\r\n"
+            ],
+            [
+                "1\r\n_\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1\r\na\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "2\r\n()\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2\r\nad\r\n",
+                "2 0\r\n"
+            ],
+            [
+                "2\r\n_a\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "2\r\nq_\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "3\r\n(_)\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "3\r\n(a)\r\n",
+                "0 1\r\n"
+            ],
+            [
+                "3\r\nq_z\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "6\r\na(al)a\r\n",
+                "1 1\r\n"
+            ],
+            [
+                "10\r\na(a)aa(a)a\r\n",
+                "2 2\r\n"
+            ],
+            [
+                "5\r\n()abc\r\n",
+                "3 0\r\n"
+            ]
+        ]
+    }
+]

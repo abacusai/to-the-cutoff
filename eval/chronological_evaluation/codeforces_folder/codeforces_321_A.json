@@ -1,0 +1,285 @@
+[
+    {
+        "name": "Ciel and Robot",
+        "description": "Fox Ciel has a robot on a 2D plane. Initially it is located in (0, 0). Fox\nCiel code a command to it. The command was represented by string s. Each\ncharacter of s is one move operation. There are four move operations at all:\n'U': go up, (x, y) \u2192 (x, y+1); 'D': go down, (x, y) \u2192 (x, y-1); 'L': go left,\n(x, y) \u2192 (x-1, y); 'R': go right, (x, y) \u2192 (x+1, y). The robot will do the\noperations in s from left to right, and repeat it infinite times. Help Fox\nCiel to determine if after some steps the robot will located in (a, b). Input\nThe first line contains two integers a and b, ( - 10^9 \u2264 a, b \u2264 10^9). The\nsecond line contains a string s (1 \u2264 |s| \u2264 100, s only contains characters\n'U', 'D', 'L', 'R') \u2014 the command. Output Print \"Yes\" if the robot will be\nlocated at (a, b), and \"No\" otherwise. Examples Input 2 2 RU Output Yes Input\n1 2 RU Output No Input -1 1000000000 LRRLU Output Yes Input 0 0 D Output Yes\nNote In the first and second test case, command string is \"RU\", so the robot\nwill go right, then go up, then right, and then up and so on. The locations of\nits moves are (0, 0) \u2192 (1, 0) \u2192 (1, 1) \u2192 (2, 1) \u2192 (2, 2) \u2192 ... So it can reach\n(2, 2) but not (1, 2).\n\n",
+        "cf_contest_id": 321,
+        "cf_index": "A",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2\r\nRU\r\n",
+                "Yes"
+            ],
+            [
+                "1 2\r\nRU\r\n",
+                "No"
+            ],
+            [
+                "-1 1000000000\r\nLRRLU\r\n",
+                "Yes"
+            ],
+            [
+                "0 0\r\nD\r\n",
+                "Yes"
+            ]
+        ],
+        "private_cases": [
+            [
+                "0 0\r\nUURRDL\r\n",
+                "Yes"
+            ],
+            [
+                "987654321 987654321\r\nUURRDL\r\n",
+                "Yes"
+            ],
+            [
+                "4 2\r\nUURRDL\r\n",
+                "No"
+            ],
+            [
+                "4 3\r\nUURRDL\r\n",
+                "Yes"
+            ],
+            [
+                "4 4\r\nUURRDL\r\n",
+                "Yes"
+            ],
+            [
+                "4 6\r\nUURRDL\r\n",
+                "Yes"
+            ],
+            [
+                "4 7\r\nUURRDL\r\n",
+                "No"
+            ],
+            [
+                "1000000000 1000000000\r\nUURRDL\r\n",
+                "Yes"
+            ],
+            [
+                "-1 -1\r\nUR\r\n",
+                "No"
+            ],
+            [
+                "1 1\r\nUURRDDLL\r\n",
+                "No"
+            ],
+            [
+                "987654321 2\r\nUURDD\r\n",
+                "Yes"
+            ],
+            [
+                "0 123456789\r\nRRULL\r\n",
+                "Yes"
+            ],
+            [
+                "4 4\r\nUUUURRRRDDDDLLLL\r\n",
+                "Yes"
+            ],
+            [
+                "-491226083 -49122610\r\nUDRLDURLDLLLDUDURLRDUUDDUUULUDRDRDUULURDRLLDDDLUDUURLUUDLLDULLLLDDLDDUU\r\n",
+                "Yes"
+            ],
+            [
+                "-261597957 418556728\r\nLLLDLUDUULLRDDULLRRUDRDLULRLRLLRRUUDRRLRUDLRRLUDRDLLUUDUULRURLDLULUUULDDUURLRUDURRL\r\n",
+                "Yes"
+            ],
+            [
+                "-771928144 -3\r\nRUDULULDRDLLLULDDUDDDDUDULRULRUULDDDURUDLUURULLLDLLDDRDDRLRURUULRUURRUDLDLDDRLLULRRDRRLLUULUDRUUDRRD\r\n",
+                "Yes"
+            ],
+            [
+                "397346346 1\r\nDDURRUURLDLRRLULD\r\n",
+                "Yes"
+            ],
+            [
+                "-528551525 0\r\nUDRLRRLDLDLURRRRULDLRLRLURUUDDLRLLDRRULLUDLURDLUUULLLRUUUDRRURLDUDULDDRDDDRDL\r\n",
+                "Yes"
+            ],
+            [
+                "311692421 -129871846\r\nLLLDURULDDDDUDDURRLUUDRLDDRDURDDRUDUURLUDUDLDRUDDDUUURDRRUDRDRDURLLDURUUDRLDLDURRRRRRDULURDRU\r\n",
+                "Yes"
+            ],
+            [
+                "485940814 728911221\r\nURURU\r\n",
+                "Yes"
+            ],
+            [
+                "-843450986 632588242\r\nLURLULULRUDUDULRDDLUL\r\n",
+                "Yes"
+            ],
+            [
+                "647999516 -809999401\r\nUDLDDLLULUDDLLDUULRRRDLUDDLDDLRLRRDRURURDRRDRULUDRDULRULLRRLLDDRLRRUDRURDUULUDLRRLRDR\r\n",
+                "Yes"
+            ],
+            [
+                "352820537 -764444491\r\nRDDUDLUDDUDLRRRDRRRDRRDUDUDDURLRRLDRLLRLLLLUULUDRURRDRLDDLLDRDURDUDRUDDLUDRLURUDRURDRDDLDRLDLDLLU\r\n",
+                "Yes"
+            ],
+            [
+                "-284973644 -1\r\nDLULLDLRUUDRR\r\n",
+                "Yes"
+            ],
+            [
+                "356922591 -2\r\nRRLDLDUDRUUUULUUDDULDDUDD\r\n",
+                "No"
+            ],
+            [
+                "27033101 54066203\r\nUDDDRDLLLRUUDDLRDLDRLRUDDULRLLRULR\r\n",
+                "No"
+            ],
+            [
+                "-199335150 39867031\r\nLLURRDUULRUDDRDUUULDLDRDDLURDRLDRLLLRRRRRULRRRUUDD\r\n",
+                "No"
+            ],
+            [
+                "609504072 609504074\r\nULRLUDLDDR\r\n",
+                "No"
+            ],
+            [
+                "497684357 829473929\r\nRRLDUUURULURRLLRRLRLURRLDU\r\n",
+                "Yes"
+            ],
+            [
+                "551922835 183974295\r\nDUDUUULDRLRURRDULRRUDDLRLLUULLRLRDRDRR\r\n",
+                "No"
+            ],
+            [
+                "825368095 -825368096\r\nRD\r\n",
+                "No"
+            ],
+            [
+                "-458990423 -229495204\r\nDLLDDRLUDLRLUL\r\n",
+                "No"
+            ],
+            [
+                "285102789 570205594\r\nRRDULRULULRRDUURRLURUDDULLRDUL\r\n",
+                "No"
+            ],
+            [
+                "109928480 219856920\r\nLRURLRLURDRDLDRDLRDDUUDDLULDRRUUURRUDLLUULUUUR\r\n",
+                "No"
+            ],
+            [
+                "-532674020 532674026\r\nUURLLL\r\n",
+                "No"
+            ],
+            [
+                "999999999 0\r\nRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\r\n",
+                "Yes"
+            ],
+            [
+                "0 0\r\nUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLR\r\n",
+                "Yes"
+            ],
+            [
+                "1 1\r\nUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLRUDLR\r\n",
+                "No"
+            ],
+            [
+                "-1000000000 -1000000000\r\nDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDLDL\r\n",
+                "Yes"
+            ],
+            [
+                "3 3\r\nUURR\r\n",
+                "No"
+            ],
+            [
+                "-2 -2\r\nUR\r\n",
+                "No"
+            ],
+            [
+                "5 5\r\nUDLR\r\n",
+                "No"
+            ],
+            [
+                "0 -1\r\nU\r\n",
+                "No"
+            ],
+            [
+                "-1 0\r\nR\r\n",
+                "No"
+            ],
+            [
+                "1000000000 1000000000\r\nURURURUR\r\n",
+                "Yes"
+            ],
+            [
+                "-1 -1\r\nRU\r\n",
+                "No"
+            ],
+            [
+                "1 1\r\nLD\r\n",
+                "No"
+            ],
+            [
+                "-2 -2\r\nUURR\r\n",
+                "No"
+            ],
+            [
+                "1000000000 0\r\nRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\r\n",
+                "Yes"
+            ],
+            [
+                "2 6\r\nRUUUURLDDDL\r\n",
+                "Yes"
+            ],
+            [
+                "0 1\r\nLUUR\r\n",
+                "No"
+            ],
+            [
+                "1 1\r\nURDLDL\r\n",
+                "Yes"
+            ],
+            [
+                "-10 -10\r\nRU\r\n",
+                "No"
+            ],
+            [
+                "1000000000 1000000000\r\nRURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURURU\r\n",
+                "Yes"
+            ],
+            [
+                "-1000000000 -500000000\r\nURR\r\n",
+                "No"
+            ],
+            [
+                "-2 0\r\nULLLDDRRRR\r\n",
+                "Yes"
+            ],
+            [
+                "999999999 -999999999\r\nRRRRRRRRRRRRRRRRRRRRRRRRRDDDDDDDDDDDDDDDDDDDDDDDDDLLLLLLLLLLLLLLLLLLLLLLLUUUUUUUUUUUUUUUUUUUUUUU\r\n",
+                "Yes"
+            ],
+            [
+                "-100 -100\r\nRU\r\n",
+                "No"
+            ],
+            [
+                "100 100\r\nRUL\r\n",
+                "No"
+            ],
+            [
+                "0 1\r\nUDLR\r\n",
+                "Yes"
+            ],
+            [
+                "0 1\r\nD\r\n",
+                "No"
+            ],
+            [
+                "0 -3\r\nRDDL\r\n",
+                "No"
+            ]
+        ]
+    }
+]

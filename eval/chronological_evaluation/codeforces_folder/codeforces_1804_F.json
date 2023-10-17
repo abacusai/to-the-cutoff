@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Approximate Diameter",
+        "description": "Jack has a graph of \n    n\n vertices and \n    m\n edges. All edges are\nbidirectional and of unit length. The graph is connected, i. e. there exists a\npath between any two of its vertices. There can be more than one edge\nconnecting the same pair of vertices. The graph can contain self-loops, i. e.\nedges connecting a node to itself. The distance between vertices \n    u\n and\n\n    v\n is denoted as \n    \u03c1(u, v)\n and equals the minimum possible\nnumber of edges on a path between \n    u\n and \n    v\n. The diameter of graph\n\n    G\n is defined as the maximum possible distance between some pair of its\nvertices. We denote it as \n    d(G)\n. In other words, \n    \n\n    d(G) = \n    max_1\n    \n    \u2264 u, v \n    \u2264 n\n    \u03c1(u, v).\n\n    \n Jack plans to consecutively apply\n\n    q\n updates to his graph. Each update adds exactly one edge to the graph.\nDenote as \n    G_i\n the graph after exactly \n    i\n updates are made. Jack\nwants to calculate \n    q + 1\n values \n    d(G_0), d(G_1), d(G_2), \n    \u2026,\n    d(G_q)\n. However, Jack suspects that finding the exact diameters of \n    q +\n    1\n graphs might be a difficult task, so he is fine with approximate answers\nthat differ from the correct answers no more than twice. Formally, Jack wants\nto find a sequence of positive integers \n    a_0, a_1, a_2, \n    \u2026, a_q\n\nsuch that \n    \n\n    \u2308\n    d(G_i)/2\n    \n    \u2309\n    \u2264 a_i\n    \n    \u2264 2 \n    \u00b7 d(G_i)\n\n    \n for each \n    i\n. Hacks You cannot make hacks in\nthis problem. Input The first line of the input contains three integers\n\n    n\n, \n    m\n, and \n    q\n (\n    2 \n    \u2264 n \n    \u2264 10^5\n, \n    n - 1 \n    \u2264 m\n    \n    \u2264 10^5\n, \n    0 \n    \u2264 q \n    \u2264 10^5\n), the number of vertices in the\ngiven graph, the number of edges and the number of updates, respectively. Then\nfollow \n    m\n lines describing the initial edges of the graph. The \n    i\n-th\nof these lines contains two integers \n    u_i\n and \n    v_i\n (\n    1 \n    \u2264 u_i,\n    v_i \n    \u2264 n\n), the indexes of the vertices connected by the \n    i\n-th\nedge. Then follow \n    q\n lines describing the updates. The \n    i\n-th of\nthese lines contains two integers \n    u'_i\n and \n    v'_i\n (\n    1 \n    \u2264 u'_i,\n    v'_i \n    \u2264 n\n), the indexes of the vertices connected by the edge that is\nadded to the graph in the \n    i\n-th update. Important note. For testing\npurposes, the input data may contain some extra lines after the mentioned\ninput format. These will be used by the checker to verify your answer. They\nare not a part of the test data, you should not use them in any way and you\ncan even omit reading them. Output Print a sequence of \n    q + 1\n positive\nintegers \n    a_0, a_1, a_2, \n    \u2026, a_q\n. The \n    i\n-th of these integers\nshould differ from the diameter of graph \n    G_i\n no more than twice.\nExamples Input 9 10 8 1 2 2 3 2 4 3 5 4 5 5 6 5 7 6 8 7 8 8 9 3 4 6 7 2 8 1 9\n1 6 4 9 3 9 7 1 Output 10 6 5 6 2 4 2 2 1 Input 8 7 9 1 2 2 3 3 4 4 5 5 6 6 7\n7 8 1 5 3 7 2 4 4 6 6 8 8 2 5 4 2 4 3 3 1 652997 124613 653029 653029 124613\n124613 124613 648901 124613 653029 Output 7 5 4 4 4 3 3 3 3 3 Note In the\nfirst example, the correct sequence of \n    d(G_0), d(G_1), d(G_2), \n    \u2026,\n    d(G_q)\n is \n    6, 6, 6, 3, 3, 3, 2, 2, 2\n. In the second example, the input\ncontains an extra line that you can omit reading. It is not a part of the test\nand will be used for verifying your answer. The output of the second example\ncontains the correct values of \n    d(G_i)\n.\n\n",
+        "cf_contest_id": 1804,
+        "cf_index": "F",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "divide and conquer",
+            "graphs",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "9 10 8\r\n1 2\r\n2 3\r\n2 4\r\n3 5\r\n4 5\r\n5 6\r\n5 7\r\n6 8\r\n7 8\r\n8 9\r\n3 4\r\n6 7\r\n2 8\r\n1 9\r\n1 6\r\n4 9\r\n3 9\r\n7 1\r\n",
+                "8 8 8 4 4 4 4 4 4 "
+            ],
+            [
+                "8 7 9\r\n1 2\r\n2 3\r\n3 4\r\n4 5\r\n5 6\r\n6 7\r\n7 8\r\n1 5\r\n3 7\r\n2 4\r\n4 6\r\n6 8\r\n8 2\r\n5 4\r\n2 4\r\n3 3\r\n1 652997 124613 653029 653029 124613 124613 124613 648901 124613 653029\r\n",
+                "8 8 8 8 8 4 4 4 4 4 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1 0\r\n1 2\r\n",
+                "2 "
+            ]
+        ]
+    }
+]

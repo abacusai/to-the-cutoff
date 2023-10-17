@@ -1,0 +1,108 @@
+[
+    {
+        "name": "Mike and distribution",
+        "description": "Mike has always been thinking about the harshness of social inequality. He's\nso obsessed with it that sometimes it even affects him while solving problems.\nAt the moment, Mike has two sequences of positive integers A = [a1, a2, ...,\nan] and B = [b1, b2, ..., bn] of length n each which he uses to ask people\nsome quite peculiar questions. To test you on how good are you at spotting\ninequality in life, he wants you to find an \"unfair\" subset of the original\nsequence. To be more precise, he wants you to select k numbers P = [p1, p2,\n..., pk] such that 1 \u2264 pi \u2264 n for 1 \u2264 i \u2264 k and elements in P are distinct.\nSequence P will represent indices of elements that you'll select from both\nsequences. He calls such a subset P \"unfair\" if and only if the following\nconditions are satisfied: 2\u00b7(ap1 + ... + apk) is greater than the sum of all\nelements from sequence A, and 2\u00b7(bp1 + ... + bpk) is greater than the sum of\nall elements from the sequence B. Also, k should be smaller or equal to\nbecause it will be to easy to find sequence P if he allowed you to select too\nmany elements! Mike guarantees you that a solution will always exist given the\nconditions described above, so please help him satisfy his curiosity! Input\nThe first line contains integer n (1 \u2264 n \u2264 10^5) \u2014 the number of elements in\nthe sequences. On the second line there are n space-separated integers a1,\n..., an (1 \u2264 ai \u2264 10^9) \u2014 elements of sequence A. On the third line there are\nalso n space-separated integers b1, ..., bn (1 \u2264 bi \u2264 10^9) \u2014 elements of\nsequence B. Output On the first line output an integer k which represents the\nsize of the found subset. k should be less or equal to . On the next line\nprint k integers p1, p2, ..., pk (1 \u2264 pi \u2264 n) \u2014 the elements of sequence P.\nYou can print the numbers in any order you want. Elements in sequence P should\nbe distinct. Example Input 5 8 7 4 8 3 4 2 5 3 7 Output 3 1 4 5\n\n",
+        "cf_contest_id": 798,
+        "cf_index": "D",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n8 7 4 8 3\r\n4 2 5 3 7\r\n",
+                "3\r\n1 4 5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "27\r\n1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384 32768 65536 131072 262144 524288 1048576 2097152 4194304 8388608 16777216 33554432 67108864\r\n67108864 33554432 16777216 8388608 4194304 2097152 1048576 524288 262144 131072 65536 32768 16384 8192 4096 2048 1024 512 256 128 64 32 16 8 4 2 1\r\n",
+                "14\r\n27 25 23 21 19 17 15 13 11 9 7 5 3 1\r\n"
+            ],
+            [
+                "100\r\n10 4 5 8 6 10 5 10 7 9 3 4 6 10 1 4 7 2 5 2 2 7 5 1 5 3 3 9 5 10 2 3 5 7 6 9 6 5 5 10 8 5 1 9 1 8 1 2 3 6 1 4 3 10 7 1 3 3 7 8 1 2 8 3 2 7 3 10 8 1 5 6 5 10 9 4 9 7 5 6 10 6 4 3 6 4 5 5 6 10 1 9 8 6 4 7 3 2 5 3\r\n6 1 5 10 7 2 8 9 1 9 3 9 2 7 5 5 10 1 1 10 6 2 3 10 4 2 6 7 8 7 8 3 2 4 7 6 6 8 3 5 1 2 7 7 2 8 8 1 5 9 9 8 2 1 4 1 5 1 5 9 2 9 8 5 6 4 9 6 10 1 10 2 2 5 3 1 5 10 9 10 3 3 6 10 7 1 10 2 4 10 2 6 9 3 10 1 3 3 9 7\r\n",
+                "51\r\n90 8 14 1 40 6 10 28 36 69 4 60 46 78 59 55 22 80 50 35 37 94 72 87 99 38 7 25 23 73 33 95 52 16 76 84 100 64 49 32 53 20 62 65 98 24 51 43 91 45 56\r\n"
+            ],
+            [
+                "100\r\n1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7 7 7 8 8 8 8 8 8 8 9 9 9 9 9 9 9 10 10 10 10 10 10 10 10 10 10 10\r\n10 10 10 10 10 10 10 10 10 10 10 10 9 9 9 9 9 9 9 9 9 9 9 8 8 8 8 8 8 8 8 7 7 7 7 7 7 7 7 7 6 6 6 6 6 6 6 6 6 5 5 5 5 5 5 5 5 5 5 4 4 4 4 4 3 3 3 3 3 3 3 3 3 3 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "51\r\n100 99 97 95 93 91 87 85 83 82 81 79 77 74 72 70 68 59 58 56 63 61 66 40 48 46 44 42 55 53 51 39 37 35 33 23 21 19 30 28 26 12 11 17 15 10 9 7 5 3 1\r\n"
+            ],
+            [
+                "1\r\n963837006\r\n731841442\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "1\r\n548\r\n33\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "1\r\n9557\r\n5242\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "1\r\n1\r\n10\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "1\r\n963837006\r\n731841442\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "1\r\n548\r\n33\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "1\r\n9557\r\n5242\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "1\r\n1\r\n10\r\n",
+                "1\r\n1\r\n"
+            ],
+            [
+                "10\r\n319645572 758298525 812547177 459359946 355467212 304450522 807957797 916787906 239781206 242840396\r\n862552539 873867121 975802175 647540462 425058513 132645393 542726039 946723283 689442435 88379179\r\n",
+                "6\r\n8 3 2 1 6 9\r\n"
+            ],
+            [
+                "10\r\n26 723 970 13 422 968 875 329 234 983\r\n965 89 711 689 69 273 674 733 186 114\r\n",
+                "6\r\n10 3 7 8 1 4\r\n"
+            ],
+            [
+                "10\r\n9930 9640 7405 6972 5842 3406 1968 7757 8869 9080\r\n430 2664 5669 9404 8763 2069 6790 3109 6108 7554\r\n",
+                "6\r\n1 10 9 4 5 7\r\n"
+            ],
+            [
+                "10\r\n1 9 7 6 2 4 7 8 1 3\r\n10 10 5 3 7 6 1 10 6 6\r\n",
+                "6\r\n2 8 4 6 1 9\r\n"
+            ],
+            [
+                "10\r\n239781206 242840396 304450522 319645572 355467212 459359946 758298525 807957797 812547177 916787906\r\n975802175 946723283 873867121 862552539 689442435 647540462 542726039 425058513 132645393 88379179\r\n",
+                "6\r\n10 8 6 4 2 1\r\n"
+            ],
+            [
+                "10\r\n13 26 234 329 422 723 875 968 970 983\r\n965 733 711 689 674 273 186 114 89 69\r\n",
+                "6\r\n10 8 6 4 2 1\r\n"
+            ],
+            [
+                "10\r\n1968 3406 5842 6972 7405 7757 8869 9080 9640 9930\r\n9404 8763 7554 6790 6108 5669 3109 2664 2069 430\r\n",
+                "6\r\n10 8 6 4 2 1\r\n"
+            ],
+            [
+                "10\r\n1 1 2 3 4 6 7 7 8 9\r\n10 10 10 7 6 6 6 5 3 1\r\n",
+                "6\r\n10 7 6 4 3 1\r\n"
+            ],
+            [
+                "100\r\n7 4 5 5 10 10 5 8 5 7 4 5 4 6 8 8 2 6 3 3 10 7 10 8 6 2 7 3 9 7 7 2 4 5 2 4 9 5 10 1 10 5 10 4 1 3 4 2 6 9 9 9 10 6 2 5 6 1 8 10 4 10 3 4 10 5 5 4 10 4 5 3 7 10 2 7 3 6 9 6 1 6 5 5 4 6 6 4 4 1 5 1 6 6 6 8 8 6 2 6\r\n3 4 6 5 7 5 4 10 2 10 1 2 2 5 8 7 8 7 1 9 9 5 6 6 4 6 9 9 10 9 4 3 7 9 10 10 9 4 4 7 9 1 7 6 6 8 9 9 5 1 6 10 6 10 9 4 6 9 2 3 3 9 2 5 6 9 4 8 1 2 1 7 5 10 6 5 5 8 4 4 4 1 4 6 5 6 7 10 1 10 8 4 8 3 2 10 10 9 6 6\r\n",
+                "51\r\n74 62 21 5 53 6 60 52 37 79 97 8 16 10 30 76 22 54 98 78 18 86 49 80 94 66 34 84 4 67 38 12 71 88 47 33 85 2 70 89 28 46 77 35 55 17 75 90 58 45 81\r\n"
+            ],
+            [
+                "100\r\n1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 7 7 7 7 7 7 7 7 8 8 8 8 8 8 8 9 9 9 9 9 9 10 10 10 10 10 10 10 10 10 10 10 10 10\r\n10 10 10 10 10 10 10 10 10 10 10 10 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 8 8 8 8 8 8 8 7 7 7 7 7 7 7 7 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 5 5 5 5 5 5 5 5 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 3 3 3 3 3 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1\r\n",
+                "51\r\n92 91 89 100 98 96 94 85 83 87 80 78 76 67 74 72 70 57 56 54 52 66 64 62 60 42 41 39 37 50 48 46 44 27 25 23 34 32 30 28 21 19 17 12 11 9 7 6 5 3 1\r\n"
+            ]
+        ]
+    }
+]

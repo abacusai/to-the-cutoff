@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Matching Names",
+        "description": "Teachers of one programming summer school decided to make a surprise for the\nstudents by giving them names in the style of the \"Hobbit\" movie. Each student\nmust get a pseudonym maximally similar to his own name. The pseudonym must be\na name of some character of the popular saga and now the teachers are busy\nmatching pseudonyms to student names. There are n students in a summer school.\nTeachers chose exactly n pseudonyms for them. Each student must get exactly\none pseudonym corresponding to him. Let us determine the relevance of a\npseudonym b to a student with name a as the length of the largest common\nprefix a and b. We will represent such value as . Then we can determine the\nquality of matching of the pseudonyms to students as a sum of relevances of\nall pseudonyms to the corresponding students. Find the matching between\nstudents and pseudonyms with the maximum quality. Input The first line\ncontains number n (1 \u2264 n \u2264 100 000) \u2014 the number of students in the summer\nschool. Next n lines contain the name of the students. Each name is a non-\nempty word consisting of lowercase English letters. Some names can be\nrepeating. The last n lines contain the given pseudonyms. Each pseudonym is a\nnon-empty word consisting of small English letters. Some pseudonyms can be\nrepeating. The total length of all the names and pseudonyms doesn't exceed 800\n000 characters. Output In the first line print the maximum possible quality of\nmatching pseudonyms to students. In the next n lines describe the optimal\nmatching. Each line must have the form a b (1 \u2264 a, b \u2264 n), that means that the\nstudent who was number a in the input, must match to the pseudonym number b in\nthe input. The matching should be a one-to-one correspondence, that is, each\nstudent and each pseudonym should occur exactly once in your output. If there\nare several optimal answers, output any. Examples Input 5 gennady galya boris\nbill toshik bilbo torin gendalf smaug galadriel Output 11 4 1 2 5 1 3 5 2 3 4\nNote The first test from the statement the match looks as follows: bill \u2192\nbilbo (lcp = 3) galya \u2192 galadriel (lcp = 3) gennady \u2192 gendalf (lcp = 3) toshik\n\u2192 torin (lcp = 2) boris \u2192 smaug (lcp = 0)\n\n",
+        "cf_contest_id": 566,
+        "cf_index": "A",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "strings",
+            "trees"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\ngennady\r\ngalya\r\nboris\r\nbill\r\ntoshik\r\nbilbo\r\ntorin\r\ngendalf\r\nsmaug\r\ngaladriel\r\n",
+                "11\r\n1 3\r\n2 5\r\n3 4\r\n4 1\r\n5 2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\na\r\na\r\n",
+                "1\r\n1 1\r\n"
+            ],
+            [
+                "2\r\na\r\na\r\na\r\na\r\n",
+                "2\r\n1 2\r\n2 1\r\n"
+            ],
+            [
+                "2\r\na\r\nb\r\na\r\na\r\n",
+                "1\r\n1 2\r\n2 1\r\n"
+            ],
+            [
+                "2\r\nb\r\nb\r\na\r\na\r\n",
+                "0\r\n1 2\r\n2 1\r\n"
+            ],
+            [
+                "2\r\na\r\nb\r\na\r\nb\r\n",
+                "2\r\n1 1\r\n2 2\r\n"
+            ],
+            [
+                "10\r\nbaa\r\na\r\nba\r\naabab\r\naa\r\nbaab\r\nbb\r\nabbbb\r\na\r\na\r\na\r\nba\r\nba\r\nbaabbb\r\nba\r\na\r\naabb\r\nbaa\r\nab\r\nb\r\n",
+                "17\r\n1 8\r\n2 6\r\n3 5\r\n4 7\r\n5 1\r\n6 4\r\n7 10\r\n8 9\r\n9 3\r\n10 2\r\n"
+            ],
+            [
+                "10\r\nabaabbaaa\r\nacccccaacabc\r\nacbaabaaabbca\r\naaccca\r\ncbbba\r\naaba\r\nacab\r\nac\r\ncbac\r\nca\r\nbbbbc\r\nbacbcbcaac\r\nc\r\ncba\r\na\r\nabba\r\nbcabc\r\nabcccaa\r\nab\r\na\r\n",
+                "10\r\n1 9\r\n2 10\r\n3 8\r\n4 6\r\n5 3\r\n6 5\r\n7 7\r\n8 2\r\n9 4\r\n10 1\r\n"
+            ],
+            [
+                "1\r\nzzzz\r\nyyx\r\n",
+                "0\r\n1 1\r\n"
+            ],
+            [
+                "1\r\naa\r\naaa\r\n",
+                "2\r\n1 1\r\n"
+            ],
+            [
+                "1\r\naaa\r\naa\r\n",
+                "2\r\n1 1\r\n"
+            ],
+            [
+                "10\r\nb\r\nb\r\na\r\na\r\na\r\na\r\nb\r\nb\r\na\r\nb\r\nb\r\na\r\na\r\na\r\nb\r\nb\r\nb\r\na\r\nb\r\nb\r\n",
+                "9\r\n1 10\r\n2 9\r\n3 8\r\n4 4\r\n5 3\r\n6 2\r\n7 7\r\n8 6\r\n9 1\r\n10 5\r\n"
+            ],
+            [
+                "10\r\na\r\nb\r\na\r\na\r\nc\r\na\r\na\r\na\r\na\r\na\r\nb\r\nc\r\nc\r\na\r\nc\r\nb\r\na\r\na\r\na\r\nc\r\n",
+                "6\r\n1 9\r\n2 6\r\n3 8\r\n4 7\r\n5 10\r\n6 4\r\n7 5\r\n8 3\r\n9 2\r\n10 1\r\n"
+            ],
+            [
+                "10\r\nw\r\nr\r\na\r\nc\r\nx\r\ne\r\nb\r\nx\r\nw\r\nx\r\nz\r\ng\r\nd\r\ny\r\ns\r\ny\r\nj\r\nh\r\nl\r\nu\r\n",
+                "0\r\n1 10\r\n2 9\r\n3 8\r\n4 7\r\n5 6\r\n6 5\r\n7 4\r\n8 3\r\n9 2\r\n10 1\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Happy Tree Party",
+        "description": "Bogdan has a birthday today and mom gave him a tree consisting of n vertecies.\nFor every edge of the tree i, some number xi was written on it. In case you\nforget, a tree is a connected non-directed graph without cycles. After the\npresent was granted, m guests consecutively come to Bogdan's party. When the\ni-th guest comes, he performs exactly one of the two possible operations:\nChooses some number yi, and two vertecies ai and bi. After that, he moves\nalong the edges of the tree from vertex ai to vertex bi using the shortest\npath (of course, such a path is unique in the tree). Every time he moves along\nsome edge j, he replaces his current number yi by , that is, by the result of\ninteger division yi div xj. Chooses some edge pi and replaces the value\nwritten in it xpi by some positive integer ci < xpi. As Bogdan cares about his\nguests, he decided to ease the process. Write a program that performs all the\noperations requested by guests and outputs the resulting value yi for each i\nof the first type. Input The first line of the input contains integers, n and\nm (2 \u2264 n \u2264 200 000, 1 \u2264 m \u2264 200 000) \u2014 the number of vertecies in the tree\ngranted to Bogdan by his mom and the number of guests that came to the party\nrespectively. Next n - 1 lines contain the description of the edges. The i-th\nof these lines contains three integers ui, vi and xi (1 \u2264 ui, vi \u2264 n, ui \u2260 vi,\n1 \u2264 xi \u2264 10^18), denoting an edge that connects vertecies ui and vi, with the\nnumber xi initially written on it. The following m lines describe operations,\nrequested by Bogdan's guests. Each description contains three or four integers\nand has one of the two possible forms: 1 ai bi yi corresponds to a guest, who\nchooses the operation of the first type. 2 pi ci corresponds to a guests, who\nchooses the operation of the second type. It is guaranteed that all the\nqueries are correct, namely 1 \u2264 ai, bi \u2264 n, 1 \u2264 pi \u2264 n - 1, 1 \u2264 yi \u2264 10^18 and\n1 \u2264 ci < xpi, where xpi represents a number written on edge pi at this\nparticular moment of time that is not necessarily equal to the initial value\nxpi, as some decreases may have already been applied to it. The edges are\nnumbered from 1 to n - 1 in the order they appear in the input. Output For\neach guest who chooses the operation of the first type, print the result of\nprocessing the value yi through the path from ai to bi. Examples Input 6 6 1 2\n1 1 3 7 1 4 4 2 5 5 2 6 2 1 4 6 17 2 3 2 1 4 6 17 1 5 5 20 2 4 1 1 5 1 3\nOutput 2 4 20 3 Input 5 4 1 2 7 1 3 3 3 4 2 3 5 5 1 4 2 100 1 5 4 1 2 2 2 1 1\n3 4 Output 2 0 2 Note Initially the tree looks like this: The response to the\nfirst query is: = 2 After the third edge is changed, the tree looks like this:\nThe response to the second query is: = 4 In the third query the initial and\nfinal vertex coincide, that is, the answer will be the initial number 20.\nAfter the change in the fourth edge the tree looks like this: In the last\nquery the answer will be: = 3\n\n",
+        "cf_contest_id": 593,
+        "cf_index": "D",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "math",
+            "trees"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 6\r\n1 2 1\r\n1 3 7\r\n1 4 4\r\n2 5 5\r\n2 6 2\r\n1 4 6 17\r\n2 3 2\r\n1 4 6 17\r\n1 5 5 20\r\n2 4 1\r\n1 5 1 3\r\n",
+                "2\r\n4\r\n20\r\n3\r\n"
+            ],
+            [
+                "5 4\r\n1 2 7\r\n1 3 3\r\n3 4 2\r\n3 5 5\r\n1 4 2 100\r\n1 5 4 1\r\n2 2 2\r\n1 1 3 4\r\n",
+                "2\r\n0\r\n2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 1\r\n1 2 1\r\n1 2 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 1\r\n1 2 1000000000000000000\r\n1 2 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2 1\r\n1 2 1\r\n1 2 1 1000000000000000000\r\n",
+                "1000000000000000000\r\n"
+            ],
+            [
+                "2 1\r\n1 2 1000000000000000000\r\n1 2 1 1000000000000000000\r\n",
+                "1\r\n"
+            ],
+            [
+                "2 2\r\n1 2 100\r\n2 1 1\r\n1 1 2 100\r\n",
+                "100\r\n"
+            ],
+            [
+                "5 5\r\n4 3 1251\r\n4 2 1668\r\n5 1 1836\r\n5 3 1468\r\n2 4 1037\r\n2 3 685\r\n2 1 1114\r\n1 2 1 88369\r\n1 1 3 46566\r\n",
+                "0\r\n0\r\n"
+            ],
+            [
+                "5 5\r\n2 1 1\r\n2 3 6\r\n2 5 9\r\n5 4 6\r\n2 3 8\r\n1 2 2 25\r\n2 2 2\r\n2 2 1\r\n1 5 5 3\r\n",
+                "25\r\n3\r\n"
+            ],
+            [
+                "2 5\r\n2 1 5\r\n1 1 2 22\r\n1 2 2 18\r\n2 1 2\r\n1 2 1 22\r\n1 1 1 10\r\n",
+                "4\r\n18\r\n11\r\n10\r\n"
+            ],
+            [
+                "5 1\r\n4 1 8\r\n2 3 2\r\n1 5 1\r\n1 2 1\r\n1 1 1 17\r\n",
+                "17\r\n"
+            ]
+        ]
+    }
+]

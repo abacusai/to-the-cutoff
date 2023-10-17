@@ -1,0 +1,123 @@
+[
+    {
+        "name": "Civilization",
+        "description": "Andrew plays a game called \"Civilization\". Dima helps him. The game has n\ncities and m bidirectional roads. The cities are numbered from 1 to n. Between\nany pair of cities there either is a single (unique) path, or there is no path\nat all. A path is such a sequence of distinct cities v1, v2, ..., vk, that\nthere is a road between any contiguous cities vi and vi + 1 (1 \u2264 i < k). The\nlength of the described path equals to (k - 1). We assume that two cities lie\nin the same region if and only if, there is a path connecting these two\ncities. During the game events of two types take place: Andrew asks Dima about\nthe length of the longest path in the region where city x lies. Andrew asks\nDima to merge the region where city x lies with the region where city y lies.\nIf the cities lie in the same region, then no merging is needed. Otherwise,\nyou need to merge the regions as follows: choose a city from the first region,\na city from the second region and connect them by a road so as to minimize the\nlength of the longest path in the resulting region. If there are multiple ways\nto do so, you are allowed to choose any of them. Dima finds it hard to execute\nAndrew's queries, so he asks you to help him. Help Dima. Input The first line\ncontains three integers n, m, q (1 \u2264 n \u2264 3\u00b710^5; 0 \u2264 m < n; 1 \u2264 q \u2264 3\u00b710^5) \u2014\nthe number of cities, the number of the roads we already have and the number\nof queries, correspondingly. Each of the following m lines contains two\nintegers, ai and bi (ai \u2260 bi; 1 \u2264 ai, bi \u2264 n). These numbers represent the\nroad between cities ai and bi. There can be at most one road between two\ncities. Each of the following q lines contains one of the two events in the\nfollowing format: 1 xi. It is the request Andrew gives to Dima to find the\nlength of the maximum path in the region that contains city xi (1 \u2264 xi \u2264 n). 2\nxi yi. It is the request Andrew gives to Dima to merge the region that\ncontains city xi and the region that contains city yi (1 \u2264 xi, yi \u2264 n). Note,\nthat xi can be equal to yi. Output For each event of the first type print the\nanswer on a separate line. Examples Input 6 0 6 2 1 2 2 3 4 2 5 6 2 3 2 2 5 3\n1 1 Output 4\n\n",
+        "cf_contest_id": 455,
+        "cf_index": "C",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "ternary search",
+            "trees"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 0 6\r\n2 1 2\r\n2 3 4\r\n2 5 6\r\n2 3 2\r\n2 5 3\r\n1 1\r\n",
+                "4\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 6 7\r\n1 2\r\n2 3\r\n1 4\r\n3 5\r\n1 6\r\n5 7\r\n1 1\r\n2 8 10\r\n1 10\r\n2 9 5\r\n1 7\r\n1 4\r\n2 1 9\r\n",
+                "5\r\n1\r\n5\r\n5\r\n"
+            ],
+            [
+                "10 5 10\r\n1 2\r\n1 3\r\n3 4\r\n2 5\r\n1 6\r\n2 7 3\r\n1 5\r\n2 3 4\r\n1 3\r\n1 8\r\n1 8\r\n1 8\r\n1 9\r\n2 5 3\r\n2 6 5\r\n",
+                "4\r\n4\r\n0\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "10 7 7\r\n1 2\r\n1 3\r\n2 4\r\n2 5\r\n4 6\r\n5 7\r\n3 8\r\n2 4 7\r\n2 6 4\r\n1 2\r\n2 10 3\r\n1 9\r\n1 8\r\n1 8\r\n",
+                "5\r\n0\r\n5\r\n5\r\n"
+            ],
+            [
+                "10 7 5\r\n1 2\r\n2 3\r\n3 4\r\n1 5\r\n1 6\r\n2 7\r\n1 8\r\n2 10 7\r\n2 8 6\r\n2 2 10\r\n2 7 10\r\n2 5 2\r\n",
+                ""
+            ],
+            [
+                "10 5 6\r\n1 2\r\n2 3\r\n2 4\r\n4 5\r\n1 6\r\n2 3 1\r\n2 6 4\r\n2 1 1\r\n1 5\r\n1 6\r\n1 4\r\n",
+                "4\r\n4\r\n4\r\n"
+            ],
+            [
+                "10 4 4\r\n1 2\r\n1 3\r\n3 4\r\n2 5\r\n1 5\r\n1 2\r\n1 3\r\n1 5\r\n",
+                "4\r\n4\r\n4\r\n4\r\n"
+            ],
+            [
+                "10 3 5\r\n1 2\r\n2 3\r\n1 4\r\n2 3 6\r\n1 6\r\n2 1 6\r\n2 8 7\r\n1 10\r\n",
+                "3\r\n0\r\n"
+            ],
+            [
+                "10 5 2\r\n1 2\r\n1 3\r\n1 4\r\n2 5\r\n1 6\r\n1 5\r\n1 8\r\n",
+                "3\r\n0\r\n"
+            ],
+            [
+                "10 2 6\r\n1 2\r\n1 3\r\n2 1 8\r\n2 9 2\r\n1 2\r\n1 9\r\n2 3 5\r\n1 8\r\n",
+                "2\r\n2\r\n2\r\n"
+            ],
+            [
+                "10 1 14\r\n1 2\r\n1 1\r\n1 8\r\n1 9\r\n2 2 5\r\n1 9\r\n1 6\r\n2 10 9\r\n2 4 8\r\n1 4\r\n2 1 10\r\n2 2 4\r\n1 10\r\n2 8 10\r\n2 7 4\r\n",
+                "1\r\n0\r\n0\r\n0\r\n0\r\n1\r\n4\r\n"
+            ],
+            [
+                "10 1 9\r\n1 2\r\n1 5\r\n2 7 4\r\n1 4\r\n1 7\r\n2 2 5\r\n2 6 3\r\n1 3\r\n1 4\r\n1 2\r\n",
+                "0\r\n1\r\n1\r\n1\r\n1\r\n2\r\n"
+            ],
+            [
+                "10 7 26\r\n1 2\r\n2 3\r\n3 4\r\n3 5\r\n4 6\r\n2 7\r\n5 8\r\n2 7 10\r\n1 3\r\n2 8 5\r\n2 9 4\r\n2 5 1\r\n1 5\r\n1 8\r\n1 10\r\n1 3\r\n1 9\r\n1 6\r\n2 1 9\r\n2 5 7\r\n2 1 4\r\n1 6\r\n2 6 7\r\n1 3\r\n1 1\r\n1 3\r\n1 2\r\n2 8 3\r\n2 2 5\r\n1 1\r\n2 7 7\r\n2 5 1\r\n2 1 8\r\n",
+                "4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n"
+            ],
+            [
+                "10 5 77\r\n1 2\r\n1 3\r\n3 4\r\n1 5\r\n5 6\r\n1 2\r\n2 3 10\r\n2 5 1\r\n1 2\r\n1 4\r\n2 7 7\r\n2 7 9\r\n1 7\r\n2 4 9\r\n2 2 4\r\n2 3 2\r\n2 5 2\r\n2 10 1\r\n2 3 8\r\n1 9\r\n1 4\r\n1 2\r\n2 8 3\r\n2 8 2\r\n2 2 3\r\n2 5 9\r\n1 10\r\n2 3 10\r\n2 5 9\r\n1 2\r\n1 7\r\n1 4\r\n1 4\r\n1 3\r\n1 4\r\n1 10\r\n2 8 7\r\n1 2\r\n2 3 1\r\n1 10\r\n2 7 7\r\n1 2\r\n1 5\r\n1 3\r\n1 8\r\n2 7 7\r\n1 10\r\n2 4 2\r\n1 9\r\n2 6 6\r\n1 3\r\n1 2\r\n2 8 10\r\n1 1\r\n1 7\r\n2 10 7\r\n1 8\r\n1 9\r\n2 1 4\r\n2 1 1\r\n2 3 3\r\n1 9\r\n1 8\r\n2 9 4\r\n1 4\r\n2 4 4\r\n1 6\r\n2 9 4\r\n2 5 10\r\n1 4\r\n2 8 9\r\n1 10\r\n1 4\r\n1 4\r\n1 10\r\n1 2\r\n1 4\r\n1 7\r\n2 10 8\r\n1 2\r\n2 6 6\r\n2 8 5\r\n",
+                "4\r\n4\r\n4\r\n1\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n"
+            ],
+            [
+                "10 3 11\r\n1 2\r\n1 3\r\n2 4\r\n1 2\r\n2 1 1\r\n2 7 9\r\n2 3 2\r\n2 2 7\r\n2 2 5\r\n1 6\r\n2 7 4\r\n1 7\r\n2 9 1\r\n2 9 2\r\n",
+                "3\r\n0\r\n4\r\n"
+            ],
+            [
+                "10 6 21\r\n1 2\r\n2 3\r\n2 4\r\n2 5\r\n4 6\r\n2 7\r\n2 4 1\r\n1 1\r\n2 5 1\r\n1 5\r\n1 3\r\n1 3\r\n1 10\r\n1 5\r\n1 7\r\n1 4\r\n2 6 3\r\n2 7 4\r\n1 10\r\n2 2 5\r\n1 1\r\n1 5\r\n1 8\r\n2 5 7\r\n1 3\r\n2 2 9\r\n1 7\r\n",
+                "3\r\n3\r\n3\r\n3\r\n0\r\n3\r\n3\r\n3\r\n0\r\n3\r\n3\r\n0\r\n3\r\n3\r\n"
+            ],
+            [
+                "10 7 48\r\n1 2\r\n2 3\r\n2 4\r\n3 5\r\n4 6\r\n6 7\r\n7 8\r\n2 7 4\r\n1 2\r\n2 7 4\r\n1 2\r\n2 5 6\r\n2 3 4\r\n1 8\r\n2 4 4\r\n2 10 3\r\n2 1 3\r\n1 10\r\n1 8\r\n2 2 7\r\n2 2 9\r\n1 10\r\n2 6 7\r\n2 3 6\r\n2 8 1\r\n2 2 6\r\n1 7\r\n2 1 2\r\n1 3\r\n2 4 1\r\n2 5 6\r\n2 7 1\r\n2 4 2\r\n2 1 9\r\n2 6 9\r\n2 6 1\r\n1 1\r\n1 2\r\n1 1\r\n2 2 3\r\n1 4\r\n2 2 2\r\n2 4 7\r\n2 5 5\r\n2 5 7\r\n1 5\r\n2 8 7\r\n1 9\r\n2 10 9\r\n1 9\r\n2 6 6\r\n2 1 1\r\n2 3 3\r\n1 9\r\n2 7 4\r\n",
+                "6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n"
+            ],
+            [
+                "10 8 43\r\n1 2\r\n2 3\r\n3 4\r\n2 5\r\n1 6\r\n3 7\r\n7 8\r\n3 9\r\n2 1 6\r\n2 2 8\r\n1 8\r\n2 2 6\r\n1 8\r\n2 1 7\r\n2 9 5\r\n2 9 4\r\n2 7 10\r\n2 10 3\r\n2 1 5\r\n2 6 9\r\n2 6 10\r\n2 3 3\r\n1 1\r\n2 7 5\r\n2 6 2\r\n2 2 5\r\n2 3 9\r\n1 3\r\n2 8 7\r\n1 9\r\n1 3\r\n2 6 9\r\n1 7\r\n1 10\r\n2 10 3\r\n2 10 2\r\n2 5 7\r\n2 10 5\r\n1 10\r\n1 7\r\n1 10\r\n1 2\r\n1 6\r\n2 3 10\r\n1 3\r\n1 5\r\n1 6\r\n1 5\r\n1 8\r\n1 7\r\n2 5 8\r\n",
+                "5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n"
+            ],
+            [
+                "10 9 16\r\n1 2\r\n1 3\r\n2 4\r\n2 5\r\n4 6\r\n4 7\r\n6 8\r\n4 9\r\n5 10\r\n2 1 5\r\n2 4 4\r\n1 7\r\n1 8\r\n1 6\r\n1 4\r\n1 10\r\n1 4\r\n2 1 5\r\n2 8 10\r\n2 5 5\r\n2 7 3\r\n2 8 7\r\n2 7 7\r\n2 7 3\r\n2 4 6\r\n",
+                "5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n"
+            ],
+            [
+                "10 5 42\r\n1 2\r\n1 3\r\n2 4\r\n4 5\r\n1 6\r\n1 4\r\n2 9 2\r\n2 10 5\r\n1 4\r\n2 2 7\r\n2 10 5\r\n2 6 10\r\n1 4\r\n1 4\r\n1 2\r\n2 7 8\r\n1 7\r\n2 4 4\r\n2 10 6\r\n2 9 3\r\n1 9\r\n1 2\r\n2 8 1\r\n1 8\r\n2 3 5\r\n1 8\r\n2 5 5\r\n2 2 7\r\n2 8 5\r\n1 9\r\n1 1\r\n2 4 4\r\n2 6 6\r\n2 1 7\r\n1 6\r\n2 8 3\r\n2 7 4\r\n1 8\r\n2 3 6\r\n2 8 6\r\n2 3 6\r\n2 9 3\r\n1 3\r\n1 9\r\n2 3 7\r\n1 2\r\n1 7\r\n",
+                "4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n"
+            ],
+            [
+                "10 6 64\r\n1 2\r\n2 3\r\n2 4\r\n4 5\r\n3 6\r\n3 7\r\n2 4 4\r\n1 4\r\n1 6\r\n1 5\r\n1 8\r\n2 1 10\r\n2 6 8\r\n2 4 2\r\n1 10\r\n1 6\r\n2 4 3\r\n2 5 9\r\n1 4\r\n2 8 7\r\n2 3 6\r\n2 8 5\r\n2 7 3\r\n2 10 7\r\n2 9 3\r\n1 8\r\n2 7 5\r\n2 6 10\r\n2 5 9\r\n1 10\r\n2 8 9\r\n1 2\r\n2 9 10\r\n2 5 1\r\n2 10 1\r\n2 3 9\r\n2 10 2\r\n2 5 4\r\n1 1\r\n1 5\r\n2 7 5\r\n1 7\r\n2 9 5\r\n2 8 2\r\n1 3\r\n1 10\r\n2 8 8\r\n2 8 2\r\n2 9 8\r\n2 7 10\r\n1 1\r\n1 6\r\n2 1 6\r\n1 2\r\n1 10\r\n2 6 4\r\n1 3\r\n2 6 6\r\n2 10 3\r\n2 3 5\r\n1 2\r\n2 1 7\r\n2 4 4\r\n1 9\r\n1 10\r\n1 5\r\n2 8 3\r\n1 6\r\n1 4\r\n1 8\r\n",
+                "4\r\n4\r\n4\r\n0\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n"
+            ],
+            [
+                "10 4 46\r\n1 2\r\n2 3\r\n1 4\r\n2 5\r\n1 5\r\n1 9\r\n2 6 8\r\n2 10 8\r\n1 1\r\n1 5\r\n1 1\r\n2 6 6\r\n1 8\r\n2 9 3\r\n1 2\r\n1 5\r\n1 2\r\n2 6 5\r\n1 2\r\n1 6\r\n2 5 3\r\n1 5\r\n2 10 5\r\n1 5\r\n2 6 10\r\n2 2 3\r\n2 7 9\r\n2 8 9\r\n1 8\r\n1 3\r\n2 7 1\r\n2 2 2\r\n1 2\r\n1 1\r\n1 5\r\n2 8 7\r\n1 3\r\n1 4\r\n1 3\r\n2 3 1\r\n2 8 8\r\n1 10\r\n1 9\r\n1 10\r\n2 7 10\r\n2 8 9\r\n1 4\r\n2 8 9\r\n1 5\r\n2 6 9\r\n",
+                "3\r\n0\r\n3\r\n3\r\n3\r\n2\r\n3\r\n3\r\n3\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n"
+            ],
+            [
+                "100 22 4\r\n100 24\r\n100 27\r\n100 4\r\n100 60\r\n24 63\r\n63 17\r\n27 89\r\n17 71\r\n63 77\r\n77 43\r\n63 9\r\n100 65\r\n24 14\r\n27 15\r\n60 10\r\n71 16\r\n100 67\r\n10 1\r\n1 40\r\n10 83\r\n43 66\r\n67 18\r\n1 6\r\n1 27\r\n1 6\r\n1 49\r\n",
+                "0\r\n9\r\n0\r\n0\r\n"
+            ],
+            [
+                "100 16 46\r\n36 42\r\n36 50\r\n42 54\r\n42 74\r\n50 58\r\n42 16\r\n50 81\r\n50 96\r\n42 62\r\n54 2\r\n74 75\r\n74 22\r\n2 48\r\n50 95\r\n74 66\r\n75 5\r\n1 62\r\n1 56\r\n2 6 68\r\n1 47\r\n1 43\r\n1 38\r\n1 75\r\n2 22 82\r\n2 56 77\r\n1 71\r\n2 52 15\r\n2 9 1\r\n2 12 59\r\n1 24\r\n2 41 94\r\n2 18 58\r\n2 22 67\r\n1 45\r\n2 68 70\r\n1 81\r\n1 48\r\n1 71\r\n2 76 28\r\n2 31 73\r\n2 58 80\r\n2 100 57\r\n2 88 79\r\n1 30\r\n2 96 23\r\n2 92 44\r\n1 12\r\n1 66\r\n1 24\r\n2 71 68\r\n2 4 4\r\n2 84 43\r\n2 80 15\r\n2 54 13\r\n1 51\r\n2 99 17\r\n1 63\r\n2 12 41\r\n2 1 2\r\n2 62 96\r\n2 79 9\r\n2 59 79\r\n",
+                "6\r\n0\r\n0\r\n0\r\n0\r\n6\r\n0\r\n0\r\n0\r\n6\r\n6\r\n0\r\n0\r\n1\r\n6\r\n0\r\n0\r\n0\r\n"
+            ],
+            [
+                "100 10 30\r\n58 81\r\n58 7\r\n58 74\r\n74 97\r\n81 56\r\n81 15\r\n15 49\r\n97 45\r\n97 47\r\n58 34\r\n2 52 44\r\n2 55 79\r\n2 52 5\r\n1 48\r\n2 60 35\r\n2 37 82\r\n2 77 52\r\n2 9 23\r\n2 25 61\r\n2 63 34\r\n1 81\r\n2 47 20\r\n1 79\r\n2 34 19\r\n1 70\r\n1 36\r\n2 27 85\r\n2 52 89\r\n1 25\r\n2 46 46\r\n1 52\r\n1 33\r\n1 70\r\n2 29 56\r\n2 3 73\r\n2 37 46\r\n2 29 83\r\n1 1\r\n1 4\r\n1 45\r\n",
+                "0\r\n6\r\n1\r\n0\r\n0\r\n1\r\n2\r\n0\r\n0\r\n0\r\n0\r\n6\r\n"
+            ]
+        ]
+    }
+]

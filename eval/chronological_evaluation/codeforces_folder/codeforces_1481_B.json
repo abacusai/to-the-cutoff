@@ -1,0 +1,81 @@
+[
+    {
+        "name": "New Colony",
+        "description": "After reaching your destination, you want to build a new colony on the new\nplanet. Since this planet has many mountains and the colony must be built on a\nflat surface you decided to flatten the mountains using boulders (you are\nstill dreaming so this makes sense to you). You are given an array \n    h_1,\n    h_2, \n    \u2026, h_n\n, where \n    h_i\n is the height of the \n    i\n-th\nmountain, and \n    k\n \u2014 the number of boulders you have. You will start\nthrowing boulders from the top of the first mountain one by one and they will\nroll as follows (let's assume that the height of the current mountain is\n\n    h_i\n): if \n    h_i \n    \u2265 h_i + 1\n, the boulder will roll to the next\nmountain; if \n    h_i < h_i + 1\n, the boulder will stop rolling and increase\nthe mountain height by \n    1\n (\n    h_i = h_i + 1\n); if the boulder reaches\nthe last mountain it will fall to the waste collection system and disappear.\nYou want to find the position of the \n    k\n-th boulder or determine that it\nwill fall into the waste collection system. Input The first line contains a\nsingle integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264 100\n) \u2014 the number of test cases.\nEach test case consists of two lines. The first line in each test case\ncontains two integers \n    n\n and \n    k\n (\n    1 \n    \u2264 n \n    \u2264 100\n; \n    1\n    \n    \u2264 k \n    \u2264 10^9\n) \u2014 the number of mountains and the number of boulders.\nThe second line contains \n    n\n integers \n    h_1, h_2, \n    \u2026, h_n\n (\n    1\n    \n    \u2264 h_i \n    \u2264 100\n) \u2014 the height of the mountains. It is guaranteed that\nthe sum of \n    n\n over all test cases does not exceed \n    100\n. Output For\neach test case, print \n    -1\n if the \n    k\n-th boulder will fall into the\ncollection system. Otherwise, print the position of the \n    k\n-th boulder.\nExample Input 4 4 3 4 1 2 3 2 7 1 8 4 5 4 1 2 3 3 1 5 3 1 Output 2 1 -1 -1\nNote Let's simulate the first case: The first boulder starts at \n    i = 1\n;\nsince \n    h_1 \n    \u2265 h_2\n it rolls to \n    i = 2\n and stops there because\n\n    h_2 < h_3\n. The new heights are \n    [4,2,2,3]\n. The second boulder\nstarts at \n    i = 1\n; since \n    h_1 \n    \u2265 h_2\n the boulder rolls to \n    i =\n    2\n; since \n    h_2 \n    \u2265 h_3\n the boulder rolls to \n    i = 3\n and stops\nthere because \n    h_3 < h_4\n. The new heights are \n    [4,2,3,3]\n. The third\nboulder starts at \n    i = 1\n; since \n    h_1 \n    \u2265 h_2\n it rolls to \n    i =\n    2\n and stops there because \n    h_2 < h_3\n. The new heights are\n\n    [4,3,3,3]\n. The positions where each boulder stopped are the following:\n\n    [2,3,2]\n. In the second case, all \n    7\n boulders will stop right at the\nfirst mountain rising its height from \n    1\n to \n    8\n. The third case is\nsimilar to the first one but now you'll throw \n    5\n boulders. The first\nthree will roll in the same way as in the first test case. After that,\nmountain heights will be equal to \n    [4, 3, 3, 3]\n, that's why the other two\nboulders will fall into the collection system. In the fourth case, the first\nand only boulders will fall straight into the collection system.\n\n",
+        "cf_contest_id": 1481,
+        "cf_index": "B",
+        "cf_rating": 1100,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n4 3\r\n4 1 2 3\r\n2 7\r\n1 8\r\n4 5\r\n4 1 2 3\r\n3 1\r\n5 3 1\r\n",
+                "2\r\n1\r\n-1\r\n-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "9\r\n1 1\r\n3\r\n10 81\r\n1 1 1 1 1 1 1 1 1 10\r\n2 100\r\n1 100\r\n2 99\r\n1 100\r\n20 25\r\n1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5\r\n5 3\r\n5 4 3 2 1\r\n25 2114\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 100\r\n30 2860\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 100\r\n5 1000000000\r\n1 1 1 1 100\r\n",
+                "-1\r\n1\r\n-1\r\n1\r\n12\r\n-1\r\n23\r\n12\r\n-1\r\n"
+            ],
+            [
+                "1\r\n100 4525\r\n11 21 31 41 51 52 62 72 82 83 93 96 96 96 99 99 99 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8\r\n12 376\r\n7 17 22 32 40 50 52 62 72 81 91 92\r\n12 543\r\n11 21 31 41 51 61 71 79 84 87 91 95\r\n12 10\r\n11 21 31 41 46 56 60 61 63 73 83 93\r\n12 483\r\n11 21 31 41 51 61 71 81 91 92 99 100\r\n12 27\r\n9 16 5 50 58 16 17 97 98 84 91 53\r\n12 260\r\n50 62 32 42 23 8 95 64 54 89 79 66\r\n12 172\r\n60 7 60 49 5 80 1 78 41 9 57 65\r\n12 533\r\n39 22 32 44 26 4 26 100 42 29 36 1\r\n",
+                "10\r\n-1\r\n1\r\n-1\r\n1\r\n4\r\n3\r\n-1\r\n"
+            ],
+            [
+                "1\r\n100 323\r\n11 21 21 24 34 44 54 64 74 84 94 98 99 99 99 99 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100\r\n",
+                "6\r\n"
+            ],
+            [
+                "14\r\n7 150\r\n11 21 25 35 45 52 62\r\n7 145\r\n11 21 31 41 51 61 71\r\n7 50\r\n2 12 22 32 42 52 62\r\n7 204\r\n11 21 21 31 41 51 61\r\n7 101\r\n11 21 31 41 51 61 71\r\n7 107\r\n11 21 31 41 51 59 69\r\n7 218\r\n11 19 29 39 49 54 64\r\n7 199\r\n58 7 24 70 5 43 69\r\n7 335\r\n72 55 43 64 96 23 57\r\n7 36\r\n96 83 98 58 73 30 23\r\n7 92\r\n68 22 70 37 12 85 76\r\n7 264\r\n33 51 20 6 42 6 6\r\n7 131\r\n56 64 34 83 85 45 66\r\n7 285\r\n86 47 15 48 65 60 28\r\n",
+                "4\r\n1\r\n2\r\n-1\r\n5\r\n4\r\n-1\r\n5\r\n-1\r\n-1\r\n5\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "1\r\n100 989\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 100\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n50 1420\r\n11 21 31 41 51 61 71 78 80 86 92 93 93 94 96 97 97 98 99 99 99 99 99 99 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100\r\n50 810\r\n94 98 37 19 87 45 62 47 44 85 18 93 54 50 82 41 33 8 98 16 84 94 25 49 74 74 47 77 31 98 2 91 45 37 45 45 75 28 68 85 62 50 78 37 11 9 58 16 82 62\r\n",
+                "-1\r\n20\r\n"
+            ],
+            [
+                "10\r\n10 451\r\n11 21 31 41 41 51 56 66 67 77\r\n10 216\r\n2 12 22 32 42 52 62 72 82 92\r\n10 220\r\n11 21 31 41 46 56 66 70 80 81\r\n10 394\r\n11 21 31 36 46 47 52 55 65 69\r\n10 408\r\n11 21 31 41 51 61 71 81 90 99\r\n10 272\r\n99 33 25 22 87 37 98 72 8 22\r\n10 79\r\n61 93 13 45 43 41 92 96 24 35\r\n10 62\r\n3 74 14 81 10 40 77 58 59 46\r\n10 284\r\n81 14 56 2 2 9 84 9 52 81\r\n10 215\r\n94 58 7 80 6 13 27 98 13 68\r\n",
+                "-1\r\n2\r\n7\r\n-1\r\n8\r\n6\r\n6\r\n1\r\n5\r\n7\r\n"
+            ],
+            [
+                "5\r\n20 591\r\n11 21 31 41 44 54 63 69 79 81 87 97 100 100 100 100 100 100 100 100\r\n20 493\r\n3 12 22 32 42 51 61 71 81 91 100 100 100 100 100 100 100 100 100 100\r\n20 420\r\n11 21 31 41 51 61 71 81 86 96 97 98 99 100 100 100 100 100 100 100\r\n20 104\r\n70 3 3 52 27 61 27 70 52 72 23 84 18 15 19 29 62 15 34 82\r\n20 41\r\n30 2 96 15 19 31 63 67 11 95 100 53 95 93 92 60 59 89 95 76\r\n",
+                "-1\r\n2\r\n1\r\n5\r\n2\r\n"
+            ],
+            [
+                "20\r\n5 166\r\n11 21 31 41 51\r\n5 37\r\n11 21 31 41 51\r\n5 231\r\n11 21 31 41 51\r\n5 58\r\n11 21 31 41 51\r\n5 157\r\n11 21 31 41 51\r\n5 179\r\n11 21 31 41 51\r\n5 150\r\n11 21 31 41 51\r\n5 122\r\n11 20 27 37 47\r\n5 204\r\n11 21 31 41 51\r\n5 62\r\n3 13 23 33 43\r\n5 106\r\n43 58 51 86 34\r\n5 42\r\n31 25 62 45 100\r\n5 36\r\n20 26 37 5 69\r\n5 169\r\n41 99 81 83 17\r\n5 76\r\n68 75 81 47 60\r\n5 151\r\n27 69 22 83 50\r\n5 6\r\n8 12 57 34 13\r\n5 116\r\n42 37 17 77 95\r\n5 235\r\n17 37 96 53 93\r\n5 20\r\n7 81 25 96 98\r\n",
+                "-1\r\n3\r\n-1\r\n3\r\n-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n3\r\n1\r\n1\r\n4\r\n-1\r\n-1\r\n-1\r\n1\r\n2\r\n-1\r\n1\r\n"
+            ],
+            [
+                "5\r\n20 645651756\r\n11 21 31 41 51 56 60 70 80 90 98 98 99 99 100 100 100 100 100 100\r\n20 465601593\r\n11 21 31 41 51 61 65 66 76 83 87 92 100 100 100 100 100 100 100 100\r\n20 479141829\r\n11 17 27 37 47 57 63 73 83 93 99 100 100 100 100 100 100 100 100 100\r\n20 967667371\r\n81 33 1 88 69 83 1 98 30 54 1 97 11 11 63 96 63 60 91 31\r\n20 64564761\r\n17 6 1 87 35 20 75 73 16 91 16 17 69 78 3 4 56 83 53 49\r\n",
+                "-1\r\n-1\r\n-1\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "1\r\n100 892\r\n1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 100\r\n",
+                "99\r\n"
+            ],
+            [
+                "1\r\n52 671191111\r\n77 99 63 2 25 7 55 5 98 39 3 89 57 60 80 76 11 42 22 9 78 26 78 88 42 59 17 91 31 57 73 23 61 46 80 49 47 59 23 31 60 70 17 46 67 48 16 50 83 22 39 24\r\n",
+                "-1\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n1\r\n1 2\r\n1\r\n",
+                "-1\r\n-1\r\n"
+            ]
+        ]
+    }
+]

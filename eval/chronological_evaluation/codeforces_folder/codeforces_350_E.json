@@ -1,0 +1,138 @@
+[
+    {
+        "name": "Wrong Floyd",
+        "description": "Valera conducts experiments with algorithms that search for shortest paths. He\nhas recently studied the Floyd's algorithm, so it's time to work with it.\nValera's already written the code that counts the shortest distance between\nany pair of vertexes in a non-directed connected graph from n vertexes and m\nedges, containing no loops and multiple edges. Besides, Valera's decided to\nmark part of the vertexes. He's marked exactly k vertexes a1, a2, ..., ak.\nValera's code is given below. ans[i][j] // the shortest distance for a pair of\nvertexes i, j a[i] // vertexes, marked by Valera for(i = 1; i <= n; i++) \nfor(j = 1; j <= n; j++)  if (i == j) ans[i][j] = 0; else ans[i][j] = INF;\n//INF is a very large number   for(i = 1; i <= m; i++)  read a pair of\nvertexes u, v that have a non-directed edge between them; ans[u][v] = 1;\nans[v][u] = 1;  for (i = 1; i <= k; i++)  v = a[i]; for(j = 1; j <= n; j++)\nfor(r = 1; r <= n; r++) ans[j][r] = min(ans[j][r], ans[j][v] + ans[v][r]); \nValera has seen that his code is wrong. Help the boy. Given the set of marked\nvertexes a1, a2, ..., ak, find such non-directed connected graph, consisting\nof n vertexes and m edges, for which Valera's code counts the wrong shortest\ndistance for at least one pair of vertexes (i, j). Valera is really keen to\nget a graph without any loops and multiple edges. If no such graph exists,\nprint -1. Input The first line of the input contains three integers n, m, k (3\n\u2264 n \u2264 300, 2 \u2264 k \u2264 n , ) \u2014 the number of vertexes, the number of edges and the\nnumber of marked vertexes. The second line of the input contains k space-\nseparated integers a1, a2, ... ak (1 \u2264 ai \u2264 n) \u2014 the numbers of the marked\nvertexes. It is guaranteed that all numbers ai are distinct. Output If the\ngraph doesn't exist, print -1 on a single line. Otherwise, print m lines, each\ncontaining two integers u, v \u2014 the description of the edges of the graph\nValera's been looking for. Examples Input 3 2 2 1 2 Output 1 3 2 3 Input 3 3 2\n1 2 Output -1\n\n",
+        "cf_contest_id": 350,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2 2\r\n1 2\r\n",
+                "1 3\r\n3 2\r\n"
+            ],
+            [
+                "3 3 2\r\n1 2\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "300 44850 2\r\n3 9\r\n",
+                "-1\r\n"
+            ],
+            [
+                "43 76 6\r\n24 11 30 21 35 1\r\n",
+                "24 2\r\n24 3\r\n24 4\r\n24 5\r\n24 6\r\n24 7\r\n24 8\r\n24 9\r\n24 10\r\n24 12\r\n24 13\r\n24 14\r\n24 15\r\n24 16\r\n24 17\r\n24 18\r\n24 19\r\n24 20\r\n24 22\r\n24 23\r\n24 25\r\n24 26\r\n24 27\r\n24 28\r\n24 29\r\n24 31\r\n24 32\r\n24 33\r\n24 34\r\n24 36\r\n24 37\r\n24 38\r\n24 39\r\n24 40\r\n24 41\r\n24 42\r\n24 43\r\n2 11\r\n2 30\r\n2 21\r\n2 35\r\n2 1\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n1 11\r\n1 12\r\n1 13\r\n1 14\r\n1 15\r\n1 16\r\n1 17\r\n1 18\r\n1 19\r\n1 20\r\n1 21\r\n1 22\r\n1 23\r\n1 25\r\n1 26\r\n1 27\r\n1 28\r\n1 29\r\n1 30\r\n1 31\r\n1 32\r\n1 33\r\n1 34\r\n1 35\r\n1 36\r\n1 37\r\n"
+            ],
+            [
+                "6 13 6\r\n2 6 5 4 1 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "300 44850 2\r\n34 32\r\n",
+                "-1\r\n"
+            ],
+            [
+                "50 78 23\r\n42 43 26 28 7 19 10 31 11 45 23 47 37 8 17 20 18 12 22 6 24 27 16\r\n",
+                "42 1\r\n42 2\r\n42 3\r\n42 4\r\n42 5\r\n42 9\r\n42 13\r\n42 14\r\n42 15\r\n42 21\r\n42 25\r\n42 29\r\n42 30\r\n42 32\r\n42 33\r\n42 34\r\n42 35\r\n42 36\r\n42 38\r\n42 39\r\n42 40\r\n42 41\r\n42 44\r\n42 46\r\n42 48\r\n42 49\r\n42 50\r\n1 43\r\n1 26\r\n1 28\r\n1 7\r\n1 19\r\n1 10\r\n1 31\r\n1 11\r\n1 45\r\n1 23\r\n1 47\r\n1 37\r\n1 8\r\n1 17\r\n1 20\r\n1 18\r\n1 12\r\n1 22\r\n1 6\r\n1 24\r\n1 27\r\n1 16\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 9\r\n1 13\r\n1 14\r\n1 15\r\n1 21\r\n1 25\r\n1 29\r\n1 30\r\n1 32\r\n1 33\r\n1 34\r\n1 35\r\n1 36\r\n1 38\r\n1 39\r\n1 40\r\n1 41\r\n1 44\r\n1 46\r\n1 48\r\n1 49\r\n1 50\r\n2 3\r\n2 4\r\n2 5\r\n"
+            ],
+            [
+                "50 66 2\r\n4 3\r\n",
+                "4 1\r\n4 2\r\n4 5\r\n4 6\r\n4 7\r\n4 8\r\n4 9\r\n4 10\r\n4 11\r\n4 12\r\n4 13\r\n4 14\r\n4 15\r\n4 16\r\n4 17\r\n4 18\r\n4 19\r\n4 20\r\n4 21\r\n4 22\r\n4 23\r\n4 24\r\n4 25\r\n4 26\r\n4 27\r\n4 28\r\n4 29\r\n4 30\r\n4 31\r\n4 32\r\n4 33\r\n4 34\r\n4 35\r\n4 36\r\n4 37\r\n4 38\r\n4 39\r\n4 40\r\n4 41\r\n4 42\r\n4 43\r\n4 44\r\n4 45\r\n4 46\r\n4 47\r\n4 48\r\n4 49\r\n4 50\r\n1 3\r\n1 2\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n1 10\r\n1 11\r\n1 12\r\n1 13\r\n1 14\r\n1 15\r\n1 16\r\n1 17\r\n1 18\r\n1 19\r\n1 20\r\n"
+            ],
+            [
+                "10 9 2\r\n9 7\r\n",
+                "9 1\r\n9 2\r\n9 3\r\n9 4\r\n9 5\r\n9 6\r\n9 8\r\n9 10\r\n1 7\r\n"
+            ],
+            [
+                "21 58 21\r\n4 11 9 19 3 18 5 13 16 2 8 6 14 10 20 1 21 7 15 12 17\r\n",
+                "-1\r\n"
+            ],
+            [
+                "56 1540 3\r\n27 38 32\r\n",
+                "-1\r\n"
+            ],
+            [
+                "88 3828 44\r\n13 79 67 88 37 82 51 84 45 54 74 56 14 59 73 68 27 24 18 66 61 52 43 17 62 5 64 78 86 16 44 23 34 29 28 60 46 19 38 35 7 49 15 47\r\n",
+                "-1\r\n"
+            ],
+            [
+                "56 1539 3\r\n10 47 4\r\n",
+                "-1\r\n"
+            ],
+            [
+                "88 3786 44\r\n15 34 31 51 67 62 68 79 73 45 40 18 59 42 80 35 53 82 29 78 19 28 23 48 77 37 14 10 75 49 74 21 32 86 22 16 84 12 63 58 30 81 25 69\r\n",
+                "-1\r\n"
+            ],
+            [
+                "50 49 24\r\n43 32 13 17 24 21 12 23 37 3 44 46 25 49 10 40 19 7 31 16 42 38 18 20\r\n",
+                "43 1\r\n43 2\r\n43 4\r\n43 5\r\n43 6\r\n43 8\r\n43 9\r\n43 11\r\n43 14\r\n43 15\r\n43 22\r\n43 26\r\n43 27\r\n43 28\r\n43 29\r\n43 30\r\n43 33\r\n43 34\r\n43 35\r\n43 36\r\n43 39\r\n43 41\r\n43 45\r\n43 47\r\n43 48\r\n43 50\r\n1 32\r\n1 13\r\n1 17\r\n1 24\r\n1 21\r\n1 12\r\n1 23\r\n1 37\r\n1 3\r\n1 44\r\n1 46\r\n1 25\r\n1 49\r\n1 10\r\n1 40\r\n1 19\r\n1 7\r\n1 31\r\n1 16\r\n1 42\r\n1 38\r\n1 18\r\n1 20\r\n"
+            ],
+            [
+                "50 50 25\r\n20 16 36 17 24 11 48 37 45 44 10 5 7 9 42 46 15 8 30 33 31 4 50 40 19\r\n",
+                "20 1\r\n20 2\r\n20 3\r\n20 6\r\n20 12\r\n20 13\r\n20 14\r\n20 18\r\n20 21\r\n20 22\r\n20 23\r\n20 25\r\n20 26\r\n20 27\r\n20 28\r\n20 29\r\n20 32\r\n20 34\r\n20 35\r\n20 38\r\n20 39\r\n20 41\r\n20 43\r\n20 47\r\n20 49\r\n1 16\r\n1 36\r\n1 17\r\n1 24\r\n1 11\r\n1 48\r\n1 37\r\n1 45\r\n1 44\r\n1 10\r\n1 5\r\n1 7\r\n1 9\r\n1 42\r\n1 46\r\n1 15\r\n1 8\r\n1 30\r\n1 33\r\n1 31\r\n1 4\r\n1 50\r\n1 40\r\n1 19\r\n1 2\r\n"
+            ],
+            [
+                "70 69 10\r\n51 42 1 8 29 52 14 3 34 50\r\n",
+                "51 2\r\n51 4\r\n51 5\r\n51 6\r\n51 7\r\n51 9\r\n51 10\r\n51 11\r\n51 12\r\n51 13\r\n51 15\r\n51 16\r\n51 17\r\n51 18\r\n51 19\r\n51 20\r\n51 21\r\n51 22\r\n51 23\r\n51 24\r\n51 25\r\n51 26\r\n51 27\r\n51 28\r\n51 30\r\n51 31\r\n51 32\r\n51 33\r\n51 35\r\n51 36\r\n51 37\r\n51 38\r\n51 39\r\n51 40\r\n51 41\r\n51 43\r\n51 44\r\n51 45\r\n51 46\r\n51 47\r\n51 48\r\n51 49\r\n51 53\r\n51 54\r\n51 55\r\n51 56\r\n51 57\r\n51 58\r\n51 59\r\n51 60\r\n51 61\r\n51 62\r\n51 63\r\n51 64\r\n51 65\r\n51 66\r\n51 67\r\n51 68\r\n51 69\r\n51 70\r\n2 42\r\n2 1\r\n2 8\r\n2 29\r\n2 52\r\n2 14\r\n2 3\r\n2 34\r\n2 50\r\n"
+            ],
+            [
+                "77 77 77\r\n64 66 76 13 50 1 42 24 10 36 57 29 72 28 46 3 47 23 21 32 31 12 20 67 30 9 25 22 75 69 48 35 73 53 34 4 44 55 33 6 49 8 45 11 41 63 39 37 17 56 71 2 77 15 61 62 18 16 51 68 58 27 54 26 59 43 38 7 52 65 14 74 70 40 60 19 5\r\n",
+                "-1\r\n"
+            ],
+            [
+                "99 4755 98\r\n42 52 40 75 21 80 6 33 94 14 82 66 5 41 60 18 10 56 74 7 20 3 37 65 63 70 59 47 68 19 49 44 35 84 39 48 30 51 8 22 34 13 96 99 1 29 87 2 81 17 73 23 46 43 62 4 55 97 15 88 89 71 24 85 83 78 93 95 9 79 32 25 45 98 53 36 11 16 12 90 92 91 67 77 26 86 28 76 61 27 38 57 58 54 69 31 64 72\r\n",
+                "-1\r\n"
+            ],
+            [
+                "22 231 11\r\n15 6 16 10 17 4 18 1 3 2 22\r\n",
+                "-1\r\n"
+            ],
+            [
+                "22 222 11\r\n22 20 1 12 13 9 18 21 3 14 2\r\n",
+                "-1\r\n"
+            ],
+            [
+                "22 22 11\r\n12 8 1 10 3 13 19 2 15 7 5\r\n",
+                "12 4\r\n12 6\r\n12 9\r\n12 11\r\n12 14\r\n12 16\r\n12 17\r\n12 18\r\n12 20\r\n12 21\r\n12 22\r\n4 8\r\n4 1\r\n4 10\r\n4 3\r\n4 13\r\n4 19\r\n4 2\r\n4 15\r\n4 7\r\n4 5\r\n1 2\r\n"
+            ],
+            [
+                "22 21 11\r\n1 7 14 6 10 20 5 13 21 22 4\r\n",
+                "1 2\r\n1 3\r\n1 8\r\n1 9\r\n1 11\r\n1 12\r\n1 15\r\n1 16\r\n1 17\r\n1 18\r\n1 19\r\n2 7\r\n2 14\r\n2 6\r\n2 10\r\n2 20\r\n2 5\r\n2 13\r\n2 21\r\n2 22\r\n2 4\r\n"
+            ],
+            [
+                "5 10 3\r\n4 1 3\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 7 3\r\n5 3 2\r\n",
+                "5 1\r\n5 4\r\n1 3\r\n1 2\r\n1 4\r\n2 3\r\n2 4\r\n"
+            ],
+            [
+                "5 8 3\r\n4 5 1\r\n",
+                "4 2\r\n4 3\r\n2 5\r\n2 1\r\n1 3\r\n1 5\r\n2 3\r\n3 5\r\n"
+            ],
+            [
+                "5 7 4\r\n1 2 3 4\r\n",
+                "1 5\r\n5 2\r\n5 3\r\n5 4\r\n2 3\r\n2 4\r\n3 4\r\n"
+            ],
+            [
+                "5 4 4\r\n1 5 3 4\r\n",
+                "1 2\r\n2 5\r\n2 3\r\n2 4\r\n"
+            ],
+            [
+                "6 13 3\r\n1 2 3\r\n",
+                "1 4\r\n1 5\r\n1 6\r\n4 2\r\n4 3\r\n2 3\r\n2 5\r\n2 6\r\n3 5\r\n3 6\r\n4 5\r\n4 6\r\n5 6\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,283 @@
+[
+    {
+        "name": "Pencils and Boxes",
+        "description": "Mishka received a gift of multicolored pencils for his birthday! Unfortunately\nhe lives in a monochrome world, where everything is of the same color and only\nsaturation differs. This pack can be represented as a sequence a1, a2, ..., an\nof n integer numbers \u2014 saturation of the color of each pencil. Now Mishka\nwants to put all the mess in the pack in order. He has an infinite number of\nempty boxes to do this. He would like to fill some boxes in such a way that:\nEach pencil belongs to exactly one box; Each non-empty box has at least k\npencils in it; If pencils i and j belong to the same box, then |ai - aj| \u2264 d,\nwhere |x| means absolute value of x. Note that the opposite is optional, there\ncan be pencils i and j such that |ai - aj| \u2264 d and they belong to different\nboxes. Help Mishka to determine if it's possible to distribute all the pencils\ninto boxes. Print \"YES\" if there exists such a distribution. Otherwise print\n\"NO\". Input The first line contains three integer numbers n, k and d (1 \u2264 k \u2264\nn \u2264 5\u00b710^5, 0 \u2264 d \u2264 10^9) \u2014 the number of pencils, minimal size of any non-\nempty box and maximal difference in saturation between any pair of pencils in\nthe same box, respectively. The second line contains n integer numbers a1, a2,\n..., an (1 \u2264 ai \u2264 10^9) \u2014 saturation of color of each pencil. Output Print\n\"YES\" if it's possible to distribute all the pencils into boxes and satisfy\nall the conditions. Otherwise print \"NO\". Examples Input 6 3 10 7 2 7 7 4 2\nOutput YES Input 6 2 3 4 5 3 13 4 10 Output YES Input 3 2 5 10 16 22 Output NO\nNote In the first example it is possible to distribute pencils into 2 boxes\nwith 3 pencils in each with any distribution. And you also can put all the\npencils into the same box, difference of any pair in it won't exceed 10. In\nthe second example you can split pencils of saturations [4, 5, 3, 4] into 2\nboxes of size 2 and put the remaining ones into another box.\n\n",
+        "cf_contest_id": 985,
+        "cf_index": "E",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "greedy",
+            "two pointers"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 3 10\r\n7 2 7 7 4 2\r\n",
+                "YES"
+            ],
+            [
+                "6 2 3\r\n4 5 3 13 4 10\r\n",
+                "YES"
+            ],
+            [
+                "3 2 5\r\n10 16 22\r\n",
+                "NO"
+            ]
+        ],
+        "private_cases": [
+            [
+                "8 7 13\r\n52 85 14 52 92 33 80 85\r\n",
+                "NO"
+            ],
+            [
+                "6 4 0\r\n1 3 2 4 2 1\r\n",
+                "NO"
+            ],
+            [
+                "10 4 9\r\n47 53 33 48 35 51 18 47 33 11\r\n",
+                "NO"
+            ],
+            [
+                "3 2 76\r\n44 5 93\r\n",
+                "NO"
+            ],
+            [
+                "5 2 9\r\n3 8 9 14 20\r\n",
+                "YES"
+            ],
+            [
+                "8 2 3\r\n1 2 3 4 10 11 12 13\r\n",
+                "YES"
+            ],
+            [
+                "10 3 3\r\n1 1 2 4 5 6 9 10 11 12\r\n",
+                "YES"
+            ],
+            [
+                "7 3 3\r\n1 1 3 4 4 4 7\r\n",
+                "YES"
+            ],
+            [
+                "8 3 6\r\n1 2 3 3 4 7 11 11\r\n",
+                "YES"
+            ],
+            [
+                "12 3 2\r\n1 2 3 9 10 11 12 13 14 15 15 15\r\n",
+                "YES"
+            ],
+            [
+                "7 3 3\r\n1 2 3 4 4 5 5\r\n",
+                "YES"
+            ],
+            [
+                "9 3 3\r\n1 2 3 4 5 6 7 8 9\r\n",
+                "YES"
+            ],
+            [
+                "5 2 3\r\n5 7 7 7 10\r\n",
+                "YES"
+            ],
+            [
+                "5 2 7\r\n1 3 4 5 10\r\n",
+                "YES"
+            ],
+            [
+                "16 2 2\r\n3 3 3 4 5 6 7 9 33 33 33 32 31 30 29 27\r\n",
+                "YES"
+            ],
+            [
+                "6 3 3\r\n1 2 3 4 5 6\r\n",
+                "YES"
+            ],
+            [
+                "3 2 15\r\n1 18 19\r\n",
+                "NO"
+            ],
+            [
+                "7 2 2\r\n1 2 3 4 5 6 7\r\n",
+                "YES"
+            ],
+            [
+                "6 3 3\r\n2 2 2 4 7 7\r\n",
+                "YES"
+            ],
+            [
+                "8 3 3\r\n1 1 1 2 2 3 3 5\r\n",
+                "YES"
+            ],
+            [
+                "6 2 2\r\n1 2 3 4 6 7\r\n",
+                "YES"
+            ],
+            [
+                "4 2 3\r\n1 2 3 6\r\n",
+                "YES"
+            ],
+            [
+                "10 4 28\r\n5 5 6 6 30 30 32 33 50 55\r\n",
+                "YES"
+            ],
+            [
+                "8 3 6\r\n1 2 3 3 7 4 11 11\r\n",
+                "YES"
+            ],
+            [
+                "6 3 2\r\n1 2 3 3 4 5\r\n",
+                "YES"
+            ],
+            [
+                "10 3 3\r\n1 2 3 3 3 3 3 3 3 5\r\n",
+                "YES"
+            ],
+            [
+                "1 1 1\r\n1\r\n",
+                "YES"
+            ],
+            [
+                "6 3 4\r\n1 2 3 4 6 7\r\n",
+                "YES"
+            ],
+            [
+                "6 3 3\r\n1 1 4 3 3 6\r\n",
+                "YES"
+            ],
+            [
+                "6 3 2\r\n1 2 2 3 4 5\r\n",
+                "YES"
+            ],
+            [
+                "4 2 12\r\n10 16 22 28\r\n",
+                "YES"
+            ],
+            [
+                "9 3 1\r\n1 2 2 2 2 3 4 4 5\r\n",
+                "YES"
+            ],
+            [
+                "6 2 2\r\n2 3 4 5 6 8\r\n",
+                "YES"
+            ],
+            [
+                "10 4 15\r\n20 16 6 16 13 11 13 1 12 16\r\n",
+                "YES"
+            ],
+            [
+                "18 2 86\r\n665 408 664 778 309 299 138 622 229 842 498 389 140 976 456 265 963 777\r\n",
+                "YES"
+            ],
+            [
+                "6 2 1\r\n1 1 2 3 4 5\r\n",
+                "YES"
+            ],
+            [
+                "10 4 7\r\n4 3 6 5 4 3 1 8 10 5\r\n",
+                "YES"
+            ],
+            [
+                "4 2 100\r\n1 2 3 200\r\n",
+                "NO"
+            ],
+            [
+                "6 3 3\r\n1 1 1 1 1 5\r\n",
+                "NO"
+            ],
+            [
+                "10 3 3\r\n1 1 1 2 2 5 6 7 8 9\r\n",
+                "YES"
+            ],
+            [
+                "11 3 4\r\n1 1 1 5 5 5 10 12 14 16 18\r\n",
+                "NO"
+            ],
+            [
+                "4 2 1\r\n1 1 2 3\r\n",
+                "YES"
+            ],
+            [
+                "7 3 3\r\n6 8 9 10 12 13 14\r\n",
+                "NO"
+            ],
+            [
+                "6 3 3\r\n1 2 3 4 7 8\r\n",
+                "NO"
+            ],
+            [
+                "13 2 86\r\n841 525 918 536 874 186 708 553 770 268 138 529 183\r\n",
+                "YES"
+            ],
+            [
+                "5 2 3\r\n1 2 3 4 100\r\n",
+                "NO"
+            ],
+            [
+                "5 2 3\r\n8 9 11 12 16\r\n",
+                "NO"
+            ],
+            [
+                "15 8 57\r\n40 36 10 6 17 84 57 9 55 37 63 75 48 70 53\r\n",
+                "NO"
+            ],
+            [
+                "10 3 1\r\n5 5 5 6 6 7 8 8 8 9\r\n",
+                "YES"
+            ],
+            [
+                "10 5 293149357\r\n79072863 760382815 358896034 663269192 233367425 32795628 837363300 46932461 179556769 763342555\r\n",
+                "NO"
+            ],
+            [
+                "7 3 3\r\n1 2 4 6 7 8 10\r\n",
+                "NO"
+            ],
+            [
+                "6 3 4\r\n1 1 3 5 8 10\r\n",
+                "NO"
+            ],
+            [
+                "14 2 75\r\n105 300 444 610 238 62 767 462 17 728 371 578 179 166\r\n",
+                "YES"
+            ],
+            [
+                "10 4 1\r\n2 2 2 3 3 10 10 10 11 11\r\n",
+                "YES"
+            ],
+            [
+                "18 3 1\r\n1 1 1 2 2 3 5 5 5 6 6 7 9 9 9 10 10 11\r\n",
+                "YES"
+            ],
+            [
+                "9 3 2\r\n1 2 2 3 4 5 6 7 7\r\n",
+                "YES"
+            ],
+            [
+                "8 4 5\r\n1 1 1 1 1 9 9 9\r\n",
+                "NO"
+            ],
+            [
+                "4 2 4\r\n9 1 2 3\r\n",
+                "NO"
+            ],
+            [
+                "10 3 0\r\n1 1 2 2 2 2 2 2 2 2\r\n",
+                "NO"
+            ],
+            [
+                "3 2 2\r\n6 7 7\r\n",
+                "YES"
+            ],
+            [
+                "3 2 257816048\r\n1 999999999 999999999\r\n",
+                "NO"
+            ],
+            [
+                "11 3 1\r\n1 1 2 2 3 3 3 4 4 5 5\r\n",
+                "YES"
+            ]
+        ]
+    }
+]

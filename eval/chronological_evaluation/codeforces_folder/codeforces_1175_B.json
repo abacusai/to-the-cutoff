@@ -1,0 +1,173 @@
+[
+    {
+        "name": "Catch Overflow!",
+        "description": "You are given a function \n    f\n written in some basic language. The function\naccepts an integer value, which is immediately written into some variable\n\n    x\n. \n    x\n is an integer variable and can be assigned values from\n\n    0\n to \n    2^32-1\n. The function contains three types of commands: for\n\n    n\n \u2014 for loop; end \u2014 every command between \"for \n    n\n\" and\ncorresponding \"end\" is executed \n    n\n times; add \u2014 adds 1 to \n    x\n. After\nthe execution of these commands, value of \n    x\n is returned. Every \"for\n\n    n\n\" is matched with \"end\", thus the function is guaranteed to be valid.\n\"for \n    n\n\" can be immediately followed by \"end\".\"add\" command can be\noutside of any for loops. Notice that \"add\" commands might overflow the value\nof \n    x\n! It means that the value of \n    x\n becomes greater than\n\n    2^32-1\n after some \"add\" command. Now you run \n    f(0)\n and wonder if\nthe resulting value of \n    x\n is correct or some overflow made it incorrect.\nIf overflow happened then output \"OVERFLOW!!!\", otherwise print the resulting\nvalue of \n    x\n. Input The first line contains a single integer \n    l\n (\n    1\n    \n    \u2264 l \n    \u2264 10^5\n) \u2014 the number of lines in the function. Each of the next\n\n    l\n lines contains a single command of one of three types: for \n    n\n\n(\n    1 \n    \u2264 n \n    \u2264 100\n) \u2014 for loop; end \u2014 every command between \"for\n\n    n\n\" and corresponding \"end\" is executed \n    n\n times; add \u2014 adds 1 to\n\n    x\n. Output If overflow happened during execution of \n    f(0)\n, then\noutput \"OVERFLOW!!!\", otherwise print the resulting value of \n    x\n. Examples\nInput 9 add for 43 end for 10 for 15 add end add end Output 161 Input 2 for 62\nend Output 0 Input 11 for 100 for 100 for 100 for 100 for 100 add end end end\nend end Output OVERFLOW!!! Note In the first example the first \"add\" is\nexecuted 1 time, the second \"add\" is executed 150 times and the last \"add\" is\nexecuted 10 times. Note that \"for \n    n\n\" can be immediately followed by\n\"end\" and that \"add\" can be outside of any for loops. In the second example\nthere are no commands \"add\", thus the returning value is 0. In the third\nexample \"add\" command is executed too many times, which causes \n    x\n to go\nover \n    2^32-1\n.\n\n",
+        "cf_contest_id": 1175,
+        "cf_index": "B",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "expression parsing",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "9\r\nadd\r\nfor 43\r\nend\r\nfor 10\r\nfor 15\r\nadd\r\nend\r\nadd\r\nend\r\n",
+                "161\r\n"
+            ],
+            [
+                "2\r\nfor 62\r\nend\r\n",
+                "0\r\n"
+            ],
+            [
+                "11\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\nadd\r\n",
+                "1\r\n"
+            ],
+            [
+                "65\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nfor 2\r\nadd\r\nadd\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "31\r\nfor 5\r\nfor 5\r\nfor 5\r\nfor 5\r\nfor 5\r\nfor 5\r\nfor 5\r\nfor 5\r\nfor 5\r\nfor 5\r\nfor 5\r\nfor 5\r\nfor 5\r\nfor 5\r\nfor 5\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "13\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 1\r\nend\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "7\r\nfor 2\r\nfor 3\r\nfor 1\r\nend\r\nadd\r\nend\r\nend\r\n",
+                "6\r\n"
+            ],
+            [
+                "21\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "13\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 2\r\nend\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "23\r\nfor 64\r\nfor 64\r\nfor 64\r\nfor 64\r\nfor 64\r\nfor 64\r\nfor 64\r\nfor 64\r\nfor 64\r\nfor 64\r\nfor 8\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "36\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nfor 16\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nfor 4\r\nadd\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "49\r\nfor 68\r\nadd\r\nend\r\nfor 82\r\nadd\r\nend\r\nfor 90\r\nend\r\nfor 76\r\nend\r\nadd\r\nadd\r\nadd\r\nfor 52\r\nadd\r\nfor 15\r\nadd\r\nend\r\nadd\r\nfor 83\r\nadd\r\nfor 74\r\nend\r\nfor 35\r\nend\r\nfor 98\r\nend\r\nadd\r\nadd\r\nfor 62\r\nadd\r\nadd\r\nadd\r\nend\r\nend\r\nadd\r\nfor 26\r\nend\r\nfor 18\r\nadd\r\nfor 30\r\nfor 60\r\nend\r\nadd\r\nfor 52\r\nend\r\nend\r\nend\r\nend\r\n",
+                "845829\r\n"
+            ],
+            [
+                "13\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 1\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "38\r\nfor 54\r\nadd\r\nadd\r\nfor 66\r\nend\r\nend\r\nfor 60\r\nend\r\nfor 10\r\nfor 56\r\nend\r\nadd\r\nadd\r\nadd\r\nend\r\nadd\r\nfor 11\r\nadd\r\nfor 60\r\nadd\r\nadd\r\nfor 1\r\nadd\r\nend\r\nfor 81\r\nfor 74\r\nfor 60\r\nfor 14\r\nadd\r\nfor 33\r\nend\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "37\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nend\r\nend\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "12\r\nfor 2\r\nadd\r\nfor 2\r\nadd\r\nend\r\nfor 2\r\nadd\r\nend\r\nfor 2\r\nadd\r\nend\r\nend\r\n",
+                "14\r\n"
+            ],
+            [
+                "38\r\nfor 56\r\nend\r\nadd\r\nadd\r\nfor 66\r\nadd\r\nfor 99\r\nfor 6\r\nfor 89\r\nfor 29\r\nfor 94\r\nend\r\nfor 31\r\nadd\r\nend\r\nadd\r\nend\r\nadd\r\nadd\r\nend\r\nend\r\nadd\r\nend\r\nadd\r\nfor 80\r\nend\r\nfor 81\r\nfor 41\r\nfor 1\r\nend\r\nadd\r\nend\r\nadd\r\nend\r\nadd\r\nfor 22\r\nend\r\nend\r\n",
+                "3245146346\r\n"
+            ],
+            [
+                "15\r\nfor 10\r\nadd\r\nadd\r\nfor 20\r\nadd\r\nend\r\nadd\r\nfor 10\r\nadd\r\nend\r\nadd\r\nfor 10\r\nadd\r\nend\r\nend\r\n",
+                "440\r\n"
+            ],
+            [
+                "11\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nend\r\nend\r\nend\r\nend\r\nadd\r\nend\r\n",
+                "100\r\n"
+            ],
+            [
+                "65\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nfor 4\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "11\r\nfor 40\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "4000000000\r\n"
+            ],
+            [
+                "25\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 10\r\nfor 1\r\nfor 1\r\nend\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "19\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 10\r\nfor 100\r\nfor 1\r\nfor 1\r\nfor 1\r\nend\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "23\r\nfor 40\r\nfor 40\r\nfor 40\r\nfor 40\r\nfor 40\r\nfor 40\r\nfor 84\r\nfor 84\r\nfor 84\r\nfor 84\r\nfor 84\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "8\r\nfor 4\r\nfor 3\r\nfor 1\r\nadd\r\nend\r\nadd\r\nend\r\nend\r\n",
+                "24\r\n"
+            ],
+            [
+                "29\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nend\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "33\r\nadd\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nfor 3\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "1\r\n"
+            ],
+            [
+                "23\r\nfor 84\r\nfor 84\r\nfor 84\r\nfor 84\r\nfor 84\r\nfor 40\r\nfor 40\r\nfor 40\r\nfor 40\r\nfor 40\r\nfor 40\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "40\r\nfor 61\r\nfor 28\r\nfor 84\r\nadd\r\nend\r\nend\r\nadd\r\nend\r\nadd\r\nadd\r\nfor 27\r\nfor 55\r\nfor 70\r\nfor 81\r\nadd\r\nadd\r\nfor 23\r\nfor 89\r\nfor 97\r\nfor 58\r\nfor 83\r\nadd\r\nfor 42\r\nadd\r\nadd\r\nfor 100\r\nfor 75\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "53\r\nadd\r\nfor 1\r\nfor 2\r\nfor 3\r\nfor 4\r\nfor 5\r\nfor 6\r\nfor 7\r\nfor 8\r\nfor 9\r\nfor 10\r\nfor 11\r\nfor 12\r\nfor 13\r\nfor 14\r\nfor 15\r\nfor 16\r\nfor 17\r\nfor 18\r\nfor 19\r\nfor 20\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nadd\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nadd\r\nend\r\nadd\r\nfor 100\r\nfor 1\r\nadd\r\nadd\r\nend\r\nfor 1\r\nend\r\nend\r\n",
+                "725963\r\n"
+            ],
+            [
+                "63\r\nadd\r\nadd\r\nfor 21\r\nadd\r\nfor 39\r\nadd\r\nadd\r\nend\r\nfor 73\r\nfor 75\r\nend\r\nadd\r\nfor 83\r\nadd\r\nfor 28\r\nfor 79\r\nfor 83\r\nend\r\nadd\r\nfor 66\r\nend\r\nadd\r\nfor 89\r\nend\r\nadd\r\nadd\r\nadd\r\nend\r\nend\r\nfor 26\r\nadd\r\nend\r\nend\r\nend\r\nfor 25\r\nadd\r\nend\r\nend\r\nadd\r\nadd\r\nfor 27\r\nfor 40\r\nfor 72\r\nadd\r\nend\r\nend\r\nadd\r\nadd\r\nend\r\nadd\r\nadd\r\nadd\r\nadd\r\nadd\r\nfor 23\r\nend\r\nadd\r\nadd\r\nfor 66\r\nend\r\nfor 86\r\nadd\r\nend\r\n",
+                "1410780421\r\n"
+            ],
+            [
+                "65\r\nadd\r\nfor 2\r\nfor 2\r\nfor 3\r\nadd\r\nfor 100\r\nfor 100\r\nend\r\nend\r\nfor 4\r\nfor 5\r\nfor 6\r\nfor 7\r\nfor 8\r\nfor 9\r\nfor 10\r\nfor 11\r\nfor 12\r\nfor 13\r\nfor 14\r\nfor 15\r\nfor 16\r\nfor 17\r\nfor 18\r\nfor 19\r\nfor 20\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nadd\r\nadd\r\nfor 25\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nadd\r\nend\r\nadd\r\nfor 100\r\nfor 1\r\nadd\r\nadd\r\nend\r\nfor 1\r\nend\r\nend\r\nfor 100\r\nend\r\nfor 100\r\nend\r\n",
+                "19595736\r\n"
+            ],
+            [
+                "37\r\nfor 62\r\nfor 55\r\nend\r\nadd\r\nend\r\nadd\r\nadd\r\nfor 99\r\nfor 36\r\nfor 2\r\nfor 67\r\nadd\r\nend\r\nend\r\nend\r\nfor 39\r\nfor 35\r\nfor 48\r\nfor 17\r\nadd\r\nadd\r\nadd\r\nend\r\nfor 44\r\nend\r\nfor 90\r\nend\r\nfor 4\r\nfor 86\r\nend\r\nadd\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "383179960\r\n"
+            ],
+            [
+                "83\r\nadd\r\nfor 58\r\nend\r\nadd\r\nadd\r\nfor 36\r\nfor 84\r\nadd\r\nadd\r\nfor 86\r\nadd\r\nadd\r\nend\r\nend\r\nadd\r\nadd\r\nadd\r\nadd\r\nfor 23\r\nadd\r\nadd\r\nadd\r\nfor 70\r\nadd\r\nadd\r\nend\r\nfor 24\r\nfor 58\r\nend\r\nadd\r\nend\r\nend\r\nend\r\nfor 41\r\nfor 51\r\nend\r\nfor 22\r\nfor 39\r\nend\r\nfor 94\r\nfor 47\r\nadd\r\nfor 57\r\nend\r\nadd\r\nend\r\nfor 55\r\nadd\r\nfor 75\r\nfor 90\r\nend\r\nadd\r\nfor 90\r\nfor 25\r\nadd\r\nfor 17\r\nend\r\nfor 57\r\nadd\r\nfor 63\r\nadd\r\nfor 15\r\nfor 35\r\nfor 69\r\nfor 93\r\nend\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nfor 41\r\nfor 31\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ],
+            [
+                "28\r\nadd\r\nfor 47\r\nadd\r\nfor 36\r\nadd\r\nfor 27\r\nadd\r\nfor 64\r\nadd\r\nend\r\nfor 52\r\nadd\r\nend\r\nadd\r\nend\r\nadd\r\nend\r\nadd\r\nend\r\nadd\r\nfor 10\r\nadd\r\nfor 15\r\nadd\r\nend\r\nadd\r\nend\r\nadd\r\n",
+                "5394363\r\n"
+            ],
+            [
+                "15\r\nfor 86\r\nadd\r\nfor 89\r\nfor 51\r\nadd\r\nend\r\nend\r\nend\r\nadd\r\nfor 10\r\nend\r\nfor 13\r\nend\r\nadd\r\nadd\r\n",
+                "390443\r\n"
+            ],
+            [
+                "17\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 100\r\nfor 5\r\nadd\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\nend\r\n",
+                "OVERFLOW!!!\r\n"
+            ]
+        ]
+    }
+]

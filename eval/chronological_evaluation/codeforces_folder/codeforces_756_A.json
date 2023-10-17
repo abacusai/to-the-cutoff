@@ -1,0 +1,276 @@
+[
+    {
+        "name": "Pavel and barbecue",
+        "description": "Pavel cooks barbecue. There are n skewers, they lay on a brazier in a row,\neach on one of n positions. Pavel wants each skewer to be cooked some time in\nevery of n positions in two directions: in the one it was directed originally\nand in the reversed direction. Pavel has a plan: a permutation p and a\nsequence b1, b2, ..., bn, consisting of zeros and ones. Each second Pavel move\nskewer on position i to position pi, and if bi equals 1 then he reverses it.\nSo he hope that every skewer will visit every position in both directions.\nUnfortunately, not every pair of permutation p and sequence b suits Pavel.\nWhat is the minimum total number of elements in the given permutation p and\nthe given sequence b he needs to change so that every skewer will visit each\nof 2n placements? Note that after changing the permutation should remain a\npermutation as well. There is no problem for Pavel, if some skewer visits some\nof the placements several times before he ends to cook. In other words, a\npermutation p and a sequence b suit him if there is an integer k (k \u2265 2n), so\nthat after k seconds each skewer visits each of the 2n placements. It can be\nshown that some suitable pair of permutation p and sequence b exists for any\nn. Input The first line contain the integer n (1 \u2264 n \u2264 2\u00b710^5) \u2014 the number of\nskewers. The second line contains a sequence of integers p1, p2, ..., pn (1 \u2264\npi \u2264 n) \u2014 the permutation, according to which Pavel wants to move the skewers.\nThe third line contains a sequence b1, b2, ..., bn consisting of zeros and\nones, according to which Pavel wants to reverse the skewers. Output Print\nsingle integer \u2014 the minimum total number of elements in the given permutation\np and the given sequence b he needs to change so that every skewer will visit\neach of 2n placements. Examples Input 4 4 3 2 1 0 1 1 1 Output 2 Input 3 2 3 1\n0 0 0 Output 1 Note In the first example Pavel can change the permutation to\n4, 3, 1, 2. In the second example Pavel can change any element of b to 1.\n\n",
+        "cf_contest_id": 756,
+        "cf_index": "A",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "dfs and similar"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n4 3 2 1\r\n0 1 1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n0 0 0\r\n",
+                "1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1\r\n0\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n0 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n0 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n0 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n1 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n1 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "5\r\n2 1 3 4 5\r\n1 0 0 0 1\r\n",
+                "5\r\n"
+            ],
+            [
+                "10\r\n4 10 5 1 6 8 9 2 3 7\r\n0 1 0 0 1 0 0 1 0 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "20\r\n10 15 20 17 8 1 14 6 3 13 19 2 16 12 4 5 11 7 9 18\r\n0 0 0 1 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "100\r\n87 69 49 86 96 12 10 79 29 66 48 77 73 62 70 52 22 28 97 35 91 5 33 82 65 85 68 80 64 8 38 23 94 34 75 53 57 6 100 2 56 50 55 58 74 9 18 44 40 3 43 45 99 51 21 92 89 36 88 54 42 14 78 71 25 76 13 11 27 72 7 32 93 46 83 30 26 37 39 31 95 59 47 24 67 16 4 15 1 98 19 81 84 61 90 41 17 20 63 60\r\n1 1 1 0 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 0 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "1\r\n1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "2\r\n1 2\r\n1 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n2 1\r\n0 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n0 0 0\r\n",
+                "4\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n1 0 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n0 1 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n1 1 0\r\n",
+                "4\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n0 0 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n1 0 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n0 1 1\r\n",
+                "4\r\n"
+            ],
+            [
+                "3\r\n1 2 3\r\n1 1 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n1 3 2\r\n0 0 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n1 3 2\r\n1 0 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n1 3 2\r\n0 1 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n1 3 2\r\n1 1 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n1 3 2\r\n0 0 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n1 3 2\r\n1 0 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n1 3 2\r\n0 1 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n1 3 2\r\n1 1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n2 1 3\r\n0 0 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n2 1 3\r\n1 0 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n2 1 3\r\n0 1 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n2 1 3\r\n1 1 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n2 1 3\r\n0 0 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n2 1 3\r\n1 0 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n2 1 3\r\n0 1 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n2 1 3\r\n1 1 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n0 0 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n1 0 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n0 1 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n1 1 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n0 0 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n1 0 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n0 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n2 3 1\r\n1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n0 0 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n1 0 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n0 1 0\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n1 1 0\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n0 0 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n1 0 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n0 1 1\r\n",
+                "1\r\n"
+            ],
+            [
+                "3\r\n3 1 2\r\n1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n0 0 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n1 0 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n0 1 0\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n1 1 0\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n0 0 1\r\n",
+                "2\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n1 0 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n0 1 1\r\n",
+                "3\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n1 1 1\r\n",
+                "2\r\n"
+            ]
+        ]
+    }
+]

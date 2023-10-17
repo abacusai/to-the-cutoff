@@ -1,0 +1,91 @@
+[
+    {
+        "name": "Counter Attack",
+        "description": "Berland has managed to repel the flatlanders' attack and is now starting the\ncounter attack. Flatland has n cities, numbered from 1 to n, and some pairs of\nthem are connected by bidirectional roads. The Flatlandian maps show roads\nbetween cities if and only if there is in fact no road between this pair of\ncities (we do not know whether is it a clever spy-proof strategy or just\nsaving ink). In other words, if two cities are connected by a road on a\nflatland map, then there is in fact no road between them. The opposite\nsituation is also true: if two cities are not connected by a road on a\nflatland map, then in fact, there is a road between them. The berlanders got\nhold of a flatland map. Now Vasya the Corporal is commissioned by General\nTouristov to find all such groups of flatland cities, that in each group of\ncities you can get from any city to any other one, moving along the actual\nroads. Also the cities from different groups are unreachable from each other,\nmoving along the actual roads. Indeed, destroying such groups one by one is\nmuch easier than surrounding all Flatland at once! Help the corporal complete\nthis task and finally become a sergeant! Don't forget that a flatland map\nshows a road between cities if and only if there is in fact no road between\nthem. Input The first line contains two space-separated integers n and m (1 \u2264\nn \u2264 5\u00b710^5, 0 \u2264 m \u2264 10^6) \u2014 the number of cities and the number of roads\nmarked on the flatland map, correspondingly. Next m lines contain descriptions\nof the cities on the map. The i-th line contains two integers ai and bi (1 \u2264\nai, bi \u2264 n, ai \u2260 bi) \u2014 the numbers of cities that are connected by the i-th\nroad on the flatland map. It is guaranteed that each pair of cities occurs in\nthe input no more than once. Output On the first line print number k \u2014 the\nnumber of groups of cities in Flatland, such that in each group you can get\nfrom any city to any other one by flatland roads. At the same time, the cities\nfrom different groups should be unreachable by flatland roads. On each of the\nfollowing k lines first print ti (1 \u2264 ti \u2264 n) \u2014 the number of vertexes in the\ni-th group. Then print space-separated numbers of cities in the i-th group.\nThe order of printing groups and the order of printing numbers in the groups\ndoes not matter. The total sum ti for all k groups must equal n. Examples\nInput 4 4 1 2 1 3 4 2 4 3 Output 2 2 1 4 2 2 3 Input 3 1 1 2 Output 1 3 1 2 3\nNote In the first sample there are roads only between pairs of cities 1-4 and\n2-3. In the second sample there is no road between cities 1 and 2, but still\nyou can get from one city to the other one through city number 3.\n\n",
+        "cf_contest_id": 190,
+        "cf_index": "E",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "dsu",
+            "graphs",
+            "hashing",
+            "sortings"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 4\r\n1 2\r\n1 3\r\n4 2\r\n4 3\r\n",
+                "2\r\n2 1 4 \r\n2 2 3 \r\n"
+            ],
+            [
+                "3 1\r\n1 2\r\n",
+                "1\r\n3 1 3 2 \r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "8 14\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n5 6\r\n6 7\r\n",
+                "2\r\n2 1 2 \r\n6 3 4 5 7 8 6 \r\n"
+            ],
+            [
+                "6 9\r\n1 4\r\n1 5\r\n1 6\r\n2 4\r\n2 5\r\n2 6\r\n3 4\r\n3 5\r\n3 6\r\n",
+                "2\r\n3 1 2 3 \r\n3 4 5 6 \r\n"
+            ],
+            [
+                "4 6\r\n3 4\r\n2 3\r\n2 4\r\n1 3\r\n2 1\r\n4 1\r\n",
+                "4\r\n1 1 \r\n1 2 \r\n1 3 \r\n1 4 \r\n"
+            ],
+            [
+                "4 4\r\n2 3\r\n1 2\r\n3 4\r\n1 3\r\n",
+                "2\r\n3 1 4 2 \r\n1 3 \r\n"
+            ],
+            [
+                "5 8\r\n5 1\r\n5 2\r\n5 3\r\n3 1\r\n1 4\r\n4 2\r\n3 2\r\n5 4\r\n",
+                "3\r\n2 1 2 \r\n2 3 4 \r\n1 5 \r\n"
+            ],
+            [
+                "5 10\r\n3 5\r\n5 1\r\n1 3\r\n1 4\r\n2 3\r\n4 5\r\n4 3\r\n2 4\r\n2 1\r\n5 2\r\n",
+                "5\r\n1 1 \r\n1 2 \r\n1 3 \r\n1 4 \r\n1 5 \r\n"
+            ],
+            [
+                "100 0\r\n",
+                "1\r\n100 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 \r\n"
+            ],
+            [
+                "1 0\r\n",
+                "1\r\n1 1 \r\n"
+            ],
+            [
+                "2 0\r\n",
+                "1\r\n2 1 2 \r\n"
+            ],
+            [
+                "2 1\r\n1 2\r\n",
+                "2\r\n1 1 \r\n1 2 \r\n"
+            ],
+            [
+                "3 2\r\n1 2\r\n1 3\r\n",
+                "2\r\n1 1 \r\n2 2 3 \r\n"
+            ],
+            [
+                "3 0\r\n",
+                "1\r\n3 1 2 3 \r\n"
+            ],
+            [
+                "3 3\r\n2 3\r\n1 2\r\n1 3\r\n",
+                "3\r\n1 1 \r\n1 2 \r\n1 3 \r\n"
+            ],
+            [
+                "4 3\r\n1 3\r\n1 4\r\n1 2\r\n",
+                "2\r\n1 1 \r\n3 2 3 4 \r\n"
+            ],
+            [
+                "4 3\r\n1 2\r\n3 4\r\n2 3\r\n",
+                "1\r\n4 1 3 4 2 \r\n"
+            ]
+        ]
+    }
+]

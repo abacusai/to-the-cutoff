@@ -1,0 +1,141 @@
+[
+    {
+        "name": "Intellectual Inquiry",
+        "description": "After getting kicked out of her reporting job for not knowing the alphabet,\nBessie has decided to attend school at the Fillet and Eggs Eater Academy. She\nhas been making good progress with her studies and now knows the first k\nEnglish letters. Each morning, Bessie travels to school along a sidewalk\nconsisting of m + n tiles. In order to help Bessie review, Mr. Moozing has\nlabeled each of the first m sidewalk tiles with one of the first k lowercase\nEnglish letters, spelling out a string t. Mr. Moozing, impressed by Bessie's\nextensive knowledge of farm animals, plans to let her finish labeling the last\nn tiles of the sidewalk by herself. Consider the resulting string s (|s| = m +\nn) consisting of letters labeled on tiles in order from home to school. For\nany sequence of indices p1 < p2 < ... < pq we can define subsequence of the\nstring s as string sp1sp2... spq. Two subsequences are considered to be\ndistinct if they differ as strings. Bessie wants to label the remaining part\nof the sidewalk such that the number of distinct subsequences of tiles is\nmaximum possible. However, since Bessie hasn't even finished learning the\nalphabet, she needs your help! Note that empty subsequence also counts. Input\nThe first line of the input contains two integers n and k (0 \u2264 n \u2264 1 000 000,\n1 \u2264 k \u2264 26). The second line contains a string t (|t| = m, 1 \u2264 m \u2264 1 000 000)\nconsisting of only first k lowercase English letters. Output Determine the\nmaximum number of distinct subsequences Bessie can form after labeling the\nlast n sidewalk tiles each with one of the first k lowercase English letters.\nSince this number can be rather large, you should print it modulo 10^9 + 7.\nPlease note, that you are not asked to maximize the remainder modulo 10^9 + 7!\nThe goal is to maximize the initial value and then print the remainder.\nExamples Input 1 3 ac Output 8 Input 0 2 aaba Output 10 Note In the first\nsample, the optimal labeling gives 8 different subsequences: \"\" (the empty\nstring), \"a\", \"c\", \"b\", \"ac\", \"ab\", \"cb\", and \"acb\". In the second sample, the\nentire sidewalk is already labeled. The are 10 possible different\nsubsequences: \"\" (the empty string), \"a\", \"b\", \"aa\", \"ab\", \"ba\", \"aaa\", \"aab\",\n\"aba\", and \"aaba\". Note that some strings, including \"aa\", can be obtained\nwith multiple sequences of tiles, but are only counted once.\n\n",
+        "cf_contest_id": 645,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1 3\r\nac\r\n",
+                "8"
+            ],
+            [
+                "0 2\r\naaba\r\n",
+                "10"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 1\r\naaaaa\r\n",
+                "9"
+            ],
+            [
+                "10 1\r\naaa\r\n",
+                "14"
+            ],
+            [
+                "1 1\r\naaaaaa\r\n",
+                "8"
+            ],
+            [
+                "3 3\r\ncbcbba\r\n",
+                "215"
+            ],
+            [
+                "5 2\r\nabaababbba\r\n",
+                "1674"
+            ],
+            [
+                "3 2\r\nabaababaa\r\n",
+                "484"
+            ],
+            [
+                "9 7\r\nafg\r\n",
+                "4016"
+            ],
+            [
+                "7 1\r\naaaaaaaaa\r\n",
+                "17"
+            ],
+            [
+                "5 1\r\naa\r\n",
+                "8"
+            ],
+            [
+                "7 8\r\nedgbfaaedg\r\n",
+                "95873"
+            ],
+            [
+                "4 8\r\nehabcb\r\n",
+                "895"
+            ],
+            [
+                "5 3\r\ncbacacaaaabcbcbbacaabccbbaabcbabccccaaaabbbbcaaccacb\r\n",
+                "710704056"
+            ],
+            [
+                "84 16\r\najilpd\r\n",
+                "632947013"
+            ],
+            [
+                "29 6\r\nfbfdfeeccddfeeabfceefabfeffecdbebaeceeeadaabaebeeacc\r\n",
+                "382533505"
+            ],
+            [
+                "7 23\r\nsbopw\r\n",
+                "4096"
+            ],
+            [
+                "53 13\r\nhdakflicajkfdglhacdidihfkehljbalmdjildlalifdiihgahkkfli\r\n",
+                "192388834"
+            ],
+            [
+                "120 22\r\najcbqsqclnochpidimndmaoucrrljjbkkmomtmbncfshnogvhpllhvfprrdtrdlaqeakiclfjnfsbuerbsesuqrhooqghgfbgvnvhajqeibujmsbeviodjvenknembhjklaefmgifgkfrngbucholrctfnkpmaeadgplebogrotfqcfqrlsvvrbukefebjcgquktmotdfknjlacfepiepvkirjglifbqblmvspgffqeeaprgvnfvbrfjbvgbquhhhirdpegconusekmkjbnsudspiaefrokfccnvekhjoicdofchvoctfguciaqthrciabaorchrpltumqarbgcpstcipthvlpibifuvacbircdeksavnrtdtuibpninegeg\r\n",
+                "286815101"
+            ],
+            [
+                "602 13\r\nihlfjkjejclfejclhadcemimkhjgdfameebgcbhejieecfcajchlkfiiaighbiiaidigkledgcmjjkjmmaedijdiflcfdmjbiahdlfbeaflaiddccigilemahhkljglimm\r\n",
+                "446157153"
+            ],
+            [
+                "782 8\r\nhgaccdaghaegedacbfbfdeeaccegcdaggdcfagbbdgagcbfffbdadcaadhhhcfagafdachbfccdacfacfbefhfdbhbccedhaffefaeadedfeggdaaaecffgdhaegchfcgceeahgcbbhagefhgddbhdahcfgdchdgbeddeaecceagaahhaecbfgbdahgchgad\r\n",
+                "143774461"
+            ],
+            [
+                "534103 5\r\nd\r\n",
+                "543044654"
+            ],
+            [
+                "964382 1\r\na\r\n",
+                "964384"
+            ],
+            [
+                "9 2\r\naaaaaaaa\r\n",
+                "855"
+            ],
+            [
+                "0 26\r\nhhhhhhhhh\r\n",
+                "10"
+            ],
+            [
+                "5 6\r\nf\r\n",
+                "64"
+            ],
+            [
+                "1 26\r\nqwertyuiopasdfghklzxcvbnm\r\n",
+                "67108864"
+            ],
+            [
+                "27 26\r\ne\r\n",
+                "268435452"
+            ],
+            [
+                "1000000 26\r\nn\r\n",
+                "408909378"
+            ],
+            [
+                "100 26\r\nbbbbbcbcca\r\n",
+                "400791792"
+            ]
+        ]
+    }
+]

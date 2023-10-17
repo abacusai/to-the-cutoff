@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Edges in MST",
+        "description": "You are given a connected weighted undirected graph without any loops and\nmultiple edges. Let us remind you that a graph's spanning tree is defined as\nan acyclic connected subgraph of the given graph that includes all of the\ngraph's vertexes. The weight of a tree is defined as the sum of weights of the\nedges that the given tree contains. The minimum spanning tree (MST) of a graph\nis defined as the graph's spanning tree having the minimum possible weight.\nFor any connected graph obviously exists the minimum spanning tree, but in the\ngeneral case, a graph's minimum spanning tree is not unique. Your task is to\ndetermine the following for each edge of the given graph: whether it is either\nincluded in any MST, or included at least in one MST, or not included in any\nMST. Input The first line contains two integers n and m (2 \u2264 n \u2264 10^5, ) \u2014 the\nnumber of the graph's vertexes and edges, correspondingly. Then follow m\nlines, each of them contains three integers \u2014 the description of the graph's\nedges as \"ai bi wi\" (1 \u2264 ai, bi \u2264 n, 1 \u2264 wi \u2264 10^6, ai \u2260 bi), where ai and bi\nare the numbers of vertexes connected by the i-th edge, wi is the edge's\nweight. It is guaranteed that the graph is connected and doesn't contain loops\nor multiple edges. Output Print m lines \u2014 the answers for all edges. If the\ni-th edge is included in any MST, print \"any\"; if the i-th edge is included at\nleast in one MST, print \"at least one\"; if the i-th edge isn't included in any\nMST, print \"none\". Print the answers for the edges in the order in which the\nedges are specified in the input. Examples Input 4 5 1 2 101 1 3 100 2 3 2 2 4\n2 3 4 1 Output none any at least one at least one any Input 3 3 1 2 1 2 3 1 1\n3 2 Output any any none Input 3 3 1 2 1 2 3 1 1 3 1 Output at least one at\nleast one at least one Note In the second sample the MST is unique for the\ngiven graph: it contains two first edges. In the third sample any two edges\nform the MST for the given graph. That means that each edge is included at\nleast in one MST.\n\n",
+        "cf_contest_id": 160,
+        "cf_index": "D",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 5\r\n1 2 101\r\n1 3 100\r\n2 3 2\r\n2 4 2\r\n3 4 1\r\n",
+                "none\r\nany\r\nat least one\r\nat least one\r\nany\r\n"
+            ],
+            [
+                "3 3\r\n1 2 1\r\n2 3 1\r\n1 3 2\r\n",
+                "any\r\nany\r\nnone\r\n"
+            ],
+            [
+                "3 3\r\n1 2 1\r\n2 3 1\r\n1 3 1\r\n",
+                "at least one\r\nat least one\r\nat least one\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 5\r\n1 2 100\r\n1 3 100\r\n2 3 2\r\n2 4 2\r\n3 4 1\r\n",
+                "at least one\r\nat least one\r\nat least one\r\nat least one\r\nany\r\n"
+            ],
+            [
+                "10 15\r\n6 5 805980\r\n1 6 805980\r\n7 8 805980\r\n4 9 805980\r\n4 1 805980\r\n3 6 805980\r\n6 9 805980\r\n8 10 805980\r\n3 1 805980\r\n1 8 805980\r\n8 4 805980\r\n2 8 805980\r\n2 10 805980\r\n2 7 805980\r\n2 9 805980\r\n",
+                "any\r\nat least one\r\nat least one\r\nat least one\r\nat least one\r\nat least one\r\nat least one\r\nat least one\r\nat least one\r\nat least one\r\nat least one\r\nat least one\r\nat least one\r\nat least one\r\nat least one\r\n"
+            ],
+            [
+                "25 25\r\n17 13 578885\r\n18 25 860003\r\n21 12 860003\r\n16 4 860003\r\n7 14 752263\r\n25 11 860003\r\n11 19 860003\r\n17 5 752263\r\n14 25 752263\r\n8 17 578885\r\n25 17 860003\r\n1 16 860003\r\n6 1 578885\r\n23 25 752263\r\n25 10 578885\r\n5 9 752263\r\n6 18 752263\r\n2 15 578885\r\n19 12 860003\r\n22 7 578885\r\n14 5 860003\r\n15 16 752263\r\n20 16 578885\r\n17 24 578885\r\n3 2 752263\r\n",
+                "any\r\nany\r\nany\r\nany\r\nany\r\nany\r\nany\r\nany\r\nany\r\nany\r\nat least one\r\nany\r\nany\r\nany\r\nany\r\nany\r\nany\r\nany\r\nany\r\nany\r\nat least one\r\nany\r\nany\r\nany\r\nany\r\n"
+            ],
+            [
+                "5 8\r\n2 5 3\r\n4 1 3\r\n3 4 7\r\n3 1 9\r\n1 2 6\r\n5 3 7\r\n2 4 7\r\n4 5 9\r\n",
+                "any\r\nany\r\nat least one\r\nnone\r\nany\r\nat least one\r\nnone\r\nnone\r\n"
+            ],
+            [
+                "2 1\r\n1 2 1\r\n",
+                "any\r\n"
+            ],
+            [
+                "3 2\r\n1 2 1\r\n2 3 2\r\n",
+                "any\r\nany\r\n"
+            ],
+            [
+                "3 2\r\n1 2 1000000\r\n1 3 1000000\r\n",
+                "any\r\nany\r\n"
+            ]
+        ]
+    }
+]

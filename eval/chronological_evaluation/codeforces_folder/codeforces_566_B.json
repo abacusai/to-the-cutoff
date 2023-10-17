@@ -1,0 +1,48 @@
+[
+    {
+        "name": "Replicating Processes",
+        "description": "A Large Software Company develops its own social network. Analysts have found\nthat during the holidays, major sporting events and other significant events\nusers begin to enter the network more frequently, resulting in great load\nincrease on the infrastructure. As part of this task, we assume that the\nsocial network is 4n processes running on the n servers. All servers are\nabsolutely identical machines, each of which has a volume of RAM of 1 GB =\n1024 MB ^(1). Each process takes 100 MB of RAM on the server. At the same\ntime, the needs of maintaining the viability of the server takes about 100\nmore megabytes of RAM. Thus, each server may have up to 9 different processes\nof social network. Now each of the n servers is running exactly 4 processes.\nHowever, at the moment of peak load it is sometimes necessary to replicate the\nexisting 4n processes by creating 8n new processes instead of the old ones.\nMore formally, there is a set of replication rules, the i-th (1 \u2264 i \u2264 4n) of\nwhich has the form of ai \u2192 (bi, ci), where ai, bi and ci (1 \u2264 ai, bi, ci \u2264 n)\nare the numbers of servers. This means that instead of an old process running\non server ai, there should appear two new copies of the process running on\nservers bi and ci. The two new replicated processes can be on the same server\n(i.e., bi may be equal to ci) or even on the same server where the original\nprocess was (i.e. ai may be equal to bi or ci). During the implementation of\nthe rule ai \u2192 (bi, ci) first the process from the server ai is destroyed, then\nappears a process on the server bi, then appears a process on the server ci.\nThere is a set of 4n rules, destroying all the original 4n processes from n\nservers, and creating after their application 8n replicated processes,\nbesides, on each of the n servers will be exactly 8 processes. However, the\nrules can only be applied consecutively, and therefore the amount of RAM of\nthe servers imposes limitations on the procedure for the application of the\nrules. According to this set of rules determine the order in which you want to\napply all the 4n rules so that at any given time the memory of each of the\nservers contained at most 9 processes (old and new together), or tell that it\nis impossible. Input The first line of the input contains integer n (1 \u2264 n \u2264\n30 000) \u2014 the number of servers of the social network. Next 4n lines contain\nthe rules of replicating processes, the i-th (1 \u2264 i \u2264 4n) of these lines as\nform ai, bi, ci (1 \u2264 ai, bi, ci \u2264 n) and describes rule ai \u2192 (bi, ci). It is\nguaranteed that each number of a server from 1 to n occurs four times in the\nset of all ai, and eight times among a set that unites all bi and ci. Output\nIf the required order of performing rules does not exist, print \"NO\" (without\nthe quotes). Otherwise, print in the first line \"YES\" (without the quotes),\nand in the second line \u2014 a sequence of 4n numbers from 1 to 4n, giving the\nnumbers of the rules in the order they are applied. The sequence should be a\npermutation, that is, include each number from 1 to 4n exactly once. If there\nare multiple possible variants, you are allowed to print any of them. Examples\nInput 2 1 2 2 1 2 2 1 2 2 1 2 2 2 1 1 2 1 1 2 1 1 2 1 1 Output YES 1 2 5 6 3 7\n4 8 Input 3 1 2 3 1 1 1 1 1 1 1 1 1 2 1 3 2 2 2 2 2 2 2 2 2 3 1 2 3 3 3 3 3 3\n3 3 3 Output YES 2 3 4 6 7 8 10 11 12 1 5 9 Note ^(1) To be extremely\naccurate, we should note that the amount of server memory is 1 GiB = 1024 MiB\nand processes require 100 MiB RAM where a gibibyte (GiB) is the amount of RAM\nof 2^30 bytes and a mebibyte (MiB) is the amount of RAM of 2^20 bytes. In the\nfirst sample test the network uses two servers, each of which initially has\nfour launched processes. In accordance with the rules of replication, each of\nthe processes must be destroyed and twice run on another server. One of the\npossible answers is given in the statement: after applying rules 1 and 2 the\nfirst server will have 2 old running processes, and the second server will\nhave 8 (4 old and 4 new) processes. After we apply rules 5 and 6, both servers\nwill have 6 running processes (2 old and 4 new). After we apply rules 3 and 7,\nboth servers will have 7 running processes (1 old and 6 new), and after we\napply rules 4 and 8, each server will have 8 running processes. At no time the\nnumber of processes on a single server exceeds 9. In the second sample test\nthe network uses three servers. On each server, three processes are replicated\ninto two processes on the same server, and the fourth one is replicated in one\nprocess for each of the two remaining servers. As a result of applying rules\n2, 3, 4, 6, 7, 8, 10, 11, 12 each server would have 7 processes (6 old and 1\nnew), as a result of applying rules 1, 5, 9 each server will have 8 processes.\nAt no time the number of processes on a single server exceeds 9.\n\n",
+        "cf_contest_id": 566,
+        "cf_index": "B",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "greedy"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n1 2 2\r\n1 2 2\r\n1 2 2\r\n1 2 2\r\n2 1 1\r\n2 1 1\r\n2 1 1\r\n2 1 1\r\n",
+                "YES\r\n2 8 5 1 7 4 6 3 "
+            ],
+            [
+                "3\r\n1 2 3\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n2 1 3\r\n2 2 2\r\n2 2 2\r\n2 2 2\r\n3 1 2\r\n3 3 3\r\n3 3 3\r\n3 3 3\r\n",
+                "YES\r\n6 10 5 11 2 3 1 4 7 9 8 12 "
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n1 2 3\r\n2 3 1\r\n3 1 2\r\n2 3 3\r\n3 1 1\r\n1 2 2\r\n1 2 1\r\n2 3 2\r\n3 1 3\r\n1 3 1\r\n2 1 2\r\n3 2 3\r\n",
+                "YES\r\n6 10 5 11 2 3 1 4 7 9 8 12 "
+            ],
+            [
+                "1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n1 1 1\r\n",
+                "YES\r\n2 3 1 4 "
+            ],
+            [
+                "2\r\n1 2 2\r\n2 1 1\r\n1 2 1\r\n1 1 2\r\n2 2 1\r\n2 2 2\r\n1 2 1\r\n2 1 1\r\n",
+                "YES\r\n2 8 5 1 7 4 6 3 "
+            ],
+            [
+                "5\r\n4 5 2\r\n2 4 5\r\n3 4 2\r\n1 2 1\r\n3 3 4\r\n4 2 2\r\n1 1 3\r\n3 4 3\r\n5 5 4\r\n1 4 3\r\n2 2 1\r\n4 5 1\r\n1 1 5\r\n2 5 2\r\n4 3 1\r\n2 3 4\r\n3 3 4\r\n5 1 1\r\n5 3 5\r\n5 2 5\r\n",
+                "YES\r\n2 19 17 15 20 5 13 18 11 1 6 3 16 7 8 10 4 9 14 12 "
+            ],
+            [
+                "10\r\n10 10 6\r\n2 5 1\r\n3 1 8\r\n7 5 2\r\n8 1 6\r\n7 4 8\r\n1 10 7\r\n3 8 2\r\n5 8 5\r\n10 3 6\r\n2 6 10\r\n4 7 4\r\n6 6 2\r\n9 4 9\r\n4 2 3\r\n2 2 1\r\n3 9 2\r\n5 9 9\r\n8 1 4\r\n5 6 2\r\n8 8 1\r\n7 8 10\r\n6 9 3\r\n4 7 5\r\n9 4 2\r\n6 9 10\r\n1 9 3\r\n4 5 8\r\n5 3 7\r\n8 1 8\r\n3 10 4\r\n9 5 7\r\n2 7 7\r\n1 5 10\r\n10 6 6\r\n6 4 4\r\n1 10 7\r\n10 5 9\r\n9 1 3\r\n7 3 3\r\n",
+                "YES\r\n2 21 27 9 18 10 39 22 19 6 31 16 14 7 4 17 20 30 35 32 12 13 15 1 36 38 34 11 24 3 29 28 37 25 23 5 26 33 40 8 "
+            ]
+        ]
+    }
+]

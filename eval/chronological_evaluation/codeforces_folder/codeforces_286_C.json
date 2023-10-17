@@ -1,0 +1,100 @@
+[
+    {
+        "name": "Main Sequence",
+        "description": "As you know, Vova has recently become a new shaman in the city of Ultima\nThule. So, he has received the shaman knowledge about the correct bracket\nsequences. The shamans of Ultima Thule have been using lots of different types\nof brackets since prehistoric times. A bracket type is a positive integer. The\nshamans define a correct bracket sequence as follows: An empty sequence is a\ncorrect bracket sequence. If a1, a2, ..., al and b1, b2, ..., bk are\ncorrect bracket sequences, then sequence a1, a2, ..., al, b1, b2, ..., bk\n(their concatenation) also is a correct bracket sequence. If a1, a2, ..., al\n\u2014 is a correct bracket sequence, then sequence also is a correct bracket\nsequence, where v (v > 0) is an integer. For example, sequences 1, 1, - 1, 2,\n- 2, - 1 and 3, - 3 are correct bracket sequences, and 2, - 3 is not.\nMoreover, after Vova became a shaman, he learned the most important correct\nbracket sequence x1, x2, ..., xn, consisting of n integers. As sequence x is\nthe most important, Vova decided to encrypt it just in case. Encrypting\nconsists of two sequences. The first sequence p1, p2, ..., pn contains types\nof brackets, that is, pi = |xi| (1 \u2264 i \u2264 n). The second sequence q1, q2, ...,\nqt contains t integers \u2014 some positions (possibly, not all of them), which\nhad negative numbers in sequence x1, x2, ..., xn. Unfortunately, Vova forgot\nthe main sequence. But he was lucky enough to keep the encryption: sequences\np1, p2, ..., pn and q1, q2, ..., qt. Help Vova restore sequence x by the\nencryption. If there are multiple sequences that correspond to the encryption,\nrestore any of them. If there are no such sequences, you should tell so. Input\nThe first line of the input contains integer n (1 \u2264 n \u2264 10^6). The second line\ncontains n integers: p1, p2, ..., pn (1 \u2264 pi \u2264 10^9). The third line contains\ninteger t (0 \u2264 t \u2264 n), followed by t distinct integers q1, q2, ..., qt (1 \u2264 qi\n\u2264 n). The numbers in each line are separated by spaces. Output Print a single\nstring \"NO\" (without the quotes) if Vova is mistaken and a suitable sequence\nx1, x2, ..., xn doesn't exist. Otherwise, in the first line print \"YES\"\n(without the quotes) and in the second line print n integers x1, x2, ..., xn\n(|xi| = pi; xqj < 0). If there are multiple sequences that correspond to the\nencrypting, you are allowed to print any of them. Examples Input 2 1 1 0\nOutput YES 1 -1 Input 4 1 1 1 1 1 3 Output YES 1 1 -1 -1 Input 3 1 1 1 0\nOutput NO Input 4 1 2 2 1 2 3 4 Output YES 1 2 -2 -1\n\n",
+        "cf_contest_id": 286,
+        "cf_index": "C",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2\r\n1 1\r\n0\r\n",
+                "YES\r\n1 -1 \r\n"
+            ],
+            [
+                "4\r\n1 1 1 1\r\n1 3\r\n",
+                "YES\r\n1 1 -1 -1 \r\n"
+            ],
+            [
+                "3\r\n1 1 1\r\n0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 2 2 1\r\n2 3 4\r\n",
+                "YES\r\n1 2 -2 -1 \r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "14\r\n1 1 1 1 2 2 1 2 2 2 1 1 2 1\r\n7 12 13 4 14 10 6 7\r\n",
+                "YES\r\n1 1 1 -1 2 -2 -1 2 2 -2 1 -1 -2 -1 \r\n"
+            ],
+            [
+                "10\r\n1 2 2 1 2 1 2 2 2 1\r\n0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\n1 1 1 1\r\n2 3 4\r\n",
+                "YES\r\n1 1 -1 -1 \r\n"
+            ],
+            [
+                "8\r\n3 3 1 1 1 1 3 3\r\n1 6\r\n",
+                "YES\r\n3 -3 1 -1 1 -1 3 -3 \r\n"
+            ],
+            [
+                "8\r\n1 1 2 1 1 2 1 1\r\n2 7 8\r\n",
+                "YES\r\n1 1 2 1 -1 -2 -1 -1 \r\n"
+            ],
+            [
+                "20\r\n3 3 3 2 2 3 1 1 3 2 1 3 3 1 2 3 1 1 3 3\r\n1 16\r\n",
+                "YES\r\n3 -3 3 2 -2 -3 1 -1 3 2 1 3 -3 -1 -2 -3 1 -1 3 -3 \r\n"
+            ],
+            [
+                "10\r\n1 1 1 1 1 1 1 1 1 1\r\n5 6 7 8 9 10\r\n",
+                "YES\r\n1 1 1 1 1 -1 -1 -1 -1 -1 \r\n"
+            ],
+            [
+                "14\r\n1 2 2 4 4 1 1 1 2 3 3 2 1 1\r\n1 7\r\n",
+                "YES\r\n1 2 -2 4 -4 1 -1 -1 2 3 -3 -2 1 -1 \r\n"
+            ],
+            [
+                "20\r\n3 3 1 1 1 1 1 2 2 1 1 3 1 1 3 1 1 2 2 1\r\n3 18 7 14\r\n",
+                "YES\r\n3 -3 1 -1 1 1 -1 2 2 1 -1 3 1 -1 -3 1 -1 -2 -2 -1 \r\n"
+            ],
+            [
+                "20\r\n3 1 1 3 1 2 4 3 3 4 4 2 2 3 3 4 2 1 3 3\r\n1 18\r\n",
+                "YES\r\n3 1 -1 -3 1 2 4 3 -3 -4 4 2 -2 3 -3 -4 -2 -1 3 -3 \r\n"
+            ],
+            [
+                "20\r\n3 3 2 2 2 2 1 1 2 2 2 2 2 2 2 2 1 1 3 3\r\n5 15 14 13 6 16\r\n",
+                "YES\r\n3 -3 2 -2 2 -2 1 -1 2 2 2 2 -2 -2 -2 -2 1 -1 3 -3 \r\n"
+            ],
+            [
+                "30\r\n2 2 2 1 1 1 1 1 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2\r\n7 23 20 24 21 26 25 7\r\n",
+                "YES\r\n2 -2 2 1 -1 1 -1 1 -1 3 -3 3 -3 3 3 3 3 3 3 -3 -3 3 -3 -3 -3 -3 -3 -2 2 -2 \r\n"
+            ],
+            [
+                "14\r\n3 3 2 2 3 3 3 2 3 3 3 3 2 3\r\n2 12 6\r\n",
+                "YES\r\n3 -3 2 -2 3 -3 3 2 3 -3 3 -3 -2 -3 \r\n"
+            ],
+            [
+                "62\r\n2 3 1 1 2 2 2 2 1 2 3 3 3 3 2 1 3 2 3 3 2 2 2 2 2 2 3 3 2 3 3 1 1 1 1 1 3 3 1 2 1 1 1 1 2 1 1 3 2 2 1 1 3 1 1 1 1 1 1 1 1 2\r\n8 8 14 28 9 61 44 53 46\r\n",
+                "YES\r\n2 3 1 1 2 -2 2 -2 -1 2 3 -3 3 -3 -2 -1 -3 -2 3 -3 2 -2 2 -2 2 -2 3 -3 2 3 -3 1 -1 1 -1 1 3 -3 1 2 1 -1 1 -1 -2 -1 -1 3 2 -2 1 -1 -3 1 -1 1 -1 1 -1 1 -1 -2 \r\n"
+            ],
+            [
+                "6\r\n2 1 1 2 1 1\r\n1 5\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6\r\n1 2 2 3 3 1\r\n1 1\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,31 @@
+[
+    {
+        "name": "Conveyor Belts",
+        "description": "Automatic Bakery of Cyberland (ABC) recently bought an n \u00d7 m rectangle table.\nTo serve the diners, ABC placed seats around the table. The size of each seat\nis equal to a unit square, so there are 2(n + m) seats in total. ABC placed\nconveyor belts on each unit square on the table. There are three types of\nconveyor belts: \"^\", \"<\" and \">\". A \"^\" belt can bring things upwards. \"<\" can\nbring leftwards and \">\" can bring rightwards. Let's number the rows with 1 to\nn from top to bottom, the columns with 1 to m from left to right. We consider\nthe seats above and below the top of the table are rows 0 and n + 1\nrespectively. Also we define seats to the left of the table and to the right\nof the table to be column 0 and m + 1. Due to the conveyor belts direction\nrestriction there are currently no way for a diner sitting in the row n + 1 to\nbe served. Given the initial table, there will be q events in order. There are\ntwo types of events: \"A x y\" means, a piece of bread will appear at row x and\ncolumn y (we will denote such position as (x, y)). The bread will follow the\nconveyor belt, until arriving at a seat of a diner. It is possible that the\nbread gets stuck in an infinite loop. Your task is to simulate the process,\nand output the final position of the bread, or determine that there will be an\ninfinite loop. \"C x y c\" means that the type of the conveyor belt at (x, y) is\nchanged to c. Queries are performed separately meaning that even if the bread\ngot stuck in an infinite loop, it won't affect further queries. Input The\nfirst line of input contains three integers n, m and q (1 \u2264 n \u2264 10^5, 1 \u2264 m \u2264\n10, 1 \u2264 q \u2264 10^5), separated by a space. Next n lines, each line contains m\ncharacters, describing the table. The characters can only be one of \"<^>\".\nNext q lines, each line describes an event. The format is \"C x y c\" or \"A x y\"\n(Consecutive elements are separated by a space). It's guaranteed that 1 \u2264 x \u2264\nn, 1 \u2264 y \u2264 m. c is a character from the set \"<^>\". There are at most 10000\nqueries of \"C\" type. Output For each event of type \"A\", output two integers\ntx, ty in a line, separated by a space, denoting the destination of (x, y) is\n(tx, ty). If there is an infinite loop, you should output tx = ty = - 1.\nExamples Input 2 2 3 >> ^^ A 2 1 C 1 2 < A 2 1 Output 1 3 -1 -1 Input 4 5 7\n><<^< ^<^^> >>>^> >^>>^ A 3 1 A 2 2 C 1 4 < A 3 1 C 1 2 ^ A 3 1 A 2 2 Output 0\n4 -1 -1 -1 -1 0 2 0 2 Note For the first sample: If the bread goes from (2,\n1), it will go out of the table at (1, 3). After changing the conveyor belt of\n(1, 2) to \"<\", when the bread goes from (2, 1) again, it will get stuck at\n\"><\", so output is ( - 1, - 1).\n\n",
+        "cf_contest_id": 487,
+        "cf_index": "D",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2 3\r\n>>\r\n^^\r\nA 2 1\r\nC 1 2 <\r\nA 2 1\r\n",
+                "1 3\r\n-1 -1\r\n"
+            ],
+            [
+                "4 5 7\r\n><<^<\r\n^<^^>\r\n>>>^>\r\n>^>>^\r\nA 3 1\r\nA 2 2\r\nC 1 4 <\r\nA 3 1\r\nC 1 2 ^\r\nA 3 1\r\nA 2 2\r\n",
+                "0 4\r\n-1 -1\r\n-1 -1\r\n0 2\r\n0 2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1 10\r\n>\r\nA 1 1\r\nC 1 1 <\r\nC 1 1 >\r\nA 1 1\r\nC 1 1 <\r\nC 1 1 >\r\nC 1 1 <\r\nC 1 1 <\r\nC 1 1 <\r\nA 1 1\r\n",
+                "1 2\r\n1 2\r\n1 0\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,246 @@
+[
+    {
+        "name": "Prefix Sum Addicts",
+        "description": "Suppose \n    a_1, a_2, \n    \u2026, a_n\n is a sorted integer sequence of length\n\n    n\n such that \n    a_1 \n    \u2264 a_2 \n    \u2264\n    \u2026\n    \u2264 a_n\n. For every\n\n    1 \n    \u2264 i \n    \u2264 n\n, the prefix sum \n    s_i\n of the first \n    i\n terms\n\n    a_1, a_2, \n    \u2026, a_i\n is defined by \n    \n\n    s_i = \n    \u2211_k=1^i a_k =\n    a_1 + a_2 + \n    \u2026 + a_i.\n\n    \n Now you are given the last \n    k\n terms of\nthe prefix sums, which are \n    s_n-k+1, \n    \u2026, s_n-1, s_n\n. Your task\nis to determine whether this is possible. Formally, given \n    k\n integers\n\n    s_n-k+1, \n    \u2026, s_n-1, s_n\n, the task is to check whether there\nis a sequence \n    a_1, a_2, \n    \u2026, a_n\n such that \n    a_1 \n    \u2264 a_2 \n    \u2264\n    \u2026\n    \u2264 a_n\n, and \n    s_i = a_1 + a_2 + \n    \u2026 + a_i\n for all\n\n    n-k+1 \n    \u2264 i \n    \u2264 n\n. Input Each test contains multiple test cases.\nThe first line contains an integer \n    t\n (\n    1 \n    \u2264 t \n    \u2264 10^5\n) \u2014\nthe number of test cases. The following lines contain the description of each\ntest case. The first line of each test case contains two integers \n    n\n\n(\n    1 \n    \u2264 n \n    \u2264 10^5\n) and \n    k\n (\n    1 \n    \u2264 k \n    \u2264 n\n),\nindicating the length of the sequence \n    a\n and the number of terms of\nprefix sums, respectively. The second line of each test case contains \n    k\n\nintegers \n    s_n-k+1, \n    \u2026, s_n-1, s_n\n (\n    -10^9 \n    \u2264 s_i \n    \u2264\n    10^9\n for every \n    n-k+1 \n    \u2264 i \n    \u2264 n\n). It is guaranteed that the\nsum of \n    n\n over all test cases does not exceed \n    10^5\n. Output For each\ntest case, output \"YES\" (without quotes) if it is possible and \"NO\" (without\nquotes) otherwise. You can output \"YES\" and \"NO\" in any case (for example,\nstrings \"yEs\", \"yes\" and \"Yes\" will be recognized as a positive response).\nExample Input 4 5 5 1 2 3 4 5 7 4 -6 -5 -3 0 3 3 2 3 4 3 2 3 4 Output Yes Yes\nNo No Note In the first test case, we have the only sequence \n    a = [1, 1, 1,\n    1, 1]\n. In the second test case, we can choose, for example, \n    a = [-3, -2,\n    -1, 0, 1, 2, 3]\n. In the third test case, the prefix sums define the only\nsequence \n    a = [2, 1, 1]\n, but it is not sorted. In the fourth test case,\nit can be shown that there is no sequence with the given prefix sums.\n\n",
+        "cf_contest_id": 1738,
+        "cf_index": "B",
+        "cf_rating": 1200,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "sortings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "4\r\n5 5\r\n1 2 3 4 5\r\n7 4\r\n-6 -5 -3 0\r\n3 3\r\n2 3 4\r\n3 2\r\n3 4\r\n",
+                "Yes\r\nYes\r\nNo\r\nNo\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n2 2\r\n0 -1\r\n",
+                "No\r\n"
+            ],
+            [
+                "1\r\n7 4\r\n-6 -7 -8 -9\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-4 -6\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n4 2\r\n-7 -9\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-10 -12\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-8 -12\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n5 1\r\n-10\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n4 3\r\n-3 -4 -4\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n5 1\r\n-4\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n5 2\r\n-10 -15\r\n",
+                "No\r\n"
+            ],
+            [
+                "1\r\n5 3\r\n-4 -6 -8\r\n",
+                "No\r\n"
+            ],
+            [
+                "1\r\n4 3\r\n0 -3 -5\r\n",
+                "No\r\n"
+            ],
+            [
+                "1\r\n4 2\r\n-3 -4\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n31 1\r\n10\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n2 1\r\n-1\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "5\r\n5 2\r\n-100 -100\r\n4 2\r\n-100 -99\r\n4 2\r\n-100 -101\r\n6 2\r\n-1000 -1000\r\n1000 2\r\n-100 -100\r\n",
+                "Yes\r\nYes\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-1 -1\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n4 2\r\n-6 -8\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n2 2\r\n-1 -2\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "4\r\n3 2\r\n-1 -1\r\n3 2\r\n-1 0\r\n3 2\r\n-1 1\r\n3 2\r\n-1 2\r\n",
+                "Yes\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "3\r\n3 2\r\n-5 -6\r\n3 2\r\n-5 -7\r\n3 2\r\n-5 -8\r\n",
+                "Yes\r\nYes\r\nNo\r\n"
+            ],
+            [
+                "1\r\n7 4\r\n-6 -7 -8 0\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n5 3\r\n-30 -40 -50\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n100000 1\r\n2\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-20 -30\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-2 -3\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "10\r\n2 1\r\n1000000000\r\n3 2\r\n-100000000 -150000003\r\n3 2\r\n-100000000 -150000004\r\n3 2\r\n-100000000 -150000001\r\n3 2\r\n-100000000 -150000002\r\n3 2\r\n-100000000 -150000000\r\n3 2\r\n-100000000 -149999999\r\n3 2\r\n-100000000 -149999999\r\n3 2\r\n-100000000 -149999998\r\n3 2\r\n-100000000 -149999997\r\n",
+                "Yes\r\nNo\r\nNo\r\nNo\r\nNo\r\nYes\r\nYes\r\nYes\r\nYes\r\nYes\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-3 -4\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n5 1\r\n-5\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-10 -14\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n4 3\r\n-3 -3 -3\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n5 2\r\n6 8\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n2 2\r\n-2 -3\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "5\r\n4 2\r\n-100 -133\r\n3 2\r\n-100 -133\r\n5 2\r\n-100 -133\r\n6 2\r\n-100 -133\r\n4 2\r\n-100 -134\r\n",
+                "Yes\r\nYes\r\nNo\r\nNo\r\nNo\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-1 -2\r\n",
+                "No\r\n"
+            ],
+            [
+                "1\r\n5 3\r\n-5 -7 1\r\n",
+                "No\r\n"
+            ],
+            [
+                "1\r\n4 2\r\n-8 -10\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n10 1\r\n2\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n2 2\r\n-1000000000 1000000000\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n5 4\r\n-20 -30 -40 -50\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n7 4\r\n-6 -8 -6 0\r\n",
+                "No\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-6 -9\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n3 3\r\n-4 -5 -4\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n1 1\r\n1000000000\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "2\r\n4 2\r\n-19 -25\r\n4 2\r\n-19 -24\r\n",
+                "Yes\r\nYes\r\n"
+            ],
+            [
+                "1\r\n10 1\r\n114514\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n4 2\r\n-4 -5\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n100000 1\r\n999999999\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n9 5\r\n-10 -12 -14 -16 -18\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-5 -7\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-10 -15\r\n",
+                "Yes\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-2 -4\r\n",
+                "No\r\n"
+            ],
+            [
+                "1\r\n4 2\r\n-3 -5\r\n",
+                "No\r\n"
+            ],
+            [
+                "2\r\n7 4\r\n-6 -8 -6 0\r\n7 4\r\n-6 -7 -6 0\r\n",
+                "No\r\nYes\r\n"
+            ],
+            [
+                "1\r\n3 2\r\n-9 -13\r\n",
+                "Yes\r\n"
+            ]
+        ]
+    }
+]

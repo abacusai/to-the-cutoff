@@ -1,0 +1,101 @@
+[
+    {
+        "name": "Lock Puzzle",
+        "description": "Welcome to another task about breaking the code lock! Explorers Whitfield and\nMartin came across an unusual safe, inside of which, according to rumors,\nthere are untold riches, among which one can find the solution of the problem\nof discrete logarithm! Of course, there is a code lock is installed on the\nsafe. The lock has a screen that displays a string of n lowercase Latin\nletters. Initially, the screen displays string s. Whitfield and Martin found\nout that the safe will open when string t will be displayed on the screen. The\nstring on the screen can be changed using the operation \u00abshift x\u00bb. In order to\napply this operation, explorers choose an integer x from 0 to n inclusive.\nAfter that, the current string p = \u03b1\u03b2 changes to \u03b2^R\u03b1, where the length of \u03b2\nis x, and the length of \u03b1 is n - x. In other words, the suffix of the length x\nof string p is reversed and moved to the beginning of the string. For example,\nafter the operation \u00abshift 4\u00bb the string \u00ababcacb\u00bb will be changed with string\n\u00abbcacab \u00bb, since \u03b1 = ab, \u03b2 = cacb, \u03b2^R = bcac. Explorers are afraid that if\nthey apply too many operations \u00abshift\u00bb, the lock will be locked forever. They\nask you to find a way to get the string t on the screen, using no more than\n6100 operations. Input The first line contains an integer n, the length of the\nstrings s and t (1 \u2264 n \u2264 2 000). After that, there are two strings s and t,\nconsisting of n lowercase Latin letters each. Output If it is impossible to\nget string t from string s using no more than 6100 operations \u00abshift\u00bb, print a\nsingle number - 1. Otherwise, in the first line output the number of\noperations k (0 \u2264 k \u2264 6100). In the next line output k numbers xi\ncorresponding to the operations \u00abshift xi\u00bb (0 \u2264 xi \u2264 n) in the order in which\nthey should be applied. Examples Input 6 abacbb babcba Output 4 6 3 2 3 Input\n3 aba bba Output -1 In the first example, after applying the operations, the\nstring on the screen will change as follows: abacbb bbcaba bbcaba ababbc\nababbc cbabab cbabab babcba\n\n",
+        "cf_contest_id": 936,
+        "cf_index": "C",
+        "cf_rating": 2300,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "implementation",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6\r\nabacbb\r\nbabcba\r\n",
+                "18\r\n4 1 6 5 1 6 3 1 6 5 1 6 4 1 6 5 1 6\r\n"
+            ],
+            [
+                "3\r\naba\r\nbba\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\nw\r\nw\r\n",
+                "3\r\n0 1 1\r\n"
+            ],
+            [
+                "2\r\nvb\r\nvb\r\n",
+                "6\r\n1 1 2 1 1 2\r\n"
+            ],
+            [
+                "7\r\nvhypflg\r\nvprhfly\r\n",
+                "-1\r\n"
+            ],
+            [
+                "8\r\nzyzxzyzw\r\nzzyzxywz\r\n",
+                "24\r\n7 1 8 6 1 8 7 1 8 6 1 8 7 1 8 7 1 8 6 1 8 7 1 8\r\n"
+            ],
+            [
+                "8\r\nvnidcatu\r\nuiacnvdt\r\n",
+                "24\r\n0 1 8 3 1 8 5 1 8 7 1 8 5 1 8 5 1 8 7 1 8 7 1 8\r\n"
+            ],
+            [
+                "3\r\nxhh\r\nxhh\r\n",
+                "9\r\n2 1 3 2 1 3 2 1 3\r\n"
+            ],
+            [
+                "4\r\nwnsc\r\nnwcs\r\n",
+                "12\r\n2 1 4 3 1 4 2 1 4 3 1 4\r\n"
+            ],
+            [
+                "5\r\nutvrb\r\nvbtru\r\n",
+                "15\r\n2 1 5 1 1 5 2 1 5 3 1 5 4 1 5\r\n"
+            ],
+            [
+                "8\r\nvnidcatu\r\nvnidcatu\r\n",
+                "24\r\n7 1 8 7 1 8 7 1 8 7 1 8 7 1 8 7 1 8 7 1 8 7 1 8\r\n"
+            ],
+            [
+                "8\r\nabbabaab\r\nbaababba\r\n",
+                "24\r\n6 1 8 7 1 8 6 1 8 7 1 8 6 1 8 7 1 8 6 1 8 7 1 8\r\n"
+            ],
+            [
+                "8\r\nabaababa\r\nabaaabab\r\n",
+                "24\r\n7 1 8 7 1 8 7 1 8 7 1 8 6 1 8 7 1 8 6 1 8 7 1 8\r\n"
+            ],
+            [
+                "49\r\nssizfrtawiuefcgtrrapgoivdxmmipwvdtqggsczdipnkzppi\r\npqzrmpifgttneasigivkrouigpdivczigcxdsmtwpzpwfsadr\r\n",
+                "147\r\n29 1 49 15 1 49 31 1 49 30 1 49 41 1 49 47 1 49 48 1 49 44 1 49 38 1 49 39 1 49 36 1 49 16 1 49 33 1 49 42 1 49 40 1 49 37 1 49 42 1 49 36 1 49 33 1 49 23 1 49 29 1 49 33 1 49 42 1 49 43 1 49 42 1 49 48 1 49 45 1 49 36 1 49 40 1 49 46 1 49 45 1 49 31 1 49 33 1 49 47 1 49 43 1 49 39 1 49 43 1 49 41 1 49 44 1 49 48 1 49 42 1 49 48 1 49 43 1 49 46 1 49 45 1 49 46 1 49 48 1 49 47 1 49 48 1 49\r\n"
+            ],
+            [
+                "50\r\nyfjtdvbotbvocjdqxdztqirfjbpqmswjhkqdiapwvrqqjisqch\r\ncioksjixqqwayfjbqtsqdjphdjzvdtijvprtohcqbvmwfqrdqb\r\n",
+                "150\r\n37 1 50 29 1 50 34 1 50 19 1 50 46 1 50 48 1 50 19 1 50 37 1 50 49 1 50 40 1 50 23 1 50 23 1 50 43 1 50 49 1 50 49 1 50 46 1 50 40 1 50 49 1 50 21 1 50 47 1 50 29 1 50 42 1 50 41 1 50 39 1 50 30 1 50 49 1 50 29 1 50 42 1 50 44 1 50 42 1 50 35 1 50 35 1 50 42 1 50 41 1 50 45 1 50 38 1 50 39 1 50 37 1 50 49 1 50 49 1 50 42 1 50 45 1 50 48 1 50 49 1 50 48 1 50 49 1 50 49 1 50 47 1 50 48 1 50 49 1 50\r\n"
+            ],
+            [
+                "50\r\nabbabaabbaababbabaababbaabbabaabbaababbaabbabaabab\r\nbaababbaabbabaababbabaabbaababbaabbabaabbaababbaba\r\n",
+                "150\r\n48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50 48 1 50 49 1 50\r\n"
+            ],
+            [
+                "50\r\nzyzxzyzwzyzxzyzvzyzxzyzwzyzxzyzuzyzxzyzwzyzxzyzvzy\r\nwxzyzzzyzyvzzvyzxxzyxwzuzzzzzyzyzzxyyzzzywzxzzyzyy\r\n",
+                "150\r\n42 1 50 46 1 50 49 1 50 49 1 50 49 1 50 49 1 50 48 1 50 49 1 50 49 1 50 49 1 50 44 1 50 49 1 50 48 1 50 15 1 50 48 1 50 49 1 50 48 1 50 41 1 50 49 1 50 49 1 50 36 1 50 38 1 50 49 1 50 43 1 50 49 1 50 48 1 50 48 1 50 48 1 50 47 1 50 49 1 50 47 1 50 49 1 50 48 1 50 48 1 50 42 1 50 48 1 50 45 1 50 49 1 50 48 1 50 48 1 50 48 1 50 49 1 50 49 1 50 46 1 50 49 1 50 49 1 50 49 1 50 48 1 50 49 1 50 49 1 50\r\n"
+            ],
+            [
+                "50\r\nyfjtdvbotbvocjdqxdztqirfjbpqmswjhkqdiapwvrqqjisqch\r\njzxptqvjqqqiiitqrikjmdhsscqjwwfabqdyboocjvdhbdfprt\r\n",
+                "-1\r\n"
+            ],
+            [
+                "50\r\nabaababaabaababaababaabaababaabaababaababaabaababa\r\nabaaaaaabbaabaaabbaabaaaababbbaaaaababbbaaaaabbbab\r\n",
+                "150\r\n49 1 50 49 1 50 49 1 50 49 1 50 48 1 50 47 1 50 47 1 50 46 1 50 49 1 50 49 1 50 48 1 50 47 1 50 49 1 50 47 1 50 47 1 50 46 1 50 49 1 50 49 1 50 47 1 50 47 1 50 49 1 50 47 1 50 47 1 50 46 1 50 45 1 50 49 1 50 46 1 50 49 1 50 49 1 50 49 1 50 48 1 50 48 1 50 47 1 50 46 1 50 46 1 50 49 1 50 46 1 50 49 1 50 49 1 50 49 1 50 48 1 50 48 1 50 47 1 50 47 1 50 46 1 50 49 1 50 49 1 50 49 1 50 48 1 50 49 1 50\r\n"
+            ],
+            [
+                "50\r\nyfjtdvbotbvocjdqxdztqirfjbpqmswjhkqdiapwvrqqjisqch\r\nyfjtdvbotbvocjdqxdztqirfjbpqmswjhkqdiapwvrqqjisqch\r\n",
+                "150\r\n49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50 49 1 50\r\n"
+            ]
+        ]
+    }
+]

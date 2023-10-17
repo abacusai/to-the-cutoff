@@ -1,0 +1,418 @@
+[
+    {
+        "name": "Timber",
+        "description": "There is a beautiful alley with trees in front of a shopping mall.\nUnfortunately, it has to go to make space for the parking lot. The trees on\nthe alley all grow in a single line. There are \n    n\n spots for trees, index\n\n    0\n is the shopping mall, index \n    n+1\n is the road and indices from\n\n    1\n to \n    n\n are the spots for trees. Some of them are taken \u2014 there\ngrow trees of the same height \n    k\n. No more than one tree grows in each\nspot. When you chop down a tree in the spot \n    x\n, you can make it fall\neither left or right. If it falls to the left, it takes up spots from\n\n    x-k\n to \n    x\n, inclusive. If it falls to the right, it takes up spots\nfrom \n    x\n to \n    x+k\n, inclusive. Let \n    m\n trees on the alley grow in\nsome spots \n    x_1, x_2, \n    \u2026, x_m\n. Let an alley be called unfortunate if\nall \n    m\n trees can be chopped down in such a way that: no tree falls on the\nshopping mall or the road; each spot is taken up by no more than one fallen\ntree. Calculate the number of different unfortunate alleys with \n    m\n trees\nof height \n    k\n. Two alleys are considered different if there is a spot\n\n    y\n such that a tree grows in \n    y\n on the first alley and doesn't grow\nin \n    y\n on the second alley. Output the number modulo\n\n    998\n     244\n     353\n. Input The only line contains three integers \n    n,\n    m\n and \n    k\n (\n    1 \n    \u2264 m, k \n    \u2264 n \n    \u2264 3 \n    \u00b7 10^5\n) \u2014 the\nnumber of spots for the trees, the number of trees and the height of each\ntree. Output Print a single integer \u2014 the number of different unfortunate\nalleys with \n    m\n trees of height \n    k\n, modulo \n    998\n     244\n     353\n.\nExamples Input 6 1 4 Output 4 Input 5 2 2 Output 0 Input 6 2 2 Output 4 Input\n15 3 2 Output 311\n\n",
+        "cf_contest_id": 1821,
+        "cf_index": "F",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 1 4\r\n",
+                "4\r\n"
+            ],
+            [
+                "5 2 2\r\n",
+                "0\r\n"
+            ],
+            [
+                "6 2 2\r\n",
+                "4\r\n"
+            ],
+            [
+                "15 3 2\r\n",
+                "311\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "300000 1 299999\r\n",
+                "2\r\n"
+            ],
+            [
+                "300000 150000 1\r\n",
+                "176011882\r\n"
+            ],
+            [
+                "300000 100 100\r\n",
+                "987455798\r\n"
+            ],
+            [
+                "300000 10 1000\r\n",
+                "251916840\r\n"
+            ],
+            [
+                "300000 1000 10\r\n",
+                "366808568\r\n"
+            ],
+            [
+                "300000 300000 300000\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1 1\r\n",
+                "0\r\n"
+            ],
+            [
+                "300000 1 1\r\n",
+                "300000\r\n"
+            ],
+            [
+                "300000 541 123\r\n",
+                "463534252\r\n"
+            ],
+            [
+                "300000 546 546\r\n",
+                "912870854\r\n"
+            ],
+            [
+                "300000 2 1\r\n",
+                "78854113\r\n"
+            ],
+            [
+                "278534 43 2\r\n",
+                "618293746\r\n"
+            ],
+            [
+                "278534 2 43\r\n",
+                "857166199\r\n"
+            ],
+            [
+                "262144 100 100\r\n",
+                "411681560\r\n"
+            ],
+            [
+                "262145 100 100\r\n",
+                "332735761\r\n"
+            ],
+            [
+                "262143 100 100\r\n",
+                "916351054\r\n"
+            ],
+            [
+                "200 13 13\r\n",
+                "139516260\r\n"
+            ],
+            [
+                "1337 13 13\r\n",
+                "805033298\r\n"
+            ],
+            [
+                "42069 13 13\r\n",
+                "384220357\r\n"
+            ],
+            [
+                "299999 13 13\r\n",
+                "620485621\r\n"
+            ],
+            [
+                "200 13 42\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 13 42\r\n",
+                "286822697\r\n"
+            ],
+            [
+                "42069 13 42\r\n",
+                "12859170\r\n"
+            ],
+            [
+                "299999 13 42\r\n",
+                "685728987\r\n"
+            ],
+            [
+                "200 13 69\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 13 69\r\n",
+                "585095843\r\n"
+            ],
+            [
+                "42069 13 69\r\n",
+                "961674095\r\n"
+            ],
+            [
+                "299999 13 69\r\n",
+                "160657613\r\n"
+            ],
+            [
+                "200 13 133\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 13 133\r\n",
+                "0\r\n"
+            ],
+            [
+                "42069 13 133\r\n",
+                "369622558\r\n"
+            ],
+            [
+                "299999 13 133\r\n",
+                "385831583\r\n"
+            ],
+            [
+                "200 42 13\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 42 13\r\n",
+                "917886822\r\n"
+            ],
+            [
+                "42069 42 13\r\n",
+                "171831345\r\n"
+            ],
+            [
+                "299999 42 13\r\n",
+                "392749615\r\n"
+            ],
+            [
+                "200 42 42\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 42 42\r\n",
+                "0\r\n"
+            ],
+            [
+                "42069 42 42\r\n",
+                "370369469\r\n"
+            ],
+            [
+                "299999 42 42\r\n",
+                "588176658\r\n"
+            ],
+            [
+                "200 42 69\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 42 69\r\n",
+                "0\r\n"
+            ],
+            [
+                "42069 42 69\r\n",
+                "855076418\r\n"
+            ],
+            [
+                "299999 42 69\r\n",
+                "926830627\r\n"
+            ],
+            [
+                "200 42 133\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 42 133\r\n",
+                "0\r\n"
+            ],
+            [
+                "42069 42 133\r\n",
+                "996259493\r\n"
+            ],
+            [
+                "299999 42 133\r\n",
+                "111411598\r\n"
+            ],
+            [
+                "200 69 13\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 69 13\r\n",
+                "964356342\r\n"
+            ],
+            [
+                "42069 69 13\r\n",
+                "260352081\r\n"
+            ],
+            [
+                "299999 69 13\r\n",
+                "713038813\r\n"
+            ],
+            [
+                "200 69 42\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 69 42\r\n",
+                "0\r\n"
+            ],
+            [
+                "42069 69 42\r\n",
+                "282491576\r\n"
+            ],
+            [
+                "299999 69 42\r\n",
+                "859927588\r\n"
+            ],
+            [
+                "200 69 69\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 69 69\r\n",
+                "0\r\n"
+            ],
+            [
+                "42069 69 69\r\n",
+                "9155511\r\n"
+            ],
+            [
+                "299999 69 69\r\n",
+                "541132694\r\n"
+            ],
+            [
+                "200 69 133\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 69 133\r\n",
+                "0\r\n"
+            ],
+            [
+                "42069 69 133\r\n",
+                "233449918\r\n"
+            ],
+            [
+                "299999 69 133\r\n",
+                "333904380\r\n"
+            ],
+            [
+                "200 133 13\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 133 13\r\n",
+                "0\r\n"
+            ],
+            [
+                "42069 133 13\r\n",
+                "666874740\r\n"
+            ],
+            [
+                "299999 133 13\r\n",
+                "833374321\r\n"
+            ],
+            [
+                "200 133 42\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 133 42\r\n",
+                "0\r\n"
+            ],
+            [
+                "42069 133 42\r\n",
+                "64981717\r\n"
+            ],
+            [
+                "299999 133 42\r\n",
+                "465395616\r\n"
+            ],
+            [
+                "200 133 69\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 133 69\r\n",
+                "0\r\n"
+            ],
+            [
+                "42069 133 69\r\n",
+                "819561028\r\n"
+            ],
+            [
+                "299999 133 69\r\n",
+                "945501320\r\n"
+            ],
+            [
+                "200 133 133\r\n",
+                "0\r\n"
+            ],
+            [
+                "1337 133 133\r\n",
+                "0\r\n"
+            ],
+            [
+                "42069 133 133\r\n",
+                "862812360\r\n"
+            ],
+            [
+                "299999 133 133\r\n",
+                "102840704\r\n"
+            ],
+            [
+                "299998 288 356\r\n",
+                "5823581\r\n"
+            ],
+            [
+                "299998 288 15636\r\n",
+                "0\r\n"
+            ],
+            [
+                "299998 288 215366\r\n",
+                "0\r\n"
+            ],
+            [
+                "299998 7000 356\r\n",
+                "0\r\n"
+            ],
+            [
+                "299998 7000 15636\r\n",
+                "0\r\n"
+            ],
+            [
+                "299998 7000 215366\r\n",
+                "0\r\n"
+            ],
+            [
+                "299998 213567 356\r\n",
+                "0\r\n"
+            ],
+            [
+                "299998 213567 15636\r\n",
+                "0\r\n"
+            ],
+            [
+                "299998 213567 215366\r\n",
+                "0\r\n"
+            ],
+            [
+                "300000 100000 1\r\n",
+                "75081513\r\n"
+            ],
+            [
+                "300000 130000 1\r\n",
+                "247668190\r\n"
+            ],
+            [
+                "300000 131071 1\r\n",
+                "973622111\r\n"
+            ],
+            [
+                "7 6 5\r\n",
+                "0\r\n"
+            ],
+            [
+                "300000 134 134\r\n",
+                "226389633\r\n"
+            ],
+            [
+                "300000 100090 42913\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

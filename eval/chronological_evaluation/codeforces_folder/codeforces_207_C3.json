@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Game with Two Trees",
+        "description": "The Smart Beaver from ABBYY has come up with a new developing game for\nchildren. The Beaver thinks that this game will help children to understand\nprogramming better. The main object of the game is finite rooted trees, each\nof their edges contains some lowercase English letter. Vertices on any tree\nare always numbered sequentially from 1 to m, where m is the number of\nvertices in the tree. Before describing the actual game, let's introduce some\ndefinitions. We'll assume that the sequence of vertices with numbers v1, v2,\n..., vk (k \u2265 1) is a forward path, if for any integer i from 1 to k - 1 vertex\nvi is a direct ancestor of vertex vi + 1. If we sequentially write out all\nletters from the the edges of the given path from v1 to vk, we get some string\n(k = 1 gives us an empty string). We'll say that such string corresponds to\nforward path v1, v2, ..., vk. We'll assume that the sequence of tree vertices\nwith numbers v1, v2, ..., vk (k \u2265 1) is a backward path if for any integer i\nfrom 1 to k - 1 vertex vi is the direct descendant of vertex vi + 1. If we\nsequentially write out all the letters from the edges of the given path from\nv1 to vk, we get some string (k = 1 gives us an empty string). We'll say that\nsuch string corresponds to backward path v1, v2, ..., vk. Now let's describe\nthe game that the Smart Beaver from ABBYY has come up with. The game uses two\nrooted trees, each of which initially consists of one vertex with number 1.\nThe player is given some sequence of operations. Each operation is\ncharacterized by three values (t, v, c) where: t is the number of the tree on\nwhich the operation is executed (1 or 2); v is the vertex index in this tree\n(it is guaranteed that the tree contains a vertex with this index); c is a\nlowercase English letter. The actual operation is as follows: vertex v of tree\nt gets a new descendant with number m + 1 (where m is the current number of\nvertices in tree t), and there should be letter c put on the new edge from\nvertex v to vertex m + 1. We'll say that an ordered group of three integers\n(i, j, q) is a good combination if: 1 \u2264 i \u2264 m1, where m1 is the number of\nvertices in the first tree; 1 \u2264 j, q \u2264 m2, where m2 is the number of vertices\nin the second tree; there exists a forward path v1, v2, ..., vk such that v1 =\nj and vk = q in the second tree; the string that corresponds to the forward\npath in the second tree from vertex j to vertex q equals the string that\ncorresponds to the backward path in the first tree from vertex i to vertex 1\n(note that both paths are determined uniquely). Your task is to calculate the\nnumber of existing good combinations after each operation on the trees. Input\nThe first line contains integer n \u2014 the number of operations on the trees.\nNext n lines specify the operations in the order of their execution. Each line\nhas form \"t v c\", where t is the number of the tree, v is the vertex index in\nthis tree, and c is a lowercase English letter. To get the full points for the\nfirst group of tests it is sufficient to solve the problem with 1 \u2264 n \u2264 700.\nTo get the full points for the second group of tests it is sufficient to solve\nthe problem with 1 \u2264 n \u2264 7000. To get the full points for the third group of\ntests it is sufficient to solve the problem with 1 \u2264 n \u2264 100000. Output Print\nexactly n lines, each containing one integer \u2014 the number of existing good\ncombinations after the corresponding operation from the input. Please, do not\nuse the \npreferred to use the cin, cout streams or the \n5 1 1 a 2 1 a 1 2 b 2 1 b 2 3 a Output 1 3 3 4 7 Note After the first\noperation the only good combination was (1, 1, 1). After the second operation\nnew good combinations appeared, (2, 1, 2) and (1, 2, 2). The third operation\ndidn't bring any good combinations. The fourth operation added good\ncombination (1, 3, 3). Finally, the fifth operation resulted in as much as\nthree new good combinations \u2014 (1, 4, 4), (2, 3, 4) and (3, 1, 4).\n\n",
+        "cf_contest_id": 207,
+        "cf_index": "C3",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\n1 1 a\r\n2 1 a\r\n1 2 b\r\n2 1 b\r\n2 3 a\r\n",
+                "1\r\n3\r\n3\r\n4\r\n7\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\n1 1 z\r\n",
+                "1\r\n"
+            ],
+            [
+                "1\r\n2 1 z\r\n",
+                "2\r\n"
+            ],
+            [
+                "2\r\n1 1 o\r\n2 1 o\r\n",
+                "1\r\n3\r\n"
+            ],
+            [
+                "5\r\n2 1 a\r\n2 2 a\r\n2 3 a\r\n1 1 a\r\n1 2 a\r\n",
+                "2\r\n3\r\n4\r\n7\r\n9\r\n"
+            ],
+            [
+                "12\r\n2 1 a\r\n1 1 a\r\n2 1 b\r\n1 1 b\r\n2 2 a\r\n1 2 a\r\n2 2 b\r\n1 2 b\r\n2 3 a\r\n1 3 a\r\n2 3 b\r\n1 3 b\r\n",
+                "2\r\n3\r\n4\r\n5\r\n7\r\n8\r\n10\r\n10\r\n13\r\n14\r\n16\r\n17\r\n"
+            ],
+            [
+                "20\r\n2 1 a\r\n2 2 a\r\n2 2 b\r\n1 1 b\r\n2 3 b\r\n1 1 b\r\n2 1 b\r\n1 3 b\r\n2 2 b\r\n1 4 a\r\n2 6 b\r\n2 2 a\r\n1 4 a\r\n2 7 b\r\n1 5 b\r\n1 7 a\r\n1 1 a\r\n1 5 b\r\n1 6 a\r\n2 9 b\r\n",
+                "2\r\n3\r\n4\r\n5\r\n7\r\n9\r\n12\r\n12\r\n15\r\n15\r\n19\r\n20\r\n20\r\n26\r\n26\r\n26\r\n29\r\n29\r\n29\r\n32\r\n"
+            ],
+            [
+                "65\r\n2 1 a\r\n2 1 a\r\n1 1 b\r\n2 1 b\r\n1 1 b\r\n2 4 b\r\n1 3 b\r\n1 1 a\r\n2 5 b\r\n1 4 a\r\n2 2 b\r\n2 5 b\r\n2 4 b\r\n2 1 b\r\n1 6 b\r\n1 2 b\r\n2 8 b\r\n2 8 a\r\n2 1 b\r\n1 1 a\r\n2 8 a\r\n2 2 a\r\n2 1 b\r\n2 15 a\r\n2 3 a\r\n1 6 a\r\n2 10 a\r\n1 5 a\r\n1 8 b\r\n2 19 a\r\n2 10 a\r\n1 2 a\r\n1 7 b\r\n1 4 a\r\n2 13 b\r\n2 12 b\r\n1 6 a\r\n1 9 b\r\n1 1 a\r\n2 9 b\r\n1 10 a\r\n2 23 b\r\n2 16 a\r\n2 21 a\r\n1 13 a\r\n2 2 a\r\n2 25 a\r\n2 23 a\r\n2 8 b\r\n2 14 a\r\n2 3 b\r\n1 12 a\r\n2 15 b\r\n2 19 a\r\n2 8 a\r\n2 28 a\r\n1 13 b\r\n2 23 a\r\n1 6 b\r\n2 24 b\r\n2 35 b\r\n2 16 b\r\n2 37 a\r\n2 38 a\r\n1 22 a\r\n",
+                "2\r\n3\r\n3\r\n5\r\n6\r\n9\r\n10\r\n12\r\n16\r\n16\r\n19\r\n23\r\n27\r\n30\r\n30\r\n34\r\n39\r\n41\r\n44\r\n47\r\n50\r\n53\r\n56\r\n59\r\n62\r\n62\r\n65\r\n68\r\n71\r\n75\r\n78\r\n79\r\n79\r\n79\r\n84\r\n88\r\n88\r\n92\r\n102\r\n108\r\n108\r\n117\r\n122\r\n127\r\n127\r\n132\r\n137\r\n142\r\n148\r\n153\r\n157\r\n157\r\n162\r\n167\r\n172\r\n177\r\n178\r\n183\r\n184\r\n190\r\n195\r\n200\r\n205\r\n210\r\n210\r\n"
+            ]
+        ]
+    }
+]

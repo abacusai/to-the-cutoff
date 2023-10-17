@@ -1,0 +1,144 @@
+[
+    {
+        "name": "Anagram",
+        "description": "String x is an anagram of string y, if we can rearrange the letters in string\nx and get exact string y. For example, strings \"DOG\" and \"GOD\" are anagrams,\nso are strings \"BABA\" and \"AABB\", but strings \"ABBAC\" and \"CAABA\" are not. You\nare given two strings s and t of the same length, consisting of uppercase\nEnglish letters. You need to get the anagram of string t from string s. You\nare permitted to perform the replacing operation: every operation is replacing\nsome character from the string s by any other character. Get the anagram of\nstring t in the least number of replacing operations. If you can get multiple\nanagrams of string t in the least number of operations, get the\nlexicographically minimal one. The lexicographic order of strings is the\nfamiliar to us \"dictionary\" order. Formally, the string p of length n is\nlexicographically smaller than string q of the same length, if p1 = q1, p2 =\nq2, ..., pk - 1 = qk - 1, pk < qk for some k (1 \u2264 k \u2264 n). Here characters in\nthe strings are numbered from 1. The characters of the strings are compared in\nthe alphabetic order. Input The input consists of two lines. The first line\ncontains string s, the second line contains string t. The strings have the\nsame length (from 1 to 10^5 characters) and consist of uppercase English\nletters. Output In the first line print z \u2014 the minimum number of replacement\noperations, needed to get an anagram of string t from string s. In the second\nline print the lexicographically minimum anagram that could be obtained in z\noperations. Examples Input ABA CBA Output 1 ABC Input CDBABC ADCABD Output 2\nADBADC Note The second sample has eight anagrams of string t, that can be\nobtained from string s by replacing exactly two letters: \"ADBADC\", \"ADDABC\",\n\"CDAABD\", \"CDBAAD\", \"CDBADA\", \"CDDABA\", \"DDAABC\", \"DDBAAC\". These anagrams are\nlisted in the lexicographical order. The lexicographically minimum anagram is\n\"ADBADC\".\n\n",
+        "cf_contest_id": 254,
+        "cf_index": "C",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "strings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "ABA\r\nCBA\r\n",
+                "1\r\nABC"
+            ],
+            [
+                "CDBABC\r\nADCABD\r\n",
+                "2\r\nADBADC"
+            ]
+        ],
+        "private_cases": [
+            [
+                "AABAA\r\nBBAAA\r\n",
+                "1\r\nAABAB"
+            ],
+            [
+                "OVGHK\r\nRPGUC\r\n",
+                "4\r\nCPGRU"
+            ],
+            [
+                "CCAACBA\r\nBBBAACC\r\n",
+                "2\r\nBCAACBB"
+            ],
+            [
+                "ECBECDB\r\nAADEEBD\r\n",
+                "3\r\nEAAEDDB"
+            ],
+            [
+                "IEDABCCJBH\r\nAJAJAAGHFG\r\n",
+                "7\r\nAAAAFGGJJH"
+            ],
+            [
+                "CFCJKBDAGL\r\nDEJEBNOFJF\r\n",
+                "6\r\nEFEJFBDJNO"
+            ],
+            [
+                "QAPGMPIHMM\r\nTSLALOBLFJ\r\n",
+                "9\r\nBAFJLLLOST"
+            ],
+            [
+                "PJPOJOVMAK\r\nFVACRHLDAP\r\n",
+                "7\r\nACPDFHVLAR"
+            ],
+            [
+                "CBCBACBCCCABABBACCCAACBABBCBABBCBACCAAACCBCBABCBCA\r\nBBCCABABABACAAAABBCACACBACAAACACABBAACCCACBBCCCCAA\r\n",
+                "7\r\nAAAAACACCCAAAABACCCAACBABBCBABBCBACCAAACCBCBABCBCA"
+            ],
+            [
+                "DBDABEEDDAEDBEABDBEBBCDCAAAEEBBCDBDEBDACAAADADDADA\r\nABACBEBBBCDDDCCDABCAEDABBAECBBAEDEBEDAACEBADEEAEEE\r\n",
+                "8\r\nBBCABEECCAEDBEABDBEBBCDCAAAEEBBCDBDEBDACAAADADEEEE"
+            ],
+            [
+                "CFIJLJMFECKJFKNNHEEABGMEHBGMCDJGKKCFCGGCJBKFACFADC\r\nHMMEBBNACGCCGGGLAEJANDIIIDEHCGKJEINMABMFFNAALJDIIE\r\n",
+                "14\r\nAAIALDMEECIJFINNHEEABGMEHBGMCDJGIICFCGGIJBKLAMNADN"
+            ],
+            [
+                "MBENGJMOLOEQFIKREJAONCPFLDANIGNHQQMDFSPEFCODSOTBJT\r\nPKTRMAMCKDQOJOHIPKQPCCTNMLOIJNBLLMQFJTIBHMGGTOCATB\r\n",
+                "14\r\nMBBCGJMCLOHQFIKRIJAOKCPKLDANIGNHQQMLMMPPTCOTTOTBJT"
+            ],
+            [
+                "BHGBGIGACEAFBIFGEGFFGDAIFJAGDHJFGCJIBDBJEHAFAIHCJJGHGGGEEGGJEEDAFBDAHBEEBEFCGJHCECAEGCDGFHGEDJAFAEEC\r\nCDHJHFDCGGFBCACJAGICEEBFBIAGDBDAFAGJBECGFDFBHHHFFJCGDCDAGICFCFADICHAJADJGGIECHJBAJHGJHECABAJFAECCEGB\r\n",
+                "14\r\nBHABAIBACCAFBIFCCCFFCDAIFJAGDHJFGCJIBDBJCHAFAIHCJJGHGGGCDGGJDEDAFBDAHBEEBEFCGJHCECAEGCDGFHGEDJAFAHJC"
+            ],
+            [
+                "RHHQKEAOTDQIBNQDONDEBEEDOANEEPICTLHFJQABHKEADSJKMONDDEFGCJHGNHRJGJLLODBRHADEOSLIISDHPKBGDQMQTGOAPSKJ\r\nPIKHKDIQDHDJIJFCCOAFAOLRFNMRAGRDJGJLCPNDJHJGSMOADHPJFDCPKJGCDPATAKDPJGGLRSCQSCDSBLKCRTBBNDTMMKPTSNGB\r\n",
+                "24\r\nRCCCKCACTDCFBFGDGNDJBJJDKANMMPICTLHFJPABHKPADSJKMONDDPFGCJHGNHRJGJLLODBRPADROSLIISDRPKSGDQMQTGTAPSKJ"
+            ],
+            [
+                "UDYLXKUDNLITSXWUSVJLDSLUSGEVBIOKUYYVGUSYTSNAZLNQGVKZGRDSMYNKPKNWKXUPAHCGZRASFRBOMSCEFRXEMEWRVCVKURPE\r\nVRTYGIECZMCWZOKHSVVFXFZLAULBXVQWINDJAEUZPTQOOLZZHHAEJAPSWCLBBAYOWMIWECDUCRLRSTWJHRZDHTNQUNXEDPWGWFOZ\r\n",
+                "30\r\nADALBCCDFLITHXWHHHJLDILJJGEOBIOKUOOVGUQYTQNAZLNQTVTZWRDSMYNWPWWWWXUPAHCZZRASFRBOMSCEFRXEZEWZVCVZUZPE"
+            ],
+            [
+                "A\r\nA\r\n",
+                "0\r\nA"
+            ],
+            [
+                "CA\r\nAB\r\n",
+                "1\r\nBA"
+            ],
+            [
+                "QZW\r\nQZB\r\n",
+                "1\r\nQZB"
+            ],
+            [
+                "ABQQ\r\nBCZW\r\n",
+                "3\r\nCBWZ"
+            ],
+            [
+                "QWBCZ\r\nABCZW\r\n",
+                "1\r\nAWBCZ"
+            ],
+            [
+                "OPGHJJ\r\nPFQJZO\r\n",
+                "3\r\nOPFQJZ"
+            ],
+            [
+                "AB\r\nBC\r\n",
+                "1\r\nCB"
+            ],
+            [
+                "AABBD\r\nBBAAC\r\n",
+                "1\r\nAABBC"
+            ],
+            [
+                "WRUKY\r\nRUKWX\r\n",
+                "1\r\nWRUKX"
+            ],
+            [
+                "ABEBCBA\r\nBBBAACD\r\n",
+                "1\r\nABDBCBA"
+            ],
+            [
+                "EGBAAED\r\nAADEEBF\r\n",
+                "1\r\nEFBAAED"
+            ],
+            [
+                "AHFLGJAAAJ\r\nAJAJAAGHFK\r\n",
+                "1\r\nAHFKGJAAAJ"
+            ],
+            [
+                "JEJFDBOQEN\r\nDEJEBNOFJP\r\n",
+                "1\r\nJEJFDBOPEN"
+            ],
+            [
+                "VTFLLLOSBA\r\nTSLALOBLFU\r\n",
+                "1\r\nUTFLLLOSBA"
+            ]
+        ]
+    }
+]

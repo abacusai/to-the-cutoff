@@ -1,0 +1,64 @@
+[
+    {
+        "name": "Hostname Aliases",
+        "description": "There are some websites that are accessible through several different\naddresses. For example, for a long time Codeforces was accessible with two\nhostnames codeforces.com and codeforces.ru. You are given a list of page\naddresses being queried. For simplicity we consider all addresses to have the\nform http://[/], where:  \u2014 server name (consists of words and maybe some dots\nseparating them), / \u2014 optional part, where  consists of words separated by\nslashes. We consider two  to correspond to one website if for each query to\nthe first  there will be exactly the same query to the second one and vice\nversa \u2014 for each query to the second  there will be the same query to the\nfirst one. Take a look at the samples for further clarifications. Your goal is\nto determine the groups of server names that correspond to one website. Ignore\ngroups consisting of the only server name. Please note, that according to the\nabove definition queries http:// and http:/// are different. Input The first\nline of the input contains a single integer n (1 \u2264 n \u2264 100 000) \u2014 the number\nof page queries. Then follow n lines each containing exactly one address. Each\naddress is of the form http://[/], where:  consists of lowercase English\nletters and dots, there are no two consecutive dots,  doesn't start or finish\nwith a dot. The length of  is positive and doesn't exceed 20.  consists of\nlowercase English letters, dots and slashes. There are no two consecutive\nslashes,  doesn't start with a slash and its length doesn't exceed 20.\nAddresses are not guaranteed to be distinct. Output First print k \u2014 the number\nof groups of server names that correspond to one website. You should count\nonly groups of size greater than one. Next k lines should contain the\ndescription of groups, one group per line. For each group print all server\nnames separated by a single space. You are allowed to print both groups and\nnames inside any group in arbitrary order. Examples Input 10\nhttp://abacaba.ru/test http://abacaba.ru/ http://abacaba.com\nhttp://abacaba.com/test http://abacaba.de/ http://abacaba.ru/test\nhttp://abacaba.de/test http://abacaba.com/ http://abacaba.com/t\nhttp://abacaba.com/test Output 1 http://abacaba.de http://abacaba.ru Input 14\nhttp://c http://ccc.bbbb/aba..b http://cba.com http://a.c/aba..b/a http://abc/\nhttp://a.c/ http://ccc.bbbb http://ab.ac.bc.aa/ http://a.a.a/ http://ccc.bbbb/\nhttp://cba.com/ http://cba.com/aba..b http://a.a.a/aba..b/a\nhttp://abc/aba..b/a Output 2 http://cba.com http://ccc.bbbb http://a.a.a\nhttp://a.c http://abc\n\n",
+        "cf_contest_id": 644,
+        "cf_index": "C",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "binary search",
+            "data structures",
+            "implementation",
+            "sortings",
+            "strings"
+        ],
+        "time_limit_seconds": 5.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "10\r\nhttp://abacaba.ru/test\r\nhttp://abacaba.ru/\r\nhttp://abacaba.com\r\nhttp://abacaba.com/test\r\nhttp://abacaba.de/\r\nhttp://abacaba.ru/test\r\nhttp://abacaba.de/test\r\nhttp://abacaba.com/\r\nhttp://abacaba.com/t\r\nhttp://abacaba.com/test\r\n",
+                "1\r\nhttp://abacaba.de http://abacaba.ru\r\n"
+            ],
+            [
+                "14\r\nhttp://c\r\nhttp://ccc.bbbb/aba..b\r\nhttp://cba.com\r\nhttp://a.c/aba..b/a\r\nhttp://abc/\r\nhttp://a.c/\r\nhttp://ccc.bbbb\r\nhttp://ab.ac.bc.aa/\r\nhttp://a.a.a/\r\nhttp://ccc.bbbb/\r\nhttp://cba.com/\r\nhttp://cba.com/aba..b\r\nhttp://a.a.a/aba..b/a\r\nhttp://abc/aba..b/a\r\n",
+                "2\r\nhttp://ccc.bbbb http://cba.com\r\nhttp://a.a.a http://a.c http://abc\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10\r\nhttp://tqr.ekdb.nh/w\r\nhttp://p.ulz/ifw\r\nhttp://w.gw.dw.xn/kpe\r\nhttp://byt.mqii.zkv/j/xt\r\nhttp://ovquj.rbgrlw/k..\r\nhttp://bv.plu.e.dslg/j/xt\r\nhttp://udgci.ufgi.gwbd.s/\r\nhttp://l.oh.ne.o.r/.vo\r\nhttp://l.oh.ne.o.r/w\r\nhttp://tqr.ekdb.nh/.vo\r\n",
+                "2\r\nhttp://byt.mqii.zkv http://bv.plu.e.dslg\r\nhttp://l.oh.ne.o.r http://tqr.ekdb.nh\r\n"
+            ],
+            [
+                "12\r\nhttp://ickght.ck/mr\r\nhttp://a.exhel/.b\r\nhttp://a.exhel/\r\nhttp://ti.cdm/\r\nhttp://ti.cdm/x/wd/lm.h.\r\nhttp://ickght.ck/a\r\nhttp://ickght.ck\r\nhttp://c.gcnk.d/.b\r\nhttp://c.gcnk.d/x/wd/lm.h.\r\nhttp://ti.cdm/.b\r\nhttp://a.exhel/x/wd/lm.h.\r\nhttp://c.gcnk.d/\r\n",
+                "1\r\nhttp://ti.cdm http://a.exhel http://c.gcnk.d\r\n"
+            ],
+            [
+                "14\r\nhttp://jr/kgb\r\nhttp://ps.p.t.jeua.x.a.q.t\r\nhttp://gsqqs.n/t/\r\nhttp://w.afwsnuc.ff.km/cohox/u.\r\nhttp://u.s.wbumkuqm/\r\nhttp://u.s.wbumkuqm/cohox/u.\r\nhttp://nq.dzjkjcwv.f.s/bvm/\r\nhttp://zoy.shgg\r\nhttp://gsqqs.n\r\nhttp://u.s.wbumkuqm/b.pd.\r\nhttp://w.afwsnuc.ff.km/\r\nhttp://w.afwsnuc.ff.km/b.pd.\r\nhttp://nq.dzjkjcwv.f.s/n\r\nhttp://nq.dzjkjcwv.f.s/ldbw\r\n",
+                "2\r\nhttp://u.s.wbumkuqm http://w.afwsnuc.ff.km\r\nhttp://zoy.shgg http://ps.p.t.jeua.x.a.q.t\r\n"
+            ],
+            [
+                "15\r\nhttp://l.edzplwqsij.rw/\r\nhttp://m.e.mehd.acsoinzm/s\r\nhttp://yg.ttahn.xin.obgez/ap/\r\nhttp://qqbb.pqkaqcncodxmaae\r\nhttp://lzi.a.flkp.lnn.k/o/qfr.cp\r\nhttp://lzi.a.flkp.lnn.k/f\r\nhttp://p.ngu.gkoq/.szinwwi\r\nhttp://qqbb.pqkaqcncodxmaae/od\r\nhttp://qqbb.pqkaqcncodxmaae\r\nhttp://wsxvmi.qpe.fihtgdvi/e./\r\nhttp://p.ngu.gkoq/zfoh\r\nhttp://m.e.mehd.acsoinzm/xp\r\nhttp://c.gy.p.h.tkrxt.jnsjt/j\r\nhttp://wsxvmi.qpe.fihtgdvi/grkag.z\r\nhttp://p.ngu.gkoq/t\r\n",
+                "0\r\n"
+            ],
+            [
+                "15\r\nhttp://w.hhjvdn.mmu/.ca.p\r\nhttp://m.p.p.lar/\r\nhttp://lgmjun.r.kogpr.ijn/./t\r\nhttp://bapchpl.mcw.a.lob/d/ym/./g.q\r\nhttp://uxnjfnjp.kxr.ss.e.uu/jwo./hjl/\r\nhttp://fd.ezw.ykbb.xhl.t/\r\nhttp://i.xcb.kr/.ca.p\r\nhttp://jofec.ry.fht.gt\r\nhttp://qeo.gghwe.lcr/d/ym/./g.q\r\nhttp://gt\r\nhttp://gjvifpf.d/d/ym/./g.q\r\nhttp://oba\r\nhttp://rjs.qwd/v/hi\r\nhttp://fgkj/\r\nhttp://ivun.naumc.l/.ca.p\r\n",
+                "4\r\nhttp://ivun.naumc.l http://w.hhjvdn.mmu http://i.xcb.kr\r\nhttp://oba http://jofec.ry.fht.gt http://gt\r\nhttp://m.p.p.lar http://fgkj http://fd.ezw.ykbb.xhl.t\r\nhttp://qeo.gghwe.lcr http://bapchpl.mcw.a.lob http://gjvifpf.d\r\n"
+            ],
+            [
+                "20\r\nhttp://gjwr/xsoiagp/\r\nhttp://gdnmu/j\r\nhttp://yfygudx.e.aqa.ezh/j\r\nhttp://mpjxue.cuvipq/\r\nhttp://a/\r\nhttp://kr/..n/c.\r\nhttp://a/xsoiagp/\r\nhttp://kr/z\r\nhttp://kr/v.cv/rk/k\r\nhttp://lvhpz\r\nhttp://qv.v.jqzhq\r\nhttp://y.no/\r\nhttp://kr/n\r\nhttp://y.no/xsoiagp/\r\nhttp://kr/ebe/z/\r\nhttp://olsvbxxw.win.n/j\r\nhttp://p.ct/j\r\nhttp://mpjxue.cuvipq/xsoiagp/\r\nhttp://kr/j\r\nhttp://gjwr/\r\n",
+                "3\r\nhttp://a http://mpjxue.cuvipq http://gjwr http://y.no\r\nhttp://qv.v.jqzhq http://lvhpz\r\nhttp://olsvbxxw.win.n http://yfygudx.e.aqa.ezh http://gdnmu http://p.ct\r\n"
+            ],
+            [
+                "1\r\nhttp://a\r\n",
+                "0\r\n"
+            ],
+            [
+                "3\r\nhttp://abacaba.com/test\r\nhttp://abacaba.de/test\r\nhttp://abacaba.de/test\r\n",
+                "1\r\nhttp://abacaba.com http://abacaba.de\r\n"
+            ]
+        ]
+    }
+]

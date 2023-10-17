@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Deputies",
+        "description": "The Trinitarian kingdom has exactly n = 3k cities. All of them are located on\nthe shores of river Trissisipi, which flows through the whole kingdom. Some of\nthe cities are located on one side of the river, and all the rest are on the\nother side. Some cities are connected by bridges built between them. Each\nbridge connects two cities that are located on the opposite sides of the\nriver. Between any two cities exists no more than one bridge. The recently\ninaugurated King Tristan the Third is busy distributing his deputies among\ncities. In total there are k deputies and the king wants to commission each of\nthem to control exactly three cities. However, no deputy can be entrusted to\nmanage the cities, which are connected by a bridge \u2014 the deputy can set a too\nhigh fee for travelling over the bridge to benefit his pocket, which is bad\nfor the reputation of the king. Help King Tristan the Third distribute the\ndeputies between the cities, if it is possible. Input The first line contains\ntwo integers n and m \u2014 the number of cities and bridges (3 \u2264 n < 10^5, n = 3k,\n0 \u2264 m \u2264 10^5). Next m lines describe the bridges. The i-th line contains two\nintegers ai and bi \u2014 the numbers of cities that are connected by the i-th\nbridge (1 \u2264 ai, bi \u2264 n, ai \u2260 bi, 1 \u2264 i \u2264 m). It is guaranteed that no bridge\nconnects a city with itself and that any two cities are connected with no more\nthan one bridge. Output If distributing the deputies in the required manner is\nimpossible, print in a single line \"NO\" (without the quotes). Otherwise, in\nthe first line print \"YES\" (without the quotes), and in the second line print\nwhich deputy should be put in charge of each city. The i-th number should\nrepresent the number of the deputy (from 1 to k), who should be in charge of\ncity numbered i-th in the input \u2014 overall there should be n numbers. If there\nare multiple solutions, print any of them. Examples Input 6 6 1 2 4 1 3 5 6 5\n2 6 4 6 Output YES 1 2 1 2 2 1 Input 3 1 1 2 Output NO\n\n",
+        "cf_contest_id": 173,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "6 6\r\n1 2\r\n4 1\r\n3 5\r\n6 5\r\n2 6\r\n4 6\r\n",
+                "YES\r\n1 2 1 2 2 1 "
+            ],
+            [
+                "3 1\r\n1 2\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6 9\r\n1 4\r\n1 5\r\n1 6\r\n2 4\r\n2 5\r\n2 6\r\n3 4\r\n3 5\r\n3 6\r\n",
+                "YES\r\n1 1 1 2 2 2 "
+            ],
+            [
+                "15 0\r\n",
+                "YES\r\n1 1 1 2 2 2 3 3 3 4 4 4 5 5 5 "
+            ],
+            [
+                "6 5\r\n1 2\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "9 17\r\n6 8\r\n2 6\r\n3 5\r\n9 4\r\n7 2\r\n7 8\r\n6 9\r\n1 3\r\n5 6\r\n3 2\r\n5 4\r\n1 4\r\n6 1\r\n7 9\r\n5 7\r\n4 2\r\n8 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 4\r\n1 2\r\n1 3\r\n4 5\r\n4 6\r\n",
+                "YES\r\n1 2 2 2 1 1 "
+            ],
+            [
+                "9 16\r\n1 2\r\n1 3\r\n4 5\r\n4 6\r\n7 2\r\n7 3\r\n7 5\r\n7 6\r\n8 2\r\n8 3\r\n8 5\r\n8 6\r\n9 2\r\n9 3\r\n9 5\r\n9 6\r\n",
+                "YES\r\n1 2 2 2 1 1 3 3 3 "
+            ],
+            [
+                "3 0\r\n",
+                "YES\r\n1 1 1 "
+            ],
+            [
+                "3 1\r\n1 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 1\r\n3 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 2\r\n1 2\r\n2 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "9 10\r\n8 5\r\n5 9\r\n1 3\r\n1 7\r\n2 9\r\n4 5\r\n2 4\r\n6 7\r\n4 6\r\n1 9\r\n",
+                "YES\r\n1 2 3 1 2 2 3 1 3 "
+            ],
+            [
+                "9 17\r\n7 4\r\n7 1\r\n6 2\r\n9 4\r\n8 1\r\n3 1\r\n2 1\r\n6 9\r\n2 4\r\n7 5\r\n6 8\r\n5 3\r\n6 3\r\n8 5\r\n6 7\r\n5 9\r\n9 1\r\n",
+                "YES\r\n2 3 1 1 2 2 3 1 3 "
+            ],
+            [
+                "9 20\r\n1 8\r\n2 7\r\n5 8\r\n3 6\r\n9 3\r\n6 4\r\n8 3\r\n6 1\r\n8 4\r\n5 6\r\n2 3\r\n7 6\r\n9 1\r\n4 9\r\n7 8\r\n1 2\r\n5 9\r\n5 2\r\n2 4\r\n9 7\r\n",
+                "NO\r\n"
+            ],
+            [
+                "12 23\r\n5 10\r\n11 6\r\n10 9\r\n9 3\r\n6 9\r\n7 12\r\n11 12\r\n7 3\r\n10 1\r\n1 12\r\n10 11\r\n9 4\r\n12 8\r\n6 5\r\n8 3\r\n12 5\r\n12 9\r\n7 4\r\n10 7\r\n3 11\r\n8 10\r\n2 7\r\n2 8\r\n",
+                "YES\r\n1 3 3 3 1 4 1 2 2 4 2 4 "
+            ],
+            [
+                "12 36\r\n1 4\r\n9 12\r\n11 7\r\n5 10\r\n9 8\r\n9 10\r\n11 4\r\n9 4\r\n8 11\r\n1 3\r\n5 4\r\n11 10\r\n6 10\r\n12 2\r\n2 7\r\n7 1\r\n3 9\r\n9 7\r\n10 2\r\n2 4\r\n5 8\r\n3 11\r\n1 12\r\n3 5\r\n5 7\r\n8 6\r\n6 3\r\n6 12\r\n1 8\r\n6 4\r\n12 5\r\n8 2\r\n11 12\r\n6 7\r\n10 1\r\n3 2\r\n",
+                "YES\r\n1 1 3 3 1 2 3 4 2 4 2 4 "
+            ],
+            [
+                "15 14\r\n9 2\r\n3 9\r\n10 9\r\n9 6\r\n9 5\r\n13 9\r\n9 1\r\n14 9\r\n9 7\r\n9 11\r\n15 9\r\n8 9\r\n4 9\r\n9 12\r\n",
+                "NO\r\n"
+            ],
+            [
+                "18 16\r\n5 2\r\n11 5\r\n14 5\r\n3 5\r\n12 5\r\n5 4\r\n5 9\r\n5 16\r\n18 5\r\n5 6\r\n5 15\r\n5 17\r\n1 5\r\n13 5\r\n8 5\r\n5 7\r\n",
+                "NO\r\n"
+            ],
+            [
+                "9 16\r\n8 2\r\n9 7\r\n9 4\r\n4 3\r\n8 7\r\n9 2\r\n6 8\r\n5 4\r\n2 3\r\n5 2\r\n4 8\r\n6 1\r\n9 6\r\n7 3\r\n3 6\r\n7 1\r\n",
+                "YES\r\n1 1 3 1 2 2 2 3 3 "
+            ],
+            [
+                "9 10\r\n1 5\r\n1 6\r\n1 7\r\n1 8\r\n1 9\r\n2 3\r\n2 4\r\n2 7\r\n2 8\r\n2 9\r\n",
+                "YES\r\n1 2 1 1 2 2 3 3 3 "
+            ],
+            [
+                "6 4\r\n1 2\r\n3 2\r\n4 5\r\n6 5\r\n",
+                "YES\r\n2 1 2 1 2 1 "
+            ],
+            [
+                "6 6\r\n1 5\r\n1 6\r\n2 3\r\n2 4\r\n2 5\r\n2 6\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 4\r\n1 5\r\n2 5\r\n3 6\r\n4 6\r\n",
+                "YES\r\n2 2 1 1 1 2 "
+            ],
+            [
+                "9 10\r\n1 3\r\n1 4\r\n1 5\r\n1 6\r\n1 7\r\n2 5\r\n2 6\r\n2 7\r\n2 8\r\n2 9\r\n",
+                "YES\r\n1 2 2 2 3 3 3 1 1 "
+            ]
+        ]
+    }
+]

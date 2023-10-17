@@ -1,0 +1,81 @@
+[
+    {
+        "name": "Strange Radiation",
+        "description": "n people are standing on a coordinate axis in points with positive integer\ncoordinates strictly less than 10^6. For each person we know in which\ndirection (left or right) he is facing, and his maximum speed. You can put a\nbomb in some point with non-negative integer coordinate, and blow it up. At\nthis moment all people will start running with their maximum speed in the\ndirection they are facing. Also, two strange rays will start propagating from\nthe bomb with speed s: one to the right, and one to the left. Of course, the\nspeed s is strictly greater than people's maximum speed. The rays are strange\nbecause if at any moment the position and the direction of movement of some\nray and some person coincide, then the speed of the person immediately\nincreases by the speed of the ray. You need to place the bomb is such a point\nthat the minimum time moment in which there is a person that has run through\npoint 0, and there is a person that has run through point 10^6, is as small as\npossible. In other words, find the minimum time moment t such that there is a\npoint you can place the bomb to so that at time moment t some person has run\nthrough 0, and some person has run through point 10^6. Input The first line\ncontains two integers n and s (2 \u2264 n \u2264 10^5, 2 \u2264 s \u2264 10^6) \u2014 the number of\npeople and the rays' speed. The next n lines contain the description of\npeople. The i-th of these lines contains three integers xi, vi and ti (0 < xi\n< 10^6, 1 \u2264 vi < s, 1 \u2264 ti \u2264 2) \u2014 the coordinate of the i-th person on the\nline, his maximum speed and the direction he will run to (1 is to the left,\ni.e. in the direction of coordinate decrease, 2 is to the right, i.e. in the\ndirection of coordinate increase), respectively. It is guaranteed that the\npoints 0 and 10^6 will be reached independently of the bomb's position. Output\nPrint the minimum time needed for both points 0 and 10^6 to be reached. Your\nanswer is considered correct if its absolute or relative error doesn't exceed\n10^-6. Namely, if your answer is a, and the jury's answer is b, then your\nanswer is accepted, if . Examples Input 2 999 400000 1 2 500000 1 1 Output\n500000.000000000000000000000000000000 Input 2 1000 400000 500 1 600000 500 2\nOutput 400.000000000000000000000000000000 Note In the first example, it is\noptimal to place the bomb at a point with a coordinate of 400000. Then at time\n0, the speed of the first person becomes 1000 and he reaches the point 10^6 at\nthe time 600. The bomb will not affect on the second person, and he will reach\nthe 0 point at the time 500000. In the second example, it is optimal to place\nthe bomb at the point 500000. The rays will catch up with both people at the\ntime 200. At this time moment, the first is at the point with a coordinate of\n300000, and the second is at the point with a coordinate of 700000. Their\nspeed will become 1500 and at the time 400 they will simultaneously run\nthrough points 0 and 10^6.\n\n",
+        "cf_contest_id": 832,
+        "cf_index": "C",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "implementation",
+            "math"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 999\r\n400000 1 2\r\n500000 1 1\r\n",
+                "499999.9999999991\r\n"
+            ],
+            [
+                "2 1000\r\n400000 500 1\r\n600000 500 2\r\n",
+                "400.0000000000\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2 99999\r\n500 1 1\r\n499 10000 2\r\n",
+                "99.9500999992\r\n"
+            ],
+            [
+                "26 10\r\n495492 7 1\r\n256604 5 2\r\n511773 3 2\r\n590712 4 1\r\n206826 7 2\r\n817878 4 2\r\n843915 1 1\r\n349160 3 1\r\n351298 4 1\r\n782251 8 2\r\n910928 4 1\r\n662354 4 2\r\n468621 2 2\r\n466991 7 2\r\n787303 6 2\r\n221623 8 2\r\n343518 6 1\r\n141123 7 1\r\n24725 6 1\r\n896603 3 2\r\n918129 8 2\r\n706071 6 2\r\n512369 2 2\r\n600004 4 1\r\n928608 9 2\r\n298493 3 1\r\n",
+                "4120.8333333325\r\n"
+            ],
+            [
+                "13 10000\r\n78186 325 1\r\n942344 8592 2\r\n19328 6409 2\r\n632454 7747 2\r\n757264 8938 1\r\n462681 7708 1\r\n26489 2214 2\r\n415801 8912 2\r\n156832 48 1\r\n898262 1620 2\r\n936086 5125 1\r\n142567 5086 1\r\n207839 9409 2\r\n",
+                "7.5724939466\r\n"
+            ],
+            [
+                "22 30\r\n739680 21 1\r\n697634 24 1\r\n267450 27 2\r\n946750 8 2\r\n268031 27 1\r\n418652 11 1\r\n595005 12 1\r\n59519 22 2\r\n332220 1 1\r\n355395 2 1\r\n573947 26 1\r\n864962 4 1\r\n659836 14 1\r\n439461 22 1\r\n694157 11 2\r\n429431 11 2\r\n304031 9 2\r\n282710 4 1\r\n623799 11 1\r\n610188 27 2\r\n596592 20 2\r\n562391 18 2\r\n",
+                "6656.2499999998\r\n"
+            ],
+            [
+                "10 100\r\n945740 58 2\r\n424642 85 2\r\n310528 91 2\r\n688743 93 1\r\n355046 85 1\r\n663649 84 2\r\n720124 56 1\r\n941616 59 2\r\n412011 46 2\r\n891591 30 2\r\n",
+                "1919.1675675669\r\n"
+            ],
+            [
+                "4 100\r\n884131 61 1\r\n927487 23 2\r\n663318 13 1\r\n234657 61 1\r\n",
+                "3152.7391304342\r\n"
+            ],
+            [
+                "20 20\r\n722369 11 1\r\n210389 8 2\r\n743965 2 1\r\n951723 17 2\r\n880618 1 2\r\n101303 8 2\r\n174013 19 2\r\n627995 19 1\r\n541778 5 1\r\n586095 19 1\r\n324166 4 1\r\n125805 12 2\r\n538606 2 2\r\n691777 9 2\r\n127586 7 1\r\n849701 9 1\r\n23273 17 1\r\n250794 4 1\r\n64709 7 2\r\n785893 9 1\r\n",
+                "1368.9999999995\r\n"
+            ],
+            [
+                "5 786551\r\n352506 2 1\r\n450985 6 2\r\n561643 4 2\r\n5065 8 2\r\n717868 3 1\r\n",
+                "0.6356859972\r\n"
+            ],
+            [
+                "3 96475\r\n187875 5 2\r\n813727 8 1\r\n645383 7 2\r\n",
+                "50659.5714285707\r\n"
+            ],
+            [
+                "2 96475\r\n813727 8 1\r\n645383 7 2\r\n",
+                "50659.5714285707\r\n"
+            ],
+            [
+                "2 2\r\n1 1 1\r\n999999 1 2\r\n",
+                "0.9999999993\r\n"
+            ],
+            [
+                "2 1000000\r\n1 1 1\r\n999999 1 2\r\n",
+                "0.5000004997\r\n"
+            ],
+            [
+                "2 250001\r\n499999 250000 1\r\n500000 250000 2\r\n",
+                "1.4999969995\r\n"
+            ]
+        ]
+    }
+]

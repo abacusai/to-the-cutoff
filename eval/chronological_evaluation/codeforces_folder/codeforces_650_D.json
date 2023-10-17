@@ -1,0 +1,150 @@
+[
+    {
+        "name": "Zip-line",
+        "description": "Vasya has decided to build a zip-line on trees of a nearby forest. He wants\nthe line to be as long as possible but he doesn't remember exactly the heights\nof all trees in the forest. He is sure that he remembers correct heights of\nall trees except, possibly, one of them. It is known that the forest consists\nof n trees staying in a row numbered from left to right with integers from 1\nto n. According to Vasya, the height of the i-th tree is equal to hi. The zip-\nline of length k should hang over k (1 \u2264 k \u2264 n) trees i1, i2, ..., ik (i1 < i2\n< ... < ik) such that their heights form an increasing sequence, that is hi1 <\nhi2 < ... < hik. Petya had been in this forest together with Vasya, and he now\nhas q assumptions about the mistake in Vasya's sequence h. His i-th assumption\nconsists of two integers ai and bi indicating that, according to Petya, the\nheight of the tree numbered ai is actually equal to bi. Note that Petya's\nassumptions are independent from each other. Your task is to find the maximum\nlength of a zip-line that can be built over the trees under each of the q\nassumptions. In this problem the length of a zip line is considered equal to\nthe number of trees that form this zip-line. Input The first line of the input\ncontains two integers n and m (1 \u2264 n, m \u2264 400 000) \u2014 the number of the trees\nin the forest and the number of Petya's assumptions, respectively. The\nfollowing line contains n integers hi (1 \u2264 hi \u2264 10^9) \u2014 the heights of trees\naccording to Vasya. Each of the following m lines contains two integers ai and\nbi (1 \u2264 ai \u2264 n, 1 \u2264 bi \u2264 10^9). Output For each of the Petya's assumptions\noutput one integer, indicating the maximum length of a zip-line that can be\nbuilt under this assumption. Examples Input 4 4 1 2 3 4 1 1 1 4 4 3 4 5 Output\n4 3 3 4 Input 4 2 1 3 2 6 3 5 2 4 Output 4 3 Note Consider the first sample.\nThe first assumption actually coincides with the height remembered by Vasya.\nIn the second assumption the heights of the trees are (4, 2, 3, 4), in the\nthird one they are (1, 2, 3, 3) and in the fourth one they are (1, 2, 3, 5).\n\n",
+        "cf_contest_id": 650,
+        "cf_index": "D",
+        "cf_rating": 2600,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "hashing"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4 4\r\n1 2 3 4\r\n1 1\r\n1 4\r\n4 3\r\n4 5\r\n",
+                "4\r\n3\r\n3\r\n4\r\n"
+            ],
+            [
+                "4 2\r\n1 3 2 6\r\n3 5\r\n2 4\r\n",
+                "4\r\n3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "15 14\r\n76 9 32 82 40 91 46 5 12 69 44 97 30 13 29\r\n4 73\r\n13 84\r\n14 51\r\n5 99\r\n7 47\r\n14 32\r\n4 12\r\n11 20\r\n9 65\r\n15 95\r\n10 26\r\n5 25\r\n2 62\r\n11 81\r\n",
+                "6\r\n6\r\n6\r\n5\r\n6\r\n6\r\n6\r\n6\r\n7\r\n6\r\n5\r\n5\r\n5\r\n7\r\n"
+            ],
+            [
+                "13 10\r\n22 90 86 54 23 79 1 92 52 17 34 26 45\r\n11 47\r\n11 95\r\n12 32\r\n7 60\r\n11 56\r\n5 65\r\n9 41\r\n12 30\r\n1 15\r\n5 65\r\n",
+                "4\r\n5\r\n4\r\n4\r\n4\r\n5\r\n4\r\n4\r\n4\r\n5\r\n"
+            ],
+            [
+                "12 4\r\n79 56 39 23 98 67 61 74 91 61 28 60\r\n12 47\r\n10 17\r\n9 57\r\n5 19\r\n",
+                "4\r\n4\r\n3\r\n4\r\n"
+            ],
+            [
+                "11 7\r\n25 38 1 100 86 55 20 56 35 4 19\r\n1 83\r\n5 84\r\n3 35\r\n11 29\r\n2 82\r\n10 73\r\n3 7\r\n",
+                "3\r\n4\r\n4\r\n4\r\n3\r\n5\r\n4\r\n"
+            ],
+            [
+                "10 2\r\n78 15 50 77 57 43 76 38 74 48\r\n9 34\r\n6 85\r\n",
+                "4\r\n4\r\n"
+            ],
+            [
+                "8 10\r\n28 97 4 46 44 31 35 21\r\n6 88\r\n7 71\r\n5 94\r\n1 84\r\n3 91\r\n2 61\r\n1 59\r\n3 43\r\n1 73\r\n2 82\r\n",
+                "3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n3\r\n"
+            ],
+            [
+                "7 6\r\n86 67 65 18 27 15 98\r\n7 66\r\n6 97\r\n4 44\r\n5 52\r\n2 97\r\n3 67\r\n",
+                "3\r\n4\r\n2\r\n3\r\n3\r\n3\r\n"
+            ],
+            [
+                "6 15\r\n39 44 19 95 99 99\r\n4 81\r\n5 79\r\n4 42\r\n5 28\r\n6 96\r\n1 85\r\n3 24\r\n6 13\r\n5 68\r\n3 99\r\n5 31\r\n3 23\r\n3 56\r\n4 98\r\n3 51\r\n",
+                "4\r\n4\r\n3\r\n4\r\n4\r\n3\r\n4\r\n4\r\n4\r\n4\r\n4\r\n4\r\n5\r\n4\r\n5\r\n"
+            ],
+            [
+                "5 10\r\n85 26 80 64 86\r\n1 13\r\n2 45\r\n1 82\r\n5 78\r\n5 88\r\n5 34\r\n5 60\r\n2 37\r\n2 58\r\n4 9\r\n",
+                "4\r\n3\r\n3\r\n3\r\n3\r\n2\r\n2\r\n3\r\n3\r\n3\r\n"
+            ],
+            [
+                "2 1\r\n40 96\r\n1 97\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1\r\n73\r\n1 40\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 15\r\n84\r\n1 45\r\n1 37\r\n1 17\r\n1 50\r\n1 50\r\n1 29\r\n1 97\r\n1 61\r\n1 55\r\n1 83\r\n1 95\r\n1 13\r\n1 100\r\n1 98\r\n1 76\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "15 1\r\n44 76 40 47 6 32 2 72 24 22 61 85 89 92 75\r\n15 23\r\n",
+                "6\r\n"
+            ],
+            [
+                "4 2\r\n85 16 5 42\r\n3 26\r\n2 65\r\n",
+                "3\r\n2\r\n"
+            ],
+            [
+                "3 13\r\n43 93 59\r\n1 95\r\n3 21\r\n3 8\r\n3 25\r\n2 3\r\n2 58\r\n3 82\r\n2 46\r\n3 54\r\n2 5\r\n2 76\r\n3 61\r\n3 16\r\n",
+                "1\r\n2\r\n2\r\n2\r\n2\r\n3\r\n2\r\n3\r\n2\r\n2\r\n2\r\n2\r\n2\r\n"
+            ],
+            [
+                "1 15\r\n92\r\n1 12\r\n1 82\r\n1 77\r\n1 47\r\n1 16\r\n1 18\r\n1 84\r\n1 100\r\n1 90\r\n1 71\r\n1 62\r\n1 93\r\n1 74\r\n1 42\r\n1 38\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "15 8\r\n46 52 70 64 53 90 36 12 91 35 14 82 41 98 99\r\n11 27\r\n2 39\r\n2 81\r\n2 23\r\n14 14\r\n13 86\r\n11 61\r\n7 41\r\n",
+                "7\r\n6\r\n6\r\n6\r\n6\r\n7\r\n7\r\n7\r\n"
+            ],
+            [
+                "14 4\r\n4 26 24 33 40 82 96 94 30 79 8 11 60 15\r\n13 40\r\n13 18\r\n11 4\r\n6 68\r\n",
+                "6\r\n6\r\n6\r\n6\r\n"
+            ],
+            [
+                "15 15\r\n53 53 51 65 76 67 73 13 21 10 13 47 53 45 70\r\n13 37\r\n1 90\r\n7 62\r\n6 85\r\n13 44\r\n6 33\r\n14 23\r\n6 88\r\n2 84\r\n9 1\r\n7 37\r\n10 35\r\n10 81\r\n7 24\r\n15 61\r\n",
+                "5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n6\r\n5\r\n6\r\n5\r\n5\r\n5\r\n"
+            ],
+            [
+                "14 15\r\n82 10 6 43 85 25 41 56 85 79 36 66 94 56\r\n5 68\r\n7 41\r\n9 63\r\n10 83\r\n10 66\r\n13 5\r\n3 44\r\n2 58\r\n13 8\r\n4 57\r\n2 88\r\n11 67\r\n5 36\r\n3 45\r\n3 24\r\n",
+                "6\r\n6\r\n7\r\n6\r\n6\r\n5\r\n6\r\n6\r\n5\r\n6\r\n6\r\n6\r\n6\r\n6\r\n7\r\n"
+            ],
+            [
+                "15 14\r\n15 97 80 21 38 33 90 75 93 54 77 7 77 73 99\r\n3 7\r\n9 2\r\n15 89\r\n1 3\r\n9 65\r\n3 36\r\n9 3\r\n5 67\r\n14 76\r\n6 53\r\n1 22\r\n4 95\r\n4 5\r\n1 73\r\n",
+                "6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n7\r\n5\r\n5\r\n5\r\n5\r\n"
+            ],
+            [
+                "15 15\r\n3 6 7 40 43 44 53 56 58 58 74 76 78 79 81\r\n1 2\r\n1 4\r\n1 15\r\n15 80\r\n15 82\r\n15 70\r\n9 20\r\n5 82\r\n11 75\r\n9 11\r\n4 51\r\n11 10\r\n12 75\r\n11 4\r\n9 15\r\n",
+                "14\r\n14\r\n13\r\n14\r\n14\r\n13\r\n14\r\n13\r\n14\r\n14\r\n13\r\n13\r\n14\r\n13\r\n14\r\n"
+            ],
+            [
+                "15 15\r\n98 94 67 65 64 62 62 49 41 40 29 25 23 17 2\r\n15 1\r\n15 3\r\n15 59\r\n1 97\r\n1 99\r\n1 19\r\n5 65\r\n13 64\r\n6 99\r\n5 63\r\n8 48\r\n12 24\r\n10 39\r\n4 64\r\n6 4\r\n",
+                "1\r\n1\r\n2\r\n1\r\n1\r\n2\r\n1\r\n2\r\n2\r\n1\r\n1\r\n1\r\n1\r\n1\r\n2\r\n"
+            ],
+            [
+                "15 15\r\n72 72 72 72 72 72 72 72 72 72 72 72 72 72 72\r\n2 73\r\n10 73\r\n12 61\r\n2 17\r\n9 52\r\n3 71\r\n2 92\r\n8 73\r\n15 48\r\n10 43\r\n10 71\r\n1 5\r\n14 73\r\n10 71\r\n6 82\r\n",
+                "2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n1\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n"
+            ],
+            [
+                "15 15\r\n78 78 78 78 78 78 78 78 78 78 78 78 78 78 78\r\n12 77\r\n2 77\r\n4 49\r\n12 77\r\n2 34\r\n9 79\r\n11 77\r\n3 79\r\n7 77\r\n13 77\r\n1 84\r\n4 95\r\n6 79\r\n12 77\r\n1 77\r\n",
+                "2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n2\r\n1\r\n2\r\n2\r\n2\r\n2\r\n"
+            ],
+            [
+                "15 15\r\n17 16 13 13 47 42 35 33 65 60 58 68 97 96 92\r\n2 16\r\n12 68\r\n15 8\r\n4 57\r\n13 97\r\n13 97\r\n7 33\r\n1 19\r\n4 85\r\n1 13\r\n12 69\r\n12 96\r\n5 36\r\n14 53\r\n2 14\r\n",
+                "5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n5\r\n6\r\n5\r\n5\r\n6\r\n5\r\n5\r\n"
+            ],
+            [
+                "15 15\r\n9 1 21 12 31 21 54 34 61 60 80 61 92 90 94\r\n5 33\r\n11 35\r\n8 95\r\n1 10\r\n10 46\r\n4 3\r\n1 31\r\n9 57\r\n11 19\r\n12 63\r\n2 28\r\n11 80\r\n9 60\r\n5 57\r\n4 12\r\n",
+                "8\r\n8\r\n8\r\n8\r\n8\r\n8\r\n8\r\n9\r\n8\r\n8\r\n8\r\n8\r\n8\r\n8\r\n8\r\n"
+            ],
+            [
+                "15 15\r\n87 87 79 83 83 85 86 57 69 55 38 40 35 3 31\r\n8 56\r\n12 42\r\n9 55\r\n9 68\r\n4 82\r\n1 49\r\n2 52\r\n6 81\r\n13 33\r\n5 83\r\n8 45\r\n4 85\r\n1 10\r\n13 21\r\n14 1\r\n",
+                "4\r\n4\r\n4\r\n4\r\n5\r\n5\r\n5\r\n3\r\n4\r\n4\r\n4\r\n4\r\n5\r\n4\r\n4\r\n"
+            ],
+            [
+                "15 15\r\n95 84 84 75 82 67 73 42 43 36 41 20 23 12 13\r\n12 20\r\n8 67\r\n1 97\r\n2 85\r\n3 83\r\n15 90\r\n11 45\r\n4 73\r\n6 69\r\n2 86\r\n5 81\r\n15 44\r\n7 28\r\n5 95\r\n5 83\r\n",
+                "2\r\n2\r\n2\r\n2\r\n2\r\n3\r\n3\r\n2\r\n2\r\n2\r\n2\r\n3\r\n3\r\n2\r\n2\r\n"
+            ],
+            [
+                "15 15\r\n1 17 19 25 9 11 3 13 27 23 5 29 21 7 15\r\n7 4\r\n1 2\r\n4 26\r\n15 16\r\n6 12\r\n11 6\r\n13 22\r\n14 8\r\n5 10\r\n3 20\r\n12 30\r\n9 28\r\n10 24\r\n8 14\r\n2 18\r\n",
+                "6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n6\r\n"
+            ]
+        ]
+    }
+]

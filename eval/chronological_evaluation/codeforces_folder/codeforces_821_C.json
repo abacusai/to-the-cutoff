@@ -1,0 +1,129 @@
+[
+    {
+        "name": "Okabe and Boxes",
+        "description": "Okabe and Super Hacker Daru are stacking and removing boxes. There are n boxes\nnumbered from 1 to n. Initially there are no boxes on the stack. Okabe, being\na control freak, gives Daru 2n commands: n of which are to add a box to the\ntop of the stack, and n of which are to remove a box from the top of the stack\nand throw it in the trash. Okabe wants Daru to throw away the boxes in the\norder from 1 to n. Of course, this means that it might be impossible for Daru\nto perform some of Okabe's remove commands, because the required box is not on\nthe top of the stack. That's why Daru can decide to wait until Okabe looks\naway and then reorder the boxes in the stack in any way he wants. He can do it\nat any point of time between Okabe's commands, but he can't add or remove\nboxes while he does it. Tell Daru the minimum number of times he needs to\nreorder the boxes so that he can successfully complete all of Okabe's\ncommands. It is guaranteed that every box is added before it is required to be\nremoved. Input The first line of input contains the integer n (1 \u2264 n \u2264 3\u00b710^5)\n\u2014 the number of boxes. Each of the next 2n lines of input starts with a string\n\"add\" or \"remove\". If the line starts with the \"add\", an integer x (1 \u2264 x \u2264 n)\nfollows, indicating that Daru should add the box with number x to the top of\nthe stack. It is guaranteed that exactly n lines contain \"add\" operations, all\nthe boxes added are distinct, and n lines contain \"remove\" operations. It is\nalso guaranteed that a box is always added before it is required to be\nremoved. Output Print the minimum number of times Daru needs to reorder the\nboxes to successfully complete all of Okabe's commands. Examples Input 3 add 1\nremove add 2 add 3 remove remove Output 1 Input 7 add 3 add 2 add 1 remove add\n4 remove remove remove add 6 add 7 add 5 remove remove remove Output 2 Note In\nthe first sample, Daru should reorder the boxes after adding box 3 to the\nstack. In the second sample, Daru should reorder the boxes after adding box 4\nand box 7 to the stack.\n\n",
+        "cf_contest_id": 821,
+        "cf_index": "C",
+        "cf_rating": 1500,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "greedy",
+            "trees"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3\r\nadd 1\r\nremove\r\nadd 2\r\nadd 3\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "7\r\nadd 3\r\nadd 2\r\nadd 1\r\nremove\r\nadd 4\r\nremove\r\nremove\r\nremove\r\nadd 6\r\nadd 7\r\nadd 5\r\nremove\r\nremove\r\nremove\r\n",
+                "2"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4\r\nadd 1\r\nadd 3\r\nremove\r\nadd 4\r\nadd 2\r\nremove\r\nremove\r\nremove\r\n",
+                "2"
+            ],
+            [
+                "2\r\nadd 1\r\nremove\r\nadd 2\r\nremove\r\n",
+                "0"
+            ],
+            [
+                "1\r\nadd 1\r\nremove\r\n",
+                "0"
+            ],
+            [
+                "15\r\nadd 12\r\nadd 7\r\nadd 10\r\nadd 11\r\nadd 5\r\nadd 2\r\nadd 1\r\nadd 6\r\nadd 8\r\nremove\r\nremove\r\nadd 15\r\nadd 4\r\nadd 13\r\nadd 9\r\nadd 3\r\nadd 14\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\n",
+                "2"
+            ],
+            [
+                "14\r\nadd 7\r\nadd 2\r\nadd 13\r\nadd 5\r\nadd 12\r\nadd 6\r\nadd 4\r\nadd 1\r\nadd 14\r\nremove\r\nadd 10\r\nremove\r\nadd 9\r\nadd 8\r\nadd 11\r\nadd 3\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\n",
+                "3"
+            ],
+            [
+                "11\r\nadd 10\r\nadd 9\r\nadd 11\r\nadd 1\r\nadd 5\r\nadd 6\r\nremove\r\nadd 3\r\nadd 8\r\nadd 2\r\nadd 4\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nadd 7\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\n",
+                "2"
+            ],
+            [
+                "3\r\nadd 3\r\nadd 2\r\nadd 1\r\nremove\r\nremove\r\nremove\r\n",
+                "0"
+            ],
+            [
+                "4\r\nadd 1\r\nadd 3\r\nadd 4\r\nremove\r\nadd 2\r\nremove\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "6\r\nadd 3\r\nadd 4\r\nadd 5\r\nadd 1\r\nadd 6\r\nremove\r\nadd 2\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "16\r\nadd 1\r\nadd 2\r\nadd 3\r\nadd 4\r\nadd 5\r\nadd 6\r\nadd 7\r\nadd 8\r\nadd 9\r\nadd 10\r\nadd 11\r\nadd 12\r\nadd 13\r\nadd 14\r\nadd 15\r\nadd 16\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "2\r\nadd 2\r\nadd 1\r\nremove\r\nremove\r\n",
+                "0"
+            ],
+            [
+                "17\r\nadd 1\r\nadd 2\r\nadd 3\r\nadd 4\r\nadd 5\r\nadd 6\r\nadd 7\r\nadd 8\r\nadd 9\r\nadd 10\r\nadd 11\r\nadd 12\r\nadd 13\r\nadd 14\r\nadd 15\r\nadd 16\r\nadd 17\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "18\r\nadd 1\r\nadd 2\r\nadd 3\r\nadd 4\r\nadd 5\r\nadd 6\r\nadd 7\r\nadd 8\r\nadd 9\r\nadd 10\r\nadd 11\r\nadd 12\r\nadd 13\r\nadd 14\r\nadd 15\r\nadd 16\r\nadd 17\r\nadd 18\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "4\r\nadd 1\r\nadd 2\r\nremove\r\nremove\r\nadd 4\r\nadd 3\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "19\r\nadd 1\r\nadd 2\r\nadd 3\r\nadd 4\r\nadd 5\r\nadd 6\r\nadd 7\r\nadd 8\r\nadd 9\r\nadd 10\r\nadd 11\r\nadd 12\r\nadd 13\r\nadd 14\r\nadd 15\r\nadd 16\r\nadd 17\r\nadd 18\r\nadd 19\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "5\r\nadd 4\r\nadd 3\r\nadd 1\r\nremove\r\nadd 2\r\nremove\r\nremove\r\nadd 5\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "7\r\nadd 4\r\nadd 6\r\nadd 1\r\nadd 5\r\nadd 7\r\nremove\r\nadd 2\r\nremove\r\nadd 3\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "8\r\nadd 1\r\nadd 2\r\nadd 3\r\nadd 7\r\nadd 8\r\nremove\r\nremove\r\nremove\r\nadd 6\r\nadd 5\r\nadd 4\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "4\r\nadd 1\r\nadd 4\r\nremove\r\nadd 3\r\nadd 2\r\nremove\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "7\r\nadd 1\r\nadd 2\r\nadd 3\r\nadd 5\r\nadd 7\r\nremove\r\nremove\r\nremove\r\nadd 4\r\nremove\r\nremove\r\nadd 6\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "4\r\nadd 4\r\nadd 1\r\nadd 2\r\nremove\r\nremove\r\nadd 3\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "5\r\nadd 1\r\nadd 3\r\nadd 4\r\nadd 5\r\nremove\r\nadd 2\r\nremove\r\nremove\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "5\r\nadd 2\r\nadd 1\r\nremove\r\nremove\r\nadd 5\r\nadd 3\r\nremove\r\nadd 4\r\nremove\r\nremove\r\n",
+                "0"
+            ],
+            [
+                "9\r\nadd 3\r\nadd 2\r\nadd 1\r\nadd 4\r\nadd 6\r\nadd 9\r\nremove\r\nremove\r\nremove\r\nremove\r\nadd 5\r\nremove\r\nremove\r\nadd 8\r\nadd 7\r\nremove\r\nremove\r\nremove\r\n",
+                "1"
+            ],
+            [
+                "10\r\nadd 9\r\nadd 10\r\nadd 4\r\nadd 3\r\nadd 2\r\nadd 1\r\nremove\r\nremove\r\nremove\r\nremove\r\nadd 8\r\nadd 7\r\nadd 5\r\nadd 6\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\nremove\r\n",
+                "1"
+            ]
+        ]
+    }
+]

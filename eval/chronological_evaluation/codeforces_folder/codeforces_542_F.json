@@ -1,0 +1,60 @@
+[
+    {
+        "name": "Quest",
+        "description": "Polycarp is making a quest for his friends. He has already made n tasks, for\neach task the boy evaluated how interesting it is as an integer qi, and the\ntime ti in minutes needed to complete the task. An interesting feature of his\nquest is: each participant should get the task that is best suited for him,\ndepending on his preferences. The task is chosen based on an interactive quiz\nthat consists of some questions. The player should answer these questions with\n\"yes\" or \"no\". Depending on the answer to the question, the participant either\nmoves to another question or goes to one of the tasks that are in the quest.\nIn other words, the quest is a binary tree, its nodes contain questions and\nits leaves contain tasks. We know that answering any of the questions that are\nasked before getting a task takes exactly one minute from the quest player.\nPolycarp knows that his friends are busy people and they can't participate in\nthe quest for more than T minutes. Polycarp wants to choose some of the n\ntasks he made, invent the corresponding set of questions for them and use them\nto form an interactive quiz as a binary tree so that no matter how the player\nanswers quiz questions, he spends at most T minutes on completing the whole\nquest (that is, answering all the questions and completing the task).\nSpecifically, the quest can contain zero questions and go straight to the\ntask. Each task can only be used once (i.e., the people who give different\nanswers to questions should get different tasks). Polycarp wants the total\n\"interest\" value of the tasks involved in the quest to be as large as\npossible. Help him determine the maximum possible total interest value of the\ntask considering that the quest should be completed in T minutes at any\nvariant of answering questions. Input The first line contains two integers n\nand T (1 \u2264 n \u2264 1000, 1 \u2264 T \u2264 100) \u2014 the number of tasks made by Polycarp and\nthe maximum time a quest player should fit into. Next n lines contain two\nintegers ti, qi (1 \u2264 ti \u2264 T, 1 \u2264 qi \u2264 1000) each \u2014 the time in minutes needed\nto complete the i-th task and its interest value. Output Print a single\ninteger \u2014 the maximum possible total interest value of all the tasks in the\nquest. Examples Input 5 5 1 1 1 1 2 2 3 3 4 4 Output 11 Input 5 5 4 1 4 2 4 3\n4 4 4 5 Output 9 Input 2 2 1 1 2 10 Output 10 Note In the first sample test\nall the five tasks can be complemented with four questions and joined into one\nquest. In the second sample test it is impossible to use all the five tasks,\nbut you can take two of them, the most interesting ones. In the third sample\ntest the optimal strategy is to include only the second task into the quest.\nHere is the picture that illustrates the answers to the sample tests. The blue\ncircles represent the questions, the two arrows that go from every circle\nrepresent where a person goes depending on his answer to that question. The\ntasks are the red ovals.\n\n",
+        "cf_contest_id": 542,
+        "cf_index": "F",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp",
+            "greedy"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 5\r\n1 1\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n",
+                "11\r\n"
+            ],
+            [
+                "5 5\r\n4 1\r\n4 2\r\n4 3\r\n4 4\r\n4 5\r\n",
+                "9\r\n"
+            ],
+            [
+                "2 2\r\n1 1\r\n2 10\r\n",
+                "10\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 1\r\n1 732\r\n1 649\r\n1 821\r\n1 756\r\n1 377\r\n1 216\r\n1 733\r\n1 420\r\n1 857\r\n1 193\r\n",
+                "857\r\n"
+            ],
+            [
+                "26 5\r\n2 377\r\n3 103\r\n1 547\r\n2 700\r\n3 616\r\n5 363\r\n2 316\r\n5 260\r\n3 385\r\n2 460\r\n4 206\r\n4 201\r\n3 236\r\n1 207\r\n1 400\r\n2 382\r\n2 365\r\n1 633\r\n1 775\r\n4 880\r\n1 808\r\n1 871\r\n3 518\r\n1 805\r\n3 771\r\n3 598\r\n",
+                "6977\r\n"
+            ],
+            [
+                "42 4\r\n1 897\r\n2 883\r\n1 766\r\n1 169\r\n3 671\r\n3 751\r\n2 204\r\n2 550\r\n3 873\r\n2 348\r\n2 286\r\n1 413\r\n1 551\r\n4 821\r\n2 573\r\n1 423\r\n4 59\r\n3 881\r\n2 450\r\n1 206\r\n3 181\r\n3 218\r\n3 870\r\n2 906\r\n1 695\r\n1 162\r\n3 370\r\n3 580\r\n2 874\r\n2 864\r\n3 47\r\n3 126\r\n2 494\r\n4 21\r\n3 791\r\n4 520\r\n4 917\r\n2 244\r\n4 74\r\n3 348\r\n4 416\r\n3 581\r\n",
+                "4698\r\n"
+            ],
+            [
+                "70 4\r\n1 83\r\n3 923\r\n2 627\r\n4 765\r\n3 74\r\n4 797\r\n4 459\r\n2 682\r\n1 840\r\n2 414\r\n4 797\r\n3 832\r\n3 203\r\n2 939\r\n4 694\r\n1 157\r\n3 544\r\n1 169\r\n3 100\r\n4 69\r\n1 851\r\n3 605\r\n4 562\r\n1 718\r\n3 74\r\n3 740\r\n2 655\r\n2 804\r\n2 218\r\n4 186\r\n4 999\r\n3 989\r\n2 407\r\n4 702\r\n2 15\r\n1 509\r\n4 376\r\n4 260\r\n1 533\r\n2 514\r\n3 520\r\n4 737\r\n2 877\r\n2 383\r\n1 556\r\n3 745\r\n2 659\r\n2 636\r\n2 443\r\n4 819\r\n2 382\r\n4 660\r\n1 376\r\n2 410\r\n3 379\r\n4 996\r\n3 944\r\n4 949\r\n2 485\r\n3 434\r\n3 786\r\n3 367\r\n4 403\r\n3 330\r\n3 625\r\n2 302\r\n3 673\r\n3 794\r\n3 411\r\n1 256\r\n",
+                "4946\r\n"
+            ],
+            [
+                "17 1\r\n1 632\r\n1 996\r\n1 665\r\n1 432\r\n1 565\r\n1 350\r\n1 857\r\n1 183\r\n1 982\r\n1 910\r\n1 938\r\n1 155\r\n1 176\r\n1 168\r\n1 419\r\n1 814\r\n1 487\r\n",
+                "996\r\n"
+            ],
+            [
+                "10 9\r\n1 518\r\n3 971\r\n5 862\r\n2 71\r\n8 138\r\n4 121\r\n6 967\r\n1 518\r\n9 754\r\n7 607\r\n",
+                "4773\r\n"
+            ],
+            [
+                "1 2\r\n1 1\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

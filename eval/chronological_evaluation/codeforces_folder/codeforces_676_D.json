@@ -1,0 +1,65 @@
+[
+    {
+        "name": "Theseus and labyrinth",
+        "description": "Theseus has just arrived to Crete to fight Minotaur. He found a labyrinth that\nhas a form of a rectangular field of size n \u00d7 m and consists of blocks of size\n1 \u00d7 1. Each block of the labyrinth has a button that rotates all blocks 90\ndegrees clockwise. Each block rotates around its center and doesn't change its\nposition in the labyrinth. Also, each block has some number of doors (possibly\nnone). In one minute, Theseus can either push the button in order to rotate\nall the blocks 90 degrees clockwise or pass to the neighbouring block. Theseus\ncan go from block A to some neighbouring block B only if block A has a door\nthat leads to block B and block B has a door that leads to block A. Theseus\nfound an entrance to labyrinth and is now located in block (xT, yT) \u2014 the\nblock in the row xT and column yT. Theseus know that the Minotaur is hiding in\nblock (xM, yM) and wants to know the minimum number of minutes required to get\nthere. Theseus is a hero, not a programmer, so he asks you to help him. Input\nThe first line of the input contains two integers n and m (1 \u2264 n, m \u2264 1000) \u2014\nthe number of rows and the number of columns in labyrinth, respectively. Each\nof the following n lines contains m characters, describing the blocks of the\nlabyrinth. The possible characters are: \u00ab+\u00bb means this block has 4 doors (one\ndoor to each neighbouring block); \u00ab-\u00bb means this block has 2 doors \u2014 to the\nleft and to the right neighbours; \u00ab|\u00bb means this block has 2 doors \u2014 to the\ntop and to the bottom neighbours; \u00ab^\u00bb means this block has 1 door \u2014 to the top\nneighbour; \u00ab>\u00bb means this block has 1 door \u2014 to the right neighbour; \u00ab<\u00bb means\nthis block has 1 door \u2014 to the left neighbour; \u00abv\u00bb means this block has 1 door\n\u2014 to the bottom neighbour; \u00abL\u00bb means this block has 3 doors \u2014 to all\nneighbours except left one; \u00abR\u00bb means this block has 3 doors \u2014 to all\nneighbours except right one; \u00abU\u00bb means this block has 3 doors \u2014 to all\nneighbours except top one; \u00abD\u00bb means this block has 3 doors \u2014 to all\nneighbours except bottom one; \u00ab*\u00bb means this block is a wall and has no doors.\nLeft, right, top and bottom are defined from representing labyrinth as a\ntable, where rows are numbered from 1 to n from top to bottom and columns are\nnumbered from 1 to m from left to right. Next line contains two integers \u2014\ncoordinates of the block (xT, yT) (1 \u2264 xT \u2264 n, 1 \u2264 yT \u2264 m), where Theseus is\ninitially located. Last line contains two integers \u2014 coordinates of the block\n(xM, yM) (1 \u2264 xM \u2264 n, 1 \u2264 yM \u2264 m), where Minotaur hides. It's guaranteed that\nboth the block where Theseus starts and the block where Minotaur is hiding\nhave at least one door. Theseus and Minotaur may be initially located at the\nsame block. Output If Theseus is not able to get to Minotaur, then print -1 in\nthe only line of the output. Otherwise, print the minimum number of minutes\nrequired to get to the block where Minotaur is hiding. Examples Input 2 2 +*\n*U 1 1 2 2 Output -1 Input 2 3 <>< ><> 1 1 2 1 Output 4 Note Assume that\nTheseus starts at the block (xT, yT) at the moment 0.\n\n",
+        "cf_contest_id": 676,
+        "cf_index": "D",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "graphs",
+            "implementation",
+            "shortest paths"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 2\r\n+*\r\n*U\r\n1 1\r\n2 2\r\n",
+                "-1"
+            ],
+            [
+                "2 3\r\n<><\r\n><>\r\n1 1\r\n2 1\r\n",
+                "4"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 3\r\n->v\r\n*+|\r\n+*^\r\n3 3\r\n1 1\r\n",
+                "6"
+            ],
+            [
+                "10 10\r\n><URRD>>+-\r\n>+vLLDL-v*\r\n*+R^v+UUR<\r\n<DDU>R||RR\r\nRL*v^UvD|R\r\nR>U<>DRv|R\r\n-D^+U^-|UD\r\nD^>L--|>|L\r\nRRL>>vL>LD\r\n<R^^^U*-^v\r\n2 1\r\n8 2\r\n",
+                "17"
+            ],
+            [
+                "3 3\r\n->v\r\n*+|\r\n+*^\r\n1 1\r\n3 3\r\n",
+                "12"
+            ],
+            [
+                "20 20\r\n||++|+++++|||||||+|+\r\n|++|++|++||+|+|+|||+\r\n||+||+|||+|++||||||+\r\n+|+++++++++|+|+++||+\r\n||++++++|++|+||+++||\r\n|||+++|+|+||+++||||+\r\n++|+|||+|+++|+++||||\r\n|||||||+|+++++|++|+|\r\n+|+|+|||++|++++|+|++\r\n|+||++++||+|+|||+||+\r\n|+||+||++|+++||+||||\r\n||+|+++++++||+||++++\r\n+|+|+||++|+++|++++||\r\n|+++|++||||++||+++||\r\n|+||||+|+|++||++|+||\r\n+|++||+||+|++||||+||\r\n||+||||++|++|++|+|+|\r\n||||+++||+|+++|+++||\r\n|+|++|+||+++||+|++++\r\n||+|+||++++++||+||+|\r\n1 1\r\n20 20\r\n",
+                "39"
+            ],
+            [
+                "1 1\r\n+\r\n1 1\r\n1 1\r\n",
+                "0"
+            ],
+            [
+                "10 10\r\n>+^+U-DU>*\r\nULLL*UL+>+\r\nU<>>L^D>>v\r\n|*L+^^R^R^\r\nLD+|L*<D*D\r\n+>U^|UL+-R\r\nD>vvR+R|^D\r\n*+v^><^vLL\r\nLU^|^U->D|\r\n*D>-|>+^L>\r\n3 8\r\n4 5\r\n",
+                "14"
+            ],
+            [
+                "5 15\r\nURRLDDULUDULUUD\r\nRDUUDULUDULDLRU\r\nRUULURLDLLUULUL\r\nDLDLLULDRRRUURU\r\nUULDRULDUDULRUU\r\n2 3\r\n4 11\r\n",
+                "14"
+            ],
+            [
+                "2 1\r\nv\r\n^\r\n1 1\r\n2 1\r\n",
+                "1"
+            ],
+            [
+                "2 1\r\nv\r\n+\r\n2 1\r\n1 1\r\n",
+                "1"
+            ]
+        ]
+    }
+]

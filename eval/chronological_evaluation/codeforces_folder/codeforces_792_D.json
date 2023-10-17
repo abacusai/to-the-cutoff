@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Paths in a Complete Binary Tree",
+        "description": "T is a complete binary tree consisting of n vertices. It means that exactly\none vertex is a root, and each vertex is either a leaf (and doesn't have\nchildren) or an inner node (and has exactly two children). All leaves of a\ncomplete binary tree have the same depth (distance from the root). So n is a\nnumber such that n + 1 is a power of 2. In the picture you can see a complete\nbinary tree with n = 15. Vertices are numbered from 1 to n in a special\nrecursive way: we recursively assign numbers to all vertices from the left\nsubtree (if current vertex is not a leaf), then assign a number to the current\nvertex, and then recursively assign numbers to all vertices from the right\nsubtree (if it exists). In the picture vertices are numbered exactly using\nthis algorithm. It is clear that for each size of a complete binary tree\nexists exactly one way to give numbers to all vertices. This way of numbering\nis called symmetric. You have to write a program that for given n answers q\nqueries to the tree. Each query consists of an integer number ui (1 \u2264 ui \u2264 n)\nand a string si, where ui is the number of vertex, and si represents the path\nstarting from this vertex. String si doesn't contain any characters other than\n'L', 'R' and 'U', which mean traverse to the left child, to the right child\nand to the parent, respectively. Characters from si have to be processed from\nleft to right, considering that ui is the vertex where the path starts. If\nit's impossible to process a character (for example, to go to the left child\nof a leaf), then you have to skip it. The answer is the number of vertex where\nthe path represented by si ends. For example, if ui = 4 and si = \u00abUURL\u00bb, then\nthe answer is 10. Input The first line contains two integer numbers n and q (1\n\u2264 n \u2264 10^18, q \u2265 1). n is such that n + 1 is a power of 2. The next 2q lines\nrepresent queries; each query consists of two consecutive lines. The first of\nthese two lines contains ui (1 \u2264 ui \u2264 n), the second contains non-empty string\nsi. si doesn't contain any characters other than 'L', 'R' and 'U'. It is\nguaranteed that the sum of lengths of si (for each i such that 1 \u2264 i \u2264 q)\ndoesn't exceed 10^5. Output Print q numbers, i-th number must be the answer to\nthe i-th query. Example Input 15 2 4 UURL 8 LRLLLLLLLL Output 10 5\n\n",
+        "cf_contest_id": 792,
+        "cf_index": "D",
+        "cf_rating": 1900,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "trees"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "15 2\r\n4\r\nUURL\r\n8\r\nLRLLLLLLLL\r\n",
+                "10\r\n5\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1 1\r\n1\r\nL\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1\r\n1\r\nR\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1\r\n1\r\nU\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 10\r\n1\r\nURLRLULUR\r\n1\r\nLRRRURULULL\r\n1\r\nLURURRUUUU\r\n1\r\nRRULLLRRUL\r\n1\r\nUULLUURL\r\n1\r\nRLRRULUL\r\n1\r\nLURRLRUULRR\r\n1\r\nLULLULUUUL\r\n1\r\nURULLULL\r\n1\r\nLRRLRUUUURRLRRL\r\n",
+                "1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n"
+            ],
+            [
+                "3 10\r\n2\r\nRUUUULULULUU\r\n1\r\nULLLURLU\r\n3\r\nLLURLULU\r\n2\r\nRRLURLURLLR\r\n3\r\nLRURURLRLLL\r\n3\r\nLRLULRRUURURRL\r\n1\r\nRULLR\r\n2\r\nLRULLURUL\r\n3\r\nRLL\r\n1\r\nULRUULURLULLLLLLRLL\r\n",
+                "2\r\n2\r\n2\r\n3\r\n3\r\n3\r\n1\r\n1\r\n3\r\n1\r\n"
+            ],
+            [
+                "7 10\r\n3\r\nLLULULLLR\r\n4\r\nLUUURLLLUURRU\r\n1\r\nULURR\r\n6\r\nLURLLLLRLR\r\n2\r\nULULURU\r\n7\r\nRRUUUURLRLR\r\n7\r\nUUURRULRRLUL\r\n7\r\nULLLRUULULR\r\n6\r\nUURRLL\r\n6\r\nRULUUULLRLLLUULL\r\n",
+                "1\r\n6\r\n3\r\n7\r\n4\r\n5\r\n5\r\n3\r\n7\r\n1\r\n"
+            ],
+            [
+                "15 10\r\n1\r\nURUUUR\r\n15\r\nRRLLURRRURL\r\n1\r\nUURRLUR\r\n13\r\nLRUULUURLRRRL\r\n6\r\nLULUURULUURL\r\n15\r\nUULL\r\n8\r\nULLLULRLRUU\r\n8\r\nULRUULRUURLLRL\r\n5\r\nLLUULRLURRRULLR\r\n10\r\nLUULLRU\r\n",
+                "12\r\n15\r\n7\r\n11\r\n10\r\n9\r\n4\r\n9\r\n1\r\n10\r\n"
+            ],
+            [
+                "31 10\r\n12\r\nRRRRRRULUURR\r\n9\r\nLUUURULLLLU\r\n24\r\nLLRRLURLLU\r\n25\r\nLLUUURL\r\n14\r\nRRRRRRULU\r\n11\r\nLRLUULRUULR\r\n10\r\nULULU\r\n30\r\nLLRLLLLRULRLL\r\n1\r\nRRULRLRLLLRULR\r\n20\r\nULLULLRR\r\n",
+                "15\r\n2\r\n18\r\n26\r\n14\r\n11\r\n12\r\n29\r\n1\r\n17\r\n"
+            ],
+            [
+                "4503599627370495 1\r\n2251799813685248\r\nLLLLLLLL\r\n",
+                "8796093022208\r\n"
+            ],
+            [
+                "4503599627370495 1\r\n2251799813685248\r\nLLLLLL\r\n",
+                "35184372088832\r\n"
+            ],
+            [
+                "576460752303423487 1\r\n1125899906842624\r\nR\r\n",
+                "1688849860263936\r\n"
+            ],
+            [
+                "1125899906842623 1\r\n1\r\nUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUULLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRLULLLLLLLLLLLLLLLLUUUULRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\r\n",
+                "2147483648\r\n"
+            ]
+        ]
+    }
+]

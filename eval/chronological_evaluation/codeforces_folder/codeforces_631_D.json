@@ -1,0 +1,111 @@
+[
+    {
+        "name": "Messenger",
+        "description": "Each employee of the \"Blake Techologies\" company uses a special messaging app\n\"Blake Messenger\". All the stuff likes this app and uses it constantly.\nHowever, some important futures are missing. For example, many users want to\nbe able to search through the message history. It was already announced that\nthe new feature will appear in the nearest update, when developers faced some\ntroubles that only you may help them to solve. All the messages are\nrepresented as a strings consisting of only lowercase English letters. In\norder to reduce the network load strings are represented in the special\ncompressed form. Compression algorithm works as follows: string is represented\nas a concatenation of n blocks, each block containing only equal characters.\nOne block may be described as a pair (li, ci), where li is the length of the\ni-th block and ci is the corresponding letter. Thus, the string s may be\nwritten as the sequence of pairs . Your task is to write the program, that\ngiven two compressed string t and s finds all occurrences of s in t.\nDevelopers know that there may be many such occurrences, so they only ask you\nto find the number of them. Note that p is the starting position of some\noccurrence of s in t if and only if tptp + 1...tp + |s| - 1 = s, where ti is\nthe i-th character of string t. Note that the way to represent the string in\ncompressed form may not be unique. For example string \"aaaa\" may be given as ,\n, ... Input The first line of the input contains two integers n and m (1 \u2264 n,\nm \u2264 200 000) \u2014 the number of blocks in the strings t and s, respectively. The\nsecond line contains the descriptions of n parts of string t in the format\n\"li-ci\" (1 \u2264 li \u2264 1 000 000) \u2014 the length of the i-th part and the\ncorresponding lowercase English letter. The second line contains the\ndescriptions of m parts of string s in the format \"li-ci\" (1 \u2264 li \u2264 1 000 000)\n\u2014 the length of the i-th part and the corresponding lowercase English letter.\nOutput Print a single integer \u2014 the number of occurrences of s in t. Examples\nInput 5 3 3-a 2-b 4-c 3-a 2-c 2-a 2-b 1-c Output 1 Input 6 1 3-a 6-b 7-a 4-c\n8-e 2-a 3-a Output 6 Input 5 5 1-h 1-e 1-l 1-l 1-o 1-w 1-o 1-r 1-l 1-d Output\n0 Note In the first sample, t = \"aaabbccccaaacc\", and string s = \"aabbc\". The\nonly occurrence of string s in string t starts at position p = 2. In the\nsecond sample, t = \"aaabbbbbbaaaaaaacccceeeeeeeeaa\", and s = \"aaa\". The\noccurrences of s in t start at positions p = 1, p = 10, p = 11, p = 12, p = 13\nand p = 14.\n\n",
+        "cf_contest_id": 631,
+        "cf_index": "D",
+        "cf_rating": 2100,
+        "difficulty": 0,
+        "cf_tags": [
+            "data structures",
+            "hashing",
+            "implementation",
+            "string suffix structures",
+            "strings"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "5 3\r\n3-a 2-b 4-c 3-a 2-c\r\n2-a 2-b 1-c\r\n",
+                "1"
+            ],
+            [
+                "6 1\r\n3-a 6-b 7-a 4-c 8-e 2-a\r\n3-a\r\n",
+                "6"
+            ],
+            [
+                "5 5\r\n1-h 1-e 1-l 1-l 1-o\r\n1-w 1-o 1-r 1-l 1-d\r\n",
+                "0"
+            ]
+        ],
+        "private_cases": [
+            [
+                "9 3\r\n1-h 1-e 2-l 1-o 1-w 1-o 1-r 1-l 1-d\r\n2-l 1-o 1-w\r\n",
+                "1"
+            ],
+            [
+                "5 3\r\n1-m 1-i 2-r 1-o 1-r\r\n1-m 1-i 1-r\r\n",
+                "1"
+            ],
+            [
+                "9 2\r\n1-a 2-b 1-o 1-k 1-l 1-m 1-a 3-b 3-z\r\n1-a 2-b\r\n",
+                "2"
+            ],
+            [
+                "10 3\r\n1-b 1-a 2-b 1-a 1-b 1-a 4-b 1-a 1-a 2-b\r\n1-b 1-a 1-b\r\n",
+                "3"
+            ],
+            [
+                "4 2\r\n7-a 3-b 2-c 11-a\r\n3-a 4-a\r\n",
+                "6"
+            ],
+            [
+                "4 3\r\n8-b 2-a 7-b 3-a\r\n3-b 2-b 1-a\r\n",
+                "2"
+            ],
+            [
+                "1 1\r\n12344-a\r\n12345-a\r\n",
+                "0"
+            ],
+            [
+                "1 1\r\n5352-k\r\n5234-j\r\n",
+                "0"
+            ],
+            [
+                "1 1\r\n6543-o\r\n34-o\r\n",
+                "6510"
+            ],
+            [
+                "1 1\r\n1-z\r\n1-z\r\n",
+                "1"
+            ],
+            [
+                "5 2\r\n7-a 6-b 6-a 5-b 2-b\r\n6-a 7-b\r\n",
+                "1"
+            ],
+            [
+                "10 3\r\n7-a 1-c 6-b 1-c 8-a 1-c 8-b 6-a 2-c 5-b\r\n5-a 1-c 4-b\r\n",
+                "2"
+            ],
+            [
+                "4 2\r\n10-c 3-c 2-d 8-a\r\n6-a 1-b\r\n",
+                "0"
+            ],
+            [
+                "4 1\r\n10-a 2-b 8-d 11-e\r\n1-c\r\n",
+                "0"
+            ],
+            [
+                "28 7\r\n1-a 1-b 1-c 1-d 1-e 1-f 1-t 1-a 1-b 1-c 1-d 1-e 1-f 1-j 1-a 1-b 1-c 1-d 1-e 1-f 1-g 1-a 1-b 1-c 1-d 1-e 1-f 2-g\r\n1-a 1-b 1-c 1-d 1-e 1-f 1-g\r\n",
+                "2"
+            ],
+            [
+                "10 3\r\n2-w 4-l 2-w 4-l 2-w 5-l 2-w 6-l 3-w 3-l\r\n2-l 2-w 2-l\r\n",
+                "3"
+            ],
+            [
+                "15 7\r\n1-b 1-a 1-b 1-c 1-b 1-a 1-b 1-c 1-b 1-a 1-b 1-c 1-b 1-a 1-b\r\n1-b 1-a 1-b 1-c 1-b 1-a 1-b\r\n",
+                "3"
+            ],
+            [
+                "15 7\r\n1-b 2-a 1-b 1-c 1-b 1-a 1-b 1-c 1-b 2-a 1-b 1-c 1-b 1-a 1-b\r\n1-b 2-a 1-b 1-c 1-b 1-a 1-b\r\n",
+                "2"
+            ],
+            [
+                "2 2\r\n1-a 1-b\r\n2-a 1-b\r\n",
+                "0"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,105 @@
+[
+    {
+        "name": "Robot in Basement",
+        "description": "The Professor has lost his home robot yet again. After some thinking Professor\nunderstood that he had left the robot in the basement. The basement in\nProfessor's house is represented by a rectangle n \u00d7 m, split into 1 \u00d7 1\nsquares. Some squares are walls which are impassable; other squares are\npassable. You can get from any passable square to any other passable square\nmoving through edge-adjacent passable squares. One passable square is the exit\nfrom the basement. The robot is placed exactly in one passable square. Also\nthe robot may be placed in the exit square. Professor is scared of going to\nthe dark basement looking for the robot at night. However, he has a basement\nplan and the robot's remote control. Using the remote, Professor can send\nsignals to the robot to shift one square left, right, up or down. When the\nrobot receives a signal, it moves in the required direction if the robot's\nneighboring square in the given direction is passable. Otherwise, the robot\nstays idle. Professor wrote a sequence of k commands on a piece of paper. He\nthinks that the sequence can lead the robot out of the basement, wherever it's\ninitial position might be. Professor programmed another robot to press the\nrequired buttons on the remote according to the notes on the piece of paper.\nProfessor was just about to run the program and go to bed, when he had an\nepiphany. Executing each command takes some energy and Professor doesn't want\nto get huge electricity bill at the end of the month. That's why he wants to\nfind in the sequence he has written out the minimal possible prefix that would\nguarantee to lead the robot out to the exit after the prefix is fulfilled. And\nthat's the problem Professor challenges you with at this late hour. Input The\nfirst line contains three integers n, m and k (3 \u2264 n, m \u2264 150, 1 \u2264 k \u2264 10^5).\nNext n lines contain m characters each \u2014 that is the Professor's basement's\ndescription: \"#\" stands for a wall, \".\" stands for a passable square and \"E\"\nstands for the exit from the basement (this square also is passable). It is\npossible to get from each passable square to the exit, all squares located by\nthe n \u00d7 m rectangle's perimeter are the walls. Exactly one square is the exit\nfrom the basement. The last line contains k characters, the description of the\nsequence of commands that Professor has written out on a piece of paper. \"L\",\n\"R\", \"U\", \"D\" stand for commands left, right, up and down correspondingly.\nOutput Print in the output file the length of the smallest possible prefix\nthat will lead the robot to the exit square. In other words, wherever the\nrobot had been positioned initially, it should be positioned in the exit\nsquare after all the commands from the prefix are fulfilled (during doing\ncommands the robot can come and leave the exit square, but only the last\nposition of the robot is interesting for us). If Professor is mistaken and no\nprefix (including the whole sequence) can bring the robot to the exit, print\n\"-1\" (without the quotes). If there is the only passable square and it is the\nexit, print \"0\" (without the quotes). Examples Input 5 5 7 ##### #...# #...#\n#E..# ##### UULLDDR Output 6 Input 5 5 7 ##### #.#.# #...# #E..# ##### UULLDDR\nOutput -1 Input 5 3 2 ### #.# #.# #E# ### DD Output 2\n\n",
+        "cf_contest_id": 97,
+        "cf_index": "D",
+        "cf_rating": 2700,
+        "difficulty": 0,
+        "cf_tags": [
+            "bitmasks",
+            "brute force",
+            "implementation"
+        ],
+        "time_limit_seconds": 4.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 5 7\r\n#####\r\n#...#\r\n#...#\r\n#E..#\r\n#####\r\nUULLDDR\r\n",
+                "6\r\n"
+            ],
+            [
+                "5 5 7\r\n#####\r\n#.#.#\r\n#...#\r\n#E..#\r\n#####\r\nUULLDDR\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 3 2\r\n###\r\n#.#\r\n#.#\r\n#E#\r\n###\r\nDD\r\n",
+                "2\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 4 1\r\n####\r\n#..#\r\n#.E#\r\n####\r\nD\r\n",
+                "-1\r\n"
+            ],
+            [
+                "3 3 10\r\n###\r\n#E#\r\n###\r\nUDRDULDLRU\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 10 1\r\n##########\r\n##########\r\n#######E##\r\n##########\r\n##########\r\n##########\r\n##########\r\n##########\r\n##########\r\n##########\r\nD\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 32 1\r\n################################\r\n#############################E.#\r\n################################\r\nL\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 32 1\r\n################################\r\n#############################.E#\r\n################################\r\nR\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 33 1\r\n#################################\r\n##############################E.#\r\n#################################\r\nL\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 33 1\r\n#################################\r\n##############################.E#\r\n#################################\r\nR\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 33 1\r\n#################################\r\n############################E.###\r\n#################################\r\nL\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 33 1\r\n#################################\r\n############################.E###\r\n#################################\r\nR\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 34 1\r\n##################################\r\n###############################.E#\r\n##################################\r\nR\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 34 1\r\n##################################\r\n###############################E.#\r\n##################################\r\nL\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 64 1\r\n################################################################\r\n#############################################################.E#\r\n################################################################\r\nR\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 64 1\r\n################################################################\r\n#############################################################E.#\r\n################################################################\r\nL\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 66 1\r\n##################################################################\r\n###############################################################.E#\r\n##################################################################\r\nR\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 65 1\r\n#################################################################\r\n##############################################################E.#\r\n#################################################################\r\nL\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 64 1\r\n################################################################\r\n###########################################################.E###\r\n################################################################\r\nR\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 64 1\r\n################################################################\r\n############################################################E.##\r\n################################################################\r\nL\r\n",
+                "1\r\n"
+            ],
+            [
+                "3 60 1\r\n############################################################\r\n#########################################################E.#\r\n############################################################\r\nL\r\n",
+                "1\r\n"
+            ]
+        ]
+    }
+]

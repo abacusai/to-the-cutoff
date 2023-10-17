@@ -1,0 +1,161 @@
+[
+    {
+        "name": "Finding lines",
+        "description": "After some programming contest Roma decided to try himself in tourism. His\nhome country Uzhlyandia is a Cartesian plane. He wants to walk along each of\nthe Main Straight Lines in Uzhlyandia. It is known that each of these lines is\na straight line parallel to one of the axes (i.e. it is described with the\nequation x = a or y = a, where a is integer called the coordinate of this\nline). Roma lost his own map, so he should find out the coordinates of all\nlines at first. Uncle Anton agreed to help him, using the following rules:\nInitially Roma doesn't know the number of vertical and horizontal lines and\ntheir coordinates; Roma can announce integer coordinates of some point in\nUzhlandia, and Anton then will tell him the minimum among the distances from\nthe chosen point to each of the lines. However, since the coordinates of the\nlines don't exceed 10^8 by absolute value, Roma can't choose a point with\ncoordinates exceeding 10^8 by absolute value. Uncle Anton is in a hurry to the\nUOI (Uzhlandian Olympiad in Informatics), so he can only answer no more than\n3\u00b710^5 questions. The problem is that Roma doesn't know how to find out the\ncoordinates of the lines. Write a program that plays Roma's role and finds the\ncoordinates. Input There is no input initially. Your program should make\nqueries to get information. It is guaranteed that the number of horizontal and\nvertical lines is at least 1 and less than or equal to 10^4 for each type.\nInteraction To make a query, print a line \"0 x y\" (-10^8 \u2264 x, y \u2264 10^8), where\nx and y are the coordinates of the point. After each query you need to print\nend-of-line, make \"flush\" operation, and then read the answer to the query \u2014\nthe minimum among the distances prom this point to the Main Straight Lines of\nUzhlyandia. You can do no more than 3\u00b710^5 queries. When you are ready to\nprint the answer, print three lines: In the first line print \"1 n m\", where n\nis the number of vertical lines (parallel to OY), and m is the number of\nhorizontal lines (parallel to OX). In the second line print n integers x1, x2,\n..., xn \u2014 the coordinates of the vertical lines. In the third line in the same\nformat print m integers y1, y2, ..., ym \u2014 the coordinates of the horizontal\nlines. You can print coordinates in arbitrary order. To make \"flush\", you can\nuse (just after printing a query/answer and end-of-line): fflush(stdout) in\nC++; System.out.flush() in Java; stdout.flush() in Python; flush(output) in\nPascal; see the documentation for other languages. You will get Wrong Answer\nif you make more queries than allowed or make an invalid query. You can get\nIdleness Limit Exceeded if you don't print anything or if you forget to flush\nthe output. If at any moment your program reads -1 as an answer, it should\nimmediately exit normally (for example, by calling exit(0)). You will get\nWrong Answer in this case, it means that you made more queries than allowed,\nor made an invalid query. If you ignore this, you can get other verdicts since\nyour program will continue to read from a closed stream. Making test for\nhacking The first line should contain two integers n and m (1 \u2264 n, m \u2264 10^4).\nThe second line should contain n distinct integers xi (-10^8 \u2264 xi \u2264 10^8) \u2014\nthe coordinates of the vertical lines. The third line should contain m\ndistinct integers yi (-10^8 \u2264 yi \u2264 10^8) \u2014 the coordinates of the horizontal\nlines. You can write coordinates in arbitrary order. You can see the example\ncase in the notes. Example Input 1 1 3 2 Output 0 1 2 0 -2 -2 0 5 6 0 -2 2 1 1\n2 2 0 -3 Note The example test is 1 2 2 0 -3 The minimum distances are: from\n(1, 2) to x = 2; from ( - 2, - 2) to y = - 3; from (5, 6) to x = 2; from ( -\n2, 2) to y = 0.\n\n",
+        "cf_contest_id": 788,
+        "cf_index": "D",
+        "cf_rating": 3000,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "divide and conquer",
+            "interactive"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "1 2\r\n2\r\n0 -3\r\n",
+                "20\r\n1 2\r\n2\r\n-3 0\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 5\r\n-3 4 5\r\n-10 2 5 7 10\r\n",
+                "35\r\n3 5\r\n-3 4 5\r\n-10 2 5 7 10\r\n"
+            ],
+            [
+                "3 3\r\n-3 5 7\r\n4 8 -9\r\n",
+                "32\r\n3 3\r\n-3 5 7\r\n-9 4 8\r\n"
+            ],
+            [
+                "5 1\r\n-3 -10 6 9 20\r\n0\r\n",
+                "39\r\n5 1\r\n-10 -3 6 9 20\r\n0\r\n"
+            ],
+            [
+                "1 3\r\n0\r\n-1 0 1\r\n",
+                "17\r\n1 3\r\n0\r\n-1 0 1\r\n"
+            ],
+            [
+                "1 1\r\n-3\r\n10\r\n",
+                "13\r\n1 1\r\n-3\r\n10\r\n"
+            ],
+            [
+                "4 4\r\n10 -3 6 -10\r\n-10 2 8 10\r\n",
+                "35\r\n4 4\r\n-10 -3 6 10\r\n-10 2 8 10\r\n"
+            ],
+            [
+                "2 3\r\n-100000000 100000000\r\n-99999999 0 99999999\r\n",
+                "25\r\n2 3\r\n-100000000 100000000\r\n-99999999 0 99999999\r\n"
+            ],
+            [
+                "1 1\r\n0\r\n0\r\n",
+                "9\r\n1 1\r\n0\r\n0\r\n"
+            ],
+            [
+                "7 7\r\n-102 -100 -1 0 1 100 102\r\n-102 -100 -1 0 1 100 102\r\n",
+                "39\r\n7 7\r\n-102 -100 -1 0 1 100 102\r\n-102 -100 -1 0 1 100 102\r\n"
+            ],
+            [
+                "5 5\r\n-100000000 -99999999 -99999998 -99999997 -99999996\r\n-100000000 -99999999 -99999998 -99999997 -99999996\r\n",
+                "26\r\n5 5\r\n-100000000 -99999999 -99999998 -99999997 -99999996\r\n-100000000 -99999999 -99999998 -99999997 -99999996\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n1\r\n",
+                "7\r\n1 1\r\n1\r\n1\r\n"
+            ],
+            [
+                "1 1\r\n-100000000\r\n-100000000\r\n",
+                "5\r\n1 1\r\n-100000000\r\n-100000000\r\n"
+            ],
+            [
+                "1 1\r\n100000000\r\n-100000000\r\n",
+                "7\r\n1 1\r\n100000000\r\n-100000000\r\n"
+            ],
+            [
+                "1 1\r\n100000000\r\n100000000\r\n",
+                "5\r\n1 1\r\n100000000\r\n100000000\r\n"
+            ],
+            [
+                "1 1\r\n-100000000\r\n100000000\r\n",
+                "7\r\n1 1\r\n-100000000\r\n100000000\r\n"
+            ],
+            [
+                "1 1\r\n99999999\r\n-99999999\r\n",
+                "9\r\n1 1\r\n99999999\r\n-99999999\r\n"
+            ],
+            [
+                "3 1\r\n-1 0 1\r\n0\r\n",
+                "17\r\n3 1\r\n-1 0 1\r\n0\r\n"
+            ],
+            [
+                "1 1\r\n10\r\n-3\r\n",
+                "13\r\n1 1\r\n10\r\n-3\r\n"
+            ],
+            [
+                "3 2\r\n-99999999 0 99999999\r\n-100000000 100000000\r\n",
+                "25\r\n3 2\r\n-99999999 0 99999999\r\n-100000000 100000000\r\n"
+            ],
+            [
+                "5 5\r\n-100000000 -99999999 -99999998 -99999997 -99999996\r\n100000000 99999999 99999998 99999997 99999996\r\n",
+                "47\r\n5 5\r\n-100000000 -99999999 -99999998 -99999997 -99999996\r\n99999996 99999997 99999998 99999999 100000000\r\n"
+            ],
+            [
+                "5 5\r\n100000000 99999999 99999998 99999997 99999996\r\n-100000000 -99999999 -99999998 -99999997 -99999996\r\n",
+                "47\r\n5 5\r\n99999996 99999997 99999998 99999999 100000000\r\n-100000000 -99999999 -99999998 -99999997 -99999996\r\n"
+            ],
+            [
+                "5 5\r\n100000000 99999999 99999998 99999997 99999996\r\n100000000 99999999 99999998 99999997 99999996\r\n",
+                "26\r\n5 5\r\n99999996 99999997 99999998 99999999 100000000\r\n99999996 99999997 99999998 99999999 100000000\r\n"
+            ],
+            [
+                "1 1\r\n-99999999\r\n99999999\r\n",
+                "9\r\n1 1\r\n-99999999\r\n99999999\r\n"
+            ],
+            [
+                "1 1\r\n99999999\r\n99999999\r\n",
+                "7\r\n1 1\r\n99999999\r\n99999999\r\n"
+            ],
+            [
+                "1 1\r\n-99999999\r\n-99999999\r\n",
+                "7\r\n1 1\r\n-99999999\r\n-99999999\r\n"
+            ],
+            [
+                "2 2\r\n-10 10\r\n10 -10\r\n",
+                "11\r\n2 2\r\n-10 10\r\n-10 10\r\n"
+            ],
+            [
+                "3 3\r\n-10 0 10\r\n-10 0 10\r\n",
+                "19\r\n3 3\r\n-10 0 10\r\n-10 0 10\r\n"
+            ],
+            [
+                "5 5\r\n-2 -1 0 1 2\r\n-2 -1 0 1 2\r\n",
+                "27\r\n5 5\r\n-2 -1 0 1 2\r\n-2 -1 0 1 2\r\n"
+            ],
+            [
+                "2 2\r\n-99999999 99999999\r\n-99999999 99999999\r\n",
+                "9\r\n2 2\r\n-99999999 99999999\r\n-99999999 99999999\r\n"
+            ],
+            [
+                "1 2\r\n-99999999\r\n-99999999 99999999\r\n",
+                "9\r\n1 2\r\n-99999999\r\n-99999999 99999999\r\n"
+            ],
+            [
+                "1 2\r\n99999999\r\n-99999999 99999999\r\n",
+                "9\r\n1 2\r\n99999999\r\n-99999999 99999999\r\n"
+            ],
+            [
+                "2 1\r\n-99999999 99999999\r\n-99999999\r\n",
+                "9\r\n2 1\r\n-99999999 99999999\r\n-99999999\r\n"
+            ],
+            [
+                "2 1\r\n-99999999 99999999\r\n99999999\r\n",
+                "9\r\n2 1\r\n-99999999 99999999\r\n99999999\r\n"
+            ],
+            [
+                "4 4\r\n-100000000 -99999999 99999999 100000000\r\n-100000000 -99999999 99999999 100000000\r\n",
+                "17\r\n4 4\r\n-100000000 -99999999 99999999 100000000\r\n-100000000 -99999999 99999999 100000000\r\n"
+            ]
+        ]
+    }
+]

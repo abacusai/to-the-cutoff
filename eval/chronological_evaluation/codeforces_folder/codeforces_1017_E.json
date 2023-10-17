@@ -1,0 +1,105 @@
+[
+    {
+        "name": "The Supersonic Rocket",
+        "description": "After the war, the supersonic rocket became the most common public\ntransportation. Each supersonic rocket consists of two \"engines\". Each engine\nis a set of \"power sources\". The first engine has \n    n\n power sources, and\nthe second one has \n    m\n power sources. A power source can be described as a\npoint \n    (x_i, y_i)\n on a 2-D plane. All points in each engine are\ndifferent. You can manipulate each engine separately. There are two operations\nthat you can do with each engine. You can do each operation as many times as\nyou want. For every power source as a whole in that engine: \n    (x_i, y_i)\n\nbecomes \n    (x_i+a, y_i+b)\n, \n    a\n and \n    b\n can be any real numbers. In\nother words, all power sources will be shifted. For every power source as a\nwhole in that engine: \n    (x_i, y_i)\n becomes \n    (x_i \n    cos\n    \u03b8 - y_i\n    \n    sin\n    \u03b8, x_i \n    sin\n    \u03b8 + y_i \n    cos\n    \u03b8)\n, \n    \u03b8\n\ncan be any real number. In other words, all power sources will be rotated.The\nengines work as follows: after the two engines are powered, their power\nsources are being combined (here power sources of different engines may\ncoincide). If two power sources \n    A(x_a, y_a)\n and \n    B(x_b, y_b)\n exist,\nthen for all real number \n    k\n that \n    0 \n     k \n     1\n, a new power\nsource will be created \n    C_k(kx_a+(1-k)x_b,ky_a+(1-k)y_b)\n. Then, this\nprocedure will be repeated again with all new and old power sources. After\nthat, the \"power field\" from all power sources will be generated (can be\nconsidered as an infinite set of all power sources occurred). A supersonic\nrocket is \"safe\" if and only if after you manipulate the engines, destroying\nany power source and then power the engine, the power field generated won't be\nchanged (comparing to the situation where no power source erased). Two power\nfields are considered the same if and only if any power source in one field\nbelongs to the other one as well. Given a supersonic rocket, check whether it\nis safe or not. Input The first line contains two integers \n    n\n, \n    m\n\n(\n    3 \n    \u2264 n, m \n    \u2264 10^5\n) \u2014 the number of power sources in each engine.\nEach of the next \n    n\n lines contains two integers \n    x_i\n and \n    y_i\n\n(\n    0\n    \u2264 x_i, y_i\n    \u2264 10^8\n) \u2014 the coordinates of the \n    i\n-th power\nsource in the first engine. Each of the next \n    m\n lines contains two\nintegers \n    x_i\n and \n    y_i\n (\n    0\n    \u2264 x_i, y_i\n    \u2264 10^8\n) \u2014 the\ncoordinates of the \n    i\n-th power source in the second engine. It is\nguaranteed that there are no two or more power sources that are located in the\nsame point in each engine. Output Print \"YES\" if the supersonic rocket is\nsafe, otherwise \"NO\". You can print each letter in an arbitrary case (upper or\nlower). Examples Input 3 4 0 0 0 2 2 0 0 2 2 2 2 0 1 1 Output YES Input 3 4 0\n0 0 2 2 0 0 2 2 2 2 0 0 0 Output NO Note The first sample: Those near pairs of\nblue and orange points actually coincide. First, manipulate the first engine:\nuse the second operation with \n    \u03b8 = \n    \u03c0\n (to rotate all power\nsources \n    180\n degrees). The power sources in the first engine become\n\n    (0, 0)\n, \n    (0, -2)\n, and \n    (-2, 0)\n. Second, manipulate the second\nengine: use the first operation with \n    a = b = -2\n. The power sources in\nthe second engine become \n    (-2, 0)\n, \n    (0, 0)\n, \n    (0, -2)\n, and\n\n    (-1, -1)\n. You can examine that destroying any point, the power field\nformed by the two engines are always the solid triangle \n    (0, 0)\n, \n    (-2,\n    0)\n, \n    (0, -2)\n. In the second sample, no matter how you manipulate the\nengines, there always exists a power source in the second engine that power\nfield will shrink if you destroy it.\n\n",
+        "cf_contest_id": 1017,
+        "cf_index": "E",
+        "cf_rating": 2400,
+        "difficulty": 0,
+        "cf_tags": [
+            "geometry",
+            "hashing",
+            "strings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 4\r\n0 0\r\n0 2\r\n2 0\r\n0 2\r\n2 2\r\n2 0\r\n1 1\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 4\r\n0 0\r\n0 2\r\n2 0\r\n0 2\r\n2 2\r\n2 0\r\n0 0\r\n",
+                "NO\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "8 8\r\n53212775 61830464\r\n32047271 31958754\r\n46845363 47341547\r\n46097536 79640734\r\n25559819 90360169\r\n5442822 40309249\r\n57656501 31139219\r\n1191345 7784770\r\n61052639 71686018\r\n53542361 10165576\r\n61963163 25946318\r\n15498921 83261369\r\n97981085 40697107\r\n35269685 20583089\r\n50275077 3751318\r\n40877349 23290816\r\n",
+                "NO\r\n"
+            ],
+            [
+                "10 8\r\n1446 2090916\r\n0 0\r\n1060 1123600\r\n2939 8946081\r\n1405 8946081\r\n2842 8946081\r\n2979 8946081\r\n2850 8946081\r\n0 100000000\r\n2991 8946081\r\n1446 2090916\r\n0 0\r\n1060 1123600\r\n2575 8946081\r\n1586 8946081\r\n460 8946081\r\n0 100000000\r\n2991 8946081\r\n",
+                "YES\r\n"
+            ],
+            [
+                "8 9\r\n4965 24651225\r\n0 0\r\n0 36000000\r\n5004 25040016\r\n4354 30107169\r\n1309 30107169\r\n2301 30107169\r\n5487 30107169\r\n30107169 513\r\n30107169 2849\r\n30107169 998\r\n25040016 996\r\n30107169 2249\r\n30107169 1567\r\n36000000 6000\r\n0 6000\r\n24651225 1035\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 3\r\n0 100000000\r\n0 0\r\n100000000 0\r\n100000000 100000000\r\n100000000 0\r\n0 100000000\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 3\r\n1 1\r\n2 2\r\n3 3\r\n0 10\r\n1 9\r\n2 8\r\n",
+                "YES\r\n"
+            ],
+            [
+                "3 3\r\n1 1\r\n2 2\r\n3 3\r\n2 2\r\n6 6\r\n7 7\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 3\r\n1 1\r\n2 2\r\n3 3\r\n1 1\r\n1 2\r\n1 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 4\r\n0 5\r\n5 10\r\n5 0\r\n10 5\r\n0 1\r\n7 2\r\n14 1\r\n7 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "3 3\r\n0 0\r\n100000000 0\r\n100000000 1\r\n100000000 100000000\r\n0 100000000\r\n0 99999999\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 3\r\n0 0\r\n100000000 0\r\n100000000 2\r\n50000000 1\r\n100000000 100000000\r\n0 100000000\r\n0 99999998\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 3\r\n0 0\r\n100000000 0\r\n100000000 2\r\n50000001 1\r\n100000000 100000000\r\n0 100000000\r\n0 99999998\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 3\r\n0 0\r\n100000000 0\r\n100000000 2\r\n49999999 1\r\n100000000 100000000\r\n0 100000000\r\n0 99999998\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 3\r\n0 0\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n6 6\r\n0 6\r\n3 3\r\n6 0\r\n",
+                "YES\r\n"
+            ],
+            [
+                "6 3\r\n0 0\r\n1 1\r\n2 2\r\n3 3\r\n4 4\r\n5 5\r\n0 6\r\n3 3\r\n6 0\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5 5\r\n2 0\r\n0 4\r\n4 8\r\n8 4\r\n10 0\r\n0 2\r\n2 6\r\n6 10\r\n10 6\r\n8 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "8 8\r\n0 1\r\n0 3\r\n1 4\r\n3 4\r\n4 3\r\n4 1\r\n3 0\r\n1 0\r\n2 5\r\n3 5\r\n5 3\r\n5 2\r\n3 0\r\n2 0\r\n0 2\r\n0 3\r\n",
+                "NO\r\n"
+            ],
+            [
+                "6 6\r\n2 0\r\n4 0\r\n6 1\r\n4 2\r\n2 2\r\n0 1\r\n1 0\r\n3 0\r\n4 2\r\n3 4\r\n1 4\r\n0 2\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4 4\r\n0 0\r\n0 5\r\n5 0\r\n5 5\r\n0 3\r\n4 0\r\n7 4\r\n3 7\r\n",
+                "YES\r\n"
+            ],
+            [
+                "4 4\r\n0 0\r\n1 0\r\n1 1\r\n2 1\r\n0 1\r\n1 1\r\n1 0\r\n2 0\r\n",
+                "NO\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,111 @@
+[
+    {
+        "name": "Timetable",
+        "description": "Ivan is a student at Berland State University (BSU). There are n days in\nBerland week, and each of these days Ivan might have some classes at the\nuniversity. There are m working hours during each Berland day, and each lesson\nat the university lasts exactly one hour. If at some day Ivan's first lesson\nis during i-th hour, and last lesson is during j-th hour, then he spends j - i\n+ 1 hours in the university during this day. If there are no lessons during\nsome day, then Ivan stays at home and therefore spends 0 hours in the\nuniversity. Ivan doesn't like to spend a lot of time in the university, so he\nhas decided to skip some lessons. He cannot skip more than k lessons during\nthe week. After deciding which lessons he should skip and which he should\nattend, every day Ivan will enter the university right before the start of the\nfirst lesson he does not skip, and leave it after the end of the last lesson\nhe decides to attend. If Ivan skips all lessons during some day, he doesn't go\nto the university that day at all. Given n, m, k and Ivan's timetable, can you\ndetermine the minimum number of hours he has to spend in the university during\none week, if he cannot skip more than k lessons? Input The first line contains\nthree integers n, m and k (1 \u2264 n, m \u2264 500, 0 \u2264 k \u2264 500) \u2014 the number of days\nin the Berland week, the number of working hours during each day, and the\nnumber of lessons Ivan can skip, respectively. Then n lines follow, i-th line\ncontaining a binary string of m characters. If j-th character in i-th line is\n1, then Ivan has a lesson on i-th day during j-th hour (if it is 0, there is\nno such lesson). Output Print the minimum number of hours Ivan has to spend in\nthe university during the week if he skips not more than k lessons. Examples\nInput 2 5 1 01001 10110 Output 5 Input 2 5 0 01001 10110 Output 8 Note In the\nfirst example Ivan can skip any of two lessons during the first day, so he\nspends 1 hour during the first day and 4 hours during the second day. In the\nsecond example Ivan can't skip any lessons, so he spends 4 hours every day.\n\n",
+        "cf_contest_id": 946,
+        "cf_index": "D",
+        "cf_rating": 1800,
+        "difficulty": 0,
+        "cf_tags": [
+            "dp"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "2 5 1\r\n01001\r\n10110\r\n",
+                "5\r\n"
+            ],
+            [
+                "2 5 0\r\n01001\r\n10110\r\n",
+                "8\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3 4 0\r\n0000\r\n0000\r\n0000\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 4 12\r\n1111\r\n1111\r\n1111\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 4 6\r\n1111\r\n1111\r\n1111\r\n",
+                "6\r\n"
+            ],
+            [
+                "10 10 0\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n",
+                "100\r\n"
+            ],
+            [
+                "10 10 5\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n",
+                "55\r\n"
+            ],
+            [
+                "10 10 10\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n",
+                "10\r\n"
+            ],
+            [
+                "10 10 20\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 10 19\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n",
+                "1\r\n"
+            ],
+            [
+                "4 16 11\r\n1111011101111111\r\n0111110111111111\r\n0011101111011000\r\n0000010000001000\r\n",
+                "30\r\n"
+            ],
+            [
+                "1 1 5\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "4 113 370\r\n01110100100010110100110000000011001111110000100111111001011001110111110111001011010110000110110010101010110001000\r\n01101001111110001010001100101100111100111001001001001101110101100110110110001110100010111011101011101110011110100\r\n01100110001001111010000010101100111100011111010000101010011011111111000111111001001010110110011011111110110010111\r\n11100111000100010000100111010101110110100101100100001111000001001010001000101110011100101011101100011010111010000\r\n",
+                "0\r\n"
+            ],
+            [
+                "3 3 4\r\n000\r\n000\r\n000\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 5 1\r\n10001\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 1\r\n0\r\n",
+                "0\r\n"
+            ],
+            [
+                "10 10 100\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n1000000001\r\n",
+                "0\r\n"
+            ],
+            [
+                "5 1 6\r\n1\r\n1\r\n1\r\n0\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1 1\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "8 4 8\r\n0001\r\n0010\r\n0100\r\n0000\r\n1001\r\n1101\r\n0010\r\n0001\r\n",
+                "2\r\n"
+            ],
+            [
+                "1 1 2\r\n1\r\n",
+                "0\r\n"
+            ],
+            [
+                "1 1 0\r\n1\r\n",
+                "1\r\n"
+            ],
+            [
+                "1 1 2\r\n0\r\n",
+                "0\r\n"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Expected diameter of a tree",
+        "description": "Pasha is a good student and one of MoJaK's best friends. He always have a\nproblem to think about. Today they had a talk about the following problem. We\nhave a forest (acyclic undirected graph) with n vertices and m edges. There\nare q queries we should answer. In each query two vertices v and u are given.\nLet V be the set of vertices in the connected component of the graph that\ncontains v, and U be the set of vertices in the connected component of the\ngraph that contains u. Let's add an edge between some vertex and some vertex\nin and compute the value d of the resulting component. If the resulting\ncomponent is a tree, the value d is the diameter of the component, and it is\nequal to -1 otherwise. What is the expected value of d, if we choose vertices\na and b from the sets uniformly at random? Can you help Pasha to solve this\nproblem? The diameter of the component is the maximum distance among some pair\nof vertices in the component. The distance between two vertices is the minimum\nnumber of edges on some path between the two vertices. Note that queries don't\nadd edges to the initial forest. Input The first line contains three integers\nn, m and q(1 \u2264 n, m, q \u2264 10^5) \u2014 the number of vertices, the number of edges\nin the graph and the number of queries. Each of the next m lines contains two\nintegers ui and vi (1 \u2264 ui, vi \u2264 n), that means there is an edge between\nvertices ui and vi. It is guaranteed that the given graph is a forest. Each of\nthe next q lines contains two integers ui and vi (1 \u2264 ui, vi \u2264 n) \u2014 the\nvertices given in the i-th query. Output For each query print the expected\nvalue of d as described in the problem statement. Your answer will be\nconsidered correct if its absolute or relative error does not exceed 10^-6.\nLet's assume that your answer is a, and the jury's answer is b. The checker\nprogram will consider your answer correct, if . Examples Input 3 1 2 1 3 3 1 2\n3 Output -1 2.0000000000 Input 5 2 3 2 4 4 3 4 2 4 1 2 5 Output -1\n2.6666666667 2.6666666667 Note In the first example the vertices 1 and 3 are\nin the same component, so the answer for the first query is -1. For the second\nquery there are two options to add the edge: one option is to add the edge 1 -\n2, the other one is 2 - 3. In both ways the resulting diameter is 2, so the\nanswer is 2. In the second example the answer for the first query is obviously\n-1. The answer for the second query is the average of three cases: for added\nedges 1 - 2 or 1 - 3 the diameter is 3, and for added edge 1 - 4 the diameter\nis 2. Thus, the answer is .\n\n",
+        "cf_contest_id": 804,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "binary search",
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "sortings",
+            "trees"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 1 2\r\n1 3\r\n3 1\r\n2 3\r\n",
+                "-1\r\n2.000000000\r\n"
+            ],
+            [
+                "5 2 3\r\n2 4\r\n4 3\r\n4 2\r\n4 1\r\n2 5\r\n",
+                "-1\r\n2.666666667\r\n2.666666667\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "17 15 13\r\n3 15\r\n3 1\r\n15 9\r\n16 6\r\n1 5\r\n1 8\r\n16 12\r\n15 7\r\n9 4\r\n6 11\r\n15 14\r\n9 10\r\n15 13\r\n1 17\r\n11 2\r\n7 3\r\n9 6\r\n9 7\r\n1 8\r\n14 13\r\n16 16\r\n14 6\r\n4 4\r\n3 4\r\n9 3\r\n8 13\r\n15 2\r\n14 4\r\n",
+                "-1\r\n8.450000000\r\n-1\r\n-1\r\n-1\r\n-1\r\n8.450000000\r\n-1\r\n-1\r\n-1\r\n-1\r\n8.450000000\r\n-1\r\n"
+            ],
+            [
+                "7 4 31\r\n1 4\r\n1 7\r\n4 6\r\n5 2\r\n6 2\r\n1 1\r\n3 2\r\n6 4\r\n1 6\r\n3 2\r\n2 1\r\n7 3\r\n7 6\r\n3 3\r\n1 1\r\n4 3\r\n6 7\r\n4 4\r\n3 2\r\n1 6\r\n2 6\r\n1 4\r\n2 3\r\n4 2\r\n4 3\r\n5 3\r\n7 5\r\n3 3\r\n2 5\r\n6 1\r\n4 6\r\n6 3\r\n7 2\r\n1 7\r\n4 7\r\n",
+                "4.500000000\r\n-1\r\n2.000000000\r\n-1\r\n-1\r\n2.000000000\r\n4.500000000\r\n3.500000000\r\n-1\r\n-1\r\n-1\r\n3.500000000\r\n-1\r\n-1\r\n2.000000000\r\n-1\r\n4.500000000\r\n-1\r\n2.000000000\r\n4.500000000\r\n3.500000000\r\n2.000000000\r\n4.500000000\r\n-1\r\n-1\r\n-1\r\n-1\r\n3.500000000\r\n4.500000000\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "30 22 21\r\n1 21\r\n29 12\r\n23 7\r\n7 30\r\n11 10\r\n25 2\r\n10 8\r\n11 26\r\n29 13\r\n28 24\r\n4 5\r\n1 20\r\n20 9\r\n8 16\r\n26 14\r\n1 19\r\n25 27\r\n28 22\r\n5 6\r\n28 15\r\n29 18\r\n10 3\r\n17 15\r\n23 23\r\n5 29\r\n5 16\r\n18 8\r\n25 20\r\n22 18\r\n9 18\r\n6 20\r\n14 4\r\n21 23\r\n30 27\r\n12 15\r\n15 14\r\n26 4\r\n20 13\r\n14 17\r\n11 17\r\n21 4\r\n10 11\r\n21 21\r\n",
+                "2.750000000\r\n-1\r\n4.416666667\r\n6.666666667\r\n6.750000000\r\n5.266666667\r\n4.500000000\r\n5.350000000\r\n5.266666667\r\n6.666666667\r\n5.266666667\r\n4.333333333\r\n4.500000000\r\n6.750000000\r\n6.666666667\r\n5.350000000\r\n5.285714286\r\n5.285714286\r\n5.266666667\r\n-1\r\n-1\r\n"
+            ],
+            [
+                "33 23 15\r\n15 10\r\n2 24\r\n2 14\r\n19 25\r\n33 27\r\n14 21\r\n13 26\r\n19 30\r\n13 9\r\n33 17\r\n20 18\r\n27 22\r\n25 6\r\n15 7\r\n17 32\r\n14 8\r\n19 11\r\n22 16\r\n7 23\r\n8 12\r\n11 3\r\n30 4\r\n22 31\r\n11 10\r\n9 8\r\n11 16\r\n18 23\r\n14 4\r\n31 27\r\n20 32\r\n18 11\r\n18 14\r\n6 10\r\n3 17\r\n20 33\r\n26 9\r\n27 18\r\n22 13\r\n",
+                "6.785714286\r\n5.833333333\r\n8.428571429\r\n4.500000000\r\n7.452380952\r\n-1\r\n6.142857143\r\n5.285714286\r\n5.166666667\r\n6.785714286\r\n8.428571429\r\n6.142857143\r\n-1\r\n6.142857143\r\n6.809523810\r\n"
+            ],
+            [
+                "44 34 9\r\n23 12\r\n31 24\r\n39 37\r\n16 20\r\n16 10\r\n23 28\r\n25 9\r\n20 13\r\n24 14\r\n5 26\r\n26 42\r\n8 17\r\n13 30\r\n9 35\r\n28 15\r\n39 38\r\n5 4\r\n20 6\r\n38 41\r\n24 40\r\n15 2\r\n20 18\r\n21 3\r\n31 34\r\n16 7\r\n26 22\r\n34 27\r\n41 11\r\n34 19\r\n28 43\r\n11 1\r\n2 29\r\n41 32\r\n16 33\r\n21 1\r\n30 15\r\n44 11\r\n30 27\r\n4 7\r\n8 31\r\n2 35\r\n18 7\r\n35 17\r\n",
+                "6.000000000\r\n8.333333333\r\n5.285714286\r\n7.761904762\r\n6.933333333\r\n5.428571429\r\n6.666666667\r\n-1\r\n3.666666667\r\n"
+            ],
+            [
+                "19 16 3\r\n1 4\r\n4 16\r\n16 5\r\n17 12\r\n4 7\r\n3 9\r\n12 14\r\n5 19\r\n17 18\r\n4 13\r\n1 6\r\n3 2\r\n7 8\r\n16 15\r\n15 11\r\n15 10\r\n2 16\r\n7 10\r\n18 8\r\n",
+                "6.916666667\r\n-1\r\n7.750000000\r\n"
+            ]
+        ]
+    }
+]

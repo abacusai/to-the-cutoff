@@ -1,0 +1,74 @@
+[
+    {
+        "name": "Network Mask",
+        "description": "The problem uses a simplified TCP/IP address model, please make sure you've\nread the statement attentively. Polycarpus has found a job, he is a system\nadministrator. One day he came across n IP addresses. Each IP address is a 32\nbit number, represented as a group of four 8-bit numbers (without leading\nzeroes), separated by dots. For example, the record 0.255.1.123 shows a\ncorrect IP address and records 0.256.1.123 and 0.255.1.01 do not. In this\nproblem an arbitrary group of four 8-bit numbers is a correct IP address.\nHaving worked as an administrator for some time, Polycarpus learned that if\nyou know the IP address, you can use the subnet mask to get the address of the\nnetwork that has this IP addess. The subnet mask is an IP address that has the\nfollowing property: if we write this IP address as a 32 bit string, that it is\nrepresentable as \"11...11000..000\". In other words, the subnet mask first has\none or more one bits, and then one or more zero bits (overall there are 32\nbits). For example, the IP address 2.0.0.0 is not a correct subnet mask as its\n32-bit record looks as 00000010000000000000000000000000. To get the network\naddress of the IP address, you need to perform the operation of the bitwise\n\"and\" of the IP address and the subnet mask. For example, if the subnet mask\nis 255.192.0.0, and the IP address is 192.168.1.2, then the network address\nequals 192.128.0.0. In the bitwise \"and\" the result has a bit that equals 1 if\nand only if both operands have corresponding bits equal to one. Now Polycarpus\nwants to find all networks to which his IP addresses belong. Unfortunately,\nPolycarpus lost subnet mask. Fortunately, Polycarpus remembers that his IP\naddresses belonged to exactly k distinct networks. Help Polycarpus find the\nsubnet mask, such that his IP addresses will belong to exactly k distinct\nnetworks. If there are several such subnet masks, find the one whose bit\nrecord contains the least number of ones. If such subnet mask do not exist,\nsay so. Input The first line contains two integers, n and k (1 \u2264 k \u2264 n \u2264 10^5)\n\u2014 the number of IP addresses and networks. The next n lines contain the IP\naddresses. It is guaranteed that all IP addresses are distinct. Output In a\nsingle line print the IP address of the subnet mask in the format that is\ndescribed in the statement, if the required subnet mask exists. Otherwise,\nprint -1. Examples Input 5 3 0.0.0.1 0.1.1.2 0.0.2.1 0.1.1.0 0.0.2.3 Output\n255.255.254.0 Input 5 2 0.0.0.1 0.1.1.2 0.0.2.1 0.1.1.0 0.0.2.3 Output\n255.255.0.0 Input 2 1 255.0.0.1 0.0.0.2 Output -1\n\n",
+        "cf_contest_id": 291,
+        "cf_index": "C",
+        "cf_rating": 1600,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "bitmasks",
+            "brute force",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5 3\r\n0.0.0.1\r\n0.1.1.2\r\n0.0.2.1\r\n0.1.1.0\r\n0.0.2.3\r\n",
+                "255.255.254.0\r\n"
+            ],
+            [
+                "5 2\r\n0.0.0.1\r\n0.1.1.2\r\n0.0.2.1\r\n0.1.1.0\r\n0.0.2.3\r\n",
+                "255.255.0.0\r\n"
+            ],
+            [
+                "2 1\r\n255.0.0.1\r\n0.0.0.2\r\n",
+                "-1\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "10 2\r\n57.11.146.42\r\n200.130.164.235\r\n52.119.155.71\r\n113.10.216.20\r\n28.23.6.128\r\n190.112.90.85\r\n7.37.210.55\r\n20.190.120.226\r\n170.124.158.110\r\n122.157.34.141\r\n",
+                "128.0.0.0\r\n"
+            ],
+            [
+                "11 4\r\n30.181.69.132\r\n170.239.176.11\r\n229.116.128.161\r\n9.82.24.38\r\n53.73.223.74\r\n168.10.125.208\r\n4.122.30.206\r\n139.239.173.235\r\n101.113.26.160\r\n216.250.148.119\r\n142.182.207.78\r\n",
+                "192.0.0.0\r\n"
+            ],
+            [
+                "12 5\r\n211.200.83.75\r\n9.64.213.241\r\n143.23.121.155\r\n212.121.142.193\r\n24.184.86.27\r\n176.131.70.228\r\n64.47.67.24\r\n255.241.229.181\r\n246.34.183.253\r\n65.121.116.178\r\n76.84.75.89\r\n22.239.28.119\r\n",
+                "-1\r\n"
+            ],
+            [
+                "13 6\r\n137.219.97.18\r\n104.145.250.214\r\n57.185.114.149\r\n158.161.4.92\r\n252.39.206.236\r\n184.252.14.247\r\n124.228.103.97\r\n114.244.29.127\r\n135.210.84.91\r\n169.248.84.237\r\n9.241.200.99\r\n90.154.249.89\r\n15.98.23.33\r\n",
+                "-1\r\n"
+            ],
+            [
+                "14 7\r\n62.238.111.217\r\n200.225.31.188\r\n228.91.108.143\r\n105.200.123.248\r\n223.149.69.190\r\n192.117.215.11\r\n184.153.140.170\r\n230.246.85.73\r\n24.131.241.184\r\n18.119.52.40\r\n199.143.68.109\r\n158.69.214.60\r\n174.25.117.109\r\n1.204.187.57\r\n",
+                "224.0.0.0\r\n"
+            ],
+            [
+                "15 8\r\n244.1.125.160\r\n39.50.68.162\r\n142.253.101.137\r\n52.239.241.147\r\n194.4.189.143\r\n200.238.160.30\r\n245.78.177.243\r\n89.249.140.19\r\n169.51.142.22\r\n123.246.20.99\r\n133.44.192.119\r\n226.240.179.30\r\n76.209.211.184\r\n98.15.6.117\r\n227.219.117.153\r\n",
+                "-1\r\n"
+            ],
+            [
+                "5 5\r\n223.122.75.125\r\n79.30.187.249\r\n231.244.158.56\r\n166.205.237.209\r\n82.85.12.212\r\n",
+                "240.0.0.0\r\n"
+            ],
+            [
+                "2 1\r\n0.0.0.0\r\n0.0.0.1\r\n",
+                "128.0.0.0\r\n"
+            ],
+            [
+                "2 2\r\n0.0.0.0\r\n1.0.0.1\r\n",
+                "255.0.0.0\r\n"
+            ],
+            [
+                "1 1\r\n0.0.0.0\r\n",
+                "128.0.0.0\r\n"
+            ]
+        ]
+    }
+]

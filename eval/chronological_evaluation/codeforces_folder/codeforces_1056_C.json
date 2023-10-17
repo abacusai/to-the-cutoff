@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Pick Heroes",
+        "description": "Don't you tell me what you think that I can be If you say that Arkady is a bit\nold-fashioned playing checkers, you won't be right. There is also a modern\ncomputer game Arkady and his friends are keen on. We won't discuss its rules,\nthe only feature important to this problem is that each player has to pick a\ndistinct hero in the beginning of the game. There are \n    2\n teams each\nhaving \n    n\n players and \n    2n\n heroes to distribute between the teams.\nThe teams take turns picking heroes: at first, the first team chooses a hero\nin its team, after that the second team chooses a hero and so on. Note that\nafter a hero is chosen it becomes unavailable to both teams. The friends\nestimate the power of the \n    i\n-th of the heroes as \n    p_i\n. Each team\nwants to maximize the total power of its heroes. However, there is one\nexception: there are \n    m\n pairs of heroes that are especially strong\nagainst each other, so when any team chooses a hero from such a pair, the\nother team must choose the other one on its turn. Each hero is in at most one\nsuch pair. This is an interactive problem. You are to write a program that\nwill optimally choose the heroes for one team, while the jury's program will\nplay for the other team. Note that the jury's program may behave\ninefficiently, in this case you have to take the opportunity and still\nmaximize the total power of your team. Formally, if you ever have chance to\nreach the total power of \n    q\n or greater regardless of jury's program\nchoices, you must get \n    q\n or greater to pass a test. Input The first line\ncontains two integers \n    n\n and \n    m\n (\n    1 \n    \u2264 n \n    \u2264 10^3\n, \n    0\n    \n    \u2264 m \n    \u2264 n\n) \u2014 the number of players in one team and the number of\nspecial pairs of heroes. The second line contains \n    2n\n integers \n    p_1,\n    p_2, \n    \u2026, p_2n\n (\n    1 \n    \u2264 p_i \n    \u2264 10^3\n) \u2014 the powers of the\nheroes. Each of the next \n    m\n lines contains two integer \n    a\n and\n\n    b\n (\n    1 \n    \u2264 a, b \n    \u2264 2n\n, \n    a \n     b\n) \u2014 a pair of heroes that\nare especially strong against each other. It is guaranteed that each hero\nappears at most once in this list. The next line contains a single integer\n\n    t\n (\n    1 \n    \u2264 t \n    \u2264 2\n) \u2014 the team you are to play for. If \n    t =\n    1\n, the first turn is yours, otherwise you have the second turn. Hacks In\norder to hack, use the format described above with one additional line. In\nthis line output \n    2n\n distinct integers from \n    1\n to \n    2n\n \u2014 the\npriority order for the jury's team. The jury's team will on each turn select\nthe first possible hero from this list. Here possible means that it is not yet\ntaken and does not contradict the rules about special pair of heroes.\nInteraction When it is your turn, print a single integer \n    x\n (\n    1 \n    \u2264 x\n    \n    \u2264 2n\n) \u2014 the index of the hero chosen by you. Note that you can't choose\na hero previously chosen by either you of the other player, and you must\nfollow the rules about special pairs of heroes. When it is the other team's\nturn, read a line containing a single integer \n    x\n (\n    1 \n    \u2264 x \n    \u2264\n    2n\n) \u2014 the index of the hero chosen by the other team. It is guaranteed that\nthis index is not chosen before and that the other team also follows the rules\nabout special pairs of heroes. After the last turn you should terminate\nwithout printing anything. After printing your choice do not forget to output\nend of line and flush the output. Otherwise you will get Idleness limit\nexceeded. To do this, use: fflush(stdout) or cout.flush() in C++;\nSystem.out.flush() in Java; flush(output) in Pascal; stdout.flush() in Python;\nsee documentation for other languages.Jury's answer \n    -1\n instead of a\nvalid choice means that you made an invalid turn. Exit immediately after\nreceiving \n    -1\n and you will see Wrong answer verdict. Otherwise you can\nget an arbitrary verdict because your solution will continue to read from a\nclosed stream. Examples Input 3 1 1 2 3 4 5 6 2 6 1 2 4 1 Output 6 5 3 Input 3\n1 1 2 3 4 5 6 1 5 2 6 1 3 Output 5 4 2 Note In the first example the first\nturn is yours. In example, you choose \n    6\n, the other team is forced to\nreply with \n    2\n. You choose \n    5\n, the other team chooses \n    4\n.\nFinally, you choose \n    3\n and the other team choose \n    1\n. In the second\nexample you have the second turn. The other team chooses \n    6\n, you choose\n\n    5\n, forcing the other team to choose \n    1\n. Now you choose \n    4\n, the\nother team chooses \n    3\n and you choose \n    2\n.\n\n",
+        "cf_contest_id": 1056,
+        "cf_index": "C",
+        "cf_rating": 1700,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation",
+            "interactive",
+            "sortings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 1\r\n1 2 3 4 5 6\r\n2 6\r\n1\r\n6 5 4 3 2 1\r\n",
+                "14 14\r\n"
+            ],
+            [
+                "3 1\r\n1 2 3 4 5 6\r\n1 5\r\n2\r\n6 5 4 3 2 1\r\n",
+                "11 11\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "6 0\r\n73 766 748 111 544 978 381 864 195 952 558 970\r\n1\r\n6 12 10 8 2 3 11 5 7 9 4 1\r\n",
+                "3746 3746\r\n"
+            ],
+            [
+                "6 0\r\n917 319 226 173 808 858 857 828 673 392 406 60\r\n2\r\n1 6 7 8 5 9 11 10 2 3 4 12\r\n",
+                "3037 3037\r\n"
+            ],
+            [
+                "6 0\r\n73 766 748 111 544 978 381 864 195 952 558 970\r\n1\r\n12 2 8 9 3 10 4 6 7 11 5 1\r\n",
+                "4644 4644\r\n"
+            ],
+            [
+                "6 0\r\n917 319 226 173 808 858 857 828 673 392 406 60\r\n2\r\n12 2 8 9 3 10 4 6 7 11 5 1\r\n",
+                "4019 4019\r\n"
+            ],
+            [
+                "20 10\r\n750 560 811 641 215 299 882 721 925 524 553 644 974 942 120 823 229 249 594 60 375 696 441 153 303 569 336 372 540 25 192 310 422 606 172 605 4 795 740 663\r\n39 30\r\n15 8\r\n6 38\r\n14 35\r\n27 7\r\n13 28\r\n21 12\r\n20 3\r\n23 22\r\n16 32\r\n1\r\n13 14 7 16 3 38 39 8 22 12 23 21 28 27 32 6 35 15 20 30 9 1 40 4 34 36 19 26 2 11 29 10 33 25 18 17 5 31 24 37\r\n",
+                "12955 12955\r\n"
+            ],
+            [
+                "20 10\r\n594 114 289 895 991 986 870 876 403 963 593 542 703 753 37 546 787 267 835 809 257 501 824 10 216 790 901 493 706 739 462 409 150 906 68 630 79 32 955 764\r\n8 29\r\n4 12\r\n33 9\r\n19 5\r\n36 37\r\n16 1\r\n23 3\r\n7 15\r\n35 39\r\n40 11\r\n2\r\n12 2 17 9 28 40 4 31 38 21 33 1 5 24 10 36 8 3 7 16 11 34 19 13 23 14 39 18 27 20 30 6 35 25 29 32 15 22 26 37\r\n",
+                "15559 15559\r\n"
+            ],
+            [
+                "1 1\r\n1 2\r\n1 2\r\n1\r\n2 1\r\n",
+                "2 2\r\n"
+            ]
+        ]
+    }
+]

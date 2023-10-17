@@ -1,0 +1,96 @@
+[
+    {
+        "name": "Tanya and Password",
+        "description": "While dad was at work, a little girl Tanya decided to play with dad's password\nto his secret database. Dad's password is a string consisting of n + 2\ncharacters. She has written all the possible n three-letter continuous\nsubstrings of the password on pieces of paper, one for each piece of paper,\nand threw the password out. Each three-letter substring was written the number\nof times it occurred in the password. Thus, Tanya ended up with n pieces of\npaper. Then Tanya realized that dad will be upset to learn about her game and\ndecided to restore the password or at least any string corresponding to the\nfinal set of three-letter strings. You have to help her in this difficult\ntask. We know that dad's password consisted of lowercase and uppercase letters\nof the Latin alphabet and digits. Uppercase and lowercase letters of the Latin\nalphabet are considered distinct. Input The first line contains integer n (1 \u2264\nn \u2264 2\u00b710^5), the number of three-letter substrings Tanya got. Next n lines\ncontain three letters each, forming the substring of dad's password. Each\ncharacter in the input is a lowercase or uppercase Latin letter or a digit.\nOutput If Tanya made a mistake somewhere during the game and the strings that\ncorrespond to the given set of substrings don't exist, print \"NO\". If it is\npossible to restore the string that corresponds to given set of substrings,\nprint \"YES\", and then print any suitable password option. Examples Input 5 aca\naba aba cab bac Output YES abacaba Input 4 abc bCb cb1 b13 Output NO Input 7\naaa aaa aaa aaa aaa aaa aaa Output YES aaaaaaaaa\n\n",
+        "cf_contest_id": 508,
+        "cf_index": "D",
+        "cf_rating": 2500,
+        "difficulty": 0,
+        "cf_tags": [
+            "dfs and similar",
+            "graphs"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "5\r\naca\r\naba\r\naba\r\ncab\r\nbac\r\n",
+                "YES\r\nabacaba\r\n"
+            ],
+            [
+                "4\r\nabc\r\nbCb\r\ncb1\r\nb13\r\n",
+                "NO\r\n"
+            ],
+            [
+                "7\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\n",
+                "YES\r\naaaaaaaaa\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\nabc\r\n",
+                "YES\r\nabc\r\n"
+            ],
+            [
+                "2\r\nbba\r\nabb\r\n",
+                "YES\r\nabba\r\n"
+            ],
+            [
+                "3\r\naaa\r\naaa\r\naab\r\n",
+                "YES\r\naaaab\r\n"
+            ],
+            [
+                "2\r\naba\r\nbab\r\n",
+                "YES\r\nbaba\r\n"
+            ],
+            [
+                "2\r\nabc\r\nbga\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\naba\r\nbab\r\ncdc\r\ndcd\r\n",
+                "NO\r\n"
+            ],
+            [
+                "4\r\nbaa\r\ncaa\r\naax\r\naay\r\n",
+                "NO\r\n"
+            ],
+            [
+                "2\r\naba\r\naba\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\n123\r\n234\r\n345\r\n456\r\n567\r\n",
+                "YES\r\n1234567\r\n"
+            ],
+            [
+                "3\r\n42y\r\n2ya\r\nya6\r\n",
+                "YES\r\n42ya6\r\n"
+            ],
+            [
+                "8\r\nzHW\r\ncwx\r\nxmo\r\nWcw\r\nox1\r\nwxm\r\nmox\r\nHWc\r\n",
+                "YES\r\nzHWcwxmox1\r\n"
+            ],
+            [
+                "98\r\nuOK\r\nI0I\r\n7Ql\r\nqT6\r\nYux\r\nnGb\r\nXuh\r\nNZ4\r\nzrV\r\ntlm\r\nRMm\r\nWyO\r\nOCX\r\nq2q\r\nTpY\r\nukr\r\nRuO\r\njr7\r\nRjv\r\nxBW\r\nBWy\r\n1nG\r\n7Tp\r\n4NQ\r\nrI0\r\nepN\r\nZfB\r\nUzz\r\n6PR\r\nzFC\r\nIKN\r\nlR1\r\nQiq\r\nD2U\r\nV1h\r\niZf\r\nr7T\r\nuOt\r\nyOC\r\nNTe\r\njaN\r\nlmN\r\n2Uz\r\nZ4N\r\nuxB\r\nvuk\r\nAu1\r\nVQG\r\nT6P\r\nNQi\r\nfBy\r\nnr7\r\npYu\r\n0IK\r\nCXu\r\nZja\r\nhZj\r\nKNn\r\nu1n\r\neoj\r\nQGR\r\nmvu\r\njv3\r\npNi\r\nv3i\r\nmNT\r\nMmv\r\nr7Q\r\nFCu\r\n2qT\r\nkrI\r\nCuO\r\nKbR\r\nOtl\r\nR1z\r\nBxA\r\nGbV\r\n1zr\r\nojr\r\nPRu\r\nhD2\r\n3iZ\r\nNnr\r\niq2\r\nbRM\r\nOKb\r\n1hD\r\nNiB\r\nzzF\r\nuhZ\r\nbV1\r\nrVQ\r\niBx\r\nQlR\r\nxAu\r\nTeo\r\nGRj\r\naNZ\r\n",
+                "YES\r\nepNiBxAu1nGbV1hD2UzzFCuOtlmNTeojr7TpYuxBWyOCXuhZjaNZ4NQiq2qT6PRuOKbRMmvukrI0IKNnr7QlR1zrVQGRjv3iZfBy\r\n"
+            ],
+            [
+                "100\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\naaa\r\n",
+                "YES\r\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n"
+            ],
+            [
+                "98\r\n229\r\nB2p\r\npBp\r\np9T\r\np9B\r\nB9T\r\nB9p\r\nB2T\r\n22T\r\nTBB\r\np2B\r\n29B\r\n9B9\r\nBTT\r\n929\r\n9pB\r\nT92\r\nppB\r\nB92\r\nBpT\r\nB9p\r\n29B\r\nT9B\r\n9B2\r\nTB9\r\np99\r\nT2T\r\n9TT\r\n9B2\r\nTp9\r\n2pB\r\npTB\r\nBp9\r\n92p\r\nBTB\r\n9Tp\r\nTBB\r\nTTp\r\n9B9\r\nTp2\r\nTBT\r\n9BT\r\n9BT\r\npT9\r\npBp\r\npB2\r\np9B\r\npBB\r\nBpB\r\n9pB\r\nBTB\r\n992\r\n2T9\r\n2TT\r\nT9p\r\nBTp\r\nBTB\r\n9pT\r\nT29\r\nTT9\r\n2B2\r\n2BT\r\nTT2\r\nTTT\r\n922\r\nB2B\r\np22\r\n9pT\r\nB2p\r\npBp\r\nB9B\r\nBTp\r\npT2\r\n9B9\r\nBBp\r\n2p2\r\nBpT\r\nTB2\r\n92B\r\nBB2\r\nTp9\r\n2BT\r\nB9B\r\nBB9\r\n2BT\r\n292\r\nTp9\r\np9p\r\nTpp\r\n292\r\nB2T\r\n2Tp\r\n2p9\r\nB2B\r\n2TB\r\n929\r\npT9\r\nBB9\r\n",
+                "YES\r\nBB9B9BTppBpT9pT29292BTB2BTp9pT9BTBTBB9pBB2TB922Tp9B9pB2p992p229B2BTTT2TT929B2pBpBpTBBp9B9Tp9TTp2B2T9\r\n"
+            ],
+            [
+                "99\r\naaJ\r\nJx9\r\naLL\r\nrCx\r\nllJ\r\naja\r\nxxr\r\nLal\r\nv9C\r\njrL\r\nLvL\r\nJLl\r\nxlJ\r\nLja\r\nLLC\r\njvL\r\n9CJ\r\nvrJ\r\nlJJ\r\nlCC\r\nlxC\r\njxl\r\nLaJ\r\nLxJ\r\nrjr\r\nxvv\r\n9jC\r\nLxL\r\nvvr\r\nCCa\r\nJJr\r\nxJL\r\nxCj\r\nvv9\r\nLJJ\r\nx9J\r\nxx9\r\nrCx\r\nJLa\r\nrLv\r\nJrC\r\nvLx\r\njCv\r\nr9J\r\n9Cj\r\nv9C\r\naJL\r\nJrC\r\nCJx\r\nJJv\r\nJxx\r\nLCr\r\nLlx\r\nrJL\r\nx9L\r\naJx\r\nJxv\r\nxvv\r\nLLr\r\nLrC\r\nCv9\r\nCja\r\nxjv\r\n9Jj\r\nCjL\r\njvL\r\nC9j\r\nJLx\r\njaa\r\nxLJ\r\nlxv\r\n9LL\r\nJlC\r\nCxx\r\nJLa\r\njaj\r\nWRX\r\njJl\r\nljv\r\n9Jx\r\nall\r\nLlj\r\njaL\r\naJl\r\nvlx\r\nCr9\r\nCaJ\r\nCxj\r\nrC9\r\nJlJ\r\nlJL\r\njLl\r\nlJr\r\nvLj\r\njvl\r\nvjx\r\nJjv\r\nxrj\r\nJvj\r\n",
+                "NO\r\n"
+            ],
+            [
+                "5\r\ndip\r\nBQd\r\nipB\r\npBQ\r\nQdi\r\n",
+                "YES\r\nQdipBQd\r\n"
+            ]
+        ]
+    }
+]

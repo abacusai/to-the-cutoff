@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Unshuffling a Deck",
+        "description": "You are given a deck of \n    n\n cards numbered from \n    1\n to \n    n\n (not\nnecessarily in this order in the deck). You have to sort the deck by repeating\nthe following operation. Choose \n    2 \n    \u2264 k \n    \u2264 n\n and split the deck in\n\n    k\n nonempty contiguous parts \n    D_1, D_2,\n    \u2026, D_k\n (\n    D_1\n\ncontains the first \n    |D_1|\n cards of the deck, \n    D_2\n contains the\nfollowing \n    |D_2|\n cards and so on). Then reverse the order of the parts,\ntransforming the deck into \n    D_k, D_k-1, \n    \u2026, D_2, D_1\n (so, the\nfirst \n    |D_k|\n cards of the new deck are \n    D_k\n, the following\n\n    |D_k-1|\n cards are \n    D_k-1\n and so on). The internal order of each\npacket of cards \n    D_i\n is unchanged by the operation. You have to obtain a\nsorted deck (i.e., a deck where the first card is \n    1\n, the second is\n\n    2\n and so on) performing at most \n    n\n operations. It can be proven\nthat it is always possible to sort the deck performing at most \n    n\n\noperations. Examples of operation: The following are three examples of valid\noperations (on three decks with different sizes). If the deck is [3 6 2 1 4 5\n7] (so \n    3\n is the first card and \n    7\n is the last card), we may apply\nthe operation with \n    k=4\n and \n    D_1=\n[3 6], \n    D_2=\n[2 1 4],\n\n    D_3=\n[5], \n    D_4=\n[7]. Doing so, the deck becomes [7 5 2 1 4 3 6]. If\nthe deck is [3 1 2], we may apply the operation with \n    k=3\n and\n\n    D_1=\n[3], \n    D_2=\n[1], \n    D_3=\n[2]. Doing so, the deck becomes [2 1\n3]. If the deck is [5 1 2 4 3 6], we may apply the operation with \n    k=2\n\nand \n    D_1=\n[5 1], \n    D_2=\n[2 4 3 6]. Doing so, the deck becomes [2 4 3 6\n5 1]. Input The first line of the input contains one integer \n    n\n\n(\n    1\n    \u2264 n\n    \u2264 52\n) \u2014 the number of cards in the deck. The second line\ncontains \n    n\n integers \n    c_1, c_2, \n    \u2026, c_n\n \u2014 the cards in the\ndeck. The first card is \n    c_1\n, the second is \n    c_2\n and so on. It is\nguaranteed that for all \n    i=1,\n    \u2026,n\n there is exactly one\n\n    j\n    \u2208\n    \n    1,\n    \u2026,n\n such that \n    c_j = i\n. Output On the first\nline, print the number \n    q\n of operations you perform (it must hold\n\n    0\n    \u2264 q\n    \u2264 n\n). Then, print \n    q\n lines, each describing one\noperation. To describe an operation, print on a single line the number \n    k\n\nof parts you are going to split the deck in, followed by the size of the\n\n    k\n parts: \n    |D_1|, |D_2|, \n    \u2026 , |D_k|\n. It must hold \n    2\n    \u2264\n    k\n    \u2264 n\n, and \n    |D_i|\n    \u2265 1\n for all \n    i=1,\n    \u2026,k\n, and\n\n    |D_1|+|D_2|+\n    \u22ef + |D_k| = n\n. It can be proven that it is always\npossible to sort the deck performing at most \n    n\n operations. If there are\nseveral ways to sort the deck you can output any of them. Examples Input 4 3 1\n2 4 Output 2 3 1 2 1 2 1 3 Input 6 6 5 4 3 2 1 Output 1 6 1 1 1 1 1 1 Input 1\n1 Output 0 Note Explanation of the first testcase: Initially the deck is [3 1\n2 4]. The first operation splits the deck as [(3) (1 2) (4)] and then\ntransforms it into [4 1 2 3]. The second operation splits the deck as [(4) (1\n2 3)] and then transforms it into [1 2 3 4]. Explanation of the second\ntestcase: Initially the deck is [6 5 4 3 2 1]. The first (and only) operation\nsplits the deck as [(6) (5) (4) (3) (2) (1)] and then transforms it into [1 2\n3 4 5 6].\n\n",
+        "cf_contest_id": 1427,
+        "cf_index": "D",
+        "cf_rating": 2000,
+        "difficulty": 0,
+        "cf_tags": [
+            "constructive algorithms",
+            "implementation"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "4\r\n3 1 2 4\r\n",
+                "4\r\n3 2 1 1\r\n3 1 2 1\r\n4 1 1 1 1\r\n4 1 1 1 1\r\n"
+            ],
+            [
+                "6\r\n6 5 4 3 2 1\r\n",
+                "5\r\n6 1 1 1 1 1 1\r\n6 1 1 1 1 1 1\r\n6 1 1 1 1 1 1\r\n6 1 1 1 1 1 1\r\n6 1 1 1 1 1 1\r\n"
+            ],
+            [
+                "1\r\n1\r\n",
+                "0\r\n\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "2\r\n2 1\r\n",
+                "1\r\n2 1 1\r\n"
+            ],
+            [
+                "3\r\n3 2 1\r\n",
+                "3\r\n3 1 1 1\r\n3 1 1 1\r\n3 1 1 1\r\n"
+            ],
+            [
+                "10\r\n8 9 10 1 2 3 4 5 6 7\r\n",
+                "10\r\n7 4 1 1 1 1 1 1\r\n7 1 1 1 1 1 4 1\r\n7 1 1 4 1 1 1 1\r\n7 1 1 1 4 1 1 1\r\n7 1 1 1 1 4 1 1\r\n7 1 4 1 1 1 1 1\r\n7 1 1 1 1 1 1 4\r\n8 3 1 1 1 1 1 1 1\r\n10 1 1 1 1 1 1 1 1 1 1\r\n10 1 1 1 1 1 1 1 1 1 1\r\n"
+            ]
+        ]
+    }
+]

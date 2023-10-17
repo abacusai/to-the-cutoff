@@ -1,0 +1,65 @@
+[
+    {
+        "name": "Cd and pwd commands",
+        "description": "Vasya is writing an operating system shell, and it should have commands for\nworking with directories. To begin with, he decided to go with just two\ncommands: cd (change the current directory) and pwd (display the current\ndirectory). Directories in Vasya's operating system form a traditional\nhierarchical tree structure. There is a single root directory, denoted by the\nslash character \"/\". Every other directory has a name \u2014 a non-empty string\nconsisting of lowercase Latin letters. Each directory (except for the root)\nhas a parent directory \u2014 the one that contains the given directory. It is\ndenoted as \"..\". The command cd takes a single parameter, which is a path in\nthe file system. The command changes the current directory to the directory\nspecified by the path. The path consists of the names of directories separated\nby slashes. The name of the directory can be \"..\", which means a step up to\nthe parent directory. \u00ab..\u00bb can be used in any place of the path, maybe several\ntimes. If the path begins with a slash, it is considered to be an absolute\npath, that is, the directory changes to the specified one, starting from the\nroot. If the parameter begins with a directory name (or \"..\"), it is\nconsidered to be a relative path, that is, the directory changes to the\nspecified directory, starting from the current one. The command pwd should\ndisplay the absolute path to the current directory. This path must not contain\n\"..\". Initially, the current directory is the root. All directories mentioned\nexplicitly or passed indirectly within any command cd are considered to exist.\nIt is guaranteed that there is no attempt of transition to the parent\ndirectory of the root directory. Input The first line of the input data\ncontains the single integer n (1 \u2264 n \u2264 50) \u2014 the number of commands. Then\nfollow n lines, each contains one command. Each of these lines contains either\ncommand pwd, or command cd, followed by a space-separated non-empty parameter.\nThe command parameter cd only contains lower case Latin letters, slashes and\ndots, two slashes cannot go consecutively, dots occur only as the name of a\nparent pseudo-directory. The command parameter cd does not end with a slash,\nexcept when it is the only symbol that points to the root directory. The\ncommand parameter has a length from 1 to 200 characters, inclusive.\nDirectories in the file system can have the same names. Output For each\ncommand pwd you should print the full absolute path of the given directory,\nending with a slash. It should start with a slash and contain the list of\nslash-separated directories in the order of being nested from the root to the\ncurrent folder. It should contain no dots. Examples Input 7 pwd cd /home/vasya\npwd cd .. pwd cd vasya/../petya pwd Output / /home/vasya/ /home/ /home/petya/\nInput 4 cd /a/b pwd cd ../a/b pwd Output /a/b/ /a/a/b/\n\n",
+        "cf_contest_id": 158,
+        "cf_index": "C",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "*special",
+            "data structures",
+            "implementation"
+        ],
+        "time_limit_seconds": 3.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "7\r\npwd\r\ncd /home/vasya\r\npwd\r\ncd ..\r\npwd\r\ncd vasya/../petya\r\npwd\r\n",
+                "/\n/home/vasya/\n/home/\n/home/petya/\n"
+            ],
+            [
+                "4\r\ncd /a/b\r\npwd\r\ncd ../a/b\r\npwd\r\n",
+                "/a/b/\n/a/a/b/\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "1\r\npwd\r\n",
+                "/\n"
+            ],
+            [
+                "2\r\ncd /test/../test/../test/../test/../a/b/c/..\r\npwd\r\n",
+                "/a/b/\n"
+            ],
+            [
+                "9\r\ncd test\r\npwd\r\ncd ..\r\ncd /test\r\npwd\r\ncd ..\r\npwd\r\ncd test/test\r\npwd\r\n",
+                "/test/\n/test/\n/\n/test/test/\n"
+            ],
+            [
+                "6\r\ncd a/a/b/b\r\npwd\r\ncd ../..\r\npwd\r\ncd ..\r\npwd\r\n",
+                "/a/a/b/b/\n/a/a/\n/a/\n"
+            ],
+            [
+                "5\r\npwd\r\ncd /xgztbykka\r\npwd\r\ncd /gia/kxfls\r\npwd\r\n",
+                "/\n/xgztbykka/\n/gia/kxfls/\n"
+            ],
+            [
+                "5\r\ncd /xgztbykka\r\ncd /gia/kxfls\r\ncd /kiaxt/hcx\r\ncd /ufzoiv\r\npwd\r\n",
+                "/ufzoiv/\n"
+            ],
+            [
+                "5\r\npwd\r\ncd ztb/kag\r\npwd\r\npwd\r\npwd\r\n",
+                "/\n/ztb/kag/\n/ztb/kag/\n/ztb/kag/\n"
+            ],
+            [
+                "50\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\npwd\r\n",
+                "/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n/\n"
+            ],
+            [
+                "1\r\ncd /\r\n",
+                ""
+            ]
+        ]
+    }
+]

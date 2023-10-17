@@ -1,0 +1,176 @@
+[
+    {
+        "name": "Award Ceremony",
+        "description": "All-Berland programming contest comes to an end. In total, n teams\nparticipated in it. Like in ACM-ICPC, current results stopped refreshing one\nhour before the contest ends. So at the Award Ceremony, results are partially\nknown. For each team the value ai is given \u2014 the number of points the i-th\nteam has earned before the last hour of the contest. Besides that, the Jury\nhas evaluated all submissions sent during the last hour and knows values di \u2014\nthe number of points earned by the i-th team during the last hour (these\nvalues can be negative, which means that a team can lose points). Before the\ncontest, each team got unique id from 1 to n. According to the contest rules,\na team with more points takes a higher place. If two or more teams have equal\nnumber of points, the team with lower id will take the higher place. So no two\nteams can share the same place. The Award Ceremony proceeds in the following\nway. At the beginning of the ceremony, a large screen shows the results for\nthe time moment \"one hour before the end\", which means that the i-th team has\nai points. Then the Jury unfreezes results of the teams one by one in some\norder. When result of the j-th team is unfrozen, its score changes from aj to\naj + dj. At this time the table of results is modified and the place of the\nteam can change. The unfreezing of the j-th team is followed by the applause\nfrom the audience with duration of |xj - yj| seconds, where xj is the place of\nthe j-th team before unfreezing and yj is the place right after the\nunfreezing. For example, if the team does not change the place, there is no\napplause from the audience. As you can see, during the Award Ceremony, each\nteam will be unfrozen exactly once. Your task is to find such an order to\nunfreeze all the teams that the total duration of applause is maximum\npossible. Input The first line of the input file contains a single integer n\n(1 \u2264 n \u2264 100) \u2014 the number of teams. Each of the next n lines contains two\nintegers ai and di (1 \u2264 ai \u2264 100, - 100 \u2264 di \u2264 100) \u2014 the number of points the\ni-th team has earned before the last hour of the contest and the number of\npoints earned by this team during the last hour. It is possible that after\nunfreezing a team will have a negative score. Output Print the only integer \u2014\nmaximal total applause duration in seconds if the Jury can choose any order of\nthe teams to unfreeze. Examples Input 4 17 -14 52 -5 1 52 6 0 Output 4 Input 5\n4 5 3 2 5 -3 6 -2 4 3 Output 14 Note In the first example the initial\nstandings are: Team 2, 52 points Team 1, 17 points Team 4, 6 points Team 3, 1\npoint Here any order of unfreezing the teams leads to 4 seconds of applause in\ntotal. For example, let's unfreeze teams in their order from the Team 1 to the\nTeam 4. After the Team 1 became unfrozen the standings are: Team 2, 52 points\nTeam 4, 6 points Team 1, 3 points Team 3, 1 point So there is 1 second of\napplause, because the difference between old and new places |2 - 3| = 1. After\nthe Team 2 became unfrozen the standings are: Team 2, 47 points Team 4, 6\npoints Team 1, 3 points Team 3, 1 point The place of the Team 2 has not\nchanged, so no applause during unfreezing. After the Team 3 became unfrozen\nthe standings are: Team 3, 53 point Team 2, 47 points Team 4, 6 points Team 1,\n3 points The place of the Team 3 has changed from 4 to 1, so the duration of\napplause is |4 - 1| = 3. The unfreezing of the Team 4 has not changed any\nplace because d4 = 0. Therefore, the total duration of applause is 1 + 0 + 3 +\n0 = 4 seconds.\n\n",
+        "cf_contest_id": 730,
+        "cf_index": "E",
+        "cf_rating": 2200,
+        "difficulty": 0,
+        "cf_tags": [
+            "greedy",
+            "implementation"
+        ],
+        "time_limit_seconds": 2.0,
+        "memory_limit_bytes": 512.0,
+        "public_cases": [
+            [
+                "4\r\n17 -14\r\n52 -5\r\n1 52\r\n6 0\r\n",
+                "4"
+            ],
+            [
+                "5\r\n4 5\r\n3 2\r\n5 -3\r\n6 -2\r\n4 3\r\n",
+                "14"
+            ]
+        ],
+        "private_cases": [
+            [
+                "3\r\n2 1\r\n1 -1\r\n1 2\r\n",
+                "3"
+            ],
+            [
+                "5\r\n4 1\r\n5 4\r\n3 5\r\n4 5\r\n5 2\r\n",
+                "16"
+            ],
+            [
+                "10\r\n3 3\r\n1 1\r\n1 2\r\n2 2\r\n3 4\r\n3 2\r\n4 3\r\n2 2\r\n2 2\r\n1 2\r\n",
+                "62"
+            ],
+            [
+                "20\r\n5 4\r\n1 5\r\n5 4\r\n4 5\r\n4 5\r\n1 1\r\n5 3\r\n3 3\r\n4 5\r\n1 4\r\n5 2\r\n4 2\r\n4 4\r\n5 1\r\n1 1\r\n5 3\r\n2 4\r\n2 4\r\n1 2\r\n2 3\r\n",
+                "259"
+            ],
+            [
+                "40\r\n5 4\r\n1 4\r\n5 1\r\n3 4\r\n1 4\r\n5 4\r\n5 1\r\n2 2\r\n4 1\r\n5 3\r\n3 1\r\n4 4\r\n4 5\r\n1 1\r\n2 1\r\n5 2\r\n2 1\r\n3 1\r\n3 3\r\n3 2\r\n1 3\r\n3 5\r\n4 5\r\n5 5\r\n3 2\r\n3 1\r\n4 5\r\n4 1\r\n3 3\r\n3 5\r\n3 2\r\n5 1\r\n1 2\r\n1 5\r\n5 1\r\n5 4\r\n5 2\r\n3 2\r\n3 4\r\n1 1\r\n",
+                "891"
+            ],
+            [
+                "60\r\n4 3\r\n4 4\r\n4 5\r\n2 2\r\n5 3\r\n3 5\r\n2 1\r\n1 1\r\n4 1\r\n4 4\r\n3 1\r\n1 3\r\n5 3\r\n4 3\r\n4 3\r\n3 2\r\n2 2\r\n3 2\r\n1 5\r\n1 4\r\n5 2\r\n3 5\r\n1 2\r\n3 2\r\n2 2\r\n2 3\r\n5 4\r\n5 1\r\n1 1\r\n1 5\r\n2 4\r\n3 4\r\n5 1\r\n4 3\r\n4 5\r\n2 4\r\n4 3\r\n3 4\r\n1 5\r\n2 2\r\n4 5\r\n1 3\r\n1 2\r\n5 2\r\n1 2\r\n3 4\r\n3 4\r\n2 1\r\n3 1\r\n2 2\r\n1 4\r\n2 4\r\n4 4\r\n3 1\r\n4 3\r\n5 5\r\n3 5\r\n1 2\r\n1 4\r\n5 1\r\n",
+                "2216"
+            ],
+            [
+                "80\r\n3 3\r\n5 3\r\n2 5\r\n2 1\r\n3 4\r\n2 4\r\n4 2\r\n4 5\r\n3 1\r\n1 4\r\n5 2\r\n4 3\r\n5 2\r\n3 5\r\n2 3\r\n1 3\r\n3 3\r\n5 3\r\n4 2\r\n2 1\r\n2 2\r\n2 2\r\n4 1\r\n3 2\r\n1 4\r\n1 3\r\n3 1\r\n4 1\r\n1 1\r\n1 4\r\n3 1\r\n5 4\r\n2 3\r\n4 3\r\n3 4\r\n1 5\r\n1 5\r\n1 5\r\n3 3\r\n1 4\r\n1 2\r\n4 1\r\n1 1\r\n3 1\r\n5 3\r\n2 2\r\n1 1\r\n5 3\r\n3 5\r\n4 3\r\n2 5\r\n1 2\r\n1 5\r\n1 3\r\n1 5\r\n3 2\r\n1 1\r\n4 1\r\n3 5\r\n3 1\r\n2 1\r\n3 1\r\n2 4\r\n1 2\r\n2 1\r\n2 3\r\n3 2\r\n2 1\r\n1 3\r\n2 5\r\n2 4\r\n4 2\r\n5 5\r\n4 2\r\n3 1\r\n5 2\r\n3 2\r\n3 3\r\n4 1\r\n2 4\r\n",
+                "3879"
+            ],
+            [
+                "100\r\n5 4\r\n2 5\r\n3 1\r\n3 3\r\n3 3\r\n2 5\r\n2 5\r\n5 2\r\n2 3\r\n3 3\r\n4 1\r\n2 4\r\n2 2\r\n4 5\r\n2 5\r\n3 3\r\n5 3\r\n5 3\r\n3 2\r\n1 1\r\n3 1\r\n4 5\r\n2 1\r\n5 5\r\n4 1\r\n3 1\r\n4 5\r\n3 3\r\n1 2\r\n3 1\r\n4 4\r\n2 3\r\n5 5\r\n1 4\r\n4 3\r\n1 5\r\n1 5\r\n3 5\r\n5 4\r\n5 3\r\n1 5\r\n1 5\r\n4 3\r\n3 1\r\n3 2\r\n3 1\r\n3 5\r\n2 3\r\n4 5\r\n2 4\r\n4 3\r\n3 4\r\n2 5\r\n3 4\r\n5 3\r\n5 2\r\n5 1\r\n1 2\r\n3 5\r\n2 2\r\n1 4\r\n2 4\r\n4 5\r\n5 5\r\n3 4\r\n1 2\r\n1 2\r\n2 1\r\n1 1\r\n3 4\r\n2 2\r\n2 1\r\n1 5\r\n1 3\r\n2 3\r\n2 2\r\n3 2\r\n5 3\r\n3 5\r\n1 5\r\n2 3\r\n1 4\r\n2 1\r\n5 1\r\n2 4\r\n2 4\r\n1 4\r\n1 3\r\n3 4\r\n4 3\r\n3 4\r\n5 2\r\n3 3\r\n1 3\r\n5 4\r\n5 1\r\n2 2\r\n5 2\r\n1 1\r\n5 3\r\n",
+                "6539"
+            ],
+            [
+                "100\r\n5 5\r\n5 3\r\n3 4\r\n2 3\r\n4 3\r\n3 5\r\n2 1\r\n1 4\r\n1 1\r\n5 5\r\n2 5\r\n2 4\r\n4 2\r\n5 5\r\n3 2\r\n4 4\r\n1 2\r\n1 2\r\n2 5\r\n2 2\r\n1 3\r\n5 4\r\n4 3\r\n5 3\r\n5 1\r\n1 3\r\n3 1\r\n4 5\r\n5 4\r\n4 5\r\n4 4\r\n3 2\r\n5 3\r\n4 1\r\n5 4\r\n2 2\r\n1 2\r\n4 3\r\n2 4\r\n1 5\r\n4 2\r\n3 5\r\n1 2\r\n3 2\r\n5 1\r\n1 2\r\n1 1\r\n5 4\r\n1 2\r\n2 2\r\n2 3\r\n4 4\r\n3 4\r\n1 2\r\n5 1\r\n2 2\r\n4 5\r\n3 3\r\n4 2\r\n4 2\r\n4 1\r\n3 5\r\n2 4\r\n5 2\r\n4 3\r\n2 1\r\n3 3\r\n5 1\r\n1 4\r\n5 5\r\n2 4\r\n3 1\r\n2 1\r\n4 5\r\n3 3\r\n4 3\r\n5 2\r\n2 3\r\n4 5\r\n1 4\r\n2 2\r\n2 4\r\n5 3\r\n2 3\r\n1 2\r\n2 3\r\n3 5\r\n3 2\r\n3 3\r\n1 5\r\n1 5\r\n3 4\r\n1 4\r\n5 1\r\n1 5\r\n1 4\r\n2 5\r\n1 4\r\n1 2\r\n4 1\r\n",
+                "6463"
+            ],
+            [
+                "5\r\n4 -5\r\n5 -2\r\n3 -1\r\n4 -1\r\n5 -4\r\n",
+                "14"
+            ],
+            [
+                "10\r\n3 -3\r\n1 -5\r\n1 -4\r\n2 -4\r\n3 -2\r\n3 -4\r\n4 -3\r\n2 -4\r\n2 -4\r\n1 -4\r\n",
+                "82"
+            ],
+            [
+                "20\r\n5 -2\r\n1 -1\r\n5 -2\r\n4 -1\r\n4 -1\r\n1 -5\r\n5 -3\r\n3 -3\r\n4 -1\r\n1 -2\r\n5 -4\r\n4 -4\r\n4 -2\r\n5 -5\r\n1 -5\r\n5 -3\r\n2 -2\r\n2 -2\r\n1 -4\r\n2 -3\r\n",
+                "209"
+            ],
+            [
+                "40\r\n5 -2\r\n1 -2\r\n5 -5\r\n3 -2\r\n1 -2\r\n5 -2\r\n5 -5\r\n2 -4\r\n4 -5\r\n5 -3\r\n3 -5\r\n4 -2\r\n4 -1\r\n1 -5\r\n2 -5\r\n5 -4\r\n2 -5\r\n3 -5\r\n3 -3\r\n3 -4\r\n1 -3\r\n3 -1\r\n4 -1\r\n5 -1\r\n3 -4\r\n3 -5\r\n4 -1\r\n4 -5\r\n3 -3\r\n3 -1\r\n3 -4\r\n5 -5\r\n1 -4\r\n1 -1\r\n5 -5\r\n5 -2\r\n5 -4\r\n3 -4\r\n3 -2\r\n1 -5\r\n",
+                "1015"
+            ],
+            [
+                "60\r\n4 -3\r\n4 -2\r\n4 -1\r\n2 -4\r\n5 -3\r\n3 -1\r\n2 -5\r\n1 -5\r\n4 -5\r\n4 -2\r\n3 -5\r\n1 -3\r\n5 -3\r\n4 -3\r\n4 -3\r\n3 -4\r\n2 -4\r\n3 -4\r\n1 -1\r\n1 -2\r\n5 -4\r\n3 -1\r\n1 -4\r\n3 -4\r\n2 -4\r\n2 -3\r\n5 -2\r\n5 -5\r\n1 -5\r\n1 -1\r\n2 -2\r\n3 -2\r\n5 -5\r\n4 -3\r\n4 -1\r\n2 -2\r\n4 -3\r\n3 -2\r\n1 -1\r\n2 -4\r\n4 -1\r\n1 -3\r\n1 -4\r\n5 -4\r\n1 -4\r\n3 -2\r\n3 -2\r\n2 -5\r\n3 -5\r\n2 -4\r\n1 -2\r\n2 -2\r\n4 -2\r\n3 -5\r\n4 -3\r\n5 -1\r\n3 -1\r\n1 -4\r\n1 -2\r\n5 -5\r\n",
+                "2272"
+            ],
+            [
+                "80\r\n3 -3\r\n5 -3\r\n2 -1\r\n2 -5\r\n3 -2\r\n2 -2\r\n4 -4\r\n4 -1\r\n3 -5\r\n1 -2\r\n5 -4\r\n4 -3\r\n5 -4\r\n3 -1\r\n2 -3\r\n1 -3\r\n3 -3\r\n5 -3\r\n4 -4\r\n2 -5\r\n2 -4\r\n2 -4\r\n4 -5\r\n3 -4\r\n1 -2\r\n1 -3\r\n3 -5\r\n4 -5\r\n1 -5\r\n1 -2\r\n3 -5\r\n5 -2\r\n2 -3\r\n4 -3\r\n3 -2\r\n1 -1\r\n1 -1\r\n1 -1\r\n3 -3\r\n1 -2\r\n1 -4\r\n4 -5\r\n1 -5\r\n3 -5\r\n5 -3\r\n2 -4\r\n1 -5\r\n5 -3\r\n3 -1\r\n4 -3\r\n2 -1\r\n1 -4\r\n1 -1\r\n1 -3\r\n1 -1\r\n3 -4\r\n1 -5\r\n4 -5\r\n3 -1\r\n3 -5\r\n2 -5\r\n3 -5\r\n2 -2\r\n1 -4\r\n2 -5\r\n2 -3\r\n3 -4\r\n2 -5\r\n1 -3\r\n2 -1\r\n2 -2\r\n4 -4\r\n5 -1\r\n4 -4\r\n3 -5\r\n5 -4\r\n3 -4\r\n3 -3\r\n4 -5\r\n2 -2\r\n",
+                "4377"
+            ],
+            [
+                "5\r\n4 1\r\n5 -2\r\n3 -1\r\n4 4\r\n5 5\r\n",
+                "8"
+            ],
+            [
+                "10\r\n3 -3\r\n1 -2\r\n1 4\r\n2 -5\r\n3 -2\r\n3 -4\r\n4 1\r\n2 1\r\n2 -4\r\n1 -5\r\n",
+                "47"
+            ],
+            [
+                "20\r\n5 1\r\n1 -3\r\n5 2\r\n4 -5\r\n4 -2\r\n1 -2\r\n5 3\r\n3 2\r\n4 -2\r\n1 3\r\n5 1\r\n4 -3\r\n4 3\r\n5 -1\r\n1 4\r\n5 2\r\n2 -5\r\n2 -2\r\n1 -5\r\n2 -1\r\n",
+                "131"
+            ],
+            [
+                "40\r\n5 4\r\n1 0\r\n5 4\r\n3 -1\r\n1 -1\r\n5 -1\r\n5 3\r\n2 -5\r\n4 1\r\n5 1\r\n3 -4\r\n4 1\r\n4 1\r\n1 3\r\n2 2\r\n5 4\r\n2 2\r\n3 2\r\n3 4\r\n3 5\r\n1 2\r\n3 2\r\n4 0\r\n5 1\r\n3 -3\r\n3 0\r\n4 -1\r\n4 -4\r\n3 -2\r\n3 -4\r\n3 5\r\n5 4\r\n1 -4\r\n1 -5\r\n5 0\r\n5 -3\r\n5 -2\r\n3 3\r\n3 -1\r\n1 1\r\n",
+                "501"
+            ],
+            [
+                "60\r\n4 4\r\n4 4\r\n4 -3\r\n2 2\r\n5 3\r\n3 -1\r\n2 -4\r\n1 -1\r\n4 3\r\n4 4\r\n3 -5\r\n1 1\r\n5 4\r\n4 -1\r\n4 4\r\n3 -4\r\n2 -4\r\n3 5\r\n1 3\r\n1 -2\r\n5 1\r\n3 0\r\n1 3\r\n3 -2\r\n2 2\r\n2 -3\r\n5 1\r\n5 -4\r\n1 -4\r\n1 -3\r\n2 2\r\n3 2\r\n5 -4\r\n4 -1\r\n4 4\r\n2 5\r\n4 -5\r\n3 5\r\n1 -1\r\n2 -2\r\n4 1\r\n1 0\r\n1 0\r\n5 0\r\n1 -2\r\n3 5\r\n3 -5\r\n2 5\r\n3 -3\r\n2 3\r\n1 2\r\n2 -3\r\n4 3\r\n3 -4\r\n4 -4\r\n5 5\r\n3 -2\r\n1 3\r\n1 -2\r\n5 -2\r\n",
+                "1347"
+            ],
+            [
+                "80\r\n3 -4\r\n5 4\r\n2 5\r\n2 -5\r\n3 -4\r\n2 4\r\n4 1\r\n4 3\r\n3 5\r\n1 3\r\n5 -3\r\n4 2\r\n5 -5\r\n3 -5\r\n2 2\r\n1 1\r\n3 -1\r\n5 5\r\n4 2\r\n2 2\r\n2 4\r\n2 2\r\n4 -1\r\n3 -5\r\n1 1\r\n1 0\r\n3 -1\r\n4 5\r\n1 -2\r\n1 5\r\n3 2\r\n5 -5\r\n2 2\r\n4 -5\r\n3 0\r\n1 3\r\n1 -1\r\n1 3\r\n3 -5\r\n1 -1\r\n1 -3\r\n4 -2\r\n1 2\r\n3 4\r\n5 1\r\n2 5\r\n1 5\r\n5 3\r\n3 -1\r\n4 -4\r\n2 -2\r\n1 -5\r\n1 -3\r\n1 -2\r\n1 -3\r\n3 1\r\n1 -5\r\n4 -3\r\n3 2\r\n3 3\r\n2 -4\r\n3 -3\r\n2 4\r\n1 1\r\n2 0\r\n2 4\r\n3 0\r\n2 -2\r\n1 -1\r\n2 -4\r\n2 -3\r\n4 5\r\n5 1\r\n4 -5\r\n3 2\r\n5 4\r\n3 3\r\n3 0\r\n4 5\r\n2 2\r\n",
+                "2580"
+            ],
+            [
+                "10\r\n10 1\r\n9 2\r\n8 3\r\n7 4\r\n6 5\r\n5 6\r\n4 7\r\n3 8\r\n2 9\r\n1 10\r\n",
+                "90"
+            ],
+            [
+                "50\r\n50 1\r\n49 2\r\n48 3\r\n47 4\r\n46 5\r\n45 6\r\n44 7\r\n43 8\r\n42 9\r\n41 10\r\n40 11\r\n39 12\r\n38 13\r\n37 14\r\n36 15\r\n35 16\r\n34 17\r\n33 18\r\n32 19\r\n31 20\r\n30 21\r\n29 22\r\n28 23\r\n27 24\r\n26 25\r\n25 26\r\n24 27\r\n23 28\r\n22 29\r\n21 30\r\n20 31\r\n19 32\r\n18 33\r\n17 34\r\n16 35\r\n15 36\r\n14 37\r\n13 38\r\n12 39\r\n11 40\r\n10 41\r\n9 42\r\n8 43\r\n7 44\r\n6 45\r\n5 46\r\n4 47\r\n3 48\r\n2 49\r\n1 50\r\n",
+                "2450"
+            ],
+            [
+                "10\r\n70 -20\r\n70 -20\r\n30 20\r\n30 20\r\n70 -20\r\n30 20\r\n70 -20\r\n30 20\r\n70 -20\r\n30 20\r\n",
+                "49"
+            ],
+            [
+                "50\r\n30 30\r\n30 30\r\n30 30\r\n90 -30\r\n90 -30\r\n90 -30\r\n90 -30\r\n30 30\r\n90 -30\r\n90 -30\r\n90 -30\r\n30 30\r\n90 -30\r\n30 30\r\n30 30\r\n90 -30\r\n90 -30\r\n30 30\r\n30 30\r\n30 30\r\n90 -30\r\n30 30\r\n90 -30\r\n30 30\r\n90 -30\r\n30 30\r\n90 -30\r\n90 -30\r\n30 30\r\n90 -30\r\n90 -30\r\n90 -30\r\n90 -30\r\n30 30\r\n90 -30\r\n90 -30\r\n30 30\r\n90 -30\r\n90 -30\r\n90 -30\r\n30 30\r\n90 -30\r\n30 30\r\n30 30\r\n30 30\r\n90 -30\r\n30 30\r\n30 30\r\n30 30\r\n90 -30\r\n",
+                "1504"
+            ],
+            [
+                "50\r\n86 -1\r\n80 1\r\n56 1\r\n64 -1\r\n100 -1\r\n58 1\r\n90 1\r\n98 -1\r\n4 0\r\n10 -1\r\n46 1\r\n14 0\r\n62 0\r\n70 -1\r\n76 1\r\n8 -1\r\n32 0\r\n16 0\r\n40 0\r\n66 1\r\n26 1\r\n78 0\r\n18 0\r\n34 1\r\n36 1\r\n74 0\r\n84 -1\r\n50 1\r\n28 1\r\n82 1\r\n20 1\r\n54 0\r\n6 0\r\n96 0\r\n52 -1\r\n38 1\r\n94 0\r\n48 -1\r\n42 -1\r\n12 -1\r\n22 1\r\n68 1\r\n60 -1\r\n44 0\r\n88 0\r\n92 -1\r\n2 1\r\n24 -1\r\n72 1\r\n30 1\r\n",
+                "5"
+            ],
+            [
+                "49\r\n8 1\r\n86 1\r\n24 0\r\n56 -1\r\n80 1\r\n44 -1\r\n30 1\r\n4 -1\r\n70 1\r\n88 1\r\n14 1\r\n72 1\r\n28 -1\r\n74 1\r\n32 -1\r\n38 0\r\n54 0\r\n62 0\r\n60 -1\r\n6 -1\r\n78 0\r\n10 0\r\n18 1\r\n52 -1\r\n58 1\r\n22 1\r\n2 0\r\n20 1\r\n68 0\r\n16 -1\r\n46 -1\r\n82 -1\r\n12 0\r\n84 -1\r\n48 -1\r\n76 1\r\n98 -1\r\n42 -1\r\n92 -1\r\n96 -1\r\n40 0\r\n94 -1\r\n34 -1\r\n50 1\r\n36 0\r\n66 0\r\n64 -1\r\n26 0\r\n90 1\r\n",
+                "3"
+            ],
+            [
+                "4\r\n4 -1\r\n3 1\r\n2 0\r\n1 3\r\n",
+                "5"
+            ],
+            [
+                "8\r\n8 -1\r\n7 -1\r\n6 -1\r\n5 -1\r\n4 1\r\n3 1\r\n2 1\r\n1 1\r\n",
+                "1"
+            ],
+            [
+                "1\r\n100 100\r\n",
+                "0"
+            ],
+            [
+                "1\r\n100 -100\r\n",
+                "0"
+            ],
+            [
+                "1\r\n1 100\r\n",
+                "0"
+            ],
+            [
+                "1\r\n1 -100\r\n",
+                "0"
+            ],
+            [
+                "20\r\n2 1\r\n12 0\r\n30 0\r\n18 0\r\n36 2\r\n34 -1\r\n14 -2\r\n16 0\r\n6 -1\r\n38 -1\r\n4 0\r\n26 -1\r\n22 -1\r\n24 2\r\n28 -2\r\n8 2\r\n10 -2\r\n40 -2\r\n32 -1\r\n20 2\r\n",
+                "11"
+            ],
+            [
+                "47\r\n56 2\r\n94 -1\r\n8 -1\r\n26 -2\r\n30 0\r\n34 0\r\n58 0\r\n82 0\r\n6 2\r\n74 1\r\n88 0\r\n10 -2\r\n42 2\r\n50 -2\r\n72 -1\r\n64 2\r\n38 1\r\n16 -1\r\n92 -2\r\n44 -1\r\n32 -1\r\n90 -1\r\n68 2\r\n76 -2\r\n62 1\r\n18 0\r\n2 0\r\n60 -1\r\n28 1\r\n40 -1\r\n48 -2\r\n84 -2\r\n36 -1\r\n4 -2\r\n46 1\r\n78 2\r\n14 1\r\n54 -2\r\n86 1\r\n52 -1\r\n80 0\r\n22 -1\r\n12 2\r\n66 0\r\n70 -1\r\n20 1\r\n24 0\r\n",
+                "14"
+            ],
+            [
+                "30\r\n3 94\r\n7 90\r\n6 90\r\n3 93\r\n6 91\r\n7 89\r\n2 92\r\n8 85\r\n96 -90\r\n98 -93\r\n98 -94\r\n93 -87\r\n92 -89\r\n94 -92\r\n98 -90\r\n94 -91\r\n48 -3\r\n47 -2\r\n53 3\r\n52 0\r\n49 1\r\n49 2\r\n50 3\r\n52 -3\r\n53 -2\r\n51 -1\r\n51 -2\r\n48 0\r\n50 1\r\n52 -1\r\n",
+                "420"
+            ],
+            [
+                "43\r\n15 57\r\n20 52\r\n19 46\r\n15 54\r\n18 57\r\n24 50\r\n18 50\r\n15 54\r\n24 42\r\n15 57\r\n23 45\r\n17 56\r\n17 56\r\n20 45\r\n47 -56\r\n54 -65\r\n53 -66\r\n51 -64\r\n49 -57\r\n48 -58\r\n54 -66\r\n53 -61\r\n54 -62\r\n47 -53\r\n45 -53\r\n46 -61\r\n52 -58\r\n52 -64\r\n47 -61\r\n50 -62\r\n47 -55\r\n52 -63\r\n50 -56\r\n51 -56\r\n49 -61\r\n45 -58\r\n51 -64\r\n49 -61\r\n51 -64\r\n53 -66\r\n50 -57\r\n45 -57\r\n55 -60\r\n",
+                "1178"
+            ]
+        ]
+    }
+]

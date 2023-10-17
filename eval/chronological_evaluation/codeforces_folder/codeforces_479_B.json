@@ -1,0 +1,175 @@
+[
+    {
+        "name": "Towers",
+        "description": "As you know, all the kids in Berland love playing with cubes. Little Petya has\nn towers consisting of cubes of the same size. Tower with number i consists of\nai cubes stacked one on top of the other. Petya defines the instability of a\nset of towers as a value equal to the difference between the heights of the\nhighest and the lowest of the towers. For example, if Petya built five cube\ntowers with heights (8, 3, 2, 6, 3), the instability of this set is equal to 6\n(the highest tower has height 8, the lowest one has height 2). The boy wants\nthe instability of his set of towers to be as low as possible. All he can do\nis to perform the following operation several times: take the top cube from\nsome tower and put it on top of some other tower of his set. Please note that\nPetya would never put the cube on the same tower from which it was removed\nbecause he thinks it's a waste of time. Before going to school, the boy will\nhave time to perform no more than k such operations. Petya does not want to be\nlate for class, so you have to help him accomplish this task. Input The first\nline contains two space-separated positive integers n and k (1 \u2264 n \u2264 100, 1 \u2264\nk \u2264 1000) \u2014 the number of towers in the given set and the maximum number of\noperations Petya can perform. The second line contains n space-separated\npositive integers ai (1 \u2264 ai \u2264 10^4) \u2014 the towers' initial heights. Output In\nthe first line print two space-separated non-negative integers s and m (m \u2264\nk). The first number is the value of the minimum possible instability that can\nbe obtained after performing at most k operations, the second number is the\nnumber of operations needed for that. In the next m lines print the\ndescription of each operation as two positive integers i and j, each of them\nlies within limits from 1 to n. They represent that Petya took the top cube\nfrom the i-th tower and put in on the j-th one (i \u2260 j). Note that in the\nprocess of performing operations the heights of some towers can become equal\nto zero. If there are multiple correct sequences at which the minimum possible\ninstability is achieved, you are allowed to print any of them. Examples Input\n3 2 5 8 5 Output 0 2 2 1 2 3 Input 3 4 2 2 4 Output 1 1 3 2 Input 5 3 8 3 2 6\n3 Output 3 3 1 3 1 2 1 3 Note In the first sample you need to move the cubes\ntwo times, from the second tower to the third one and from the second one to\nthe first one. Then the heights of the towers are all the same and equal to 6.\n\n",
+        "cf_contest_id": 479,
+        "cf_index": "B",
+        "cf_rating": 1400,
+        "difficulty": 0,
+        "cf_tags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "sortings"
+        ],
+        "time_limit_seconds": 1.0,
+        "memory_limit_bytes": 256.0,
+        "public_cases": [
+            [
+                "3 2\r\n5 8 5\r\n",
+                "0 2\r\n2 1\r\n2 3\r\n"
+            ],
+            [
+                "3 4\r\n2 2 4\r\n",
+                "1 1\r\n3 1\r\n"
+            ],
+            [
+                "5 3\r\n8 3 2 6 3\r\n",
+                "3 3\r\n1 3\r\n1 2\r\n1 3\r\n"
+            ]
+        ],
+        "private_cases": [
+            [
+                "4 6\r\n1 10 8 2\r\n",
+                "2 6\r\n2 1\r\n2 1\r\n2 4\r\n3 1\r\n2 4\r\n3 1\r\n"
+            ],
+            [
+                "5 3\r\n2 2 2 2 2\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1 1\r\n1\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1 1\r\n10000\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1 1\r\n1238\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1 998\r\n13\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "1 1000\r\n2153\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2 1\r\n13 13\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "2 2\r\n27 29\r\n",
+                "0 1\r\n2 1\r\n"
+            ],
+            [
+                "2 1\r\n27 29\r\n",
+                "0 1\r\n2 1\r\n"
+            ],
+            [
+                "2 1\r\n37 41\r\n",
+                "2 1\r\n2 1\r\n"
+            ],
+            [
+                "2 2\r\n37 41\r\n",
+                "0 2\r\n2 1\r\n2 1\r\n"
+            ],
+            [
+                "5 1000\r\n10000 10000 10000 10000 10000\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "6 1000\r\n1 2 3 4 5 6\r\n",
+                "1 3\r\n6 1\r\n5 1\r\n6 2\r\n"
+            ],
+            [
+                "5 17\r\n10000 1 10000 1 10000\r\n",
+                "9986 17\r\n1 2\r\n3 4\r\n5 2\r\n1 4\r\n3 2\r\n5 4\r\n1 2\r\n3 4\r\n5 2\r\n1 4\r\n3 2\r\n5 4\r\n1 2\r\n3 4\r\n5 2\r\n1 4\r\n3 2\r\n"
+            ],
+            [
+                "8 4\r\n9 8 7 5 6 8 10 12\r\n",
+                "2 4\r\n8 4\r\n8 4\r\n7 5\r\n8 3\r\n"
+            ],
+            [
+                "7 23\r\n1 1 1 1 1 1 1\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "11 20\r\n10 12 14 7 9 11 13 15 5 7 88\r\n",
+                "57 20\r\n11 9\r\n11 9\r\n11 4\r\n11 9\r\n11 10\r\n11 4\r\n11 9\r\n11 10\r\n11 4\r\n11 5\r\n11 9\r\n11 10\r\n11 1\r\n11 4\r\n11 5\r\n11 9\r\n11 10\r\n11 1\r\n11 4\r\n11 5\r\n"
+            ],
+            [
+                "10 14\r\n18 26 19 37 37 37 12 2 11 39\r\n",
+                "21 14\r\n10 8\r\n10 8\r\n4 8\r\n5 8\r\n6 8\r\n10 8\r\n4 8\r\n5 8\r\n6 8\r\n10 8\r\n4 9\r\n5 7\r\n6 8\r\n10 9\r\n"
+            ],
+            [
+                "7 859\r\n12 10 11 12 10 15 18\r\n",
+                "1 7\r\n7 2\r\n7 5\r\n7 2\r\n6 3\r\n7 5\r\n6 1\r\n7 2\r\n"
+            ],
+            [
+                "8 789\r\n80 88 86 88 89 80 85 86\r\n",
+                "1 10\r\n5 1\r\n2 6\r\n4 1\r\n5 6\r\n2 1\r\n4 6\r\n5 1\r\n2 6\r\n3 1\r\n4 6\r\n"
+            ],
+            [
+                "7 987\r\n670 658 658 658 679 690 684\r\n",
+                "0 40\r\n6 2\r\n6 3\r\n6 4\r\n6 2\r\n6 3\r\n6 4\r\n6 2\r\n7 3\r\n6 4\r\n7 2\r\n6 3\r\n7 4\r\n6 2\r\n7 3\r\n6 4\r\n7 2\r\n5 3\r\n6 4\r\n7 2\r\n5 3\r\n6 4\r\n7 2\r\n5 3\r\n6 4\r\n7 2\r\n5 3\r\n6 4\r\n7 2\r\n5 3\r\n6 4\r\n7 2\r\n5 3\r\n6 4\r\n7 2\r\n5 3\r\n6 4\r\n7 1\r\n5 2\r\n6 3\r\n7 4\r\n"
+            ],
+            [
+                "7 750\r\n96 101 102 103 104 105 103\r\n",
+                "0 7\r\n6 1\r\n5 1\r\n6 1\r\n4 1\r\n5 1\r\n6 1\r\n7 2\r\n"
+            ],
+            [
+                "64 35\r\n369 370 362 370 380 377 379 360 369 380 366 369 360 379 359 374 360 373 370 375 363 367 380 361 364 367 369 370 368 370 375 362 359 364 367 371 362 377 372 367 377 373 375 364 359 359 370 368 377 372 374 378 376 365 368 370 369 373 370 365 365 372 365 367\r\n",
+                "12 35\r\n5 15\r\n10 33\r\n23 45\r\n5 46\r\n7 8\r\n10 13\r\n14 15\r\n23 17\r\n5 33\r\n7 45\r\n10 46\r\n14 8\r\n23 13\r\n52 15\r\n5 17\r\n6 24\r\n7 33\r\n10 45\r\n14 46\r\n23 3\r\n38 8\r\n41 13\r\n49 15\r\n52 17\r\n5 24\r\n6 32\r\n7 33\r\n10 37\r\n14 45\r\n23 46\r\n38 3\r\n41 8\r\n49 13\r\n52 15\r\n53 17\r\n"
+            ],
+            [
+                "76 41\r\n359 359 366 370 376 375 368 361 369 373 367 363 364 377 363 378 373 371 370 370 360 367 369 359 365 373 379 379 375 361 372 377 369 368 373 362 375 379 365 378 370 370 377 364 373 379 365 362 360 366 375 364 372 376 375 379 362 377 369 370 359 379 365 359 372 376 373 371 364 361 377 366 373 380 378 369\r\n",
+                "13 41\r\n74 1\r\n27 2\r\n28 24\r\n38 61\r\n46 64\r\n56 1\r\n62 2\r\n74 21\r\n16 24\r\n27 49\r\n28 61\r\n38 64\r\n40 1\r\n46 2\r\n56 8\r\n62 21\r\n74 24\r\n75 30\r\n14 49\r\n16 61\r\n27 64\r\n28 70\r\n32 1\r\n38 2\r\n40 8\r\n43 21\r\n46 24\r\n56 30\r\n58 36\r\n62 48\r\n71 49\r\n74 57\r\n75 61\r\n5 64\r\n14 70\r\n16 1\r\n27 2\r\n28 8\r\n32 12\r\n38 15\r\n40 21\r\n"
+            ],
+            [
+                "4 917\r\n371 379 368 369\r\n",
+                "1 7\r\n2 3\r\n2 3\r\n2 4\r\n2 3\r\n2 4\r\n2 1\r\n2 3\r\n"
+            ],
+            [
+                "40 543\r\n817 818 818 817 817 818 818 818 818 817 818 818 818 818 818 818 818 818 817 818 817 817 818 817 818 817 818 817 818 818 817 818 818 818 817 818 818 818 818 818\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "56 253\r\n818 817 817 818 817 818 817 817 818 818 817 817 818 817 817 817 817 817 818 817 818 818 818 817 817 818 818 818 817 817 818 817 817 818 818 817 818 818 817 817 817 817 818 817 818 818 818 817 817 818 817 817 818 818 818 817\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "16 611\r\n817 817 818 818 818 818 817 817 818 818 818 817 817 817 818 818\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "87 161\r\n1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024 1024\r\n",
+                "0 0\r\n"
+            ],
+            [
+                "4 1\r\n10000 3 3 3\r\n",
+                "9996 1\r\n1 2\r\n"
+            ],
+            [
+                "4 4\r\n2 2 2 3\r\n",
+                "1 0\r\n"
+            ],
+            [
+                "2 1\r\n10000 1\r\n",
+                "9997 1\r\n1 2\r\n"
+            ],
+            [
+                "4 3\r\n10000 3 3 3\r\n",
+                "9993 3\r\n1 2\r\n1 3\r\n1 4\r\n"
+            ],
+            [
+                "2 2\r\n1 3\r\n",
+                "0 1\r\n2 1\r\n"
+            ]
+        ]
+    }
+]
