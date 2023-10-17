@@ -1,8 +1,9 @@
-# Code by Manley Roberts, Himanshu Thakur, and open source code from many authors used under license.
+Associated with 'Data Contamination Through the Lens of Time' (arxiv preprint): http://arxiv.org/abs/2310.10628
 
-Associated with 'Data Contamination Through the Lens of Time (arxiv preprint)': http://arxiv.org/abs/2310.10628
+Code by Manley Roberts, Himanshu Thakur, and open source code from many authors used under license.
+For contact: manley@abacus.ai
 
-This is a code dump designed to make transparent our procedure for producing datasets and conducting experiments. A small number of files, such as one-off utility files used while collecting dataset features or plotting/analysis code files, have not been included. In addition, a fully updated env install file is not yet available.
+Current code makes transparent our procedure for producing datasets and conducting experiments. A small number of files, such as one-off utility files used while collecting dataset features or plotting/analysis code files, have not been included. In addition, a fully updated env install file is not yet available.
 
 The code has some small changes from the exact form used for experiments. For example, we have removed the implementation of a testing function in code_contests/execution/solve_problem.cc in order to better comply with the Codeforces materials license v 0.1. More details in that file.
 
