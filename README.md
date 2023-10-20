@@ -8,11 +8,13 @@ The code has some small changes from the exact form used for experiments. For ex
 
 We have prioritized making the code available for release and transparency; usability improvements including a thorough how-to-install (especially tricky to get the C++ environment configured correctly) will come soon.
 
+For now, requirements.txt, along with a Python 3.10 installation, should prove sufficient to execute experiments (although it will not be sufficient to replicate dataset scraping or GitHub scraping.)
+
 SPOILER WARNING! Solutions for Project Euler exist in the euler directory. Solutions for problems from both datasets may exist in the csvs.
 
 For now, a few key entry points:
 - eval/euler.csv, eval/codeforces_summary_stats.csv, eval/codeforces.csv contain final experimental data on which analyses are conducted.
-- summary_stats_codeforcest_tests.ipnyb is an analysis file used to collect summary stats. It also could be useful as a starting point for any reviewer seeking to have a closer look into the results csvs.
 - eval/chronological_evaluation primarily includes tools for collecting codeforces data (e.g. codeforces_scraper.py) and collecting experimental results (entry point: chronological_evaluation.py).
+- eval/chronological_evaluation/summary_stats_codeforcest_tests.ipnyb is an analysis file used to collect summary stats. It also could be useful as a starting point for any reviewer seeking to have a closer look into the results csvs.
 - euler directory contains raw project euler data and scrapers. 
 - code_contests directory contains tools slightly modified from https://github.com/google-deepmind/code_contests, used for functional correctness tests on codeforces.
