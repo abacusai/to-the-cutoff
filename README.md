@@ -17,3 +17,5 @@ For now, a few key entry points:
 - eval/chronological_evaluation primarily includes tools for collecting codeforces data (e.g. codeforces_scraper.py) and collecting experimental results (entry point: chronological_evaluation.py).
 - euler directory contains raw project euler data and scrapers. 
 - code_contests directory contains tools slightly modified from https://github.com/google-deepmind/code_contests, used for functional correctness tests on codeforces.
+
+Note: Some Codeforces runs contained a few (<5) generated solution completions which did not produce any output from the evaluation handle adapted from Deepmind (even failing to produce failed/test case failed output). In these events, we redo those completions, which will typically lead to a regenerated solution.
