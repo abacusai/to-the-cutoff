@@ -9,7 +9,7 @@ The code has some small changes from the exact form used for experiments. For ex
 
 We have prioritized making the code available for release and transparency; usability improvements including a thorough how-to-install (especially tricky to get the C++ environment configured correctly) will come soon.
 
-For now, requirements.txt, along with a Python 3.10 installation, should prove sufficient to execute experiments (although it will not be sufficient to replicate dataset scraping or GitHub scraping.)
+For now, requirements.txt, along with a Python 3.10 installation (and the necessary C++ setup which is quite similar to Deepmind's setup https://github.com/google-deepmind/code_contests), should prove sufficient to execute experiments (although it will not be sufficient to replicate dataset scraping or GitHub scraping.)
 
 SPOILER WARNING! Solutions for Project Euler exist in the euler directory. Solutions for problems from both datasets may exist in the csvs.
 
